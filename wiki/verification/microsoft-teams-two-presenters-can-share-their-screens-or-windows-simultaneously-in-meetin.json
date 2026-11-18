@@ -4,46 +4,36 @@
   "title": "Microsoft Teams: two presenters can share screens or windows at the same time in meetings",
   "status": "held",
   "date": "2026-11-18",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
+  "standard": "cd5b21ff3a5b",
   "verifierVerdict": "hold",
   "notes": [],
   "hold": {
     "reason": "failed",
     "since": "2026-11-18",
     "reasons": [
-      "3 blocking findings (claims 30, 40, 41)"
+      "2 blocking findings (claims 21, 30)"
     ]
   },
   "counts": {
-    "claims": 47,
+    "claims": 46,
     "confirmed": 43,
-    "unconfirmed": 1,
+    "unconfirmed": 0,
     "contradicted": 3,
-    "blocker": 3,
+    "blocker": 2,
     "major": 0,
-    "minor": 4
+    "minor": 1
   },
-  "summary": "The roadmap facts, rollout notice and documented sharing controls are substantially supported. Hold for the unsupported assurance that no budget control applies and the claims that the organiser's role and meeting option are undocumented, despite explicit descriptions in the notice and PowerShell reference.",
+  "summary": "The rollout window, default and PowerShell commands are supported. The briefing nevertheless treats licensing as wholly unpublished despite documented Teams licensing, and incorrectly casts the general screen-sharing policy's applicability as unconfirmed.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: products; title",
+      "where": "title; summary; What's changing; Risk assessment",
       "type": "record",
-      "claim": "This roadmap item concerns Microsoft Teams.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Teams\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
-      "where": "title; What's changing; Risk assessment; rationale: risk",
-      "type": "record",
-      "claim": "Two presenters are planned to be able to share a screen or window simultaneously in a Teams meeting.",
+      "claim": "Two presenters will be able to share a screen or window simultaneously in a Teams meeting.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Two presenters can share a screen or window at the same time in a Teams meeting.",
@@ -51,10 +41,10 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "What's changing; Risk assessment; rationale: impact",
+      "n": 2,
+      "where": "What's changing; Risk assessment",
       "type": "record",
-      "claim": "Participants can see both shared content streams simultaneously.",
+      "claim": "Participants can see both shared content streams at once.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Participants can see both shared content streams simultaneously",
@@ -62,10 +52,10 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 3,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap describes easier comparison and discussion of different presenters' content as the purpose.",
+      "claim": "The roadmap describes the purpose as easier comparison and discussion of content from different presenters.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "making it easier to compare and discuss content from different presenters.",
@@ -73,98 +63,10 @@
       "fix": null
     },
     {
-      "n": 5,
-      "where": "front matter: status; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap status is In development.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: targetDate; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap target is January CY2027.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"January CY2027\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "front matter: releasePhase; What's changing",
-      "type": "record",
-      "claim": "The roadmap lists General Availability and Targeted Release.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only listed roadmap cloud; US Government clouds are not listed.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "front matter: platforms; What's changing; Risk assessment; Scope; Open questions",
-      "type": "record",
-      "claim": "The roadmap lists Desktop and Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Desktop\", \"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap gives no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-11-13T19:41:44.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-11-13T19:41:44\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "MC1528014 was updated on 3 November 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1528014",
-      "quote": "Updated November 3, 2026: We have updated the timeline.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
+      "n": 4,
       "where": "front matter: defaultState; summary; What's changing; Why it matters; Risk assessment; rationale: impact",
       "type": "default",
-      "claim": "The capability is enabled for all meetings by default without administrator action.",
+      "claim": "The capability is on for all meetings by default without administrator action.",
       "status": "supported",
       "source": "Message Center post MC1528014",
       "quote": "This capability will be enabled for all meetings by default",
@@ -172,10 +74,10 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 5,
       "where": "What's changing; Risk assessment",
       "type": "record",
-      "claim": "A second presenter can begin sharing without the first presenter stopping.",
+      "claim": "A second presenter can start sharing without the first presenter stopping.",
       "status": "supported",
       "source": "Message Center post MC1528014",
       "quote": "allowing a second presenter to start sharing without requiring the first presenter to stop.",
@@ -183,7 +85,7 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 6,
       "where": "summary; What's changing; Scope; rationale: risk",
       "type": "record",
       "claim": "Meeting organisers will have an option controlling simultaneous sharing in an individual meeting.",
@@ -194,10 +96,10 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "summary; What's changing; Scope; Governance controls; rationale: risk",
+      "n": 7,
+      "where": "summary; What's changing; Scope; rationale: risk",
       "type": "record",
-      "claim": "Organisations will have tenant-level admin control over whether simultaneous sharing is available.",
+      "claim": "Organisations will have a tenant-level administrator control determining whether simultaneous sharing is available.",
       "status": "supported",
       "source": "Message Center post MC1528014",
       "quote": "Organizations will have tenant-level admin control to determine whether simultaneous sharing is available to their users.",
@@ -205,7 +107,18 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 8,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1528014 was updated on 3 November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1528014",
+      "quote": "Updated November 3, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
       "where": "What's changing",
       "type": "record",
       "claim": "The notice sets no act-by date.",
@@ -216,43 +129,142 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 10,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is January CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: platforms; What's changing; Risk assessment; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists Desktop and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The only cloud listed in the roadmap record is Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
       "where": "summary; What's changing; Why it matters; Scope; Governance guidance",
-      "type": "date",
-      "claim": "Worldwide General Availability rollout starts in early December 2026, moved from late November.",
+      "type": "record",
+      "claim": "MC1528014 targets the start of General Availability rollout in Worldwide for early December 2026.",
       "status": "supported",
       "source": "Message Center post MC1528014",
-      "quote": "General Availability (Worldwide): We will begin rolling out in early December 2026 (previously late November)",
-      "severity": "minor",
-      "fix": "In the summary, replace 'on by default from early December 2026' with 'on by default, with rollout targeted to begin in early December 2026'."
+      "quote": "General Availability (Worldwide): We will begin rolling out in early December 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Governance guidance",
+      "type": "record",
+      "claim": "The rollout start was previously late November.",
+      "status": "supported",
+      "source": "Message Center post MC1528014",
+      "quote": "early December 2026 (previously late November)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "MC1528014 expects rollout completion by mid-December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1528014",
+      "quote": "expect to complete by mid-December 2026.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 19,
-      "where": "What's changing; Scope",
-      "type": "date",
-      "claim": "The notice expects rollout to complete by mid-December 2026.",
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn has no dedicated page for this feature at the time of writing.",
       "status": "supported",
-      "source": "Message Center post MC1528014",
-      "quote": "and expect to complete by mid-December 2026.",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com \"Teams\" \"two presenters\"; Teams simultaneous two presenters screen sharing licensing multiple screenshare admin center meeting option. Read content-sharing guidance and Set-CsTeamsMeetingPolicy; no dedicated feature page found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "summary; Risk assessment; Cost and licensing; Governance guidance",
-      "type": "record",
-      "claim": "Microsoft recommends reviewing sharing policies and informing users and support teams.",
+      "where": "controls[1]; Risk assessment; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "Screen sharing mode is a per-user policy controlling whether a user can share a desktop and window in a Teams meeting.",
       "status": "supported",
-      "source": "Message Center post MC1528014",
-      "quote": "Review your organization's sharing policies and inform users and support teams about the new experience.",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing",
+      "quote": "This setting is a per-user policy. The setting controls whether a user can share a desktop and window in a Teams meeting.",
       "severity": null,
       "fix": null
     },
     {
       "n": 21,
+      "where": "controls[1].note; Governance controls table",
+      "type": "applicability",
+      "claim": "Microsoft has not confirmed that the general Screen sharing mode control applies to simultaneous sharing.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing",
+      "quote": "The setting controls whether a user can share a desktop and window in a Teams meeting.",
+      "severity": "blocker",
+      "fix": "Replace the first sentence of controls[1].note and its rendered counterpart with 'General control: governs whether a user can share a desktop or window in a Teams meeting.' The documented reach includes these presenters' screen and window sharing; retain the narrower statement that it does not determine the number of simultaneous presenters."
+    },
+    {
+      "n": 22,
       "where": "Risk assessment; rationale: risk",
       "type": "record",
-      "claim": "The notice states that no compliance considerations were identified.",
+      "claim": "MC1528014 identifies no compliance considerations.",
       "status": "supported",
       "source": "Message Center post MC1528014",
       "quote": "No compliance considerations identified. Review as appropriate for your organization.",
@@ -260,18 +272,18 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 23,
       "where": "Risk assessment: Data exposure",
       "type": "record",
-      "claim": "The notice describes no new data storage or processing.",
+      "claim": "The notice describes no new data being stored or processed.",
       "status": "supported",
       "source": "Message Center post MC1528014",
-      "quote": "Participants can see both shared content streams simultaneously, making it easier to compare and discuss content from different presenters.",
+      "quote": "When enabled, participants can see both shared content streams at the same time",
       "severity": null,
       "fix": null
     },
     {
-      "n": 23,
+      "n": 24,
       "where": "Risk assessment: Security & identity",
       "type": "record",
       "claim": "Neither the roadmap nor the notice describes an identity or authentication change.",
@@ -282,10 +294,10 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 25,
       "where": "Risk assessment: Security & identity",
       "type": "record",
-      "claim": "The notice provides no detailed role eligibility rules for becoming the second presenter.",
+      "claim": "The notice does not specify which roles can be the second presenter.",
       "status": "supported",
       "source": "Message Center post MC1528014",
       "quote": "allowing a second presenter to start sharing without requiring the first presenter to stop.",
@@ -293,10 +305,10 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 26,
       "where": "Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "The described sharing action is initiated by a presenter.",
+      "claim": "A person in the meeting starts sharing.",
       "status": "supported",
       "source": "Message Center post MC1528014",
       "quote": "allowing a second presenter to start sharing",
@@ -304,10 +316,10 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 27,
       "where": "Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "Neither supplied record describes automated or agent-driven sharing.",
+      "claim": "Neither source describes automated or agent-driven sharing.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Two presenters can share a screen or window at the same time in a Teams meeting.",
@@ -315,219 +327,43 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "Risk assessment: Change & support",
-      "type": "absence",
-      "claim": "Microsoft has not documented how the second stream appears on other clients.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams simultaneous two presenters multiple screenshare AllowMultipleScreenshare admin center meeting option license pricing mobile; Teams simultaneous sharing mobile organizer. Opened content-sharing guidance and Set-CsTeamsMeetingPolicy; no second-stream client presentation details found.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 28,
-      "where": "front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "licensing",
-      "claim": "Feature-specific licensing is not yet published, so the licensing model is unknown.",
+      "where": "summary; Risk assessment; Cost and licensing; Governance guidance",
+      "type": "record",
+      "claim": "The notice recommends reviewing sharing policies and informing users and support teams.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams simultaneously presenters license sharing; Teams simultaneous sharing licensing meter budget cap. Opened Manage Teams licenses, Microsoft Teams add-on licenses and both cited Learn pages; found no simultaneous-sharing-specific licence requirement.",
+      "source": "Message Center post MC1528014",
+      "quote": "Review your organization's sharing policies and inform users and support teams about the new experience.",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "where": "Risk assessment: Change & support; Open questions",
       "type": "absence",
-      "claim": "Neither supplied record names a meter, and no feature-specific meter was found in Microsoft Learn.",
+      "claim": "Microsoft has not documented how this feature's second stream appears on other clients, including mobile and Teams Rooms.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams simultaneous sharing licensing meter budget cap; Teams simultaneous two presenters multiple screenshare license pricing. Read both records, Teams licensing and add-on licensing pages, content-sharing guidance and the cmdlet reference; no feature-specific meter found.",
+      "quote": "Searched: Teams multiple simultaneous screenshare two presenters mobile Teams Rooms tenant admin meeting policy control; site:learn.microsoft.com \"Teams\" \"two presenters\". Read content-sharing guidance, meeting audio/video search excerpts and Set-CsTeamsMeetingPolicy; no second-stream client details found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 30,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "No cap or budget control applies because no meter is documented.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Teams simultaneous sharing licensing meter budget cap. Opened Teams licensing, add-on licensing, content-sharing guidance and Set-CsTeamsMeetingPolicy; none states that no cap or budget control applies. An undocumented meter does not establish this conclusion.",
+      "where": "front matter: licensing; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing model is unknown because Microsoft has not published a licence requirement.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/user-access",
+      "quote": "Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
       "severity": "blocker",
-      "fix": "Remove 'No cap or budget control applies, because no meter is documented.'"
+      "fix": "Set licensing.model to 'included'. Replace licensing.notes and the first Cost and licensing paragraph with 'Microsoft documents Teams licensing: except for joining meetings anonymously, each user in the organisation needs a Teams license to use Teams. The Teams service description includes meetings and screen sharing across Teams plans. No requirement specific to simultaneous sharing is published at the time of writing (November 2026).' Cite https://learn.microsoft.com/microsoftteams/user-access and https://learn.microsoft.com/office365/servicedescriptions/teams-service-description. In the cost rationale and licensing open question, narrow 'licensing is not yet published' to 'a requirement specific to simultaneous sharing is not yet published'."
     },
     {
       "n": 31,
-      "where": "controls[0].ui; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "No Teams admin center path for the multiple-screenshare setting is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: AllowMultipleScreenshare admin center; Teams multiple screenshare meeting option role. Opened Manage meeting policies for content sharing and Set-CsTeamsMeetingPolicy. The former gives no multiple-screenshare path; the latter documents PowerShell but no admin-center navigation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "controls[0].api; Governance controls",
-      "type": "command",
-      "claim": "MicrosoftTeams PowerShell supports Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowMultipleScreenshare $false to disable multiple screenshare for the policy, subject to the release caveat.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "It controls whether Multiple Screenshare is on or off for the entire tenant or for a particular user. ... $false: MultiVBSS meeting options are not available (hidden) for the organizer.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "controls[0].note; Scope; Governance controls",
-      "type": "behaviour",
-      "claim": "The cmdlet reference warns that the multiple-screenshare setting has no effect because the feature has not been fully released.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "This feature has not been fully released yet, so the setting will have no effect.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "controls[0].note; Scope; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "The reference does not explicitly identify AllowMultipleScreenshare as the control for roadmap item 80239 or MC1528014.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: AllowMultipleScreenshare admin center; Teams multiple screenshare meeting option role. Opened Set-CsTeamsMeetingPolicy and searched its text for AllowMultipleScreenshare, MC1528014 and 80239; the parameter exists but neither identifier appears.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "controls[1].ui",
-      "type": "admin-path",
-      "claim": "Content-sharing policies are at Teams admin center > Meetings > Meeting policies > policy > Content sharing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing",
-      "quote": "In the left navigation of the Teams admin center, go to Meetings > Meeting policies. ... Select the policy that you want to edit. ... Go to the Content sharing section.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "controls[1].api",
-      "type": "command",
-      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -ScreenSharingMode <value> controls the existing screen-sharing mode.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing",
-      "quote": "You can also use the Set-CsTeamsMeetingPolicy cmdlet to control the content sharing settings. Set the following parameters: ... ScreenSharingMode",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "controls[1].governs and scope; Risk assessment; Governance guidance; Governance controls",
-      "type": "behaviour",
-      "claim": "Screen sharing mode is a per-user policy governing whether a user can share a desktop or window.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing",
-      "quote": "This setting is a per-user policy. The setting controls whether a user can share a desktop and window in a Teams meeting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "controls[1].note; Risk assessment; Governance controls",
-      "type": "absence",
-      "claim": "The cited documentation does not explain Screen sharing mode's specific interaction with simultaneous sharing or describe it as a presenter-count control.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams simultaneous two presenters multiple screenshare AllowMultipleScreenshare; AllowMultipleScreenshare admin center. Read content-sharing guidance and ScreenSharingMode in Set-CsTeamsMeetingPolicy; neither describes an interaction or presenter-count setting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Scope: Who configures it; Open questions",
-      "type": "absence",
-      "claim": "The notice does not name a specific administrator role for its tenant-level control.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams multiple screenshare meeting option role; AllowMultipleScreenshare admin center. Read MC1528014 and the cmdlet's parameter description, which says Tenant Admins but does not name a specific administrative role for the notice's control.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Scope: Who configures it",
-      "type": "role",
-      "claim": "Microsoft has not named the role needed to configure the organiser's per-meeting option.",
-      "status": "contradicted",
-      "source": "Message Center post MC1528014",
-      "quote": "Meeting organizers will also have a meeting option to control whether multiple presenters can share simultaneously in an individual meeting.",
-      "severity": "blocker",
-      "fix": "Replace 'Microsoft has not named the role needed for either.' with 'The notice identifies meeting organisers for the per-meeting option but does not name a specific administrator role for the tenant-level control.'"
-    },
-    {
-      "n": 41,
-      "where": "Governance controls: final paragraph",
-      "type": "absence",
-      "claim": "Microsoft has not described the organiser's meeting option in any page found.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
-      "quote": "$true: Multiple VBSS (MultiVBSS) meeting options are available and enabled for the organizer. ... $false: MultiVBSS meeting options are not available (hidden) for the organizer.",
-      "severity": "blocker",
-      "fix": "Replace the final sentence with 'The AllowMultipleScreenshare reference describes Multiple VBSS meeting options as available and enabled for the organiser when true, and hidden when false; it also warns that the setting currently has no effect.'"
-    },
-    {
-      "n": 42,
-      "where": "Governance guidance: Before rollout",
-      "type": "admin-path",
-      "claim": "The prose gives Teams admin center > Meetings > Meeting policies > Content sharing as the path for reviewing each policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing",
-      "quote": "In the left navigation of the Teams admin center, go to Meetings > Meeting policies. ... Select the policy that you want to edit. ... Go to the Content sharing section.",
-      "severity": "minor",
-      "fix": "Replace the parenthetical path with 'Teams admin center > Meetings > Meeting policies > policy > Content sharing', matching the existing controls row."
-    },
-    {
-      "n": 43,
-      "where": "front matter: impact; rationale: impact",
-      "type": "consistency",
-      "claim": "The page rates impact medium although its rationale describes a change to default behaviour, which the standard defines as high impact.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "impact: \"medium\"; rationale: 'Microsoft's notice says it is enabled for all meetings by default'. The standard defines high impact as 'most users, or a change to default behaviour'.",
-      "severity": "minor",
-      "fix": "Set impact to 'high' and replace the impact rationale with: High. Microsoft's notice says the capability is enabled for all meetings by default, changing default screen-sharing behaviour."
-    },
-    {
-      "n": 44,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "No dedicated Microsoft Learn feature page was found beyond the parameter reference and surrounding sharing guidance.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams simultaneous two presenters multiple screenshare AllowMultipleScreenshare admin center meeting option license pricing mobile; Teams multiple screenshare meeting option role. Opened Set-CsTeamsMeetingPolicy and content-sharing guidance; no dedicated simultaneous-sharing page found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "record",
-      "claim": "Neither the roadmap record nor MC1528014 names a licence requirement.",
-      "status": "supported",
-      "source": "Message Center post MC1528014",
-      "quote": "Organizations will have tenant-level admin control to determine whether simultaneous sharing is available to their users. Review your organization's sharing policies and inform users and support teams about the new experience.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Governance controls",
-      "type": "record",
-      "claim": "The notice announces a tenant-level control but gives no location for it.",
+      "claim": "Neither the roadmap record nor MC1528014 names a licence for this feature.",
       "status": "supported",
       "source": "Message Center post MC1528014",
       "quote": "Organizations will have tenant-level admin control to determine whether simultaneous sharing is available to their users.",
@@ -535,19 +371,173 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "Cost and licensing",
+      "n": 32,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft has published no licence requirement specific to simultaneous two-presenter sharing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams meetings screen sharing licenses Teams Premium simultaneous sharing license. Read Manage Teams licenses, Teams service description, and Teams Premium licensing; standard licensing is documented, but no simultaneous-sharing-specific requirement was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter is documented for this feature at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams simultaneous two presenters screen sharing licensing multiple screenshare admin center meeting option; Microsoft Teams meetings licensing requirements screen sharing Teams license. Read Teams service description, Manage Teams licenses and Teams Premium licensing; no feature meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope: Who and where",
       "type": "record",
-      "claim": "The notice recommends communication and training for users and support teams.",
+      "claim": "The roadmap does not list US Government clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope: Who configures it",
+      "type": "record",
+      "claim": "The notice names no specific administrator role for its tenant-level control.",
       "status": "supported",
       "source": "Message Center post MC1528014",
-      "quote": "Review your organization's sharing policies and inform users and support teams about the new experience.",
+      "quote": "Organizations will have tenant-level admin control to determine whether simultaneous sharing is available to their users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowMultipleScreenshare $false is a documented call for the multiple-screenshare policy, subject to the stated no-effect warning.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "-AllowMultipleScreenshare\nThis setting enables Tenant Admins to turn on the Multiple Screenshare feature.\n- $false: MultiVBSS meeting options are not available (hidden) for the organizer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[0].ui; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no Teams admin center path for the multiple-screenshare setting at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams AllowMultipleScreenshare admin center Multiple VBSS meeting options tenant policy precedence; site:learn.microsoft.com \"Teams\" \"MultipleScreenshare\" \"admin\". Read content-sharing guidance, settings/policies reference excerpts and Set-CsTeamsMeetingPolicy; no UI path found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].governs; controls[0].scope; Governance controls",
+      "type": "behaviour",
+      "claim": "AllowMultipleScreenshare controls Multiple Screenshare for the entire tenant or a particular user through meeting policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "It controls whether Multiple Screenshare is on or off for the entire tenant or for a particular user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The AllowMultipleScreenshare reference warns that the setting currently has no effect because the feature has not been fully released.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "This feature has not been fully released yet, so the setting will have no effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[0].note; Scope; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The reference does not explicitly tie AllowMultipleScreenshare to roadmap item 80239 or MC1528014.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams AllowMultipleScreenshare admin center Multiple VBSS meeting options tenant policy precedence; site:learn.microsoft.com \"Teams\" \"two presenters\". Opened Set-CsTeamsMeetingPolicy and read its AllowMultipleScreenshare description; it names neither record.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[1].ui; Governance guidance; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Content sharing section of a meeting policy is reached in Teams admin center through Meetings > Meeting policies > policy > Content sharing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing",
+      "quote": "In the left navigation of the Teams admin center, go to Meetings > Meeting policies.\n2. Select the policy that you want to edit.\n3. Go to the Content sharing section.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -ScreenSharingMode <value> configures screen-sharing mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing",
+      "quote": "You can also use the Set-CsTeamsMeetingPolicy cmdlet to control the content sharing settings. Set the following parameters:\n- ScreenSharingMode",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].note; Governance controls",
+      "type": "absence",
+      "claim": "The Screen sharing mode documentation does not describe a setting for the number of simultaneous presenters.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams simultaneous two presenters screen sharing licensing multiple screenshare admin center meeting option. Read the full Screen sharing mode section and the ScreenSharingMode parameter reference; both concern permitted sharing modes, not a simultaneous-presenter count.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "AllowMultipleScreenshare true makes Multiple VBSS meeting options available and enabled for the organiser.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "$true: Multiple VBSS (MultiVBSS) meeting options are available and enabled for the organizer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "AllowMultipleScreenshare false hides the MultiVBSS meeting options from the organiser.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy",
+      "quote": "$false: MultiVBSS meeting options are not available (hidden) for the organizer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance guidance: After rollout",
+      "type": "consistency",
+      "claim": "The checklist asks readers to check an organiser meeting option that has no corresponding controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Ask organisers whether the per-meeting option for multiple presenters is visible and behaves as the notice describes. | Controls rows: multiple-screenshare meeting policy; existing Screen sharing mode policy.",
       "severity": "minor",
-      "fix": "Replace the indirect-cost sentence with 'The known cost is indirect: admin time to review sharing settings and communication for users and support teams, as the notice recommends.' The notice recommends informing users, not training."
+      "fix": "Remove the After rollout bullet 'Ask organisers whether the per-meeting option for multiple presenters is visible and behaves as the notice describes.' It instructs a check of a control not represented in the table."
     }
   ],
   "precheck": {
-    "at": "2026-11-18T07:41:05.200Z",
+    "at": "2026-11-18T09:02:07.424Z",
     "summary": {
       "links": 4,
       "unreachable": 0,
@@ -614,5 +604,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

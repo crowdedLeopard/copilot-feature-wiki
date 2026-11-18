@@ -46,6 +46,15 @@ sources:
   - title: "Manage participation in Business Applications in Work IQ"
     url: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation"
     kind: "learn"
+  - title: "Quickstart: Set up Business Applications in Work IQ for a pilot"
+    url: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/quickstart"
+    kind: "learn"
+  - title: "Control which apps are allowed in your environment"
+    url: "https://learn.microsoft.com/power-platform/admin/control-app-access-environment"
+    kind: "learn"
+  - title: "Application table/entity reference (Microsoft Dataverse)"
+    url: "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/application"
+    kind: "learn"
   - title: "Business Applications in Work IQ"
     url: "https://learn.microsoft.com/power-apps/maker/data-platform/business-applications-work-iq"
     kind: "learn"
@@ -100,8 +109,11 @@ controls:
       surface: "Power Platform admin center"
       path: "Security > Identity & access > App Access Control > environment > Enable"
       docs: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access"
-    api: null
-    note: "After enabling, return to the environment and select the applications to block. Power Platform Administrator role."
+    api:
+      kind: "rest"
+      call: "PATCH https://<organization>/api/data/v9.2/applications(<applicationid>)"
+      docs: "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/application"
+    note: "Power Platform Administrator role. The request body sets access (0 Allowed, 1 Blocked); this changes an app's status, so set environment-level enforcement separately. General App Access docs require a managed environment."
   - governs: "How much Cowork can consume in Copilot Credits"
     scope: "tenant"
     ui:
@@ -117,7 +129,7 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Apps (maker)"
-      path: "More > Business skills > skill > Deactivate"
+      path: "environment > More > Business skills > skill > Deactivate"
       docs: "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills"
     api:
       kind: "other"
@@ -133,19 +145,23 @@ changes:
     note: "New briefing: Cowork access to Business Applications through Work IQ is documented as a public preview plugin that an admin installs; roadmap target is December CY2026."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 88 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Correction: added the Dataverse application table call for blocking apps, removed the claim that turning off Work IQ blocks Cowork's data access, and trimmed role-review checklist items and a Copilot Studio availability claim."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 86 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 88
-  confirmed: 85
+  claims: 86
+  confirmed: 83
   unconfirmed: 0
   contradicted: 3
-  attempts: 1
-  hash: "5b6a6f511e46fcabdd9c14106d57c6d1"
+  attempts: 2
+  hash: "3a5f7bd5a5ab42db00320727a66a33cb"
 ---
 
 ## What's changing
@@ -156,13 +172,13 @@ Microsoft Learn already documents this. The Cowork page describes a **Business a
 
 Business skills are process instructions stored in a Dataverse environment. Learn says that once they are created and activated, Copilot Chat, Copilot Cowork and connected agents can discover and use the skills the user has access to.
 
-On status, the roadmap item is In development with a preview date of September CY2026 and a target of December CY2026, listing both Preview and General Availability. Learn states that access through Cowork is in public preview, while access through Work IQ MCP and Copilot Studio is generally available. Treat December CY2026 as a target.
+On status, the roadmap item is In development with a preview date of September CY2026 and a target of December CY2026, listing both Preview and General Availability. Learn states that access through Cowork is in public preview, while access through Work IQ MCP is generally available. Treat December CY2026 as a target.
 
 ## Why it matters
 
 This puts write-capable access to business records inside a chat tool that many users already have. The plugin does not work until an admin installs it, so the first decision is yours: which users, and which environments, should be able to reach Dynamics 365 and Power Apps data from Cowork.
 
-The environment and tenant settings are separate from that decision. Learn documents Business Applications in Work IQ as on by default for new public production environments, with exceptions, and the tenant audience setting defaults to all users. Check those settings now, because they decide what Cowork can reach once the plugin is installed. Spend also needs an owner: Cowork consumption is metered in Copilot Credits, and the usage of one request varies.
+The environment and tenant settings are separate from that decision. Learn documents Business Applications in Work IQ as on by default for new public production environments, with exceptions, and the tenant audience setting defaults to all users. Check those settings now, and separately review App Access Control for Cowork, because participation settings do not prevent agentic access to environment data. Spend also needs an owner: Cowork consumption is metered in Copilot Credits, and the usage of one request varies.
 
 ## Risk assessment
 
@@ -202,8 +218,7 @@ To cap spend, Learn's cost guidance says to include Cowork in a spending policy 
 
 ### Before rollout
 - Review the tenant audience setting in the Microsoft 365 admin center and decide whether business applications should be available to all users, specific groups or no users.
-- Check which environments have **Work IQ** turned on, and turn it off where Cowork should not reach the data.
-- Review Dataverse security roles in those environments, because Cowork acts within each user's permissions.
+- Check which environments have **Work IQ** turned on; use App Access Control to block Cowork from environments whose data it should not access.
 - Create or confirm a spending policy that covers Cowork, with a per-user limit, before any pilot.
 
 ### At rollout
@@ -213,7 +228,7 @@ To cap spend, Learn's cost guidance says to include Cowork in a spending policy 
 
 ### After rollout
 - Watch Cowork consumption against the spending policy and adjust limits.
-- Review who holds the Skill Sharing Role and which skills are shared with everyone in an environment.
+- Review which skills are shared with everyone in an environment.
 - Re-check Learn and Message center for the December CY2026 target and any change from preview.
 
 ## Governance controls
@@ -226,9 +241,9 @@ To cap spend, Learn's cost guidance says to include Cowork in a spending policy 
 <tr><td data-label="Control"><strong>Whether the Business apps plugin is installed for Cowork users</strong><br><small>Tenant</small><br><small class="controls__note">Install offers All users or Specific users and groups. The API is a general package block (beta, Agent 365 licence); not confirmed for this plugin.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Plugins › Business apps (preview) › Install <a href="https://learn.microsoft.com/copilot/cowork/cowork-work-iq" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which users can use business applications through Microsoft 365 Copilot</strong><br><small>Tenant</small><br><small class="controls__note">Options: All users (default), Specific groups, No users. The quickstart page words the setting label slightly differently. AI Administrator role.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › Business Applications data in Work IQ available to Copilot <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which environments have Work IQ turned on</strong><br><small>Environment</small><br><small class="controls__note">Power Platform Administrator role. Does not prevent agentic access to environment data.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › environment › Settings › Product › Features › Work IQ <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which applications, including Copilot Cowork, can access an environment's Dataverse data</strong><br><small>Environment</small><br><small class="controls__note">After enabling, return to the environment and select the applications to block. Power Platform Administrator role.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Identity &amp; access › App Access Control › environment › Enable <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which applications, including Copilot Cowork, can access an environment's Dataverse data</strong><br><small>Environment</small><br><small class="controls__note">Power Platform Administrator role. The request body sets access (0 Allowed, 1 Blocked); this changes an app's status, so set environment-level enforcement separately. General App Access docs require a managed environment.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Identity &amp; access › App Access Control › environment › Enable <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH https://&lt;organization&gt;/api/data/v9.2/applications(&lt;applicationid&gt;)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/application" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>How much Cowork can consume in Copilot Credits</strong><br><small>Tenant</small><br><small class="controls__note">Policies cover selected services and users; per-policy and per-user limits apply. Beta API.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether a business skill is active for agents to discover</strong><br><small>Environment</small><br><small class="controls__note">The tool deletes a skill; the page lists no tool that deactivates one. Sharing is set with Share on the same page.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>More › Business skills › skill › Deactivate <a href="https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Dataverse MCP server tool delete_skill (deletes a business skill from the environment)</code> <a href="https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether a business skill is active for agents to discover</strong><br><small>Environment</small><br><small class="controls__note">The tool deletes a skill; the page lists no tool that deactivates one. Sharing is set with Share on the same page.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>environment › More › Business skills › skill › Deactivate <a href="https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Dataverse MCP server tool delete_skill (deletes a business skill from the environment)</code> <a href="https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -252,12 +267,11 @@ impact: Medium. Users who already hold access to model-driven apps or Dataverse 
 <!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[3].api; Governance controls table / absence: An API for allowing or blocking applications' access to environment data is not yet documented. | Found: Update ... PATCH /applications(applicationid) ... Writable columns/attributes ... Access ... LogicalName ... access ... Access Choices/Options ... 0 ... Allowed ... 1 ... Blocked | Fix: Replace controls[3].api null with kind 'rest', call 'PATCH https://<organization>/api/data/v9.2/applications(<applicationid>) with JSON body {"access":1}', docs 'https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/application'. Qualify the note: 'The API changes an application's allowed/blocked status; configure environment-level App Access enforcement separately.' The documented access values are 0 for Allowed and 1 for Blocked. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/application
-- [contradicted, blocker] Governance guidance: Before rollout, second bullet; Why it matters / applicability: Turning off the environment Work IQ setting prevents Cowork from reaching that environment's data. | Found: These participation settings don't prevent agentic access to environment data. Use App Access controls to manage that access. | Fix: Replace the second Before rollout bullet with 'Check which environments have Work IQ turned on; use App Access Control to block Cowork from environments whose data it should not access.' Replace 'because they decide what Cowork can reach once the plugin is installed' in Why it matters with 'and separately review App Access Control for Cowork, because participation settings do not prevent agentic access to environment data.' This also resolves the conflict with controls[2].note and the Governance controls notes. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation
+- [contradicted, blocker] controls[4].api; Governance controls table / command: GET https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies is automation for setting how much Cowork can consume. | Found: List spendingPolicies | GET /copilot/costManagement/spendingPolicies | Get a list of spending policies. ... Update spendingPolicy | PATCH /copilot/costManagement/spendingPolicies/{id} | Update a spending policy. | Fix: Replace the call with 'PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id}' and docs with https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update. Add to the note: 'The request body sets periodLimit and perUserLimit.' This reference explicitly lists both as updatable properties. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview
+- [contradicted, blocker] controls[5].api; Governance controls table / command: Dataverse MCP delete_skill is the automation counterpart of the row's skill activation control. | Found: Deactivating a skill preserves its content and version history. ... Deleting a skill is permanent and can't be undone. | Fix: Replace the API with kind 'rest', call 'PATCH /skills(<skillid>)', and docs https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/skill. Replace the deletion note with: 'The request body sets statecode to 1 (Inactive) and statuscode to 2 (Inactive) to deactivate the skill without deleting it.' The table reference documents SetState through PATCH and these exact state/status values. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing / availability: Learn says access to Business Applications through Copilot Studio is generally available. | Found: Access to Business Applications through Work IQ Model Context Protocol (MCP) and Microsoft Copilot Studio is generally available. | Fix: Remove 'and Copilot Studio' from the general-availability assertion. The cited user page supports it, but https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq instead identifies Business apps (preview) as a preview workload that requires enabling preview workloads. | Source: https://learn.microsoft.com/power-apps/user/use-business-apps-work-iq
-- [supported, minor] controls[3].ui; Governance controls table / admin-path: App Access setup is in Power Platform admin center under Security > Identity & access > App Access Control > environment > Enable. | Found: Select Security > Identity & access. ... Select App Access Control. ... Select the environment in which you want to enable app access. ... Select Enable, and then select Save. | Fix: Retain the cited Work IQ-specific path, but qualify its note: 'The general App Access documentation requires a managed environment and gives a different setup flow: Set up app access control > Access control > Enabled.' Cite https://learn.microsoft.com/power-platform/admin/control-app-access-environment for that qualification. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access
-- [supported, minor] controls[5].ui; Governance controls table / admin-path: A skill can be deactivated in Power Apps under More > Business skills > skill > Deactivate. | Found: Go to Power Apps and select your environment. ... In the left navigation pane, select More, and then select Business skills. ... Select a skill, and then select Deactivate from the command bar or the three-dot menu | Fix: Include the omitted scope-selection step: set controls[5].ui.path to 'environment > More > Business skills > skill > Deactivate'. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills
-- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: The checklist's security-role reviews are represented by controls in the governance table. | Found: Review Dataverse security roles in those environments ... Review who holds the Skill Sharing Role ... Controls rows cover plugin installation, audience, Work IQ features, App Access, spending and skill activation, but not security-role assignments. | Fix: The Before rollout step reviewing Dataverse security roles and the After rollout step reviewing Skill Sharing Role assignments have no corresponding control row. Do not add rows in this correction; remove those role-review clauses from the checklist, leaving their supported permission and role facts in Risk assessment.
-- [supported, minor] controls[1].note; Governance controls table / behaviour: The quickstart page uses a slightly different label for the tenant audience setting. | Found: Open the setting for Business Applications in Work IQ available to Copilot in Microsoft 365 Copilot. | Fix: Add https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/quickstart to sources for the note about the quickstart's differing setting label; the default-settings page includes 'data' in the label while the quickstart does not. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/quickstart
+- [supported, minor] Why it matters; Scope / default: Business Applications in Work IQ is on by default for new public production environments, subject to exceptions. | Found: Business Applications in Work IQ is on by default for new public production environments created for new or existing tenants. The following environments are exceptions: | Fix: Add: 'The general feature-settings reference still lists the Dataverse intelligence (Work IQ) settings as Off by default: https://learn.microsoft.com/power-platform/admin/settings-features#dataverse-intelligence-preview.' Retain the newer, specific default-settings guidance. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings
+- [supported, minor] controls[3].ui; Governance controls table / admin-path: The feature-specific App Access setup path is Security > Identity & access > App Access Control > environment > Enable. | Found: Select Security > Identity & access. Select App Access Control. Select the environment in which you want to enable app access. Select Enable, and then select Save. | Fix: Add to the row note: 'The general App Access reference gives different labels: Security > Identity and access > App access control > environment > Set up app access control > Access control > Enabled; select an application and Block. See https://learn.microsoft.com/power-platform/admin/control-app-access-environment#turn-on-enabled-mode.' | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access
+- [supported, minor] controls[3].api; Governance controls table / command: PATCH https://<organization>/api/data/v9.2/applications(<applicationid>) updates an Application record's access setting. | Found: Update ... PATCH /applications(applicationid) ... Writable columns/attributes ... Access ... LogicalName ... access | Fix: Add https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/application to sources: it explicitly documents the /api/data/v9.2/applications entity-set path used in the call. The cited table reference already supports PATCH and the access property. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/application
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist's instruction to review skills shared with everyone has a corresponding sharing control row. | Found: Review which skills are shared with everyone in an environment. ... Whether a business skill is active for agents to discover | Fix: Remove the checklist bullet 'Review which skills are shared with everyone in an environment.' The existing skills row governs activation, not sharing; its brief Share note does not make it a sharing row. Do not add a control row as part of this correction.
 -->

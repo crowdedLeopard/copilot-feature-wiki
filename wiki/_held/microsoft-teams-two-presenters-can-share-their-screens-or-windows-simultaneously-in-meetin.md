@@ -4,7 +4,7 @@ slug: "microsoft-teams-two-presenters-can-share-their-screens-or-windows-simulta
 roadmapId: 80239
 topic: "modern-work"
 products: ["Microsoft Teams"]
-summary: "Microsoft is adding simultaneous sharing by two presenters in Teams meetings, on by default from early December 2026. Admins get a tenant-level control and organisers a meeting option; tell users and support teams."
+summary: "Microsoft is adding simultaneous sharing by two presenters in Teams meetings, on by default, with rollout targeted to begin in early December 2026. Admins get a tenant-level control and organisers a meeting option; tell users and support teams."
 status: "in-development"
 releasePhase: ["General Availability","Targeted Release"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -13,7 +13,7 @@ targetDate: "January CY2027"
 previewDate: null
 risk: "low"
 cost: "low"
-impact: "medium"
+impact: "high"
 defaultState: "on"
 action: "prepare"
 licensing:
@@ -25,7 +25,7 @@ sources:
   - title: "Microsoft 365 Roadmap 80239"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=80239"
     kind: "roadmap"
-  - title: "MC1528014"
+  - title: "MC1528014: (Updated) Microsoft Teams: Two presenters can share their screens or windows simultaneously in meetings"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1528014"
     kind: "message-center"
   - title: "Set-CsTeamsMeetingPolicy"
@@ -65,19 +65,23 @@ changes:
     note: "First briefing for this roadmap item, built from the roadmap record, MC1528014 and the Set-CsTeamsMeetingPolicy reference."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 47 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected after verification: removed an unsupported claim about caps, named the organiser role for the per-meeting option, described the Multiple VBSS meeting options, and raised impact to high."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 46 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
+  claims: 46
   confirmed: 43
-  unconfirmed: 1
+  unconfirmed: 0
   contradicted: 3
-  attempts: 1
-  hash: "a760fc6580693bb262cf69a5bedc7f8d"
+  attempts: 2
+  hash: "15e7c430b2899c8892cf749a1e425629"
 ---
 
 ## What's changing
@@ -114,7 +118,7 @@ The practical decision is whether that default suits each part of the organisati
 
 Microsoft has not published a licence requirement or a meter for this feature. The roadmap record and MC1528014 name no licence, and Microsoft Learn documents none for it at the time of writing (November 2026). Do not budget for an additional licence on the strength of that silence, and do not assume none is needed either.
 
-The known cost is indirect: admin time to review sharing settings, and communication and training for users and support teams, as the notice recommends. No cap or budget control applies, because no meter is documented.
+The known cost is indirect: admin time to review sharing settings and communication for users and support teams, as the notice recommends.
 
 ## Scope
 
@@ -122,14 +126,14 @@ The known cost is indirect: admin time to review sharing settings, and communica
 
 **Rollout.** Per MC1528014, General Availability (Worldwide) begins in early December 2026 and is expected to finish by mid-December 2026. The roadmap item gives a January CY2027 target and the status In development; treat both dates as Microsoft's targets.
 
-**Who configures it.** The notice says organisations have a tenant-level admin control and organisers have a per-meeting option. Microsoft has not named the role needed for either. The Set-CsTeamsMeetingPolicy reference documents an AllowMultipleScreenshare parameter, covered in the controls table, but does not say that it is the control the notice describes.
+**Who configures it.** The notice says organisations have a tenant-level admin control and organisers have a per-meeting option. The notice identifies meeting organisers for the per-meeting option but does not name a specific administrator role for the tenant-level control. The Set-CsTeamsMeetingPolicy reference documents an AllowMultipleScreenshare parameter, covered in the controls table, but does not say that it is the control the notice describes.
 
 ## Governance guidance
 
 ### Before rollout
 - Tell service desk and meeting organisers about the new behaviour before the early December 2026 rollout window that MC1528014 gives, as the notice recommends.
 - Identify teams that present sensitive material in meetings, and decide whether the default suits them or whether to limit simultaneous sharing once Microsoft confirms which control applies.
-- Review the current **Screen sharing mode** meeting policy setting for each policy (Teams admin center > Meetings > Meeting policies > Content sharing), because it decides who can share a screen or window at all.
+- Review the current **Screen sharing mode** meeting policy setting for each policy (Teams admin center > Meetings > Meeting policies > policy > Content sharing), because it decides who can share a screen or window at all.
 
 ### At rollout
 - Confirm in Message center whether MC1528014 changes again, since its timeline was already moved once.
@@ -155,7 +159,7 @@ Microsoft Learn documents no Teams admin center path for the multiple-screenshar
 
 The Set-CsTeamsMeetingPolicy reference describes AllowMultipleScreenshare as a setting that "controls whether Multiple Screenshare is on or off for the entire tenant or for a particular user", and notes that the feature "has not been fully released yet, so the setting will have no effect". It does not tie the parameter to the roadmap item, so confirm that it is the control the notice means before relying on it.
 
-The Screen sharing mode row is today's alternative. It decides whether a user can share a desktop and window at all; the page does not describe any effect on how many presenters share at once. Microsoft has not described the organiser's meeting option in any page found, so it has no row.
+The Screen sharing mode row is today's alternative. It decides whether a user can share a desktop and window at all; the page does not describe any effect on how many presenters share at once. The AllowMultipleScreenshare reference describes Multiple VBSS meeting options as available and enabled for the organiser when true, and hidden when false; it also warns that the setting currently has no effect.
 
 ## Open questions
 
@@ -168,18 +172,14 @@ The Screen sharing mode row is today's alternative. It decides whether a user ca
 <!-- rationale
 risk: Low. It adds a second simultaneous shared stream in meetings; Microsoft's notice MC1528014 identifies no compliance considerations and describes a tenant-level admin control and an organiser meeting option.
 cost: Low. No licence or meter is documented for this feature at the time of writing (November 2026), so the known cost is admin time and user communication. Licensing is not yet published.
-impact: Medium. Microsoft's notice says it is enabled for all meetings by default, so presenters and participants in meetings with a second sharer will notice a changed screen-sharing experience.
+impact: High. Microsoft's notice says the capability is enabled for all meetings by default, changing default screen-sharing behaviour.
 -->
 
 <!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Cost and licensing / cost: No cap or budget control applies because no meter is documented. | Found: Searched: Teams simultaneous sharing licensing meter budget cap. Opened Teams licensing, add-on licensing, content-sharing guidance and Set-CsTeamsMeetingPolicy; none states that no cap or budget control applies. An undocumented meter does not establish this conclusion. | Fix: Remove 'No cap or budget control applies, because no meter is documented.'
-- [contradicted, blocker] Scope: Who configures it / role: Microsoft has not named the role needed to configure the organiser's per-meeting option. | Found: Meeting organizers will also have a meeting option to control whether multiple presenters can share simultaneously in an individual meeting. | Fix: Replace 'Microsoft has not named the role needed for either.' with 'The notice identifies meeting organisers for the per-meeting option but does not name a specific administrator role for the tenant-level control.'
-- [contradicted, blocker] Governance controls: final paragraph / absence: Microsoft has not described the organiser's meeting option in any page found. | Found: $true: Multiple VBSS (MultiVBSS) meeting options are available and enabled for the organizer. ... $false: MultiVBSS meeting options are not available (hidden) for the organizer. | Fix: Replace the final sentence with 'The AllowMultipleScreenshare reference describes Multiple VBSS meeting options as available and enabled for the organiser when true, and hidden when false; it also warns that the setting currently has no effect.' | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy
+- [contradicted, blocker] controls[1].note; Governance controls table / applicability: Microsoft has not confirmed that the general Screen sharing mode control applies to simultaneous sharing. | Found: The setting controls whether a user can share a desktop and window in a Teams meeting. | Fix: Replace the first sentence of controls[1].note and its rendered counterpart with 'General control: governs whether a user can share a desktop or window in a Teams meeting.' The documented reach includes these presenters' screen and window sharing; retain the narrower statement that it does not determine the number of simultaneous presenters. | Source: https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing
+- [contradicted, blocker] front matter: licensing; Cost and licensing; Open questions; rationale: cost / licensing: The licensing model is unknown because Microsoft has not published a licence requirement. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Set licensing.model to 'included'. Replace licensing.notes and the first Cost and licensing paragraph with 'Microsoft documents Teams licensing: except for joining meetings anonymously, each user in the organisation needs a Teams license to use Teams. The Teams service description includes meetings and screen sharing across Teams plans. No requirement specific to simultaneous sharing is published at the time of writing (November 2026).' Cite https://learn.microsoft.com/microsoftteams/user-access and https://learn.microsoft.com/office365/servicedescriptions/teams-service-description. In the cost rationale and licensing open question, narrow 'licensing is not yet published' to 'a requirement specific to simultaneous sharing is not yet published'. | Source: https://learn.microsoft.com/microsoftteams/user-access
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] summary; What's changing; Why it matters; Scope; Governance guidance / date: Worldwide General Availability rollout starts in early December 2026, moved from late November. | Found: General Availability (Worldwide): We will begin rolling out in early December 2026 (previously late November) | Fix: In the summary, replace 'on by default from early December 2026' with 'on by default, with rollout targeted to begin in early December 2026'.
-- [supported, minor] Governance guidance: Before rollout / admin-path: The prose gives Teams admin center > Meetings > Meeting policies > Content sharing as the path for reviewing each policy. | Found: In the left navigation of the Teams admin center, go to Meetings > Meeting policies. ... Select the policy that you want to edit. ... Go to the Content sharing section. | Fix: Replace the parenthetical path with 'Teams admin center > Meetings > Meeting policies > policy > Content sharing', matching the existing controls row. | Source: https://learn.microsoft.com/microsoftteams/meeting-policies-content-sharing
-- [contradicted, minor] front matter: impact; rationale: impact / consistency: The page rates impact medium although its rationale describes a change to default behaviour, which the standard defines as high impact. | Found: impact: "medium"; rationale: 'Microsoft's notice says it is enabled for all meetings by default'. The standard defines high impact as 'most users, or a change to default behaviour'. | Fix: Set impact to 'high' and replace the impact rationale with: High. Microsoft's notice says the capability is enabled for all meetings by default, changing default screen-sharing behaviour.
-- [supported, minor] Cost and licensing / record: The notice recommends communication and training for users and support teams. | Found: Review your organization's sharing policies and inform users and support teams about the new experience. | Fix: Replace the indirect-cost sentence with 'The known cost is indirect: admin time to review sharing settings and communication for users and support teams, as the notice recommends.' The notice recommends informing users, not training.
+- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist asks readers to check an organiser meeting option that has no corresponding controls-table row. | Found: Ask organisers whether the per-meeting option for multiple presenters is visible and behaves as the notice describes. | Controls rows: multiple-screenshare meeting policy; existing Screen sharing mode policy. | Fix: Remove the After rollout bullet 'Ask organisers whether the per-meeting option for multiple presenters is visible and behaves as the notice describes.' It instructs a check of a control not represented in the table.
 -->

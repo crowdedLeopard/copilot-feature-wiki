@@ -94,19 +94,23 @@ changes:
     note: "Rewritten for the Android item (roadmap 560700): the brief's existing page described the Windows item, so no Windows content was carried over."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 74 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-18"
+    note: "Corrected after verification: the SharePoint quota sentence now states what the Loop admin page says, the first open question reflects the roadmap's In development status, and an unsupported impact claim was removed."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 69 statements confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-18"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 74
-  confirmed: 71
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "c71ebf2c25065e60f43ef648fd732d3f"
+  claims: 69
+  confirmed: 69
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "c957a48f97259a0105a30c43ec8973c5"
 ---
 
 ## What's changing
@@ -151,7 +155,7 @@ Licence: the Learn page for Facilitator in Teams Rooms says in-person note-takin
 
 Meter: no meter, credit rate or usage charge is documented for this feature on these pages at the time of writing (November 2026). The price of Teams Rooms Pro and any change to the licensing model before final release are Not yet published here; Learn warns that the licensing model may change before final release.
 
-Indirect costs: admin time to confirm the prerequisites on room accounts and helpdesk briefing. The Loop admin policy page says storage for .loop files counts against the organisation's SharePoint quota; confirm whether that applies to room notes held in SharePoint Embedded.
+Indirect costs: admin time to confirm the prerequisites on room accounts and helpdesk briefing. Learn describes room notes as Loop files in SharePoint Embedded; the Loop admin policy page says storage for Loop files, including those in SharePoint Embedded, counts against the organisation's SharePoint quota.
 
 ## Scope
 
@@ -203,7 +207,7 @@ The Teams admin center steps to allow or block the Facilitator app (Teams apps >
 
 ## Open questions
 
-- Is in-person room note-taking on Android generally available, as the roadmap record and MC1307888 state, or still in preview, as the Learn page says? Watch the Learn page and Message center.
+- Has the announced Android rollout reached our rooms? The roadmap still says In development with a November CY2026 General Availability target, MC1307888 announces rollout from early November to early December 2026, and Learn still labels in-person note-taking preview.
 - Do the Facilitator-in-meetings limits (no sensitivity label inheritance, no watermarks, no automatic eDiscovery cloud attachment collection) also apply to in-person room notes?
 - Which meeting policy does the room resource account use for these notes?
 - Does any announcement tell in-room participants that transcription has started?
@@ -212,14 +216,5 @@ The Teams admin center steps to allow or block the Facilitator app (Teams apps >
 <!-- rationale
 risk: Medium. Room audio is transcribed and turned into notes stored in tenant-owned SharePoint Embedded storage, and Microsoft's notice says the feature is available automatically once prerequisites are met.
 cost: Low. Learn says in-person note-taking is currently included with Teams Rooms Pro; the cost is that licence on each room account (price not covered here) plus admin and helpdesk time.
-impact: Medium. People who meet in Pro-licensed Android rooms see a Take notes entry point on the console and notes on the front-of-room display; users outside those rooms are unaffected.
--->
-
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: Indirect costs / applicability: Whether that SharePoint quota rule applies to the room notes' Loop files in SharePoint Embedded still needs confirmation. | Found: Loop components and their integrations are powered by .loop files (earlier releases created .fluid files), stored in OneDrive, SharePoint, or SharePoint Embedded. Storage counts against your organization's SharePoint quota. | Fix: Replace the final sentence of Indirect costs with: "Learn describes room notes as Loop files in SharePoint Embedded; the Loop admin policy page says storage for Loop files, including those in SharePoint Embedded, counts against the organisation's SharePoint quota." Keep the existing citations to https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms and https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration. | Source: https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration
-- [contradicted, blocker] Open questions: first bullet / availability: The roadmap record states that in-person room note-taking on Android is generally available. | Found: "status": "In development", "targetDate": "November CY2026", "releasePhase": ["General Availability"] | Fix: Replace the first Open questions bullet with: "Has the announced Android rollout reached our rooms? The roadmap still says In development with a November CY2026 General Availability target, MC1307888 announces rollout from early November to early December 2026, and Learn still labels in-person note-taking preview."
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [unsupported, minor] rationale: impact / behaviour: Users outside the Pro-licensed Android rooms are unaffected. | Found: Searched: Facilitator in-person participants access outside. Read Rooms Facilitator and MC1307888, plus returned access excerpts; sources identify the room experience and saved-note access but do not guarantee all other users are unaffected. | Fix: Remove "; users outside those rooms are unaffected" from the impact rationale.
+impact: Medium. People who meet in Pro-licensed Android rooms see a Take notes entry point on the console and notes on the front-of-room display.
 -->

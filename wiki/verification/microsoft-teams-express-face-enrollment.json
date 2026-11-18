@@ -4,123 +4,36 @@
   "title": "Microsoft Teams: express face enrollment from meeting video for Teams Rooms recognition",
   "status": "held",
   "date": "2026-11-18",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
+  "standard": "cd5b21ff3a5b",
   "verifierVerdict": "hold",
   "notes": [],
   "hold": {
     "reason": "failed",
     "since": "2026-11-18",
     "reasons": [
-      "1 blocking finding (claim 60)"
+      "1 blocking finding (claim 66)"
     ]
   },
   "counts": {
-    "claims": 64,
-    "confirmed": 63,
+    "claims": 67,
+    "confirmed": 66,
     "unconfirmed": 0,
     "contradicted": 1,
     "blocker": 1,
     "major": 0,
-    "minor": 1
+    "minor": 0
   },
-  "summary": "The before-rollout checklist directs administrators to a command that disables face enrollment when it tells them to inspect current settings. The roadmap facts and the related enrollment and room-recognition controls are supported, but that instruction must be corrected before publication.",
+  "summary": "Hold: the licensing model is reported as unpublished even though Microsoft documents the underlying Teams user licence requirement. The roadmap facts and the documented enrollment and room-recognition controls are supported; the remaining uncertainty should be limited to requirements specific to express face enrollment.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: status; What's changing",
+      "where": "title; What's changing; summary",
       "type": "record",
-      "claim": "The roadmap status is In development.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
-      "where": "front matter: targetDate; What's changing",
-      "type": "record",
-      "claim": "February CY2027 is the roadmap target, not a committed release date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"February CY2027\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap supplies no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "front matter: releasePhase; What's changing; Scope",
-      "type": "record",
-      "claim": "The release phases are General Availability and Targeted Release.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists Android, Desktop, iOS and Mac.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap record was modified on 2026-11-13T19:41:44.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-11-13T19:41:44\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "front matter: products, roadmapId; title",
-      "type": "record",
-      "claim": "Roadmap item 570846 describes Microsoft Teams express face enrollment.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"id\": 570846, \"title\": \"Microsoft Teams: Express face enrollment\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "summary; What's changing; Risk assessment: Data exposure; rationale: risk",
-      "type": "record",
-      "claim": "The planned feature creates a face profile using the user's camera during eligible Teams meetings.",
+      "claim": "Roadmap item 570846 concerns creating a Teams face profile using the user's camera during eligible meetings.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Express face enrollment makes it easier for users to create a face profile in Teams by using their camera during eligible meetings, after they opt in.",
@@ -128,18 +41,18 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "summary; What's changing; Why it matters; Scope; Governance guidance; rationale: impact",
+      "n": 2,
+      "where": "summary; What's changing; Why it matters; Scope; rationale: risk and impact",
       "type": "record",
-      "claim": "Users opt in before express face enrollment.",
+      "claim": "Users opt in before creating the profile.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "by using their camera during eligible meetings, after they opt in",
+      "quote": "by using their camera during eligible meetings, after they opt in.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 11,
+      "n": 3,
       "where": "summary; What's changing",
       "type": "record",
       "claim": "Enrolled users can be recognised in supported Teams Rooms experiences.",
@@ -150,21 +63,43 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 4,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap links recognition to identifying people in the room and improving Copilot and recap experiences.",
+      "claim": "The roadmap says recognition helps identify who is in the room.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "helping identify who is in the room and improving downstream meeting experiences such as Copilot and recap",
+      "quote": "helping identify who is in the room",
       "severity": null,
       "fix": null
     },
     {
-      "n": 13,
+      "n": 5,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says recognition improves downstream Copilot experiences.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "improving downstream meeting experiences such as Copilot and recap.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says recognition improves downstream recap experiences.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "improving downstream meeting experiences such as Copilot and recap.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
       "where": "What's changing; controls[1].note",
       "type": "record",
-      "claim": "The roadmap says administrators can enable or disable the feature for their organisation.",
+      "claim": "The roadmap says administrators can enable or disable express face enrollment for their organisation.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Admins can enable or disable the feature for their organization.",
@@ -172,19 +107,96 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "No dedicated Learn page explicitly identifies itself as documentation for this roadmap item; the enrollment overview describes express face enrollment generally.",
+      "n": 8,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"express face enrollment\" Teams admin policy default license eligible meetings. Opened voice-and-face-recognition and Set-CsTeamsAIPolicy; neither explicitly identifies roadmap item 570846.",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is February CY2027, not a committed availability date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"targetDate\": \"February CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Android, Desktop, iOS and Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap provides no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-11-13T19:41:44.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-13T19:41:44\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 15,
       "where": "What's changing",
+      "type": "absence",
+      "claim": "No dedicated Learn page identifying this roadmap feature was found, distinct from the general enrollment background.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"express face enrollment\" admin policy license default eligible meetings; opened Overview and configuration of voice and face enrollment and Set-CsTeamsAIPolicy; neither identifies roadmap item 570846.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Learn describes express enrollment using voice and images and videos of the user's face from Teams meetings.",
       "status": "supported",
@@ -194,7 +206,7 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 17,
       "where": "What's changing",
       "type": "admin-path",
       "claim": "Active enrollment is a manual experience reached through Settings > Recognition in the Teams app.",
@@ -205,10 +217,10 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 18,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Teams audio and video used to create profiles through express enrollment are not retained after the call.",
+      "claim": "Teams audio and video used for express enrollment are not retained after the call ends.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
       "quote": "If users enroll via express enrollment, Teams audio and video used to create voice and face profiles aren't retained after the end of the Teams call.",
@@ -216,10 +228,21 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 19,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Learn does not explicitly identify its general express-enrollment description as this roadmap item.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"express face enrollment\" admin policy license default eligible meetings; opened the full voice and face enrollment overview and Set-CsTeamsAIPolicy; no explicit connection to roadmap item 570846 was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
       "where": "Why it matters; rationale: risk",
       "type": "behaviour",
-      "claim": "The recognition face profile is biometric data.",
+      "claim": "A face profile used for recognition is biometric data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
       "quote": "Voice and face recognition only works if end users have completed enrollment by creating their biometric profiles in Teams.",
@@ -227,21 +250,21 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 21,
       "where": "Why it matters; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Teams Rooms face recognition identifies enrolled users appearing on camera.",
+      "claim": "Teams Rooms face recognition identifies enrolled people appearing on camera.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
-      "quote": "Face recognition: Uses an enrolled user's face profile to identify them when they appear on camera in a meeting room.",
+      "quote": "Face recognition: Uses an enrolled user’s face profile to identify them when they appear on camera in a meeting room.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 20,
+      "n": 22,
       "where": "Why it matters; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Recognised users' contributions are attributed in transcriptions, meeting recaps and Copilot experiences.",
+      "claim": "Enrolled room participants' contributions are attributed in transcriptions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
       "quote": "When an enrolled user joins meetings from a Teams Room, their contributions are accurately attributed in transcriptions, meeting recaps, and Copilot experiences.",
@@ -249,43 +272,98 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "Why it matters",
-      "type": "default",
-      "claim": "The existing EnrollVoice setting is enabled by default.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy",
-      "quote": "-EnrollVoice: Default value: Enabled",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "Why it matters",
-      "type": "default",
-      "claim": "The existing EnrollFace setting is enabled by default.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy",
-      "quote": "-EnrollFace: Default value: Enabled",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 23,
-      "where": "Why it matters",
-      "type": "default",
-      "claim": "Learn says the existing PassiveVoiceEnrollment setting is enabled by default.",
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Enrolled room participants' contributions are attributed in meeting recaps.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
-      "quote": "The new policy includes three distinct settings which are enabled by default",
-      "severity": "minor",
-      "fix": "After the defaults sentence, add: 'The Set-CsTeamsAIPolicy reference qualifies PassiveVoiceEnrollment: organisations that previously disabled EnrollVoice receive a one-time matching state for PassiveVoiceEnrollment when express voice enrollment launches.' The reference is https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy."
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+      "quote": "their contributions are accurately attributed in transcriptions, meeting recaps, and Copilot experiences.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 24,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Enrolled room participants' contributions are attributed in Copilot experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+      "quote": "their contributions are accurately attributed in transcriptions, meeting recaps, and Copilot experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: defaultState; summary; Why it matters; Open questions",
+      "type": "default",
+      "claim": "The administrative default on arrival for this express face enrollment roadmap feature is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams express face enrollment policy default license eligible meetings; read roadmap, voice and face enrollment overview, and Set-CsTeamsAIPolicy. General enrollment defaults are stated, but no express-face-specific arrival default is identified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters; Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The checked sources do not describe a replacement of existing behaviour or autonomous actions on the user's behalf for this roadmap item.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"express face enrollment\" admin policy license default eligible meetings; read roadmap and enrollment overview. The roadmap describes opt-in profile creation and recognition, not replacement of existing behaviour or autonomous actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "EnrollVoice is enabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy",
+      "quote": "-EnrollVoice; Default value: Enabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "EnrollFace is enabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy",
+      "quote": "-EnrollFace; Default value: Enabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "PassiveVoiceEnrollment is normally enabled by default, subject to the following migration qualification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy",
+      "quote": "This setting is typically enabled by default; however any organization that previously had EnrollVoice set to disabled will see a one-time manual state duplication",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "Organisations that previously disabled EnrollVoice receive a one-time matching PassiveVoiceEnrollment state when express voice enrollment launches.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy",
+      "quote": "any organization that previously had EnrollVoice set to disabled will see a one-time manual state duplication so that both EnrollVoice and PassiveVoiceEnrollment will have the same state when launching this new functionality.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Microsoft retains an enrolled user's profile subject to its retention policies while the Teams account is active.",
+      "claim": "Microsoft retains profiles while the user is enrolled with an active Teams account, subject to the stated deletion rules.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
       "quote": "When a user is enrolled in the feature and has an active Teams account, Microsoft, on behalf of the user's organization, retains their voice and face profiles in accordance with the following retention policies.",
@@ -293,21 +371,21 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 32,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "A voice and face profile unused for one year is removed automatically.",
+      "claim": "A profile unused for one year is removed automatically.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
-      "quote": "In addition, a voice and face profile that isn't used for one year is removed automatically.",
+      "quote": "a voice and face profile that isn't used for one year is removed automatically.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 26,
+      "n": 33,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The user's profile is removed within 90 days after the organisation deletes the Teams account.",
+      "claim": "A user's profile is removed within 90 days of deletion of their Teams account.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
       "quote": "If the organization deletes the user's Teams account, the user's voice and face profile is removed within 90 days of the Teams account being deleted.",
@@ -315,10 +393,10 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "Risk assessment: Security & identity; controls[2].note",
+      "n": 34,
+      "where": "controls[2].note; Risk assessment: Security & identity",
       "type": "default",
-      "claim": "The separate Face Recognition device setting defaults to Off, so enrollment alone does not enable room recognition.",
+      "claim": "The Face Recognition device setting defaults to Off, so enrollment alone does not enable room recognition.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
       "quote": "| Face Recognition | Off | Users with enrolled face profile are identified with their face when using this device. Others are distinguished as meeting participants. |",
@@ -326,10 +404,10 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 35,
       "where": "Risk assessment: Security & identity; Scope",
-      "type": "availability",
-      "claim": "Face recognition requires a supported camera or a Teams Rooms on Windows device with Cloud IntelliFrame enabled.",
+      "type": "behaviour",
+      "claim": "Room face recognition requires a supported camera or a Teams Rooms on Windows device with Cloud IntelliFrame enabled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
       "quote": "Face recognition requires a supported camera or Teams Rooms on Windows devices with Cloud IntelliFrame enabled.",
@@ -337,32 +415,32 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 36,
       "where": "Risk assessment: Security & identity; Scope",
       "type": "availability",
-      "claim": "Teams Rooms on Windows supports face recognition.",
+      "claim": "Face recognition is supported on Teams Rooms on Windows.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
-      "quote": "Teams Rooms on Windows | Voice recognition: Supported | Face recognition: Supported",
+      "quote": "| Teams Rooms on Windows | ✅ Supported | ✅ Supported | Device settings or meeting policy |",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
+      "n": 37,
       "where": "Risk assessment: Security & identity; Scope",
       "type": "availability",
-      "claim": "Teams Rooms on Android does not support face recognition.",
+      "claim": "Face recognition is not supported on Teams Rooms on Android.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
-      "quote": "Teams Rooms on Android | Voice recognition: Supported | Face recognition: Not supported",
+      "quote": "| Teams Rooms on Android | ✅ Supported | 🚫 Not supported | Device settings or meeting policy |",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
+      "n": 38,
       "where": "Risk assessment: Security & identity; Governance controls",
       "type": "behaviour",
-      "claim": "Administrators cannot export end-user voice or face enrollment data from Teams admin center.",
+      "claim": "Administrators cannot export end-user voice or face enrollment data through the Teams admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
       "quote": "Enterprise administrators can't export end-user voice or face enrollment data from the Teams admin center.",
@@ -370,10 +448,10 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "Risk assessment: Security & identity",
+      "n": 39,
+      "where": "Risk assessment: Security & identity; Governance controls",
       "type": "behaviour",
-      "claim": "Enrollment data export remains under the end user's control.",
+      "claim": "Export of enrollment data remains under the end user's control.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
       "quote": "Export of enrollment data remains under the end user's control and within the user experience.",
@@ -381,21 +459,21 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 40,
       "where": "Risk assessment: Security & identity; Scope",
       "type": "availability",
-      "claim": "Learn describes enrollment generally as available only up to GCC, not in GCC High or DoD.",
+      "claim": "Learn describes enrollment generally as available only up to GCC and unavailable in GCC High or DoD.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
-      "quote": "No, voice and face enrollments are currently available only up to GCC and aren't available in GCCH or DOD environments.",
+      "quote": "voice and face enrollments are currently available only up to GCC and aren't available in GCCH or DOD environments.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
+      "n": 41,
       "where": "Risk assessment: Change & support; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Users can delete their profile at any time in Teams desktop, including after an administrator disables enrollment.",
+      "claim": "Users can delete their profiles in the Teams desktop app even after an administrator disables enrollment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
       "quote": "Users can delete their voice and face profile at any time using the Teams desktop app, even if their Enterprise administrator has turned off enrollment after they enrolled.",
@@ -403,65 +481,43 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "front matter: defaultState; summary; Why it matters; Open questions",
-      "type": "absence",
-      "claim": "The arrival default for the planned express face enrollment setting is not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"express face enrollment\" Teams admin policy default license eligible meetings. Read roadmap, enrollment overview and Set-CsTeamsAIPolicy: manual face and express voice defaults are given, but no express-face-specific rollout default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "front matter: licensing.model; summary; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "A licensing model specific to express face enrollment has not been published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams express face enrollment licensing requirements Teams Enterprise license price. Opened enrollment overview, People Recognition, Teams Rooms licenses and Teams Premium licensing; no express-face enrollment entitlement specified.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "absence",
-      "claim": "The enrollment overview does not specify an enrollment licence requirement.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams express face enrollment licensing pricing biometric recognition profile license. Read the enrollment overview in full: it identifies Teams Enterprise as the product context but gives no enrollment licence requirement.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
+      "n": 42,
       "where": "Cost and licensing",
       "type": "absence",
       "claim": "Microsoft has not published a price specific to express face enrollment.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams express face enrollment licensing pricing biometric recognition profile license. Read enrollment overview and People Recognition; checked Teams Premium licensing for enrollment, recognition, biometric, express and face; no price found.",
+      "quote": "Searched: Microsoft Teams express face enrollment licensing Teams Enterprise price meter license requirements; opened enrollment overview, People Recognition, Teams service description and Manage Teams licenses; no express-face-specific price found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
-      "where": "Cost and licensing",
+      "n": 43,
+      "where": "front matter: licensing.notes; Cost and licensing",
       "type": "absence",
-      "claim": "The enrollment overview documents no meter for express face enrollment at the time of writing.",
+      "claim": "The voice and face enrollment overview names no licence requirement.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams express face enrollment eligible meetings default policy EnrollFace license pricing meter. Read enrollment overview in full and checked licensing pages; no enrollment meter found.",
+      "quote": "Searched: \"face enrollment\" \"license\" and Teams express face enrollment licensing; read the full enrollment overview. It calls this a Microsoft Teams Enterprise feature but states no licence requirement or licensing entitlement.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 40,
-      "where": "front matter: licensing.notes; Cost and licensing; controls[2].note; rationale: cost",
+      "n": 44,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The enrollment overview documents no meter for express face enrollment.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams express face enrollment licensing Teams Enterprise price meter license requirements; opened the complete enrollment overview and Teams service description; no express-face enrollment meter was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "front matter: licensing.notes; controls[2].note; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "People Recognition on Teams Rooms devices requires a Teams Rooms Pro licence, separately from any unconfirmed enrollment entitlement.",
+      "claim": "People Recognition is exclusive to Teams Rooms devices with a Teams Rooms Pro licence, rather than a stated express-enrollment licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
       "quote": "This feature is exclusive to Microsoft Teams Rooms devices with a Teams Rooms Pro license.",
@@ -469,21 +525,21 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 46,
       "where": "Scope; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not defined which meetings are eligible for the planned express face enrollment feature.",
+      "claim": "Microsoft has not specified which meetings qualify as eligible for this roadmap feature.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"express face enrollment\" Teams admin policy default license eligible meetings. Read roadmap and enrollment overview; neither defines eligible meetings for the planned face-enrollment feature.",
+      "quote": "Searched: \"express face enrollment\" admin policy license default eligible meetings; Teams express face enrollment \"eligible\" \"default\" \"policy\"; opened enrollment overview and policy reference and read roadmap; no eligibility definition found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 42,
+      "n": 47,
       "where": "Scope",
       "type": "role",
-      "claim": "The enrollment overview addresses Enterprise administrators.",
+      "claim": "The enrollment overview describes its administrator audience as Enterprise administrators.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
       "quote": "Enterprise administrators can manage voice and face enrollment by using the CsTeamsAIPolicy.",
@@ -491,9 +547,9 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 48,
       "where": "Scope",
-      "type": "availability",
+      "type": "behaviour",
       "claim": "Face enrollment has no language requirement.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
@@ -502,32 +558,21 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 49,
       "where": "Scope",
       "type": "absence",
-      "claim": "The enrollment overview does not identify a specific administrator role required to edit Teams AI policies.",
+      "claim": "The enrollment overview does not name a specific administrative role needed to edit Teams AI policies.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams AI policy Set-CsTeamsAIPolicy administrator role permissions. Read enrollment overview and Set-CsTeamsAIPolicy; the overview uses Enterprise administrators without specifying an RBAC role.",
+      "quote": "Searched: Teams EnrollFace Teams admin center UI CsTeamsAIPolicy express face enrollment PowerShell Graph licensing price; read full enrollment overview and Set-CsTeamsAIPolicy. The overview says Enterprise administrators, not a specific role.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 45,
-      "where": "controls[0].ui; Open questions",
-      "type": "absence",
-      "claim": "No admin UI is documented for setting the EnrollFace Teams AI policy value; the policy is PowerShell-only.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams face enrollment EnrollFace Teams admin center PowerShell express face enrollment setting. Opened enrollment overview: 'You can access this policy only through Microsoft PowerShell.' Copilot overview search excerpt likewise says no Teams admin center setting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "controls[0].api; Governance controls table",
+      "n": 50,
+      "where": "controls[0].api",
       "type": "command",
-      "claim": "Set-CsTeamsAIPolicy -Identity Global -EnrollFace Disabled is a MicrosoftTeams PowerShell command that disables the Global EnrollFace value.",
+      "claim": "Set-CsTeamsAIPolicy -Identity Global -EnrollFace Disabled disables face enrollment through Recognition settings in the Global policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy",
       "quote": "Set-CsTeamsAIPolicy -Identity Global -EnrollFace Disabled\nSet Teams AI policy \"EnrollFace\" value to \"Disabled\" for global as default.",
@@ -535,21 +580,43 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "controls[0].governs; controls[0].note; Governance controls",
-      "type": "applicability",
-      "claim": "EnrollFace controls access to face enrollment in Teams app settings and is described as allowing active enrollment.",
+      "n": 51,
+      "where": "controls[0].ui; Open questions",
+      "type": "absence",
+      "claim": "No administrative UI is documented for setting the Teams AI EnrollFace policy.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy",
-      "quote": "EnrollFace controls user access to user face enrollment in the Teams app settings.\nEnabling these settings will allow your users in your organization the ability to enroll using active enrollment.",
+      "source": null,
+      "quote": "Searched: Teams EnrollFace Teams admin center UI CsTeamsAIPolicy express face enrollment PowerShell Graph licensing price; opened enrollment overview: 'You can access this policy only through Microsoft PowerShell.'",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
-      "where": "controls[0].scope; controls[0].note; Governance controls",
+      "n": 52,
+      "where": "controls[1].ui and controls[1].api; summary; Risk assessment: Change & support",
+      "type": "absence",
+      "claim": "No dedicated administrative UI or automation switch for express face enrollment is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"express face enrollment\" admin policy license default eligible meetings; Teams EnrollFace Teams admin center UI CsTeamsAIPolicy express face enrollment PowerShell Graph licensing price; opened enrollment overview and Set-CsTeamsAIPolicy; no dedicated switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[0].note; Governance controls; Governance guidance: At rollout",
+      "type": "absence",
+      "claim": "The policy documentation does not confirm that EnrollFace governs express face enrollment.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"express face enrollment\" admin policy license default eligible meetings; read enrollment overview and full Set-CsTeamsAIPolicy. EnrollFace is described as manual active enrollment; express voice has a separate parameter; express face is not mapped.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[0].note; Governance controls",
       "type": "applicability",
-      "claim": "Teams AI enrollment policies can govern specific users or groups.",
+      "claim": "Teams AI enrollment policies can apply to specific users or groups.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
       "quote": "Enterprise administrators can turn on or off use of voice and face recognition and voice and face enrollment for specific users or groups using the Teams AI Policy.",
@@ -557,32 +624,21 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "controls[1].ui; controls[1].api; summary; Governance guidance; Open questions",
-      "type": "absence",
-      "claim": "A dedicated express face enrollment switch and its UI or automation are not documented, and EnrollFace applicability to this planned flow is unconfirmed.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams face enrollment EnrollFace Teams admin center PowerShell express face enrollment setting. Read enrollment overview and Set-CsTeamsAIPolicy: EnrollFace is described as manual enrollment; PassiveVoiceEnrollment is express voice; no dedicated express-face switch.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "controls[2].ui; Governance controls table; Governance guidance: Before rollout",
+      "n": 55,
+      "where": "controls[2].ui",
       "type": "admin-path",
-      "claim": "The Teams Pro Management Portal exposes room recognition under Rooms > Settings > Recognition > Configure with device settings.",
+      "claim": "The room recognition device settings are reached in Teams Pro Management Portal through Rooms > Settings > Recognition > Configure with device settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
-      "quote": "Log in to the Teams Pro Management Portal.\nSelect Rooms.\nSelect Settings followed by the Recognition tab\nEnable Configure with device settings",
+      "quote": "Log in to the Teams Pro Management Portal.\nSelect Rooms.\nSelect Settings followed by the Recognition tab\nEnable Configure with device settings\nModify to the desired configuration",
       "severity": null,
       "fix": null
     },
     {
-      "n": 51,
-      "where": "controls[2].api; Governance controls table",
+      "n": 56,
+      "where": "controls[2].api",
       "type": "command",
-      "claim": "Set-CsTeamsMeetingPolicy -Identity <PolicyName> -roomPeopleNameUserOverride Off disables video-based identification through the meeting-policy configuration.",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <PolicyName> -roomPeopleNameUserOverride Off turns off video-based room identification through meeting policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
       "quote": "Set-CsTeamsMeetingPolicy -Identity PolicyName -roomAttributeUserOverride Attribute -roomPeopleNameUserOverride On\nroomPeopleNameUserOverride | Control the video-based user identification in meeting rooms. | Off - The room won't send video for identification.",
@@ -590,21 +646,21 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 57,
       "where": "controls[2].note; Governance controls; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Meeting-policy-based room recognition configuration will be retired in the future.",
+      "claim": "Microsoft says meeting-policy-based room recognition configuration will be retired in the future.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
-      "quote": "Meeting policy-based configuration will be retired in the future.",
+      "quote": "meeting policy-based configuration will be retired in the future.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 53,
+      "n": 58,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Microsoft recommends device-level recognition settings.",
+      "claim": "Microsoft recommends device settings for room recognition.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
       "quote": "We recommend using device-level settings because meeting policy-based configuration will be retired in the future.",
@@ -612,7 +668,7 @@
       "fix": null
     },
     {
-      "n": 54,
+      "n": 59,
       "where": "Governance controls",
       "type": "applicability",
       "claim": "PassiveVoiceEnrollment controls express voice enrollment.",
@@ -623,21 +679,21 @@
       "fix": null
     },
     {
-      "n": 55,
+      "n": 60,
       "where": "Governance controls",
       "type": "absence",
       "claim": "The Set-CsTeamsAIPolicy reference lists no parameter named for express face enrollment.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"express face enrollment\" Teams admin policy default license eligible meetings. Read the full Set-CsTeamsAIPolicy syntax and parameter sections: EnrollFace, EnrollVoice, PassiveVoiceEnrollment, SpeakerAttributionBYOD, Description and Identity.",
+      "quote": "Searched: \"express face enrollment\" admin policy license default eligible meetings; read full Set-CsTeamsAIPolicy syntax and parameters: EnrollFace, EnrollVoice, PassiveVoiceEnrollment, SpeakerAttributionBYOD, Description, Identity; no express-face parameter.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 56,
+      "n": 61,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Administrators can view end-user enrollment status in Teams admin center.",
+      "claim": "Administrators can view end-user enrollment status in the Teams admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
       "quote": "Enterprise administrators can now use Teams admin center to view end-user voice and face enrollment status and manage enrolled data directly from the admin experience.",
@@ -645,10 +701,10 @@
       "fix": null
     },
     {
-      "n": 57,
+      "n": 62,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Administrators can delete end-user voice and face profiles and enrollment data in Teams admin center.",
+      "claim": "Administrators can delete end-user profiles and enrollment data in the Teams admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
       "quote": "Enterprise administrators can also delete end-user voice and face profiles and enrollment data directly from the Teams admin center.",
@@ -656,21 +712,21 @@
       "fix": null
     },
     {
-      "n": 58,
+      "n": 63,
       "where": "Governance controls",
       "type": "absence",
-      "claim": "The cited enrollment overview names Teams admin center for enrollment data management but supplies no menu path.",
+      "claim": "The enrollment overview names the Teams admin center for enrollment data management but supplies no menu path.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams face enrollment EnrollFace Teams admin center PowerShell express face enrollment setting. Read the enrollment overview's Manage enrollment data in Teams admin center section and FAQ; neither gives menu steps.",
+      "quote": "Searched: Teams EnrollFace Teams admin center UI CsTeamsAIPolicy express face enrollment PowerShell Graph licensing price; opened full enrollment overview, including Manage enrollment data in Teams admin center and FAQ; no menu path is supplied there.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 59,
+      "n": 64,
       "where": "Governance controls",
       "type": "default",
-      "claim": "The Teams admin center enrollment-data-management capability does not change default feature availability or enrollment behaviour.",
+      "claim": "The Teams admin center enrollment-data management capability does not change default feature availability or enrollment behaviour.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
       "quote": "This capability does not change default feature availability and enrollment behavior. Existing policies and end-user controls for voice and face recognition and enrollment remain the same.",
@@ -678,65 +734,43 @@
       "fix": null
     },
     {
-      "n": 60,
-      "where": "Governance guidance: Before rollout, first bullet",
+      "n": 65,
+      "where": "Governance guidance: Before rollout",
       "type": "command",
-      "claim": "Administrators can read current enrollment policy values using the first controls row.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy",
-      "quote": "Set-CsTeamsAIPolicy -Identity Global -EnrollFace Disabled\nSet Teams AI policy \"EnrollFace\" value to \"Disabled\" for global as default.",
-      "severity": "blocker",
-      "fix": "Replace the first Before rollout bullet with: 'Inspect the Global and any custom Teams AI policies with Get-CsTeamsAIPolicy; do not run the first controls row's disable command merely to inspect settings.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/get-csteamsaipolicy, which states that the cmdlet retrieves all Teams AI policies for the tenant."
-    },
-    {
-      "n": 61,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The roadmap describes recognition and identification rather than autonomous actions on the user's behalf.",
+      "claim": "Get-CsTeamsAIPolicy inspects tenant Teams AI policies without using the modifying disable command.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "Once enrolled, users can be recognized in supported Teams Rooms experiences, helping identify who is in the room and improving downstream meeting experiences such as Copilot and recap.",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/get-csteamsaipolicy",
+      "quote": "This cmdlet retrieves all Teams AI policies for the tenant.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 62,
+      "n": 66,
+      "where": "front matter: licensing.model; summary; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing model is unknown because Microsoft has not published a licence for express face enrollment.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/user-access",
+      "quote": "Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
+      "severity": "blocker",
+      "fix": "Set licensing.model to included under the standard's rule for a new option inside a licensed product. Replace the unqualified unpublished-licence statements with: 'Teams use requires a Teams licence for each user, except for joining meetings anonymously. Microsoft has not published any licensing requirement or price specific to express face enrollment.' Cite https://learn.microsoft.com/microsoftteams/user-access and https://learn.microsoft.com/office365/servicedescriptions/teams-service-description. Retain the separately stated Teams Rooms Pro requirement for room recognition, and narrow the summary, licensing notes and cost rationale to say that feature-specific licensing is not yet published rather than that the underlying entitlement is unknown."
+    },
+    {
+      "n": 67,
       "where": "rationale: impact; Risk assessment: Change & support",
       "type": "absence",
-      "claim": "Microsoft has not specified who receives a prompt for the planned feature or when.",
+      "claim": "Microsoft has not specified who receives an express face enrollment prompt, when it appears or how the dedicated policy affects that prompt.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"express face enrollment\" Teams admin policy default license eligible meetings. Read roadmap, enrollment overview and Set-CsTeamsAIPolicy; no express-face rollout prompt audience or timing specified.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 63,
-      "where": "Open questions",
-      "type": "absence",
-      "claim": "The effect of disabling the planned express face setting on already-created profiles is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams face enrollment EnrollFace Teams admin center PowerShell express face enrollment setting. Read roadmap, enrollment overview and Set-CsTeamsAIPolicy: user deletion after disabling is documented, but no planned express-face switch or its profile-deletion semantics.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 64,
-      "where": "Why it matters",
-      "type": "absence",
-      "claim": "The supplied roadmap and cited documentation do not state that this planned item's arrival changes existing behaviour automatically.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"express face enrollment\" Teams admin policy default license eligible meetings. Read roadmap, enrollment overview and Set-CsTeamsAIPolicy; none describes an automatic behaviour change on arrival for roadmap item 570846.",
+      "quote": "Searched: Teams express face enrollment \"eligible\" \"default\" \"policy\"; \"express face enrollment\" admin policy license default eligible meetings; opened enrollment overview and Set-CsTeamsAIPolicy and read roadmap; no express-face prompt timing or policy effect found.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-18T07:41:02.418Z",
+    "at": "2026-11-18T09:02:05.034Z",
     "summary": {
-      "links": 4,
+      "links": 5,
       "unreachable": 0,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 0,
@@ -757,6 +791,11 @@
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/get-csteamsaipolicy",
         "ok": true,
         "status": 200
       },
@@ -802,5 +841,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

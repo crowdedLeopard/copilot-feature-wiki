@@ -4,35 +4,36 @@
   "title": "Power Apps: modern, refreshed look reaches the mail app on the semi-annual channel",
   "status": "held",
   "date": "2026-11-18",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
+  "standard": "cd5b21ff3a5b",
   "verifierVerdict": "hold",
   "notes": [],
   "hold": {
     "reason": "failed",
     "since": "2026-11-18",
     "reasons": [
-      "6 blocking findings (claims 24, 26, 28, 32, 36, 43)"
+      "2 blocking findings (claims 24, 35)"
     ]
   },
   "counts": {
-    "claims": 46,
-    "confirmed": 39,
-    "unconfirmed": 2,
-    "contradicted": 5,
-    "blocker": 6,
-    "major": 1,
-    "minor": 1
+    "claims": 45,
+    "confirmed": 43,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 2,
+    "major": 0,
+    "minor": 0
   },
-  "summary": "The rollout facts and automatic enablement match Microsoft's roadmap. Hold the briefing because its release-channel guidance confuses feature activation with build delivery, the environment API example is incomplete, and Microsoft does document general automation for the app setting reported as having none.",
+  "summary": "Hold: the licensing position is not wholly unpublished, because Microsoft documents the premium use rights required for model-driven apps. The New Look control's UI path also stops at adding a setting rather than reaching its editable value.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; What's changing; rationale: risk",
+      "where": "title; summary; What's changing; rationale: risk",
       "type": "record",
-      "claim": "This Power Apps change extends the Fluent-based modern, refreshed look for model-driven apps to the mail app.",
+      "claim": "This Power Apps change extends the Fluent-based modern look for model-driven apps to the mail app.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Extends the Fluent-based modern, refreshed look for model-driven apps to the mail app",
@@ -41,9 +42,9 @@
     },
     {
       "n": 2,
-      "where": "What's changing; Governance guidance: Before rollout",
+      "where": "What's changing; Governance guidance; rationale: risk",
       "type": "record",
-      "claim": "Microsoft describes consistent controls, spacing, colours and visual treatment in the mail app.",
+      "claim": "The change provides consistent controls, spacing, colours and visual treatment.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "providing consistent controls, spacing, colors, and visual treatment when users work in that app.",
@@ -54,7 +55,7 @@
       "n": 3,
       "where": "What's changing",
       "type": "record",
-      "claim": "The look was previously enabled for the monthly channel with release 2602.1.",
+      "claim": "The monthly channel previously received the look with release 2602.1.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "This was previously enabled for the monthly channel with the 2602.1 release",
@@ -65,7 +66,7 @@
       "n": 4,
       "where": "What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap enables the look for the semiannual channel with release 2609.3.",
+      "claim": "The roadmap enables the look for the semiannual channel with version 2609.3.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "is now being enabled for the semiannual channel with the 2609.3 release.",
@@ -74,6 +75,28 @@
     },
     {
       "n": 5,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap's Applies to field is Model-driven apps.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Applies to\nModel-driven apps",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "summary; What's changing; Risk assessment; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The feature scope is users, always enabled, rather than a user-selected new look.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Feature scope\nUsers (always enabled)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is Launched.",
@@ -84,7 +107,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 8,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target date is October CY2026.",
@@ -95,10 +118,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 9,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap supplies no preview date.",
+      "claim": "The roadmap gives no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -106,7 +129,7 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 10,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The release phase is General Availability.",
@@ -117,18 +140,7 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "front matter: clouds; Scope",
-      "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC and GCC High.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
+      "n": 11,
       "where": "front matter: platforms; What's changing; Scope; Open questions",
       "type": "record",
       "claim": "The roadmap lists Web as the platform.",
@@ -139,10 +151,32 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "front matter: defaultState; summary; Risk assessment; Scope; rationale: impact",
+      "n": 12,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The listed clouds are Worldwide (Standard Multi-Tenant), GCC and GCC High.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-13T23:01:05.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-13T23:01:05\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: defaultState; summary; Why it matters",
       "type": "default",
-      "claim": "The look reaches its users automatically and is always enabled rather than requiring users to choose it.",
+      "claim": "The refresh reaches its intended users without administrator opt-in, so defaultState is on.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Feature scope\nUsers (always enabled)",
@@ -150,21 +184,10 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap says the feature applies to model-driven apps.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Applies to\nModel-driven apps",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "What's changing; Scope; Governance guidance: Before rollout",
+      "n": 15,
+      "where": "What's changing; Scope; Governance guidance",
       "type": "date",
-      "claim": "Learn says the mail app look is on by default for monthly-channel environments from the February 2026 release.",
+      "claim": "Learn says the mail app look is on by default for monthly-channel environments from February 2026.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
       "quote": "The mail app supports the modern, refreshed look. It's on by default for environments on the monthly channel as part of the February 2026 release",
@@ -172,7 +195,7 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 16,
       "where": "What's changing",
       "type": "date",
       "claim": "Learn says the mail app look will be enabled on the semi-annual channel with the October 2026 update.",
@@ -183,10 +206,10 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 17,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The channel page lists the October semi-annual production build as YY09.3, for example 2609.3.",
+      "claim": "The October semi-annual production build is YY09.3, with 2609.3 as Microsoft's example.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/channel-overview",
       "quote": "| October release | Early October | `YY09.3` (for example, `2609.3`) |",
@@ -194,10 +217,10 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 18,
       "where": "What's changing; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Semi-annual releases roll out gradually across region groups on successive weekends, rather than one date for everyone.",
+      "claim": "Semi-annual releases roll out gradually to region groups on successive weekends, rather than one common date.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/channel-overview",
       "quote": "Like the monthly channel, each semi-annual release follows the gradual weekly rollout across the same region groups, starting with the first release region and reaching each subsequent region group on the following weekend.",
@@ -205,10 +228,10 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 19,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "Microsoft recommends the semi-annual channel for users who need more training and extensive testing before new user-facing features.",
+      "claim": "Microsoft recommends the semi-annual channel for users needing more training and extensive testing before new user-facing features.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/channel-overview",
       "quote": "For users in your organization where more training and extensive testing are needed before rollout out of new end user impacting features.",
@@ -216,153 +239,87 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 20,
       "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
       "type": "absence",
-      "claim": "The roadmap and modern-look article describe no new data access for this mail app change.",
+      "claim": "The roadmap and modern-look page describe no new data access for this mail app refresh.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Power Apps mail app modern refreshed look data access permissions sign in automated actions. Read the roadmap and modern-fluent-design; neither describes new data access for the mail app refresh.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "Risk assessment: Security & identity; rationale: risk",
-      "type": "absence",
-      "claim": "Neither the roadmap nor the feature article describes a permissions or sign-in change for the mail app refresh.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Apps mail app modern refreshed look data access permissions sign in automated actions. Read the roadmap and modern-fluent-design; no mail-refresh permissions or sign-in change is described.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "Risk assessment: Autonomy & actions; rationale: risk",
-      "type": "absence",
-      "claim": "The roadmap item does not describe an automated action in the mail app.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Apps mail app modern refreshed look data access permissions sign in automated actions. Read the roadmap description in full; it describes styling and availability, not automated actions.",
+      "quote": "Searched: Power Apps mail app modern refreshed look new data access permissions sign in automated actions spend control licensing. Read the roadmap, modern-fluent-design and important-changes-coming: no new mail-app data access is described.",
       "severity": null,
       "fix": null
     },
     {
       "n": 21,
-      "where": "front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost",
+      "where": "Why it matters; Risk assessment: Security & identity; rationale: risk",
       "type": "absence",
-      "claim": "A licence specifically for the visual refresh is not published, so its licensing model is unknown.",
+      "claim": "The roadmap and modern-look page describe no mail-refresh change to permissions, roles or sign-in.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Power Apps modern refreshed look mail app licensing price meter spend control. Opened modern-fluent-design, pricing-billing-skus and powerapps-licensing-faq; they document no refresh-specific licence. General app use rights are documented.",
+      "quote": "Searched: Power Apps mail app modern refreshed look new data access permissions sign in automated actions spend control licensing. Read the roadmap and modern-fluent-design; neither describes new mail-refresh permissions, roles or sign-in.",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
       "type": "absence",
-      "claim": "The roadmap and modern-look article name no meter specifically for the refresh.",
+      "claim": "The roadmap does not describe any automated action introduced in the mail app.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Power Apps modern refreshed look mail app licensing price meter spend control. Read the roadmap, modern-fluent-design and pricing-billing-skus; no refresh-specific meter is named. General Power Apps meters do not establish an additional refresh meter.",
+      "quote": "Searched: Power Apps mail app modern refreshed look new data access permissions sign in automated actions spend control licensing. Read the roadmap description and modern-fluent-design; the mail refresh describes visual treatment, not automated actions.",
       "severity": null,
       "fix": null
     },
     {
       "n": 23,
-      "where": "front matter: licensing.notes; Cost and licensing",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "The roadmap and modern-look article name no price for the refresh.",
+      "claim": "The roadmap and modern-look page name no licence, price or meter specific to this visual refresh.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Power Apps modern refreshed look mail app licensing price meter spend control. Read the roadmap and modern-fluent-design, plus pricing-billing-skus and powerapps-licensing-faq; no refresh-specific price is stated.",
+      "quote": "Searched: Power Apps modern refreshed look mail app licensing license price meter spend control. Read the roadmap, modern-fluent-design and Power Apps licensing FAQs: no refresh-specific licence, price or meter is named.",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "No spend control applies.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Power Apps modern refreshed look mail app licensing price meter spend control; modern, refreshed look spend control. Opened modern-fluent-design and pricing-billing-skus. Neither states that no spend control applies.",
+      "where": "front matter: licensing.model; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing model is unknown because Microsoft has not published the licence position for the look.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq",
+      "quote": "Model-driven apps use Dataverse and are premium apps by default. Every user who runs a model-driven app needs a license that provides Power Apps premium use rights.",
       "severity": "blocker",
-      "fix": "Replace 'No spend control applies' with 'No spend control specific to this visual refresh is documented at the time of writing (November 2026)'. Do not imply that general Power Apps billing controls are inapplicable."
+      "fix": "Set licensing.model to included. Replace the broad unpublished-licensing statements in the notes, body, open question and cost rationale with: 'Model-driven app users need a licence providing Power Apps premium use rights. Microsoft names no licence, price or meter specific to this visual refresh.' Cite https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq. Keep cost low for the refresh's indirect communication and training cost."
     },
     {
       "n": 25,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The environment channel is under Power Platform admin center > Manage > Environments > environment > Settings > Product > Behavior.",
+      "where": "Why it matters; Cost and licensing",
+      "type": "absence",
+      "claim": "No spend change or spend control specific to this visual refresh is documented.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/settings-behavior",
-      "quote": "In the navigation pane, select Manage. ... select Environments. ... select an environment. ... select Settings. Expand Product, and then select Behavior.",
+      "source": null,
+      "quote": "Searched: Power Apps modern refreshed look mail app licensing license price meter spend control. Read modern-fluent-design, the roadmap, licensing overview and licensing FAQs; none documents a spend change or spend control specific to this refresh.",
       "severity": null,
       "fix": null
     },
     {
       "n": 26,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "PATCH /organizations(<organizationid>) with the ReleaseChannel column set to the channel value is a runnable channel-setting call.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/update-delete-entities-using-web-api",
-      "quote": "Update operations use the HTTP PATCH verb. Pass a JSON object containing the properties you want to update to the URI that represents the record.",
-      "severity": "blocker",
-      "fix": "The pre-check's missing-endpoint lead is a formatting false positive: the Organization reference documents PATCH /organizations(organizationid), logical name releasechannel and value 3 for Semi-annual. Nevertheless replace the prose pseudo-call with 'PATCH [Organization URI]/api/data/v9.2/organizations(<organizationid>)' and JSON body '{\"releasechannel\":3}', labelled as the Semi-annual example, with Content-Type: application/json and If-Match: *. Cite the Organization reference and https://learn.microsoft.com/power-apps/developer/data-platform/webapi/update-delete-entities-using-web-api for the request format."
+      "where": "Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "The release channel controls feature availability, not deployed database, platform or application versions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/channel-overview",
+      "quote": "The release channel controls feature availability. It doesn't change the environment's database version or the platform and application versions deployed to the environment.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 27,
-      "where": "controls[0].note; Governance controls",
-      "type": "role",
-      "claim": "Updating environment behaviour settings requires the System Administrator security role or equivalent permissions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/settings-behavior",
-      "quote": "Make sure you have the System Administrator security role or equivalent permissions to update the settings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "controls[0].note; Governance controls",
-      "type": "applicability",
-      "claim": "Per-app channel settings take precedence over the environment channel without qualification.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/channel-change",
-      "quote": "3. App release channel value other than Auto (for example, Monthly, Semi-annual).\n4. Environment release channel value other than Auto (for example, Monthly, Semi-annual).",
-      "severity": "blocker",
-      "fix": "Replace the precedence statement in the note, rendered table and prose with 'A configured user channel override takes precedence over app and environment channels. An explicit app release channel other than Auto takes precedence over the environment channel.'"
-    },
-    {
-      "n": 29,
-      "where": "controls[0].note; Scope; Governance controls",
-      "type": "applicability",
-      "claim": "A user channel override takes precedence over app and environment channels.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/user-channel-override",
-      "quote": "User channel override takes precedence over the environment channel and app channel.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "Scope; Governance controls",
-      "type": "behaviour",
-      "claim": "The effective model-driven app channel depends on environment, app and user configuration.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/channel-overview",
-      "quote": "Release channel can be configured on the environment, app, or user level. The release channel is primarily managed on the environment or app. The user level is an override",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
       "where": "Scope",
       "type": "default",
-      "claim": "When app and environment channels are both Auto, Power Apps and Dynamics 365 environments use Monthly.",
+      "claim": "When both app and environment channels are Auto, Power Apps and Dynamics 365 environments use Monthly.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/channel-change",
       "quote": "App release channel and environment release channel are both Auto. In this case, Power Apps and Dynamics 365 environments use the monthly channel.",
@@ -370,21 +327,21 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "Risk assessment: Change & support; Governance controls",
+      "n": 28,
+      "where": "controls[0].note; Scope; Governance controls",
       "type": "behaviour",
-      "claim": "The release channel controls when a build arrives.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/channel-overview",
-      "quote": "The release channel controls feature availability. It doesn't change the environment's database version or the platform and application versions deployed to the environment.",
-      "severity": "blocker",
-      "fix": "Replace 'The release channel controls when a build arrives, not whether the look is applied once it does' with 'The release channel controls feature availability, not the database, platform or application versions deployed to the environment.' Preserve the separate, supported statement that builds roll out to region groups on successive weekends."
+      "claim": "A configured user channel override takes precedence over the app and environment channels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/user-channel-override",
+      "quote": "User channel override takes precedence over the environment channel and app channel.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 33,
+      "n": 29,
       "where": "Governance controls",
-      "type": "admin-path",
-      "claim": "An app-specific release channel can be configured in the app designer.",
+      "type": "behaviour",
+      "claim": "An explicit app channel other than Auto takes precedence over the environment channel.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/channel-change",
       "quote": "A maker can use the app designer to explicitly set the release channel for an app, which overrides the environment channel.",
@@ -392,76 +349,98 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "Governance controls",
+      "n": 30,
+      "where": "controls[0].ui; Governance controls: first row",
       "type": "admin-path",
-      "claim": "A user-specific channel override is available in the Power Platform admin center under the environment's Users.",
+      "claim": "Environment release-channel settings are on Power Platform admin center > Manage > Environments > environment > Settings > Product > Behavior.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/user-channel-override",
-      "quote": "Select Users > See all. ... Under the Model apps channel field, select Change channel. ... Select a channel from User channel override dropdown menu.",
+      "source": "https://learn.microsoft.com/power-platform/admin/settings-behavior",
+      "quote": "select Manage. ... select Environments. ... select an environment. ... select Settings. ... Expand Product, and then select Behavior. ... Model-driven app release channel",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].api; Governance controls: first row",
+      "type": "command",
+      "claim": "PATCH [Organization URI]/api/data/v9.2/organizations(<organizationid>) updates the organization record used for the environment channel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization",
+      "quote": "| `Update`Event: True | `PATCH` /organizations(*organizationid*)See Update |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].note; Governance controls: first row",
+      "type": "command",
+      "claim": "The request body property releasechannel set to 3 selects the semi-annual environment channel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization",
+      "quote": "### ReleaseChannel\n| LogicalName | `releasechannel` |\n| 3 | **Semi-annual channel** |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].note; Governance controls: first row",
+      "type": "command",
+      "claim": "The Dataverse update request can use the v9.2 path, Content-Type: application/json and If-Match: *.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/update-delete-entities-using-web-api",
+      "quote": "PATCH [Organization URI]/api/data/v9.2/accounts(00000000-0000-0000-0000-000000000001) HTTP/1.1\nContent-Type: application/json\nOData-MaxVersion: 4.0\nOData-Version: 4.0\nIf-Match: *",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "Updating environment behavior settings requires the System Administrator role or equivalent permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/settings-behavior",
+      "quote": "Make sure you have the System Administrator security role or equivalent permissions to update the settings.",
       "severity": null,
       "fix": null
     },
     {
       "n": 35,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "A user must refresh the browser tab twice after an environment channel change.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/channel-change",
-      "quote": "When you change the release channel at the environment level, a user must refresh the browser tab twice to update the release channel information.",
-      "severity": "minor",
-      "fix": "Replace the sentence with 'Learn's changing-channels page says to refresh the browser tab twice after an environment channel change; its behaviour settings page says users switch after one to two refreshes.' Both pages are already cited."
+      "where": "controls[1].ui; Governance controls: second row",
+      "type": "admin-path",
+      "claim": "Solutions > solution > Add Existing > More > Setting > New look for model driven apps reaches the app's editable New Look control.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "6. Select Add to add it to the solution.\n7. Select New look for model driven apps from the solution explorer.\n8. Update Setting Environment Value to No.\n9. Add the apps to the solution for which you want to turn off new look.\n10. Update the value of the apps to No.",
+      "severity": "blocker",
+      "fix": "Remove the second control row and its rendered table row, and remove '(row 2)' from the checklist. The printed path reaches the setting picker, not an editable app value; the same cited page also says makers can no longer switch to the classic look. Retain the existing prose about conflicting documentation and unconfirmed applicability to the mail app rather than presenting this incomplete route as an operational control."
     },
     {
       "n": 36,
-      "where": "Governance controls: paragraph beginning The environment setting",
-      "type": "admin-path",
-      "claim": "The behaviour settings page itself documents the per-user channel override under Users.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-platform/admin/user-channel-override",
-      "quote": "Select Users > See all. ... Under the Model apps channel field, select Change channel.",
-      "severity": "blocker",
-      "fix": "Replace 'The same page documents the per-user override under Users in the environment' with 'Learn's User channel override page documents the per-user override under Users in the environment', linking to https://learn.microsoft.com/power-platform/admin/user-channel-override. The behaviour page documents the environment setting, not a Users path."
+      "where": "controls[1].api; Governance controls: second row",
+      "type": "command",
+      "claim": "The printed saveSettingValue call is documented generic automation for updating a current-app setting to false with overrideScope 2.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/get-update-setting-value-using-code",
+      "quote": "Xrm.Utility.getGlobalContext().saveSettingValue(settingName, value, saveSettingOptions).then(successCallback, errorCallback); ... Use 2 to add or update a setting app value.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 37,
-      "where": "Governance controls",
+      "where": "Risk assessment; controls[1].note; Governance controls; Open questions",
       "type": "behaviour",
-      "claim": "Learn documents changing a user's channel through the ReleaseChannel column on UserSettings.",
+      "claim": "The modern-look page retains instructions saying admins can turn off the New Look, in conflict with mandatory-look documentation.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/channel-change",
-      "quote": "Developers can change the user release channel by updating the ReleaseChannel column value for the row in the UserSettings table.",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "Starting with the April 2026 semiannual release, the New Look is mandatory for all users. Makers can no longer switch a model-driven app to the classic look. ... Admins can turn off the New Look for all users",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The cited modern-look article locates New look for model driven apps through Solutions > solution > Add Existing > More > Setting.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
-      "quote": "Under Solutions, open an existing solution with one or more model-driven apps. ... Select Add Existing > More > Setting. ... Select New look for model driven apps.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "controls[1].governs; Governance controls",
+      "where": "Governance controls; Open questions",
       "type": "behaviour",
-      "claim": "The modern-look article describes the New look for model driven apps setting as an admin mechanism for turning off the New Look.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
-      "quote": "Admins can turn off the New Look for all users by updating the New look for model driven apps app setting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "controls[1].note; Risk assessment; Governance controls; Open questions",
-      "type": "behaviour",
-      "claim": "Learn's app settings page says the New Look setting is hidden and ignored from 2026 Wave 1, conflicting with the rollback instructions.",
+      "claim": "The app-settings page says the New Look setting is hidden and ignored when the new look becomes mandatory.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties",
       "quote": "This setting is hidden and ignored with the 2026 Wave 1 release when the new look becomes mandatory.",
@@ -469,81 +448,92 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 39,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Learn's important changes page says the admin settings related to the classic look will be removed.",
+      "claim": "Microsoft's important-changes page says admin settings related to the classic-look change will be removed.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/important-changes-coming#deprecation-of-the-classic-look-for-model-driven-apps",
-      "quote": "The admin settings related to this feature will be removed.",
+      "quote": "Existing apps will automatically display the modern look across all release channels, including the semi-annual channel. The admin settings related to this feature will be removed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[1].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The New Look setting and generic setting API are not confirmed to control this mail app refresh.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"mail app\" \"New look for model driven apps\" setting disable. Read modern-fluent-design, app-properties and get-update-setting-value-using-code: none expressly connects this setting or API to the mail app refresh.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope; Governance controls",
+      "type": "behaviour",
+      "claim": "A per-app release channel exists in the app designer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/channel-change",
+      "quote": "Open the app in the app designer. ... Open Settings dialog. ... Under the General tab, expand Advanced settings. ... Use App release channel to change the app release value.",
       "severity": null,
       "fix": null
     },
     {
       "n": 42,
-      "where": "controls[1].note; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "The cited Learn pages do not specifically confirm that the New Look setting controls the mail app.",
+      "where": "Scope; Governance controls",
+      "type": "behaviour",
+      "claim": "A per-user release-channel override exists under the environment's Users list in Power Platform admin center.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: mail app modern New look release channel setting; New look for model driven apps API setting SaveSettingValue. Opened modern-fluent-design and app-properties; the mail paragraph states rollout, not applicability of the New Look switch.",
+      "source": "https://learn.microsoft.com/power-platform/admin/user-channel-override",
+      "quote": "Select Users > See all. ... Select the user's name. ... Under the Model apps channel field, select Change channel. ... Select a channel from User channel override dropdown menu.",
       "severity": null,
       "fix": null
     },
     {
       "n": 43,
-      "where": "controls[1].api; Governance controls table and closing paragraph",
-      "type": "absence",
-      "claim": "Microsoft Learn documents no API for the New Look app setting.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/get-update-setting-value-using-code",
-      "quote": "Adds or updates the setting app value for the current app or the setting environment value for the current environment. ... You can also use the following Web APIs to get or update a setting value ... SaveSettingValue action",
-      "severity": "blocker",
-      "fix": "Replace the null side with kind 'other', call 'Xrm.Utility.getGlobalContext().saveSettingValue(\"<setting-unique-name>\", false, {overrideScope: 2}).then(successCallback, errorCallback)' and docs https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/get-update-setting-value-using-code. Retain the qualification that this is general app-setting automation, not confirmation of a working mail-app rollback. Replace the no-API prose with 'Learn documents generic app-setting automation; its effect on the mail app is not confirmed.'"
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Learn documents the ReleaseChannel column on the UserSettings table for changing a user's channel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/channel-change",
+      "quote": "Developers can change the user release channel by updating the ReleaseChannel column value for the row in the UserSettings table.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 44,
-      "where": "controls[1].note; Governance controls table",
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "The New Look setting does not control release timing.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: New look for model driven apps release timing; mail app modern New look release channel setting. Opened modern-fluent-design, app-properties and channel-overview; none explicitly states this negative claim about the setting.",
-      "severity": "major",
-      "fix": "Remove 'It does not control release timing' from the control note and rendered table. The separate, verified description of release channels already explains feature availability."
+      "claim": "A user must refresh the browser tab twice to update channel information after an environment-channel change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/channel-change",
+      "quote": "When you change the release channel at the environment level, a user must refresh the browser tab twice to update the release channel information.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 45,
       "where": "Scope; Open questions",
       "type": "behaviour",
-      "claim": "Learn places the mail app description under Modern, refreshed look outside of browser in Known limitations.",
+      "claim": "Learn places the mail app under the heading Modern, refreshed look outside of browser.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
-      "quote": "## Known limitations\n### Modern, refreshed look outside of browser\nThe mail app supports the modern, refreshed look.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap record was modified on 2026-10-13T23:01:05.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-10-13T23:01:05\"",
+      "quote": "### Modern, refreshed look outside of browser\nThe mail app supports the modern, refreshed look.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-18T07:41:06.845Z",
+    "at": "2026-11-18T09:02:09.166Z",
     "summary": {
-      "links": 9,
+      "links": 11,
       "unreachable": 0,
       "uiPaths": 2,
       "uiPathsWithMissingWords": 0,
-      "apiCalls": 1,
-      "apiCallsNotOnPage": 1,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 2,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -591,6 +581,16 @@
         "url": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization",
         "ok": true,
         "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/update-delete-entities-using-web-api",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/get-update-setting-value-using-code",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -615,7 +615,7 @@
         "governs": "When the mail app look arrives: the model-driven app release channel for an environment",
         "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization",
         "reachable": true,
-        "token": "PATCH /organizations(<organizationid>)",
+        "token": "PATCH [Organization",
         "found": false
       },
       {
@@ -632,9 +632,25 @@
           "New look for model driven apps"
         ],
         "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether an app uses the New Look (the New look for model driven apps setting)",
+        "docs": "https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/get-update-setting-value-using-code",
+        "reachable": true,
+        "token": "Xrm.Utility.getGlobalContext().saveSettingValue(\"<setting-unique-name>\", false,",
+        "found": false
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

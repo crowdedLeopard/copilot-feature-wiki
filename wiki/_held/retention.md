@@ -5,7 +5,7 @@ slug: "retention"
 summary: "Retention policies and retention labels in Microsoft Purview decide how long Microsoft 365 content, including Copilot interactions, is kept and when it is permanently deleted. Covers licensing, limits and where each control lives."
 created: "2026-11-18"
 updated: "2026-11-18"
-version: 2
+version: 3
 tags: ["retention","purview","data-lifecycle-management","adaptive-scopes","priority-cleanup","m365-copilot","ediscovery","meeting-transcripts"]
 covers: []
 sources:
@@ -62,6 +62,12 @@ sources:
     kind: "learn"
   - title: "Get-RegulatoryComplianceUI"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/get-regulatorycomplianceui?view=exchange-ps"
+    kind: "learn"
+  - title: "Common settings for retention policies and retention label policies"
+    url: "https://learn.microsoft.com/purview/retention-settings"
+    kind: "learn"
+  - title: "Set-AppRetentionCompliancePolicy"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-appretentioncompliancepolicy?view=exchange-ps"
     kind: "learn"
 related: ["auditing","microsoft-purview-data-lifecycle-management-legacy-teams-retention-policies-covering-copil","microsoft-purview-archive-sharepoint-files-under-retention-policies","microsoft-purview-data-lifecycle-management-hard-delete-capability-for-onedrive-and-sharep","purview-retention-last-accessed-sharepoint-onedrive","microsoft-purview-adaptive-scope-evaluation-control-with-recipient-and-site-owner-lifecycl","teams-ai-generated-meeting-memory","teams-intelligent-recap-without-saving-transcript"]
 controls:
@@ -150,18 +156,22 @@ changes:
     note: "Corrected the policy-status command (-DistributionDetail), the Graph label endpoint version, the Preservation Lock UI note and the limits caveat; removed an unsupported Graph absence claim and two checklist items without table rows."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 108 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-18"
+    note: "Corrected the adaptive-scope licensing sentence to match the Purview service description, and noted that the Set-AppRetentionCompliancePolicy reference differs from the policy guide for Copilot."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 120 statements contradicted, 0 unconfirmed; taken offline until corrected"
 verification:
   status: "held"
   date: "2026-11-18"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 108
-  confirmed: 107
+  claims: 120
+  confirmed: 118
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "db432f5b36e4b80df50afca6f1fbc4db"
+  contradicted: 2
+  attempts: 3
+  hash: "d46cf21bf17207b4a1d1c3520e8858cd"
 ---
 
 ## What it is
@@ -192,7 +202,7 @@ Deletion is decided on the stored copies, not on what users see. Microsoft state
 
 Any user who benefits from retention needs a licence; the plan depends on the feature, per the Microsoft Purview service description.
 
-- **Retention policies** (org-wide, location-wide or include/exclude): Microsoft 365 E5/A5/G5/E3/A3/G3 or Business Premium, among other listed plans. Policies with an adaptive scope need Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW or Microsoft Defender + Purview Suite FLW.
+- **Retention policies** (org-wide, location-wide or include/exclude): Microsoft 365 E5/A5/G5/E3/A3/G3 or Business Premium, among other listed plans. Policies with an adaptive scope are licensed by Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW or Microsoft Defender + Purview Suite FLW, among other listed plans.
 - **Retention labels**: creation is licensed by a wider list that includes Microsoft 365 E3 and F1/F3. Event-based retention, disposition review, marking items as records and automatic relabelling need the narrower, E5-level list.
 - **Copilot interactions**: Microsoft 365 E3/E5 plus Microsoft 365 Copilot.
 - **Priority cleanup**: the E5-level list.
@@ -232,6 +242,8 @@ A feature built on retention may add its own charge; follow the link from its br
 
 **Roles.** Microsoft recommends the Compliance Administrator role group; alternatively a custom group with the Retention Management role, or View-Only Retention Management for read-only access. Priority cleanup needs the Priority Cleanup Admin role, which Compliance Administrator does not include by default. Adaptive scopes need the Scope Manager role.
 
+**Copilot command.** The [Set-AppRetentionCompliancePolicy reference](https://learn.microsoft.com/powershell/module/exchangepowershell/set-appretentioncompliancepolicy?view=exchange-ps) marks Microsoft Copilot experiences as Preview and says all of its listed values must be supplied together. This conflicts with the single-application example in the policy guide used in the table.
+
 **Other tools.** Microsoft Graph documents retention labels: `POST /v1.0/security/labels/retentionLabels` accepts delegated permissions only (RecordsManagement.ReadWrite.All). Policy lookup in the Data lifecycle management or Records management solution finds the policies for a user, site or group by exact email address or URL, with no wildcards. Label usage appears under Data Lifecycle Management > Overview.
 
 **Audit.** Creating, changing or deleting a policy or label is logged, for example Updated retention policy (SetRetentionCompliancePolicy). Retention actions are audited for labels only, not policies. See [Purview Audit](/concepts/auditing/).
@@ -253,8 +265,6 @@ A feature built on retention may add its own charge; follow the link from its br
 <!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: Retention policies, adaptive-scope sentence / licensing: Policies with an adaptive scope need Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW or Microsoft Defender + Purview Suite FLW. | Found: If the retention policy uses an adaptive policy scope, then one of the following licenses is required to provide user rights: - Microsoft 365 E5/A5/G5 - Microsoft Purview Suite/EDU/GOV/FLW - Microsoft Defender + Purview Suite FLW - Office 365 E5/A5/G5 | Fix: Replace the sentence with: 'Policies with an adaptive scope are licensed by Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW or Microsoft Defender + Purview Suite FLW, among other listed plans.' The cited service description also permits Office 365 E5/A5/G5 and Microsoft 365 E5/A5/F5/G5 Information Protection and Governance; the current unqualified 'need' list incorrectly excludes them. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].api / command: Set-AppRetentionCompliancePolicy -Identity "<policy name>" -Applications "User:M365Copilot" adds Microsoft 365 Copilot to an existing policy for newer locations. | Found: Set-AppRetentionCompliancePolicy -Identity “<policy name>” -Applications "User:M365Copilot" | Fix: Keep the cited guide's example, but append this note: 'The Set-AppRetentionCompliancePolicy reference marks Microsoft Copilot experiences as Preview and says all these application values must be supplied together: User:M365Copilot,CopilotForSecurity,CopilotinFabricPowerBI,CopilotStudio,CopilotinBusinessApplicationplatformsSales,SQLCopilot. This conflicts with the policy guide's single-application example.' Link that note to https://learn.microsoft.com/powershell/module/exchangepowershell/set-appretentioncompliancepolicy?view=exchange-ps. | Source: https://learn.microsoft.com/purview/create-retention-policies
-- [supported, minor] Cost and licensing: features built on retention; sources / cost: A feature using retention can add its own licensing or billing requirements, as illustrated by archiving retained SharePoint files. | Found: File-level archive requires a Microsoft 365 E5 license. | Fix: Add https://learn.microsoft.com/purview/retention-settings to sources for the SharePoint archive licensing and billing premise. Also add https://learn.microsoft.com/powershell/module/exchangepowershell/set-appretentioncompliancepolicy?view=exchange-ps for the documented Copilot command disagreement. These are the Microsoft pages relied on in this check that are missing from the page's sources. | Source: https://learn.microsoft.com/purview/retention-settings
+- [contradicted, blocker] controls[0].api / command: New-RetentionCompliancePolicy with ExchangeLocation and SharePointLocation configures both policy locations and whether the policy retains, deletes or both. | Found: Policies are not valid until a rule is added (for retention policies) or a label is added (for retention label policies). | Fix: Narrow controls[0].governs, and the corresponding rendered row, to 'Which locations a retention policy covers'. Keep its current call and its note that New-RetentionComplianceRule is required. The printed call sets locations, not the retention action. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy?view=exchange-ps
+- [contradicted, blocker] controls[3].api / command: New-RetentionCompliancePolicy -Name <policy name> -SharePointLocation <site-url> publishes or auto-applies retention labels. | Found: Policies are not valid until a rule is added (for retention policies) or a label is added (for retention label policies). | Fix: Set controls[3].governs to 'Publishing retention labels to locations' and replace its call with 'New-RetentionComplianceRule -Policy "<policy name>" -PublishComplianceTag "<label name>"'. Set its docs to https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule?view=exchange-ps. Replace its note with 'Publishes an existing label through an existing policy scoped to the required locations.' Update the rendered row identically. The reference states that PublishComplianceTag specifies the published label and makes it visible in apps. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy?view=exchange-ps
 -->

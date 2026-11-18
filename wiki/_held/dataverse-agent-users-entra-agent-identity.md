@@ -1,10 +1,10 @@
 ---
-title: "Microsoft Dataverse: agent users backed by Microsoft Entra agent identities"
+title: "Microsoft Dataverse: agent users with a Microsoft Entra agent identity"
 slug: "dataverse-agent-users-entra-agent-identity"
 roadmapId: 576843
 topic: "power-platform"
 products: ["Microsoft Copilot (Microsoft 365)","Microsoft Dataverse"]
-summary: "Admins can add an AI agent's Microsoft Entra agent identity to a Dataverse environment as an agent user and give it a security role. Nothing is added until an admin does it. Learn still marks the feature preview."
+summary: "Dataverse can add AI agents that have a Microsoft Entra agent identity as agent users with their own security roles. An administrator adds each agent in the Power Platform admin center; Learn still marks the pages as preview."
 status: "launched"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -14,13 +14,13 @@ previewDate: "June CY2026"
 risk: "medium"
 cost: "low"
 impact: "low"
-defaultState: "admin-opt-in"
+defaultState: "unknown"
 action: "review"
 licensing:
   model: "unknown"
-  notes: "Not yet published. The Learn pages on Dataverse agent users name no licence or meter. Microsoft Entra Agent ID itself is stated to be available for all Microsoft Entra customers."
-audiences: ["power-platform-admin","security","maker"]
-tags: ["dataverse","agent-users","agent-identity","entra-agent-id","security-roles","least-privilege","power-platform-admin-center","agents","autonomous-agents"]
+  notes: "No Microsoft page read states a licence or meter for Dataverse agent users. Power Platform licensing says a user still needs a security role and any required product licence; Entra says Agent ID is available to all Entra customers and its security features for agents need Agent 365."
+audiences: ["power-platform-admin","security","service-owner"]
+tags: ["agent-users","entra-agent-id","agent-identity","dataverse","security-roles","least-privilege","power-platform-admin-center","microsoft-graph"]
 sources:
   - title: "Microsoft 365 Roadmap 576843"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=576843"
@@ -31,52 +31,60 @@ sources:
   - title: "Create Entra agent users (preview)"
     url: "https://learn.microsoft.com/power-platform/admin/agent-users"
     kind: "learn"
-  - title: "Create agent identities in agent identity platform"
-    url: "https://learn.microsoft.com/entra/agent-id/create-delete-agent-identities"
+  - title: "Create agentUser"
+    url: "https://learn.microsoft.com/graph/api/agentuser-post"
     kind: "learn"
-  - title: "Create an identity for your agent with Microsoft Graph (preview)"
-    url: "https://learn.microsoft.com/entra/agent-id/create-single-instance-agent"
-    kind: "learn"
-  - title: "How are agent identities created?"
-    url: "https://learn.microsoft.com/entra/agent-id/agent-id-creation-channels"
+  - title: "Manage agent identities in your organization"
+    url: "https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin"
     kind: "learn"
   - title: "Microsoft Entra licensing"
     url: "https://learn.microsoft.com/entra/fundamentals/licensing"
     kind: "learn"
-  - title: "Microsoft Entra Agent ID logs"
-    url: "https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents"
+  - title: "Licensing overview for Microsoft Power Platform"
+    url: "https://learn.microsoft.com/power-platform/admin/pricing-billing-skus"
     kind: "learn"
-  - title: "pac admin"
-    url: "https://learn.microsoft.com/power-platform/developer/cli/reference/admin"
+  - title: "The agent's user account in Microsoft Entra Agent ID"
+    url: "https://learn.microsoft.com/entra/agent-id/agent-users"
     kind: "learn"
-  - title: "Add-AdminPowerAppsSyncUser"
-    url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-adminpowerappssyncuser"
+  - title: "Which agents are added to a Dataverse environment as agent users, and their security role (Power Platform admin center)"
+    url: "https://learn.microsoft.com/power-platform/admin/create-users#create-an-agent-user-preview"
+    kind: "learn"
+  - title: "Sign-in activity of agent users and agent identities (Microsoft Entra admin center)"
+    url: "https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin#monitor-agent-activity"
     kind: "learn"
 videos: []
-related: ["microsoft-copilot-studio-persistent-identity-for-copilot-studio-agents"]
+related: ["agent-identity","microsoft-copilot-studio-persistent-identity-for-copilot-studio-agents","auditing"]
 controls:
-  - governs: "Adding an agent as a Dataverse user and assigning its security role"
+  - governs: "Which agents are added to a Dataverse environment as agent users, and their security role"
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Manage > Environments > environment > Settings > Users + permissions > Agents > + Add agent > agent user > Add > security role > Save"
-      docs: "https://learn.microsoft.com/power-platform/admin/create-users"
+      path: "Manage > Environments > environment > Settings > Users + permissions > Agents > + Add agent"
+      docs: "https://learn.microsoft.com/power-platform/admin/create-users#create-an-agent-user-preview"
     api: null
-    note: "Preview. The Learn section names no required role. Microsoft has not said that general user commands apply to agent users."
-  - governs: "Creating the Microsoft Entra agent identity an agent user relies on"
+    note: "Preview page. The role is then chosen on the Manage security roles page. Learn documents no API for this step at the time of writing (November 2026)."
+  - governs: "Creation of the Entra agent user linked to an agent identity"
     scope: "agent"
-    ui:
-      surface: "Microsoft Entra admin center"
-      path: "Entra ID > Agents > Agent identities > New agent identity (Preview)"
-      docs: "https://learn.microsoft.com/entra/agent-id/create-delete-agent-identities"
+    ui: null
     api:
       kind: "graph"
-      call: "POST https://graph.microsoft.com/beta/servicePrincipals/microsoft.graph.agentIdentity with displayName, agentIdentityBlueprintId and sponsors@odata.bind in the body"
-      docs: "https://learn.microsoft.com/entra/agent-id/create-single-instance-agent"
-    note: "Entra-side control, not a Dataverse setting. Needs an agent identity blueprint and an Entra role such as Agent ID Developer, Agent ID Administrator or AI Administrator."
+      call: "POST /v1.0/users/microsoft.graph.agentUser"
+      docs: "https://learn.microsoft.com/graph/api/agentuser-post"
+    note: "The request body sets identityParentId, the agent identity's object ID. Least privileged role per the reference: Agent ID Administrator. Learn documents no admin centre steps for this at the time of writing."
+  - governs: "Sign-in activity of agent users and agent identities"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft Entra admin center"
+      path: "Entra ID > Monitoring & health > Sign-in logs"
+      docs: "https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin#monitor-agent-activity"
+    api:
+      kind: "graph"
+      call: "GET /beta/auditLogs/signIns"
+      docs: "https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin#monitor-agent-activity"
+    note: "Read-only monitoring in Entra, at least Reports Reader. Filter Agent type to Agent ID user. The page's example filters agent identity service principal sign-ins. It does not describe Dataverse audit."
 confidence: "medium"
 created: "2026-11-13"
-updated: "2026-11-17"
+updated: "2026-11-18"
 roadmapModified: "2026-10-16T19:09:45"
 changes:
   - date: "2026-11-13"
@@ -97,86 +105,90 @@ changes:
     note: "New briefing: Dataverse agent users backed by Microsoft Entra agent identities, which Learn still labels preview."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 48 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 6
+  - date: "2026-11-18"
+    note: "New briefing: Dataverse agent users backed by a Microsoft Entra agent identity, with the preview-marked Learn procedure and the unpublished licence and default."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 49 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 7
 verification:
   status: "held"
-  date: "2026-11-17"
-  version: 6
+  date: "2026-11-18"
+  version: 7
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 43
-  unconfirmed: 2
-  contradicted: 3
-  attempts: 5
-  hash: "4a7ab51437a87a9889a7abcbfc704154"
+  claims: 49
+  confirmed: 47
+  unconfirmed: 0
+  contradicted: 2
+  attempts: 6
+  hash: "57b152fac5aa4fa1f69cfdefe52f2c1a"
 ---
 
 ## What's changing
 
-Microsoft Dataverse can now hold an agent user: a user record for an AI agent that already has an agent identity in Microsoft Entra Agent ID. An administrator adds the agent to a Dataverse environment and picks a security role, and that role decides what data the agent can reach. The roadmap item describes this as least-privileged access for agents acting autonomously or on behalf of users, with identity-based role assignment and auditing of agent-driven actions.
+Dataverse can take AI agents as a new kind of user. An agent that has a Microsoft Entra agent identity is added to a Dataverse environment as an agent user and given a security role, which decides what Dataverse data it can reach. The roadmap item describes dedicated, least-privileged roles based on what each agent is meant to do, for agents that work autonomously or on behalf of users.
 
-Microsoft Learn's page on Entra agent users says that an agent that needs Dataverse data must have an Entra agent user created and associated with its agent identity, so that security roles can be assigned to enable access to Dataverse APIs and data in the environment. It adds that Copilot Studio agents can automatically receive an Entra agent identity, and that support for creating Entra Agent Application Users from agent identities isn't available yet. The Learn pages mark the agent user sections as preview, prerelease documentation.
+Microsoft Learn gives the procedure. For agents that need Dataverse data access, an Entra agent user must be created and associated with the agent identity so that security roles can be assigned. An administrator then goes to Settings > Users + permissions > Agents in the Power Platform admin center, selects **+ Add agent**, chooses the agent user from the search list and selects a security role. Learn adds that Copilot Studio agents can automatically receive an Entra agent identity, and that support for creating Entra Agent Application Users from agent identities is not available yet.
 
-The roadmap item has status Launched, with release phases General Availability and Preview, a preview target of June CY2026 and a general availability target of August CY2026. It lists Worldwide (Standard Multi-Tenant) and the Web platform. Learn still labels the feature preview at the time of writing (November 2026); treat its limits as the preview's, not the final design.
+The roadmap record shows status Launched, release phases General Availability and Preview, a preview date of June CY2026 and a target of August CY2026, for Worldwide (Standard Multi-Tenant) on the web. The two Learn pages read, Create users and Create Entra agent users, are both headed as preview and prerelease documentation at the time of writing (November 2026). Treat their limits and behaviour as the preview design, not the final one.
 
 ## Why it matters
 
-This gives agents their own named identity inside Dataverse instead of borrowing a person's account or a shared application identity, so access to environment data can be granted, reviewed and removed per agent through security roles. The risk to manage is the role you choose: an agent user with a broad role can read or change whatever that role allows, with no person approving each action.
+This gives a service owner a per-agent identity inside Dataverse whose reach is set by a security role, the same mechanism used for people. The decision that matters is which role each agent gets: Learn says a user's presence in an environment does not grant access to Dataverse data, and the user must still have an appropriate security role.
 
-Microsoft has not stated an on-arrival default beyond the roadmap's "enabled for admins/makers/marketers automatically". The Learn procedure has an administrator add each agent and choose its role, so this briefing treats the feature as admin opt-in: no source says existing agents gain Dataverse access without that step.
+The roadmap says agent-driven actions are fully audited. The Entra pages read document Entra audit and sign-in logs for agent identities and agent user accounts; Microsoft Learn's agent user pages describe no Dataverse audit behaviour for them at the time of writing (November 2026). The roadmap says the feature is enabled for admins, makers and marketers automatically, while Learn describes an administrator adding each agent, so Microsoft has not stated what happens on arrival. No source says existing users or agents change, so plan on the Learn procedure being how agents are added.
 
 ## Risk assessment
 
 **Data exposure**
 
-- An agent user reads and writes Dataverse data through the security role assigned on the **Manage security roles** step. A role copied from a human user gives the agent that user's reach; pick the narrowest role the agent's tasks need.
-- The Learn pages read do not say how agent-driven actions appear in Dataverse auditing. The roadmap item claims full auditing; confirm what is logged before relying on it for compliance.
+- An agent user reaches Dataverse data through the security role chosen on the Manage security roles page. A broad role gives the agent broad access, so choose roles per agent, not one shared role.
+- The roadmap states agents get only the access required for their tasks; that depends on the role an administrator selects, and the page read does not say Dataverse limits the role for agent users.
 
 **Security & identity**
 
-- Each agent user is tied to an Entra agent identity. Microsoft Entra records agent activity in audit and sign-in logs, which Microsoft's page on agent logs says cover cases where an agent identity or an agent's user account initiates or performs an operation.
-- Learn marks agent users as preview and not meant for production use, so approve production use deliberately.
+- The agent user is tied to an Entra agent identity. Entra says an agent's user account cannot have credentials such as passwords or passkeys, so access is controlled through the parent agent identity and the Dataverse role.
+- Learn says Entra Agent Application Users cannot yet be created from agent identities, so application-user based designs cannot rely on this path today.
 
 **Autonomy & actions**
 
-- The roadmap says agents can act autonomously or on behalf of users. The Learn pages read describe no per-action approval for agent users, so treat the security role as the limit on what an autonomous agent can do.
+- The roadmap says agents can act autonomously or on behalf of users. Learn's steps do not say how an agent user's role is used in each mode, so confirm this per agent before granting write privileges.
 
 **Change & support**
 
-- Creating an agent user is a manual step per environment and per agent, so access can drift from what the agent's owner expects. The Learn page says support for Entra Agent Application Users from agent identities isn't available yet.
+- Both Learn pages are marked preview and subject to change, while the roadmap shows Launched. Expect procedure or portal labels to move and re-check the path before writing runbooks.
 
 ## Cost and licensing
 
-The Learn pages on Dataverse agent users (Create users, and Create Entra agent users) name no licence and no meter for agent users, and the roadmap item does not mention licensing. Licensing for Dataverse agent users is therefore not yet published. This briefing cannot say whether an agent user consumes a Dataverse licence or a Copilot Credits meter.
+Microsoft Learn's Create users and Create Entra agent users pages name no licence or meter for Dataverse agent users, and no price is published for this feature at the time of writing (November 2026). Power Platform licensing says a user must still have an appropriate security role and any required product licence.
 
-On the Entra side, Microsoft's licensing page states that Microsoft Entra Agent ID is available for all Microsoft Entra customers, and that extending Microsoft Entra security features to agents requires Microsoft Agent 365. Whether those Agent 365 rules touch agent users in Dataverse is not stated. The known indirect cost is administrator time to create identities, add agents to each environment and review their roles.
+On the Entra side, Microsoft says Entra Agent ID is available to all Entra customers, and that extending Entra security features to agents requires Microsoft Agent 365. Whether that requirement applies to a Dataverse agent user is not stated. The indirect cost is administrator time to create the Entra agent user, add it to each environment and assign a role.
 
 ## Scope
 
-The roadmap item lists Worldwide (Standard Multi-Tenant) and the Web platform, and describes the feature as enabled for admins, makers and marketers automatically. Learn's procedure works per environment in the Power Platform admin center, and it presupposes an existing Microsoft Entra agent identity. The Learn page does not name the admin role needed to add an agent, so check the permissions on your own account before planning.
+The roadmap lists Worldwide (Standard Multi-Tenant) and the Web platform, with release phases General Availability and Preview. The roadmap says the feature is enabled for admins, makers and marketers automatically.
 
-The roadmap record does not list the GCC, GCC High or DoD clouds. That is a record fact, not a statement that the feature is unavailable there. Microsoft's Entra page on creating agent identities says creating an agent identity needs the Agent ID Developer, Agent ID Administrator or AI Administrator role when done through the admin centre, Graph or PowerShell/CLI.
+The prerequisite in Learn is an Entra agent identity with an associated Entra agent user. Copilot Studio agents can automatically receive an Entra agent identity. Agent users are added per Dataverse environment. Creating Entra Agent Application Users from agent identities is not available yet. The page does not name the role needed to add agents in the Power Platform admin center.
 
 ## Governance guidance
 
 ### Before rollout
 
-- Inventory which agents already have an Entra agent identity (Microsoft Entra admin center > Entra ID > Agents > Agent identities) and name an owner for each one that will need Dataverse data.
-- Decide, per agent, the least-privileged Dataverse security role it needs, and create or choose that role before you add the agent.
-- Treat the preview label as a gate: record who approves production use of agent users while Learn marks them as preview.
+- List the agents that need Dataverse data and decide, per agent, the least-privileged security role it needs.
+- Check that each agent has an Entra agent identity, and plan who creates the associated Entra agent user (row 2 of the controls table).
+- Treat the preview label on both Learn pages as a reason to pilot in a non-production environment first.
 
 ### At rollout
 
-- Add each agent to the environment with **+ Add agent** in the Power Platform admin center and select its security role on the **Manage security roles** page.
-- Start in a development or test environment and check the agent can do its task with the assigned role and no more.
-- Confirm in the Entra agent identity that the agent user is associated with the right agent identity before assigning data access.
+- Add each agent in the Power Platform admin center under Settings > Users + permissions > Agents, then pick its role on the Manage security roles page (row 1).
+- Record which administrator added each agent user and which role was assigned.
+- Avoid reusing one broad role across agents.
 
 ### After rollout
 
-- Review the **Agents** list in each environment on a schedule and remove agents whose owner no longer needs Dataverse data.
-- Check Microsoft Entra audit and sign-in logs for the agent identity and its user account, and confirm how the same activity appears in Dataverse before you rely on it for compliance evidence.
-- Watch the Learn pages for when the preview label is removed and for licensing.
+- Review Entra sign-in logs filtered to agent users (row 3) for unexpected activity.
+- Re-check each agent's role when its capabilities change.
+- Watch the Learn pages for the end of preview and for Dataverse audit guidance.
 
 ## Governance controls
 
@@ -185,36 +197,33 @@ The roadmap record does not list the GCC, GCC High or DoD clouds. That is a reco
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Adding an agent as a Dataverse user and assigning its security role</strong><br><small>Environment</small><br><small class="controls__note">Preview. The Learn section names no required role. Microsoft has not said that general user commands apply to agent users.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Users + permissions › Agents › + Add agent › agent user › Add › security role › Save <a href="https://learn.microsoft.com/power-platform/admin/create-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Creating the Microsoft Entra agent identity an agent user relies on</strong><br><small>Agent</small><br><small class="controls__note">Entra-side control, not a Dataverse setting. Needs an agent identity blueprint and an Entra role such as Agent ID Developer, Agent ID Administrator or AI Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Agents › Agent identities › New agent identity (Preview) <a href="https://learn.microsoft.com/entra/agent-id/create-delete-agent-identities" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/servicePrincipals/microsoft.graph.agentIdentity with displayName, agentIdentityBlueprintId and sponsors@odata.bind in the body</code> <a href="https://learn.microsoft.com/entra/agent-id/create-single-instance-agent" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which agents are added to a Dataverse environment as agent users, and their security role</strong><br><small>Environment</small><br><small class="controls__note">Preview page. The role is then chosen on the Manage security roles page. Learn documents no API for this step at the time of writing (November 2026).</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Users + permissions › Agents › + Add agent <a href="https://learn.microsoft.com/power-platform/admin/create-users#create-an-agent-user-preview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Creation of the Entra agent user linked to an agent identity</strong><br><small>Agent</small><br><small class="controls__note">The request body sets identityParentId, the agent identity's object ID. Least privileged role per the reference: Agent ID Administrator. Learn documents no admin centre steps for this at the time of writing.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/users/microsoft.graph.agentUser</code> <a href="https://learn.microsoft.com/graph/api/agentuser-post" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Sign-in activity of agent users and agent identities</strong><br><small>Tenant</small><br><small class="controls__note">Read-only monitoring in Entra, at least Reports Reader. Filter Agent type to Agent ID user. The page's example filters agent identity service principal sign-ins. It does not describe Dataverse audit.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Entra ID › Monitoring &amp; health › Sign-in logs <a href="https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin#monitor-agent-activity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET /beta/auditLogs/signIns</code> <a href="https://learn.microsoft.com/entra/agent-id/manage-agent-identities-admin#monitor-agent-activity" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The table covers the two places an administrator acts: Microsoft Entra creates the agent identity, and the Power Platform admin center adds the agent to an environment and sets its role. Microsoft Learn documents no API for adding an agent user to a Dataverse environment at the time of writing (November 2026); the Power Platform CLI `pac admin assign-user` and the PowerShell cmdlet `Add-AdminPowerAppsSyncUser` exist for adding ordinary users, and Microsoft has not said they apply to agent users.
+Row 1 is the Dataverse-side control: adding an agent user to an environment and selecting its security role. Learn's agent user pages document the admin centre steps; at the time of writing (November 2026) they document no API for that step. Rows 2 and 3 are Entra-side: creating the agent user account and viewing agent sign-ins.
 
-The Learn procedure sets a security role for the agent user and describes no other access limit. Creating the Entra agent identity is a separate task from adding it to Dataverse and needs Entra roles, not a Dataverse role.
+Role assignment in Dataverse determines data reach. Agent user creation in Entra needs, per the Graph reference, the Agent ID Administrator role as the least privileged supported role, or the AgentIdUser.ReadWrite.IdentityParentedBy permission. The role needed to add agents in the Power Platform admin center is not stated on the pages read.
 
 ## Open questions
 
-- Which licence, if any, does a Dataverse agent user need, and is any usage metered? Watch the Create users page and Microsoft Entra licensing page.
-- When does Learn drop the preview label for agent users, given the roadmap lists General Availability and a target of August CY2026?
-- How are actions by an agent user recorded in Dataverse auditing, and do they reach Microsoft Purview?
-- Is there a supported command or API to add an agent user to an environment, and which Power Platform admin role is required in the admin centre?
+- Which Dataverse role is needed to add an agent user in the Power Platform admin center, and is there an API for that step? Watch the Create Entra agent users page on Learn.
+- Does a Dataverse agent user need a Power Platform or Dynamics 365 licence, or Microsoft Agent 365? Watch the Power Platform licensing pages and Message center.
+- How does Dataverse auditing record changes made by an agent user, and how does it distinguish them from human users? Watch the Create users page.
+- What happens on arrival: does anything appear automatically, as the roadmap's enabled-automatically wording suggests, or only after an administrator adds an agent?
+- When does the preview label come off the Learn pages, given the roadmap shows Launched?
 
 <!-- rationale
-risk: Medium. An agent user reaches Dataverse data only through the security role an administrator assigns, so the exposure depends on how broad that role is. Learn marks the feature preview.
-cost: Low. The Learn pages read name no Dataverse licence or meter for agent users, so the only cost shown is admin time. Licensing for Dataverse agent users is not yet published.
-impact: Low. Environment administrators and the makers or developers who own the agents notice it; end users see nothing until an agent they use is given Dataverse access.
+risk: Medium. An agent user gets Dataverse data access through the security role an administrator picks, so the exposure depends on that role; the pages describing it are still marked preview and the roadmap's default wording differs from Learn's procedure.
+cost: Low. The only cost the sources show is administrator time to create and add agent users; no Dataverse licence or meter for agent users is published at the time of writing, and Entra licensing for agent features is set out on its own page.
+impact: Low. Power Platform administrators and the owners of agents that need Dataverse data notice it; nothing in the sources says existing users or apps change.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] front matter: defaultState; summary; Why it matters; Risk assessment: Change & support; rationale: impact / default: The feature is admin-opt-in, nothing is added until an administrator acts, and agent-user creation is necessarily manual for every agent and environment. | Found: Searched: "Entra agent users" "default" "Dataverse"; "Dataverse" "agent users" "automatically". Read Create users and Create Entra agent users. They document a manual route, not an exclusive route or the arrival behavior of existing agents. | Fix: Set defaultState to "unknown". Remove "Nothing is added until an admin does it" from the summary. Replace the second Why it matters paragraph with: "The roadmap says enabled for admins/makers/marketers automatically. Learn documents an administrator adding an agent and assigning its security role, but does not state whether existing agents gain Dataverse access automatically." Replace the manual-step sentence under Change & support with: "Learn documents a per-environment procedure for adding an agent and assigning its security role." Remove "end users see nothing until an agent they use is given Dataverse access" from the impact rationale.
-- [contradicted, blocker] Risk assessment: Data exposure / applicability: A role copied from a human user gives the agent that user's reach. | Found: Users can access records they own, objects that are shared with the organization, objects that are shared with them, and objects that are shared with a team that they're a member of. | Fix: Replace "A role copied from a human user gives the agent that user's reach" with "A copied role carries privileges, but access to particular records also depends on access levels, ownership and sharing." Cite https://learn.microsoft.com/power-platform/admin/security-roles-privileges. | Source: https://learn.microsoft.com/power-platform/admin/security-roles-privileges
-- [unsupported, major] Why it matters / behaviour: An agent user with a broad role acts with no person approving each action. | Found: Searched: "Dataverse" "agent user" "approval". Read Create users and Create Entra agent users. The roadmap permits autonomous tasks, but neither feature page establishes the approval behavior of every agent using this identity. | Fix: Remove ", with no person approving each action". Retain the separately attributed roadmap statement that agents can act autonomously or on behalf of users.
-- [contradicted, blocker] controls[1].note; Governance controls: final paragraph / role: Creating the Entra agent identity necessarily needs an Entra role, rather than another authorization route. | Found: User must be an owner of the agent identity blueprint or agent identity blueprint principal (owners added at any time have this permission). | Fix: Replace controls[1].note with "Entra-side control, not a Dataverse setting. Requires an agent identity blueprint; authorization depends on the creation method." Make the same replacement in the rendered table. In the final Governance controls paragraph, remove "and needs Entra roles, not a Dataverse role". The cited creation-channels page also documents owner-based delegated creation with no Agent ID role and application-permission creation. | Source: https://learn.microsoft.com/entra/agent-id/agent-id-creation-channels
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters; Governance guidance: After rollout / applicability: Administrators can review and remove a user's Dataverse security-role assignments to manage its access. | Found: The Remove from role? window appears, asking you to confirm that you want privileges associated with that role removed for the selected user. | Fix: Add https://learn.microsoft.com/power-platform/admin/security-roles-privileges to sources for the statements about reviewing and removing security-role access. | Source: https://learn.microsoft.com/power-platform/admin/security-roles-privileges
-- [contradicted, minor] Governance guidance: Before rollout and After rollout; Governance controls / consistency: The governance checklist asks readers to create a security role and check Entra audit and sign-in logs, but neither control is represented by the two table rows. | Found: "create or choose that role before you add the agent"; "Check Microsoft Entra audit and sign-in logs"; table rows cover adding an agent with a role and creating an Entra agent identity. | Fix: Replace the Before rollout role bullet with "Decide, per agent, the least-privileged Dataverse security role to select when adding the agent." Remove the After rollout bullet that directs readers to check Entra audit and sign-in logs. Keep the separately documented log behavior in Risk assessment and the Dataverse auditing open question; do not add control rows.
+- [contradicted, blocker] front matter: defaultState; Why it matters; Open questions; rationale: risk / default: The default state is unknown because Microsoft has not stated what happens on arrival. | Found: Enabled for admins/makers/marketers automatically | Fix: Set defaultState to "on". Replace the sentence ending "Microsoft has not stated what happens on arrival" with "The roadmap says the capability is enabled for admins, makers and marketers automatically; Learn separately documents how an administrator adds an individual agent user." Replace the corresponding arrival question with "Does enabling the capability automatically provision any Dataverse agent users?" In the risk rationale, replace "the roadmap's default wording differs from Learn's procedure" with "the roadmap describes automatic availability while Learn documents per-agent setup". Automatic capability availability and individual account provisioning are different facts.
+- [contradicted, blocker] Governance controls: final paragraph / role: Creating an Entra agent user needs either the Agent ID Administrator role or the AgentIdUser.ReadWrite.IdentityParentedBy permission. | Found: Delegated (work or school account) | AgentIdUser.ReadWrite.IdentityParentedBy ... For delegated access using work or school accounts, the admin must be assigned a supported Microsoft Entra role | Fix: Replace the creation-permission sentence with "For delegated creation, the Graph reference lists AgentIdUser.ReadWrite.IdentityParentedBy as the least privileged permission and additionally requires a supported administrator role, with Agent ID Administrator the least privileged. For application access, it lists AgentIdUser.ReadWrite.IdentityParentedBy as the least privileged application permission." These are the requirements at https://learn.microsoft.com/graph/api/agentuser-post; the role is not a substitute for an API permission. | Source: https://learn.microsoft.com/graph/api/agentuser-post
 -->

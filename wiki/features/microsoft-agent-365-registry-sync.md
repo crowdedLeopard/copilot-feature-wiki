@@ -89,19 +89,23 @@ changes:
     note: "Corrected after verification: replaced the plan-availability gap with the service description's table, added the Edit step to the observability path, rated risk low, and noted the Databricks sync and permission differences and the preview label."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 76 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-18"
+    note: "Corrected after verification: the Graph registry APIs sentence now says what the Graph guide documents, and checklist steps with no controls-table row were removed."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 77 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-18"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 76
-  confirmed: 74
+  claims: 77
+  confirmed: 77
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "a60b620cb890f9feb41f3e2d9179cd6c"
+  contradicted: 0
+  attempts: 0
+  hash: "5635776e16d67b3b41938e021f255b14"
 ---
 
 ## What's changing
@@ -163,7 +167,6 @@ Prerequisites: a supported source platform, credentials and permissions created 
 
 - Agree which team holds the Agent 365 AI administrator role for connections, and which platform administrator owns credentials for each source platform.
 - Choose the platform, account, project, workspace or region to connect, and create a credential limited to the permissions that platform's guide lists. Decide whether to grant the optional delete permission.
-- Allow Agent 365's outbound IP addresses on the source platform if it restricts network access.
 - Check the provider's pricing for telemetry queries before deciding whether to leave **Collect agent observability data** on.
 
 ### At rollout
@@ -175,9 +178,7 @@ Prerequisites: a supported source platform, credentials and permissions created 
 ### After rollout
 
 - Re-run **Sync agents** on a cadence you choose and after known changes on the source platform.
-- Reconcile the registry against the source platform and remove manually any agent that no longer exists there.
-- Rotate or revoke the credentials with the platform administrator, and delete connections that are no longer needed.
-- Review the synchronisation status and errors on each connection.
+- Delete connections that are no longer needed.
 
 ## Governance controls
 
@@ -194,11 +195,9 @@ Prerequisites: a supported source platform, credentials and permissions created 
 
 Connections are created and managed by the Agent 365 AI administrator; the platform administrator owns the credentials and permissions on the source side. Credential rotation, changing the source scope and revoking access follow the provider guide for each platform.
 
-The checklist's source-platform IP allow-list, credential rotation and revocation, manual removal of registry agents, and synchronisation status review have no rows in the table. They are done on the source platform or on the connection page, not through a setting listed above.
-
 Learn's Agent settings page lists agent management rules, agent and plugin access, security templates, sharing, user access, feedback sharing and tags. It lists no setting that switches registry sync on or off for the tenant, hence the row above. Whether the existing agent and plugin access or user access settings apply to synced agents is not stated.
 
-Microsoft Learn documents no API for creating connections or running **Sync agents** at the time of writing (November 2026). The Graph agent registry APIs Microsoft documents list agents in the tenant inventory; Microsoft does not say whether they cover synced agents or connections.
+Microsoft Learn documents no API for creating connections or running **Sync agents** at the time of writing (November 2026). The Graph agent registry APIs Microsoft documents list agents in the tenant inventory; those references do not document connection management or synchronisation operations.
 
 ## Open questions
 
@@ -212,12 +211,4 @@ Microsoft Learn documents no API for creating connections or running **Sync agen
 risk: Low. Nothing syncs until an administrator creates a connection. After opt-in, credentials are stored in Microsoft 365 and observability collection is enabled by default for new connections.
 cost: Medium. Agent 365 is licensed per user, and the Connected platforms page names no separate licence for registry sync. Observability collection can incur query charges billed by the source platform.
 impact: Low. Administrators create the connections and see the synced agents in the registry; the documentation describes no change for end users.
--->
-
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: final sentence / absence: Microsoft does not say whether the documented registry inventory APIs cover synchronised agents. | Found: Get all agents in your inventory: Use the List packages API, to retrieve a complete list of agents in your tenant for compliance and reporting. | Fix: Replace the final sentence with: "The Graph agent registry APIs Microsoft documents list agents in the tenant inventory; those references do not document connection management or synchronisation operations." The cited guide describes its inventory coverage as all agents, not an unconfirmed subset. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/graph-api
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance; Governance controls: missing-rows paragraph / consistency: The governance checklist directs readers to use controls that have no corresponding controls-table rows. | Found: Allow Agent 365's outbound IP addresses on the source platform if it restricts network access. The checklist's source-platform IP allow-list, credential rotation and revocation, manual removal of registry agents, and synchronisation status review have no rows in the table. | Fix: The IP allow-list step before rollout and the manual-removal, credential-rotation/revocation and synchronisation-status steps after rollout have no corresponding rows. Remove those checklist directives while retaining the existing explanatory prose; acknowledging missing rows does not satisfy the checklist/table requirement.
 -->

@@ -56,7 +56,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Data loss prevention > + Create policy > Custom > Custom policy > Assign admin units > Fabric and Power BI workspaces > Create or customize advanced DLP rules > Create rule > Restrict access or encrypt the content in Microsoft 365 locations"
+      path: "Data loss prevention > Policies > + Create policy > Custom > Custom policy > Fabric and Power BI workspaces > Create or customize advanced DLP rules > Create rule > Actions > Restrict access or encrypt the content in Microsoft 365 locations"
       docs: "https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure"
     api:
       kind: "powershell"
@@ -91,19 +91,23 @@ changes:
     note: "Correction: both Purview portal creation paths now include the Name policy, Assign admin units, Define policy settings and Customize advanced DLP rules pages Learn documents."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 74 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-18"
+    note: "Correction: the restrict access creation path in the controls table now runs on through Create or customize advanced DLP rules, Create rule and the Actions section, as Learn documents."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 75 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 74
-  confirmed: 73
+  claims: 75
+  confirmed: 75
   unconfirmed: 0
-  contradicted: 1
-  attempts: 3
-  hash: "51ac032d551fed31482c610a522b1578"
+  contradicted: 0
+  attempts: 0
+  hash: "69d000456444405d8d84ad0329b3c23e"
 ---
 
 ## What's changing
@@ -180,7 +184,7 @@ The account that creates the policy must be in the Compliance administrator, Com
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Restrict access action in a DLP rule for Fabric items</strong><br><small>Tenant</small><br><small class="controls__note">Name and describe the policy after choosing Custom policy, then select Next; on Assign admin units, select Next without assigning units. Then select the Block users option and choose everyone or outsiders only.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › + Create policy › Custom › Custom policy › Assign admin units › Fabric and Power BI workspaces › Create or customize advanced DLP rules › Create rule › Restrict access or encrypt the content in Microsoft 365 locations <a href="https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpComplianceRule -Name &quot;&lt;rule name&gt;&quot; -Policy &quot;&lt;policy name&gt;&quot; -ContentContainsSensitiveInformation @{Name=&quot;&lt;sensitive info type&gt;&quot;} -BlockAccess $true</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Restrict access action in a DLP rule for Fabric items</strong><br><small>Tenant</small><br><small class="controls__note">Name and describe the policy after choosing Custom policy, then select Next; on Assign admin units, select Next without assigning units. Then select the Block users option and choose everyone or outsiders only.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Custom › Custom policy › Fabric and Power BI workspaces › Create or customize advanced DLP rules › Create rule › Actions › Restrict access or encrypt the content in Microsoft 365 locations <a href="https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpComplianceRule -Name &quot;&lt;rule name&gt;&quot; -Policy &quot;&lt;policy name&gt;&quot; -ContentContainsSensitiveInformation @{Name=&quot;&lt;sensitive info type&gt;&quot;} -BlockAccess $true</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which Fabric workspaces a DLP policy covers</strong><br><small>Environment</small><br><small class="controls__note">Name and describe the policy after choosing Custom policy, then select Next; on Assign admin units, select Next without assigning units. Learn: DLP actions apply only to workspaces on Fabric or Premium capacities.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Custom › Custom policy › Assign admin units › Fabric and Power BI workspaces › Edit <a href="https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpCompliancePolicy -Name &quot;&lt;policy name&gt;&quot; -PowerBIDlpLocation &quot;All&quot; -PowerBIDlpLocationException &quot;&lt;workspaceID&gt;&quot; -Mode Enable</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -202,10 +206,9 @@ cost: Variable. Microsoft documents that DLP evaluation for Fabric affects capac
 impact: Low. Security and compliance admins configure it; policy matches can remove user access or show owners policy tips.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: The displayed restrict-access creation path gives the complete documented sequence through the Purview portal. | Found: The Define policy settings page appears. Choose Create or customize advanced DLP rules ... On the Customize advanced DLP rules page ... Select Create rule. ... Actions ... expand the Restrict access or encrypt the content in Microsoft 365 locations section | Fix: Replace controls[0].ui.path and the corresponding rendered path with 'Data loss prevention > Policies > + Create policy > Custom > Custom policy > Assign admin units > Fabric and Power BI workspaces > Define policy settings > Create or customize advanced DLP rules > Customize advanced DLP rules > Create rule > Actions > Restrict access or encrypt the content in Microsoft 365 locations'. Keep the existing note explaining naming, advancing without admin units and selecting the Block users option. The omitted Define policy settings and Customize advanced DLP rules pages and Actions section are explicitly documented at https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure. | Source: https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].api; controls[1].note; Governance controls table / command: The New-DlpCompliancePolicy call includes all supported Power BI workspaces except the supplied workspace and enables actions and notifications. | Found: Only workspaces hosted in Premium Gen2 capacities are permitted. You can use the value All to include all supported workspaces. ... Enable: The policy is enabled for actions and notifications. | Fix: Append this qualification to controls[1].note and the corresponding rendered note: 'The PowerShell reference limits these parameters to workspaces hosted in Premium Gen2 capacities; the Fabric configuration page instead says Fabric or Premium capacities.' Retain the existing warning that Fabric item applicability is not confirmed by the cmdlet reference. Both pages are already cited. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy
+- [supported, minor] controls[0].ui; Governance controls: first table row / admin-path: The printed Purview creation path reaches the restrict access section through the Custom policy and advanced-rule choices. | Found: The Define policy settings page appears. Choose Create or customize advanced DLP rules to begin defining your policy. | Fix: Restore the pass-through wizard headings in both copies of this path: Data loss prevention > Policies > + Create policy > Custom > Custom policy > Assign admin units > Fabric and Power BI workspaces > Define policy settings > Create or customize advanced DLP rules > Customize advanced DLP rules > Create rule > Actions > Restrict access or encrypt the content in Microsoft 365 locations. Retain the note explaining the Block users selection. | Source: https://learn.microsoft.com/fabric/governance/data-loss-prevention-configure
+- [supported, minor] controls[1].api; Governance controls: second table row / command: New-DlpCompliancePolicy -PowerBIDlpLocation All -PowerBIDlpLocationException <workspaceID> -Mode Enable creates an enabled policy excluding the specified workspace. | Found: This example creates a DLP policy named PowerBIPolicy for all qualifying Power BI workspaces (that is, those hosted on Premium Gen2 capacities) except for the specified workspaces. | Fix: Append to the workspace-scope row's note: 'The PowerShell reference limits -PowerBIDlpLocation and -PowerBIDlpLocationException to workspaces hosted in Premium Gen2 capacities; the Fabric configuration page instead says Fabric or Premium capacities.' Retain the existing test-tenant caveat and the existing call. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy
 -->

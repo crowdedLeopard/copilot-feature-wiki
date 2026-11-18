@@ -44,7 +44,7 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Security > Data and privacy > Data policy > New Policy > Next > Next > connector > Block"
+      path: "Security > Data and privacy > Data policy > New Policy > Next > Next > connector > three dots > Block"
       docs: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
     api:
       kind: "powershell"
@@ -60,19 +60,23 @@ changes:
     note: "First briefing for this item; Microsoft Learn does not name the feature, so behaviour is taken from the related Learn page on in-chat connection requests."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 48 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected the data policy path to include the connector's three-dots menu before Block, and stated that -Classification Blocked puts connectors in the Blocked group."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 48 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 48
-  confirmed: 46
+  confirmed: 47
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "deccab66d288d70b040468f69948c424"
+  contradicted: 1
+  attempts: 2
+  hash: "7b52495d5cc5c34d64dac32e5eecfd2f"
 ---
 
 ## What's changing
@@ -150,13 +154,13 @@ The Learn page on end-user connections is written for agents on the Microsoft Co
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which connectors agent makers can use as tools</strong><br><small>Environment</small><br><small class="controls__note">General control: Microsoft has not confirmed how it applies to the in-chat sign-in. The path is for a new policy; use Edit Policy for an existing one. Requires admin rights over the scope.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy › Next › Next › connector › Block <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-ConnectorsToPolicy -PolicyName &lt;policy-id&gt; -Classification &lt;group&gt; -Connectors &lt;connector-list&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which connectors agent makers can use as tools</strong><br><small>Environment</small><br><small class="controls__note">General control: Microsoft has not confirmed how it applies to the in-chat sign-in. The path is for a new policy; use Edit Policy for an existing one. Requires admin rights over the scope.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy › Next › Next › connector › three dots › Block <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-ConnectorsToPolicy -PolicyName &lt;policy-id&gt; -Classification &lt;group&gt; -Connectors &lt;connector-list&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 Data policies are a general control: Microsoft Learn states that a data policy can block a connector as a tool for agent makers, but does not state how a data policy interacts with the in-chat sign-in step. The control is configured by a Power Platform administrator.
 
-The PowerShell side classifies connectors in a data policy group. The page read for this briefing does not show the value that means Blocked, so check the reference before scripting.
+The PowerShell side classifies connectors in a data policy group. Use -Classification Blocked to put the connectors in the Blocked group.
 
 Users manage their own connections on the **Manage your connections** page; that is a user-side control, not an admin one.
 
@@ -176,6 +180,9 @@ impact: Medium. Makers and the people chatting with agents see the new sign-in s
 <!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: The blocking path is Security > Data and privacy > Data policy > New Policy > Next > Next > connector > Block. | Found: Use the search box to find the connector you want. ... Select the three dots (⋮) next to the connector, and then: ... To prevent agent makers from using the features associated with the connector, select Block. | Fix: Insert the documented connector menu step in controls[0].ui.path and the rendered table: 'Security > Data and privacy > Data policy > New Policy > Next > Next > connector > three dots > Block'. The cited page places Block inside that menu, not directly on the connector. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
-- [contradicted, blocker] Governance controls: PowerShell paragraph / absence: The cited PowerShell reference does not show the classification value that means Blocked. | Found: The name of the group to which the connectors should be added. Allowed values are 'General', 'Confidential', and 'Blocked' (for Non-business, Business, and Blocked, respectively). | Fix: Replace 'The page read for this briefing does not show the value that means Blocked, so check the reference before scripting.' with 'Use -Classification Blocked to put the connectors in the Blocked group.' | Source: https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy
+- [contradicted, blocker] front matter: licensing.model and notes; Cost and licensing; rationale: cost / licensing: The licensing model is unknown because no licence is published for this feature. | Found: To use Copilot Studio, you need one of the following configurations: - Copilot Studio user license (free). - Copilot Studio authors role in Power Platform admin center. - Microsoft 365 Copilot license - Copilot Studio trial license. | Fix: Set licensing.model to mixed and cite https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing. Replace the blanket licensing absence in the notes, Cost and licensing, and cost rationale with: 'Copilot Studio documents access through a Copilot Studio user license requiring a tenant prepaid Copilot Credit pack subscription, the Copilot Studio authors role for applicable pay-as-you-go scenarios, a Microsoft 365 Copilot license, or a trial. The trial permits testing but not publishing. No separate entitlement for this connection experience is published.' Retain the distinct statement that a charge for the connection step itself is not stated. | Source: https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Governance guidance: Before rollout / behaviour: An agent has a tools list that makers can review. | Found: In the agent navigation bar, select the Build tab. 3. The tools list appears in the components panel on the right, below the Tools button. | Fix: Add https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/tools-manage to sources for the advice to review each agent's tools list. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/tools-manage
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Power Platform admin center > Security > Data and privacy > Data policy > New Policy > Next > Next > connector > three dots > Block reaches connector blocking. | Found: Select Next. The Add an environment page appears. - To add an environment to your data policy, select the environment in the Available tab, and then select Add to policy. Select Next. The Assign connectors page appears. | Fix: Include the omitted environment selection and wizard headings in both copies of the path: 'Security > Data and privacy > Data policy > New Policy > Next > Add an environment > Available > environment > Add to policy > Next > Assign connectors > connector > three dots > Block'. The cited page also confirms the final three-dots > Block steps; this is not a nonexistent-path finding. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
+- [supported, minor] Governance controls / role: A Power Platform administrator can configure the data-policy control. | Found: | Data policies | | | | | | View and manage tenant policies | Yes | Yes | Yes | No | | View and manage environment policies | Yes | Yes | Yes | No | | Fix: Add https://learn.microsoft.com/power-platform/admin/use-service-admin-role-manage-tenant to sources; its permission matrix confirms Power Platform administrators can manage tenant and environment data policies. | Source: https://learn.microsoft.com/power-platform/admin/use-service-admin-role-manage-tenant
 -->

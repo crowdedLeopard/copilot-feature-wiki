@@ -31,6 +31,9 @@ sources:
   - title: "Set-CsTeamsAIPolicy"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy"
     kind: "learn"
+  - title: "Get-CsTeamsAIPolicy"
+    url: "https://learn.microsoft.com/powershell/module/microsoftteams/get-csteamsaipolicy"
+    kind: "learn"
   - title: "Enable People Recognition on Teams Rooms"
     url: "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition"
     kind: "learn"
@@ -70,19 +73,23 @@ changes:
     note: "New briefing: roadmap item for express face enrollment, with the related Teams AI policy and Teams Rooms recognition controls and the gaps Microsoft has not yet documented."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 64 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected the first Before rollout step to inspect policies with Get-CsTeamsAIPolicy instead of the disable command, and added the PassiveVoiceEnrollment qualification from the Set-CsTeamsAIPolicy reference."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 67 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 63
+  claims: 67
+  confirmed: 66
   unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "c8d0bed13b1f54fc4b0abe18da4f1dba"
+  attempts: 2
+  hash: "3fbe745184d36230464c7404cd8bea36"
 ---
 
 ## What's changing
@@ -97,7 +104,7 @@ The record gives the status as In development, with a target of February CY2027,
 
 A face profile is biometric data, and recognition in Teams Rooms turns it into names on video, in transcripts, recaps and Copilot output. This is an opt-in feature, so the exposure is limited to users who choose it, but the choice is easier to make than a manual enrollment. Privacy, security and legal teams will want to have decided their position before users are asked.
 
-Microsoft has not stated what happens on arrival, because no page describes the express face setting or its default. No source says existing behaviour changes. Learn does say that the existing Teams AI policy settings EnrollVoice, EnrollFace and PassiveVoiceEnrollment are enabled by default, so check the current values now, and watch for the page that says which setting governs express face enrollment.
+Microsoft has not stated what happens on arrival, because no page describes the express face setting or its default. No source says existing behaviour changes. Learn does say that the existing Teams AI policy settings EnrollVoice, EnrollFace and PassiveVoiceEnrollment are enabled by default, so check the current values now, and watch for the page that says which setting governs express face enrollment. The Set-CsTeamsAIPolicy reference qualifies PassiveVoiceEnrollment: organisations that previously disabled EnrollVoice receive a one-time matching state for PassiveVoiceEnrollment when express voice enrollment launches.
 
 ## Risk assessment
 
@@ -138,7 +145,7 @@ For recognition in rooms, Learn lists face recognition as supported on Teams Roo
 
 ### Before rollout
 
-- Read the current EnrollFace, EnrollVoice and PassiveVoiceEnrollment values in the Global and any custom Teams AI policies, using the first controls row.
+- Inspect the Global and any custom Teams AI policies with Get-CsTeamsAIPolicy; do not run the first controls row's disable command merely to inspect settings.
 - Agree with privacy, security and legal teams whether staff may create face profiles, and where a policy exception is needed.
 - Check which Teams Rooms have Face Recognition turned on in the Pro Management Portal, using the room recognition row.
 
@@ -188,7 +195,5 @@ impact: Low. The roadmap says users create the profile after they opt in, so tho
 <!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance guidance: Before rollout, first bullet / command: Administrators can read current enrollment policy values using the first controls row. | Found: Set-CsTeamsAIPolicy -Identity Global -EnrollFace Disabled Set Teams AI policy "EnrollFace" value to "Disabled" for global as default. | Fix: Replace the first Before rollout bullet with: 'Inspect the Global and any custom Teams AI policies with Get-CsTeamsAIPolicy; do not run the first controls row's disable command merely to inspect settings.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/get-csteamsaipolicy, which states that the cmdlet retrieves all Teams AI policies for the tenant. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters / default: Learn says the existing PassiveVoiceEnrollment setting is enabled by default. | Found: The new policy includes three distinct settings which are enabled by default | Fix: After the defaults sentence, add: 'The Set-CsTeamsAIPolicy reference qualifies PassiveVoiceEnrollment: organisations that previously disabled EnrollVoice receive a one-time matching state for PassiveVoiceEnrollment when express voice enrollment launches.' The reference is https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy. | Source: https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition
+- [contradicted, blocker] front matter: licensing.model; summary; Cost and licensing; Open questions; rationale: cost / licensing: The licensing model is unknown because Microsoft has not published a licence for express face enrollment. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Set licensing.model to included under the standard's rule for a new option inside a licensed product. Replace the unqualified unpublished-licence statements with: 'Teams use requires a Teams licence for each user, except for joining meetings anonymously. Microsoft has not published any licensing requirement or price specific to express face enrollment.' Cite https://learn.microsoft.com/microsoftteams/user-access and https://learn.microsoft.com/office365/servicedescriptions/teams-service-description. Retain the separately stated Teams Rooms Pro requirement for room recognition, and narrow the summary, licensing notes and cost rationale to say that feature-specific licensing is not yet published rather than that the underlying entitlement is unknown. | Source: https://learn.microsoft.com/microsoftteams/user-access
 -->

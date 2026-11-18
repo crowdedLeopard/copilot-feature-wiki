@@ -93,19 +93,23 @@ changes:
     note: "Corrected after verification: broad data-access claim narrowed, unsupported API entry removed, data policy path, roles and blockable-connector wording fixed, connector-licence inference dropped."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 67 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-18"
+    note: "Corrected after verification: cost rationale now says no CLI-specific licence or meter is documented, and the connection-review checklist step without a controls-table row was removed."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 66 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-18"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 65
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 2
-  hash: "55264a67a03c6016298b8d037ae8bca9"
+  claims: 66
+  confirmed: 64
+  unconfirmed: 0
+  contradicted: 2
+  attempts: 3
+  hash: "58d07071eb05c2d03d1d6b417efb1817"
 ---
 
 ## What's changing
@@ -167,7 +171,6 @@ Release phases on the record are General Availability and Preview. Microsoft Lea
 - Turn on Enable code apps only in the environments where you want this development path, using environment groups and rules if you manage many environments.
 
 ### After rollout
-- Review the connections in code app environments with `pa connection list` or the maker portal, and remove any no longer needed.
 - Confirm that data policy changes take effect for published code apps by testing an app that uses a newly blocked connector.
 - Check for Microsoft Learn pages describing the agent.md guidance, and review what those agents are told to do.
 
@@ -198,14 +201,13 @@ Tenant-level policies require the Power Platform Administrator role. Environment
 
 <!-- rationale
 risk: Medium. Connections for code apps can now be created from a terminal, or by a coding agent running the CLI, without the maker portal; existing controls (the environment's code apps toggle and data policies) apply but need checking.
-cost: Low. Microsoft Learn documents no charge for the CLI commands themselves; end users who run code apps need Power Apps Premium, pay-as-you-go, an App Pass or auto-claim, so the cost is mostly licensing and admin time.
+cost: Low. No CLI-specific licence or meter is documented at the time of writing (November 2026); the known incremental cost is developer and admin time. Existing code-app licensing requirements still apply.
 impact: Low. Developers and makers who build code apps notice it; the code apps setting on an environment is documented as off by default, so most users see no change.
 -->
 
 <!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] rationale: cost / cost: Microsoft Learn documents no charge for the CLI commands themselves. | Found: Searched: "pa connection create" "license" "meter"; "code apps" "CLI" licensing pricing limits connector premium. Read create-connection, npm-quickstart, CLI reference and overview; none states that running the commands is free. | Fix: Replace the cost rationale with: 'Low. No CLI-specific licence or meter is documented at the time of writing (November 2026); the known incremental cost is developer and admin time. Existing code-app licensing requirements still apply.' This preserves the distinction between an undocumented charge and a documented absence of charge.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist's connection review and removal control has no corresponding controls-table row. | Found: After rollout: 'Review the connections in code app environments with pa connection list or the maker portal, and remove any no longer needed.' The table contains only 'Whether code apps run in an environment' and 'Which connectors code apps may use or combine'. | Fix: The After rollout step on reviewing and removing connections names a control not represented in the table. Remove that checklist bullet if retaining the current two-row table.
+- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: Security > Settings > Data and privacy > Data policy is the complete path to the control deciding which connectors may be used or combined. | Found: From the list of data policies, select a policy, and then select Edit Policy. Select the Prebuilt connectors step in the Edit Policy process. | Fix: Replace the path with 'Security > Settings > Data and privacy > Data policy > policy > Edit Policy > Prebuilt connectors > connector > Block' and add to the existing note: 'The UI path blocks a blockable connector in an existing policy.' The cited page documents the Block action and explains that it is unavailable for unblockable connectors. | Source: https://learn.microsoft.com/power-platform/admin/create-dlp-policy
+- [contradicted, blocker] controls[1].api; Governance controls table / command: New-DlpPolicy -DisplayName <name> -EnvironmentType <type> sets which connectors code apps may use or combine. | Found: The New-DlpPolicy cmdlet creates a new DLP policy for the logged in admin's tenant. | Fix: Replace the call with 'Add-ConnectorsToPolicy -PolicyName <policy-guid> -Connectors <connector-objects> -Classification <General|Confidential|Blocked>' and docs with 'https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest'. Add to the existing note: 'Classification assigns connectors to Non-business (General), Business (Confidential), or Blocked; each connector object requires id, type, and name.' That reference explicitly documents moving connectors between groups; the current call only creates a policy. | Source: https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest
 -->

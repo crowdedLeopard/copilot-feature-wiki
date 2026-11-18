@@ -55,6 +55,12 @@ sources:
   - title: "copilotPackage: block"
     url: "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackage-block"
     kind: "learn"
+  - title: "Plan data, privacy, and security"
+    url: "https://learn.microsoft.com/plugins/data-privacy-security"
+    kind: "learn"
+  - title: "Declarative agents for Microsoft 365 Copilot"
+    url: "https://learn.microsoft.com/plugins/overview-declarative-agent"
+    kind: "learn"
 videos: []
 related: ["mcp","m365-copilot-copilot-extensibility-users-in-gcc-h-will-be-able-to-use-custom-engine-agents","m365-copilot-new-m365-copilot-usage-reports-for-copilot-search-connectors-and-agents-for-u","m365-copilot-use-agent-365-agents-within-m365-copilot-chat-and-declarative-agents"]
 controls:
@@ -68,7 +74,7 @@ controls:
       kind: "graph"
       call: "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block"
       docs: "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackage-block"
-    note: "General agent control: Microsoft has not confirmed it applies to MCP-based agents. API is preview, needs an Agent 365 licence and is listed as unavailable in US Government L4 and L5."
+    note: "Blocks the selected agent, not necessarily a shared MCP server or its connected-service permissions or credentials. API is preview, needs an Agent 365 licence and is listed as unavailable in US Government L4 and L5."
 confidence: "medium"
 created: "2026-11-18"
 updated: "2026-11-18"
@@ -78,19 +84,23 @@ changes:
     note: "First briefing for this item: reports the roadmap launch for GCC, GCC High and DoD alongside Learn's differing government-cloud limits for agents."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 56 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected after the independent check: reworded the MCP tool-access claim, stated that Learn's authenticated custom actions restriction covers MCP actions, and narrowed the block control note to the selected agent."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 57 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 53
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "2a81ff0e6b5c9182e425d40eb5c943dd"
+  claims: 57
+  confirmed: 56
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 2
+  hash: "8c64c8904bcf8311e643d0e6d9b2953d"
 ---
 
 ## What's changing
@@ -99,13 +109,13 @@ The roadmap item states that Microsoft is introducing support for Model Context 
 
 Microsoft Learn does not describe this item for government clouds. Its general guidance says an MCP plugin is an action for a declarative agent: the plugin manifest connects the agent to a remote MCP server, and it does not package or host the running server. By default Copilot resolves the plugin's tools from the MCP server at runtime, and a developer can instead pin a fixed set of tools.
 
-The roadmap and Learn do not fully agree. The roadmap lists all three clouds, but the Microsoft 365 Copilot service description lists declarative agents as "Not currently available" in DoD and, for GCC High, supports only agents created with Agent Builder or published through admin controls. The Learn known-issues page lists authenticated custom actions, usage billing for extensibility features and publishing through the Microsoft 365 Agents Toolkit as not supported in Microsoft 365 Government tenants. This briefing reports both and does not choose between them.
+The roadmap and Learn do not fully agree. The roadmap lists all three clouds, but the Microsoft 365 Copilot service description lists declarative agents as "Not currently available" in DoD and, for GCC High, supports only agents created with Agent Builder or published through admin controls. The declarative-agent overview instead lists limited DoD support for pro-code agents built with Microsoft 365 Agents Toolkit, and states that GCCH supports pro-code agents built with Microsoft 365 Agents Toolkit as well as Agent Builder. The Learn known-issues page lists authenticated custom actions, usage billing for extensibility features and publishing through the Microsoft 365 Agents Toolkit as not supported in Microsoft 365 Government tenants. This briefing reports both and does not choose between them.
 
 The roadmap record shows the status as Launched, with a target of June CY2026 and release phase General Availability.
 
 ## Why it matters
 
-MCP servers are separate services. An agent that uses one can reach whatever that service exposes, so each connection is a decision about a system outside Microsoft 365 that an administrator in a regulated tenant will want to see. Microsoft has not stated what happens on arrival, and no source says existing behaviour changes, so the practical exposure is the agents that developers choose to build and share.
+MCP servers are separate services. An agent can invoke the MCP tools made available to it, subject to authentication, permissions and its tool configuration, so each connection is a decision about a system outside Microsoft 365 that an administrator in a regulated tenant will want to see. Microsoft has not stated what happens on arrival, and no source says existing behaviour changes, so the practical exposure is the agents that developers choose to build and share.
 
 The unresolved differences between the roadmap, the service description and the known-issues page matter most for GCC High and DoD tenants. Confirm what applies in your cloud before developers build against it, so that nobody builds an agent that the cloud then does not support.
 
@@ -117,7 +127,7 @@ The unresolved differences between the roadmap, the service description and the 
 
 **Security & identity**
 - Learn's walkthrough uses an OAuth client so that Copilot obtains an access token on behalf of the signed-in user each time the agent calls the MCP server. A separate Learn page says a server in development can use authentication type None and that authentication should be added before production. Ask developers which type each server uses.
-- Whether authenticated MCP calls fall under the "authenticated custom actions" item on the known-issues page for Government tenants is not stated.
+- Learn classifies MCP plugins as custom actions, so its Government restriction on authenticated custom actions covers authenticated MCP actions. The roadmap nevertheless lists MCP-based enablement as launched; it does not explain that conflict.
 
 **Autonomy & actions**
 - Learn says MCP and API plugins can, when supported, create, update and delete data through natural-language prompts, so an MCP-based agent can change data in the connected system, not only read it.
@@ -165,11 +175,11 @@ Learn's agent management page says publishing agents to the organisation is supp
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether an agent is blocked for the whole organisation</strong><br><small>Agent</small><br><small class="controls__note">General agent control: Microsoft has not confirmed it applies to MCP-based agents. API is preview, needs an Agent 365 licence and is listed as unavailable in US Government L4 and L5.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block › Block agent › Save <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether an agent is blocked for the whole organisation</strong><br><small>Agent</small><br><small class="controls__note">Blocks the selected agent, not necessarily a shared MCP server or its connected-service permissions or credentials. API is preview, needs an Agent 365 licence and is listed as unavailable in US Government L4 and L5.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block › Block agent › Save <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The block control is Learn's general control for agents; the page does not mention MCP, and Microsoft has not confirmed how it applies to a declarative agent that uses an MCP plugin. Learn says to block or unblock an agent for the entire organisation by using the same controls as for any other app in the Microsoft 365 admin center.
+The block control is Learn's general control for agents. It blocks the selected agent; blocking an agent does not necessarily block a shared MCP server or revoke connected-service permissions or credentials. Learn says to block or unblock an agent for the entire organisation by using the same controls as for any other app in the Microsoft 365 admin center.
 
 The API side is a preview Microsoft Graph beta call. Learn says it needs a Microsoft Agent 365 licence and lists the API as not available in US Government L4 and L5, so it cannot be assumed to work in government tenants. The user-interface page has a note that publishing agents to the organisation is supported in GCCH and GCCM; it gives no equivalent statement for blocking in DoD.
 
@@ -178,7 +188,7 @@ Microsoft Learn documents no MCP-specific tenant switch or allow list of MCP ser
 ## Open questions
 
 - Which of the three clouds actually support MCP-based agents today, given that the service description lists declarative agents as not currently available in DoD and limited in GCC High? Watch the service description and the roadmap item.
-- Do MCP servers that need sign-in fall under the known-issues entry for authenticated custom actions in Microsoft 365 Government tenants?
+- How is the roadmap launch reconciled with Learn's restriction on authenticated custom actions?
 - Which licence or meter does an MCP-based agent need in GCC, GCC High and DoD, given that usage-based billing is not supported in GCC and GCCH?
 - Can an administrator limit which MCP servers agents may call, and do the Agent 365 tool-management controls apply in US Government clouds?
 - What is the default state on arrival? Microsoft has not stated it.
@@ -192,10 +202,5 @@ impact: Medium. Developers who build the agents and the users they share them wi
 <!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: An agent using an MCP server can reach whatever that service exposes. | Found: Searched: Microsoft 365 Copilot MCP plugins government cloud data boundary authenticated custom actions. Opened overview-plugins, build-mcp-plugins and data-privacy-security; these document pinned tool sets and permission boundaries, not unrestricted access. | Fix: Replace 'An agent that uses one can reach whatever that service exposes' with 'An agent can invoke the MCP tools made available to it, subject to authentication, permissions and its tool configuration.' Cite https://learn.microsoft.com/plugins/overview-plugins and https://learn.microsoft.com/plugins/data-privacy-security.
-- [contradicted, blocker] Risk assessment: Security & identity; Open questions / applicability: It is not stated whether authenticated MCP calls fall under the Government restriction on authenticated custom actions. | Found: MCP and API plugins are custom actions that enable declarative agents in Microsoft 365 Copilot to interact with Model Context Protocol (MCP) servers or REST APIs that have an OpenAPI description. | Fix: Replace the uncertainty statement with: 'Learn classifies MCP plugins as custom actions, so its Government restriction on authenticated custom actions covers authenticated MCP actions. The roadmap nevertheless lists MCP-based enablement as launched; it does not explain that conflict.' Keep the known-issues and overview-plugins citations. Remove or replace the corresponding open question with 'How is the roadmap launch reconciled with Learn's restriction on authenticated custom actions?' | Source: https://learn.microsoft.com/plugins/overview-plugins
-- [contradicted, blocker] controls[0].note; Governance controls / applicability: Microsoft has not confirmed that general agent blocking applies to a declarative agent using an MCP plugin. | Found: You can manage agents for Copilot by using the Microsoft 365 admin center. You can enable, disable, assign, block, or remove agents for your organization, and manage Copilot capabilities. | Fix: Remove the statements that blocking applicability to an MCP-based declarative agent is unconfirmed. Replace them with: 'The control blocks the selected agent. Blocking an agent does not necessarily block a shared MCP server or revoke connected-service permissions or credentials.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions. Retain the separate national-cloud and API limitations; do not imply that blocking the agent blocks every connected component. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-copilot-agents-integrated-apps
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Open questions / availability: The Copilot service description lists declarative agents as not currently available in DoD. | Found: | Declarative agents | Yes | Yes | Yes^8^ | Not currently available | | Fix: Retain the attribution to the service description, and add: 'The declarative-agent overview instead lists limited DoD support for pro-code agents built with Microsoft 365 Agents Toolkit.' Cite https://learn.microsoft.com/plugins/overview-declarative-agent#national-cloud-support. | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot
-- [supported, minor] What's changing; Open questions / availability: The service description limits GCC High declarative-agent support to Agent Builder agents and agents published through admin controls. | Found: GCC-High currently only supports declarative agents created using Agent Builder and those published via admin controls. | Fix: Retain the attribution, and add: 'The declarative-agent overview also states that GCCH supports pro-code agents built with Microsoft 365 Agents Toolkit, as well as Agent Builder.' Cite https://learn.microsoft.com/plugins/overview-declarative-agent#national-cloud-support. | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot
+- [contradicted, blocker] front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost / licensing: The licensing model is unknown because Microsoft has not published which entitlement covers these MCP-based agents. | Found: | Custom actions | ✅ | ✅ | ✅ | | Fix: Set licensing.model to "included". Replace the licensing notes and the Licence paragraph with: "Learn's general agent licensing table includes custom actions in Copilot Chat without usage-based billing and in licensed Microsoft 365 Copilot. Government-cloud support remains subject to the conflicting availability statements described above; MCP-specific government licensing terms are not separately published." In Open questions, replace the licence-or-meter question with "Are there any MCP-specific government licensing terms beyond the general agent entitlements?" In the cost rationale, replace "the licence for MCP-based agents in US Government clouds is not yet published" with "Learn documents general agent entitlements but no separate MCP-specific government licensing terms". The cited prerequisites table expressly covers custom actions, the class that includes MCP plugins. | Source: https://learn.microsoft.com/plugins/prerequisites
 -->
