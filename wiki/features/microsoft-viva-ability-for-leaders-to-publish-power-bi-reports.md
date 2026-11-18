@@ -18,7 +18,7 @@ defaultState: "on"
 action: "act-now"
 licensing:
   model: "unknown"
-  notes: "Not yet published for leader publishing. The Publish reports page names an E3 or E5 Exchange licence only for org-wide recipient search in analyst publishing, and no licence for publishing itself."
+  notes: "Microsoft has not published an additional licence requirement specifically for leader publishing. Existing platform requirements apply: Viva Insights requires the applicable Viva Insights licensing and a Microsoft 365 or Office 365 tenant with Exchange Online Plan 1 or Plan 2. The Publish reports page names an E3 or E5 Exchange licence only for org-wide recipient search in analyst publishing."
 audiences: ["m365-admin","service-owner","change-adoption","compliance"]
 tags: ["viva-insights","viva-feature-access-management","power-bi","sharing","delegation","m365-admin-center","powershell","gcc"]
 sources:
@@ -39,6 +39,9 @@ sources:
     kind: "learn"
   - title: "Control access to features in Microsoft 365 using PowerShell"
     url: "https://learn.microsoft.com/viva/manage-access-policies"
+    kind: "learn"
+  - title: "Environment requirements for Viva Insights"
+    url: "https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements"
     kind: "learn"
 videos: []
 related: ["microsoft-viva-copilot-analytics-agent-dashboard","microsoft-viva-copilot-analytics-export-metrics-from-agent-dashboard"]
@@ -74,19 +77,23 @@ changes:
     note: "First briefing for this item, based on MC1489942 (updated 2026-11-16, rollout now mid-December 2026) and the Viva feature access pages."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 88 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Correction: narrowed the licensing gap to an additional leader-specific requirement and added the Viva Insights platform requirements; fixed the impact rationale; removed four checklist bullets that had no controls-table row."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 85 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 88
+  claims: 85
   confirmed: 85
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "d946ddab8df5883d0a4ff03df8330857"
+  contradicted: 0
+  attempts: 0
+  hash: "b70881ce9986130819ab021ae5eca0e0"
 ---
 
 ## What's changing
@@ -125,7 +132,7 @@ The main exposure is scope. An unfiltered publish shows recipients the report's 
 
 ## Cost and licensing
 
-Microsoft has not published a licence requirement or meter for leader publishing. MC1489942 and the roadmap item name none, and the Learn page Publish reports lists no licence for publishing itself. That is a statement about what is documented, not a statement that none applies.
+Microsoft has not published an additional licence requirement specifically for leader publishing. MC1489942 and the roadmap item name none, and the Learn page Publish reports lists no licence for publishing itself. That is a statement about what is documented, not a statement that none applies. Existing platform requirements apply: Viva Insights requires the applicable Viva Insights licensing and a Microsoft 365 or Office 365 tenant with Exchange Online Plan 1 or Plan 2.
 
 The Learn page does give one licence condition for analyst publishing of unfiltered reports: to find people across the organisation, both publisher and recipient must have an E3 or E5 Exchange licence, otherwise the error "Your account isn't configured for org-wide recipient search" appears. That condition is not stated for leaders. Separately, creating Viva feature access policies requires a supported version of Microsoft 365 or a Viva Suite licence.
 
@@ -147,16 +154,12 @@ Indirect cost is admin and communication time: setting a Report publish policy, 
 - Decide who in your organisation should be allowed to publish, and record it before mid-December 2026, using the Report publish control in the controls table.
 - Check whether an Analyst report publish policy already exists and what it restricts, since Microsoft says the renamed control will govern leaders as well as analysts.
 - Brief leaders and delegates on the choice between unfiltered and manager-hierarchy publish, and on the publication end date.
-- Check the notification route: Learn says mail-enabled security groups must allow external senders to be notified of a publish.
 
 ### At rollout
 - Create a Report publish policy if you want to restrict leaders; use a group policy for specific people, or the tenant-wide policy as the default.
 - Confirm in a test publish that the setting behaves as you configured it, allowing up to 24 hours for a policy change to apply.
-- Open the Admin Publish Reports experience as an Insights Admin to confirm you can see and remove publications.
 
 ### After rollout
-- Review publications in the Admin Publish Reports experience and remove any with an unintended audience.
-- Check the unified audit log for PublishReport and RemovedPublishedReport events, and confirm whether leader publishes are recorded the same way.
 - Re-check the Publish reports Learn page, which describes analyst publishing at the time of writing, for the leader documentation.
 
 ## Governance controls
@@ -187,15 +190,12 @@ The Admin Publish Reports experience is described in MC1489942; Microsoft Learn 
 
 <!-- rationale
 risk: Medium. Microsoft's notice says the Report publish setting is on by default, so leaders can send reports to chosen audiences, including at the full data scope of the report, unless an admin sets a policy first.
-cost: Low. Neither the roadmap item nor Microsoft's notice names a licence or meter for leader publishing; the known cost is admin time to set policy and brief leaders. Licensing is not yet published.
-impact: Medium. Leaders, managers, delegates and analysts gain publishing, and everyone they publish to receives an email notification and a report in the Viva Insights Reports tab.
+cost: Low. Neither the roadmap item nor Microsoft's notice names an additional licence or meter for leader publishing; the known cost is admin time to set policy and brief leaders. An additional licence requirement is not yet published.
+impact: Medium. Leaders, managers and delegates gain publishing; analysts already have it. Recipients receive an email notification and can access the report in the Viva Insights Reports tab.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing; front matter: licensing.notes; rationale: cost / licensing: Microsoft has not published a licence requirement for leader publishing. | Found: Viva Insights requires the applicable Viva Insights licensing and a Microsoft 365 or Office 365 tenant with Exchange Online Plan 1 or Plan 2. | Fix: Narrow the gap everywhere to 'Microsoft has not published an additional licence requirement specifically for leader publishing.' In Cost and licensing add: 'Existing platform requirements apply: Viva Insights requires the applicable Viva Insights licensing and a Microsoft 365 or Office 365 tenant with Exchange Online Plan 1 or Plan 2.' Cite https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements. Keep the feature-specific licensing model unknown rather than implying the platform has no published requirements. | Source: https://learn.microsoft.com/viva/insights/advanced/setup-maint/environment-requirements
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] rationale: impact / consistency: Analysts, along with leaders, managers and delegates, gain publishing through this change. | Found: rationale: 'Leaders, managers, delegates and analysts gain publishing'; What's changing: 'extending report publishing from analysts to leaders'. | Fix: Replace the impact rationale with: 'Medium. Leaders, managers and delegates gain publishing; analysts already have it. Recipients receive an email notification and can access the report in the Viva Insights Reports tab.'
-- [contradicted, minor] Governance guidance: Before rollout; At rollout; After rollout / consistency: Every control the governance checklist asks administrators to check is represented in the controls table. | Found: The checklist says 'Check the notification route', 'Open the Admin Publish Reports experience', 'Review publications' and 'Check the unified audit log'; the table contains only Report publish and Expanded publish report recipients. | Fix: The notification-route check, Admin Publish Reports checks and unified-audit-log check have no controls-table rows. Remove those four checklist bullets; retain their already documented factual descriptions in the body. Do not add unverified control rows.
+- [supported, minor] What's changing; Risk assessment: Autonomy & actions; rationale: impact / record: Recipients receive an email notification when a report is published to them. | Found: Recipients will receive an email notification when a report is published to them, and can access published reports from the Viva Insights Reports tab. | Fix: After the notification statement in What's changing, add: 'For existing analyst publishing, Learn qualifies security-group notifications: the group must be mail-enabled and allow external senders.' The qualification is at https://learn.microsoft.com/viva/insights/advanced/analyst/publish-reports under 'Publish'.
 -->

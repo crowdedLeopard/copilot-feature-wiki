@@ -58,6 +58,12 @@ sources:
   - title: "Use Microsoft Purview to manage data security & compliance for Microsoft 365 Copilot & Microsoft 365 Copilot Chat"
     url: "https://learn.microsoft.com/purview/ai-m365-copilot"
     kind: "learn"
+  - title: "Model Context Protocol (MCP) overview"
+    url: "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/mcp-overview"
+    kind: "learn"
+  - title: "Package Management API overview"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview"
+    kind: "learn"
 videos: []
 related: ["m365-copilot-federated-connectors-write-update-delete","mcp","m365-admin-center-usage-reports-m365-copilot-connectors"]
 controls:
@@ -102,7 +108,7 @@ controls:
       call: "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
     note: "API is a general control: beta, needs an Agent 365 licence, not in US Government clouds, and Microsoft has not confirmed it applies to federated connectors."
-  - governs: "Switching off write, update and delete tools separately from a connector"
+  - governs: "Tenant-wide switch for all write, update and delete tools"
     scope: "tenant"
     ui: null
     api: null
@@ -120,19 +126,23 @@ changes:
     note: "Corrected after verification: added the Graph TCM preview API for publisher types and User access, reworded the audit-trail and Purview statements, and dropped the Purview checklist bullet."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 98 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-18"
+    note: "Corrected after verification: the write, update and delete row now names only the tenant-wide bulk switch, and the page notes that Agents > Tools documents tool-level and connector-level blocking."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 99 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 98
-  confirmed: 97
+  claims: 99
+  confirmed: 99
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "2edbbf32330fda7d3957fb28566427e6"
+  contradicted: 0
+  attempts: 0
+  hash: "6801a42dc2969fbcfaa5a283a2ff77c4"
 ---
 
 ## What's changing
@@ -165,7 +175,7 @@ Microsoft has not stated what happens on arrival, so plan on the documented cont
 
 - Where a connector provides the tools, Copilot can create, update or delete data in the third-party system. Learn says these tools require user approval and default to Needs approval.
 - A user can choose Always allow for a tool, which then does not ask again until the user changes the setting or the publisher changes the tool. A publisher-added or changed write tool is reset to Needs approval.
-- Learn says write, update and delete tools are part of the connector and are not enabled separately. The admin lever is therefore the connector itself.
+- Learn says write, update and delete tools are part of the connector and are not enabled separately. Learn also documents tool-level and connector-level blocking under **Agents** > **Tools**.
 
 **Change & support**
 
@@ -222,7 +232,7 @@ Indirect costs are admin time to configure the controls below, and for custom co
 <tr><td data-label="Control"><strong>Maximum population that can use any connector</strong><br><small>Tenant</small><br><small class="controls__note">UI options: All users (default), Specific users or groups, No users. Staging can narrow but not widen this. API: general TCM preview control, everyone or noOne only, global service only.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Enabling, disabling and staging an individual connector</strong><br><small>Tenant</small><br><small class="controls__note">Enable, Disable and Delete are on the same Your connections list. Delete applies to custom connectors only.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Your connections › Staged rollout <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Blocking a connector or its tools</strong><br><small>Agent</small><br><small class="controls__note">API is a general control: beta, needs an Agent 365 licence, not in US Government clouds, and Microsoft has not confirmed it applies to federated connectors.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Switching off write, update and delete tools separately from a connector</strong><br><small>Tenant</small><br><small class="controls__note">Learn says write, update and delete tools are part of the connector and aren't enabled separately; users set approval per tool.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Tenant-wide switch for all write, update and delete tools</strong><br><small>Tenant</small><br><small class="controls__note">Learn says write, update and delete tools are part of the connector and aren't enabled separately; users set approval per tool.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -230,7 +240,7 @@ Learn says **Agent and plugin access**, **User access**, the connector's own ena
 
 The API side of the first two rows is a general Tenant Configuration Management (TCM) preview control in Microsoft Graph beta: `POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors` with mode `applyOnce`. Learn says it is available only in the global service, not in national clouds. It needs the delegated `ConfigurationMonitoring.ReadWrite.All` permission for the calling app, the delegated `CopilotPolicySettings.ReadWrite` permission for the TCM service principal, and AI Administrator for the signed-in user. For publisher types, the `microsoft.agent.allowedagenttypes` resource takes a body such as `{"displayName":"Configure publisher access","mode":"applyOnce","baseline":{"displayName":"Publisher access","resources":[{"displayName":"Allowed agent types","resourceType":"microsoft.agent.allowedagenttypes","resourceVersion":1,"properties":{"valueObject":{"areMicrosoftAppsAllowed":true,"areTenantScopedAppsAllowed":true,"areISVAppsAllowed":false,"areMicrosoftCertifiedThirdPartyAppsAllowed":true}}}]}}`. For User access, the `microsoft.agent.useraccess` resource supports `everyone` or `noOne`, not specific-user or group assignment: `{"displayName":"Configure agent user access","mode":"applyOnce","baseline":{"displayName":"User access","resources":[{"displayName":"Agent user access","resourceType":"microsoft.agent.useraccess","resourceVersion":1,"properties":{"valueObject":{"userAssignmentCategory":"noOne"}}}]}}`.
 
-Microsoft Learn documents no tenant switch that turns off write, update and delete tools separately from the connector at the time of writing (November 2026). The Graph Package Management API row is a general control for agents and tools; Learn's overview of that API lists tools such as plugins, MCP servers and skills, but Microsoft has not confirmed it covers federated connectors. It requires a Microsoft Agent 365 licence and is not available in the US Government clouds.
+Microsoft Learn documents no tenant-wide switch for all write, update and delete tools at the time of writing (November 2026). The Graph Package Management API row is a general control for agents and tools; Learn's overview of that API lists tools such as plugins, MCP servers and skills, but Microsoft has not confirmed it covers federated connectors. It requires a Microsoft Agent 365 licence and is not available in the US Government clouds.
 
 ## Open questions
 
@@ -246,12 +256,9 @@ cost: Low. Learn says federated connectors need a Microsoft 365 Copilot add-on l
 impact: Medium. Only users with a Microsoft 365 Copilot licence who are allowed to use a connector and sign in to the source notice it, and Microsoft has not stated what happens on arrival.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[4].ui/api; Risk assessment: Autonomy & actions; Governance controls / absence: No administrative surface switches off write, update and delete tools separately from the connector, so the admin lever is the connector itself. | Found: Tools block / unblock | Agents > Tools | Tool-level and connector-level blocking. | Fix: Narrow controls[4].governs to 'Tenant-wide switch for all write, update and delete tools', retaining null surfaces only for that bulk switch. Replace 'The admin lever is therefore the connector itself.' with 'Learn also documents tool-level and connector-level blocking under Agents > Tools.' In Governance controls, say 'Microsoft Learn documents no tenant-wide switch for all write, update and delete tools.' The lack of separate enablement does not establish a lack of tool-level blocking; the blocking path is already present in controls[3]. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing / behaviour: MCP is an open standard for connecting AI applications to data sources and tools. | Found: The Model Context Protocol (MCP) is an open standard that defines how AI applications communicate with data sources and tools. | Fix: Add https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/mcp-overview to sources for the definition of MCP, or remove the parenthetical definition. | Source: https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/mcp-overview
-- [supported, minor] What's changing; Risk assessment: Autonomy & actions; rationale: risk / behaviour: Where a connector supplies appropriate tools, Copilot can create, update or delete source data with user approval. | Found: Can read data and, where a connector provides the tools, create, update, or delete data with the user's approval. | Fix: Add this qualification: 'The general connectors overview still describes federated connectors as read-only, alongside a note that write actions become available starting early October 2026; this briefing follows the feature-specific overview.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/overview. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview
-- [supported, minor] Governance controls / applicability: The Package Management API overview includes general tools such as plugins, MCP servers and skills. | Found: A package represents an agent or a tool, such as a plugin, MCP server, or skill, in the organization catalog. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview to sources for the statement attributed to that overview. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview
+- [supported, minor] What's changing; Risk assessment: Autonomy & actions; rationale: risk / behaviour: Where a connector supplies the tools, Copilot can create, update or delete source data with user approval. | Found: Can read data and, where a connector provides the tools, create, update, or delete data with the user's approval. | Fix: After this description, add: "The broader connectors overview still calls federated connectors read-only, alongside a note that write actions were planned from early October 2026; this briefing follows the dedicated federated connectors page." Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/overview#types-of-copilot-connectors, which says "Federated connectors are read-only; they can search and fetch content but can't write data back." | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview
+- [supported, minor] Risk assessment: Security & identity; rationale: impact / behaviour: Users sign in to each source using their own credentials. | Found: User credentials, rather than admin credentials, are required to connect to any data source. | Fix: Qualify the sentence as "Where a source requires authentication, users sign in with their own credentials." In the impact rationale, replace "and sign in to the source" with "and, where required, sign in to the source". The cited custom setup page explicitly supports "No Auth" and says "Users don't need to authenticate"; the body already notes that exception. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview
 -->

@@ -43,14 +43,14 @@ sources:
   - title: "Data policies"
     url: "https://learn.microsoft.com/power-platform/admin/wp-data-loss-prevention"
     kind: "learn"
+  - title: "Tutorial: Manage Copilot Credits allocations programmatically"
+    url: "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations"
+    kind: "learn"
   - title: "Whether makers can use the SQL connector behind Azure SQL knowledge (Power Platform admin center)"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
     kind: "learn"
   - title: "Whether makers can use the SQL connector behind Azure SQL knowledge (PowerShell)"
     url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy"
-    kind: "learn"
-  - title: "Copilot Credits allocated to an environment and whether it can draw from tenant capacity (Power Platform admin center)"
-    url: "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations"
     kind: "learn"
 videos: []
 related: ["data-policies","copilot-credits","microsoft-copilot-studio-cost-visibility-in-monitor-tab","managed-environments"]
@@ -76,7 +76,7 @@ controls:
       kind: "power-platform-api"
       call: "PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 (body: scope.environmentId, allocatedEntitlements with entitlementId MCSMessages, allocation.quantity, enforcementRules ruleType TenantPool enabled false)"
       docs: "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations"
-    note: "Applies to all Copilot Studio workloads in the environment, not only this source. Needs Power Platform Administrator or Global Administrator, or an equivalent role."
+    note: "Needs Power Platform Administrator or Global Administrator, or equivalent. A published environment group rule on tenant-capacity draw overrides this: UI and API updates fail with TenantPoolLockedByPolicy."
 confidence: "medium"
 created: "2026-11-18"
 updated: "2026-11-18"
@@ -90,19 +90,23 @@ changes:
     note: "Corrected after the independent check: Copilot Credits admin path, wording on setup permissions, and data policy applicability now cites Microsoft's data policies page."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 67 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-18"
+    note: "Corrected after the independent check: the Copilot Credits tenant-capacity setting now notes that a published environment group rule overrides it (TenantPoolLockedByPolicy), and checklist items without a table row are worded as considerations."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 75 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 64
+  claims: 75
+  confirmed: 74
   unconfirmed: 0
-  contradicted: 3
-  attempts: 2
-  hash: "bfe896988fd5d3a2bcfcc27f5ff91982"
+  contradicted: 1
+  attempts: 0
+  hash: "1083b80aaf864930a080a0d081c03b76"
 ---
 
 ## What's changing
@@ -161,10 +165,10 @@ Prerequisites on the page: an Azure SQL Database or Azure SQL Managed Instance r
 
 ### Before rollout
 
-- Identify which environments host Microsoft Copilot harness agents and which makers can edit agents there, because the harness has no maker-access setting of its own and authoring follows existing Copilot Studio and environment permissions.
+- Identify which environments host Microsoft Copilot harness agents and which makers can edit agents there, because the harness has no maker-access setting of its own and authoring follows existing Copilot Studio and environment permissions. This is not a row in the controls table.
 - Review the data policies that cover those environments, and decide how the SQL Server connector should be classified. Power Platform data policies govern connector access; this source uses a Power Platform SQL connection.
-- Ask database owners to create a dedicated identity and views that expose only intended columns, and to confirm the firewall or private connectivity route from Power Platform.
-- Set environment credit allocations and decide whether the environment may draw from tenant capacity.
+- Consider asking database owners about a dedicated identity, views that expose only intended columns, and the firewall or private connectivity route from Power Platform. These are set in Azure SQL and are not rows in the controls table.
+- Set environment credit allocations and decide whether the environment may draw from tenant capacity. Check first whether a published environment group rule governs that setting, because the environment setting cannot then be overridden.
 
 ### At rollout
 
@@ -185,11 +189,13 @@ Prerequisites on the page: an Azure SQL Database or Azure SQL Managed Instance r
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether makers can use the SQL connector behind Azure SQL knowledge</strong><br><small>Environment</small><br><small class="controls__note">General control: Microsoft has not confirmed which connector classification governs Azure SQL knowledge. The UI steps start with New Policy or Edit Policy.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy › Next › Next › ⋮ › Block <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-ConnectorsToPolicy -PolicyName &lt;policy GUID&gt; -Connectors $connectors -Classification &lt;classification&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Copilot Credits allocated to an environment and whether it can draw from tenant capacity</strong><br><small>Environment</small><br><small class="controls__note">Applies to all Copilot Studio workloads in the environment, not only this source. Needs Power Platform Administrator or Global Administrator, or an equivalent role.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Manage Copilot Credits › environment › Allocate capacity › Capacity overages › Draw from the available capacity in my tenant › Save <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 (body: scope.environmentId, allocatedEntitlements with entitlementId MCSMessages, allocation.quantity, enforcementRules ruleType TenantPool enabled false)</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Copilot Credits allocated to an environment and whether it can draw from tenant capacity</strong><br><small>Environment</small><br><small class="controls__note">Needs Power Platform Administrator or Global Administrator, or equivalent. A published environment group rule on tenant-capacity draw overrides this: UI and API updates fail with TenantPoolLockedByPolicy.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Manage Copilot Credits › environment › Allocate capacity › Capacity overages › Draw from the available capacity in my tenant › Save <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 (body: scope.environmentId, allocatedEntitlements with entitlementId MCSMessages, allocation.quantity, enforcementRules ruleType TenantPool enabled false)</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-Changing data policies needs a tenant admin or the Environment Admin role, per the Learn page. Managing Copilot Studio capacity needs the Power Platform Administrator or Global Administrator role, or an equivalent role that can manage licensing and capacity.
+Changing data policies needs a tenant admin or the Environment Admin role, per the Learn page. Managing Copilot Studio capacity needs the Power Platform Administrator or Global Administrator role, or an equivalent role that can manage licensing and capacity. The credit row applies to all Copilot Studio workloads in the environment, not only this source.
+
+If a published environment group rule governs **Draw from the available capacity in my tenant**, the environment setting cannot be overridden: updates through the admin center or the API are rejected with the TenantPoolLockedByPolicy error. Change and republish the group rule, or remove the environment from the group before managing it independently.
 
 Power Platform data policies govern connector access, and Learn says the Azure SQL knowledge source uses the Power Platform SQL connection; a related page, written for the standard harness, says to govern Power Platform connectors used as knowledge with Power Platform data policies. Microsoft has not confirmed which connector classification governs this source in the Microsoft Copilot agent experience.
 
@@ -209,12 +215,9 @@ cost: Variable. For agents on the Microsoft Copilot harness, Microsoft's billing
 impact: Medium. Makers decide whether to add the source, and users of those agents then get answers drawn from SQL data; admins notice through credit consumption and data policy behaviour.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; Governance controls table; Governance guidance: Before rollout / admin-path: An administrator can change tenant-capacity draw for an environment through the printed Licensing > Products > Copilot Studio > Manage Copilot Credits path without an environment-group qualification. | Found: If a published [environment group rule](environment-groups#rules) governs **Draw from the available capacity in my tenant**, you can't override the setting for an individual environment. | Fix: Keep the documented UI path, but add to controls[1].note and the corresponding governance prose: 'If a published environment group rule governs Draw from the available capacity in my tenant, the environment setting cannot be overridden. Change and republish the group rule, or remove the environment from the group before managing it independently.' Cite https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
-- [contradicted, blocker] controls[1].api; Governance controls table / command: PUT licensing/allocationsV2 using version 2024-10-01 and the printed MCSMessages/TenantPool body can change environment tenant-capacity draw without an environment-group qualification. | Found: Updates through the Power Platform admin center, Power Platform API, or administration SDKs are rejected with the `TenantPoolLockedByPolicy` error. | Fix: Retain the documented endpoint, version and body fields. Add to controls[1].note: 'If an environment group rule governs tenant-capacity draw, API updates cannot override it and fail with TenantPoolLockedByPolicy. Change and republish the group rule, or remove the environment from the group before managing this setting independently.' Use the existing API docs URL. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The general connector-blocking UI is Power Platform admin center > Security > Data and privacy > Data policy > New Policy > Next > Next > connector menu > Block. | Found: To add an environment to your data policy, select the environment in the **Available** tab, and then select **Add to policy**. | Fix: The path omits the environment and connector pickers. Use 'Security > Data and privacy > Data policy > New Policy > Next > Available > environment > Add to policy > Next > connector > ⋮ > Block' for the create-policy route; retain the general-control applicability caveat. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
-- [contradicted, minor] Governance guidance; Governance controls table / consistency: Several checklist controls do not appear in the controls table. | Found: Checklist: 'which makers can edit agents'; 'create a dedicated identity and views'; 'confirm the firewall or private connectivity route'. The table contains only connector data-policy classification and environment credit allocation. | Fix: The maker-authoring permissions, SQL identity/view permissions, SQL network configuration and agent knowledge configuration checklist steps have no corresponding table rows. With the current table retained, narrow those checklist imperatives to non-procedural considerations rather than presenting them as tabulated controls; do not add unverified rows.
+- [supported, minor] controls[0].ui; Governance controls: first table row / admin-path: The general connector-blocking UI path is Security > Data and privacy > Data policy > New Policy > Next > Next > three dots > Block. | Found: Select **Next**. The **Add an environment** page appears. ... select the environment in the **Available** tab, and then select **Add to policy**. ... Select **Next**. The **Assign connectors** page appears. ... Select the three dots (**⋮**) next to the connector | Fix: Clarify the omitted scope selections in controls[0].ui and its rendered row: 'Security > Data and privacy > Data policy > New Policy > Next > Available > environment > Add to policy > Next > connector > ⋮ > Block'. The cited page also instructs the reader to enter the policy name after New Policy. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
+- [contradicted, minor] Governance guidance versus controls / consistency: Every control the governance checklist asks readers to inspect has a corresponding controls-table row. | Found: Identify ... which makers can edit agents ... Check that makers write a specific knowledge name and description ... Watch credit consumption ... Review agents ... tables and views ... The table contains only connector data policies and environment credit allocation. | Fix: The author-permission inventory, knowledge-name/description check, consumption-monitoring step and selected-table/view review have no controls-table rows. Remove these checklist steps if retaining the current two-row table; no additional control row is requested by this correction.
 -->

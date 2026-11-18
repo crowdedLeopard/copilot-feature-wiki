@@ -1,7 +1,7 @@
 ---
 title: "Copilot Studio: agent node runs an AI agent as a workflow step"
 slug: "microsoft-copilot-studio-invoke-agents-as-workflow-steps-with-the-agent-node"
-roadmapId: 562222
+roadmapId: 566998
 topic: "copilot-studio"
 products: ["Microsoft Copilot (Microsoft 365)","Microsoft Copilot Studio"]
 summary: "Makers can add an agent node to a Copilot Studio workflow so an AI agent decides and acts mid-flow. It uses Copilot Credits and no switch dedicated to the node is documented, so administrators should review credit and tool controls."
@@ -22,8 +22,8 @@ licensing:
 audiences: ["power-platform-admin","finops","maker","service-owner"]
 tags: ["copilot-studio","agents","automation","tools","mcp","knowledge-grounding","work-iq","human-in-the-loop","agent-evaluation","copilot-credits","usage-based-billing","copilot-harness"]
 sources:
-  - title: "Microsoft 365 Roadmap 562222"
-    url: "https://www.microsoft.com/microsoft-365/roadmap?id=562222"
+  - title: "Microsoft 365 Roadmap 566998"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=566998"
     kind: "roadmap"
   - title: "Add an agent node to a workflow (Microsoft Copilot)"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow"
@@ -96,7 +96,7 @@ controls:
 confidence: "medium"
 created: "2026-11-16"
 updated: "2026-11-18"
-roadmapModified: "2026-11-17T00:31:56"
+roadmapModified: "2026-10-26T23:15:50"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this item: documents the agent node, its credit billing and the environment-level cost controls; no agent-node admin switch is documented."
@@ -164,19 +164,23 @@ changes:
     note: "Re-read the Learn pages on 18 November 2026: status, dates, credit billing, controls and default state are unchanged."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 88 statements confirmed"
-version: 19
+  - date: "2026-11-18"
+    note: "Re-read the Learn pages on 18 November 2026: status, dates, credit billing, controls and default state are unchanged."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 104 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 20
 verification:
-  status: "verified"
+  status: "held"
   date: "2026-11-18"
-  version: 19
+  version: 20
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 88
-  confirmed: 88
+  claims: 104
+  confirmed: 103
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
-  hash: "5024aed98f75c9224951163c6b1d12ef"
+  contradicted: 1
+  attempts: 1
+  hash: "e2298b05e90fafb2f0a633c4e38cd797"
 ---
 
 ## What's changing
@@ -189,7 +193,7 @@ The roadmap item shows status Launched, with a target date of September CY2026 a
 
 ## Why it matters
 
-The agent node puts AI reasoning inside an otherwise defined sequence of workflow actions: one step can interpret an email or a document and then act through attached connectors. That moves decisions, and sometimes write actions, into flows that makers build. Microsoft Learn documents no tenant switch dedicated to the node, so the controls that remain are the ones around it: credit allocation per environment, data policies and Advanced Connector Policies for tools, who can build in the environment, and what the maker attaches.
+The agent node puts AI reasoning inside an otherwise defined sequence of workflow actions: one step can interpret an email or a document and then act through attached connectors. That moves decisions, and sometimes write actions, into flows that makers build. Microsoft Learn documents no tenant switch dedicated to the node at the time of writing (November 2026), so the controls that remain are the ones around it: credit allocation per environment, data policies and Advanced Connector Policies for tools, who can build in the environment, and what the maker attaches.
 
 The cost effect arrives without a purchase order. Credits are charged to the environment that runs the workflow, and testing and evaluating an agent node can consume credits as well. A tenant that lets makers build workflows in an environment that can draw from the tenant credit pool can therefore spend shared prepaid capacity before anyone has agreed a budget.
 
@@ -281,4 +285,10 @@ Three platform controls exist outside the table. Data policies govern Power Plat
 risk: Medium. The agent picks at run time which attached tools and connector actions to call, and Microsoft Learn documents no switch dedicated to the node itself.
 cost: Variable. Workflow actions and the agent node's use consume Copilot Credits, billed to the environment, and no rate specific to the agent node is published.
 impact: Medium. Makers who build workflows notice it first; the people who feed or receive the workflow's output see decisions made by an agent instead of a fixed rule.
+-->
+
+<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Risk assessment: Data exposure; Governance controls: final sentence; Open questions / absence: Microsoft Learn has not confirmed that Work IQ MCP policy governs the inline agent node's Work IQ option. | Found: In Copilot Studio, only Work IQ connects your agents to the unified tool surface that uses context and actions across Microsoft 365 services. Centralized governance: Admins manage Work IQ MCP in the Microsoft 365 admin center. | Fix: Replace the applicability uncertainty in Risk assessment and Governance controls with: 'Work IQ in Copilot Studio uses Work IQ MCP, which administrators centrally govern in the Microsoft 365 admin center; the Policy tab is available only where offered.' Cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq alongside the existing policy-governance-mcp source. Remove 'or confirm that Work IQ MCP policy governs the node's Work IQ option' from Open questions. The Work IQ documentation covers Copilot Studio agents using this harness generally; it is not restricted to agents outside workflows. Keep the separately verified absence of a switch dedicated to the agent node. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq
 -->

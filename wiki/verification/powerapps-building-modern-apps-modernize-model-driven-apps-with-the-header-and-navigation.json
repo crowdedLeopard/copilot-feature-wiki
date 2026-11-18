@@ -1,0 +1,670 @@
+{
+  "slug": "powerapps-building-modern-apps-modernize-model-driven-apps-with-the-header-and-navigation",
+  "roadmapId": 576781,
+  "title": "Power Apps: header and navigation refresh for model-driven apps",
+  "status": "held",
+  "date": "2026-11-18",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-18",
+    "reasons": [
+      "2 blocking findings (claims 38, 45)"
+    ]
+  },
+  "counts": {
+    "claims": 52,
+    "confirmed": 49,
+    "unconfirmed": 2,
+    "contradicted": 1,
+    "blocker": 2,
+    "major": 1,
+    "minor": 0
+  },
+  "summary": "Hold: the automation row does not provide a documented, usable request for this refresh. The licensing discussion also treats licensing as unpublished without distinguishing the documented premium use rights required for model-driven apps from any additional refresh-specific requirement.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "This Power Apps change applies to model-driven apps.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "products: [\"Power Apps\"]; Applies to: Model-driven apps",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "The refresh redesigns the app header, sitemap and form layout.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "It builds on the New Look (wave 1) with a redesigned app header, streamlined sitemap, and reworked form layout that gives users more space to focus on their work.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft describes this refresh as wave 2, building on the New Look in wave 1.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "The header and navigation refresh (wave 2) is the next step in modernizing model-driven apps. It builds on the New Look (wave 1)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The command bar is the only element fixed at the top of a form.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "The command bar is now the only element fixed at the top of the page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The summary area and form header scroll away with the form.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "The summary area and form header scroll off with the rest of the form, giving users more room to work.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "A condensed sticky header attaches below the command bar when the form header scrolls out of view.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "When the form header scrolls out of view, a condensed sticky header attaches below the command bar so the record is always identifiable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The refreshed form header adapts better to window sizes and content densities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "The form header adapts more gracefully across window sizes and content densities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The refresh tightens spacing and margins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "Tighter spacing and margins: Targeted adjustments across the app improve consistency, readability, and overall page density.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Injected commands such as Show As and Show Chart appear in third position after New and Delete.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "Injected system commands like Show As and Show Chart now appear in the third position, after New and Delete.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The form command bar is no longer embedded in the form header as it was during preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "On forms, the command bar is no longer embedded in the form header as it was during preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The record set navigator has returned to the command bar.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "The record set navigator also returned to the command bar.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: defaultState; summary; Why it matters; Scope; rationale: impact",
+      "type": "default",
+      "claim": "Existing apps are maker opt-in, represented as user-opt-in, with the Plan designer exception stated separately.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "The header and navigation refresh is an opt-in capability for existing apps. Enable it through the app settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; What's changing; Why it matters; Scope; Governance guidance",
+      "type": "default",
+      "claim": "The refresh applies automatically to apps generated by the Plan designer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "The header and navigation refresh automatically applies to all apps generated by the Plan designer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap describes Auto as the default setting value, off except for apps created using Plans.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Auto (default): The new experience is off for apps, except those apps created using Plans.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Governance guidance",
+      "type": "record",
+      "claim": "The roadmap lists Yes as the value that enables the new header and navigation experience.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Yes: Turns on the new header and navigation experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Governance guidance",
+      "type": "record",
+      "claim": "The roadmap lists No as the value that keeps the classic header and navigation experience.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "No: Keeps the classic header and navigation experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0].ui; What's changing; Governance guidance; Governance controls",
+      "type": "admin-path",
+      "claim": "The app-scoped maker path is App designer > Settings > Features > Header and navigation refresh.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "1. In the app designer, select Settings on the command bar.\n2. Select Features, and then enable Header and navigation refresh.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment; Scope: Prerequisite; Governance controls",
+      "type": "behaviour",
+      "claim": "The header and navigation refresh requires the New Look to be enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "No. The header and navigation refresh (wave 2) builds on the New Look (wave 1), so you must enable the New Look to see the header and navigation refresh experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: targetDate; What's changing; Governance guidance",
+      "type": "record",
+      "claim": "The roadmap target date is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is May CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"May CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the record; no US Government cloud is listed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Web is the only platform listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview as release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The roadmap description specifies the Weekly release channel.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Release Channel\nWeekly",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "The roadmap description specifies version 2609.1.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Version\n2609.1",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "Learn describes the refresh as generally available, beginning with build 2609.1.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "The header and navigation refresh is generally available and opt-in today.\n\nNote\n\nGeneral availability begins with build 2609.1.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Scope: Rollout",
+      "type": "availability",
+      "claim": "Availability might vary by region as build 2609.1 rolls out.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "Availability might vary by region as the build rolls out.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "The modern look no longer honours classic theme customisations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "With the modern, refreshed look, Power Apps no longer honors classic theme customizations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "App header colours can be overridden with the modern look.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "You can, however, override the colors for the app header to match your organization branding with the modern, refreshed look.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Custom navigation icons must be SVG; other formats are replaced by a default icon.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "Only SVG icons are supported. If you use other formats such as PNG, the navigation doesn't display them and a default icon appears instead.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Why it matters; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Theme switching and dark mode are not supported for the modern look.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "Switching themes or enabling dark mode isn't supported at this time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "default",
+      "claim": "Plan designer apps have a flat sitemap because Home, Recent, Pinned and sitemap groups are turned off by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "The designer turns off Home, Recent, Pinned, and sitemap groups by default for a simplified flat list of navigation options in the sitemap.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "The feature documentation describes no new data access or data movement for this refresh.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"header and navigation refresh\" \"data access\" permissions security. Opened modern-fluent-design in full and read the roadmap record; neither describes new data access or movement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Neither the roadmap nor the feature's Learn page describes new permissions, roles or sign-in behaviour for this refresh.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"header and navigation refresh\" \"data access\" permissions security. Read modern-fluent-design and the roadmap record in full; neither specifies new permissions, roles or sign-in behaviour for the refresh.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "No autonomous behaviour is described, and the feature page's automatic refresh enablement concerns Plan designer apps.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"header and navigation refresh\" autonomy autonomous \"permissions\". Opened modern-fluent-design in full; its automatic refresh enablement statement concerns Plan designer apps, not autonomous actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "The refresh is not a data or security change, touches no new data and adds no new access.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"header and navigation refresh\" \"data access\" permissions security. Opened modern-fluent-design; it describes UI changes but does not state that no new data is touched or access added.",
+      "severity": "major",
+      "fix": "Replace 'not a data or security change' with 'with no new data access or security behaviour described in the feature documentation'. Replace 'it touches no new data and adds no new access' in the risk rationale with 'the feature documentation describes no new data access'."
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "Licensing is unknown because Microsoft has not published a licence requirement for the header and navigation refresh.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq",
+      "quote": "Model-driven apps use Dataverse and are premium apps by default. Every user who runs a model-driven app needs a license that provides Power Apps premium use rights.",
+      "severity": "blocker",
+      "fix": "Distinguish the published platform requirement from the unpublished incremental requirement. Replace the unqualified licensing statements and licensing notes with 'Model-driven app use requires a licence providing Power Apps premium use rights. Microsoft has not published an additional licence requirement specific to the header and navigation refresh.' Cite https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq. Retain model unknown only as the classification of additional refresh-specific licensing, not the underlying app's licensing."
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to the header and navigation refresh is published at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"header and navigation refresh\" \"license\" \"Power Apps\"; Power Apps licensing model-driven apps Power Apps Premium Dynamics 365 use rights. Read modern-fluent-design, powerapps-licensing-faq and licensing FAQ excerpts; no refresh-specific meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "The roadmap record and feature page themselves list no licence or charge for the refresh.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"header and navigation refresh\" \"license\" \"Power Apps\". Read the full roadmap record and modern-fluent-design; neither lists a licence or charge for the refresh. This does not negate the platform's published licence requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing; Scope: Who turns it on",
+      "type": "record",
+      "claim": "The roadmap gives the feature scope as users, enabled by admins or makers for end users.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Feature Scope\nUsers (enabled by admins or makers)\n\nEnabled for:\n\nEnabled by admins/makers/marketers for end users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope: Related behaviour",
+      "type": "behaviour",
+      "claim": "Learn says the mail app supports the modern, refreshed look and describes its enablement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "The mail app supports the modern, refreshed look. It's on by default for environments on the monthly channel as part of the February 2026 release, and will be enabled on the semi-annual channel with the October 2026 update.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope: Related behaviour",
+      "type": "behaviour",
+      "claim": "Learn says the mobile app supports the modern, refreshed look and describes its separate enablement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "The mobile app also supports the modern, refreshed look. Admins can enable it by adding the Mobile modern experience setting to a solution and updating the value for the environment or for individual apps (2 = on).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].note; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Makers should save and publish the app after changing its app settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties",
+      "quote": "You must select Publish to activate an app settings change.\n\n3. Save and Publish the app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "The automation call is POST [Organization URI]/api/data/v9.0/SaveSettingValue with AppUniqueName, SettingName and Value in the body.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"SaveSettingValue\" \"POST\" \"v9.0\"; \"header and navigation refresh\" \"SaveSettingValue\" \"SettingName\". Read savesettingvalue, client API settings and use-web-api-actions; no exact v9.0 call or refresh-specific setting identifier was documented.",
+      "severity": "blocker",
+      "fix": "Set controls[0].api to null and remove the printed request from the rendered table. Keep the existing generic SaveSettingValue explanation in prose, qualified as not confirmed for this refresh. The cited reference documents the action and parameter names, not the exact versioned request shown; the row also lists body keys without values or placeholders and cannot be used as printed."
+    },
+    {
+      "n": 46,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "SaveSettingValue is a general mechanism for creating or updating app- or organisation-level setting overrides.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue",
+      "quote": "Creates or updates app/organization level override.\nAppUniqueName: Model-driven app unique name (Optional).\nSettingName: Setting definition unique name (Required).\nValue: Overridden value that needs to be set (Required).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn does not publish this refresh setting's unique name.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"header and navigation refresh\" \"setting\" \"environment\" API unique name; \"header and navigation refresh\" \"SaveSettingValue\" \"SettingName\". Read modern-fluent-design, app-properties, savesettingvalue and client API settings; no unique name found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance controls; Open questions; front matter: defaultState",
+      "type": "absence",
+      "claim": "No environment-wide or tenant-wide switch for this specific refresh is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"header and navigation refresh\" \"tenant\" \"switch\"; \"header and navigation refresh\" \"setting\" \"environment\" API unique name. Read modern-fluent-design, app-properties and client API settings; generic overrides do not establish this setting's scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Learn separately documents adding the New look for model driven apps setting to a solution.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "Select Add Existing > More > Setting.\nSearch for New look.\nSelect New look for model driven apps.\nSelect Add to add it to the solution.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls; Open questions",
+      "type": "date",
+      "claim": "The New Look becomes mandatory with 2026 Wave 1, when its setting is hidden and ignored.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties",
+      "quote": "This setting is hidden and ignored with the 2026 Wave 1 release when the new look becomes mandatory.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The feature page retains revert instructions saying admins can turn off the New Look, despite documentation saying it is mandatory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+      "quote": "Starting with the April 2026 semiannual release, the New Look is mandatory for all users. Makers can no longer switch a model-driven app to the classic look.\n\nAdmins can turn off the New Look for all users by updating the New look for model driven apps app setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not published a mandatory adoption date for wave 2; Learn currently describes it as opt-in.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"header and navigation refresh\" \"mandatory\" date. Read modern-fluent-design: wave 2 is 'Generally available. Opt-in today.' Its mandatory New Look notice explicitly excludes the header and navigation refresh.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-18T07:41:09.664Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=576781",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/get-update-setting-value-using-code",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether an existing model-driven app uses the header and navigation refresh",
+        "docs": "https://learn.microsoft.com/power-apps/user/modern-fluent-design",
+        "reachable": true,
+        "segments": [
+          "App designer",
+          "Settings",
+          "Features",
+          "Header and navigation refresh"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether an existing model-driven app uses the header and navigation refresh",
+        "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue",
+        "reachable": true,
+        "token": "POST [Organization",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -46,14 +46,17 @@ sources:
   - title: "Manage feature settings"
     url: "https://learn.microsoft.com/power-platform/admin/settings-features#power-apps-code-apps"
     kind: "learn"
-  - title: "Whether code apps run in an environment (API)"
+  - title: "EnvironmentManagementSetting.PowerAppsAllowCodeApps Property"
     url: "https://learn.microsoft.com/dotnet/api/microsoft.powerplatform.management.models.environmentmanagementsetting.powerappsallowcodeapps?view=power-platform-latest"
     kind: "learn"
-  - title: "Which connectors code apps may use or combine (Power Platform admin center)"
+  - title: "Manage data policies"
     url: "https://learn.microsoft.com/power-platform/admin/create-dlp-policy"
     kind: "learn"
-  - title: "Which connectors code apps may use or combine (PowerShell)"
+  - title: "New-DlpPolicy"
     url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest"
+    kind: "learn"
+  - title: "Manage connections in canvas apps"
+    url: "https://learn.microsoft.com/power-apps/maker/canvas-apps/add-manage-connections"
     kind: "learn"
 videos: []
 related: ["power-apps-use-power-platform-connectors-in-generative-pages","data-policies"]
@@ -64,16 +67,13 @@ controls:
       surface: "Power Platform admin center"
       path: "Manage > Environments > environment > Settings > Product > Features > Power Apps code apps > Enable code apps"
       docs: "https://learn.microsoft.com/power-apps/developer/code-apps/overview"
-    api:
-      kind: "other"
-      call: "Set the PowerAppsAllowCodeApps property (bool) on an EnvironmentManagementSetting object (Microsoft.PowerPlatform.Management .NET SDK)"
-      docs: "https://learn.microsoft.com/dotnet/api/microsoft.powerplatform.management.models.environmentmanagementsetting.powerappsallowcodeapps?view=power-platform-latest"
+    api: null
     note: "Power Platform admins and environment admins can set it; configurable for several environments through environment groups and rules. Learn lists the default as Off."
   - governs: "Which connectors code apps may use or combine"
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Security > Data and privacy > Data policy"
+      path: "Security > Settings > Data and privacy > Data policy"
       docs: "https://learn.microsoft.com/power-platform/admin/create-dlp-policy"
     api:
       kind: "powershell"
@@ -89,39 +89,43 @@ changes:
     note: "First briefing for this roadmap item."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 50 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected after verification: broad data-access claim narrowed, unsupported API entry removed, data policy path, roles and blockable-connector wording fixed, connector-licence inference dropped."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 67 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 44
-  unconfirmed: 3
-  contradicted: 3
-  attempts: 1
-  hash: "cca4c87da0e36ce5e32e06f9e5130b29"
+  claims: 67
+  confirmed: 65
+  unconfirmed: 1
+  contradicted: 1
+  attempts: 2
+  hash: "55264a67a03c6016298b8d037ae8bca9"
 ---
 
 ## What's changing
 
 The Power Apps CLI for code apps gains commands that let a developer find the connectors available in an environment and create a connection to one from the terminal. The roadmap item describes this as wiring connectors into code apps without switching tools or configuring connections in the maker portal. It also covers new agent.md files and how-to articles that show coding agents doing connector discovery and connection creation as part of prompt-to-app workflows.
 
-Microsoft Learn documents the commands. `pa connector list` lists connectors in the environment configured for the code app (with `--search` and `--json` options), and `pa connection create --connector <connector-id>` creates a connection and returns its connection ID. That ID is then used when the connector is added to the app as a data source. Both run from an initialised code app project. A separate Learn quickstart describes a code apps plugin for GitHub Copilot CLI: after you approve a plan, the agent runs the code apps CLI to scaffold, initialise, add connectors and build the app.
+Microsoft Learn documents the commands. `pa connector list` lists connectors in the environment configured for the code app (with `--search` and `--json` options), and `pa connection create --connector <connector-id>` creates a connection and returns its connection ID. That ID is then used when the connector is added to the app as a data source. Both run from an initialised code app project. A separate Learn quickstart describes a code apps preview plugin for GitHub Copilot CLI: after you approve a plan, the agent runs the code apps CLI to scaffold, initialise, add connectors and build the app.
 
 The roadmap record gives status Launched, with a preview date of June CY2026 and a target date of July CY2026. Release phases are listed as General Availability and Preview, for Worldwide (Standard Multi-Tenant) on the Web platform. The record says it is enabled for admins, makers and marketers automatically. Microsoft Learn does not describe the agent.md files at the time of writing (November 2026), so what they contain is the roadmap's description.
 
 ## Why it matters
 
-This shortens the path from a developer's terminal to a connected, published code app, and lets an AI agent take some of those steps. For a service owner the connection is the thing to watch: Learn says `pa connection create` creates it in the environment configured for the code app, and the app then reads or writes whatever that connector reaches.
+This shortens the path from a developer's terminal to a connected, published code app, and lets an AI agent take some of those steps. For a service owner the connection is the thing to watch: Learn says `pa connection create` creates it in the environment configured for the code app. After adding a connection as a data source, the app can call the generated services for that data source.
 
 If nobody acts, nothing changes for tenants that have not enabled code apps: the Learn feature settings page lists the Enable code apps setting with a default of Off. In environments where it is on, developers can use the commands straight away. Microsoft has not documented a separate switch for the CLI commands, so the controls that matter are the environment setting and data policies.
 
 ## Risk assessment
 
 **Data exposure**
-- A connection created with `pa connection create` can be used by the code app as a data source, so the app can reach whatever data that connector reaches. The code apps overview lists data loss policy enforcement during app launch as a supported management capability. Whether a data policy also stops the connection being created from the CLI is not documented.
+- After adding a connection as a data source, the app can call the generated services for that data source. The code apps overview lists data loss policy enforcement during app launch as a supported management capability. Whether a data policy also stops the connection being created from the CLI is not documented.
 - The code apps overview says the end user sees a consent dialog for connector permissions.
 
 **Security & identity**
@@ -140,7 +144,7 @@ No licence or meter is documented for the CLI commands themselves at the time of
 
 The code apps overview says end users who run code apps need a Power Apps Premium licence, pay-as-you-go enabled, an App Pass, or auto-claim enabled (which assigns a premium licence automatically if one is available in the tenant). That requirement belongs to code apps in general, not to this change.
 
-The data policy page classes each connector by whether its use requires a Premium licence or is included in the Built-in/Standard licence for Power Platform. Which connectors developers wire in therefore affects licensing; Microsoft has not published a rate or limit specific to this feature. Indirect cost is developer and admin time to review the connections created.
+The data policy page classes each connector by whether its use requires a Premium licence or is included in the Built-in/Standard licence for Power Platform. Microsoft has not published a rate or limit specific to this feature. Indirect cost is developer and admin time to review the connections created.
 
 ## Scope
 
@@ -154,7 +158,7 @@ Release phases on the record are General Availability and Preview. Microsoft Lea
 
 ### Before rollout
 - Check which environments have Enable code apps turned on, and decide which should keep it (Power Platform admin center, environment settings).
-- Review the data policies that cover those environments, and confirm connectors you do not want used are in the Blocked group.
+- Review the data policies that cover those environments, and confirm unwanted blockable connectors are in the Blocked group.
 - Agree with developers which environment the CLI and the coding agent may target, since the connector list and connections come from the environment configured for the app.
 
 ### At rollout
@@ -174,16 +178,16 @@ Release phases on the record are General Availability and Preview. Microsoft Lea
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether code apps run in an environment</strong><br><small>Environment</small><br><small class="controls__note">Power Platform admins and environment admins can set it; configurable for several environments through environment groups and rules. Learn lists the default as Off.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Power Apps code apps › Enable code apps <a href="https://learn.microsoft.com/power-apps/developer/code-apps/overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Set the PowerAppsAllowCodeApps property (bool) on an EnvironmentManagementSetting object (Microsoft.PowerPlatform.Management .NET SDK)</code> <a href="https://learn.microsoft.com/dotnet/api/microsoft.powerplatform.management.models.environmentmanagementsetting.powerappsallowcodeapps?view=power-platform-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which connectors code apps may use or combine</strong><br><small>Environment</small><br><small class="controls__note">General control: the code apps overview lists data loss policy enforcement during app launch for code apps. Not confirmed to apply to the CLI commands themselves.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy <a href="https://learn.microsoft.com/power-platform/admin/create-dlp-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpPolicy -DisplayName &lt;name&gt; -EnvironmentType &lt;type&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether code apps run in an environment</strong><br><small>Environment</small><br><small class="controls__note">Power Platform admins and environment admins can set it; configurable for several environments through environment groups and rules. Learn lists the default as Off.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Power Apps code apps › Enable code apps <a href="https://learn.microsoft.com/power-apps/developer/code-apps/overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which connectors code apps may use or combine</strong><br><small>Environment</small><br><small class="controls__note">General control: the code apps overview lists data loss policy enforcement during app launch for code apps. Not confirmed to apply to the CLI commands themselves.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Settings › Data and privacy › Data policy <a href="https://learn.microsoft.com/power-platform/admin/create-dlp-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpPolicy -DisplayName &lt;name&gt; -EnvironmentType &lt;type&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The environment setting decides whether code apps run at all: Learn says that if it is turned off, those apps do not run. It is documented as an environment setting that Power Platform admins and environment admins can change, and it can be configured for several environments at once with environment groups and rules.
+The environment setting decides whether code apps run at all: Learn says that if it is turned off, those apps do not run. It is documented as an environment setting that Power Platform admins and environment admins can change, and it can be configured for several environments at once with environment groups and rules. The .NET SDK exposes nullable Boolean PowerAppsAllowCodeApps on EnvironmentManagementSetting; the property reference does not give a runnable update operation.
 
 Data policies are a general Power Platform control. The code apps overview lists data loss policy enforcement during app launch as supported for code apps. Microsoft Learn does not say that a data policy blocks the CLI commands that list connectors or create connections, so treat the policy as a control over what the app can use, not over what developers can create.
 
-To create, edit or delete data policies you need Environment Admin or Power Platform admin permissions; for environments with a Dataverse database, the System Administrator role is required instead. No admin control specific to the connector commands is documented at the time of writing (November 2026).
+Tenant-level policies require the Power Platform Administrator role. Environment-level policies require Power Apps Environment Admin permissions, or the System Administrator role for environments with a Dataverse database. No admin control specific to the connector commands is documented at the time of writing (November 2026).
 
 ## Open questions
 
@@ -201,13 +205,7 @@ impact: Low. Developers and makers who build code apps notice it; the code apps 
 <!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters; Risk assessment: Data exposure / behaviour: Adding the connection means the app can read or write whatever data that connector reaches. | Found: Searched: Power Apps code apps data permissions connection. Opened connect-to-data and overview. They document adding data sources and calling generated services, not unrestricted access to whatever data a connector can reach. | Fix: Replace both versions of the broad access assertion with 'After adding a connection as a data source, the app can call the generated services for that data source.' See https://learn.microsoft.com/power-apps/developer/code-apps/how-to/connect-to-data.
-- [unsupported, blocker] controls[0].api; Governance controls table / command: Setting a bool PowerAppsAllowCodeApps property on an EnvironmentManagementSetting object is the documented automation operation for enabling code apps. | Found: Searched: PowerAppsAllowCodeApps update environment settings Power Platform API PowerShell CLI. Opened the cited property reference, environment-management API create/update references and tutorial; the property page shows bool? get/set, not a setting-update operation. | Fix: Remove the non-runnable automation entry and its rendered call. Preserve only this informational note: 'The .NET SDK exposes nullable Boolean PowerAppsAllowCodeApps on EnvironmentManagementSetting; the property reference does not give a runnable update operation.' Do not describe the property assignment as persisting an environment setting or infer a request body from its name.
-- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: The documented data-policy path is Security > Data and privacy > Data policy. | Found: Select Security in the navigation pane. In the Security pane, under Settings, select Data and privacy. In the Data protection and privacy screen, select the Data policy section. | Fix: Replace the path in front matter and the rendered table with 'Security > Settings > Data and privacy > Data policy'. The cited page explicitly includes the Settings group heading. | Source: https://learn.microsoft.com/power-platform/admin/create-dlp-policy
-- [unsupported, blocker] Cost and licensing, last paragraph / licensing: Which connectors are wired into a code app therefore affects its end-user licensing requirements. | Found: Searched: Power Apps code apps CLI licensing connector commands pricing limits premium connectors; code apps licensing Premium. Opened overview, create-dlp-policy and licensing FAQs; none states a connector-dependent change to the code-app licensing routes already listed. | Fix: Remove 'Which connectors developers wire in therefore affects licensing'. Keep the documented Class attribute and the code-app licensing routes as separate facts; do not infer an additional or different code-app licence from connector class.
-- [contradicted, blocker] Governance guidance: Before rollout / applicability: Connectors administrators do not want used can be placed in the Blocked data-policy group. | Found: For connectors like SharePoint that aren't blockable, the Block action isn't available and a warning appears. | Fix: Replace the checklist bullet with 'Review the data policies that cover those environments, and confirm unwanted blockable connectors are in the Blocked group.' The qualification is necessary because not every connector can be blocked. | Source: https://learn.microsoft.com/power-platform/admin/create-dlp-policy
-- [contradicted, blocker] Governance controls, last paragraph / role: Creating, editing or deleting data policies requires Environment Admin or Power Platform admin permissions, replaced by System Administrator for any environment with Dataverse. | Found: Environment-level policies To follow the steps for environment-level policies, you need to have Power Apps Environment Admin permissions. For environments with a Dataverse database, you need to be assigned the System Administrator role instead. | Fix: Replace the role sentence with 'Tenant-level policies require the Power Platform Administrator role. Environment-level policies require Power Apps Environment Admin permissions, or the System Administrator role for environments with a Dataverse database.' | Source: https://learn.microsoft.com/power-platform/admin/create-dlp-policy
+- [unsupported, blocker] rationale: cost / cost: Microsoft Learn documents no charge for the CLI commands themselves. | Found: Searched: "pa connection create" "license" "meter"; "code apps" "CLI" licensing pricing limits connector premium. Read create-connection, npm-quickstart, CLI reference and overview; none states that running the commands is free. | Fix: Replace the cost rationale with: 'Low. No CLI-specific licence or meter is documented at the time of writing (November 2026); the known incremental cost is developer and admin time. Existing code-app licensing requirements still apply.' This preserves the distinction between an undocumented charge and a documented absence of charge.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] summary; What's changing; Risk assessment: Autonomy & actions / behaviour: The GitHub Copilot CLI code apps plugin runs the CLI to scaffold, initialise, add connectors and implement the app after plan approval. | Found: When you approve the plan, the agent runs the code apps CLI to: - Scaffold the project files - Initialize the app - Add connectors - Implement functionality and UI, using the connectors | Fix: Call this the 'code apps preview plugin' in its first mention: the quickstart says 'Then install the code apps preview plugin'. This qualification concerns the agent plugin, not the release status of every connector command. | Source: https://learn.microsoft.com/power-apps/developer/code-apps/how-to/quickstart-github-copilot
-- [supported, minor] Governance guidance: After rollout / behaviour: Connections can also be reviewed and deleted in the maker portal. | Found: In powerapps.com, create a connection to one or more data sources, delete a connection, or update its credentials. | Fix: Add https://learn.microsoft.com/power-apps/maker/canvas-apps/add-manage-connections to sources for the maker-portal connection-management statement. | Source: https://learn.microsoft.com/power-apps/maker/canvas-apps/add-manage-connections
+- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist's connection review and removal control has no corresponding controls-table row. | Found: After rollout: 'Review the connections in code app environments with pa connection list or the maker portal, and remove any no longer needed.' The table contains only 'Whether code apps run in an environment' and 'Which connectors code apps may use or combine'. | Fix: The After rollout step on reviewing and removing connections names a control not represented in the table. Remove that checklist bullet if retaining the current two-row table.
 -->

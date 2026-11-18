@@ -74,19 +74,23 @@ changes:
     note: "Corrected after verification: removed the departed-owner row with its incorrect API absence and added the Dataverse ReassignObjectsSystemUser action in prose; added the licensing FAQ's trial and Power BI statements; trimmed checklist steps with no control row."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 84 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-18"
+    note: "Corrected after verification: added the receiving-user requirement (Environment Maker is sufficient) to the reassign-records guidance, narrowed the pilot step and removed the After rollout checklist item."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 85 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-18"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 84
-  confirmed: 81
+  claims: 85
+  confirmed: 85
   unconfirmed: 0
-  contradicted: 3
-  attempts: 3
-  hash: "2afa4e26cdad42754d615e2484980060"
+  contradicted: 0
+  attempts: 0
+  hash: "ce5787370d3a59a21d4259c8a42aa5d4"
 ---
 
 ## What's changing
@@ -147,12 +151,8 @@ Prerequisites on Microsoft Learn for process mining are the licences or trials, 
 
 ### At rollout
 
-- Test with a pilot process owner: create a tab, add cards, set a persistent filter, mark a tab public, and confirm what a second user with the Process Mining User role can see.
+- Test with a pilot process owner: create a tab, add cards, and confirm what a second user with the Process Mining User role can see.
 - Tell makers that Edit layout changes are saved to the tab and that persistent filters cannot be removed in the viewing mode.
-
-### After rollout
-
-- Reassign the records of departing process owners using Power Platform admin center > environment > Settings > Users + permissions > Users > user > Reassign records, because a co-owner does not take over automatically.
 
 ## Governance controls
 
@@ -167,7 +167,7 @@ Prerequisites on Microsoft Learn for process mining are the licences or trials, 
 
 No admin setting for switching the process intelligence experience on or off, or for restricting tab sharing, is documented at the time of writing (November 2026). Access is governed by the Dataverse security roles that already apply to process mining, so the roles, not this feature, are the lever. The Learn security page notes some privileges are set by default in Dataverse so that built-in roles can use process mining without further action.
 
-The reassign-records path (Power Platform admin center > environment > Settings > Users + permissions > Users > user > Reassign records) is the documented route for assigning a new owner to a leaving employee's Dataverse records for a process mining process; see [Share process mining processes](https://learn.microsoft.com/power-automate/process-mining-share). Required role for the admin steps: the Learn page does not state one for this path. Microsoft also documents the Dataverse ReassignObjectsSystemUser action for reassigning all records owned by a specified user; see [ReassignObjectsSystemUser Action](https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/reassignobjectssystemuser). This is a general Dataverse operation, not a process-only transfer.
+The reassign-records path (Power Platform admin center > environment > Settings > Users + permissions > Users > user > Reassign records) is the documented route for assigning a new owner to a leaving employee's Dataverse records for a process mining process; see [Share process mining processes](https://learn.microsoft.com/power-automate/process-mining-share). The receiving user must have appropriate privileges on the entities associated with the transferred records; for a process mining process, the Environment Maker role is sufficient. Required role for the admin steps: the Learn page does not state one for this path. Microsoft also documents the Dataverse ReassignObjectsSystemUser action for reassigning all records owned by a specified user; see [ReassignObjectsSystemUser Action](https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/reassignobjectssystemuser). This is a general Dataverse operation, not a process-only transfer.
 
 ## Open questions
 
@@ -180,13 +180,4 @@ The reassign-records path (Power Platform admin center > environment > Settings 
 risk: Low. It is a new analysis interface over process data that makers and admins can already reach; Microsoft documents no new data source, and sharing is a per-tab choice by the person building it.
 cost: Low. The pages tie only admin and training time to this experience; process mining itself is licensed under Power Automate, and no separate price for the new experience is published.
 impact: Medium. The roadmap says it is enabled automatically for admins and makers, so process owners and analysts who use process mining will see a different interface from the previous process overview.
--->
-
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance guidance: After rollout; Governance controls / admin-path: Departing owners' records can be reassigned through Power Platform admin center > environment > Settings > Users + permissions > Users > user > Reassign records, without stating the receiving user's privilege requirement. | Found: Reassignment requirement: The target user should have the appropriate privileges on the different entities associated with the transferred records. For process mining process, giving the **Environment Maker** role is sufficient. | Fix: Keep the navigation path, which matches the cited page. Add to the reassignment guidance: 'The receiving user must have appropriate privileges on the entities associated with the transferred records; for a process mining process, the Environment Maker role is sufficient.' | Source: https://learn.microsoft.com/power-automate/process-mining-share
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The rollout checklist asks readers to set a persistent filter and make a tab public, but neither maker-side control appears in the controls table. | Found: set a persistent filter, mark a tab public ... | The table's only row is 'Switch to turn the process intelligence experience on or off, or to limit tab sharing'. | Fix: Narrow the pilot bullet to: 'Test with a pilot process owner: create a tab, add cards, and confirm what a second user with the Process Mining User role can see.'
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist instructs administrators to reassign departing owners' records, but reassignment has no controls-table row. | Found: Reassign the records of departing process owners ... | The table's only row is 'Switch to turn the process intelligence experience on or off, or to limit tab sharing'. | Fix: Remove the 'After rollout' checklist bullet and its now-empty heading. Keep the documented reassignment path and API explanation in Governance controls prose, with the receiving-user qualification.
 -->

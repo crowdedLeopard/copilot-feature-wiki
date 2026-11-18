@@ -52,6 +52,9 @@ sources:
   - title: "Control access to features in Microsoft 365 using PowerShell"
     url: "https://learn.microsoft.com/viva/manage-access-policies"
     kind: "learn"
+  - title: "Export Copilot metrics from the Microsoft Copilot Dashboard"
+    url: "https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics"
+    kind: "learn"
 videos: []
 related: ["m365-copilot-agent-365-business-analytics-experience","microsoft-viva-copilot-analytics-agent-dashboard","microsoft-viva-copilot-analytics-export-metrics-from-agent-dashboard"]
 controls:
@@ -63,7 +66,7 @@ controls:
       docs: "https://learn.microsoft.com/a365-business-analytics/manage/access"
     api: null
     note: "Global administrator, AI administrator or Viva Insights administrator. Interactive insights needs eligible access in the Global Partition; Frontier preview."
-  - governs: "Feature access policy for Viva Insights features (general control, may not cover Interactive insights)"
+  - governs: "User-level export and insights, including user-level insights from Interactive insights"
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
@@ -73,7 +76,7 @@ controls:
       kind: "powershell"
       call: "Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId <featureId> -Name <policyName> -IsFeatureEnabled $false -Everyone"
       docs: "https://learn.microsoft.com/viva/manage-access-policies"
-    note: "General control: Microsoft has not confirmed it applies to Interactive insights. Get-VivaModuleFeature -ModuleId VivaInsights lists supported features."
+    note: "Off leaves aggregated insights only for leaders and managers; always on for analysts. A dedicated Interactive insights enablement policy is not yet documented."
   - governs: "Enabling Interactive insights outside Frontier and enabling file uploads"
     scope: "tenant"
     ui: null
@@ -92,19 +95,23 @@ changes:
     note: "Corrected the Microsoft 365 admin center path for Viva feature access policies, reworded the Public Preview reference and removed the Purview change-log checklist item."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 85 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-18"
+    note: "Corrected the Viva feature access row: Learn documents User-level export and insights as controlling user-level insights from Interactive insights, so the unconfirmed-applicability caveat was replaced."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 101 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 85
-  confirmed: 84
+  claims: 101
+  confirmed: 101
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "62cf5a0706d31079390186df38671748"
+  contradicted: 0
+  attempts: 0
+  hash: "4e95244037c132c8f7c0b97ba6c1893b"
 ---
 
 ## What's changing
@@ -167,7 +174,7 @@ The roadmap item lists Worldwide (Standard Multi-Tenant) and the Web platform. L
 
 ### At rollout
 
-- Run Get-VivaModuleFeature -ModuleId VivaInsights to see whether Interactive insights is listed as a feature that accepts a Viva Feature Access Management policy; apply a policy only once it is listed, since Microsoft has not confirmed that it governs this feature.
+- Decide whether leaders and managers should get user-level insights from Interactive insights; the **User-level export and insights** setting in Viva Feature Access Management turns them off and leaves aggregated insights only. Run Get-VivaModuleFeature -ModuleId VivaInsights to list the features that accept a policy.
 - Ask a pilot leader and a manager to start sessions under different **View as** settings and compare the answers with their Business Analytics pages.
 - Show pilot users the Reasoning component and the prompt 'Summarize the data sources, methods, and assumptions you used for this comparison' so they can audit answers.
 
@@ -184,30 +191,30 @@ The roadmap item lists Worldwide (Standard Multi-Tenant) and the Web platform. L
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Who can open Business Analytics and whose data they can see</strong><br><small>User</small><br><small class="controls__note">Global administrator, AI administrator or Viva Insights administrator. Interactive insights needs eligible access in the Global Partition; Frontier preview.</small></td><td data-label="Admin UI"><strong>Agent 365 Business Analytics</strong><br>Manage › Access management › New access policy <a href="https://learn.microsoft.com/a365-business-analytics/manage/access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Feature access policy for Viva Insights features (general control, may not cover Interactive insights)</strong><br><small>Tenant</small><br><small class="controls__note">General control: Microsoft has not confirmed it applies to Interactive insights. Get-VivaModuleFeature -ModuleId VivaInsights lists supported features.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Viva › Settings › Manage feature access › Create a policy <a href="https://learn.microsoft.com/viva/control-access-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId &lt;featureId&gt; -Name &lt;policyName&gt; -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/viva/manage-access-policies" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>User-level export and insights, including user-level insights from Interactive insights</strong><br><small>Tenant</small><br><small class="controls__note">Off leaves aggregated insights only for leaders and managers; always on for analysts. A dedicated Interactive insights enablement policy is not yet documented.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Viva › Settings › Manage feature access › Create a policy <a href="https://learn.microsoft.com/viva/control-access-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId &lt;featureId&gt; -Name &lt;policyName&gt; -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/viva/manage-access-policies" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Enabling Interactive insights outside Frontier and enabling file uploads</strong><br><small>Tenant</small><br><small class="controls__note">The page says an administrator enables both but gives no path or call.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 Business Analytics access is managed by Global administrators, AI administrators and Viva Insights administrators. A user's effective access combines all valid assignments, and one assignment never removes access another grants. Microsoft Learn documents no API for Business Analytics access policies at the time of writing (November 2026).
 
-The Viva Feature Access Management page says its settings apply to Agent 365 Business Analytics 'where applicable', and its feature table does not list Interactive insights by name. Treat the row as a general control until Microsoft confirms it covers this feature. The Interactive insights page says a tenant administrator must enable it outside Frontier and that file uploads depend on administrator configuration, but at the time of writing (November 2026) Learn documents no path or command for either. Learn adds that organisations can govern access and capabilities through 'applicable Microsoft 365 and Viva Insights controls'.
+Microsoft documents User-level export and insights as controlling user-level insights from Interactive insights for leaders and managers: turning it off leaves aggregated insights only. The setting is always on for analysts and cannot be changed for that role. A dedicated Interactive insights enablement policy is not yet documented. The Interactive insights page says a tenant administrator must enable it outside Frontier and that file uploads depend on administrator configuration, but at the time of writing (November 2026) Learn documents no path or command for either. Learn adds that organisations can govern access and capabilities through 'applicable Microsoft 365 and Viva Insights controls'.
 
 ## Open questions
 
 - Where does a tenant administrator enable Interactive insights outside Frontier, and where are file uploads switched on? Watch the Interactive insights and Business Analytics admin pages on Microsoft Learn.
 - Will Interactive insights use a licence or a meter such as Copilot Credits at general availability, and what is the fair use limit?
-- Does a Viva Feature Access Management policy cover Interactive insights, and is it on or off by default when it reaches general availability in March CY2027?
+- Is Interactive insights on or off by default when it reaches general availability in March CY2027, and will Microsoft publish a dedicated enablement policy for it?
 - Are Interactive insights prompts, uploaded files and generated reports retained or audited, and where can an administrator see them?
 
 <!-- rationale
-risk: Medium. It reads AI cost and usage data, optionally with uploaded files, and generates reports and slides that users can share; Learn documents access and privacy limits but no switch for it by name.
+risk: Medium. It reads AI cost and usage data, optionally with uploaded files, and generates reports and slides that users can share; Learn documents access and privacy limits but no dedicated enablement switch for it.
 cost: Low. The only cost the sources show is admin and communication time. Microsoft has not published a licence or meter for Interactive insights, so budget conclusions are not yet possible.
 impact: Medium. Business Analytics access is given by default to senior leaders, managers of teams of 10 or more and Global admins, so the people who notice are leaders and analysts rather than most users.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].note; Governance controls; Governance guidance: At rollout; Open questions / absence: Microsoft has not confirmed that Viva Feature Access Management policies govern Interactive insights. | Found: When off, leaders and managers can't export user-level data or view user-level insights on specific cards, and Interactive insights provides aggregated insights only. | Fix: Replace the unqualified applicability caveat in the row name, note, governance prose, rollout checklist and open question with: 'Microsoft documents User-level export and insights as controlling user-level insights from Interactive insights for leaders and managers: turning it off leaves aggregated insights only. The setting is always on for analysts and cannot be changed for that role. A dedicated Interactive insights enablement policy is not yet documented.' Cite https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics#admin-management. Keep the existing generic path and placeholder command; do not invent a feature ID. | Source: https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: targetDate; What's changing; Open questions, third bullet / record: General availability is targeted for March CY2027, although the open question phrases it as when GA will occur. | Found: "targetDate": "March CY2027"; "status": "In development" | Fix: Replace the third Open questions bullet with: "What will the default be if Interactive insights reaches general availability at the roadmap's March CY2027 target, and will Microsoft publish a dedicated enablement policy for it?"
 -->

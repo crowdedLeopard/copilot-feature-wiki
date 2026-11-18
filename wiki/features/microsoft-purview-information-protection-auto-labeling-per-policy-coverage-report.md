@@ -4,7 +4,7 @@ slug: "microsoft-purview-information-protection-auto-labeling-per-policy-coverag
 roadmapId: 568935
 topic: "governance"
 products: ["Microsoft Purview"]
-summary: "Purview adds a View coverage report to auto-labeling policies that shows labeled, pending and failed files against the latest simulation. Read-only; Microsoft says no action is required, though it suggests updating runbooks."
+summary: "Purview adds a View coverage report to auto-labeling policies that shows labeled, pending and failed files against the latest simulation. Microsoft says no action is required, though it suggests updating runbooks."
 status: "launched"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -49,7 +49,7 @@ controls:
     scope: "other"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Information Protection > Policies > Auto-labeling policies > policy > View details"
+      path: "Solutions > Information Protection > Policies > Auto-labeling policies > policy > View details"
       docs: "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically"
     api:
       kind: "powershell"
@@ -65,19 +65,23 @@ changes:
     note: "New briefing on the Purview auto-labeling per-policy coverage report (View coverage), covering rollout, the 30-day window and the preview label on Learn."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 66 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Correction: removed unsupported read-only and end-user claims, stated that Learn gives no separate permissions for View coverage, added Solutions to the View details path and dropped the simulation-running checklist step."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
-  confirmed: 61
-  unconfirmed: 3
-  contradicted: 2
-  attempts: 1
-  hash: "883782229907fa211cdd63bf1fff3813"
+  claims: 64
+  confirmed: 64
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "85a3ef2c24a3fec941c6e71047de2016"
 ---
 
 ## What's changing
@@ -94,15 +98,15 @@ The roadmap record lists the item as Launched, with a target of October CY2026, 
 
 The report compares enforcement with the latest simulation, so it is the page to check when asking whether a policy is doing what the simulation predicted. It is useful for explaining to a data owner why a file is still unlabelled, or why a file turned up that the simulation never saw.
 
-Because Microsoft says no action is required, the report appears on its own and nothing in the tenant changes for end users. The wiki's view is that the work is operational: tell the people who monitor auto-labeling about the 30-day window, and avoid treating the numbers as an audit total, because Learn says the report is not an all-time policy total and is not intended to be an exact reconciliation between simulation and enforcement.
+Because Microsoft says no action is required, the report appears on its own. The wiki's view is that the work is operational: tell the people who monitor auto-labeling about the 30-day window, and avoid treating the numbers as an audit total, because Learn says the report is not an all-time policy total and is not intended to be an exact reconciliation between simulation and enforcement.
 
 ## Risk assessment
 
 **Data exposure**
-- The report lists files by name, location, label and status, so it reveals which files hold labelled or unlabelled content. Access follows the roles Learn lists for the per-policy review pages; Learn says viewing matched text inside a file also needs the Data Classification Content Viewer role, which global admins do not have by default.
+- The report lists files by name, location, label and status, so it reveals which files hold labelled or unlabelled content. Learn lists Compliance Administrator, Compliance Data Administrator, Information Protection Admin and Information Protection Analyst for the per-policy review pages but does not separately state the permissions required for View coverage.
 
 **Security & identity**
-- The report only reads; it applies no labels itself. Learn states that a simulation match does not confirm that a label was applied, so do not use "found in simulation" as evidence of protection.
+- Microsoft describes the report as monitoring auto-labeling enforcement outcomes. Learn states that a simulation match does not confirm that a label was applied, so do not use "found in simulation" as evidence of protection.
 
 **Autonomy & actions**
 - No change: Microsoft's notice describes the report as monitoring and does not describe it taking action. Labeling continues to come from the policy you turned on.
@@ -128,7 +132,6 @@ Prerequisites on the Learn page: run the policy in simulation, then turn it on; 
 ### Before rollout
 - Confirm which auto-labeling policies include SharePoint or OneDrive; Learn says an Exchange-only policy does not get file coverage.
 - Check that the people who will read the report hold one of the roles Learn lists for the review pages (see the controls table).
-- Run a simulation on any policy that has not had one, as Microsoft's notice recommends.
 
 ### At rollout
 - Open **View coverage** on one policy that is turned on and compare its buckets with the policy's **Labeled items** and **Labeling failures** tabs.
@@ -136,7 +139,7 @@ Prerequisites on the Learn page: run the policy in simulation, then turn it on; 
 - Update internal operating notes for staff who monitor auto-labeling effectiveness, as MC1456609 recommends.
 
 ### After rollout
-- Review coverage within the 30 days after each simulation run, and rerun the simulation when you need coverage again.
+- Review coverage within the 30 days after each simulation run.
 - Open the item list under **Failed to apply label** and review the failure reason.
 - Check files under **No simulation match found**, which Learn says can be created, changed or classified after the simulation completed.
 
@@ -148,11 +151,11 @@ Prerequisites on the Learn page: run the policy in simulation, then turn it on; 
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Opening the per-policy coverage report</strong><br><small class="controls__note">Policy must include SharePoint or OneDrive, have completed simulation and be turned on. Learn lists review-page roles; none stated for coverage alone. Preview label on Learn.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Information Protection › Policies › Auto-labeling policies › policy › Coverage › View coverage <a href="https://learn.microsoft.com/purview/apply-sensitivity-label-automatically" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Per-policy labeling activity and progress (today's alternative to coverage)</strong><br><small class="controls__note">Security &amp; Compliance PowerShell only. Shows labeling progress, not the comparison with simulation. Roles: Compliance Administrator, Compliance Data Administrator, Information Protection Admin or Information Protection Analyst.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Information Protection › Policies › Auto-labeling policies › policy › View details <a href="https://learn.microsoft.com/purview/apply-sensitivity-label-automatically" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Get-AutoSensitivityLabelPolicy -Identity &quot;&lt;policy name&gt;&quot; -IncludeProgressFeedback</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/get-autosensitivitylabelpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Per-policy labeling activity and progress (today's alternative to coverage)</strong><br><small class="controls__note">Security &amp; Compliance PowerShell only. Shows labeling progress, not the comparison with simulation. Roles: Compliance Administrator, Compliance Data Administrator, Information Protection Admin or Information Protection Analyst.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Policies › Auto-labeling policies › policy › View details <a href="https://learn.microsoft.com/purview/apply-sensitivity-label-automatically" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Get-AutoSensitivityLabelPolicy -Identity &quot;&lt;policy name&gt;&quot; -IncludeProgressFeedback</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/get-autosensitivitylabelpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-Microsoft Learn documents the report as a view inside the policy list; the page describes no separate setting to turn the report on or off. Access to it follows the Purview roles listed in the table note, and the file-content preview needs the Data Classification Content Viewer role in addition.
+Microsoft Learn documents the report as a view inside the policy list; the page describes no separate setting to turn the report on or off. Learn lists the roles in the table note for the per-policy review pages but does not separately state the permissions required for View coverage. Learn says viewing matched text inside a file on the review pages also needs the Data Classification Content Viewer role; it does not say this applies to the coverage report.
 
 The PowerShell row is today's alternative: it reports labeling progress for enabled policies, not the simulation comparison, and does not replace the coverage report.
 
@@ -164,18 +167,13 @@ The PowerShell row is today's alternative: it reports labeling progress for enab
 - Which role, if any, is specific to **View coverage**, as Learn lists roles only for the review pages?
 
 <!-- rationale
-risk: Low. It is a read-only report on policies an admin has already turned on; Microsoft's notice describes it as monitoring and says no action is required to receive it.
+risk: Low. Microsoft describes the report as monitoring auto-labeling enforcement outcomes on policies an admin has already turned on, and its notice says no action is required to receive it.
 cost: Low. The only cost the sources show is admin time; Microsoft Learn lists no separate meter or licence for the report, and auto-labeling itself is listed with E5 or P2-tier SKUs.
-impact: Low. Only Purview administrators who manage Information Protection auto-labeling policies see the new View coverage action; end users notice nothing.
+impact: Low. Microsoft's notice identifies Purview administrators who create and manage Information Protection auto-labeling policies as the people affected by the new View coverage action.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] summary; Risk assessment: Security & identity; rationale: risk / behaviour: The report is strictly read-only and applies no labels itself. | Found: Searched: Purview auto-labeling per-policy coverage report read-only no labels end users. Read MC1456609, apply-sensitivity-label-automatically (coverage and monitoring), and troubleshooting search excerpts; they describe reporting, not an explicit read-only guarantee. | Fix: Replace 'Read-only', 'The report only reads; it applies no labels itself' and the read-only premise in the risk rationale with 'Microsoft describes the report as monitoring auto-labeling enforcement outcomes.' Keep the separate advice about simulation matches.
-- [unsupported, major] Why it matters; rationale: impact / behaviour: Nothing changes for end users and end users notice nothing. | Found: Searched: Purview auto-labeling per-policy coverage report read-only no labels end users. Read MC1456609 and the Learn monitoring and coverage sections; Microsoft identifies administrators as affected but does not state that no end user can notice any change. | Fix: Remove 'and nothing in the tenant changes for end users' from Why it matters and 'end users notice nothing' from the impact rationale. Retain the documented administrator audience.
-- [unsupported, blocker] Risk assessment: Data exposure; Governance controls / applicability: Access to the coverage report follows the four roles documented for the per-policy review pages. | Found: Searched: Purview "coverage by simulation context" "role"; "View coverage" permissions roles enable disable license pricing. Read the cited Learn coverage and policy-review sections and Purview permissions excerpts; no passage extends those review-page roles explicitly to coverage. | Fix: Replace both assertions that coverage access follows the review-page roles with 'Learn lists these roles for the per-policy review pages but does not separately state the permissions required for View coverage.' In Governance controls, qualify the content-preview statement as applying to matched content in the review pages, not an established coverage-report preview.
-- [contradicted, blocker] controls[1].ui / admin-path: Policy review pages open through Information Protection > Policies > Auto-labeling policies > policy > View details. | Found: To open the newer review pages, go to **Solutions** > **Information Protection** > **Policies** > **Auto-labeling policies**. Select a policy, then select **View details** in the policy details panel. | Fix: Replace controls[1].ui.path and its rendered-table path with 'Solutions > Information Protection > Policies > Auto-labeling policies > policy > View details'. The cited page explicitly includes Solutions for this review-page route. | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout and After rollout; Governance controls / consistency: The checklist instructs administrators to run or rerun simulation, but neither controls-table row describes the simulation control. | Found: Run a simulation on any policy that has not had one; rerun the simulation when you need coverage again. Table rows: Opening the per-policy coverage report; Per-policy labeling activity and progress (today's alternative to coverage). | Fix: The simulation-running steps have no controls-table row. Remove the standalone 'Run a simulation on any policy that has not had one, as Microsoft's notice recommends' checklist bullet and shorten the After rollout bullet to 'Review coverage within the 30 days after each simulation run.' Keep the supported simulation prerequisite and expiry explanation in the body.
+- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: The cited feature page lists Azure Information Protection Premium P2 (standalone) for auto-labeling. | Found: Microsoft 365 E5, Microsoft 365 E5 Compliance, Microsoft 365 E5 Information Protection & Governance, Azure Information Protection Premium P2 (standalone) | Fix: After the SKU list in Cost and licensing, add: "Microsoft's Purview service description also says that if AIP P2 is assigned to a user, AIP P1 must also be assigned." Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description, whose note states: "And if AIP P2 is assigned to a user, that user must also have AIP P1 assigned." | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
 -->

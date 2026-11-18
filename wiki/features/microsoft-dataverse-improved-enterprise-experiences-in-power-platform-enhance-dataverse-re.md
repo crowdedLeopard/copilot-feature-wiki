@@ -15,7 +15,7 @@ risk: "low"
 cost: "low"
 impact: "medium"
 defaultState: "unknown"
-action: "review"
+action: "prepare"
 licensing:
   model: "unknown"
   notes: "Not yet published for this change. The Learn page for /mention lists no licence requirement."
@@ -51,19 +51,23 @@ changes:
     note: "First briefing for roadmap item 576788, now Launched: richer environment, app and record labels for Dataverse records in Copilot /mention."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 40 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Correction: removed the claim that enabled environments get the new labels without further steps, set action to prepare, and stated the System Administrator role from Manage feature settings."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 45 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 40
-  confirmed: 38
+  claims: 45
+  confirmed: 45
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "76fcc96415bae6b160dbac8fc61c2ba8"
+  contradicted: 0
+  attempts: 0
+  hash: "0e599ad356b252ec240429404693ac3f"
 ---
 
 ## What's changing
@@ -76,9 +80,9 @@ The roadmap item is marked Launched, with a preview date of July CY2026 and a ta
 
 ## Why it matters
 
-The labels only change how records are described, but they sit on a data path that crosses boundaries. For /mention to work, a small set of Dataverse data is synced into Microsoft 365, and Microsoft's page warns that the sync can cross geo, service and compliance boundaries. Service owners who already allowed the setting will see the new labels without taking any step that Microsoft has documented.
+The labels only change how records are described, but they sit on a data path that crosses boundaries. For /mention to work, a small set of Dataverse data is synced into Microsoft 365, and Microsoft's page warns that the sync can cross geo, service and compliance boundaries.
 
-The practical view is that this is a review item, not an emergency. Check which environments have the setting on, confirm that the data flow was approved when it was enabled, and tell Dynamics 365 and Power Apps users what the new labels show. If nobody acts, Microsoft has not stated whether anything changes beyond the label text.
+The practical view is that this needs communication, not emergency action. Check which environments have the setting on, confirm that the data flow was approved when it was enabled, and tell Dynamics 365 and Power Apps users what the new labels show. If nobody acts, Microsoft has not stated whether anything changes beyond the label text.
 
 ## Risk assessment
 
@@ -110,7 +114,7 @@ The cost the sources support is administrator time: reviewing the per-environmen
 
 The roadmap record lists the Worldwide (Standard Multi-Tenant) cloud, the Web platform and the products Microsoft Copilot (Microsoft 365) and Microsoft Dataverse. It lists General Availability and Preview as release phases and the status as Launched.
 
-The setting is configured per environment in the Power Platform admin center. The Learn page names no admin role for it. Records come from Dynamics 365 and Power Apps model-driven apps, and users see only records they have access to and have recently viewed.
+The setting is configured per environment in the Power Platform admin center. The /mention page does not name a role; Manage feature settings requires the System Administrator security role or equivalent permissions to update these settings. Records come from Dynamics 365 and Power Apps model-driven apps, and users see only records they have access to and have recently viewed.
 
 ## Governance guidance
 
@@ -141,7 +145,7 @@ The setting is configured per environment in the Power Platform admin center. Th
 </tbody>
 </table>
 
-The one documented control is the per-environment **Search for records in Microsoft 365 apps** setting. The Learn page gives no admin role for it. Microsoft Learn documents no API for this specific setting at the time of writing (November 2026), so the API side is shown as not documented.
+The one documented control is the per-environment **Search for records in Microsoft 365 apps** setting. The /mention page does not name a role; Manage feature settings requires the System Administrator security role or equivalent permissions to update these settings. Microsoft Learn documents no API for this specific setting at the time of writing (November 2026), so the API side is shown as not documented.
 
 The setting is not specific to the new labels: it governs whether /mention offers records from that environment. No separate switch for the label format is documented. Access to the records themselves follows Dataverse security roles, which the page says the user and the email recipient need.
 
@@ -156,13 +160,4 @@ The setting is not specific to the new labels: it governs whether /mention offer
 risk: Low. The change is the label text on records that the /mention setting already makes available; the sync of environment, app and record names that sits behind it is documented separately and is set per environment.
 cost: Low. The only cost the sources show is administrator time to review the per-environment setting; the Learn page for /mention names no licence or meter, and licensing for this change is not yet published.
 impact: Medium. Users of Dynamics 365 and model-driven Power Apps who reference business records in Microsoft 365 Copilot will see the new labels; people who never use /mention will not notice.
--->
-
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters; front matter: defaultState / consistency: Existing enabled environments will receive the new labels without an administrator taking another step, although the page records arrival behaviour as unknown. | Found: Microsoft has not stated what happens on arrival for the new labels ... Service owners who already allowed the setting will see the new labels without taking any step that Microsoft has documented. | Fix: Remove 'Service owners who already allowed the setting will see the new labels without taking any step that Microsoft has documented.' Keep defaultState unknown and the existing statement that Microsoft has not stated what happens on arrival; the sources checked do not give a label-specific rollout instruction.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Scope; Governance controls / role: The /mention page leaves the admin role unstated, but the cited general feature-settings page requires System Administrator or equivalent permissions. | Found: Make sure you have the System Administrator security role or equivalent permissions to update the settings. | Fix: Replace both role-gap sentences with: 'The /mention page does not name a role; Manage feature settings requires the System Administrator security role or equivalent permissions to update these settings.' The supporting page is already cited: https://learn.microsoft.com/power-platform/admin/settings-features. | Source: https://learn.microsoft.com/power-platform/admin/settings-features
-- [contradicted, minor] front matter: action; Why it matters / consistency: The cosmetic replacement of labels used by existing /mention users is a review item. | Found: action: "review" ... The practical view is that this is a review item, not an emergency. ... Records ... get a more descriptive label. | Fix: Set action to 'prepare' and replace 'The practical view is that this is a review item, not an emergency.' with 'The practical view is that this needs communication, not emergency action.' The assessment scale assigns prepare to low-risk redesigns of existing experiences that need communication, including when defaultState is unknown.
 -->
