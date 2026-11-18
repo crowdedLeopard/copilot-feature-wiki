@@ -34,6 +34,12 @@ sources:
   - title: "Use agents with pay-as-you-go billing"
     url: "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing"
     kind: "learn"
+  - title: "Microsoft 365 Pay-as-you-go services pricing with Azure subscription"
+    url: "https://learn.microsoft.com/sharepoint/microsoft-365-pay-as-you-go-pricing"
+    kind: "learn"
+  - title: "Set up and manage pay-as-you-go billing in the Copilot node of the Microsoft 365 admin center"
+    url: "https://learn.microsoft.com/microsoft-365/services/pay-as-you-go-setup-copilot"
+    kind: "learn"
   - title: "Overview of agent and app management and governance in Teams admin center"
     url: "https://learn.microsoft.com/microsoftteams/manage-apps"
     kind: "learn"
@@ -51,31 +57,21 @@ controls:
       docs: "https://learn.microsoft.com/microsoftteams/manage-apps"
     api:
       kind: "powershell"
-      call: "Update-M365TeamsApp -Id <app-id> -IsBlocked $true"
+      call: "Update-M365TeamsApp -Id <app-id> -IsBlocked <Boolean>"
       docs: "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp"
-    note: "General control: Microsoft has not confirmed it applies to SharePoint agents added from the in-context store. Teams Administrator role per Learn."
+    note: "General control: not confirmed for SharePoint agents in the in-context store. The Update-M365TeamsApp reference describes its -IsBlocked $true example as unblocking, so it is not reliable guidance for a blocking command."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-18"
 roadmapModified: "2026-10-01T23:00:07"
 changes:
   - date: "2026-11-17"
     note: "First briefing for this item: SharePoint agents can be added to Teams chats on Desktop and Mac, on by default, with the rollout timeline from MC1193415."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 59 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
-verification:
-  status: "held"
-  date: "2026-11-17"
-  version: 1
-  model: "gpt-6.1-sol"
-  engine: "copilot"
-  claims: 59
-  confirmed: 55
-  unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "cc9988a56a9d7db346823d593cb0483d"
+  - date: "2026-11-18"
+    note: "Corrected after verification: pay-as-you-go billing now states the $0.01 per message price and that the billing resource applies to users without a Copilot licence; the blocking call is no longer shown as verified."
+version: 2
 ---
 
 ## What's changing
@@ -116,7 +112,7 @@ Microsoft's notice asks administrators to ensure intended users have E3 or E5 (w
 
 For pay-as-you-go, Learn's page on using agents with pay-as-you-go billing says each SharePoint agent interaction uses 12 messages (10 for tenant graph grounding and 2 for generative answers) to respond to a single complex prompt, and charges appear under the Copilot Studio meter on the invoice. It says interactive use by authenticated Microsoft Copilot users in Microsoft 365 apps and services is included at no extra cost. A budget can be created in Microsoft Cost Management under Monitoring > Budgets.
 
-Not yet published: whether usage from the Teams in-context store is metered at those rates, and a price per message for this feature. Check the Learn billing page and Message center.
+The SharePoint-agent billing resource is used whenever a user without a Microsoft Copilot licence uses a SharePoint agent; Microsoft documents 12 messages for a single complex-prompt interaction. Microsoft publishes a pay-as-you-go price of USD $0.01 per message for agents in SharePoint (Learn, Microsoft 365 Pay-as-you-go services pricing with Azure subscription).
 
 ## Scope
 
@@ -127,7 +123,7 @@ The record lists General Availability and Targeted Release. The notice gives the
 ## Governance guidance
 
 ### Before rollout
-- Confirm which users hold a Microsoft 365 Copilot licence and whether pay-as-you-go billing for SharePoint agents is connected, using Microsoft 365 admin center > Copilot > Billing and usage.
+- Confirm which users hold a Microsoft 365 Copilot licence and whether pay-as-you-go billing for SharePoint agents is connected, using Microsoft 365 admin center > Copilot > Billing and usage. Microsoft's linked setup guide instead directs administrators to Copilot > Cost management > Classic Billing & usage.
 - Review the permissions on important .agent files and on the sites those agents use, since Learn says file permissions determine who can access or edit an agent.
 - Decide whether any sensitive sites should be flagged with restricted content discovery, which removes the Agent icon and keeps their content out of other agents.
 
@@ -147,7 +143,7 @@ The record lists General Availability and Targeted Release. The notice gives the
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether a Teams agent or app is allowed or blocked for the organisation</strong><br><small>Tenant</small><br><small class="controls__note">General control: Microsoft has not confirmed it applies to SharePoint agents added from the in-context store. Teams Administrator role per Learn.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › app › Allow or Block <a href="https://learn.microsoft.com/microsoftteams/manage-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app-id&gt; -IsBlocked $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether a Teams agent or app is allowed or blocked for the organisation</strong><br><small>Tenant</small><br><small class="controls__note">General control: not confirmed for SharePoint agents in the in-context store. The Update-M365TeamsApp reference describes its -IsBlocked $true example as unblocking, so it is not reliable guidance for a blocking command.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › app › Allow or Block <a href="https://learn.microsoft.com/microsoftteams/manage-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app-id&gt; -IsBlocked &lt;Boolean&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -155,10 +151,11 @@ Microsoft's notice says no changes to admin controls are needed and that existin
 
 Other controls come from the SharePoint agents pages. Learn says admins can turn 'Microsoft Copilot for SharePoint' on or off per user under the service plans of the Copilot licence, but this also disables Copilot in OneDrive and SharePoint page authoring for that user. Under pay-as-you-go, only users in the security group assigned to the billing policy have access to agents. Restricted content discovery turns agent features off per site. Blocking an agent in the Microsoft 365 admin center currently covers Copilot Chat only.
 
+The checklist steps on .agent file permissions, restricted content discovery, the billing connection and budgets are background guidance from those pages; they have no rows in this table.
+
 ## Open questions
 
 - Does the Teams admin center Manage apps page, or app-centric management, control SharePoint agents added from the in-context store, and is there a Teams policy that hides **Add Agents and Bots**? Watch the Teams admin center documentation and MC1193415.
-- Is usage from agents added in Teams chats metered at the same rate as SharePoint agent use elsewhere under pay-as-you-go? Watch the Learn pay-as-you-go page.
 - How are responses handled when an agent is added to a chat whose members have different access to the agent's data sources? Microsoft has not described this for the feature.
 - Does the feature reach channels, as the roadmap description says, or only chats, as the notice says?
 - The roadmap title mentions adaptive card link unfurling while the description and notice describe SharePoint agents: which does Microsoft intend this item to cover?
@@ -167,15 +164,4 @@ Other controls come from the SharePoint agents pages. Learn says admins can turn
 risk: Medium. The feature is on by default for Teams users on Desktop and Mac and puts agents into shared chats, while Microsoft's notice says no admin control changes are needed and existing policies are respected.
 cost: Variable. Users need a Microsoft 365 Copilot licence or tenant pay-as-you-go billing for SharePoint agents, which Microsoft documents as 12 messages per interaction on the Copilot Studio meter.
 impact: High. Microsoft's notice MC1193415 says all Teams users on Desktop and Mac are affected, and the feature is enabled by default.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing; Open questions / absence: Microsoft has not published whether the SharePoint-agent PAYG rates apply to agents accessed through the Teams in-context store. | Found: That resource is used whenever a user without a Microsoft Copilot license uses a SharePoint agent. | Fix: Remove the sentence and open question that make Teams access an unconfirmed billing exception. Replace with: 'The SharePoint-agent billing resource is used whenever a user without a Microsoft Copilot licence uses a SharePoint agent; Microsoft documents 12 messages for a single complex-prompt interaction.' | Source: https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing
-- [contradicted, blocker] Cost and licensing / absence: A price per message for SharePoint-agent usage has not been published. | Found: | Agents in SharePoint | The number of messages used. | $0.01/message | | Fix: Replace the unpublished-price claim with: 'Microsoft publishes a pay-as-you-go price of USD $0.01 per message for agents in SharePoint.' Cite https://learn.microsoft.com/sharepoint/microsoft-365-pay-as-you-go-pricing. | Source: https://learn.microsoft.com/sharepoint/microsoft-365-pay-as-you-go-pricing
-- [contradicted, blocker] controls[0].api; Governance controls table / command: Update-M365TeamsApp -Id <app-id> -IsBlocked $true is a verified MicrosoftTeams PowerShell call for blocking an app. | Found: Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true Unblocks Bookings app (App ID 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b). | Fix: Remove this unverified blocking call from the row and rendered table. In the control note state: 'The Update-M365TeamsApp reference describes its -IsBlocked $true example as unblocking, so it is not reliable guidance for a blocking command.' Do not reverse the Boolean by inference. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance guidance: Before rollout / admin-path: SharePoint-agent billing can be reached through Microsoft 365 admin center > Copilot > Billing and usage. | Found: In the Microsoft 365 admin center, select Copilot > Billing and usage. | Fix: Keep the cited path but add: 'Microsoft's linked setup guide instead directs administrators to Copilot > Cost management > Classic Billing & usage.' Cite https://learn.microsoft.com/microsoft-365/services/pay-as-you-go-setup-copilot, whose setup and connection steps give that route. | Source: https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing
-- [contradicted, minor] Governance guidance; Governance controls table / consistency: The governance checklist asks readers to review agent and site permissions, restricted content discovery, billing connections and budgets, but the table contains only Teams app blocking. | Found: Review the permissions on important .agent files and on the sites those agents use Decide whether any sensitive sites should be flagged with restricted content discovery If pay-as-you-go is used, create a budget in Microsoft Cost Management | Fix: The permissions review, restricted-content-discovery decision, billing-connection check and budget creation steps have no corresponding controls-table rows. Keep them as qualified background guidance rather than implying the table exhaustively maps the checklist; do not add unverified rows.
 -->

@@ -14,11 +14,11 @@ previewDate: "July CY2025"
 risk: "low"
 cost: "low"
 impact: "low"
-defaultState: "unknown"
+defaultState: "on"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for this feature. Microsoft Learn says Communication Compliance needs a supported subscription with licences assigned to users, and links to the subscription requirements."
+  model: "included"
+  notes: "Communication Compliance is included in eligible subscriptions, including Microsoft 365 E5/A5/G5 and Office 365 E5/A5/G5. No separate additional licensing requirement for these alert improvements is documented as of November 2026."
 audiences: ["compliance","security","m365-admin"]
 tags: ["purview","communication-compliance","admin-controls","monitoring"]
 sources:
@@ -33,6 +33,9 @@ sources:
     kind: "learn"
   - title: "Get started with Communication Compliance"
     url: "https://learn.microsoft.com/purview/communication-compliance-configure"
+    kind: "learn"
+  - title: "Microsoft Purview service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
     kind: "learn"
 videos: []
 related: []
@@ -52,26 +55,30 @@ controls:
     note: "MC920304 says the feature is available by default and describes no switch."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-18"
 roadmapModified: "2026-10-22T22:58:40"
 changes:
   - date: "2026-11-17"
     note: "First briefing on Communication Compliance alert improvements, based on roadmap item 181825, MC920304 and the current Learn pages."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 57 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected after verification: default state is on per MC920304, licensing is included in eligible subscriptions, and the existing-policies prerequisite and employee-impact claim were removed."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 48 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-17"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-18"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 52
-  unconfirmed: 2
-  contradicted: 3
-  attempts: 1
-  hash: "2365d45673b25aa82e8834524919a077"
+  claims: 48
+  confirmed: 47
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "c50950130a62bcc34f9d032631aa15a3"
 ---
 
 ## What's changing
@@ -109,7 +116,7 @@ MC920304 says the new feature is available by default, but neither it nor the ro
 
 ## Cost and licensing
 
-Licence: Microsoft has not published a licence or price for this feature. Learn's Communication Compliance getting-started page says administrators need to verify that the organisation has a supported subscription and that users have the appropriate licences assigned, and points to the subscription requirements for the detail.
+Licence: Communication Compliance is included in eligible subscriptions, including Microsoft 365 E5/A5/G5 and Office 365 E5/A5/G5, according to the Microsoft Purview service description. No separate additional licensing requirement for these alert improvements is documented as of November 2026. Learn's Communication Compliance getting-started page also says administrators need to verify that the organisation has a supported subscription and that users have the appropriate licences assigned, and points to the subscription requirements for the detail.
 
 Meter: the same page says detecting inappropriate or risky interactions for non-Microsoft 365 AI data needs pay-as-you-go billing, and that there are no pay-as-you-go requirements or charges for detecting such interactions for Microsoft 365 Copilot data. Neither Microsoft source ties a meter to the alert improvements, so none is documented for them at the time of writing (November 2026).
 
@@ -123,7 +130,7 @@ Indirect cost is reviewer and admin time: changing alert frequency changes how m
 
 **Rollout.** MC920304 gives a public preview rollout beginning October 2026 and expected to complete by the end of October 2026, with General Availability for Worldwide to be announced. The roadmap item remains In development with a January CY2027 target. The post says the feature is available by default.
 
-**Prerequisites.** Existing Communication Compliance policies. The Learn page for policies says PowerShell isn't supported for creating and managing Communication Compliance policies.
+**Prerequisites.** The Learn page for policies says PowerShell isn't supported for creating and managing Communication Compliance policies.
 
 ## Governance guidance
 
@@ -169,18 +176,13 @@ The row for alert policy triggers is an existing control that applies today; it 
 - Is any licence or meter specific to the alert improvements, beyond the Communication Compliance subscription requirements?
 
 <!-- rationale
-risk: Low. The change adjusts how and when alerts and alert emails are produced for policies that already exist; Microsoft describes no new data access, and the default for existing policies is not stated.
-cost: Low. The only cost the sources show is admin and investigator time; licensing for this feature is not yet published, and Communication Compliance already requires a supported subscription.
-impact: Low. The people who notice are Communication Compliance admins and the reviewers who receive alert emails; employees whose messages are inspected see nothing change.
+risk: Low. The change adjusts how and when alerts and alert emails are produced per policy; Microsoft describes no new data access, and the default for existing policies is not stated.
+cost: Low. The only cost the sources show is admin and reviewer time; Communication Compliance is included in eligible subscriptions, and no separate licence for these alert improvements is documented as of November 2026.
+impact: Low. The people who notice are Communication Compliance admins and the reviewers who receive alert emails.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: defaultState / default: The default state of the feature is unknown. | Found: This new feature is available by default. | Fix: Set defaultState to "on": MC920304 explicitly says the new feature is available by default. Keep the separate caveat that the notice does not specify whether existing policies' alert behaviour changes; availability and migration of existing settings are different facts.
-- [contradicted, blocker] front matter: licensing.model and notes; Cost and licensing; rationale: cost / licensing: The licensing model is unknown because Microsoft has not published a licence for this feature. | Found: | Communication Compliance | Included | Included | Included | Included | | Fix: Set licensing.model to "included" and replace the unqualified unpublished-licensing statements with: "Communication Compliance is included in eligible subscriptions, including Microsoft 365 E5/A5/G5 and Office 365 E5/A5/G5. No separate additional licensing requirement for these alert improvements is documented as of November 2026." Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-communications-compliance. Keep cost low for the change's administrative work; do not describe the underlying product's published licensing as unpublished. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-communications-compliance
-- [unsupported, blocker] Scope: Prerequisites; rationale: risk / applicability: Existing Communication Compliance policies are a prerequisite for the alert improvements. | Found: Searched: "Communication Compliance" "existing policies" "alert frequency"; "Communication Compliance" "alert improvements" "employees" "prerequisites". Read MC920304 and configure: the new settings are described within policy creation, not as requiring pre-existing policies. | Fix: Remove "Existing Communication Compliance policies." from Prerequisites. In the risk rationale replace "for policies that already exist" with "per policy"; the notice places the settings in the policy creation wizard and does not establish a pre-existing-policy prerequisite.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [unsupported, minor] rationale: impact / behaviour: Employees whose messages are inspected see nothing change. | Found: Searched: "Communication Compliance" "alert improvements" "employees" "prerequisites"; read MC920304, policies and configure. None guarantees that inspected employees see no change from the alert improvements. | Fix: Remove "employees whose messages are inspected see nothing change" from the impact rationale. Retain the assessment that the people directly using the settings are administrators and alert recipients.
-- [contradicted, minor] Governance guidance: Before rollout and At rollout; Governance controls table / consistency: The governance checklist names controls that are not represented in the controls table. | Found: Checklist: "Confirm who is in the Communication Compliance Admins role group" and "Set frequency and recipients per policy". Table rows: existing alert policy triggers; tenant-wide switch. | Fix: The role-group membership check and the per-policy alert-frequency/recipient configuration step have no corresponding controls-table rows. The existing-trigger row explicitly says it is not the new alerts page.
+- [contradicted, minor] Governance guidance; Governance controls / consistency: The governance checklist names controls that are not represented in the controls table. | Found: Checklist: 'Confirm who is in the Communication Compliance Admins role group' and 'Set frequency and recipients per policy'. Table: existing alert policy triggers and a tenant-wide switch only. | Fix: The Before rollout role-group membership check and At rollout per-policy frequency/recipient configuration step have no corresponding controls-table rows; neither is represented by the existing-trigger or tenant-switch row.
 -->

@@ -2,37 +2,29 @@
   "slug": "microsoft-purview-compliance-portal-communication-compliance-alert-improvements",
   "roadmapId": 181825,
   "title": "Microsoft Purview Communication Compliance: policy alert improvements",
-  "status": "held",
-  "date": "2026-11-17",
-  "version": 1,
+  "status": "verified-with-gaps",
+  "date": "2026-11-18",
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
-  "verifierVerdict": "hold",
-  "notes": [
-    "claim 56: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
-  ],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-17",
-    "reasons": [
-      "3 blocking findings (claims 24, 26, 54)"
-    ]
-  },
+  "attempts": 0,
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
   "counts": {
-    "claims": 57,
-    "confirmed": 52,
-    "unconfirmed": 2,
-    "contradicted": 3,
-    "blocker": 3,
+    "claims": 48,
+    "confirmed": 47,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 0,
     "major": 0,
-    "minor": 2
+    "minor": 1
   },
-  "summary": "Hold: the default-state field says Microsoft has not stated a default, although its notice explicitly says the feature is available by default. Published Communication Compliance licensing should be distinguished from any unpublished additional requirements, and existing policies should not be presented as a prerequisite for controls offered during policy creation.",
+  "summary": "The briefing accurately separates the planned alert improvements from existing documented controls. The roadmap dates, Message Center rollout details, default availability and eligible subscription licensing are supported; a minor checklist-to-controls-table gap remains.",
   "claims": [
     {
       "n": 1,
-      "where": "What's changing",
+      "where": "What's changing; title; summary",
       "type": "record",
       "claim": "The roadmap describes improvements to Communication Compliance alerting capabilities and customisation.",
       "status": "supported",
@@ -43,20 +35,9 @@
     },
     {
       "n": 2,
-      "where": "front matter: products; title; Scope",
+      "where": "summary; What's changing; Governance guidance; rationale: risk",
       "type": "record",
-      "claim": "The change belongs to Microsoft Purview Communication Compliance.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"title\": \"Microsoft Purview compliance portal: Communication Compliance - Alert improvements\", \"products\": [\"Microsoft Purview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "summary; What's changing; Governance guidance",
-      "type": "record",
-      "claim": "Administrators will be able to customise alert frequency per policy.",
+      "claim": "Admins will be able to customise alert frequency per policy.",
       "status": "supported",
       "source": "Message Center post MC920304",
       "quote": "Admins will be able to customize the alert frequency per policy",
@@ -64,10 +45,21 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "What's changing; Why it matters; Governance guidance",
+      "n": 3,
+      "where": "What's changing; Governance guidance; rationale: risk",
       "type": "record",
-      "claim": "Administrators will be able to adjust email alert frequency.",
+      "claim": "Admins will be able to adjust email alert frequency.",
+      "status": "supported",
+      "source": "Message Center post MC920304",
+      "quote": "as well as adjust the email alerts frequency and recipients",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "Admins will be able to adjust email alert recipients.",
       "status": "supported",
       "source": "Message Center post MC920304",
       "quote": "as well as adjust the email alerts frequency and recipients",
@@ -76,20 +68,9 @@
     },
     {
       "n": 5,
-      "where": "summary; What's changing; Risk assessment; Governance guidance",
-      "type": "record",
-      "claim": "Administrators will be able to adjust email alert recipients.",
-      "status": "supported",
-      "source": "Message Center post MC920304",
-      "quote": "as well as adjust the email alerts frequency and recipients",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
       "where": "What's changing; Governance guidance: At rollout",
       "type": "record",
-      "claim": "The new settings are on a new alerts page within the policy creation wizard.",
+      "claim": "The new settings are reached through a new alerts page in the policy creation wizard.",
       "status": "supported",
       "source": "Message Center post MC920304",
       "quote": "within the policy creation wizard by navigating to the new alerts page.",
@@ -97,10 +78,76 @@
       "fix": null
     },
     {
+      "n": 6,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe the new alerts page.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Communication Compliance\" \"new alerts\" \"frequency\". Opened communication-compliance-policies and communication-compliance-configure; the documented wizard proceeds from conditions to Review and finish without the new alerts page.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 7,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Communication Compliance automatically creates a corresponding alert policy after a policy is configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "After you configure a policy, Communication Compliance automatically creates a corresponding alert policy and generates alerts for messages that match conditions defined in the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Why it matters; Governance guidance; Open questions",
+      "type": "behaviour",
+      "claim": "Current documentation specifies a single alert email every 24 hours regardless of the number of matching messages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "A single email notification is sent once every 24 hours for any alerts, regardless of the number of individual messages that match policy conditions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "default",
+      "claim": "The existing alert policy defaults to simple aggregation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "For Communication Compliance policies, the system configures the following alert policy values by default: ... | Aggregation | Simple aggregation |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "default",
+      "claim": "The existing alert policy's default threshold is 4 activities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "| Threshold | Default: 4 activities  Minimum: 3 activities  Maximum: 2,147,483,647 activities |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "default",
+      "claim": "The existing alert policy's default window is 60 minutes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "| Window | Default: 60 minutes  Minimum: 60 minutes  Maximum: 10,000 minutes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
       "where": "front matter: status; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap status is In development.",
+      "claim": "The roadmap status remains In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -108,7 +155,7 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 13,
       "where": "front matter: targetDate; What's changing; Risk assessment; Scope; Open questions",
       "type": "record",
       "claim": "The roadmap target is January CY2027.",
@@ -119,7 +166,7 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 14,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview date is July CY2025.",
@@ -130,10 +177,10 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 15,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The roadmap lists General Availability and Preview as release phases.",
+      "claim": "The roadmap release phases are General Availability and Preview.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -141,10 +188,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 16,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -152,7 +199,7 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 17,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap platform is Web.",
@@ -163,21 +210,10 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap record was modified on 22 October 2026 at 22:58:40.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-10-22T22:58:40\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
+      "n": 18,
       "where": "What's changing",
       "type": "record",
-      "claim": "The Message Center notice contains a timeline update dated 9 March 2026.",
+      "claim": "The Message Center body carries a 9 March 2026 timeline update.",
       "status": "supported",
       "source": "Message Center post MC920304",
       "quote": "Updated March 9, 2026: We have updated the timeline. Thank you for your patience.",
@@ -185,10 +221,10 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 19,
       "where": "What's changing",
       "type": "record",
-      "claim": "The supplied Message Center metadata gives 22 October 2026 as the last-updated date.",
+      "claim": "The Message Center post was last updated on 22 October 2026.",
       "status": "supported",
       "source": "Message Center post MC920304",
       "quote": "Published 2024-10-28; last updated 2026-10-22; Microsoft's end date 2027-02-26",
@@ -196,54 +232,32 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 20,
       "where": "What's changing; Risk assessment; Scope",
       "type": "record",
-      "claim": "The notice targets the start of public preview rollout for October 2026.",
+      "claim": "Public preview rollout was moved from late July 2025 to a planned October 2026 start.",
       "status": "supported",
       "source": "Message Center post MC920304",
-      "quote": "Public Preview: We will begin rolling out October 2026",
+      "quote": "Public Preview: We will begin rolling out October 2026 (previously late July 2025)",
       "severity": null,
       "fix": null
     },
     {
-      "n": 17,
-      "where": "What's changing; Risk assessment",
-      "type": "record",
-      "claim": "The notice says the previously planned preview rollout start was late July 2025.",
-      "status": "supported",
-      "source": "Message Center post MC920304",
-      "quote": "October 2026 (previously late July 2025)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
+      "n": 21,
       "where": "What's changing; Scope",
       "type": "record",
-      "claim": "The notice expects public preview rollout to complete by the end of October 2026.",
+      "claim": "Public preview rollout was expected to finish by the end of October 2026, previously mid-August 2025.",
       "status": "supported",
       "source": "Message Center post MC920304",
-      "quote": "expect to complete by end of October 2026",
+      "quote": "and expect to complete by end of October 2026 (previously mid-Aug 2025).",
       "severity": null,
       "fix": null
     },
     {
-      "n": 19,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The notice gives mid-August 2025 as the previous preview completion target.",
-      "status": "supported",
-      "source": "Message Center post MC920304",
-      "quote": "end of October 2026 (previously mid-Aug 2025).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
+      "n": 22,
       "where": "What's changing; Risk assessment; Scope; Governance guidance; Open questions",
       "type": "record",
-      "claim": "The notice says the General Availability timeline for Worldwide will be announced in a future update.",
+      "claim": "The post says the General Availability timeline for Worldwide will be announced in a future update.",
       "status": "supported",
       "source": "Message Center post MC920304",
       "quote": "General Availability (Worldwide): We will announce this timeline in a future update.",
@@ -251,10 +265,10 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 23,
       "where": "What's changing; Risk assessment",
       "type": "record",
-      "claim": "The supplied Message Center metadata gives an end date of 26 February 2027.",
+      "claim": "The Message Center metadata gives an end date of 26 February 2027.",
       "status": "supported",
       "source": "Message Center post MC920304",
       "quote": "Microsoft's end date 2027-02-26",
@@ -262,285 +276,54 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 24,
       "where": "What's changing; summary",
       "type": "record",
-      "claim": "The supplied notice sets no act-by date.",
+      "claim": "The supplied post sets no act-by date or mandatory immediate preparation action.",
       "status": "supported",
       "source": "Message Center post MC920304",
-      "quote": "Act by: none",
+      "quote": "Act by: none; Category: Stay informed; severity: Normal; major change: no",
       "severity": null,
       "fix": null
-    },
-    {
-      "n": 23,
-      "where": "Why it matters; Scope; controls[1].note",
-      "type": "record",
-      "claim": "MC920304 says the new feature is available by default.",
-      "status": "supported",
-      "source": "Message Center post MC920304",
-      "quote": "This new feature is available by default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "front matter: defaultState",
-      "type": "default",
-      "claim": "The default state of the feature is unknown.",
-      "status": "contradicted",
-      "source": "Message Center post MC920304",
-      "quote": "This new feature is available by default.",
-      "severity": "blocker",
-      "fix": "Set defaultState to \"on\": MC920304 explicitly says the new feature is available by default. Keep the separate caveat that the notice does not specify whether existing policies' alert behaviour changes; availability and migration of existing settings are different facts."
     },
     {
       "n": 25,
-      "where": "Why it matters; Governance guidance; Open questions; rationale: risk",
-      "type": "absence",
-      "claim": "The sources do not state whether existing policies retain their alert behaviour when the new settings arrive.",
+      "where": "front matter: defaultState; Why it matters; Scope; controls[1].note",
+      "type": "default",
+      "claim": "The new capability is available by default, supporting defaultState on.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Communication Compliance\" \"existing policies\" \"alert frequency\"; read MC920304 and communication-compliance-policies/configure. No migration or existing-policy default is specified for the new settings.",
+      "source": "Message Center post MC920304",
+      "quote": "This new feature is available by default.",
       "severity": null,
       "fix": null
     },
     {
       "n": 26,
-      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "The licensing model is unknown because Microsoft has not published a licence for this feature.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-communications-compliance",
-      "quote": "| Communication Compliance | Included | Included | Included | Included |",
-      "severity": "blocker",
-      "fix": "Set licensing.model to \"included\" and replace the unqualified unpublished-licensing statements with: \"Communication Compliance is included in eligible subscriptions, including Microsoft 365 E5/A5/G5 and Office 365 E5/A5/G5. No separate additional licensing requirement for these alert improvements is documented as of November 2026.\" Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-communications-compliance. Keep cost low for the change's administrative work; do not describe the underlying product's published licensing as unpublished."
+      "where": "Why it matters; Governance guidance; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether existing policies retain their current alert behaviour when the new page arrives.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Communication Compliance\" \"alert settings\" \"roles\" \"existing\". Read MC920304 and the roadmap; opened communication-compliance-policies and communication-compliance-configure. None specifies migration or changed defaults for existing policy alerts.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 27,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Communication Compliance requires a supported subscription.",
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "The supplied descriptions of the alert improvements identify no new data source or new data access.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
-      "quote": "To access and use Communication Compliance, administrators need to verify that their organization has a supported subscription",
+      "source": "Message Center post MC920304",
+      "quote": "Admins will be able to customize the alert frequency per policy as well as adjust the email alerts frequency and recipients within the policy creation wizard by navigating to the new alerts page.",
       "severity": null,
       "fix": null
     },
     {
       "n": 28,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Users must have appropriate licences assigned for Communication Compliance.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
-      "quote": "and that users have the appropriate licenses assigned.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "behaviour",
-      "claim": "The getting-started page links to Communication Compliance subscription requirements.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
-      "quote": "For more information about subscriptions and licensing, see the [subscription requirements](https://aka.ms/M365EnterprisePlans) for Communication Compliance.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "No price specific to the alert improvements is published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Communication Compliance\" \"alert frequency\" \"existing\" \"license\"; read policies, configure, the Purview service description and purview-billing-models. No separate alert-improvements price was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Detecting inappropriate or risky interactions for non-Microsoft 365 AI data requires enabling pay-as-you-go billing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
-      "quote": "Additionally, to detect inappropriate or risky interactions for non-Microsoft 365 AI data, you need to enable pay-as-you-go billing in your organization.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "There are no pay-as-you-go requirements or charges for detecting these interactions in Microsoft 365 Copilot data.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
-      "quote": "There aren't any pay-as-you-go billing requirements or charges for Microsoft 365 detecting inappropriate or risky interaction for Microsoft 365 Copilot data.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Cost and licensing; Open questions",
-      "type": "absence",
-      "claim": "No meter specific to the alert improvements is documented as of November 2026.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: communication compliance alert improvements licensing subscription requirements; read configure and purview-billing-models. The documented meter covers text records scanned for non-Microsoft 365 AI interactions, not alert frequency or recipients.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Communication Compliance automatically creates a corresponding alert policy after a policy is configured.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
-      "quote": "After you configure a policy, Communication Compliance automatically creates a corresponding alert policy",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "What's changing; Why it matters; Governance guidance; Open questions",
-      "type": "behaviour",
-      "claim": "The existing documented behaviour is a single alert email notification once every 24 hours.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
-      "quote": "A single email notification is sent once every 24 hours for any alerts",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The number of individual matching messages does not change that single-email behaviour.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
-      "quote": "regardless of the number of individual messages that match policy conditions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "What's changing",
-      "type": "default",
-      "claim": "Existing Communication Compliance alert policies use simple aggregation by default.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
-      "quote": "For Communication Compliance policies, the system configures the following alert policy values by default: ... | Aggregation | Simple aggregation |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "What's changing",
-      "type": "default",
-      "claim": "The default alert policy threshold is 4 activities.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
-      "quote": "| Threshold | Default: 4 activities  Minimum: 3 activities  Maximum: 2,147,483,647 activities |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "What's changing",
-      "type": "default",
-      "claim": "The default alert policy window is 60 minutes.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
-      "quote": "| Window | Default: 60 minutes  Minimum: 60 minutes  Maximum: 10,000 minutes |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The minimum activities threshold for Communication Compliance policies is 3.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
-      "quote": "The alert policy threshold trigger settings for activities support a minimum value of 3 or higher for Communication Compliance policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "controls[0].ui; Governance guidance: After rollout; Governance controls table",
-      "type": "admin-path",
-      "claim": "Existing alert triggers for activities, period and specific users can be changed on Microsoft Purview's Alert policies page.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
-      "quote": "You can change the default settings for triggers on number of activities, period for the activities, and for specific users in alert policies on the Alert policies page in Microsoft Purview.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "controls[0].api; Governance controls table and prose",
-      "type": "absence",
-      "claim": "No API or automation equivalent is documented for those Communication Compliance alert trigger settings.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: powershell Set-ProtectionAlert CommunicationCompliance ThreatType alert policy threshold notification; \"Communication Compliance\" \"alert\" \"API\" \"frequency\". Read policies and Set-ProtectionAlert excerpts; the latter excludes editing default policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "controls[0].note; Scope: Prerequisites; Governance controls",
-      "type": "command",
-      "claim": "PowerShell is not supported for creating and managing Communication Compliance policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
-      "quote": "PowerShell isn't supported for creating and managing Communication Compliance policies. To create and manage these policies, use the policy management controls in the Communication Compliance solution.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "controls[1].ui and controls[1].api; Governance controls table",
-      "type": "absence",
-      "claim": "No tenant-wide UI or API switch is documented for the new alert frequency and recipient settings.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: communication compliance alert improvements new alerts page frequency recipients enable disable role license; \"Communication Compliance\" \"alerts page\" \"default\" \"disable\". Read MC920304, policies/configure and returned settings excerpts; no feature-wide switch found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "What's changing; Governance guidance: At rollout",
-      "type": "absence",
-      "claim": "Microsoft Learn does not yet describe the new policy-creation alerts page.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: communication compliance alert improvements new alerts page frequency recipients enable disable role license. Read policies and configure, including policy creation and Manage alert policies; neither describes the new wizard page.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Risk assessment: Data exposure; rationale: risk",
-      "type": "absence",
-      "claim": "The sources describe no new data source or data access introduced by these alert improvements.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: communication compliance alert improvements new alerts page frequency recipients enable disable role license; read MC920304, roadmap record, policies and configure. The change description covers alert frequency and recipients, not new data ingestion or access.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
       "where": "Risk assessment: Data exposure",
       "type": "record",
-      "claim": "MC920304 repeats Microsoft's statement that usernames are pseudonymised by default.",
+      "claim": "MC920304 states that usernames are pseudonymised by default.",
       "status": "supported",
       "source": "Message Center post MC920304",
       "quote": "Usernames are pseudonymized by default",
@@ -548,7 +331,7 @@
       "fix": null
     },
     {
-      "n": 48,
+      "n": 29,
       "where": "Risk assessment: Data exposure",
       "type": "record",
       "claim": "MC920304 states that role-based access controls are built in.",
@@ -559,19 +342,8 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "Risk assessment: Data exposure",
-      "type": "absence",
-      "claim": "The supplied post does not specify the contents of the new alert emails.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: communication compliance alert improvements new alerts page frequency recipients enable disable role license; read MC920304 in full. Its email statement names frequency and recipients but gives no email-body contents.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "Risk assessment: Security & identity; Scope: Roles; Governance guidance; Governance controls",
+      "n": 30,
+      "where": "Risk assessment; Scope; Governance guidance; Governance controls",
       "type": "role",
       "claim": "Users assigned the Communication Compliance Admins role can set up policies.",
       "status": "supported",
@@ -581,87 +353,208 @@
       "fix": null
     },
     {
-      "n": 51,
+      "n": 31,
       "where": "Risk assessment: Security & identity; Scope: Roles; Open questions",
       "type": "absence",
-      "claim": "The sources do not specify roles for changing the new alert settings.",
+      "claim": "The roles specifically authorised to change the new alert settings are not stated.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Communication Compliance\" \"new alerts\" \"roles\"; communication compliance alert improvements new alerts page frequency recipients enable disable role license. Read MC920304, policies and configure; no role specific to the new settings found.",
+      "quote": "Searched: \"Communication Compliance\" \"alert settings\" \"roles\" \"existing\". Read MC920304; opened communication-compliance-policies and communication-compliance-configure. These give policy roles but no role requirements specific to the new alerts page.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 52,
-      "where": "Why it matters; Risk assessment: Autonomy & actions",
+      "n": 32,
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The supplied Message Center post does not specify the content of an alert email.",
+      "status": "supported",
+      "source": "Message Center post MC920304",
+      "quote": "adjust the email alerts frequency and recipients within the policy creation wizard by navigating to the new alerts page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The description of these alert improvements identifies no autonomous remediation action.",
+      "status": "supported",
+      "source": "Message Center post MC920304",
+      "quote": "Communication Compliance is improving the capabilities and customization of policy alerts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Autonomy & actions; Why it matters",
       "type": "behaviour",
-      "claim": "Alerts notify reviewers of policy matches for human investigation and subsequent action.",
+      "claim": "Communication Compliance detections are reviewed by human investigators who can take remediation actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "With role-based access controls, human investigators can take remediation actions such as removing a message from Teams or notifying senders of potentially inappropriate conduct.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Communication Compliance is included in eligible subscriptions including Microsoft 365 E5/A5/G5 and Office 365 E5/A5/G5.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Table columns include Microsoft 365 E5/A5/G5 and Office 365 E5/A5/G5. | Communication Compliance | Included | Included | Included | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate additional licence requirement is documented specifically for these alert improvements as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Communication Compliance\" \"alert improvements\" licensing billing disable tenant. Opened Microsoft Purview service description, communication-compliance-configure and purview-billing-models; read MC920304. No alert-improvement-specific licence requirement was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Administrators must verify that the organisation has a supported subscription.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
-      "quote": "Review alerts to investigate detected messages and take action: Identify and analyze messages that match a policy's conditions to trigger alerts that provide context around a policy violation, so you can investigate and take action if needed.",
+      "quote": "To access and use Communication Compliance, administrators need to verify that their organization has a supported subscription",
       "severity": null,
       "fix": null
     },
     {
-      "n": 53,
-      "where": "Risk assessment: Autonomy & actions",
+      "n": 38,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Administrators must verify that users have appropriate licences assigned; Learn links to subscription requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "and that users have the appropriate licenses assigned. For more information about subscriptions and licensing, see the subscription requirements for Communication Compliance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Detecting inappropriate or risky interactions in non-Microsoft 365 AI data requires enabling pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "Additionally, to detect inappropriate or risky interactions for non-Microsoft 365 AI data, you need to enable pay-as-you-go billing in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Detecting inappropriate or risky interactions for Microsoft 365 Copilot data has no pay-as-you-go billing requirements or charges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "There aren't any pay-as-you-go billing requirements or charges for Microsoft 365 detecting inappropriate or risky interaction for Microsoft 365 Copilot data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "No autonomous remediation action is described for the alert improvements.",
+      "claim": "No meter specific to the alert improvements is documented as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: communication compliance alert improvements new alerts page frequency recipients enable disable role license; read MC920304 and the roadmap description. Neither assigns remediation actions to the new alert settings.",
+      "quote": "Searched: \"Communication Compliance\" \"alert improvements\" licensing billing disable tenant. Opened communication-compliance-configure, Microsoft Purview service description and purview-billing-models. The latter meters non-Microsoft 365 AI scanning, not these alert settings.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 54,
-      "where": "Scope: Prerequisites; rationale: risk",
-      "type": "applicability",
-      "claim": "Existing Communication Compliance policies are a prerequisite for the alert improvements.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"Communication Compliance\" \"existing policies\" \"alert frequency\"; \"Communication Compliance\" \"alert improvements\" \"employees\" \"prerequisites\". Read MC920304 and configure: the new settings are described within policy creation, not as requiring pre-existing policies.",
-      "severity": "blocker",
-      "fix": "Remove \"Existing Communication Compliance policies.\" from Prerequisites. In the risk rationale replace \"for policies that already exist\" with \"per policy\"; the notice places the settings in the policy creation wizard and does not establish a pre-existing-policy prerequisite."
+      "n": 42,
+      "where": "controls[0].ui; Governance guidance: After rollout; Governance controls",
+      "type": "admin-path",
+      "claim": "Existing activity-count, activity-period and specific-user alert triggers can be changed on the Alert policies page in Microsoft Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "You can change the default settings for triggers on number of activities, period for the activities, and for specific users in alert policies on the Alert policies page in Microsoft Purview.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 55,
+      "n": 43,
+      "where": "controls[0].api and note; Scope: Prerequisites; Governance controls",
+      "type": "absence",
+      "claim": "No automation for this Communication Compliance alert-trigger control is documented, and Learn says PowerShell policy management is unsupported.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Communication Compliance alert policies PowerShell Set-ProtectionAlert aggregation threshold notification recipients. Opened communication-compliance-policies and Set-ProtectionAlert: policy PowerShell is unsupported; the cmdlet only modifies alerts created using New-ProtectionAlert.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].ui and api; controls[1].note",
+      "type": "absence",
+      "claim": "A tenant-wide UI or API switch for the new alert frequency and recipient settings is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Communication Compliance\" \"alert frequency\" \"disable\"; \"Communication Compliance\" \"alert\" \"Microsoft Graph\" API frequency tenant switch. Read MC920304; opened policy and configuration pages and Set-ProtectionAlert. No tenant-wide feature switch was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Communication Compliance alert policies have a minimum activity threshold of 3.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "The alert policy threshold trigger settings for activities support a minimum value of 3 or higher for Communication Compliance policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "No API for the new alert settings is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Communication Compliance new alerts page alert frequency recipients policy tenant switch API PowerShell; \"Communication Compliance\" \"alert\" \"Microsoft Graph\" API frequency tenant switch. Opened policy/configuration pages and Set-ProtectionAlert; no API for the new settings appeared.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
       "where": "Governance controls; Open questions",
       "type": "absence",
-      "claim": "The sources do not establish that the new alerts page replaces the existing alert policy trigger controls.",
+      "claim": "Learn does not state that the new alerts page replaces the existing alert-trigger controls.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Communication Compliance\" \"existing policies\" \"alert frequency\"; communication compliance alert improvements new alerts page frequency recipients enable disable role license. Read MC920304 and policies; neither describes replacement of the existing trigger controls.",
+      "quote": "Searched: \"Communication Compliance\" \"new alerts\" \"frequency\"; \"Communication Compliance\" \"alert settings\" \"roles\" \"existing\". Opened communication-compliance-policies and communication-compliance-configure. Existing triggers are described without a replacement statement.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 56,
-      "where": "rationale: impact",
-      "type": "behaviour",
-      "claim": "Employees whose messages are inspected see nothing change.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"Communication Compliance\" \"alert improvements\" \"employees\" \"prerequisites\"; read MC920304, policies and configure. None guarantees that inspected employees see no change from the alert improvements.",
-      "severity": "minor",
-      "fix": "Remove \"employees whose messages are inspected see nothing change\" from the impact rationale. Retain the assessment that the people directly using the settings are administrators and alert recipients."
-    },
-    {
-      "n": 57,
-      "where": "Governance guidance: Before rollout and At rollout; Governance controls table",
+      "n": 48,
+      "where": "Governance guidance; Governance controls",
       "type": "consistency",
       "claim": "The governance checklist names controls that are not represented in the controls table.",
       "status": "contradicted",
       "source": "page",
-      "quote": "Checklist: \"Confirm who is in the Communication Compliance Admins role group\" and \"Set frequency and recipients per policy\". Table rows: existing alert policy triggers; tenant-wide switch.",
+      "quote": "Checklist: 'Confirm who is in the Communication Compliance Admins role group' and 'Set frequency and recipients per policy'. Table: existing alert policy triggers and a tenant-wide switch only.",
       "severity": "minor",
-      "fix": "The role-group membership check and the per-policy alert-frequency/recipient configuration step have no corresponding controls-table rows. The existing-trigger row explicitly says it is not the new alerts page."
+      "fix": "The Before rollout role-group membership check and At rollout per-policy frequency/recipient configuration step have no corresponding controls-table rows; neither is represented by the existing-trigger or tenant-switch row."
     }
   ],
   "precheck": {
-    "at": "2026-11-17T22:07:00.891Z",
+    "at": "2026-11-18T02:01:12.973Z",
     "summary": {
-      "links": 4,
+      "links": 5,
       "unreachable": 0,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 0,
@@ -689,6 +582,11 @@
         "url": "https://learn.microsoft.com/purview/communication-compliance-configure",
         "ok": true,
         "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -706,5 +604,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-17",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

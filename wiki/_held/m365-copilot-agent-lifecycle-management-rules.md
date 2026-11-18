@@ -119,18 +119,20 @@ changes:
     note: "Corrected after verification: registry risk signals now carry the E7 or A365 licence condition, the inventory-filter checklist step was removed, and the publish-request row notes the store page's labels."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 78 statements not yet confirmed"
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 80 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 4
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-18"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 78
+  claims: 80
   confirmed: 78
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "bee0a147c960f5d1eccabba29e85b972"
 ---
 
@@ -223,10 +225,13 @@ cost: None. Included in Copilot controls.
 impact: Medium. Users can lose agents; managers inherit ownership.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[2].ui; Governance controls table / admin-path: The cited admin guide currently documents Copilot > Settings > Data access > Agents as the user-access path. | Found: Select Agents > Settings > User access to manage your organization's agents and plugins. | Fix: Set controls[2].ui.path and the rendered row to 'Agents > Settings > User access' and ui.docs to https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access. Remove the alternate-route note. Search still returns the former guide text, but opening its URL redirects to manage-copilot-agents-integrated-apps, which does not contain that path. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access
+- [contradicted, blocker] controls[3].ui; controls[3].note; Governance controls table / admin-path: The cited admin guide currently gives Agents > All agents > Requests > agent > Publish / Reject. | Found: Select Agents > All agents > Requests. ... select Publish to store within the agent details pane ... Reject submission - After reviewing a requested agent's details, select this action | Fix: Set controls[3].ui.path and the rendered row to 'Agents > All agents > Requests > agent > Publish to store / Reject submission' and ui.docs to https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests#actions-for-requested-agents; add that source. Remove the note saying the cited guide gives Publish / Reject. Older search excerpts retain those labels, but the live guide redirects to a page without this procedure. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing / behaviour: Agent details provides a Pin for users action. | Found: Pin for users | The agent is pinned in the UI (based on channel) where the agent was deployed, so that the agent can be found more easily. | Fix: Add https://learn.microsoft.com/microsoft-agent-365/admin/agent-details to sources for the exact Pin for users action label. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-details#view-agent-details
-- [supported, minor] What's changing / admin-path: All agents has a Missing an owner inventory filter. | Found: Below Agent inventory, select Missing an owner. Consider removing agents that no longer have an owner. | Fix: Add after the inventory-filter sentence: 'The registry page instead describes an Agents without owners card that filters by Publisher type and Owner.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview#agents-without-owners. | Source: https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide
-- [supported, minor] What's changing / admin-path: All agents has an Availability > No users inventory filter. | Found: Next to Filters, select Availability > No users. Note which agents aren't available to members of your organization. | Fix: Add after the inventory-filter sentence: 'The registry page lists Status, Publisher Type, Channel, Platform and Data source filters rather than Availability.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview#agent-registry-filters. | Source: https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide
+- [supported, minor] What's changing / behaviour: Agent details provides a Pin for users action. | Found: Pin for users | The agent is pinned in the UI (based on channel) where the agent was deployed, so that the agent can be found more easily. | Fix: Add https://learn.microsoft.com/microsoft-agent-365/admin/agent-details to sources for the exact Pin for users action label. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-details
+- [supported, minor] What's changing / admin-path: All agents has a Missing an owner inventory filter. | Found: Below Agent inventory, select Missing an owner. Consider removing agents that no longer have an owner. | Fix: Learn search still supplies the quoted guide excerpt, but the live guide redirects and the registry page describes a different label. Replace 'Missing an owner' with 'Agents without owners' and cite https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview#agents-without-owners. | Source: https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide#manage-agent-lifecycle
+- [supported, minor] What's changing / admin-path: All agents has an Availability > No users inventory filter. | Found: Next to Filters, select Availability > No users. Note which agents aren't available to members of your organization. | Fix: Remove ', Availability: No users' from the inventory-filter sentence. The quoted guide search excerpt supports the older label, but the live guide redirects and https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview#agent-registry-filters lists Status, Publisher Type, Channel, Platform and Data source instead. | Source: https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide#manage-agent-lifecycle
 -->

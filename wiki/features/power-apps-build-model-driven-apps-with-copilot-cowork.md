@@ -18,7 +18,7 @@ defaultState: "unknown"
 action: "review"
 licensing:
   model: "mixed"
-  notes: "Cowork is metered in Copilot Credits through usage-based billing, and Microsoft Learn says users of Cowork plugins need Microsoft 365 Copilot licences. A rate or licence statement for this skill is not yet published."
+  notes: "Cowork requires a Microsoft 365 Copilot licence and is metered in Copilot Credits through usage-based billing. Any additional licence requirement or credit rate specific to this skill is not yet published."
 audiences: ["power-platform-admin","m365-admin","maker","finops"]
 tags: ["power-apps","model-driven-apps","cowork","dataverse","copilot-credits","spending-policies","security-roles","power-platform"]
 sources:
@@ -104,7 +104,7 @@ controls:
     note: "Microsoft Learn documents no such switch at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-18"
 roadmapModified: "2026-11-17T18:36:41"
 changes:
   - date: "2026-11-17"
@@ -115,19 +115,23 @@ changes:
     note: "Correction: removed the unsupported claim that the Cowork skill creates security roles; replaced the Dataverse capacity gap with the documented capacity rule; narrowed the approval statement."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 73 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-18"
+    note: "Correction: Cost and licensing and the licensing note now state that Cowork requires a Microsoft 365 Copilot licence and enabled usage-based billing, with any skill-specific licence or credit rate not yet published."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 76 statements confirmed"
+version: 3
 verification:
-  status: "held"
-  date: "2026-11-17"
-  version: 2
+  status: "verified"
+  date: "2026-11-18"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 73
-  confirmed: 72
+  claims: 76
+  confirmed: 76
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "38bc503a68a7caee837acf960f13089b"
+  contradicted: 0
+  attempts: 0
+  hash: "0b2d771e96bae89c161313bd5a4797c5"
 ---
 
 ## What's changing
@@ -165,7 +169,7 @@ Microsoft has not stated what happens on arrival if nobody acts. Cowork access i
 
 ## Cost and licensing
 
-Microsoft has not published a licence or price for this skill. What Learn states for Cowork generally:
+Cowork requires an active Microsoft 365 Copilot licence and enabled usage-based billing. Microsoft has not published an additional licence requirement or a credit rate specific to the model-app-builder skill. What Learn states for Cowork generally:
 
 - Cowork uses usage-based billing, and "Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption" (Manage Copilot Cowork for your organization). The meter is Copilot Credits. See [Copilot Credits](/concepts/copilot-credits/).
 - Admins must enable usage-based billing before users can access Cowork. Access is granted by a spending policy that selects Cowork, and a low credit limit does not block access (row 1 of the controls table).
@@ -227,10 +231,4 @@ The plugin availability row applies only if the skill ships as a Cowork plugin, 
 risk: Medium. The roadmap says the skill creates a model-driven app and Dataverse artifacts after the user reviews a plan; Microsoft Learn does not yet say which environment, identity or roles the Cowork version uses.
 cost: Variable. Cowork activity, including skill calls, counts toward usage-based billing in Copilot Credits; what this skill consumes is not yet published.
 impact: Medium. The roadmap lists the feature scope as admins or makers, so makers are the people who will notice it first.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.notes; Cost and licensing / licensing: The required licence for using this skill is unpublished, with Microsoft 365 Copilot licensing stated only for the unconfirmed plugin delivery case. | Found: Before you begin, make sure you have: - Microsoft Copilot access: An active Microsoft 365 Copilot license assigned to your account. | Fix: Replace the opening of Cost and licensing with: 'Cowork requires an active Microsoft 365 Copilot licence and enabled usage-based billing. Microsoft has not published an additional licence requirement or a credit rate specific to the model-app-builder skill.' Replace licensing.notes with: 'Cowork requires a Microsoft 365 Copilot licence and is metered in Copilot Credits through usage-based billing. Any additional licence requirement or credit rate specific to this skill is not yet published.' The existing cited Get started with Copilot Cowork page states the general licence prerequisite regardless of plugin delivery. | Source: https://learn.microsoft.com/copilot/cowork/get-started
 -->

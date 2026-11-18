@@ -18,7 +18,7 @@ defaultState: "user-opt-in"
 action: "review"
 licensing:
   model: "unknown"
-  notes: "Not yet published. The four control pages on Microsoft Learn name no licence or meter. Apps that use premium connectors need a standalone Power Apps or Power Automate plan licence under the licensing FAQ."
+  notes: "Not yet published. The four control pages on Microsoft Learn name no licence or meter. Apps using premium connectors need an appropriate Power Apps entitlement; the Power Apps per-app pay-as-you-go meter also supports access without a standalone Power Apps licence."
 audiences: ["power-platform-admin","maker","change-adoption"]
 tags: ["power-apps","user-experience","canvas-apps","modern-controls"]
 sources:
@@ -43,8 +43,14 @@ sources:
   - title: "Overview of modern controls and themes in canvas apps"
     url: "https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/overview-modern-controls"
     kind: "learn"
-  - title: "Power Platform licensing FAQs"
-    url: "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq"
+  - title: "Power Apps licensing FAQs"
+    url: "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq"
+    kind: "learn"
+  - title: "Pay-as-you-go meters"
+    url: "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters"
+    kind: "learn"
+  - title: "Share resources used by canvas apps"
+    url: "https://learn.microsoft.com/power-apps/maker/canvas-apps/share-app-resources"
     kind: "learn"
 videos: []
 related: []
@@ -59,26 +65,30 @@ controls:
     note: "Maker-side setting in the canvas app opened for editing. Learn does not say it governs the four controls individually."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-18"
 roadmapModified: "2026-11-17T19:05:12"
 changes:
   - date: "2026-11-17"
     note: "First briefing for roadmap item 580456: four modern canvas controls targeted for general availability in January CY2027; Learn pages still show preview."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 66 statements contradicted, 3 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected after the independent check: Persona OnChange removed from the review step, example wording narrowed to Notify, premium-connector licensing reworded, and a rationale sentence aligned to the roadmap text."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-17"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-18"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
-  confirmed: 63
-  unconfirmed: 3
+  claims: 67
+  confirmed: 67
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "b12ca9b5ad93a7f2c195dd4c577694db"
+  attempts: 0
+  hash: "9fdc4511a91ee90cef5b9cd2c336b281"
 ---
 
 ## What's changing
@@ -110,7 +120,7 @@ The point for a service owner is what makers will build with them. Persona and A
 
 **Autonomy & actions**
 
-- The controls take actions through maker-written **OnSelect** and **OnChange** formulas, such as `Navigate` or `Notify` in the Learn examples. Review those formulas in the app, not the control.
+- The controls take actions through maker-written **OnSelect** and **OnChange** formulas, such as `Notify` in the Persona and Avatar group Learn examples. Review those formulas in the app, not the control.
 
 **Change & support**
 
@@ -122,7 +132,7 @@ The point for a service owner is what makers will build with them. Persona and A
 
 Microsoft Learn lists no licence and no meter for Card gallery, Persona, Avatar group or Metrics card. Licensing for the controls themselves is not yet published, and the roadmap item names none.
 
-The licensing FAQ states that a standalone Power Apps or Power Automate plan licence is required to access premium, on-premises and custom connectors. If a maker binds a card gallery or metric to such a data source, the app's licensing follows that connector, not the control.
+Apps using premium connectors need an appropriate Power Apps entitlement; the Power Apps per-app pay-as-you-go meter also supports access without a standalone Power Apps licence. If a maker binds a card gallery or metric to such a data source, the app's licensing follows that connector, not the control.
 
 The indirect cost is maker time: rebuilding galleries as Card gallery, supplying presence and metric formulas, and testing fixed card heights and delegation on real data.
 
@@ -145,7 +155,7 @@ Microsoft has not stated a rollout mechanism or a required role for the four con
 ### At rollout
 
 - Check Persona placements in new apps and confirm the maker has replaced the default name, email and image where the signed-in user should not be shown.
-- Review **OnSelect** and **OnChange** formulas on Avatar group, Card gallery and Persona before apps are shared.
+- Review **OnSelect** formulas on Avatar group, Card gallery and Persona, and **OnChange** formulas on Avatar group and Card gallery, before apps are shared.
 - Test Card gallery against the real data source, since Learn warns that delegation is not guaranteed.
 
 ### After rollout
@@ -176,18 +186,13 @@ Because the controls draw on whatever data the maker binds, existing governance 
 - Will Microsoft document an administrator-level setting to restrict these controls, rather than the per-app maker setting? Watch the Power Platform admin center documentation.
 
 <!-- rationale
-risk: Low. The controls display values a maker supplies and read no data on their own; Persona's defaults show the signed-in user's name, email and image. No admin switch is documented.
+risk: Low. Makers supply data, presence values and metric calculations through properties and Power Fx. Persona's defaults show the signed-in user's name, email and image. No admin switch is documented.
 cost: Low. Microsoft Learn lists no licence or meter for these controls, so the known cost is maker time to build and test apps. Licensing for the controls is not yet published.
 impact: Medium. Makers building canvas apps notice first, and end users see the controls only in apps that makers choose to update.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Governance guidance: At rollout / behaviour: Persona has an OnChange formula for makers to review alongside OnSelect. | Found: Searched: Persona OnChange modern control. Opened the complete Persona reference, including Behavior and Limitations: it documents OnSelect and DisplayMode, not OnChange; search results document OnChange for Avatar group and Card gallery instead. | Fix: Replace the checklist bullet with: 'Review OnSelect formulas on Avatar group, Card gallery and Persona, and OnChange formulas on Avatar group and Card gallery, before apps are shared.' Persona's reference is https://learn.microsoft.com/power-apps/maker/canvas-apps/controls/modern-controls/modern-control-persona.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [unsupported, minor] Risk assessment: Autonomy & actions / behaviour: The Learn examples for these controls demonstrate Navigate as well as Notify. | Found: Searched: Persona Card Gallery Navigate OnSelect. Opened all four control pages: Persona and Avatar group examples use Notify, but none of the four examples uses Navigate. Search returned Navigate for other canvas-app controls. | Fix: Replace 'such as Navigate or Notify in the Learn examples' with 'such as Notify in the Persona and Avatar group Learn examples'.
-- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: The licensing FAQ says access to premium, on-premises and custom connectors requires a standalone Power Apps or Power Automate plan licence. | Found: A standalone Power Apps or Power Automate plan license is required to access all Premium, on-premises, and custom connectors. | Fix: The cited FAQ supports the quotation, but qualify its application to canvas apps. Replace the connector-licensing sentence in licensing.notes and the corresponding Cost and licensing paragraph with: 'Apps using premium connectors need an appropriate Power Apps entitlement; the Power Apps per-app pay-as-you-go meter also supports access without a standalone Power Apps licence.' Cite https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq#general and https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters#how-do-meters-work, which documents access to any type of app without a Power Apps licence. Do not present a Power Automate plan as interchangeable app licensing. | Source: https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq
-- [supported, minor] Governance controls / applicability: Existing app-sharing and data-connection permissions govern exposure of the data bound into these canvas apps. | Found: Other connections require users to create their own connections and explictly grant security privileges (such as security roles for the Dataverse, OneDrive for Business, SQL Server with Microsoft Entra authentication). | Fix: Add https://learn.microsoft.com/power-apps/maker/canvas-apps/share-app-resources to sources for the general app-sharing and connection-permission claim; that page also documents connections implicitly shared with an app. | Source: https://learn.microsoft.com/power-apps/maker/canvas-apps/share-app-resources
-- [unsupported, minor] rationale: risk / behaviour: All four controls read no data on their own. | Found: Searched: Card Gallery Metrics Card data connection; Power Apps Card gallery Persona Avatar group Metrics card admin disable rollout default existing apps role. Read four control references. They document supplied properties and specific presence limitations, not this blanket data-access guarantee. | Fix: Replace 'The controls display values a maker supplies and read no data on their own' with 'Makers supply data, presence values and metric calculations through properties and Power Fx', matching the roadmap record. Retain the following Persona-defaults sentence.
+- [supported, minor] Risk assessment: Data exposure; Governance guidance; rationale: risk / behaviour: Persona's default User() formulas refer to the user signed in to the canvas app. | Found: In Power Apps, show the full name, the email address, and the picture that's associated with the user who's signed in to a canvas app. | Fix: Add https://learn.microsoft.com/power-apps/maker/canvas-apps/show-current-user to sources for the explanation of whose details the User() defaults display. | Source: https://learn.microsoft.com/power-apps/maker/canvas-apps/show-current-user
 -->

@@ -47,26 +47,30 @@ controls:
     note: "Microsoft Learn documents no such setting at the time of writing (November 2026). MC1470424 states that no admin configuration is required."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-18"
 roadmapModified: "2026-09-23T22:59:12"
 changes:
   - date: "2026-11-17"
     note: "First briefing for this item; reports that the roadmap (50), MC1470424 (unlimited) and the Microsoft 365 limits page (10) give different favourites limits."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 46 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Correction: removed the unsupported sentence that no spend cap or budget control applies; the documented-meter gap is unchanged."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 47 statements confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-17"
-  version: 1
+  status: "verified"
+  date: "2026-11-18"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 46
-  confirmed: 45
-  unconfirmed: 1
+  claims: 47
+  confirmed: 47
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "0cdf0e973bdded04a80985cdc82730f3"
+  attempts: 0
+  hash: "0a5926eb728e1a4f25917ff847960e66"
 ---
 
 ## What's changing
@@ -108,7 +112,7 @@ The practical effects are on helpdesk and training. Screenshots and instructions
 
 Microsoft has not published a licence requirement or a meter for these navigation controls. MC1470424 says all Viva Engage users who access Viva Engage on the web, including in Teams and Outlook, are affected, and it names no licence or charge. Licensing is Not yet published.
 
-The cost the sources do show is indirect: time for helpdesk briefing, community manager communication and updates to internal training material, all recommended in MC1470424. No spend cap or budget control applies, because no meter is documented.
+The cost the sources do show is indirect: time for helpdesk briefing, community manager communication and updates to internal training material, all recommended in MC1470424.
 
 ## Scope
 
@@ -158,10 +162,4 @@ Microsoft Learn documents no tenant setting or API for these left navigation con
 risk: Low. Microsoft's notice MC1470424 describes user-initiated, additive changes that leave navigation destinations and community membership unchanged, and states that no admin configuration is required.
 cost: Low. The only cost the sources show is admin time for helpdesk briefing and training updates; Microsoft has not published a licence or meter for these controls, and the sources name none.
 impact: Medium. The controls reach Viva Engage users on the web, in Teams and in Outlook, but Microsoft says no visible change occurs unless a user chooses to use them.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Cost and licensing / cost: No spend cap or budget control applies because no meter is documented. | Found: Searched: "Viva Engage" "left navigation" "budget" "license". Read setup requirements, service-description excerpts, roadmap and MC1470424; none states that no spend cap or budget control applies. | Fix: Remove the sentence 'No spend cap or budget control applies, because no meter is documented.' The preceding text already reports the narrower, verified gap about a documented meter.
 -->

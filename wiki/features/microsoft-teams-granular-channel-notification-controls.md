@@ -52,7 +52,7 @@ controls:
     scope: "app"
     ui:
       surface: "Microsoft Intune admin center"
-      path: "Apps > Protection > Create Policy > platform > Basics > Apps > Data Protection > Org data notifications"
+      path: "Apps > Protection > Create Policy > platform > Basics > Apps > Select public apps > Microsoft Teams > Data Protection > Org data notifications"
       docs: "https://learn.microsoft.com/intune/app-management/configuration/configure-teams-mobile"
     api:
       kind: "graph"
@@ -61,26 +61,30 @@ controls:
     note: "General control for Teams on mobile; Microsoft has not confirmed how it interacts with the new channel presets. Beta Graph API; iOS/iPadOS policy shown."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-18"
 roadmapModified: "2026-10-06T22:56:31"
 changes:
   - date: "2026-11-17"
     note: "New briefing: per-channel notification presets rolling out to Teams, with the notice's cloud-by-cloud timeline and no documented tenant control."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 46 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Correction: removed the claim that policy cannot constrain the rollout, reworded the notice's schedule as expected completion dates, and gave the full Intune path including app selection."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 53 statements confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-17"
-  version: 1
+  status: "verified"
+  date: "2026-11-18"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 46
-  confirmed: 45
-  unconfirmed: 1
+  claims: 53
+  confirmed: 53
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "d394a8036adda6c261429dfadfd26688"
+  attempts: 0
+  hash: "9d1dcd02423268da067f542257271f06"
 ---
 
 ## What's changing
@@ -89,13 +93,13 @@ Teams users get three presets for each channel's notifications: **All new messag
 
 Microsoft Learn does not describe this feature yet, so what follows about its behaviour is the roadmap item's and Microsoft's notice MC1388719's description. The notice says existing notification behaviour remains unchanged unless users modify their settings, that the feature is enabled by default for all users, and that no changes are required to existing admin settings or policies. It lists Teams on desktop, web and mobile (Windows, Mac, iOS, Android).
 
-The roadmap item is at status Rolling out, with a target date of October CY2026, release phases General Availability and Targeted Release, and the Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD clouds. MC1388719 was updated on 19 October 2026 with a new timeline: targeted release begins in early October 2026 and completes in early October 2026; Worldwide begins in early November 2026 and completes in mid-November 2026; GCC and GCC High begin in mid-November 2026 and complete in late November 2026; DoD begins in late November 2026 and completes by mid-December 2026. The notice sets no act-by date.
+The roadmap item is at status Rolling out, with a target date of October CY2026, release phases General Availability and Targeted Release, and the Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD clouds. MC1388719 was updated on 19 October 2026 with a new timeline: targeted release begins in early October 2026 and is expected to complete in early October 2026; Worldwide begins in early November 2026 and is expected to complete in mid-November 2026; GCC and GCC High begin in mid-November 2026 and are expected to complete in late November 2026; DoD begins in late November 2026 and is expected to complete by mid-December 2026. The notice sets no act-by date.
 
 ## Why it matters
 
 Most of the impact is on user expectations and support. The notice says nothing changes for a user until they alter their settings, so channels keep notifying as they do today, but users will see new options and some will start muting or narrowing channels. Expect questions from people who miss a channel post after choosing **Mute** or **Mentions and replies**, and from people who cannot find where the new options sit.
 
-The notice recommends two things: inform helpdesk teams, and update any internal documentation or training that refers to Teams notifications. That communication is the whole of the preparation Microsoft describes. Microsoft Learn documents no tenant-level control over these presets at the time of writing (November 2026), so the rollout cannot be switched off or constrained by policy on the evidence available.
+The notice recommends two things: inform helpdesk teams, and update any internal documentation or training that refers to Teams notifications. That communication is the whole of the preparation Microsoft describes. Microsoft Learn documents no tenant-level control over these presets at the time of writing (November 2026).
 
 ## Risk assessment
 
@@ -115,7 +119,7 @@ The notice recommends two things: inform helpdesk teams, and update any internal
 **Change & support**
 
 - A user who chooses **Mute** for a channel or limits it to **Mentions and replies** can miss announcements posted there; no tenant-wide control over the presets is documented, so the mitigation is communication to users and helpdesk.
-- The rollout is staged by cloud, with Worldwide in November 2026 and DoD finishing in mid-December 2026 according to the notice, so users in different tenants and clouds will see the options at different times.
+- The rollout is staged by cloud, with Worldwide in November 2026 and DoD expected to finish by mid-December 2026 according to the notice, so users in different tenants and clouds will see the options at different times.
 
 ## Cost and licensing
 
@@ -155,7 +159,7 @@ Microsoft has not stated which admin role, if any, can configure the presets, an
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Tenant-level switch or policy for the channel notification presets</strong><br><small>Tenant</small><br><small class="controls__note">None documented at the time of writing (November 2026); Microsoft's notice says no changes are required to existing admin settings or policies.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>How Teams notifications are displayed or suppressed on iOS and Android</strong><br><small>App</small><br><small class="controls__note">General control for Teams on mobile; Microsoft has not confirmed how it interacts with the new channel presets. Beta Graph API; iOS/iPadOS policy shown.</small></td><td data-label="Admin UI"><strong>Microsoft Intune admin center</strong><br>Apps › Protection › Create Policy › platform › Basics › Apps › Data Protection › Org data notifications <a href="https://learn.microsoft.com/intune/app-management/configuration/configure-teams-mobile" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/deviceAppManagement/iosManagedAppProtections/{iosManagedAppProtectionId} with body {&quot;notificationRestriction&quot;: &quot;blockOrganizationalData&quot;}</code> <a href="https://learn.microsoft.com/graph/api/intune-mam-iosmanagedappprotection-update?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>How Teams notifications are displayed or suppressed on iOS and Android</strong><br><small>App</small><br><small class="controls__note">General control for Teams on mobile; Microsoft has not confirmed how it interacts with the new channel presets. Beta Graph API; iOS/iPadOS policy shown.</small></td><td data-label="Admin UI"><strong>Microsoft Intune admin center</strong><br>Apps › Protection › Create Policy › platform › Basics › Apps › Select public apps › Microsoft Teams › Data Protection › Org data notifications <a href="https://learn.microsoft.com/intune/app-management/configuration/configure-teams-mobile" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/deviceAppManagement/iosManagedAppProtections/{iosManagedAppProtectionId} with body {&quot;notificationRestriction&quot;: &quot;blockOrganizationalData&quot;}</code> <a href="https://learn.microsoft.com/graph/api/intune-mam-iosmanagedappprotection-update?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -175,13 +179,4 @@ The Intune row is an existing, general control for Teams on mobile. It governs h
 risk: Low. Microsoft's notice describes a user-side notification setting that leaves existing behaviour unchanged until a user changes it, and identifies no new data access or compliance considerations.
 cost: Low. The only cost the sources show is helpdesk and communication time; Microsoft has not published a licence or meter for this feature.
 impact: Medium. Users in Teams channels get new notification options, but the notice says existing notification behaviour stays as it is until a user changes their settings.
--->
-
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Why it matters: second paragraph / applicability: The rollout cannot be switched off or constrained by policy on the evidence available. | Found: Searched: Teams granular channel notification presets administrator role PowerShell Microsoft Graph disable. Read Teams settings reference, notification policy cmdlet and MC1388719. No source states that policy cannot constrain or disable the rollout. | Fix: Delete ', so the rollout cannot be switched off or constrained by policy on the evidence available'. Keep the preceding statement that Microsoft Learn documents no tenant-level control over these presets at the time of writing.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: rollout schedule / record: Targeted release begins and completes in early October 2026. | Found: Targeted release: Rollout will begin in early October 2026 (previously late September) and is expected to complete in early October 2026 (previously mid-August). | Fix: Preserve the notice's uncertainty throughout the schedule: replace 'completes' with 'is expected to complete', and replace 'complete' with 'are expected to complete' for GCC and GCC High. In Risk assessment replace 'DoD finishing in mid-December 2026' with 'DoD expected to finish by mid-December 2026'.
-- [supported, minor] controls[1].ui; rendered Governance controls table / admin-path: The Intune path is Apps > Protection > Create Policy > platform > Basics > Apps > Data Protection > Org data notifications. | Found: On the Apps page, click Select public apps, then find and select the Microsoft Teams apps. Click Next. | Fix: Replace the path in front matter and the rendered table with 'Apps > Protection > Create Policy > platform > Basics > Apps > Select public apps > Microsoft Teams > Data Protection > Org data notifications'. The omitted steps select the apps the policy applies to. | Source: https://learn.microsoft.com/intune/app-management/configuration/configure-teams-mobile
 -->

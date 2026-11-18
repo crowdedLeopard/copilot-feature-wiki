@@ -105,15 +105,17 @@ changes:
     note: "Corrected after verification: summary no longer says spending limits are required, the Anthropic access path and the credit-request path now follow the Learn steps, and the unmatched consumption checklist step was removed."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 85 statements confirmed"
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 89 statements not yet confirmed"
 version: 4
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "verified-with-gaps"
+  date: "2026-11-18"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 85
-  confirmed: 85
+  claims: 89
+  confirmed: 89
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -214,4 +216,11 @@ Azure Cost Management shows pay-as-you-go charges and P3 purchase or amortized c
 risk: Medium. This adds a user-driven spend path, and the terms differ by model: Claude models are excluded from the EU Data Boundary and some are covered by Anthropic's own terms. Exposure depends on who has usage-based billing enabled.
 cost: Variable. The meter is Copilot Credits, consumed per interaction under usage-based billing on top of the Microsoft 365 Copilot user subscription licence. Per-model credit rates are not yet published.
 impact: Medium. Licensed users with usage-based billing enabled and credits gain extra model choices. Microsoft says users have no access to these models unless it is enabled; how the selector appears to other users is not established.
+-->
+
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Risk assessment: Change & support / cost: Dashboard totals are expressed in credits, not currency. | Found: Everything in this view is expressed in Copilot Credits, not currency. | Fix: Replace 'expressed in credits, not currency; finance needs a translation to spend' with 'described as credits-only in the comparison article, but the monitoring article now also documents estimated cost in local currency, including negotiated rates; those estimates might not match the bill'. Cite https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending alongside the comparison article. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views
+- [supported, minor] Risk assessment: Change & support / behaviour: Dashboard totals are point-in-time views. | Found: Dashboard totals and exports might be point-in-time views and can refresh at different intervals. | Fix: Replace 'Dashboard totals are point-in-time' with 'The comparison article says dashboard totals and exports may be point-in-time views, while the monitoring article distinguishes point-in-time exported reports from dashboard views that continue retrieving live data'. Cite https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views
 -->

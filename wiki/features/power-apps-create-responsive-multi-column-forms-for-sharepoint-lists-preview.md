@@ -4,7 +4,7 @@ slug: "power-apps-create-responsive-multi-column-forms-for-sharepoint-lists-prev
 roadmapId: 580457
 topic: "power-platform"
 products: ["Power Apps"]
-summary: "New SharePoint list forms customised with Power Apps get a responsive, multi-column starting layout in eligible commercial tenants. Existing customised forms keep their layout. Makers are affected; admins need no switch."
+summary: "New SharePoint list forms customised with Power Apps get a responsive, multi-column starting layout in eligible commercial tenants. Existing customised forms keep their layout. Makers are affected; Microsoft has not stated what happens on arrival."
 status: "in-development"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -59,26 +59,30 @@ controls:
     note: "General control for SharePoint custom forms; Learn does not say it applies specifically to the new template. Tenant admin only; production environments only. Existing forms are not migrated."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-18"
 roadmapModified: "2026-11-17T19:05:12"
 changes:
   - date: "2026-11-17"
     note: "First briefing for this roadmap item: responsive, multi-column starting layout for new SharePoint list forms, in preview from November CY2026."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 52 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected after verification: summary no longer says admins need no switch, availability is stated as where the template is enabled, preview timing is described as targeted, and an unsupported checklist bullet was removed."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-17"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-18"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 49
-  unconfirmed: 1
+  claims: 58
+  confirmed: 56
+  unconfirmed: 0
   contradicted: 2
-  attempts: 1
-  hash: "27984f775ac596ed039cd2ff626f7f69"
+  attempts: 0
+  hash: "b115ccd2d4f27ab7bb27b7dc69ca6e8f"
 ---
 
 ## What's changing
@@ -93,7 +97,7 @@ The roadmap record gives status In development, a preview date of November CY202
 
 ## Why it matters
 
-For service owners the change is mostly about makers and form users, not data. Anyone who creates a new custom form will start from a different template, so existing how-to notes, screenshots and support scripts that assume a single-column mobile canvas will no longer match. Because Microsoft has not stated what happens on arrival, treat the new template as something that may appear for new forms without a tenant-level choice, and plan communication to makers accordingly.
+For service owners the change is mostly about makers and form users, not data. Where the responsive template is enabled for new form creation, makers start from a different template, so existing how-to notes, screenshots and support scripts that assume a single-column mobile canvas will no longer match. Because Microsoft has not stated what happens on arrival, treat the new template as something that may appear for new forms without a tenant-level choice, and plan communication to makers accordingly.
 
 The lasting effect is on forms that makers edit after creation. Learn warns that replacing the generated formulas with fixed values can stop fields from reflowing, and that the connection to list actions depends on keeping the generated containers and actions. Forms that are poorly adjusted are a support and quality risk, not a security one.
 
@@ -141,7 +145,6 @@ Learn's guidance on the default environment says a custom SharePoint form create
 - Confirm that makers keep the generated **SharePointIntegration** actions and responsive container formulas when they edit forms.
 
 ### After rollout
-- Review lists whose forms were customised for Read and Restricted View access, since users with those permissions inherit access to the form.
 - Watch the roadmap item and Learn page for the General Availability date and for any licensing statement.
 
 ## Governance controls
@@ -172,12 +175,11 @@ cost: Low. The only cost the sources show is maker time to test forms; Learn's p
 impact: Medium. Makers who customise list forms see a different starting template, and the people filling in those forms see columns reflow with the available width.
 -->
 
-<!-- verifier-findings (2026-11-17, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] summary: admins need no switch / default: Administrators need no switch for the new template. | Found: Searched: SharePoint responsive custom forms template licensing default enabled eligibility environment admin switch; responsive SharePoint template disable. Opened sharepoint-form-integration, customize-list-form and powerapps-powershell; no enablement requirement is stated. | Fix: Replace 'Makers are affected; admins need no switch.' with 'Makers are affected; Microsoft has not stated what happens on arrival.' This also agrees with defaultState: unknown.
-- [contradicted, blocker] Why it matters: Anyone who creates a new custom form / availability: Anyone who creates a new custom form will start from the different template. | Found: This article describes the responsive template where it's enabled for new form creation. | Fix: Replace 'Anyone who creates a new custom form will start from a different template' with 'Where the responsive template is enabled for new form creation, makers start from a different template'. | Source: https://learn.microsoft.com/power-apps/maker/canvas-apps/sharepoint-form-integration
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: previewDate; What's changing; changes[0].note / record: The preview date is November CY2026. | Found: "previewDate": "November CY2026", "status": "In development" | Fix: In changes[0].note, replace 'in preview from November CY2026' with 'with preview targeted for November CY2026'.
-- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist asks readers to review list access permissions, but that control has no controls-table row. | Found: Review lists whose forms were customised for Read and Restricted View access, since users with those permissions inherit access to the form. The only table row is 'Environment where new SharePoint custom forms are saved'. | Fix: Remove the After rollout checklist bullet beginning 'Review lists whose forms were customised for Read and Restricted View access'; it names a permissions control absent from the table. The existing risk section can retain its access explanation.
+- [supported, minor] Cost and licensing; rationale: cost / absence: No meter is documented for the new responsive layout at the time of writing. | Found: Searched: Power Apps SharePoint customized responsive forms licensing preview standard connectors meter pay as you go. Opened sharepoint-form-integration, pricing-billing-skus and pay-as-you-go-meters. No separate layout meter; general Power Apps app metering is documented. | Fix: Narrow 'no meter is documented for this feature' to 'No separate meter is documented for the responsive layout; existing Power Apps billing rules still apply.' In the cost rationale, replace 'names no licence or meter' with 'names no layout-specific licence or meter'. Cite https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters.
+- [supported, minor] Governance controls / role: Learn says a user creating a custom form in a designated environment needs the Environment Maker role. | Found: The ability for a user to create a custom form in a designated environment requires that user to have the Environment Maker role. | Fix: Replace the first sentence with: 'The PowerShell overview says creators need Environment Maker, while Manage Power Apps documents the SharePoint custom form maker role as an alternative in a nondefault environment with Dataverse.' Both sources are already cited; https://learn.microsoft.com/power-platform/admin/admin-manage-apps explicitly accepts either role. | Source: https://learn.microsoft.com/power-platform/admin/powerapps-powershell
+- [contradicted, minor] Governance controls: final sentence / consistency: The text reports an absent layout switch without representing that absence in the controls table. | Found: Text: 'Microsoft has not documented a setting that turns the new starting layout on or off.' The sole table row is 'Environment where new SharePoint custom forms are saved'. | Fix: Remove the final sentence of Governance controls about the undocumented layout switch. Keep the existing question about retaining the previous template in Open questions; do not add a control row.
+- [contradicted, minor] Governance guidance: At rollout, second bullet / consistency: The checklist tells readers to check generated actions and responsive formulas, but neither control appears in the controls table. | Found: Checklist: 'Confirm that makers keep the generated SharePointIntegration actions and responsive container formulas when they edit forms.' The table contains only the form-environment control. | Fix: Remove the second At rollout bullet beginning 'Confirm that makers keep'. The existing What's changing and Why it matters paragraphs already carry the verified preservation guidance; do not add control rows.
 -->
