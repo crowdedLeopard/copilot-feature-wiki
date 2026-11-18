@@ -2,45 +2,28 @@
   "slug": "microsoft-purview-archive-sharepoint-files-under-retention-policies",
   "roadmapId": 562345,
   "title": "Microsoft Purview: archive SharePoint files with retention policies",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-18",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
-  "verifierVerdict": "hold",
+  "attempts": 0,
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-18",
-    "reasons": [
-      "1 blocking finding (claim 73)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 79,
-    "confirmed": 76,
+    "claims": 76,
+    "confirmed": 75,
     "unconfirmed": 0,
-    "contradicted": 3,
-    "blocker": 1,
+    "contradicted": 1,
+    "blocker": 0,
     "major": 0,
-    "minor": 4
+    "minor": 1
   },
-  "summary": "Hold: the site-specific PowerShell command omits the mandatory site identity, so it is not a complete command to copy into automation. The rollout, administrator opt-in, licensing, storage billing and retention behaviour are supported; smaller corrections concern citations, the risk rationale and audit-control coverage.",
+  "summary": "The briefing passes: its rollout dates, opt-in default, licensing, storage billing and configuration instructions are supported by the supplied records and Microsoft documentation. A minor checklist/table mismatch remains for archive-storage monitoring.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: title, roadmapId, products",
-      "type": "record",
-      "claim": "This briefing concerns Microsoft Purview roadmap item 562345, Archive SharePoint files under retention policies.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"id\": 562345; \"title\": \"Microsoft Purview: Archive SharePoint files under retention policies\"; \"products\": [\"Microsoft Purview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -51,43 +34,10 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "front matter: releasePhase; What's changing",
-      "type": "record",
-      "claim": "The roadmap release phase is General Availability.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists GCC, GCC High and DoD.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap platform is Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
+      "n": 2,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
-      "claim": "The roadmap target is December CY2026.",
+      "claim": "The roadmap target is December CY2026, presented as a target rather than a commitment.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"December CY2026\"",
@@ -95,7 +45,7 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 3,
       "where": "front matter: previewDate",
       "type": "record",
       "claim": "The roadmap supplies no preview date.",
@@ -106,10 +56,54 @@
       "fix": null
     },
     {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Purview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 8,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap record was modified at 2026-10-19T23:15:15.",
+      "claim": "The roadmap record was modified on 19 October 2026 at 23:15:15.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-10-19T23:15:15\"",
@@ -118,152 +112,20 @@
     },
     {
       "n": 9,
-      "where": "front matter: defaultState; summary; controls[0].note; What's changing; rationale",
-      "type": "default",
-      "claim": "The archive action is administrator opt-in and is not enabled by default.",
+      "where": "title; summary; What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Purview retention policies can move supported inactive SharePoint files to Microsoft 365 Archive.",
       "status": "supported",
-      "source": "Message Center post MC1472601",
-      "quote": "This feature is not enabled by default and requires admin configuration.",
+      "source": "https://learn.microsoft.com/purview/retention-settings",
+      "quote": "For SharePoint, you can add an archive action to retention policies and retention labels. This action moves supported inactive files to Microsoft 365 Archive while the files remain subject to retention and legal holds.",
       "severity": null,
       "fix": null
     },
     {
       "n": 10,
-      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance; rationale: cost",
-      "type": "licensing",
-      "claim": "File-level archive requires a Microsoft 365 E5 licence.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/retention-settings",
-      "quote": "File-level archive requires a Microsoft 365 E5 license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The licensing model is mixed, combining an E5 licence requirement with pay-as-you-go Archive billing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/retention-settings",
-      "quote": "File-level archive requires a Microsoft 365 E5 license. No additional setup is required to archive files by using retention policies or labels. To use the cost-saving benefits of Microsoft 365 Archive, first set up pay-as-you-go billing for Microsoft 365 Archive.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "front matter: cost; rationale: cost",
-      "type": "cost",
-      "claim": "Variable cost is appropriate because Archive storage is metered.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-pricing",
-      "quote": "Storage consumption is charged at a per-GB monthly rate.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The policy creation path is Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/create-retention-policies",
-      "quote": "Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies.\n2. Select New retention policy to start the Create retention policy configuration, and name your new retention policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "controls[0].api; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Microsoft does not document an automation equivalent for configuring the Purview retention archive action.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: New-RetentionComplianceRule Set-RetentionComplianceRule archive parameter retention archive files PowerShell; Purview archive retention API archive action. Opened retention-settings and both RetentionComplianceRule references; no archive-action automation found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Archive billing-policy connection is reached through Microsoft 365 admin center > Billing > Pay-as-you-go > Services > Microsoft 365 Archive > Connect a policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-setup",
-      "quote": "In the Microsoft 365 admin center, go to Billing > Pay-as-you-go. ... go to the Services tab and find Microsoft 365 Archive. Select Connect a policy, turn on the Connection status toggle for the billing policy, and then select Save.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "controls[1].api; Governance controls table",
-      "type": "absence",
-      "claim": "Microsoft does not document an API or PowerShell equivalent for connecting Archive to this billing policy.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft 365 Archive connect pay-as-you-go billing policy API PowerShell enable service; Microsoft 365 Archive billing PowerShell connect. Opened archive-setup and pay-as-you-go-setup-billing-node; no equivalent found. Backup application billing is a different service.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "controls[1].note; Scope: Roles; Governance guidance",
-      "type": "role",
-      "claim": "Archive setup requires a SharePoint Administrator or Global Administrator.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-setup",
-      "quote": "You must be a SharePoint Administrator or Global Administrator to be able to access the Microsoft 365 admin center and set up Microsoft 365 Archive.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "controls[1].note; Governance controls table",
-      "type": "admin-path",
-      "claim": "The earlier Archive setup flow uses Settings > Org settings > Pay-as-you-go services.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-setup",
-      "quote": "In the Microsoft 365 admin center, select Settings > Org settings.\n2. On the Org settings page, select Pay-as-you-go services.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "controls[2].ui; Governance controls table",
-      "type": "absence",
-      "claim": "Microsoft does not document an admin UI for hiding only the manual Archive action.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft 365 Archive hide manual Archive action admin center UI AllowFileArchive. Opened archive-manage and archive-faq; the documented controls are PowerShell. The archive-setup UI turns off the broader service, not just the manual action.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "controls[2].api; Governance controls; Risk assessment; Governance guidance",
-      "type": "command",
-      "claim": "Set-SPOTenant -AllowFileArchive $false hides manual archiving tenant-wide while allowing policy archiving.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-manage",
-      "quote": "Set-SPOTenant -AllowFileArchive $false\n... This tenant setting overrides the site-level property with the same name and blocks manual file archiving across the tenant. Admin-defined policies can still archive eligible files automatically.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "controls[2].note; Governance controls table",
-      "type": "role",
-      "claim": "SharePoint Administrators and Global Administrators can control manual file archiving.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-manage",
-      "quote": "SharePoint Administrators or Global Administrators can control manual file archiving for all SharePoint sites, a subset of sites, or not at all.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "What's changing; title; summary; Governance controls",
+      "where": "What's changing; Governance controls",
       "type": "behaviour",
-      "claim": "An archive action can be added to SharePoint retention policies and retention labels.",
+      "claim": "Retention labels also support the archive action.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention-settings",
       "quote": "For SharePoint, you can add an archive action to retention policies and retention labels.",
@@ -271,10 +133,10 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What's changing; summary; Why it matters; rationale: risk",
-      "type": "behaviour",
-      "claim": "The action moves supported inactive files to Microsoft 365 Archive.",
+      "n": 11,
+      "where": "What's changing; Why it matters; Risk assessment",
+      "type": "applicability",
+      "claim": "Archived files remain subject to retention and legal holds.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention-settings",
       "quote": "This action moves supported inactive files to Microsoft 365 Archive while the files remain subject to retention and legal holds.",
@@ -282,10 +144,10 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 12,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Items that do not support the archive action remain active.",
+      "claim": "Items that do not support the archive action stay active.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention-settings",
       "quote": "Items that don't support the archive action remain active.",
@@ -293,32 +155,10 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "What's changing; Why it matters; Risk assessment",
-      "type": "applicability",
-      "claim": "Retention requirements continue to apply to archived files.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/retention-settings",
-      "quote": "This action moves supported inactive files to Microsoft 365 Archive while the files remain subject to retention and legal holds.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "What's changing; Why it matters; Risk assessment",
-      "type": "applicability",
-      "claim": "Legal holds continue to apply to archived files.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/retention-settings",
-      "quote": "This action moves supported inactive files to Microsoft 365 Archive while the files remain subject to retention and legal holds.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
+      "n": 13,
       "where": "What's changing; Risk assessment",
-      "type": "applicability",
-      "claim": "Archived files remain available to Microsoft Purview eDiscovery.",
+      "type": "behaviour",
+      "claim": "Archived files remain available to Purview eDiscovery and content search.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention-settings",
       "quote": "Archived files remain available for Microsoft Purview eDiscovery and content search but are excluded from Microsoft 365 Copilot indexing.",
@@ -326,10 +166,10 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "What's changing; Risk assessment",
+      "n": 14,
+      "where": "summary; What's changing; Why it matters; Risk assessment; Governance guidance",
       "type": "behaviour",
-      "claim": "Archived files remain available to content search.",
+      "claim": "Archived files are excluded from Microsoft 365 Copilot indexing and are not used in Copilot answers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention-settings",
       "quote": "Archived files remain available for Microsoft Purview eDiscovery and content search but are excluded from Microsoft 365 Copilot indexing.",
@@ -337,30 +177,41 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "summary; What's changing; Why it matters; Risk assessment; Governance guidance; rationale: risk",
-      "type": "behaviour",
-      "claim": "Archived files are excluded from Microsoft 365 Copilot indexing and responses.",
+      "n": 15,
+      "where": "front matter: defaultState; summary; controls[0].note; rationale: risk and impact",
+      "type": "default",
+      "claim": "The retention archive action is admin-opt-in and is not enabled by default.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-faq",
-      "quote": "Does archived content get returned in Microsoft Copilot queries?\nNo, archived content isn't used by Microsoft Copilot.",
+      "source": "Message Center post MC1472601",
+      "quote": "This feature is not enabled by default and requires admin configuration.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
+      "n": 16,
+      "where": "Why it matters; Governance guidance; rationale: risk",
+      "type": "default",
+      "claim": "Existing retention policies do not archive files unless an administrator updates them, so leaving the action unconfigured preserves current behaviour.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-settings",
+      "quote": "Existing retention policies and labels don't archive files unless an administrator updates them to include the archive action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
       "where": "What's changing; controls[0].note; Governance guidance",
       "type": "admin-path",
-      "claim": "The retention setting is labelled Archive retained items in secure and compliant Microsoft 365 Archive to reduce cost.",
+      "claim": "The retention settings contain the option Archive retained items in secure and compliant Microsoft 365 Archive to reduce cost.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention-settings",
-      "quote": "To configure the archive action, select Archive retained items in secure and compliant Microsoft 365 Archive to reduce cost in the retention settings.",
+      "quote": "To configure the archive action, select **Archive retained items in secure and compliant Microsoft 365 Archive to reduce cost** in the retention settings.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
-      "where": "What's changing; Governance guidance: At rollout",
+      "n": 18,
+      "where": "What's changing; Governance guidance",
       "type": "behaviour",
       "claim": "The archive period can start at creation or last modification.",
       "status": "supported",
@@ -370,10 +221,10 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "What's changing; Governance guidance: At rollout",
+      "n": 19,
+      "where": "What's changing; Governance guidance",
       "type": "behaviour",
-      "claim": "Administrators configure how long files remain active before archiving.",
+      "claim": "Administrators specify how long files remain active before archiving.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention-settings",
       "quote": "Then specify when the archive period starts and how long files remain active before they're archived.",
@@ -381,8 +232,8 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "controls[0].note; What's changing; Risk assessment; Governance guidance",
+      "n": 20,
+      "where": "What's changing; controls[0].note; Risk assessment; Governance guidance",
       "type": "applicability",
       "claim": "Event-based retention is not supported for file-level archive.",
       "status": "supported",
@@ -392,10 +243,10 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 21,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "A retention policy leaves an already archived file archived.",
+      "claim": "A retention policy evaluating an already archived file leaves it archived.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention-settings",
       "quote": "If a retention policy evaluates a file that's already archived, the file remains archived; the policy doesn't reactivate or otherwise change it.",
@@ -403,7 +254,7 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 22,
       "where": "What's changing; Risk assessment; Governance guidance",
       "type": "behaviour",
       "claim": "A reactivated file cannot be archived manually or by policy for 120 days.",
@@ -414,21 +265,21 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 23,
       "where": "What's changing",
       "type": "record",
-      "claim": "Notice MC1472601 was updated on 19 October 2026.",
+      "claim": "MC1472601 was updated on 19 October 2026.",
       "status": "supported",
       "source": "Message Center post MC1472601",
-      "quote": "Updated October 19, 2026: We have updated the timeline. Thank you for your patience.",
+      "quote": "Updated October 19, 2026: We have updated the timeline.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
-      "where": "What's changing; Scope: Clouds and rollout",
+      "n": 24,
+      "where": "What's changing; Scope",
       "type": "record",
-      "claim": "The notice schedules GCC, GCC High and DoD rollout to begin in early December 2026.",
+      "claim": "MC1472601 schedules the GCC, GCC High and DoD rollout to begin in early December 2026.",
       "status": "supported",
       "source": "Message Center post MC1472601",
       "quote": "General Availability (GCC, GCC High, DoD): Beginning in early December 2026 and expected to complete by early January 2027 (previously early November 2026)",
@@ -436,21 +287,21 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "What's changing; Scope: Clouds and rollout",
+      "n": 25,
+      "where": "What's changing; Scope",
       "type": "record",
       "claim": "The notice expects rollout completion by early January 2027.",
       "status": "supported",
       "source": "Message Center post MC1472601",
-      "quote": "Beginning in early December 2026 and expected to complete by early January 2027 (previously early November 2026)",
+      "quote": "expected to complete by early January 2027",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
+      "n": 26,
       "where": "What's changing",
       "type": "record",
-      "claim": "The notice identifies early November 2026 as the previous timeline.",
+      "claim": "The notice identifies early November 2026 as the previous timing.",
       "status": "supported",
       "source": "Message Center post MC1472601",
       "quote": "(previously early November 2026)",
@@ -458,7 +309,7 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 27,
       "where": "What's changing",
       "type": "record",
       "claim": "The supplied notice sets no act-by date.",
@@ -469,10 +320,10 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 28,
       "where": "What's changing",
       "type": "record",
-      "claim": "Microsoft's notice says no immediate action is required.",
+      "claim": "Microsoft says no immediate action is required.",
       "status": "supported",
       "source": "Message Center post MC1472601",
       "quote": "No immediate action is required.",
@@ -480,21 +331,32 @@
       "fix": null
     },
     {
-      "n": 42,
-      "where": "Why it matters; Governance guidance; rationale: risk, impact",
-      "type": "default",
-      "claim": "Existing retention policies do not start archiving unless an administrator updates them.",
+      "n": 29,
+      "where": "Scope; Open questions",
+      "type": "record",
+      "claim": "The notice names organisations using retention policies in SharePoint Online and OneDrive as affected.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/retention-settings",
-      "quote": "Existing retention policies and labels don't archive files unless an administrator updates them to include the archive action.",
+      "source": "Message Center post MC1472601",
+      "quote": "Organizations using retention policies in SharePoint Online and OneDrive",
       "severity": null,
       "fix": null
     },
     {
-      "n": 43,
+      "n": 30,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap description speaks of SharePoint Online rather than expressly including OneDrive.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "With the introduction of file archiving support in SharePoint Online, administrators are looking to seamlessly include archiving actions within their existing data retention policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Learn already describes the archive action without the roadmap's government-cloud rollout qualification.",
+      "claim": "Learn already describes the archive action without the roadmap's government-cloud qualification, while the roadmap remains In development.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention-settings",
       "quote": "For SharePoint, you can add an archive action to retention policies and retention labels.",
@@ -502,7 +364,7 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 32,
       "where": "Risk assessment: Security & identity",
       "type": "role",
       "claim": "Users with read access can reactivate an archived file.",
@@ -513,43 +375,21 @@
       "fix": null
     },
     {
-      "n": 45,
-      "where": "Risk assessment: Security & identity; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "File archive actions are recorded as Archived file (FileArchived) in the Microsoft 365 audit log.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/retention-settings",
-      "quote": "File archive actions are recorded in the Microsoft 365 audit log. The Archived file (FileArchived) record identifies the user or system account that archived the file.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Risk assessment: Security & identity; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "An automatic file archive audit event includes the policy ID.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-manage",
-      "quote": "When an automatic file archive policy archives a file, the event includes the policy ID, policy version, and the file's last access date.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
+      "n": 33,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "An automatic file archive audit event includes the policy version.",
+      "claim": "The audit log records Archived file events named FileArchived.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-manage",
-      "quote": "When an automatic file archive policy archives a file, the event includes the policy ID, policy version, and the file's last access date.",
+      "quote": "Search the Microsoft 365 audit log for **Archived file** (`FileArchived`) to determine whether a user or system account archived a file.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
+      "n": 34,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "An automatic file archive audit event includes the file's last access date.",
+      "claim": "An automatic file archive policy's event includes the policy ID.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-manage",
       "quote": "When an automatic file archive policy archives a file, the event includes the policy ID, policy version, and the file's last access date.",
@@ -557,21 +397,65 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 35,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "An automatic file archive policy's event includes the policy version.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-manage",
+      "quote": "the event includes the policy ID, policy version, and the file's last access date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "An automatic file archive policy's event includes the file's last access date.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-manage",
+      "quote": "the event includes the policy ID, policy version, and the file's last access date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Configured retention policies can archive eligible files automatically rather than requiring users to approve each file.",
+      "claim": "Configured policies automatically archive eligible files rather than requiring users to approve each file.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention-settings",
-      "quote": "To hide the Archive action from users while allowing retention policies and labels to archive eligible files automatically, run Set-SPOTenant -AllowFileArchive $false.",
+      "quote": "To hide the **Archive** action from users while allowing retention policies and labels to archive eligible files automatically, run",
       "severity": null,
       "fix": null
     },
     {
-      "n": 50,
-      "where": "Cost and licensing: Licence; Open questions",
+      "n": 38,
+      "where": "controls[2].note; Risk assessment; Governance controls",
+      "type": "applicability",
+      "claim": "Hiding the manual Archive action does not prevent policy archiving.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-settings",
+      "quote": "Manual file archiving doesn't need to be enabled for the archive action in retention policies or labels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance; rationale: cost",
+      "type": "licensing",
+      "claim": "The retention settings page states that file-level archive requires a Microsoft 365 E5 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-settings",
+      "quote": "File-level archive requires a [Microsoft 365 E5 license]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing; Open questions",
       "type": "behaviour",
-      "claim": "The retention page says no additional setup is required to archive files through retention policies or labels.",
+      "claim": "The retention page says no additional setup is required to archive files using retention policies or labels.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention-settings",
       "quote": "No additional setup is required to archive files by using retention policies or labels.",
@@ -579,21 +463,21 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "Cost and licensing: Licence; Risk assessment: Change & support",
+      "n": 41,
+      "where": "Cost and licensing; Risk assessment; Open questions",
       "type": "cost",
-      "claim": "The retention page directs administrators to set up Archive pay-as-you-go billing to obtain its cost-saving benefits.",
+      "claim": "The retention page says to set up Archive pay-as-you-go billing to use its cost-saving benefits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention-settings",
-      "quote": "To use the cost-saving benefits of Microsoft 365 Archive, first set up pay-as-you-go billing for Microsoft 365 Archive.",
+      "quote": "To use the cost-saving benefits of Microsoft 365 Archive, first [set up pay-as-you-go billing for Microsoft 365 Archive]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 52,
-      "where": "Cost and licensing: Meter; summary; front matter: licensing.notes; rationale: cost",
+      "n": 42,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "Archive storage is charged per GB per month.",
+      "claim": "Archive storage is metered per GB per month.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-pricing",
       "quote": "Storage consumption is charged at a per-GB monthly rate.",
@@ -601,21 +485,21 @@
       "fix": null
     },
     {
-      "n": 53,
-      "where": "Cost and licensing: Meter; Governance guidance: Before rollout",
+      "n": 43,
+      "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Archive pay-as-you-go billing links to an Azure subscription.",
+      "claim": "Archive pay-as-you-go billing uses a linked Azure subscription.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-setup",
-      "quote": "Before you can use Microsoft 365 Archive, you must first link your Azure subscription in pay-as-you-go billing.",
+      "quote": "Before you can use Microsoft 365 Archive, you must first link your Azure subscription in [pay-as-you-go billing]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 54,
-      "where": "front matter: licensing.notes; Cost and licensing; Why it matters; rationale: cost",
+      "n": 44,
+      "where": "front matter: licensing.notes; Why it matters; Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "The storage meter applies only when archived plus active SharePoint storage exceeds the tenant's licensed storage capacity.",
+      "claim": "Archive storage charges apply only when combined archived and active SharePoint storage exceeds the tenant's licensed quota, with no additional archive-storage cost below it.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-pricing",
       "quote": "This meter is charged only when archived storage plus active storage in SharePoint exceeds the included or licensed allocated SharePoint storage capacity limit of the tenant.",
@@ -623,19 +507,8 @@
       "fix": null
     },
     {
-      "n": 55,
-      "where": "Cost and licensing: Meter",
-      "type": "cost",
-      "claim": "Archive storage adds no storage charge while combined storage stays within the licensed tenant quota.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-pricing",
-      "quote": "In other words, there's no additional storage cost for archived sites or files if the tenant hasn't consumed its already licensed storage quota.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "Cost and licensing: Meter",
+      "n": 45,
+      "where": "Cost and licensing",
       "type": "cost",
       "claim": "The pricing page's billing scenarios use $0.05/GB/month.",
       "status": "supported",
@@ -645,32 +518,32 @@
       "fix": null
     },
     {
-      "n": 57,
-      "where": "Cost and licensing: Meter",
+      "n": 46,
+      "where": "Cost and licensing",
       "type": "cost",
-      "claim": "The Archive billing-policy setup offers an optional budget and alerts.",
+      "claim": "Learn documents an optional billing-policy budget and alerts.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-setup",
-      "quote": "On the Budget page, optionally set a budget and alerts, and then select Next.",
+      "quote": "On the **Budget** page, optionally set a budget and alerts, and then select **Next**.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 58,
-      "where": "Cost and licensing: Meter",
+      "n": 47,
+      "where": "Cost and licensing",
       "type": "absence",
-      "claim": "The documented Archive budget setup does not provide a hard spending cap.",
+      "claim": "The cited Archive setup guidance does not describe a hard spending cap.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft 365 pay as you go billing policy budget hard cap stop spending Archive. Opened archive-setup and pay-as-you-go-setup-billing-node; the latter says reaching 100% of budget does not stop service or billing. No Archive hard cap found.",
+      "quote": "Searched: Microsoft 365 Archive pay as you go budget hard spending cap stop service; read archive-setup and pay-as-you-go-setup-billing-node. Setup describes optional alerts; billing guidance says reaching 100% does not stop service or billing.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 59,
+      "n": 48,
       "where": "Cost and licensing: Indirect costs",
       "type": "behaviour",
-      "claim": "Archived content stays archived if Archive or its billing is turned off or unhealthy.",
+      "claim": "Content stays archived if Archive or its billing is turned off or unhealthy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-pricing",
       "quote": "If Microsoft 365 Archive is turned off, or if the associated archive billing subscription is unhealthy or turned off, archived content stays archived.",
@@ -678,7 +551,7 @@
       "fix": null
     },
     {
-      "n": 60,
+      "n": 49,
       "where": "Cost and licensing: Indirect costs",
       "type": "cost",
       "claim": "Archived content counts as active storage while Archive or billing is unavailable.",
@@ -689,8 +562,8 @@
       "fix": null
     },
     {
-      "n": 61,
-      "where": "Risk assessment: Change & support; Governance controls; Open questions",
+      "n": 50,
+      "where": "Risk assessment; Governance controls; Open questions",
       "type": "behaviour",
       "claim": "The pricing page says new archive actions are blocked until Archive is on and billing is healthy.",
       "status": "supported",
@@ -700,32 +573,32 @@
       "fix": null
     },
     {
-      "n": 62,
+      "n": 51,
       "where": "Cost and licensing: Not yet published",
       "type": "absence",
-      "claim": "The supplied roadmap record and notice give no separate price for the retention-driven action.",
+      "claim": "The supplied roadmap and notice give no separate price for the retention-driven action.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft 365 Archive setup pricing manage FAQ. Read the supplied roadmap description and MC1472601 in full and opened archive-pricing and retention-settings; the supplied record and notice state no separate retention-action price.",
+      "quote": "Searched: read the complete supplied roadmap record and MC1472601 for pricing; neither gives a separate price for the retention-driven action.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 63,
+      "n": 52,
       "where": "Cost and licensing: Not yet published",
       "type": "absence",
-      "claim": "The supplied roadmap record and notice give no separate licence requirement for the retention-driven action.",
+      "claim": "The supplied roadmap and notice give no separate licence for the retention-driven action.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Purview retention-settings archive retained items file-level archive. Read roadmap 562345 and MC1472601 in full and opened retention-settings; neither supplied record gives a separate licence requirement. The Learn E5 requirement is reported separately.",
+      "quote": "Searched: read the complete supplied roadmap record and MC1472601 for licensing; neither names a separate licence for the retention-driven action.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 64,
-      "where": "Scope: Who and what; Open questions",
+      "n": 53,
+      "where": "Scope: Who and what",
       "type": "availability",
-      "claim": "The Archive FAQ says file-level archive is currently available only on SharePoint sites.",
+      "claim": "Learn states that file-level archive is currently available only on SharePoint sites.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-faq",
       "quote": "File-level archive is currently available only on SharePoint sites.",
@@ -733,43 +606,43 @@
       "fix": null
     },
     {
-      "n": 65,
-      "where": "Scope: Who and what; Open questions",
-      "type": "record",
-      "claim": "MC1472601 identifies organisations using retention policies in SharePoint Online and OneDrive as affected.",
-      "status": "supported",
-      "source": "Message Center post MC1472601",
-      "quote": "Organizations using retention policies in SharePoint Online and OneDrive",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 66,
-      "where": "Scope: Who and what; Open questions",
+      "n": 54,
+      "where": "Scope; Open questions",
       "type": "absence",
-      "claim": "Whether this Purview retention archive action archives OneDrive files is not explicitly stated.",
+      "claim": "Whether the retention archive action archives OneDrive files is not expressly stated.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft 365 Archive GCC High DoD file retention archive OneDrive availability; Purview archive retention API archive action. Read MC1472601 and retention-settings plus archive-faq/manage. OneDrive is named as affected, not explicitly supported for this retention action.",
+      "quote": "Searched: \"OneDrive\" \"archive action\" \"retention\"; Microsoft 365 Archive file retention policies OneDrive GCC High DoD availability. Read retention-settings, archive-faq and MC1472601; no explicit OneDrive archive-action configuration was documented.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 67,
+      "n": 55,
       "where": "controls[0].note; Scope: Roles",
       "type": "role",
-      "claim": "A restricted administrator assigned administrative units cannot configure a retention policy including SharePoint sites; an unrestricted administrator is required.",
+      "claim": "Restricted administrators assigned administrative units cannot configure retention policies including SharePoint sites; these locations require an unrestricted administrator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/create-retention-policies",
-      "quote": "If your organization is using administrative units and you're a restricted administrator assigned one or more adminsitrative units, you won't be able to configure a retention policy that includes SharePoint sites or Exchange public folders.",
+      "quote": "you won't be able to configure a retention policy that includes SharePoint sites or Exchange public folders. For these locations, you must be an unrestricted administrator.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 68,
+      "n": 56,
+      "where": "controls[1].note; Scope: Roles; Governance guidance",
+      "type": "role",
+      "claim": "The Archive setup page requires SharePoint Administrator or Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-setup",
+      "quote": "You must be a [SharePoint Administrator] or [Global Administrator] to be able to access the Microsoft 365 admin center and set up Microsoft 365 Archive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
       "where": "Scope: Clouds and rollout; Open questions",
       "type": "availability",
-      "claim": "Learn states that Microsoft 365 Archive for SharePoint sites is available for GCC organisations.",
+      "claim": "Learn states Archive for SharePoint sites is available for GCC organisations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-setup",
       "quote": "Microsoft 365 Archive for SharePoint sites is also available for Government Community Cloud (GCC) organizations.",
@@ -777,32 +650,197 @@
       "fix": null
     },
     {
-      "n": 69,
+      "n": 58,
       "where": "Scope: Clouds and rollout; Open questions",
       "type": "absence",
-      "claim": "Learn does not state GCC High availability for the underlying SharePoint Archive service.",
+      "claim": "Learn does not state GCC High or DoD availability for Archive for SharePoint sites at the time of writing.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft 365 Archive GCC High DoD file retention archive OneDrive availability. Opened archive-setup, archive-faq and retention-settings; read Archive overview and GCC High deployment search excerpts. No explicit underlying Archive service availability for GCC High found.",
+      "quote": "Searched: \"Microsoft 365 Archive\" \"GCC High\" \"DoD\"; Microsoft 365 Archive file retention policies OneDrive GCC High DoD availability. Read archive-setup and archive-faq and government-planning excerpts; no explicit Archive availability statement for those clouds.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Purview portal path is Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-retention-policies",
+      "quote": "Sign in to the Microsoft Purview portal > **Solutions** > **Data Lifecycle Management** > **Policies** > **Retention policies**.\n2. Select **New retention policy**",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[0].api; Governance controls table; Open questions",
+      "type": "absence",
+      "claim": "No API or PowerShell call is documented for configuring a retention policy's archive action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview retention archive action PowerShell New-RetentionComplianceRule Set-RetentionComplianceRule archive parameter; Microsoft 365 Archive retention archive action Microsoft Graph API retention label archive settings. Read both rule references and retention-settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Archive billing-policy connection is at Microsoft 365 admin center > Billing > Pay-as-you-go > Services > Microsoft 365 Archive > Connect a policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-setup",
+      "quote": "go to **Billing > Pay-as-you-go**.\nSelect **Connect your services**, or go to the **Services** tab and find **Microsoft 365 Archive**. Select **Connect a policy**",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[1].api; Governance controls table",
+      "type": "absence",
+      "claim": "No automation equivalent is documented for connecting Archive to its pay-as-you-go billing policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Archive billing policy connection automation PowerShell API connect service billing; \"Microsoft 365 Archive\" \"PowerShell\" \"billing policy\". Read archive-setup and billing-node guidance; results for Backup and High Volume Email do not establish Archive automation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[1].note; Governance controls table",
+      "type": "admin-path",
+      "claim": "Earlier tenants can use Settings > Org settings > Pay-as-you-go services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-setup",
+      "quote": "For tenants that use **Settings > Org settings > Pay-as-you-go services** to turn on Archive, turn it off in the same location:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "absence",
+      "claim": "No admin UI setting is documented for hiding the manual Archive action while retaining policy archiving.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Archive hide manual Archive action admin center UI AllowFileArchive. Read archive-manage, archive-faq and retention-settings; they direct administrators to PowerShell rather than an admin UI setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[2].api; Governance controls table and prose",
+      "type": "command",
+      "claim": "Set-SPOTenant -AllowFileArchive $false hides the manual Archive action tenant-wide without blocking policy archiving.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-manage",
+      "quote": "Set-SPOTenant -AllowFileArchive $false\nThis tenant setting overrides the site-level property with the same name and blocks manual file archiving across the tenant. Admin-defined policies can still archive eligible files automatically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[2].note; Governance controls table",
+      "type": "role",
+      "claim": "SharePoint Administrator or Global Administrator can configure manual file archiving.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-manage",
+      "quote": "[SharePoint Administrators] or [Global Administrators] can control manual file archiving for all SharePoint sites, a subset of sites, or not at all.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance guidance: After rollout",
+      "type": "command",
+      "claim": "Get-SPOSite reports site archive-file storage through ArchivedFileDiskUsed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-manage",
+      "quote": "The '*ArchivedFileDiskUsed*' property of the ***Get-SPOSite*** cmdlet indicates the storage consumed by all archived files on that site in bytes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Set-SPOSite -Identity <site_url> -AllowFileArchive $false hides the manual Archive action on the specified site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-manage",
+      "quote": "Set-SPOSite -Identity <site_url> -AllowFileArchive $false",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Set-SPOTenant -AllowFileArchiveOnNewSitesByDefault $false disables manual archiving by default on sites created later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-manage",
+      "quote": "To control whether users can manually archive files on sites created in the future, use the ***-AllowFileArchiveOnNewSitesByDefault*** property of the ***Set-SPOTenant*** cmdlet.",
       "severity": null,
       "fix": null
     },
     {
       "n": 70,
-      "where": "Scope: Clouds and rollout; Open questions",
-      "type": "absence",
-      "claim": "Learn does not state DoD availability for the underlying SharePoint Archive service.",
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "For a retention policy or label to archive files, its retention settings must include the archive action rather than merely enabling manual archiving.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft 365 Archive GCC High DoD file retention archive OneDrive availability. Opened archive-setup, archive-faq and retention-settings; read Archive overview and GCC High/DoD search excerpts. No explicit underlying Archive service availability for DoD found.",
+      "source": "https://learn.microsoft.com/purview/retention-settings",
+      "quote": "Existing retention policies and labels don't archive files unless an administrator updates them to include the archive action.",
       "severity": null,
       "fix": null
     },
     {
       "n": 71,
-      "where": "Governance guidance: Before rollout; rationale: risk; Risk assessment: Change & support",
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The New-RetentionComplianceRule reference lists no archive parameter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview retention archive action PowerShell New-RetentionComplianceRule Set-RetentionComplianceRule archive parameter. Read the complete New-RetentionComplianceRule reference; no archive parameter and RetentionComplianceAction values are Delete, Keep and KeepAndDelete.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The Set-RetentionComplianceRule reference lists no archive parameter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview retention archive action PowerShell New-RetentionComplianceRule Set-RetentionComplianceRule archive parameter. Read the complete Set-RetentionComplianceRule reference; no archive parameter and RetentionComplianceAction values are Delete, Keep and KeepAndDelete.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The mixed licensing model reflects the documented E5 requirement plus Archive pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-settings",
+      "quote": "File-level archive requires a [Microsoft 365 E5 license]. No additional setup is required to archive files by using retention policies or labels. To use the cost-saving benefits of Microsoft 365 Archive, first [set up pay-as-you-go billing for Microsoft 365 Archive].",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The variable cost rating corresponds to a metered Archive storage charge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-pricing",
+      "quote": "Storage consumption is charged at a per-GB monthly rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "Archived files require reactivation before users can read them.",
+      "claim": "Archived files need reactivation before they can be read.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/archive/archive-manage",
       "quote": "After a file is archived, it requires reactivation before it can be read.",
@@ -810,98 +848,21 @@
       "fix": null
     },
     {
-      "n": 72,
-      "where": "Governance guidance: After rollout",
-      "type": "command",
-      "claim": "Get-SPOSite reports site-level archived file storage through ArchivedFileDiskUsed.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-manage",
-      "quote": "The 'ArchivedFileDiskUsed' property of the Get-SPOSite cmdlet indicates the storage consumed by all archived files on that site in bytes.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 73,
-      "where": "Governance controls: second paragraph",
-      "type": "command",
-      "claim": "Set-SPOSite -AllowFileArchive $false is the printed command to hide manual archiving on a single site.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-sposite",
-      "quote": "Set-SPOSite\n    [-Identity] <SpoSitePipeBind>\n... -Identity ... Mandatory: | True",
-      "severity": "blocker",
-      "fix": "Replace `Set-SPOSite -AllowFileArchive $false` with `Set-SPOSite -Identity <site_url> -AllowFileArchive $false`, as printed at https://learn.microsoft.com/microsoft-365/archive/archive-manage. The site identity is mandatory and is not supplied by the existing call."
-    },
-    {
-      "n": 74,
-      "where": "Governance controls: second paragraph",
-      "type": "command",
-      "claim": "Set-SPOTenant -AllowFileArchiveOnNewSitesByDefault $false controls manual archive availability on subsequently created sites.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/archive/archive-manage",
-      "quote": "To control whether users can manually archive files on sites created in the future, use the -AllowFileArchiveOnNewSitesByDefault property of the Set-SPOTenant cmdlet. ... Set-SPOTenant -AllowFileArchiveOnNewSitesByDefault $false",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 75,
-      "where": "Governance controls: first paragraph",
-      "type": "absence",
-      "claim": "The New-RetentionComplianceRule reference lists no archive parameter.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: New-RetentionComplianceRule Set-RetentionComplianceRule archive parameter retention archive files PowerShell. Opened the full New-RetentionComplianceRule reference; read its syntax and parameters. RetentionComplianceAction lists Delete, Keep and KeepAndDelete, not Archive.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule to the page's sources to cite the reference on which this absence statement depends."
-    },
-    {
       "n": 76,
-      "where": "Governance controls: first paragraph",
-      "type": "absence",
-      "claim": "The Set-RetentionComplianceRule reference lists no archive parameter.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: New-RetentionComplianceRule Set-RetentionComplianceRule archive parameter retention archive files PowerShell. Opened the full Set-RetentionComplianceRule reference; read its syntax and parameters. RetentionComplianceAction lists Delete, Keep and KeepAndDelete, not Archive.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/powershell/module/exchangepowershell/set-retentioncompliancerule to the page's sources to cite the reference on which this absence statement depends."
-    },
-    {
-      "n": 77,
-      "where": "Governance controls: first paragraph",
-      "type": "applicability",
-      "claim": "Within a retention policy or label, adding the retention archive action is what enables that policy or label to archive files.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/retention-settings",
-      "quote": "Existing retention policies and labels don't archive files unless an administrator updates them to include the archive action. ... Manual file archiving doesn't need to be enabled for the archive action in retention policies or labels.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 78,
-      "where": "front matter: risk; rationale: risk",
-      "type": "consistency",
-      "claim": "The medium risk rating is based on the consequences of enabling this optional control rather than exposure if it is left at its default.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "risk: \"medium\"; rationale: \"Nothing archives until an admin adds the archive action, but a policy then moves files out of active storage and out of Microsoft 365 Copilot indexing\". The scale assigns low when nothing happens until admin opt-in.",
-      "severity": "minor",
-      "fix": "Set risk to `low` and replace its rationale with: `Low. The archive action is not enabled by default, and existing retention policies do not archive files unless an administrator updates them. Leaving the new control unconfigured preserves current behaviour.`"
-    },
-    {
-      "n": 79,
       "where": "Governance guidance: After rollout; Governance controls table",
       "type": "consistency",
-      "claim": "The checklist tells administrators to search FileArchived audit records, but the controls table has no audit-monitoring row.",
+      "claim": "The archive-storage monitoring check in the governance checklist has a corresponding controls-table row.",
       "status": "contradicted",
       "source": "page",
-      "quote": "After rollout: \"Search the audit log for Archived file (FileArchived) to see which policy archived what.\" The three table rows cover retention configuration, billing connection and the manual Archive action, not audit monitoring.",
+      "quote": "Checklist: \"Review archive storage against the tenant quota and the pay-as-you-go bill; Get-SPOSite reports ArchivedFileDiskUsed per site.\" Table rows cover retention archiving, billing connection and the manual Archive action, not storage monitoring.",
       "severity": "minor",
-      "fix": "Remove the checklist bullet `Search the audit log for **Archived file** (`FileArchived`) to see which policy archived what.`; its monitoring control has no corresponding row. Keep the supported audit-event description in Risk assessment."
+      "fix": "Remove the After rollout checklist bullet beginning 'Review archive storage against the tenant quota' because its monitoring control has no corresponding table row."
     }
   ],
   "precheck": {
-    "at": "2026-11-18T02:01:10.571Z",
+    "at": "2026-11-18T02:52:56.958Z",
     "summary": {
-      "links": 8,
+      "links": 10,
       "unreachable": 0,
       "uiPaths": 2,
       "uiPathsWithMissingWords": 0,
@@ -949,6 +910,16 @@
         "url": "https://learn.microsoft.com/microsoft-365/archive/archive-faq",
         "ok": true,
         "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-retentioncompliancerule",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -994,5 +965,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

@@ -11,7 +11,7 @@ clouds: ["GCC","GCC High","DoD"]
 platforms: ["Web"]
 targetDate: "December CY2026"
 previewDate: null
-risk: "medium"
+risk: "low"
 cost: "variable"
 impact: "low"
 defaultState: "admin-opt-in"
@@ -45,6 +45,12 @@ sources:
     kind: "learn"
   - title: "Frequently asked questions about Microsoft 365 Archive"
     url: "https://learn.microsoft.com/microsoft-365/archive/archive-faq"
+    kind: "learn"
+  - title: "New-RetentionComplianceRule"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule"
+    kind: "learn"
+  - title: "Set-RetentionComplianceRule"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-retentioncompliancerule"
     kind: "learn"
 videos: []
 related: ["purview-retention-last-accessed-sharepoint-onedrive","m365-paygo-consumption-based-meter-for-your-extra-sharepoint-storage-needs","microsoft-purview-data-lifecycle-management-hard-delete-capability-for-onedrive-and-sharep"]
@@ -82,19 +88,23 @@ changes:
     note: "New briefing: retention-policy archive action for SharePoint files, with Microsoft 365 Archive billing and Copilot indexing effects."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 79 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Correction: single-site command now includes the mandatory -Identity parameter; risk rated low; audit-log checklist bullet removed; cmdlet reference sources added."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 76 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 79
-  confirmed: 76
+  claims: 76
+  confirmed: 75
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "489c985065ce101c3bae92a8a96d7e08"
+  contradicted: 1
+  attempts: 0
+  hash: "d05823bc98ae65aa481b6c5506cc069a"
 ---
 
 ## What's changing
@@ -161,7 +171,6 @@ Because the archive action is not on by default and existing policies do not arc
 - Avoid event-based retention for content you intend to archive, as Learn says it is not supported.
 
 ### After rollout
-- Search the audit log for **Archived file** (`FileArchived`) to see which policy archived what.
 - Review archive storage against the tenant quota and the pay-as-you-go bill; `Get-SPOSite` reports `ArchivedFileDiskUsed` per site.
 - Check reactivation requests and the 120-day wait, and adjust the archive period if users keep reactivating.
 
@@ -180,7 +189,7 @@ Because the archive action is not on by default and existing policies do not arc
 
 The retention archive action is the only control that makes a policy archive files, and it is set in the retention settings of each policy or label. Microsoft Learn's `New-RetentionComplianceRule` and `Set-RetentionComplianceRule` references list no archive parameter at the time of writing (November 2026).
 
-The manual **Archive** action and policy archiving are separate controls: `Set-SPOTenant -AllowFileArchive $false` hides the manual action across the tenant, and admin-defined policies can still archive eligible files. Learn also documents `Set-SPOSite -AllowFileArchive $false` to hide the action on a single site, and `Set-SPOTenant -AllowFileArchiveOnNewSitesByDefault $false` for sites created later. Turning off Archive or its billing blocks new archive actions.
+The manual **Archive** action and policy archiving are separate controls: `Set-SPOTenant -AllowFileArchive $false` hides the manual action across the tenant, and admin-defined policies can still archive eligible files. Learn also documents `Set-SPOSite -Identity <site_url> -AllowFileArchive $false` to hide the action on a single site, and `Set-SPOTenant -AllowFileArchiveOnNewSitesByDefault $false` for sites created later. Turning off Archive or its billing blocks new archive actions.
 
 ## Open questions
 
@@ -190,18 +199,13 @@ The manual **Archive** action and policy archiving are separate controls: `Set-S
 - Will PowerShell or another API support creating a retention policy with the archive action? None is documented at the time of writing (November 2026).
 
 <!-- rationale
-risk: Medium. Nothing archives until an admin adds the archive action, but a policy then moves files out of active storage and out of Microsoft 365 Copilot indexing, and users must reactivate files to read them.
+risk: Low. The archive action is not enabled by default, and existing retention policies do not archive files unless an administrator updates them. Leaving the new control unconfigured preserves current behaviour.
 cost: Variable. File-level archive requires a Microsoft 365 E5 licence, and archive storage is a per-GB pay-as-you-go meter that applies once archived plus active storage exceeds the tenant's storage quota.
 impact: Low. Compliance and SharePoint admins configure it, and users notice only where a policy archives their files. Microsoft states it is not enabled by default.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: second paragraph / command: Set-SPOSite -AllowFileArchive $false is the printed command to hide manual archiving on a single site. | Found: Set-SPOSite [-Identity] <SpoSitePipeBind> ... -Identity ... Mandatory: | True | Fix: Replace `Set-SPOSite -AllowFileArchive $false` with `Set-SPOSite -Identity <site_url> -AllowFileArchive $false`, as printed at https://learn.microsoft.com/microsoft-365/archive/archive-manage. The site identity is mandatory and is not supplied by the existing call. | Source: https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-sposite
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls: first paragraph / absence: The New-RetentionComplianceRule reference lists no archive parameter. | Found: Searched: New-RetentionComplianceRule Set-RetentionComplianceRule archive parameter retention archive files PowerShell. Opened the full New-RetentionComplianceRule reference; read its syntax and parameters. RetentionComplianceAction lists Delete, Keep and KeepAndDelete, not Archive. | Fix: Add https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule to the page's sources to cite the reference on which this absence statement depends.
-- [supported, minor] Governance controls: first paragraph / absence: The Set-RetentionComplianceRule reference lists no archive parameter. | Found: Searched: New-RetentionComplianceRule Set-RetentionComplianceRule archive parameter retention archive files PowerShell. Opened the full Set-RetentionComplianceRule reference; read its syntax and parameters. RetentionComplianceAction lists Delete, Keep and KeepAndDelete, not Archive. | Fix: Add https://learn.microsoft.com/powershell/module/exchangepowershell/set-retentioncompliancerule to the page's sources to cite the reference on which this absence statement depends.
-- [contradicted, minor] front matter: risk; rationale: risk / consistency: The medium risk rating is based on the consequences of enabling this optional control rather than exposure if it is left at its default. | Found: risk: "medium"; rationale: "Nothing archives until an admin adds the archive action, but a policy then moves files out of active storage and out of Microsoft 365 Copilot indexing". The scale assigns low when nothing happens until admin opt-in. | Fix: Set risk to `low` and replace its rationale with: `Low. The archive action is not enabled by default, and existing retention policies do not archive files unless an administrator updates them. Leaving the new control unconfigured preserves current behaviour.`
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist tells administrators to search FileArchived audit records, but the controls table has no audit-monitoring row. | Found: After rollout: "Search the audit log for Archived file (FileArchived) to see which policy archived what." The three table rows cover retention configuration, billing connection and the manual Archive action, not audit monitoring. | Fix: Remove the checklist bullet `Search the audit log for **Archived file** (`FileArchived`) to see which policy archived what.`; its monitoring control has no corresponding row. Keep the supported audit-event description in Risk assessment.
+- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The archive-storage monitoring check in the governance checklist has a corresponding controls-table row. | Found: Checklist: "Review archive storage against the tenant quota and the pay-as-you-go bill; Get-SPOSite reports ArchivedFileDiskUsed per site." Table rows cover retention archiving, billing connection and the manual Archive action, not storage monitoring. | Fix: Remove the After rollout checklist bullet beginning 'Review archive storage against the tenant quota' because its monitoring control has no corresponding table row.
 -->

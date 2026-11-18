@@ -12,7 +12,7 @@ platforms: ["Developer"]
 targetDate: "November CY2026"
 previewDate: "October CY2026"
 risk: "medium"
-cost: "variable"
+cost: "low"
 impact: "low"
 defaultState: "unknown"
 action: "review"
@@ -101,19 +101,23 @@ changes:
     note: "First briefing for this item: the roadmap description only, with the documented Work IQ, Tools registry and Copilot Credits controls shown as unconfirmed for it."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 61 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected the roadmap preview and release wording in Change & support, and lowered the cost rating to low because REST endpoint tool metering is not yet published."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 66 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 59
+  claims: 66
+  confirmed: 66
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "f3a2e02591fd6127b1af6ae044aa9448"
+  contradicted: 0
+  attempts: 0
+  hash: "479b2127f57202aac925c5d789098563"
 ---
 
 ## What's changing
@@ -144,7 +148,7 @@ Microsoft has not stated what happens on arrival, so base any plan on "no source
 - The Tools registry lets an admin turn individual tools off for supported MCP servers. Treat that as the model to look for, not as a confirmed control for this feature.
 
 **Change & support**
-- The roadmap lists both Preview and General Availability without saying which applies when. Expect preview behaviour, names and limits to change before release.
+- The roadmap targets preview for October CY2026 and release for November CY2026, while still listing the status as In development. Expect preview behaviour, names and limits to change before release.
 - Learn says every Work IQ tool invocation is logged and evaluated. Confirm that REST endpoint tool calls appear in the same logging before relying on it for audit.
 
 ## Cost and licensing
@@ -210,15 +214,13 @@ The Cost Management API is under /beta, where Learn says use in production appli
 
 <!-- rationale
 risk: Medium. Agents would gain a new kind of tool, and Microsoft Learn does not yet say which Work IQ policies or Tools registry controls apply to it; the documented controls cover Work IQ MCP and registered MCP servers.
-cost: Variable. Work IQ API usage is metered in Copilot Credits; Microsoft has not published whether REST endpoint tool calls are metered separately or at what rate.
+cost: Low. The only established cost of this roadmap change is administrative review time; licensing and metering for REST endpoint tools are not yet published.
 impact: Low. The roadmap lists the Developer platform, so developers and the admins who govern agent tools notice first; Microsoft has not said whether end users see any change.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Change & support / record: The roadmap lists Preview and General Availability without saying which applies when. | Found: "previewDate": "October CY2026", "targetDate": "November CY2026", "releasePhase": ["General Availability", "Preview"] | Fix: Replace 'The roadmap lists both Preview and General Availability without saying which applies when.' with 'The roadmap targets preview for October CY2026 and release for November CY2026, while still listing the status as In development.'
-- [contradicted, blocker] front matter: cost; rationale: cost; controls[3].note / consistency: The feature is assigned the factual cost rating variable even though the page leaves its metering unconfirmed and establishes only the surrounding product's meter. | Found: cost: "variable"; "whether REST endpoint tool calls are metered is not published." The assessment scale defines variable as metered and requires rating the change, not the surrounding product. | Fix: Set cost to 'low' and replace the cost rationale with 'Low. The only established cost of this roadmap change is administrative review time; licensing and metering for REST endpoint tools are not yet published.' Retain the separately qualified Work IQ API billing background.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] summary; What's changing / absence: Learn does not yet describe this roadmap capability specifically. | Found: Searched: "Work IQ" "REST endpoint tools"; opened Work IQ overview, API overview and MCP management reference. Found remote API tool creation, but no explicit identification with this roadmap item. | Fix: Narrow 'Learn does not describe it yet' to 'Learn does not explicitly identify this roadmap item. Its Work IQ overview search excerpt describes custom MCP servers supporting arbitrary REST endpoints, while the fetched overview describes 10 generic tools; the relationship to this item is not stated.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq#skills-and-tools alongside the existing MCP management reference.
+- [supported, minor] What's changing / behaviour: Learn describes Work IQ MCP as having 10 generic tools. | Found: collapses hundreds of operations into just 10 generic tools | Fix: Remove 'with 10 generic tools'. The cited overview says 10, but https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview lists 12 tool names across its Entity, Copilot and Schema rows, including fetch_blob and the preview retrieve tool. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/
+- [supported, minor] Why it matters; Risk assessment: Autonomy & actions / behaviour: REST endpoints can expose operations that create, update or delete data. | Found: users can ask a declarative agent to query an MCP server or REST API for information and, when supported, create, update, and delete data and objects through natural language prompts. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-plugins to sources for the general statement that REST endpoints can expose write operations; do not describe that plugin mechanism as the implementation of this roadmap capability. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-plugins
 -->

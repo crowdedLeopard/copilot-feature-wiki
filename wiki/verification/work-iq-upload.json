@@ -1,0 +1,687 @@
+{
+  "slug": "work-iq-upload",
+  "roadmapId": 570850,
+  "title": "Work IQ: agents upload files and content to Microsoft 365",
+  "status": "held",
+  "date": "2026-11-18",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-18",
+    "reasons": [
+      "2 blocking findings (claims 21, 22)"
+    ]
+  },
+  "counts": {
+    "claims": 54,
+    "confirmed": 50,
+    "unconfirmed": 1,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 1,
+    "minor": 3
+  },
+  "summary": "Hold: the briefing treats Work IQ's documented user-permission boundary as unconfirmed and overstates which permission applications need for writes. The roadmap facts and admin path are accurate, but the overwrite claim lacks evidence and Microsoft's differing descriptions of write defaults should be acknowledged.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; rationale: risk",
+      "type": "record",
+      "claim": "Microsoft plans to enable agents to upload files and content to supported Microsoft 365 destinations.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enable agents to upload files and content to supported Microsoft 365 destinations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: products; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the product as Work IQ.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Work IQ\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: platforms; What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "Web is the only platform listed in the record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed, without an assertion that other clouds are unavailable.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target date is October CY2026, presented as a target rather than a commitment.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap preview date is October CY2026, presented as a target.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phases listed are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Risk assessment: Data exposure; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap description does not name individual supported destinations.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enable agents to upload files and content to supported Microsoft 365 destinations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap record has no more-info link.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"moreInfoLink\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: defaultState; What's changing; Why it matters; Scope; Open questions",
+      "type": "default",
+      "claim": "The upload feature's default state is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"Upload\" rollout \"default\" enable; read roadmap record, Work IQ overview, SharePoint Tools, MCP policy governance and Work IQ in Copilot Studio. General write defaults are documented, but no source identifies the upload item's arrival state.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing; rationale: risk; changes",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe this named roadmap upload feature or list its destinations.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ upload 570850 default destinations mutation permissions billing; \"Work IQ\" \"upload\"; \"Work IQ\" \"upload\" \"supported destinations\". Read Work IQ overview, API overview, SharePoint Tools and Copilot Studio Work IQ; none identifies this roadmap feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "SharePoint Tools for Work IQ are documented as public preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/sharepoint-iq",
+      "quote": "The SharePoint Tools are available in public preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "The SharePoint Tools Prepare file transfers scenario obtains download instructions and upload-session details, including resumable sessions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/sharepoint-iq",
+      "quote": "Obtain download instructions and upload-session details, including resumable upload sessions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "The documented file-transfer preparation does not transfer file bytes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/sharepoint-iq",
+      "quote": "File-transfer preparation doesn't transfer the file bytes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether the roadmap item builds on the SharePoint Tools transfer-preparation scenario.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"upload\"; Work IQ upload 570850 default destinations mutation permissions billing. Read SharePoint Tools, Work IQ overview and API overview; none links Prepare file transfers to roadmap item 570850.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Why it matters; Open questions",
+      "type": "default",
+      "claim": "The Work IQ MCP policy documentation says mutation operations are blocked by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "By default, mutation operations aren't allowed for safety. This restriction includes create, update, delete, and action requests that modify data, such as sending email.",
+      "severity": "minor",
+      "fix": "After this statement add: 'The Work IQ in Copilot Studio page separately says write operations are on by default, subject to organisational permissions and policies; Microsoft does not reconcile these descriptions.' Cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq."
+    },
+    {
+      "n": 18,
+      "where": "controls[0].note; Why it matters; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not explicitly identified this upload roadmap capability as covered by the Work IQ MCP policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ upload 570850 default destinations mutation permissions billing; \"Work IQ\" \"upload\". Read MCP policy governance, SharePoint Tools, Work IQ overview and API overview; none specifies the upload feature's protocol or policy coverage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Work IQ requests run in the context of a signed-in user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Actions are user scoped, meaning every request runs in the context of a specific user and only accesses what that user is allowed to see or do.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "SharePoint Tools OAuth scopes do not grant access beyond the signed-in user's existing SharePoint permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/sharepoint-iq",
+      "quote": "OAuth scopes don't grant access beyond the signed-in user's existing SharePoint permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Whether the signed-in-user permission boundary applies to Work IQ upload is not stated.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Actions are user scoped, meaning every request runs in the context of a specific user and only accesses what that user is allowed to see or do.",
+      "severity": "blocker",
+      "fix": "Replace 'Whether the same limit applies to this upload capability is not stated.' with 'The Work IQ overview states that every request runs in a user's context and only accesses what that user is allowed to see or do.' The platform-wide boundary already covers Work IQ requests; retain the separate uncertainty about supported destinations."
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Apps need WorkIQ.Act to change Microsoft 365 data through Work IQ.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/permissions",
+      "quote": "Allows the app to ask Work IQ agents questions and receive responses on behalf of the signed-in user. This includes read and write access to Microsoft 365 resources that are accessible to Work IQ agents and scoped to the signed-in user.",
+      "severity": "blocker",
+      "fix": "Replace 'Apps need the `WorkIQ.Act` scope to change Microsoft 365 data through Work IQ' with 'For SharePoint Tools, Microsoft documents `WorkIQ.Act` for actions that change SharePoint content or configuration'. Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/sharepoint-iq. Keep the existing statement that WorkIQ.Act requires admin consent; do not imply it is the only Work IQ permission permitting writes."
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Security & identity; Governance guidance",
+      "type": "behaviour",
+      "claim": "WorkIQ.Act permits an application to read and change accessible Microsoft 365 data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/permissions",
+      "quote": "Allows the app to use WorkIQ to read and make changes to Microsoft 365 data that the signed-in user can access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "role",
+      "claim": "WorkIQ.Act requires administrator consent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/permissions",
+      "quote": "### WorkIQ.Act\n| AdminConsentRequired | - | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "WorkIQ.Read requires administrator consent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/permissions",
+      "quote": "### WorkIQ.Read\n| AdminConsentRequired | - | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Microsoft has not specified whether uploaded files are assigned sensitivity labels or other protections by this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"upload\" \"default\" destinations approval sensitivity labels; \"Work IQ\" upload sensitivity labels applied storage file size limit. Read Work IQ API overview: it says existing labels and policies are enforced, not that uploads are assigned labels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The planned upload capability can replace files without a person opening them.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"upload\" \"replace\". Read the roadmap record and SharePoint Tools transfer scenario; neither documents overwrite semantics or the claimed interaction model for this item.",
+      "severity": "major",
+      "fix": "Replace 'An agent that can upload can create or replace files without a person opening them.' with 'The roadmap says agents will upload files and content; it does not describe overwrite behaviour.'"
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Microsoft has not specified whether this upload feature requires user approval.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"upload\" \"default\" destinations approval sensitivity labels; \"Work IQ\" \"human-in-the-loop\" upload. Read roadmap, SharePoint Tools and API overview; Foundry search text describes configurable MCP approvals, not this upload item's requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Work IQ: Human in the loop is a separate roadmap entry.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 570672, \"title\": \"Work IQ: Human in the loop\", \"description\": \"Allow agents and agent flows to pause for human input or approval before continuing.\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed that the separate human-in-the-loop roadmap capability applies to upload.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"human-in-the-loop\" upload. Read both upload and Human in the loop roadmap records, Work IQ API overview and SharePoint Tools; none connects the two roadmap capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Tenant policy can deny an MCP request even when authentication and OAuth permissions are valid.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "an MCP request can fail because of tenant policy even when the user is authenticated and the app has the required OAuth permission.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The paths and parameters exposed for SharePoint Tools evolve over time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/sharepoint-iq",
+      "quote": "The exact paths and parameters that Work IQ exposes for SharePoint Tools evolve over time, but existing scenarios remain supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Work IQ API access is independent of Microsoft 365 Copilot licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Work IQ API access is independent of Microsoft 365 Copilot licensing and available through usage-based billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.model; front matter: cost; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing model is consumption and the cost rating is variable because Work IQ API access uses usage-based billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Work IQ API access is independent of Microsoft 365 Copilot licensing and available through usage-based billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Work IQ is available in Microsoft 365 Copilot experiences and agents for Microsoft 365 Copilot licensed users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "For Microsoft 365 Copilot licensed users, Work IQ is available in all Microsoft 365 Copilot experiences and agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Custom and third-party agents are subject to usage-based billing even for Copilot licensed users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "It is subject to usage-based billing for custom and third-party agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Users without a Microsoft 365 Copilot licence are billed based on usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Users without a Microsoft 365 Copilot license are billed based on usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Work IQ API usage consumes Copilot Credits shared with other eligible services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Work IQ API usage consumes Copilot Credits shared with other eligible services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing; Scope; Governance guidance: Before rollout",
+      "type": "licensing",
+      "claim": "The Work IQ enablement page lists a Copilot Studio usage-based billing plan with an Azure subscription and resource group as a prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+      "quote": "A usage-based billing plan set up in Copilot Studio with an Azure subscription and resource group assigned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope: Prerequisites documented for Work IQ",
+      "type": "role",
+      "claim": "A Global Administrator performs a one-time Work IQ setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+      "quote": "A user with Global Administrator role for the one-time Work IQ setup",
+      "severity": "minor",
+      "fix": "Replace 'a Global Administrator performs a one-time setup' with 'the enablement guide lists a Global Administrator for manual one-time setup; the MCP overview also says the service principal is created automatically on first use'. Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview as well as the existing enablement page."
+    },
+    {
+      "n": 41,
+      "where": "Scope: Prerequisites documented for Work IQ",
+      "type": "applicability",
+      "claim": "Applications need WorkIQ.Read or WorkIQ.Act for SharePoint Tools paths to be discoverable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/sharepoint-iq",
+      "quote": "Your application needs `WorkIQ.Read` or `WorkIQ.Act` for these paths to be discoverable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "An upload-specific credit rate has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" upload pricing credits file size storage limits licensing; \"Work IQ\" \"upload\" \"credits\" \"rate\". Read Work IQ overview and API overview and licensing search results; none states an upload-specific credit rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "Upload-specific limits on file size and volume have not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" upload pricing credits file size storage limits licensing; \"Work IQ\" upload sensitivity labels applied storage file size limit. Read SharePoint Tools, Work IQ overview and API overview; none specifies limits for this upload item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "A destination storage charge for the upload feature has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" upload pricing credits file size storage limits licensing; \"Work IQ\" upload sensitivity labels applied storage file size limit. Read Work IQ overview, API overview and SharePoint Tools; no destination or storage tariff is specified for this item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft Learn names no licence specific to this upload roadmap item.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" upload pricing credits file size storage limits licensing. Read Work IQ overview, API overview, enablement prerequisites and licensing search results; these describe general Work IQ billing, not an upload-specific licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope: Rollout",
+      "type": "absence",
+      "claim": "Microsoft has not stated a rollout mechanism for the upload feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"Upload\" rollout \"default\" enable. Read roadmap, Work IQ overview, SharePoint Tools and Copilot Studio Work IQ; none identifies an upload-specific rollout mechanism.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The tenant Work IQ MCP policy UI is Microsoft 365 admin center > Agents > Tools > Work IQ MCP > Policy, when the Policy tab is available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "In the left navigation, select **Agents** > **Tools**.\nIn the tools registry, select **Work IQ MCP**.\nOn the Work IQ MCP details pane, select the **Policy** tab when it's available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[0].api; Governance controls table and prose",
+      "type": "absence",
+      "claim": "No API call equivalent to the tenant Work IQ MCP policy toggle is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"policy\" Microsoft Graph beta API settings mutation; \"Work IQ MCP\" policy toggle Graph API beta PowerShell. Read policy governance and API overview; policy values are discussed but no toggle endpoint, method or cmdlet is supplied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "Saved Work IQ MCP policy changes can take up to 24 hours to apply.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "After you save the setting, it can take up to 24 hours for the policy change to apply across your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[0].governs; controls[0].scope; Governance controls",
+      "type": "behaviour",
+      "claim": "The initial Work IQ MCP policy control is tenant-level, includes write-request governance, and has no per-user, per-app, per-agent or scenario-specific policy templates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "In the initial release, Work IQ MCP provides tenant-level policy control. [...] Per-user, per-app, per-agent, or scenario-specific policy templates aren't part of the initial policy control surface.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The enablement page documents tenant provisioning of the Work IQ service principal using Graph Explorer or the Azure CLI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+      "quote": "This section creates the Work IQ service principal in your organization, which provisions the Work IQ resource so your applications can request tokens for it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls",
+      "type": "cost",
+      "claim": "Work IQ costs can be managed in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Work IQ cost is variable based on usage and can be managed in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance guidance: Before rollout and After rollout",
+      "type": "consistency",
+      "claim": "The consent-inventory, billing-plan and consumption-monitoring checks have corresponding controls-table rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Ask your Work IQ owners whether any agent already holds `WorkIQ.Act` consent [...] Confirm that a usage-based billing plan is set up [...] Watch Copilot Credits consumption [...] The controls table contains only the Work IQ MCP policy row.",
+      "severity": "minor",
+      "fix": "Remove the checklist bullets directing readers to inventory WorkIQ.Act consent, confirm the billing plan and watch Copilot Credits consumption. Their documented background can remain in Cost and licensing and Governance controls; do not add unverified control rows."
+    },
+    {
+      "n": 54,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The record does not map its two release phases to distinct parts of the capability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"description\": \"Enable agents to upload files and content to supported Microsoft 365 destinations.\", \"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-18T02:53:00.011Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/sharepoint-iq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=570850",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether Work IQ MCP tool requests, including write requests, are governed by tenant policy",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Tools",
+          "Work IQ MCP"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

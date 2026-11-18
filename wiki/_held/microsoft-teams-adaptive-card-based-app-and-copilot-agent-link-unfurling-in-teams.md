@@ -71,7 +71,21 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 59 statements contradicted, 0 unconfirmed; taken offline until corrected"
   - date: "2026-11-18"
     note: "Corrected after verification: pay-as-you-go billing now states the $0.01 per message price and that the billing resource applies to users without a Copilot licence; the blocking call is no longer shown as verified."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 55 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
+verification:
+  status: "held"
+  date: "2026-11-18"
+  version: 2
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 55
+  confirmed: 53
+  unconfirmed: 0
+  contradicted: 2
+  attempts: 1
+  hash: "e53efa850e7776e7c7b4dd54442a7117"
 ---
 
 ## What's changing
@@ -164,4 +178,12 @@ The checklist steps on .agent file permissions, restricted content discovery, th
 risk: Medium. The feature is on by default for Teams users on Desktop and Mac and puts agents into shared chats, while Microsoft's notice says no admin control changes are needed and existing policies are respected.
 cost: Variable. Users need a Microsoft 365 Copilot licence or tenant pay-as-you-go billing for SharePoint agents, which Microsoft documents as 12 messages per interaction on the Copilot Studio meter.
 impact: High. Microsoft's notice MC1193415 says all Teams users on Desktop and Mac are affected, and the feature is enabled by default.
+-->
+
+<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Risk assessment: Data exposure; Open questions: differing data-source permissions / absence: Microsoft has not described how SharePoint-agent responses are handled in a Teams chat whose members have different source permissions. | Found: If the user who asks the question has permission to see the answer, but some members in the chat group don't, the user sees a message explaining that the answer can't be automatically added to the chat. | Fix: Replace the shared-chat uncertainty in Data exposure and remove the corresponding Open question. Write: "In Teams, the agent checks the requesting user's permissions. If other chat members lack access, the answer is not posted automatically: the requester can select View response, review it, and decide whether to share it with the group." Cite and add to sources https://support.microsoft.com/office/share-an-agent-from-sharepoint-in-teams-6dcbf7b5-8c13-44e5-a68a-dbd71fb76ad3. | Source: https://support.microsoft.com/office/share-an-agent-from-sharepoint-in-teams-6dcbf7b5-8c13-44e5-a68a-dbd71fb76ad3
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [contradicted, minor] Governance guidance; Governance controls: final paragraph / consistency: The checklist names .agent permissions, restricted content discovery, the billing connection and budgets, but the controls table has no corresponding rows. | Found: The checklist steps on .agent file permissions, restricted content discovery, the billing connection and budgets are background guidance from those pages; they have no rows in this table. | Fix: Remove the checklist bullets that tell readers to review .agent/site permissions, set restricted content discovery, check the billing connection, or create budgets, and remove the final paragraph acknowledging their missing rows. Keep the verified background explanations in the risk and cost sections; do not add control rows as part of this correction.
 -->

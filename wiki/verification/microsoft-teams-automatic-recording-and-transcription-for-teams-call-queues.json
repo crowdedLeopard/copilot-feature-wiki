@@ -1,0 +1,1130 @@
+{
+  "slug": "microsoft-teams-automatic-recording-and-transcription-for-teams-call-queues",
+  "roadmapId": 565215,
+  "title": "Microsoft Teams: automatic recording and transcription for call queues",
+  "status": "held",
+  "date": "2026-11-18",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 81: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-18",
+    "reasons": [
+      "4 blocking findings (claims 12, 34, 36, 83)"
+    ]
+  },
+  "counts": {
+    "claims": 83,
+    "confirmed": 77,
+    "unconfirmed": 1,
+    "contradicted": 5,
+    "blocker": 4,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: the access and announcement PowerShell examples are incomplete, and the announcement example includes prose that is not executable PowerShell. The licensing guidance omits the Teams Phone licence each Queues app user needs, and the storage question overlooks published SharePoint limits.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "Automatic Recording for Call Queue is a first-party Teams solution for automatic recording and transcription of inbound queue calls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-plan-recording",
+      "quote": "Automatic Recording for Call Queue is a first-party Microsoft Teams solution that enables administrators to configure automatic recording and transcription of inbound call queue calls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Enabled automatic recording starts when a representative answers, without a manual start.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-plan-recording",
+      "quote": "Recording starts automatically when a representative answers a call queue call and stops when the call ends.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Recording stops when the call ends.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-plan-recording",
+      "quote": "Recording starts automatically when a representative answers a call queue call and stops when the call ends.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Recordings and transcripts are stored in the SharePoint location specified by the template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "An automatic recording template for Call Queue defines where, in SharePoint, recordings and transcripts will be stored",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; Cost and licensing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Authorized users and representatives access recordings through the Queues app call history.",
+      "status": "supported",
+      "source": "Message Center post MC1401299",
+      "quote": "Recordings are automatically stored in SharePoint and accessible through the Queues app call history.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "This automatic-recording capability is admin opt-in, configured through template assignment to a queue.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "Select the call queue you want to have automatic recording for.\n3. On the Templates tab, scroll to find the Automatic recording template section.\n4. Select the automatic recoding template template from the dropdown.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "summary; licensing.notes; Cost and licensing; controls[4].note; rationale: cost",
+      "type": "licensing",
+      "claim": "All Queues app users require a Teams Premium licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-reference-prerequisites-licensing",
+      "quote": "All Queues App users require a Teams Premium license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: licensing.model; cost; rationale: cost",
+      "type": "licensing",
+      "claim": "Teams Premium is an add-on licence, supporting the add-on licensing model and medium cost rating.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "Microsoft Teams Premium is a Teams add-on license that allows organizations with Microsoft 365 subscriptions to enhance their Teams experience",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams to sources for the Teams Premium add-on classification."
+    },
+    {
+      "n": 9,
+      "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "Automatic Recording for Call Queue requires no extra Teams Phone licensing and its licensing entry points to the SharePoint service description.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-reference-prerequisites-licensing",
+      "quote": "Automatic Recording for Call Queue\n\n- No extra Teams Phone licensing is required.\n- See SharePoint service description.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Base call queue service licensing requires at least one Teams Phone licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-reference-prerequisites-licensing",
+      "quote": "At least one Teams Phone license to enable Teams Phone Agent, Auto Attendant, and Call Queue services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Each resource account requires a free Microsoft Teams Phone Resource Account licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-reference-prerequisites-licensing",
+      "quote": "A free Microsoft Teams Phone Resource Account license for each resource account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "Cost and licensing: Queues app; Governance guidance: Before rollout",
+      "type": "licensing",
+      "claim": "The user-licensing guidance specifies Teams Premium for Queues app users but omits their individual Teams Phone requirement.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-queues-app",
+      "quote": "Users must have a Teams Phone and a Teams Premium license to use Queues app.",
+      "severity": "blocker",
+      "fix": "Replace the first Cost and licensing sentence with 'Queues app: each user needs both a Teams Phone licence and a Teams Premium licence.' Change the checklist instruction to 'Assign Teams Phone and Teams Premium to the users who need the Queues app.' Cite https://learn.microsoft.com/microsoftteams/manage-queues-app."
+    },
+    {
+      "n": 13,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The cited feature pages state no feature-specific meter, price or recording-storage charge as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams call queue automatic recording tenant-wide switch SharePoint storage quota charge GCC. Opened aa-cq-plan-recording, aa-cq-setup-call-queue-template-recording-automatic, aa-cq-reference-prerequisites-licensing and the SharePoint service description; no feature-specific rate stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: targetDate, previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is August CY2026 and it supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2026\", \"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: clouds; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Desktop and Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2 September 2026 at 22:56:59.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-09-02T22:56:59\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1401299 was last updated on 30 June 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1401299",
+      "quote": "Updated June 30, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1401299 gave Targeted Release a planned early-to-mid-August 2026 rollout.",
+      "status": "supported",
+      "source": "Message Center post MC1401299",
+      "quote": "Targeted Release: We will begin rolling out in early August 2026 (previously mid-July) and expect to complete by mid-August 2026 (previously late July).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1401299 gave Worldwide and GCC General Availability a planned mid-to-late-August 2026 rollout.",
+      "status": "supported",
+      "source": "Message Center post MC1401299",
+      "quote": "General Availability (Worldwide, GCC): We will begin rolling out in mid-August 2026 (previously early August) and expect to complete by late August 2026 (previously mid-August).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1401299 sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1401299",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; controls[0].note",
+      "type": "date",
+      "claim": "Learn dates Teams admin center configuration to 30 September 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "September 30, 2026\n    - Automatic Recording for Call Queue can be configured in Teams admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; controls[0].note; Open questions",
+      "type": "date",
+      "claim": "Learn dates PowerShell configuration to 13 August 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "August 13, 2026\n    - Automatic Recording for Call Queue can be configured via PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing: template settings",
+      "type": "behaviour",
+      "claim": "The template controls whether recording is enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "Call recording is enabled by default. Disable call recording if required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing: template settings",
+      "type": "behaviour",
+      "claim": "The template controls whether transcription is enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "Transcription is enabled by default. Disable transcription if required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The template includes a Recording Document Owner selection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "Select a user, preferably a Teams administrator, to be the Recording Document Owner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].ui; Governance controls: first row UI",
+      "type": "admin-path",
+      "claim": "Create a template through Teams admin center > Voice > Templates and resources > Templates > Automatic Recording > Add.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "go to Voice > Templates and resources.\n2. Select Templates.\n3. Select Automatic Recording as the template type.\n4. Select Add to create a new Automatic Recording template.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].api; Governance controls: first row API",
+      "type": "command",
+      "claim": "New-CsAutoRecordingTemplate in MicrosoftTeams supports the displayed name, description, SharePoint location, owner, recording and transcription parameters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate",
+      "quote": "-Name <String>\n    -Description <String>\n    -SharePointHostName <String>\n    -SharePointSiteName <String>\n    -RecordingDocumentOwner <String>\n    [-TranscriptionEnabled <Boolean>]\n    [-RecordingEnabled <Boolean>]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[1].ui; Governance controls: second row UI",
+      "type": "admin-path",
+      "claim": "Assign the template through Teams admin center > Voice > Call queue > call queue > Templates > Automatic recording template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "go to Voice > Call queue.\n2. Select the call queue you want to have automatic recording for.\n3. On the Templates tab, scroll to find the Automatic recording template section.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[1].api; Governance controls: second row API",
+      "type": "command",
+      "claim": "Set-CsCallQueue -Identity <queue GUID> -AutoRecordingTemplateId <template id> assigns the automatic recording template, subject to the stated private-preview caveat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue",
+      "quote": "Voice applications private preview customers only.\n\nSaving a call queue configuration through Teams admin center will remove this setting.\n\nThe AutoRecordingTemplateId parameter indicates the Auto Recording template to apply to the call queue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[2].ui; Governance controls: third row UI",
+      "type": "admin-path",
+      "claim": "Representative access is selected while creating an Automatic Recording template at the displayed admin path.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "Select Automatic Recording as the template type.\n4. Select Add to create a new Automatic Recording template.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[2].api; Governance controls: third row API",
+      "type": "command",
+      "claim": "New-CsAutoRecordingTemplate -AgentViewPermission All is the complete displayed call for configuring representative access.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate",
+      "quote": "New-CsAutoRecordingTemplate\n    -Name <String>\n    -Description <String>\n    -SharePointHostName <String>\n    -SharePointSiteName <String>\n    -RecordingDocumentOwner <String>",
+      "severity": "blocker",
+      "fix": "Replace the call with 'New-CsAutoRecordingTemplate -Name <string> -Description <string> -SharePointHostName <host> -SharePointSiteName <site> -RecordingDocumentOwner <id> -RecordingEnabled $true -TranscriptionEnabled $true -AgentViewPermission All -AutoRecordingAnnouncementTextToSpeechPrompt <text>'. This creates a template with representative access; it does not update an existing template."
+    },
+    {
+      "n": 35,
+      "where": "controls[3].ui; Governance controls: fourth row UI",
+      "type": "admin-path",
+      "claim": "Caller announcements are configured while creating an Automatic Recording template at the displayed admin path.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "Use the Default announcement or configure a Custom announcement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[3].api; Governance controls: fourth row API",
+      "type": "command",
+      "claim": "The displayed New-CsAutoRecordingTemplate announcement line is a runnable command after replacing its placeholders.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate",
+      "quote": "-Name <String>\n    -Description <String>\n    -SharePointHostName <String>\n    -SharePointSiteName <String>\n    -RecordingDocumentOwner <String>\n    [-TranscriptionEnabled <Boolean>]\n    [-RecordingEnabled <Boolean>]",
+      "severity": "blocker",
+      "fix": "Replace the line with 'New-CsAutoRecordingTemplate -Name <string> -Description <string> -SharePointHostName <host> -SharePointSiteName <site> -RecordingDocumentOwner <id> -RecordingEnabled $true -TranscriptionEnabled $true -AutoRecordingAnnouncementTextToSpeechPrompt <text>'. Remove the parenthesised '(or ...)' prose from the executable call."
+    },
+    {
+      "n": 37,
+      "where": "controls[4].ui; Governance controls: fifth row UI",
+      "type": "admin-path",
+      "claim": "Assign Shared Call History through Teams admin center > Voice > Call queues > call queue > General info > Shared call history template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-shared-history",
+      "quote": "go to Voice > Call queues.\n2. Select the call queue you want to have shared call history for.\n3. On the General info tab, scroll to find the Shared call history template section.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[4].api; Governance controls: fifth row API",
+      "type": "command",
+      "claim": "Set-CsCallQueue -Identity <queue GUID> -SharedCallQueueHistoryTemplateId <template id> assigns Shared Call History.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue",
+      "quote": "The SharedCallQueueHistoryTemplateId parameter indicates the Shared Call History template to apply to the call queue.\n\nNote\n\n-ConferenceMode must be set to $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[2].note; Risk assessment: Data exposure",
+      "type": "command",
+      "claim": "AgentViewPermission accepts None or All and governs access to recordings or transcriptions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate",
+      "quote": "Are agents allowed to access the recordings or transcriptions.\n\nSupported values: None | All",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[2].note; Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The admin center representative-access setting cannot be modified after template creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "This setting can't be modified once the template is created.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure",
+      "type": "default",
+      "claim": "Authorized users have access to recordings by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "Authorized users have access by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0].note; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The SharePoint host name cannot be changed after template creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "Enter the SharePoint host name.\n    - Example: contoso.sharepoint.com\n    - The host must already exist and must have been visited in a standard browser before you create the template.\n    - This setting can't be modified once the template is created.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].note; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The SharePoint site name cannot be changed after template creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "This setting can't be modified once the template is created.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The SharePoint host must already exist and have been visited in a browser before template creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "The host must already exist and must have been visited in a standard browser before you create the template.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "SharePoint site creation must be enabled in the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "Ensure SharePoint site creation is enabled in the tenant (default is on).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope",
+      "type": "default",
+      "claim": "SharePoint site creation is on by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "Ensure SharePoint site creation is enabled in the tenant (default is on).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Change & support; Scope; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Conference mode must be enabled on the queue.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "Conference mode is enabled on the call queue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Change & support; Scope; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Call answering must use a group or channel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "Call answering must use a group or channel.",
+      "severity": "minor",
+      "fix": "After this prerequisite, add 'The prerequisites and licensing reference instead says to use Microsoft 365 security groups to assign representatives; the two Learn pages differ on this prerequisite.' Both https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic and https://learn.microsoft.com/microsoftteams/aa-cq-reference-prerequisites-licensing are already cited."
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Individual Users are not a supported call-answering configuration for this feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "Call answering must use a group or channel.\n    - Users and Shifts are not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Shifts is not supported for this feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "Users and Shifts are not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "What's changing; controls[2].note; controls[4].note; Scope; Governance guidance",
+      "type": "applicability",
+      "claim": "Shared Call History must be enabled for users to access automatic recordings and transcripts through the Queues app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "With Shared Call History enabled, authorized users and representatives (agents) will be able to access the recordings and transcriptons through Queues App.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Change & support; Scope; Governance guidance: Before rollout",
+      "type": "default",
+      "claim": "Explicit recording consent must be Off for this feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "Explicit recording consent must be Off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Changes to SharePoint site structure, file names or permissions can cause access, permission or recording failures.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "Changes to the SharePoint site structure, file names, or permissions can cause access issues, permission errors, or automatic recording failures.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The Teams administrator creating the template becomes its associated SharePoint site's administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "The Teams administrator creating the automatic recording template becomes the SharePoint site admin of the template's associated site.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].note; Risk assessment: Security & identity; Governance controls",
+      "type": "role",
+      "claim": "A Teams administrator assigning the template must also be a SharePoint site administrator of its site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "To assign an automatic recording template to a call queue or manage its authorized users list, the Teams administrator must also be a SharePoint site administrator for the site used by the template.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "role",
+      "claim": "A Teams administrator managing the queue's authorized users must also be a SharePoint site administrator of the template's site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "To assign an automatic recording template to a call queue or manage its authorized users list, the Teams administrator must also be a SharePoint site administrator for the site used by the template.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "Microsoft recommends configuring other Teams administrators as SharePoint site administrators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "Microsoft recommends that all other Teams administrators be configured as SharePoint site admins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The Recording Document Owner's described access is for recording-upload failure situations only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "This user can access the recording if there's a problem uploading it to SharePoint.\n    - This access is only for upload failure situations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Risk assessment: Change & support; rationale: impact",
+      "type": "default",
+      "claim": "Callers hear a recording announcement whose admin center default is 'This call will be recorded.'.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "Use the Default announcement or configure a Custom announcement.\n    - The default announcement is: This call will be recorded.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "What's changing; controls[3]; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "MC1401299 gives default announcement, custom audio and text-to-speech announcement options.",
+      "status": "supported",
+      "source": "Message Center post MC1401299",
+      "quote": "Admins can configure the recording and transcription announcements played to callers. Options include the default system announcement, a custom audio file, or text-to-speech.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[3].note",
+      "type": "command",
+      "claim": "The text-to-speech announcement text must match the call queue's configured language.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate",
+      "quote": "This text needs to be entered in the same language that is set for the call queue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[1].note; Risk assessment: Change & support; Governance controls; Open questions",
+      "type": "availability",
+      "claim": "Set-CsCallQueue still marks AutoRecordingTemplateId for Voice applications private-preview customers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue",
+      "quote": "-AutoRecordingTemplateId\n\nVoice applications private preview customers only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[1].note; Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "The cmdlet reference warns that saving the queue through Teams admin center removes AutoRecordingTemplateId.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue",
+      "quote": "Saving a call queue configuration through Teams admin center will remove this setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Authorized users must be Enterprise Voice enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-reference-prerequisites-licensing",
+      "quote": "All authorized users must be Enterprise Voice enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Representatives receiving queue calls must be Enterprise Voice enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-reference-prerequisites-licensing",
+      "quote": "Representatives (agents) who receive calls from a call queue must be Enterprise Voice enabled online or on-premises users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Compliance Recording for Call Queue is a separate third-party option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-reference-prerequisites-licensing",
+      "quote": "Compliance Recording for Call Queue\n\n- Third party licensing - For more information on compliance recording, see Introduction to Microsoft Teams third-party compliance recording",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "An automatic recording template can be reused across multiple call queues.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "An automatic recording template for Call Queue can be reused across multiple call queues.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance controls",
+      "type": "default",
+      "claim": "Recording is enabled by default in the admin center template-creation form.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "Call recording is enabled by default. Disable call recording if required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance controls",
+      "type": "default",
+      "claim": "Transcription is enabled by default in the admin center template-creation form.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+      "quote": "Transcription is enabled by default. Disable transcription if required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance controls",
+      "type": "default",
+      "claim": "New-CsAutoRecordingTemplate documents RecordingEnabled's default as False.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate",
+      "quote": "-RecordingEnabled\n\nIs recording enabled.\n\nParameter properties\n\n| Type: | Boolean |\n| --- | --- |\n| Default value: | False |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance controls",
+      "type": "default",
+      "claim": "New-CsAutoRecordingTemplate documents TranscriptionEnabled's default as False.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate",
+      "quote": "-TranscriptionEnabled\n\nIs transcription enabled.\n\nParameter properties\n\n| Type: | Boolean |\n| --- | --- |\n| Default value: | False |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance controls; Governance guidance: After rollout",
+      "type": "command",
+      "claim": "Get-CsAutoRecordingTemplate lists automatic recording templates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/get-csautorecordingtemplate",
+      "quote": "Use the Get-CsAutoRecordingTemplate cmdlet to list the Auto Recording templates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Get-CsAutoRecordingTemplate accepts an optional Id parameter to retrieve a particular template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/get-csautorecordingtemplate",
+      "quote": "Get-CsAutoRecordingTemplate\n    [-Id <string>]\n    [<CommonParameters>]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no tenant-wide automatic-call-queue-recording switch as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"automatic recording\" \"call queue\" \"tenant\" disable policy. Read planning, setup, licensing and Set-CsCallQueue; search returned template/per-queue controls, not a tenant-wide automatic-recording switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "MC1401299 describes previously ephemeral interactions becoming stored recordings and transcripts when enabled.",
+      "status": "supported",
+      "source": "Message Center post MC1401299",
+      "quote": "Customer call interactions that were previously ephemeral are now captured as recordings and transcripts and stored for later access, if feature is enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "MC1401299 warns that recorded calls may contain personal data requiring export, deletion or access handling.",
+      "status": "supported",
+      "source": "Message Center post MC1401299",
+      "quote": "Recorded calls may contain personal data, which could require handling for export, deletion, or access requests depending on organizational processes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Why it matters; Open questions; Governance guidance: After rollout",
+      "type": "record",
+      "claim": "MC1401299 says eDiscovery, retention and audit policies may cover recordings and transcripts depending on configuration.",
+      "status": "supported",
+      "source": "Message Center post MC1401299",
+      "quote": "Recorded calls and transcripts may become subject to eDiscovery, retention, and audit policies depending on organization configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Agents do not control recording; administrators control agent access to the resulting recordings and transcripts.",
+      "status": "supported",
+      "source": "Message Center post MC1401299",
+      "quote": "Agents do not control recording, but admins can control whether agents can access recordings and transcripts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "MC1401299 recommends reviewing recording policies and determining which queues should enable recording.",
+      "status": "supported",
+      "source": "Message Center post MC1401299",
+      "quote": "Review your organization’s call recording and transcription policies.- Determine which Call Queues should enable automatic recording.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Microsoft recommends communicating the changes to representatives and helpdesk teams.",
+      "status": "supported",
+      "source": "Message Center post MC1401299",
+      "quote": "Communicate changes to call queue agents and helpdesk teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "Representatives and supervisors in each configured queue are recorded.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"automatic recording\" \"call queue\" \"supervisors\" recording calls. Read aa-cq-plan-recording and manage-queues-app; no passage says supervisors are recorded just because they belong to the queue.",
+      "severity": "minor",
+      "fix": "Replace the impact rationale with 'Medium. Callers hear a recording announcement and representative-answered inbound calls in configured queues are recorded; only queues an admin configures are affected.'"
+    },
+    {
+      "n": 82,
+      "where": "Governance guidance: Before rollout and After rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist names controls that have no corresponding controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'conference mode on, call answering by group or channel ... explicit recording consent Off'; 'make every Teams administrator ... a SharePoint site admin'; 'Review who can open ... SharePoint site'. No table rows cover these controls.",
+      "severity": "minor",
+      "fix": "Remove the checklist instructions to check conference mode, call-answering membership and explicit recording consent, to configure SharePoint site administrators, and to review SharePoint site access. Keep the verified prerequisite and role descriptions in Scope and Risk assessment; these checklist controls have no table rows."
+    },
+    {
+      "n": 83,
+      "where": "Open questions: storage charge or quota",
+      "type": "absence",
+      "claim": "Whether the template's SharePoint site has a storage quota or storage-capacity charge remains an unpublished question.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-limits",
+      "quote": "Max storage per site (site collection) | 25 TB | 25 TB | 25 TB | 25 TB | 25 TB |\nYou can purchase an unlimited amount of more SharePoint storage.",
+      "severity": "blocker",
+      "fix": "Remove the Open questions bullet 'Is there a storage charge or quota for the SharePoint site? Learn points to the SharePoint service description and states no extra Teams Phone licensing.' General SharePoint site and tenant storage limits are published; the absence of a feature-specific price does not make those limits unknown."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-18T02:52:55.143Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 5,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 5,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=565215",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/aa-cq-plan-recording",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/aa-cq-reference-prerequisites-licensing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-shared-history",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/get-csautorecordingtemplate",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1401299",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which queues record and transcribe, and where files are stored (Automatic Recording template)",
+        "docs": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+        "reachable": true,
+        "segments": [
+          "Voice",
+          "Templates and resources",
+          "Templates",
+          "Automatic Recording",
+          "Add"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which queues record and transcribe, and where files are stored (Automatic Recording template)",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate",
+        "reachable": true,
+        "token": "New-CsAutoRecordingTemplate",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which call queue uses an automatic recording template",
+        "docs": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+        "reachable": true,
+        "segments": [
+          "Voice",
+          "Call queue",
+          "call queue",
+          "Templates",
+          "Automatic recording template"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which call queue uses an automatic recording template",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue",
+        "reachable": true,
+        "token": "Set-CsCallQueue",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether representatives can view recordings and transcripts",
+        "docs": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+        "reachable": true,
+        "segments": [
+          "Voice",
+          "Templates and resources",
+          "Templates",
+          "Automatic Recording",
+          "Add"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether representatives can view recordings and transcripts",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate",
+        "reachable": true,
+        "token": "New-CsAutoRecordingTemplate",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "The recording announcement callers hear",
+        "docs": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic",
+        "reachable": true,
+        "segments": [
+          "Voice",
+          "Templates and resources",
+          "Templates",
+          "Automatic Recording",
+          "Add"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "The recording announcement callers hear",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate",
+        "reachable": true,
+        "token": "New-CsAutoRecordingTemplate",
+        "found": true
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Shared Call History, which lets users reach recordings in the Queues app",
+        "docs": "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-shared-history",
+        "reachable": true,
+        "segments": [
+          "Voice",
+          "Call queues",
+          "call queue",
+          "General info",
+          "Shared call history template"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "api",
+        "governs": "Shared Call History, which lets users reach recordings in the Queues app",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue",
+        "reachable": true,
+        "token": "Set-CsCallQueue",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -40,8 +40,11 @@ sources:
   - title: "Agent management in Microsoft 365 admin center"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-365-overview"
     kind: "learn"
-  - title: "Prerequisites for managing agents in Microsoft 365"
-    url: "https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/agent-prerequisites"
+  - title: "Agent management roles and permissions in Microsoft 365 admin center"
+    url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-roles-perms"
+    kind: "learn"
+  - title: "Microsoft Agent 365"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365"
     kind: "learn"
   - title: "Agent Registration API overview (preview)"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/agent-registration/overview"
@@ -54,6 +57,12 @@ sources:
     kind: "learn"
   - title: "Update Copilot package"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update"
+    kind: "learn"
+  - title: "Get Copilot package details"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-get"
+    kind: "learn"
+  - title: "packageElement complex type"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/resources/packageelement"
     kind: "learn"
 videos: []
 related: ["work-iq-a2a-and-mcp-long-running-tasks","m365-copilot-agent-lifecycle-management-rules","work-iq-agent-policy-governance","agent-identity","mcp"]
@@ -75,8 +84,11 @@ controls:
       surface: "Microsoft 365 admin center"
       path: "Agents > All agents > agent > Connected Agents"
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents"
-    api: null
-    note: "Learn says administrators can add connected agents to Researcher and Sales; for other agents they can view developer-configured connections but cannot add or remove them."
+    api:
+      kind: "graph"
+      call: "GET https://graph.microsoft.com/v1.0/copilot/admin/catalog/packages/{id}"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-get"
+    note: "General manifest-inspection API: inspect the declarativeAgent elementDetails[].elements[].definition JSON for worker_agents title IDs; this does not add or remove connections. Requires an Agent 365 licence and CopilotPackages.Read.All."
   - governs: "Blocking an agent for the organisation"
     scope: "tenant"
     ui:
@@ -90,7 +102,7 @@ controls:
     note: "General control: Microsoft has not confirmed it applies to Agent2Agent agents. The API is in preview, uses the CopilotPackages.ReadWrite.All delegated permission and requires an Agent 365 licence."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-18"
 roadmapModified: "2026-10-27T23:05:02"
 changes:
   - date: "2026-11-17"
@@ -103,19 +115,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 82 statements not yet confirmed"
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 81 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-18"
+    note: "Corrected the connected-agents review row to give its documented Graph call, replaced the roles and licence sentences with the pages that state them, and removed an unsupported absence statement."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 76 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-18"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 81
-  confirmed: 80
+  claims: 76
+  confirmed: 75
   unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "43c8db9232e2746913da49a3913570bf"
+  attempts: 2
+  hash: "848a5305f8499a498043858f1f0c55cf"
 ---
 
 ## What's changing
@@ -156,9 +172,9 @@ Treat it as a new approval path to define before developers ask. If nobody insta
 
 Microsoft has not published the licence or meter for using an Agent2Agent agent as a connected agent, and the roadmap item names none. Treat the cost known today as admin time and communications.
 
-Microsoft Learn says Microsoft Agent 365 is licensed on a per-user basis and that at least one user must hold a qualifying Agent 365 licence to enable Agent 365 (Overview of Microsoft Agent 365). Microsoft 365 E7 includes Microsoft 365 E5, Microsoft Copilot, Microsoft Agent 365 and the Microsoft Entra Suite (Agent management in Microsoft 365 admin center). The Package Management API, used in the block row below, requires an Agent 365 licence.
+Microsoft Learn says Microsoft Agent 365 is licensed on a per-user basis and that at least one user must hold a qualifying Agent 365 licence to enable Agent 365 (Overview of Microsoft Agent 365). Microsoft 365 E7 includes Microsoft 365 E5, Microsoft Copilot, Microsoft Agent 365 and the Microsoft Entra Suite (Agent management in Microsoft 365 admin center). The Package Management API, used in the review and block rows below, requires an Agent 365 licence.
 
-Whether an A2A agent you install carries its own charge, and whether using it counts against Copilot Credits, is not published at the time of writing (November 2026). The admin-centre prerequisites page names no licence for approving agents; it lists the roles AI Admin, Global Admin and Global Reader (view-only, no edit).
+Whether an A2A agent you install carries its own charge, and whether using it counts against Copilot Credits, is not published at the time of writing (November 2026). The Agent 365 service description lists basic governance actions, including approval, as included with Microsoft 365 Enterprise, Business, Education and Front Line Worker plans. The agent-management roles page lists AI Administrator and Global Administrator for management actions, and Global Reader as read-only.
 
 ## Scope
 
@@ -195,14 +211,14 @@ Rollout began in late August 2026 and is expected to complete by the end of Dece
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether an Agent2Agent agent is installed for users or groups</strong><br><small>Tenant</small><br><small class="controls__note">Role: AI Admin or Global Admin. General package-deployment API; Microsoft does not separately describe A2A registration applicability. The API is in preview, requires an Agent 365 licence and CopilotPackages.ReadWrite.All (delegated).</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › Registry › Status › Available › agent › Install › Deploy agent to selected users › Next › Review permissions › Grant admin consent › Permissions requested › Accept › Next › Review &amp; finish › Finish deployment <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} with Content-Type: application/json and body {&quot;acquireUsersAndGroups&quot;:[{&quot;resourceType&quot;:&quot;group&quot;,&quot;resourceId&quot;:&quot;&lt;group-id&gt;&quot;}],&quot;deployedTo&quot;:&quot;acquiredForSome&quot;}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Review of the agents a declarative agent connects to</strong><br><small>Agent</small><br><small class="controls__note">Learn says administrators can add connected agents to Researcher and Sales; for other agents they can view developer-configured connections but cannot add or remove them.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Connected Agents <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Review of the agents a declarative agent connects to</strong><br><small>Agent</small><br><small class="controls__note">General manifest-inspection API: inspect the declarativeAgent elementDetails[].elements[].definition JSON for worker_agents title IDs; this does not add or remove connections. Requires an Agent 365 licence and CopilotPackages.Read.All.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Connected Agents <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET https://graph.microsoft.com/v1.0/copilot/admin/catalog/packages/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-get" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Blocking an agent for the organisation</strong><br><small>Tenant</small><br><small class="controls__note">General control: Microsoft has not confirmed it applies to Agent2Agent agents. The API is in preview, uses the CopilotPackages.ReadWrite.All delegated permission and requires an Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block › Block agent › Save <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 Installing an agent and blocking an agent are separate actions on the same **All agents** page; the notice describes installation as the step that makes an A2A agent available, and users cannot install these agents themselves. The connected-agents page says administrators can view developer-configured connections for most agents but not add or remove them, so the tab is a review point, not an editing control.
 
-The Package Management API is in preview and requires an Agent 365 licence. Developers register A2A agents with the Agent Registration API (preview), which Microsoft's overview says also lets administrators retrieve, update and delete registrations. Microsoft Learn documents no admin-centre setting that blocks only the connected-agent capability for declarative agents at the time of writing (November 2026).
+The Package Management API is in preview and requires an Agent 365 licence. Developers register A2A agents with the Agent Registration API (preview), which Microsoft's overview says also lets administrators retrieve, update and delete registrations.
 
 ## Open questions
 
@@ -220,13 +236,5 @@ impact: Medium. Administrators and developers who build declarative agents notic
 <!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].api; Governance controls table / absence: No API is documented for reviewing the agents a declarative agent connects to. | Found: definition | String | Complete definition or manifest of the element as a JSON string. | Fix: Replace controls[1].api null with kind graph, call 'GET https://graph.microsoft.com/v1.0/copilot/admin/catalog/packages/{id}', and docs https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-get; update the rendered API cell to match. Add this qualification to the row note: 'General manifest-inspection API: inspect the declarativeAgent elementDetails[].elements[].definition JSON for worker_agents title IDs; this does not add or remove connections. Requires an Agent 365 licence and CopilotPackages.Read.All.' The GET reference documents the endpoint and permissions; the packageElement reference documents the complete manifest, and the already-cited connected-agent page documents worker_agents. Also cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/resources/packageelement. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/resources/packageelement
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity / behaviour: An external A2A agent registration declares authentication through an authorization object referencing an authentication registration. | Found: the registration references an existing authentication registration through the authorization object in the agentRegistration. | Fix: After this sentence add: 'The agentRegistration resource reference instead names the optional property a2aAuthorization as the configuration used to invoke an Agent2Agent server; the two Microsoft pages use different property names.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/agent-registration/resources/agentregistration. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/declarative-agent-connected-agent
-- [supported, minor] Risk assessment: Autonomy & actions / behaviour: An agent can connect to up to 10 other agents. | Found: Limit - An agent can connect to up to 10 other agents. | Fix: Replace the sentence with: 'The managing-connected-agents page states a limit of 10 connected agents, while the agent-details page says that the 10 excludes connections added by the maker.' Also cite https://learn.microsoft.com/microsoft-agent-365/admin/agent-details#connected-agents. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents
-- [supported, minor] controls[1].note; Risk assessment: Change & support; Governance controls / behaviour: For other primary agents administrators can view developer-configured connections but cannot add connections. | Found: For other agents, you can view the connections configured by the agent developer, but you can't add or remove them. | Fix: After the restriction in Governance controls add: 'The general agent-details page describes a Connect agents action for a selected agent without the Researcher and Sales restriction.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/agent-details#connected-agents alongside the existing source. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents
-- [supported, minor] controls[1].note; Risk assessment: Change & support; Governance controls / behaviour: Administrators cannot remove developer-configured connections. | Found: You can't remove connected agents configured by the agent developer. | Fix: After the restriction in Governance controls add: 'The agent-details page qualifies removal differently: depending on how the maker connected the agents, administrators might be able to remove them.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/agent-details#connected-agents. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-connected-agents
-- [supported, minor] controls[0].note; Cost and licensing; Scope; Governance guidance: Before rollout / role: AI Administrators can install, configure, approve and manage agents. | Found: AI Administrator | ✔ | ✔ | ✔ | Fix: Add https://learn.microsoft.com/microsoft-agent-365/admin/agent-roles-perms to sources for the role statements. Replace 'it lists the roles AI Admin, Global Admin and Global Reader (view-only, no edit)' in Cost and licensing with 'The agent-management roles page lists AI Administrator and Global Administrator for management actions, and Global Reader as read-only.' The old prerequisites URL now redirects to a general overview with no role list. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-roles-perms
-- [supported, minor] Cost and licensing / absence: The cited admin-centre prerequisites page names no licence specifically for approving agents. | Found: Searched: Agent2Agent license declarative. Opened agent-prerequisites and confirmed redirect to manage-copilot-agents-integrated-apps, which has no approval licence prerequisite; followed agent-365-overview and read the Agent 365 service description. | Fix: Replace 'The admin-centre prerequisites page names no licence for approving agents' with 'The Agent 365 service description lists basic governance actions, including approval, as included with Microsoft 365 Enterprise, Business, Education and Front Line Worker plans.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365. The old prerequisites URL now leads to a general overview rather than a prerequisites list.
-- [supported, minor] Governance controls: final sentence / absence: Microsoft documents no admin-centre switch that blocks only the connected-agent capability for declarative agents. | Found: Searched: Microsoft 365 admin disable connected agents declarative Agent2Agent block setting. Read agent-settings, manage-connected-agents, agent-actions and agent-details; found general access, installation, blocking and connection actions, not a capability-only switch. | Fix: Remove the final sentence beginning 'Microsoft Learn documents no admin-centre setting'. The standard requires an explicitly asserted missing control to have a controls row, but there is no such row; removing the sentence resolves this without adding a control.
+- [contradicted, blocker] Governance controls: paragraph after table / availability: The Package Management API is described collectively as being in preview. | Found: ::: zone pivot="graph-v1" ... GET https://graph.microsoft.com/v1.0/copilot/admin/catalog/packages/{id} ... ::: zone pivot="graph-preview" ... GET https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} | Fix: Replace 'The Package Management API is in preview and requires an Agent 365 licence.' with 'The package-update and blocking APIs are in preview; the package-details API also has a v1.0 endpoint. Access to the Package Management API requires an Agent 365 licence.' | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-get
 -->

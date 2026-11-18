@@ -18,7 +18,7 @@ defaultState: "unknown"
 action: "review"
 licensing:
   model: "unknown"
-  notes: "Not yet published. The Learn page's prerequisite is a subscription to Microsoft 365 and Microsoft Power Platform and names no specific plan or licence for the updated template."
+  notes: "Microsoft has not published template-specific licensing terms. General Power Apps rules apply: building canvas apps does not require a licence, while running apps requires appropriate entitlements."
 audiences: ["power-platform-admin","maker","service-owner"]
 tags: ["power-apps","canvas-apps","sharepoint","modern-controls","connectors","data-policies"]
 sources:
@@ -36,6 +36,18 @@ sources:
     kind: "learn"
   - title: "Get-DlpPolicy"
     url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-dlppolicy"
+    kind: "learn"
+  - title: "Power Apps licensing FAQs"
+    url: "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq"
+    kind: "learn"
+  - title: "Licensing overview for Microsoft Power Platform"
+    url: "https://learn.microsoft.com/power-platform/admin/pricing-billing-skus"
+    kind: "learn"
+  - title: "Pay-as-you-go meters"
+    url: "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters"
+    kind: "learn"
+  - title: "Share a canvas app with your organization"
+    url: "https://learn.microsoft.com/power-apps/maker/canvas-apps/share-app"
     kind: "learn"
 videos: []
 related: ["data-policies"]
@@ -65,19 +77,23 @@ changes:
     note: "New briefing: the updated SharePoint list canvas app template, with the data policy control that applies and the gaps Microsoft has not yet filled."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 62 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected licensing and cost: general Power Apps licence rules and the per-app pay-as-you-go meter now replace the unpublished-licensing statements; the first pre-rollout step no longer asks for an early-release inventory."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 76 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 62
-  confirmed: 59
+  claims: 76
+  confirmed: 74
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "d7a850cbadf5c52e2e0a9fd558fdd7b4"
+  contradicted: 2
+  attempts: 2
+  hash: "e0c0f8f77fe73c0cd55fba4fbaecfc7b"
 ---
 
 ## What's changing
@@ -120,11 +136,9 @@ The practical decision is whether to tell makers what the template does and does
 
 ## Cost and licensing
 
-Microsoft has not published a licence or price specific to the updated template. The Learn page for creating an app from a list gives its prerequisite as using SharePoint and Power Apps with a subscription to Microsoft 365 and Microsoft Power Platform, and names no specific plan.
+Microsoft has not published template-specific licensing terms. General Power Apps rules apply: building canvas apps does not require a licence, while running apps requires appropriate entitlements. Some Microsoft 365 licences include use rights for Microsoft 365 data and standard connectors; premium features and Managed Environments can require additional entitlements. The Learn page for creating an app from a list gives its prerequisite as using SharePoint and Power Apps with a subscription to Microsoft 365 and Microsoft Power Platform, and names no specific plan.
 
-No meter is documented for this template at the time of writing (November 2026). The roadmap record states no licensing. Indirect costs are maker time to test generated apps and admin time to brief makers; the Learn page lists the checks to run before sharing an app.
-
-Licensing is not yet published beyond that prerequisite. Confirm the licence each maker and app user needs against Microsoft's Power Apps licensing pages before budgeting for broad use.
+Microsoft documents no template-specific meter. Where Power Apps pay-as-you-go is enabled for the environment, the general Power Apps per-app meter can bill generated canvas apps through the linked Azure subscription at $10 per active user/app/month. Users with Power Apps per-user licences, and users with qualifying Microsoft 365 Power Apps rights running standard-connector apps, are not counted in that meter. The roadmap record states no licensing. Indirect costs are maker time to test generated apps and admin time to brief makers; the Learn page lists the checks to run before sharing an app.
 
 ## Scope
 
@@ -136,7 +150,7 @@ The feature applies to makers who start an app from a SharePoint or Microsoft Li
 
 ### Before rollout
 
-- Identify which environments are in the early-release programme and who creates apps from SharePoint lists there, so the right makers are briefed.
+- Identify makers who create apps from SharePoint lists, so the right makers are briefed.
 - Check which data policy covers the SharePoint connector in those environments, using the data policy row in the controls table.
 - Tell makers that grid and list views can filter differently and that delegation limits still apply to large lists.
 
@@ -169,23 +183,18 @@ The PowerShell cmdlet in the table creates a policy from a policy object; Get-Dl
 ## Open questions
 
 - Which environments get the updated template by default, and does an administrator have a way to choose between it and the single-screen template? Watch the roadmap item and the Learn page.
-- What licence do makers and users of an app built from the template need? Not yet published; check Microsoft's Power Apps licensing pages.
 - When does the template move from public preview in early-release environments to general availability, given the February CY2027 target?
 - Does the template change anything for apps already generated from a list, or only for new ones?
 
 <!-- rationale
 risk: Low. The template generates a standalone canvas app over a list the maker can already reach, and the roadmap says connector and formula delegation limits still apply; no admin switch or new data access is described.
-cost: Low. The only cost the sources show is maker and admin time for testing; licensing for the template is not yet published, and the Learn page lists a Microsoft 365 and Microsoft Power Platform subscription as its prerequisite.
+cost: Low. Microsoft has published no template-specific licensing or meter; the cost the sources show is maker and admin time, though the general Power Apps per-app pay-as-you-go meter ($10 per active user/app/month) can apply where enabled.
 impact: Low. Makers who start an app from a SharePoint or Lists list will notice the new screens; other users see a change only when a maker publishes an app built from the template.
 -->
 
 <!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing; Cost and licensing; Open questions; rationale: cost / licensing: The unknown licensing field and accompanying prose say licensing for makers and generated-app users is unpublished beyond the feature-page prerequisite. | Found: You don't need a license to build canvas apps. You need a license to build model-driven apps. Creating and managing Power Apps doesn't require a license, so users can access the environment without assigned licenses. However, users without a license can't play apps. | Fix: Limit unknown licensing to template-specific terms. Replace the broad unpublished-licensing statements in licensing.notes, Cost and licensing, Open questions and the cost rationale with: 'Microsoft has not published template-specific licensing terms. General Power Apps rules apply: building canvas apps does not require a licence, while running apps requires appropriate entitlements. Some Microsoft 365 licences include use rights for Microsoft 365 data and standard connectors; premium features and Managed Environments can require additional entitlements.' Cite https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq and https://learn.microsoft.com/power-platform/admin/pricing-billing-skus. Remove the open question saying maker and user licensing is unpublished. | Source: https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq
-- [contradicted, blocker] Cost and licensing / cost: No meter is documented for this template. | Found: The Power Apps per-app meter enables users to use any type of app without needing to have a Power Apps license. The Power Apps per-app meter provides access to both canvas, and model-driven apps for authenticated users. | Fix: Replace 'No meter is documented for this template at the time of writing (November 2026)' with: 'Microsoft documents no template-specific meter. Where Power Apps pay-as-you-go is enabled for the environment, the general Power Apps per-app meter can bill generated canvas apps through the linked Azure subscription at $10 per active user/app/month. Users with Power Apps per-user licences, and users with qualifying Microsoft 365 Power Apps rights running standard-connector apps, are not counted in that meter.' Cite https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters. | Source: https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure / applicability: Underlying data-source and connection permissions, rather than the generated template, govern access to list data. | Found: For a shared app to function as you expect, you must also manage permissions for the data source or sources on which the app is based | Fix: Add https://learn.microsoft.com/power-apps/maker/canvas-apps/share-app to sources to support the data-source permission statement. | Source: https://learn.microsoft.com/power-apps/maker/canvas-apps/share-app
-- [supported, minor] rationale: impact / behaviour: App changes reach other users only after the maker publishes them. | Found: Whenever you make changes, you must save and publish the app again if you want others to see those changes. | Fix: Cite https://learn.microsoft.com/power-apps/maker/canvas-apps/share-app for the publication prerequisite; the same source also supports the data-permissions statement. | Source: https://learn.microsoft.com/power-apps/maker/canvas-apps/share-app
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist asks administrators to take stock of early-release environment configuration without a corresponding control row. | Found: Identify which environments are in the early-release programme ... The controls table contains only connector data policies and updated-template availability. | Fix: Replace the first Before rollout bullet with 'Identify makers who create apps from SharePoint lists, so the right makers are briefed.' This removes the unmatched control-inventory instruction without adding an unverified control row.
+- [contradicted, blocker] front matter: licensing.model / consistency: The licensing model is unknown, meaning licensing has not yet been published. | Found: Microsoft Power Platform capabilities can be licensed through standalone licenses, use rights included with other Microsoft products, capacity add-ons, or pay-as-you-go meters. | Fix: Set licensing.model to "mixed". Retain the existing notes explaining general canvas-app entitlements and the absence of separate template-specific terms; published general licensing applies to these canvas apps. Source: https://learn.microsoft.com/power-platform/admin/pricing-billing-skus. | Source: https://learn.microsoft.com/power-platform/admin/pricing-billing-skus
+- [contradicted, blocker] front matter: cost; rationale: cost / consistency: The cost rating is low, which the standard defines as indirect cost only. | Found: cost: "low"; "the general Power Apps per-app pay-as-you-go meter ($10 per active user/app/month) can apply where enabled." | Fix: Set cost to "variable" and replace the cost rationale with: "Variable. The general Power Apps per-app pay-as-you-go meter can apply where enabled at $10 per active user/app/month; qualifying licensed users are excluded. Microsoft documents no separate template-specific meter." Source: https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters.
 -->

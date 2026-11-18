@@ -1,0 +1,880 @@
+{
+  "slug": "m365-copilot-sales-development-agent-meeting-scheduling",
+  "roadmapId": 575289,
+  "title": "Microsoft 365 Copilot: Sales Development agent books seller meetings for prospects",
+  "status": "held",
+  "date": "2026-11-18",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-18",
+    "reasons": [
+      "4 blocking findings (claims 41, 59, 60, 68)"
+    ]
+  },
+  "counts": {
+    "claims": 69,
+    "confirmed": 63,
+    "unconfirmed": 1,
+    "contradicted": 5,
+    "blocker": 4,
+    "major": 1,
+    "minor": 6
+  },
+  "summary": "Hold: Microsoft has published consumption billing for the Sales Development agent's upcoming public preview, so the briefing understates known costs. The blocking API omits its required beta version, and the blocking UI reference redirects to a page without the instructions.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What's changing; title; summary",
+      "type": "record",
+      "claim": "The roadmap plans for the agent to turn a prospect's meeting interest into a booked seller meeting.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Sales Development Agent can turn a prospect’s interest in meeting into a booked seller meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The agent asks the prospect for preferred dates and times.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The agent asks the prospect to provide preferred dates and times",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The agent evaluates the proposed options against the appropriate seller's calendar.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "evaluates those options against the appropriate seller’s calendar",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The agent books the first valid option in the prospect's preference order.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "books the first valid option in the prospect’s stated preference order.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; Governance guidance: At rollout; rationale: risk",
+      "type": "record",
+      "claim": "The seller receives the meeting invitation.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The seller and prospect receive the meeting invitation",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing; Why it matters; rationale: risk",
+      "type": "record",
+      "claim": "The prospect receives the meeting invitation.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The seller and prospect receive the meeting invitation",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The seller receives additional conversation context for a warm handoff.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "while the seller receives additional conversation context to support a warm handoff.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "If scheduling fails, the agent transfers the request to the seller.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "If scheduling cannot be completed, the agent transfers the request and relevant context to the seller for follow-up.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The failed-scheduling transfer includes relevant context.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "the agent transfers the request and relevant context to the seller for follow-up.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: targetDate, previewDate; What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap target is November CY2026, with no preview date specified.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\", \"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Current Channel and General Availability as release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"Current Channel\", \"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap record does not list US Government clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: products, roadmapModified",
+      "type": "record",
+      "claim": "The record identifies Microsoft Copilot (Microsoft 365) and was modified on 2026-10-22T22:58:40.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-22T22:58:40\"; \"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft's preview documentation describes sales outreach and prospect management within Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/sales-development-agent-overview",
+      "quote": "Sales Development agent overview (preview)\nThe Sales Development agent automates sales outreach and prospect management within Microsoft Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "applicability",
+      "claim": "Sales Development is a template agent under Microsoft Agent 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/use",
+      "quote": "Discover how template agents, such as the Sales Development agent, help you streamline workflows and focus on higher-value work.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-agent-365/use to sources for the template-agent classification."
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "The preview agent communicates only through email and Teams chats.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/sales-development-agent-overview",
+      "quote": "The agent interacts with users only through email and Teams chats.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "The preview agent replies only to email threads it started.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/sales-development-agent-overview",
+      "quote": "The agent replies only to email threads that it starts. It ignores email sent to it unless it started the thread.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Why it matters; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Once launched, the preview agent runs autonomously until stopped.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/sales-development-agent-overview",
+      "quote": "Human oversight | Once launched, runs autonomously until stopped.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "absence",
+      "claim": "Learn does not yet describe this roadmap item's meeting-scheduling capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Sales Development agent\" \"meeting scheduling\"; opened the Sales Development overview, activation and onboarding pages. Results covered other Sales agents and Dynamics MCP scheduling, not this capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: defaultState; summary; Why it matters; Open questions",
+      "type": "default",
+      "claim": "The scheduling capability's arrival default and effect on existing instances are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Sales Development agent\" \"scheduling\" \"default\" \"disable\" and \"Sales Development agent\" \"scheduling\" \"enable\"; read roadmap, overview, activation and onboarding. No scheduling default found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated which seller-calendar details the prospect sees.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Sales Development agent\" \"calendar\" \"permission\" and \"Sales Development agent\" \"meeting\" scheduling calendar permissions enable disable license credits; read overview, activation and onboarding. No prospect calendar-detail disclosure found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented which calendar permission this scheduling capability uses.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Sales Development agent\" \"calendar\" \"permission\"; read the overview's complete permissions list and activation page. Results on Exchange calendar administration did not identify this agent's scheduling permission.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "The overview's preview permissions list includes mail, Teams, files, sites and MCP permissions but no calendar-specific entry.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Sales Development agent\" \"calendar\" \"permission\"; read all permissions under Sales Development agent permissions on sales-development-agent-overview. Mail, Teams, Files, Sites and MCP entries appear; no calendar-specific permission appears.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The agent chooses which seller's calendar to evaluate.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Sales Development agent\" \"chooses\" \"seller\"; read roadmap and Sales Development overview, activation and onboarding. The roadmap says \"appropriate seller\" but does not state that the agent chooses that seller.",
+      "severity": "major",
+      "fix": "Replace 'The agent chooses which seller's calendar to evaluate' with 'The roadmap says the agent evaluates the proposed times against the appropriate seller's calendar'."
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Shared content can appear in responses to people without original access, regardless of sensitivity labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/onboard-agent",
+      "quote": "even those individuals who don't originally have access to that content. This risk applies regardless of sensitivity labels or permissions placed on the content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Creating a preview instance creates a dedicated agent identity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
+      "quote": "The system then creates a dedicated agent identity",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Instance creation provisions a Teams account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
+      "quote": "provisions a Teams account, Exchange mailbox, OneDrive, and SharePoint resources.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Instance creation provisions an Exchange mailbox.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
+      "quote": "provisions a Teams account, Exchange mailbox, OneDrive, and SharePoint resources.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Instance creation provisions OneDrive resources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
+      "quote": "provisions a Teams account, Exchange mailbox, OneDrive, and SharePoint resources.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Instance creation provisions SharePoint resources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
+      "quote": "provisions a Teams account, Exchange mailbox, OneDrive, and SharePoint resources.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The preview overview lists Mail.Send.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/sales-development-agent-overview",
+      "quote": "Mail.Send: Send mail.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The preview overview lists Files.ReadWrite.All.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/sales-development-agent-overview",
+      "quote": "Files.ReadWrite.All: Have full access to all files user can access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The preview overview lists Sites.ReadWrite.All.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/sales-development-agent-overview",
+      "quote": "Sites.ReadWrite.All: Have full control of all site collections.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes booking without describing a seller-approval step.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "evaluates those options against the appropriate seller’s calendar, and books the first valid option in the prospect’s stated preference order.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The preview overview says the agent sends email at all hours, including weekends.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/sales-development-agent-overview",
+      "quote": "Email sending | Sends emails at all hours, including weekends.",
+      "severity": "minor",
+      "fix": "Add: 'The separate preview send-time page says that, for tenants where that feature is enabled, the default window is Monday-Friday, 8am-6pm; check the configured timezone.' Cite https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/configure-send-time. Do not imply this documents scheduling-invitation timing."
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Send-time configuration can restrict the days and hours for outreach email.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/configure-send-time",
+      "quote": "You can define a send window, which specifies days and hours the agent is allowed to send outreach emails, and the agent will follow it.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/configure-send-time for outreach send windows. Narrow the checklist to 'Check the configured outreach send window and timezone'; the page does not establish how meeting invitations are timed."
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.model; summary; Cost and licensing",
+      "type": "licensing",
+      "claim": "The licensing model for this meeting-scheduling capability at general availability is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Sales Development agent\" licensing billing \"Copilot Credits\"; read activation, Agent 365 overview and Microsoft 365 Resources for Agents. The latter explicitly limits its licensing terms to Public Preview; no GA scheduling licence rule found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing: first sentence; rationale: cost",
+      "type": "cost",
+      "claim": "No applicable meter has been published and the sources show only indirect costs.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-resources-for-agents",
+      "quote": "All charges are billed consumptively via Copilot Credits:\n- The agent account, email address, and persistent access to Microsoft 365 resources (for example, Exchange and OneDrive workspaces) have a recurring charge of 100 Copilot Credits per agent per month.",
+      "severity": "blocker",
+      "fix": "Replace the unpublished-meter statement with: 'Microsoft publishes Copilot Credits billing for the Sales Development agent public preview from December 1, 2026: 100 Copilot Credits per agent per month for its account and persistent Microsoft 365 resources, plus consumption charges for agent activity. The accountable user must have consumption billing enabled. These are public-preview terms, not confirmed general-availability pricing for meeting scheduling.' Cite this service-description URL and retain the roadmap's separate November CY2026 scheduling target."
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The preview activation page lists required Microsoft 365 subscriptions and licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
+      "quote": "You have the required subscriptions and licenses for Microsoft 365, Microsoft 365 Copilot, and Microsoft Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The preview activation page lists required Microsoft 365 Copilot subscriptions and licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
+      "quote": "You have the required subscriptions and licenses for Microsoft 365, Microsoft 365 Copilot, and Microsoft Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The preview activation page requires Microsoft Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
+      "quote": "Microsoft Teams is required for Sales Development agent and must be included in the template, either as a bundled license in the AI Teammate license or as a standalone license",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "availability",
+      "claim": "The preview activation prerequisites include enabling Copilot Frontier in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
+      "quote": "Copilot Frontier is enabled in the Microsoft 365 admin center: Copilot > Settings > Copilot Frontier.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The activation page's Agent 365 public-preview instructions specify a $0 SKU.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
+      "quote": "Purchase the $0 Agent 365 SKU",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "That preview SKU includes a licence for 25 agent instances.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
+      "quote": "Purchase the $0 Agent 365 SKU, which includes a license for 25 agent instances.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Agent 365 overview describes Agent 365 licensing as per-user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/overview",
+      "quote": "Microsoft Agent 365 is licensed on a per-user basis.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing; Scope; Open questions",
+      "type": "absence",
+      "claim": "The preview prerequisites do not establish the final general-availability prerequisites or licensing for scheduling.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Sales Development agent\" licensing billing \"Copilot Credits\"; read activation, Agent 365 overview, Agent 365 service description and Resources for Agents. Resources terms apply to Public Preview and reserve additional GA requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The preview overview requires opting into Targeted release for the organisation or selected users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/sales-development-agent-overview",
+      "quote": "The Sales Development agent is available to customers who opt into the Microsoft 365 Targeted release program. You can choose Targeted release for your entire organization, or just for selected users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Scope; controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "Activation requires AI Administrator or Global Administrator in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
+      "quote": "You must have either the AI Administrator or Global Administrator role in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Enabling the Agent 365 public preview requires Global Administrator in Microsoft Entra ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
+      "quote": "You must have the Global Administrator role in Microsoft Entra ID to enable the Agent 365 public preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "All users can see the agent in the Agent Store.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
+      "quote": "All users can see the Sales Development agent in the Agent Store",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Only users with explicit access can activate an instance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
+      "quote": "only users with explicit access can activate an instance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[0].note; Governance guidance: Before rollout; rationale: impact",
+      "type": "behaviour",
+      "claim": "Administrators choose the users or groups allowed to create instances during activation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
+      "quote": "Choose the users or groups that can create Sales Development agent instances.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[0].note; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Activation includes applying a policy template allowing instance creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
+      "quote": "Apply a policy template that allows agent instance creation, and then complete the remaining activation steps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The activation path is Microsoft 365 admin center > Agents > All Agents > Sales Development (Frontier) > Activate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
+      "quote": "In the Microsoft 365 admin center, go to Agents > All Agents.\nSearch for Sales Development (Frontier), and then select Activate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No API is documented specifically for activating Sales Development or granting instance-creation access.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Graph Sales Development agent activate policy template instance creation API; \"copilot\" \"packages\" \"activate\" \"Graph\". Opened activation, Package API overview and update reference; package audience updates do not confirm template instance-creation support.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The cited management page supplies a complete blocking path ending Agents > All Agents > agent > Block.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "In the Block agent or Unblock agent pane that opens, select either Block agent or Unblock agent, and then select Save.",
+      "severity": "blocker",
+      "fix": "Change controls[1].ui.docs to https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions#block-or-unblock-agents and the path to 'Agents > All agents > agent > Block > Block agent > Save'. The old manage-agents URL redirects to agent-365-overview without blocking instructions, although Learn search still returns its former text."
+    },
+    {
+      "n": 60,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "The runnable Graph blocking call is POST /copilot/admin/catalog/packages/{id}/block.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": "blocker",
+      "fix": "Replace controls[1].api.call with 'POST /beta/copilot/admin/catalog/packages/{id}/block' and controls[1].api.docs with https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackage-block. Preserve the warning that Sales Development package applicability is unconfirmed."
+    },
+    {
+      "n": 61,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The package block, unblock and reassign operations are preview operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/overview",
+      "quote": "Block (preview) | POST /copilot/admin/catalog/packages/{id}/block\nUnblock (preview) | POST /copilot/admin/catalog/packages/{id}/unblock\nReassign (preview) | POST /copilot/admin/catalog/packages/{id}/reassign",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[1].note; Governance controls",
+      "type": "licensing",
+      "claim": "Access to the Package Management API requires an Agent 365 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/overview",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[1].note; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed that Sales Development is a package addressable through this API.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Graph Sales Development agent activate policy template instance creation API; \"copilot\" \"packages\" \"activate\" \"Graph\". Read Package API overview, block and update references and Sales Development activation; no Sales Development package mapping found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[2].ui; controls[2].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No separate UI or API switch is documented for meeting scheduling alone.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Sales Development agent\" \"scheduling\" \"default\" \"disable\"; \"Sales Development agent\" \"scheduling\" \"enable\". Read overview, activation, onboarding, Package API overview and update reference. No scheduling-specific switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Blocking the parent agent turns off all its instances.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-agents#actions-for-agent-365-agents",
+      "quote": "Blocking an agent automatically turns off all instances created under that agent. These instances remain inactive until the IT admin unblocks the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Administrators can block an individual instance in the Agents > All Agents area.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-agent-instances",
+      "quote": "Under the Details tab, select the Instances tab to see all instances created by that agent.\nSelect an instance and choose Block.",
+      "severity": "minor",
+      "fix": "Replace the attribution to the old management page for individual-instance blocking with a citation to https://learn.microsoft.com/microsoft-agent-365/admin/manage-agent-instances#block-agent-instances."
+    },
+    {
+      "n": 67,
+      "where": "Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "The agent registry for reviewing instances and owners is under Agents > All Agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-agent-instances",
+      "quote": "Agent Registry - Navigate to Agents > All agents > Registry. You can view agents with the AI teammate tag. You'll also see the number of instances that have been created for the specific agent.",
+      "severity": "minor",
+      "fix": "Change the checklist path to 'Agents > All agents > Registry' and cite https://learn.microsoft.com/microsoft-agent-365/admin/manage-agent-instances. The omitted Registry tab is the inventory-selection step."
+    },
+    {
+      "n": 68,
+      "where": "front matter: cost; rationale: cost",
+      "type": "consistency",
+      "claim": "Cost is low because only indirect costs are documented.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-resources-for-agents",
+      "quote": "Page: 'Low. The only cost the sources show is admin time'. Microsoft: 'Resources are provisioned automatically for each supported agent user instance, and charges are billed consumptively via Copilot Credits.'",
+      "severity": "blocker",
+      "fix": "Set cost to 'variable'. Replace the cost rationale with 'Variable. Microsoft publishes Copilot Credits consumption billing for the Sales Development agent public preview from December 1, 2026; general-availability pricing for meeting scheduling is not yet confirmed.' Keep the November CY2026 roadmap target distinct from that public-preview billing date."
+    },
+    {
+      "n": 69,
+      "where": "Governance guidance: At rollout, After rollout; Governance controls",
+      "type": "consistency",
+      "claim": "Every checklist control is represented in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Check send-time configuration for outreach' and 'Review the agent registry for instances and owners'. The table covers activation, blocking and a scheduling-only switch, not send windows or registry review.",
+      "severity": "minor",
+      "fix": "The send-time check and registry-review checklist steps have no corresponding controls-table rows. Remove those two checklist steps to eliminate the mismatch without adding unverified control rows."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-18T02:53:02.160Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=575289",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/sales-development-agent-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/onboard-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-agents",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/overview",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Who can activate the Sales Development agent and create instances",
+        "docs": "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All Agents",
+          "Sales Development",
+          "Activate"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Blocking the Sales Development agent for the organisation",
+        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-agents",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "All Agents",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Blocking the Sales Development agent for the organisation",
+        "docs": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/overview",
+        "reachable": true,
+        "token": "POST /copilot/admin/catalog/packages/{id}/block",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
