@@ -150,6 +150,11 @@ How to judge each type:
     on its page; an unlabelled icon or "more options" button; names typed and fields filled in on
     the pages of a wizard, and its "Next" and "Continue"; or the step where the admin picks what
     the setting applies to (the environment, the site, the policy, or the tab that lists them).
+    The same holds for a path that is right in every step it prints and stops early, on the page
+    that holds the control or lists the items it is set on (the Data policy page, where the cited
+    page goes on to open a policy and its connectors step): the reader is in the right place, and
+    the fix gives the rest of the route. A path that stops at the admin centre's own navigation,
+    before any page about the control, has not reached it and is unsupported.
   - **Supported, with no finding,** whatever it leaves off after the control: the confirmation
     pane and the button in it, "Save", "Finish". The standard ends a path at the control.
   - Do not fail a path for cosmetic differences: bold type, the word "Select", the arrow style
@@ -206,7 +211,15 @@ How to judge each type:
   statement, that the feature's page lists its prerequisites and names no licence among them, is
   supported when you have read those prerequisites and that is what they show. A licensing model
   of `unknown` is an absence too: it says no Microsoft page states which licence covers the
-  feature, and it is contradicted when the feature's page or its product's licensing page does.
+  feature. It is contradicted when a Microsoft page names a licence or a meter for this feature:
+  the feature's own page or its prerequisites, a plan or comparison table that lists the feature,
+  a billing page that meters what it does. Where all that is published is the product's general
+  requirement ("each user needs a Teams license to use Teams", "to use Copilot Studio, you need
+  one of the following") and the briefing says no licence specific to the feature is published,
+  what the briefing says is true and `unknown` understates it: supported, with a minor whose fix
+  sets the model the standard gives for a new option inside a licensed product and names that
+  licence. A briefing that says no licence is needed, or that nothing at all is known about
+  licensing where the feature's page states it, is contradicted as before.
   "Cap", "limit" and "stop", said of spending or use, claim that it ends there: where the page
   says use carries on by another route (the tenant's capacity, a pay-as-you-go plan), the claim
   is contradicted.
@@ -220,6 +233,13 @@ How to judge each type:
   statement that the control is not confirmed for this feature is an absence: contradicted where
   the page's terms plainly include the feature's case, supported where they leave it out or in
   doubt.
+  One form of that statement is a minor and no more: a control row that gives a general control
+  correctly (its path and its call are right) with a note saying Microsoft has not confirmed it
+  applies to this feature. The row still shows the reader the control and where to find it, and
+  briefings written before November 2026 were asked to add that note. Where the control's page
+  states a reach that includes the feature's case, the fix replaces the note with that reach in
+  the page's terms. The same caveat in the prose, used to say that nothing governs the feature
+  or that a billing or data rule may not apply to it, is checked as the absence it is.
 - **Preview.** If the cited page marks the feature as preview and the briefing presents its limits,
   licensing or behaviour as final, that is a finding.
 - **Links.** A `docs` URL that does not open, or opens a page that shows neither the call nor the
@@ -308,7 +328,10 @@ Give every claim that needs a correction a severity.
   link that shows neither the call nor the control's part of the path, and a factual field
   (default state, licensing model, cost) that conflicts with a verified fact. A path or call that
   is right in everything it prints, and leaves out only what "How to judge each type" says it
-  may, is not unsupported and is not a blocker.
+  may, is not unsupported and is not a blocker. Nor are the two understatements that section
+  gives as minors: a licensing model of `unknown` where only the product's general licence is
+  published, and a control row's note that a correctly documented general control is not
+  confirmed for this feature.
 - **major**: an unsupported statement about how the feature behaves that would not by itself change
   what an administrator does.
 - **minor**: true but misleading in form, or a matter of judgement: a target date worded as firm, a
@@ -316,8 +339,10 @@ Give every claim that needs a correction a severity.
   cited, a second Microsoft page that disagrees, advice attributed to Microsoft beyond what the
   page says, a checklist control with no row in the table, a risk, impact or action rating that
   does not fit its definition, an admin path that leaves out a heading or a step the reader passes
-  without choosing, a call that prints part of a request body correctly. A minor can sit on a
-  supported claim.
+  without choosing or that stops early on the right page, a call that prints part of a request
+  body correctly, a licensing model of `unknown` beside a product-level licence, a row note that
+  a documented general control is unconfirmed for this feature. A minor can sit on a supported
+  claim.
 
 The verdict follows mechanically:
 
