@@ -1,0 +1,934 @@
+{
+  "slug": "microsoft-purview-data-loss-prevention-new-guided-experience-to-diagnose-and-resolve-dlp-i",
+  "roadmapId": 561032,
+  "title": "Microsoft Purview DLP: guided diagnostics for why a policy acted",
+  "status": "held",
+  "date": "2026-11-18",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-18",
+    "reasons": [
+      "6 blocking findings (claims 46, 56, 57, 58, 66, 74)"
+    ]
+  },
+  "counts": {
+    "claims": 74,
+    "confirmed": 68,
+    "unconfirmed": 0,
+    "contradicted": 6,
+    "blocker": 6,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "The rollout details and both published navigation paths are supported. Hold because the briefing treats Security Copilot consumption and platform-wide data controls as unconfirmed despite documentation covering embedded experiences, understates the cost model, and presents a personal plugin toggle as tenant-wide.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; What's changing",
+      "type": "record",
+      "claim": "Microsoft is introducing guided diagnostics for Purview DLP policy issues.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We’re introducing a new guided diagnostics experience to help users understand why their DLP policies may not be behaving as expected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "The experience explains why a DLP action was taken on a document.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This experience provides a clear summary of why a DLP action was taken on a document",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The diagnostics identify which policies were triggered.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "including which policies were triggered",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "The diagnostics show policy evaluation order.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "including which policies were triggered, the order of evaluation",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "summary; What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The diagnostics show which conditions evaluated as true or false.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "detailed insights into which conditions evaluated as true or false.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap describes Copilot-powered insights for Microsoft 365 E5 customers.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "For Microsoft 365 E5 customers, the experience also includes Copilot-powered insights",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Copilot provides tailored recommendations for troubleshooting and policy optimisation.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Copilot-powered insights and tailored recommendations to accelerate troubleshooting and policy optimization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Purview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The general availability target is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: previewDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The preview target is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the listed cloud, with GCC, GCC High and DoD not listed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-11-11T00:53:22.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-11T00:53:22\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "record",
+      "claim": "The notice places the experience in the Microsoft Purview portal.",
+      "status": "supported",
+      "source": "Message Center post MC1293479",
+      "quote": "A new guided diagnostics experience will be available in the Microsoft Purview portal to help troubleshoot DLP policy behavior.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; controls[0].note; Scope; Governance guidance",
+      "type": "record",
+      "claim": "Diagnostics are available to all users who have permission to view DLP policies.",
+      "status": "supported",
+      "source": "Message Center post MC1293479",
+      "quote": "The diagnostics will be available to all users who have permission to view DLP policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Diagnostics show actions taken, including allow, block and audit.",
+      "status": "supported",
+      "source": "Message Center post MC1293479",
+      "quote": "Actions taken (allow, block, audit)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope; rationale: risk",
+      "type": "record",
+      "claim": "Existing DLP policies are not changed.",
+      "status": "supported",
+      "source": "Message Center post MC1293479",
+      "quote": "Existing DLP policies and enforcement behavior are not changed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "The experience and its Copilot insights do not change DLP enforcement decisions.",
+      "status": "supported",
+      "source": "Message Center post MC1293479",
+      "quote": "Existing DLP policies and enforcement behavior are not changed. ... Copilot does not change DLP enforcement decisions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "summary; What's changing; Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The Copilot-powered insights use Security Copilot.",
+      "status": "supported",
+      "source": "Message Center post MC1293479",
+      "quote": "The guided diagnostics experience includes Security Copilot-powered insights and recommendations for eligible tenants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: licensing.notes; What's changing; Cost and licensing; Scope",
+      "type": "record",
+      "claim": "The notice limits insights to customers with eligible Microsoft 365 E5 and Copilot licensing.",
+      "status": "supported",
+      "source": "Message Center post MC1293479",
+      "quote": "Security Copilot‑powered insights are available only to customers with eligible Microsoft 365 E5 and Copilot licensing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The insights analyse existing DLP configuration data.",
+      "status": "supported",
+      "source": "Message Center post MC1293479",
+      "quote": "These insights analyze existing DLP configuration data and diagnostic metadata",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The insights analyse diagnostic metadata.",
+      "status": "supported",
+      "source": "Message Center post MC1293479",
+      "quote": "These insights analyze existing DLP configuration data and diagnostic metadata",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "The notice says no new customer content sources are introduced.",
+      "status": "supported",
+      "source": "Message Center post MC1293479",
+      "quote": "No new customer content sources are introduced",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice was updated on 4 August 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1293479",
+      "quote": "Updated August 4, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice gave public preview as early September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1293479",
+      "quote": "Public Preview: Early September 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice expected Worldwide general availability rollout to begin in October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1293479",
+      "quote": "General Availability (Worldwide): We expect to begin rolling out October 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1293479",
+      "quote": "Act by: none; No action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "summary; Why it matters",
+      "type": "record",
+      "claim": "Microsoft says no action is required.",
+      "status": "supported",
+      "source": "Message Center post MC1293479",
+      "quote": "No action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Scope: Clouds",
+      "type": "record",
+      "claim": "The notice refers to commercial tenants.",
+      "status": "supported",
+      "source": "Message Center post MC1293479",
+      "quote": "Who is affected ... Commercial tenants",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "rationale: impact",
+      "type": "record",
+      "claim": "The notice says there is no impact to user workflows.",
+      "status": "supported",
+      "source": "Message Center post MC1293479",
+      "quote": "There is no impact to user workflows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "record",
+      "claim": "The notice optionally recommends updating internal DLP troubleshooting documentation.",
+      "status": "supported",
+      "source": "Message Center post MC1293479",
+      "quote": "Optionally: ... Review internal DLP troubleshooting documentation and update it to reference the new diagnostics experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "record",
+      "claim": "The notice optionally recommends making security and compliance teams aware of the new flow.",
+      "status": "supported",
+      "source": "Message Center post MC1293479",
+      "quote": "Ensure security and compliance teams are aware of the new diagnostics flow in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Change & support; Governance guidance; Open questions",
+      "type": "record",
+      "claim": "The notice said documentation links would be provided once preview documentation was available.",
+      "status": "supported",
+      "source": "Message Center post MC1293479",
+      "quote": "(Documentation links will be provided once public preview documentation is available.)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "absence",
+      "claim": "No Microsoft Learn page specifically describing this guided per-document experience was found as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"guided diagnostics\" \"DLP\"; Purview DLP guided diagnostics policy evaluation order document conditions licensing enable disable permissions. Opened DLP policy reference, Test your DLP policies and Copilot in Purview Overview; results describe other diagnostics, not this new experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "record",
+      "claim": "Neither supplied record names a licence specifically for the base guided diagnostics.",
+      "status": "supported",
+      "source": "Message Center post MC1293479",
+      "quote": "The diagnostics will be available to all users who have permission to view DLP policies. ... Security Copilot‑powered insights are available only to customers with eligible Microsoft 365 E5 and Copilot licensing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing: Licence; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A licence requirement specific to the base guided diagnostics has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"guided diagnostics\" \"DLP\" \"license\"; \"Purview service description\" \"Data Loss Prevention\" diagnostics. Opened Microsoft Purview service description: it lists DLP workload licences, but has no guided-diagnostics-specific requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Why it matters; Scope; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "The new guided diagnostics' supported DLP locations have not been specified.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"DLP\" \"guided diagnostics\" \"document\" conditions coverage. Read roadmap, MC1293479, DLP policy reference and Test your DLP policies; no location list for this new experience was found. Existing self-help diagnostics are not identified as roadmap 561032.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Why it matters; Scope; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "The new guided diagnostics' supported condition types have not been specified.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"DLP\" \"guided diagnostics\" \"document\" conditions coverage; Purview DLP guided diagnostics Security Copilot SCU consumption licensing supported locations conditions. Read DLP policy reference and Test your DLP policies; no condition-type list for this experience was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Microsoft has not specified what document details the new diagnostics display.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview DLP guided diagnostics policy evaluation order document conditions licensing enable disable permissions; \"DLP\" \"guided diagnostics\" \"document\" conditions coverage. Read MC1293479, DLP policy reference and Test your DLP policies; no displayed document-field specification found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The notice does not define the roles that confer permission to view DLP policies.",
+      "status": "supported",
+      "source": "Message Center post MC1293479",
+      "quote": "The diagnostics will be available to all users who have permission to view DLP policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Rules execute in priority order within each DLP policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "A policy contains one or more rules. Rules are executed sequentially, starting with the highest-priority rule in each policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "For hosted locations such as Exchange, SharePoint and OneDrive, the first evaluated matching rule with the most restrictive action is enforced.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "For the hosted service locations, like Exchange, SharePoint, and OneDrive ... If content matches multiple rules, the first rule evaluated that has the most restrictive action is enforced.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Security Copilot may copy, process and store relevant Customer Data to provide responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "Relevant Customer Data may be copied, processed, and stored by Security Copilot to provide responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Microsoft has not said whether Security Copilot's documented data processing applies to the DLP insights.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/security/privacy-data-security",
+      "quote": "Microsoft Security products purchased by you may share data, including Customer Data, as described in the product documentation. Customer Data shared with Security Copilot is governed by the Product Terms, Data Protection Addendum, and documentation applicable to Security Copilot.",
+      "severity": "blocker",
+      "fix": "Replace the uncertainty sentence with: 'Data shared with Security Copilot is governed by Security Copilot product terms, data protection commitments and documentation; the notice identifies existing DLP configuration data and diagnostic metadata as inputs.' Keep the narrower statement that the notice introduces no new customer content sources."
+    },
+    {
+      "n": 47,
+      "where": "controls[1].note; Risk assessment: Security & identity",
+      "type": "default",
+      "claim": "Microsoft 365 services data access defaults to ON when Security Copilot is auto-provisioned for E5 or E7.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/auto-provisioning-security-copilot",
+      "quote": "Accessing data from Microsoft 365 services ... By default, this setting is set to ON.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "Managing Owner settings requires the Security Copilot owner role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/owner-settings",
+      "quote": "You need the Security Copilot owner role to manage owner settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[2].note",
+      "type": "default",
+      "claim": "Security Copilot in Purview is enabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-overview",
+      "quote": "Security Copilot in Purview is enabled by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Microsoft 365 services data access is configured in the Security Copilot portal under Settings > Owner settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/privacy-data-security",
+      "quote": "Configuring Microsoft 365 services data access ... In Security Copilot, go to Settings > Owner settings.",
+      "severity": "minor",
+      "fix": "Keep the cited path, but add: 'Microsoft documentation also describes Owner > Owner settings in the home menu; see https://learn.microsoft.com/copilot/security/navigating-security-copilot#use-the-home-menu.' That page lists Owner settings under Owner and describes Settings as theme, time zone and language preferences."
+    },
+    {
+      "n": 51,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "The Purview source toggle is reached through Security Copilot portal > Sources > Manage plugins > Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-overview",
+      "quote": "Open Sources in the prompt bar. ... On the Manage plugins page, set the Purview toggle to On to enable or Off to disable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[0].ui; controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No dedicated UI switch or automation control for enabling, disabling or restricting the new guided diagnostics is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"guided diagnostics\" \"DLP\" \"tenant\" disable PowerShell; Purview \"guided diagnostics\" PowerShell licensing permission switch. Read MC1293479, DLP policy reference and Test your DLP policies; no dedicated availability switch or API found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "No automation equivalent for Security Copilot Microsoft 365 services data access is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Security Copilot\" \"Microsoft 365\" \"data access\" \"REST\"; \"Security Copilot\" \"owner settings\" \"PowerShell\" \"Graph\". Opened Privacy and data security, Owner settings and Auto provisioning; found UI instructions but no corresponding command or endpoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[2].api",
+      "type": "absence",
+      "claim": "No automation equivalent for the Security Copilot Purview plugin toggle is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Security Copilot\" \"Purview\" \"plugin\" \"API\" enable disable; \"Security Copilot\" \"plugins\" \"REST API\" settings. Opened Copilot in Purview Overview, Manage plugins and Use plugins; no corresponding management command or endpoint found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].governs",
+      "type": "behaviour",
+      "claim": "The Microsoft 365 services data access setting controls Security Copilot queries to services such as Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/auto-provisioning-security-copilot",
+      "quote": "This setting allows customers to configure whether Security Copilot can query information directly from Microsoft 365 services such as Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[1].note; Risk assessment: Security & identity; Governance controls; Open questions",
+      "type": "applicability",
+      "claim": "Microsoft has not confirmed whether disabling Microsoft 365 data access governs the DLP Security Copilot insights.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "Customers can choose not to share their Microsoft 365 service data with Copilot in the Owner settings page. However, the organization won't be able to use Copilot with Microsoft 365 products such as like Microsoft Purview.",
+      "severity": "blocker",
+      "fix": "Replace the unconfirmed-applicability statements for row 2 with: 'The Microsoft 365 services data access setting governs Security Copilot integration with Purview; disabling it prevents the organisation from using Copilot with Purview.' Cite the already-listed Security Copilot inclusion page. Remove the corresponding open question about whether this setting removes the insights."
+    },
+    {
+      "n": 57,
+      "where": "controls[2].note; Governance guidance; Governance controls; Open questions",
+      "type": "applicability",
+      "claim": "Microsoft has not confirmed whether the Purview source toggle governs the DLP Security Copilot insights.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-overview",
+      "quote": "Security Copilot in Purview must be enabled for both the standalone and embedded experiences to work.",
+      "severity": "blocker",
+      "fix": "Replace the unconfirmed-applicability statements for row 3 with: 'Microsoft documents the Purview source as required for both standalone and embedded Security Copilot experiences in Purview.' Remove the corresponding open question and the condition 'if Microsoft confirms they apply' from the checklist."
+    },
+    {
+      "n": 58,
+      "where": "controls[2].scope; Governance controls: row 3",
+      "type": "applicability",
+      "claim": "The Sources > Manage plugins > Purview toggle is a tenant-wide control.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/security/use-plugins",
+      "quote": "To personalize the way Security Copilot interacts with you ... Turn any plugin on or off ... Select which plugins Security Copilot uses as a data source by turning service toggles on or off.",
+      "severity": "blocker",
+      "fix": "Change controls[2].scope and the rendered scope from tenant to user. Add to its note: 'This source toggle personalises the user's active plugins; it is not the organisation-wide plugin availability restriction.' Cite https://learn.microsoft.com/copilot/security/use-plugins for the distinction."
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Security Copilot compute is measured in Security Compute Units.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "A Security Compute Unit is a unit measure of the compute power to run Security Copilot workloads for AI capabilities within the standalone and embedded experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "E5 and E7 inclusion provides 400 SCUs per month for every 1,000 paid user licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "Customers with Microsoft 365 E5 and E7 will have 400 Security Compute Units (SCU) each month for every 1,000 paid user license",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "The included monthly capacity is capped at 10,000 SCUs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "up to 10,000 SCUs each month",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "The included E5 and E7 SCU allocation has no additional cost.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "up to 10,000 SCUs each month at no additional cost.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "The cited inclusion page says usage beyond allocated SCUs will be throttled at a future date.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "Usage beyond the allocated SCUs will be throttled at a future date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "At that future point, customers can scale beyond inclusion at $6 USD per SCU on a pay-as-you-go basis.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "Customers have an option to scale beyond the allocated amount at $6 USD for each SCU on a pay-as-you go basis at that time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Cost and licensing: Meter",
+      "type": "licensing",
+      "claim": "Customers without E5 or E7 can continue using Security Copilot under its existing pricing model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "Customers without Microsoft 365 E5 and E7 licenses can continue to access Security Copilot using the existing pricing model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Cost and licensing: Meter; Open questions; rationale: cost",
+      "type": "cost",
+      "claim": "Whether the DLP Security Copilot insights consume SCUs is not yet published.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/security/security-compute-units-capacity",
+      "quote": "You consume SCUs in the following scenarios: ... Running embedded Security Copilot experiences ... Running other Security Copilot features and capabilities",
+      "severity": "blocker",
+      "fix": "Replace the consumption uncertainty with: 'The Security Copilot-powered insights consume SCUs under the platform's embedded-experience capacity model; a rate specific to these diagnostics is not yet published.' Cite https://learn.microsoft.com/copilot/security/security-compute-units-capacity. Retain only the feature-specific rate question."
+    },
+    {
+      "n": 67,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "A specific SCU consumption rate for the new DLP diagnostics insights has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview DLP guided diagnostics Security Copilot SCU consumption licensing supported locations conditions. Opened Security Copilot inclusion and Security Compute Units and capacity; these document the general meter, not a rate per guided-diagnostics insight.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Cost and licensing: Meter; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "SCU usage can be tracked in the in-product dashboard in the Security Copilot standalone portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "Customers are able to track their usage in the in-product usage dashboard in the Security Copilot standalone portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance controls; Governance guidance: At rollout; Risk assessment: Change & support",
+      "type": "command",
+      "claim": "Test-DlpPolicies is an existing item-level test for policies scoped to SharePoint and OneDrive, rather than a control over the new experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+      "quote": "Test-DlpPolicies is a cmdlet that allows you to see which DLP policies scoped to SharePoint and OneDrive match (or don't match) an individual item in SharePoint or OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Test-DlpPolicies does not work with complex, grouped or nested conditions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+      "quote": "Test-DlpPolices works only with simple conditions. It doesn't work with complex, grouped, or nested conditions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Test-DlpPolicies sends its report to the SMTP address supplied in -SendReportTo.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+      "quote": "The report is sent to the SMTP address specified in the -SendReportTo parameter of the Test-DlpPolicies command.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "The guided diagnostics default state is on for their intended audience, without administrator enablement.",
+      "status": "supported",
+      "source": "Message Center post MC1293479",
+      "quote": "The diagnostics will be available to all users who have permission to view DLP policies. ... No action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is mixed, combining licence eligibility with Security Copilot capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "Customers with Microsoft 365 E5 and E7 will have 400 Security Compute Units (SCU) each month for every 1,000 paid user license, up to 10,000 SCUs each month at no additional cost.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "front matter: cost; rationale: cost",
+      "type": "consistency",
+      "claim": "Cost is low because admin time is the only certain cost and SCU consumption is unconfirmed.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/security/security-compute-units-capacity",
+      "quote": "Briefing: 'Admin time is the only certain cost' and 'whether ... insights draw on Security Compute Units is not yet published.' Source: 'You consume SCUs ... Running embedded Security Copilot experiences'. The standard defines variable as metered.",
+      "severity": "blocker",
+      "fix": "Set cost to 'variable'. Replace the cost rationale with: 'Variable. Security Copilot-powered insights consume Security Compute Units, including allocated E5 capacity; a rate specific to these diagnostics is not yet published. Admin time is an additional indirect cost, and no licence specific to the base diagnostics is published.' Cite https://learn.microsoft.com/copilot/security/security-compute-units-capacity."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-18T04:23:49.400Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=561032",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1293479",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-policy-reference",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/copilot-in-purview-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/security/auto-provisioning-security-copilot",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/security/privacy-data-security",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/security/owner-settings",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether Security Copilot can query Microsoft 365 services such as Microsoft Purview for data",
+        "docs": "https://learn.microsoft.com/copilot/security/privacy-data-security",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Owner settings"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether the Microsoft Purview source is enabled in Security Copilot",
+        "docs": "https://learn.microsoft.com/purview/copilot-in-purview-overview",
+        "reachable": true,
+        "segments": [
+          "Sources",
+          "Manage plugins",
+          "Purview"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

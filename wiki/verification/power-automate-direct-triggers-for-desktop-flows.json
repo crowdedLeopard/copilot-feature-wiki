@@ -4,43 +4,32 @@
   "title": "Power Automate: direct triggers for desktop flows",
   "status": "held",
   "date": "2026-11-18",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "verifierVerdict": "hold",
   "notes": [],
   "hold": {
     "reason": "failed",
     "since": "2026-11-18",
     "reasons": [
-      "4 blocking findings (claims 39, 44, 51, 52)"
+      "2 blocking findings (claims 37, 56)"
     ]
   },
   "counts": {
-    "claims": 54,
-    "confirmed": 50,
+    "claims": 56,
+    "confirmed": 54,
     "unconfirmed": 0,
-    "contradicted": 4,
-    "blocker": 4,
+    "contradicted": 2,
+    "blocker": 2,
     "major": 0,
-    "minor": 1
+    "minor": 0
   },
-  "summary": "Hold: the briefing overlooks published desktop-flow metering and casts existing module-level data policies as unconfirmed. It also omits a heading from the documented admin path and incorrectly says Learn describes only cloud-flow triggering. The roadmap status and target dates are accurate.",
+  "summary": "The roadmap dates and the documented data-policy path and command are supported. Hold because the page treats licensing without a cloud flow as wholly unpublished despite a general unattended-desktop-flow licensing rule, and rates cost as indirect-only despite the documented desktop-flow consumption meter.",
   "claims": [
     {
       "n": 1,
-      "where": "title; front matter: products",
-      "type": "record",
-      "claim": "This roadmap item concerns Power Automate direct triggers for desktop flows.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Power Automate: Direct triggers for desktop flows",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
       "where": "summary; What's changing; Risk assessment; rationale: risk",
       "type": "record",
       "claim": "Microsoft plans event-triggered desktop flows without an intermediary cloud flow.",
@@ -51,13 +40,24 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 2,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap says this simplifies automation design and reduces the effort to connect desktop flows to business processes.",
+      "claim": "The roadmap describes simpler automation design and less effort connecting desktop flows to business processes.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "This simplifies automation design and reduces the effort required to connect desktop flows to business processes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: products; title",
+      "type": "record",
+      "claim": "The roadmap feature belongs to Power Automate.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Power Automate\"]",
       "severity": null,
       "fix": null
     },
@@ -74,7 +74,7 @@
     },
     {
       "n": 5,
-      "where": "summary; front matter: previewDate; What's changing; changes",
+      "where": "front matter: previewDate; summary; What's changing; changes",
       "type": "record",
       "claim": "Preview is targeted for January CY2027.",
       "status": "supported",
@@ -98,7 +98,7 @@
       "n": 7,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed, without establishing exclusion of other clouds.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -107,17 +107,6 @@
     },
     {
       "n": 8,
-      "where": "Scope",
-      "type": "record",
-      "claim": "Other clouds are not listed on this roadmap item.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap platform is Desktop.",
@@ -128,10 +117,10 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 9,
       "where": "front matter: releasePhase; Scope",
       "type": "record",
-      "claim": "The release phases are General Availability and Preview.",
+      "claim": "The roadmap release phases are General Availability and Preview.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -139,10 +128,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 10,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap record was modified at 2026-11-12T01:35:00.",
+      "claim": "The roadmap modification timestamp is 2026-11-12T01:35:00.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-11-12T01:35:00\"",
@@ -150,13 +139,24 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "What's changing",
+      "n": 11,
+      "where": "What's changing; Open questions",
       "type": "record",
       "claim": "The roadmap does not identify the supported events.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "enabling automations to start in response to supported events without requiring an intermediary cloud flow",
+      "quote": "Desktop flows will support direct triggers, enabling automations to start in response to supported events without requiring an intermediary cloud flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap does not specify where a direct trigger is configured.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Desktop flows will support direct triggers, enabling automations to start in response to supported events without requiring an intermediary cloud flow.",
       "severity": null,
       "fix": null
     },
@@ -164,7 +164,7 @@
       "n": 13,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap does not identify where direct triggers are configured.",
+      "claim": "The roadmap does not specify the execution machine.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Desktop flows will support direct triggers, enabling automations to start in response to supported events without requiring an intermediary cloud flow.",
@@ -175,7 +175,7 @@
       "n": 14,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap does not identify the execution machine or account.",
+      "claim": "The roadmap does not specify the execution account.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Desktop flows will support direct triggers, enabling automations to start in response to supported events without requiring an intermediary cloud flow.",
@@ -186,7 +186,7 @@
       "n": 15,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap does not specify whether attended runs, unattended runs or both are supported.",
+      "claim": "The roadmap does not specify whether direct triggers support attended runs, unattended runs or both.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Desktop flows will support direct triggers, enabling automations to start in response to supported events without requiring an intermediary cloud flow.",
@@ -197,10 +197,10 @@
       "n": 16,
       "where": "Risk assessment: Data exposure",
       "type": "record",
-      "claim": "The roadmap does not describe the event's input data.",
+      "claim": "The roadmap does not specify the data an event supplies.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "enabling automations to start in response to supported events",
+      "quote": "Desktop flows will support direct triggers, enabling automations to start in response to supported events without requiring an intermediary cloud flow.",
       "severity": null,
       "fix": null
     },
@@ -208,7 +208,7 @@
       "n": 17,
       "where": "Risk assessment: Data exposure",
       "type": "record",
-      "claim": "The roadmap does not say whether a directly triggered flow passes data back out.",
+      "claim": "The roadmap does not specify whether a directly triggered flow passes data back out.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Desktop flows will support direct triggers, enabling automations to start in response to supported events without requiring an intermediary cloud flow.",
@@ -222,7 +222,7 @@
       "claim": "The roadmap names no licence.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Desktop flows will support direct triggers, enabling automations to start in response to supported events without requiring an intermediary cloud flow.",
+      "quote": "Desktop flows will support direct triggers, enabling automations to start in response to supported events without requiring an intermediary cloud flow. This simplifies automation design and reduces the effort required to connect desktop flows to business processes.",
       "severity": null,
       "fix": null
     },
@@ -233,18 +233,18 @@
       "claim": "The roadmap names no meter.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "This simplifies automation design and reduces the effort required to connect desktop flows to business processes.",
+      "quote": "Desktop flows will support direct triggers, enabling automations to start in response to supported events without requiring an intermediary cloud flow. This simplifies automation design and reduces the effort required to connect desktop flows to business processes.",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "What's changing; Governance guidance",
+      "where": "What's changing",
       "type": "absence",
-      "claim": "Learn does not yet describe the planned direct-trigger feature.",
+      "claim": "Learn does not yet document the roadmap's supported-event direct-trigger feature.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"desktop flows\" \"direct triggers\"; Power Automate desktop flows direct triggers licensing default admin setting API supported events. Opened trigger-desktop-flows and run-desktop-flows-url-shortcuts; results describe existing routes, not the planned feature.",
+      "quote": "Searched: desktop flows direct triggers event triggers supported configure; opened trigger-desktop-flows and schedule-desktop-flows. Scheduled triggers document recurrence, not an identified implementation of this roadmap's event-trigger feature.",
       "severity": null,
       "fix": null
     },
@@ -252,40 +252,95 @@
       "n": 21,
       "where": "front matter: defaultState; summary; Why it matters; Open questions",
       "type": "default",
-      "claim": "The default state of the planned direct-trigger feature is unknown.",
+      "claim": "The default state of the roadmap's direct-trigger feature is not stated.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"desktop flows\" \"direct triggers\" \"default\" \"licensing\"; Power Automate desktop direct triggers default prerequisites events identity approval frequency limits data policies. Read roadmap, trigger-desktop-flows and existing URL-trigger documentation; no planned-feature default stated.",
+      "quote": "Searched: desktop flows direct triggers licensing pricing default enabled rollout roles; read roadmap, trigger-desktop-flows, console search excerpt and schedule-desktop-flows. No default for this event-trigger roadmap feature found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
-      "where": "front matter: licensing.model; licensing.notes; summary; Cost and licensing; Open questions",
+      "where": "front matter: licensing.model; summary; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "Direct-trigger-specific licensing has not been published, so the feature's licensing model is unknown.",
+      "claim": "No licensing model specific to the new direct-trigger capability has been published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Power Automate desktop direct triggers licensing pay as you go meter unattended Process; \"desktop flows\" \"direct triggers\" \"default\" \"licensing\". Opened licensing/types and pay-as-you-go-meters: general desktop-flow rules, no direct-trigger-specific licence.",
+      "quote": "Searched: desktop flows direct triggers licensing pricing default enabled rollout roles; opened licensing/types, pay-as-you-go-meters, trigger-desktop-flows and schedule-desktop-flows. General desktop-flow rules exist; no direct-trigger-specific SKU found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 23,
-      "where": "controls[0]; summary; Risk assessment: Change & support; Governance controls; rationale: risk",
+      "where": "controls[0]; summary; Risk assessment; Governance controls; rationale: risk",
       "type": "absence",
-      "claim": "No dedicated tenant or environment UI setting or automation call for enabling or disabling direct triggers is documented.",
+      "claim": "No tenant or environment UI switch or API for allowing or disabling this direct-event-trigger feature is documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Power Automate desktop direct triggers disable tenant setting PowerShell Power Platform API Dataverse. Read tenant-settings and governance search excerpts, New-DlpPolicy and prevent-data-loss; no dedicated direct-trigger switch or API surfaced.",
+      "quote": "Searched: desktop flows direct triggers admin disable PowerShell data policies; opened prevent-data-loss, admin/prevent-data-loss, New-DlpPolicy and schedule-desktop-flows. Per-schedule Enable/Disable is documented, but no tenant switch for this roadmap feature.",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
-      "where": "What's changing",
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Data policies are reached in Power Platform admin center through Security > Settings > Data and privacy > Data policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/prevent-data-loss",
+      "quote": "Select Security in the navigation pane. ... In the Security pane, under Settings, select Data and privacy. ... In the Data protection and privacy screen, select the Data policy section.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Microsoft.PowerApps.Administration.PowerShell provides New-DlpPolicy -NewPolicy $NewPolicy to create a data policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy",
+      "quote": "New-DlpPolicy -NewPolicy $NewPolicy\nCreates a new policy with the $NewPolicy object.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[1]; Risk assessment; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "General data policies can govern desktop flow modules in an environment and cloud flow connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/prevent-data-loss",
+      "quote": "You can define a DLP policy that manages both desktop flow modules and cloud flow connectors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Governance controls; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "The desktop flow connector can be governed in data policies like other connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/prevent-data-loss",
+      "quote": "The desktop flow connector can be governed in your policies like any other connector in all environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[1].note; Risk assessment; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not specified governance of direct triggers themselves or whether desktop flow connector policies govern their triggering route.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: desktop flows direct triggers admin disable PowerShell data policies; read prevent-data-loss and admin/prevent-data-loss. Module enforcement is documented, but no mapping of the new event-trigger route to the desktop flow connector was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Why it matters; Scope",
       "type": "behaviour",
-      "claim": "A cloud flow can start a desktop flow with Run a flow built with Power Automate for desktop.",
+      "claim": "A documented cloud-flow route starts desktop flows using Run a flow built with Power Automate for desktop.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/trigger-desktop-flows",
       "quote": "Under Actions, select Run a flow built with Power Automate for desktop.",
@@ -293,10 +348,10 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 30,
       "where": "What's changing; Why it matters; Scope",
       "type": "behaviour",
-      "claim": "The documented cloud-triggered route requires a registered machine or machine group.",
+      "claim": "The cloud-flow route requires a registered machine or machine group.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/trigger-desktop-flows",
       "quote": "A registered machine or machine group that will run the triggered desktop flows.",
@@ -304,10 +359,10 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 31,
       "where": "Scope",
       "type": "behaviour",
-      "claim": "The documented cloud-triggered route requires a work or school account.",
+      "claim": "The documented cloud-flow route requires a work or school account.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/trigger-desktop-flows",
       "quote": "A work or school account.",
@@ -315,10 +370,10 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 32,
       "where": "What's changing; Why it matters; Scope",
       "type": "behaviour",
-      "claim": "The documented cloud-triggered route requires a desktop flow connection.",
+      "claim": "The cloud-flow route requires a configured desktop flow connection.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/trigger-desktop-flows",
       "quote": "A configured desktop flow connection.",
@@ -326,10 +381,10 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "n": 33,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "The cited cloud-triggering page requires the appropriate licence for attended runs.",
+      "claim": "The cloud-triggering page requires the appropriate licence for attended runs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/trigger-desktop-flows",
       "quote": "To run the triggered desktop flows, you need to have the appropriate license (for attended runs) or an unattended add-on (for unattended runs).",
@@ -337,18 +392,18 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "n": 34,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
       "type": "licensing",
-      "claim": "The cited cloud-triggering page requires an unattended add-on for unattended runs.",
+      "claim": "The cloud-triggering page names an unattended add-on for unattended runs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/trigger-desktop-flows",
       "quote": "To run the triggered desktop flows, you need to have the appropriate license (for attended runs) or an unattended add-on (for unattended runs).",
-      "severity": "minor",
-      "fix": "Keep the attribution to the cloud-triggering page, but qualify the unattended-add-on wording wherever used with: 'The licensing overview instead says to subscribe to Power Automate Process licenses or enable pay-as-you-go for unattended desktop flows.' Cite https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types."
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 30,
+      "n": 35,
       "where": "Why it matters; Risk assessment: Security & identity; Cost and licensing",
       "type": "licensing",
       "claim": "The cloud-triggering page identifies the connection creator as the user needing the appropriate licence.",
@@ -359,10 +414,65 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing overview says unattended desktop flows require Process licenses or pay-as-you-go.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types",
+      "quote": "For additional capacity, running desktop flows unattended, or licensing flows on their own without use licenses, subscribe to Power Automate Process licenses or enable pay-as-you-go.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing: Whether the same rule applies when no cloud flow is involved",
+      "type": "licensing",
+      "claim": "Whether the preceding unattended desktop-flow licensing rule applies without a cloud flow is not yet published.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types",
+      "quote": "For additional capacity, running desktop flows unattended, or licensing flows on their own without use licenses, subscribe to Power Automate Process licenses or enable pay-as-you-go.",
+      "severity": "blocker",
+      "fix": "Replace 'Whether the same rule applies when no cloud flow is involved is not yet published.' with 'The overview states this rule for unattended desktop flows generally, not just cloud-triggered runs; direct-trigger-specific licensing changes have not been published.'"
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Learn warns to secure a machine and trust its admins before running desktop flows from the cloud.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-automate/desktop-flows/desktop-flow-connections",
+      "quote": "Before using a machine to run desktop flows from the cloud, ensure that the machine is secured and the machine's admins are trusted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "No approval step for this new direct-event-trigger feature is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: desktop flows direct triggers supported events identity approval frequency limits pricing; opened trigger-desktop-flows, run-desktop-flows-url-shortcuts and schedule-desktop-flows. URL confirmation is documented for another route, not this new feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Autonomy & actions; Change & support",
+      "type": "absence",
+      "claim": "No trigger-frequency or run limit for this new direct-event-trigger feature is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: desktop flows direct triggers supported events identity approval frequency limits pricing; opened trigger-desktop-flows and schedule-desktop-flows and read limits-and-config search excerpts. No limit stated for this roadmap feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "The cloud-triggering page documents a limit of 70 desktop flow runs per minute per connection.",
+      "claim": "The cloud-triggering page documents up to 70 desktop flow runs per minute per connection.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/desktop-flows/trigger-desktop-flows",
       "quote": "We currently support up to 70 desktop flows runs per minute for every connection.",
@@ -370,76 +480,120 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "Learn advises securing a machine before using it for cloud-triggered desktop flows.",
+      "n": 42,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "The execution identity and machine-session behavior of the new direct-event-trigger feature are not documented.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/desktop-flow-connections",
-      "quote": "Before using a machine to run desktop flows from the cloud, ensure that the machine is secured and the machine's admins are trusted.",
+      "source": null,
+      "quote": "Searched: desktop flows direct triggers supported events identity approval frequency limits pricing; opened desktop-flow-connections and schedule-desktop-flows. Existing connection and schedule identities do not identify this roadmap feature's execution model.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "Learn advises ensuring that the machine's administrators are trusted.",
+      "n": 43,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "No source found states that the new direct-trigger feature changes existing flows automatically.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/desktop-flow-connections",
-      "quote": "Before using a machine to run desktop flows from the cloud, ensure that the machine is secured and the machine's admins are trusted.",
+      "source": null,
+      "quote": "Searched: desktop flows direct triggers licensing pricing default enabled rollout roles; read roadmap, trigger-desktop-flows and schedule-desktop-flows. No existing-flow migration or automatic behavior change for this roadmap feature found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
-      "where": "controls[1].governs; Risk assessment: Data exposure; Governance controls",
-      "type": "applicability",
-      "claim": "Data policies can govern desktop flow modules.",
+      "n": 44,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "The eligible users of the new direct-event-trigger feature have not been published.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/prevent-data-loss",
-      "quote": "Power Automate allows you to create and enforce DLP policies that classify desktop flow modules and individual module actions as Business, Non-business, or Blocked.",
+      "source": null,
+      "quote": "Searched: desktop flows direct triggers licensing pricing default enabled rollout roles; opened licensing/types and schedule-desktop-flows. Schedule-owner and Operator permissions describe scheduled triggers, not this identified event-trigger roadmap feature.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 35,
+      "n": 45,
+      "where": "Scope; Governance guidance: At rollout",
+      "type": "absence",
+      "claim": "Required roles for the new direct-event-trigger feature have not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: desktop flows direct triggers licensing pricing default enabled rollout roles; read run-only-user-role search excerpt and schedule-desktop-flows. No role requirement identified for this roadmap event-trigger capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope; Governance guidance: At rollout",
+      "type": "absence",
+      "claim": "Feature-specific prerequisites for the new direct-event-trigger capability have not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: desktop flows direct triggers event triggers supported configure; opened trigger-desktop-flows and schedule-desktop-flows. Their prerequisites are for cloud triggering and scheduled triggers; neither identifies this new supported-event capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Detailed rollout mechanics for the roadmap's direct-event-trigger feature have not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: desktop flows direct triggers licensing pricing default enabled rollout roles; read roadmap and schedule-desktop-flows. Roadmap gives month targets; the regional preview rollout on the latter page is specifically for scheduled triggers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Microsoft documents a preview Power Automate flow-run meter covering desktop flows in pay-as-you-go environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters",
+      "quote": "Power Automate flow runs (preview) ... Flow runs for premium cloud flows and desktop flows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Attended desktop-flow charges in pay-as-you-go environments depend on the running user's licence entitlements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters",
+      "quote": "Attended runs follow the entitlements of the user running the flow. A user whose license includes attended RPA isn't charged; a user whose license doesn't include it is charged $0.60 per run.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Unattended desktop flows in pay-as-you-go environments are charged per run.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters",
+      "quote": "Unattended runs are charged at $3.00 per run regardless of any capacity assigned to the environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No direct-trigger-specific rate or exception to desktop-flow metering is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: desktop flows direct triggers supported events identity approval frequency limits pricing; opened pay-as-you-go-meters and licensing/types. Desktop-flow rates are documented generally, with no exception or rate specific to direct triggers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
       "where": "Governance controls",
-      "type": "applicability",
-      "claim": "A data policy can manage cloud flow connectors alongside desktop flow modules.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/prevent-data-loss",
-      "quote": "You can define a DLP policy that manages both desktop flow modules and cloud flow connectors.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Governance controls; Governance guidance: Before rollout",
-      "type": "applicability",
-      "claim": "The desktop flow connector can be governed like other connectors.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/prevent-data-loss",
-      "quote": "The desktop flow connector can be governed in your policies like any other connector in all environments.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "controls[1].note; Governance controls",
       "type": "behaviour",
-      "claim": "Adding desktop flow modules to a policy causes existing desktop flows to be evaluated against them.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-automate/prevent-data-loss",
-      "quote": "When desktop flow modules are added to DLP policies, your tenant's desktop flows are evaluated against them",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Noncompliant desktop flows are suspended after policy evaluation.",
+      "claim": "Adding desktop flow modules to data policies causes evaluation and suspension of noncompliant flows.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-automate/prevent-data-loss",
       "quote": "When desktop flow modules are added to DLP policies, your tenant's desktop flows are evaluated against them, and they're suspended if they're noncompliant.",
@@ -447,32 +601,10 @@
       "fix": null
     },
     {
-      "n": 39,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The documented path is Power Platform admin center > Security > Data and privacy > Data policy.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-platform/admin/prevent-data-loss",
-      "quote": "Select Security in the navigation pane. In the Security pane, under Settings, select Data and privacy. In the Data protection and privacy screen, select the Data policy section.",
-      "severity": "blocker",
-      "fix": "Change controls[1].ui.path and the rendered path to 'Security > Settings > Data and privacy > Data policy', retaining the existing surface and docs URL. Settings is the documented group heading between Security and Data and privacy."
-    },
-    {
-      "n": 40,
-      "where": "controls[1].api; Governance controls table",
-      "type": "command",
-      "claim": "Microsoft.PowerApps.Administration.PowerShell provides New-DlpPolicy -NewPolicy $NewPolicy to create a data policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy",
-      "quote": "Module: Microsoft.PowerApps.Administration.PowerShell Module. New-DlpPolicy -NewPolicy $NewPolicy. Creates a new policy with the $NewPolicy object.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
+      "n": 53,
       "where": "Governance controls",
       "type": "role",
-      "claim": "The tenant-level data policy walkthrough requires Power Platform Administrator.",
+      "claim": "The tenant-level data-policy instructions require the Power Platform Administrator role.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/prevent-data-loss",
       "quote": "To follow the steps described in this article for tenant-level policies, sign in as a user with the Power Platform Administrator role.",
@@ -480,10 +612,10 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 54,
       "where": "Governance controls",
       "type": "role",
-      "claim": "Environment-level data policies require Environment Admin permissions outside the Dataverse exception.",
+      "claim": "Environment-level data-policy instructions require Environment Admin permissions outside the Dataverse exception.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/prevent-data-loss",
       "quote": "To follow the steps for environment-level policies, you need to have Power Apps Environment Admin permissions.",
@@ -491,10 +623,10 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 55,
       "where": "Governance controls",
       "type": "role",
-      "claim": "Environments with a Dataverse database require System Administrator instead.",
+      "claim": "Environments with a Dataverse database instead require the System Administrator role for environment-level policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/prevent-data-loss",
       "quote": "For environments with a Dataverse database, you need to be assigned the System Administrator role instead.",
@@ -502,136 +634,26 @@
       "fix": null
     },
     {
-      "n": 44,
-      "where": "controls[1].note; Risk assessment: Data exposure; Governance controls; Governance guidance: At rollout",
-      "type": "applicability",
-      "claim": "Whether desktop flow module data policies cover a directly triggered desktop flow is unconfirmed.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-automate/prevent-data-loss",
-      "quote": "DLP policy enforcement for desktop flows is available in all environments.",
-      "severity": "blocker",
-      "fix": "Narrow the caveat in the control note and repeated prose to: 'Data policies govern desktop flow modules. Microsoft has not documented how direct triggers themselves are governed or whether desktop flow connector policies govern the new triggering route.' Do not cast module-level policy enforcement as dependent on a cloud-flow trigger."
-    },
-    {
-      "n": 45,
-      "where": "Risk assessment: Security & identity; Open questions",
-      "type": "absence",
-      "claim": "The execution identity and machine-session behaviour of direct triggers are not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Automate desktop direct triggers default prerequisites events identity approval frequency limits data policies. Opened desktop-flow-connections and trigger-desktop-flows; read requirements search excerpts. No planned direct-trigger identity or session rules surfaced.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Scope",
-      "type": "absence",
-      "claim": "Users eligible for the planned direct-trigger capability are not specified.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Automate desktop flows direct triggers licensing default admin setting API supported events; \"desktop flows\" \"direct triggers\". Opened trigger-desktop-flows and licensing/types; neither describes eligibility for the planned feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Scope; Governance guidance: At rollout",
-      "type": "absence",
-      "claim": "Roles required specifically for direct triggers are not published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Automate desktop direct triggers default prerequisites events identity approval frequency limits data policies. Read requirements excerpts, trigger-desktop-flows and desktop-flow-connections; no direct-trigger role requirement surfaced.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "Scope; Governance guidance: At rollout",
-      "type": "absence",
-      "claim": "Prerequisites specific to direct triggers are not published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Automate desktop direct triggers default prerequisites events identity approval frequency limits data policies. Read requirements excerpts and trigger-desktop-flows; these describe existing desktop/cloud routes, not direct-trigger-specific prerequisites.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "absence",
-      "claim": "An approval step for the planned direct-trigger feature is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Automate desktop direct triggers default prerequisites events identity approval frequency limits data policies. Opened trigger-desktop-flows and run-desktop-flows-url-shortcuts; the latter's confirmation applies to URLs/shortcuts, not the planned feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "Risk assessment: Autonomy & actions; Change & support",
-      "type": "absence",
-      "claim": "A direct-trigger-specific frequency or execution limit has not been documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Automate desktop direct triggers default prerequisites events identity approval frequency limits data policies. Opened trigger-desktop-flows; its 70-runs-per-minute limit concerns the existing connection-based cloud route, not a documented direct-trigger limit.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "No meter is documented for directly triggered desktop-flow runs.",
+      "n": 56,
+      "where": "front matter: cost; rationale: cost",
+      "type": "consistency",
+      "claim": "Cost is low, meaning indirect cost only, although general desktop-flow licensing and pay-as-you-go rules are documented.",
       "status": "contradicted",
       "source": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters",
-      "quote": "Desktop flow runs in a pay-as-you-go environment are charged as follows: Attended runs follow the entitlements of the user running the flow.",
+      "quote": "Desktop flow runs in a pay-as-you-go environment are charged as follows: ... Unattended runs are charged at $3.00 per run regardless of any capacity assigned to the environment.",
       "severity": "blocker",
-      "fix": "Replace the absence claim with: 'Microsoft documents the Power Automate flow-run meter in preview for desktop flows in pay-as-you-go environments; attended charges depend on licence entitlements and unattended runs are charged per run. No direct-trigger-specific rate or exception is published.' Cite https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters. Replace the rationale's 'only cost' sentence with: 'Direct-trigger-specific pricing is not published; existing desktop-flow licensing and pay-as-you-go rules are documented.'"
-    },
-    {
-      "n": 52,
-      "where": "Scope; Why it matters",
-      "type": "behaviour",
-      "claim": "Learn describes only the cloud-flow route for triggering desktop flows today.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-automate/desktop-flows/run-desktop-flows-url-shortcuts",
-      "quote": "You can use URLs to trigger desktop flows through many different sources, such as browsers, the Windows Run application, the command prompt, and the Windows Task Scheduler.",
-      "severity": "blocker",
-      "fix": "Replace 'Learn describes only the cloud-flow route today' with 'Learn describes a cloud-flow route today'. In Why it matters, replace 'the cloud flow as the way events and schedules reach a desktop flow' with 'cloud flows as one way to trigger desktop flows'. No additional discussion of the other routes is needed."
-    },
-    {
-      "n": 53,
-      "where": "Scope",
-      "type": "absence",
-      "claim": "The rollout mechanics beyond the roadmap targets are not published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Automate desktop flows direct triggers licensing default admin setting API supported events; \"desktop flows\" \"direct triggers\" \"default\" \"licensing\". Read roadmap and trigger-desktop-flows; no planned-feature rollout mechanism surfaced.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "Why it matters; rationale: impact",
-      "type": "absence",
-      "claim": "No source states that introducing direct triggers changes existing flows or other users' behaviour automatically.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"desktop flows\" \"direct triggers\" \"default\" \"licensing\"; Power Automate desktop flows direct triggers licensing default admin setting API supported events. Read roadmap and trigger-desktop-flows; no existing-flow migration or automatic behaviour change stated.",
-      "severity": null,
-      "fix": null
+      "fix": "Set cost to 'variable'. Replace the cost rationale with 'Variable. The preview Power Automate flow-run meter charges desktop flows in pay-as-you-go environments; attended charges depend on licence entitlements and unattended runs are charged per run. No direct-trigger-specific rate or exception is published.' Keep licensing.model as 'unknown' for feature-specific licensing."
     }
   ],
   "precheck": {
-    "at": "2026-11-18T03:37:07.134Z",
+    "at": "2026-11-18T04:23:55.831Z",
     "summary": {
-      "links": 6,
-      "unreachable": 5,
+      "links": 9,
+      "unreachable": 0,
       "uiPaths": 1,
-      "uiPathsWithMissingWords": 1,
+      "uiPathsWithMissingWords": 0,
       "apiCalls": 1,
-      "apiCallsNotOnPage": 1,
+      "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -642,28 +664,43 @@
       },
       {
         "url": "https://learn.microsoft.com/power-automate/desktop-flows/trigger-desktop-flows",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/power-automate/desktop-flows/desktop-flow-connections",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/power-automate/prevent-data-loss",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/prevent-data-loss",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-automate/desktop-flows/run-desktop-flows-url-shortcuts",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -672,29 +709,33 @@
         "side": "ui",
         "governs": "Which desktop flow modules and connectors can be used in an environment (data policy)",
         "docs": "https://learn.microsoft.com/power-platform/admin/prevent-data-loss",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Security",
+          "Settings",
           "Data and privacy",
           "Data policy"
         ],
-        "missing": [
-          "Security",
-          "Data and privacy",
-          "Data policy"
-        ]
+        "missing": []
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Which desktop flow modules and connectors can be used in an environment (data policy)",
         "docs": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy",
-        "reachable": false,
+        "reachable": true,
         "token": "New-DlpPolicy",
-        "found": false
+        "found": true
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

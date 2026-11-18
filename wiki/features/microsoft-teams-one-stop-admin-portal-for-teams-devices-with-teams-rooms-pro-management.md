@@ -94,19 +94,23 @@ changes:
     note: "Correction: licence-tier statement now follows the update-management guide, minimum Admin Agent version is stated per cloud (AA 830 public, AA 856 government), role-assignment permissions corrected, checklist steps without table rows removed, impact lowered to low."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 118 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-18"
+    note: "Correction: the general Teams Rooms Pro Management page's supported clouds now read 'all Microsoft clouds except DoD and Office 365 operated by 21Vianet'."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 132 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 118
-  confirmed: 117
+  claims: 132
+  confirmed: 131
   unconfirmed: 0
   contradicted: 1
-  attempts: 2
-  hash: "20eec54ef13409c5a965dac8bce9dc23"
+  attempts: 0
+  hash: "9a36d8c82b75533714c2d57fb7091102"
 ---
 
 ## What's changing
@@ -117,7 +121,7 @@ PMP provides device inventory with metadata and app information, remote actions 
 
 MC1227622 (updated 28 October 2026, end date 2027-03-01, no act-by date) gives the timeline. PMP rollout is complete in the public cloud as of 2 July 2026 and in GCC High and DoD as of 8 October 2026; for GCC, Microsoft expects to start in November 2026 and complete by late November 2026. TAC device administration then retires in phases: SIP, Teams Rooms on Android and panels start by mid-November 2026 and finish by the end of November; phones start by early December and finish by 15 December 2026. For GCC High and DoD, TAC administration retires from early December to 15 December 2026; for GCC, from early January to 30 January 2027; phones in all three government clouds run from early January to 30 January 2027. The post says overlapping TAC capabilities (updates, settings, restart, sign-in/out, log collection, provisioning) will be deprecated by January 2027.
 
-The roadmap record shows the item as Launched, General Availability, with a June CY2026 target, for Worldwide, GCC, GCC High and DoD on Android, desktop and Teams and Surface devices. Two details differ: the post still describes GCC as rolling out in November 2026, and Microsoft's general Teams Rooms Pro Management page lists supported clouds as all Microsoft clouds except DoD, while the transition guide lists a DoD portal address.
+The roadmap record shows the item as Launched, General Availability, with a June CY2026 target, for Worldwide, GCC, GCC High and DoD on Android, desktop and Teams and Surface devices. Two details differ: the post still describes GCC as rolling out in November 2026, and Microsoft's general Teams Rooms Pro Management page lists supported clouds as all Microsoft clouds except DoD and Office 365 operated by 21Vianet, while the transition guide lists a DoD portal address.
 
 ## Why it matters
 
@@ -221,8 +225,10 @@ cost: Low. The transition page ties portal access to Teams Rooms or Teams Shared
 impact: Low. Teams device administrators and help desks change portals, while room and phone users are not described as affected; the TAC retirement dates apply whether or not anyone acts.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing: final paragraph / availability: The general Teams Rooms Pro Management page lists supported clouds as all Microsoft clouds except DoD. | Found: | **Supported clouds** | All Microsoft clouds except DoD and Office 365 operated by 21Vianet. | | Fix: Replace 'lists supported clouds as all Microsoft clouds except DoD' with 'lists supported clouds as all Microsoft clouds except DoD and Office 365 operated by 21Vianet', following https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-management. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-pro-management
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] What's changing: public-cloud retirement; summary / record: Public-cloud SIP administration retires from mid-November to the end of November 2026. | Found: SIP, MTR-A and Panels devices administration experience in TAC will start deprecating by Mid-November and will complete by end of November. | Fix: Keep the notice's dates. Add: 'The transition guide's FAQ still says deprecation begins and ends in October 2026; this briefing follows the later timeline in MC1227622.' The conflicting FAQ is at https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1 under 'What is the deadline to migrate from TAC to PMP?'.
+- [supported, minor] Risk assessment: Change & support / behaviour: End-of-life devices get the latest Admin Agent. | Found: Microsoft will make the latest Admin agent version available which supports connectivity to the Pro Management Portal. | Fix: Replace 'End-of-life devices get the latest Admin Agent' with 'Microsoft makes the latest Admin Agent available for end-of-life devices'. This preserves the transition guide's narrower availability statement; https://learn.microsoft.com/microsoftteams/rooms/androidupdatemanagementinpmp says Microsoft makes every effort to update these devices automatically and administrators remain responsible for ensuring they are updated. | Source: https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1
+- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist tells readers to fix network and conditional access controls, but neither control has a row in the controls table. | Found: fix the network, Admin Agent version or conditional access cause. / Table rows: custom roles; tenant-wide pause; PMP ring adoption; TAC tag import. | Fix: Replace the first After rollout bullet with 'Check each device group in PMP for devices showing Device is not connected to IoT Hub.' This removes the unmatched instructions to change network or conditional access controls without adding table rows.
 -->

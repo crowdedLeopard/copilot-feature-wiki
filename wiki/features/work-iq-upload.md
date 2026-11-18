@@ -70,19 +70,23 @@ changes:
     note: "Correction: aligned the user-scope, WorkIQ.Act and overwrite statements with Learn, added the Copilot Studio write-default note and the setup wording, and removed checklist items without control rows."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 69 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-18"
+    note: "Correction: the Governance controls notes no longer say the tenant MCP policy is the only control gating agent writes; the SharePoint Tools page also documents OAuth scopes gating write paths."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 72 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-18"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 69
-  confirmed: 68
+  claims: 72
+  confirmed: 72
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "5dd1b37132f751cf33c6677fa8d76dc8"
+  contradicted: 0
+  attempts: 0
+  hash: "faabe2e11666777a4ec6f69d05e8b546"
 ---
 
 ## What's changing
@@ -158,7 +162,7 @@ Not yet published: a credit rate or limit for upload, and any storage charge for
 </tbody>
 </table>
 
-The only control Microsoft Learn documents that plausibly gates agent writes through Work IQ MCP is the tenant-level Work IQ MCP policy. The policy page says that in the initial release control is tenant-level, and that per-user, per-app, per-agent or scenario-specific templates are not part of it. It is a general control: no page confirms it covers this upload capability.
+Microsoft Learn documents the tenant-level Work IQ MCP policy as a control over MCP tool requests. The policy page says that in the initial release control is tenant-level, and that per-user, per-app, per-agent or scenario-specific templates are not part of it. It is a general control: no page confirms it covers this upload capability.
 
 Microsoft Learn documents no API call for the Work IQ MCP policy toggle at the time of writing (November 2026), so that side of the row is empty.
 
@@ -176,10 +180,4 @@ Work IQ scopes `WorkIQ.Read` and `WorkIQ.Act` are consented by an administrator,
 risk: Medium. The roadmap says agents will write files and content into Microsoft 365, but Microsoft Learn does not yet describe which destinations are supported or which control covers uploads.
 cost: Variable. Microsoft Learn says Work IQ is available through usage-based billing and consumes Copilot Credits; no upload-specific rate is published.
 impact: Low. The roadmap item is for agents and the people building them; no source says end users see anything change, and the only platform listed is Web.
--->
-
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: first paragraph / absence: The tenant-level MCP policy is the only documented control that plausibly gates agent writes through Work IQ MCP. | Found: Work IQ filters the /sharepoint paths exposed during discovery according to the scopes in the access token. A read-only token doesn't expose paths for actions that change data. | Fix: Replace the first sentence of Governance controls with: 'Microsoft Learn documents the tenant-level Work IQ MCP policy as a control over MCP tool requests.' Remove 'only': the cited SharePoint Tools page also documents OAuth scopes gating access to write paths. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/sharepoint-iq
 -->

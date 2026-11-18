@@ -46,6 +46,9 @@ sources:
   - title: "Whether a plugin package is blocked for users and agents (Microsoft Graph)"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
     kind: "learn"
+  - title: "Agent 365 Package Management API overview"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview"
+    kind: "learn"
   - title: "Which connectors and tools makers can use in Copilot Studio agents (PowerShell)"
     url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-dlppolicy"
     kind: "learn"
@@ -67,7 +70,7 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Security > Data and privacy > Data policy > policy > Assign connectors > connector > Block"
+      path: "Security > Data and privacy > Data policy > policy > Edit Policy > Next > Next > Assign connectors > connector > three dots > Block"
       docs: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
     api:
       kind: "powershell"
@@ -88,19 +91,23 @@ changes:
     note: "New briefing: roadmap item 570669, with plugin administration background and the controls Learn documents today."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 57 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Correction: data policy path now includes Edit Policy and both Next steps; connector wording narrowed to Power Platform connectors; plugin approval flow no longer asserted for this integration."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 66 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 54
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "5023f56121a2615620768a28fb39f72e"
+  claims: 66
+  confirmed: 65
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 2
+  hash: "56f721fcf0ea4c316d407f41dee61e89"
 ---
 
 ## What's changing
@@ -113,7 +120,7 @@ The record lists status In development, a target of November CY2026 and a previe
 
 ## Why it matters
 
-If this ships as described, makers get a route to plugins that does not start in the Microsoft 365 admin center, while approval of plugins stays there. Learn states that package approval does not replace Power Platform policies, so a service owner has two sets of controls and two sets of administrators to line up before makers start asking for plugins.
+If this ships as described, makers get a route to plugins that does not start in the Microsoft 365 admin center, while administrators generally manage plugin access in the Microsoft 365 admin center; Microsoft has not confirmed the approval flow for this Copilot Studio integration. Learn states that package approval does not replace Power Platform policies, so a service owner has two sets of controls and two sets of administrators to line up before makers start asking for plugins.
 
 Microsoft has not stated what happens on arrival, including whether the registry is visible to every maker or whether an admin must switch it on. No source says existing behaviour changes, so treat this as a capability to review now rather than a change that lands on its own; revisit when Microsoft publishes the Learn page or a Message center post.
 
@@ -168,14 +175,14 @@ Who sees the registry, which licences makers need and whether an admin setting g
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether a plugin package is blocked for users and agents</strong><br><small>Tenant</small><br><small class="controls__note">Beta API; needs an Agent 365 licence. General plugin control: Microsoft has not confirmed it applies to the Copilot Studio registry connection.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Plugins › plugin › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which connectors and tools makers can use in Copilot Studio agents</strong><br><small>Environment</small><br><small class="controls__note">General control: Microsoft has not confirmed it applies to plugins from the registry. The call reads a policy; it does not change it.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › policy › Assign connectors › connector › Block <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Get-DlpPolicy -PolicyName &lt;policy name&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-dlppolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which connectors and tools makers can use in Copilot Studio agents</strong><br><small>Environment</small><br><small class="controls__note">General control: Microsoft has not confirmed it applies to plugins from the registry. The call reads a policy; it does not change it.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › policy › Edit Policy › Next › Next › Assign connectors › connector › three dots › Block <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Get-DlpPolicy -PolicyName &lt;policy name&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-dlppolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Copilot Studio switch for the shared plugin registry connection</strong><br><small>Tenant</small><br><small class="controls__note">No setting documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 Learn documents plugin administration in the Microsoft 365 admin center, including availability by publisher category under Agents > Settings > Agent and plugin access and per-plugin user availability, alongside block, install and uninstall actions. Whether any of these apply to the Copilot Studio registry connection has not been confirmed, so the table lists only the block action and the data policy as general controls.
 
-Blocking a plugin package blocks its included agents. Associated MCP servers and connectors remain available to other plugins, so a block is not a block on a connector: use data policies for that. Learn says Copilot Studio and Power Platform can have separate controls for their components and connections.
+Blocking a plugin package blocks its included agents. Associated MCP servers and connectors remain available to other plugins, so a package block does not necessarily block a connector. Copilot Studio data policies govern Power Platform connectors used as agent tools, not Copilot connectors. Learn says Copilot Studio and Power Platform can have separate controls for their components and connections.
 
 No Copilot Studio switch for the registry connection is documented at the time of writing (November 2026), so the third row records the gap.
 
@@ -195,9 +202,5 @@ impact: Medium. Makers in Copilot Studio are the people who would notice, becaus
 <!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: An existing data policy's connector can be blocked at Security > Data and privacy > Data policy > policy > Assign connectors > connector > Block. | Found: To edit an existing data policy, select the data policy and select Edit Policy. ... Select Next. The Add an environment page appears. ... Select Next. The Assign connectors page appears. ... Select the three dots | Fix: Replace the path in controls[1].ui and the rendered table with 'Security > Data and privacy > Data policy > policy > Edit Policy > Next > Next > Assign connectors > connector > three dots > Block'. The first Next opens Add an environment; the second opens Assign connectors. See https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
-- [contradicted, blocker] Governance controls / applicability: Administrators should use data policies to block the connectors associated with plugin packages generally. | Found: Power Platform connectors refers to Power Platform connectors used as tools in an agent. They don't refer to Copilot connectors. | Fix: Replace 'so a block is not a block on a connector: use data policies for that' with 'so a package block does not necessarily block a connector. Copilot Studio data policies govern Power Platform connectors used as agent tools, not Copilot connectors.' Cite https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
-- [unsupported, blocker] Why it matters / applicability: Approval of plugins discovered through this new Copilot Studio integration stays in the Microsoft 365 admin center. | Found: Searched: "Copilot Studio" "shared plugin registry"; Copilot Studio plugins registry identity authentication data policies supported. Opened /plugins/govern-plugins and /microsoft-agent-365/admin/manage-plugins-skills-mcp-servers; neither states this integration's approval flow. | Fix: Replace 'while approval of plugins stays there' with 'while administrators generally manage plugin access in the Microsoft 365 admin center; Microsoft has not confirmed the approval flow for this Copilot Studio integration'.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing / behaviour: The Package Management API can list plugin packages as well as block them. | Found: Admin retrieves an inventory of the plugins, MCP servers, and skills in the organization. ... Admin blocks a package to prevent its usage across the organization. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview to sources for the statement that the API can list plugin packages. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview
+- [contradicted, blocker] Cost and licensing; summary; front matter: licensing.notes; rationale: cost; Open questions / cost: Whether plugin use from Copilot Studio is billed in Copilot Credits is not yet published. | Found: Copilot Credits are the common currency across Copilot Studio capabilities. | Fix: Replace the billing uncertainty with: 'Any additional charge specific to registry discovery or adding a plugin is not yet published. Copilot Studio agent usage is measured in Copilot Credits under the applicable harness billing rules and licensing inclusions.' Cite https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing, https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management and https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview. In the summary, licensing notes, cost rationale and final open question, limit the unpublished-cost claim to additional registry-specific charges; do not describe ordinary runtime billing as unknown. The low rating can remain for the incremental discovery change, rather than representing the cost of running agents. | Source: https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing
 -->

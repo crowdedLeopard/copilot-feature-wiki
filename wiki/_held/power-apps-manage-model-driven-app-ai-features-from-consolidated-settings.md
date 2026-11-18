@@ -67,38 +67,17 @@ sources:
   - title: "Environment Management Settings - List Environment Management Settings"
     url: "https://learn.microsoft.com/rest/api/power-platform/environmentmanagement/environment-management-settings/list-environment-management-settings"
     kind: "docs"
+  - title: "Environment Management Settings - Update Environment Management Settings"
+    url: "https://learn.microsoft.com/rest/api/power-platform/environmentmanagement/environment-management-settings/update-environment-management-settings"
+    kind: "docs"
 videos: []
 related: ["power-apps-form-fill-assistance-using-m365-files-in-model-driven-apps","power-apps-model-driven-apps-use-row-summaries-in-us-government-clouds","managed-environments","power-apps-form-fill-assistance-using-speech-as-input-in-model-driven-apps","power-apps-expand-model-access-and-maker-studio-availability-for-generative-pages-via-gith"]
 controls:
-  - governs: "Form fill assistance in model-driven apps (environment level)"
-    scope: "environment"
-    ui:
-      surface: "Power Platform admin center"
-      path: "Copilot > Settings > Power Apps > Data entry"
-      docs: "https://learn.microsoft.com/power-apps/user/form-filling-assistance"
-    api: null
-    note: "Learn says this control is gradually rolling out and that form fill assistance is in production ready preview in Power Apps."
-  - governs: "Natural language search and filtering of views"
-    scope: "environment"
-    ui:
-      surface: "Power Platform admin center"
-      path: "Copilot > Settings > Power Apps > Data exploration"
-      docs: "https://learn.microsoft.com/power-apps/user/find-data-with-ai"
-    api: null
-    note: "Learn says this is gradually rolling out; the roadmap calls the group Data analysis."
-  - governs: "AI-generated charts that visualise a view"
-    scope: "environment"
-    ui:
-      surface: "Power Platform admin center"
-      path: "Copilot > Settings > Power Apps > Data exploration > Chart Visualization"
-      docs: "https://learn.microsoft.com/power-apps/user/visualize-data-in-copilot"
-    api: null
-    note: "Learn says this change is gradually rolling out. The feature settings page labels the chart setting as preview."
   - governs: "App-level override of AI skill settings for one model-driven app"
     scope: "app"
     ui:
       surface: "Power Apps (maker)"
-      path: "Settings > Features"
+      path: "App in app designer > Settings > Features"
       docs: "https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties"
     api:
       kind: "rest"
@@ -122,19 +101,23 @@ changes:
     note: "Correction: removed the claim that no API is documented for row summaries and the legacy switches; the Power Platform environment-management settings API is now cited, and those two paths moved from table rows into the notes under the table."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 108 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-18"
+    note: "Correction: removed three table rows whose automation was wrongly shown as not documented, kept their paths in the notes and cited the environment-management settings API; noted the differing Copilot chat Default wording; app-level path now starts in the app designer."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 121 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 4
 verification:
   status: "held"
   date: "2026-11-18"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 108
-  confirmed: 104
+  claims: 121
+  confirmed: 119
   unconfirmed: 0
-  contradicted: 4
-  attempts: 3
-  hash: "14d92784639d8ac151f7efcf6b42c660"
+  contradicted: 2
+  attempts: 4
+  hash: "13755227601f5cb4299dd9845da5e7a6"
 ---
 
 ## What's changing
@@ -155,7 +138,7 @@ Microsoft has not stated what happens to existing values or what the default sta
 
 **Data exposure**
 
-- Form fill assistance suggests values from the user's usage of the app and the data already on the form, from text the user copies through Smart paste, and from files the user supplies. Row summaries summarise records. The settings in this item decide which of these skills run in an environment, so a value that does not carry over can switch record or file content into, or out of, an AI skill. Table rows 1 to 3 and the Row summaries path under the table cover the settings.
+- Form fill assistance suggests values from the user's usage of the app and the data already on the form, from text the user copies through Smart paste, and from files the user supplies. Row summaries summarise records. The settings in this item decide which of these skills run in an environment, so a value that does not carry over can switch record or file content into, or out of, an AI skill. The paths for these settings are in the notes under the controls table.
 
 **Security & identity**
 
@@ -194,12 +177,12 @@ Microsoft says row summaries rely on AI Builder to execute summary prompts. AI B
 
 - Record the current value of each legacy switch per environment at **Environment > Settings > Product > Features** (the **AI form fill assistance**, **Natural language grid and view search** and **AI insight cards** sections), so you can compare after the move. The path is given in the notes under the controls table.
 - Have the Power Platform admin or environment admin list which environments are Managed Environments, since Learn documents the user-level allow list only for them (see [Managed Environments](/concepts/managed-environments/)).
-- Ask makers to list model-driven apps that set their own app-level values in the app designer **Features** tab, because those overrides may differ from the environment value (table row 4).
+- Ask makers to list model-driven apps that set their own app-level values in the app designer **Features** tab, because those overrides may differ from the environment value (the table row).
 - Update runbooks and training notes that cite the old paths.
 
 ### At rollout
 
-- Open **Copilot > Settings > Power Apps** in each environment once it appears and compare **Data entry**, **Summary** and **Data exploration** with your recorded values (rows 1 to 3 and the Row summaries path in the notes under the table).
+- Open **Copilot > Settings > Power Apps** in each environment once it appears and compare **Data entry**, **Summary** and **Data exploration** with your recorded values (the paths are given in the notes under the table).
 - Set each value explicitly rather than leaving it at **Default**, after checking what Default means for that particular setting.
 - Use environment groups for the settings Learn says can be configured through environment groups and rules, once you have confirmed a given setting supports them.
 - Tell makers when the **Copilot and AI** tab reaches Maker Studio, and what an app-level value overrides.
@@ -216,22 +199,21 @@ Microsoft says row summaries rely on AI Builder to execute summary prompts. AI B
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Form fill assistance in model-driven apps (environment level)</strong><br><small>Environment</small><br><small class="controls__note">Learn says this control is gradually rolling out and that form fill assistance is in production ready preview in Power Apps.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Power Apps › Data entry <a href="https://learn.microsoft.com/power-apps/user/form-filling-assistance" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Natural language search and filtering of views</strong><br><small>Environment</small><br><small class="controls__note">Learn says this is gradually rolling out; the roadmap calls the group Data analysis.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Power Apps › Data exploration <a href="https://learn.microsoft.com/power-apps/user/find-data-with-ai" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>AI-generated charts that visualise a view</strong><br><small>Environment</small><br><small class="controls__note">Learn says this change is gradually rolling out. The feature settings page labels the chart setting as preview.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Power Apps › Data exploration › Chart Visualization <a href="https://learn.microsoft.com/power-apps/user/visualize-data-in-copilot" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>App-level override of AI skill settings for one model-driven app</strong><br><small>App</small><br><small class="controls__note">Maker-side. Save and publish the app for a change to take effect. Learn lists the form fill assist toolbar on the Features tab; it does not yet describe a Copilot and AI tab.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Settings › Features <a href="https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST &lt;organization URI&gt;/api/data/v9.2/SaveSettingValue {&quot;AppUniqueName&quot;: &quot;&lt;app unique name&gt;&quot;, &quot;SettingName&quot;: &quot;&lt;setting definition unique name&gt;&quot;, &quot;Value&quot;: &quot;&lt;value&gt;&quot;}</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>App-level override of AI skill settings for one model-driven app</strong><br><small>App</small><br><small class="controls__note">Maker-side. Save and publish the app for a change to take effect. Learn lists the form fill assist toolbar on the Features tab; it does not yet describe a Copilot and AI tab.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>App in app designer › Settings › Features <a href="https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST &lt;organization URI&gt;/api/data/v9.2/SaveSettingValue {&quot;AppUniqueName&quot;: &quot;&lt;app unique name&gt;&quot;, &quot;SettingName&quot;: &quot;&lt;setting definition unique name&gt;&quot;, &quot;Value&quot;: &quot;&lt;value&gt;&quot;}</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
+
+**Form fill assistance, natural language search and chart visualisation (environment level).** In the Power Platform admin center: Copilot > Settings > Power Apps > Data entry for form fill assistance, as given on [Use AI form fill assistance feature in model-driven apps](https://learn.microsoft.com/power-apps/user/form-filling-assistance); Copilot > Settings > Power Apps > Data exploration for natural language search and filtering of views, as given on [Find data in a view with AI](https://learn.microsoft.com/power-apps/user/find-data-with-ai); and Copilot > Settings > Power Apps > Data exploration > Chart Visualization for AI-generated charts, as given on [Visualize data in a view with AI](https://learn.microsoft.com/power-apps/user/visualize-data-in-copilot). Learn says these changes are gradually rolling out and that form fill assistance is in production ready preview in Power Apps. The feature settings page labels the chart setting as preview. The roadmap calls the Data exploration group Data analysis.
 
 **Row summaries (environment level).** In the Power Platform admin center: Copilot > Settings > Power Apps > Summary > Row summaries > environment > Edit setting, as given on [Use row summaries in model-driven apps](https://learn.microsoft.com/power-apps/user/record-summaries). Learn calls this the preferred location; it covers main forms and view pages. It is the same capability as AI insight cards under Environment > Settings > Features, which Learn says will be removed in a future release.
 
 **Legacy environment-level AI switches.** These are existing controls, not the new one. In the Power Platform admin center: Manage > Environments > environment > Settings > Product > Features, as given on [Manage feature settings](https://learn.microsoft.com/power-platform/admin/settings-features). It needs System Administrator or equivalent and covers the AI form fill assistance, Natural language grid and view search and AI insight cards sections.
 
-Learn documents the Copilot > Settings > Power Apps controls on the page for each skill, so rows 1 to 3 and the Row summaries path each read from their own article. Settings there are configured per environment, with most also available through environment groups and rules; Learn says the panel for each setting lets you pick an environment or group and select **Edit setting**.
+Settings under Copilot > Settings > Power Apps are configured per environment, with most also available through environment groups and rules; Learn says the panel for each setting lets you pick an environment or group and select **Edit setting**.
 
-Microsoft documents an environment-management settings API, whose schema includes powerApps_EnableFormInsights and other Power Apps AI fields; this briefing has not established a complete configuration call for each new Copilot hub control (November 2026). Rows 1 to 3 therefore show no automation call. The app-level row has one: the Dataverse SaveSettingValue action creates or updates an app or organisation level override of a setting definition. Learn names settings such as FormPredictSmartPasteEnabled, FormFileUploadEnabled, NLGridSearchSetting and NLChartDataVisualizationSetting as app-level settings.
+Microsoft documents the powerApps_FormPredictAutomatic, powerApps_FormPredictSmartPaste, powerApps_NLSearch, powerApps_ChartVisualization and powerApps_EnableFormInsights fields in its [environment-management settings API](https://learn.microsoft.com/rest/api/power-platform/environmentmanagement/environment-management-settings/list-environment-management-settings), and an [update operation](https://learn.microsoft.com/rest/api/power-platform/environmentmanagement/environment-management-settings/update-environment-management-settings); this briefing does not give a complete configuration call for these controls (November 2026). The app-level row has one: the Dataverse SaveSettingValue action creates or updates an app or organisation level override of a setting definition. Learn names settings such as FormPredictSmartPasteEnabled, FormFileUploadEnabled, NLGridSearchSetting and NLChartDataVisualizationSetting as app-level settings.
 
-The roadmap also names Generative pages and Copilot in apps among the consolidated settings. Learn documents an environment switch for Copilot chat in model-driven apps (generally available in Dynamics 365 apps, preview in Power Apps) under **Environment > Settings > Product > Features** (Default, On or Off) and says chat is not enabled by default and administrators must enable it. The same article says the Default option disables Copilot chat for Power Apps-licensed environments and enables it for Dynamics 365-licensed environments. Microsoft has not said whether that switch is the roadmap's Copilot in apps setting, so it has no row here.
+The roadmap also names Generative pages and Copilot in apps among the consolidated settings. Learn documents an environment switch for Copilot chat in model-driven apps (generally available in Dynamics 365 apps, preview in Power Apps) under **Environment > Settings > Product > Features** (Default, On or Off) and says chat is not enabled by default and administrators must enable it. The same article says the Default option disables Copilot chat for Power Apps-licensed environments and enables it for Dynamics 365-licensed environments. The [Manage feature settings](https://learn.microsoft.com/power-platform/admin/settings-features#copilot-preview) article instead says that Default turns on only Copilot in Dynamics 365 Sales apps. Microsoft has not said whether that switch is the roadmap's Copilot in apps setting, so it has no row here.
 
 The user-level allow or exclusion list is in preview and documented only for Managed Environments. It is a separate control from the environment settings in the table and its path is not given on the Learn page, so it has no row.
 
@@ -252,11 +234,9 @@ impact: Medium. Power Platform admins and makers see the new locations; end user
 <!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls: automation explanation / absence: Microsoft has not documented automation for environment-level form fill assistance. | Found: powerApps_FormPredictAutomatic | boolean powerApps_FormPredictSmartPaste | boolean | Fix: Remove the form fill assistance row rather than render its automation as 'Not yet documented'; retain its documented UI path in the notes. Replace the explanation with 'Microsoft documents form fill fields powerApps_FormPredictAutomatic and powerApps_FormPredictSmartPaste in its environment-management settings API, and an update operation; this briefing does not give a complete configuration call.' Cite this reference and https://learn.microsoft.com/rest/api/power-platform/environmentmanagement/environment-management-settings/update-environment-management-settings. Do not equate an unestablished call with undocumented automation. | Source: https://learn.microsoft.com/rest/api/power-platform/environmentmanagement/environment-management-settings/list-environment-management-settings
-- [contradicted, blocker] controls[1].api; Governance controls: automation explanation / absence: Microsoft has not documented automation for environment-level natural language search. | Found: powerApps_NLSearch | boolean | Fix: Remove the natural language search row rather than render its automation as 'Not yet documented'; retain its documented UI path in the notes. State 'Microsoft documents the powerApps_NLSearch field in its environment-management settings API, and an update operation; this briefing does not give a complete configuration call.' Cite this reference and https://learn.microsoft.com/rest/api/power-platform/environmentmanagement/environment-management-settings/update-environment-management-settings. | Source: https://learn.microsoft.com/rest/api/power-platform/environmentmanagement/environment-management-settings/list-environment-management-settings
-- [contradicted, blocker] controls[2].api; Governance controls: automation explanation / absence: Microsoft has not documented automation for environment-level chart visualization. | Found: powerApps_ChartVisualization | boolean | Fix: Remove the chart visualization row rather than render its automation as 'Not yet documented'; retain its documented UI path in the notes. State 'Microsoft documents the powerApps_ChartVisualization field in its environment-management settings API, and an update operation; this briefing does not give a complete configuration call.' Cite this reference and https://learn.microsoft.com/rest/api/power-platform/environmentmanagement/environment-management-settings/update-environment-management-settings. | Source: https://learn.microsoft.com/rest/api/power-platform/environmentmanagement/environment-management-settings/list-environment-management-settings
+- [contradicted, blocker] front matter: licensing.model; licensing.notes; Cost and licensing / consistency: The licensing field classifies the governed skills as per-user despite the body also documenting consumption-based licensing for row summaries. | Found: model: "per-user" ... "row summaries rely on AI Builder to execute summary prompts" ... "AI Builder prompt and model capabilities in Power Apps consume Copilot Credits when AI Builder credits are unavailable or exceeded." | Fix: Set licensing.model to "mixed". Append to licensing.notes: "Row summaries also execute AI Builder prompts, which consume AI Builder credits or Copilot Credits; Power Apps prompt capabilities consume Copilot Credits when AI Builder credits are unavailable or exceeded." Keep the statement that no separate licence is documented for the consolidation itself.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[3].ui; Governance guidance / admin-path: Makers configure app-level features through Settings > Features in Power Apps. | Found: When you select Settings from the command bar, select Features to enable or disable model-driven app features for the app. | Fix: Clarify the starting context by changing the path to 'app in app designer > Settings > Features'; the cited article starts in the app designer, not the Power Apps home page. | Source: https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties
-- [supported, minor] Governance controls: Copilot chat / default: The Copilot chat article says Default enables chat for a Dynamics 365-licensed environment. | Found: Default. Copilot chat is disabled for a Power Apps licensed environment and enabled for a Dynamics 365 licensed environment. | Fix: Append: 'The Manage feature settings article instead says that Default turns on only Copilot in Dynamics 365 Sales apps.' Cite https://learn.microsoft.com/power-platform/admin/settings-features#copilot-preview. Preserve the existing account of the Copilot chat article rather than choosing between the sources. | Source: https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-ai-copilot
-- [contradicted, minor] Governance guidance versus controls table / consistency: The checklist directs readers to inspect legacy switches and configure row summaries, but neither control has a table row. | Found: Record the current value of each legacy switch per environment ... compare Data entry, Summary and Data exploration with your recorded values (rows 1 to 3 and the Row summaries path in the notes under the table). | Fix: The checklist's legacy-switch inventory and Summary comparison have no corresponding controls-table rows. Keep their existing documented paths in the notes; do not describe those steps as covered by table rows, and do not add unverified automation to fill the gap.
+- [supported, minor] Governance controls: Legacy environment-level AI switches; Governance guidance / admin-path: The full legacy Features page path is Manage > Environments > environment > Settings > Product > Features. | Found: select Manage. ... select Environments. ... select an environment. ... select Settings. ... Expand Product, and then select Features. | Fix: In Why it matters and the Before rollout checklist, replace the shortened 'Environment > Settings > Product > Features' path with 'Manage > Environments > environment > Settings > Product > Features', matching the full path already given in Governance controls. | Source: https://learn.microsoft.com/power-platform/admin/settings-features
+- [supported, minor] Governance controls: Copilot chat / admin-path: The cited Copilot chat article documents an environment switch under Environment > Settings > Product > Features. | Found: go to Manage > Environments ... select Settings. ... select Product > Features. ... Default. Copilot chat is disabled for a Power Apps licensed environment and enabled for a Dynamics 365 licensed environment. ... On. ... Off. | Fix: Add: 'Another Microsoft page documents the model-driven app chat control at Copilot > Settings > Power Apps > Copilot in app > Chat agent in Model-Driven Apps (preview).' Cite https://learn.microsoft.com/dynamics365/sales/copilot-control-access alongside the legacy article, rather than presenting the legacy path as the only documented location. | Source: https://learn.microsoft.com/power-apps/maker/model-driven-apps/add-ai-copilot
+- [contradicted, minor] Governance guidance; Governance controls table / consistency: The checklist directs readers to check legacy switches and configure Copilot hub skills and environment-group settings, but only the app-level override has a controls-table row. | Found: Record the current value of each legacy switch per environment ... compare Data entry, Summary and Data exploration ... Use environment groups ... controls: App-level override of AI skill settings for one model-driven app | Fix: The Before rollout legacy-switch inventory and At rollout Copilot hub skill and environment-group checks have no corresponding controls-table rows; these are the checklist steps missing table coverage.
 -->
