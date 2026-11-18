@@ -5,7 +5,7 @@ slug: "knowledge-grounding"
 summary: "Knowledge grounding points a Copilot Studio agent at your own content through knowledge sources. Administrators use it to decide which source types makers may add, what grounded answers cost in Copilot Credits and when an agent may answer from general knowledge."
 created: "2026-11-18"
 updated: "2026-11-18"
-version: 3
+version: 4
 tags: ["knowledge-grounding","copilot-studio","agents","dataverse","sharepoint","copilot-credits","data-policies","power-platform-admin-center","copilot-connectors"]
 covers: []
 sources:
@@ -57,6 +57,12 @@ sources:
   - title: "Work IQ overview"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/"
     kind: "learn"
+  - title: "Orchestrate agent behavior with generative AI"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/advanced-generative-actions"
+    kind: "learn"
+  - title: "Add knowledge sources to an agent (Microsoft Copilot)"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-existing-copilot"
+    kind: "learn"
 related: ["copilot-credits","data-policies","work-iq","agent-identity","managed-environments","microsoft-copilot-studio-dataverse-integration-on-copilot-studio"]
 controls:
   - governs: "Which knowledge source types agents may use: SharePoint and OneDrive, public websites, uploaded documents"
@@ -93,7 +99,7 @@ controls:
     scope: "agent"
     ui:
       surface: "Copilot Studio (maker)"
-      path: "Agent > Generative AI settings > Knowledge > Allow ungrounded responses"
+      path: "Agent > Settings > Generative AI > Knowledge > Allow ungrounded responses"
       docs: "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio"
     api: null
     note: "Maker-side. Requires generative orchestration."
@@ -101,7 +107,7 @@ controls:
     scope: "agent"
     ui:
       surface: "Copilot Studio (maker)"
-      path: "Agent > Generative AI settings > Tenant graph grounding with semantic search"
+      path: "Agent > Settings > Generative AI > Tenant graph grounding with semantic search"
       docs: "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio"
     api: null
     note: "Maker-side. Requires generative orchestration and Authenticate with Microsoft. This requires a configured semantic index and at least one user assigned a Microsoft 365 Copilot licence in the agent's tenant."
@@ -120,23 +126,27 @@ changes:
     note: "Corrected after the independent check: the Dataverse search API row now gives the documented PATCH on the organization table, Microsoft Copilot harness billing is stated from Microsoft's page, the multi-day index caveat is added and the analytics checklist bullet is removed."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 94 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-18"
+    note: "Corrected the maker paths for Allow ungrounded responses and tenant graph grounding to Agent > Settings > Generative AI, and limited the Knowledge page navigation to agents on the standard harness."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 99 statements not yet confirmed"
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 94
-  confirmed: 92
+  claims: 99
+  confirmed: 99
   unconfirmed: 0
-  contradicted: 2
-  attempts: 3
-  hash: "fabfca132a1d837c59b9f672a104e98e"
+  contradicted: 0
+  attempts: 0
+  hash: "4bb34afc1c59a5b83750ef055fb278da"
 ---
 
 ## What it is
 
-Knowledge grounding means pointing an agent at your own content so that its answers come from that content rather than from the model's general knowledge. In Copilot Studio each pointer is a **knowledge source**: Microsoft states that knowledge sources ground an agent's responses in enterprise data. Makers add them on an agent's **Knowledge** page or in a generative answers node inside a topic, and a published agent uses the sources it was configured with.
+Knowledge grounding means pointing an agent at your own content so that its answers come from that content rather than from the model's general knowledge. In Copilot Studio each pointer is a **knowledge source**: Microsoft states that knowledge sources ground an agent's responses in enterprise data. For agents powered by the standard harness, makers add them on an agent's **Knowledge** page or in a generative answers node inside a topic, and a published agent uses the sources it was configured with.
 
 | Source | What it searches | Authentication |
 | --- | --- | --- |
@@ -186,8 +196,8 @@ Tenant graph grounding is optional for each agent. By default, users with Micros
 <tr><td data-label="Control"><strong>Which knowledge source types agents may use: SharePoint and OneDrive, public websites, uploaded documents</strong><br><small>Environment group</small><br><small class="controls__note">Preview. SharePoint and public websites offer None, All or Custom with Allow or Deny per URL. Set at environment group level, it can't be changed in the environment.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Knowledge sources for agents › Environment groups or Environments › environment group or environment › Manage knowledge sources <a href="https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether makers can add SharePoint knowledge sources through Upload files &gt; SharePoint</strong><br><small>Environment</small><br><small class="controls__note">The connector is Knowledge source with SharePoint and OneDrive in Copilot Studio. The cmdlet moves connectors to the named data policy group. See the data policies page.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › policy › Edit Policy › Next › Next › connector › three dots (⋮) › Block <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-ConnectorsToPolicy -PolicyName &lt;policy GUID&gt; -Classification &lt;group&gt; -Connectors $connectors</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether Dataverse search is on in an environment, which Dataverse knowledge sources and uploaded files need</strong><br><small>Environment</small><br><small class="controls__note">Sign in as a system administrator. The request body sets isexternalsearchindexenabled.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Dataverse search <a href="https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH /organizations(organizationid)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether an agent may answer from the model's general knowledge without using a source or tool</strong><br><small>Agent</small><br><small class="controls__note">Maker-side. Requires generative orchestration.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Agent › Generative AI settings › Knowledge › Allow ungrounded responses <a href="https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether an agent uses tenant graph grounding with semantic search, which adds a charge</strong><br><small>Agent</small><br><small class="controls__note">Maker-side. Requires generative orchestration and Authenticate with Microsoft. This requires a configured semantic index and at least one user assigned a Microsoft 365 Copilot licence in the agent's tenant.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Agent › Generative AI settings › Tenant graph grounding with semantic search <a href="https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether an agent may answer from the model's general knowledge without using a source or tool</strong><br><small>Agent</small><br><small class="controls__note">Maker-side. Requires generative orchestration.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Agent › Settings › Generative AI › Knowledge › Allow ungrounded responses <a href="https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether an agent uses tenant graph grounding with semantic search, which adds a charge</strong><br><small>Agent</small><br><small class="controls__note">Maker-side. Requires generative orchestration and Authenticate with Microsoft. This requires a configured semantic index and at least one user assigned a Microsoft 365 Copilot licence in the agent's tenant.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Agent › Settings › Generative AI › Tenant graph grounding with semantic search <a href="https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -214,12 +224,8 @@ For monitoring, Copilot Studio documents analytics on a per knowledge source bas
 - Which admin setting turns off web search for agents powered by the Microsoft Copilot harness? Microsoft's page says the toggle is disabled if an admin turned it off but does not name the setting.
 - Does endpoint filtering restrict SharePoint and public website knowledge sources? Microsoft's pages differ.
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[3].ui; Governance controls: fourth table row / admin-path: The maker path to Allow ungrounded responses is Agent > Generative AI settings > Knowledge > Allow ungrounded responses. | Found: Go to the **Settings** page for your agent. 2. In the **Generative AI** section | Fix: Replace the path in front matter and the rendered table with 'agent > Settings > Generative AI > Knowledge > Allow ungrounded responses'. Settings is the page the maker must open; Generative AI is within it, not a navigation item labelled 'Generative AI settings'. The cited knowledge-copilot-studio page supplies the Knowledge section and final setting. | Source: https://learn.microsoft.com/microsoft-copilot-studio/advanced-generative-actions
-- [contradicted, blocker] controls[4].ui; Governance controls: fifth table row / admin-path: The tenant graph maker path is Agent > Generative AI settings > Tenant graph grounding with semantic search. | Found: Go to the **Settings** page for your agent. 2. In the **Generative AI** section | Fix: Replace the path in front matter and the rendered table with 'agent > Settings > Generative AI > Tenant graph grounding with semantic search'. The cited knowledge-copilot-studio page places the final control on the agent's Generative AI settings page; advanced-generative-actions documents entering Settings first. | Source: https://learn.microsoft.com/microsoft-copilot-studio/advanced-generative-actions
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What it is: opening paragraph / behaviour: Makers add knowledge sources on an agent's Knowledge page. | Found: You can incorporate knowledge at the agent level, in the **Knowledge** page | Fix: Begin the navigation sentence 'For agents powered by the standard harness, makers add them'. The Microsoft Copilot harness instead uses the Knowledge button on the Build tab, as documented at https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-existing-copilot; this qualification avoids presenting the older navigation as universal. | Source: https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio
-- [supported, minor] controls[2].api and note; Governance controls: Dataverse API / command: PATCH /organizations(organizationid) can update the writable isexternalsearchindexenabled property controlling search enablement. | Found: | `Update`Event: True | `PATCH` /organizations(*organizationid*)See [Update](/en-us/powerapps/developer/data-platform/webapi/update-delete-entities-using-web-api#basic-update) | | Fix: Add the supporting pages missing from sources: https://learn.microsoft.com/power-apps/developer/data-platform/search/overview (states that IsExternalSearchIndexEnabled indicates whether search is enabled); https://learn.microsoft.com/microsoft-copilot-studio/advanced-generative-actions (Settings entry point and standard-harness orchestration scope); https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-existing-copilot (Microsoft Copilot harness navigation and its lack of a general-knowledge switch). The Organization reference lists IsExternalSearchIndexEnabled among writable columns and gives logical name isexternalsearchindexenabled. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization
+- [supported, minor] controls[2].note / applicability: The isexternalsearchindexenabled organization property represents whether Dataverse search is enabled. | Found: The IsExternalSearchIndexEnabled boolean column indicates whether search is enabled for the organization. | Fix: Add https://learn.microsoft.com/power-apps/developer/data-platform/search/overview to sources: it explicitly connects isexternalsearchindexenabled to the Dataverse search setting. Keep the existing command and organization-table reference. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/search/overview#detect-if-search-is-enabled
 -->

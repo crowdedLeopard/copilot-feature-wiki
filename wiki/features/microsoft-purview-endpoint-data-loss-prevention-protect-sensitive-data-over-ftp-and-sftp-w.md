@@ -12,7 +12,7 @@ platforms: ["Web"]
 targetDate: "October CY2026"
 previewDate: "September CY2026"
 risk: "low"
-cost: "low"
+cost: "variable"
 impact: "low"
 defaultState: "admin-opt-in"
 action: "review"
@@ -33,6 +33,9 @@ sources:
     kind: "learn"
   - title: "Microsoft Purview service description"
     url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
+    kind: "learn"
+  - title: "Learn about evidence collection for file activities on devices"
+    url: "https://learn.microsoft.com/purview/dlp-copy-matched-items-learn"
     kind: "learn"
   - title: "Get started with collecting files that match data loss prevention policies from devices"
     url: "https://learn.microsoft.com/purview/dlp-copy-matched-items-get-started"
@@ -105,19 +108,23 @@ changes:
     note: "First briefing: Endpoint DLP FTP and SFTP support is launched, not on by default, and set per device rule."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 59 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Correction: cost is now variable because customer-managed evidence storage adds Azure charges; removed an unsupported 'third transfer route' claim and the policy-tips step."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 69 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 56
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "5cb3b4b1040bc7c923cb8318b3d587a7"
+  claims: 69
+  confirmed: 69
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "0c9c541921cc408bc6831ee2e3a1897a"
 ---
 
 ## What's changing
@@ -130,7 +137,7 @@ The roadmap item is Launched, with a preview target of September CY2026 and a ge
 
 ## Why it matters
 
-This adds a third transfer route, FTP and SFTP, to the device activities Endpoint DLP already covers, and Microsoft's notice describes it as closing a gap in protection across common transfer methods. If nobody acts, Microsoft's notice says FTP and SFTP protection is not enabled, so existing Endpoint DLP rules do not gain the new coverage on their own.
+This adds FTP and SFTP transfers to the device activities Endpoint DLP covers, and Microsoft's notice describes it as closing a gap in protection across common transfer methods. If nobody acts, Microsoft's notice says FTP and SFTP protection is not enabled, so existing Endpoint DLP rules do not gain the new coverage on their own.
 
 The practical decision is when to add the activity to an existing device rule and with which action. Microsoft recommends a small pilot group and Audit only first. Treat the first weeks as discovery: Activity explorer will show who sends which files over FTP or SFTP before anyone is blocked.
 
@@ -155,7 +162,7 @@ The practical decision is when to add the activity to an existing device rule an
 
 The Microsoft Purview service description lists Endpoint Data Loss Prevention (DLP) as Included for Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, and Microsoft 365 E5/A5/F5/G5 Information Protection & Governance. The FTP and SFTP page lists onboarded devices and permissions as its prerequisites and names no separate licence, price or meter for this capability.
 
-Indirect costs are admin time to review and tune rules and, if you use evidence collection, storage. Learn tells admins using a customer-managed Azure storage account to consider access tiers and Azure storage account pricing, and the evidence collection page lets you choose a customer-managed or Microsoft-managed store and view the managed store's usage.
+Admin time is an indirect cost. Customer-managed evidence storage has additional Azure storage charges; Microsoft-managed evidence storage is currently included in E5, and Microsoft says it may charge additionally for excessive usage (see [evidence collection for file activities on devices](https://learn.microsoft.com/purview/dlp-copy-matched-items-learn)). Learn tells admins using a customer-managed Azure storage account to consider access tiers and Azure storage account pricing, and the evidence collection page lets you choose a customer-managed or Microsoft-managed store and view the managed store's usage.
 
 ## Scope
 
@@ -175,7 +182,6 @@ Clouds and rollout: the roadmap lists Worldwide (Standard Multi-Tenant), GCC, GC
 ### At rollout
 - Add **FTP and SFTP transfers** to a rule scoped to a small pilot group and set the action to Audit only.
 - Add the conditions you want to detect, such as sensitive information types or sensitivity labels.
-- Turn on policy tips under User notifications only once you are ready for users to see them.
 
 ### After rollout
 - Filter Activity explorer to File transfer by FTP/SFTP and review the user, device, file, matched policy and action of each transfer.
@@ -209,15 +215,12 @@ Microsoft Learn documents no automation for the FTP and SFTP action at the time 
 
 <!-- rationale
 risk: Low. Microsoft's notice MC1404319 says FTP and SFTP protection is not enabled by default, so nothing is enforced until an admin configures a rule; a Block action can later interrupt users' transfers.
-cost: Low. The Purview service description lists Endpoint DLP as included in Microsoft 365 E5 and the other suites it names; the remaining cost is admin time and, if evidence collection is used, Azure storage.
+cost: Variable. Endpoint DLP is included in the listed licences, but choosing customer-managed evidence collection adds Azure storage consumption charges; Microsoft-managed evidence storage is currently included in E5.
 impact: Low. Admins who manage Endpoint DLP and users on managed Windows devices who transfer files over FTP or SFTP notice it, and only where a rule applies the activity.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: cost; Cost and licensing; rationale: cost / cost: The cost is low, meaning indirect costs only, with evidence storage classified alongside admin time as an indirect cost. | Found: | Charges | Storage costs are charged in addition to the cost of your Entra subscription. | Storage cost today is included in E5. | Fix: Set cost to variable to cover the optional Azure storage consumption the briefing includes. Replace the indirect-cost sentence with 'Admin time is an indirect cost. Customer-managed evidence storage has additional Azure storage charges; Microsoft-managed evidence storage is currently included in E5.' Replace the cost rationale with 'Variable. Endpoint DLP is included in the listed licences, but choosing customer-managed evidence collection adds Azure storage consumption charges; Microsoft-managed evidence storage is currently included in E5.' Cite https://learn.microsoft.com/purview/dlp-copy-matched-items-learn for this distinction. | Source: https://learn.microsoft.com/purview/dlp-copy-matched-items-learn
-- [unsupported, major] Why it matters / behaviour: FTP and SFTP add a third transfer route to Endpoint DLP. | Found: Searched: Endpoint DLP "third" "FTP" transfer route. Read endpoint-dlp-ftp-sftp-short and MC1404319; neither numbers transfer routes or calls FTP/SFTP the third route. Learn describes USB and network shares as examples, not an exhaustive prior list. | Fix: Replace 'This adds a third transfer route, FTP and SFTP, to the device activities Endpoint DLP already covers' with 'This adds FTP and SFTP transfers to the device activities Endpoint DLP covers'.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The checklist tells readers to enable policy tips, but no controls-table row represents that control. | Found: Checklist: 'Turn on policy tips under User notifications only once you are ready for users to see them.' The table's four rows cover transfer actions, event review, evidence storage and device status, not policy tips. | Fix: Remove the 'Turn on policy tips under User notifications only once you are ready for users to see them' checklist bullet; the policy-tips step has no row in the controls table.
+- [supported, minor] Risk assessment: Change & support / behaviour: A device that has not received a new or updated policy is not covered by that policy version. | Found: Policies that are updated while a device is offline won't be pushed to that device. Similarly, such policies won't be enforced on that device, until the device is back online. However, the outdated policy that exists on the offline device will still be enforced. | Fix: Add https://learn.microsoft.com/purview/endpoint-dlp-learn-about#endpoint-dlp-and-offline-devices to sources for the statement about policy coverage before devices receive updates. | Source: https://learn.microsoft.com/purview/endpoint-dlp-learn-about#endpoint-dlp-and-offline-devices
 -->

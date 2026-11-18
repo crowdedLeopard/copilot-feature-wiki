@@ -77,19 +77,21 @@ changes:
     note: "Correction: licensing set to mixed with the Copilot Studio access routes from the licensing page; data policy path gained the environment steps; added sources for the tools list and admin role."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-18"
+    note: "Correction: the open question on data policies now asks only whether they are evaluated again at the in-chat connection step; the maker-credentials wording was removed."
+version: 4
 verification:
   status: "held"
   date: "2026-11-18"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 60
   confirmed: 59
   unconfirmed: 0
   contradicted: 1
-  attempts: 3
-  hash: "4a252f5e5d9598b6fafbf5f3361d2de0"
+  attempts: 4
+  hash: "dfcb92bf2215b5cb256842b02bc63641"
 ---
 
 ## What's changing
@@ -181,7 +183,7 @@ Users manage their own connections on the **Manage your connections** page; that
 
 - Does this roadmap item correspond to the Connection Required card and Manage your connections page on Learn, and which harnesses and channels does it cover? Watch the roadmap item and the Learn page.
 - Is there a tenant or environment setting that turns the in-chat sign-in off? Watch Learn and Message center.
-- Do data policies and the blocking of maker-provided credentials apply when a user connects in chat? Watch the Learn data policy page.
+- Are data policies evaluated again at the in-chat connection step? Watch the Learn data policy page.
 - Does the connection step consume Copilot Credits, and at what rate? Watch the Copilot Studio billing pages.
 
 <!-- rationale
@@ -193,5 +195,5 @@ impact: Medium. Makers and the people chatting with agents see the new sign-in s
 <!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Open questions: data policies and blocking maker-provided credentials / absence: Whether blocking maker-provided credentials applies when a user connects in chat remains an open applicability question. | Found: All tools for all agents in the impacted environments instantly change to require end-user credentials at runtime. ... When an end user interacts with an agent ... and triggers a tool action, the agent prompts that user to sign in if they haven't already. | Fix: Replace the Open questions bullet 'Do data policies and the blocking of maker-provided credentials apply when a user connects in chat? Watch the Learn data policy page.' with 'Are data policies evaluated again at the in-chat connection step? Watch the Learn data policy page.' General credential-control applicability is documented at https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication. | Source: https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication
+- [contradicted, blocker] Risk assessment: Autonomy & actions, final sentence / absence: Learn does not describe what happens without a user present to respond, leaving autonomous handling unconfirmed. | Found: When maker-provided credentials are prevented from being used, agents require real-time user interaction because each tool call must be authenticated with a live user sign-in. | Fix: Remove the sentence beginning 'Learn does not describe what happens when no user is present'. Learn documents a relevant case at https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication: when maker-provided credentials are disabled, scheduled, autonomous and background agents fail due to missing credentials and require an active user. Removing the sentence avoids implying that this conditional limitation is undocumented, without asserting that the roadmap feature maps to that setting. | Source: https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication
 -->

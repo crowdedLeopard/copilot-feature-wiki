@@ -50,7 +50,7 @@ controls:
       kind: "other"
       call: "Registry: SOFTWARE\\Policies\\Microsoft\\Edge, value NewTabPageQuickLinksEnabled (REG_DWORD); macOS preference key NewTabPageQuickLinksEnabled"
       docs: "https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagequicklinksenabled"
-    note: "Disabling it hides new tab page quick links and, per the page, Top Sites in the search bar. Applies to local, Microsoft account and Active Directory profiles; Entra ID profiles are sent to the M365 admin portal."
+    note: "Disabling it hides quick links and Top Sites in the search bar. The policy description lists Microsoft account profiles, but the same page marks Microsoft-account applicability as No; applicability to those profiles is unclear."
   - governs: "Which managed tiles appear in quick links and Top Sites in the search bar"
     scope: "user"
     ui:
@@ -71,19 +71,23 @@ changes:
     note: "First briefing for roadmap item 579193; controls are the two Edge quick links policies that Learn ties to Top Sites in the search bar."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 58 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected the Microsoft account applicability of NewTabPageQuickLinksEnabled: its description lists those profiles but the page marks Microsoft-account applicability as No, so it is now stated as unclear."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 69 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 57
+  claims: 69
+  confirmed: 69
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "3fe1bbe4e0ba42ff49658d729363cac4"
+  contradicted: 0
+  attempts: 0
+  hash: "070d24940ae15527bfb3fccd9369e384"
 ---
 
 ## What's changing
@@ -117,7 +121,7 @@ The useful part for a service owner is that the controls exist already. If your 
 **Change & support**
 
 - Administrators who pin tiles through NewTabPageManagedQuickLinks will also see them in the search bar. Set as mandatory, the policy page says the tiles "can't be deleted by the user", which may prompt support questions if users expect to remove them.
-- The NewTabPageQuickLinksEnabled page says it applies to local, Microsoft account and Active Directory profiles, and points to the M365 admin portal for the Enterprise new tab page on profiles signed in with Microsoft Entra ID (the page still calls it Azure Active Directory). Confirm which route governs your users' profiles before relying on the policy.
+- The NewTabPageQuickLinksEnabled page says it applies to local user profiles and Active Directory profiles. The policy description lists Microsoft account profiles, but the same page marks Microsoft-account applicability as No; applicability to those profiles is unclear. The page also points to the M365 admin portal for the Enterprise new tab page on profiles signed in with Microsoft Entra ID (the page still calls it Azure Active Directory). Confirm which route governs your users' profiles before relying on the policy.
 
 ## Cost and licensing
 
@@ -129,7 +133,7 @@ The cost the sources show is admin time: reviewing two Group Policy settings and
 
 The roadmap item describes the feature as being for the Edge search bar on desktop. It lists the cloud as Worldwide (Standard Multi-Tenant), the platform as Web and the release phase as General Availability.
 
-Both policy pages list Windows and macOS as supported (NewTabPageManagedQuickLinks from version 79, NewTabPageQuickLinksEnabled from version 91) and Android and iOS as not supported. The pages do not state which Edge version first shows top sites in the search bar, or how the rollout is staged. NewTabPageQuickLinksEnabled applies to local, Microsoft account and Active Directory profiles; for profiles signed in with Microsoft Entra ID it points to the M365 admin portal.
+Both policy pages list Windows and macOS as supported (NewTabPageManagedQuickLinks from version 79, NewTabPageQuickLinksEnabled from version 91) and Android and iOS as not supported. The pages do not state which Edge version first shows top sites in the search bar, or how the rollout is staged. NewTabPageQuickLinksEnabled applies to local user profiles and Active Directory profiles; its description lists Microsoft account profiles, but the same page marks Microsoft-account applicability as No, so applicability to those profiles is unclear. For profiles signed in with Microsoft Entra ID it points to the M365 admin portal.
 
 ## Governance guidance
 
@@ -157,7 +161,7 @@ Both policy pages list Windows and macOS as supported (NewTabPageManagedQuickLin
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether quick links and Top Sites in the search bar are shown</strong><br><small>User</small><br><small class="controls__note">Disabling it hides new tab page quick links and, per the page, Top Sites in the search bar. Applies to local, Microsoft account and Active Directory profiles; Entra ID profiles are sent to the M365 admin portal.</small></td><td data-label="Admin UI"><strong>Group Policy (Administrative Templates)</strong><br>Administrative Templates › Microsoft Edge › Startup, home page and new tab page › Allow quick links on the new tab page <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagequicklinksenabled" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry: SOFTWARE\Policies\Microsoft\Edge, value NewTabPageQuickLinksEnabled (REG_DWORD); macOS preference key NewTabPageQuickLinksEnabled</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagequicklinksenabled" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether quick links and Top Sites in the search bar are shown</strong><br><small>User</small><br><small class="controls__note">Disabling it hides quick links and Top Sites in the search bar. The policy description lists Microsoft account profiles, but the same page marks Microsoft-account applicability as No; applicability to those profiles is unclear.</small></td><td data-label="Admin UI"><strong>Group Policy (Administrative Templates)</strong><br>Administrative Templates › Microsoft Edge › Startup, home page and new tab page › Allow quick links on the new tab page <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagequicklinksenabled" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry: SOFTWARE\Policies\Microsoft\Edge, value NewTabPageQuickLinksEnabled (REG_DWORD); macOS preference key NewTabPageQuickLinksEnabled</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagequicklinksenabled" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which managed tiles appear in quick links and Top Sites in the search bar</strong><br><small>User</small><br><small class="controls__note">Up to three tiles. Mandatory pins all tiles and users cannot delete them; recommended lets users edit and delete. Requires a browser restart.</small></td><td data-label="Admin UI"><strong>Group Policy (Administrative Templates)</strong><br>Administrative Templates › Microsoft Edge › Startup, home page and new tab page › Set new tab page quick links <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagemanagedquicklinks" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry: SOFTWARE\Policies\Microsoft\Edge, value NewTabPageManagedQuickLinks (REG_SZ); macOS preference key NewTabPageManagedQuickLinks</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagemanagedquicklinks" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -177,10 +181,4 @@ NewTabPageQuickLinksEnabled can be mandatory but not recommended. NewTabPageMana
 risk: Low. It is a browser interface change on desktop, and two documented Edge policies already hide or fix the top sites, so little exposure is left if nobody configures them.
 cost: Low. The only cost the sources show is admin time to review two Group Policy settings; a licence for this feature is not yet published.
 impact: Medium. Desktop Edge users would see a new list in the search bar and can add, edit, remove or hide sites, according to the roadmap; the rollout scope is not stated.
--->
-
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].note; Risk assessment: Change & support; Scope; Governance controls table / applicability: NewTabPageQuickLinksEnabled applies to profiles signed in using a Microsoft account. | Found: This policy only applies for Microsoft Edge local user profiles, profiles signed in using a Microsoft Account, and profiles signed in using Active Directory. Applies to a profile that is signed in with a Microsoft account: No | Fix: Replace the unqualified Microsoft-account applicability assertion in controls[0].note, its rendered table note, Risk assessment and Scope with: 'The policy description lists Microsoft account profiles, but the same page marks Microsoft-account applicability as No; applicability to those profiles is unclear.' Retain https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagequicklinksenabled as the source. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/newtabpagequicklinksenabled
 -->

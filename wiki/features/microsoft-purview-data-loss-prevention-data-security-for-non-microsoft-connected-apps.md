@@ -65,7 +65,7 @@ sources:
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-autosensitivitylabelpolicy?view=exchange-ps"
     kind: "learn"
 videos: []
-related: ["purview-dlp-block-sensitive-data-in-copilot-web-search"]
+related: []
 controls:
   - governs: "DLP policy for non-Microsoft connected apps"
     scope: "tenant"
@@ -112,7 +112,7 @@ controls:
     note: "Today's alternative, not a control over the new dedicated locations. Learn says this location retires on 6 January 2027. Cmdlet needs Compliance Administrator or Compliance Data Administrator."
 confidence: "high"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-18"
 roadmapModified: "2026-11-03T00:14:11"
 changes:
   - date: "2026-11-17"
@@ -127,19 +127,23 @@ changes:
     note: "Correction: replaced the auto-labeling path with the full wizard path from the Learn page, and added the alternative connector route to the connectors row note."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 99 statements not yet confirmed"
-version: 3
+  - date: "2026-11-18"
+    note: "Rollout updated to MC1449180's 18 November 2026 timeline (General Availability from mid-March 2027, previously late December 2026); narrowed the Azure subscription checklist bullet."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 93 statements confirmed"
+version: 4
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
-  version: 3
+  status: "verified"
+  date: "2026-11-18"
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 99
-  confirmed: 98
+  claims: 93
+  confirmed: 93
   unconfirmed: 0
-  contradicted: 1
+  contradicted: 0
   attempts: 0
-  hash: "4d666d878cc95d75555f7d1b0e97e9dd"
+  hash: "6b5c9cc3eaaa7c5de099f0d1ed27564d"
 ---
 
 ## What's changing
@@ -148,13 +152,13 @@ Microsoft Purview is adding dedicated policy locations for non-Microsoft apps, s
 
 Per MC1449180 and Learn, DLP supports Google Workspace, Box, Dropbox, Salesforce, ServiceNow, AWS and Cisco Webex. Auto-labeling supports Google Workspace and Box. The DLP policies detect, monitor and protect sensitive data at rest in these apps. Learn's pages for both capabilities are marked preview and say the apps roll out in phases, so not every app is available in every tenant at the same time.
 
-The roadmap item is In development, with a preview date of October CY2026 and a General Availability target of December CY2026. MC1449180 was updated on 30 October 2026 and gives General Availability for Worldwide beginning in late December 2026 and expected to complete in late December 2026 (both previously late October). It lists no act-by date and says no action is required before rollout. The roadmap lists Worldwide (Standard Multi-Tenant) only, and the platform as Web.
+The roadmap item is In development, with a preview date of October CY2026 and a General Availability target of December CY2026. MC1449180 was updated on 18 November 2026 and now gives General Availability for Worldwide beginning in mid-March 2027 and expected to complete by late March 2027 (both previously late December 2026), so the notice is later than the roadmap target. It lists no act-by date and says no action is required before rollout. The roadmap lists Worldwide (Standard Multi-Tenant) only, and the platform as Web.
 
 Separately, Learn says file policies in Defender for Cloud Apps retire on 6 January 2027, and that the **Instances** DLP location is retired on the same date. Policies in Purview and in Defender for Cloud Apps cannot coexist, per Learn, so teams that use file policies today have a migration to plan.
 
 ## Why it matters
 
-This extends the same Purview policy framework to data that sits outside Microsoft 365, so one team can govern sensitive files in Box or Google Workspace the way it governs SharePoint. It also adds a consumption meter: MC1449180 says usage is billed through the Purview At Rest Protection pay-as-you-go meter, so a policy scoped to a large repository carries a cost.
+This extends the same Purview policy framework to data that sits outside Microsoft 365, so one team can govern sensitive files in Box or Google Workspace the way it governs SharePoint. It also adds a consumption meter: MC1449180 says usage is billed through the Microsoft Purview At Rest Protection pay-as-you-go meter, so a policy scoped to a large repository carries a cost.
 
 Nothing in the sources says existing behaviour changes for tenants that create no policy. The pressure comes from the retirement of Defender for Cloud Apps file policies on 6 January 2027: tenants that rely on them need equivalent Purview policies, and Microsoft's notice MC1449180 says to turn off or delete the overlapping file policy before creating the Purview one.
 
@@ -196,7 +200,7 @@ Nothing in the sources says existing behaviour changes for tenants that create n
 - **Prerequisites:** each app must first be connected through a Defender for Cloud Apps app connector. For auto-labeling, the sensitivity labels must already be published.
 - **Policy rules:** only the Custom policy template is supported, only advanced DLP rules are supported, administrative units are not supported (scope is Full directory), and non-Microsoft app locations cannot be combined with SharePoint, OneDrive, Exchange, Fabric or Devices in the same DLP policy, per Learn.
 - **Roles:** Compliance administrator, Compliance data administrator, Information Protection, Information Protection Admin or Security administrator role group membership, per Learn.
-- **Rollout:** a preview on Learn now; MC1449180 gives General Availability beginning in late December 2026. The roadmap's target is December CY2026 and is a plan, not a shipped date.
+- **Rollout:** a preview on Learn now; MC1449180 gives General Availability beginning in mid-March 2027. The roadmap's target is December CY2026 and is a plan, not a shipped date.
 
 ## Governance guidance
 
@@ -204,7 +208,7 @@ Nothing in the sources says existing behaviour changes for tenants that create n
 
 - Inventory which of the supported apps you use and whether any are connected under **Settings > Cloud Apps > Connected Apps > App Connectors** in the Microsoft Defender portal (row: Defender for Cloud Apps app connectors).
 - List existing Defender for Cloud Apps file policies on the same apps and plan the cut-over to the Purview equivalent (row: Defender for Cloud Apps file policies).
-- Ask finance to review Purview pay-as-you-go pricing and confirm the tenant is linked to an Azure subscription, then agree who owns the At Rest Protection charge.
+- Ask finance to review Purview pay-as-you-go pricing, then agree who owns the At Rest Protection charge.
 - Decide which role group will own these policies and confirm each member holds one of the role groups Learn lists.
 
 ### At rollout
@@ -246,16 +250,10 @@ The Purview roles that can create these policies are listed under Scope. Creatin
 - Which Enterprise tier Purview licence is required? Learn's feature pages point to licensing guidance without naming a plan.
 - Which cmdlet or API will manage the dedicated app locations? Watch the New-DlpCompliancePolicy and New-AutoSensitivityLabelPolicy references.
 - Will auto-labeling extend beyond Box and Google Workspace, and will further DLP attributes arrive for each app? Watch MC1449180 and the Learn preview pages.
-- Does General Availability in late December 2026 leave enough time before the 6 January 2027 Defender for Cloud Apps file policy retirement? Watch Message center and the migration page.
+- MC1449180 now gives General Availability beginning in mid-March 2027, after the 6 January 2027 Defender for Cloud Apps file policy retirement that Learn gives. How should tenants that rely on file policies cover the period between? Watch Message center and the migration page.
 
 <!-- rationale
 risk: Medium. Policies can act on data in third-party services (the notice lists quarantine and access controls), simulation mode is not supported, and a policy can overlap a Defender for Cloud Apps file policy, which Microsoft says causes unexpected enforcement.
 cost: Variable. Microsoft's notice MC1449180 says usage is billed through the Microsoft Purview At Rest Protection pay-as-you-go meter, at 1,000 files = 1 data asset, on top of Enterprise tier Purview licensing.
 impact: Low. Administrators who create and run the policies notice it first; the roadmap and notice name no end-user experience, and Learn says policy tips and user overrides are not supported for these apps.
--->
-
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist asks readers to confirm the Azure subscription association, but no controls-table row covers that check. | Found: Ask finance to review Purview pay-as-you-go pricing and confirm the tenant is linked to an Azure subscription | Fix: Narrow that checklist bullet to: "Ask finance to review Purview pay-as-you-go pricing, then agree who owns the At Rest Protection charge." Keep the documented Azure subscription prerequisite in Cost and licensing.
 -->

@@ -62,19 +62,23 @@ changes:
     note: "First briefing for App Blocks: the roadmap describes it, Microsoft Learn does not yet, and the only documented lever is blocking Copilot Chat as a whole."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 44 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected the Data exposure bullet to the routes to organisational content that the Microsoft Copilot overview documents for Copilot Chat (Basic)."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 49 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 44
-  confirmed: 43
+  claims: 49
+  confirmed: 49
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "d17a67066949fc8d0a2b26f35b58c238"
+  contradicted: 0
+  attempts: 0
+  hash: "a46d7a9f73e122e1acdfb482edb8d9b9"
 ---
 
 ## What's changing
@@ -95,7 +99,7 @@ The practical issue is control. Microsoft Learn documents no App Blocks setting 
 
 **Data exposure**
 - The roadmap item says grounded scenarios retrieve current information and render it interactively, but does not name the sources. Confirm whether work data or web content is involved before telling users what is safe to put into an App Block.
-- Learn says Copilot Chat can use organisational content, but you must explicitly provide that content with your prompt. Whether that rule is the same for App Blocks is not stated.
+- For Copilot Chat (Basic), Learn documents user-provided prompt content, content already open in Teams and Outlook, and pay-as-you-go agents as routes to organisational content. Whether those routes are the same for App Blocks is not stated.
 
 **Security & identity**
 - Microsoft has not described how an interactive experience runs, where it is stored or under which identity it retrieves data. Treat these as items to confirm, not assumptions.
@@ -163,11 +167,8 @@ cost: Low. The only cost the sources show is admin and support time; no licence 
 impact: Medium. The roadmap item targets Copilot Chat users on Android, Desktop, iOS, Mac and Web, so people who use Copilot Chat may notice new interactive answers; Microsoft has not said whether every user gets it.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure / behaviour: Users must explicitly provide organisational content with their prompt for Copilot Chat to use it. | Found: In this context, Copilot Chat is aware of your open content and can use it instead of requiring you to copy and paste information or upload a file. | Fix: Replace 'Learn says Copilot Chat can use organisational content, but you must explicitly provide that content with your prompt.' with 'For Copilot Chat (Basic), Learn documents user-provided prompt content, content already open in Teams and Outlook, and pay-as-you-go agents as routes to organisational content.' Keep the following App Blocks-specific uncertainty. Source: https://learn.microsoft.com/copilot/plan/copilot-overview. | Source: https://learn.microsoft.com/copilot/plan/copilot-overview
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls; Risk assessment: Change & support / applicability: Manage Copilot Chat says the block can be scoped to specific users or groups, including licensed users. | Found: Blocking Copilot through Integrated Apps is a tenant-wide control that you can scope to specific users or groups, including licensed users. | Fix: After the scoping sentence add: 'However, the cited Integrated Apps instructions say that choosing Block app blocks all users in the organisation; confirm the effective scope before relying on a selective block.' The conflicting source is https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365#how-to-block-an-app. | Source: https://learn.microsoft.com/copilot/manage/manage-copilot-chat
-- [supported, minor] Governance controls / applicability: Manage Copilot Chat says Integrated Apps blocking covers the Microsoft Copilot app, Teams, Outlook and Copilot Chat on the web. | Found: This setting blocks Copilot in the Microsoft Copilot app, Teams, Outlook, and Copilot Chat on the web for all users. | Fix: Attribute the coverage sentence to Manage Copilot Chat and add: 'The Integrated Apps page instead says the app is blocked only in Microsoft Copilot and Outlook, while Teams continues to honour its Teams admin center setting.' Cite https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365#how-to-block-an-app for the disagreement. | Source: https://learn.microsoft.com/copilot/manage/manage-copilot-chat
+- [supported, minor] Governance controls / applicability: Integrated Apps blocking blocks Copilot in the Microsoft Copilot app, Teams, Outlook and Copilot Chat on the web. | Found: This setting blocks Copilot in the Microsoft Copilot app, Teams, Outlook, and Copilot Chat on the web for all users. | Fix: Attribute the sentence to Manage Copilot Chat and append: 'The general Integrated Apps reference differs: it says the app is blocked only in the Microsoft Copilot application and Outlook, while Teams continues to honor Teams admin center settings.' Cite https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365#how-to-block-an-app for that qualification. | Source: https://learn.microsoft.com/copilot/manage/manage-copilot-chat
 -->

@@ -2,39 +2,33 @@
   "slug": "microsoft-copilot-studio-use-sharepoint-lists-as-a-knowledge-source",
   "roadmapId": 566859,
   "title": "Copilot Studio: SharePoint lists as an agent knowledge source",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-18",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "cd5b21ff3a5b",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-18",
-    "reasons": [
-      "1 blocking finding (claim 42)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 72,
-    "confirmed": 68,
-    "unconfirmed": 2,
-    "contradicted": 2,
-    "blocker": 1,
-    "major": 2,
-    "minor": 6
+    "claims": 77,
+    "confirmed": 77,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 1
   },
-  "summary": "Hold: the consumption-only licensing classification does not reflect the documented licence-covered standard-harness usage that the body itself describes. Two additional statements go beyond the evidence: the precise environment holding ingested list content, and the promise that unsupported sources produce gaps rather than errors.",
+  "summary": "The briefing passes: its roadmap facts, licensing distinctions and governance controls are supported. One minor correction should acknowledge Microsoft's conflicting descriptions of content freshness for the SharePoint upload route.",
   "claims": [
     {
       "n": 1,
-      "where": "What's changing",
+      "where": "What's changing; title; summary",
       "type": "record",
-      "claim": "The roadmap plans native SharePoint list knowledge grounding for Copilot Studio agents without manual data movement or complex integrations.",
+      "claim": "The roadmap describes native SharePoint list knowledge for Copilot Studio agents without manual data movement or complex integrations.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "With native support, customers can ground AI responses in up-to-date, business-critical data—such as tasks, inventory, customers, or operations—without manual data movement or complex integrations.",
@@ -43,6 +37,17 @@
     },
     {
       "n": 2,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The listed products are Microsoft Copilot (Microsoft 365) and Microsoft Copilot Studio.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Microsoft Copilot Studio\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
       "where": "front matter: status; What's changing; Open questions",
       "type": "record",
       "claim": "The roadmap status remains In development.",
@@ -53,8 +58,8 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "front matter: targetDate; What's changing",
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Open questions",
       "type": "record",
       "claim": "The General Availability target is September CY2026.",
       "status": "supported",
@@ -64,8 +69,8 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "front matter: previewDate; What's changing",
+      "n": 5,
+      "where": "front matter: previewDate; What's changing; Open questions",
       "type": "record",
       "claim": "The preview target is July CY2026.",
       "status": "supported",
@@ -75,10 +80,10 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The record lists Worldwide (Standard Multi-Tenant) and does not list a US Government cloud.",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), with no US Government cloud listed.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -86,10 +91,10 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 7,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The record lists Web as the platform.",
+      "claim": "The roadmap platform is Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -97,10 +102,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 8,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The record lists General Availability and Preview release phases.",
+      "claim": "The roadmap release phases are General Availability and Preview.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -108,21 +113,10 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "front matter: products",
-      "type": "record",
-      "claim": "The record associates the item with Microsoft Copilot (Microsoft 365) and Microsoft Copilot Studio.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Microsoft Copilot Studio\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 9,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-07-07T23:01:01.",
+      "claim": "The roadmap record was modified on 2026-07-07T23:01:01.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-07-07T23:01:01\"",
@@ -133,7 +127,7 @@
       "n": 10,
       "where": "What's changing",
       "type": "record",
-      "claim": "The record has no more-info link.",
+      "claim": "The roadmap record has no more-info link.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"moreInfoLink\": null",
@@ -143,19 +137,19 @@
     {
       "n": 11,
       "where": "What's changing; Open questions",
-      "type": "record",
-      "claim": "Both roadmap target months have passed as of the November 18, 2026 run without the record changing to Launched.",
+      "type": "date",
+      "claim": "Both roadmap target months have passed as of the November 18, 2026 run.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"In development\"; \"targetDate\": \"September CY2026\"; \"previewDate\": \"July CY2026\"",
+      "quote": "\"targetDate\": \"September CY2026\", \"previewDate\": \"July CY2026\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 12,
-      "where": "title; summary; What's changing; Scope",
-      "type": "behaviour",
-      "claim": "Learn already documents SharePoint lists as agent knowledge sources, including standard-harness agents.",
+      "where": "summary; What's changing; Scope",
+      "type": "availability",
+      "claim": "Learn already documents SharePoint list knowledge for standard-harness agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-sharepoint",
       "quote": "This article describes features used in agents or agent flows powered by the standard harness. ... Your agent can use these lists as a knowledge source.",
@@ -164,9 +158,9 @@
     },
     {
       "n": 13,
-      "where": "What's changing: maker add-list procedure",
+      "where": "What's changing",
       "type": "admin-path",
-      "claim": "A maker opens an agent, selects Add knowledge, selects SharePoint under Upload file, then browses for a list or enters its URL.",
+      "claim": "A maker opens the agent, selects Add knowledge and SharePoint under Upload file, then browses for a list or enters its URL.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-sharepoint",
       "quote": "Open the agent. ... Select Add knowledge ... In the Upload file section, select SharePoint. ... Select Browse items to find your desired list, or enter the URL of a specific SharePoint list.",
@@ -175,9 +169,9 @@
     },
     {
       "n": 14,
-      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "where": "What's changing; Risk assessment; rationale: risk; Open questions",
       "type": "behaviour",
-      "claim": "The selected SharePoint lists are ingested into Dataverse and indexed.",
+      "claim": "The selected SharePoint lists are ingested into Dataverse.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-sharepoint",
       "quote": "The selected SharePoint lists are ingested into Dataverse and indexed to improve search results.",
@@ -186,20 +180,31 @@
     },
     {
       "n": 15,
-      "where": "What's changing",
+      "where": "What's changing; Risk assessment; rationale: risk",
       "type": "behaviour",
-      "claim": "Learn describes adding a SharePoint list as creating a real-time connection to the source.",
+      "claim": "The selected lists are indexed.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-sharepoint",
-      "quote": "When you add a SharePoint list as a knowledge source, you create a real-time connection to the source, so the most current data is used for queries and reasoning.",
+      "quote": "The selected SharePoint lists are ingested into Dataverse and indexed to improve search results.",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn says the list connection is real-time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-sharepoint",
+      "quote": "When you add a SharePoint list as a knowledge source, you create a real-time connection to the source, so the most current data is used for queries and reasoning.",
+      "severity": "minor",
+      "fix": "After this sentence add: 'However, the Unstructured data as a knowledge source FAQ describes the file-upload route, which also supports lists, as synchronizing content every four to six hours; Microsoft's descriptions of freshness differ.' Cite https://learn.microsoft.com/microsoft-copilot-studio/knowledge-unstructured-data#faq, whose Runtime differences table says 'Content is synchronized every four to six hours, based on ingestion completion' for Option 1 and marks SharePoint lists supported."
+    },
+    {
+      "n": 17,
       "where": "What's changing; Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Users authenticate using their SharePoint credentials.",
+      "claim": "Users authenticate with their SharePoint credentials.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-sharepoint",
       "quote": "Users authenticate by using their SharePoint credentials, which ensures they have permission to access the data before your agent provides a response.",
@@ -207,10 +212,21 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 18,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "Learn also documents SharePoint list knowledge for Microsoft Copilot harness agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-sharepoint-lists",
+      "quote": "Add SharePoint lists (Microsoft Copilot) ... After you connect SharePoint lists to your Copilot Studio agent, it can answer questions grounded in structured SharePoint data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The Microsoft Copilot harness list knowledge page describes analytical and aggregation queries over list data.",
+      "claim": "Microsoft Copilot harness list knowledge supports analytical and aggregation queries.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-sharepoint-lists",
       "quote": "Analytical and aggregation queries over structured list data",
@@ -218,10 +234,10 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 20,
       "where": "What's changing; Risk assessment: Change & support",
       "type": "availability",
-      "claim": "Large-list support on the Microsoft Copilot harness page is described as preview.",
+      "claim": "The Microsoft Copilot harness page describes large-list support as preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-sharepoint-lists",
       "quote": "This preview supports large-scale lists. The supported scale is:",
@@ -229,32 +245,43 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "What's changing: Microsoft Copilot harness limits",
-      "type": "behaviour",
-      "claim": "The Microsoft Copilot harness page gives public-preview support for up to 10 lists per agent.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-sharepoint-lists",
-      "quote": "| Lists per agent | Up to 10 lists. |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "What's changing: Microsoft Copilot harness limits",
-      "type": "behaviour",
-      "claim": "The Microsoft Copilot harness page supports up to 120,000 rows and warns that larger connected lists might degrade quality and latency.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-sharepoint-lists",
-      "quote": "Up to 120,000 rows. You can connect larger lists, but quality and latency might degrade after 120,000 rows. The best performance occurs when you limit total rows to 120,000 rows across all lists.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 21,
-      "where": "What's changing: standard-harness quotas; Open questions",
+      "where": "What's changing; Open questions",
       "type": "behaviour",
-      "claim": "The standard-harness quotas page says SharePoint lists support up to 15 total lists.",
+      "claim": "The Microsoft Copilot harness page gives up to 10 lists per agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-sharepoint-lists",
+      "quote": "Lists per agent | Up to 10 lists.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "The Microsoft Copilot harness page gives a supported list size of up to 120,000 rows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-sharepoint-lists",
+      "quote": "Maximum supported list size | Up to 120,000 rows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Quality and latency can degrade beyond 120,000 rows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-sharepoint-lists",
+      "quote": "You can connect larger lists, but quality and latency might degrade after 120,000 rows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Governance guidance; Open questions",
+      "type": "behaviour",
+      "claim": "The standard-harness quotas page says up to 15 total lists.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-quotas",
       "quote": "SharePoint lists support up to 15 total lists",
@@ -262,10 +289,10 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "What's changing: standard-harness quotas; Open questions",
+      "n": 25,
+      "where": "What's changing; Open questions",
       "type": "behaviour",
-      "claim": "The quotas page says up to 35,000 rows across all 15 lists provided total rows do not exceed 120,000.",
+      "claim": "The quotas page says up to 35,000 rows across all 15 lists.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-quotas",
       "quote": "SharePoint lists support up to 15 total lists, and up to 35,000 rows across all 15 lists, as long as the total rows don't exceed 120,000 rows.",
@@ -273,10 +300,21 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What's changing: standard-harness quotas",
+      "n": 26,
+      "where": "What's changing; Open questions",
       "type": "behaviour",
-      "claim": "The quotas page says list queries return data only from the first 2,048 rows.",
+      "claim": "The quotas page also says total rows must not exceed 120,000.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-quotas",
+      "quote": "as long as the total rows don't exceed 120,000 rows. For example, you could have 3 lists of 35,000 rows each, or 12 lists with 10,000 rows each.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The quotas page says SharePoint list queries return only the first 2,048 rows.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-quotas",
       "quote": "SharePoint list queries only return data from the first 2,048 rows of data.",
@@ -284,32 +322,21 @@
       "fix": null
     },
     {
-      "n": 24,
-      "where": "What's changing; Governance guidance: Before rollout",
+      "n": 28,
+      "where": "What's changing; Governance guidance",
       "type": "behaviour",
-      "claim": "The standard-harness SharePoint page recommends using up to 10 lists per agent, differing from the quotas page.",
+      "claim": "The standard-harness SharePoint page recommends up to 10 lists per agent, differing from the quotas page.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-sharepoint",
-      "quote": "You can select up to 10 lists at a time. For the best results, only use up to 10 lists per agent.",
+      "quote": "For the best results, only use up to 10 lists per agent.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 25,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "SharePoint lists can hold operational records such as tickets and procurement requests.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-sharepoint-lists",
-      "quote": "Many organizations store important operational and business data in SharePoint lists, such as help desk tickets, course catalogs, backlogs, and more. ... \"How many procurement requests were submitted for MacBooks?\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "Why it matters; Risk assessment; Scope; rationale: risk",
+      "n": 29,
+      "where": "Why it matters; Risk assessment; Scope",
       "type": "role",
-      "claim": "A user needs at least Read permission on the SharePoint site or list to access its content through the agent.",
+      "claim": "Users need at least Read permission on the SharePoint site or list.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-sharepoint",
       "quote": "At a minimum, the user must have Read permissions to the SharePoint site or list to access the content.",
@@ -317,10 +344,10 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 30,
       "where": "Why it matters; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Learn says the agent responds with no response when the user lacks permission to access the content.",
+      "claim": "Learn says the agent responds with no response when the user lacks permission.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-sharepoint",
       "quote": "If the user doesn't have permission to access the content, the agent responds with \"no response.\"",
@@ -328,10 +355,10 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "Risk assessment: Data exposure; Security & identity; rationale: risk",
-      "type": "applicability",
-      "claim": "The agent surfaces SharePoint content only when the user has permission to access it.",
+      "n": 31,
+      "where": "Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "The agent surfaces only content the user has permission to access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-sharepoint",
       "quote": "By using this option, the agent surfaces only content that the user has permission to access.",
@@ -339,74 +366,8 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "front matter: defaultState; summary; Why it matters; rationale: impact",
-      "type": "default",
-      "claim": "List knowledge is maker opt-in rather than an automatic change to existing agents.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-sharepoint",
-      "quote": "Open the agent. ... Select Add knowledge ... Select Browse items to find your desired list, or enter the URL of a specific SharePoint list. ... Select Add to agent to finish adding the knowledge source.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "front matter: licensing.notes; Cost and licensing: Licence",
-      "type": "licensing",
-      "claim": "Microsoft Copilot harness agents use consumption-based billing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
-      "quote": "Agents powered by the Microsoft Copilot harness use consumption-based billing.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "front matter: licensing.notes; Cost and licensing: Licence",
-      "type": "licensing",
-      "claim": "Microsoft Copilot harness usage is not included with the user's Microsoft 365 Copilot licence.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
-      "quote": "This usage isn't included with a user's Microsoft 365 Copilot license.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 32,
-      "where": "Why it matters; rationale: cost",
-      "type": "cost",
-      "claim": "Microsoft Copilot harness agents are billed for all usage regardless of the user's licence.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
-      "quote": "Billed for all usage. Creation and runtime activities consume Copilot Credits regardless of the user's license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Why it matters; Risk assessment: Change & support; Cost and licensing: Meter",
-      "type": "cost",
-      "claim": "Microsoft Copilot harness credit charges can begin during building and testing before an agent is shared.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
-      "quote": "Unlike the standard harness, which starts billing after publish, the Microsoft Copilot harness charges credits from the moment you start building.",
-      "severity": "minor",
-      "fix": "In Risk assessment: Change & support, replace 'Credit use starts when makers build and test' with 'For Microsoft Copilot harness agents, credit use starts when makers build and test'. The billing overview distinguishes the standard harness, which starts billing after publish."
-    },
-    {
-      "n": 34,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Ingested list content is held specifically in the environment where the agent lives.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Copilot Studio SharePoint lists ingested Dataverse stored same environment agent; SharePoint lists Dataverse environment stored Copilot Studio. Read knowledge-add-sharepoint and search excerpts for knowledge-unstructured-data, environments-first-run-experience and geo-data-residency.",
-      "severity": "major",
-      "fix": "Remove ', so list content is held in the environment where the agent lives'. Keep the documented statement that selected lists are ingested into Dataverse and indexed; the cited page does not specify the storage environment."
-    },
-    {
-      "n": 35,
-      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "where": "Risk assessment: Security & identity; Governance guidance",
       "type": "availability",
       "claim": "Generative answers from SharePoint sources are unavailable to guest users in SSO-enabled apps.",
       "status": "supported",
@@ -416,10 +377,10 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "n": 33,
+      "where": "Risk assessment: Security & identity; Governance guidance",
       "type": "applicability",
-      "claim": "Learn says Restricted SharePoint Search blocks use of SharePoint as a knowledge source.",
+      "claim": "Learn says Restricted SharePoint Search blocks use of SharePoint.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-sharepoint",
       "quote": "If Restricted SharePoint Search is enabled, use of SharePoint is blocked.",
@@ -427,19 +388,19 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 34,
       "where": "Risk assessment: Autonomy & actions",
       "type": "absence",
-      "claim": "The list-knowledge documentation describes answering questions rather than new autonomous actions on lists.",
+      "claim": "No new autonomy or list-writing action is documented for this knowledge-source feature.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Copilot Studio SharePoint list knowledge source actions write update read only. Opened knowledge-add-sharepoint and agents-experience/knowledge-sharepoint-lists; these document grounding and queries, not list mutations. Separate MCP tools are not this knowledge-source feature.",
+      "quote": "Searched: \"SharePoint lists\" \"knowledge\" \"actions\" \"Copilot Studio\". Opened Add SharePoint as a knowledge source and Add SharePoint lists (Microsoft Copilot); they describe retrieval, analytical reasoning and answers, not list-writing actions.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Risk assessment: Change & support; Scope; Governance guidance: Before rollout",
+      "n": 35,
+      "where": "Risk assessment: Change & support; Scope; Governance guidance",
       "type": "behaviour",
       "claim": "List views cannot be selected as knowledge sources.",
       "status": "supported",
@@ -449,8 +410,8 @@
       "fix": null
     },
     {
-      "n": 39,
-      "where": "Risk assessment: Change & support; Scope; Governance guidance: Before rollout",
+      "n": 36,
+      "where": "Risk assessment: Change & support; Scope; Governance guidance",
       "type": "behaviour",
       "claim": "Document libraries are not supported as lists.",
       "status": "supported",
@@ -460,43 +421,65 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 37,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "The Attachments column is not indexed or reasoned over.",
+      "claim": "The Attachments column does not prevent list indexing or cause an indexing error.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-quotas",
-      "quote": "The Attachments column doesn't support indexing or reasoning over attachments.",
+      "quote": "The Attachments column doesn't support indexing or reasoning over attachments. However, no error occurs and the list is indexed",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Responses do not use attachment contents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-quotas",
+      "quote": "no responses are provided based on the attachment contents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Why it matters; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Microsoft Copilot harness agents are billed for all usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
+      "quote": "Microsoft Copilot harness agents | No | Billed for all usage. Creation and runtime activities consume Copilot Credits regardless of the user's license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Why it matters; Risk assessment; Cost and licensing",
+      "type": "cost",
+      "claim": "Microsoft Copilot harness billing starts during building and testing, before an agent is shared.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "the Microsoft Copilot harness charges credits from the moment you start building. Experiences such as creating an automated solution with natural language, previewing and testing an agent, and generating and creating agent evaluations all consume credits.",
       "severity": null,
       "fix": null
     },
     {
       "n": 41,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "Makers connecting list views, document libraries or attachments will see gaps rather than errors.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: SharePoint lists no error Copilot Studio views. Opened requirements-quotas and knowledge-add-sharepoint; read SharePoint troubleshooting search excerpts. Only the Attachments limitation expressly says no error occurs, not list views or document libraries.",
-      "severity": "major",
-      "fix": "Replace 'Makers who connect those will see gaps rather than errors' with 'For attachments, Learn says the list is indexed without an error, but responses do not use attachment contents.' Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-quotas."
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft Copilot harness usage is not included with a user's Microsoft 365 Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
+      "quote": "This usage isn't included with a user's Microsoft 365 Copilot license.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 42,
-      "where": "front matter: licensing.model; Cost and licensing: Licence",
-      "type": "consistency",
-      "claim": "The feature's licensing model is consumption-only even though the page covers both harnesses and documents licence-included standard-harness use.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "model: \"consumption\"; \"For standard harness agents, the billing rates page says employee-facing usage is included in the Microsoft Copilot user licence when the user is licensed and the agent operates using that user's identity.\"",
-      "severity": "blocker",
-      "fix": "Set licensing.model to 'mixed'. Add to licensing.notes: 'For standard-harness agents, employee-facing usage is included in the Microsoft Copilot USL when the user is licensed and the agent uses that authenticated user's identity, subject to fair usage limits.' This is stated at https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management. Retain the separately qualified Microsoft Copilot harness consumption rule."
-    },
-    {
-      "n": 43,
-      "where": "Cost and licensing: Licence",
+      "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Standard-harness employee-facing agent usage is included in the Microsoft Copilot USL when the user is licensed and the agent uses that user's authenticated identity.",
+      "claim": "Standard-harness employee-facing usage is included in Microsoft Copilot USL when the user is licensed and the agent uses that authenticated user's identity.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
       "quote": "are included in the Microsoft Copilot USL when the user of the agent is licensed with Microsoft Copilot, and the agent operates using the authenticated Microsoft Copilot USL user's identity.",
@@ -504,24 +487,35 @@
       "fix": null
     },
     {
-      "n": 44,
-      "where": "summary; front matter: cost; Cost and licensing: Meter; rationale: cost",
-      "type": "cost",
-      "claim": "Agent use is metered in Copilot Credits, making the cost variable.",
+      "n": 43,
+      "where": "front matter: licensing.notes",
+      "type": "licensing",
+      "claim": "The standard-harness included usage is subject to fair usage limits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
-      "quote": "Copilot Credits are the unit that measures agent usage. ... | Generative answer ... | 2 Copilot Credits | No charge |",
-      "severity": "minor",
-      "fix": "In the summary, replace 'use is billed in Copilot Credits' with 'use can consume Copilot Credits depending on the harness and user licence'. Keep cost 'variable'; the body already explains the licence-included standard-harness case."
+      "quote": "Usage is limited to fair usage limits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is mixed, with licensed inclusion for qualifying standard-harness usage and consumption billing for Microsoft Copilot harness usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
+      "quote": "Standard harness agents | Yes, in Microsoft 365 channels ... Microsoft Copilot harness agents | No | Billed for all usage.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 45,
-      "where": "Cost and licensing: Meter",
+      "where": "summary; Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "Microsoft Copilot harness credits cover model tokens, tools including knowledge, and the harness.",
+      "claim": "Copilot Credits are the usage meter.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
-      "quote": "Copilot Credits are charged for large language model (LLM) tokens, tools (including knowledge and MCPs), and the harness itself.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "Copilot Credits are the unit that measures agent usage.",
       "severity": null,
       "fix": null
     },
@@ -529,29 +523,106 @@
       "n": 46,
       "where": "Cost and licensing: Meter",
       "type": "cost",
-      "claim": "The standard-harness billing page publishes a generative-answer feature rate of 2 Copilot Credits.",
+      "claim": "Microsoft Copilot harness billing includes model tokens.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
-      "quote": "| Generative answer ... | 2 Copilot Credits | No charge |",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "Copilot Credits are charged for large language model (LLM) tokens, tools (including knowledge and MCPs), and the harness itself.",
       "severity": null,
       "fix": null
     },
     {
       "n": 47,
-      "where": "front matter: licensing.notes; Cost and licensing: Meter; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "No separate credit rate specific to SharePoint list knowledge is published.",
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Microsoft Copilot harness billing includes tools, including knowledge.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio SharePoint lists knowledge Copilot Credits billing rate. Opened requirements-messages-management, agents-experience/billing-credit-overview and agents-experience/knowledge-sharepoint-lists; none gives a separately named SharePoint-list rate.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "Copilot Credits are charged for large language model (LLM) tokens, tools (including knowledge and MCPs), and the harness itself.",
       "severity": null,
       "fix": null
     },
     {
       "n": 48,
-      "where": "summary; controls[1].governs; Cost and licensing: Caps",
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Microsoft Copilot harness billing includes the harness itself.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "Copilot Credits are charged for large language model (LLM) tokens, tools (including knowledge and MCPs), and the harness itself.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "The standard-harness rate table lists 2 Copilot Credits for a generative answer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "Generative answer | 2 Copilot Credits | No charge",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A separate credit rate specific to SharePoint list knowledge is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio SharePoint list knowledge Copilot Credits billing rate. Opened Billing rates and management, Overview of usage-based billing and both SharePoint list knowledge pages; general answer/tool billing is documented, but no list-specific rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing: Caps",
+      "type": "cost",
+      "claim": "An environment allocation is not a spending boundary if tenant capacity or pay-as-you-go can supply additional credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
+      "quote": "An allocation isn't a boundary if the environment can continue drawing from tenant capacity or pay-as-you-go billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing: Caps",
       "type": "behaviour",
-      "claim": "An agent monthly consumption limit can have a hard stop that turns off the agent at its limit.",
+      "claim": "Azure budgets send alerts but do not stop Copilot Studio usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
+      "quote": "Azure budgets and alerts send notifications but don't stop Copilot Studio consumption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[1].note; Scope",
+      "type": "role",
+      "claim": "Capacity management requires Power Platform Administrator, Global Administrator or an equivalent role that manages licensing and capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
+      "quote": "To manage Copilot Studio capacity, you need the Power Platform Administrator or Global Administrator role, or an equivalent role that can manage licensing and capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "Agent monthly limits apply to Copilot Studio agents generally, rather than only SharePoint list knowledge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "Admins can set monthly consumption limits for each Copilot Studio agent, regardless of whether the environment uses prepaid capacity or pay-as-you-go billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].governs; Cost and licensing: Caps",
+      "type": "behaviour",
+      "claim": "An enabled agent hard stop turns the agent off at its monthly limit.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
       "quote": "Hard stop: The agent is automatically turned off once it hits the defined limit.",
@@ -559,7 +630,7 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 56,
       "where": "Cost and licensing: Caps",
       "type": "behaviour",
       "claim": "Agent limits are not applied instantly.",
@@ -570,65 +641,32 @@
       "fix": null
     },
     {
-      "n": 50,
-      "where": "Cost and licensing: Caps",
-      "type": "cost",
-      "claim": "An environment allocation is not a spending boundary if the environment can draw on tenant capacity or pay-as-you-go.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
-      "quote": "An allocation isn't a boundary if the environment can continue drawing from tenant capacity or pay-as-you-go billing.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "Cost and licensing: Caps",
-      "type": "cost",
-      "claim": "Azure budgets send alerts but do not stop Copilot Studio use.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
-      "quote": "Azure budgets and alerts send notifications but don't stop Copilot Studio consumption.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "controls[1].note; Scope",
-      "type": "role",
-      "claim": "Capacity management requires Power Platform Administrator, Global Administrator or an equivalent role that can manage licensing and capacity.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
-      "quote": "To manage Copilot Studio capacity, you need the Power Platform Administrator or Global Administrator role, or an equivalent role that can manage licensing and capacity.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "controls[0].ui",
+      "n": 57,
+      "where": "controls[0].ui; Governance controls: row 1",
       "type": "admin-path",
-      "claim": "The SharePoint + OneDrive rule is reached in Power Platform admin center through Security > Data and privacy > Knowledge sources for agents > Environment groups > environment group > Manage knowledge sources > SharePoint + OneDrive.",
+      "claim": "The Power Platform admin center path is Security > Data and privacy > Knowledge sources for agents > Environment groups > environment group > Manage knowledge sources > SharePoint + OneDrive.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule",
-      "quote": "select Security. ... select ... Data and privacy ... Knowledge sources for agents ... Environment groups ... Select the environment group ... select Manage knowledge sources. ... SharePoint + OneDrive",
+      "quote": "select Security. ... Data and privacy ... Knowledge sources for agents ... Environment groups ... Select the environment group ... Manage knowledge sources. ... SharePoint + OneDrive",
       "severity": null,
       "fix": null
     },
     {
-      "n": 54,
+      "n": 58,
       "where": "controls[0].api; Governance controls",
       "type": "absence",
-      "claim": "No documented automation operation sets this Knowledge sources for agents rule.",
+      "claim": "No API operation for the Knowledge sources for agents setting is documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Knowledge sources for agents API SharePoint; Knowledge sources for agents PowerShell rule. Opened knowledge-sources-for-agents-rule, pac governance and Power Platform Rule Sets Update Rule Set. Generic rule-set operations give no identifier or value schema for this control.",
+      "quote": "Searched: \"knowledge sources for agents\" \"API\" \"rule\". Opened Configure knowledge sources for agents, pac governance, and Rule Sets - Update Rule Set; generic rule operations exist but no knowledge-source rule identifier or setting mapping is documented.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 55,
-      "where": "controls[0].scope; controls[0].note; Governance controls",
+      "n": 59,
+      "where": "controls[0].note",
       "type": "applicability",
-      "claim": "Knowledge sources for agents can be configured at environment-group or environment scope.",
+      "claim": "Knowledge sources for agents is configurable at environment as well as environment-group level.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule",
       "quote": "This setting is available at both the environment and environment group level.",
@@ -636,21 +674,21 @@
       "fix": null
     },
     {
-      "n": 56,
+      "n": 60,
       "where": "controls[0].note",
       "type": "behaviour",
-      "claim": "SharePoint + OneDrive offers None, All and Custom options.",
+      "claim": "The SharePoint + OneDrive setting offers None, All and Custom.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule",
-      "quote": "SharePoint + OneDrive ... Choose from three options: ... None ... All ... Custom",
+      "quote": "None: Don't use any SharePoint and OneDrive sites as knowledge sources. ... All: Use all SharePoint and OneDrive sites as knowledge sources. ... Custom: Select which SharePoint and OneDrive sites agents can use.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 57,
+      "n": 61,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Custom allows or denies SharePoint and OneDrive sites by URL.",
+      "claim": "Custom permits Allow or Deny for SharePoint and OneDrive site URLs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule",
       "quote": "Custom: Select which SharePoint and OneDrive sites agents can use. Agents reference them in priority order, starting with the first URL. Select either Allow or Deny under Access for each URL.",
@@ -658,21 +696,21 @@
       "fix": null
     },
     {
-      "n": 58,
+      "n": 62,
       "where": "Governance controls; Open questions",
       "type": "absence",
-      "claim": "The documentation does not explain how Custom treats individual list URLs.",
+      "claim": "The rule documentation does not explain treatment of individual list URLs in Custom.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Knowledge sources for agents list URLs. Opened knowledge-sources-for-agents-rule and choose-knowledge-sources. They describe site URLs and the source mapping, not evaluation of individual list URLs; Agent Builder list-URL results address adding knowledge, not this rule.",
+      "quote": "Searched: \"knowledge sources for agents\" \"Custom\" \"list\". Opened Configure knowledge sources for agents and Choose knowledge sources for agents built in Copilot Studio; the Custom instructions name site URLs, not individual list URLs.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 59,
+      "n": 63,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "A group-level knowledge-source rule is distributed to environments and cannot be changed at environment level.",
+      "claim": "An environment cannot modify a knowledge-source setting imposed at environment-group level.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule",
       "quote": "if an admin sets the control at the environment group level, then it's distributed to the environment level and can't be modified there.",
@@ -680,98 +718,65 @@
       "fix": null
     },
     {
-      "n": 60,
-      "where": "controls[1].ui",
-      "type": "admin-path",
-      "claim": "The capacity page documents Power Platform admin center > Licensing > Products > Copilot Studio > Summary > Manage Agents for monthly agent limits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
-      "quote": "On the navigation pane, select Licensing. ... under Products, select Copilot Studio. ... On the Summary tab, select Manage Agents.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
-      "where": "controls[1].api; Governance controls",
-      "type": "absence",
-      "claim": "No documented API or PowerShell operation configures an individual agent's monthly Copilot Credit limit.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Platform API agent limit monthly; agent monthly limit PowerShell Copilot Credits; Dataverse bot consumption limit. Opened manage-usage-github-copilot-harness, capacity management and Dataverse bot Web API reference; no monthly-limit property or setting operation was documented.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 62,
-      "where": "controls[1].note; Governance guidance: Before rollout",
-      "type": "admin-path",
-      "claim": "After Manage Agents, select an agent, select Set limit and enable Stop usage to turn it off at the limit.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
-      "quote": "Select the agent, and then select Set limit. ... Turn on Stop usage if the agent should be turned off when it reaches the limit.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 63,
-      "where": "controls[1].note; Governance controls",
-      "type": "applicability",
-      "claim": "Agent monthly limits apply to Copilot Studio agents generally rather than only this list-knowledge feature.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
-      "quote": "Admins can set monthly consumption limits for each Copilot Studio agent, regardless of whether the environment uses prepaid capacity or pay-as-you-go billing.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 64,
       "where": "controls[0].note; Governance controls",
-      "type": "applicability",
-      "claim": "The Upload files > SharePoint entry is mapped to the SharePoint + OneDrive knowledge-source setting.",
+      "type": "availability",
+      "claim": "The Knowledge sources for agents admin documentation is marked preview.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/choose-knowledge-sources",
-      "quote": "| Upload files > SharePoint | SharePoint + OneDrive | Configures whether agents can use SharePoint and OneDrive sites as knowledge sources. |",
-      "severity": "minor",
-      "fix": "In Governance controls, replace 'Its table lists' with 'The Choose knowledge sources for agents built in Copilot Studio table lists'. The mapping is on the already-cited https://learn.microsoft.com/microsoft-copilot-studio/choose-knowledge-sources, not the Knowledge sources for agents configuration page."
+      "source": "https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule",
+      "quote": "Configure knowledge sources for agents in the Power Platform admin center (preview) ... [This article is prerelease documentation and is subject to change.]",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 65,
-      "where": "Governance controls",
-      "type": "absence",
-      "claim": "The pac governance reference provides rule-set commands but does not name this knowledge-source rule.",
+      "where": "summary; controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "The SharePoint + OneDrive rule maps to Upload files > SharePoint, the upload entry used by Learn's list-addition steps.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Knowledge sources for agents API SharePoint; Knowledge sources for agents PowerShell rule. Read the full pac governance reference: create-rule-set and update-rule-set accept generic parameters; no Knowledge sources for agents rule name or parameters are specified.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/choose-knowledge-sources",
+      "quote": "Upload files > SharePoint | SharePoint + OneDrive | Configures whether agents can use SharePoint and OneDrive sites as knowledge sources.",
       "severity": null,
       "fix": null
     },
     {
       "n": 66,
+      "where": "controls[1].ui; controls[1].note; Governance controls: row 2",
+      "type": "admin-path",
+      "claim": "The limit UI is reached through Licensing > Products > Copilot Studio > Summary > Manage Agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "select Licensing. ... under Products, select Copilot Studio. ... On the Summary tab, select Manage Agents. ... You can set a monthly limit for any agent directly from this page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "No API operation for setting an individual agent's monthly credit limit is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio agent monthly consumption limit Stop usage API PowerShell. Opened Manage Copilot Credits and capacity, Manage costs for Microsoft Copilot harness, and Govern Copilot Credit consumption; no agent-limit setter reference found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
       "where": "Governance guidance: Before rollout",
       "type": "role",
       "claim": "Power Platform administrators can configure environment-group rules.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/environment-groups",
-      "quote": "After you create the environment group, Power Platform tenant administrators can immediately add managed environments or configure the group's rules.",
-      "severity": "minor",
-      "fix": "Cite https://learn.microsoft.com/power-platform/admin/environment-groups for the Power Platform administrator assignment in the first Before rollout bullet."
+      "quote": "Power Platform tenant administrators can immediately add managed environments or configure the group's rules.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 67,
-      "where": "Governance guidance: Before rollout",
-      "type": "role",
-      "claim": "SharePoint site owners can review and change list permissions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/understanding-permission-levels",
-      "quote": "Lists and libraries inherit permissions from the site to which they belong. If you're a site owner, you can stop permissions inheritance and change the permission settings for the list or library.",
-      "severity": "minor",
-      "fix": "Cite https://learn.microsoft.com/sharepoint/understanding-permission-levels for assigning list-permission review to SharePoint site owners."
-    },
-    {
-      "n": 68,
+      "n": 69,
       "where": "Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Learn's list-knowledge best practices advise evaluations before production.",
+      "claim": "Learn best practices advise evaluations before production rollout.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-sharepoint-lists",
       "quote": "Run evaluations and validate your queries before production rollout.",
@@ -779,18 +784,62 @@
       "fix": null
     },
     {
-      "n": 69,
+      "n": 70,
       "where": "Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Manage Agents displays month-to-date billed credits and agent status.",
+      "claim": "Manage Agents exposes month-to-date billed credits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
-      "quote": "See month-to-date billed credits. ... Monitor agent status, such as Nearing limit, Over limit, or Within limit.",
+      "quote": "See month-to-date billed credits.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 70,
+      "n": 71,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The pac governance reference has environment-group rule-set commands but does not name this knowledge-source rule.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"knowledge sources for agents\" \"API\" \"rule\"; read the full pac governance reference and Rule Sets - Update Rule Set. They document create/update rule sets and generic parameters, but do not name the Knowledge sources for agents rule.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "The capability is user-opt-in: a maker must add a list, rather than existing agents acquiring list knowledge automatically.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-sharepoint",
+      "quote": "Select Add to agent to finish adding the knowledge source. Searched: Copilot Studio SharePoint lists knowledge source enable admin default setting; no dedicated feature switch found, only existing knowledge-source policy and Dataverse search prerequisites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "controls[1].note; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "After Manage Agents, the admin selects the agent and Set limit, then enables Stop usage for enforcement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
+      "quote": "Select the agent, and then select Set limit. ... Turn on Stop usage if the agent should be turned off when it reaches the limit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Manage Agents exposes agent status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "Monitor agent status, such as Nearing limit, Over limit, or Within limit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
       "where": "Governance guidance: After rollout",
       "type": "behaviour",
       "claim": "The downloadable detailed consumption report includes a Knowledge sources / Tool used column.",
@@ -801,35 +850,35 @@
       "fix": null
     },
     {
-      "n": 71,
-      "where": "Governance guidance: Before rollout; Governance controls",
-      "type": "consistency",
-      "claim": "Every control the governance checklist asks readers to review appears in the controls table.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "\"Review read permissions on the lists makers are likely to connect\"; the controls table contains only the knowledge-source rule and monthly agent credit limit.",
-      "severity": "minor",
-      "fix": "The Before rollout list-permission review has no matching controls-table row. Remove that checklist bullet to make the checklist match the existing table; retain the permission-review advice in Why it matters."
+      "n": 76,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "SharePoint lists commonly hold operational and business records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-sharepoint-lists",
+      "quote": "Many organizations store important operational and business data in SharePoint lists, such as help desk tickets, course catalogs, backlogs, and more.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 72,
-      "where": "controls[0].note; Governance controls",
-      "type": "availability",
-      "claim": "The Knowledge sources for agents configuration page is preview documentation.",
+      "n": 77,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The variable cost rating reflects metered Copilot Credit usage.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule",
-      "quote": "Configure knowledge sources for agents in the Power Platform admin center (preview) ... [This article is prerelease documentation and is subject to change.]",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "Usage is billed based on consumption and measured in Copilot Credits.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-18T14:04:53.563Z",
+    "at": "2026-11-18T20:03:47.384Z",
     "summary": {
-      "links": 11,
-      "unreachable": 6,
+      "links": 12,
+      "unreachable": 0,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 1,
+      "uiPathsWithMissingWords": 0,
       "apiCalls": 0,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
@@ -837,18 +886,18 @@
     "linkChecks": [
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-sharepoint",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-sharepoint-lists",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-quotas",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule",
@@ -862,13 +911,13 @@
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
@@ -882,8 +931,13 @@
       },
       {
         "url": "https://learn.microsoft.com/power-platform/developer/cli/reference/governance",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/environment-groups",
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://www.microsoft.com/microsoft-365/roadmap?id=566859",
@@ -913,7 +967,7 @@
         "side": "ui",
         "governs": "Monthly Copilot Credit limit and hard stop for an agent",
         "docs": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Licensing",
           "Products",
@@ -921,16 +975,17 @@
           "Summary",
           "Manage Agents"
         ],
-        "missing": [
-          "Licensing",
-          "Products",
-          "Copilot Studio",
-          "Summary",
-          "Manage Agents"
-        ]
+        "missing": []
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

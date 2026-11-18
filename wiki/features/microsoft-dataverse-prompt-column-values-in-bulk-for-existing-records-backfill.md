@@ -40,6 +40,15 @@ sources:
   - title: "Administer AI Builder"
     url: "https://learn.microsoft.com/ai-builder/administer"
     kind: "learn"
+  - title: "Specialized columns using code"
+    url: "https://learn.microsoft.com/power-apps/developer/data-platform/specialized-columns#prompt-columns"
+    kind: "learn"
+  - title: "Column-level security to control access"
+    url: "https://learn.microsoft.com/power-platform/admin/field-level-security"
+    kind: "learn"
+  - title: "Organization table/entity reference (Microsoft Dataverse)"
+    url: "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization"
+    kind: "learn"
 videos: []
 related: ["copilot-credits"]
 controls:
@@ -58,15 +67,18 @@ controls:
       path: "Manage > Environments > environment > Settings > Product > Features > Require review before processing imported prompt columns"
       docs: "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column"
     api: null
-    note: "On by default per Learn; an imported job pauses in System jobs and can be started manually after review."
+    note: "On by default per Learn; an imported job pauses in System jobs and can be started manually after review. Specialized columns using code page still states importing and exporting solutions with prompt columns is not supported."
   - governs: "Whether AI prompts, which prompt columns rely on, are available in an environment"
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
       path: "Manage > Environments > environment > Settings > Product > Features > AI Builder > AI prompts"
       docs: "https://learn.microsoft.com/ai-builder/administer"
-    api: null
-    note: "Existing control, enabled by default per Learn. It switches AI prompts off or on generally; it is not specific to backfill. An environment group rule for AI prompts can lock it."
+    api:
+      kind: "rest"
+      call: "PATCH /organizations(<organizationid>)"
+      docs: "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization"
+    note: "Not specific to backfill. The request body sets aipromptsenabled, a Boolean that enables or disables AI prompts. Administration page: enabled by default; Organization table reference: DefaultValue False for AiPromptsEnabled."
 confidence: "high"
 created: "2026-11-18"
 updated: "2026-11-18"
@@ -76,19 +88,23 @@ changes:
     note: "New briefing: backfill of Dataverse prompt columns over existing records, with its off-by-default environment setting, credit consumption and job limits."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 65 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected after verification: added the Dataverse Web API call for the AI prompts switch, reworded the per-record credit, maker-side and credit-type statements, and removed checklist items that had no table row."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 73 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
-  confirmed: 59
-  unconfirmed: 2
-  contradicted: 4
-  attempts: 1
-  hash: "c6fd705e0ac663e90dd802e4a2339031"
+  claims: 73
+  confirmed: 73
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "77e8bdf6b5d04aa6da0f8ac65b462027"
 ---
 
 ## What's changing
@@ -134,7 +150,7 @@ The gate is the environment setting **Allow bulk processing of existing records*
 
 **Licence.** Microsoft's prompt column page says prompt columns use the same licensing model as AI Builder prompts. The AI Builder prompts page lists Copilot Credits among the prerequisites, and the prompt column page says prompt columns consume both AI Builder credits and Copilot Credits, adding that AI Builder credits are retiring soon.
 
-**Meter.** Each prompt execution consumes credits. A backfill queues one execution per record in scope, so the spend scales with the table size and the filter. Learn says to apply filters so the prompt runs only on the records needed and to test a few records first. The maker sees the number of records and the estimated credit consumption before running the job.
+**Meter.** Each prompt execution consumes credits. A backfill runs the prompt over existing records in scope; review the record count and estimated credit consumption before running it. Learn says to apply filters so the prompt runs only on the records needed and to test a few records first. The maker sees the number of records and the estimated credit consumption before running the job.
 
 **Where it shows.** Microsoft says prompt column executions appear in Power Automate > Automation center > AI Builder activity, in the **Estimated consumption** column, and show whether each execution used AI Builder credits or Copilot Credits. Learn also says the credits consumed by the job can be viewed in System jobs. See [Copilot Credits](/concepts/copilot-credits/) for the shared meter.
 
@@ -144,7 +160,7 @@ The gate is the environment setting **Allow bulk processing of existing records*
 
 ## Scope
 
-**Who and where.** The setting applies per environment, and the option is used by makers on the prompt columns they own. The roadmap record lists Power Apps, Microsoft Dataverse and Microsoft Power Platform governance and administration, with the web platform and the Worldwide (Standard Multi-Tenant), GCC and GCC High clouds.
+**Who and where.** The setting applies per environment, and makers use the option from a prompt column panel. The roadmap record lists Power Apps, Microsoft Dataverse and Microsoft Power Platform governance and administration, with the web platform and the Worldwide (Standard Multi-Tenant), GCC and GCC High clouds.
 
 **Prerequisites.** Learn lists the Copilot and AI Prompts features turned On in the Features area of the environment settings, and the AI Builder prompts licensing model. A table can have up to five prompt columns. Input columns cannot be formula, file, image or other prompt columns; Microsoft says their input value is ignored.
 
@@ -157,7 +173,6 @@ The gate is the environment setting **Allow bulk processing of existing records*
 ### Before rollout
 
 - Identify the environments where makers build prompt columns and confirm that **Allow bulk processing of existing records** is still off in each (see the controls table).
-- Check the available AI credit capacity in those environments, as Microsoft advises, and agree with makers who may spend it.
 - Confirm the AI prompts feature is on only where you intend prompt columns to run, since Learn lists it as a prerequisite.
 - Brief makers to apply filters and test a few records before a backfill.
 
@@ -169,8 +184,6 @@ The gate is the environment setting **Allow bulk processing of existing records*
 
 ### After rollout
 
-- Monitor jobs in System jobs and act on failed or paused ones; the notes under the table give the path.
-- Review the **Estimated consumption** column in the AI Builder activity report for the credits each run used.
 - Ask makers to check the Status and Details columns on a sample of records after each run.
 
 ## Governance controls
@@ -181,14 +194,14 @@ The gate is the environment setting **Allow bulk processing of existing records*
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether prompt columns can be run on existing records in bulk in an environment</strong><br><small>Environment</small><br><small class="controls__note">Off by default per Learn. The setting label is read on the prompt column page; the route to the Features page is on the Manage feature settings page. Needs System Administrator or equivalent.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Allow bulk processing of existing records <a href="https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether imported prompt column jobs pause for review before they run</strong><br><small>Environment</small><br><small class="controls__note">On by default per Learn; an imported job pauses in System jobs and can be started manually after review.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Require review before processing imported prompt columns <a href="https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether AI prompts, which prompt columns rely on, are available in an environment</strong><br><small>Environment</small><br><small class="controls__note">Existing control, enabled by default per Learn. It switches AI prompts off or on generally; it is not specific to backfill. An environment group rule for AI prompts can lock it.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › AI Builder › AI prompts <a href="https://learn.microsoft.com/ai-builder/administer" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether imported prompt column jobs pause for review before they run</strong><br><small>Environment</small><br><small class="controls__note">On by default per Learn; an imported job pauses in System jobs and can be started manually after review. Specialized columns using code page still states importing and exporting solutions with prompt columns is not supported.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Require review before processing imported prompt columns <a href="https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether AI prompts, which prompt columns rely on, are available in an environment</strong><br><small>Environment</small><br><small class="controls__note">Not specific to backfill. The request body sets aipromptsenabled, a Boolean that enables or disables AI prompts. Administration page: enabled by default; Organization table reference: DefaultValue False for AiPromptsEnabled.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › AI Builder › AI prompts <a href="https://learn.microsoft.com/ai-builder/administer" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH /organizations(&lt;organizationid&gt;)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 The environment settings are changed by someone with the System Administrator role or equivalent, per the Manage feature settings page. Learn says the **Allow bulk processing of existing records** setting is off by default and that **Require review before processing imported prompt columns** is on by default.
 
-Maker-side, the column panel option **Also generate values for Existing records in bulk** starts the job, and Learn says the **Allow prompt column execution** checkbox on the Edit column pane is enabled by default and, when cleared, stops AI analysis for that column. Learn adds that for prompts to be executed, both tenant level and column level settings need to be enabled.
+Maker-side, select **Also generate values for Existing records in bulk**, review the record count and credit estimate, save the column configuration, and select **Run prompt** to queue the job. Learn says the **Allow prompt column execution** checkbox on the Edit column pane is enabled by default and, when cleared, stops AI analysis for that column. Learn adds that for prompts to be executed, both tenant level and column level settings need to be enabled.
 
 To monitor or stop a job, go to Power Platform admin center > Manage > Environments > environment > Settings > Audit and logs > System jobs; Microsoft says that if there is a problem with a system job you can cancel, postpone, pause or resume it, and you cannot change the status of a completed or cancelled job.
 
@@ -201,22 +214,6 @@ To monitor or stop a job, go to Power Platform admin center > Manage > Environme
 
 <!-- rationale
 risk: Medium. A backfill writes AI-generated values into many existing records at once, but the environment setting that allows it is off by default and Microsoft documents filters and a review step.
-cost: Variable. Microsoft's prompt column page says prompt columns consume both AI Builder credits and Copilot Credits each time a prompt runs, so a backfill over a large table spends credits in one job.
-impact: Medium. Makers who own prompt columns notice it first, and the generated values then appear for the app users who read those tables; admins decide where the setting is turned on.
--->
-
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[2].api; Governance controls: third table row / absence: An automation operation for the AI prompts environment switch is not yet documented. | Found: Update ... PATCH /organizations(organizationid) ... AiPromptsEnabled ... Indicates whether AI Prompts feature is enabled. ... LogicalName ... aipromptsenabled | Fix: Set controls[2].api to kind 'rest', call 'PATCH /organizations(<organizationid>)', docs 'https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization'. Add to its note: 'The request body sets aipromptsenabled, a Boolean that enables or disables AI prompts.' The v9.2 Web API reference also documents this property at https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/organization?view=dataverse-latest. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization
-- [unsupported, blocker] Cost and licensing: Meter / cost: A backfill queues exactly one prompt execution per record in scope. | Found: Searched: 'prompt column backfill credits rate per record'. Opened Prompt columns and Specialized columns using code; they describe per-record results and per-execution credits but do not specify an exact queued-execution count per record. | Fix: Replace 'A backfill queues one execution per record in scope, so the spend scales with the table size and the filter' with 'A backfill runs the prompt over existing records in scope; review the record count and estimated credit consumption before running it.'
-- [unsupported, major] Scope: Who and where; rationale: impact / behaviour: Makers use the option on prompt columns they own. | Found: Searched: 'prompt columns own', 'prompt columns backfill execution user identity security permissions owner'. Read Prompt columns and Specialized columns using code; neither establishes maker ownership of a prompt column. | Fix: Replace 'the option is used by makers on the prompt columns they own' with 'makers use the option from a prompt column panel'. In the impact rationale, replace 'Makers who own prompt columns notice it first' with 'Makers using prompt columns notice it first'.
-- [contradicted, blocker] Governance controls: maker-side settings / behaviour: The Also generate values for Existing records in bulk checkbox starts the job. | Found: Review the number of records to process and the estimated credit consumption for the job, and save the column configuration. ... Select Run prompt when you're ready to queue the job. | Fix: Replace 'Maker-side, the column panel option Also generate values for Existing records in bulk starts the job' with 'Maker-side, select Also generate values for Existing records in bulk, review the record count and credit estimate, save the column configuration, and select Run prompt to queue the job'. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column
-- [contradicted, blocker] rationale: cost / consistency: Every prompt execution consumes both AI Builder credits and Copilot Credits. | Found: Rationale: 'consume both AI Builder credits and Copilot Credits each time a prompt runs'. Learn and the body: 'show whether the execution consumed AI Builder credits or Copilot Credits.' | Fix: Replace the cost rationale with 'Variable. Prompt columns consume credits each time a prompt executes; the activity report shows whether an execution used AI Builder credits or Copilot Credits, so a bulk backfill can consume substantial credits.' | Source: https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].note; Risk assessment: Autonomy & actions; Governance guidance / behaviour: With import review enabled, a solution-imported job pauses in System jobs and can be started manually after review. | Found: When enabled, an imported job pauses for review in System jobs and can be manually started after review. | Fix: Add: 'Microsoft's Specialized columns using code page still states that importing and exporting solutions with prompt columns is not supported, whereas the Prompt columns page documents imported jobs.' Cite https://learn.microsoft.com/power-apps/developer/data-platform/specialized-columns#prompt-columns. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column
-- [supported, minor] controls[2].note; Governance controls: third table row / default: Microsoft's AI Builder administration page says AI prompts is enabled by default. | Found: By default, the AI prompts feature is enabled for makers to create and experiment with various AI-generated content. | Fix: Retain the attributed administration-page default, but add: 'The Organization table reference lists DefaultValue False for AiPromptsEnabled; this differs from the administration page's enabled-by-default statement.' Cite https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization#BKMK_AiPromptsEnabled. | Source: https://learn.microsoft.com/ai-builder/administer
-- [supported, minor] What's changing: historical execution behaviour / behaviour: The existing execution mechanism runs on record creation or a change to an input column, rather than automatically populating pre-existing records when the column is added. | Found: Prompt column values are populated when records are created and when the input column values are updated. When prompt columns are added to tables with records, the existing records' new prompt columns aren't populated automatically. | Fix: Cite https://learn.microsoft.com/power-apps/developer/data-platform/specialized-columns#prompt-columns for the historical execution behaviour; that supporting page is absent from sources. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/specialized-columns
-- [supported, minor] Risk assessment: Data exposure / applicability: Access to the generated prompt column governs who can see its output, so its column security needs checking. | Found: When a calculated column or prompt column includes a column that is secured, data might be displayed in the calculated or prompt column to users that don't have permission to the secured column. Both the original column and the calculated or prompt column should be secured. | Fix: Cite https://learn.microsoft.com/power-platform/admin/field-level-security for the prompt-column visibility and security advice; the existing sources do not state this access-control premise. | Source: https://learn.microsoft.com/power-platform/admin/field-level-security
-- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: The governance checklist asks readers to check capacity and monitor System jobs and AI Builder activity, but those controls have no table rows. | Found: Checklist: 'Check the available AI credit capacity'; 'Monitor jobs in System jobs'; 'Review the Estimated consumption column'. The table contains only the bulk switch, import-review switch and AI prompts switch. | Fix: Remove the checklist bullets beginning 'Check the available AI credit capacity', 'Monitor jobs in System jobs' and 'Review the Estimated consumption column'. Keep the existing capacity and monitoring information in the body; these checklist controls lack table rows.
+cost: Variable. Prompt columns consume credits each time a prompt executes; the activity report shows whether an execution used AI Builder credits or Copilot Credits, so a bulk backfill can consume substantial credits.
+impact: Medium. Makers using prompt columns notice it first, and the generated values then appear for the app users who read those tables; admins decide where the setting is turned on.
 -->

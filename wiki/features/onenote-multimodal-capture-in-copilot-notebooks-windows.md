@@ -68,7 +68,7 @@ controls:
       kind: "graph"
       call: "POST /beta/admin/configurationManagement/configurationMonitors"
       docs: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
-    note: "Learn does not say this setting governs capture. API is preview: applyOnce mode, resource microsoft.copilot.copilotpagesnotebooks, value 0 disables; tenant-level policies only."
+    note: "Learn does not say this setting governs capture. API is preview: applyOnce, resource microsoft.copilot.copilotpagesnotebooks, value 0 disables; tenant-level policies only. Fails if the setting is in any group-level policy."
   - governs: "Policy setting named in MC1405506 to disable multimodal capture"
     scope: "tenant"
     ui: null
@@ -83,19 +83,23 @@ changes:
     note: "New briefing: Windows multimodal capture for Copilot Notebooks, with the rollout moved to end of November 2026 and the unnamed disable policy recorded as an open question."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 62 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected after the check: added the group-level policy prerequisite for the preview Graph applyOnce route, and reworded the Information Barriers and storage statements to match the Learn compliance and storage pages."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 66 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 62
-  confirmed: 60
+  claims: 66
+  confirmed: 66
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "ed7a04f30ee438de8d12d8a197a749de"
+  contradicted: 0
+  attempts: 0
+  hash: "f7adf88b9a30080efd9172daded93ae4"
 ---
 
 ## What's changing
@@ -122,7 +126,7 @@ The control picture is incomplete. The notice says admins can disable the featur
 **Security & identity**
 
 - The notice lists Microsoft Entra ID work or school accounts as eligible and says the Microsoft 365 desktop apps must be installed on Windows. It describes no new identity or permission model.
-- Learn states that Information Barriers are not supported for content stored in SharePoint Embedded containers, and that Copilot Notebooks use SharePoint Embedded for storage. If you rely on Information Barriers, treat captured content as outside that boundary.
+- Learn's compliance summary says Information Barriers are not supported for SharePoint Embedded content and describes Copilot Notebooks as using that storage. However, the storage page says notebooks created before November 2025 remain in SharePoint Embedded while current notebooks use OneDrive for Business. Confirm the storage and applicable compliance boundary for captured content before relying on Information Barriers.
 
 **Autonomy & actions**
 
@@ -152,7 +156,7 @@ The roadmap lists the Worldwide (Standard Multi-Tenant) cloud, the Desktop platf
 - Ask the Office Apps Administrator or another Cloud Policy administrator to open the Create and view Copilot Pages and Copilot Notebooks setting and record whether it is Enabled, Disabled or Not configured for each group.
 - Ask Microsoft through your support channel which policy setting MC1405506 refers to, and whether it is the Cloud Policy setting in the controls table.
 - Decide with legal and compliance whether capturing third-party browser meetings (Zoom, Webex, Google Meet) is permitted, and write the consent rule users must follow.
-- Check your Information Barriers and retention plans against the documented storage of Copilot Notebooks before capture content accumulates.
+- Ask compliance to assess the documented Copilot Notebook storage limitations before capture content accumulates.
 
 ### At rollout
 
@@ -173,14 +177,14 @@ The roadmap lists the Worldwide (Standard Multi-Tenant) cloud, the Desktop platf
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether users can create and view Copilot Pages and Copilot Notebooks</strong><br><small>Tenant</small><br><small class="controls__note">Learn does not say this setting governs capture. API is preview: applyOnce mode, resource microsoft.copilot.copilotpagesnotebooks, value 0 disables; tenant-level policies only.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Choose the scope › Configure Settings › Create and view Copilot Pages and Copilot Notebooks <a href="https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration?view=o365-worldwide" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether users can create and view Copilot Pages and Copilot Notebooks</strong><br><small>Tenant</small><br><small class="controls__note">Learn does not say this setting governs capture. API is preview: applyOnce, resource microsoft.copilot.copilotpagesnotebooks, value 0 disables; tenant-level policies only. Fails if the setting is in any group-level policy.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › policy configuration › Choose the scope › Configure Settings › Create and view Copilot Pages and Copilot Notebooks <a href="https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration?view=o365-worldwide" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Policy setting named in MC1405506 to disable multimodal capture</strong><br><small>Tenant</small><br><small class="controls__note">MC1405506 says admins can disable the feature using a policy setting but does not name it.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 Learn documents one Cloud Policy setting for Copilot Pages and Copilot Notebooks. Its Disabled value is documented as making creation and integration unavailable to users and hiding the Notebooks module in the Microsoft Copilot app; existing items are not deleted. Learn does not say that it switches off multimodal capture in OneNote, and MC1405506 names no setting, so the second row records the setting the notice mentions but does not identify.
 
-The Cloud Policy overview lists Office Apps Administrator as the recommended role. Policies from Cloud Policy are applied only when the Office app is restarted. The Graph row is a preview Tenant Configuration Management route, and Learn says it works only for tenant-level policies in the Microsoft 365 Apps admin center.
+The Cloud Policy overview lists Office Apps Administrator as the recommended role. Policies from Cloud Policy are applied only when the Office app is restarted. The Graph row is a preview Tenant Configuration Management route, and Learn says it works only for tenant-level policies in the Microsoft 365 Apps admin center. The target setting must not be configured in any group-level policy in the Microsoft 365 Apps admin center; if it is, applyOnce fails for that resource.
 
 ## Open questions
 
@@ -193,13 +197,4 @@ The Cloud Policy overview lists Office Apps Administrator as the recommended rol
 risk: Medium. Microsoft's notice says the feature is on by default and transcribes captured audio, including from Zoom, Webex and Google Meet meetings in a browser, but names no capture-specific switch, so governance rests on consent policy and a policy setting that is not yet identified.
 cost: Low. The notice says a Microsoft 365 Copilot license is required and publishes no separate price or meter for capture; the indirect costs are admin time, user communication and Copilot Notebook storage counted against a quota.
 impact: Medium. Only users who already have access to Copilot Notebooks in OneNote on Windows are affected, but for them it arrives on by default, and capture can be suggested when a supported browser meeting is detected.
--->
-
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].note; Governance controls: final paragraph / applicability: The preview Graph route is presented as usable for tenant-level policies without qualifying what happens when the same setting is configured in a group-level policy. | Found: Before using TCM, ensure that the target setting isn't configured in any group-level policy in that admin center. If it is, monitoring, snapshots, remediation, and applyOnce fail for that resource. | Fix: Keep the endpoint and tenant-level limitation. Add to controls[0].note, its rendered table note and the final Governance controls paragraph: "The target setting must not be configured in any group-level policy in the Microsoft 365 Apps admin center; if it is, applyOnce fails for that resource." The prerequisite is documented at https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources#microsoft-copilot-resources. | Source: https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity / behaviour: Learn says Copilot Notebooks use SharePoint Embedded storage, underpinning the advice about captured content and Information Barriers. | Found: Copilot Pages and Copilot Notebooks use SharePoint Embedded for storage. | Fix: Replace this bullet with: "Learn's compliance summary says Information Barriers are not supported for SharePoint Embedded content and describes Copilot Notebooks as using that storage. However, the storage page says notebooks created before November 2025 remain in SharePoint Embedded while current notebooks use OneDrive for Business. Confirm the storage and applicable compliance boundary for captured content before relying on Information Barriers." Cite https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary?view=o365-worldwide and https://learn.microsoft.com/microsoft-365/loop/cpcn-storage?view=o365-worldwide. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-compliance-summary?view=o365-worldwide
-- [contradicted, minor] Governance guidance: Before rollout, fourth bullet; Governance controls / consistency: The checklist tells readers to check Information Barriers and retention plans, but those controls have no table rows. | Found: Check your Information Barriers and retention plans against the documented storage of Copilot Notebooks before capture content accumulates. Table rows: creation/viewing policy; unnamed capture-disable policy. | Fix: Replace the fourth Before rollout bullet with "Ask compliance to assess the documented Copilot Notebook storage limitations before capture content accumulates." Do not add control rows as part of this correction.
 -->

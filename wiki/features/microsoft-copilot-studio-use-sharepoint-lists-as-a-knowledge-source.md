@@ -4,7 +4,7 @@ slug: "microsoft-copilot-studio-use-sharepoint-lists-as-a-knowledge-source"
 roadmapId: 566859
 topic: "copilot-studio"
 products: ["Microsoft Copilot (Microsoft 365)","Microsoft Copilot Studio"]
-summary: "Copilot Studio agents can use SharePoint lists as a knowledge source. Nothing changes until a maker adds a list; use is billed in Copilot Credits, and admins can restrict SharePoint knowledge and cap agent credits."
+summary: "Copilot Studio agents can use SharePoint lists as a knowledge source. Nothing changes until a maker adds a list; use can consume Copilot Credits depending on the harness and user licence, and admins can restrict SharePoint knowledge."
 status: "in-development"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "user-opt-in"
 action: "review"
 licensing:
-  model: "consumption"
-  notes: "Learn says Microsoft Copilot harness agents use consumption-based billing and are not covered by a Microsoft 365 Copilot licence. Standard harness rates are on the billing rates page. A rate specific to list knowledge is not yet published."
+  model: "mixed"
+  notes: "Learn says Microsoft Copilot harness agents use consumption-based billing and are not covered by a Microsoft 365 Copilot licence. For standard-harness agents, employee-facing usage is included in the Microsoft Copilot USL when the user is licensed and the agent uses that authenticated user's identity, subject to fair usage limits. A rate specific to list knowledge is not yet published."
 audiences: ["maker","power-platform-admin","service-owner","finops"]
 tags: ["copilot-studio","sharepoint","knowledge-grounding","copilot-credits","dataverse","power-platform-admin-center","agents"]
 sources:
@@ -52,6 +52,9 @@ sources:
   - title: "pac governance"
     url: "https://learn.microsoft.com/power-platform/developer/cli/reference/governance"
     kind: "learn"
+  - title: "Environment groups"
+    url: "https://learn.microsoft.com/power-platform/admin/environment-groups"
+    kind: "learn"
   - title: "Microsoft 365 Roadmap item 566859"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=566859"
     kind: "roadmap"
@@ -83,19 +86,23 @@ changes:
     note: "First briefing for roadmap item 566859: SharePoint lists as a Copilot Studio knowledge source, with the conflicting list limits and Copilot Credit billing noted."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 72 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-18"
+    note: "Corrected after verification: licensing model is now mixed (standard-harness inclusion added), storage and attachment statements narrowed to what Learn says, and the unmatched permission-review checklist step removed."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
-  confirmed: 68
-  unconfirmed: 2
-  contradicted: 2
-  attempts: 1
-  hash: "83d7c511dceb9e98bd028671ba5bd8e5"
+  claims: 77
+  confirmed: 77
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "832f48b4cf29467e5bf9287de84a14d0"
 ---
 
 ## What's changing
@@ -115,7 +122,7 @@ If nobody acts, nothing changes for existing agents: a maker has to add a list. 
 ## Risk assessment
 
 **Data exposure**
-- Learn says the selected lists are ingested into Dataverse and indexed, so list content is held in the environment where the agent lives. Confirm who can read that environment's data before makers connect lists of customer or personnel records.
+- Learn says the selected lists are ingested into Dataverse and indexed.
 - Learn says the user needs at least Read permission on the site or list. A list with broad read access becomes answerable through any agent that connects it.
 
 **Security & identity**
@@ -127,8 +134,8 @@ If nobody acts, nothing changes for existing agents: a maker has to add a list. 
 
 **Change & support**
 - Limits differ between Learn pages and the large-list support is described as a preview, so expect support questions about missing or slow answers.
-- Learn says list views and document libraries are not supported as lists, and that the Attachments column is not reasoned over. Makers who connect those will see gaps rather than errors.
-- Credit use starts when makers build and test, which can surprise environment owners.
+- Learn says list views and document libraries are not supported as lists. For attachments, Learn says the list is indexed without an error, but responses do not use attachment contents.
+- For Microsoft Copilot harness agents, credit use starts when makers build and test, which can surprise environment owners.
 
 ## Cost and licensing
 
@@ -148,7 +155,6 @@ Makers and the users of agents that add a list. The record lists Worldwide (Stan
 
 ### Before rollout
 - Decide which environment groups may use SharePoint knowledge and set the **Knowledge sources for agents** rule for them (controls table, row 1); Power Platform administrators do this.
-- Review read permissions on the lists makers are likely to connect, since Learn ties answers to the user's access; SharePoint site owners do this.
 - Set a monthly limit with **Stop usage** on agents in development environments (row 2) and decide who reviews alerts.
 - Brief makers on the documented limits: lists, not list views or document libraries, and the conflicting list and row counts.
 
@@ -173,7 +179,7 @@ Makers and the users of agents that add a list. The record lists Worldwide (Stan
 </tbody>
 </table>
 
-The **Knowledge sources for agents** page is marked preview. Its table lists **Upload files > SharePoint** under **SharePoint + OneDrive**, and Learn's steps for adding a list also start at the **SharePoint** option in the **Upload file** section. The **Custom** option allows or denies SharePoint and OneDrive sites by URL; the page does not say how list URLs are treated. If a group-level rule is set, the environment's setting cannot be changed there.
+The **Knowledge sources for agents** page is marked preview. The Choose knowledge sources for agents built in Copilot Studio table lists **Upload files > SharePoint** under **SharePoint + OneDrive**, and Learn's steps for adding a list also start at the **SharePoint** option in the **Upload file** section. The **Custom** option allows or denies SharePoint and OneDrive sites by URL; the page does not say how list URLs are treated. If a group-level rule is set, the environment's setting cannot be changed there.
 
 Microsoft Learn documents no API for the Knowledge sources for agents setting or for agent monthly limits at the time of writing (November 2026). The pac governance reference lists commands for environment group rule sets but does not name this rule. The agent limit applies to Copilot Studio agents generally, not only to this feature.
 
@@ -191,17 +197,8 @@ cost: Variable. Usage is metered in Copilot Credits: Learn says Microsoft Copilo
 impact: Medium. Makers who build agents, and the users of agents that gain list knowledge, notice it; nothing changes for existing agents until a maker adds a list.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Data exposure / behaviour: Ingested list content is held specifically in the environment where the agent lives. | Found: Searched: Copilot Studio SharePoint lists ingested Dataverse stored same environment agent; SharePoint lists Dataverse environment stored Copilot Studio. Read knowledge-add-sharepoint and search excerpts for knowledge-unstructured-data, environments-first-run-experience and geo-data-residency. | Fix: Remove ', so list content is held in the environment where the agent lives'. Keep the documented statement that selected lists are ingested into Dataverse and indexed; the cited page does not specify the storage environment.
-- [unsupported, major] Risk assessment: Change & support / behaviour: Makers connecting list views, document libraries or attachments will see gaps rather than errors. | Found: Searched: SharePoint lists no error Copilot Studio views. Opened requirements-quotas and knowledge-add-sharepoint; read SharePoint troubleshooting search excerpts. Only the Attachments limitation expressly says no error occurs, not list views or document libraries. | Fix: Replace 'Makers who connect those will see gaps rather than errors' with 'For attachments, Learn says the list is indexed without an error, but responses do not use attachment contents.' Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-quotas.
-- [contradicted, blocker] front matter: licensing.model; Cost and licensing: Licence / consistency: The feature's licensing model is consumption-only even though the page covers both harnesses and documents licence-included standard-harness use. | Found: model: "consumption"; "For standard harness agents, the billing rates page says employee-facing usage is included in the Microsoft Copilot user licence when the user is licensed and the agent operates using that user's identity." | Fix: Set licensing.model to 'mixed'. Add to licensing.notes: 'For standard-harness agents, employee-facing usage is included in the Microsoft Copilot USL when the user is licensed and the agent uses that authenticated user's identity, subject to fair usage limits.' This is stated at https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management. Retain the separately qualified Microsoft Copilot harness consumption rule.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters; Risk assessment: Change & support; Cost and licensing: Meter / cost: Microsoft Copilot harness credit charges can begin during building and testing before an agent is shared. | Found: Unlike the standard harness, which starts billing after publish, the Microsoft Copilot harness charges credits from the moment you start building. | Fix: In Risk assessment: Change & support, replace 'Credit use starts when makers build and test' with 'For Microsoft Copilot harness agents, credit use starts when makers build and test'. The billing overview distinguishes the standard harness, which starts billing after publish. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview
-- [supported, minor] summary; front matter: cost; Cost and licensing: Meter; rationale: cost / cost: Agent use is metered in Copilot Credits, making the cost variable. | Found: Copilot Credits are the unit that measures agent usage. ... | Generative answer ... | 2 Copilot Credits | No charge | | Fix: In the summary, replace 'use is billed in Copilot Credits' with 'use can consume Copilot Credits depending on the harness and user licence'. Keep cost 'variable'; the body already explains the licence-included standard-harness case. | Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management
-- [supported, minor] controls[0].note; Governance controls / applicability: The Upload files > SharePoint entry is mapped to the SharePoint + OneDrive knowledge-source setting. | Found: | Upload files > SharePoint | SharePoint + OneDrive | Configures whether agents can use SharePoint and OneDrive sites as knowledge sources. | | Fix: In Governance controls, replace 'Its table lists' with 'The Choose knowledge sources for agents built in Copilot Studio table lists'. The mapping is on the already-cited https://learn.microsoft.com/microsoft-copilot-studio/choose-knowledge-sources, not the Knowledge sources for agents configuration page. | Source: https://learn.microsoft.com/microsoft-copilot-studio/choose-knowledge-sources
-- [supported, minor] Governance guidance: Before rollout / role: Power Platform administrators can configure environment-group rules. | Found: After you create the environment group, Power Platform tenant administrators can immediately add managed environments or configure the group's rules. | Fix: Cite https://learn.microsoft.com/power-platform/admin/environment-groups for the Power Platform administrator assignment in the first Before rollout bullet. | Source: https://learn.microsoft.com/power-platform/admin/environment-groups
-- [supported, minor] Governance guidance: Before rollout / role: SharePoint site owners can review and change list permissions. | Found: Lists and libraries inherit permissions from the site to which they belong. If you're a site owner, you can stop permissions inheritance and change the permission settings for the list or library. | Fix: Cite https://learn.microsoft.com/sharepoint/understanding-permission-levels for assigning list-permission review to SharePoint site owners. | Source: https://learn.microsoft.com/sharepoint/understanding-permission-levels
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: Every control the governance checklist asks readers to review appears in the controls table. | Found: "Review read permissions on the lists makers are likely to connect"; the controls table contains only the knowledge-source rule and monthly agent credit limit. | Fix: The Before rollout list-permission review has no matching controls-table row. Remove that checklist bullet to make the checklist match the existing table; retain the permission-review advice in Why it matters.
+- [supported, minor] What's changing / behaviour: Learn says the list connection is real-time. | Found: When you add a SharePoint list as a knowledge source, you create a real-time connection to the source, so the most current data is used for queries and reasoning. | Fix: After this sentence add: 'However, the Unstructured data as a knowledge source FAQ describes the file-upload route, which also supports lists, as synchronizing content every four to six hours; Microsoft's descriptions of freshness differ.' Cite https://learn.microsoft.com/microsoft-copilot-studio/knowledge-unstructured-data#faq, whose Runtime differences table says 'Content is synchronized every four to six hours, based on ingestion completion' for Option 1 and marks SharePoint lists supported. | Source: https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-sharepoint
 -->

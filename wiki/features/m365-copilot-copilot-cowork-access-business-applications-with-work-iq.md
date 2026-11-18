@@ -70,17 +70,23 @@ sources:
   - title: "Plan licensing and cost"
     url: "https://learn.microsoft.com/plugins/cost-considerations"
     kind: "learn"
-  - title: "Whether the Business apps plugin is installed for Cowork users (Microsoft Graph)"
+  - title: "copilotPackage: block"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
     kind: "learn"
-  - title: "How much Cowork can consume in Copilot Credits (Microsoft 365 admin center)"
+  - title: "Set up usage-based billing for Copilot Credits"
     url: "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup"
     kind: "learn"
-  - title: "How much Cowork can consume in Copilot Credits (Microsoft Graph)"
+  - title: "Managing AI experiences enabled by usage-based billing"
+    url: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits"
+    kind: "learn"
+  - title: "Cost management API overview"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
     kind: "learn"
   - title: "Update spendingPolicy"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update"
+    kind: "learn"
+  - title: "How much Cowork can consume in Copilot Credits (Microsoft 365 admin center)"
+    url: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits#edit-spending-policy"
     kind: "learn"
 videos: []
 related: ["work-iq","work-iq-business-skills-to-manage-your-business-processes-in-work-iq-mcp","power-apps-model-driven-applications-in-business-apps-in-work-iq","spending-policies","mcp"]
@@ -91,11 +97,8 @@ controls:
       surface: "Microsoft 365 admin center"
       path: "Agents > Tools > Plugins > Business apps (preview) > Install"
       docs: "https://learn.microsoft.com/copilot/cowork/cowork-work-iq"
-    api:
-      kind: "graph"
-      call: "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block"
-      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
-    note: "Install offers All users or Specific users and groups. The API is a general package block (beta, Agent 365 licence); not confirmed for this plugin."
+    api: null
+    note: "Install offers All users or Specific users and groups. Installation automation is not yet documented."
   - governs: "Which users can use business applications through Microsoft 365 Copilot"
     scope: "tenant"
     ui:
@@ -127,8 +130,8 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Copilot > Cost Management"
-      docs: "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup"
+      path: "Copilot > Cost Management > Configuration > policy > Spending limits"
+      docs: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits#edit-spending-policy"
     api:
       kind: "graph"
       call: "PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id}"
@@ -162,19 +165,23 @@ changes:
     note: "Correction: the spending row now points to the spending policy update call, the skill row to the skill table's PATCH that deactivates without deleting, and the unsupported sharing-review checklist item was removed."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 89 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-18"
+    note: "Correction: the plugin install row no longer lists the package block call, which blocks usage rather than installing, and the spending row now gives the Configuration tab path to Spending limits."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 95 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-18"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 89
-  confirmed: 87
+  claims: 95
+  confirmed: 95
   unconfirmed: 0
-  contradicted: 2
-  attempts: 3
-  hash: "ef801603afffd022a4dd69340bfdf516"
+  contradicted: 0
+  attempts: 0
+  hash: "d73b369315934879d3156714807fc9c5"
 ---
 
 ## What's changing
@@ -250,18 +257,18 @@ To cap spend, Learn's cost guidance says to include Cowork in a spending policy 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether the Business apps plugin is installed for Cowork users</strong><br><small>Tenant</small><br><small class="controls__note">Install offers All users or Specific users and groups. The API is a general package block (beta, Agent 365 licence); not confirmed for this plugin.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Plugins › Business apps (preview) › Install <a href="https://learn.microsoft.com/copilot/cowork/cowork-work-iq" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether the Business apps plugin is installed for Cowork users</strong><br><small>Tenant</small><br><small class="controls__note">Install offers All users or Specific users and groups. Installation automation is not yet documented.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Plugins › Business apps (preview) › Install <a href="https://learn.microsoft.com/copilot/cowork/cowork-work-iq" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which users can use business applications through Microsoft 365 Copilot</strong><br><small>Tenant</small><br><small class="controls__note">Options: All users (default), Specific groups, No users. The quickstart page words the setting label slightly differently. AI Administrator role.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › Business Applications data in Work IQ available to Copilot <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which environments have Work IQ turned on</strong><br><small>Environment</small><br><small class="controls__note">Power Platform Administrator role. Does not prevent agentic access to environment data.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › environment › Settings › Product › Features › Work IQ <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which applications, including Copilot Cowork, can access an environment's Dataverse data</strong><br><small>Environment</small><br><small class="controls__note">Power Platform Administrator role. The request body sets access (0 Allowed, 1 Blocked); this changes an app's status, so set environment-level enforcement separately. General App Access docs require a managed environment.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Identity &amp; access › App Access Control › environment › Enable <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH https://&lt;organization&gt;/api/data/v9.2/applications(&lt;applicationid&gt;)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/application" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>How much Cowork can consume in Copilot Credits</strong><br><small>Tenant</small><br><small class="controls__note">Policies cover selected services and users; per-policy and per-user limits apply. Beta API. The request body sets periodLimit and perUserLimit.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>How much Cowork can consume in Copilot Credits</strong><br><small>Tenant</small><br><small class="controls__note">Policies cover selected services and users; per-policy and per-user limits apply. Beta API. The request body sets periodLimit and perUserLimit.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › policy › Spending limits <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits#edit-spending-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether a business skill is active for agents to discover</strong><br><small>Environment</small><br><small class="controls__note">The request body sets statecode to 1 (Inactive) and statuscode to 2 (Inactive) to deactivate the skill without deleting it. Sharing is set with Share on the same page.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>environment › More › Business skills › skill › Deactivate <a href="https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH /skills(&lt;skillid&gt;)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/skill" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 The plugin install, the tenant audience, the environment setting and App Access Control are separate controls. Learn says the Work IQ participation settings do not prevent agentic access to environment data and points to App Access Control for that. Learn also says enabling an experience does not grant access to business data.
 
-The Package Management API row is a general plugin and agent control. Microsoft has not confirmed that the Business apps (preview) plugin appears in it, and the API requires a Microsoft Agent 365 licence. Learn also documents an availability control for the whole Work IQ MCP server (Agents > Tools > Work IQ MCP > Block); Microsoft has not said whether the Cowork plugin depends on it. Microsoft Learn documents no API for the tenant audience setting or the environment Work IQ setting at the time of writing (November 2026).
+Learn documents a general Package Management API operation that blocks a Copilot package to prevent its usage; it is a beta API and requires a Microsoft Agent 365 licence. It does not install or uninstall a plugin, and Microsoft has not confirmed that the Business apps (preview) plugin appears in it. Learn also documents an availability control for the whole Work IQ MCP server (Agents > Tools > Work IQ MCP > Block); Microsoft has not said whether the Cowork plugin depends on it. Microsoft Learn documents no API for the tenant audience setting or the environment Work IQ setting at the time of writing (November 2026).
 
 ## Open questions
 
@@ -276,11 +283,8 @@ cost: Variable. Learn says Work IQ consumption that supports a Cowork task is at
 impact: Medium. Users who already hold access to model-driven apps or Dataverse tables, and the makers who write business skills, notice it; ordinary Cowork users see nothing until the plugin is installed for them.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls table / command: POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block is the automation counterpart of whether the plugin is installed for users. | Found: Block a Copilot package to prevent its usage. | Fix: Set controls[0].api to null and remove the call from the rendered installation row: blocking usage does not install or uninstall a plugin. Replace the API clause in its note with 'Installation automation is not yet documented.' The general blocking operation may remain described separately in the governance prose. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block
-- [contradicted, blocker] controls[4].ui; Governance controls table / admin-path: Copilot > Cost Management is the complete path to the control setting how much Cowork can consume. | Found: Select the Configuration tab. ... Select the spending policy you want to edit. ... The spending policy details fly-out opens, where you can modify its settings. This includes: ... Spending limits | Fix: Replace controls[4].ui.path and its rendered path with 'Copilot > Cost Management > Configuration > policy > Spending limits' and set its docs URL to https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits#edit-spending-policy. Add that page to sources. The current path stops at the dashboard and omits the Configuration tab and the actual limits control. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[3].ui; Governance controls table / admin-path: App Access is enabled through Security > Identity & access > App Access Control > environment > Enable. | Found: Select Security > Identity & access. ... Select App Access Control. ... Select the environment in which you want to enable app access. ... Select Enable, and then select Save. | Fix: Keep the feature-specific path, but add to the existing note: 'After saving, return to the environment and select the applications to block. The general App Access guide instead describes Set up app access control > Access control > Enabled, then selecting an application and Block: https://learn.microsoft.com/power-platform/admin/control-app-access-environment.' | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access
+- [supported, minor] controls[3].ui; Governance controls / admin-path: The feature's App Access guide gives Power Platform admin center > Security > Identity & access > App Access Control > environment > Enable. | Found: Select Security > Identity & access. ... Select App Access Control. ... Select the environment in which you want to enable app access. ... Select Enable, and then select Save. | Fix: Append to controls[3].note and its rendered note: 'The general App Access guide gives a different route after selecting the environment: Set up app access control > Access control > Enabled, then select an application and Block.' The other cited guide is https://learn.microsoft.com/power-platform/admin/control-app-access-environment#turn-on-enabled-mode. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access
 -->
