@@ -169,10 +169,12 @@ changes:
     note: "Correction: the plugin install row no longer lists the package block call, which blocks usage rather than installing, and the spending row now gives the Configuration tab path to Spending limits."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 95 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 95 statements not yet confirmed"
 version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-18"
+  date: "2026-11-19"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
@@ -283,8 +285,8 @@ cost: Variable. Learn says Work IQ consumption that supports a Cowork task is at
 impact: Medium. Users who already hold access to model-driven apps or Dataverse tables, and the makers who write business skills, notice it; ordinary Cowork users see nothing until the plugin is installed for them.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[3].ui; Governance controls / admin-path: The feature's App Access guide gives Power Platform admin center > Security > Identity & access > App Access Control > environment > Enable. | Found: Select Security > Identity & access. ... Select App Access Control. ... Select the environment in which you want to enable app access. ... Select Enable, and then select Save. | Fix: Append to controls[3].note and its rendered note: 'The general App Access guide gives a different route after selecting the environment: Set up app access control > Access control > Enabled, then select an application and Block.' The other cited guide is https://learn.microsoft.com/power-platform/admin/control-app-access-environment#turn-on-enabled-mode. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access
+- [supported, minor] controls[3].ui; Governance controls / admin-path: The feature's App Access guide gives Power Platform admin center > Security > Identity & access > App Access Control > environment > Enable. | Found: Select **Security** > **Identity & access**. ... Select **App Access Control**. ... Select the environment in which you want to enable app access. ... Select **Enable**, and then select **Save**. | Fix: Append to controls[3].note and the rendered note: 'The general App Access guide gives a different route after selecting the environment: Set up app access control > Access control > Enabled, then select an application and Block.' The other cited guide is https://learn.microsoft.com/power-platform/admin/control-app-access-environment#turn-on-enabled-mode. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access
 -->

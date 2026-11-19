@@ -3,8 +3,8 @@
   "roadmapId": 573706,
   "title": "Microsoft Teams: external presenters in event group chat",
   "status": "verified",
-  "date": "2026-11-18",
-  "version": 5,
+  "date": "2026-11-19",
+  "version": 6,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
   "attempts": 0,
@@ -14,21 +14,21 @@
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 63,
-    "confirmed": 63,
+    "claims": 68,
+    "confirmed": 68,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
     "minor": 0
   },
-  "summary": "The briefing accurately reports Microsoft's revised rollout window and distinguishes it from the older roadmap target. The cited documentation supports the controls and general Teams events licensing, while feature-specific licensing and chat-control gaps are appropriately qualified.",
+  "summary": "The briefing matches the roadmap and Microsoft's updated notice, including the late March to mid-April 2027 rollout and conditional access to earlier messages. The documented controls and licensing statements are supported; no blocking corrections were found.",
   "claims": [
     {
       "n": 1,
-      "where": "What's changing; Scope; rationale: impact",
+      "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "Event group chat is the private coordination chat for organisers, co-organisers and presenters in an event or structured meeting.",
+      "claim": "Microsoft plans external presenter support for Teams event group chat.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Event group chat, the private chat for organizers, co-organizers, and presenters in an event or structured meeting, will support external presenters.",
@@ -37,9 +37,31 @@
     },
     {
       "n": 2,
-      "where": "summary; What's changing; Why it matters",
+      "where": "What's changing; Scope: Who; rationale: impact",
       "type": "record",
-      "claim": "Microsoft plans to allow presenters outside the hosting tenant to participate in event group chat.",
+      "claim": "Event group chat is private chat for organisers, co-organisers and presenters in an event or structured meeting.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Event group chat, the private chat for organizers, co-organizers, and presenters in an event or structured meeting",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "The chat is used for coordination during the event or structured meeting.",
+      "status": "supported",
+      "source": "Message Center post MC1528011",
+      "quote": "the private chat used by organizers, co-organizers, and presenters for coordination during an event or structured meeting",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing; Scope: Who",
+      "type": "record",
+      "claim": "Presenters outside the hosting tenant will be able to participate in event group chat.",
       "status": "supported",
       "source": "Message Center post MC1528011",
       "quote": "This change enables presenters who are outside the tenant hosting the meeting or event to participate in the event group chat.",
@@ -47,18 +69,139 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "front matter: products; title",
-      "type": "record",
-      "claim": "The change is for Microsoft Teams.",
+      "n": 5,
+      "where": "What's changing: existing chat",
+      "type": "behaviour",
+      "claim": "For events optimised for large audiences, event group chat is available before, during and after the event.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Teams\"]",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
+      "quote": "The event group chat is available before, during, and after an event, and is a separate experience from the chat with attendees.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 4,
+      "n": 6,
+      "where": "What's changing: existing chat",
+      "type": "behaviour",
+      "claim": "For events optimised for large audiences, event group chat is separate from attendee chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
+      "quote": "The event group chat is available before, during, and after an event, and is a separate experience from the chat with attendees.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing: notice publication",
+      "type": "record",
+      "claim": "MC1528011 was published on 27 October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1528011",
+      "quote": "Published 2026-10-27; last updated 2026-11-18",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "The notice's 18 November 2026 update changed the rollout timeline.",
+      "status": "supported",
+      "source": "Message Center post MC1528011",
+      "quote": "Updated November 18, 2026: We have updated the timeline. Thank you for your patience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Scope: Prerequisites; Governance guidance; rationale: impact",
+      "type": "record",
+      "claim": "Event group chat requires the Enable Green room Teams meeting option to be enabled.",
+      "status": "supported",
+      "source": "Message Center post MC1528011",
+      "quote": "The meeting or event must have the Enable Green room Teams meeting option enabled to use event group chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Scope: Prerequisites; controls[0].note; Governance controls",
+      "type": "record",
+      "claim": "External user collaboration must be enabled for external presenters to use the feature.",
+      "status": "supported",
+      "source": "Message Center post MC1528011",
+      "quote": "External user collaboration must be enabled for external presenters to use this functionality.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing: Learn documentation gap; Governance guidance: After rollout",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe this external-presenter event group chat change itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"external presenters\" \"event group chat\". Opened learn.microsoft.com/microsoftteams/manage-event-chat and plan-events; results describe existing group chat, external join links and verification, not this change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing: rollout; Scope: Rollout",
+      "type": "record",
+      "claim": "The notice describes the rollout as General Availability (Worldwide).",
+      "status": "supported",
+      "source": "Message Center post MC1528011",
+      "quote": "General Availability (Worldwide): Rollout will begin in late March 2027",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; What's changing; Why it matters; Scope: Rollout",
+      "type": "record",
+      "claim": "The notice targets the start of rollout for late March 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1528011",
+      "quote": "Rollout will begin in late March 2027 (previously early December 2026)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing: previous rollout start; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The previous rollout start was early December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1528011",
+      "quote": "late March 2027 (previously early December 2026)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing: completion; Scope: Rollout",
+      "type": "record",
+      "claim": "Rollout is expected to complete by mid-April 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1528011",
+      "quote": "is expected to complete by mid-April 2027 (previously early January)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing: previous completion",
+      "type": "record",
+      "claim": "The notice previously expected rollout completion in early January.",
+      "status": "supported",
+      "source": "Message Center post MC1528011",
+      "quote": "mid-April 2027 (previously early January)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -69,19 +212,19 @@
       "fix": null
     },
     {
-      "n": 5,
-      "where": "front matter: targetDate; What's changing; Scope",
+      "n": 18,
+      "where": "front matter: targetDate; What's changing; Scope: Rollout",
       "type": "record",
-      "claim": "The roadmap target is December CY2026.",
+      "claim": "The roadmap target is March CY2027, matching the month of the notice's rollout start.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"targetDate\": \"December CY2026\"",
+      "quote": "\"targetDate\": \"March CY2027\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 6,
-      "where": "front matter: releasePhase; What's changing; Scope",
+      "n": 19,
+      "where": "front matter: releasePhase; What's changing; Scope: Rollout",
       "type": "record",
       "claim": "The roadmap lists General Availability and Targeted Release.",
       "status": "supported",
@@ -91,8 +234,19 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "front matter: clouds; Scope",
+      "n": 20,
+      "where": "front matter: platforms; What's changing; Scope: Platforms",
+      "type": "record",
+      "claim": "The listed platforms are Android, Desktop, iOS and Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: clouds; Scope: Cloud",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
       "status": "supported",
@@ -102,10 +256,10 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 22,
       "where": "Scope: Cloud",
       "type": "record",
-      "claim": "Other clouds are not listed in the roadmap record.",
+      "claim": "Other clouds are not listed in this roadmap record.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -113,21 +267,10 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap platforms are Android, Desktop, iOS and Mac.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
+      "n": 23,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap gives no preview date.",
+      "claim": "The roadmap supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -135,98 +278,10 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "front matter: roadmapModified",
+      "n": 24,
+      "where": "What's changing: act-by date",
       "type": "record",
-      "claim": "The roadmap record was modified on 29 October 2026 at 23:01:00.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-10-29T23:01:00\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "MC1528011 was published on 27 October 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1528011",
-      "quote": "Published 2026-10-27; last updated 2026-11-18",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "What's changing; Risk assessment; Governance guidance",
-      "type": "record",
-      "claim": "Microsoft updated the notice's rollout timeline on 18 November 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1528011",
-      "quote": "Updated November 18, 2026: We have updated the timeline. Thank you for your patience.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "summary; What's changing; Why it matters; Scope",
-      "type": "record",
-      "claim": "The updated notice targets the rollout start for late March 2027.",
-      "status": "supported",
-      "source": "Message Center post MC1528011",
-      "quote": "Rollout will begin in late March 2027 (previously early December 2026)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing; Risk assessment: Change & support",
-      "type": "record",
-      "claim": "The previous rollout start was early December 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1528011",
-      "quote": "Rollout will begin in late March 2027 (previously early December 2026)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing; Scope",
-      "type": "record",
-      "claim": "The updated notice expects rollout completion by mid-April 2027.",
-      "status": "supported",
-      "source": "Message Center post MC1528011",
-      "quote": "is expected to complete by mid-April 2027 (previously early January).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The notice describes the previous completion window as early January.",
-      "status": "supported",
-      "source": "Message Center post MC1528011",
-      "quote": "is expected to complete by mid-April 2027 (previously early January).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What's changing; Scope: Rollout",
-      "type": "record",
-      "claim": "The notice's rollout schedule is for General Availability worldwide.",
-      "status": "supported",
-      "source": "Message Center post MC1528011",
-      "quote": "General Availability (Worldwide): Rollout will begin in late March 2027",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The supplied notice sets no act-by date.",
+      "claim": "The notice sets no act-by date.",
       "status": "supported",
       "source": "Message Center post MC1528011",
       "quote": "Act by: none",
@@ -234,32 +289,10 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What's changing; Scope: Prerequisites; Governance guidance; rationale: impact",
-      "type": "record",
-      "claim": "The meeting or event must have Enable Green room turned on to use event group chat.",
-      "status": "supported",
-      "source": "Message Center post MC1528011",
-      "quote": "The meeting or event must have the Enable Green room Teams meeting option enabled to use event group chat.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing; Scope: Prerequisites; Governance controls",
-      "type": "record",
-      "claim": "External user collaboration must be enabled for external presenters to use the functionality.",
-      "status": "supported",
-      "source": "Message Center post MC1528011",
-      "quote": "External user collaboration must be enabled for external presenters to use this functionality.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
+      "n": 25,
       "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
       "type": "record",
-      "claim": "External federated presenters will be able to read and post in event group chat.",
+      "claim": "External federated presenters will be able to read event group chat.",
       "status": "supported",
       "source": "Message Center post MC1528011",
       "quote": "External federated presenters can now read and post in the event group chat.",
@@ -267,10 +300,21 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What's changing; Why it matters; Risk assessment; Governance guidance; rationale: risk",
+      "n": 26,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
       "type": "record",
-      "claim": "External federated presenters can see earlier messages if the thread shows history.",
+      "claim": "External federated presenters will be able to post in event group chat.",
+      "status": "supported",
+      "source": "Message Center post MC1528011",
+      "quote": "External federated presenters can now read and post in the event group chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "External presenters can see messages written before they joined if the thread shows history.",
       "status": "supported",
       "source": "Message Center post MC1528011",
       "quote": "That includes messages written before they joined, if the thread shows history.",
@@ -278,7 +322,7 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 28,
       "where": "What's changing; Risk assessment: Security & identity; Open questions",
       "type": "record",
       "claim": "The presenter's stored tenantId changes from the organiser's tenant to the presenter's own tenant.",
@@ -289,7 +333,7 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 29,
       "where": "Why it matters; Risk assessment: Security & identity",
       "type": "record",
       "claim": "Microsoft describes this as a new cross-tenant chat path between the organiser's tenant and external presenters.",
@@ -300,10 +344,10 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 30,
       "where": "Why it matters; Risk assessment: Security & identity; Governance controls",
       "type": "record",
-      "claim": "Both tenants must allow external access for this cross-tenant chat path.",
+      "claim": "Both tenants must allow external access, so the partner tenant's configuration also affects participation.",
       "status": "supported",
       "source": "Message Center post MC1528011",
       "quote": "Both tenants must allow external access.",
@@ -311,7 +355,7 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 31,
       "where": "Risk assessment: Data exposure",
       "type": "record",
       "claim": "The notice says the change stores no new customer data.",
@@ -322,10 +366,10 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 32,
       "where": "Risk assessment: Data exposure; Open questions",
       "type": "record",
-      "claim": "The notice says external presenters' messages fall under existing federated-chat handling.",
+      "claim": "External presenters' messages fall under existing federated-chat handling.",
       "status": "supported",
       "source": "Message Center post MC1528011",
       "quote": "External presenters' messages fall under existing federated-chat handling.",
@@ -333,68 +377,24 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "Scope: Who; rationale: impact",
-      "type": "record",
-      "claim": "The affected people are organisers, co-organisers and presenters using event group chat, including external presenters.",
-      "status": "supported",
-      "source": "Message Center post MC1528011",
-      "quote": "Organizers, co-organizers, and presenters using event group chat in meetings or events, including external presenters.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "For events optimized for large audiences, event group chat is available before, during and after the event.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
-      "quote": "The event group chat is available before, during, and after an event",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "For events optimized for large audiences, event group chat is separate from attendee chat.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
-      "quote": "The event group chat is available before, during, and after an event, and is a separate experience from the chat with attendees.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "rationale: impact",
-      "type": "behaviour",
-      "claim": "Attendees do not use event group chat.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/plan-events",
-      "quote": "Event group chat (organizers, co-organizers, and presenters) | No control. | Can chat with presenters and co-organizers. Attendees don't use this chat during events.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 33,
       "where": "Risk assessment: Autonomy & actions",
-      "type": "absence",
-      "claim": "No agent or automated action is described for this change.",
+      "type": "record",
+      "claim": "The described capability is external presenters participating in chat, rather than an agent or automated action.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams external presenters event group chat admin control licensing join verification. Read the roadmap, MC1528011, manage-event-chat and plan-events; the described change is human presenter participation, with no agent or automated action.",
+      "source": "Message Center post MC1528011",
+      "quote": "External presenters will be able to join the event group chat used for coordination during a meeting or event.",
       "severity": null,
       "fix": null
     },
     {
       "n": 34,
-      "where": "What's changing; Governance guidance: After rollout",
-      "type": "absence",
-      "claim": "Microsoft Learn does not yet describe the external-presenter event group chat change itself.",
+      "where": "Risk assessment: Change & support; controls[3].note; Governance controls; rationale: risk",
+      "type": "behaviour",
+      "claim": "Learn's events planning page lists No control for admins over event group chat.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams external presenters event group chat admin control licensing join verification; \"event group chat\" \"control\". Opened manage-event-chat and plan-events; they describe existing event group chat, not roadmap 573706's external-presenter change.",
+      "source": "https://learn.microsoft.com/microsoftteams/plan-events",
+      "quote": "Event group chat (organizers, co-organizers, and presenters) | No control. | Can chat with presenters and co-organizers.",
       "severity": null,
       "fix": null
     },
@@ -402,7 +402,7 @@
       "n": 35,
       "where": "front matter: defaultState; Scope: Default; Why it matters",
       "type": "default",
-      "claim": "The capability arrives on for the intended events, subject to the existing green room and external-collaboration prerequisites.",
+      "claim": "The capability arrives on for the intended presenters where the existing prerequisites are satisfied, without a new feature switch.",
       "status": "supported",
       "source": "Message Center post MC1528011",
       "quote": "External presenters will be able to join the event group chat used for coordination during a meeting or event.",
@@ -411,9 +411,9 @@
     },
     {
       "n": 36,
-      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
+      "where": "front matter: licensing.model",
       "type": "licensing",
-      "claim": "Teams events are included in eligible Teams licences, with entitlement based on the organiser's licence.",
+      "claim": "The licensing model is included under the eligible Teams event organiser licensing described in the notes.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
       "quote": "All eligible Teams licenses include the foundational capabilities needed to create and run events, engage attendees, review attendance reports, and publish event recordings.",
@@ -422,20 +422,9 @@
     },
     {
       "n": 37,
-      "where": "front matter: licensing.notes; Cost and licensing",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "Microsoft documents Teams Enterprise event entitlements.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/plan-events",
-      "quote": "With Teams Enterprise, organizers can:",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Teams event capabilities and attendee capacity vary with the organiser's licence.",
+      "claim": "Teams events use the organiser's eligible Teams licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
       "quote": "Event capabilities and attendee capacity vary based on the organizer's license.",
@@ -443,13 +432,24 @@
       "fix": null
     },
     {
-      "n": 39,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "An additional licence specific to external presenters in event group chat is not yet published.",
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft documents Teams Enterprise event entitlements.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"event group chat\" \"external\" \"license\"; \"Teams events\" \"external presenters\" \"licensing\". Opened events-licensing, plan-events and manage-event-chat; no additional licence specific to this change is stated.",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "As part of the April 2026 licensing changes, event features that were previously part of Teams Premium moved to Teams Enterprise.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Event capabilities and attendee capacity vary with the organiser's licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "Event capabilities and attendee capacity vary based on the organizer's license.",
       "severity": null,
       "fix": null
     },
@@ -457,10 +457,10 @@
       "n": 40,
       "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
       "type": "absence",
-      "claim": "A price specific to external presenters in event group chat is not yet published.",
+      "claim": "An additional licence specific to this external-presenter chat change is not yet published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"event group chat\" \"external\" \"license\"; \"Teams events\" \"external presenters\" \"licensing\". Opened events-licensing, plan-events and manage-event-chat; none publishes a price specific to this change.",
+      "quote": "Searched: site:learn.microsoft.com/microsoftteams \"external presenters\" \"event group chat\" licensing. Opened learn.microsoft.com/microsoftteams/events-licensing, plan-events and manage-event-chat; no change-specific licence is named.",
       "severity": null,
       "fix": null
     },
@@ -468,18 +468,29 @@
       "n": 41,
       "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
       "type": "absence",
-      "claim": "A meter specific to external presenters in event group chat is not yet published.",
+      "claim": "A price specific to this external-presenter chat change is not yet published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"event group chat\" \"external\" \"license\"; \"Teams events\" \"external presenters\" \"licensing\". Opened events-licensing, plan-events and manage-event-chat; none publishes a meter specific to this change.",
+      "quote": "Searched: \"external presenter\" \"group chat\" license price meter; site:learn.microsoft.com/microsoftteams \"external presenters\" \"event group chat\" licensing. Opened learn.microsoft.com/microsoftteams/events-licensing and plan-events; no change-specific price.",
       "severity": null,
       "fix": null
     },
     {
       "n": 42,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A meter specific to this external-presenter chat change is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"external presenter\" \"group chat\" license price meter. Opened learn.microsoft.com/microsoftteams/events-licensing and manage-event-chat; results about Azure Communication Services concern SDK usage, not this Teams change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
       "where": "Scope: Prerequisites; Governance controls",
       "type": "applicability",
-      "claim": "Both the organisation setting and a user policy must allow external access for a user to use it.",
+      "claim": "Both the organisation setting and a user policy must allow external access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-external-access",
       "quote": "For a user to use external access, both the organization setting and a user policy must allow it.",
@@ -487,10 +498,10 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 44,
       "where": "Scope: Prerequisites",
       "type": "default",
-      "claim": "External access organisation settings and user policies are turned on by default.",
+      "claim": "The organisation external access settings are turned on by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-external-access",
       "quote": "Both the organization settings and user policies are turned on by default.",
@@ -498,7 +509,18 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 45,
+      "where": "Scope: Prerequisites",
+      "type": "default",
+      "claim": "The user external access policies are turned on by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-access",
+      "quote": "Both the organization settings and user policies are turned on by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
       "where": "controls[1].note; Governance guidance: Before rollout; Governance controls",
       "type": "behaviour",
       "claim": "Organisation external access settings can override user external access policies.",
@@ -509,10 +531,10 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 47,
       "where": "Governance guidance: Before rollout; Governance controls",
       "type": "behaviour",
-      "claim": "A custom policy's Allow or block external domains value takes precedence over organisation domain settings.",
+      "claim": "A custom policy's Allow or block external domains value takes precedence over organisation settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-external-access",
       "quote": "Custom policy assigned to user: The value for Allow or block external domains setting in the custom policy takes precedence over organization settings.",
@@ -520,10 +542,32 @@
       "fix": null
     },
     {
-      "n": 46,
-      "where": "controls[0].ui; Governance guidance: Before rollout; Governance controls",
+      "n": 48,
+      "where": "Governance guidance: Before rollout and After rollout",
+      "type": "behaviour",
+      "claim": "External access can be restricted with a domain block list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-access",
+      "quote": "Block specific domains: By adding domains to a Block list, you can communicate with all external domains except the domains you blocked.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance guidance: Before rollout and After rollout",
+      "type": "behaviour",
+      "claim": "External access can be restricted with a domain allow list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-external-access",
+      "quote": "Allow only specific external domains: By adding domains to an Allow list, you limit external access to only the allowed domains.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[0].ui; Governance controls table row 1; Governance guidance: Before rollout",
       "type": "admin-path",
-      "claim": "The existing organisation external access settings are at Teams admin center > Users > External access.",
+      "claim": "The Teams admin center's Users > External access page provides tenant-level external organisation controls.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-external-access",
       "quote": "In the Teams admin center, go to Users > External access.",
@@ -531,10 +575,10 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "controls[0].api; Governance controls table",
+      "n": 51,
+      "where": "controls[0].api; Governance controls table row 1",
       "type": "command",
-      "claim": "Set-CsTenantFederationConfiguration -AllowFederatedUsers $true enables the tenant federation master switch.",
+      "claim": "Set-CsTenantFederationConfiguration -AllowFederatedUsers $true enables the tenant's federation prerequisite.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-cstenantfederationconfiguration",
       "quote": "When set to True (the default value) users will be potentially allowed to communicate with users from other domains.",
@@ -542,32 +586,32 @@
       "fix": null
     },
     {
-      "n": 48,
-      "where": "controls[1].ui; Governance controls table",
+      "n": 52,
+      "where": "controls[1].ui; Governance controls table row 2",
       "type": "admin-path",
-      "claim": "Existing external access user policies are at Teams admin center > Users > External access > Policies > policy.",
+      "claim": "User external access policies are reached at Teams admin center > Users > External access > Policies > policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-external-access",
-      "quote": "1. In the Teams admin center, go to Users > External access.\n2. Select the Policies tab.\n3. In the list of policies, select the Org-wide default settings.",
+      "quote": "In the Teams admin center, go to Users > External access.\n2. Select the Policies tab.\n3. In the list of policies, select the Org-wide default settings.\n4. Adjust the settings as you need.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 49,
-      "where": "controls[1].api; Governance controls table",
+      "n": 53,
+      "where": "controls[1].api; Governance controls table row 2",
       "type": "command",
-      "claim": "Set-CsExternalAccessPolicy -EnableFederationAccess $true enables federation access in the external access policy.",
+      "claim": "Set-CsExternalAccessPolicy -EnableFederationAccess $true enables federation in an external access policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-external-access",
-      "quote": "External access policies are configured by using Set-CsExternalAccessPolicy cmdlet.\nAllow or prevent meetings and chat with other Teams organizations and Skype for Business | -EnableFederationAccess",
+      "quote": "Set-CsExternalAccessPolicy -EnableFederationAccess $True",
       "severity": null,
       "fix": null
     },
     {
-      "n": 50,
-      "where": "controls[1].note; Governance controls table",
-      "type": "admin-path",
-      "claim": "The default external access policy is displayed as Org-wide default settings.",
+      "n": 54,
+      "where": "controls[1].note; Governance controls table row 2",
+      "type": "behaviour",
+      "claim": "The default policy is labelled Org-wide default settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/manage-external-access",
       "quote": "In the list of policies, select the Org-wide default settings.",
@@ -575,21 +619,32 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "controls[2].ui; Governance controls table; Governance guidance: Before rollout",
+      "n": 55,
+      "where": "controls[0].note; Governance controls: External Collaboration explanation",
       "type": "admin-path",
-      "claim": "Join verification is at Teams admin center > Meetings > Events policies > policy > Verify external presenters before joining an event.",
+      "claim": "Learn describes an External Collaboration left-rail section containing the existing External access page.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/events-external-presenter-join-verification",
-      "quote": "go to Meetings > Events policies.\n2. Select an existing policy or create a new one.\n3. In the Verify external presenters before joining an event dropdown list, select Yes verify accounts or No verification needed.",
+      "source": "https://learn.microsoft.com/microsoftteams/unified-external-collab-settings-management-experience",
+      "quote": "The External Collaboration section in the Teams Admin Center (TAC) left rail provides a unified location to manage all external collaboration settings. The section includes:",
       "severity": null,
       "fix": null
     },
     {
-      "n": 52,
-      "where": "controls[2].api; Governance controls table",
+      "n": 56,
+      "where": "controls[2].ui; Governance controls table row 3",
+      "type": "admin-path",
+      "claim": "Join verification is at Meetings > Events policies > policy > Verify external presenters before joining an event.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/events-external-presenter-join-verification",
+      "quote": "go to Meetings > Events policies.\n2. Select an existing policy or create a new one.\n3. In the Verify external presenters before joining an event dropdown list",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[2].api; Governance controls table row 3",
       "type": "command",
-      "claim": "Set-CsTeamsEventsPolicy -Identity <policy name> -ExternalPresenterJoinVerification EOTP requires presenter identity verification before event join.",
+      "claim": "Set-CsTeamsEventsPolicy -Identity <policy name> -ExternalPresenterJoinVerification EOTP requires presenter verification.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/events-external-presenter-join-verification",
       "quote": "Set-CsTeamsEventsPolicy -Identity <policy name> -ExternalPresenterJoinVerification EOTP",
@@ -597,8 +652,19 @@
       "fix": null
     },
     {
-      "n": 53,
-      "where": "controls[2].note; Governance controls table",
+      "n": 58,
+      "where": "controls[2].governs and scope; Governance guidance: Before rollout; Governance controls",
+      "type": "applicability",
+      "claim": "The events policy governs verification before external presenters join events created by organisers assigned that policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/events-external-presenter-join-verification",
+      "quote": "When organizers with this policy create events, external presenters must verify their identity before joining",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[2].note; Governance controls table row 3",
       "type": "behaviour",
       "claim": "The Set-CsTeamsEventsPolicy reference marks the policy as preview.",
       "status": "supported",
@@ -608,32 +674,21 @@
       "fix": null
     },
     {
-      "n": 54,
-      "where": "controls[2].note; Governance controls table",
+      "n": 60,
+      "where": "controls[3].ui and controls[3].api; Governance controls table row 4; Open questions",
       "type": "absence",
-      "claim": "The Set-CsTeamsEventsPolicy reference does not yet list ExternalPresenterJoinVerification, although the join-verification how-to documents it.",
+      "claim": "No dedicated admin UI or API switch for external presenters in event group chat is documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: ExternalPresenterJoinVerification in the fetched Set-CsTeamsEventsPolicy reference; no match. Opened events-external-presenter-join-verification, which explicitly documents the parameter and EOTP command.",
+      "quote": "Searched: \"event group chat\" admin control PowerShell TeamsEventsPolicy; site:learn.microsoft.com/powershell/module/microsoftteams \"event group chat\" external presenters control. Opened plan-events, manage-event-chat and Set-CsTeamsEventsPolicy; no dedicated switch.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 55,
-      "where": "controls[3]; Risk assessment: Change & support; Scope: Default; Governance controls; rationale: risk",
-      "type": "absence",
-      "claim": "No separate admin UI or API switch for external presenters in event group chat is documented, and Learn lists no admin control over event group chat.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams external presenter event group chat admin disable PowerShell licensing ExternalPresenterJoinVerification chat; \"event group chat\" \"control\". Opened plan-events (event group chat: \"No control.\"), manage-event-chat and Set-CsTeamsEventsPolicy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "Governance controls",
+      "n": 61,
+      "where": "Governance controls: green room",
       "type": "behaviour",
-      "claim": "Learn's Teams events planning table lists no admin control over the green room.",
+      "claim": "Learn's planning table also lists No control for admins over the green room.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/plan-events",
       "quote": "Green room | No control. | Can choose if green room is used for an event.",
@@ -641,43 +696,21 @@
       "fix": null
     },
     {
-      "n": 57,
-      "where": "controls[0].note; Governance controls",
-      "type": "admin-path",
-      "claim": "The unified Teams admin center External Collaboration section includes the existing External access page.",
+      "n": 62,
+      "where": "Governance controls: join-verification caveat; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed that external presenter join verification governs access to event group chat.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/unified-external-collab-settings-management-experience",
-      "quote": "The External Collaboration section in the Teams Admin Center (TAC) left rail provides a unified location to manage all external collaboration settings.\nExternal access: This is the existing page to manage configuration of federation and communication with external domains",
+      "source": null,
+      "quote": "Searched: \"external presenter\" \"join verification\" \"group chat\". Opened learn.microsoft.com/microsoftteams/events-external-presenter-join-verification, plan-events and manage-event-chat; verification is described for joining events, not group chat access.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 58,
-      "where": "controls[0].note; Governance controls; Scope: Default",
-      "type": "record",
-      "claim": "The notice asks organisations wanting the functionality to ensure external user collaboration is enabled at Teams admin center > External collaboration.",
-      "status": "supported",
-      "source": "Message Center post MC1528011",
-      "quote": "If your organization wants external presenters to use event group chat, ensure external user collaboration is enabled in Teams admin center > External collaboration.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "Governance guidance: Before rollout; Governance controls",
-      "type": "behaviour",
-      "claim": "Organisation external access settings can allow or block specified partner domains.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/manage-external-access",
-      "quote": "You can allow or block certain domains in order to define which organizations your organization trusts for external meetings and chat.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "Governance controls",
+      "n": 63,
+      "where": "Governance controls: PowerShell domain parameters",
       "type": "command",
-      "claim": "The AllowedDomains parameter configures the allowed domain list.",
+      "claim": "The tenant federation cmdlet's -AllowedDomains parameter configures the allowed domain list.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-cstenantfederationconfiguration",
       "quote": "Domain objects (created by using the New-CsEdgeAllowList cmdlet or the New-CsEdgeAllowAllKnownDomains cmdlet) that represent the domains that users are allowed to communicate with.",
@@ -685,48 +718,70 @@
       "fix": null
     },
     {
-      "n": 61,
-      "where": "Governance controls",
+      "n": 64,
+      "where": "Governance controls: PowerShell domain parameters",
       "type": "command",
-      "claim": "The BlockedDomains parameter configures the blocked domain list.",
+      "claim": "The tenant federation cmdlet's -BlockedDomains parameter configures the blocked domain list.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-cstenantfederationconfiguration",
-      "quote": "Set-CsTenantFederationConfiguration -BlockedDomains $list",
+      "quote": "Set-CsTenantFederationConfiguration -BlockedDomains @{Replace=$x}",
       "severity": null,
       "fix": null
     },
     {
-      "n": 62,
-      "where": "Governance controls",
+      "n": 65,
+      "where": "Governance controls: separate PowerShell operations",
       "type": "command",
-      "claim": "Domain-list configuration is documented as operations separate from the printed federation-enabling calls.",
+      "claim": "Domain lists can be set in their own cmdlet calls separately from the federation-enabling call.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-cstenantfederationconfiguration",
-      "quote": "Set-CsTenantFederationConfiguration -BlockedDomains $Null\nSet-CsTenantFederationConfiguration -AllowedDomains $Null",
+      "quote": "Set-CsTenantFederationConfiguration -BlockedDomains $Null\n\nExample 5 shows how you can remove all the domains assigned to the blocked domains list for the current tenant",
       "severity": null,
       "fix": null
     },
     {
-      "n": 63,
-      "where": "Governance controls; Open questions",
-      "type": "absence",
-      "claim": "The documented presenter join-verification policy is not confirmed to govern group chat access.",
+      "n": 66,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "Attendees do not use the event group chat.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Teams\" \"event group chat\" \"ExternalPresenterJoinVerification\". Opened events-external-presenter-join-verification, plan-events, manage-event-chat and Set-CsTeamsEventsPolicy; verification is described for event join, not group chat access.",
+      "source": "https://learn.microsoft.com/microsoftteams/plan-events",
+      "quote": "Can chat with presenters and co-organizers. Attendees don't use this chat during events.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Scope: Default; Governance controls: notice prerequisite path",
+      "type": "record",
+      "claim": "The notice asks organisations wanting the feature to ensure external user collaboration is enabled at Teams admin center > External collaboration.",
+      "status": "supported",
+      "source": "Message Center post MC1528011",
+      "quote": "If your organization wants external presenters to use event group chat, ensure external user collaboration is enabled in Teams admin center > External collaboration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Why it matters; Scope: Default",
+      "type": "record",
+      "claim": "The supplied notice does not specify a new admin switch for external-presenter group chat.",
+      "status": "supported",
+      "source": "Message Center post MC1528011",
+      "quote": "External user collaboration must be enabled for external presenters to use this functionality.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-18T21:59:02.094Z",
+    "at": "2026-11-19T02:04:21.468Z",
     "summary": {
       "links": 10,
-      "unreachable": 0,
+      "unreachable": 8,
       "uiPaths": 3,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 3,
       "apiCalls": 3,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 3,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -742,43 +797,43 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/manage-external-access",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/unified-external-collab-settings-management-experience",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/events-external-presenter-join-verification",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/manage-event-chat",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/plan-events",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/events-licensing",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-cstenantfederationconfiguration",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -787,65 +842,76 @@
         "side": "ui",
         "governs": "Which external organisations your users can chat and meet with",
         "docs": "https://learn.microsoft.com/microsoftteams/manage-external-access",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Users",
           "External access"
         ],
-        "missing": []
+        "missing": [
+          "Users",
+          "External access"
+        ]
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Which external organisations your users can chat and meet with",
         "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-cstenantfederationconfiguration",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-CsTenantFederationConfiguration",
-        "found": true
+        "found": false
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Which users may chat and meet with people outside the organisation",
         "docs": "https://learn.microsoft.com/microsoftteams/manage-external-access",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Users",
           "External access",
           "Policies"
         ],
-        "missing": []
+        "missing": [
+          "Users",
+          "External access",
+          "Policies"
+        ]
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Which users may chat and meet with people outside the organisation",
         "docs": "https://learn.microsoft.com/microsoftteams/manage-external-access",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-CsExternalAccessPolicy",
-        "found": true
+        "found": false
       },
       {
         "index": 2,
         "side": "ui",
         "governs": "Whether external presenters must verify their identity before joining an event",
         "docs": "https://learn.microsoft.com/microsoftteams/events-external-presenter-join-verification",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Meetings",
           "Events policies",
           "Verify external presenters before joining an event"
         ],
-        "missing": []
+        "missing": [
+          "Meetings",
+          "Events policies",
+          "Verify external presenters before joining an event"
+        ]
       },
       {
         "index": 2,
         "side": "api",
         "governs": "Whether external presenters must verify their identity before joining an event",
         "docs": "https://learn.microsoft.com/microsoftteams/events-external-presenter-join-verification",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-CsTeamsEventsPolicy",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
@@ -879,6 +945,12 @@
       "date": "2026-11-18",
       "status": "held",
       "version": 4,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-18",
+      "status": "verified",
+      "version": 5,
       "model": "gpt-6.1-sol"
     }
   ]

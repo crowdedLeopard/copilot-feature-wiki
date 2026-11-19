@@ -2,39 +2,69 @@
   "slug": "microsoft-copilot-studio-discover-and-use-shared-plugins-in-copilot-studio",
   "roadmapId": 570669,
   "title": "Copilot Studio: discover and use shared plugins from Microsoft's plugin registry",
-  "status": "verified",
-  "date": "2026-11-18",
+  "status": "held",
+  "date": "2026-11-19",
   "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 0,
-  "verifierVerdict": "pass",
+  "attempts": 1,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
   "notes": [],
-  "hold": null,
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-19",
+    "reasons": [
+      "3 blocking findings (claims 40, 56, 59)"
+    ]
+  },
   "counts": {
-    "claims": 74,
-    "confirmed": 74,
+    "claims": 68,
+    "confirmed": 65,
     "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
+    "contradicted": 3,
+    "blocker": 3,
     "major": 0,
     "minor": 0
   },
-  "summary": "The briefing passes: its roadmap facts, documented controls and billing statements are supported. It distinguishes existing plugin administration from the planned registry integration and limits unpublished pricing claims to registry discovery or adding a plugin.",
+  "summary": "Hold: the data-policy automation only reads a policy; it cannot block a connector. The briefing also labels licensing as unpublished despite documented product licensing, and casts doubt on data-policy coverage that Microsoft states applies to Copilot Studio agents.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; What's changing; rationale: risk and impact",
+      "where": "summary; What's changing; rationale: risk",
       "type": "record",
-      "claim": "Microsoft plans a Copilot Studio connection to its shared plugin registry so makers can discover and use plugins, connectors and other capabilities.",
+      "claim": "The roadmap plans a connection between Copilot Studio and Microsoft's shared plugin registry.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Copilot Studio now connects to Microsoft's shared plugin registry, making it easier for makers to discover and use plugins, connectors, and other available capabilities.",
+      "quote": "Copilot Studio now connects to Microsoft's shared plugin registry",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
+      "where": "What's changing; rationale: impact",
+      "type": "record",
+      "claim": "The planned connection makes it easier for makers to discover and use plugins, connectors and other capabilities.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "making it easier for makers to discover and use plugins, connectors, and other available capabilities",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Microsoft Copilot Studio as the product.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [ \"Microsoft Copilot Studio\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -45,18 +75,18 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 5,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
-      "claim": "The roadmap target is November CY2026, presented as a target rather than a commitment.",
+      "claim": "The roadmap target is November CY2026, not a committed release date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"targetDate\": \"November CY2026\"",
+      "quote": "\"status\": \"In development\"; \"targetDate\": \"November CY2026\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 4,
+      "n": 6,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview target is October CY2026.",
@@ -67,161 +97,73 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 7,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The listed release phases are General Availability and Preview.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "The listed cloud is Worldwide (Standard Multi-Tenant).",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "The listed platform is Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
+      "quote": "\"releasePhase\": [ \"General Availability\", \"Preview\" ]",
       "severity": null,
       "fix": null
     },
     {
       "n": 8,
-      "where": "front matter: products; Scope",
+      "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The listed product is Microsoft Copilot Studio.",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed, without an assertion that other clouds are unavailable.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Copilot Studio\"]",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
       "severity": null,
       "fix": null
     },
     {
       "n": 9,
-      "where": "What's changing",
+      "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The record does not explicitly associate each release phase with a date.",
+      "claim": "The listed platform is Web.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"targetDate\": \"November CY2026\", \"previewDate\": \"October CY2026\"; \"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "quote": "\"platforms\": [ \"Web\" ]",
       "severity": null,
       "fix": null
     },
     {
       "n": 10,
-      "where": "Scope",
+      "where": "What's changing",
       "type": "record",
-      "claim": "Other clouds are not listed in the record, without asserting they are unavailable.",
+      "claim": "The record does not explicitly map its release-phase entries to its date fields.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "quote": "\"targetDate\": \"November CY2026\", \"previewDate\": \"October CY2026\"; \"releasePhase\": [ \"General Availability\", \"Preview\" ]",
       "severity": null,
       "fix": null
     },
     {
       "n": 11,
-      "where": "summary; What's changing; Governance guidance",
+      "where": "front matter: defaultState; summary; Why it matters; Scope; Open questions",
       "type": "absence",
-      "claim": "Learn does not yet describe this particular Copilot Studio shared registry integration in November 2026.",
+      "claim": "Microsoft has not stated whether the registry connection is visible to every maker on arrival or requires enabling.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Copilot Studio\" \"plugin registry\"; Copilot Studio shared plugin registry integration discovery maker enable default availability harness identity approval. Opened plugins/overview, add-tools-custom-agent and extensibility/overview; no integration procedure found.",
+      "quote": "Searched: 'Copilot Studio shared plugin registry discover use plugins enable admin switch default maker experience identity harness'; opened add-tools-custom-agent, plugins/overview and manage-plugins-skills-mcp-servers; read the roadmap. No integration default was stated.",
       "severity": null,
       "fix": null
     },
     {
       "n": 12,
-      "where": "front matter: defaultState; summary; Why it matters; Open questions",
-      "type": "default",
-      "claim": "The registry integration's default state, automatic maker visibility and enablement requirement are not stated.",
+      "where": "summary; What's changing; Governance guidance: After rollout",
+      "type": "absence",
+      "claim": "Learn does not yet describe the roadmap's Copilot Studio shared-plugin-registry integration.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Copilot Studio shared plugin registry integration discovery maker enable default availability harness identity approval. Read the roadmap, add-tools-custom-agent and manage-plugins-skills-mcp-servers; none states this integration's arrival default.",
+      "quote": "Searched: 'Copilot Studio shared plugin registry maker discover plugins approval default identity harness integration 570669'; opened plugins/overview, add-tools-custom-agent, govern-plugins and extensibility/overview. Found background, not this integration's procedure.",
       "severity": null,
       "fix": null
     },
     {
       "n": 13,
-      "where": "front matter: licensing.model; Scope",
-      "type": "licensing",
-      "claim": "Licensing specific to makers discovering or adding registry plugins is not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio shared plugin registry discovery add plugin licensing price credits. Opened billing-licensing, requirements-messages-management and agents-experience/billing-credit-overview; read plugins/cost-considerations excerpts. No registry-specific maker licence found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost; Open questions",
-      "type": "absence",
-      "claim": "An additional charge specifically for registry discovery or adding a plugin is not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio shared plugin registry discovery add plugin licensing price credits. Read billing-licensing, requirements-messages-management, billing-credit-overview and plugins/cost-considerations excerpts; found usage billing, not a discovery or add-plugin charge.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
-      "type": "cost",
-      "claim": "Copilot Studio agent usage is measured in Copilot Credits under the applicable harness billing rules and licensing inclusions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
-      "quote": "Copilot Credits are the unit that measures agent usage. You calculate the total cost based on the sum of the Copilot Credits your organization uses.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Learn calls Copilot Credits the common currency across Copilot Studio capabilities.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
-      "quote": "Copilot Credits are the common currency across Copilot Studio capabilities.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "Cost and licensing",
-      "type": "record",
-      "claim": "The roadmap record names no licence or meter for this feature.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "This integration provides a more consistent way to extend agents with capabilities across Microsoft's AI ecosystem.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "The cited adding-tools article describes tool types without specifying a licence for plugins.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio shared plugin registry discovery add plugin licensing price credits. Opened and read add-tools-custom-agent, including tool types, plugin comparison and limitations; no plugin licence prerequisite stated there.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "A Microsoft 365 Copilot plugin is an installable package.",
@@ -232,7 +174,7 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 14,
       "where": "What's changing; rationale: risk",
       "type": "behaviour",
       "claim": "A plugin brings together skills, tools and optional agents.",
@@ -243,7 +185,7 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 15,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "A plugin registry is a destination for plugins published or shared with a selected audience.",
@@ -254,7 +196,7 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 16,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Tools added in Copilot Studio belong to the agent.",
@@ -265,9 +207,9 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What's changing; Governance guidance",
-      "type": "behaviour",
+      "n": 17,
+      "where": "What's changing",
+      "type": "role",
       "claim": "Makers manage agent tools in Copilot Studio.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent",
@@ -276,10 +218,10 @@
       "fix": null
     },
     {
-      "n": 24,
-      "where": "What's changing; Why it matters; Scope; Governance guidance",
-      "type": "behaviour",
-      "claim": "Administrators generally manage Microsoft 365 Copilot plugins in the Microsoft 365 admin center.",
+      "n": 18,
+      "where": "What's changing; Why it matters; Scope",
+      "type": "role",
+      "claim": "Administrators manage plugins in the Microsoft 365 admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent",
       "quote": "Admins manage plugins, including the skills and MCP servers they contain, in the Microsoft 365 admin center.",
@@ -287,40 +229,40 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 19,
       "where": "What's changing",
       "type": "absence",
-      "claim": "Microsoft has not specified how plugins from the registry appear in the Copilot Studio maker experience.",
+      "claim": "Microsoft has not described how registry-discovered plugins appear in the Copilot Studio maker experience.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Copilot Studio\" \"plugin registry\"; Copilot Studio shared plugin registry integration discovery maker enable default availability harness identity approval. Opened plugins/overview and add-tools-custom-agent; no registry maker-screen procedure found.",
+      "quote": "Searched: 'Copilot Studio shared plugin registry discover use plugins enable admin switch default maker experience identity harness'; opened add-tools-custom-agent and plugins/overview. Neither describes a registry-plugin discovery screen in Copilot Studio.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 26,
+      "n": 20,
       "where": "What's changing",
       "type": "absence",
-      "claim": "Microsoft has not specified how registry plugins would be attached to a Copilot Studio agent.",
+      "claim": "Microsoft has not described how plugins discovered through this registry are attached to a Copilot Studio agent.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Copilot Studio\" \"plugin registry\"; Copilot Studio shared plugin registry integration discovery maker enable default availability harness identity approval. Opened add-tools-custom-agent and plugins/overview; no shared-registry attachment workflow found.",
+      "quote": "Searched: 'Copilot Studio shared plugin registry maker discover plugins approval default identity harness integration 570669'; opened add-tools-custom-agent, plugins/overview and govern-plugins. No registry-plugin attachment procedure was found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 27,
-      "where": "Why it matters; Governance guidance",
+      "n": 21,
+      "where": "Why it matters",
       "type": "absence",
-      "claim": "The approval flow for this specific Copilot Studio registry integration has not been confirmed.",
+      "claim": "Microsoft has not confirmed the approval flow for this specific Copilot Studio integration.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"shared plugin\" \"Copilot Studio\" default identity approval harness. Opened manage-plugins-skills-mcp-servers and plugins/govern-plugins; general plugin and MCP approvals are documented, not this integration's approval flow.",
+      "quote": "Searched: 'Copilot Studio shared plugin registry maker discover plugins approval default identity harness integration 570669'; opened govern-plugins and manage-plugins-skills-mcp-servers. They document plugin and MCP approvals, not this integration's approval flow.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 28,
+      "n": 22,
       "where": "Why it matters",
       "type": "applicability",
       "claim": "Package approval does not replace Power Platform policies.",
@@ -331,10 +273,21 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "Risk assessment: Data exposure; rationale: risk",
+      "n": 23,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "The checked sources do not state that the integration changes existing behaviour automatically.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot Studio shared plugin registry discover use plugins enable admin switch default maker experience identity harness'; read roadmap, add-tools-custom-agent and plugins/overview. Found no automatic replacement or change to existing agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Plugin tools can connect to apps and data through supported Copilot connectors and remote MCP integrations.",
+      "claim": "Plugin tools can connect to apps and data through Copilot connectors and remote MCP integrations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/plugins/overview",
       "quote": "Tools | Connect to apps and data, including supported Copilot connectors and remote MCP integrations.",
@@ -342,10 +295,10 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 25,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Plugin users may still need to sign in after installation.",
+      "claim": "Users might still need to sign in, grant consent or configure a service connection after plugin installation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
       "quote": "Users might still need to sign in, grant consent, or configure a service connection after installation, depending on the component and product.",
@@ -353,43 +306,10 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Plugin users may still need to grant consent after installation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Users might still need to sign in, grant consent, or configure a service connection after installation, depending on the component and product.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Plugin users may still need to configure a service connection after installation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Users might still need to sign in, grant consent, or configure a service connection after installation, depending on the component and product.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Risk assessment: Data exposure; Governance guidance; controls[1]",
-      "type": "applicability",
-      "claim": "Power Platform data policies control which tools makers can add to Copilot Studio agents.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent",
-      "quote": "Power Platform data policies still control which tools makers can add in Copilot Studio.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
+      "n": 26,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Plugin access approval does not replace connected-service permissions or connection setup.",
+      "claim": "Plugin approval does not replace connected-service permissions or connection setup.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
       "quote": "Approval grants access to the requested plugin; it doesn't replace permissions or connection setup required by its connected services.",
@@ -397,10 +317,10 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 27,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "An approved MCP server becomes available to agent-building surfaces only after Microsoft Entra consent is granted.",
+      "claim": "An approved MCP server becomes available to agent-building surfaces only after Microsoft Entra consent.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
       "quote": "After approval, consent to the Microsoft Entra permissions required by the MCP server. The server becomes available to agent-building surfaces only after consent is granted.",
@@ -408,21 +328,21 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 28,
       "where": "Risk assessment: Security & identity",
       "type": "absence",
-      "claim": "The identity used by Copilot Studio for plugins obtained through this registry integration has not been stated.",
+      "claim": "Microsoft has not specified the runtime identity for plugins obtained through this particular registry integration.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"shared plugin\" \"Copilot Studio\" default identity approval harness. Opened add-tools-custom-agent, plugins/overview and manage-plugins-skills-mcp-servers; read identity and connected-agent search excerpts. None assigns an identity to this registry integration.",
+      "quote": "Searched: 'Copilot Studio registry plugins authentication identity user maker credentials consent'; opened add-tools-custom-agent and govern-plugins; reviewed identity and credential search excerpts. They describe existing tool authentication, not this registry integration.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
+      "n": 29,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "The plugin catalog can include third-party plugins.",
+      "claim": "The plugin catalog can include third-party and Microsoft-published plugins.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
       "quote": "The plugin catalog can include third-party plugins published by independent providers and plugins published by Microsoft",
@@ -430,21 +350,10 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "The plugin catalog can include plugins published by Microsoft.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "The plugin catalog can include third-party plugins published by independent providers and plugins published by Microsoft",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
+      "n": 30,
       "where": "Risk assessment: Autonomy & actions",
       "type": "default",
-      "claim": "The cited standard-harness tools article documents generative orchestration as on by default.",
+      "claim": "Generative orchestration is on by default for the documented standard-harness tool experience.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent",
       "quote": "Generative orchestration (automatically): Generative orchestration is on by default.",
@@ -452,21 +361,21 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 31,
       "where": "Risk assessment: Autonomy & actions",
       "type": "default",
-      "claim": "A new tool is on by default in the documented Copilot Studio tools experience.",
+      "claim": "A new tool is on by default in the documented tool experience.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent",
-      "quote": "A new tool is on by default. Turning a tool off stops your agent from using it, but keeps it connected so you can turn it back on later.",
+      "quote": "A new tool is on by default.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 41,
+      "n": 32,
       "where": "Risk assessment: Autonomy & actions",
       "type": "default",
-      "claim": "Ask the end user before running is No by default in the documented tools experience.",
+      "claim": "Ask the end user before running is No by default in that tool experience.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent",
       "quote": "Ask the end user before running | Asks the user to confirm before the tool runs. Set to No by default.",
@@ -474,40 +383,40 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 33,
       "where": "Risk assessment: Autonomy & actions",
       "type": "absence",
-      "claim": "Whether capabilities obtained from the registry inherit those orchestration and tool defaults has not been stated.",
+      "claim": "Microsoft has not specified whether those tool defaults also describe capabilities taken from the shared registry.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"shared plugin\" \"Copilot Studio\" default identity approval harness. Opened add-tools-custom-agent and plugins/overview; the tools defaults are documented, but their application to this registry integration is not.",
+      "quote": "Searched: 'Copilot Studio shared plugin registry maker discover plugins approval default identity harness integration 570669'; opened add-tools-custom-agent and plugins/overview. Existing tool defaults are documented, but their mapping to this integration is not.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 43,
+      "n": 34,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Plugins restricted by organisational availability settings can remain discoverable as blocked.",
+      "claim": "Plugins restricted by organization-level availability settings can remain discoverable.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "If a plugin is restricted by organization-level availability settings or by its user availability configuration, users can still discover the plugin in the Copilot channel.",
+      "quote": "If you don't select a category, affected plugins remain discoverable but display the message",
       "severity": null,
       "fix": null
     },
     {
-      "n": 44,
+      "n": 35,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "The documented blocked-plugin message is \"This plugin is blocked by your organization's policy.\"",
+      "claim": "The documented blocked-plugin message is This plugin is blocked by your organization's policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "If you don't select a category, affected plugins remain discoverable but display the message: \"This plugin is blocked by your organization's policy.\"",
+      "quote": "This plugin is blocked by your organization's policy.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 45,
+      "n": 36,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "After approval and consent, an MCP server can take up to 30 minutes to appear across the tenant's Copilot Studio environments.",
@@ -518,10 +427,76 @@
       "fix": null
     },
     {
-      "n": 46,
-      "where": "controls[0].note; Cost and licensing",
+      "n": 37,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap record names no licence or meter specific to this feature.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This integration provides a more consistent way to extend agents with capabilities across Microsoft's AI ecosystem.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The adding-tools article describes supported tool types without specifying a licence for plugins.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot Studio shared plugin registry discovery adding plugin licensing charge price'; opened add-tools-custom-agent in full. Its plugin comparison and tool-type list do not state a plugin licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "summary; licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "An additional charge specific to registry discovery or adding a registry plugin has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot Studio shared plugin registry discovery adding plugin licensing charge price'; opened plugins/cost-considerations, billing-licensing, requirements-messages-management and billing-credit-overview. No separate registry-discovery or plugin-addition fee was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.model; Scope: which licences makers need",
       "type": "licensing",
-      "claim": "Access to the Package Management API requires a Microsoft Agent 365 licence.",
+      "claim": "The licensing model and the licences makers need are unpublished.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
+      "quote": "To use Copilot Studio, you need one of the following configurations: ... Copilot Studio user license (free). ... Copilot Studio authors role in Power Platform admin center. ... Microsoft 365 Copilot license ... Copilot Studio trial license.",
+      "severity": "blocker",
+      "fix": "Set licensing.model to mixed and retain the narrow additional-registry-charge caveat. Replace Scope's 'which licences makers need' with 'whether an additional registry-specific licence is needed'. In Cost and licensing add: 'Copilot Studio has documented authoring access and Copilot Credits licensing; follow the licensing guidance for the agent harness. Any additional licence specific to registry discovery is not yet published.' Cite https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing and https://learn.microsoft.com/plugins/cost-considerations#check-product-specific-licensing-and-billing."
+    },
+    {
+      "n": 41,
+      "where": "licensing.notes; Cost and licensing; Open questions",
+      "type": "cost",
+      "claim": "Copilot Studio agent usage is measured in Copilot Credits under applicable harness rules and licensing inclusions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "Copilot Credits are the unit that measures agent usage. ... Employee-facing usage scenarios ... are included in the Microsoft Copilot USL when the user ... is licensed with Microsoft Copilot, and the agent operates using the authenticated ... user's identity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Microsoft describes Copilot Credits as the common currency across Copilot Studio capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
+      "quote": "Copilot Credits are the common currency across Copilot Studio capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].note; Cost and licensing; Governance controls",
+      "type": "licensing",
+      "claim": "Access to the Package Management API requires a Microsoft Agent 365 licence, independently of any maker entitlement.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview",
       "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
@@ -529,131 +504,21 @@
       "fix": null
     },
     {
-      "n": 47,
+      "n": 44,
       "where": "Cost and licensing",
       "type": "behaviour",
       "claim": "The Package Management API can list plugin packages.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview",
-      "quote": "Admin retrieves an inventory of the plugins, MCP servers, and skills in the organization.",
+      "quote": "To list titles that contain tools, filter on element type. ... Get the agents in the organization, and optionally tools such as plugins, MCP servers, and skills.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
-      "where": "controls[0].ui; Governance controls",
-      "type": "admin-path",
-      "claim": "A tenant-wide plugin package block is available in Microsoft 365 admin center at Agents > Tools > Plugins > plugin > Block.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Select Agents > Tools > Plugins. ... From the list, select the plugin or skill that you want to block. ... Select Block, and then select Block again to confirm.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "controls[0].api; Cost and licensing; Governance controls",
-      "type": "command",
-      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a package to prevent its usage.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "Block a Copilot package to prevent its usage. ... POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "controls[0].note; Governance controls",
-      "type": "command",
-      "claim": "The package block API is a beta API.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "controls[1].ui; Governance controls",
-      "type": "admin-path",
-      "claim": "The Power Platform data-policy blocking path is Security > Data and privacy > Data policy > policy > Edit Policy > Next > Next > Assign connectors > connector > three dots > Block.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
-      "quote": "select the data policy and select Edit Policy. ... Select Next. The Add an environment page appears. ... Select Next. The Assign connectors page appears. ... Select the three dots ... next to the connector ... select Block.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "controls[1].api; Governance controls; Governance guidance: After rollout",
-      "type": "command",
-      "claim": "Get-DlpPolicy -PolicyName <policy name> is a Microsoft.PowerApps.Administration.PowerShell call for retrieving the specified policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-dlppolicy",
-      "quote": "Module: Microsoft.PowerApps.Administration.PowerShell Module. ... Get-DlpPolicy [-PolicyName <String>] ... -PolicyName: Get the specific policy by using policy name.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "controls[1].scope; Governance guidance: Before rollout",
-      "type": "applicability",
-      "claim": "A data policy governs Copilot Studio agents in the environments covered by the policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
-      "quote": "These data policies apply to Copilot Studio agents in the environments included in the policy's scope.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "controls[1].note; Governance controls",
-      "type": "command",
-      "claim": "Get-DlpPolicy reads policy objects rather than changing them.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-dlppolicy",
-      "quote": "The Get-DlpPolicy cmdlet retrieves policy objects for the logged in admin's tenant.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "controls[2]; Governance controls; Scope",
-      "type": "absence",
-      "claim": "Neither an admin UI switch nor an API switch specifically for the Copilot Studio registry connection is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio shared plugin registry tenant setting enable disable Power Platform API pac admin PowerShell Dataverse; \"plugin registry\" \"Copilot Studio\" \"API\" \"enable\". Read tenant-settings excerpts, add-tools-custom-agent and package API overview; no dedicated switch found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "controls[0].note; Governance controls; Governance guidance; rationale: risk",
-      "type": "absence",
-      "claim": "Microsoft has not confirmed that the general plugin package controls govern this particular Copilot Studio registry connection.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio shared plugin registry data policies plugin controls block availability integration. Opened manage-plugins-skills-mcp-servers, plugins/govern-plugins and add-tools-custom-agent; general controls are documented, not this connection's package-control mapping.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "controls[1].note; Risk assessment: Data exposure; Open questions; rationale: risk",
-      "type": "absence",
-      "claim": "The registry integration's evaluation under data policies, including its connector or data-group mapping, is not specifically documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio shared plugin registry data policies plugin controls block availability integration. Read admin-data-loss-prevention and add-tools-custom-agent: agent and connector rules are stated, but no shared-registry plugin classification or integration mapping is given.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
+      "n": 45,
       "where": "Scope",
       "type": "role",
-      "claim": "Reviewing and approving MCP registration requests requires access to the Microsoft 365 admin center Tools page.",
+      "claim": "Reviewing and approving MCP server registrations requires access to the Tools page.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
       "quote": "You must have access to the Tools page in the Microsoft 365 admin center to manage agent tools and review MCP server registration requests.",
@@ -661,7 +526,7 @@
       "fix": null
     },
     {
-      "n": 59,
+      "n": 46,
       "where": "Scope",
       "type": "role",
       "claim": "Completing MCP registration review and approval also requires the ability to grant tenant-wide consent.",
@@ -672,10 +537,10 @@
       "fix": null
     },
     {
-      "n": 60,
+      "n": 47,
       "where": "Scope",
       "type": "role",
-      "claim": "AI Administrator meets both documented MCP review and consent requirements.",
+      "claim": "AI Administrator meets both requirements.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
       "quote": "Two roles meet both requirements: AI Administrator. Global Administrator.",
@@ -683,10 +548,10 @@
       "fix": null
     },
     {
-      "n": 61,
+      "n": 48,
       "where": "Scope",
       "type": "role",
-      "claim": "Global Administrator meets both documented MCP review and consent requirements.",
+      "claim": "Global Administrator meets both requirements.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
       "quote": "Two roles meet both requirements: AI Administrator. Global Administrator.",
@@ -694,10 +559,10 @@
       "fix": null
     },
     {
-      "n": 62,
+      "n": 49,
       "where": "Scope",
       "type": "applicability",
-      "claim": "The cited Copilot Studio adding-tools article describes agents or agent flows powered by the standard harness.",
+      "claim": "The cited Copilot Studio tools article describes the standard harness.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent",
       "quote": "This article describes features used in agents or agent flows powered by the standard harness.",
@@ -705,41 +570,140 @@
       "fix": null
     },
     {
-      "n": 63,
+      "n": 50,
       "where": "Scope",
       "type": "absence",
-      "claim": "A harness dependency for this registry integration has not been stated.",
+      "claim": "Microsoft has not stated a harness dependency for this roadmap integration.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"shared plugin\" \"Copilot Studio\" default identity approval harness. Opened add-tools-custom-agent and read harnesses-overview search excerpts; neither those nor the roadmap specifies a harness for this registry connection.",
+      "quote": "Searched: 'Copilot Studio shared plugin registry maker discover plugins approval default identity harness integration 570669'; read roadmap, add-tools-custom-agent, billing-credit-overview and harness search excerpts. No harness requirement for this integration was found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 64,
-      "where": "Governance guidance: Before rollout",
+      "n": 51,
+      "where": "controls[0].ui; Governance controls; Governance guidance: Before rollout",
       "type": "admin-path",
-      "claim": "Administrators can list plugins under Microsoft 365 admin center > Agents > Tools > Plugins.",
+      "claim": "Microsoft 365 admin center > Agents > Tools > Plugins > plugin > Block blocks a plugin package across the organization.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Select Agents > Tools > Plugins. ... From the list, select the plugin or skill that you want to block.",
+      "quote": "Select Agents > Tools > Plugins. ... From the list, select the plugin or skill that you want to block. ... Select Block, and then select Block again to confirm.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 65,
-      "where": "Governance controls",
+      "n": 52,
+      "where": "controls[0].api; Governance controls; Cost and licensing",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a package to prevent its usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage. ... POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The package-block operation uses the beta API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[0].note; Governance guidance: At rollout; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed how package block, user availability and publisher controls affect this Copilot Studio registry view.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot Studio shared plugin registry admin blocked package Microsoft 365 controls'; opened manage-plugins-skills-mcp-servers, govern-plugins and package/overview. The admin procedure warns not to assume policy applies across all products or connected components.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].ui; Governance controls",
       "type": "admin-path",
-      "claim": "Publisher-category plugin availability is managed at Agents > Settings > Agent and plugin access.",
+      "claim": "The printed Power Platform admin center path reaches connector blocking in an existing data policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "select Security ... Data and privacy ... Data policy ... select the data policy and select Edit Policy ... Select Next ... Select Next. The Assign connectors page appears ... Select the three dots ... select Block.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "Get-DlpPolicy -PolicyName <policy name> is the automation counterpart for controlling which connectors and tools makers can use.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-dlppolicy",
+      "quote": "Retrieves a list of DLP policy objects. ... The Get-DlpPolicy cmdlet retrieves policy objects for the logged in admin's tenant.",
+      "severity": "blocker",
+      "fix": "Replace controls[1].api.call and the rendered call with 'Add-ConnectorsToPolicy -PolicyName <policy GUID> -Connectors <connector objects> -Classification Blocked' and its docs URL with https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy. Replace the read-only note with 'The call moves the specified connectors to the Blocked group; each connector object requires id, type and name.' This reference explicitly documents the move and the Blocked classification. Keep inventory advice separate from the setting call."
+    },
+    {
+      "n": 57,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The currently printed Get-DlpPolicy call reads a policy rather than changing it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-dlppolicy",
+      "quote": "The Get-DlpPolicy cmdlet retrieves policy objects for the logged in admin's tenant. ... -PolicyName ... Get the specific policy by using policy name.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[1].governs; Governance guidance: Before rollout; Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Power Platform data policies control which tools makers can add to Copilot Studio agents in scoped environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "These data policies apply to Copilot Studio agents in the environments included in the policy's scope. ... To prevent agent makers from using Power Platform connectors as tools in Copilot Studio agents, configure a data policy with the connectors you want to block.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[1].note; Risk assessment: Data exposure; Open questions; rationale: risk",
+      "type": "applicability",
+      "claim": "Whether Power Platform data policies cover registry-sourced capabilities used in Copilot Studio agents is unconfirmed.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "These data policies apply to Copilot Studio agents in the environments included in the policy's scope. ... Data policies and sharing rules that apply to a Copilot Studio agent continue to apply when the agent is packaged in a plugin.",
+      "severity": "blocker",
+      "fix": "Replace the blanket data-policy caveat in controls[1].note, Risk assessment and the risk rationale with: 'Data policies apply to Copilot Studio agents in the environments in scope and govern Power Platform connector tools, not Copilot connectors. How the shared-registry experience maps plugin capabilities to those connectors is not yet documented.' Narrow the corresponding Open question to: 'How does the shared-registry experience map plugin capabilities to Power Platform connectors and data groups?' Use https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention; do not imply that an undocumented discovery route exempts agent tools from existing policies."
+    },
+    {
+      "n": 60,
+      "where": "controls[2]; Governance controls; Scope; Open questions",
+      "type": "absence",
+      "claim": "No Copilot Studio switch or automation operation specifically enabling the shared plugin registry connection is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot Studio shared plugin registry tenant setting Power Platform API PowerShell Dataverse table enable registry'; opened add-tools-custom-agent, govern-plugins and manage-plugins-skills-mcp-servers. Found no UI switch or API for this connection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance controls: paragraph after table",
+      "type": "admin-path",
+      "claim": "Agents > Settings > Agent and plugin access is the Microsoft 365 admin center route to publisher-category plugin availability.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Select Agents > Settings > Agent and plugin access. ... Under the installation settings, choose which publisher categories users can access",
+      "quote": "Select Agents > Settings > Agent and plugin access. ... Under the installation settings, choose which publisher categories users can access: Microsoft, your organization, or certified external publishers.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 66,
-      "where": "Governance controls",
+      "n": 62,
+      "where": "Governance controls: paragraph after table",
       "type": "behaviour",
       "claim": "The Microsoft 365 admin center supports per-plugin user availability.",
       "status": "supported",
@@ -749,30 +713,19 @@
       "fix": null
     },
     {
-      "n": 67,
-      "where": "Governance controls",
+      "n": 63,
+      "where": "Governance controls: paragraph after table",
       "type": "behaviour",
-      "claim": "The Microsoft 365 admin center supports installing plugin packages.",
+      "claim": "Plugin administration includes install and uninstall actions alongside blocking.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "You can install a plugin or skill for your entire organization or for specific users or groups by using the same process as for other apps in the Microsoft 365 admin center.",
+      "quote": "Install and uninstall | Selected plugin or standalone skill package. | Install the package for users without requiring manual installation by end users, or uninstall a previously installed package.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 68,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The Microsoft 365 admin center supports uninstalling plugin packages.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Uninstall a plugin or skill to remove it from the environment. Agents can't access it unless you install it again.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 69,
-      "where": "Governance controls",
+      "n": 64,
+      "where": "Governance controls: package blocking paragraph",
       "type": "behaviour",
       "claim": "Blocking a plugin package also blocks its included agents.",
       "status": "supported",
@@ -782,10 +735,10 @@
       "fix": null
     },
     {
-      "n": 70,
-      "where": "Governance controls",
+      "n": 65,
+      "where": "Governance controls: package blocking paragraph",
       "type": "behaviour",
-      "claim": "Associated MCP servers remain available to other plugins after a package block.",
+      "claim": "Associated MCP servers and connectors remain available to other plugins, so a package block need not block the connector itself.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
       "quote": "Associated MCP servers and connectors remain available to other plugins.",
@@ -793,10 +746,10 @@
       "fix": null
     },
     {
-      "n": 71,
-      "where": "Governance controls",
+      "n": 66,
+      "where": "Governance controls: package blocking paragraph",
       "type": "applicability",
-      "claim": "The connector data-policy control described here concerns Power Platform connectors used as agent tools, not Copilot connectors.",
+      "claim": "The connector tools governed by Copilot Studio data policies are Power Platform connectors, not Copilot connectors.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
       "quote": "Power Platform connectors refers to Power Platform connectors used as tools in an agent. They don't refer to Copilot connectors.",
@@ -804,48 +757,37 @@
       "fix": null
     },
     {
-      "n": 72,
-      "where": "Governance controls; Why it matters; Governance guidance",
+      "n": 67,
+      "where": "Governance controls: package blocking paragraph; Governance guidance: Before rollout",
       "type": "applicability",
-      "claim": "Copilot Studio and Power Platform can have separate controls for plugin components and connections.",
+      "claim": "Copilot Studio and Power Platform can have separate component and connection controls from plugin package governance.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Copilot Studio and Power Platform can have separate controls for their components and connections.",
+      "quote": "Don't treat package approval or blocking as granting or revoking connected-service permissions or credentials. Copilot Studio and Power Platform can have separate controls for their components and connections.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 73,
-      "where": "Governance controls",
+      "n": 68,
+      "where": "Governance guidance: Before rollout; After rollout; Open questions",
       "type": "behaviour",
-      "claim": "Associated connectors remain available to other plugins after a package block, so a package block does not necessarily block a connector.",
+      "claim": "Data policies classify Copilot Studio connectors into data groups.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Associated MCP servers and connectors remain available to other plugins.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 74,
-      "where": "Why it matters",
-      "type": "absence",
-      "claim": "No source examined says this registry integration changes existing behaviour automatically.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio shared plugin registry integration discovery maker enable default availability harness identity approval; \"Copilot Studio\" \"plugin registry\". Read roadmap, add-tools-custom-agent, plugins/overview and governance pages; no automatic replacement or behaviour change stated.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "In the Power Platform admin center, you can classify Copilot Studio connectors within a data policy under the following data groups: Business; Non-business; Blocked",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-18T05:16:42.092Z",
+    "at": "2026-11-19T02:04:24.428Z",
     "summary": {
       "links": 13,
-      "unreachable": 0,
+      "unreachable": 10,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 1,
       "apiCalls": 2,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 2,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -856,23 +798,23 @@
       },
       {
         "url": "https://learn.microsoft.com/plugins/overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/plugins/govern-plugins",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
@@ -881,33 +823,33 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-dlppolicy",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
@@ -921,7 +863,7 @@
         "side": "ui",
         "governs": "Whether a plugin package is blocked for users and agents",
         "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Agents",
           "Tools",
@@ -929,16 +871,22 @@
           "plugin",
           "Block"
         ],
-        "missing": []
+        "missing": [
+          "Agents",
+          "Tools",
+          "Plugins",
+          "plugin",
+          "Block"
+        ]
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Whether a plugin package is blocked for users and agents",
         "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-        "reachable": true,
+        "reachable": false,
         "token": "/beta/copilot/admin",
-        "found": true
+        "found": false
       },
       {
         "index": 1,
@@ -964,9 +912,9 @@
         "side": "api",
         "governs": "Which connectors and tools makers can use in Copilot Studio agents",
         "docs": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-dlppolicy",
-        "reachable": true,
+        "reachable": false,
         "token": "Get-DlpPolicy",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
@@ -982,6 +930,12 @@
       "date": "2026-11-18",
       "status": "held",
       "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-18",
+      "status": "verified",
+      "version": 3,
       "model": "gpt-6.1-sol"
     }
   ]

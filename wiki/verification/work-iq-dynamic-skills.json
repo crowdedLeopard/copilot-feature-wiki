@@ -2,29 +2,37 @@
   "slug": "work-iq-dynamic-skills",
   "roadmapId": 570869,
   "title": "Work IQ: agents select the most relevant skills for each request",
-  "status": "verified-with-gaps",
-  "date": "2026-11-18",
+  "status": "held",
+  "date": "2026-11-19",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 0,
-  "verifierVerdict": "pass",
+  "attempts": 1,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
   "notes": [],
-  "hold": null,
-  "counts": {
-    "claims": 53,
-    "confirmed": 53,
-    "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
-    "major": 0,
-    "minor": 1
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-19",
+    "reasons": [
+      "1 blocking finding (claim 11)"
+    ]
   },
-  "summary": "The briefing accurately reports the roadmap targets and distinguishes documented package controls and Work IQ billing from unconfirmed feature-specific details. Both admin paths and Graph operations are supported; add the package resource reference for the availability value used in the example.",
+  "counts": {
+    "claims": 60,
+    "confirmed": 59,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "Hold: the licensing field says entitlement is unpublished even though Microsoft documents the Work IQ licensing and consumption rules that the briefing itself describes. The roadmap facts and package controls check out; the update call also needs a small formatting correction and an additional source.",
   "claims": [
     {
       "n": 1,
-      "where": "What's changing; title; summary; Risk assessment; rationale",
+      "where": "title; summary; What's changing; Autonomy & actions; rationale: risk",
       "type": "record",
       "claim": "Microsoft plans to enable agents to select and use the most relevant skills dynamically for each request.",
       "status": "supported",
@@ -37,7 +45,7 @@
       "n": 2,
       "where": "front matter: products; What's changing",
       "type": "record",
-      "claim": "The roadmap lists Work IQ as a product.",
+      "claim": "The roadmap lists Work IQ and Microsoft Copilot (Microsoft 365) as the products.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"products\": [\"Work IQ\", \"Microsoft Copilot (Microsoft 365)\"]",
@@ -46,17 +54,6 @@
     },
     {
       "n": 3,
-      "where": "front matter: products; What's changing",
-      "type": "record",
-      "claim": "The roadmap lists Microsoft Copilot (Microsoft 365) as a product.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Work IQ\", \"Microsoft Copilot (Microsoft 365)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
       "where": "front matter: platforms; What's changing; Scope; rationale: impact",
       "type": "record",
       "claim": "The roadmap lists the Developer platform.",
@@ -67,7 +64,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 4,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -78,10 +75,21 @@
       "fix": null
     },
     {
+      "n": 5,
+      "where": "front matter: previewDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap preview target is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 6,
       "where": "front matter: targetDate; What's changing; Scope",
       "type": "record",
-      "claim": "The general availability target is November CY2026, not a commitment.",
+      "claim": "The roadmap general availability target is November CY2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"November CY2026\"",
@@ -90,20 +98,9 @@
     },
     {
       "n": 7,
-      "where": "front matter: previewDate; What's changing; Scope",
-      "type": "record",
-      "claim": "The preview target is October CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": \"October CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and no other cloud.",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -111,10 +108,10 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 8,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The listed release phases are General Availability and Preview.",
+      "claim": "The roadmap lists release phases General Availability and Preview.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -122,30 +119,151 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "front matter: roadmapModified",
+      "n": 9,
+      "where": "Cost and licensing: opening paragraph",
       "type": "record",
-      "claim": "The roadmap record was modified on 2026-11-17T20:22:13.",
+      "claim": "The roadmap record names no licence or price.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"modified\": \"2026-11-17T20:22:13\"",
+      "quote": "\"description\": \"Enable agents to select and use the most relevant skills dynamically for each request.\", \"moreInfoLink\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated the default state of dynamic skill selection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"dynamic skills\" default administrator selection configuration. Read roadmap, Work IQ overview, Business skills overview and default-settings search excerpts; none identifies the default of this roadmap change.",
       "severity": null,
       "fix": null
     },
     {
       "n": 11,
-      "where": "summary; What's changing; front matter: changes",
-      "type": "absence",
-      "claim": "No Microsoft Learn page specifically describing roadmap item 570869 was found.",
+      "where": "front matter: licensing.model and notes; Cost and licensing: opening; Scope: licences",
+      "type": "licensing",
+      "claim": "The licensing model is unknown because Microsoft has not published which licence covers this feature.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq",
+      "quote": "For Microsoft 365 Copilot licensed users, Work IQ is available in all Microsoft 365 Copilot experiences and agents. It is subject to usage-based billing for custom and third-party agents.",
+      "severity": "blocker",
+      "fix": "Set licensing.model to mixed. Replace the blanket unpublished-licensing statements in the notes, opening cost paragraph and Scope with: 'Work IQ follows the published access rules: Microsoft 365 Copilot licensed users have access in Microsoft 365 Copilot experiences and agents; custom and third-party agents are subject to usage-based billing, and users without a Microsoft 365 Copilot licence are billed based on usage. Work IQ API usage consumes Copilot Credits. A separate rate or meter for dynamic skill selection is Not yet published.' Retain the existing Work IQ overview citation."
+    },
+    {
+      "n": 12,
+      "where": "controls[0].ui; Governance controls: first row",
+      "type": "admin-path",
+      "claim": "A skill package can be blocked at Microsoft 365 admin center > Agents > Tools > Plugins > plugin or skill > Block.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"570869\" \"dynamic skills\"; \"Work IQ\" \"dynamic skills\" default configuration admin Graph skill selection logging rollout prerequisites. Opened Work IQ overview and Business skills overview; results describe related capabilities, not this roadmap item.",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Select Agents > Tools > Plugins.\n3. From the list, select the plugin or skill that you want to block.\n4. Select Block, and then select Block again to confirm.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 12,
-      "where": "What's changing",
+      "n": 13,
+      "where": "controls[0].api; Governance controls: first row",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage.\nPOST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[1].ui; Governance controls: second row",
+      "type": "admin-path",
+      "claim": "User availability is configured at Microsoft 365 admin center > Agents > Tools > Plugins > plugin > Users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Select Agents > Tools > Plugins.\n3. Select the plugin that you want to manage.\n4. Open Users, and then choose one of the following availability options:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[1].api; Governance controls: second row",
+      "type": "command",
+      "claim": "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} can update availability using the printed availableTo request-body property.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
+      "quote": "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}\navailableTo | packageAllowStatus | Enum value specifying which users or groups within the tenant can access this package.",
+      "severity": "minor",
+      "fix": "Set controls[1].api.call and the rendered call to 'PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}'. Move the body explanation into the note as: 'The request body sets availableTo to allowedForNone to make the package unavailable to all users.'"
+    },
+    {
+      "n": 16,
+      "where": "controls[2].ui; controls[2].api; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no UI or API setting specific to dynamic skill selection as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"dynamic skill\" Graph admin selection settings Work IQ; \"Work IQ\" \"dynamic skills\" default administrator selection configuration. Opened Manage plugins, skills, and MCP servers, Package Management API overview and Update Copilot package; no selection-specific control found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0].note; controls[1].note; Risk assessment; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft has not identified these package controls as governing the dynamically selected skills of this roadmap item.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"dynamic skill\" Graph admin selection settings Work IQ. Read package-management overview, Manage plugins, skills, and MCP servers and Business skills overview; package controls are documented, but this item's skill type is not identified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "summary; What's changing; changes: initial briefing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet have documentation identifying this roadmap feature separately.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"dynamic skills\" default administrator selection configuration; \"Work IQ\" \"dynamic skill selection\" \"meter\" \"rollout\". Read Work IQ overview and Business skills overview; results describe surrounding capabilities, not this roadmap item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Open questions: skills in scope",
+      "type": "absence",
+      "claim": "Microsoft has not specified which types of skills are in scope for this roadmap feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"dynamic skills\" \"logging\" \"data\" \"prerequisites\". Read Work IQ overview, Business skills overview and package-management overview; none maps the roadmap item to Dataverse skills, packaged skills or both.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing: feature-specific selection mechanism",
+      "type": "absence",
+      "claim": "Microsoft has not described how this particular feature chooses between skills.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"dynamic skills\" default administrator selection configuration. Read Work IQ overview and Business skills overview; the latter explains business-skill discovery but does not identify itself as the implementation of this roadmap item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing: administrator experience",
+      "type": "absence",
+      "claim": "Microsoft has not documented what an administrator sees for this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"dynamic skills\" default administrator selection configuration. Opened Work IQ overview and Manage plugins, skills, and MCP servers; no feature-specific administrator experience was identified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing: skills in general; Autonomy & actions",
       "type": "behaviour",
       "claim": "Skills provide task-specific instructions that help Copilot and agents complete specialized work.",
       "status": "supported",
@@ -155,10 +273,10 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "n": 23,
+      "where": "What's changing: skills in general; Autonomy & actions",
       "type": "behaviour",
-      "claim": "Skills describe what actions to take, while tools execute those actions.",
+      "claim": "Tools execute the actions that skills describe.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq#skills-and-tools",
       "quote": "If skills describe what actions to take, tools execute those actions.",
@@ -166,10 +284,10 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing; Why it matters",
+      "n": 24,
+      "where": "What's changing: business skills; Why it matters: descriptions",
       "type": "behaviour",
-      "claim": "For business skills, agents compare skill names and descriptions with the user's request.",
+      "claim": "For business skills, an agent compares names and descriptions with the user's request.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
       "quote": "The agent compares skill frontmatter, especially the name and description, with the user's request.",
@@ -177,10 +295,10 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "What's changing",
+      "n": 25,
+      "where": "What's changing: business skills",
       "type": "behaviour",
-      "claim": "For business skills, agents retrieve the complete instructions of a relevant skill.",
+      "claim": "For business skills, the agent retrieves the instructions of a relevant skill.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
       "quote": "The agent retrieves the complete instructions and resources for a relevant skill.",
@@ -188,8 +306,8 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "n": 26,
+      "where": "What's changing: business skills",
       "type": "behaviour",
       "claim": "For business skills, the agent uses its connected tools to carry out the process.",
       "status": "supported",
@@ -199,18 +317,18 @@
       "fix": null
     },
     {
-      "n": 17,
-      "where": "What's changing; Risk assessment; Governance guidance; rationale: risk",
+      "n": 27,
+      "where": "What's changing; Autonomy & actions; Governance guidance; rationale: risk",
       "type": "behaviour",
-      "claim": "Microsoft describes agent selection of business skills as probabilistic.",
+      "claim": "Microsoft describes business-skill selection as probabilistic.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
       "quote": "Agent selection is probabilistic, so test representative requests before you share a skill broadly.",
-      "severity": null,
-      "fix": null
+      "severity": "minor",
+      "fix": "Change 'For business skills, a related Work IQ capability' to 'For business skills (preview), a related Work IQ capability'. The cited Work IQ overview's Skills and tools section labels business skills as preview."
     },
     {
-      "n": 18,
+      "n": 28,
       "where": "Why it matters; Governance guidance: At rollout",
       "type": "behaviour",
       "claim": "Microsoft advises testing representative requests before sharing a business skill broadly.",
@@ -221,117 +339,117 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "What's changing",
+      "n": 29,
+      "where": "What's changing: final sentence of business-skills paragraph",
       "type": "absence",
-      "claim": "Microsoft has not stated whether this roadmap item uses the business-skill discovery mechanism.",
+      "claim": "Microsoft has not stated that this roadmap item uses the business-skill selection mechanism.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"570869\" \"dynamic skills\"; \"Work IQ\" \"dynamic skills\" default configuration admin Graph skill selection logging rollout prerequisites. Opened Work IQ overview and Business skills overview; neither identifies its discovery mechanism with item 570869.",
+      "quote": "Searched: \"Work IQ\" \"dynamic skills\" default administrator selection configuration. Read roadmap, Work IQ overview and Business skills overview; no explicit connection of that mechanism to this item was found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 20,
-      "where": "front matter: defaultState; Open questions",
-      "type": "default",
-      "claim": "The default state of dynamic skill selection is unknown.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"dynamic skill selection\" admin settings Graph default audit logs. Read roadmap, Work IQ overview and package administration docs; none states this feature's default. Results about Work IQ being added to new agents do not identify dynamic skills.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "front matter: licensing; Cost and licensing; Scope",
-      "type": "licensing",
-      "claim": "A licensing model or licence requirement specific to dynamic skill selection is not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"dynamic skills\" licensing pricing meter Copilot Credits; \"Work IQ\" \"dynamic skills\" licensing prerequisites rollout. Opened Work IQ overview and Plan licensing and cost; these publish general Work IQ billing, not a dynamic-selection licence.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "Cost and licensing; Open questions; rationale: cost",
+      "n": 30,
+      "where": "Why it matters; Scope: rollout mechanics",
       "type": "absence",
-      "claim": "A price, rate or meter specific to dynamic skill selection is not yet published.",
+      "claim": "Microsoft has not stated the rollout mechanics of dynamic skill selection.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ\" \"dynamic skills\" licensing pricing meter Copilot Credits. Opened Work IQ overview and Plan licensing and cost; both identify Copilot Credits for Work IQ API, neither a separate dynamic skill selection rate or meter.",
+      "quote": "Searched: \"Work IQ\" \"dynamic skill selection\" \"meter\" \"rollout\". Read roadmap, Work IQ overview and returned Business Applications administration excerpts; no rollout mechanics for this particular change were found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 23,
-      "where": "Why it matters; Scope",
+      "n": 31,
+      "where": "Why it matters: existing agents",
       "type": "absence",
-      "claim": "Rollout mechanics, recipients and prerequisites specific to this roadmap feature have not been documented.",
+      "claim": "No supplied notice or located documentation says this change alters existing agents.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ\" \"dynamic skills\" licensing prerequisites rollout. Read roadmap and Work IQ overview; results concern general Work IQ or Business Applications setup, not rollout mechanics, recipients or prerequisites specific to item 570869.",
+      "quote": "Searched: \"Work IQ\" \"dynamic skill selection\" \"meter\" \"rollout\"; \"Work IQ\" \"dynamic skills\" default administrator selection configuration. Read roadmap and Work IQ overview; no existing-agent change or action deadline found. No Message Center post was supplied.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 24,
-      "where": "Why it matters",
-      "type": "absence",
-      "claim": "No source found states that this roadmap item changes existing agents' behaviour or requires action before its target month.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"570869\" \"dynamic skills\"; \"Work IQ\" \"dynamic skills\" licensing prerequisites rollout. Read roadmap and Work IQ overview; neither gives an existing-agent migration or act-by requirement for this item. No Message Center post was supplied.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "What's changing; Open questions",
-      "type": "absence",
-      "claim": "The skill types in scope, feature-specific selection details and administrator experience are not yet documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"dynamic skills\" default configuration admin Graph skill selection logging rollout prerequisites. Opened Work IQ overview, Business skills overview and package administration; no page ties a skill type or admin experience to item 570869.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
+      "n": 32,
       "where": "Risk assessment: Data exposure",
       "type": "absence",
-      "claim": "Microsoft has not described which data the skills selected by this specific feature can reach.",
+      "claim": "Microsoft has not specified the data reachable by a skill selected by this particular feature.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ\" skills instructions tools task specific user scoped. Read Work IQ overview and Business skills overview; they supply general user boundaries and discovery rules, not the data scope of skills selected by item 570869.",
+      "quote": "Searched: \"Work IQ\" \"dynamic skills\" \"logging\" \"data\" \"prerequisites\". Read Work IQ overview and Business skills overview; general permission boundaries are stated, but this item's skill and data scope are not identified.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 27,
+      "n": 33,
       "where": "Risk assessment: Data exposure; Scope",
       "type": "behaviour",
-      "claim": "Work IQ actions run in a specific user's context and access only what that user may see or do.",
+      "claim": "Work IQ actions are user scoped and each request runs in a specific user's context.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq",
-      "quote": "Actions are user scoped, meaning every request runs in the context of a specific user and only accesses what that user is allowed to see or do.",
+      "quote": "Actions are user scoped, meaning every request runs in the context of a specific user",
       "severity": null,
       "fix": null
     },
     {
-      "n": 28,
-      "where": "Scope",
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Skill availability is user scoped in general.",
+      "claim": "Work IQ requests access only what the user is permitted to see or do.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
-      "quote": "The agent searches the connected environment for skills that the current identity can access.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq",
+      "quote": "only accesses what that user is allowed to see or do.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 29,
+      "n": 35,
+      "where": "controls[1].note; Risk assessment; Governance guidance: Before rollout",
+      "type": "availability",
+      "claim": "The All users option makes the selected skill or plugin package available to everyone in the organization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "All users: Make the plugin available to everyone in the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[1].note; Risk assessment; Governance guidance: Before rollout",
+      "type": "availability",
+      "claim": "The No users option makes the selected skill or plugin package unavailable to all users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "No users: Make the plugin unavailable to all users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[1].note; Risk assessment; Governance guidance: Before rollout",
+      "type": "availability",
+      "claim": "The Specific users and groups option restricts the package to selected users or groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Specific users and groups: Make the plugin available only to selected users or groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].governs; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Blocking a skill package prevents users and agents from accessing that package across the organization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "You can block a plugin or skill package across your entire organization by using the Microsoft 365 admin center. When you block it, agents can no longer use it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "Every Work IQ tool invocation is logged and evaluated.",
@@ -342,19 +460,19 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "Risk assessment: Change & support; Open questions",
+      "n": 40,
+      "where": "Risk assessment: Change & support; Open questions: skill-selection logs",
       "type": "absence",
-      "claim": "How dynamic skill selections themselves are logged is not yet documented for this feature.",
+      "claim": "Microsoft has not documented feature-specific logging of which skills dynamic selection chooses.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ\" \"dynamic skill selection\" admin settings Graph default audit logs. Read Work IQ overview and search excerpt for workIQAdminActivity; these describe tool logging and admin audit data, not selection records for this roadmap item.",
+      "quote": "Searched: \"Work IQ\" \"dynamic skills\" \"logging\" \"data\" \"prerequisites\". Read Work IQ overview and Business skills overview; tool invocation logging is stated, but selection records and their administrator location are not identified for this change.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
-      "where": "front matter: licensing.notes; Cost and licensing",
+      "n": 41,
+      "where": "licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "Work IQ API access is independent of Microsoft 365 Copilot licensing.",
       "status": "supported",
@@ -364,10 +482,10 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "n": 42,
+      "where": "licensing.notes; Cost and licensing; Governance guidance: After rollout",
       "type": "cost",
-      "claim": "Work IQ API access is available through usage-based billing, supporting a variable cost rating.",
+      "claim": "Work IQ API access is available through usage-based billing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq",
       "quote": "Work IQ API access is independent of Microsoft 365 Copilot licensing and available through usage-based billing.",
@@ -375,10 +493,10 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Cost and licensing",
+      "n": 43,
+      "where": "Cost and licensing: licensed users",
       "type": "licensing",
-      "claim": "Work IQ is available in all Microsoft 365 Copilot experiences and agents for Microsoft 365 Copilot licensed users.",
+      "claim": "For Microsoft 365 Copilot licensed users, Work IQ is available in all Microsoft 365 Copilot experiences and agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq",
       "quote": "For Microsoft 365 Copilot licensed users, Work IQ is available in all Microsoft 365 Copilot experiences and agents.",
@@ -386,10 +504,10 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "Cost and licensing; Governance guidance: After rollout",
+      "n": 44,
+      "where": "Cost and licensing: custom and third-party agents",
       "type": "cost",
-      "claim": "For licensed users, Work IQ in custom and third-party agents is subject to usage-based billing.",
+      "claim": "Work IQ for Microsoft 365 Copilot licensed users remains subject to usage-based billing in custom and third-party agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq",
       "quote": "It is subject to usage-based billing for custom and third-party agents.",
@@ -397,10 +515,10 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Cost and licensing",
+      "n": 45,
+      "where": "Cost and licensing: unlicensed users",
       "type": "cost",
-      "claim": "Users without a Microsoft 365 Copilot licence are billed for Work IQ based on usage.",
+      "claim": "Users without a Microsoft 365 Copilot licence are billed based on usage.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq",
       "quote": "Users without a Microsoft 365 Copilot license are billed based on usage.",
@@ -408,10 +526,10 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "n": 46,
+      "where": "licensing.notes; Cost and licensing; rationale: cost; front matter: cost",
       "type": "cost",
-      "claim": "Work IQ API usage consumes Copilot Credits.",
+      "claim": "Work IQ API usage consumes Copilot Credits shared with other eligible services.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq",
       "quote": "Work IQ API usage consumes Copilot Credits shared with other eligible services.",
@@ -419,19 +537,8 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Work IQ API consumes credits shared with other eligible services.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq",
-      "quote": "Work IQ API usage consumes Copilot Credits shared with other eligible services.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Cost and licensing",
+      "n": 47,
+      "where": "Cost and licensing: cost management",
       "type": "cost",
       "claim": "Work IQ cost can be managed in the Microsoft 365 admin center.",
       "status": "supported",
@@ -441,8 +548,19 @@
       "fix": null
     },
     {
-      "n": 39,
-      "where": "Cost and licensing; controls[0].note; controls[1].note; Governance controls",
+      "n": 48,
+      "where": "Cost and licensing: feature-specific rate; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published a rate or meter specific to dynamic skill selection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"dynamic\" \"skills\" licensing pricing credits rollout logging; \"Work IQ\" \"dynamic skill selection\" \"meter\" \"rollout\". Opened Work IQ overview, Work IQ API overview and Plan licensing and cost; no selection-specific rate or meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].note; controls[1].note; Cost and licensing; Governance controls",
       "type": "licensing",
       "claim": "Access to the Package Management API requires a Microsoft Agent 365 licence.",
       "status": "supported",
@@ -452,75 +570,31 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "controls[0].ui; Governance controls: first row; Risk assessment",
-      "type": "admin-path",
-      "claim": "A tenant-wide skill-package block is available at Microsoft 365 admin center > Agents > Tools > Plugins > plugin or skill > Block.",
+      "n": 50,
+      "where": "Governance controls: package-level scope; Scope",
+      "type": "applicability",
+      "claim": "The documented skill-package actions govern the package rather than serving as separate controls for each included component.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Select **Agents** > **Tools** > **Plugins**.\n3. From the list, select the plugin or skill that you want to block.\n4. Select **Block**, and then select **Block** again to confirm.",
+      "quote": "These package-level actions aren't separate controls for each included component.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 41,
-      "where": "controls[0].api; Governance controls: first row",
-      "type": "command",
-      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a package to prevent its usage.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "Block a Copilot package to prevent its usage.\nPOST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "controls[1].ui; Governance controls: second row; Risk assessment; Governance guidance",
-      "type": "admin-path",
-      "claim": "Skill-package user availability is managed at Agents > Tools > Plugins > plugin > Users, choosing All users, No users or Specific users and groups.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Select **Agents** > **Tools** > **Plugins**.\n3. Select the plugin that you want to manage.\n4. Open **Users**, and then choose one of the following availability options:",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "controls[1].api; Governance controls: second row",
-      "type": "command",
-      "claim": "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} accepts a JSON body setting availableTo.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
-      "quote": "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}\n`availableTo` | packageAllowStatus | Enum value specifying which users or groups within the tenant can access this package.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "controls[1].api; controls[1].note; Governance controls: second row",
-      "type": "command",
-      "claim": "The JSON body {\"availableTo\":\"allowedForNone\"} makes the package unavailable to any users.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/resources/copilotpackage",
-      "quote": "`allowedForNone` | Not available to any users.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/resources/copilotpackage to sources as 'copilotPackage resource type'; it documents the allowedForNone value used in the example."
-    },
-    {
-      "n": 45,
-      "where": "controls[0].note; controls[1].note; Governance controls",
+      "n": 51,
+      "where": "Governance controls: preview",
       "type": "behaviour",
-      "claim": "The displayed block and update APIs are beta, and the block operation is preview.",
+      "claim": "The block operation is preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview",
-      "quote": "[Update package] (preview) | PATCH `/copilot/admin/catalog/packages/{id}`\n[Block] (preview) | POST `/copilot/admin/catalog/packages/{id}/block`",
+      "quote": "Block (preview) | POST /copilot/admin/catalog/packages/{id}/block | Block a package to prevent its usage.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 46,
-      "where": "Governance controls",
-      "type": "command",
+      "n": 52,
+      "where": "Governance controls: delegated permission",
+      "type": "role",
       "claim": "The block operation's delegated work-or-school permission is CopilotPackages.ReadWrite.All.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
@@ -529,92 +603,103 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "Governance controls; Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "Package-level actions are not separate controls for each included component.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "These package-level actions aren't separate controls for each included component.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "Governance controls",
+      "n": 53,
+      "where": "Governance controls: API overview operations",
       "type": "behaviour",
       "claim": "The Package Management API overview lists list, get, update, block, unblock and reassign operations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview",
-      "quote": "List packages\nGet package details\nUpdate package (preview)\nBlock (preview)\nUnblock (preview)\nReassign (preview)",
+      "quote": "List packages; Get package details; Update package (preview); Block (preview); Unblock (preview); Reassign (preview)",
       "severity": null,
       "fix": null
     },
     {
-      "n": 49,
-      "where": "Governance controls",
-      "type": "command",
-      "claim": "Update package supports user availability through availableTo and allowedUsersAndGroups.",
+      "n": 54,
+      "where": "Governance controls: Update package availableTo",
+      "type": "behaviour",
+      "claim": "The beta Update package operation exposes availableTo for user availability.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
-      "quote": "`allowedUsersAndGroups` | packageAccessEntity collection | Users/groups for whom the package is available.\n`availableTo` | packageAllowStatus | Enum value specifying which users or groups within the tenant can access this package.",
+      "quote": "availableTo | packageAllowStatus | Enum value specifying which users or groups within the tenant can access this package. Required if updating allowedUsersAndGroups.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 50,
-      "where": "Cost and licensing",
-      "type": "record",
-      "claim": "The roadmap item does not name a licence or price.",
+      "n": 55,
+      "where": "Governance controls: Update package allowedUsersAndGroups",
+      "type": "behaviour",
+      "claim": "The beta Update package operation exposes allowedUsersAndGroups to specify the users and groups for whom a package is available.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"description\": \"Enable agents to select and use the most relevant skills dynamically for each request.\", \"moreInfoLink\": null",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
+      "quote": "allowedUsersAndGroups | packageAccessEntity collection | Users/groups for whom the package is available.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 51,
-      "where": "controls[2]; Governance controls; Open questions; rationale: risk",
+      "n": 56,
+      "where": "controls[1].api; controls[1].note; Governance controls: second row",
+      "type": "command",
+      "claim": "The availableTo value allowedForNone makes the package unavailable to any users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/resources/copilotpackage",
+      "quote": "allowedForNone | Not available to any users.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/resources/copilotpackage to sources as 'copilotPackage resource type'; it documents the allowedForNone value used in the example."
+    },
+    {
+      "n": 57,
+      "where": "Scope: prerequisites",
       "type": "absence",
-      "claim": "No admin UI or API setting specific to dynamic skill selection was found as of November 2026.",
+      "claim": "Microsoft has not identified prerequisites specific to this roadmap feature.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ\" \"dynamic skill selection\" admin settings Graph default audit logs. Opened Manage plugins, skills, and MCP servers, Package Management API overview, block and Update package; no feature-specific selection switch or configuration was documented.",
+      "quote": "Searched: \"Work IQ\" \"dynamic skills\" \"logging\" \"data\" \"prerequisites\". Read roadmap, Work IQ overview, Work IQ API overview and Business skills overview; no prerequisites specific to this item found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 52,
-      "where": "controls[0].note; controls[1].note; Risk assessment; Governance controls",
+      "n": 58,
+      "where": "Scope: user-scoped skills",
+      "type": "behaviour",
+      "claim": "Skill discovery in the documented business-skills capability is scoped to the current identity's access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
+      "quote": "The agent searches the connected environment for skills that the current identity can access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Scope: recipients",
       "type": "absence",
-      "claim": "Microsoft has not explicitly confirmed that the documented package controls govern this roadmap item's dynamically selected skills.",
+      "claim": "Microsoft has not identified the receiving audience of this particular roadmap feature beyond the recorded platform.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ\" \"dynamic skill selection\" admin settings Graph default audit logs. Read package administration, API overview and Work IQ overview; none identifies the roadmap item's skill types or maps them to these package controls.",
+      "quote": "Searched: \"Work IQ\" \"dynamic skills\" default administrator selection configuration. Read roadmap, Work IQ overview and Business skills overview; no receiving audience specific to this item found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 53,
-      "where": "summary; Risk assessment; Scope; Governance guidance; Governance controls",
-      "type": "applicability",
-      "claim": "The documented package availability and blocking controls apply to standalone skill packages, not merely plugins.",
+      "n": 60,
+      "where": "Why it matters: action timing",
+      "type": "absence",
+      "claim": "No supplied notice or located documentation requires action before the target month for this feature.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Managing a skill uses the same actions and steps as managing a plugin, so this section applies to both plugins and skills.",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"dynamic skill selection\" \"meter\" \"rollout\". Read roadmap and Work IQ overview; no action deadline for this item found. No Message Center post was supplied.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-18T02:01:11.877Z",
+    "at": "2026-11-19T02:04:25.247Z",
     "summary": {
       "links": 7,
-      "unreachable": 0,
+      "unreachable": 6,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 2,
       "apiCalls": 2,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 2,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -625,33 +710,33 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -660,7 +745,7 @@
         "side": "ui",
         "governs": "Blocking a skill package so agents cannot use it",
         "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Agents",
           "Tools",
@@ -668,23 +753,29 @@
           "plugin or skill",
           "Block"
         ],
-        "missing": []
+        "missing": [
+          "Agents",
+          "Tools",
+          "Plugins",
+          "plugin or skill",
+          "Block"
+        ]
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Blocking a skill package so agents cannot use it",
         "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-        "reachable": true,
+        "reachable": false,
         "token": "/beta/copilot/admin",
-        "found": true
+        "found": false
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Which users can use a skill package",
         "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Agents",
           "Tools",
@@ -692,16 +783,22 @@
           "plugin",
           "Users"
         ],
-        "missing": []
+        "missing": [
+          "Agents",
+          "Tools",
+          "Plugins",
+          "plugin",
+          "Users"
+        ]
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Which users can use a skill package",
         "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update",
-        "reachable": true,
+        "reachable": false,
         "token": "/beta/copilot/admin",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
@@ -711,6 +808,12 @@
       "date": "2026-11-17",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-18",
+      "status": "verified-with-gaps",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

@@ -40,6 +40,15 @@ sources:
   - title: "Call Microsoft 365 API to transfer organizational data for API-based import (Step 2 of 3)"
     url: "https://learn.microsoft.com/microsoft-365-apps/org-data-service/import/import-org-data-api-call"
     kind: "learn"
+  - title: "Manage General Settings in Viva Glint"
+    url: "https://learn.microsoft.com/viva/glint/setup/manage-general-settings"
+    kind: "learn"
+  - title: "Import and manage your organizational data with a .csv file"
+    url: "https://learn.microsoft.com/microsoft-365-apps/org-data-service/import/import-orgdata"
+    kind: "learn"
+  - title: "Applications powered by Microsoft 365 Organizational Data Service"
+    url: "https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/applications"
+    kind: "learn"
 videos: []
 related: []
 controls:
@@ -47,8 +56,8 @@ controls:
     scope: "tenant"
     ui:
       surface: "Viva Glint"
-      path: "General settings > Technical configuration > Organizational data imports"
-      docs: "https://learn.microsoft.com/viva/glint/setup/modis-data-consumption"
+      path: "Configuration > Service Configuration > General Settings > Technical configuration > Organizational data imports"
+      docs: "https://learn.microsoft.com/viva/glint/setup/manage-general-settings"
     api: null
     note: "Onboarding sets it to Yes. When No, uploads return the ORG_UPLOAD_SWITCHED_OFF advisory and Viva Glint does not appear as an endpoint in the admin center."
   - governs: "Who can create and manage employee data imports (Organizational Data Source Administrator role)"
@@ -66,47 +75,51 @@ controls:
     scope: "other"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Settings > Viva > Data management > Microsoft 365 Organizational Data Service > Data connections > + New import > connector type > Choose attribute access"
+      path: "Settings > Viva > Data management > Microsoft 365 Organizational Data Service > Data connections > + New import > CSV import > Choose apps & services > Viva Glint > Choose attribute access"
       docs: "https://learn.microsoft.com/viva/glint/setup/modis-data-import"
     api: null
-    note: "Set per connection, separately for reserved and custom attributes. Selecting Viva Glint under Choose apps & services comes earlier in the same wizard."
+    note: "Documented CSV example; set per connection, separately for reserved and custom attributes. These choices govern application-specific and custom attributes; public global attributes are automatically available to Profile and downstream apps."
   - governs: "Whether uploaded data waits for approval before reaching Viva Glint"
     scope: "other"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Settings > Viva > Data management > Microsoft 365 Organizational Data Service > Data connections > + New import > connector type > File upload, import method, and data staging > Data staging"
+      path: "Settings > Viva > Data management > Microsoft 365 Organizational Data Service > Data connections > + New import > CSV import > Choose apps & services > Viva Glint > File upload, import method, and data staging > Data staging"
       docs: "https://learn.microsoft.com/viva/glint/setup/modis-data-import"
     api: null
-    note: "When on, an Organizational Data Source Administrator must approve the upload before it flows to Viva Glint. Learn says staging is available for all connectors."
+    note: "Documented CSV example. When on, an Organizational Data Source Administrator must approve the upload before it flows to Viva Glint. Learn says staging is available for all connectors."
 confidence: "high"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-19"
 roadmapModified: "2026-11-06T23:04:41"
 changes:
   - date: "2026-11-18"
     note: "First briefing for this item: HRIS import into Viva Glint through Microsoft 365 Organizational Data Service, with its role, attribute access and staging controls."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 72 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-19"
+    note: "Corrected after the independent check: attribute access and staging paths now follow the documented CSV import example, Glint switch path completed, ingestion timing and manager hierarchy advice updated, notifications bullet removed."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 83 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
-  date: "2026-11-18"
-  version: 1
+  date: "2026-11-19"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
-  confirmed: 69
+  claims: 83
+  confirmed: 82
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "d09f53518a20e440c95d212d86369fd0"
+  contradicted: 1
+  attempts: 2
+  hash: "bcc363b1117b022b19a4467640825f4e"
 ---
 
 ## What's changing
 
 The roadmap item says customers will be able to use connectors to HRIS (human resources information system) tools to import HRIS data into Viva Glint from the Microsoft 365 admin center. Microsoft Learn documents this as importing employee data through Microsoft 365 Organizational Data Service, a central service for employee data that Microsoft 365 and Viva apps can then read.
 
-An administrator creates a connection under **Data connections**, chooses a connector, selects **Viva Glint** under **Choose apps & services**, maps attributes, chooses which attributes Viva Glint may receive, and then starts validation. Learn lists these import methods: Workday and SuccessFactors connectors, APIs, Azure Data Lake Storage (ADLS) and file-based imports, with CSV upload as the worked example. Imports can be incremental or full; for CSV the administrator chooses, and incremental is the default. Files up to 2 GB are supported, and Learn says ingestion can take from a few minutes to up to three hours.
+An administrator creates a connection under **Data connections**, chooses a connector, selects **Viva Glint** under **Choose apps & services**, maps attributes, chooses which attributes Viva Glint may receive, and then starts validation. Learn lists these import methods: Workday and SuccessFactors connectors, APIs, Azure Data Lake Storage (ADLS) and file-based imports, with CSV upload as the worked example. Imports can be incremental or full; for CSV the administrator chooses, and incremental is the default. Files up to 2 GB are supported. The Glint import page says overall ingestion can take a few minutes to three hours; the CSV service guide allows up to 24 hours for processing, or 72 hours for the first upload, and up to three days for profile-store availability.
 
 The Viva Glint side is on by default for new customers. Existing customers with employee data already in Viva Glint must complete a one-time onboarding that maps Organizational data attributes to Viva Glint attributes before Viva Glint can import from the service, and Learn says the feature is being released in phases, so the onboarding banner may not yet appear in a tenant.
 
@@ -135,7 +148,7 @@ The same service also feeds other apps, so the attribute access choices matter b
 **Change & support**
 - Learn says a schema change on the Workday or SuccessFactors connector triggers a full import; for other connectors, administrators must send all employees again after a schema update.
 - With several connectors configured, automatic full imports through Workday and SuccessFactors are turned off, and each connector can send to only one Viva Glint instance.
-- If the Viva Glint manager hierarchy derives from an attribute mapped to Microsoft_ManagerEmail, it mirrors the Profile hierarchy; do not map that attribute if you want them to differ.
+- If the Viva Glint manager hierarchy derives from an attribute mapped to Microsoft_ManagerEmail, it mirrors the Profile hierarchy. The consumption page instead names Microsoft_ManagerID in its advice for keeping the hierarchies distinct.
 
 ## Cost and licensing
 
@@ -155,7 +168,7 @@ Indirect costs are admin time and coordination between the Organizational Data S
 
 ### Before rollout
 - Assign the Organizational Data Source Administrator role to the named owner of employee data imports, and keep Global Administrator involvement to the assignment (controls table, role row).
-- Decide with the HRIS data owner which attributes Viva Glint needs, and mark each as shared or not before connector setup (controls table, attribute access row).
+- Decide with the HRIS data owner which attributes Viva Glint needs, and mark each as shared or not before connector setup (controls table, attribute access row). These choices govern application-specific and custom attributes; the service's applications guide says public global attributes are automatically available to Profile and downstream apps.
 - Complete the one-time onboarding in Viva Glint if employee data already exists there, then confirm the **Organizational data imports** setting reads Yes (controls table, Viva Glint setting row).
 - Choose a connector using the get-started page's guidance, and obtain security and data governance approval for any direct Workday or SAP SuccessFactors connection.
 
@@ -166,7 +179,6 @@ Indirect costs are admin time and coordination between the Organizational Data S
 
 ### After rollout
 - Review validation and import status on **Data connections** after each file, including the ingestion summary and advisories.
-- Set the Viva Glint email notifications for imports; Learn says up to 10 Viva Glint admins can receive them.
 - Re-check attribute access whenever the HRIS schema or the Viva Glint schema changes.
 
 ## Governance controls
@@ -176,16 +188,16 @@ Indirect costs are admin time and coordination between the Organizational Data S
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Viva Glint accepts imports from Organizational Data Service</strong><br><small>Tenant</small><br><small class="controls__note">Onboarding sets it to Yes. When No, uploads return the ORG_UPLOAD_SWITCHED_OFF advisory and Viva Glint does not appear as an endpoint in the admin center.</small></td><td data-label="Admin UI"><strong>Viva Glint</strong><br>General settings › Technical configuration › Organizational data imports <a href="https://learn.microsoft.com/viva/glint/setup/modis-data-consumption" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether Viva Glint accepts imports from Organizational Data Service</strong><br><small>Tenant</small><br><small class="controls__note">Onboarding sets it to Yes. When No, uploads return the ORG_UPLOAD_SWITCHED_OFF advisory and Viva Glint does not appear as an endpoint in the admin center.</small></td><td data-label="Admin UI"><strong>Viva Glint</strong><br>Configuration › Service Configuration › General Settings › Technical configuration › Organizational data imports <a href="https://learn.microsoft.com/viva/glint/setup/manage-general-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Who can create and manage employee data imports (Organizational Data Source Administrator role)</strong><br><small>Tenant</small><br><small class="controls__note">Select the Organizational Data Source Administrator role; the portal steps need at least Privileged Role Administrator. The request body sets roleDefinitionId and principalId.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Identity › Roles &amp; admins › role › Add assignments <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/roleManagement/directory/roleAssignments</code> <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which attributes a connection shares with Viva Glint</strong><br><small class="controls__note">Set per connection, separately for reserved and custom attributes. Selecting Viva Glint under Choose apps &amp; services comes earlier in the same wizard.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Viva › Data management › Microsoft 365 Organizational Data Service › Data connections › + New import › connector type › Choose attribute access <a href="https://learn.microsoft.com/viva/glint/setup/modis-data-import" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether uploaded data waits for approval before reaching Viva Glint</strong><br><small class="controls__note">When on, an Organizational Data Source Administrator must approve the upload before it flows to Viva Glint. Learn says staging is available for all connectors.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Viva › Data management › Microsoft 365 Organizational Data Service › Data connections › + New import › connector type › File upload, import method, and data staging › Data staging <a href="https://learn.microsoft.com/viva/glint/setup/modis-data-import" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which attributes a connection shares with Viva Glint</strong><br><small class="controls__note">Documented CSV example; set per connection, separately for reserved and custom attributes. These choices govern application-specific and custom attributes; public global attributes are automatically available to Profile and downstream apps.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Viva › Data management › Microsoft 365 Organizational Data Service › Data connections › + New import › CSV import › Choose apps &amp; services › Viva Glint › Choose attribute access <a href="https://learn.microsoft.com/viva/glint/setup/modis-data-import" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether uploaded data waits for approval before reaching Viva Glint</strong><br><small class="controls__note">Documented CSV example. When on, an Organizational Data Source Administrator must approve the upload before it flows to Viva Glint. Learn says staging is available for all connectors.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Viva › Data management › Microsoft 365 Organizational Data Service › Data connections › + New import › CSV import › Choose apps &amp; services › Viva Glint › File upload, import method, and data staging › Data staging <a href="https://learn.microsoft.com/viva/glint/setup/modis-data-import" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 Learn documents the Viva Glint switch, the role, attribute access and staging as interface steps. The role can also be assigned through the Microsoft Graph call in the table. At the time of writing (November 2026) Learn documents no API for the Viva Glint switch, attribute access or data staging.
 
-The attribute access and staging steps are screens inside the connection wizard, so the path ends at the page that holds them. Attribute access is configured per application and per attribute, so a choice made for Viva Glint does not change what other apps receive. Learn does not say the staging option is on by default; turn it on per connection.
+The attribute access and staging paths follow the documented CSV import example and end at the wizard page that holds each setting. Attribute access is configured per application and per attribute, so a choice made for Viva Glint does not change what other apps receive. Those choices govern application-specific and custom attributes; the service's applications guide says public global attributes are automatically available to Profile and downstream apps. Learn does not say the staging option is on by default; turn it on per connection.
 
 ## Open questions
 
@@ -200,15 +212,8 @@ cost: Low. The only cost the sources show is admin time and the Viva Glint licen
 impact: Low. The people who act are the Organizational Data Source Administrator, Viva Glint administrators and the HRIS data owner; the roadmap item describes an admin import path.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[2].ui; Governance controls table / admin-path: After entering the service through Settings > Viva > Data management, the attribute-access path goes from Data connections > + New import > connector type directly to Choose attribute access. | Found: Select a connector type. The following example uses CSV import. ... Choose apps & services ... Select the Viva Glint. | Fix: Replace controls[2].ui.path and its table path with "Settings > Viva > Data management > Microsoft 365 Organizational Data Service > Data connections > + New import > CSV import > Choose apps & services > Viva Glint > Choose attribute access". State in the note that this is the documented CSV example. The required destination choice cannot be omitted from the path; describing it only in the note does not supply the route. The Settings entry is supported by the already-cited get-started page, so the pre-check's missing Data management text is not itself an error. | Source: https://learn.microsoft.com/viva/glint/setup/modis-data-import
-- [contradicted, blocker] controls[3].ui; Governance controls table / admin-path: The staging route goes from connector type directly to File upload, import method, and data staging > Data staging. | Found: Select a connector type. The following example uses CSV import. ... Choose apps & services ... Select the Viva Glint. | Fix: Replace controls[3].ui.path and its table path with "Settings > Viva > Data management > Microsoft 365 Organizational Data Service > Data connections > + New import > CSV import > Choose apps & services > Viva Glint > File upload, import method, and data staging > Data staging". State in the note that this route is the documented CSV example. The mandatory destination choice is missing; the service entry through Data management is independently supported by the cited get-started page. | Source: https://learn.microsoft.com/viva/glint/setup/modis-data-import
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing / behaviour: Learn says overall ingestion takes a few minutes to up to three hours. | Found: Overall ingestion can take from a few minutes to up to three hours. | Fix: Replace the timing sentence with: "The Glint import page says overall ingestion can take a few minutes to three hours; the CSV service guide allows up to 24 hours for processing, or 72 hours for the first upload, and up to three days for profile-store availability." Cite https://learn.microsoft.com/microsoft-365-apps/org-data-service/import/import-orgdata, whose timing differs. | Source: https://learn.microsoft.com/viva/glint/setup/modis-data-import
-- [supported, minor] Risk assessment: Change & support / behaviour: A hierarchy derived from an attribute mapped to Microsoft_ManagerEmail mirrors Profile, so avoiding that mapping preserves a distinct hierarchy. | Found: If the Viva Glint manager hierarchy is derived from a Viva Glint attribute that's mapped to Microsoft_ManagerEmail, the Viva Glint manager hierarchy mirrors the Profile hierarchy. | Fix: Retain the observation about Microsoft_ManagerEmail but remove "do not map that attribute if you want them to differ." Append: "The consumption page instead names Microsoft_ManagerID in its advice for keeping the hierarchies distinct." Both source pages are already cited. | Source: https://learn.microsoft.com/viva/glint/setup/modis-data-import
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The Glint switch is at General settings > Technical configuration > Organizational data imports. | Found: You can enable or disable imports from Microsoft 365 Organizational Data Service at any time from General settings > Technical configuration. | Fix: Use "Configuration > Service Configuration > General Settings > Technical configuration > Organizational data imports" in controls[0].ui and the table. Cite https://learn.microsoft.com/viva/glint/setup/manage-general-settings, which gives the initial Configuration symbol and Service Configuration heading. The omitted symbol and heading are navigational omissions, not wrong printed steps. | Source: https://learn.microsoft.com/viva/glint/setup/modis-data-consumption
-- [supported, minor] controls[2].note; Governance controls; Governance guidance / behaviour: Attribute access is configured per connection, per destination and per attribute, separately for reserved and custom attributes. | Found: Attribute access is configured separately for reserved attributes and custom attributes. For each attribute, select the applications and services that should receive the attribute data. | Fix: Qualify the attribute-choice guidance and controls[2].note with: "These choices govern application-specific and custom attributes; the service's applications guide says public global attributes are automatically available to Profile and downstream apps." Cite https://learn.microsoft.com/microsoft-365-apps/org-data-service/distribute/applications, which distinguishes public global attributes from the configurable ones. | Source: https://learn.microsoft.com/viva/glint/setup/modis-data-import
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist tells administrators to configure import email notifications, but that control has no table row. | Found: Set the Viva Glint email notifications for imports; Learn says up to 10 Viva Glint admins can receive them. | The table covers the import switch, role assignment, attribute access and data staging, not notifications. | Fix: Remove the checklist bullet "Set the Viva Glint email notifications for imports; Learn says up to 10 Viva Glint admins can receive them." It is a configuration step without a controls-table row; do not add a new row as part of this correction.
+- [contradicted, blocker] Governance guidance: Before rollout, first bullet / role: Global Administrator involvement can be limited to assigning the Organizational Data Source Administrator role. | Found: The first time the connector is provisioned, a global admin must complete this step. | Fix: Remove ', and keep Global Administrator involvement to the assignment' from the first Before rollout bullet. Microsoft requires a Global Administrator for initial API-connector provisioning, as documented at https://learn.microsoft.com/microsoft-365-apps/org-data-service/import/import-org-data-api-set-up. | Source: https://learn.microsoft.com/microsoft-365-apps/org-data-service/import/import-org-data-api-set-up
 -->

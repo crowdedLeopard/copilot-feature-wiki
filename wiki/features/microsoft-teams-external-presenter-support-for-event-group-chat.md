@@ -4,12 +4,12 @@ slug: "microsoft-teams-external-presenter-support-for-event-group-chat"
 roadmapId: 573706
 topic: "modern-work"
 products: ["Microsoft Teams"]
-summary: "Microsoft plans to let presenters from other tenants join the event group chat in Teams events and structured meetings, now rolling out from late March 2027. Check your external access settings and brief organisers."
+summary: "Microsoft plans to let presenters from other tenants join the event group chat in Teams events and structured meetings, with rollout from late March 2027. Check external access settings and brief organisers."
 status: "in-development"
 releasePhase: ["General Availability","Targeted Release"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Android","Desktop","iOS","Mac"]
-targetDate: "December CY2026"
+targetDate: "March CY2027"
 previewDate: null
 risk: "medium"
 cost: "low"
@@ -53,7 +53,7 @@ sources:
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy"
     kind: "learn"
 videos: []
-related: []
+related: ["microsoft-teams-chat-for-organizers-and-presenters-in-structured-meetings-and-webinars-on","microsoft-teams-external-presenters-can-access-production-controls-for-teams-events"]
 controls:
   - governs: "Which external organisations your users can chat and meet with"
     scope: "tenant"
@@ -87,7 +87,7 @@ controls:
       kind: "powershell"
       call: "Set-CsTeamsEventsPolicy -Identity <policy name> -ExternalPresenterJoinVerification EOTP"
       docs: "https://learn.microsoft.com/microsoftteams/events-external-presenter-join-verification"
-    note: "The join-verification how-to documents this command; the Set-CsTeamsEventsPolicy reference does not yet list -ExternalPresenterJoinVerification and marks the policy as preview."
+    note: "The join-verification how-to documents this command; the Set-CsTeamsEventsPolicy reference marks the policy as preview."
   - governs: "Switch for external presenters in event group chat"
     scope: "tenant"
     ui: null
@@ -95,8 +95,8 @@ controls:
     note: "Learn's events planning page lists \"No control\" for admins over event group chat."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-18"
-roadmapModified: "2026-10-29T23:01:00"
+updated: "2026-11-19"
+roadmapModified: "2026-11-19T00:53:06"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this item, based on roadmap item 573706 and Message Center post MC1528011 as updated on 29 October 2026."
@@ -114,28 +114,32 @@ changes:
     note: "Corrected licensing to Teams events organiser licences (cost stays low), removed an unsupported external access policy caveat, and reworded the timeline-change statements; added a preview note on the events policy reference."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 63 statements confirmed"
-version: 5
+  - date: "2026-11-19"
+    note: "Roadmap target moved from December CY2026 to March CY2027, now matching the notice's late March 2027 rollout; removed a reference-page claim about a missing parameter."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 68 statements confirmed"
+version: 6
 verification:
   status: "verified"
-  date: "2026-11-18"
-  version: 5
+  date: "2026-11-19"
+  version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 63
+  claims: 68
+  confirmed: 68
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "858f2e101b40baae2629789f364ecd08"
+  hash: "7ab81e874226499d24cc53d3eca0d882"
 ---
 
 ## What's changing
 
-Microsoft is adding support for external presenters in event group chat, the private chat that organisers, co-organisers and presenters use to coordinate during an event or structured meeting. A presenter from outside the tenant that hosts the meeting or event will be able to take part in that chat. For events optimized for large audiences, Microsoft Learn describes the existing chat as available before, during and after an event, and separate from the chat with attendees.
+Microsoft is adding support for external presenters in event group chat, the private chat that organisers, co-organisers and presenters use to coordinate during an event or structured meeting. A presenter from outside the tenant that hosts the meeting or event will be able to take part in that chat. For events optimised for large audiences, Microsoft Learn describes the existing chat as available before, during and after an event, and separate from the chat with attendees.
 
-Microsoft's notice MC1528011 (published 27 October 2026, updated 18 November 2026) says the chat is used only in meetings or events that have the **Enable Green room** Teams meeting option turned on, and that external user collaboration must be enabled for external presenters to use it. Microsoft Learn does not yet describe this change itself, so what follows about its behaviour is the roadmap item's description and the notice's.
+Microsoft's notice MC1528011 (published 27 October 2026, updated 18 November 2026) says the chat is used in meetings or events that have the **Enable Green room** Teams meeting option turned on, and that external user collaboration must be enabled for external presenters to use it. Microsoft Learn does not yet describe this change itself, so what follows about its behaviour is the roadmap item's description and the notice's.
 
-The updated notice gives the General Availability (Worldwide) rollout as beginning in late March 2027 (previously early December 2026) and expected to complete by mid-April 2027 (previously early January). The roadmap item shows the status In development with a target of December CY2026, release phases General Availability and Targeted Release, and the platforms Android, Desktop, iOS and Mac. The two sources disagree on timing; the notice is the later and more specific statement. The notice sets no act-by date. Dates are Microsoft's targets.
+The updated notice gives the General Availability (Worldwide) rollout as beginning in late March 2027 (previously early December 2026) and expected to complete by mid-April 2027 (previously early January). The roadmap item shows the status In development with a target of March CY2027, release phases General Availability and Targeted Release, and the platforms Android, Desktop, iOS and Mac. Both fall in March 2027. The notice sets no act-by date. Dates are Microsoft's targets.
 
 The notice also states that external federated presenters will be able to read and post in the chat, including messages written before they joined if the thread shows history, and that the presenter's stored tenantId changes from the organiser's tenant to the presenter's own tenant.
 
@@ -143,7 +147,7 @@ The notice also states that external federated presenters will be able to read a
 
 This opens a new cross-tenant chat path between the hosting organisation and its external presenters, in a chat that organisers use for backstage coordination. The notice itself describes it as a new way of communicating between tenants and says both tenants must allow external access.
 
-If nobody acts, organisers who invite external presenters to green room events will probably start putting them in the group chat, and the chat may hold earlier internal messages. Decide before the late March 2027 start whether that is acceptable, and tell organisers what not to post in that chat.
+The notice says external presenters will be able to join the chat, and sets no admin switch for it, so expect organisers who invite external presenters to green room events to start putting them in the group chat, where earlier internal messages may be visible. Decide before the late March 2027 start whether that is acceptable, and tell organisers what not to post in that chat.
 
 ## Risk assessment
 
@@ -178,7 +182,7 @@ The cost that is known is indirect: administrator time to check external access 
 - **Prerequisites:** the **Enable Green room** Teams meeting option on the meeting or event, and external user collaboration enabled, per the notice. Microsoft Learn says the organisation setting and a user policy must both allow external access, and that both are turned on by default.
 - **Cloud:** Worldwide (Standard Multi-Tenant) on the roadmap record. Other clouds are not listed.
 - **Platforms:** Android, Desktop, iOS and Mac on the roadmap record.
-- **Rollout:** General Availability, beginning late March 2027 and expected to complete by mid-April 2027 per MC1528011; the roadmap target is December CY2026 and it also lists Targeted Release.
+- **Rollout:** General Availability, beginning late March 2027 and expected to complete by mid-April 2027 per MC1528011; the roadmap target is March CY2027 and it also lists Targeted Release.
 - **Default:** the notice names no admin switch for the feature. It states what will happen and asks administrators to confirm external collaboration only if they want external presenters to use the chat.
 
 ## Governance guidance
@@ -192,7 +196,7 @@ The cost that is known is indirect: administrator time to check external access 
 
 ### At rollout
 
-- Watch Message center for MC1528011 for further timeline changes; the date changed in the 18 November 2026 update.
+- Watch Message center for MC1528011 for further timeline changes; the dates changed in the 18 November 2026 update.
 - Run a test event with the green room enabled and one external presenter from a trusted tenant to confirm what that presenter can see.
 - Brief the helpdesk on the green room and external access prerequisites.
 
@@ -210,7 +214,7 @@ The cost that is known is indirect: administrator time to check external access 
 <tbody>
 <tr><td data-label="Control"><strong>Which external organisations your users can chat and meet with</strong><br><small>Tenant</small><br><small class="controls__note">Existing setting. MC1528011 names external user collaboration as a prerequisite and labels it External collaboration; Learn places the External access page inside that section.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Users › External access <a href="https://learn.microsoft.com/microsoftteams/manage-external-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTenantFederationConfiguration -AllowFederatedUsers $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-cstenantfederationconfiguration" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which users may chat and meet with people outside the organisation</strong><br><small>User</small><br><small class="controls__note">Existing policy; the default policy is Org-wide default settings. Learn says organisation settings can override it.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Users › External access › Policies › policy <a href="https://learn.microsoft.com/microsoftteams/manage-external-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsExternalAccessPolicy -EnableFederationAccess $true</code> <a href="https://learn.microsoft.com/microsoftteams/manage-external-access" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether external presenters must verify their identity before joining an event</strong><br><small>User</small><br><small class="controls__note">The join-verification how-to documents this command; the Set-CsTeamsEventsPolicy reference does not yet list -ExternalPresenterJoinVerification and marks the policy as preview.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Events policies › policy › Verify external presenters before joining an event <a href="https://learn.microsoft.com/microsoftteams/events-external-presenter-join-verification" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsEventsPolicy -Identity &lt;policy name&gt; -ExternalPresenterJoinVerification EOTP</code> <a href="https://learn.microsoft.com/microsoftteams/events-external-presenter-join-verification" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether external presenters must verify their identity before joining an event</strong><br><small>User</small><br><small class="controls__note">The join-verification how-to documents this command; the Set-CsTeamsEventsPolicy reference marks the policy as preview.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Events policies › policy › Verify external presenters before joining an event <a href="https://learn.microsoft.com/microsoftteams/events-external-presenter-join-verification" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsEventsPolicy -Identity &lt;policy name&gt; -ExternalPresenterJoinVerification EOTP</code> <a href="https://learn.microsoft.com/microsoftteams/events-external-presenter-join-verification" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Switch for external presenters in event group chat</strong><br><small>Tenant</small><br><small class="controls__note">Learn's events planning page lists &quot;No control&quot; for admins over event group chat.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -231,6 +235,6 @@ Learn's events planning page lists "No control" for admins over event group chat
 
 <!-- rationale
 risk: Medium. Federated external presenters will be able to read and post in the event group chat, including earlier messages if the thread shows history, and Learn lists no admin control for that chat itself.
-cost: Low. Teams events use the organiser's eligible Teams licence, and no licence, price or meter specific to this change is yet published; the only known added cost is admin time to check settings and brief organisers.
+cost: Low. Teams events use the organiser's eligible Teams licence, and no licence, price or meter specific to this change is yet published; the known added cost is admin time to check settings and brief organisers.
 impact: Medium. Organisers, co-organisers and presenters in Teams events and structured meetings with the green room enabled will notice; attendees do not use this chat.
 -->

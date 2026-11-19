@@ -53,26 +53,30 @@ controls:
     note: "Setting name: Allow the use of connected experiences in Office that analyze content. Turning it off removes Copilot in OneNote on Android. Broader than this feature. Office Apps Administrator recommended."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-19"
 roadmapModified: "2026-11-06T23:04:41"
 changes:
   - date: "2026-11-18"
     note: "New briefing for roadmap item 422323, covering the MC1309746 rollout update to the end of November 2026."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 48 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-19"
+    note: "Correction: removed the claim that Android activity-history storage is unstated and that no further prerequisites are published, and removed a checklist item with no matching control row."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 48 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
-  date: "2026-11-18"
-  version: 1
+  date: "2026-11-19"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 48
-  confirmed: 45
+  confirmed: 47
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "6fbc3d42b1a796b3b41d7c4894c4ed7a"
+  contradicted: 1
+  attempts: 2
+  hash: "92c4369accb1f516f163390e871b8aa9"
 ---
 
 ## What's changing
@@ -94,7 +98,7 @@ The notice's own compliance answers say the change alters how existing customer 
 **Data exposure**
 
 - The pane processes OneNote content the user already has access to, in order to write summaries and answer questions. Microsoft's notice says this follows existing Microsoft 365 Copilot data handling, permissions and security controls. Microsoft's Copilot privacy page says Copilot only surfaces organisational data to which the user has at least view permissions, so oversharing in shared notebooks becomes easier to surface through questions.
-- Microsoft's Copilot privacy page says that when users interact with Copilot in apps including OneNote, it stores the prompt and response as the user's Copilot activity history. Whether the Android pane does the same is not stated in the notice.
+- Microsoft's Copilot privacy page says that when users interact with Copilot in apps including OneNote, it stores the prompt and response as the user's Copilot activity history.
 
 **Security & identity**
 
@@ -122,13 +126,12 @@ The notice names no separate meter or charge for the pane, and the Copilot overv
 - **Clouds:** the roadmap record lists Worldwide (Standard Multi-Tenant).
 - **Platform:** Android only, per the roadmap record. Other platforms are not covered by this item.
 - **Release phase and timing:** General Availability. The roadmap target is November CY2026; the notice says rollout begins and is expected to complete at the end of November 2026.
-- **Prerequisites:** a Microsoft 365 Copilot (Premium) licence for each user. Microsoft has not published further prerequisites for this feature.
+- **Prerequisites:** a Microsoft 365 Copilot (Premium) licence for each user.
 
 ## Governance guidance
 
 ### Before rollout
 
-- Identify which users hold a Microsoft 365 Copilot (Premium) licence and use OneNote on Android, as only they will see the pane.
 - Confirm how your Cloud Policy setting for connected experiences that analyse content is configured today, because it governs Copilot features in OneNote on Android.
 - Review oversharing in shared notebooks and sections, because answers draw on content the asking user can open.
 - Brief helpdesk staff on the pane and the Summary feature, as the notice suggests.
@@ -163,7 +166,6 @@ Who sees the pane is also set by the Microsoft 365 Copilot (Premium) licence, as
 ## Open questions
 
 - Does a setting govern this pane separately from existing Copilot controls and the Cloud Policy connected-experiences setting? Watch the Microsoft Learn Copilot pages and MC1309746.
-- Are the prompts and responses in the Android pane stored as Copilot activity history, as Microsoft's privacy page describes for Copilot in OneNote generally?
 - Does a price or fair-use limit specific to this feature exist? Watch the Microsoft Copilot overview page.
 - Will the rollout finish by the end of November 2026, given that the notice already moved it from the end of October?
 
@@ -173,11 +175,8 @@ cost: Low. The notice ties the pane to the Microsoft 365 Copilot (Premium) licen
 impact: Medium. Only users with a Microsoft 365 Copilot (Premium) licence who use OneNote on Android will see the pane; Microsoft's notice says users without the licence are not impacted.
 -->
 
-<!-- verifier-findings (2026-11-18, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Open questions: Android activity history; Risk assessment: Data exposure / applicability: Whether prompts and responses in this Android Copilot pane are stored as Copilot activity history remains an open question. | Found: When a user interacts with Microsoft Copilot (using apps such as Word, PowerPoint, Excel, OneNote, Loop, or Whiteboard), we store data about these interactions. The stored data includes the user's prompt and Copilot's response | Fix: Remove the activity-history bullet from Open questions and remove 'Whether the Android pane does the same is not stated in the notice.' from Risk assessment. Keep the existing statement that Microsoft's Copilot privacy page documents prompt and response storage for Copilot in OneNote; that rule is not limited to another platform. | Source: https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy
-- [contradicted, blocker] Scope: Prerequisites / absence: Microsoft has not published prerequisites beyond the Premium licence for this feature. | Found: Users need a Microsoft Copilot license and a qualifying prerequisite license. ... Users must have a work or school account in Microsoft Entra ID. | Fix: Remove 'Microsoft has not published further prerequisites for this feature.' from Scope. Microsoft's general Copilot requirements publish prerequisite licensing and identity requirements; the absence of an Android-pane-specific page does not make those requirements unpublished. | Source: https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The governance checklist asks readers to take stock of licence-based access, but the controls table has no corresponding row. | Found: Identify which users hold a Microsoft 365 Copilot (Premium) licence and use OneNote on Android, as only they will see the pane. ... The table contains only the connected-experiences control. | Fix: Remove the first Before rollout checklist bullet, 'Identify which users hold a Microsoft 365 Copilot (Premium) licence and use OneNote on Android, as only they will see the pane.' It names a licensing control absent from the table; retain the verified licence requirement in Cost and licensing and Scope.
+- [contradicted, blocker] front matter: cost; rationale: cost / consistency: The cost is low because the sources show only license assignment and administrator/helpdesk time. | Found: cost: "low"; licensing.model: "add-on". The standard defines low as "indirect cost only: admin time, communications, training" and medium as "add-on licences for a subset of users, or predictable consumption". | Fix: Set cost to "medium" and replace the cost rationale with: "Medium. The pane requires the Microsoft 365 Copilot (Premium) add-on licence for Android users who should have access. The notice names no separate meter; licence assignment, helpdesk briefing and communication also take staff time."
 -->
