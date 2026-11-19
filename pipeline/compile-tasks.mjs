@@ -18,8 +18,8 @@
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { DATA_DIR, readJson, writeJson, slugify, today } from './lib/util.mjs';
-import { loadIndexSlugs, selectQueue, topicSplit, loadRawItem, loadExisting, researchBrief, existingSlugForRoadmapId } from './lib/briefing.mjs';
+import { DATA_DIR, readJson, writeJson, today } from './lib/util.mjs';
+import { loadIndexSlugs, selectQueue, topicSplit, loadRawItem, loadExisting, researchBrief, pageSlugs, slugForItem, siblingIndex, siblingsFor } from './lib/briefing.mjs';
 import { loadGlossary } from './lib/tags.mjs';
 import { CONCEPTS } from '../config/taxonomy.mjs';
 import { CONCEPT_STATE, selectConceptTasks, conceptBrief, conceptTaskId, liveBriefings, allConceptPages, loadExistingConcept } from './lib/concepts.mjs';
@@ -46,20 +46,27 @@ await fs.mkdir(TASK_DIR, { recursive: true });
 await fs.rm(path.join(DATA_DIR, 'compile-results.json'), { force: true });
 
 const tasks = [];
+// Every page's slug and roadmap id, and the items Microsoft lists more than once, read once for the run. `taken`
+// keeps two new items of one run apart (slugForItem).
+const pages = items.length ? await pageSlugs() : new Map();
+const twins = items.length ? await siblingIndex() : new Map();
+const taken = new Set();
 for (const q of items) {
   const item = await loadRawItem(q.id);
   if (!item) { console.warn(`no raw record for ${q.id}`); continue; }
-  const slug = q.slug || (await existingSlugForRoadmapId(item.id)) || slugify(item.title);
+  const slug = await slugForItem(item, { queued: q.slug, taken, pages });
+  taken.add(slug);
+  const siblings = await siblingsFor(item, { index: twins, pages });
   // A page parked after its corrections failed can be queued once more as a fresh draft (reason 'fresh-draft',
   // set by requeue-held.mjs): the writer gets the roadmap record and Microsoft's pages, not the held text, while
   // write-briefing.mjs keeps the slug, created date, version and change log and removes the held copy.
   const { existing } = q.reason === 'fresh-draft' ? { existing: null } : await loadExisting(slug);
   const posts = await postsForBrief(item.id);
   const briefFile = path.join(TASK_DIR, `${q.id}.md`);
-  await fs.writeFile(briefFile, researchBrief(item, existing, indexSlugs, glossary, posts, confirmed));
+  await fs.writeFile(briefFile, researchBrief(item, existing, indexSlugs, glossary, posts, confirmed, siblings));
   tasks.push({
     id: q.id, reason: q.reason, slug, title: item.title, status: item.status, topic: item.topic,
-    exists: Boolean(existing), messageCenter: posts.map((p) => p.id), brief: path.relative(process.cwd(), briefFile),
+    exists: Boolean(existing), siblings: siblings.map((s) => s.id), messageCenter: posts.map((p) => p.id), brief: path.relative(process.cwd(), briefFile),
     raw: path.relative(process.cwd(), path.join('raw', 'roadmap', 'items', `${q.id}.json`)),
     page: path.relative(process.cwd(), path.join('wiki', 'features', `${slug}.md`)),
   });

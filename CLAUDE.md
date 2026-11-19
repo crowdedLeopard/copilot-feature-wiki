@@ -31,6 +31,12 @@ daily by GitHub Actions.
   briefings, the home page and the digest show the same dates. There is no page per post and no general feed; all of
   it hides until the source is connected. Setup for the tenant owner: `docs/message-centre.md`.
 - `wiki/features/*.md` are the briefings. Front matter is validated by `pipeline/lib/schema.mjs` and `src/content.config.ts`.
+  One page per roadmap item, found by `roadmapId`, never by title: Microsoft lists a feature twice when it ships to the
+  worldwide and the US Government clouds, or under titles that differ only past the slug's 90 characters (92 such
+  groups on 19 Nov 2026, and three pages were rewritten every run as the two items overwrote each other).
+  `slugForItem` in `pipeline/lib/briefing.mjs` gives the second item its own slug (the cloud as suffix for a
+  government release, otherwise the roadmap id), `siblingsFor` puts the twin items' records in the brief, and
+  `titleForPage` adds the clouds to a government twin's title when the writer left them out.
 - `pipeline/` holds the daily jobs: `ingest` (roadmap), `compile` (LLM writes briefings), `lint`, `index`, `digest`, `pdf`.
   Curation runs chain: `chain-next.mjs` records the run's AI credits in `data/spend.json` and, while the day stays under
   `COMPILE_DAILY_CREDITS` (15,000) and the run wrote something, the workflow starts the next run at once (`COMPILE_CHAIN=off`
