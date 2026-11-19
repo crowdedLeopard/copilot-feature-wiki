@@ -1,0 +1,934 @@
+{
+  "slug": "dynamics-365-finance-business-performance-mcp-for-erp-analytics",
+  "roadmapId": 576762,
+  "title": "Dynamics 365 Finance: ERP Analytics MCP gives agents access to Business performance analytics data",
+  "status": "held",
+  "date": "2026-11-19",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-19",
+    "reasons": [
+      "4 blocking findings (claims 46, 47, 48, 53)"
+    ]
+  },
+  "counts": {
+    "claims": 73,
+    "confirmed": 68,
+    "unconfirmed": 0,
+    "contradicted": 5,
+    "blocker": 4,
+    "major": 0,
+    "minor": 5
+  },
+  "summary": "Hold: the briefing calls the default unstated even though the roadmap says it is enabled automatically for admins, makers and marketers. It also understates potential agent consumption costs and omits licence-based exceptions from the separate ERP MCP server's billing description. The analytics capabilities, prerequisites and BPA security paths are documented.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Governance guidance",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap targets December CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is January CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"January CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Worldwide (Standard Multi-Tenant), with no other cloud listed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The record associates the item with Microsoft Copilot (Microsoft 365) and Dynamics 365 Finance.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Finance\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-16T19:08:46.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-16T19:08:46\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The planned server gives agents structured access to ERP analytics data.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "MCP for Analytics provides AI agents with structured access to ERP analytics data and tools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes access to key metrics, dimensions and relationships.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Provides access to key metrics, dimensions, and relationships used in reporting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes exposing the full semantic model.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Exposes the full semantic model to support consistent interpretation of data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap mentions tools such as Power BI and Business Performance Analytics.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enables agents to connect with tools like Power BI and Business Performance Analytics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap's Enabled for line says Enabled for admins/makers/marketers automatically.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enabled for admins/makers/marketers automatically",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Model Context Protocol is an open standard connecting AI agents to data systems.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-overview",
+      "quote": "The Model Context Protocol (MCP) is an open standard that connects AI agents to various data systems to enhance the relevance of agent responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "The documented ERP Analytics MCP server lets agents access and analyse BPA data through natural language.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-overview",
+      "quote": "The Dynamics 365 ERP Analytics MCP server enables AI agents to access and analyze Business performance analytics data through natural language",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "summary; What's changing; Risk assessment; Governance guidance",
+      "type": "availability",
+      "claim": "Learn documents the server as a public preview, unlike the roadmap's In development status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-faq",
+      "quote": "The ERP Analytics MCP server is currently in public preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn says preview features are not meant for production use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-overview",
+      "quote": "Preview features aren't meant for production use and might have restricted functionality.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "One of the two documented tools retrieves BPA schema including tables, columns, measures and relationships.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-overview",
+      "quote": "get-bpa-dataset-schema | Retrieves the schema of dimensional models, including tables, columns, measures, and relationships from your Business performance analytics environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "The other documented tool executes DAX queries against BPA data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-overview",
+      "quote": "execute-dax-query | Executes DAX (Data Analysis Expressions) queries against your Business performance analytics data with automatic row-level security enforcement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "Data is returned as JSON for the agent to analyse and present.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-overview",
+      "quote": "Data is returned as JSON that agents can analyze and present.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap's more-info link points to the Dynamics 365 ERP MCP agent-building page.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"moreInfoLink\": \"https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/copilot/build-agent-mcp\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The more-info page describes an ERP MCP server for data operations and business logic rather than the two-tool analytics server.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/build-agent-mcp",
+      "quote": "The Dynamics 365 ERP MCP server provides a dynamic framework for agents to perform data operations and access the business logic of finance and operations apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Why it matters; Scope; rationale: risk",
+      "type": "behaviour",
+      "claim": "BPA analytics coverage includes Record-to-Report financial data, P&L and budgets.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-technical-details",
+      "quote": "Record-to-Report - Financial data, P&L, budgets.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Why it matters; Scope; rationale: risk",
+      "type": "behaviour",
+      "claim": "BPA analytics coverage includes Procure-to-Pay purchase orders and vendor information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-technical-details",
+      "quote": "Procure-to-Pay - Purchase orders, vendor management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters; Scope",
+      "type": "behaviour",
+      "claim": "BPA analytics coverage includes Order-to-Cash sales orders and receivables.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-technical-details",
+      "quote": "Order-to-Cash - Sales orders, invoicing, receivables.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters; Risk assessment; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "The authenticated user's BPA and finance and operations permissions gate access through the analytics server.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-faq",
+      "quote": "Yes, access is controlled through Business performance analytics user roles and Dynamics 365 finance and operations security roles. Users must have appropriate permissions in both systems to access data through the MCP server.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[2].note; Risk assessment",
+      "type": "applicability",
+      "claim": "The analytics server enforces row-level security based on the authenticated user's roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-faq",
+      "quote": "The MCP server enforces row-level security (RLS) based on the authenticated user's roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[2].governs; Why it matters; Risk assessment",
+      "type": "applicability",
+      "claim": "BPA dimension security also bounds the data agents can retrieve.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-technical-details",
+      "quote": "The MCP server respects all security configurations defined in your Business performance analytics environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[2].note; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Values in an unsecured dimension are accessible to all BPA users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/set-up-security",
+      "quote": "If you don't secure a dimension, all users can access the values in that dimension.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "The documented query timeout is 120 seconds.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-technical-details",
+      "quote": "Query timeout - 120 seconds maximum execution time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "The documented data return limit is approximately 10MB per query.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-technical-details",
+      "quote": "Data return limit - Approximately 10MB per query.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Learn recommends Claude Sonnet 4.5 for agents using the analytics server.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-copilot-studio",
+      "quote": "The recommended model for agents using the Dynamics 365 ERP Analytics MCP server is Claude Sonnet 4.5.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment",
+      "type": "behaviour",
+      "claim": "Learn describes Claude models as external and not hosted in Azure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-copilot-studio",
+      "quote": "Claude models are external models not hosted in Azure.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment; Governance guidance",
+      "type": "role",
+      "claim": "Tenant administrators must approve Claude models for tenant use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-copilot-studio",
+      "quote": "Tenant administrators must approve them for use on the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment; Scope",
+      "type": "role",
+      "claim": "The Basic user role in finance and operations is a prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-technical-details",
+      "quote": "Basic user role in Dynamics 365 finance and operations environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment; Scope; rationale: impact",
+      "type": "role",
+      "claim": "The BPA user role is a prerequisite for analytical data access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-technical-details",
+      "quote": "Business performance analytics user role for accessing analytical data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment",
+      "type": "default",
+      "claim": "BPA data access is disabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/set-up-security",
+      "quote": "In Business performance analytics, data access is disabled by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment",
+      "type": "availability",
+      "claim": "Microsoft authentication clients are currently required and direct non-Microsoft client access might not work in preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-technical-details",
+      "quote": "Currently requires Microsoft authentication clients only. Direct access from non-Microsoft clients might not work during the preview period.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Agents can combine analytics with the other ERP MCP server to trigger finance and operations actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-overview",
+      "quote": "Insights to action - Explore Business performance analytics data to identify issues, then trigger Dynamics 365 finance and operations actions through the Dynamics 365 ERP MCP server.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "The separate Dynamics 365 ERP MCP server has tools that create, update and delete records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/copilot-mcp",
+      "quote": "Data tools: These tools enable the agent to perform standard data operations to create, read, update, and delete data in your finance and operations apps environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "BPA data refreshes twice daily rather than tracking live transactions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-technical-details",
+      "quote": "Business performance analytics data refreshes twice daily (12-hour intervals).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "BPA is included as part of the Dynamics 365 Finance licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/business-performance-analytics-home-page",
+      "quote": "Business performance analytics is an innovative reporting tool that's included as part of the Dynamics 365 Finance license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Building the agent in Copilot Studio requires a licence and permissions to create agents there.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-copilot-studio",
+      "quote": "Microsoft Copilot Studio access: License and permissions to create agents",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is mixed, combining licensed BPA access with agent-platform requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "Copilot Credits are the unit that measures agent usage. You calculate the total cost based on the sum of the Copilot Credits your organization uses.",
+      "severity": "minor",
+      "fix": "Keep mixed, and cite https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management. Add to licensing.notes: 'Copilot Studio agent usage can consume Copilot Credits; qualifying authenticated employee-facing use by Microsoft 365 Copilot licensed users is included.'"
+    },
+    {
+      "n": 45,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "No licence, meter or price specific to the ERP Analytics MCP server is published in the documentation checked.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"ERP Analytics MCP\" license licensing pricing credits meter. Read Analytics overview, technical details, FAQ, Copilot Studio guide, BPA overview and separate ERP MCP licensing; no Analytics-specific server rate found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "front matter: cost; rationale: cost; Cost and licensing",
+      "type": "cost",
+      "claim": "The known cost is low, meaning indirect admin time only, because no server-specific meter is published.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "Copilot Credits are the unit that measures agent usage. You calculate the total cost based on the sum of the Copilot Credits your organization uses.",
+      "severity": "blocker",
+      "fix": "Set cost to variable. Replace the cost rationale with 'Variable. Copilot Studio agents can consume Copilot Credits, although qualifying authenticated employee-facing usage by Microsoft 365 Copilot licensed users is included. No Analytics MCP server-specific execution rate is published.' Cite https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management and add the same distinction to Cost and licensing; retain the narrower absence of an Analytics-specific server meter."
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Using the separate Dynamics 365 ERP MCP server in Copilot Studio incurs the Copilot Studio rate.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/copilot-mcp",
+      "quote": "Business to Employee usage of Copilot Studio agents is included in the Copilot USL when the user of that agent is licensed with Copilot and the agent operates by using the authenticated Copilot USL user's identity.",
+      "severity": "blocker",
+      "fix": "Qualify the separate-server sentence: 'For the separate Dynamics 365 ERP MCP server, Copilot Studio ordinarily bills at its Agent Action rate, but authenticated Business-to-Employee usage by a Copilot USL licensed user is included and does not incur additional tool-call credit consumption.' Keep this explicitly separate from Analytics MCP server execution pricing."
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The separate Dynamics 365 ERP MCP server costs 0.1 Copilot Credits per tool call on other clients.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/copilot-mcp",
+      "quote": "The following premium licenses are exempt from the tool execution billing for agents built on clients other than Copilot Studio.",
+      "severity": "blocker",
+      "fix": "Replace that rate clause with 'On other clients, the separate Dynamics 365 ERP MCP server charges 0.1 Copilot Credits per tool call for standard user licences; Dynamics 365 Finance Premium and Dynamics 365 Supply Chain Management Premium are exempt from that execution charge.'"
+    },
+    {
+      "n": 49,
+      "where": "Scope; Governance guidance",
+      "type": "availability",
+      "claim": "Finance and operations version 10.0.38 or higher is required.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-technical-details",
+      "quote": "Dynamics 365 finance and operations - Version 10.0.38 or higher required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope; Governance guidance",
+      "type": "availability",
+      "claim": "BPA version 2.4.3224 or higher is required.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-technical-details",
+      "quote": "Business performance analytics - Version 2.4.3224 or higher required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The agent platform must support MCP connections.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-technical-details",
+      "quote": "Agent platform - The agent platform on which you're building your agent must support MCP connections.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Copilot Studio and Visual Studio Code with GitHub Copilot are supported clients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-faq",
+      "quote": "You can use the ERP Analytics MCP server in both Visual Studio Code with GitHub Copilot and Microsoft Copilot Studio.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: defaultState; summary; Why it matters; Scope; Open questions",
+      "type": "default",
+      "claim": "The default state is unknown because no source states what happens on arrival.",
+      "status": "contradicted",
+      "source": "roadmap record",
+      "quote": "Enabled for admins/makers/marketers automatically",
+      "severity": "blocker",
+      "fix": "Set defaultState to on under the schema's automatic-enablement definition. Replace 'no source states the default', 'Microsoft has not stated what happens on arrival' and 'the default state [is] not stated' with 'The roadmap says enabled for admins/makers/marketers automatically; Learn separately requires BPA installation, permissions and an agent connection.' Narrow the default open question to 'How does roadmap automatic enablement relate to the documented preview prerequisites?' Do not equate automatic availability with automatically querying data."
+    },
+    {
+      "n": 54,
+      "where": "controls[0].ui; controls[0].api; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "No dedicated Analytics MCP server on/off UI or automation operation is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"ERP Analytics MCP\" enable disable default \"Allowed\"; \"ERP Analytics MCP\" rollout existing behavior enable disable API PowerShell. Read Analytics overview, technical details, FAQ, Studio guide, ERP MCP security and Agent 365 management; no dedicated Analytics switch steps found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Copilot Studio troubleshooting says to check that the Analytics MCP server is enabled but gives no enabling procedure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-copilot-studio",
+      "quote": "Check that the ERP Analytics MCP server is enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Business performance analytics > Administration > Set up user is the UI entry point for assigning users' access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/set-up-security",
+      "quote": "In Business performance analytics, on the Administration or Users page, select Set up user.",
+      "severity": "minor",
+      "fix": "Keep the documented entry path and clarify its early endpoint in the row note: 'This opens user setup: search for the user, select Next, then assign at least one role and one dimension group.' The omitted search and Next steps are procedural, not contradictory navigation."
+    },
+    {
+      "n": 57,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "No API or command for BPA user access setup is documented in the references found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Business performance analytics\" users roles dimension groups API PowerShell automation; \"Business performance analytics\" \"users\" \"PowerShell\". Read set-up-security and access-bpa search excerpts; found app steps, no BPA access-setup command or endpoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[1].note",
+      "type": "role",
+      "claim": "Assign at least one role and one dimension group per BPA user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/set-up-security",
+      "quote": "Assign at least one role and one dimension group to the user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "The first user who signs in to BPA gets the BPA admin role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/set-up-security",
+      "quote": "The first user who signs in to the app is assigned the BPA admin role. This role grants the user access to the Administrator section of Business performance analytics, where they can set up security.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Business performance analytics > Administration > Set up dimension groups leads to dimension filtering setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/set-up-security",
+      "quote": "In Business performance analytics, on the Administration page, select Set up dimension groups. Alternatively, on the Dimension groups page, select New.",
+      "severity": "minor",
+      "fix": "Extend the path to 'Administration > Set up dimension groups > Select specific values'. Add to the existing note: 'Secure dimensions first; enter a group name and select Next before choosing specific values.' These are the remaining documented steps to the filter control, not a different route."
+    },
+    {
+      "n": 61,
+      "where": "controls[2].api",
+      "type": "absence",
+      "claim": "No API or command for BPA dimension group setup is documented in the references found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Business performance analytics\" users roles dimension groups API PowerShell automation; \"Business performance analytics\" \"dimension groups\" \"API\". Read set-up-security; results document UI setup, not an automation operation for BPA dimension security.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft advises testing security with users who have different BPA permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-copilot-studio",
+      "quote": "Validate security: Test with users having different Business performance analytics permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The cited Allowed MCP clients and registry block documentation does not establish that either governs the Analytics MCP server.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"ERP Analytics MCP\" enable disable default \"Allowed\". Read ERP MCP mcp-security and Agent 365 manage-plugins-skills-mcp-servers: the former names ERP MCP; the latter warns not to assume policies apply across all products. Neither identifies Analytics MCP coverage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance guidance: Before rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist's dimension-securing and external-model approval controls have no corresponding controls-table rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'secure the dimensions that matter' and 'whether Claude models are approved for the tenant'. Table: dedicated server switch, user setup and dimension group setup only.",
+      "severity": "minor",
+      "fix": "Do not add rows. Remove the instruction 'and secure the dimensions that matter' from the checklist, and replace the Claude approval checklist bullet with 'Account for the documented external-model approval prerequisite when assessing the pilot.' Keep the factual approval and unsecured-dimension explanations in Risk assessment."
+    },
+    {
+      "n": 65,
+      "where": "rationale: cost",
+      "type": "licensing",
+      "claim": "Copilot Studio access is the stated agent-building prerequisite in the Copilot Studio guide.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-copilot-studio",
+      "quote": "Microsoft Copilot Studio access: License and permissions to create agents. For complete environment and system prerequisites, see ERP Analytics MCP Technical Details.",
+      "severity": "minor",
+      "fix": "Remove 'the only stated prerequisite for building an agent is Copilot Studio access' from the rationale. If retaining a prerequisite clause, use 'Building in Copilot Studio additionally requires its licence and agent-creation permissions'; the guide also refers readers to the environment prerequisites."
+    },
+    {
+      "n": 66,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Allowed MCP clients configuration is documented for the separate Dynamics 365 ERP MCP server.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/mcp/mcp-security",
+      "quote": "When you enable the Dynamics 365 ERP MCP server in your environment, choose which agent platforms can access the server.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Microsoft 365 admin center can block an MCP server selected in its registry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Select Block to restrict the server across your organization, or Unblock to restore access to a previously blocked server.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Open questions",
+      "type": "behaviour",
+      "claim": "Learn advises tracking which data sources and measures agents access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-technical-details",
+      "quote": "Monitor data access patterns - Track which data sources and measures are being accessed through the MCP server.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "The Analytics MCP documentation names no log or report for monitoring these data reads.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"ERP Analytics MCP\" monitor audit log report. Read Analytics overview, technical details and FAQ; technical details advises tracking access without naming a log or report. Search results for other products do not establish Analytics MCP audit coverage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Why it matters; Scope",
+      "type": "absence",
+      "claim": "Detailed rollout mechanics and a change to existing behaviour are not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"ERP Analytics MCP\" rollout existing behavior enable disable API PowerShell. Read roadmap, Analytics overview, technical details, FAQ and Studio guide. Automatic availability is in the roadmap, but no rollout sequence or replacement of existing behaviour is specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "The Analytics server's data coverage follows what is available in the customer's BPA environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-technical-details",
+      "quote": "The MCP server exposes what's available in your Business performance analytics environment. If certain data areas aren't covered by Business performance analytics, they won't be accessible through the MCP server.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The Analytics MCP-specific pages checked do not themselves describe agent usage charges.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"ERP Analytics MCP\" license licensing pricing credits meter. Read Analytics overview, technical details, FAQ and Studio guide: none gives agent usage rates. This narrow absence does not negate the general Copilot Studio billing documentation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "The BPA admin role grants access to the Administrator section for setting up security.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/set-up-security",
+      "quote": "This role grants the user access to the Administrator section of Business performance analytics, where they can set up security.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-19T22:10:35.119Z",
+    "summary": {
+      "links": 11,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=576762",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-technical-details",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-faq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/erp-analytics-mcp-copilot-studio",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/business-performance-analytics-home-page",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/set-up-security",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/build-agent-mcp",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/copilot-mcp",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/mcp/mcp-security",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which users can access BPA data, and so what an agent can query",
+        "docs": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/set-up-security",
+        "reachable": true,
+        "segments": [
+          "Administration",
+          "Set up user"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which data values each BPA user, and so each agent acting for them, can see",
+        "docs": "https://learn.microsoft.com/dynamics365/finance/business-performance-analytics/set-up-security",
+        "reachable": true,
+        "segments": [
+          "Administration",
+          "Set up dimension groups"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

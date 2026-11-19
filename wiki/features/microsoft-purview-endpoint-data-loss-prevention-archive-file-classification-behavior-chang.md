@@ -66,19 +66,23 @@ changes:
     note: "First briefing: Endpoint DLP on Windows will classify archives as one object and report only the outer archive file."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 47 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-19"
+    note: "Corrected after verification: the affected audience is now limited to organisations with archive file classification enabled, and three checklist items match Microsoft's notice."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 52 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-19"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 45
+  claims: 52
+  confirmed: 52
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "fe5ff92accf8cf00fcd5650e97bcc16f"
+  contradicted: 0
+  attempts: 0
+  hash: "fb2c5d6776a1ab72cb0312c01555486e"
 ---
 
 ## What's changing
@@ -91,7 +95,7 @@ The roadmap item (ID 570965) has status In development, with a preview target of
 
 ## Why it matters
 
-The change reaches every organisation that uses Endpoint DLP on Windows without anyone choosing it, and it alters what analysts see rather than what policies decide. Anything that relies on one event per file inside an archive, such as saved Activity explorer views, SIEM queries, alert thresholds or incident write-ups, will now see a single event for the outer archive.
+The change reaches organisations using Endpoint DLP on Windows with archive file classification enabled without anyone choosing the update, and it alters what analysts see rather than what policies decide. Anything that relies on one event per file inside an archive, such as saved Activity explorer views, SIEM queries, alert thresholds or incident write-ups, will now see a single event for the outer archive.
 
 If nobody acts, the policies keep evaluating archive content as before according to Microsoft's notice, but your monitoring and audit evidence will describe archives differently from older records. Brief your compliance and security teams before the new behaviour appears in their reports, and keep a note of the cut-over so that before-and-after event counts are not misread as a change in user behaviour.
 
@@ -133,8 +137,8 @@ The cost the sources show is indirect: admin time to update documentation, saved
 
 ### Before rollout
 
-- Identify saved Activity explorer views, SIEM queries and alert rules that count or match Endpoint DLP events for files inside .zip or .rar archives, and list which reports depend on them.
-- Update internal documentation that describes archive file classification, as MC1474107 recommends.
+- Identify reports that depend on separate classification events for files inside .zip or .rar archives.
+- Review internal documentation that describes archive file classification, as MC1474107 recommends.
 - Tell compliance and security teams that Endpoint DLP reporting will show events for the outer archive file instead of the individual files within it.
 
 ### At rollout
@@ -145,7 +149,7 @@ The cost the sources show is indirect: admin time to update documentation, saved
 ### After rollout
 
 - Revise the monitoring procedures that referred to individual events for files contained within archives, as the notice recommends.
-- Reset any alert thresholds or reports that now show a lower event count for archive activity, and note the reason in your change log.
+- Document any reduction in archive event counts in your change log.
 
 ## Governance controls
 
@@ -172,13 +176,4 @@ Activity explorer, the other place analysts read endpoint events, takes its data
 risk: Low. Microsoft's notice says policy evaluation of content inside archives is unchanged; what changes is that events name the outer archive instead of the files inside it.
 cost: Low. The only cost the sources show is admin time to update monitoring procedures and brief compliance teams; Endpoint DLP itself is listed as included in Microsoft 365 E5 and the other plans on the service description.
 impact: Medium. Security and compliance analysts who read Endpoint DLP events will see one event for the outer archive where they may have seen events for files inside it; end users are asked to do nothing.
--->
-
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters: first sentence / record: The change reaches every organisation that uses Endpoint DLP on Windows. | Found: Who is affected - Organizations using Microsoft Purview Endpoint DLP on Windows endpoints with archive file classification enabled | Fix: Replace the first sentence with: 'The change reaches organisations using Endpoint DLP on Windows with archive file classification enabled without anyone choosing the update, and it alters what analysts see rather than what policies decide.' This preserves the qualification in MC1474107 and the Scope section.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance guidance: Before rollout / record: MC1474107 recommends updating internal documentation describing archive classification. | Found: Review internal documentation that describes archive file classification behavior. | Fix: Replace 'Update internal documentation that describes archive file classification, as MC1474107 recommends' with 'Review internal documentation that describes archive file classification, as MC1474107 recommends.' The notice recommends reviewing it, not explicitly updating it.
-- [contradicted, minor] Governance guidance: Before rollout and After rollout; controls / consistency: The checklist's instructions to inventory saved Activity explorer views and alert rules and reset alert thresholds are represented in the controls table. | Found: Identify saved Activity explorer views, SIEM queries and alert rules; Reset any alert thresholds or reports. The sole controls row is Search of Endpoint DLP audit records before and after the change. | Fix: The checklist's saved Activity explorer views and alert-rule/threshold instructions have no controls rows. Without adding rows, replace the first Before rollout bullet with 'Identify reports that depend on separate classification events for files inside .zip or .rar archives.' Replace the last After rollout bullet with 'Document any reduction in archive event counts in your change log.'
 -->

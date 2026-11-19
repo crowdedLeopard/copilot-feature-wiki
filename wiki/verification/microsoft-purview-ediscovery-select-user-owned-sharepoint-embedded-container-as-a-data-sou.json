@@ -1,0 +1,791 @@
+{
+  "slug": "microsoft-purview-ediscovery-select-user-owned-sharepoint-embedded-container-as-a-data-sou",
+  "roadmapId": 569364,
+  "title": "Microsoft Purview eDiscovery: select user-owned SharePoint Embedded containers as a data source",
+  "status": "verified-with-gaps",
+  "date": "2026-11-19",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 62,
+    "confirmed": 61,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "The briefing is supported by the roadmap, Microsoft's tenant notice and the cited documentation, including the disagreement about tenant-owned containers. Minor corrections should finish the role-assignment path, expand the container-lookup directions and correct a source attribution; the checklist also mentions a control absent from its table.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap general availability target is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview target is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "Scope: Where",
+      "type": "record",
+      "claim": "The roadmap record lists no US Government clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The record fetched on 13 November 2026 still showed In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\"; \"fetchedAt\": \"2026-11-13T21:57:28.424Z\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-08-17T22:52:47.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-08-17T22:52:47\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans to let eDiscovery users view and select SharePoint Embedded containers owned or created by a selected person.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "eDiscovery users will be able to view and select SharePoint Embedded content containers owned or created by a selected person.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "These containers store content from apps such as Microsoft Loop, Copilot Pages and Copilot Notebooks.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "These containers store content from apps such as Microsoft Loop, Copilot Pages, and Copilot Notebooks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "MC1470884 describes the option when adding a person as a data source in a case, search or hold.",
+      "status": "supported",
+      "source": "Message Center post MC1470884",
+      "quote": "Microsoft Purview eDiscovery will support selecting user-owned SharePoint Embedded (SPE) containers when adding a person as a data source in an eDiscovery case, search, or hold.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Scope; Governance guidance; Open questions",
+      "type": "record",
+      "claim": "MC1470884 says only containers owned by the selected user will be displayed.",
+      "status": "supported",
+      "source": "Message Center post MC1470884",
+      "quote": "Only containers owned by the selected user will be displayed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "MC1470884 excludes app-owned containers from this release.",
+      "status": "supported",
+      "source": "Message Center post MC1470884",
+      "quote": "App-owned SharePoint Embedded containers are not included in this release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The update grants no additional eDiscovery permissions and remains subject to existing permissions and access controls.",
+      "status": "supported",
+      "source": "Message Center post MC1470884",
+      "quote": "This update does not grant additional permissions to eDiscovery users. ... subject to existing permissions and access controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "type": "record",
+      "claim": "Existing cases, searches and holds will not be modified automatically.",
+      "status": "supported",
+      "source": "Message Center post MC1470884",
+      "quote": "Existing eDiscovery cases, searches, and holds will not be modified automatically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "MC1470884 targets public preview beginning mid-September 2026 and completing in late September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1470884",
+      "quote": "Public Preview: Beginning in mid-September 2026 and expected to complete by late September 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "MC1470884 targets worldwide general availability beginning mid-October 2026 and completing in late October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1470884",
+      "quote": "General Availability (Worldwide): Beginning in mid-October 2026 and expected to complete by late October 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "summary; Why it matters; controls[1].note",
+      "type": "record",
+      "claim": "Microsoft says no administrative action is required before rollout.",
+      "status": "supported",
+      "source": "Message Center post MC1470884",
+      "quote": "No administrative action is required before rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Scope: Who; rationale: impact",
+      "type": "record",
+      "claim": "The affected audience is eDiscovery users and compliance and legal teams managing investigations.",
+      "status": "supported",
+      "source": "Message Center post MC1470884",
+      "quote": "Microsoft Purview eDiscovery users- Compliance teams and legal teams managing eDiscovery investigations",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Scope: Where",
+      "type": "availability",
+      "claim": "Microsoft Purview portal is the surface for the change.",
+      "status": "supported",
+      "source": "Message Center post MC1470884",
+      "quote": "Platforms and services ... Microsoft Purview eDiscovery- Microsoft Purview portal- SharePoint Embedded",
+      "severity": "minor",
+      "fix": "Replace the first Where sentence with: 'The roadmap record lists Worldwide (Standard Multi-Tenant) and the Web platform, with Preview and General Availability phases. MC1470884 identifies Microsoft Purview portal as the surface.' The portal is in the notice, not the roadmap record."
+    },
+    {
+      "n": 22,
+      "where": "Cost and licensing; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft recommends updating internal eDiscovery documentation and procedures.",
+      "status": "supported",
+      "source": "Message Center post MC1470884",
+      "quote": "Update internal eDiscovery documentation and procedures as appropriate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Governance guidance: After rollout",
+      "type": "record",
+      "claim": "Microsoft recommends informing compliance, legal and investigation teams.",
+      "status": "supported",
+      "source": "Message Center post MC1470884",
+      "quote": "Inform compliance, legal, and investigation teams about the availability of this new data source selection option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Cost and licensing; Governance guidance: After rollout; rationale: cost",
+      "type": "record",
+      "claim": "Microsoft recommends updating practitioner training materials where applicable.",
+      "status": "supported",
+      "source": "Message Center post MC1470884",
+      "quote": "Update training materials for eDiscovery practitioners if applicable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft recommends reviewing how the supported applications store content in SharePoint Embedded.",
+      "status": "supported",
+      "source": "Message Center post MC1470884",
+      "quote": "Review SharePoint Embedded documentation to understand how applications such as Microsoft Loop, Copilot Pages, Copilot Notebooks, and other supported applications may store content in SharePoint Embedded containers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Risk assessment: Change & support; Open questions; changes[0]",
+      "type": "behaviour",
+      "claim": "Learn already documents the capability as preview and says it might change before general availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-data-sources",
+      "quote": "SharePoint Embedded container support in eDiscovery (preview) might change before general availability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Scope; Governance guidance; Open questions",
+      "type": "behaviour",
+      "claim": "Learn says adding a user surfaces supported user-owned and tenant-owned containers relevant to that user alongside their other data locations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-data-sources",
+      "quote": "Add a user as a data source to display supported user-owned and tenant-owned SharePoint Embedded containers relevant to that user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Users can select or clear individual supported containers before saving the data source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-data-sources",
+      "quote": "You can select or clear individual containers before saving the data source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "admin-path",
+      "claim": "Filter by app narrows containers to a supported application.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-data-sources",
+      "quote": "When reviewing containers for a selected user, use Filter by app to narrow the displayed containers to a specific supported application.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Why it matters; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "A supported container can be added as a site data source using its URL.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-data-sources",
+      "quote": "If you know the SharePoint Embedded container URL, enter it when adding a site location. eDiscovery resolves the container URL so you can select the container as a data source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Supported container URLs can be included in a bulk data-source import.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-data-sources",
+      "quote": "Include supported SharePoint Embedded container URLs when you bulk import data sources. eDiscovery resolves the URLs as data-source locations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Why it matters; Risk assessment",
+      "type": "behaviour",
+      "claim": "Loop My workspace, Copilot Pages and Copilot Notebooks share one user-owned container for each user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/copilot-pages-ediscovery",
+      "quote": "Each user has one user-owned SharePoint Embedded container for their Copilot Pages, Copilot Notebooks, and Loop My workspace content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The shared container is labeled Loop in administration and compliance experiences, so Pages and Notebooks might not have separate application filters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-data-sources",
+      "quote": "In SharePoint Embedded administration and compliance experiences, this shared container is identified as Loop. As a result, Copilot Pages and Copilot Notebooks content can appear in a container labeled Loop and might not appear as separate application filters.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Risk assessment: Change & support; Scope; Open questions",
+      "type": "behaviour",
+      "claim": "Learn says group-owned containers are not currently supported in this picker.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-data-sources",
+      "quote": "Group-owned and app-owned SharePoint Embedded containers aren't currently supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing; Risk assessment: Change & support; Scope",
+      "type": "behaviour",
+      "claim": "Learn says app-owned containers are not currently supported in this picker.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-data-sources",
+      "quote": "Group-owned and app-owned SharePoint Embedded containers aren't currently supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure; Governance guidance; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "eDiscovery compliance boundary enforcement is not currently supported for SharePoint Embedded containers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-data-sources",
+      "quote": "eDiscovery compliance boundary enforcement isn't currently supported for SharePoint Embedded containers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Selecting a user's OneDrive as a data source does not include their Copilot Pages or Copilot Notebooks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/copilot-pages-ediscovery",
+      "quote": "Selecting a user's OneDrive as a data source doesn't include their Copilot Pages or Copilot Notebooks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The user's SharePoint Embedded container must be included as a separate data source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/copilot-pages-ediscovery",
+      "quote": "Include the user's SharePoint Embedded container as a separate data source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Governance guidance: At rollout; Governance controls",
+      "type": "role",
+      "claim": "The documented manual container-lookup route uses the SharePoint Embedded administrator role in the SharePoint admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/copilot-pages-ediscovery",
+      "quote": "Sign in to the SharePoint admin center with the SharePoint Embedded administrator role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Governance guidance: At rollout, container URL fallback",
+      "type": "admin-path",
+      "claim": "In the SharePoint admin center, Active containers can be filtered by Application name: Loop and Ownership type: User.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/copilot-pages-ediscovery",
+      "quote": "Expand SharePoint Embedded, and then select Active containers. ... Filter the list by Application name: Loop and Ownership type: User.",
+      "severity": "minor",
+      "fix": "Replace the fallback bullet with: 'Keep the container URL route as a fallback: in the SharePoint admin center, sign in with the SharePoint Embedded administrator role, expand SharePoint Embedded, select Active containers, filter by Application name: Loop and Ownership type: User, search for the user in Principal owner, select the container, and copy its container URL from the General tab.'"
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The container URL itself does not grant access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/purview-management",
+      "quote": "The container URL doesn't provide access to the container and doesn't function as a shareable link.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Legal holds are supported for Copilot Pages and Copilot Notebooks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/copilot-pages-ediscovery",
+      "quote": "Legal holds are supported for Copilot Pages and Copilot Notebooks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].governs; Scope: Who; Risk assessment; Governance controls",
+      "type": "applicability",
+      "claim": "eDiscovery permissions and role assignments govern access to eDiscovery and its data-source capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "To use eDiscovery capabilities and features in the Microsoft Purview portal, assign the appropriate permissions to users. ... The Custodian role provides access to the Data Sources tab in eDiscovery to manage data sources related to specific cases.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Learn says eDiscovery Managers can access and manage the cases they create.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "eDiscovery Managers can only access and manage the cases they create.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "role",
+      "claim": "An eDiscovery Administrator can view and access all eDiscovery cases.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "An eDiscovery Administrator can view and access all eDiscovery cases, they can audit and oversee all cases and associated compliance searches.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Assigning eDiscovery permissions requires Organization Management membership or the Role Management role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "You need to be a member of the Organization Management role group or be assigned the Role Management role to assign eDiscovery permissions in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "Security & Compliance PowerShell can add a mail-enabled security group to the eDiscovery Managers subgroup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "You can use the Add-RoleGroupMember cmdlet in Security & Compliance PowerShell to add a mail-enabled security group as a member of the eDiscovery Managers subgroup in the eDiscovery Manager role group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "A mail-enabled security group cannot be added to the eDiscovery Administrators subgroup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "However, you can't add a mail-enabled security group to the eDiscovery Administrators subgroup.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Settings > Role groups > Role groups for Microsoft Purview solutions > eDiscovery Manager reaches the role group used to assign access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "Go to Settings > Role groups. ... On Role groups for Microsoft Purview solutions, select eDiscovery Manager. ... Select Edit. ... On Manage eDiscovery Manager, select Choose users or Choose groups.",
+      "severity": "minor",
+      "fix": "Extend controls[0].ui.path and the matching table path to 'Settings > Role groups > Role groups for Microsoft Purview solutions > eDiscovery Manager > Edit > Manage eDiscovery Manager > Choose users or Choose groups'. The existing path correctly reaches the role-group pane but stops before its membership control."
+    },
+    {
+      "n": 50,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Add-RoleGroupMember \"eDiscoveryManager\" -Member <name of security group> adds the specified mail-enabled security group in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "You can add a mail-enabled security group ... by using the Add-RoleGroupMember cmdlet in Security & Compliance PowerShell. ... Add-RoleGroupMember \"eDiscoveryManager\" -Member <name of security group>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].ui and controls[1].api; Why it matters; Governance controls",
+      "type": "absence",
+      "claim": "No tenant-wide UI or automation switch specifically controlling whether the new container picker appears is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: eDiscovery SharePoint Embedded containers disable tenant setting PowerShell Graph data sources switch; \"eDiscovery\" \"SharePoint Embedded\" \"Set-\". Read edisc-data-sources, edisc-get-started, edisc-permissions and Graph eDiscovery API overview excerpts; no picker switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "front matter: defaultState; summary; Why it matters",
+      "type": "default",
+      "claim": "The option reaches its intended eDiscovery users without an administrator enabling it, supporting defaultState on.",
+      "status": "supported",
+      "source": "Message Center post MC1470884",
+      "quote": "When adding a person as a data source in eDiscovery, users will be able to view and select supported SharePoint Embedded containers owned by that person. ... No administrative action is required before rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Learn says admins and users working with eDiscovery cases require a Microsoft 365 Enterprise E3 or E5 license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-get-started",
+      "quote": "Both admins and users working with eDiscovery cases require a Microsoft 365 Enterprise E3 or E5 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The selector is an included option within the already licensed eDiscovery product.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-get-started",
+      "quote": "Both admins and users working with eDiscovery cases require a Microsoft 365 Enterprise E3 or E5 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate licensing requirement specific to selecting these containers is published in the checked sources.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"SharePoint Embedded\" \"eDiscovery\" \"license\" \"select\"; eDiscovery SharePoint Embedded container selection licensing price billing budget cap. Read get-started, billing, data-sources, Copilot Pages eDiscovery, roadmap and MC1470884; no selector-specific licence found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The checked documentation publishes no charge specific to selecting SharePoint Embedded containers, and the eDiscovery billing page names no such charge.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: eDiscovery SharePoint Embedded container selection licensing price billing budget cap. Read edisc-billing, edisc-get-started and feature pages; reviewed SharePoint Embedded billing-meters and choose-billing-model excerpts. No container-selection charge found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The eDiscovery billing page describes pay-as-you-go storage billing for non-Microsoft 365 AI data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-billing",
+      "quote": "Pay-as-you-go billing for data storage for non-Microsoft 365 enterprise and cloud AI application data in eDiscovery cases.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The eDiscovery billing page describes Microsoft Graph export billing for E3 eDiscovery licensed organizations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-billing",
+      "quote": "Billing details for Microsoft Graph API usage for E3 eDiscovery licensed organizations ... Currently, usage of all APIs except Export APIs doesn't contribute towards billing. Usage of Export API is billed based on the volume of data exported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft documents no cap or budget control specifically for the container-selection option.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"SharePoint Embedded\" \"eDiscovery\" \"budget\"; eDiscovery SharePoint Embedded container selection licensing price billing budget cap. Read edisc-billing and feature pages; reviewed Embedded monitoring/budgets excerpts, which concern storage and other meters, not this selector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The Manage sources pane displays each supported container's full URL.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-data-sources",
+      "quote": "For each supported SharePoint Embedded container, the Manage sources pane displays: ... The full container URL",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The Manage sources pane displays ContainerTypeId for each supported container.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-data-sources",
+      "quote": "For each supported SharePoint Embedded container, the Manage sources pane displays: ... The ContainerTypeId",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance guidance: Before rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist asks readers to take stock of compliance-boundary configuration, but the controls table has no corresponding row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Check whether your organisation relies on eDiscovery compliance boundaries ... Controls: Who can use eDiscovery and add data sources; Tenant-wide switch for showing SharePoint Embedded containers in eDiscovery data sources.",
+      "severity": "minor",
+      "fix": "The Before rollout compliance-boundary inventory step has no controls-table row. Remove that checklist bullet; retain the verified unsupported-boundary warning in Risk assessment and Governance controls. Do not add a control row as part of this correction."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-19T22:10:38.808Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=569364",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-data-sources",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/loop/copilot-pages-ediscovery",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/loop/purview-management",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-get-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-billing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1470884",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Who can use eDiscovery and add data sources",
+        "docs": "https://learn.microsoft.com/purview/edisc-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Role groups",
+          "Role groups for Microsoft Purview solutions",
+          "eDiscovery Manager"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Who can use eDiscovery and add data sources",
+        "docs": "https://learn.microsoft.com/purview/edisc-permissions",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

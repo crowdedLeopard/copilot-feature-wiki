@@ -1,0 +1,740 @@
+{
+  "slug": "microsoft-teams-default-meeting-templates",
+  "roadmapId": 576609,
+  "title": "Microsoft Teams: default meeting templates apply admin-chosen meeting settings to new meetings",
+  "status": "verified-with-gaps",
+  "date": "2026-11-19",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 56,
+    "confirmed": 54,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 1,
+    "minor": 3
+  },
+  "summary": "The documented default-template controls, Teams Premium requirement and roadmap details are supported. The statement that the feature takes no actions on its own goes beyond the documentation; the checklist also names controls missing from the table, and two supporting pages should be cited.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is November CY2026, presented as a plan rather than a commitment.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\n    \"Worldwide (Standard Multi-Tenant)\",\n    \"GCC\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\n    \"Worldwide (Standard Multi-Tenant)\",\n    \"GCC\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Desktop.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\n    \"Desktop\",\n    \"Mac\",\n    \"Web\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\n    \"Desktop\",\n    \"Mac\",\n    \"Web\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\n    \"Desktop\",\n    \"Mac\",\n    \"Web\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\n    \"General Availability\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-11-03T00:14:11.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-03T00:14:11\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "An administrator can set a custom meeting template as the default in a Teams meeting template policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-set-default",
+      "quote": "After you create a custom meeting template, you can set it as the default in a Teams meeting template policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing; Why it matters; Scope; rationale: impact",
+      "type": "behaviour",
+      "claim": "The default is automatically applied to new meetings scheduled through Teams calendar or Outlook by users assigned the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-set-default",
+      "quote": "When users who are assigned the policy schedule new meetings, the default template is automatically applied, retaining the custom template's default values and any locked or hidden meeting options.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Automatic application retains the custom template's default values.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-set-default",
+      "quote": "the default template is automatically applied, retaining the custom template's default values and any locked or hidden meeting options.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Automatic application retains locked meeting options.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-set-default",
+      "quote": "the default template is automatically applied, retaining the custom template's default values and any locked or hidden meeting options.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Automatic application retains hidden meeting options.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-set-default",
+      "quote": "the default template is automatically applied, retaining the custom template's default values and any locked or hidden meeting options.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Organisers can change options that have a default value but are not locked.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-set-default",
+      "quote": "Can change meeting options that have a default value but aren't locked.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Change & support; rationale: impact",
+      "type": "behaviour",
+      "claim": "Organisers cannot change locked meeting options.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-set-default",
+      "quote": "Can't change meeting options that are locked.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment: Change & support; rationale: impact",
+      "type": "behaviour",
+      "claim": "Organisers cannot see hidden meeting options.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-set-default",
+      "quote": "Can't see meeting options that are hidden.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment: Security & identity; Scope; rationale: impact",
+      "type": "applicability",
+      "claim": "Meeting settings enforced through the default template also apply to attendees.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-set-default",
+      "quote": "Any meeting settings enforced through the default meeting template apply to attendees.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Scope: Prerequisites; controls[0].note",
+      "type": "behaviour",
+      "claim": "Only custom templates, not predefined templates included in Teams, can be set as the default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-set-default",
+      "quote": "Only custom meeting templates can be set as the default. Predefined meeting templates included in Teams can't be set as the default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Scope: Learn platform support",
+      "type": "availability",
+      "claim": "Learn documents default-template support in Teams calendar and Outlook on Teams desktop for Windows and Mac and on web.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-set-default",
+      "quote": "Default meeting templates are supported in the Teams calendar and Outlook on Teams desktop (Windows and Mac) and web.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Scope: Learn platform support",
+      "type": "availability",
+      "claim": "Both new Outlook and classic Outlook are supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-set-default",
+      "quote": "Both new Outlook and classic Outlook are supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "Learn lists errors in certain meeting scenarios when the meeting policy's Copilot setting is On with saved transcript required.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-set-default",
+      "quote": "Users might encounter errors in certain meeting scenarios when using a default meeting template if the Copilot setting in the Teams meeting policy is set to On with saved transcript required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Microsoft recommends a different Copilot setting until that issue is resolved.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-set-default",
+      "quote": "Until the issue is resolved, we recommend using a different Copilot setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "The roadmap describes applying meeting protection settings at scale and reducing manual organiser configuration.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This helps organizations apply meeting settings (including protection settings) at scale, and reduce the need for organizers to manually configure meeting options.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "A custom meeting template can specify a sensitivity label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-overview",
+      "quote": "Apply sensitivity label | Specifies the sensitivity label to be used for the meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "A custom meeting template can specify lobby options.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-overview",
+      "quote": "Lobby | Specifies who can bypass the lobby and join the meeting directly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "A custom meeting template can specify end-to-end encryption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-overview",
+      "quote": "End-to-end encryption | Specifies if the meeting is encrypted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "A custom meeting template can specify watermarks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-overview",
+      "quote": "Enable watermark for screenshare | Specifies if watermarks are used for content that is shared on screen in the meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "A custom meeting template can specify recording options.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-overview",
+      "quote": "Recording | Specifies who can record and if the meeting is recorded automatically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters; Governance controls",
+      "type": "behaviour",
+      "claim": "A custom meeting template includes an Allow Copilot option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-overview",
+      "quote": "Allow Copilot | Specifies how transcripts are used for Microsoft Copilot in Teams meetings and events.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "applicability",
+      "claim": "Where a sensitivity label configures the same meeting option, it overrides the template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-overview",
+      "quote": "If any of these options are configured in a sensitivity label, the label overrides the options in the template.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "The compliance admin must publish a sensitivity label to the Teams admin's account through a Purview label policy before it can be selected in a custom template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-overview",
+      "quote": "To select a sensitivity label in custom meeting templates, the compliance admin must first publish the label to the Teams admin's account using the Purview label policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Teams admins cannot see sensitivity labels in templates unless those labels are published to their accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-overview",
+      "quote": "Teams admins can't see sensitivity labels in meeting templates unless those labels are published to their account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The feature takes no actions on its own.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Teams default meeting templates actions automatically apply meeting options scheduling'; opened custom-meeting-templates-set-default and custom-meeting-templates-overview. They describe automatic application of settings, not this unrestricted negative.",
+      "severity": "major",
+      "fix": "Replace the bullet with: 'The feature automatically applies the configured meeting options when an organiser schedules a meeting.'"
+    },
+    {
+      "n": 36,
+      "where": "summary; licensing.notes; Risk assessment; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Organisers must have a Teams Premium licence to use default meeting templates, as both Learn and the roadmap state.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-set-default",
+      "quote": "Organizers must have a Teams Premium license to use default meeting templates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.model; front matter: cost; rationale: cost",
+      "type": "licensing",
+      "claim": "Teams Premium is an add-on licence, supporting the add-on licensing model and medium cost assessment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "Microsoft Teams Premium is a Teams add-on license that allows organizations with Microsoft 365 subscriptions to enhance their Teams experience",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Teams Premium licensing table lists Meeting templates (configured by IT admin) as an organiser-level feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "Premium Value | Features Applied at Organizer Level | Features Applied at Attendee/User Level | Features Applied at the IT Admin Level\nMore personalized | Meeting templates (configured by IT admin)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Organisation-customised meeting templates require admin configuration in the Teams admin center before users can access them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "The following list indicates Teams Premium features that require admin configuration in the Teams admin center before users can access the feature:\nUsing organization customized meeting templates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing",
+      "type": "date",
+      "claim": "The licensing page states that some previously Premium-only features became included with Teams Enterprise as of April 1, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "As of April 1, 2026, some features that were previously only available with Teams Premium are now included with Teams Enterprise.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope: Prerequisites",
+      "type": "default",
+      "claim": "By default the Global (Org-wide default) meeting template policy lets users see all available templates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-templates",
+      "quote": "By default, the Global (Org-wide default) meeting template policy allows users to see all available templates, including default templates and any custom templates that you've created.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope: Prerequisites; controls[0].note; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "A created meeting template policy needs to be assigned to users or groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-templates",
+      "quote": "Once you've created the policy, you need to assign it to users or groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance controls: Global policy",
+      "type": "applicability",
+      "claim": "The Global (Org-wide default) policy is the starting point for users without another applicable policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/policy-assignment-overview",
+      "quote": "If a user isn't directly assigned a policy or isn't a member of any groups that are assigned a policy, the user gets the global (Org-wide default) policy for that policy type.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoftteams/policy-assignment-overview to sources for the statement about the Global policy applying to everyone else."
+    },
+    {
+      "n": 44,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The default-template control is admin-opt-in: no default template is applied until one is configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingtemplatepermissionpolicy?view=teams-ps",
+      "quote": "Specifies the ID of the meeting template to be applied by default to ad-hoc or standard meetings created by the user. Must use the `customtemplate_<GUID>` format. When set to null, no default template is applied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The default-template control is at Teams admin center > Meetings > Meeting template policies > policy > template > Set as default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-set-default",
+      "quote": "go to Meetings > Meeting template policies.\n2. Select an existing policy or create a new one.\n3. In the list of templates, choose the custom template you want to set as the default, and then select Set as default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "MicrosoftTeams PowerShell supports Set-CsTeamsMeetingTemplatePermissionPolicy -Identity <policy name> -DefaultMeetingTemplateId customtemplate_<GUID> to set the default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingtemplatepermissionpolicy?view=teams-ps",
+      "quote": "Set-CsTeamsMeetingTemplatePermissionPolicy -Identity Foobar -DefaultMeetingTemplateId \"customtemplate_9ab0014a-bba4-4ad6-b816-0b42104b5056\"\nSets the default meeting template that is automatically applied to ad-hoc or standard meetings created by users assigned this policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Template visibility is configured at Teams admin center > Meetings > Meeting template policies > policy > Edit > Viewable templates > template > Hide.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-meeting-templates",
+      "quote": "In the Teams admin center, expand Meetings and select Meeting template policies.\n2. Select the policy you want to change, and then select Edit.\n3. To make a viewable template hidden, select the template in the Viewable templates list and then select Hide.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "MicrosoftTeams PowerShell supports Set-CsTeamsMeetingTemplatePermissionPolicy -Identity <policy name> -HiddenMeetingTemplates <HiddenMeetingTemplate objects> to hide templates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingtemplatepermissionpolicy?view=teams-ps",
+      "quote": "The updated list of meeting template IDs to hide. The HiddenMeetingTemplate objects are created with New-CsTeamsHiddenMeetingTemplate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].note",
+      "type": "behaviour",
+      "claim": "Setting DefaultMeetingTemplateId to null applies no default template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingtemplatepermissionpolicy?view=teams-ps",
+      "quote": "When set to null, no default template is applied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Template visibility and the default template are separate properties of the same meeting template policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingtemplatepermissionpolicy?view=teams-ps",
+      "quote": "[-HiddenMeetingTemplates <PSListModifier[HiddenMeetingTemplate]>]\n    [-Description <string>]\n    [-DefaultMeetingTemplateId <string>]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "availability",
+      "claim": "The overview says the custom-template picker is unavailable in Outlook for Mac and Outlook on the web, which the briefing reports alongside default-template support.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-overview",
+      "quote": "The option to select a custom meeting template when creating a new meeting isn't available on Outlook for Mac or Outlook on the web.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Removing a template as the default stops its automatic application to new meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-set-default",
+      "quote": "After you remove the template as the default, it's no longer automatically applied to new meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance guidance: Before rollout and After rollout",
+      "type": "behaviour",
+      "claim": "Admins can create and adjust custom templates with locked, hidden or editable options in the Teams admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/create-custom-meeting-template",
+      "quote": "Use this procedure to create a custom meeting template in the Teams admin center.\nTo prevent the meeting organizer from changing an option, select the option and then select lock.\nTo prevent the meeting organizer from seeing an option, select the option and then select Hide.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoftteams/create-custom-meeting-template to sources for creating and adjusting template options in the Teams admin center."
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance; Governance controls",
+      "type": "consistency",
+      "claim": "The governance checklist names controls that have no corresponding table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Create the custom template', 'publish any sensitivity label', 'Check the Copilot setting', 'Assign the policy'. Table: 'Which custom meeting template is the default' and 'Which meeting templates users in a policy can see'.",
+      "severity": "minor",
+      "fix": "The checklist steps for creating or adjusting template options, publishing sensitivity labels, checking the Copilot meeting policy and assigning the policy lack corresponding controls-table rows. Remove those checklist steps rather than adding unverified rows."
+    },
+    {
+      "n": 55,
+      "where": "Governance controls: Copilot controls",
+      "type": "behaviour",
+      "claim": "The template's Copilot option and the Teams meeting policy's Copilot setting are separate controls, and the known issue belongs to the meeting policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-set-default",
+      "quote": "This issue is related to the Copilot meeting policy and not the default meeting template.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap associates this feature with Microsoft Teams and Outlook.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\n    \"Microsoft Teams\",\n    \"Outlook\"\n  ]",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-19T22:10:35.714Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=576609",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-set-default",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/manage-meeting-templates",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingtemplatepermissionpolicy?view=teams-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which custom meeting template is the default for users in a policy",
+        "docs": "https://learn.microsoft.com/microsoftteams/custom-meeting-templates-set-default",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting template policies",
+          "template",
+          "Set as default"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which custom meeting template is the default for users in a policy",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingtemplatepermissionpolicy?view=teams-ps",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingTemplatePermissionPolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which meeting templates users in a policy can see",
+        "docs": "https://learn.microsoft.com/microsoftteams/manage-meeting-templates",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting template policies",
+          "Edit",
+          "Viewable templates",
+          "template",
+          "Hide"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which meeting templates users in a policy can see",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingtemplatepermissionpolicy?view=teams-ps",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingTemplatePermissionPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

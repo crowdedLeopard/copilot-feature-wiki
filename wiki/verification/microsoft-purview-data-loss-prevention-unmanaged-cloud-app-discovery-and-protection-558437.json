@@ -2,135 +2,52 @@
   "slug": "microsoft-purview-data-loss-prevention-unmanaged-cloud-app-discovery-and-protection-558437",
   "roadmapId": 558437,
   "title": "Microsoft Purview: protect data sent to unmanaged cloud apps through the Island Enterprise Browser",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-19",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-19",
-    "reasons": [
-      "2 blocking findings (claims 58, 59)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 72,
-    "confirmed": 70,
+    "claims": 86,
+    "confirmed": 85,
     "unconfirmed": 0,
-    "contradicted": 2,
-    "blocker": 2,
+    "contradicted": 1,
+    "blocker": 0,
     "major": 0,
-    "minor": 4
+    "minor": 3
   },
-  "summary": "Hold: the DLP automation creates a policy container rather than configuring its audit or block rules. The PowerShell reference also explicitly documents the Network enforcement plane, contrary to the table note. The rollout, administrator-controlled default and mixed licensing are supported.",
+  "summary": "The briefing passes: its rollout dates, administrator-controlled default, licensing requirements and documented commands are supported. Two policy-creation paths omit intermediate scoping steps, and the checklist recommends action settings that are not represented in the controls table; these are minor corrections.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing",
-      "type": "record",
-      "claim": "Microsoft plans an Island integration with Purview network data security.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Microsoft Purview network data security now integrates with Island, extending protection to Island’s browser-based workflows at the point of user interaction.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
-      "where": "What's changing; summary; Scope",
-      "type": "record",
-      "claim": "New and existing Island customers can configure collection and DLP policies for unmanaged cloud app data shared through the Island Enterprise Browser, Island Extension and browser add-ins.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "new and existing Island customers can configure Microsoft Purview collection and data loss prevention policies to detect and protect data shared with unmanaged cloud apps through the Island Enterprise Browser, the Island Extension, and browser add ins",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap describes HTTP and HTTPS coverage.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "browser add ins via HTTP and HTTPS",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "What's changing; Why it matters",
-      "type": "record",
-      "claim": "The integration uses the same classifiers, sensitive information types and sensitivity labels as other Purview policies.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "using the same classifiers, sensitive information types, and sensitivity labels used in other Purview policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "What's changing; Why it matters",
-      "type": "record",
-      "claim": "Island provides presentation-layer visibility and control over typed and pasted input, file transfers and extension activity before data leaves the browser.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Island provides visibility and control at the presentation layer, including typed and pasted input, file transfers, and extension activity, so data can be inspected before it ever leaves the browser.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "What's changing; Why it matters",
-      "type": "record",
-      "claim": "The integration enriches Data Security Posture Management.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "This integration further enriches Purview Data Security Posture Management (DSPM)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "What's changing; Why it matters",
-      "type": "record",
-      "claim": "The integration enriches the Insider Risk Management risk score.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Insider Risk Management (IRM) risk score",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The integration supports data security and compliance for AI interactions.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "enables data security and compliance for AI interactions",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
       "where": "front matter: status; What's changing; Open questions",
       "type": "record",
       "claim": "The roadmap status is In development.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"In development\"",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 10,
+      "n": 2,
+      "where": "front matter: targetDate; summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "General availability is targeted for June CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview date is March CY2026.",
@@ -141,46 +58,123 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "front matter: targetDate; summary; What's changing; Why it matters",
-      "type": "record",
-      "claim": "The roadmap general availability target is June CY2027.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"June CY2027\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
+      "n": 4,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 13,
+      "n": 5,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists the Web platform.",
+      "claim": "The roadmap platform is Web.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"platforms\": [ \"Web\" ]",
+      "quote": "\"platforms\": [\"Web\"]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 14,
+      "n": 6,
       "where": "front matter: releasePhase",
       "type": "record",
       "claim": "The roadmap lists General Availability and Preview release phases.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"releasePhase\": [ \"General Availability\", \"Preview\" ]",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products; title",
+      "type": "record",
+      "claim": "The roadmap item belongs to Microsoft Purview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft Purview network data security is adding an Island integration.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Purview network data security now integrates with Island, extending protection to Island’s browser-based workflows at the point of user interaction.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Governance controls",
+      "type": "record",
+      "claim": "The Island integration permits collection policies to detect data shared with unmanaged cloud apps.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "customers can configure Microsoft Purview collection and data loss prevention policies to detect and protect data shared with unmanaged cloud apps",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Governance controls",
+      "type": "record",
+      "claim": "The Island integration permits DLP policies to protect data shared with unmanaged cloud apps.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "customers can configure Microsoft Purview collection and data loss prevention policies to detect and protect data shared with unmanaged cloud apps",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes the integration for both new and existing Island customers.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "With this integration, new and existing Island customers can configure Microsoft Purview collection and data loss prevention policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The planned coverage includes the Island Enterprise Browser.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "through the Island Enterprise Browser, the Island Extension, and browser add ins via HTTP and HTTPS",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The planned coverage includes the Island Extension.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "through the Island Enterprise Browser, the Island Extension, and browser add ins via HTTP and HTTPS",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The planned coverage includes browser add-ins.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "through the Island Enterprise Browser, the Island Extension, and browser add ins via HTTP and HTTPS",
       "severity": null,
       "fix": null
     },
@@ -188,7 +182,128 @@
       "n": 15,
       "where": "What's changing",
       "type": "record",
-      "claim": "The Island integration automatically appears in the Purview DLP Security Store as it rolls out.",
+      "claim": "The roadmap describes inspection over HTTP and HTTPS.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "browser add ins via HTTP and HTTPS",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "The integration uses the same classifiers as other Purview policies.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "using the same classifiers, sensitive information types, and sensitivity labels used in other Purview policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The integration uses the same sensitive information types as other Purview policies.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "using the same classifiers, sensitive information types, and sensitivity labels used in other Purview policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "The integration uses the same sensitivity labels as other Purview policies.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "using the same classifiers, sensitive information types, and sensitivity labels used in other Purview policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Island supplies visibility and control at the presentation layer.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Island provides visibility and control at the presentation layer",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "The presentation-layer coverage includes typed and pasted input.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "including typed and pasted input, file transfers, and extension activity",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "The presentation-layer coverage includes file transfers.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "including typed and pasted input, file transfers, and extension activity",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The presentation-layer coverage includes extension activity.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "including typed and pasted input, file transfers, and extension activity",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap says the integration enriches Data Security Posture Management.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This integration further enriches Purview Data Security Posture Management (DSPM)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap says the integration enriches the Insider Risk Management risk score.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Insider Risk Management (IRM) risk score",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes data security and compliance for AI interactions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "enables data security and compliance for AI interactions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The Island integration will appear automatically in the Purview DLP Security Store during rollout.",
       "status": "supported",
       "source": "Message Center post MC1249424",
       "quote": "The Island integration will automatically appear in the Purview DLP Security Store as the feature rolls out.",
@@ -196,10 +311,10 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 27,
       "where": "front matter: defaultState; summary; What's changing; Governance guidance; rationale: risk",
       "type": "default",
-      "claim": "The integration is administrator opt-in and is not enabled by default.",
+      "claim": "The integration is administrator opt-in and cannot be used in policies until an administrator enables it.",
       "status": "supported",
       "source": "Message Center post MC1249424",
       "quote": "The integration is not enabled by default. Administrators must explicitly enable it before it can be used in policies.",
@@ -207,10 +322,10 @@
       "fix": null
     },
     {
-      "n": 17,
-      "where": "What's changing; Governance controls",
+      "n": 28,
+      "where": "What's changing; Why it matters; Governance controls",
       "type": "record",
-      "claim": "Existing network collection and DLP policies apply automatically once the integration is enabled.",
+      "claim": "Existing network collection and DLP policies automatically apply when the integration is enabled.",
       "status": "supported",
       "source": "Message Center post MC1249424",
       "quote": "Existing network data security collection and DLP policies will automatically apply if the integration is enabled.",
@@ -218,7 +333,7 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 29,
       "where": "Why it matters; rationale: risk; rationale: impact",
       "type": "record",
       "claim": "There is no end-user impact unless administrators enable the integration and configure network data security policies.",
@@ -229,10 +344,10 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 30,
       "where": "Risk assessment: Data exposure",
       "type": "record",
-      "claim": "Enabled integration may process browser activity metadata and inspection results.",
+      "claim": "Enabling the integration may cause browser activity metadata and inspection results to be processed.",
       "status": "supported",
       "source": "Message Center post MC1249424",
       "quote": "When the integration is enabled, browser-based activity metadata and inspection results may be processed as part of Microsoft Purview network data security.",
@@ -240,30 +355,8 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What's changing; Open questions",
-      "type": "record",
-      "claim": "The notice gives a public preview rollout beginning in late March 2026 and expected to complete by late April 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1249424",
-      "quote": "Public Preview: Rollout will begin in late March 2026 and is expected to complete by late April 2026.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing; front matter: changes",
-      "type": "record",
-      "claim": "The notice moves general availability start and completion to June 2027 from late June and late July 2026 respectively.",
-      "status": "supported",
-      "source": "Message Center post MC1249424",
-      "quote": "General Availability (Worldwide): Rollout will begin in June 2027 (previously late June 2026) and is expected to complete June 2027 (previoulsy late July 2026).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "What's changing; front matter: changes",
+      "n": 31,
+      "where": "What's changing; changes",
       "type": "record",
       "claim": "MC1249424 was updated on 18 September 2026.",
       "status": "supported",
@@ -273,21 +366,65 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What's changing: separate Palo Alto item",
+      "n": 32,
+      "where": "What's changing; Open questions",
       "type": "record",
-      "claim": "Roadmap item 558939 covers the equivalent Palo Alto Prisma Access integration.",
+      "claim": "The notice gives a public preview rollout from late March 2026 to an expected completion in late April 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1249424",
+      "quote": "Public Preview: Rollout will begin in late March 2026 and is expected to complete by late April 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; changes",
+      "type": "record",
+      "claim": "The updated notice gives general availability rollout beginning and completing in June 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1249424",
+      "quote": "General Availability (Worldwide): Rollout will begin in June 2027 (previously late June 2026) and is expected to complete June 2027 (previoulsy late July 2026).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The previously announced GA rollout start was late June 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1249424",
+      "quote": "Rollout will begin in June 2027 (previously late June 2026)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The previously announced GA rollout completion was late July 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1249424",
+      "quote": "is expected to complete June 2027 (previoulsy late July 2026).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Roadmap item 558939 separately covers the equivalent Palo Alto Prisma Access integration.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"id\": 558939; \"title\": \"Microsoft Purview: Data Loss Prevention - Unmanaged cloud app discovery and protection with Microsoft Purview and Palo Alto Prisma Access\"",
-      "severity": "minor",
-      "fix": "Add https://www.microsoft.com/microsoft-365/roadmap?id=558939 to sources as the roadmap evidence for this sentence; the linked wiki briefing is not evidence."
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 24,
-      "where": "What's changing: general mechanism",
+      "n": 37,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Integrated solutions monitor network traffic and send data to Purview for classification and policy evaluation.",
+      "claim": "An integrated solution monitors traffic and sends data to Purview for classification and policy evaluation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
       "quote": "The integrated solutions monitor network traffic and send the data to Microsoft Purview for classification and policy evaluation.",
@@ -295,10 +432,10 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "What's changing: general mechanism",
+      "n": 38,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Communication is real time when DLP policies protect the traffic.",
+      "claim": "Communication with Purview is real-time when DLP protection is applied.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
       "quote": "When you apply protections via the use of DLP policies, the communication between the integrated solution and Microsoft Purview is in real time.",
@@ -306,10 +443,10 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "What's changing: general mechanism",
+      "n": 39,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Communication is asynchronous when only collection policies monitor traffic.",
+      "claim": "Communication is asynchronous when collection policies provide monitoring only.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
       "quote": "If you are using network data security for monitoring only via collection policies, the communication is asynchronous.",
@@ -317,32 +454,32 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 40,
       "where": "What's changing; Governance controls",
-      "type": "behaviour",
-      "claim": "Non-Microsoft SASE and secure browser integrations are found and configured in the Purview DLP Security Store.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
-      "quote": "You configure the integration between Microsoft Purview and the network security solution using the Security Store.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "What's changing: documentation gap",
       "type": "absence",
-      "claim": "Microsoft Learn has no Island integration page at the time of writing.",
+      "claim": "At the time of writing, Learn has no page specifically documenting the Island Purview integration.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Purview Island Enterprise Browser integration licensing Security Store; Purview \"Island\" \"network data security\". Opened dlp-network-data-security-learn and collection-policies-create-deploy-policy; searched excerpts include purview-extensibility, with no Island integration page.",
+      "quote": "Searched: \"Island\" \"Purview\"; Purview Island Enterprise Browser integration network data security licensing pricing documentation enable API PowerShell Security Store. Read network data security, collection-policy and DLP scenario pages; no Island-specific integration page found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 29,
+      "n": 41,
+      "where": "What's changing",
+      "type": "admin-path",
+      "claim": "Learn directs administrators to the Purview DLP Security Store for non-Microsoft SASE and secure browser integrations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
+      "quote": "Non-Microsoft SASE and secure browser solutions (general availability or preview, depending on the integration): Find these solutions in the Security Store in Microsoft Purview Data Loss Prevention.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Collection-policy content capture captures the full user conversation with an AI app and sends it to Purview.",
+      "claim": "When a collection policy enables content capture, the full conversation with the AI app is captured and sent to Purview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
       "quote": "If you configure content capture in the collection policy, the full conversation that happens between the user and the AI app is captured and sent to Microsoft Purview as well.",
@@ -350,10 +487,10 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 43,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Inline text evaluation covers up to 4 MB for uploadText and downloadText.",
+      "claim": "Purview inline evaluation covers up to 4 MB for uploadText and downloadText.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
       "quote": "Inline evaluation size limits: Microsoft Purview evaluates up to 4 MB of content for uploadText and downloadText",
@@ -361,10 +498,10 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 44,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Inline file evaluation covers files up to 3 MB for uploadFile and downloadFile.",
+      "claim": "Purview inline evaluation covers files up to 3 MB for uploadFile and downloadFile.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
       "quote": "files up to 3 MB for uploadFile and downloadFile.",
@@ -372,10 +509,10 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 45,
       "where": "Risk assessment: Data exposure",
       "type": "applicability",
-      "claim": "Unmanaged-app policies can capture consumer and enterprise interactions where the app shares a URL across instances.",
+      "claim": "Unmanaged-app policies can capture consumer and enterprise interactions when those versions share the app URL.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
       "quote": "Policies that target unmanaged apps can capture interactions from both the consumer and enterprise versions of an app when the app's URL is shared across instances",
@@ -383,18 +520,29 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 46,
       "where": "Risk assessment: Security & identity; Governance guidance; Open questions",
       "type": "behaviour",
-      "claim": "Non-Microsoft partners can access and possibly store policy configuration including user identifiers under their own terms and privacy policy.",
+      "claim": "Non-Microsoft integration partners can access and possibly store policy configuration, including user identifiers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
-      "quote": "If you choose to integrate with non-Microsoft partners, they will be able to access and possibly store some policy configuration, including user identifiers. Their terms, conditions, and privacy policy will govern the usage and storage of this data.",
+      "quote": "If you choose to integrate with non-Microsoft partners, they will be able to access and possibly store some policy configuration, including user identifiers.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
+      "n": 47,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "behaviour",
+      "claim": "The partner's terms, conditions and privacy policy govern use and storage of that policy data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
+      "quote": "Their terms, conditions, and privacy policy will govern the usage and storage of this data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
       "where": "Risk assessment: Security & identity; Scope",
       "type": "applicability",
       "claim": "Network data security policies do not apply to B2B guest users.",
@@ -405,21 +553,21 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Risk assessment: Autonomy & actions; Governance guidance; Open questions",
+      "n": 49,
+      "where": "Risk assessment: Autonomy & actions; Why it matters; Governance guidance; rationale: impact",
       "type": "behaviour",
-      "claim": "Network data security supports Audit only and Block actions.",
+      "claim": "Network DLP supports Audit only and Block actions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
-      "quote": "Network data security supports Audit only and Block actions.",
+      "quote": "Actions - Network data security supports Audit only and Block actions.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
+      "n": 50,
       "where": "Risk assessment: Autonomy & actions; Governance guidance; Open questions",
       "type": "behaviour",
-      "claim": "Supported activities and actions can differ by integrated solution, and Microsoft advises checking with the provider.",
+      "claim": "Supported activities and actions can differ by integrated solution, and Learn says to check with the provider.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
       "quote": "The activities and actions supported may differ depending on integrated solution. Check with your solution provider for details on supported activities.",
@@ -427,10 +575,10 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 51,
       "where": "Governance guidance: Before rollout; Open questions",
       "type": "behaviour",
-      "claim": "Protocol support can differ by integrated solution and Microsoft directs administrators to the provider for details.",
+      "claim": "Protocol support can differ by provider beyond the shared HTTP and HTTPS support.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
       "quote": "Support for WebSocket protocol may differ depending on the integrated SASE or non-Microsoft secure browser solution. Check with your solution provider for details on supported protocols.",
@@ -438,21 +586,21 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 52,
       "where": "Risk assessment: Change & support; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Administrators should allow up to 24 hours for policy distribution and the first data.",
+      "claim": "Administrators should allow up to 24 hours for policy distribution and the first network data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
-      "quote": "allow up to 24 hours for your policies to be distributed to the network security solution and for the first data to show up.",
+      "quote": "After you configure the integration between Microsoft Purview and your network security solution, allow up to 24 hours for your policies to be distributed to the network security solution and for the first data to show up.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
-      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost; Governance guidance",
+      "n": 53,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance; rationale: cost",
       "type": "licensing",
-      "claim": "Licensing is mixed: non-Microsoft secure browser network data security requires Purview E5 or equivalent per-seat licences and pay-as-you-go.",
+      "claim": "Non-Microsoft SASE and secure browser network data security requires Purview E5 or equivalent per-seat licences.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
       "quote": "Network data security with non-Microsoft SASE and secure browser solutions requires: Purview E5 (or equivalent) per-seat licenses and the Microsoft Purview pay-as-you-go billing model.",
@@ -460,21 +608,32 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "Cost and licensing; Scope; Governance guidance",
+      "n": 54,
+      "where": "summary; Cost and licensing; Scope; Risk assessment; Governance guidance",
       "type": "licensing",
-      "claim": "Pay-as-you-go must be configured for the Microsoft 365 tenant before using non-Microsoft network data security integrations.",
+      "claim": "Purview pay-as-you-go must be configured for the tenant to use the Island integration.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
-      "quote": "You must configure pay-as-you-go for your Microsoft 365 tenant to use Purview network data security with non-Microsoft SASE and secure browser solutions.",
+      "source": "Message Center post MC1249424",
+      "quote": "Confirm that Purview pay-as-you-go is enabled and configured for your tenant, as it is required to use this integration.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 41,
-      "where": "front matter: cost; Cost and licensing; Why it matters; rationale: cost",
+      "n": 55,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is mixed, combining per-seat licensing with pay-as-you-go.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
+      "quote": "Purview E5 (or equivalent) per-seat licenses and the Microsoft Purview pay-as-you-go billing model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "front matter: cost; rationale: cost",
       "type": "cost",
-      "claim": "The variable pay-as-you-go cost is metered in requests for non-Microsoft secure browser integrations.",
+      "claim": "The variable cost rating reflects metered requests.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
       "quote": "Network data security uses the request as unit of measure for pay-as-you-go billing purposes when using non-Microsoft SASE and secure browser integrations.",
@@ -482,21 +641,32 @@
       "fix": null
     },
     {
-      "n": 42,
-      "where": "Cost and licensing",
+      "n": 57,
+      "where": "Cost and licensing; Why it matters; Governance guidance",
       "type": "cost",
-      "claim": "A request is each network call from a device or browser to a website or API, excluding responses.",
+      "claim": "A billable request is a network call from a device or browser to a website or API.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
-      "quote": "A request is each network call made from a device or browser to a website or API. This definition doesn't include the responses to the requests.",
+      "quote": "A request is each network call made from a device or browser to a website or API.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 43,
+      "n": 58,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Network data security counts only outbound requests from the device.",
+      "claim": "Responses are excluded from the request definition.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
+      "quote": "This definition doesn't include the responses to the requests.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Network data security counts only outbound device requests.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-billing-models",
       "quote": "Network data security only counts requests that are outbound from the device.",
@@ -504,10 +674,10 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 60,
       "where": "Cost and licensing; Governance guidance: After rollout",
       "type": "cost",
-      "claim": "An Azure bill at month end contains total pay-as-you-go charges across Microsoft solutions.",
+      "claim": "An Azure bill at month end aggregates pay-as-you-go charges across Microsoft solutions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-billing-models",
       "quote": "An Azure bill is generated at the end of the month for the total number of pay-as-you-go charges across all Microsoft solutions.",
@@ -515,10 +685,10 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 61,
       "where": "Cost and licensing",
       "type": "behaviour",
-      "claim": "The Purview portal provides a Usage center.",
+      "claim": "The Purview portal provides a Usage center for usage management.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
       "quote": "To help you understand and manage your usage, Microsoft Purview provides a Usage center in the Microsoft Purview portal.",
@@ -526,7 +696,7 @@
       "fix": null
     },
     {
-      "n": 46,
+      "n": 62,
       "where": "Cost and licensing; Governance guidance; controls[3].note; Governance controls",
       "type": "role",
       "claim": "Only a Global Administrator can enable Purview pay-as-you-go.",
@@ -537,7 +707,7 @@
       "fix": null
     },
     {
-      "n": 47,
+      "n": 63,
       "where": "Cost and licensing; Governance guidance: Before rollout",
       "type": "licensing",
       "claim": "Pay-as-you-go enablement requires an active Azure subscription.",
@@ -548,21 +718,21 @@
       "fix": null
     },
     {
-      "n": 48,
+      "n": 64,
       "where": "Cost and licensing",
       "type": "licensing",
       "claim": "Pay-as-you-go enablement requires an Azure resource group.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement",
-      "quote": "An Azure resource group in that subscription.",
+      "quote": "To enable pay-as-you go, you must have: An Azure subscription in the same tenant as Microsoft Purview. An Azure resource group in that subscription.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 49,
+      "n": 65,
       "where": "Cost and licensing; controls[3].note",
       "type": "availability",
-      "claim": "The cited pay-as-you-go enablement feature is marked preview.",
+      "claim": "The cited pay-as-you-go enablement page marks its feature as preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement",
       "quote": "This featue is in preview.",
@@ -570,32 +740,21 @@
       "fix": null
     },
     {
-      "n": 50,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
-      "type": "absence",
-      "claim": "A licence or charge specific to the Island integration is not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Island\" \"Purview\" pricing license integration; site:azure.microsoft.com/pricing/details/purview Island Network data security pricing. Read dlp-network-data-security-learn and purview-billing-models; no Island-specific terms found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
+      "n": 66,
       "where": "Scope; controls[0].note",
-      "type": "behaviour",
-      "claim": "A non-Microsoft secure browser integration requires completion of the provider's integration steps.",
+      "type": "applicability",
+      "claim": "A non-Microsoft secure browser provider's documented integration steps must be completed.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security",
-      "quote": "Ensure you've completed the integration steps outlined in your provider's documentation.",
+      "quote": "If you are using a non-Microsoft SASE or secure enterprise browser provider ... Ensure you've completed the integration steps outlined in your provider's documentation.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 52,
+      "n": 67,
       "where": "Scope; Governance guidance: At rollout",
       "type": "applicability",
-      "claim": "Policies can be scoped to groups.",
+      "claim": "Network collection and DLP policies can be scoped to groups.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security",
       "quote": "Select + Add inclusions. Select Specific users and groups. Search for and select the Finance department group, then select Add.",
@@ -603,10 +762,10 @@
       "fix": null
     },
     {
-      "n": 53,
+      "n": 68,
       "where": "Scope; controls[2].note; Governance controls",
       "type": "role",
-      "claim": "DLP Compliance Management is an applicable collection-policy role.",
+      "claim": "Learn lists DLP Compliance Management as an applicable collection-policy role.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
       "quote": "Here's a list of applicable roles. DLP Compliance Management",
@@ -614,7 +773,7 @@
       "fix": null
     },
     {
-      "n": 54,
+      "n": 69,
       "where": "Governance controls",
       "type": "role",
       "claim": "Applicable collection-policy role groups include Organization Management and Compliance Administrator.",
@@ -625,65 +784,65 @@
       "fix": null
     },
     {
-      "n": 55,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The Security Store integration entry is reached in the Purview portal through Data Loss Prevention > Security Store > Get solution.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
-      "quote": "open the Data Loss Prevention solution and choose Security Store in the left navigation bar. Select Get solution for the SASE or non-Microsoft secure browser solution provider you want to integrate with.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "controls[0].api; Governance controls table",
+      "n": 70,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
       "type": "absence",
-      "claim": "Microsoft documents no automation call to enable the Island Security Store integration.",
+      "claim": "Microsoft has not published a separate licence or charge specific to the Island integration.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Purview Security Store enable integration PowerShell Graph API; \"Security Store\" \"Purview\" \"PowerShell\" integration enable. Read collection-policies-create-deploy-policy and dlp-network-data-security-learn; only portal/provider setup is documented in relevant results.",
+      "quote": "Searched: \"Island\" \"Purview\" \"license\" \"pricing\"; Purview network data security Island integration separate pricing license. Read network data security, billing models and Purview service description; found general per-seat plus request billing, not separate Island terms.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 57,
-      "where": "controls[1].ui; Governance controls table",
+      "n": 71,
+      "where": "controls[0].ui; Governance controls; Governance guidance: At rollout",
       "type": "admin-path",
-      "claim": "The DLP UI route runs through Data loss prevention, Policies, Create policy, Inline web traffic, Custom and Custom policy to the Network and non-Microsoft secure browsers enforcement option.",
+      "claim": "Purview portal > Data Loss Prevention > Security Store > Get solution starts provider integration setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
+      "quote": "open the Data Loss Prevention solution and choose Security Store in the left navigation bar. ... Select Get solution for the SASE or non-Microsoft secure browser solution provider you want to integrate with.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "controls[0].api",
+      "type": "absence",
+      "claim": "Microsoft has not documented an automation operation to enable the Island integration.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Island Security Store enable integration REST API PowerShell. Read network data security and collection-policy integration steps; found Security Store and provider setup instructions, not an Island enablement command or endpoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The printed new-DLP-policy path reaches Network and non-Microsoft secure browsers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security",
-      "quote": "Select + Add cloud apps. Select the Adaptive app scopes tab, then choose All unmanaged AI apps and select Add (1). Select Edit scope on All unmanaged AI apps.",
+      "quote": "Select + Add cloud apps. Select the Adaptive app scopes tab ... Select Edit scope ... On the Choose where to enforce the policy page, ensure Network and non-Microsoft secure browsers is On",
       "severity": "minor",
-      "fix": "Replace the path with 'Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > + Add cloud apps > Adaptive app scopes > All unmanaged AI apps > Edit scope > Include only specific > + Add inclusions > Specific users and groups > group > Choose where to enforce the policy > Network and non-Microsoft secure browsers'. State that this is the cited unmanaged-AI scenario, with the administrator choosing the target group. Source: https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security."
+      "fix": "The printed steps are correct but omit the cloud-app and group scope selection. For the cited scenario, give: Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > + Add cloud apps > Adaptive app scopes > All unmanaged AI apps > Edit scope > Include only specific > + Add inclusions > Specific users and groups > group > Choose where to enforce the policy > Network and non-Microsoft secure browsers. Source: https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security."
     },
     {
-      "n": 58,
-      "where": "controls[1].api; Governance controls table",
+      "n": 74,
+      "where": "controls[1].api; controls[1].note",
       "type": "command",
-      "claim": "New-DlpCompliancePolicy -Name <String> -EnforcementPlanes <MultiValuedProperty> is the automation for network DLP policies that audit or block data.",
-      "status": "contradicted",
+      "claim": "Security & Compliance PowerShell supports New-DlpCompliancePolicy -Name <String> -EnforcementPlanes @(\"Network\") to create a network-plane policy container.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
-      "quote": "Use the New-DlpCompliancePolicy cmdlet to create data loss prevention (DLP) policies in the Microsoft Purview compliance portal. DLP policies contain DLP rules that identify, monitor, and protect sensitive information.",
-      "severity": "blocker",
-      "fix": "Narrow this existing row's governs to 'Network enforcement plane for a new DLP policy', and use 'New-DlpCompliancePolicy -Name <String> -EnforcementPlanes Network'. Retain the qualification that this creates only the policy container, not its Audit only/Block rules. The Network value is documented at https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy."
+      "quote": "The EnforcementPlanes parameter defines the layer where policy actions are run. This parameter uses the following syntax: -EnforcementPlanes @(\"<Value>\"). Valid values are: ... Network",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 59,
-      "where": "controls[1].note; Governance controls table",
-      "type": "absence",
-      "claim": "The New-DlpCompliancePolicy reference lists no value for network policies.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
-      "quote": "The EnforcementPlanes parameter defines the layer where policy actions are run. ... Valid values are: ... Network",
-      "severity": "blocker",
-      "fix": "Replace 'The reference read lists no value for network policies' with 'The EnforcementPlanes parameter accepts Network', citing https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy."
-    },
-    {
-      "n": 60,
-      "where": "controls[1].note; Governance controls table",
+      "n": 75,
+      "where": "controls[1].note",
       "type": "availability",
-      "claim": "Some features in the cited DLP scenario are in preview.",
+      "claim": "Some features in the cited network DLP scenario are in preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security",
       "quote": "Some features used in this scenario are in preview.",
@@ -691,32 +850,32 @@
       "fix": null
     },
     {
-      "n": 61,
-      "where": "controls[2].ui; Governance controls table",
+      "n": 76,
+      "where": "controls[2].ui; Governance guidance: At rollout",
       "type": "admin-path",
-      "claim": "The collection-policy UI route uses the documented collection-policy, classifier, activity and unmanaged-cloud-app steps to reach Network and non-Microsoft secure browsers.",
+      "claim": "The printed collection-policy path reaches the Network and non-Microsoft secure browsers option.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
-      "quote": "Select Edit scope on the Unmanaged cloud apps row. Select the Include only specific option ... Leave the default option of Don't capture content and select Next. Ensure Network and non-Microsoft secure browsers is enabled",
+      "quote": "Leave the default option of Don't capture content and select Next. ... Ensure Network and non-Microsoft secure browsers is enabled and select Next.",
       "severity": "minor",
-      "fix": "Shorten controls[2].ui.path to 'Data loss prevention > Classifiers > Collection policies', the documented page listing these policies, rather than printing an incomplete wizard route. Add to its note: 'This path opens the collection-policy list; the cited network scenario gives the subsequent activity, app scope, content capture and network-enablement choices.' Keep https://learn.microsoft.com/purview/collection-policies-create-deploy-policy as docs."
+      "fix": "Expand the correct but abbreviated scenario route to: Data loss prevention > Classifiers > Collection policies > + Create policy > + Add condition > Content contains > Classifiers > Edit > Scope for classifiers > Exclude classifiers > + Exclude classifiers > Choose Classifiers > classifiers > + Add activities > activities > + Add data source > Unmanaged cloud apps > cloud apps > Edit scope > Include only specific > Included > + Add inclusions > group > Don't capture content > Network and non-Microsoft secure browsers. Lower-case placeholders identify the classifiers, activities, apps and group the administrator chooses. Source: https://learn.microsoft.com/purview/collection-policies-create-deploy-policy."
     },
     {
-      "n": 62,
-      "where": "controls[2].api; Governance controls table",
+      "n": 77,
+      "where": "controls[2].api",
       "type": "command",
       "claim": "New-FeatureConfiguration -Name <String> -FeatureScenario KnowYourData -Mode Enable -ScenarioConfig <JSON> creates an enabled collection-policy configuration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration",
-      "quote": "New-FeatureConfiguration -Name \"Collection policy for supported Copilots\" -FeatureScenario KnowYourData -Mode Enable -ScenarioConfig",
+      "quote": "New-FeatureConfiguration -Name \"Collection policy for supported Copilots\" -FeatureScenario KnowYourData -Mode Enable -ScenarioConfig '{\"Activities\":[\"UploadText\",\"DownloadText\"],\"EnforcementPlanes\":[\"CopilotExperiences\",\"Browser\"],\"SensitiveTypeIds\":[\"All\"],\"IsIngestionEnabled\":true}'",
       "severity": null,
       "fix": null
     },
     {
-      "n": 63,
-      "where": "controls[2].note; Governance controls table",
+      "n": 78,
+      "where": "controls[2].note",
       "type": "availability",
-      "claim": "New-FeatureConfiguration is Public Preview and not available in all organisations.",
+      "claim": "New-FeatureConfiguration is in Public Preview and unavailable in some organisations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration",
       "quote": "This cmdlet is currently available in Public Preview, isn't available in all organizations, and is subject to change.",
@@ -724,63 +883,63 @@
       "fix": null
     },
     {
-      "n": 64,
-      "where": "controls[2].note; Governance controls table",
+      "n": 79,
+      "where": "controls[2].note",
       "type": "absence",
-      "claim": "The collection cmdlet reference shows CopilotExperiences and Browser examples, but no network example.",
+      "claim": "The cmdlet reference shows CopilotExperiences and Browser examples, not a network example.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"New-FeatureConfiguration\" \"Network\" collection policy. Read the entire New-FeatureConfiguration reference: examples use CopilotExperiences, Browser and Devices enforcement planes, not Network.",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration",
+      "quote": "Example 1: \"EnforcementPlanes\":[\"CopilotExperiences\",\"Browser\"]; Example 2: \"EnforcementPlanes\":[\"Browser\"]; Example 3: \"EnforcementPlanes\":[\"Devices\",\"Browser\"]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 65,
-      "where": "controls[3].ui; Governance controls table",
+      "n": 80,
+      "where": "controls[3].ui; controls[3].note",
       "type": "admin-path",
-      "claim": "Settings > Account details in the Purview portal is the entry point for pay-as-you-go enablement.",
+      "claim": "Pay-as-you-go setup can start at Purview Settings > Account details or the rocket icon > Get Started.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement",
-      "quote": "This can also be done from Settings > Account details. Select your active Azure subscription from the list. ... Select the resource group.",
-      "severity": "minor",
-      "fix": "The path reaches the correct starting page but stops before the billing association is configured. Extend it to 'Settings > Account details > subscription > resource group', using the selections documented at https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement."
+      "quote": "select the rocket icon on the top right in the header pane ... Select Get Started in the ribbon menu to start the process. This can also be done from Settings > Account details.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 66,
-      "where": "controls[3].api; Governance controls table",
+      "n": 81,
+      "where": "controls[3].api",
       "type": "absence",
-      "claim": "No automation call is documented for the Purview pay-as-you-go enablement flow.",
+      "claim": "Microsoft does not document an automation operation for the tenant pay-as-you-go enablement shown in this row.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Microsoft Purview pay-as-you-go enable billing PowerShell REST API subscription tenant; \"Purview\" \"pay-as-you-go\" \"REST\" enable billing API. Read purview-payg-subscription-based-enablement and purview-billing-models; no enablement API found.",
+      "quote": "Searched: Purview pay-as-you-go enable billing PowerShell API subscription Account details; Purview payg subscription based enablement API PowerShell Microsoft.Purview accounts billing. Read tenant enablement and billing models; results did not document an equivalent enablement operation.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 67,
-      "where": "controls[4].ui; Governance controls table; Governance guidance: After rollout",
+      "n": 82,
+      "where": "controls[4].ui; Governance guidance: After rollout",
       "type": "admin-path",
-      "claim": "Network matches are viewed through Data loss prevention > Explorers > Activity explorer > + Add filter > Enforcement plane > Network.",
+      "claim": "Network matches are viewed at Data loss prevention > Explorers > Activity explorer > + Add filter > Enforcement plane > Network.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy",
-      "quote": "Open the Data loss prevention solution and navigate to Explorers > Activity explorer. Select + Add filter and choose Enforcement plane. Click the Enforcement plane filter and select Network.",
+      "quote": "Open the Data loss prevention solution and navigate to Explorers > Activity explorer. ... Select + Add filter and choose Enforcement plane. ... Click the Enforcement plane filter and select Network.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 68,
-      "where": "controls[4].api; Governance controls table; Governance guidance: After rollout",
+      "n": 83,
+      "where": "controls[4].api; controls[4].note; Governance guidance: After rollout",
       "type": "command",
-      "claim": "Export-ActivityExplorerData -StartTime <DateTime> -EndTime <DateTime> -OutputFormat <String> exports Activity explorer records.",
+      "claim": "Export-ActivityExplorerData -StartTime <DateTime> -EndTime <DateTime> -OutputFormat <String> exports Activity explorer records rather than configuring enforcement.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/export-activityexplorerdata",
-      "quote": "Export-ActivityExplorerData\n    -EndTime <DateTime>\n    -OutputFormat <String>\n    -StartTime <DateTime>",
+      "quote": "Use the Export-ActivityExplorerData cmdlet to export activities ... Export-ActivityExplorerData -EndTime <DateTime> -OutputFormat <String> -StartTime <DateTime>",
       "severity": null,
       "fix": null
     },
     {
-      "n": 69,
-      "where": "controls[4].note; Governance controls table",
+      "n": 84,
+      "where": "controls[4].note",
       "type": "behaviour",
       "claim": "The export reference says Activity explorer reports on up to 30 days of data.",
       "status": "supported",
@@ -790,43 +949,32 @@
       "fix": null
     },
     {
-      "n": 70,
-      "where": "Governance guidance: Before rollout; Scope",
-      "type": "record",
-      "claim": "MC1249424 asks administrators to review existing collection and DLP policies for network inspection.",
-      "status": "supported",
-      "source": "Message Center post MC1249424",
-      "quote": "Review your existing Purview collection and DLP policies to determine where network-based data inspection may be appropriate.",
-      "severity": null,
-      "fix": null
+      "n": 85,
+      "where": "Governance guidance: At rollout; Governance controls",
+      "type": "consistency",
+      "claim": "Every control the governance checklist tells readers to configure is represented in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: \"Create the network DLP policy with the Audit only action before switching to Block\". The DLP control row governs \"Network enforcement plane for a new DLP policy\" and explicitly says \"not its rules or Audit only/Block\".",
+      "severity": "minor",
+      "fix": "Narrow that At rollout checklist bullet to 'Create the network DLP policy with the Network and non-Microsoft secure browsers enforcement plane enabled.' The table has no action-setting row; do not add a row as part of this correction."
     },
     {
-      "n": 71,
-      "where": "summary; front matter: licensing.notes; Cost and licensing; Risk assessment: Change & support",
+      "n": 86,
+      "where": "Scope; Governance guidance: Before rollout",
       "type": "record",
-      "claim": "MC1249424 explicitly requires configured Purview pay-as-you-go for the Island integration.",
+      "claim": "The notice addresses Purview organisations, Island browser customers and Purview policy administrators, asking administrators to review existing policies.",
       "status": "supported",
       "source": "Message Center post MC1249424",
-      "quote": "Confirm that Purview pay-as-you-go is enabled and configured for your tenant, as it is required to use this integration.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 72,
-      "where": "Scope",
-      "type": "record",
-      "claim": "The notice addresses Purview organisations, Island browser, extension and add-in customers, and administrators managing collection and DLP policies.",
-      "status": "supported",
-      "source": "Message Center post MC1249424",
-      "quote": "Organizations using Microsoft Purview; Customers using or planning to use the Island Enterprise Browser, Island Extension, or supported browser add-ins.; Microsoft 365 administrators managing Purview collection and DLP policies.",
+      "quote": "Organizations using Microsoft Purview ... Customers using or planning to use the Island Enterprise Browser, Island Extension, or supported browser add-ins. ... Review your existing Purview collection and DLP policies to determine where network-based data inspection may be appropriate.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-19T20:00:37.152Z",
+    "at": "2026-11-19T22:10:34.530Z",
     "summary": {
-      "links": 10,
+      "links": 11,
       "unreachable": 0,
       "uiPaths": 5,
       "uiPathsWithMissingWords": 0,
@@ -837,6 +985,11 @@
     "linkChecks": [
       {
         "url": "https://www.microsoft.com/microsoft-365/roadmap?id=558437",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=558939",
         "ok": true,
         "status": 200
       },
@@ -903,7 +1056,7 @@
       {
         "index": 1,
         "side": "ui",
-        "governs": "Network DLP policies that audit or block data sent to unmanaged cloud apps",
+        "governs": "Network enforcement plane for a new DLP policy",
         "docs": "https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security",
         "reachable": true,
         "segments": [
@@ -921,7 +1074,7 @@
       {
         "index": 1,
         "side": "api",
-        "governs": "Network DLP policies that audit or block data sent to unmanaged cloud apps",
+        "governs": "Network enforcement plane for a new DLP policy",
         "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
         "reachable": true,
         "token": "New-DlpCompliancePolicy",
@@ -998,5 +1151,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-19",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

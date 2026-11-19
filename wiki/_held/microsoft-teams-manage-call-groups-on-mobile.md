@@ -40,6 +40,9 @@ sources:
   - title: "Set-CsTeamsCallingPolicy"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy?view=teams-ps"
     kind: "learn"
+  - title: "Grant-CsTeamsCallingPolicy"
+    url: "https://learn.microsoft.com/powershell/module/microsoftteams/grant-csteamscallingpolicy?view=teams-ps"
+    kind: "learn"
   - title: "Set-CsUserCallingSettings"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csusercallingsettings?view=teams-ps"
     kind: "learn"
@@ -56,7 +59,7 @@ controls:
     scope: "user"
     ui:
       surface: "Teams admin center"
-      path: "Voice > Calling policies > policy > Inbound calls can be routed to call groups"
+      path: "Voice > Calling policies > policy > Edit > Inbound calls can be routed to call groups"
       docs: "https://learn.microsoft.com/microsoftteams/teams-calling-policy"
     api:
       kind: "powershell"
@@ -67,7 +70,7 @@ controls:
     scope: "user"
     ui:
       surface: "Teams admin center"
-      path: "Users > Manage users > user > Voice > Call answering rules > Manage call group"
+      path: "Users > Manage users > user > Voice > Call answering rules > Ring user's devices > Also allow > Group call pickup > Manage call group"
       docs: "https://learn.microsoft.com/microsoftteams/call-sharing-and-group-call-pickup"
     api:
       kind: "powershell"
@@ -88,19 +91,23 @@ changes:
     note: "New briefing: call group management on Teams on Mobile, rolling out from early December 2026 per MC1552390, governed by the existing calling policy."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 54 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-19"
+    note: "Corrected the two Teams admin center paths to the full routes Learn documents, and removed the claim that the Manage call group screen is hidden for ineligible users."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 56 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-19"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 51
-  unconfirmed: 1
+  claims: 56
+  confirmed: 54
+  unconfirmed: 0
   contradicted: 2
-  attempts: 1
-  hash: "3fd3af095cf1193262cc89839c83a30e"
+  attempts: 2
+  hash: "95ff4cf5d51bd351e53475dbe42fdc52"
 ---
 
 ## What's changing
@@ -130,7 +137,7 @@ The notice says no admin action is required before rollout and that the feature 
 - Setting a user's call group through PowerShell overwrites the current membership with the full set of members given, so a scripted change and a phone edit can replace each other.
 
 **Change & support**
-- Expect help desk questions about where **Manage call group** is and why it is missing. It is missing for users without a Teams Phone licence or with call groups turned off in the calling policy.
+- Expect help desk questions about where **Manage call group** is. The feature requires a Teams Phone licence; users with call groups turned off in their calling policy cannot use it on Mobile.
 - Learn says a call group can have up to 25 users, a user can own only one call group, and adding more than five members switches the ring order to **Everyone at once**. Whether the Mobile ordering options follow the five-member rule is not described.
 
 ## Cost and licensing
@@ -150,13 +157,13 @@ The notice names no other licence, meter or charge for the Mobile experience. Th
 ## Governance guidance
 
 ### Before rollout
-- Check which calling policy each call group user has and confirm that **Inbound calls can be routed to call groups** is on (Teams admin center > Voice > Calling policies).
+- Check which calling policy each call group user has and confirm that **Inbound calls can be routed to call groups** is on (Teams admin center > Voice > Calling policies > policy > Edit).
 - Confirm that users who should manage call groups hold a Teams Phone licence, as the notice recommends.
 - Inform users who rely on call groups for backup cover and often work away from their desk that Manage call group is coming to Teams on Mobile.
 
 ### At rollout
 - Watch Message center for updates to MC1552390, whose rollout window is early to mid December 2026.
-- Tell the help desk that **Manage call group** appears under Settings > Calling on Teams on Mobile only for eligible users.
+- Tell the help desk that MC1552390 says eligible users will see **Manage call group** under Settings > Calling on Teams on Mobile.
 
 ### After rollout
 - Review a sample of users' call groups in the Teams admin center (Users > Manage users > user > Voice) for stale or unexpected members.
@@ -169,8 +176,8 @@ The notice names no other licence, meter or charge for the Mobile experience. Th
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether users can use call groups and route inbound calls to them</strong><br><small>User</small><br><small class="controls__note">MC1552390 says users with call groups turned off in their calling policy cannot use the feature on Mobile. Assign the policy to users or groups.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Calling policies › policy › Inbound calls can be routed to call groups <a href="https://learn.microsoft.com/microsoftteams/teams-calling-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsCallingPolicy -Identity &lt;policy name&gt; -AllowCallGroups $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>A user's call group members and ring order (today's admin-side route)</strong><br><small>User</small><br><small class="controls__note">Edits one user's call group. It does not turn the Mobile screen on or off. CallGroupTargets overwrites the current membership with the full set given.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Users › Manage users › user › Voice › Call answering rules › Manage call group <a href="https://learn.microsoft.com/microsoftteams/call-sharing-and-group-call-pickup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsUserCallingSettings -Identity &lt;user principal name&gt; -CallGroupOrder InOrder -CallGroupTargets &lt;array of sip addresses&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csusercallingsettings?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether users can use call groups and route inbound calls to them</strong><br><small>User</small><br><small class="controls__note">MC1552390 says users with call groups turned off in their calling policy cannot use the feature on Mobile. Assign the policy to users or groups.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Calling policies › policy › Edit › Inbound calls can be routed to call groups <a href="https://learn.microsoft.com/microsoftteams/teams-calling-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsCallingPolicy -Identity &lt;policy name&gt; -AllowCallGroups $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>A user's call group members and ring order (today's admin-side route)</strong><br><small>User</small><br><small class="controls__note">Edits one user's call group. It does not turn the Mobile screen on or off. CallGroupTargets overwrites the current membership with the full set given.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Users › Manage users › user › Voice › Call answering rules › Ring user's devices › Also allow › Group call pickup › Manage call group <a href="https://learn.microsoft.com/microsoftteams/call-sharing-and-group-call-pickup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsUserCallingSettings -Identity &lt;user principal name&gt; -CallGroupOrder InOrder -CallGroupTargets &lt;array of sip addresses&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csusercallingsettings?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>A separate switch for call group management on Teams on Mobile</strong><br><small>Tenant</small><br><small class="controls__note">MC1552390 says Mobile uses the same controls as desktop.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -191,15 +198,14 @@ Learn also says that if **Use unanswered settings** or **Send to voicemail** is 
 <!-- rationale
 risk: Low. Mobile edits the same call group settings as desktop and is governed by the existing calling policy, so the exposure is users changing call routing quickly from a phone.
 cost: Low. Microsoft's notice names a Teams Phone licence as the requirement and no other licence or meter; the remaining cost is checking calling policies and telling users.
-impact: Medium. Users with a Teams Phone licence who rely on call groups for backup cover will notice a new Manage call group screen in Calling settings; other users see nothing new.
+impact: Medium. Users with a Teams Phone licence who rely on call groups for backup cover will notice a new Manage call group screen in Calling settings.
 -->
 
 <!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls table; Governance guidance: Before rollout / admin-path: The call group policy setting is reached by Teams admin center > Voice > Calling policies > policy > Inbound calls can be routed to call groups. | Found: Select the policy or policies that you want to modify, and then select Edit. | Fix: Replace the structured and rendered path with 'Voice > Calling policies > policy > Edit > Inbound calls can be routed to call groups' in Teams admin center, as documented at https://learn.microsoft.com/microsoftteams/teams-calling-policy. Use that complete route in the Before rollout policy-check bullet too. | Source: https://learn.microsoft.com/microsoftteams/teams-calling-policy
-- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: The call group editor is reached by Users > Manage users > user > Voice > Call answering rules > Manage call group. | Found: Be immediately forwarded and select Group call pickup from the Call forward type dropdown 4. Select Manage call group | Fix: Replace the structured and rendered path with 'Users > Manage users > user > Voice > Call answering rules > Ring user's devices > Also allow > Group call pickup > Manage call group' in Teams admin center, as documented at https://learn.microsoft.com/microsoftteams/call-sharing-and-group-call-pickup. The current path omits the call-answering choice and Group call pickup selection. | Source: https://learn.microsoft.com/microsoftteams/call-sharing-and-group-call-pickup
-- [unsupported, major] Risk assessment: Change & support; Governance guidance: At rollout; rationale: impact / behaviour: The Manage call group screen is missing for users without Teams Phone or with call groups disabled in their calling policy. | Found: Searched: "Manage call group" "mobile" "hidden" "license"; read MC1552390 and call-sharing-and-group-call-pickup. The notice confirms eligibility and policy restrictions, but does not state whether ineligible users see a hidden or disabled control. | Fix: Replace 'It is missing for users without a Teams Phone licence or with call groups turned off in the calling policy.' with 'The feature requires a Teams Phone licence; users with call groups turned off in their calling policy cannot use it on Mobile.' In the At rollout bullet say 'MC1552390 says eligible users will see Manage call group under Settings > Calling on Teams on Mobile.' Remove 'other users see nothing new' from the impact rationale.
+- [contradicted, blocker] Risk assessment: Change & support; Open questions: five-member rule / absence: Whether Mobile ordering options follow the five-member call group rule is not described. | Found: The order in which members of the call group are notified about the incoming call can be specified as simultaneous or in order (with 5 or less members). | Fix: Remove 'Whether the Mobile ordering options follow the five-member rule is not described' and the corresponding Open questions bullet. Learn states this restriction for call groups without a desktop qualification, and MC1552390 explicitly says Mobile changes the same call group settings as desktop; retain the preceding documented five-member rule. | Source: https://learn.microsoft.com/microsoftteams/call-sharing-and-group-call-pickup
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].note; Governance controls table / applicability: Teams calling policies can be assigned to users or groups. | Found: Assigns a specific Teams Calling Policy to a user, a group of users, or sets the Global policy instance. | Fix: Add https://learn.microsoft.com/powershell/module/microsoftteams/grant-csteamscallingpolicy?view=teams-ps to sources; it explicitly confirms group assignment, whereas the cited calling-policy overview qualifies group support with 'if supported for the policy type'. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/grant-csteamscallingpolicy?view=teams-ps
+- [supported, minor] Governance guidance: After rollout, review a sample / admin-path: Users > Manage users > user > Voice is the route given for reviewing call group membership. | Found: On the user details page, go to the Voice tab. ... Under Call answering rules ... Ring user's devices and select Group call pickup from the Also allow dropdown. ... Select Manage call group | Fix: Extend the parenthetical route in After rollout to 'Users > Manage users > user > Voice > Call answering rules > Ring user's devices > Also allow > Group call pickup > Manage call group', matching controls[1].ui. The current route stops early on the right page. | Source: https://learn.microsoft.com/microsoftteams/call-sharing-and-group-call-pickup
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: Every control the checklist tells administrators to check is represented in the controls table. | Found: Confirm that users who should manage call groups hold a Teams Phone licence ... Controls: Whether users can use call groups; A user's call group members and ring order; A separate switch for call group management on Teams on Mobile. | Fix: The Before rollout step that checks Teams Phone licence assignments has no corresponding control row. If retaining the current table, remove that checklist bullet; the licence prerequisite is already stated in Cost and licensing and Scope.
 -->

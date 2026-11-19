@@ -46,36 +46,39 @@ sources:
   - title: "Proactive Callback Profile (msdyn_proactive_callback_profile) table/entity reference (Microsoft Dynamics 365 Customer Service)"
     url: "https://learn.microsoft.com/dynamics365/customer-service/develop/reference/entities/msdyn_proactive_callback_profile"
     kind: "learn"
+  - title: "Proactive Callback Config (msdyn_proactive_callback_config) table/entity reference (Microsoft Dynamics 365 Customer Service)"
+    url: "https://learn.microsoft.com/dynamics365/customer-service/develop/reference/entities/msdyn_proactive_callback_config"
+    kind: "learn"
   - title: "Overflow Action Config (msdyn_overflowactionconfig) table/entity reference"
     url: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_overflowactionconfig"
     kind: "learn"
 videos: []
 related: ["dynamics-365-contact-center-unified-routing-orchestrate-conversation-distribution-with-nat","copilot-credits"]
 controls:
-  - governs: "Whether customer-first direct callback is enabled (irreversible)"
+  - governs: "Complete irreversible customer-first callback onboarding, including Callback Agent provisioning"
     scope: "other"
     ui:
       surface: "Copilot Service admin center"
       path: "Routing > Callback management > Customer-first direct callback"
       docs: "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback"
     api: null
-    note: "Enable Copilot AI agent for callback management first. Microsoft says the setting is irreversible and needs at least one callback profile."
+    note: "Enable Copilot AI agent for callback management first. Microsoft says the setting is irreversible and needs at least one callback profile. A Dataverse config record is documented; see the notes below."
   - governs: "Callback profile settings (offer message, window, dialling, retries, AI agent)"
     scope: "environment"
     ui:
       surface: "Copilot Service admin center"
-      path: "Routing > Callback management"
+      path: "Routing > Callback management > Create new direct callback profile > Dialing > Behaviors > Retry Settings"
       docs: "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback"
     api:
       kind: "rest"
       call: "POST /msdyn_proactive_callback_profiles"
       docs: "https://learn.microsoft.com/dynamics365/customer-service/develop/reference/entities/msdyn_proactive_callback_profile"
-    note: "The route reaches Callback management; profile creation continues on Create new direct callback profile, then Dialing and Behaviors > Retry Settings. The request body can set msdyn_number_of_retries and msdyn_fallback_action."
+    note: "The earlier wizard pages hold the other profile settings. The request body can set msdyn_number_of_retries and msdyn_fallback_action."
   - governs: "Which callback profile a queue uses for each overflow condition"
     scope: "environment"
     ui:
       surface: "Copilot Service admin center"
-      path: "Customer support > Queues > Advanced queues > queue > Overflow handling > Add condition-action pair > Before work items are queued > Add condition-action pair"
+      path: "Customer support > Queues > Advanced queues > queue > Overflow handling > Add condition-action pair > Before work items are queued > Add condition-action pair > Condition > Action > Direct callback > Callback profile"
       docs: "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow"
     api:
       kind: "rest"
@@ -95,19 +98,23 @@ changes:
     note: "Correction: enablement control rescoped to other, queue overflow path completed, Copilot Service admin center roles added, and the credits-monitoring checklist step removed."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 62 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-19"
+    note: "Correction: first control row rescoped to the complete onboarding sequence with the documented Dataverse config record noted; profile and queue admin paths extended."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 63 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-19"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 62
-  confirmed: 61
-  unconfirmed: 1
+  claims: 63
+  confirmed: 63
+  unconfirmed: 0
   contradicted: 0
-  attempts: 2
-  hash: "e0a5dee691da0162278fc2a65a65c676"
+  attempts: 0
+  hash: "6efca1c92e91727389ef56e7f854fb6b"
 ---
 
 ## What's changing
@@ -190,13 +197,15 @@ Indirect costs are admin time to design profiles and test queues.
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether customer-first direct callback is enabled (irreversible)</strong><br><small class="controls__note">Enable Copilot AI agent for callback management first. Microsoft says the setting is irreversible and needs at least one callback profile.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Routing › Callback management › Customer-first direct callback <a href="https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Callback profile settings (offer message, window, dialling, retries, AI agent)</strong><br><small>Environment</small><br><small class="controls__note">The route reaches Callback management; profile creation continues on Create new direct callback profile, then Dialing and Behaviors &gt; Retry Settings. The request body can set msdyn_number_of_retries and msdyn_fallback_action.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Routing › Callback management <a href="https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST /msdyn_proactive_callback_profiles</code> <a href="https://learn.microsoft.com/dynamics365/customer-service/develop/reference/entities/msdyn_proactive_callback_profile" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which callback profile a queue uses for each overflow condition</strong><br><small>Environment</small><br><small class="controls__note">Choose Direct callback as the action on a voice queue, then select a Callback profile. The Customer Service table reference adds the msdyn_proactive_callback_profileId lookup.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Customer support › Queues › Advanced queues › queue › Overflow handling › Add condition-action pair › Before work items are queued › Add condition-action pair <a href="https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH /msdyn_overflowactionconfigs(msdyn_overflowactionconfigid)</code> <a href="https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_overflowactionconfig" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Complete irreversible customer-first callback onboarding, including Callback Agent provisioning</strong><br><small class="controls__note">Enable Copilot AI agent for callback management first. Microsoft says the setting is irreversible and needs at least one callback profile. A Dataverse config record is documented; see the notes below.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Routing › Callback management › Customer-first direct callback <a href="https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Callback profile settings (offer message, window, dialling, retries, AI agent)</strong><br><small>Environment</small><br><small class="controls__note">The earlier wizard pages hold the other profile settings. The request body can set msdyn_number_of_retries and msdyn_fallback_action.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Routing › Callback management › Create new direct callback profile › Dialing › Behaviors › Retry Settings <a href="https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST /msdyn_proactive_callback_profiles</code> <a href="https://learn.microsoft.com/dynamics365/customer-service/develop/reference/entities/msdyn_proactive_callback_profile" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which callback profile a queue uses for each overflow condition</strong><br><small>Environment</small><br><small class="controls__note">Choose Direct callback as the action on a voice queue, then select a Callback profile. The Customer Service table reference adds the msdyn_proactive_callback_profileId lookup.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Customer support › Queues › Advanced queues › queue › Overflow handling › Add condition-action pair › Before work items are queued › Add condition-action pair › Condition › Action › Direct callback › Callback profile <a href="https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH /msdyn_overflowactionconfigs(msdyn_overflowactionconfigid)</code> <a href="https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_overflowactionconfig" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 Enabling is a one-way step, so the first row is a decision more than a setting. The callback profile is the unit of configuration: the profile row sets the behaviour, and the overflow row attaches it to a queue. One profile can be set per overflow condition for a single queue. Avoid editing or deleting the AI agent configured for alternate-number capture.
+
+For the first row, [the Proactive Callback Config table reference](https://learn.microsoft.com/dynamics365/customer-service/develop/reference/entities/msdyn_proactive_callback_config) documents PATCH /msdyn_proactive_callback_configs(msdyn_proactive_callback_configid), with writable msdyn_enabled and msdyn_callback_type (192350000 = Direct Callback). As of November 2026, the pages checked do not map this record update to the complete irreversible onboarding sequence. Do not treat it as a documented way to reverse enablement.
 
 ## Open questions
 
@@ -209,13 +218,4 @@ Enabling is a one-way step, so the first row is a decision more than a setting. 
 risk: Medium. Nothing starts until an admin enables it, but enabling cannot be undone, and it places outbound AI-agent calls to customers and applies the first callback profile to queues that already use direct callback.
 cost: Variable. Microsoft's page says AI agent use can consume available Copilot or Microsoft service credits (the Copilot Credits meter); a rate specific to callback agents is not yet published.
 impact: Medium. Callers on voice queues that use direct callback, and the representatives who take those calls, notice the changed callback flow; other users are unaffected.
--->
-
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] controls[0].api; Governance controls: first row / absence: No API or automation is documented for enabling customer-first direct callback. | Found: Searched: customer-first callback enable API Dataverse; msdyn_proactive_callback_config enable. Read configure-customer-first-callback and the Proactive Callback Config reference: PATCH, writable msdyn_enabled and Direct Callback type exist, but no mapping to the complete onboarding was found. | Fix: Narrow controls[0].governs and its rendered label to 'Complete irreversible customer-first callback onboarding, including Callback Agent provisioning'; retain api null only for that complete sequence. Append this note and cite https://learn.microsoft.com/dynamics365/customer-service/develop/reference/entities/msdyn_proactive_callback_config: 'Dataverse documents PATCH /msdyn_proactive_callback_configs(msdyn_proactive_callback_configid), with writable msdyn_enabled and msdyn_callback_type (192350000 = Direct Callback). As of November 2026, the pages checked do not map this record update to the complete irreversible onboarding sequence. Do not treat it as a documented way to reverse enablement.'
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; controls[1].note; Governance controls / admin-path: Routing > Callback management in Copilot Service admin center is the route provided for configuring callback profile settings. | Found: go to Routing > Callback management. ... On Create new direct callback profile ... On the Dialing page ... On the Behaviors page, in Retry Settings | Fix: The path reaches the right management page but stops before the profile wizard described in the existing note. For the retry settings covered by this row, expand the path to 'Routing > Callback management > Create new direct callback profile > Dialing > Behaviors > Retry Settings', retaining the note that the earlier wizard pages hold the other profile settings. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback
-- [supported, minor] controls[2].ui; Governance controls / admin-path: The printed queue path reaches the before-queue overflow condition-action configuration in Copilot Service admin center. | Found: Select Advanced queues, and then select the queue ... Under Overflow handling, select Add condition-action pair. ... in Before work items are queued, select Add condition-action pair. | Fix: The printed path reaches the correct overflow configuration but stops before choosing the profile. Extend it to 'Customer support > Queues > Advanced queues > queue > Overflow handling > Add condition-action pair > Before work items are queued > Add condition-action pair > Condition > Action > Direct callback > Callback profile'. The final profile selection is documented at the already-cited https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback#use-callback-profile-in-overflow-action. | Source: https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow
 -->

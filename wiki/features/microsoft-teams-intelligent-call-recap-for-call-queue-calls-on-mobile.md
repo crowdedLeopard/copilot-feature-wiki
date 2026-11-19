@@ -17,7 +17,7 @@ impact: "medium"
 defaultState: "on"
 action: "prepare"
 licensing:
-  model: "add-on"
+  model: "included"
   notes: "Queues app users need a Teams Phone and a Teams Premium licence. Learn says intelligent recap for calls needs a Teams Premium or Microsoft Copilot licence; a recap requirement specific to call queue calls is not yet published."
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["teams","call-queues","queues-app","intelligent-recap","mobile","teams-phone","transcripts"]
@@ -43,10 +43,10 @@ sources:
   - title: "Microsoft Teams Premium - Overview for admins"
     url: "https://learn.microsoft.com/microsoftteams/enhanced-teams-experience"
     kind: "learn"
-  - title: "Whether call queue calls are recorded and transcribed (the calls recap depends on) (PowerShell)"
+  - title: "New-CsAutoRecordingTemplate"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate?view=teams-ps"
     kind: "learn"
-  - title: "Which call queue uses an automatic recording template (PowerShell)"
+  - title: "Set-CsCallQueue"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue?view=teams-ps"
     kind: "learn"
 videos: []
@@ -56,7 +56,7 @@ controls:
     scope: "other"
     ui:
       surface: "Teams admin center"
-      path: "Voice > Templates and resources > Templates > Automatic Recording > Add"
+      path: "Voice > Templates and resources > Templates > Automatic Recording > Add > Call recording > Transcription"
       docs: "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic"
     api:
       kind: "powershell"
@@ -73,7 +73,7 @@ controls:
       kind: "powershell"
       call: "Set-CsCallQueue -AutoRecordingTemplateId <template ID>"
       docs: "https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue?view=teams-ps"
-    note: "The Set-CsCallQueue reference says this parameter works only for customers in the Voice Applications private preview; the admin centre page describes assignment as generally available."
+    note: "The Set-CsCallQueue reference says this parameter is for Voice Applications private preview customers only, and that saving a queue in Teams admin center removes it; the admin centre page describes assignment as generally available."
 confidence: "medium"
 created: "2026-11-19"
 updated: "2026-11-19"
@@ -83,19 +83,23 @@ changes:
     note: "New briefing on intelligent call recap for call queue calls in the Queues app on mobile, covering MC1558032 and the recording template controls."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 72 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-19"
+    note: "Correction: licensing model set to included, rollout bullet now states Microsoft's plan and expected completion, recording template path extended to the settings, and three checklist items without control rows removed."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 77 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-19"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
-  confirmed: 70
+  claims: 77
+  confirmed: 77
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "763ced2f65cddeb6804749c0e3bd9169"
+  contradicted: 0
+  attempts: 0
+  hash: "5f2ea19cdae2cf74d71d6eaa5b059327"
 ---
 
 ## What's changing
@@ -153,18 +157,15 @@ The Auto Attendant and Call Queue licensing page lists no extra Teams Phone lice
 ### Before rollout
 
 - Confirm which call queues record and transcribe calls, using the automatic recording template (see the controls table); a queue without both has nothing for recap to summarise.
-- Check licence assignments for the representatives and supervisors who use the Queues app on mobile, as MC1558032 recommends.
-- Check that shared call history is enabled on the queues, because Learn says it is how authorized users and representatives reach recordings and transcripts through the Queues app.
 - Brief your compliance owner on MC1558032's request to review recording, transcription and AI-related requirements.
 
 ### At rollout
 
-- Tell queue teams that the **View recap** option appears from shared call history in early to mid-December 2026.
+- Tell queue teams that Microsoft plans to begin rollout of the View recap option in shared call history in early December 2026 and expects completion by mid-December 2026.
 - Test with a pilot queue on Android and iOS and note which recorded calls show a recap.
 
 ### After rollout
 
-- Review which representatives can access recordings under each template, since recap follows recording access.
 - Collect user reports of missing recaps and compare them with the queue's recording and transcription settings.
 
 ## Governance controls
@@ -174,8 +175,8 @@ The Auto Attendant and Call Queue licensing page lists no extra Teams Phone lice
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether call queue calls are recorded and transcribed (the calls recap depends on)</strong><br><small class="controls__note">Creates the template; a template applies only to queues it is assigned to. Learn does not say recap reads this template's settings; the notice says recap needs recorded and transcribed calls.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Templates and resources › Templates › Automatic Recording › Add <a href="https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-CsAutoRecordingTemplate -Name &lt;template name&gt; -RecordingEnabled $true -TranscriptionEnabled $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which call queue uses an automatic recording template</strong><br><small class="controls__note">The Set-CsCallQueue reference says this parameter works only for customers in the Voice Applications private preview; the admin centre page describes assignment as generally available.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Call queue › call queue › Templates › Automatic recording template <a href="https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsCallQueue -AutoRecordingTemplateId &lt;template ID&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether call queue calls are recorded and transcribed (the calls recap depends on)</strong><br><small class="controls__note">Creates the template; a template applies only to queues it is assigned to. Learn does not say recap reads this template's settings; the notice says recap needs recorded and transcribed calls.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Templates and resources › Templates › Automatic Recording › Add › Call recording › Transcription <a href="https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-CsAutoRecordingTemplate -Name &lt;template name&gt; -RecordingEnabled $true -TranscriptionEnabled $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/new-csautorecordingtemplate?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which call queue uses an automatic recording template</strong><br><small class="controls__note">The Set-CsCallQueue reference says this parameter is for Voice Applications private preview customers only, and that saving a queue in Teams admin center removes it; the admin centre page describes assignment as generally available.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Call queue › call queue › Templates › Automatic recording template <a href="https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsCallQueue -AutoRecordingTemplateId &lt;template ID&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -194,15 +195,4 @@ The Queues app can be turned off org-wide in the Teams admin center, but Learn s
 risk: Low. Microsoft's notice MC1558032 says recap is only for recorded and transcribed calls and for users who already have access to the recording, and that recording creation, storage and access do not change.
 cost: Low. The only cost the sources show is admin time to review licences; Queues app users already need Teams Phone and Teams Premium, and a licence specific to recap on call queue calls is not yet published.
 impact: Medium. Calling representatives and supervisors who use the Queues app on Teams mobile are the people who see the new View recap option; other users do not.
--->
-
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model; rationale: cost / consistency: The add-on licensing classification conflicts with the standard's treatment of a new option inside an already licensed product. | Found: model: "add-on" cost: Low. The only cost the sources show is admin time to review licences; Queues app users already need Teams Phone and Teams Premium, and a licence specific to recap on call queue calls is not yet published. | Fix: Set licensing.model to "included" under the standard's product-level entitlement rule. Keep the notes naming Teams Phone and Teams Premium for Queues app and saying no requirement specific to call queue recap is published. This does not assert a separately verified recap-specific licence.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Scope: Rollout; Governance guidance: At rollout / record: Microsoft expects completion by mid-December 2026, presented without that qualification in the rollout checklist. | Found: expected to complete by mid-December 2026 | Fix: Replace the first At rollout bullet with: "Tell queue teams that Microsoft plans to begin rollout of the View recap option in shared call history in early December 2026 and expects completion by mid-December 2026."
-- [supported, minor] controls[0].ui; Governance controls: first table row / admin-path: Teams admin center > Voice > Templates and resources > Templates > Automatic Recording > Add opens automatic recording template creation. | Found: go to Voice > Templates and resources. Select Templates. Select Automatic Recording as the template type. Select Add to create a new Automatic Recording template. | Fix: Extend the path in front matter and the table to "Voice > Templates and resources > Templates > Automatic Recording > Add > Call recording > Transcription" so it reaches the settings described by the row. The cited page documents both settings after Add. | Source: https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-recording-automatic
-- [supported, minor] controls[1].api; Governance controls: second table row / command: MicrosoftTeams Set-CsCallQueue -AutoRecordingTemplateId <template ID> assigns an automatic recording template, subject to the stated private-preview restriction. | Found: Voice applications private preview customers only. Saving a call queue configuration through Teams admin center will remove this setting. The AutoRecordingTemplateId parameter indicates the Auto Recording template to apply to the call queue. | Fix: Append to controls[1].note and the matching table note: "The PowerShell reference also warns that saving a call queue configuration through Teams admin center removes this setting." | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue?view=teams-ps
-- [contradicted, minor] Governance guidance: Before rollout; After rollout; Governance controls table / consistency: The checklist asks readers to review licence assignments, shared call history and representative recording permissions, but these have no corresponding control rows. | Found: Check licence assignments ... Check that shared call history is enabled ... Review which representatives can access recordings ... Table rows: Whether call queue calls are recorded and transcribed; Which call queue uses an automatic recording template. | Fix: Remove the Before rollout bullets "Check licence assignments..." and "Check that shared call history is enabled...", and the After rollout bullet "Review which representatives can access recordings..." from the checklist; their documented facts remain in the body. Do not add control rows in this correction.
 -->

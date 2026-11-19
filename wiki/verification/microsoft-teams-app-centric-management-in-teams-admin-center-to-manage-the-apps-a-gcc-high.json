@@ -1,0 +1,881 @@
+{
+  "slug": "microsoft-teams-app-centric-management-in-teams-admin-center-to-manage-the-apps-a-gcc-high",
+  "roadmapId": 569433,
+  "title": "Microsoft Teams: app centric management of app availability in GCC High",
+  "status": "held",
+  "date": "2026-11-19",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-19",
+    "reasons": [
+      "1 blocking finding (claim 21)"
+    ]
+  },
+  "counts": {
+    "claims": 67,
+    "confirmed": 64,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 1,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: the briefing treats what happens without administrator action as unknown, although Learn describes automatic migration, including the transition of tenants with custom policies. The GCC High-specific migration schedule remains unpublished, but that narrower uncertainty should not obscure the documented automatic migration behaviour. The control paths and PowerShell operations are otherwise supported, with small presentation and citation corrections.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "Roadmap item 569433 is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\n    \"General Availability\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "title; front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "This roadmap item covers GCC High.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\n    \"GCC High\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\n    \"Web\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-11-03T00:14:11.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-03T00:14:11\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "App centric management replaces app permission policies with per-app access choices of Everyone, Specific users or groups, or No one.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "Use the feature if already auto-migrated or manually migrate to app centric management. It replaces app permission policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Administrators can set a default for new apps published to the Teams app store.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "First, admins can set a default value for new apps that are published to Teams app store.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Why it matters; Scope",
+      "type": "record",
+      "claim": "The roadmap describes evolving permission policies and migrating existing customers' policies to maintain app availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature evolves the existing app permission policies and provides admins with the ability to manage access to the app individually. The app permission policies for existing customers are migrated to maintain existing app availability in the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The documented automatic migration creates one security group per custom app permission policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "During the auto migration, one security group is created for each custom app permission policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Users assigned to each migrated permission policy are added to its corresponding security group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "All users currently assigned to an app permission policy are then added to the corresponding security group for that policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Migration assigns the corresponding groups to the apps their policies allowed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "These groups are assigned to each app they're allowed in their respective policy, maintaining their app access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment; Governance guidance; rationale: impact",
+      "type": "behaviour",
+      "claim": "Learn identifies global-allow/custom-block as the migration exception that makes an app available to all tenant users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "There's no change of app permissions during the migration, except where an app is allowed in the global policy but blocked in the custom app permission policy. Here, the app is available to all users of the tenant, except for EDU customers, for whom it will be available to none.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "For EDU customers, the documented conflict case instead makes the app available to none.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "except for EDU customers, for whom it will be available to none.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Administrators can modify the conflict-case availability after migration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "Admins can modify this behavior as desired post migration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "The app centric management page says the feature is not available to all organisations yet.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "All organizations don't have the app centric management feature available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "Learn directs readers to Message Center post MC688930 and roadmap item 151829 for timelines.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "For timelines, see Message Center post MC688930 or Microsoft 365 roadmap item 151829.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "Learn's general overview describes automatic tenant migration starting in April 2025.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "Starting from April 2025, tenants are automatically migrated to app centric management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; front matter: changes; Open questions",
+      "type": "absence",
+      "claim": "The cited Learn pages do not give a GCC High-specific automatic migration schedule.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams app centric management GCC High automatic migration default rollout MC688930; \"app centric management\" \"GCC High\" migration automatic. Read app-centric-management, manage-apps and platform/concepts/cloud-overview; no GCC High-specific schedule was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
+      "type": "default",
+      "claim": "The default is unknown because Microsoft has not stated whether migration happens if nobody acts in GCC High.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "Starting from April 2025, your tenant is automatically migrated to app centric management. After the migration, you can't access the migration wizard. However, until the migration is complete, you can use the wizard and opt to complete the migration manually.",
+      "severity": "blocker",
+      "fix": "Set defaultState to on. Replace the claims that Microsoft has not stated whether migration happens without action with: 'Learn describes automatic migration to app centric management, with manual migration available until it completes; it does not give a GCC High-specific migration schedule.' In Open questions, replace the first two bullets with: 'When will automatic migration reach this GCC High tenant? Learn gives no GCC High-specific schedule; the roadmap target is November CY2026.' Do not apply Learn's general April 2025 start date as a GCC High-specific rollout date. Source: https://learn.microsoft.com/microsoftteams/app-centric-management#migrate-to-app-centric-management."
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The separate GCC roadmap item 527830 is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "GCC roadmap item 527830 has a January CY2026 target.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The separate DoD roadmap item 569434 is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "DoD roadmap item 569434 has a November CY2026 target.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "summary; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Migration cannot be reverted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "Once your organization migrates, you can't revert the migration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters; Risk assessment; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "After switching, administrators cannot access, edit or use permission policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "After you switch to this feature, you can't access, edit, or use permission policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure; Governance guidance",
+      "type": "availability",
+      "claim": "Everyone availability includes existing organisation users, new users and guests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "Available to all org users, new users, and guests.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure",
+      "type": "availability",
+      "claim": "Specific users or groups excludes guests even when they are assigned.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "Guests can't use the app if this option is selected and even if guests are assigned to the app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Changing membership of groups assigned to an app changes access through those groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "Administrators manage these groups like any others to customize the app centric management assignments, such as adding and removing users or removing the group and replacing it with another group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Previously blocked apps remain unavailable after migration, with status unblocked and availability No one.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "After migration, your blocked apps continue to remain unavailable to users. The status of such apps is `unblocked` now but the apps are available to `No one` in the `Available to` column on the Manage apps page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Learn documents app access management rather than new autonomous behaviour for this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams app centric management autonomous actions behavior. Read app-centric-management and manage-apps; the described changes concern app access, availability and migration, with no new autonomous behaviour specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].note; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Availability changes take up to 24 hours to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "It takes up to 24 hours for the availability changes to take effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "In rare cases, availability changes take up to six days to appear in the client.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "In rare cases, it might take up to six days for the changes to reflect in the client.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Bulk availability updates are supported through PowerShell but not through the Teams admin center UI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "You can't update app availability in bulk in Teams admin center, but you can do so through PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Scope: Rollout",
+      "type": "availability",
+      "claim": "Supported assignment groups include security, Microsoft 365, dynamic membership, nested groups and distribution lists.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "The supported group types are security groups, Microsoft 365 groups, dynamic user membership groups, nested groups, and the distribution lists.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Scope: Rollout",
+      "type": "behaviour",
+      "claim": "An administrator can add up to 99 users or groups to an app at a time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "You can add up to 99 users or groups at a time to an app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].note; licensing.notes; Cost and licensing; Scope; Governance controls; rationales",
+      "type": "role",
+      "claim": "Learn names Teams Administrator as the role required to use the Teams admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "To use Teams admin center, you must have a Teams Administrator role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope: Who is affected",
+      "type": "role",
+      "claim": "Microsoft recommends using the lower-privilege role where possible even though higher-privilege administrators can perform governance tasks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "Some admins with a higher privilege role can accomplish agent and app governance tasks but we recommend using the lower privilege role where possible.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.model; Cost and licensing",
+      "type": "licensing",
+      "claim": "Licensing is included with the existing Microsoft 365 Government Teams deployment rather than a separately published app centric management entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/platform/concepts/cloud-overview",
+      "quote": "To deploy Teams in GCC, GCC High, or DoD, you must purchase a suitable Microsoft 365 Government plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No licence specific to app centric management is published in the documentation checked.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams app centric management licensing license pricing meter prerequisites; \"app centric management\" \"license\". Read app-centric-management, manage-apps and cloud-overview; found the Government plan requirement, not a feature-specific licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No price specific to app centric management is published in the documentation checked.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams app centric management licensing license pricing meter prerequisites. Read app-centric-management, manage-apps, cloud-overview and purchase-third-party-apps; the purchasing documentation concerns app subscriptions, not a price for this control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to app centric management is published in the documentation checked.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams app centric management licensing license pricing meter prerequisites. Read app-centric-management, manage-apps and cloud-overview; none specifies a consumption meter for app centric management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Deploying Teams in GCC, GCC High or DoD requires a suitable Microsoft 365 Government plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/platform/concepts/cloud-overview",
+      "quote": "To deploy Teams in GCC, GCC High, or DoD, you must purchase a suitable Microsoft 365 Government plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Paid third-party app subscriptions are separate purchases available from the Manage apps page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/purchase-third-party-apps",
+      "quote": "You can purchase licenses for services offered by third-party apps from the Manage apps page in the Teams admin center.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoftteams/purchase-third-party-apps to sources for the sentence about buying third-party app licences from Manage apps; the cited manage-apps overview does not contain that purchasing guidance."
+    },
+    {
+      "n": 46,
+      "where": "Why it matters; Cost and licensing; Scope; Open questions",
+      "type": "availability",
+      "claim": "The government-cloud documentation says third-party apps are unavailable in GCC High and DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/platform/concepts/cloud-overview",
+      "quote": "Third-party apps are turned off by default for GCC and aren't available for GCC High and DoD.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope: Cloud and platform",
+      "type": "availability",
+      "claim": "The government-cloud capabilities table lists Manage apps in Teams admin center as available in GCC High.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/platform/concepts/cloud-overview",
+      "quote": "| Manage apps in Teams Admin Center | ✔️ | ✔️ | ✔️ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].note; Scope: Third-party apps",
+      "type": "default",
+      "claim": "The Teams management overview says all third-party agents and apps are blocked by default in GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "In a Microsoft 365 Government - GCC, GCCH and DoD deployment of Teams, all third-party agents and apps are blocked by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Per-app availability is reached through Teams apps > Manage apps > app > Users and groups > Availability > Edit availability > Available to.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "Select the Users and groups tab.\n4. Under Select to manage who this app is installed for or available to in your organization, select Availability.\n5. Select Edit availability.\n6. Select the required option from Available to menu.",
+      "severity": "minor",
+      "fix": "In controls[0].ui.path and the rendered table, restore the omitted section heading: 'Teams apps > Manage apps > app > Users and groups > Select to manage who this app is installed for or available to in your organization > Availability > Edit availability > Available to'. The existing path's selectable steps are correct."
+    },
+    {
+      "n": 50,
+      "where": "controls[0].api; Governance controls table and prose",
+      "type": "command",
+      "claim": "Update-M365TeamsApp -Id <app id> -AppAssignmentType Everyone sets per-app availability to Everyone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -AppAssignmentType Everyone",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[0].note; Governance controls table",
+      "type": "command",
+      "claim": "The cmdlet also documents UsersAndGroups with Users and Groups parameters, and the Noone assignment type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "(Everyone ... UsersandGroups ... Noone) ... -Users ... List of all the users for whom the app is enabled or disabled. ... -Groups ... List of all the groups for whom the app is enabled or disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The third-party org-wide setting is reached through Teams apps > Manage apps > Actions > Org-wide app settings > Third-party apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "On Manage apps page, under the Actions menu, select Org-wide app settings. You can then configure the settings in the pane.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[1].api; Governance controls prose; Open questions",
+      "type": "absence",
+      "claim": "No documented automation mapping was found between the org-wide defaults and the unified tenant settings names.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams org-wide app settings PowerShell GlobalApp DefaultApp PrivateApp Update-M365UnifiedTenantSettings third-party apps; \"Update-M365UnifiedTenantSettings\" \"Third\". Read the update reference, Get search excerpts, manage-apps and app-centric-management; no mapping found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[1].note; Governance controls table",
+      "type": "admin-path",
+      "claim": "Microsoft apps and Custom apps controls are on the same Org-wide app settings pane.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "Under Microsoft apps, a single control automatically enables users to install and use any available agents and apps by default. ... Under Custom apps, turn off or turn on Let users install and use available apps by default option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].note; Governance controls prose",
+      "type": "applicability",
+      "claim": "Org-wide settings do not override individually saved Specific users and groups, Everyone or No one assignments, or blocked apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "The Org-wide app settings don’t apply to:\n\n- All apps that have user assignment set to Specific users and groups and saved by you.\n- All apps that were assigned to Everyone or to No one and saved individually.\n- Any blocked apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "An app can be allowed or blocked by selecting it at Teams apps > Manage apps and choosing Allow or Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "Sign in to the Teams admin center and access Teams apps > Manage apps.\n2. Select the app on the Manage apps page and select Allow or Block option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "Update-M365TeamsApp -Id <app id> -IsBlocked $true is a documented operation for changing an app's tenant state.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[2].note; Governance controls prose",
+      "type": "applicability",
+      "claim": "Availability requires allowing the app through all listed access controls, while any one listed control can block it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "To allow an agent or app, you must do all of the following settings. To block an agent or app, use any one of the following settings:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[1].governs; Governance controls prose",
+      "type": "applicability",
+      "claim": "Org-wide app defaults cover new store apps and existing apps whose availability has not been actively managed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "The Org-wide app settings apply to:\n\n- All the new apps made available in Teams app store.\n- All the existing apps that you didn't actively manage, that is, you didn't change the availability of.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance controls prose",
+      "type": "command",
+      "claim": "Update-M365UnifiedTenantSettings lists GlobalApp, DefaultApp and PrivateApp as setting names.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365unifiedtenantsettings",
+      "quote": "DefaultApp ... GlobalApp ... PrivateApp ... EnableCopilotExtensibility",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Learn advises inventorying apps and assigned users or groups at Teams admin center > Teams apps > Permission policies before migration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "Log into Teams admin center and access Teams apps > Permission policies page. Take inventory of the apps in the permission policies and identify the users and groups that the apps are allowed or blocked for.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Learn documents a mapping from old global policy and org-wide settings to new Microsoft and third-party app defaults.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "When your tenant's admin center receives this feature, the following updates are made to the app access. The access to apps doesn't change and the update only maps your existing permission policies to new availability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance guidance: Before rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist's instruction to take stock of Permission policies has no corresponding controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Inventory the apps and users in each app permission policy at Teams admin center > Teams apps > Permission policies; the controls table contains only per-app availability, org-wide defaults and app allow/block.",
+      "severity": "minor",
+      "fix": "The first Before rollout checklist step names the Permission policies control, which has no controls-table row. Remove that checklist step; the migration discussion can retain its factual description of permission policies."
+    },
+    {
+      "n": 64,
+      "where": "front matter: action",
+      "type": "consistency",
+      "claim": "The prepare action understates a rolling-out automatic migration with medium risk and pre-migration decisions.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "status: \"rolling-out\"; risk: \"medium\"; action: \"prepare\". The page asks administrators to review app availability before an irreversible migration.",
+      "severity": "minor",
+      "fix": "Set action to act-now: the roadmap says Rolling out, Learn describes automatic migration, and this briefing rates the change medium risk and identifies decisions to take before migration."
+    },
+    {
+      "n": 65,
+      "where": "controls[2].note; Governance controls prose",
+      "type": "behaviour",
+      "claim": "App availability assignments and the app's organisation-level allowed or blocked status are separately documented controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "The Manage apps page displays all the available agents and apps and the current org-level app status. ... Use agent and app assignment through app centric management to define user access for agents and apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[0].governs; What's changing",
+      "type": "availability",
+      "claim": "The No one availability option makes an app unavailable to any user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "| `No one` | Not available to any user | Same as a blocked app. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[0].governs; What's changing",
+      "type": "availability",
+      "claim": "Specific users or groups restricts app availability to the selected users and groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "Only the users and groups that you select can use the app.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-19T22:10:31.014Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/manage-apps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365unifiedtenantsettings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/platform/concepts/cloud-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=569433",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which users and groups can use each app (Everyone, Specific users or groups, No one)",
+        "docs": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Manage apps",
+          "Users and groups",
+          "Availability",
+          "Edit availability",
+          "Available to"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which users and groups can use each app (Everyone, Specific users or groups, No one)",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "reachable": true,
+        "token": "Update-M365TeamsApp",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Default availability of new and unmanaged apps (Org-wide app settings)",
+        "docs": "https://learn.microsoft.com/microsoftteams/manage-apps",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Manage apps",
+          "Actions",
+          "Org-wide app settings",
+          "Third-party apps"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether an app is allowed or blocked for the organisation",
+        "docs": "https://learn.microsoft.com/microsoftteams/manage-apps",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Manage apps",
+          "Allow or Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether an app is allowed or blocked for the organisation",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "reachable": true,
+        "token": "Update-M365TeamsApp",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

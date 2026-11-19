@@ -25,6 +25,9 @@ sources:
   - title: "Microsoft 365 Roadmap 558437"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=558437"
     kind: "roadmap"
+  - title: "Microsoft 365 Roadmap 558939"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=558939"
+    kind: "roadmap"
   - title: "MC1249424: (Updated) Microsoft Purview DLP: Unmanaged cloud app protection with Microsoft Purview and the Island Enterprise Browser"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1249424"
     kind: "message-center"
@@ -63,7 +66,7 @@ controls:
       docs: "https://learn.microsoft.com/purview/collection-policies-create-deploy-policy"
     api: null
     note: "General Security Store steps from Learn; MC1249424 says the integration is enabled from the Security Store. Island-specific steps follow Island's documentation."
-  - governs: "Network DLP policies that audit or block data sent to unmanaged cloud apps"
+  - governs: "Network enforcement plane for a new DLP policy"
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
@@ -71,9 +74,9 @@ controls:
       docs: "https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security"
     api:
       kind: "powershell"
-      call: "New-DlpCompliancePolicy -Name <String> -EnforcementPlanes <MultiValuedProperty>"
+      call: "New-DlpCompliancePolicy -Name <String> -EnforcementPlanes @(\"Network\")"
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy"
-    note: "Security & Compliance PowerShell; creates the policy container, not its rules or Audit only/Block. The reference read lists no value for network policies. Some features in the Learn scenario are in preview."
+    note: "Security & Compliance PowerShell; creates the policy container, not its rules or Audit only/Block. The EnforcementPlanes parameter accepts Network. Some features in the Learn scenario are in preview."
   - governs: "What network activity is collected for discovery, without enforcement"
     scope: "tenant"
     ui:
@@ -113,19 +116,23 @@ changes:
     note: "New briefing for the Island integration; MC1249424 (updated 18 September 2026) moved general availability to June 2027, and the integration is off by default and needs pay-as-you-go."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 72 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-19"
+    note: "Corrected the network DLP policy row: the New-DlpCompliancePolicy EnforcementPlanes parameter accepts Network. Added the roadmap item for the Palo Alto Prisma Access integration as a source."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 86 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
-  confirmed: 70
+  claims: 86
+  confirmed: 85
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "821ec9ed5aebcbca445aceccdafcebfa"
+  contradicted: 1
+  attempts: 0
+  hash: "4109308dca9ef0b412bf95458ffbc883"
 ---
 
 ## What's changing
@@ -208,7 +215,7 @@ Learn lists these prerequisites for a non-Microsoft secure browser provider: Pur
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether the Island integration is enabled for network data security</strong><br><small>Tenant</small><br><small class="controls__note">General Security Store steps from Learn; MC1249424 says the integration is enabled from the Security Store. Island-specific steps follow Island's documentation.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Loss Prevention › Security Store › Get solution <a href="https://learn.microsoft.com/purview/collection-policies-create-deploy-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Network DLP policies that audit or block data sent to unmanaged cloud apps</strong><br><small>Tenant</small><br><small class="controls__note">Security &amp; Compliance PowerShell; creates the policy container, not its rules or Audit only/Block. The reference read lists no value for network policies. Some features in the Learn scenario are in preview.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Inline web traffic › Custom › Custom policy › Choose where to enforce the policy › Network and non-Microsoft secure browsers <a href="https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpCompliancePolicy -Name &lt;String&gt; -EnforcementPlanes &lt;MultiValuedProperty&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Network enforcement plane for a new DLP policy</strong><br><small>Tenant</small><br><small class="controls__note">Security &amp; Compliance PowerShell; creates the policy container, not its rules or Audit only/Block. The EnforcementPlanes parameter accepts Network. Some features in the Learn scenario are in preview.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Inline web traffic › Custom › Custom policy › Choose where to enforce the policy › Network and non-Microsoft secure browsers <a href="https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpCompliancePolicy -Name &lt;String&gt; -EnforcementPlanes @(&quot;Network&quot;)</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>What network activity is collected for discovery, without enforcement</strong><br><small>Tenant</small><br><small class="controls__note">The cmdlet is in Public Preview and not available in all organisations; its Learn example uses the CopilotExperiences and Browser planes, so a network example is not shown. Learn lists the DLP Compliance Management role.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Classifiers › Collection policies › + Create policy › + Add condition › Content contains › Classifiers › Edit › + Add activities › + Add data source › Unmanaged cloud apps › Network and non-Microsoft secure browsers <a href="https://learn.microsoft.com/purview/collection-policies-create-deploy-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-FeatureConfiguration -Name &lt;String&gt; -FeatureScenario KnowYourData -Mode Enable -ScenarioConfig &lt;JSON&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-featureconfiguration" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Pay-as-you-go billing that the integration requires</strong><br><small>Tenant</small><br><small class="controls__note">Only a Global Administrator can enable pay-as-you-go; the page marks the feature as in preview. It can also be started from the rocket icon, then Get Started.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Account details <a href="https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Where Island-sourced network matches are viewed and exported</strong><br><small>Tenant</small><br><small class="controls__note">Reporting, not enforcement. The cmdlet reference says Activity explorer reports on up to 30 days of data.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Explorers › Activity explorer › + Add filter › Enforcement plane › Network <a href="https://learn.microsoft.com/purview/collection-policies-create-deploy-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Export-ActivityExplorerData -StartTime &lt;DateTime&gt; -EndTime &lt;DateTime&gt; -OutputFormat &lt;String&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/export-activityexplorerdata" rel="noopener" class="controls__docs">Learn</a></td></tr>
@@ -232,14 +239,10 @@ cost: Variable. Learn says network data security with non-Microsoft secure brows
 impact: Low. Purview, security and billing administrators decide whether to enable it; users are affected only where a policy is configured to audit or block their browser activity.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].api; Governance controls table / command: New-DlpCompliancePolicy -Name <String> -EnforcementPlanes <MultiValuedProperty> is the automation for network DLP policies that audit or block data. | Found: Use the New-DlpCompliancePolicy cmdlet to create data loss prevention (DLP) policies in the Microsoft Purview compliance portal. DLP policies contain DLP rules that identify, monitor, and protect sensitive information. | Fix: Narrow this existing row's governs to 'Network enforcement plane for a new DLP policy', and use 'New-DlpCompliancePolicy -Name <String> -EnforcementPlanes Network'. Retain the qualification that this creates only the policy container, not its Audit only/Block rules. The Network value is documented at https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy
-- [contradicted, blocker] controls[1].note; Governance controls table / absence: The New-DlpCompliancePolicy reference lists no value for network policies. | Found: The EnforcementPlanes parameter defines the layer where policy actions are run. ... Valid values are: ... Network | Fix: Replace 'The reference read lists no value for network policies' with 'The EnforcementPlanes parameter accepts Network', citing https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: separate Palo Alto item / record: Roadmap item 558939 covers the equivalent Palo Alto Prisma Access integration. | Found: "id": 558939; "title": "Microsoft Purview: Data Loss Prevention - Unmanaged cloud app discovery and protection with Microsoft Purview and Palo Alto Prisma Access" | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=558939 to sources as the roadmap evidence for this sentence; the linked wiki briefing is not evidence.
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: The DLP UI route runs through Data loss prevention, Policies, Create policy, Inline web traffic, Custom and Custom policy to the Network and non-Microsoft secure browsers enforcement option. | Found: Select + Add cloud apps. Select the Adaptive app scopes tab, then choose All unmanaged AI apps and select Add (1). Select Edit scope on All unmanaged AI apps. | Fix: Replace the path with 'Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > + Add cloud apps > Adaptive app scopes > All unmanaged AI apps > Edit scope > Include only specific > + Add inclusions > Specific users and groups > group > Choose where to enforce the policy > Network and non-Microsoft secure browsers'. State that this is the cited unmanaged-AI scenario, with the administrator choosing the target group. Source: https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security. | Source: https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security
-- [supported, minor] controls[2].ui; Governance controls table / admin-path: The collection-policy UI route uses the documented collection-policy, classifier, activity and unmanaged-cloud-app steps to reach Network and non-Microsoft secure browsers. | Found: Select Edit scope on the Unmanaged cloud apps row. Select the Include only specific option ... Leave the default option of Don't capture content and select Next. Ensure Network and non-Microsoft secure browsers is enabled | Fix: Shorten controls[2].ui.path to 'Data loss prevention > Classifiers > Collection policies', the documented page listing these policies, rather than printing an incomplete wizard route. Add to its note: 'This path opens the collection-policy list; the cited network scenario gives the subsequent activity, app scope, content capture and network-enablement choices.' Keep https://learn.microsoft.com/purview/collection-policies-create-deploy-policy as docs. | Source: https://learn.microsoft.com/purview/collection-policies-create-deploy-policy
-- [supported, minor] controls[3].ui; Governance controls table / admin-path: Settings > Account details in the Purview portal is the entry point for pay-as-you-go enablement. | Found: This can also be done from Settings > Account details. Select your active Azure subscription from the list. ... Select the resource group. | Fix: The path reaches the correct starting page but stops before the billing association is configured. Extend it to 'Settings > Account details > subscription > resource group', using the selections documented at https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement. | Source: https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement
+- [supported, minor] controls[1].ui / admin-path: The printed new-DLP-policy path reaches Network and non-Microsoft secure browsers. | Found: Select + Add cloud apps. Select the Adaptive app scopes tab ... Select Edit scope ... On the Choose where to enforce the policy page, ensure Network and non-Microsoft secure browsers is On | Fix: The printed steps are correct but omit the cloud-app and group scope selection. For the cited scenario, give: Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > + Add cloud apps > Adaptive app scopes > All unmanaged AI apps > Edit scope > Include only specific > + Add inclusions > Specific users and groups > group > Choose where to enforce the policy > Network and non-Microsoft secure browsers. Source: https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security. | Source: https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security
+- [supported, minor] controls[2].ui; Governance guidance: At rollout / admin-path: The printed collection-policy path reaches the Network and non-Microsoft secure browsers option. | Found: Leave the default option of Don't capture content and select Next. ... Ensure Network and non-Microsoft secure browsers is enabled and select Next. | Fix: Expand the correct but abbreviated scenario route to: Data loss prevention > Classifiers > Collection policies > + Create policy > + Add condition > Content contains > Classifiers > Edit > Scope for classifiers > Exclude classifiers > + Exclude classifiers > Choose Classifiers > classifiers > + Add activities > activities > + Add data source > Unmanaged cloud apps > cloud apps > Edit scope > Include only specific > Included > + Add inclusions > group > Don't capture content > Network and non-Microsoft secure browsers. Lower-case placeholders identify the classifiers, activities, apps and group the administrator chooses. Source: https://learn.microsoft.com/purview/collection-policies-create-deploy-policy. | Source: https://learn.microsoft.com/purview/collection-policies-create-deploy-policy
+- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: Every control the governance checklist tells readers to configure is represented in the controls table. | Found: Checklist: "Create the network DLP policy with the Audit only action before switching to Block". The DLP control row governs "Network enforcement plane for a new DLP policy" and explicitly says "not its rules or Audit only/Block". | Fix: Narrow that At rollout checklist bullet to 'Create the network DLP policy with the Network and non-Microsoft secure browsers enforcement plane enabled.' The table has no action-setting row; do not add a row as part of this correction.
 -->

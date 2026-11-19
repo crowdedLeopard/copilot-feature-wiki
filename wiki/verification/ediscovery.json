@@ -1,0 +1,1323 @@
+{
+  "slug": "ediscovery",
+  "kind": "concept",
+  "roadmapId": null,
+  "title": "Microsoft Purview eDiscovery: who can search, hold and delete organisational content, and what it costs",
+  "status": "held",
+  "date": "2026-11-19",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-19",
+    "reasons": [
+      "2 blocking findings (claims 51, 76)"
+    ]
+  },
+  "counts": {
+    "claims": 99,
+    "confirmed": 96,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 0,
+    "minor": 10
+  },
+  "summary": "Hold: the hold-policy API creates a policy but does not select the mailboxes or sites the row says it preserves. The page also incorrectly implies that eDiscovery permissions require a mail-enabled security group, although Microsoft documents assigning individual users.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "Purview eDiscovery identifies and delivers electronic information as evidence in investigations and legal cases.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc",
+      "quote": "Electronic discovery, or eDiscovery, is the process of identifying and delivering electronically stored information (ESI) that you can use as evidence in investigations and legal cases.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What it is, first paragraph",
+      "type": "behaviour",
+      "claim": "A case contains the searches, holds and review sets for an investigation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc",
+      "quote": "An eDiscovery case contains all searches, holds, and review sets related to a specific investigation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What it is, first paragraph; Why it matters; Governance controls",
+      "type": "role",
+      "claim": "Case membership controls access to the case and its contents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc",
+      "quote": "You can also assign members to a case to control who can access the case and view the contents of the case.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What it is, second paragraph",
+      "type": "applicability",
+      "claim": "Search supports Exchange, OneDrive, SharePoint, Teams, Microsoft 365 Groups and Viva Engage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc",
+      "quote": "Search for content that's stored in Exchange mailboxes, OneDrive accounts, SharePoint sites, Microsoft Teams, Microsoft 365 Groups, and Viva Engage Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What it is, second paragraph",
+      "type": "behaviour",
+      "claim": "One eDiscovery search can search mailboxes and sites together.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc",
+      "quote": "You can search mailboxes and sites in the same eDiscovery search, and then export the search results.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What it is, second paragraph",
+      "type": "behaviour",
+      "claim": "Microsoft 365 Copilot interactions are individual items in the user's Exchange Online mailbox.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-copilot-data",
+      "quote": "Each Microsoft 365 Copilot interaction is stored in the user's Exchange Online mailbox as an individual message-class item",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "summary; What it is, second paragraph",
+      "type": "applicability",
+      "claim": "Copilot interaction data can be searched, preserved and exported with eDiscovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "eDiscovery content search, legal hold, export search results for Copilot interactions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What it is, second paragraph",
+      "type": "date",
+      "claim": "Microsoft retired classic eDiscovery experiences on 31 August 2025.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ediscovery",
+      "quote": "Microsoft retired all classic eDiscovery experiences on August 31, 2025.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What it is, second paragraph",
+      "type": "behaviour",
+      "claim": "The current experience is eDiscovery in the Microsoft Purview portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc",
+      "quote": "In the Microsoft Purview portal, all Content Search functionality is now included in a system generated eDiscovery case",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What it is, The parts: Search",
+      "type": "behaviour",
+      "claim": "Search finds content using keyword queries and conditions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc",
+      "quote": "Create Keyword Query Language (KeyQL) search queries to search for content keywords that match query criteria. You can also include conditions to narrow the scope of your search.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What it is, The parts: Search",
+      "type": "behaviour",
+      "claim": "Search provides statistics and samples.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc",
+      "quote": "You can also view a representative sample of the items included in the search results.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What it is, The parts: Hold; Why it matters",
+      "type": "behaviour",
+      "claim": "Case holds preserve selected mailbox and site content until the location is removed or the hold is released.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-create",
+      "quote": "When you place content locations on hold, you preserve content until you remove the content location from the hold or until you delete or release the hold.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What it is, The parts: Export",
+      "type": "behaviour",
+      "claim": "Export copies results from their original locations into a downloadable package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc",
+      "quote": "When you export search results, items are copied from their original content location and packaged. Then you can download those items in the export package to a local computer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What it is, The parts: Review set",
+      "type": "behaviour",
+      "claim": "A review set is a Microsoft-provided Azure Storage copy of collected items.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc",
+      "quote": "A review set is a secure, Microsoft-provided Azure Storage location in the Microsoft cloud. When you add data to a review set, the collected items are copied from their original content location to the review set.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What it is, The parts: Review set",
+      "type": "behaviour",
+      "claim": "Review sets support filtering, tagging and analysis.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc",
+      "quote": "Review sets provide a static, known set of content that you can search, filter, tag, analyze, and predict relevancy using predictive coding models.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What it is, The parts: Search and delete",
+      "type": "applicability",
+      "claim": "Search and delete can remove harmful or high-risk email, Teams messages and Copilot or AI application data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc",
+      "quote": "Use eDiscovery to search for and delete email messages, Microsoft Teams chat messages, and Copilot and AI application data across your organization. This capability helps you find and remove content that's potentially harmful or high-risk.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What it is, final paragraph",
+      "type": "licensing",
+      "claim": "Review sets, analytics, tagging and decryption are premium rather than standard features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc",
+      "quote": "| Review sets |  | ![Supported.](media/check-mark.png) |\n| Decryption |  | ![Supported.](media/check-mark.png) |\n| Tagging |  | ![Supported.](media/check-mark.png) |\n| Analytics |  | ![Supported.](media/check-mark.png) |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What it is, final paragraph; Why it matters; Governance controls",
+      "type": "role",
+      "claim": "Role-based permissions determine which eDiscovery tasks users can perform.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc",
+      "quote": "Use role-based access control (RBAC) permissions to control what eDiscovery-related tasks that different users can perform.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Why it matters; controls[2].governs",
+      "type": "applicability",
+      "claim": "Search permissions filters build compliance boundaries limiting the mailboxes and sites a manager can search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-permission-filtering",
+      "quote": "Use search permissions filtering to create logical boundaries (called compliance boundaries) within an organization that control the user content locations (such as mailboxes, SharePoint sites, and OneDrive accounts) that specific eDiscovery managers can search.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Why it matters, second paragraph",
+      "type": "behaviour",
+      "claim": "Microsoft recommends retention policies and labels for long-term retention unrelated to investigations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-create",
+      "quote": "For long term data retention not related to eDiscovery investigations, use retention policies and retention labels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Why it matters, second paragraph",
+      "type": "applicability",
+      "claim": "eDiscovery covers content generated by other applications when that content is stored in mailboxes and sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc",
+      "quote": "Searches include content generated by other Microsoft 365 apps that store data in mailboxes and sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Why it matters, second paragraph",
+      "type": "behaviour",
+      "claim": "The documented Microsoft 365 Copilot item class is IPM.SkypeTeams.Message.Copilot.*.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-copilot-data",
+      "quote": "| Microsoft 365 Copilot | `IPM.SkypeTeams.Message.Copilot.*` |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Cost and licensing, first paragraph",
+      "type": "licensing",
+      "claim": "Standard eDiscovery for sites and files is Included in all columns of the cited service-description table, including the E3 column.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| eDiscovery (standard) for sites and files | Included | Included | Included | Included | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Cost and licensing, first paragraph",
+      "type": "licensing",
+      "claim": "Standard eDiscovery for email is Included in all columns of that table, including the E3 column.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| eDiscovery (standard) for email | Included | Included | Included | Included | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Cost and licensing, first paragraph",
+      "type": "licensing",
+      "claim": "Premium is Included in the table's E5, Purview Suite and eDiscovery & Audit add-on columns, and Not included in its E3 columns.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| eDiscovery (premium) | Included | Not included | Included | Included | Not included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Cost and licensing, first paragraph",
+      "type": "licensing",
+      "claim": "Compliance boundaries have no separate licensing requirement beyond applicable eDiscovery licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Compliance boundaries are an eDiscovery configuration capability for limiting which content locations and cases eDiscovery managers can access, and don't have separate licensing requirements beyond applicable eDiscovery licensing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing, Holds; What to check",
+      "type": "licensing",
+      "claim": "Every user whose content is preserved by a hold needs an eligible licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-create",
+      "quote": "eDiscovery holds require an eligible license on every user whose content you preserve.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing, Holds",
+      "type": "licensing",
+      "claim": "Office 365 F1 and F3 do not include rights to be the target of an eDiscovery hold.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-create",
+      "quote": "Frontline subscriptions such as Office 365 F1 and F3 don't include the rights required to be the target of an eDiscovery hold.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing, Holds",
+      "type": "licensing",
+      "claim": "A shared mailbox on hold needs Exchange Online Plan 2 or Plan 1 with Exchange Online Archiving.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Placing a shared mailbox on hold using Microsoft Purview eDiscovery (standard or premium) is subject to the same licensing requirements as placing a hold directly in Exchange Online—Exchange Online Plan 2 or Exchange Online Plan 1 with the Exchange Online Archiving add‑on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing, Premium analysis",
+      "type": "licensing",
+      "claim": "The permissions page requires E5 or an eligible add-on for the user whose data is analysed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "To analyze a user's data when premium eDiscovery features are enabled, the user must be assigned an Office 365 E5 or Microsoft 365 E5 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing, Premium analysis; Open questions",
+      "type": "licensing",
+      "claim": "The permissions page says administrators assigned to cases do not need E5.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "Administrators, compliance officers, or legal personnel who are assigned to cases as members and use premium eDiscovery features to collect, view, and analyze data don't need an E5 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing, Premium analysis; Open questions",
+      "type": "licensing",
+      "claim": "The service description instead requires the appropriate licence or add-on for both the analysed user and the administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "When eDiscovery (premium) features are used, both the user whose data is being analyzed and the administrator performing the analysis must have the appropriate license or add-on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing, Pay-as-you-go",
+      "type": "cost",
+      "claim": "Microsoft 365 non-AI data storage is included in the enterprise subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-billing",
+      "quote": "This data storage is included in your enterprise subscription and isn't subject to pay-as-you-go billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing, Pay-as-you-go",
+      "type": "cost",
+      "claim": "Microsoft 365 AI data storage is included rather than billed pay-as-you-go.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-billing",
+      "quote": "This data storage is included in your enterprise subscription and isn't subject to pay-as-you-go billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing, Pay-as-you-go",
+      "type": "cost",
+      "claim": "Non-Microsoft 365 AI data storage is subject to pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-billing",
+      "quote": "This data storage isn't included in your enterprise subscription and is subject to pay-as-you-go billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing, Pay-as-you-go",
+      "type": "applicability",
+      "claim": "The non-Microsoft 365 AI billing category includes Fabric Copilot, Security Copilot and connected or cloud AI applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-billing",
+      "quote": "This data type includes Copilot in Microsoft Fabric, Microsoft Security Copilot, and any connected or cloud AI application.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing, Pay-as-you-go",
+      "type": "cost",
+      "claim": "Direct portal export of non-Microsoft 365 AI data is a billable process.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-billing",
+      "quote": "The following eDiscovery processes use pay-as-you-go billing for non-Microsoft 365 AI data:\n\n- Direct export of this data from cases by using the Microsoft Purview portal",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing, Pay-as-you-go",
+      "type": "cost",
+      "claim": "Adding non-Microsoft 365 AI data to a review set is a billable process.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-billing",
+      "quote": "The following eDiscovery processes use pay-as-you-go billing for non-Microsoft 365 AI data:\n\n- Direct export of this data from cases by using the Microsoft Purview portal\n- Adding this data to a review set",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing, Pay-as-you-go",
+      "type": "cost",
+      "claim": "Exporting non-Microsoft 365 AI data through Graph is a billable process.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-billing",
+      "quote": "The following eDiscovery processes use pay-as-you-go billing for non-Microsoft 365 AI data:\n\n- Direct export of this data from cases by using the Microsoft Purview portal\n- Adding this data to a review set\n- Exporting this data by using Microsoft Graph API",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing, Pay-as-you-go",
+      "type": "cost",
+      "claim": "Search, hold and case-management processes do not incur the non-Microsoft 365 AI data pay-as-you-go charges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-billing",
+      "quote": "The following eDiscovery processes don't use pay-as-you-go billing for non-Microsoft 365 AI data and are included in your enterprise subscription:\n\n- All search processes\n- All hold processes\n- All case management processes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing, Pay-as-you-go",
+      "type": "cost",
+      "claim": "Microsoft publishes the per-GB eDiscovery storage rate on the Purview pricing page rather than the billing article.",
+      "status": "supported",
+      "source": "https://azure.microsoft.com/pricing/details/purview/",
+      "quote": "This functionality is billed based on the amount of data processed and stored through export and review set each month, equivalent to $20 per GB per month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing, Graph APIs",
+      "type": "licensing",
+      "claim": "Graph API use with E3 eDiscovery licences requires an Azure subscription configured for pay-as-you-go.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-billing",
+      "quote": "Before you can use features associated with non-Microsoft 365 AI data in eDiscovery in your organization, or use Microsoft Graph APIs with an E3 eDiscovery license, you must configure an Azure subscription for pay-as-you-go billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing, Graph APIs",
+      "type": "cost",
+      "claim": "Currently all APIs except Export APIs do not contribute towards E3 API billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-billing",
+      "quote": "Currently, usage of all APIs except Export APIs doesn't contribute towards billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing, Graph APIs",
+      "type": "cost",
+      "claim": "Export API billing is volume-based above an included monthly free amount.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-billing",
+      "quote": "Usage of Export API is billed based on the volume of data exported. Each organization receives an included amount of free storage per month, with additional usage billed at a set price per GB.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risks and limits, eDiscovery Administrators; Governance controls: Roles",
+      "type": "role",
+      "claim": "eDiscovery Administrators can access all cases and case data, and add themselves to any case to manage it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "Access case data for any case in the organization.\n    - Manage any eDiscovery case after they add themselves as a member of the case.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risks and limits, eDiscovery Administrators; What to check",
+      "type": "behaviour",
+      "claim": "Microsoft advises limiting the number of eDiscovery Administrators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "because eDiscovery Administrators can access potentially sensitive information in the results of a compliance search, you should limit the number of people who are eDiscovery Administrators.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risks and limits, eDiscovery Administrators; Governance controls: Roles",
+      "type": "role",
+      "claim": "An eDiscovery Manager can access and manage only cases they create.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "eDiscovery Managers can only access and manage the cases they create. They can't access or manage cases created by other eDiscovery Managers.",
+      "severity": "minor",
+      "fix": "Replace the unqualified creator-only statements with 'The permissions page describes Managers as limited to cases they create, while the service description and case-access guidance say Managers can access cases of which they are members.' The latter guidance is at https://learn.microsoft.com/purview/edisc-settings-access-permissions and the already-cited Purview service description."
+    },
+    {
+      "n": 48,
+      "where": "Risks and limits, A case can lock itself; What to check",
+      "type": "role",
+      "claim": "If a case's sole member leaves, an eDiscovery Administrator can recover access by adding a member.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "because an eDiscovery Administrator can access all eDiscovery cases in the organization, they can view the case and add themselves or another eDiscovery manager as a member of the case.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[1].note; Risks and limits, A case can lock itself",
+      "type": "role",
+      "claim": "Only an eDiscovery Administrator can remove case members.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-settings-access-permissions",
+      "quote": "Only an eDiscovery Administrator can remove users from a case. Even if you're assigned to the eDiscovery Manager role group or initially created the case, you can't remove yourself or other members from a case unless you're also an eDiscovery Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risks and limits, Role-group edits",
+      "type": "behaviour",
+      "claim": "Adding or removing a role from a case-member role group removes that group from its cases.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-settings-access-permissions",
+      "quote": "If you add or remove a role from a role group that you added as a member of a case, the role group is automatically removed as a member of the case (or any case the role group is a member of).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[0].note; Risks and limits, Groups do not behave as expected",
+      "type": "role",
+      "claim": "The eDiscovery Manager role group needs a mail-enabled security group, with mail-enabled security groups being the only membership option.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "On Manage eDiscovery Manager, select Choose users or Choose groups.",
+      "severity": "blocker",
+      "fix": "Replace 'The eDiscovery Manager role group needs a mail-enabled security group' with 'When adding a group to the eDiscovery Managers subgroup, use a mail-enabled security group; individual users can also be assigned.' Replace 'Mail-enabled security groups only' in the row note with 'Group membership uses mail-enabled security groups; individual users are also supported. This command assigns Managers, not Administrators.'"
+    },
+    {
+      "n": 52,
+      "where": "Risks and limits, Groups do not behave as expected",
+      "type": "role",
+      "claim": "Exchange distribution groups and Microsoft 365 Groups are unsupported as members of the eDiscovery Managers subgroup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "Exchange distribution groups and Microsoft 365 Groups aren't supported. You must use a mail-enabled security group",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risks and limits, Groups do not behave as expected",
+      "type": "role",
+      "claim": "A mail-enabled security group cannot itself be a case member.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "You also can't add a mail-enabled security group as a member of a case.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risks and limits, Holds are snapshots; What to check",
+      "type": "behaviour",
+      "claim": "Group membership is captured at hold creation, so later-added members are not automatically held and the group must be re-added to reflect changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-create",
+      "quote": "Members added to the group later are not automatically placed on hold; members removed from the group remain on hold until you update or release the policy. To reflect current membership, add the group again as a data source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risks and limits, Holds are snapshots",
+      "type": "behaviour",
+      "claim": "A new eDiscovery hold can take up to 24 hours to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-create",
+      "quote": "After you create an eDiscovery hold, it might take up to 24 hours for the hold to take effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risks and limits, Holds are snapshots",
+      "type": "behaviour",
+      "claim": "SharePoint Recycle Bin content is not indexed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-create",
+      "quote": "The Recycle Bin in SharePoint sites isn't indexed and therefore unavailable for searching.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risks and limits, Holds are snapshots",
+      "type": "behaviour",
+      "claim": "Selecting a subsite for a hold puts the hold on its parent site instead.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-create",
+      "quote": "If you select a subsite, the hold is placed on the parent SharePoint site instead.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risks and limits, Filters have a ceiling; What to check",
+      "type": "behaviour",
+      "claim": "A search has a maximum of 100 conditions including its query and all applied search permissions filters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-permission-filtering",
+      "quote": "a search query can have a maximum of 100 conditions. ... The limit for the number of conditions includes the search query itself plus all search permissions filters that the user who runs the search applies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Risks and limits, Filters have a ceiling",
+      "type": "applicability",
+      "claim": "Search permissions filters cannot limit Exchange public-folder searches.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-permission-filtering",
+      "quote": "You can't use search permissions filtering to limit who can search public folders in Exchange.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[4].note; Risks and limits, Deleting Copilot data; What to check",
+      "type": "behaviour",
+      "claim": "A mailbox hold or retention policy keeps AI data that a purge attempts to delete, so the documented workflow removes those policies first.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-copilot-data",
+      "quote": "Before you can delete Copilot or other AI application data from a mailbox, you have to remove any hold or retention policy that is assigned to a target mailbox. If you don't remove the hold or retention policy, the data you're trying to delete is retained.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Risks and limits, Deleting Copilot data",
+      "type": "behaviour",
+      "claim": "The AI-data article documents a 10-items-per-mailbox deletion limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-copilot-data",
+      "quote": "You can remove up to 10 items per mailbox at one time.",
+      "severity": "minor",
+      "fix": "Append 'The Graph purgeData reference instead documents a maximum of 100 items per location; the two pages differ.' Cite https://learn.microsoft.com/graph/api/security-ediscoverysearch-purgedata?view=graph-rest-1.0."
+    },
+    {
+      "n": 62,
+      "where": "Risks and limits, Deleting Copilot data",
+      "type": "behaviour",
+      "claim": "Deleting a conversation does not delete associated Copilot memory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-copilot-data",
+      "quote": "Deleting a conversation or message from Microsoft Purview or eDiscovery doesn't delete the associated Copilot memory.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Risks and limits, Search and purge",
+      "type": "applicability",
+      "claim": "Search and purge is unsupported on a mailbox with litigation hold.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-mailbox-data",
+      "quote": "Search and purge isn't supported if a mailbox has a litigation hold.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Risks and limits, Required enterprise apps",
+      "type": "behaviour",
+      "claim": "Required enterprise apps must be enabled for sign-in for all eDiscovery view, filter and search features to work.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-get-started",
+      "quote": "If you don't enable these apps, you can't access all eDiscovery view, filter, and search features. These apps must be up to date and correctly configured. Make sure that Enabled for users to sign-in is selected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Risks and limits, App-only authentication",
+      "type": "behaviour",
+      "claim": "App-only authentication for eDiscovery cmdlets in Security & Compliance PowerShell is unsupported and Microsoft advises migration to Graph.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "App-only authentication for eDiscovery cmdlets in Security & Compliance PowerShell is unsupported. Transition automations to Microsoft Graph APIs where available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Settings > Role groups > eDiscovery Manager > Edit reaches the permission-assignment workflow in the Purview portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "Go to Settings > Role groups.\n3. On Role groups for Microsoft Purview solutions, select eDiscovery Manager.",
+      "severity": "minor",
+      "fix": "The printed route reaches the correct workflow but stops before choosing members. For the Manager assignment, extend it to 'Settings > Role groups > eDiscovery Manager > Edit > Manage eDiscovery Manager > Choose users' and say that Choose groups is the alternative for group assignments."
+    },
+    {
+      "n": 67,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "Add-RoleGroupMember \"eDiscoveryManager\" -Member <name of security group> adds a mail-enabled security group to the Managers subgroup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "Add-RoleGroupMember \"eDiscoveryManager\" -Member <name of security group>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[0].note; Governance controls: Roles",
+      "type": "role",
+      "claim": "Assigning eDiscovery permissions requires Organization Management membership or the Role Management role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "You need to be a member of the Organization Management role group or be assigned the Role Management role to assign eDiscovery permissions in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "eDiscovery > Cases > case > Case settings > Access and permissions > Users > Add adds users to a case.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-settings-access-permissions",
+      "quote": "Select a case, then select Case settings.\n4. On Case settings, select Access and permissions.\n5. Under Users, select Add to add users to the case.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "POST /v1.0/security/cases/ediscoveryCases/{ediscoveryCaseId}/caseMembers adds a user or role group as a case member.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/security-ediscoverycasemember-post?view=graph-rest-1.0",
+      "quote": "POST https://graph.microsoft.com/v1.0/security/cases/ediscoveryCases/b0073e4e-4184-41c6-9eb7-8c8cc3e2288b/caseMembers",
+      "severity": "minor",
+      "fix": "Add to controls[1].note: 'The request body sets recipientType to user or roleGroup and identifies the member by id, or smtpAddress for a user or displayName for a role group.'"
+    },
+    {
+      "n": 71,
+      "where": "controls[1].note; Governance controls: How the controls interact",
+      "type": "role",
+      "claim": "A user must be in the eDiscovery Manager role group before accessing a case.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-settings-access-permissions",
+      "quote": "before a user can access an eDiscovery case (and perform tasks in the case), you must add the user to the eDiscovery Manager role group in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "controls[2].ui; Open questions, search permissions filters",
+      "type": "absence",
+      "claim": "No portal creation path is documented for search permissions filters; Microsoft documents four Security & Compliance PowerShell cmdlets.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'eDiscovery search permissions filtering create portal UI New-ComplianceSecurityFilter'; opened edisc-search-permission-filtering and edisc-compliance-boundaries. They describe New/Get/Set/Remove-ComplianceSecurityFilter, not a portal creation path.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "New-ComplianceSecurityFilter -FilterName <name of filter> -Users <user or role group> -Filters <filter> creates a search permissions filter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-permission-filtering",
+      "quote": "New-ComplianceSecurityFilter -FilterName <name of filter> -Users <user or role group> -Filters <filter>",
+      "severity": "minor",
+      "fix": "The cited article prints this syntax, but the cmdlet reference marks Action mandatory. Use 'New-ComplianceSecurityFilter -FilterName <name of filter> -Users <user or role group> -Filters <filter> -Action All' and cite https://learn.microsoft.com/powershell/module/exchangepowershell/new-compliancesecurityfilter?view=exchange-ps; note that All applies the filter to all search actions."
+    },
+    {
+      "n": 74,
+      "where": "controls[2].note; Governance controls: How the controls interact",
+      "type": "role",
+      "claim": "Filter creation requires Organization Management and eDiscovery administrator roles, with connections to Exchange Online and Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-permission-filtering",
+      "quote": "you need to be a member of the Organization Management role group and have the eDiscovery administrator role assigned ... You need to connect to both Exchange Online and Security & Compliance PowerShell to use the compliance security filter cmdlets.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "eDiscovery > Cases > case > Hold policies > Create policy reaches the case hold creation workflow.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-hold-create",
+      "quote": "Select a case, and then select the Hold policies tab.\n4. On the Hold policies dashboard, select Create policy.",
+      "severity": "minor",
+      "fix": "Keep the path but narrow the row's governs to 'Creation of a case hold policy', consistent with the API correction. The printed path reaches policy creation, not the subsequent data-source selection."
+    },
+    {
+      "n": 76,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "POST /v1.0/security/cases/ediscoveryCases/{ediscoveryCaseId}/legalHolds sets which mailboxes and sites are preserved by a case hold.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/api/security-ediscoverycase-post-legalholds?view=graph-rest-1.0",
+      "quote": "Create a new ediscoveryHoldPolicy object. ... displayName | String | The display name of the legal hold policy. Required. ... contentQuery | String | KQL query that specifies content to be held in the specified locations. Optional.",
+      "severity": "blocker",
+      "fix": "Narrow controls[3].governs and its rendered label to 'Creation of a case hold policy'. Keep the endpoint, but make the note 'Creates the policy only; the request body requires displayName and optionally sets contentQuery. Mailboxes and sites must be added separately.' The create endpoint does not select locations; Microsoft documents separate POST legalHolds/{ediscoveryHoldPolicyId}/userSources and siteSources operations."
+    },
+    {
+      "n": 77,
+      "where": "controls[4].api; controls[4].note; controls[4].ui",
+      "type": "command",
+      "claim": "The documented automation for AI-data deletion is POST /v1.0/security/cases/ediscoveryCases/{ediscoveryCaseID}/searches/{ediscoverySearchID}/purgeData.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-copilot-data",
+      "quote": "In Graph Explorer, run the following POST request to delete the items returned by the search",
+      "severity": "minor",
+      "fix": "Keep the method and path. Add to the row note 'The request body uses purgeAreas to select mailboxes and purgeType to select recoverable or permanentlyDelete.' The v1.0 reference at https://learn.microsoft.com/graph/api/security-ediscoverysearch-purgedata?view=graph-rest-1.0 documents those properties."
+    },
+    {
+      "n": 78,
+      "where": "controls[5].ui; controls[5].note; Governance controls: How the controls interact",
+      "type": "admin-path",
+      "claim": "eDiscovery > Settings > eDiscovery > General > eDiscovery (Premium) controls the premium default for new cases.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-settings-general",
+      "quote": "Select the eDiscovery solution card, then go to Settings > eDiscovery > General.\n3. Select or clear the toggle for eDiscovery (Premium).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "What to check, mailbox policies and audit-log bullets",
+      "type": "consistency",
+      "claim": "Every control the checklist tells the reader to review has a row in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Check which mailboxes carry holds or retention policies ... Search the audit log for CaseAdded and HoldCreated events ... [The table has case-hold and purge rows, but no retention-policy or audit-search row.]",
+      "severity": "minor",
+      "fix": "The checklist's retention-policy inspection and audit-log search have no corresponding control rows. Remove those checklist instructions if the table remains unchanged; do not add unverified rows as part of this correction."
+    },
+    {
+      "n": 80,
+      "where": "sources",
+      "type": "behaviour",
+      "claim": "Additional Microsoft references support the page's pricing statement and its explanatory note about adding hold locations separately.",
+      "status": "supported",
+      "source": "https://azure.microsoft.com/pricing/details/purview/",
+      "quote": "This functionality is billed based on the amount of data processed and stored through export and review set each month, equivalent to $20 per GB per month.",
+      "severity": "minor",
+      "fix": "Add the relied-on references to sources together: https://azure.microsoft.com/pricing/details/purview/ ; https://learn.microsoft.com/graph/api/security-ediscoveryholdpolicy-post-usersources?view=graph-rest-1.0 ; https://learn.microsoft.com/graph/api/security-ediscoveryholdpolicy-post-sitesources?view=graph-rest-1.0 ; https://learn.microsoft.com/graph/api/security-ediscoverysearch-purgedata?view=graph-rest-1.0 ; https://learn.microsoft.com/powershell/module/exchangepowershell/new-compliancesecurityfilter?view=exchange-ps ."
+    },
+    {
+      "n": 81,
+      "where": "controls[3].note",
+      "type": "command",
+      "claim": "Creating a hold policy requires the displayName request-body property.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/security-ediscoverycase-post-legalholds?view=graph-rest-1.0",
+      "quote": "| displayName | String | The display name of the legal hold policy. Required. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "controls[3].note",
+      "type": "command",
+      "claim": "The contentQuery property is optional when creating a hold policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/security-ediscoverycase-post-legalholds?view=graph-rest-1.0",
+      "quote": "| contentQuery | String | KQL query that specifies content to be held in the specified locations. Optional. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "controls[3].note",
+      "type": "command",
+      "claim": "Mailbox sources are added to an existing hold through the separate userSources operation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/security-ediscoveryholdpolicy-post-usersources?view=graph-rest-1.0",
+      "quote": "POST /security/cases/ediscoveryCases/{ediscoveryCaseId}/legalHolds/{ediscoveryHoldPolicyId}/userSources",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "controls[3].note",
+      "type": "command",
+      "claim": "Site sources are added to an existing hold through the separate siteSources operation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/security-ediscoveryholdpolicy-post-sitesources?view=graph-rest-1.0",
+      "quote": "POST /security/cases/ediscoveryCases/{ediscoveryCaseId}/legalHolds/{ediscoveryHoldPolicyId}/siteSources",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "controls[4].ui",
+      "type": "absence",
+      "claim": "Microsoft does not document a Purview portal control for purging the AI data returned by a search.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'eDiscovery delete Copilot AI data Purview portal purge user interface'; opened edisc-search-copilot-data and the v1.0 purgeData reference. Portal steps create and inspect searches; deletion uses Graph Explorer or PowerShell, not a portal purge control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "controls[4].note; Governance controls: Roles",
+      "type": "role",
+      "claim": "Deleting AI activity data requires the Search And Purge role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-copilot-data",
+      "quote": "To delete AI activity data, you need to be assigned the Search And Purge role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "Data Investigator and Organization Management have Search And Purge by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-copilot-data",
+      "quote": "The Data Investigator and Organization Management role groups have this role by default.",
+      "severity": "minor",
+      "fix": "Append 'The Graph purgeData reference instead says this role is only available to Organization Management members; the references differ.' The conflicting text is at https://learn.microsoft.com/graph/api/security-ediscoverysearch-purgedata?view=graph-rest-1.0."
+    },
+    {
+      "n": 88,
+      "where": "controls[5].note",
+      "type": "role",
+      "claim": "Only eDiscovery Administrators can access the tenant premium default setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-settings-general",
+      "quote": "Only users assigned to the eDiscovery Administrators role can access this setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 89,
+      "where": "controls[5].note; Governance controls: How the controls interact",
+      "type": "behaviour",
+      "claim": "Changing the tenant premium default affects new cases only, not existing cases.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-settings-general",
+      "quote": "Enabling premium eDiscovery features only affects new cases and doesn't affect the license state of any existing cases.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 90,
+      "where": "controls[5].note",
+      "type": "licensing",
+      "claim": "The tenant premium default setting is unavailable to organizations with Microsoft 365 Enterprise E3.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-settings-general",
+      "quote": "This setting isn't available for organizations with Microsoft 365 Enterprise E3 subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 91,
+      "where": "controls[5].note; Governance controls: How the controls interact",
+      "type": "behaviour",
+      "claim": "The premium default can be overridden for individual cases.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-settings-general",
+      "quote": "You can override this setting on a per-case basis after creating a new case in the settings for a case.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 92,
+      "where": "controls[5].api; Open questions, tenant-wide premium default",
+      "type": "absence",
+      "claim": "No automation operation is documented for the tenant-wide premium default.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'eDiscovery tenant default premium settings PowerShell Graph API enable premium new cases' and 'eDiscovery premium default tenant organization setting API PowerShell Set-PolicyConfig'; opened edisc-settings-general; inspected returned API and cmdlet excerpts. No tenant-default operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 93,
+      "where": "Governance controls: How the controls interact",
+      "type": "applicability",
+      "claim": "Search permissions filtering applies to search, preview, export and purge actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-permission-filtering",
+      "quote": "When you apply a search permissions filter to a specific user, that user can perform the following search-related actions:\n\n- Search for content\n- Preview search results\n- Export search results\n- Purge items returned by a search",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 94,
+      "where": "Governance controls: Monitoring; What to check",
+      "type": "behaviour",
+      "claim": "CaseAdded is the audit operation for creating an eDiscovery case.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "| Created eDiscovery case | CaseAdded | Added a new eDiscovery case. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 95,
+      "where": "Governance controls: Monitoring; What to check",
+      "type": "behaviour",
+      "claim": "HoldCreated is the audit operation for creating a case hold.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "| Created hold in eDiscovery case | HoldCreated | A new hold was created. This audit activity includes the case name, case ID, and hold name that was created. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 96,
+      "where": "Governance controls: Monitoring",
+      "type": "behaviour",
+      "claim": "PurviewSearchAdded records creation of an eDiscovery search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "| Added Purview search | PurviewSearchAdded | A new search was created. This audit activity includes the case name, case ID, and search name that was created. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 97,
+      "where": "What to check, Copilot or AI data purge",
+      "type": "behaviour",
+      "claim": "The AI-data deletion workflow records removed holds and retention policies so they can be reapplied after deletion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-copilot-data",
+      "quote": "Record each hold or retention policy that you remove so that you can reapply that policy to the affected mailboxes after the deletion is complete.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 98,
+      "where": "Open questions, item class table",
+      "type": "absence",
+      "claim": "Microsoft has not stated that the AI item-class table is updated for every new Copilot feature such as meeting memory.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'eDiscovery Copilot item class table updated every new feature meeting memory'; opened edisc-search-copilot-data and read search excerpts for Memory for Microsoft Teams Meetings and Manage Copilot personalization and memory. No table-update commitment was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 99,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "The documented Add-RoleGroupMember operation runs in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "You can add a mail-enabled security group as a member of the eDiscovery Managers subgroup in the eDiscovery Manager role group by using the Add-RoleGroupMember cmdlet in Security & Compliance PowerShell.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-19T22:10:28.668Z",
+    "summary": {
+      "links": 15,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 5,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/purview/edisc",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/ediscovery",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-get-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-settings-access-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-search-permission-filtering",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-hold-create",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-search-copilot-data",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-search-mailbox-data",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-settings-general",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-billing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/security-ediscoverycasemember-post?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/security-ediscoverycase-post-legalholds?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-log-activities",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Who holds eDiscovery Manager and eDiscovery Administrator permissions",
+        "docs": "https://learn.microsoft.com/purview/edisc-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Role groups",
+          "eDiscovery Manager",
+          "Edit"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Who holds eDiscovery Manager and eDiscovery Administrator permissions",
+        "docs": "https://learn.microsoft.com/purview/edisc-permissions",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which users and role groups are members of an eDiscovery case",
+        "docs": "https://learn.microsoft.com/purview/edisc-settings-access-permissions",
+        "reachable": true,
+        "segments": [
+          "eDiscovery",
+          "Cases",
+          "case",
+          "Case settings",
+          "Access and permissions",
+          "Users",
+          "Add"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which users and role groups are members of an eDiscovery case",
+        "docs": "https://learn.microsoft.com/graph/api/security-ediscoverycasemember-post?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/security/cases",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Which mailboxes and sites an eDiscovery manager can search (search permissions filters)",
+        "docs": "https://learn.microsoft.com/purview/edisc-search-permission-filtering",
+        "reachable": true,
+        "token": "New-ComplianceSecurityFilter",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Which mailboxes and sites are preserved by a case hold",
+        "docs": "https://learn.microsoft.com/purview/edisc-hold-create",
+        "reachable": true,
+        "segments": [
+          "eDiscovery",
+          "Cases",
+          "case",
+          "Hold policies",
+          "Create policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Which mailboxes and sites are preserved by a case hold",
+        "docs": "https://learn.microsoft.com/graph/api/security-ediscoverycase-post-legalholds?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/security/cases",
+        "found": true
+      },
+      {
+        "index": 4,
+        "side": "api",
+        "governs": "Deleting Copilot and AI application data returned by a search",
+        "docs": "https://learn.microsoft.com/purview/edisc-search-copilot-data",
+        "reachable": true,
+        "token": "/v1.0/security/cases",
+        "found": true
+      },
+      {
+        "index": 5,
+        "side": "ui",
+        "governs": "Whether new cases default to premium eDiscovery features",
+        "docs": "https://learn.microsoft.com/purview/edisc-settings-general",
+        "reachable": true,
+        "segments": [
+          "eDiscovery",
+          "Settings",
+          "eDiscovery",
+          "General",
+          "eDiscovery"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

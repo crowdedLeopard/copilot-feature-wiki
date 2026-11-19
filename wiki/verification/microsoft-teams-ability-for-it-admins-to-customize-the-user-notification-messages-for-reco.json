@@ -1,0 +1,719 @@
+{
+  "slug": "microsoft-teams-ability-for-it-admins-to-customize-the-user-notification-messages-for-reco",
+  "roadmapId": 567302,
+  "title": "Microsoft Teams: customise the recording and transcription notification text",
+  "status": "held",
+  "date": "2026-11-19",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-19",
+    "reasons": [
+      "2 blocking findings (claims 11, 51)"
+    ]
+  },
+  "counts": {
+    "claims": 52,
+    "confirmed": 50,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 2,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "The briefing correctly reports the roadmap and the documented meeting notification controls. However, its summary promises no change without administrator action despite an unpublished default, and its checklist incorrectly suggests calling policies determine which meetings display custom text. The licensing section also overlooks the published general Teams licence requirement.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "IT administrators can customise part of the recording and transcription notification text.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "IT admins can customize the Recording and Transcription message and the URL of the privacy policy used to notify implicitly or gain explicit consent from meeting participants",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Scope: Calls; Open questions",
+      "type": "record",
+      "claim": "The roadmap describes customising a portion of recording and transcription notifications during Teams calls.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature enables IT admins to customize a portion of the user notification messages for recording and transcription during Teams calls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate, previewDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is August CY2026, with no preview date supplied.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2026\", \"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Desktop, Mac and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap associates this item with Microsoft Teams and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Teams\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-10-21T23:02:10.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-21T23:02:10\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated the default value of the custom notification toggle for meeting or calling policies.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: EnableRecordingAndTranscriptionCustomMessage default; recording-transcription-custom-message default group calls. Read the feature page and meeting/calling parameter excerpts: enable/disable instructions and parameter Default value: None, not a service default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary versus front matter: defaultState and Why it matters",
+      "type": "consistency",
+      "claim": "The summary promises that nothing changes until an administrator sets it, while the page reports the arrival default as unknown.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "summary: \"nothing changes until an admin sets it\"; defaultState: \"unknown\"; Why it matters: \"Microsoft has not stated whether the setting is on or off by default\".",
+      "severity": "blocker",
+      "fix": "Replace the summary with: \"IT admins can replace part of the recording and transcription notification text Teams shows participants. The roadmap status is Launched; Microsoft has not stated the setting's default, and Learn says custom messages are not supported in 1:1 calls.\" Keep defaultState as unknown."
+    },
+    {
+      "n": 12,
+      "where": "front matter: licensing.model and notes; Cost and licensing; Open questions",
+      "type": "licensing",
+      "claim": "The licensing model is unknown because no feature-specific licence entitlement is published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/user-access",
+      "quote": "Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
+      "severity": "minor",
+      "fix": "Set licensing.model to included. Replace the licensing notes and the broad entitlement gap in Cost and licensing and Open questions with: \"A Teams licence is required to use Teams, except for joining meetings anonymously. No additional licence requirement specific to custom notifications is published at the time of writing (November 2026).\" Cite https://learn.microsoft.com/microsoftteams/user-access. This is the standard's product-level licensing understatement, not evidence of a published feature-specific licence."
+    },
+    {
+      "n": 13,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "The feature and overview documentation publish no additional licence requirement specific to custom notifications.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: recording-transcription-custom-message license; custom notification recording licensing Teams Premium. Read custom-message, recording-transcription-overview and user-access: a general Teams licence requirement, but no additional requirement for this notification setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No price or meter specific to this custom notification feature is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: custom notification transcription price license Teams. Read custom-message, recording-transcription-overview and user-access. None publishes a feature-specific price or meter; this does not establish that the feature is free.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Administrators can change the privacy policy URL in the recording and transcription notification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "IT admins can customize the Recording and Transcription message and the URL of the privacy policy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The privacy policy link's display text is fixed as Privacy policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "Only the URL can be changed. The display text \"Privacy policy\" is fixed and cannot be modified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Teams displays a notification banner when recording or transcription starts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "When recording or transcription starts, Teams displays a notification banner composed of four elements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The custom banner message supports plain text and HTML links.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "Consent message (#3): Supports plain text and HTML <a> tags for adding multiple custom links.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "In explicit-consent meetings, the consent dialog appears when a user unmutes or turns on the camera.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "For meetings that require explicit consent, Teams displays a consent dialog when a user unmutes/turns on the camera.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The custom consent message in the explicit-consent dialog allows plain text only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "Customizable consent message (#3): Only supports plain text, HTML <a> tag is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The CSV template configures notification messages by scenario and language.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "First column: Supported languages (refer here to see all the supported languages). First row: Notification scenarios you can customize.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Custom messages cannot exceed 200 characters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "Custom messages can't exceed 200 characters; longer messages aren't permitted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Fixed information, including the initiator's name and privacy policy, remains in notifications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "The message you set appears in the notification for the corresponding scenarios, along with fixed information (such as the initiator's name and privacy policy) that is always included.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].note; Risk assessment; Scope: Users; Governance controls; rationale: impact",
+      "type": "applicability",
+      "claim": "Enabled meeting-policy custom messages apply in meetings organised by users assigned that policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "Once the custom message is enabled for a meeting policy, all users assigned to that policy see the custom notifications in meetings they organize.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Security & identity; Scope: Users; Governance controls; rationale: impact",
+      "type": "applicability",
+      "claim": "All participants in those meetings follow the organiser's custom-message settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "All participants in those meetings follow the organizer's custom message settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters; Risk assessment: Change & support; rationale: impact",
+      "type": "behaviour",
+      "claim": "Teams uses its default message when no custom message exists for the applicable scenario or language.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "If there's no custom message for a specific language or scenario, the user sees the default message in Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Scope: Platforms; Governance guidance: At rollout",
+      "type": "availability",
+      "claim": "Custom messages are supported on Teams Windows, macOS and Web clients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "Custom messages are supported on Teams Windows, macOS, and Web clients.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Change & support; Scope: Platforms",
+      "type": "behaviour",
+      "claim": "iOS and Android currently support plain text only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "iOS and Android currently support plain text only, with full message customizability coming soon.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout; Open questions",
+      "type": "behaviour",
+      "claim": "Learn says full customisability for iOS and Android is coming soon.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "iOS and Android currently support plain text only, with full message customizability coming soon.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Open questions: iOS and Android",
+      "type": "absence",
+      "claim": "The feature page gives no date for full iOS and Android customisability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: custom notification recording transcription setting; read the full recording-transcription-custom-message page, including client support. Its mobile statement says coming soon and supplies no date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Scope: Languages; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The displayed custom message is selected using the participant's client language.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "The message displayed depends on the scenario and the participant's client language.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Excel's locale-dependent delimiters can damage the CSV formatting, and Learn directs affected administrators to use a plain text editor.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "Excel uses a different default CSV delimiter based on regional settings. To avoid formatting issues, admins using these system languages should edit the CSV template using another plain text editor. Please do not edit or re-save the CSV file using Excel.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Using <empty> for a language or scenario leaves only the fixed information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "If you don't want to display any message (excluding the fixed information), you can insert <empty> for the specific language or scenario. In this case, the notification shows only the fixed information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment; Cost and licensing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The Preview button lets administrators inspect uploaded custom notifications against the defaults.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "Once uploaded, the policy preview displays customized strings, with differences highlighted compared to the system defaults.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Administrators configure notification text by downloading, filling in and uploading the CSV template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "Download the CSV template from the customization panel. Open the downloaded template, and fill in your custom messages for each scenario and language as needed. Upload the completed CSV using the Select a file button.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing; Open questions: calls",
+      "type": "absence",
+      "claim": "Learn does not specify whether this notification customisation applies to group calls.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: custom notification transcription group calls. Read custom-message, recording-transcription-overview, call-recording-transcription-captions and Copilot release-note excerpts. General group-call recording policies are documented, but this custom-message scope is not specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The toggle is at Teams admin center > Meetings > Meeting policies > policy > Recording & transcription > Show customized in-meeting notification for recording and transcription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "Navigate to Meetings → Meeting policies. Select or create a meeting policy where you want to enable custom messages. In the Recording & transcription section, find the new setting: Show customized in-meeting notification for recording and transcription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -EnableRecordingAndTranscriptionCustomMessage $true sets the meeting-policy custom-message toggle.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
+      "quote": "Set-CsTeamsMeetingPolicy [[-Identity] <XdsIdentity>] ... [-EnableRecordingAndTranscriptionCustomMessage <Boolean>] ... The Set-CsTeamsMeetingPolicy cmdlet allows administrators to update existing meeting policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The text customisation panel is at Teams admin center > Meetings > Meeting policies > policy > Recording & transcription > Customize notification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "Navigate to Meetings → Meeting policies. Select or create a meeting policy ... In the Recording & transcription section ... Click the Customize notification button to set your custom message.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -RecordingAndTranscriptionCustomMessageIdentifier <guid> assigns the custom-message identifier to a meeting policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
+      "quote": "Set-CsTeamsMeetingPolicy [[-Identity] <XdsIdentity>] ... [-RecordingAndTranscriptionCustomMessageIdentifier <Guid>]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[2].ui; Governance controls table; Open questions",
+      "type": "absence",
+      "claim": "No admin UI control for calling-policy custom recording and transcription messages is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: custom notification recording calling policies Teams admin center. Read teams-calling-policy, call-recording-transcription-captions and custom-message. Calling-policy settings list recording, transcription and consent, but no custom-notification UI setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsCallingPolicy supports the Boolean EnableRecordingAndTranscriptionCustomMessage parameter shown in the calling-policy row.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy?view=teams-ps",
+      "quote": "Use this cmdlet to update values in existing Teams Calling Policies. ... -EnableRecordingAndTranscriptionCustomMessage ... Type: Boolean",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "New-CsTeamsRecordingAndTranscriptionCustomMessage creates custom notification message settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/new-csteamsrecordingandtranscriptioncustommessage?view=teams-ps",
+      "quote": "Create a concrete prompt message setting in multiple languages and multiple scenarios to be displayed to participants after recording or transcription has started.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The New-CsTeamsRecordingAndTranscriptionCustomMessage reference warns that the feature has not been fully released and the setting has no effect, despite the roadmap's Launched status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/new-csteamsrecordingandtranscriptioncustommessage?view=teams-ps",
+      "quote": "This feature has not been fully released yet, so the setting will have no effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope: Calls",
+      "type": "command",
+      "claim": "Set-CsTeamsCallingPolicy also lists a Guid-valued RecordingAndTranscriptionCustomMessageIdentifier parameter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy?view=teams-ps",
+      "quote": "-RecordingAndTranscriptionCustomMessageIdentifier ... Type: Guid ... Default value: None",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "summary; What's changing; controls[2].note; Scope; Governance controls; Open questions",
+      "type": "availability",
+      "claim": "The feature page says custom messages are not supported in 1:1 calls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+      "quote": "Custom messages are not supported in 1:1 calls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[2].note; Scope: Calls; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The documented calling-policy parameter names do not establish how custom notifications take effect in calls.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams recording transcription custom message calling policy; EnableRecordingAndTranscriptionCustomMessage default. Read calling parameter excerpts, custom-message and call-recording-transcription-captions: parameter types are listed, but no call-effect description resolves the 1:1 exclusion.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Data exposure and Security & identity",
+      "type": "absence",
+      "claim": "The notification customisation documentation describes no new data access, permission, identity or sign-in behaviour.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams custom recording transcription notification new data access permissions identity sign in; custom notification recording permissions identity Teams. Read the feature page and New custom-message reference: text, links and policy association, not new access or authentication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "This is a notification-content setting rather than a control that starts, stops or blocks recording or transcription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/new-csteamsrecordingandtranscriptioncustommessage?view=teams-ps",
+      "quote": "The strings defined by this command is used for display after recording or transcription is started in a meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The feature's Learn page names no required administrator role.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams recording transcription custom message license admin role calling policy. Read the full recording-transcription-custom-message page: it addresses IT admins and gives configuration steps, but names no administrator role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance guidance: Before rollout, second bullet",
+      "type": "applicability",
+      "claim": "Checking users' calling policies helps determine whose meetings will display the new custom text.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-overview",
+      "quote": "Meeting policies: These policies control user permissions for recording and transcription in Teams meetings and group calls. ... Voice calling policies: These policies control user permissions for 1:1 calls",
+      "severity": "blocker",
+      "fix": "Replace the bullet with: \"Check which meeting policies your users hold, so you know whose meetings will show the new text.\" The feature page places custom meeting notifications under the organiser's meeting policy; the briefing already correctly warns that calling-policy effects are unconfirmed."
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Some other recording and transcription options have Teams Premium or Copilot licensing requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/recording-transcription-overview",
+      "quote": "Intelligent recap for meetings (Teams Premium and Microsoft Copilot) ... Users with a Teams Premium or Microsoft Copilot license automatically have access to this feature.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-19T22:10:41.343Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=567302",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy?view=teams-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/new-csteamsrecordingandtranscriptioncustommessage?view=teams-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/teams-calling-policy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/recording-transcription-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a meeting policy shows custom recording and transcription notifications",
+        "docs": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting policies",
+          "Recording & transcription",
+          "Show customized in-meeting notification for recording and transcription"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether a meeting policy shows custom recording and transcription notifications",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which custom message text a meeting policy displays",
+        "docs": "https://learn.microsoft.com/microsoftteams/recording-transcription-custom-message",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting policies",
+          "Recording & transcription",
+          "Customize notification"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which custom message text a meeting policy displays",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Custom recording and transcription notification setting in a Teams calling policy",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy?view=teams-ps",
+        "reachable": true,
+        "token": "Set-CsTeamsCallingPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

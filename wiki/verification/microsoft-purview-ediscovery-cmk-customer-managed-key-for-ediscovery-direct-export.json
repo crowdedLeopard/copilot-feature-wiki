@@ -1,0 +1,613 @@
+{
+  "slug": "microsoft-purview-ediscovery-cmk-customer-managed-key-for-ediscovery-direct-export",
+  "roadmapId": 557684,
+  "title": "Microsoft Purview eDiscovery: customer-managed keys for direct export (Worldwide)",
+  "status": "held",
+  "date": "2026-11-19",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-19",
+    "reasons": [
+      "3 blocking findings (claims 25, 38, 47)"
+    ]
+  },
+  "counts": {
+    "claims": 47,
+    "confirmed": 44,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 3,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "Hold: the briefing implies that customer-managed encryption protects downloaded files, but the documentation establishes encryption at rest in eDiscovery storage, not protection of downloaded copies. It also omits the SharePoint export licensing qualification and directs administrators to use a policy-assignment command to check an assignment.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "Roadmap item 557684 is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap general availability target is December CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview target is April CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "title; front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "This roadmap item lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans customer-managed key options for Microsoft Purview eDiscovery direct export.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This release of eDiscovery features the implementation of customer-managed key (CMK) options, allowing users to manage their own encryption keys for the data included in the direct export workflow in eDiscovery",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes CMK as adding to Microsoft-managed encryption already in place.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "adding to the Microsoft-managed encryption already in place.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Enabled direct exports use tenant-specific encryption scopes backed by customer-managed keys for encryption at rest.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-export",
+      "quote": "When enabled, exported investigation data is encrypted at rest using tenant-specific encryption scopes backed by customer-managed keys.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Scope; Risk assessment; controls[1].governs",
+      "type": "applicability",
+      "claim": "The feature requires Customer Key through MDEP with a DEP in PolicyAssigned status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-export",
+      "quote": "A Data Encryption Policy (DEP) is in PolicyAssigned state via the Microsoft 365 Data-at-Rest Encryption Platform (MDEP) onboarding cmdlets.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; controls[0].note; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Tenant feature enablement requires a request to Microsoft Support or a Customer Success Account Manager.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-export",
+      "quote": "To enable this feature, contact Microsoft Support or your Customer Success Account Manager (CSAM) and request CMK for eDiscovery direct exports for your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Encryption follows existing DEP configuration and CMK configuration is validated through MDEP at export time.",
+      "status": "supported",
+      "source": "Message Center post MC1289726",
+      "quote": "Encryption is applied automatically based on existing DEP configuration.\n- CMK configuration is dynamically validated through MDEP at export time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Governance guidance: At rollout; rationale: impact",
+      "type": "record",
+      "claim": "CMK introduces no change to the eDiscovery user experience.",
+      "status": "supported",
+      "source": "Message Center post MC1289726",
+      "quote": "No change to the eDiscovery user experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Governance controls",
+      "type": "record",
+      "claim": "There is no new toggle; existing Data Encryption Policies govern encryption behaviour.",
+      "status": "supported",
+      "source": "Message Center post MC1289726",
+      "quote": "Behavior is governed by existing Data Encryption Policies; no new toggle is introduced, but encryption is controlled through CMK configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Data exposure; Open questions; rationale: risk",
+      "type": "record",
+      "claim": "Direct exports proceed without CMK encryption if CMK is not properly configured through MDEP at export time.",
+      "status": "supported",
+      "source": "Message Center post MC1289726",
+      "quote": "If your tenant does not have CMK properly configured through MDEP at export time, direct export jobs will proceed without CMK encryption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; controls[0].note",
+      "type": "availability",
+      "claim": "The Learn section labels CMK for direct exports as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-export",
+      "quote": "Enable CMK (Customer Managed Key) for direct exports (preview)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Data exposure; Scope; Governance guidance",
+      "type": "applicability",
+      "claim": "This CMK protection does not include data at rest in an eDiscovery review set.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-export",
+      "quote": "This encryption applies to direct exports only. Data at rest in an eDiscovery review set isn't included at this time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1289726 was updated on 14 August 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1289726",
+      "quote": "Updated August 14, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1289726 gives a public preview rollout from early May to early June 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1289726",
+      "quote": "Public Preview: We will begin rolling out early May 2026 and expect to complete by early June 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "MC1289726 gives a Worldwide GA rollout beginning late December 2026 and expected to complete by early January 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1289726",
+      "quote": "General Availability (Worldwide):  We will begin rolling out late December 2026 (previously early September) and expect to complete by early January 2027 (previously end of September).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The previous GA rollout window in MC1289726 was early to end of September.",
+      "status": "supported",
+      "source": "Message Center post MC1289726",
+      "quote": "late December 2026 (previously early September) and expect to complete by early January 2027 (previously end of September).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Scope; front matter: changes",
+      "type": "record",
+      "claim": "GCC, GCC High and DoD are listed on separate roadmap item 565373.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 565373; \"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": "minor",
+      "fix": "Add https://www.microsoft.com/microsoft-365/roadmap?id=565373 to sources for the government-cloud availability and target date stated in What's changing and Scope."
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Roadmap item 565373 targets January CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 565373; \"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: defaultState; Why it matters; Governance controls; rationale: risk",
+      "type": "default",
+      "claim": "The feature is admin-opt-in and does not change existing exports unless the tenant requests enablement.",
+      "status": "supported",
+      "source": "Message Center post MC1289726",
+      "quote": "Only enabled for specific tenants by request to Microsoft Support",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters: first paragraph",
+      "type": "applicability",
+      "claim": "Customer Key extends key custody to the files an investigator downloads, addressing control over every copy of investigation data.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: eDiscovery customer-managed download encryption direct export packages. Opened edisc-search-export and read edisc-ref-api-guide search excerpts. MC1289726 describes encrypted eDiscovery storage accounts; no passage establishes continuing CMK protection of downloaded copies.",
+      "severity": "blocker",
+      "fix": "Replace the first paragraph of Why it matters with: \"Organisations that already use Customer Key can extend customer-controlled encryption to direct export packages at rest in eDiscovery storage. This matters when assessing key-control requirements for that service-held copy of investigation data.\" Do not imply that downloaded files or every subsequent copy retain this protection."
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity; Scope: Prerequisites",
+      "type": "applicability",
+      "claim": "Azure Key Vault must be configured using the standard Customer Key setup process.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-export",
+      "quote": "Your organization configured Azure Key Vault following the standard Customer Key setup process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity; Cost and licensing; Scope; rationale: cost",
+      "type": "cost",
+      "claim": "Customer Key setup requires two paid Azure subscriptions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/customer-key-set-up",
+      "quote": "Azure subscriptions: Two paid Azure subscriptions (Free, Trial, Sponsorship, MSDN, or Legacy Support aren't eligible)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity; Governance guidance: After rollout",
+      "type": "date",
+      "claim": "Search export packages expire 14 days after creation, and CMK does not change that retention.",
+      "status": "supported",
+      "source": "Message Center post MC1289726",
+      "quote": "Exported data retention remains 14 days, unchanged by CMK.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "After expiry, search exports and their packaged data are automatically deleted and cannot be recovered.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-search-export",
+      "quote": "Search export packages expire 14 days after you create the export. After 14 days, the export and all data contained in the export package are automatically deleted and can't be recovered.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The change adds no agent or independent automated workflow beyond service-side encryption during an export.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: eDiscovery CMK direct export agent autonomous actions encryption customer managed key. Opened edisc-search-export and read MC1289726: transparent service encryption during existing exports; no agent or independent action workflow documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The service manages encryption scopes, storage accounts and containers automatically, without additional storage configuration.",
+      "status": "supported",
+      "source": "Message Center post MC1289726",
+      "quote": "Encryption scopes, storage accounts, and containers are managed automatically by the service; no additional storage configuration is needed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing: first paragraph; licensing.notes; rationale: cost",
+      "type": "absence",
+      "claim": "The researched Microsoft pages publish no separate charge or licence specific to enabling CMK on direct export.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: eDiscovery direct export CMK pricing licensing PowerShell enable. Opened edisc-search-export, Purview service description, customer-key-set-up, edisc-billing; read MC1289726. General licences and Azure costs are documented, but no CMK-direct-export-specific SKU or charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is included within the required product licences rather than a separately documented CMK-direct-export entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW, Microsoft 365 E5/A5/F5/G5 Information Protection and Governance | Office 365 E5/A5/G5 |\n| Customer Key | Included | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing: second paragraph",
+      "type": "licensing",
+      "claim": "Each user benefiting from Customer Key requires a licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Each user who benefits from Customer Key requires a license. Requirements vary by workload.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing; front matter: licensing.notes",
+      "type": "licensing",
+      "claim": "Customer Key is included in the Microsoft 365, Office 365, Purview Suite and Information Protection and Governance plans listed in the briefing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW, Microsoft 365 E5/A5/F5/G5 Information Protection and Governance | Office 365 E5/A5/G5 |\n| Customer Key | Included | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing: second paragraph",
+      "type": "licensing",
+      "claim": "For multiple workloads, the tenant needs at least as many Customer Key licences as Exchange or Teams licensed users, whichever is greater.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Because data encryption policies apply at the tenant level, your tenant must have at least as many Customer Key licenses as users assigned Exchange or Teams licenses—whichever is greater.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing: third paragraph",
+      "type": "cost",
+      "claim": "Customer Key prerequisites bring Azure costs for the tenant's subscriptions and key vaults.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/customer-key-set-up",
+      "quote": "The cost of operations is the same for both; so, the only price difference comes from the monthly cost of each HSM-protected key. For pricing details, see Key Vault pricing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance: Before rollout",
+      "type": "licensing",
+      "claim": "An exporting eDiscovery user needs Microsoft 365 Enterprise E3 or E5, with no SharePoint-specific qualification stated.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/edisc-search-export",
+      "quote": "When exporting SharePoint content, the account must also have a Microsoft SharePoint E3 license; otherwise, SharePoint items might not export as expected.",
+      "severity": "blocker",
+      "fix": "After the E3/E5 requirement in licensing.notes, Cost and licensing, and the Before rollout licence check, add: \"When exporting SharePoint content, the account must also have a Microsoft SharePoint E3 licence; otherwise, SharePoint items might not export as expected.\""
+    },
+    {
+      "n": 39,
+      "where": "controls[0].ui; controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No administrator-facing UI switch or API command is documented to enable CMK for direct export.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: eDiscovery direct export CMK enable PowerShell portal; eDiscovery direct export CMK pricing licensing PowerShell enable. Opened edisc-search-export; read relevant API-guide search excerpts and MC1289726. Enablement is Microsoft-side configuration requested through Support.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[1].ui",
+      "type": "absence",
+      "claim": "No administrator UI route is documented for assigning the tenant's multi-workload Customer Key DEP.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Customer Key data encryption policy assign admin portal UI MDEP eDiscovery DEP type; Customer Key data encryption policy portal assign multi workload. Opened customer-key-manage and customer-key-set-up. Assignment is documented through Exchange Online PowerShell, not a portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "Set-M365DataAtRestEncryptionPolicyAssignment -DataEncryptionPolicy <PolicyName or ID> assigns a multi-workload DEP at tenant level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/customer-key-manage",
+      "quote": "After creating a multi-workload data encryption policy (DEP), assign it using the Set-M365DataAtRestEncryptionPolicyAssignment cmdlet.\nSet-M365DataAtRestEncryptionPolicyAssignment -DataEncryptionPolicy <PolicyName or ID>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].note; Scope: Prerequisites; Governance controls",
+      "type": "role",
+      "claim": "The Customer Key prerequisites specify Exchange admin permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/customer-key-manage",
+      "quote": "Permissions: Exchange admin permissions (all DEP operations run through Exchange Online PowerShell)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].note; Governance controls; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "The eDiscovery export page does not explicitly name the DEP type beyond its MDEP onboarding prerequisite.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Customer Key data encryption policy assign admin portal UI MDEP eDiscovery DEP type. Opened edisc-search-export and customer-key-set-up. The export page requires MDEP onboarding and PolicyAssigned, without explicitly naming a DEP type; setup maps MDEP to Multiple Workloads.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance controls: Customer Key operations",
+      "type": "behaviour",
+      "claim": "The Customer Key setup page says Customer Key operations run through Exchange Online PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/customer-key-set-up",
+      "quote": "Permissions: Exchange admin permissions (all Customer Key operations run through Exchange Online PowerShell)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls: rollback",
+      "type": "behaviour",
+      "claim": "Rolling back Customer Key for multiple workloads requires a Microsoft Support request.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/customer-key-manage",
+      "quote": "If you no longer want to use Customer Key with multi-workload data encryption policies (DEPs), submit a support request through Microsoft Support.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Open questions: per-export encryption verification",
+      "type": "absence",
+      "claim": "Microsoft has not documented how to identify CMK encryption for an individual export in the portal or export process report.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: eDiscovery CMK report encryption status export. Opened edisc-search-export, edisc-process-report and edisc-process-report-use; searched the report reference for CMK, customer-managed and encryption. Found no per-export CMK status indicator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance guidance: Before rollout, DEP status check",
+      "type": "command",
+      "claim": "The assignment cmdlet in the controls table can be used to confirm that the DEP is assigned.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/customer-key-manage",
+      "quote": "To identify which DEP is assigned to your tenant, connect to Exchange Online PowerShell and run:\nGet-M365DataAtRestEncryptionPolicyAssignment",
+      "severity": "blocker",
+      "fix": "Replace \"Confirm that Customer Key is configured and that your DEP is in PolicyAssigned status, using the Customer Key assignment cmdlets in the controls table\" with \"Confirm that Customer Key is configured and that your DEP is in PolicyAssigned status. Do not run the assignment command in the controls table as a status check: it changes the tenant's policy assignment.\""
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-19T22:10:36.694Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 0,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=557684",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-search-export",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/customer-key-set-up",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/customer-key-manage",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-m365dataatrestencryptionpolicyassignment",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1289726",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "The data encryption policy assigned to the tenant, a prerequisite for CMK direct export",
+        "docs": "https://learn.microsoft.com/purview/customer-key-manage",
+        "reachable": true,
+        "token": "Set-M365DataAtRestEncryptionPolicyAssignment",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

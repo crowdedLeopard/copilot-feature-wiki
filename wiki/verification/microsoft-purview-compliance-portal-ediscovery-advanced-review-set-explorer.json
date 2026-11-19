@@ -1,0 +1,754 @@
+{
+  "slug": "microsoft-purview-compliance-portal-ediscovery-advanced-review-set-explorer",
+  "roadmapId": 484086,
+  "title": "Microsoft Purview eDiscovery: Advanced review set explorer for KQL queries",
+  "status": "held",
+  "date": "2026-11-19",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-19",
+    "reasons": [
+      "2 blocking findings (claims 9, 55)"
+    ]
+  },
+  "counts": {
+    "claims": 57,
+    "confirmed": 55,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 2,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "The rollout, default state, licensing background and query limits are supported. Hold because the explorer instructions omit the route to a case, and the claim that unpermissioned users cannot see the tab goes beyond the documented access prerequisite. The role-management path stops early, and audit-search permissions need to acknowledge conflicting Microsoft guidance.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; Cost and licensing; Scope",
+      "type": "record",
+      "claim": "The explorer is a new query experience in Microsoft Purview eDiscovery (Premium) review sets.",
+      "status": "supported",
+      "source": "Message Center post MC1221453",
+      "quote": "We’re introducing the Advanced Review Set Explorer (public preview) for review sets in Microsoft Purview eDiscovery (Premium).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Reviewers can use Kusto Query Language queries to filter review set content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-review-set-explorer",
+      "quote": "With the Advanced review set explorer (preview), you can query, filter, and visualize review set data directly in the Microsoft Purview portal without modifying the underlying content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The explorer supports aggregation of review set data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-review-set-explorer",
+      "quote": "The `summarize` operator aggregates data by applying functions like `count()`, `sum()`, or `avg()`, and groups results based on specified columns.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The explorer supports pattern-based text extraction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-review-set-explorer",
+      "quote": "Build powerful queries with complex filtering, pattern-based text extraction, and data format parsing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Queries can return a table or chart visualization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-review-set-explorer",
+      "quote": "Queries run against the full set of indexed items and return either tabular results or chart visualizations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "summary; What's changing; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Existing KeyQL searching continues unchanged alongside the new KQL option.",
+      "status": "supported",
+      "source": "Message Center post MC1221453",
+      "quote": "Users can continue using existing KeyQL‑based searching within review set without change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The change does not modify existing queries or workflows.",
+      "status": "supported",
+      "source": "Message Center post MC1221453",
+      "quote": "No existing queries or workflows are modified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Risk assessment; Scope; changes",
+      "type": "availability",
+      "claim": "Microsoft Learn documents the explorer as a preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-review-set-explorer",
+      "quote": "Search content in a review set with the Advanced review set explorer (preview)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The route supplied for opening the explorer begins at case > Review sets > review set > Advanced review set explorer (preview).",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/edisc-review-set-explorer",
+      "quote": "Select the **eDiscovery** solution card, and then select **Cases** in the left navigation.",
+      "severity": "blocker",
+      "fix": "In both places, give the route from the Microsoft Purview portal as 'eDiscovery > Cases > case > Review sets > review set > Advanced review set explorer (preview)'. The current route starts inside a case without saying how to reach it. Source: https://learn.microsoft.com/purview/edisc-review-set-explorer."
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Explorer queries are read-only and do not modify review set content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-review-set-explorer",
+      "quote": "Queries are read-only and don't modify review set content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Queries run against the current review set's indexed items rather than a new data source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-review-set-explorer",
+      "quote": "All queries in the Advanced review set explorer (preview) run against the current review set’s indexed items. You don't need to specify a table name. The review set acts as the default data source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "A query returning more than 10,000 results returns only the first 10,000.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-review-set-explorer",
+      "quote": "If the query returns more than 10,000 results, it returns only the first 10,000 results. Modify the query to narrow down the results.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The explorer does not support all Kusto operators and properties.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-review-set-explorer",
+      "quote": "The Advanced review set explorer (preview) doesn't support all Kusto operators and properties.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Older review sets may lack KQL properties and return a column-not-found error when those properties are queried.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-review-set-explorer",
+      "quote": "Some older review sets might not support certain KQL properties if those properties weren't available when the review set was created and data was generated. Querying an unsupported property in an older review set results in a column not found error.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Learn documents creating a new review set and using Add to review set to regenerate data with the latest properties.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-review-set-explorer",
+      "quote": "To resolve this error, create a new review set and use the **Add to review set** process to regenerate the data with the latest supported properties.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is February CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"February CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: targetDate; What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap general availability target is December CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: clouds; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap record lists only Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Web\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\", \"Preview\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1221453 was updated on 14 August 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1221453",
+      "quote": "Updated August 14, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "MC1221453 gives February 2026 for public preview rollout in Worldwide excluding government clouds.",
+      "status": "supported",
+      "source": "Message Center post MC1221453",
+      "quote": "Public Preview (Worldwide, excluding government clouds): We will start rolling out in February 2026 and expect to complete in February 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Scope; Open questions; changes",
+      "type": "record",
+      "claim": "MC1221453 targets general availability rollout for late December 2026, previously late August.",
+      "status": "supported",
+      "source": "Message Center post MC1221453",
+      "quote": "General Availability (Worldwide, GCC, GCCH, and DoD): We will start rolling out in late December 2026 (previously late August) and expect to complete in late December 2026 (previously late August).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "MC1221453 includes Worldwide, GCC, GCC High and DoD for general availability, unlike the roadmap's narrower cloud list.",
+      "status": "supported",
+      "source": "Message Center post MC1221453",
+      "quote": "General Availability (Worldwide, GCC, GCCH, and DoD)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1221453",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: defaultState; summary; Why it matters; Risk assessment; rationales",
+      "type": "default",
+      "claim": "The explorer is enabled by default.",
+      "status": "supported",
+      "source": "Message Center post MC1221453",
+      "quote": "The feature is enabled by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters; Risk assessment: Security & identity; Scope; controls[0].note",
+      "type": "role",
+      "claim": "Users with eDiscovery review permissions can run explorer KQL queries.",
+      "status": "supported",
+      "source": "Message Center post MC1221453",
+      "quote": "Users with eDiscovery review permissions can run KQL queries.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity; rationale: risk",
+      "type": "record",
+      "claim": "Existing admin policies and permissions remain unchanged.",
+      "status": "supported",
+      "source": "Message Center post MC1221453",
+      "quote": "Existing admin policies and permissions are unchanged.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters; Governance controls",
+      "type": "absence",
+      "claim": "MC1221453 names no explorer-only admin setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: explorer setting, switch and disable in the complete supplied MC1221453; it states enabled by default and unchanged policies but names no explorer-only setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Open questions: tenant or case setting; Governance controls",
+      "type": "absence",
+      "claim": "An explorer-specific tenant or case disable setting is not documented in the material checked.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Advanced review set explorer disable turn off Set-ComplianceCase license billing'; read edisc-review-set-explorer, edisc-settings-general and the returned Set-ComplianceCase syntax; none documents an explorer switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Learn includes an example listing external recipient addresses per item.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-review-set-explorer",
+      "quote": "Find all review set items that include at least one external recipient (outside your organization contoso.com), and list those external email addresses for each item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The explorer documentation describes no autonomous operation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: autonom, automatic in the fetched edisc-review-set-explorer text; the automatic action described is inserting ReviewSetTable into a query. Its workflow has reviewers write and run read-only queries.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Learn lists common KQL syntax errors and fixes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-review-set-explorer",
+      "quote": "When you create queries in the Advanced review set explorer (preview), you might encounter syntax errors. The following table lists common errors and how to fix them:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Adding data to a review set can change the results of a previously run query.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-review-set-explorer",
+      "quote": "Results reflect the current indexed state of the review set. If you add more data to the review set, the query might return different results.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.model; licensing.notes; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing model is included within the licensing for premium eDiscovery review sets.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "To analyze a user's data when premium eDiscovery features are enabled, the user must be assigned an Office 365 E5 or Microsoft 365 E5 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing; front matter: licensing.notes",
+      "type": "licensing",
+      "claim": "Learn requires an Office 365 E5 or Microsoft 365 E5 licence for the user whose data is analyzed with premium features, subject to the stated add-on alternative.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "To analyze a user's data when premium eDiscovery features are enabled, the user must be assigned an Office 365 E5 or Microsoft 365 E5 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing; front matter: licensing.notes",
+      "type": "licensing",
+      "claim": "Office 365 E1, Office 365 E3 or Microsoft 365 E3 users can instead receive Microsoft Purview Suite or the Microsoft 365 eDiscovery and Audit add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "Alternatively, users with an Office 365 E1 or an Office 365 or Microsoft 365 E3 license can be assigned a Microsoft Purview Suite (formerly known as Microsoft 365 E5 Compliance) or Microsoft 365 eDiscovery and Audit add-on license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Administrators, compliance officers and legal personnel assigned as case members do not need E5 to use premium features to collect, view and analyze data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "Administrators, compliance officers, or legal personnel who are assigned to cases as members and use premium eDiscovery features to collect, view, and analyze data don't need an E5 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The explorer Learn page and MC1221453 name no separate explorer licence or meter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: license, licensing, price, billing, meter in edisc-review-set-explorer and the full supplied MC1221453; neither names a separate explorer licence or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "No explorer-specific licence or price is published in the Microsoft material found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Advanced review set explorer license price' and 'Purview eDiscovery billing pay as you go review set processing advanced explorer pricing'; read explorer and permissions pages and edisc-billing search excerpts; no explorer-specific price or licence found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft asks administrators to tell eDiscovery teams that both query options are supported and users can choose between them.",
+      "status": "supported",
+      "source": "Message Center post MC1221453",
+      "quote": "Inform eDiscovery teams that both KeyQL and KQL are supported, and users can choose the option that best fits their needs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "The Review role permits access to review sets in cases of which the user is a member.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "This role lets users access review sets in eDiscovery. Users who are assigned this role can see and open the list of cases that they're members of.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope; controls[0].note; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "The eDiscovery Manager and Administrator assignments and the Reviewer role group include the Review role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "| Review |  | ![Check mark indicating the Review role is assigned to eDiscovery Manager and Administrator.](media/checkmark.png) |  | ![Check mark](media/checkmark.png) |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Settings > Role groups > eDiscovery Manager in the Microsoft Purview portal is the route given for managing review access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "Go to **Settings** > **Role groups**. On **Role groups for Microsoft Purview solutions**, select **eDiscovery Manager**.",
+      "severity": "minor",
+      "fix": "Extend controls[0].ui.path and the matching rendered cell to 'Settings > Role groups > eDiscovery Manager > Edit > Manage eDiscovery Manager > Choose users or Choose groups'. The existing route reaches the correct role-group pane but stops before its membership control. Source: https://learn.microsoft.com/purview/edisc-permissions."
+    },
+    {
+      "n": 46,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "Add-RoleGroupMember \"eDiscoveryManager\" -Member <name of security group> adds the specified group to the eDiscovery Managers subgroup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "Add-RoleGroupMember \"eDiscoveryManager\" -Member <name of security group>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "The documented security-group membership operation requires a mail-enabled security group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-permissions",
+      "quote": "Exchange distribution groups and Microsoft 365 Groups aren't supported. You must use a mail-enabled security group",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The Purview audit route is Audit > Search > Activities - friendly names > eDiscovery activities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-ref-audit-log",
+      "quote": "Select the **Audit** solution card. On the **Search** page, complete the following steps: In the **Activities - friendly names** drop-down list, under **eDiscovery activities**, select one or more eDiscovery activities to search for.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Search-UnifiedAuditLog -Operations <String[]> searches audit records filtered by operation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog?view=exchange-ps",
+      "quote": "The Operations parameter filters the log entries by operation. The available values for this parameter depend on the RecordType value.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[1].note; Governance controls; Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "The audit log records creating review sets and performing review activities in eDiscovery cases.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-ref-audit-log",
+      "quote": "Creating eDiscovery review sets and performing review activities in cases.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "A distinct audit activity specifically for explorer KQL queries is not confirmed.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Advanced review set explorer audit KQL'; searched audit-log-activities for explorer, KQL and review set operations. ReviewSetSearchRun is documented, but no distinct explorer KQL event or explicit mapping was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls: audit-search permissions",
+      "type": "role",
+      "claim": "An eDiscovery-permissioned account can use the audit row to search recorded eDiscovery activities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-ref-audit-log",
+      "quote": "Go to the Microsoft Purview portal and sign in with the credentials for a user account assigned eDiscovery permissions.",
+      "severity": "minor",
+      "fix": "Replace the sentence with: 'The eDiscovery audit guide starts with an account assigned eDiscovery permissions, but the general audit-search guide requires the Audit Logs or View-Only Audit Logs role in Microsoft Purview to search, and the corresponding role in Exchange admin center to access audit cmdlets.' Add https://learn.microsoft.com/purview/audit-search to sources."
+    },
+    {
+      "n": 53,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The explorer has a Getting started tab with basic query examples.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-review-set-explorer",
+      "quote": "If you're new to KQL, start with the **Getting started** tab to explore basic query patterns",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance: Before rollout; At rollout",
+      "type": "behaviour",
+      "claim": "The explorer includes sample queries that reviewers can load and run.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/edisc-review-set-explorer",
+      "quote": "**Sample queries**: Provides ready-to-use query templates for common review set analysis tasks",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "rationale: impact; Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Users without eDiscovery permissions do not see the explorer.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Advanced review set explorer permissions visible'; read edisc-review-set-explorer and edisc-permissions. They document the permissions needed to open review sets and the explorer, not whether an unpermissioned user can see its tab.",
+      "severity": "blocker",
+      "fix": "In the impact rationale, replace 'users without eDiscovery permissions do not see it' with 'opening it requires an account assigned eDiscovery permissions', as documented at https://learn.microsoft.com/purview/edisc-review-set-explorer."
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft suggests considering KQL training or reference materials.",
+      "status": "supported",
+      "source": "Message Center post MC1221453",
+      "quote": "Consider providing KQL training or reference materials.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "Microsoft suggests updating internal documentation or workflows as needed.",
+      "status": "supported",
+      "source": "Message Center post MC1221453",
+      "quote": "Update internal documentation or workflows as needed.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-19T22:10:26.690Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=484086",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-review-set-explorer",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/edisc-ref-audit-log",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog?view=exchange-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1221453",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Who can access review sets, and so the explorer, through eDiscovery roles",
+        "docs": "https://learn.microsoft.com/purview/edisc-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Role groups",
+          "eDiscovery Manager"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Who can access review sets, and so the explorer, through eDiscovery roles",
+        "docs": "https://learn.microsoft.com/purview/edisc-permissions",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Searching eDiscovery review activity in the audit log",
+        "docs": "https://learn.microsoft.com/purview/edisc-ref-audit-log",
+        "reachable": true,
+        "segments": [
+          "Audit",
+          "Search",
+          "Activities - friendly names",
+          "eDiscovery activities"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Searching eDiscovery review activity in the audit log",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog?view=exchange-ps",
+        "reachable": true,
+        "token": "Search-UnifiedAuditLog",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
