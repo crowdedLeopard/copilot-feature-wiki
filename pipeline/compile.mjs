@@ -107,7 +107,7 @@ async function main() {
       const { out, usage } = await compileOne(client, item, existing, indexSlugs, schemaDoc, await loadGlossary(), confirmed);
       inTok += usage.input_tokens + (usage.cache_read_input_tokens || 0) + (usage.cache_creation_input_tokens || 0);
       outTok += usage.output_tokens;
-      const { title } = await writeBriefingPage(item, out, { slug, existingFm, indexSlugs });
+      const { title } = await writeBriefingPage(item, out, { slug, existingFm, indexSlugs, restore: q.reason === 'restored' });
       written++;
       indexSlugs.push(`${slug} | ${title}`);
       await record(q.id, { ok: true, slug, title });

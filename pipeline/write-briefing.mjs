@@ -47,7 +47,8 @@ const slug = task?.slug || (await existingSlugForRoadmapId(id)) || slugify(item.
 const { existingFm } = await loadExisting(slug);
 const indexSlugs = await loadIndexSlugs();
 try {
-  const { file, title, tags } = await writeBriefingPage(item, raw, { slug, existingFm, indexSlugs });
+  // Only a 'restored' task (the item is back on the roadmap) may drop an archived page's archived block and status.
+  const { file, title, tags } = await writeBriefingPage(item, raw, { slug, existingFm, indexSlugs, restore: task?.reason === 'restored' });
   // The task's reason (no-briefing, revise, fresh-draft, forced, ...) lets a reader of the run's results tell a first
   // draft from a correction or a parked page written again, which the page's version number cannot.
   await record({ ok: true, slug, title, reason: task?.reason, file: path.relative(process.cwd(), file), newTags: tags.added, stubTags: tags.stubs });
