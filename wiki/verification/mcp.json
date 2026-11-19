@@ -3,31 +3,39 @@
   "kind": "concept",
   "roadmapId": null,
   "title": "MCP (Model Context Protocol): how agents reach tools, and where you can stop them",
-  "status": "verified",
-  "date": "2026-11-17",
+  "status": "held",
+  "date": "2026-11-19",
   "version": 4,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 0,
-  "verifierVerdict": "pass",
+  "attempts": 1,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
   "notes": [],
-  "hold": null,
-  "counts": {
-    "claims": 110,
-    "confirmed": 110,
-    "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
-    "major": 0,
-    "minor": 0
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-19",
+    "reasons": [
+      "1 blocking finding (claim 43)"
+    ]
   },
-  "summary": "The control paths, commands, licensing statements and documented limitations are supported by Microsoft's pages. The deterministic pre-check flags reflect formatting or placeholder differences rather than incorrect controls.",
+  "counts": {
+    "claims": 120,
+    "confirmed": 119,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "The data-policy PowerShell example creates a policy but does not choose which connectors to allow or block. Replace it with the documented connector-classification operation before administrators rely on the automation column. The cited pages were accessible in this check, including those previously rate-limited.",
   "claims": [
     {
       "n": 1,
-      "where": "controls[0].ui; Governance controls; What to check",
+      "where": "controls[0].ui",
       "type": "admin-path",
-      "claim": "Tenant-wide MCP server blocking is at Microsoft 365 admin center > Agents > Tools > Registry > MCP server > Block.",
+      "claim": "Microsoft 365 admin center > Agents > Tools > Registry > MCP server > Block blocks a server across the organisation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
       "quote": "Select Agents > Tools, and then select the Registry tab. ... Select an MCP server from the list to open its overview pane. ... Select Block to restrict the server across your organization",
@@ -36,227 +44,29 @@
     },
     {
       "n": 2,
-      "where": "controls[1].ui; Governance controls; What to check",
-      "type": "admin-path",
-      "claim": "Individual tool control is at Agents > Tools > Registry > MCP server > Tools > Enabled / Disabled toggle > Save.",
+      "where": "controls[0].api; Open questions",
+      "type": "absence",
+      "claim": "An API or command for blocking registry MCP servers is not documented.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Select Agents > Tools, and then select the Registry tab. ... Select the Tools tab. The list shows every tool the server exposes, along with its description and an Enabled or Disabled toggle. ... Select Save to apply your changes",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com/graph/api MCP server registry block approval individual tool enabled Agent 365. Opened manage-plugins-skills-mcp-servers, manage-byo-mcp-server, develop-mcp and azure/api-management/agent-365.",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
-      "where": "controls[2].ui; Governance controls; What to check",
-      "type": "admin-path",
-      "claim": "Requested MCP server registrations are reviewed at Microsoft 365 admin center > Agents > Tools > Requests (preview).",
+      "where": "controls[0].governs",
+      "type": "behaviour",
+      "claim": "Blocking an MCP server disables all the tools it exposes.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Select Agents > Tools, and then select the Requests (preview) tab.",
+      "quote": "Blocking an MCP server disables all the tools it exposes.",
       "severity": null,
       "fix": null
     },
     {
       "n": 4,
-      "where": "controls[3].ui; What it is; Governance controls; What to check",
-      "type": "admin-path",
-      "claim": "Publisher-type availability for agents, plugins, connectors and MCP servers is at Agents > Settings > Agent and plugin access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
-      "quote": "Agent and plugin access controls which types of agents and plugins, including connectors and MCP servers, are available in your organization. ... go to Agents > Settings > Agent and plugin access.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "controls[4].ui; What it is; Governance controls; What to check",
-      "type": "admin-path",
-      "claim": "Tenant user access for agents and plugins, including MCP servers and connectors, is at Agents > Settings > User access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-      "quote": "Plugins include tools, MCP servers, connectors, skills, and other AI artifacts. ... Select Agents > Settings > User access to manage your organization's agents and plugins.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "controls[5].ui; What it is; Governance controls",
-      "type": "admin-path",
-      "claim": "Federated connectors can be enabled or disabled under Copilot > Connectors > Your connections and staged through Staged rollout > Add staging.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
-      "quote": "Enable / Disable | Copilot > Connectors > Your connections ... Limit a connector to specific users or Microsoft Entra ID groups by choosing Add staging in the Staged rollout column.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "controls[6].ui; Governance controls; What to check",
-      "type": "admin-path",
-      "claim": "Work IQ MCP policy is reached through Agents > Tools > Registry > Work IQ MCP > Policy, when that tab is available.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "In the left navigation, select Agents > Tools. ... In the tools registry, select Work IQ MCP. ... On the Work IQ MCP details pane, select the Policy tab when it's available.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "controls[7].ui; Governance controls",
-      "type": "admin-path",
-      "claim": "The single-environment advanced connector policy UI is at Power Platform admin center > Security > Data and privacy > Advanced connector policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
-      "quote": "In the navigation pane, select Security. ... In the Security pane, select Data and privacy. ... Select Advanced connector policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "controls[7].api; Governance controls",
-      "type": "command",
-      "claim": "POST /governance/ruleBasedPolicies?api-version=2024-10-01 creates an advanced connector policy before assignment.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-advanced-connector-policies",
-      "quote": "All examples in the article use API version 2024-10-01. ... $policy = Invoke-RestMethod -Method Post `\n    -Uri \"$apiBaseUrl/governance/ruleBasedPolicies?api-version=$apiVersion\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "controls[7].api; Governance controls",
-      "type": "command",
-      "claim": "POST /governance/ruleBasedPolicies/<policyId>/environmentGroups/<environmentGroupId>/assignments?api-version=2024-10-01 with {} assigns the policy to the group.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-advanced-connector-policies",
-      "quote": "Invoke-RestMethod -Method Post `\n    -Uri \"$apiBaseUrl/governance/ruleBasedPolicies/$($policy.id)/environmentGroups/$environmentGroupId/assignments?api-version=$apiVersion\" `\n    -Headers $headers -ContentType \"application/json\" -Body \"{}\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "controls[8].ui; Governance controls",
-      "type": "admin-path",
-      "claim": "Classic data policy creation is at Security > Settings > Data and privacy > Data policy > + New Policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/prevent-data-loss",
-      "quote": "Select Security in the navigation pane. ... In the Security pane, under Settings, select Data and privacy. ... In the Data protection and privacy screen, select the Data policy section. Select + New Policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "controls[8].api; Governance controls",
-      "type": "command",
-      "claim": "Microsoft.PowerApps.Administration.PowerShell provides New-DlpPolicy -DisplayName <name> -EnvironmentType <type> [-Environments <environments>] to create a data policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest",
-      "quote": "Module: Microsoft.PowerApps.Administration.PowerShell Module ... New-DlpPolicy\n    -DisplayName <String>\n    -EnvironmentType <String>\n    [-DefaultConnectorClassification <String>]\n    [-Environments <Object>]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "controls[9].ui; What it is; Governance controls; What to check",
-      "type": "admin-path",
-      "claim": "Dataverse MCP client configuration is under Manage > Environments > environment > Settings > Product > Features > Dataverse Model Context Protocol > Advanced Settings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
-      "quote": "Select Manage > Environments. ... Select the Environment Name ... select Settings. Under Settings, select Product > Features. Scroll down to locate Dataverse Model Context Protocol ... Select Advanced Settings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "controls[9].api; Governance controls",
-      "type": "command",
-      "claim": "PATCH <organization URI>/api/data/v9.2/allowedmcpclients(<allowedmcpclientid>) can set isenabled false or true for an individual MCP client.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient?view=dataverse-latest",
-      "quote": "Entity set path: [organization URI]/api/data/v9.2/allowedmcpclients ... Primary key: allowedmcpclientid ... Operations supported: POSTGETPATCHDELETE ... isenabled | Edm.Boolean | Display name: Is Enabled ... 1 | Yes ... 0 | No",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "controls[0].api; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "A PowerShell, Graph or REST equivalent of the registry MCP server Block action is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: MCP server block tool enabled approve requests admin API; MCP block Tools Graph beta Agent 365. Read manage-plugins-skills-mcp-servers and develop-mcp; no registry blocking API found. Graph's Enterprise MCP service-principal disable is a different control.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "controls[1].api; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "A PowerShell, Graph or REST equivalent of registry individual-tool toggles is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: MCP server block tool enabled approve requests admin API; MCP block Tools Graph beta Agent 365. Opened manage-plugins-skills-mcp-servers and develop-mcp; read Azure API Management Agent 365 search excerpts. No equivalent registry tool-toggle endpoint found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "controls[2].api; Governance controls",
-      "type": "absence",
-      "claim": "Automation for approving MCP registration requests is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: MCP approval API Agent 365 requests; MCP approve Graph API registry. Opened develop-mcp and manage-plugins-skills-mcp-servers. The CLI explicitly removed approve; results document admin-center approval, not an approval endpoint.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "controls[3].api; Governance controls",
-      "type": "absence",
-      "claim": "Automation for Agent and plugin access publisher-type settings is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Agent and plugin access User access PowerShell Graph API settings; User access Agent and plugin access Graph beta. Opened agent-settings and manage-federated-connectors; results give UI procedures but no API for this publisher-type setting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "controls[4].api; Governance controls",
-      "type": "absence",
-      "claim": "Automation for the tenant-wide Agents > Settings > User access setting is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Agent and plugin access User access PowerShell Graph API settings; User access Agent and plugin access Graph beta. Opened agent-settings and manage-federated-connectors; no equivalent tenant User access API found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "controls[5].api; Governance controls",
-      "type": "absence",
-      "claim": "Automation for federated connector enablement and staged rollout is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: federated connectors enable disable staged rollout API PowerShell. Opened federated-connectors-overview and manage-federated-connectors; read set-up-custom-federated-connectors excerpts. No equivalent API found; Entra authentication staged rollout is unrelated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "controls[6].api; Governance controls",
-      "type": "absence",
-      "claim": "Automation for Work IQ MCP tenant policy is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Work IQ MCP tenant policy configure API PowerShell Graph; Work IQ MCP policy API configure; Work IQ MCP policy PowerShell. Opened policy-governance-mcp; searched results describe policy payload concepts but supply no configuration endpoint or cmdlet.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "controls[0].note; Governance controls",
+      "where": "controls[0].note",
       "type": "behaviour",
       "claim": "Unblock restores access to a previously blocked MCP server.",
       "status": "supported",
@@ -266,21 +76,43 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "controls[0].note; Cost and licensing; Governance controls",
+      "n": 5,
+      "where": "controls[0].note; Cost and licensing",
       "type": "licensing",
-      "claim": "The Agent 365 service description lists tenant-wide tool access control as not included with Microsoft 365 plans and requiring Microsoft 365 E7 / G7 or Agent 365.",
+      "claim": "The Agent 365 service description lists tenant-wide tool control as requiring Microsoft 365 E7 / G7 or Agent 365.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365",
-      "quote": "Included with Microsoft 365 Enterprise, Business, Education, and Front Line Worker plans | Requires Microsoft 365 E7 / G7 or Agent 365 ... Control which tools (including Microsoft MCP servers) agents can access tenant-wide | Microsoft 365 Admin Center | No | Yes | Yes",
+      "quote": "| Control which tools (including Microsoft MCP servers) agents can access tenant-wide | Microsoft 365 Admin Center | No | Yes | Yes |",
       "severity": null,
       "fix": null
     },
     {
-      "n": 24,
-      "where": "controls[1].note; Risks and limits; Governance controls",
+      "n": 6,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Individual tool toggles are at Microsoft 365 admin center > Agents > Tools > Registry > MCP server > Tools > Enabled / Disabled toggle > Save.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Select the Tools tab. The list shows every tool the server exposes, along with its description and an Enabled or Disabled toggle. ... Turn individual tools on or off as needed. ... Select Save to apply your changes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "controls[1].api; Open questions",
+      "type": "absence",
+      "claim": "An API or command for registry individual-tool blocking is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com/graph/api MCP server registry block approval individual tool enabled Agent 365. Opened manage-plugins-skills-mcp-servers and azure/api-management/agent-365; no equivalent setting call found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "controls[1].note; Risks and limits",
       "type": "availability",
-      "claim": "Registry tool-level control is rolling out and supports only specific MCP server types.",
+      "claim": "Registry tool-level granular control is rolling out to tenants.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
       "quote": "Tool-level granular control is rolling out to tenants and supports only specific types of MCP servers registered on Agent 365.",
@@ -288,19 +120,52 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "Risks and limits: Tool-level control in the registry is limited",
-      "type": "behaviour",
-      "claim": "In the registry, a server without tool discovery can only be controlled through whole-server blocking.",
+      "n": 9,
+      "where": "controls[1].note; Risks and limits",
+      "type": "applicability",
+      "claim": "Registry tool-level control supports only specific MCP server types.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "If an MCP server doesn't support tool discovery ... individual tools aren't available to manage. In this case, use Block or allow an MCP server to control the entire server instead.",
+      "quote": "Tool-level granular control is rolling out to tenants and supports only specific types of MCP servers registered on Agent 365.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 26,
-      "where": "controls[2].note; Governance controls",
+      "n": 10,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "MCP registration requests are reviewed at Microsoft 365 admin center > Agents > Tools > Requests (preview).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Select Agents > Tools, and then select the Requests (preview) tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[2].api",
+      "type": "absence",
+      "claim": "An automation call for approving requested registry MCP servers is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Graph beta admin MCP server tools block approve availability API PowerShell; site:learn.microsoft.com/graph/api MCP server registry block approval individual tool enabled Agent 365. Opened manage-plugins-skills-mcp-servers and develop-mcp; CLI approval command has been removed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[2].governs",
+      "type": "behaviour",
+      "claim": "Registered BYO MCP servers require administrator approval before agents can use them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-byo-mcp-server",
+      "quote": "| Approval or rejection | An admin approves or rejects each BYO MCP server before it can be used. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[2].note; Governance controls: Where it is watched",
       "type": "availability",
       "claim": "Bring-your-own MCP server registration is in preview.",
       "status": "supported",
@@ -310,54 +175,142 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "controls[2].note; Governance controls",
-      "type": "admin-path",
-      "claim": "The Agent 365 CLI reference instead points to Requested Agents for pending requests.",
+      "n": 14,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "The Agent 365 CLI reference instead points administrators to Requested Agents for pending requests.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/developer/reference/cli/develop-mcp",
-      "quote": "Tenant administrators now perform server approval and blocking in the Microsoft admin center — pending requests are reviewed on the Requested Agents page.",
+      "quote": "pending requests are reviewed on the Requested Agents page. ... Before any agent can use the server, a tenant administrator must approve it on the Requested Tools page",
+      "severity": "minor",
+      "fix": "Replace the note's second sentence with: 'The Agent 365 CLI reference mentions both Requested Agents and Requested Tools for pending requests.' The introduction names Requested Agents, but the publish section now names Requested Tools."
+    },
+    {
+      "n": 15,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Publisher-type availability is controlled at Microsoft 365 admin center > Agents > Settings > Agent and plugin access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "In the Microsoft 365 admin center, go to Agents > Settings > Agent and plugin access.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 28,
+      "n": 16,
+      "where": "controls[3].governs",
+      "type": "applicability",
+      "claim": "Agent and plugin access covers agents, plugins, connectors and MCP servers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
+      "quote": "Agent and plugin access controls which types of agents and plugins, including connectors and MCP servers, are available in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[3].api",
+      "type": "absence",
+      "claim": "An automation call for Agent and plugin access publisher categories is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com User access Agent and plugin access settings Microsoft Graph PowerShell configuration API. Opened agent-settings and manage-federated-connectors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
       "where": "controls[3].note; Governance controls: Roles",
       "type": "role",
       "claim": "Managing federated connectors requires Global Administrator or Search Administrator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
-      "quote": "To manage federated connectors, you need one of the following administrator roles: Global Administrator; Search Administrator",
+      "quote": "To manage federated connectors, you need one of the following administrator roles: ... Global Administrator ... Search Administrator",
       "severity": null,
       "fix": null
     },
     {
-      "n": 29,
-      "where": "controls[4].note; Governance controls",
-      "type": "default",
-      "claim": "All users is the default User access value.",
+      "n": 19,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "User availability is controlled at Microsoft 365 admin center > Agents > Settings > User access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-      "quote": "All users - This option is the default.",
+      "quote": "Select Agents > Settings > User access to manage your organization's agents and plugins.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
-      "where": "controls[4].note; Governance controls",
+      "n": 20,
+      "where": "controls[4].governs",
+      "type": "applicability",
+      "claim": "User access covers agents and plugins, including connectors and MCP servers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "Use User access to control how members of your organization access and install agents and plugins. Plugins include tools, MCP servers, connectors, skills, and other AI artifacts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[4].api",
+      "type": "absence",
+      "claim": "An automation call for the tenant User access setting is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com User access Agent and plugin access settings Microsoft Graph PowerShell configuration API. Opened agent-settings and manage-federated-connectors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[4].note",
+      "type": "default",
+      "claim": "All users is the default User access option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "All users - This option is the default. It means that all users in the organization can access agents and plugins, subject to the existing app policies and user assignments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[4].note",
       "type": "behaviour",
       "claim": "User access offers All users, No users and Specific users or groups.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-      "quote": "The setting has three options: All users ... No users ... Specific users or groups",
+      "quote": "The setting has three options: ... All users ... No users ... Specific users or groups",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
+      "n": 24,
+      "where": "controls[5].ui",
+      "type": "admin-path",
+      "claim": "Federated connectors can be enabled, disabled and staged under Microsoft 365 admin center > Copilot > Connectors > Your connections > connector, using Enable / Disable and Staged rollout > Add staging.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "| Enable / Disable | Copilot > Connectors > Your connections | ... Limit a connector to specific users or Microsoft Entra ID groups by choosing Add staging in the Staged rollout column.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[5].api",
+      "type": "absence",
+      "claim": "An equivalent federated-connector enable, disable or staging automation call is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com federated connector enable disable staged rollout API PowerShell Microsoft Graph. Opened federated-connectors-overview and manage-federated-connectors; read excerpts from set-up-custom-federated-connectors and staged-rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
       "where": "controls[5].note; Governance controls: How they interact",
-      "type": "applicability",
-      "claim": "Federated connector staging cannot extend beyond User access.",
+      "type": "behaviour",
+      "claim": "Connector staging cannot extend beyond the population allowed by User access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
       "quote": "Staging can't extend beyond the users allowed by User access.",
@@ -365,8 +318,41 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "controls[6].note; Governance controls",
+      "n": 27,
+      "where": "controls[6].ui",
+      "type": "admin-path",
+      "claim": "Work IQ MCP policy is reached at Microsoft 365 admin center > Agents > Tools > Registry > Work IQ MCP > Policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "In the left navigation, select Agents > Tools. ... In the tools registry, select Work IQ MCP. ... On the Work IQ MCP details pane, select the Policy tab when it's available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[6].governs",
+      "type": "applicability",
+      "claim": "Work IQ MCP tenant policy governs whether mutation operations are allowed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "Administrators can enable supported mutation scenarios through tenant policy in the Microsoft 365 admin center when those capabilities are needed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[6].api",
+      "type": "absence",
+      "claim": "An equivalent Work IQ MCP tenant-policy automation call is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ MCP tenant policy configuration REST API Allowed Disallowed; site:learn.microsoft.com Work IQ MCP policy update tenant REST endpoint policy settings API. Opened policy-governance-mcp and Work IQ overview; results describe settings but give no configuration method and endpoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[6].note",
       "type": "behaviour",
       "claim": "Initial-release Work IQ MCP policy control is tenant-level on or off.",
       "status": "supported",
@@ -376,7 +362,7 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 31,
       "where": "controls[6].note; Risks and limits; What to check",
       "type": "behaviour",
       "claim": "Saved Work IQ MCP policy changes can take up to 24 hours to apply.",
@@ -387,43 +373,109 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "controls[7].note; Governance controls",
-      "type": "command",
-      "claim": "The advanced connector policy API host is api.powerplatform.com.",
+      "n": 32,
+      "where": "controls[6].note",
+      "type": "availability",
+      "claim": "The Work IQ MCP Policy tab is used when available.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-advanced-connector-policies",
-      "quote": "$apiBaseUrl = \"https://api.powerplatform.com\"\n$apiVersion = \"2024-10-01\"",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "On the Work IQ MCP details pane, select the Policy tab when it's available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[7].ui",
+      "type": "admin-path",
+      "claim": "Advanced connector policies are reached at Power Platform admin center > Security > Data and privacy > Advanced connector policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
+      "quote": "In the navigation pane, select Security. ... In the Security pane, select Data and privacy. ... Select Advanced connector policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[7].governs",
+      "type": "applicability",
+      "claim": "Advanced connector policies govern connectors and MCP servers in individual environments or environment groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
+      "quote": "You can configure advanced connector policies at the environment group level for bulk deployment or directly on individual environments for targeted governance. ... administrators can see MCP servers listed alongside other connector types",
       "severity": null,
       "fix": null
     },
     {
       "n": 35,
-      "where": "controls[7].note; Governance controls",
+      "where": "controls[7].api",
       "type": "command",
-      "claim": "The create payload uses name and ruleSets with id ConnectorManagement, version and inputs.AllowedConnectorList.",
+      "claim": "POST /governance/ruleBasedPolicies?api-version=2024-10-01 creates an ACP and POST /governance/ruleBasedPolicies/<policyId>/environmentGroups/<environmentGroupId>/assignments?api-version=2024-10-01 with {} assigns it.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-advanced-connector-policies",
-      "quote": "\"name\": \"Contoso ACP baseline\",\n  \"ruleSets\": [\n    {\n      \"id\": \"ConnectorManagement\",\n      \"version\": \"1.0\",\n      \"inputs\": {\n        \"AllowedConnectorList\": [",
-      "severity": null,
-      "fix": null
+      "quote": "Adding ACP to an environment group is a two-part operation: create the policy, then assign it to the group. ... To assign the policy to the whole group, send an assignment request with an empty body ({}).",
+      "severity": "minor",
+      "fix": "Keep the two documented method-and-path operations, but remove 'creates an unassigned policy', 'with {}' and 'assigns it' from the call. Put that explanation in the note: 'Create the policy, then assign it to the group with an empty request body ({}).'"
     },
     {
       "n": 36,
-      "where": "controls[7].note; Governance controls",
+      "where": "controls[7].note",
       "type": "command",
-      "claim": "A policy can instead be assigned through its /environments/<environmentId>/assignments endpoint.",
+      "claim": "The ACP API host is api.powerplatform.com.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-advanced-connector-policies",
-      "quote": "Invoke-RestMethod -Method Post `\n    -Uri \"$apiBaseUrl/governance/ruleBasedPolicies/$policyId/environments/$environmentId/assignments?api-version=$apiVersion\" `\n    -Headers $headers -ContentType \"application/json\" -Body \"{}\"",
+      "quote": "$apiBaseUrl = \"https://api.powerplatform.com\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 37,
-      "where": "controls[7].note; Risks and limits; Governance controls",
+      "where": "controls[7].note",
+      "type": "command",
+      "claim": "ACP creation uses name and ruleSets in the request body.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-advanced-connector-policies",
+      "quote": "\"name\": \"Contoso ACP baseline\", ... \"ruleSets\": [",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[7].note",
+      "type": "command",
+      "claim": "The ACP connector rule set has id ConnectorManagement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-advanced-connector-policies",
+      "quote": "the rule set with the ID ConnectorManagement holds the ACP connector allowlist.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[7].note",
+      "type": "command",
+      "claim": "The ConnectorManagement rule set includes version and inputs.AllowedConnectorList.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-advanced-connector-policies",
+      "quote": "That rule set carries a version and its inputs hold an AllowedConnectorList, where each entry allows a connector and sets how its actions and connection types are governed",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[7].note",
+      "type": "command",
+      "claim": "An ACP can be assigned to a single environment at /environments/<environmentId>/assignments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-advanced-connector-policies",
+      "quote": "-Uri \"$apiBaseUrl/governance/ruleBasedPolicies/$policyId/environments/$environmentId/assignments?api-version=$apiVersion\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[7].note; Risks and limits",
       "type": "behaviour",
-      "claim": "Advanced connector policies support MCP server-level blocking but not granular individual MCP tool control.",
+      "claim": "ACP supports server-level MCP blocking, not granular control of individual MCP tools.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
       "quote": "As of now, granular control over individual MCP tools (endpoints and actions) within an MCP server isn't available. Blocking the entire MCP server is supported.",
@@ -431,10 +483,32 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "controls[8].note; What it is; Governance controls; What to check",
+      "n": 42,
+      "where": "controls[8].ui",
+      "type": "admin-path",
+      "claim": "Data policy creation is at Power Platform admin center > Security > Settings > Data and privacy > Data policy > + New Policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/prevent-data-loss",
+      "quote": "Select Security in the navigation pane. ... In the Security pane, under Settings, select Data and privacy. ... select the Data policy section. Select + New Policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[8].api",
+      "type": "command",
+      "claim": "New-DlpPolicy -DisplayName <name> -EnvironmentType <type> [-Environments <environments>] controls which connectors agents may use.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest",
+      "quote": "The New-DlpPolicy cmdlet creates a new DLP policy for the logged in admin's tenant. ... -DisplayName ... Creates the policy with the input display name. ... -EnvironmentType ... The type of the environment: trial, production, sandbox, default.",
+      "severity": "blocker",
+      "fix": "Replace the API call with 'Add-ConnectorsToPolicy -PolicyName <policy-guid> -Classification Blocked -Connectors <connector-objects>' and its docs URL with https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest. Add to the note: 'For an existing policy, this classifies the specified connectors as Blocked; each connector object needs id, type and name.' Add that reference to sources. The current call creates a policy but names no parameter that selects or blocks connectors."
+    },
+    {
+      "n": 44,
+      "where": "controls[8].note; What it is",
       "type": "applicability",
-      "claim": "Power Platform connector blocking also blocks tools in connected MCP servers that rely on those connectors.",
+      "claim": "Blocking Power Platform connectors also blocks dependent tools in connected MCP servers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
       "quote": "Blocking Power Platform connectors also blocks access to tools in connected MCP servers, which rely on Power Platform connectors for connectivity.",
@@ -442,8 +516,41 @@
       "fix": null
     },
     {
-      "n": 39,
-      "where": "controls[9].note; Governance controls",
+      "n": 45,
+      "where": "controls[9].ui",
+      "type": "admin-path",
+      "claim": "Dataverse MCP client settings are at Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > Dataverse Model Context Protocol > Advanced Settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
+      "quote": "Select Manage > Environments. ... select Settings. Under Settings, select Product > Features. Scroll down to locate Dataverse Model Context Protocol ... Select Advanced Settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[9].api",
+      "type": "command",
+      "claim": "PATCH <organization URI>/api/data/v9.2/allowedmcpclients(<allowedmcpclientid>) with isenabled false or true disables or enables a client.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient?view=dataverse-latest",
+      "quote": "Entity set path: ... [organization URI]/api/data/v9.2/allowedmcpclients ... Primary key: ... allowedmcpclientid ... Operations supported: ... POSTGETPATCHDELETE ... isenabled | Edm.Boolean | Display name: Is Enabled",
+      "severity": "minor",
+      "fix": "Set the call to 'PATCH <organization URI>/api/data/v9.2/allowedmcpclients(<allowedmcpclientid>)'. Move the body explanation into the note: 'The request body sets isenabled to false to disable the selected client, or true to enable it.'"
+    },
+    {
+      "n": 47,
+      "where": "controls[9].note",
+      "type": "behaviour",
+      "claim": "The allowedmcpclients API updates individual clients, not the environment-wide MCP switch.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient?view=dataverse-latest",
+      "quote": "An MCP client that is allowed to talk to MCP endpoint ... Display name: ... Allowed MCP Client ... Primary key: ... allowedmcpclientid",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[9].note",
       "type": "default",
       "claim": "The Copilot Studio client for Dataverse MCP is enabled by default.",
       "status": "supported",
@@ -453,8 +560,8 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "controls[9].note; Governance controls; What to check",
+      "n": 49,
+      "where": "controls[9].note; What to check",
       "type": "default",
       "claim": "Additional Dataverse MCP clients must be enabled before use.",
       "status": "supported",
@@ -464,51 +571,29 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "controls[9].note; Governance controls",
-      "type": "behaviour",
-      "claim": "The allowedmcpclients API changes individual client records rather than the environment-wide MCP switch.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient?view=dataverse-latest",
-      "quote": "An MCP client that is allowed to talk to MCP endpoint ... Primary key: allowedmcpclientid ... isenabled | Edm.Boolean | Display name: Is Enabled",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
+      "n": 50,
       "where": "summary; What it is",
       "type": "behaviour",
-      "claim": "Model Context Protocol lets Copilot Studio agents connect to external knowledge servers, data sources and tools.",
+      "claim": "MCP connects Copilot Studio agents to external tools, knowledge servers and data sources.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-extend-action-mcp",
-      "quote": "You can extend your agent with tools by using Model Context Protocol (MCP). ... Model Context Protocol (MCP) helps you connect to existing knowledge servers and data sources directly within Copilot Studio.",
+      "quote": "Model Context Protocol (MCP) helps you connect to existing knowledge servers and data sources directly within Copilot Studio.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 43,
+      "n": 51,
       "where": "What it is",
       "type": "behaviour",
-      "claim": "An MCP server publishes tools and resources.",
+      "claim": "An MCP server publishes tools and resources for clients such as Copilot Studio agents to access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-extend-action-mcp",
-      "quote": "Each tool or resource that a connected MCP server publishes is automatically available for use in Copilot Studio.",
+      "quote": "Each tool or resource that a connected MCP server publishes is automatically available for use in Copilot Studio. ... Copilot Studio agents can access each tool.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 44,
-      "where": "What it is",
-      "type": "behaviour",
-      "claim": "Copilot Studio agents can act as clients accessing MCP server content.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-extend-action-mcp",
-      "quote": "A single MCP server can integrate and manage multiple tools and resources. Copilot Studio agents can access each tool.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
+      "n": 52,
       "where": "What it is",
       "type": "behaviour",
       "claim": "MCP resources are file-like data an agent can read.",
@@ -519,7 +604,7 @@
       "fix": null
     },
     {
-      "n": 46,
+      "n": 53,
       "where": "What it is",
       "type": "behaviour",
       "claim": "MCP tools are functions a language model can call to perform an action.",
@@ -530,7 +615,7 @@
       "fix": null
     },
     {
-      "n": 47,
+      "n": 54,
       "where": "What it is",
       "type": "behaviour",
       "claim": "MCP prompts are predefined templates.",
@@ -541,7 +626,7 @@
       "fix": null
     },
     {
-      "n": 48,
+      "n": 55,
       "where": "What it is",
       "type": "availability",
       "claim": "Copilot Studio currently supports MCP tools and resources.",
@@ -552,10 +637,10 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 56,
       "where": "What it is",
       "type": "behaviour",
-      "claim": "The MCP server supplies tool names, descriptions, inputs and outputs.",
+      "claim": "The server supplies tool names, descriptions, inputs and outputs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-extend-action-mcp",
       "quote": "The server provides the name, description, inputs, and outputs.",
@@ -563,10 +648,10 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 57,
       "where": "What it is",
       "type": "behaviour",
-      "claim": "Copilot Studio dynamically reflects server-side changes to tools and resources.",
+      "claim": "Copilot Studio dynamically reflects server-side tool changes and removals.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-extend-action-mcp",
       "quote": "When you update or remove tools and resources on the MCP server, Copilot Studio dynamically reflects these changes.",
@@ -574,10 +659,10 @@
       "fix": null
     },
     {
-      "n": 51,
+      "n": 58,
       "where": "What it is",
       "type": "behaviour",
-      "claim": "Copilot Studio's standard-harness MCP guidance requires generative orchestration.",
+      "claim": "The standard-harness MCP guidance requires generative orchestration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-extend-action-mcp",
       "quote": "This article describes features used in agents or agent flows powered by the standard harness. ... You must turn on generative orchestration to use MCP.",
@@ -585,10 +670,10 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 59,
       "where": "What it is",
       "type": "availability",
-      "claim": "Copilot Studio supports the Streamable MCP transport.",
+      "claim": "Copilot Studio supports the Streamable transport.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-add-existing-server-to-agent",
       "quote": "Copilot Studio supports the Streamable transport type.",
@@ -596,7 +681,7 @@
       "fix": null
     },
     {
-      "n": 53,
+      "n": 60,
       "where": "What it is",
       "type": "date",
       "claim": "Copilot Studio no longer supports SSE for MCP after August 2025.",
@@ -607,29 +692,40 @@
       "fix": null
     },
     {
-      "n": 54,
+      "n": 61,
       "where": "What it is",
       "type": "behaviour",
-      "claim": "The MCP onboarding wizard offers no authentication, API key and OAuth 2.0.",
+      "claim": "The server onboarding wizard offers None authentication.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-add-existing-server-to-agent",
-      "quote": "Select the authentication type for your MCP server, if applicable. You have three options: None; API key: Configure API key authentication; OAuth 2.0: Configure OAuth 2.0 authentication",
+      "quote": "Select the authentication type for your MCP server, if applicable. You have three options: ... None",
       "severity": null,
       "fix": null
     },
     {
-      "n": 55,
-      "where": "What it is: governance table; What to check",
-      "type": "applicability",
-      "claim": "Advanced connector policies govern MCP server use within Power Platform, including Copilot Studio.",
+      "n": 62,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "The server onboarding wizard offers API key authentication.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
-      "quote": "MCP servers are special connector endpoints that expose MCP-enabled APIs and tooling capabilities within Power Platform. ... Until design-time support is available in a given maker portal, ACP operates as a runtime-only enforcement for that workload.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-add-existing-server-to-agent",
+      "quote": "API key: Configure API key authentication",
       "severity": null,
       "fix": null
     },
     {
-      "n": 56,
+      "n": 63,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "The server onboarding wizard offers OAuth 2.0 authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-add-existing-server-to-agent",
+      "quote": "OAuth 2.0: Configure OAuth 2.0 authentication",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
       "where": "What it is",
       "type": "behaviour",
       "claim": "Work IQ offers a remote MCP server.",
@@ -640,10 +736,10 @@
       "fix": null
     },
     {
-      "n": 57,
+      "n": 65,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "Federated connectors can create, update or delete source-system data on the user's behalf when the connector provides those tools.",
+      "claim": "Federated connector tools can create data in a connected system on the user's behalf.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
       "quote": "Where a connector provides the tools, Copilot can also create, update, or delete data in the connected system on the user's behalf.",
@@ -651,10 +747,32 @@
       "fix": null
     },
     {
-      "n": 58,
+      "n": 66,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "Dataverse MCP provides tools for querying records.",
+      "claim": "Federated connector tools can update data in a connected system on the user's behalf.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Where a connector provides the tools, Copilot can also create, update, or delete data in the connected system on the user's behalf.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Federated connector tools can delete data in a connected system on the user's behalf.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "Where a connector provides the tools, Copilot can also create, update, or delete data in the connected system on the user's behalf.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The Dataverse MCP server provides tools for querying records.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-faq",
       "quote": "The Dataverse MCP server provides tools for common data operations such as querying records, creating and updating rows, and describing table schemas.",
@@ -662,10 +780,10 @@
       "fix": null
     },
     {
-      "n": 59,
+      "n": 69,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "Dataverse MCP provides tools for creating and updating rows.",
+      "claim": "The Dataverse MCP server provides tools for creating rows.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-faq",
       "quote": "The Dataverse MCP server provides tools for common data operations such as querying records, creating and updating rows, and describing table schemas.",
@@ -673,10 +791,21 @@
       "fix": null
     },
     {
-      "n": 60,
+      "n": 70,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "The general Copilot connectors overview still calls federated connectors read-only, unlike the federated connectors overview.",
+      "claim": "The Dataverse MCP server provides tools for updating rows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-faq",
+      "quote": "The Dataverse MCP server provides tools for common data operations such as querying records, creating and updating rows, and describing table schemas.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The Copilot connectors overview still calls federated connectors read-only.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview",
       "quote": "Federated connectors are read-only; they can search and fetch content but can't write data back.",
@@ -684,10 +813,10 @@
       "fix": null
     },
     {
-      "n": 61,
+      "n": 72,
       "where": "Why it matters",
       "type": "date",
-      "claim": "That general overview also announces write actions starting early October 2026.",
+      "claim": "The Copilot connectors overview announces write actions starting early October 2026.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview",
       "quote": "Write actions will be available starting early October 2026.",
@@ -695,10 +824,10 @@
       "fix": null
     },
     {
-      "n": 62,
+      "n": 73,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "Plugin package-level actions are not separate controls for every included component.",
+      "claim": "Plugin package-level actions are not separate controls for each included component.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
       "quote": "These package-level actions aren't separate controls for each included component.",
@@ -706,21 +835,32 @@
       "fix": null
     },
     {
-      "n": 63,
+      "n": 74,
       "where": "Cost and licensing",
       "type": "absence",
-      "claim": "No licence or meter for the MCP protocol itself is documented as of November 2026.",
+      "claim": "A licence for the MCP protocol itself is not documented as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Model Context Protocol MCP protocol license pricing meter. Opened agent-extend-action-mcp, Agent 365 service description, billing-credit-overview, Work IQ overview and Dataverse MCP FAQ. Results document product/server charges, not a protocol licence or protocol meter.",
+      "quote": "Searched: Model Context Protocol protocol license price meter MCP Microsoft. Opened agent-extend-action-mcp, Microsoft Agent 365 service description, billing-credit-overview, Work IQ overview and Dataverse MCP FAQ; no licence for the protocol itself found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 64,
+      "n": 75,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "A meter for the MCP protocol itself is not documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Model Context Protocol protocol license price meter MCP Microsoft. Opened billing-credit-overview, Work IQ overview and Dataverse MCP FAQ; read results for Business Central and finance and operations MCP. Meters concern client or server usage, not the protocol itself.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "For agents on the Microsoft Copilot harness, tools including MCPs consume Copilot Credits.",
+      "claim": "Microsoft Copilot harness experiences charge Copilot Credits for tools, including MCPs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
       "quote": "For experiences powered by the Microsoft Copilot harness, Copilot Credits are charged for large language model (LLM) tokens, tools (including knowledge and MCPs), and the harness itself.",
@@ -728,7 +868,7 @@
       "fix": null
     },
     {
-      "n": 65,
+      "n": 77,
       "where": "Cost and licensing",
       "type": "licensing",
       "claim": "Work IQ API usage is independent of Microsoft 365 Copilot licensing.",
@@ -739,7 +879,7 @@
       "fix": null
     },
     {
-      "n": 66,
+      "n": 78,
       "where": "Cost and licensing",
       "type": "cost",
       "claim": "Work IQ MCP is available through usage-based billing.",
@@ -750,10 +890,10 @@
       "fix": null
     },
     {
-      "n": 67,
+      "n": 79,
       "where": "Cost and licensing",
       "type": "date",
-      "claim": "The documented start date for charging external-agent access to Dataverse MCP tools is 15 December 2025.",
+      "claim": "Dataverse MCP charging for AI agents created outside Copilot Studio starts on 15 December 2025.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-faq",
       "quote": "Starting December 15, 2025, Dataverse MCP tools are charged when accessed by AI agents created outside of Microsoft Copilot Studio.",
@@ -761,10 +901,10 @@
       "fix": null
     },
     {
-      "n": 68,
+      "n": 80,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Dataverse MCP tools are charged when accessed by AI agents created outside Copilot Studio.",
+      "claim": "Dataverse MCP tools are charged when accessed by AI agents created outside Copilot Studio, subject to the stated exemptions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-faq",
       "quote": "Dataverse MCP tools are charged when accessed by AI agents created outside of Microsoft Copilot Studio.",
@@ -772,10 +912,10 @@
       "fix": null
     },
     {
-      "n": 69,
+      "n": 81,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Qualifying Dynamics 365 Premium licences or a Microsoft 365 Copilot user subscription licence exempt access to Dynamics 365 data from those charges.",
+      "claim": "Qualifying Dynamics 365 Premium licence holders are not charged for accessing Dynamics 365 data through Dataverse MCP.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-faq",
       "quote": "If you have qualifying Dynamics 365 Premium licenses or a Microsoft 365 Copilot User Subscription License (USL), you aren't charged for accessing Dynamics 365 data.",
@@ -783,10 +923,21 @@
       "fix": null
     },
     {
-      "n": 70,
+      "n": 82,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "A user needs a Microsoft 365 Copilot licence to see a federated connector.",
+      "claim": "Microsoft 365 Copilot user subscription licence holders are not charged for accessing Dynamics 365 data through Dataverse MCP.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-faq",
+      "quote": "If you have qualifying Dynamics 365 Premium licenses or a Microsoft 365 Copilot User Subscription License (USL), you aren't charged for accessing Dynamics 365 data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "A user needs a Microsoft 365 Copilot licence to see a federated connector in Copilot.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
       "quote": "A user sees a federated connector in Copilot only when all of the following are true: ... The user has a Microsoft 365 Copilot license.",
@@ -794,32 +945,21 @@
       "fix": null
     },
     {
-      "n": 71,
-      "where": "Risks and limits: An advanced connector policy is a strict allowlist",
+      "n": 84,
+      "where": "Risks and limits",
       "type": "behaviour",
-      "claim": "Advanced connector policies block connectors not explicitly allowed.",
+      "claim": "ACP blocks every connector not explicitly allowed as soon as the policy is saved or published.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
-      "quote": "ACP enforces a strict allowlist ... every connector that isn't explicitly allowed is blocked.",
+      "quote": "ACP enforces a strict allowlist as soon as you save it (single environment) or publish it (environment group): every connector that isn't explicitly allowed is blocked.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 72,
-      "where": "Risks and limits: An advanced connector policy is a strict allowlist",
-      "type": "behaviour",
-      "claim": "The allowlist is enforced when saved for a single environment or published for an environment group.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
-      "quote": "ACP enforces a strict allowlist as soon as you save it (single environment) or publish it (environment group)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 73,
+      "n": 85,
       "where": "Risks and limits",
       "type": "availability",
-      "claim": "Advanced connector policies do not yet support custom connectors.",
+      "claim": "ACP does not yet support custom connectors.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
       "quote": "Custom connectors and HTTP connectors aren't yet supported.",
@@ -827,10 +967,10 @@
       "fix": null
     },
     {
-      "n": 74,
+      "n": 86,
       "where": "Risks and limits",
       "type": "availability",
-      "claim": "Advanced connector policies do not yet support HTTP connectors.",
+      "claim": "ACP does not yet support HTTP connectors.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
       "quote": "Custom connectors and HTTP connectors aren't yet supported.",
@@ -838,10 +978,21 @@
       "fix": null
     },
     {
-      "n": 75,
-      "where": "Risks and limits: Blocking at the wrong level",
+      "n": 87,
+      "where": "Risks and limits",
       "type": "behaviour",
-      "claim": "MCP server blocking is a separate component-level action whose effects on dependent plugins and linked connectors depend on the management route.",
+      "claim": "Servers without tool discovery cannot have individual tools managed through the registry Tools tab.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "If an MCP server doesn't support tool discovery, the Tools tab shows a message that the server doesn't support tool discovery, and individual tools aren't available to manage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 88,
+      "where": "Risks and limits",
+      "type": "behaviour",
+      "claim": "MCP server blocking is a separate component-level action whose effects on plugins and connectors depend on the management route.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
       "quote": "Blocking an MCP server is a separate component-level action; effects on dependent plugins and linked connectors depend on the applicable management route.",
@@ -849,8 +1000,8 @@
       "fix": null
     },
     {
-      "n": 76,
-      "where": "Risks and limits: Blocking at the wrong level",
+      "n": 89,
+      "where": "Risks and limits",
       "type": "behaviour",
       "claim": "Blocking a plugin leaves its associated MCP servers available to other plugins.",
       "status": "supported",
@@ -860,10 +1011,10 @@
       "fix": null
     },
     {
-      "n": 77,
-      "where": "Risks and limits: Third-party servers",
+      "n": 90,
+      "where": "Risks and limits",
       "type": "behaviour",
-      "claim": "Copilot Studio makes users responsible for tools and resources accessed from non-Microsoft MCP servers.",
+      "claim": "Copilot Studio users are responsible for tools and resources accessed from non-Microsoft MCP servers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agent-extend-action-mcp",
       "quote": "When you connect to a non-Microsoft product, including an external MCP server, you're responsible for the tools and resources you access from within Copilot Studio.",
@@ -871,8 +1022,8 @@
       "fix": null
     },
     {
-      "n": 78,
-      "where": "Risks and limits: Third-party servers",
+      "n": 91,
+      "where": "Risks and limits",
       "type": "behaviour",
       "claim": "Data processed by non-Microsoft services is not subject to Microsoft agreements.",
       "status": "supported",
@@ -882,10 +1033,10 @@
       "fix": null
     },
     {
-      "n": 79,
-      "where": "Risks and limits: Disabling the Dataverse MCP server",
+      "n": 92,
+      "where": "Risks and limits",
       "type": "behaviour",
-      "claim": "Disabling Dataverse MCP stops every tool and agent relying on it.",
+      "claim": "Disabling Dataverse MCP stops all tools and agents relying on it.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
       "quote": "Disabling the Dataverse MCP Server stops all tools and agents that rely on it.",
@@ -893,8 +1044,8 @@
       "fix": null
     },
     {
-      "n": 80,
-      "where": "Risks and limits: Disabling the Dataverse MCP server",
+      "n": 93,
+      "where": "Risks and limits",
       "type": "applicability",
       "claim": "The Dataverse MCP client allow list applies only to /api/mcp.",
       "status": "supported",
@@ -904,19 +1055,19 @@
       "fix": null
     },
     {
-      "n": 81,
-      "where": "Risks and limits: Disabling the Dataverse MCP server",
+      "n": 94,
+      "where": "Risks and limits",
       "type": "applicability",
-      "claim": "MCP-named custom APIs remain regular Dataverse APIs and are not restricted by the client allow list.",
+      "claim": "MCP-named Dataverse custom APIs are regular APIs outside that allow-list restriction.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
-      "quote": "MCP‑named custom APIs are regular Dataverse APIs and aren't restricted by this setting.",
+      "quote": "MCP-named custom APIs are regular Dataverse APIs and aren't restricted by this setting.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 82,
-      "where": "Risks and limits: Work IQ MCP policy",
+      "n": 95,
+      "where": "Risks and limits",
       "type": "behaviour",
       "claim": "Work IQ MCP policy cannot grant access beyond the signed-in user's existing access.",
       "status": "supported",
@@ -926,54 +1077,21 @@
       "fix": null
     },
     {
-      "n": 83,
+      "n": 96,
       "where": "Governance controls: Roles",
       "type": "role",
       "claim": "The Dataverse MCP configuration page requires Power Platform administrator to access its environment settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
-      "quote": "Power Platform administrator role in order to access Dataverse MCP server environment settings",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 84,
-      "where": "Governance controls: Roles",
-      "type": "role",
-      "claim": "That procedure requires Power Platform administrator to enable allowed MCP clients.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
-      "quote": "Power Platform administrator role in order to access Dataverse MCP server environment settings, enable allowed MCP clients",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 85,
-      "where": "Governance controls: Roles",
-      "type": "role",
-      "claim": "That procedure requires Power Platform administrator to create or edit an environment group.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
       "quote": "Power Platform administrator role in order to access Dataverse MCP server environment settings, enable allowed MCP clients, create or edit an environment group, and change connector policies.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 86,
+      "n": 97,
       "where": "Governance controls: Roles",
       "type": "role",
-      "claim": "That procedure requires Power Platform administrator to change connector policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
-      "quote": "Power Platform administrator role in order to access Dataverse MCP server environment settings, enable allowed MCP clients, create or edit an environment group, and change connector policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 87,
-      "where": "Governance controls: Roles",
-      "type": "role",
-      "claim": "Classic tenant-level data policy procedures require Power Platform Administrator.",
+      "claim": "Tenant-level classic data policies require Power Platform Administrator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/prevent-data-loss",
       "quote": "To follow the steps described in this article for tenant-level policies, sign in as a user with the Power Platform Administrator role.",
@@ -981,32 +1099,21 @@
       "fix": null
     },
     {
-      "n": 88,
+      "n": 98,
       "where": "Governance controls: Roles",
       "type": "role",
-      "claim": "Classic environment-level policy procedures require Environment Admin permissions outside the Dataverse qualification.",
+      "claim": "Environment-level classic data policies require Environment Admin for environments without a Dataverse database.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/prevent-data-loss",
-      "quote": "To follow the steps for environment-level policies, you need to have Power Apps Environment Admin permissions.",
+      "quote": "you need to have Power Apps Environment Admin permissions. For environments with a Dataverse database, you need to be assigned the System Administrator role instead.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 89,
-      "where": "Governance controls: Roles",
-      "type": "role",
-      "claim": "For environments with a Dataverse database, classic environment-level policy procedures require System Administrator instead.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/prevent-data-loss",
-      "quote": "For environments with a Dataverse database, you need to be assigned the System Administrator role instead.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 90,
+      "n": 99,
       "where": "Governance controls: Roles",
       "type": "applicability",
-      "claim": "The Dataverse MCP server must be in a Managed Environment to be managed through advanced connector policies.",
+      "claim": "Managing Dataverse MCP through advanced connector policies requires a Managed Environment according to the Dataverse configuration page.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
       "quote": "The environment must be a Managed Environment if you want to manage the Dataverse MCP server through Advanced connector policies.",
@@ -1014,10 +1121,10 @@
       "fix": null
     },
     {
-      "n": 91,
+      "n": 100,
       "where": "Governance controls: Environment groups",
       "type": "admin-path",
-      "claim": "Environment-group advanced connector policy configuration is under Manage > Environment groups > group > Rules.",
+      "claim": "An environment group's ACP is under Power Platform admin center > Manage > Environment groups > group > Rules.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
       "quote": "select Manage. ... select Environment groups. ... select the environment group where you want to apply the policy. ... Select the Rules tab. ... Select Advanced connector policies.",
@@ -1025,54 +1132,21 @@
       "fix": null
     },
     {
-      "n": 92,
+      "n": 101,
       "where": "Governance controls: How they interact",
       "type": "behaviour",
-      "claim": "A federated connector's publisher type must be allowed unless an administrator turns on that connector individually.",
+      "claim": "A visible federated connector must have its publisher type allowed or be turned on individually by an administrator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
-      "quote": "The connector's publisher type is allowed in Agent and plugin access, or an admin turned on the connector individually.",
+      "quote": "The connector's publisher type is allowed in Agent and plugin access, or an admin turned on the connector individually. ... The connector is enabled. ... The user is included in User access. ... The user is included in the connector's staged rollout.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 93,
+      "n": 102,
       "where": "Governance controls: How they interact",
       "type": "behaviour",
-      "claim": "A federated connector must be enabled for a user to see it.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
-      "quote": "A user sees a federated connector in Copilot only when all of the following are true: ... The connector is enabled.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 94,
-      "where": "Governance controls: How they interact",
-      "type": "applicability",
-      "claim": "A user must be included in User access to see a federated connector.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
-      "quote": "A user sees a federated connector in Copilot only when all of the following are true: ... The user is included in User access.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 95,
-      "where": "Governance controls: How they interact",
-      "type": "applicability",
-      "claim": "A user must be included in the connector's staged rollout to see a federated connector.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
-      "quote": "A user sees a federated connector in Copilot only when all of the following are true: ... The user is included in the connector's staged rollout.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 96,
-      "where": "Governance controls: How they interact",
-      "type": "behaviour",
-      "claim": "Clearing a publisher type in Agent and plugin access sets connectors of that type to No users.",
+      "claim": "Clearing a publisher type sets its connectors' staged rollout to No users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
       "quote": "When you clear an option, existing connectors of that type remain visible to admins in Copilot connectors > Your connections, but their staged rollout is set to No users.",
@@ -1080,32 +1154,21 @@
       "fix": null
     },
     {
-      "n": 97,
+      "n": 103,
       "where": "Governance controls: Federated connector tools",
       "type": "availability",
-      "claim": "The federated connector admin-centre Tools view is labelled Coming soon.",
+      "claim": "The connector-details admin Tools view is labelled Coming soon.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
-      "quote": "View a connector's tools in the admin center (Coming soon)",
+      "quote": "View a connector's tools in the admin center (Coming soon) ... Viewing tools in the admin center isn't available for all connectors.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 98,
-      "where": "Governance controls: Federated connector tools",
-      "type": "availability",
-      "claim": "Viewing tools in the admin centre is not available for all federated connectors.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
-      "quote": "Viewing tools in the admin center isn't available for all connectors.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 99,
+      "n": 104,
       "where": "Governance controls: Federated connector tools",
       "type": "admin-path",
-      "claim": "Users can instead inspect connector write/delete tools through Microsoft 365 Copilot > Settings > Sources > connector > Write/Delete tools.",
+      "claim": "Users can review connector write tools in Microsoft 365 Copilot > Settings > Sources > connector > Write/Delete tools.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
       "quote": "sign in to Microsoft 365 Copilot with your user account, go to Settings -> Sources, and select the connector. Then expand Write/Delete tools.",
@@ -1113,7 +1176,7 @@
       "fix": null
     },
     {
-      "n": 100,
+      "n": 105,
       "where": "Governance controls: Where it is watched",
       "type": "behaviour",
       "claim": "Administrators can audit federated connector activity in Microsoft Purview.",
@@ -1124,63 +1187,52 @@
       "fix": null
     },
     {
-      "n": 101,
+      "n": 106,
       "where": "Governance controls: Where it is watched",
       "type": "behaviour",
-      "claim": "Security teams can monitor approved BYO MCP server tool invocations through Microsoft Defender advanced hunting.",
+      "claim": "Security teams can monitor approved BYO MCP invocations in Microsoft Defender advanced hunting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-byo-mcp-server",
-      "quote": "The security team monitors activity and tool invocations through Microsoft Defender advanced hunting for compliance and anomaly detection.",
+      "quote": "Use Microsoft Defender advanced hunting to track and analyze MCP server invocations routed through the Agent 365 Tooling Gateway.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 102,
+      "n": 107,
       "where": "Governance controls: Where it is watched",
       "type": "behaviour",
-      "claim": "A data policy violation produces an error banner in Copilot Studio.",
+      "claim": "Copilot Studio data-policy violations show an error banner.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
-      "quote": "After you attempt to perform an operation that's subject to the data policy, an error banner appears with a Details button.",
+      "quote": "After you attempt to perform an operation that's subject to the data policy, an error banner appears with a Details button. ... When a data policy violation occurs, the Publish button becomes unavailable.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 103,
-      "where": "Governance controls: Where it is watched",
-      "type": "behaviour",
-      "claim": "A data policy violation makes Copilot Studio's Publish button unavailable.",
+      "n": 108,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "Power Platform data-policy or ACP applicability to federated connectors and registry MCP servers in Microsoft 365 Copilot is not established by the federated connector pages.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
-      "quote": "When a data policy violation occurs, the Publish button becomes unavailable.",
+      "source": null,
+      "quote": "Searched: Power Platform data policies advanced connector policies federated connectors registry MCP Microsoft 365 Copilot applicability. Opened federated connector overview and management, Copilot Studio data policies, ACP and Copilot Managed Runtime governance; no such cross-product rule found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 104,
-      "where": "Open questions: Work IQ write defaults; controls[6].governs",
+      "n": 109,
+      "where": "Open questions",
       "type": "default",
-      "claim": "The Work IQ MCP policy page says mutations are not allowed by default and administrators can enable supported mutation scenarios through tenant policy.",
+      "claim": "The Work IQ MCP policy page states that mutation operations are disallowed by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "By default, mutation operations aren't allowed for safety. ... Administrators can enable supported mutation scenarios through tenant policy in the Microsoft 365 admin center when those capabilities are needed.",
+      "quote": "By default, mutation operations aren't allowed for safety.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 105,
-      "where": "Open questions: Work IQ write defaults",
-      "type": "default",
-      "claim": "Copilot Studio's what's-new page says Work IQ write operations are enabled by default in that product.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/whats-new",
-      "quote": "Use Work IQ, now added by default to every new agent powered by the Microsoft Copilot harness ... Write operations are enabled by default, subject to your organization's permissions and policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 106,
-      "where": "Open questions: BYO tool-level control",
+      "n": 110,
+      "where": "Open questions",
       "type": "availability",
       "claim": "Individual tool blocking for BYO MCP servers is planned for a future release.",
       "status": "supported",
@@ -1190,59 +1242,125 @@
       "fix": null
     },
     {
-      "n": 107,
-      "where": "Open questions: Power Platform policy applicability",
-      "type": "absence",
-      "claim": "The federated connector pages document Microsoft 365 admin-centre controls, not Power Platform policy applicability to federated connectors or registry MCP servers in Microsoft 365 Copilot.",
+      "n": 111,
+      "where": "Open questions",
+      "type": "default",
+      "claim": "Copilot Studio what's-new states that Work IQ write operations are enabled by default in that product.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: federated connectors data policies advanced connector policies. Opened federated-connectors-overview, manage-federated-connectors, admin-data-loss-prevention and advanced-connector-policies. No statement found extending Power Platform policies to these Microsoft 365 Copilot surfaces.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/whats-new",
+      "quote": "Use Work IQ, now added by default to every new agent powered by the Microsoft Copilot harness ... Write operations are enabled by default, subject to your organization's permissions and policies.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 108,
-      "where": "What it is: governance table; Why it matters",
-      "type": "behaviour",
-      "claim": "Federated Copilot connectors use MCP to access external data.",
+      "n": 112,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "The Dataverse MCP configuration page requires Power Platform administrator to enable allowed MCP clients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
+      "quote": "Power Platform administrator role in order to access Dataverse MCP server environment settings, enable allowed MCP clients, create or edit an environment group, and change connector policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 113,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "The Dataverse MCP configuration page requires Power Platform administrator for its environment-group creation or editing procedure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
+      "quote": "Power Platform administrator role in order to access Dataverse MCP server environment settings, enable allowed MCP clients, create or edit an environment group, and change connector policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 114,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "The Dataverse MCP configuration page requires Power Platform administrator for its connector-policy changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
+      "quote": "Power Platform administrator role in order to access Dataverse MCP server environment settings, enable allowed MCP clients, create or edit an environment group, and change connector policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 115,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "Environment-level classic data policies require System Administrator instead of Environment Admin for environments with a Dataverse database.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/prevent-data-loss",
+      "quote": "For environments with a Dataverse database, you need to be assigned the System Administrator role instead.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 116,
+      "where": "Governance controls: Federated connector tools",
+      "type": "availability",
+      "claim": "Viewing federated connector tools in the admin center is not available for all connectors.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
-      "quote": "Microsoft 365 Copilot supports federated Copilot connectors to enable organizations to connect their data to Copilot by using Model Context Protocol (MCP).",
+      "quote": "Viewing tools in the admin center isn't available for all connectors.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 109,
-      "where": "controls[0].governs; Governance controls",
+      "n": 117,
+      "where": "Governance controls: Where it is watched",
       "type": "behaviour",
-      "claim": "Blocking a registry MCP server disables all the tools it exposes.",
+      "claim": "Copilot Studio makes Publish unavailable when a data-policy violation occurs.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Blocking an MCP server disables all the tools it exposes.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "When a data policy violation occurs, the Publish button becomes unavailable.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 110,
-      "where": "controls[2].governs; Governance controls",
+      "n": 118,
+      "where": "Governance controls: How they interact",
       "type": "behaviour",
-      "claim": "An administrator must approve a requested BYO MCP server before agents can use it.",
+      "claim": "A federated connector must be enabled for a user to see it in Copilot.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-byo-mcp-server",
-      "quote": "An admin approves or rejects each BYO MCP server before it can be used.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "A user sees a federated connector in Copilot only when all of the following are true: ... The connector is enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 119,
+      "where": "Governance controls: How they interact",
+      "type": "behaviour",
+      "claim": "The user must be included in User access to see a federated connector in Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "A user sees a federated connector in Copilot only when all of the following are true: ... The user is included in User access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 120,
+      "where": "Governance controls: How they interact",
+      "type": "behaviour",
+      "claim": "The user must be included in a federated connector's staged rollout to see it in Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
+      "quote": "A user sees a federated connector in Copilot only when all of the following are true: ... The user is included in the connector's staged rollout.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-17T03:37:43.873Z",
+    "at": "2026-11-19T06:20:51.999Z",
     "summary": {
       "links": 23,
-      "unreachable": 0,
+      "unreachable": 14,
       "uiPaths": 10,
-      "uiPathsWithMissingWords": 2,
+      "uiPathsWithMissingWords": 4,
       "apiCalls": 3,
-      "apiCallsNotOnPage": 2,
+      "apiCallsNotOnPage": 3,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -1253,8 +1371,8 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-add-existing-server-to-agent",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
@@ -1268,33 +1386,33 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-byo-mcp-server",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-agent-365/developer/reference/cli/develop-mcp",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
@@ -1308,8 +1426,8 @@
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-advanced-connector-policies",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/prevent-data-loss",
@@ -1318,8 +1436,8 @@
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable",
@@ -1328,18 +1446,18 @@
       },
       {
         "url": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient?view=dataverse-latest",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-faq",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
@@ -1348,8 +1466,8 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/whats-new",
@@ -1358,8 +1476,8 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview#types-of-copilot-connectors",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -1415,33 +1533,41 @@
         "side": "ui",
         "governs": "Which publisher types of agents, plugins and connectors, including MCP servers, are allowed",
         "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Agents",
           "Settings",
           "Agent and plugin access"
         ],
-        "missing": []
+        "missing": [
+          "Agents",
+          "Settings",
+          "Agent and plugin access"
+        ]
       },
       {
         "index": 4,
         "side": "ui",
         "governs": "Which users can use any agent or plugin, including connectors and MCP servers",
         "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Agents",
           "Settings",
           "User access"
         ],
-        "missing": []
+        "missing": [
+          "Agents",
+          "Settings",
+          "User access"
+        ]
       },
       {
         "index": 5,
         "side": "ui",
         "governs": "Whether a federated Copilot connector is on, and for which users or groups",
         "docs": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Copilot",
           "Connectors",
@@ -1450,7 +1576,11 @@
           "Add staging"
         ],
         "missing": [
-          "Enable / Disable; Staged rollout"
+          "Copilot",
+          "Connectors",
+          "Your connections",
+          "Enable / Disable; Staged rollout",
+          "Add staging"
         ]
       },
       {
@@ -1485,7 +1615,7 @@
         "side": "api",
         "governs": "Which connectors and MCP servers makers' agents may use in an environment or environment group",
         "docs": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-advanced-connector-policies",
-        "reachable": true,
+        "reachable": false,
         "token": "POST /governance/ruleBasedPolicies?api-version=2024-10-01",
         "found": false
       },
@@ -1509,9 +1639,9 @@
         "side": "api",
         "governs": "Which Power Platform connectors, and so the MCP tools that rely on them, agents may use",
         "docs": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest",
-        "reachable": true,
+        "reachable": false,
         "token": "New-DlpPolicy",
-        "found": true
+        "found": false
       },
       {
         "index": 9,
@@ -1535,7 +1665,7 @@
         "side": "api",
         "governs": "Whether MCP clients can use the Dataverse MCP server in an environment, and which clients",
         "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient?view=dataverse-latest",
-        "reachable": true,
+        "reachable": false,
         "token": "PATCH <organization",
         "found": false
       }
@@ -1559,6 +1689,12 @@
       "date": "2026-11-17",
       "status": "held",
       "version": 3,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "verified",
+      "version": 4,
       "model": "gpt-6.1-sol"
     }
   ]

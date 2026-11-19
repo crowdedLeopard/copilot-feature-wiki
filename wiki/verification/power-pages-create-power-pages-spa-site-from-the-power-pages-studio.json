@@ -1,0 +1,918 @@
+{
+  "slug": "power-pages-create-power-pages-spa-site-from-the-power-pages-studio",
+  "roadmapId": 573277,
+  "title": "Power Pages: create a single-page application (SPA) site from Power Pages studio",
+  "status": "verified",
+  "date": "2026-11-18",
+  "version": 2,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 71,
+    "confirmed": 71,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 0
+  },
+  "summary": "The briefing passes: its roadmap facts, licensing qualifications and documented governance controls are supported. It correctly distinguishes the planned studio entry point from the existing CLI workflow and leaves the studio option's default and specific requirements open.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans to let makers create a modern SPA site directly from Power Pages studio.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Quickly get started with modern single-page application (SPA) development by creating a site directly from Power Pages Studio.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes continuing development and customisation using preferred development tools and frameworks.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Continue building and customizing your experience using your preferred development tools and frameworks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "November CY2026 is the roadmap target, not a committed availability date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Web is the listed platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-10-13T23:01:05.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-13T23:01:05\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Governance guidance: At rollout",
+      "type": "absence",
+      "claim": "Learn does not yet document the planned studio SPA creation flow as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages studio create SPA single page application site prerequisites enable default setting; opened /power-pages/configure/create-code-sites and /power-pages/getting-started/create-manage. Results describe CLI uploads and traditional studio templates, not the planned studio SPA flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: defaultState; summary; Why it matters; Open questions; rationale: risk",
+      "type": "default",
+      "claim": "The studio option's default and arrival behaviour are not stated, so defaultState is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages studio create SPA single page application site prerequisites enable default setting; read roadmap record, /power-pages/configure/create-code-sites and /power-pages/getting-started/create-manage. None states the studio option's default or a change to existing sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Learn defines an SPA site as a Power Pages site running entirely in the user's browser with client-side rendering.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-sites",
+      "quote": "An SPA site is a Power Pages site that runs entirely in the user's browser (client-side rendering).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The SPA documentation describes creating and setting up a project using the Power Platform CLI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-sites",
+      "quote": "Create and set up an SPA project for Power Pages by using the Power Platform CLI (PAC CLI).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "command",
+      "claim": "pac pages upload-code-site uploads SPA site assets.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-sites",
+      "quote": "Use the pac pages upload-code-site command to upload your local source and compiled assets to your Power Pages environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A newly uploaded SPA site appears in Power Pages under Inactive sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-sites",
+      "quote": "After you upload a site, it appears in Power Pages in the Inactive sites list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The uploaded site must be activated to make it available to users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-sites",
+      "quote": "Activate the site to make it available to users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The pages workspace is not supported for the documented SPA sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-sites",
+      "quote": "The pages workspace isn't supported. Use client routing and client site pages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Liquid code and Liquid templates are not supported for the documented SPA sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-sites",
+      "quote": "Liquid code and Liquid templates aren't supported. Access data by using your framework's template engine and Web APIs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Adding out-of-the-box components such as lists and forms is not currently supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-sites",
+      "quote": "Adding out-of-the-box components like lists and forms isn't currently supported. However, you can build custom forms and lists by using the React framework and Web APIs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn says SPA sites are managed only through source code and CLI tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-sites",
+      "quote": "Unlike traditional Power Pages sites, you manage SPA sites only through source code and command-line interface (CLI) tools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "How the roadmap's studio entry point fits with Learn's source-code-and-CLI description is not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages create single page application studio SPA site default enable disable licensing; Power Pages studio create SPA single page application site prerequisites enable default setting. Opened /power-pages/configure/create-code-sites and /power-pages/getting-started/create-manage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Power Pages plugin supports creating SPA sites from curated templates in GitHub Copilot CLI and Claude Code.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-site-using-claude-code",
+      "quote": "Create a site from a curated SPA template or scaffold it from scratch, then customize it, set up Dataverse data models, and configure authentication. Template creation is available in both GitHub Copilot CLI and Claude Code through /create-site.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Why it matters; rationale: risk",
+      "type": "applicability",
+      "claim": "SPA sites use the same security model as traditional Power Pages sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-sites",
+      "quote": "Power Pages SPA sites use the same security model as traditional Power Pages sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "SPA code can read and modify Dataverse records through Power Pages Web APIs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-sites",
+      "quote": "Developers can use Power Pages Web APIs to load content into the UI or to create, update, and delete records.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Required Web APIs must be enabled before use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-sites",
+      "quote": "Before using these APIs, make sure that the required Web APIs are enabled and that appropriate table permissions and web roles are properly configured.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "Table permissions govern data access through SPA Web API calls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-sites",
+      "quote": "Power Pages enforces table permissions and security web roles on Web API calls, ensuring that data access aligns with user roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "Web roles govern the site's Web API data access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-sites",
+      "quote": "Power Pages enforces table permissions and security web roles on Web API calls, ensuring that data access aligns with user roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Creating a site in the default environment risks unintentionally sharing data with other users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/getting-started/create-manage",
+      "quote": "This environment is shared across all the users in the tenant and creating your site here risks sharing data with other users unintentionally.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Microsoft does not recommend creating a site in the default environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/getting-started/create-manage",
+      "quote": "It isn't recommended to create a site in the default environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[1].governs; Risk assessment: Security & identity; Scope; rationale: risk",
+      "type": "applicability",
+      "claim": "The documented SPA setup requires allowing JavaScript file uploads in Dataverse environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-sites",
+      "quote": "Allow JavaScript file uploads in Dataverse environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The blocked file extensions setting prevents uploading or downloading attachment types considered dangerous.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/settings-privacy-security",
+      "quote": "Block these file extensions | Prevent upload or download of certain attachment types that are considered dangerous.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[1].note; Risk assessment: Security & identity; Governance controls",
+      "type": "applicability",
+      "claim": "Changing blocked extensions has environment-wide upload implications rather than affecting only Power Pages or SPA sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/files-images-overview",
+      "quote": "You can specify which types of files can't be saved in file columns, attachments and notes. ... It's stored in the Organization.BlockedAttachments column. There's only one row in the organization table.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity",
+      "type": "default",
+      "claim": "Each new site automatically has a default Microsoft Entra ID provider.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-sites",
+      "quote": "Each new site automatically has a default Microsoft Entra ID provider.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Learn's local-development steps enable bearer authentication through site settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-sites",
+      "quote": "Authentication/BearerAuthentication/Enabled = true\nAuthentication/BearerAuthentication/Protocol = OpenIdConnect\nAuthentication/BearerAuthentication/Provider = AzureAD",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Learn's local-development steps set site visibility to Public.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-sites",
+      "quote": "Set site visibility to Public\n\nThis setting lets localhost access the site for development and testing purposes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Microsoft limits those local-development settings to development environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-sites",
+      "quote": "Apply these settings only in development environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The plugin documentation warns that AI-generated code and configuration can be inaccurate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-site-using-claude-code",
+      "quote": "Code and configuration generated by the AI coding agent can be inaccurate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Microsoft advises reviewing generated content before deployment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-site-using-claude-code",
+      "quote": "Review, test, and validate all generated content before you approve or deploy it. Always review agent proposals before approving them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The SPA page describes SEO support as limited.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-sites",
+      "quote": "Because SPA sites are built with the React framework and use client-side rendering, SEO support is limited.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Power Pages licensing is capacity based.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "Power Pages (formerly Power Apps portals) licensing is capacity based",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "One capacity type is Authenticated users per website/month.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "offers two types of capacities based on user type: Authenticated users per website/month and Anonymous users per website/month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The other capacity type is Anonymous users per website/month.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "offers two types of capacities based on user type: Authenticated users per website/month and Anonymous users per website/month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Authenticated user capacity is available as a subscription licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "The Authenticated user capacity subscription license can be purchased for the anticipated number of unique, authenticated users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "An authenticated user pay-as-you-go meter is available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "The Authenticated user pay-as-you-go meter enables customers to pay-as-you-go based on the actual number of authenticated users who have accessed a website in a month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Anonymous user capacity is available as a subscription licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "The Anonymous user monthly capacity subscription license can be purchased for the anticipated number of unique, anonymous users accessing a website in a month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "An anonymous user pay-as-you-go meter is available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "The Anonymous user pay-as-you-go meter enables customers to pay-as-you-go based on the actual number of anonymous users who have accessed a website in a month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The authenticated meter measures unique authenticated users per website per month.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "Power Pages Authenticated user pay-as-you-go meter: A measure of the number of unique authenticated users per website per month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "An administrator must allocate capacity to a Power Platform environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/admin/website-consumption-reports",
+      "quote": "This capacity must be allocated to a Microsoft Power Platform environment by an administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Administrators can download Power Pages authenticated and anonymous reports from the admin center capacity page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/admin/website-consumption-reports",
+      "quote": "Select Capacity. ... In the Add-ons section, select Download reports. ... Select the Power Pages authenticated or Power Pages anonymous report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Authenticated users licensed with Power Apps or Dynamics 365 enterprise licences have Power Pages use rights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "Authenticated users licensed with Power Apps or Dynamics 365 enterprise licenses are granted use rights for Power Pages as described below.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Power Apps per app users can access one website in the environment assigned the per app capacity licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "Power Apps per app: Users can access one Power Pages website that should be part of the environment to which Power Apps per app capacity licenses are assigned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Power Apps per user licences give rights to unlimited Power Pages websites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "Power Apps per user licensed users: Users who have been assigned Power Apps per user licenses can use unlimited Power Pages websites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Dynamics 365 enterprise users have unlimited websites mapped to the licensed application context and its environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "Users who have been assigned Dynamics 365 enterprise licenses can use unlimited Power Pages websites. These websites must map to the licensed Dynamics 365 application context and map to the same environment as the licensed Dynamics 365 application.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Recognising Power Apps per-user/premium and Dynamics 365 enterprise licences requires Entra ID access through the out-of-the-box Azure AD provider.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "In order for Power Apps per users/premium and Dynamics 365 enterprise licenses to be recognized: ... Users should access the Power Pages site using their Entra ID and utilizing the out of the box Azure AD provider.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Those licences must be assigned in the same tenant as the Power Pages site to be recognised.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "Users need a license assigned in the same tenant as the Power Pages site. If the user's license is assigned in a different tenant, it's not recognized.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The SPA page's prerequisite list names no licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-sites",
+      "quote": "A Power Pages environment with admin privileges. ... Power Platform CLI (PAC CLI) version 1.44.x or later installed and authenticated. ... A Power Pages site on version 9.7.4.x or later. ... Allow JavaScript file uploads ... A local Git repository",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No licence or meter specific to SPA sites is published, distinct from the existing Power Pages rules.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages SPA single page application site licensing pricing meter. Read /power-pages/configure/create-code-sites, /power-platform/admin/powerapps-flow-licensing-faq and search excerpts of /power-platform/admin/pay-as-you-go-meters; only general Power Pages licensing and meters are described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Scope",
+      "type": "role",
+      "claim": "The general site-creation page requires a user account with Read-Write Access Mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/getting-started/create-manage",
+      "quote": "You need: ... A user account with Read-Write Access Mode",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Scope",
+      "type": "role",
+      "claim": "The general site-creation page requires the System administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/getting-started/create-manage",
+      "quote": "You need: ... System administrator role",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Scope",
+      "type": "role",
+      "claim": "When tenant website creation is disabled, users also need Dynamics 365 administrator or Power Platform administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/getting-started/create-manage",
+      "quote": "If website creation is disabled in the tenant, users need at least one of the following roles to create a website: ... Dynamics 365 administrator ... Power Platform administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Scope; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Studio-specific prerequisites, maker eligibility and an on/off switch for the studio SPA option are not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages studio create SPA single page application site prerequisites enable default setting. Read /power-pages/configure/create-code-sites, /power-pages/getting-started/create-manage and /power-pages/admin/control-site-creation; none describes studio-specific SPA prerequisites or a switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "The CLI route requires Power Platform CLI version 1.44.x or later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-sites",
+      "quote": "Power Platform CLI (PAC CLI) version 1.44.x or later installed and authenticated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "The CLI route requires a Power Pages site on version 9.7.4.x or later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-sites",
+      "quote": "A Power Pages site on version 9.7.4.x or later.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[0].ui; Governance controls",
+      "type": "absence",
+      "claim": "An admin center UI path for disabling non-administrator Power Pages site creation is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Power Pages disablePortalsCreationByNonAdminUsers admin center UI tenant site creation setting. Opened /power-pages/admin/control-site-creation; read search excerpts of /power-pages/admin/admin-overview. The tenant restriction is documented through PowerShell, not a UI path.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "Set-TenantSettings -RequestBody @{ \"disablePortalsCreationByNonAdminUsers\" = $true } disables tenant site creation by non-administrators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/admin/control-site-creation",
+      "quote": "Set-TenantSettings -RequestBody @{ \"disablePortalsCreationByNonAdminUsers\" = $true }",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "Setting disablePortalsCreationByNonAdminUsers to $false allows site creation again.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/admin/control-site-creation",
+      "quote": "To enable site creation in a tenant, change the settings value from $true to $false.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "For this tenant setting, administrators are users with Dynamics 365 administrator or Power Platform administrator Azure roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/admin/control-site-creation",
+      "quote": "Administrators are the users having one of the following Azure roles: ... Dynamics 365 administrator ... Power Platform administrator ... Users without these Azure roles are considered non-administrators.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The Power Platform admin center path is Manage > Environments > environment > Settings > Product > Privacy + Security > Blocked Attachments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-pages/configure/create-code-sites",
+      "quote": "select Manage. ... select Environments. ... Select an environment. ... select Settings. ... Expand Product, and then select Privacy + Security. ... In the Blocked Attachments section, remove js from the list of file extensions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[1].api; controls[1].note",
+      "type": "command",
+      "claim": "PATCH /organizations(organizationid), with blockedattachments in the request body, changes blocked file extensions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization",
+      "quote": "Update ... PATCH /organizations(organizationid) ... Writable columns/attributes ... BlockedAttachments ... LogicalName | blockedattachments ... Prevent upload or download of certain attachment types that are considered dangerous.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Mixed describes the published combination of capacity subscriptions, pay-as-you-go meters and qualifying existing-licence use rights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "The Authenticated user capacity subscription license ... The Authenticated user pay-as-you-go meter ... Authenticated users licensed with Power Apps or Dynamics 365 enterprise licenses are granted use rights for Power Pages",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "Variable is consistent with the named authenticated and anonymous user pay-as-you-go meters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "The Authenticated user pay-as-you-go meter ... The Anonymous user pay-as-you-go meter enables customers to pay-as-you-go based on the actual number of anonymous users who have accessed a website in a month.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-18T21:59:08.282Z",
+    "summary": {
+      "links": 10,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=573277",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/configure/create-code-sites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/getting-started/create-manage",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/admin/control-site-creation",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/admin/website-consumption-reports",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/settings-privacy-security",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/files-images-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-pages/configure/create-code-site-using-claude-code",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether non-administrators can create Power Pages sites in the tenant",
+        "docs": "https://learn.microsoft.com/power-pages/admin/control-site-creation",
+        "reachable": true,
+        "token": "Set-TenantSettings",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which file extensions an environment blocks from upload, including .js files that SPA code needs",
+        "docs": "https://learn.microsoft.com/power-pages/configure/create-code-sites",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Environments",
+          "Settings",
+          "Product",
+          "Privacy + Security",
+          "Blocked Attachments"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which file extensions an environment blocks from upload, including .js files that SPA code needs",
+        "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization",
+        "reachable": true,
+        "token": "PATCH /organizations(organizationid)",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
+}

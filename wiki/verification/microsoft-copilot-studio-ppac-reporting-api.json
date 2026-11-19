@@ -1,0 +1,728 @@
+{
+  "slug": "microsoft-copilot-studio-ppac-reporting-api",
+  "roadmapId": 579968,
+  "title": "Copilot Studio: PPAC Reporting API for daily usage data",
+  "status": "verified-with-gaps",
+  "date": "2026-11-19",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 54,
+    "confirmed": 54,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "The roadmap facts and the documented reporting and spending controls are supported. Two minor corrections remain: acknowledge the newly documented preview usage-report tutorial and qualify the background authoring licence requirements. Microsoft does not explicitly identify the preview licensing operation as the API named in the roadmap.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: title, products; Scope",
+      "type": "record",
+      "claim": "The roadmap item concerns the Microsoft Copilot Studio PPAC Reporting API.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"title\": \"Microsoft Copilot Studio: PPAC Reporting API\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status, summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Scope; Risk assessment",
+      "type": "record",
+      "claim": "The General Availability target is January CY2027, not a committed release date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate, summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The preview target is November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview as release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Web is the listed platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans programmatic access to Copilot Studio usage data.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The PPAC Reporting API gives customers scalable, programmatic access to Copilot Studio usage data",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes the usage data as coming from Microsoft's lakehouse.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Copilot Studio usage data from our lakehouse",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The roadmap says the API replaces older unsupported consumption-data extraction methods.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "replacing older unsupported methods for pulling consumption data",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Governance controls",
+      "type": "record",
+      "claim": "The roadmap describes daily JSON data.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Daily JSON data by environment, user, agent and feature",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap describes an environment dimension.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Daily JSON data by environment, user, agent and feature",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: summary; What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes a user dimension.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Daily JSON data by environment, user, agent and feature",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: summary; What's changing; Risk assessment",
+      "type": "record",
+      "claim": "The roadmap describes an agent dimension.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Daily JSON data by environment, user, agent and feature",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap describes a feature dimension.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Daily JSON data by environment, user, agent and feature",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap names dashboards as a use of the data.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "powers dashboards, FinOps reporting and automated cost controls",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap names FinOps reporting as a use of the data.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "powers dashboards, FinOps reporting and automated cost controls",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "record",
+      "claim": "The roadmap names automated cost controls as a use of the data.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "powers dashboards, FinOps reporting and automated cost controls",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing: Learn documentation; Cost and licensing",
+      "type": "absence",
+      "claim": "Learn does not document an API explicitly under the roadmap name PPAC Reporting API.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"PPAC Reporting API\" Copilot Studio default license permissions limits; \"PPAC\" \"Reporting\" \"API\" \"Copilot\". Read cited capacity, REST and CLI pages and the linked preview usage-report tutorial; none explicitly uses that roadmap name.",
+      "severity": "minor",
+      "fix": "Replace the documentation-gap sentence with: 'Learn now documents programmatic Copilot Studio usage reporting in preview, including an end-to-end tutorial, but does not explicitly identify it as the PPAC Reporting API named in the roadmap.' Cite https://learn.microsoft.com/power-platform/admin/programmability-tutorial-download-copilot-credit-usage-reports. Retain the distinction between the documented preview operation and the roadmap description."
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Administrators can download consumption reports organized by environment, agent or user in PPAC.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "From the Summary tab, you can download reports that organize consumption by environment, agent, or user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "The documented licensing-report download returns a gzip-compressed CSV file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/developer/cli/reference/copilot-studio",
+      "quote": "(Preview) Downloads a generated licensing report as a gzip-compressed CSV file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; controls[0].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not explicitly identified the licensing-report operation as the roadmap API or its predecessor.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"PPAC\" \"Reporting\" \"API\" \"Copilot\". Read the roadmap, capacity page, generate/download licensing-report references, CLI reference and linked usage-report tutorial; none explicitly connects the operation to roadmap 579968.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "The admin-center report-download route requires an administrator to initiate the download manually.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "Select Download report. ... Select the download type you need: environment, agent, or user. ... Download the report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: defaultState, summary; Why it matters",
+      "type": "default",
+      "claim": "The arrival default of the API named in the roadmap is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"PPAC Reporting API\" Copilot Studio default license permissions limits; \"Copilot Studio\" \"licensing reports\" \"default\" \"permissions\". Read roadmap, capacity page, REST and CLI references and usage-report tutorial; no rollout default for the named roadmap API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure; Scope; Open questions",
+      "type": "absence",
+      "claim": "Roles for the roadmap-named API have not been separately established from the documented licensing-report operation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"PPAC Reporting API\" Copilot Studio default license permissions limits. Read generate-report reference and usage-report tutorial: both give administrator roles for licensing reports, but neither explicitly identifies the operation as the roadmap API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].note; Risk assessment; Scope; Governance guidance",
+      "type": "role",
+      "claim": "The documented licensing-report operation requires a Global, Dynamics 365 or Power Platform administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/rest/api/power-platform/copilotstudio/licensing-reports/generate-licensing-report",
+      "quote": "Requires the Global, Dynamics 365, or Power Platform administrator role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The existing user report can show unauthenticated usage under the all-zero user ID with no user name.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "usage from sessions where the user didn't sign in ... can appear under the user ID 00000000-0000-0000-0000-000000000000 with no user name.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The general Power Platform API reference tells callers to register an app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/rest/api/power-platform/",
+      "quote": "To use the Power Platform API: 1. Register your app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The general Power Platform API reference tells callers to obtain authentication tokens.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/rest/api/power-platform/",
+      "quote": "Get authentication tokens for a user or service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Authorization for the roadmap-named API is not separately documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"PPAC Reporting API\" Copilot Studio default license permissions limits. Read general API reference and usage-report tutorial: delegated-only authentication is documented for usage reports, without an explicit identification with the roadmap-named API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[1].api; Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "absence",
+      "claim": "No API for setting an agent's monthly Copilot Credit limit was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio agent monthly consumption limit API PowerShell pac Dataverse bot limit; site:learn.microsoft.com/rest/api/power-platform \"agent\" \"limit\" \"monthly\". Read capacity and CLI references; searched full Dataverse bot reference for limit, credit, consumption, budget, capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated when the older unsupported extraction methods stop working.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot Studio\" \"unsupported methods\" reporting retirement; \"Copilot Studio\" \"Reporting API\" \"price\" \"retire\". Read roadmap, capacity page and usage-report tutorial; reviewed deprecation search excerpts. No shutdown date for these methods was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Change & support; Governance controls; Why it matters",
+      "type": "behaviour",
+      "claim": "Learn marks the pac licensing-report commands as Preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/developer/cli/reference/copilot-studio",
+      "quote": "pac copilot-studio generate-licensing-report | (Preview) Starts generating a Copilot Studio licensing report",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.model, summary; Cost and licensing",
+      "type": "licensing",
+      "claim": "A licence entitlement specifically covering the roadmap-named reporting API is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"PPAC Reporting API\" Copilot Studio default license permissions limits; \"Copilot\" \"usage reports\" \"API\" \"limits\" \"license\". Read requirements-licensing, billing-licensing and usage-report tutorial. Authoring/client requirements do not state a licence for the named standalone reporting API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The cited licensing page says creating and managing agents needs a Copilot Studio User License for each author.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-licensing",
+      "quote": "To create and manage agents with Copilot Studio, you need: A license for each user ... Copilot Studio User License",
+      "severity": "minor",
+      "fix": "Replace the background authoring-licence statement in licensing.notes and Cost and licensing with: 'For standard-harness agent authoring, the cited page lists a Copilot Studio User License per author and a tenant licence. The licensing overview also lists Copilot Studio authors access, a Microsoft 365 Copilot licence or a trial licence as access routes.' Cite https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing. Keep the reporting API's own entitlement open."
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The cited agent-authoring licensing page also lists an organizational tenant licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-licensing",
+      "quote": "A license for your organization, also known as a tenant license (or Copilot Studio as referred to on the Microsoft 365 admin center).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "The cited authoring-licensing page does not mention reporting APIs.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot\" \"usage reports\" \"API\" \"limits\" \"license\". Read https://learn.microsoft.com/microsoft-copilot-studio/requirements-licensing in full; it covers author and tenant licensing, not entitlement to reporting APIs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No charge or per-call price for the roadmap-named API was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot Studio\" \"Reporting API\" \"price\" \"retire\"; \"Copilot\" \"usage reports\" \"API\" \"limits\" \"license\". Read product billing/licensing pages, capacity page, REST references and usage-report tutorial; none publishes a price for calling the named API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The admin center reports Copilot Credit consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "The Copilot Credit capacity tab ... shows a product-focused view of Copilot Studio credit units consumed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "One agent interaction can consume several Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "One interaction with an agent can consume several credits",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Features used during an interaction have their own credit rates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "because each feature the agent uses in that interaction has its own rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "Call limits specifically identified with the roadmap-named API are not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"PPAC Reporting API\" Copilot Studio default license permissions limits; site:learn.microsoft.com/power-platform \"usage reports\" \"service protection\". Read generate-report reference and tutorial: the latter discusses 429 responses, without identifying limits with the roadmap-named API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "Prerequisites specifically identified with the roadmap-named API are not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"PPAC Reporting API\" Copilot Studio default license permissions limits. Read roadmap and usage-report tutorial prerequisites. The tutorial documents usage-report clients and delegated administrator access, but does not explicitly identify them as prerequisites of the roadmap-named API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope; Open questions",
+      "type": "behaviour",
+      "claim": "The admin-center report documentation qualifies user-level consumption reporting to standard-harness agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "For agents powered by the standard harness, the user report also shows consumption by user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The PPAC report-download path is Licensing > Products > Copilot Studio > Summary > Download report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "select Licensing. ... under Products, select Copilot Studio. ... Select the Summary tab. ... Select Download report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "POST https://api.powerplatform.com/copilotstudio/licensing/reports/{ReportName}?api-version=2024-10-01 starts tenant licensing-report generation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/rest/api/power-platform/copilotstudio/licensing-reports/generate-licensing-report",
+      "quote": "POST https://api.powerplatform.com/copilotstudio/licensing/reports/{ReportName}?api-version=2024-10-01",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "The report request body accepts startDate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/rest/api/power-platform/copilotstudio/licensing-reports/generate-licensing-report",
+      "quote": "startDate | True | string (date) | The inclusive UTC start date of the report range.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "The report request body accepts endDate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/rest/api/power-platform/copilotstudio/licensing-reports/generate-licensing-report",
+      "quote": "endDate | True | string (date) | The inclusive UTC end date of the report range.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "The report request body accepts granularity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/rest/api/power-platform/copilotstudio/licensing-reports/generate-licensing-report",
+      "quote": "granularity | | CopilotStudioLicensingReportGranularity | The granularity of a licensing report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[1].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "PPAC exposes agent monthly-limit management at Licensing > Products > Copilot Studio > Summary > Manage Agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "select Licensing. ... under Products, select Copilot Studio. ... On the Summary tab, select Manage Agents. ... You can set a monthly limit for any agent directly from this page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Agent monthly limits are not applied instantly and an agent can continue responding after reaching its limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "Limits aren't applied instantly. An agent can continue to respond for some time after it reaches its limit",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "An agent's monthly limit does not stop agent flows it calls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "An agent's monthly limit doesn't stop the agent flows that the agent calls. Agent flows are billed and checked for capacity separately",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[1].governs; Governance controls",
+      "type": "behaviour",
+      "claim": "A configurable hard stop turns off the agent when it reaches the monthly limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "After you set limits, you can configure two key guardrails: ... Hard stop: The agent is automatically turned off once it hits the defined limit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls: new API on/off and caller restrictions",
+      "type": "absence",
+      "claim": "A dedicated control enabling, disabling or restricting callers of the roadmap-named API is not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot\" \"reporting API\" \"enable\"; \"PPAC Reporting API\" Copilot Studio default license permissions limits. Read capacity page, API authentication overview, report reference and tutorial; found role-based report prerequisites, not a separate switch for the roadmap-named API.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-19T03:09:30.490Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 5,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 2,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=579968",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/rest/api/power-platform/copilotstudio/licensing-reports/generate-licensing-report",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/developer/cli/reference/copilot-studio",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/rest/api/power-platform/",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-licensing",
+        "ok": false,
+        "status": 429
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Access to Copilot Studio consumption data by environment, agent or user (existing alternative)",
+        "docs": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+        "reachable": false,
+        "segments": [
+          "Licensing",
+          "Products",
+          "Copilot Studio",
+          "Summary",
+          "Download report"
+        ],
+        "missing": [
+          "Licensing",
+          "Products",
+          "Copilot Studio",
+          "Summary",
+          "Download report"
+        ]
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Access to Copilot Studio consumption data by environment, agent or user (existing alternative)",
+        "docs": "https://learn.microsoft.com/rest/api/power-platform/copilotstudio/licensing-reports/generate-licensing-report",
+        "reachable": false,
+        "token": "api.powerplatform.com/copilotstudio/licensing/reports/{ReportName}",
+        "found": false
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Monthly credit limit and hard stop for a Copilot Studio agent (existing cost control)",
+        "docs": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+        "reachable": false,
+        "segments": [
+          "Licensing",
+          "Products",
+          "Copilot Studio",
+          "Summary",
+          "Manage Agents"
+        ],
+        "missing": [
+          "Licensing",
+          "Products",
+          "Copilot Studio",
+          "Summary",
+          "Manage Agents"
+        ]
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-18",
+      "status": "verified-with-gaps",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
+}

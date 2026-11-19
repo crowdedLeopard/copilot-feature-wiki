@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "on"
 action: "prepare"
 licensing:
-  model: "unknown"
-  notes: "Not yet published. The feature page lists permission to manage environment settings as its prerequisite and names no licence. Environment groups need Managed Environments, which have their own licensing requirements."
+  model: "included"
+  notes: "Covered by Copilot Studio product access: a user license with a prepaid Copilot Credit pack subscription, the Copilot Studio authors role (pay-as-you-go), a Microsoft 365 Copilot license, or a trial license (cannot publish). No feature-specific licence, price or credit treatment is published. Environment groups need Managed Environments, which have their own licensing requirements."
 audiences: ["power-platform-admin","security","service-owner","maker"]
 tags: ["copilot-studio","maker-credentials","sharing","oversharing","publish-controls","power-platform-admin-center","threat-detection","environment-groups"]
 sources:
@@ -45,6 +45,9 @@ sources:
     kind: "learn"
   - title: "Licensing requirements for managed environments"
     url: "https://learn.microsoft.com/power-platform/admin/managed-environment-licensing"
+    kind: "learn"
+  - title: "Licensing for agents powered by the standard harness"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing"
     kind: "learn"
 videos: []
 related: ["agent-identity","power-platform-maker-guidelines-copilot-studio"]
@@ -78,7 +81,7 @@ controls:
     note: "Limits editors, viewers and security groups; not credential-aware. Retrieve governanceConfiguration first, then update settings.extendedSettings (bot-limitSharingMode, bot-maxLimitUserSharing, bot-authoringSharingDisabled)."
 confidence: "high"
 created: "2026-11-13"
-updated: "2026-11-17"
+updated: "2026-11-19"
 roadmapModified: "2026-07-01T23:03:18"
 changes:
   - date: "2026-11-13"
@@ -91,19 +94,25 @@ changes:
     note: "Corrected after verification: publish behaviour now distinguishes unshared and already-shared agents, the sharing-limits PowerShell call is shown as documented, and the scope note no longer excludes already-shared agents."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 57 statements confirmed"
-version: 4
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 61 statements contradicted, 1 unconfirmed; taken offline until corrected"
+  - date: "2026-11-19"
+    note: "Corrected after verification: licensing model is now included, citing the Copilot Studio licensing page, and the impact rationale no longer says end users are not asked to do anything."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 71 statements confirmed"
+version: 5
 verification:
   status: "verified"
-  date: "2026-11-17"
-  version: 4
+  date: "2026-11-19"
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 57
+  claims: 71
+  confirmed: 71
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "75dcb3f99e57f530449bdf30410d0588"
+  hash: "e5c319adc1f7c50c3492ba4fb0f6bd66"
 ---
 
 ## What's changing
@@ -142,7 +151,7 @@ If nobody reviews it, the exposure is in the agents that are already shared: the
 
 ## Cost and licensing
 
-- **Licence:** The feature page lists permission to manage settings for the target environment as its prerequisite and names no licence. Microsoft has not published a feature-specific licence, price or Copilot Credit charge or exemption for this setting at the time of writing (November 2026).
+- **Licence:** To use Copilot Studio, you need one of: a Copilot Studio user license (free, but it needs a tenant prepaid Copilot Credit pack subscription), the Copilot Studio authors role for applicable pay-as-you-go scenarios, a Microsoft 365 Copilot license, or a trial license, which cannot publish agents (Licensing for agents powered by the standard harness page). The feature page lists permission to manage settings for the target environment as its prerequisite and names no licence. Microsoft has not published a feature-specific licence, price or Copilot Credit charge or exemption for this setting at the time of writing (November 2026).
 - **Managed Environments:** Environment groups can only contain managed environments. Managed environments are included as an entitlement in licences such as Power Apps Premium, Power Automate Premium and Microsoft Copilot Studio, and when managed environments are activated, all active usage requires a qualifying standalone licence or pay-as-you-go meter (Managed Environments licensing page).
 - **Indirect cost:** Admin time to review findings and maker time to move connections to end-user authentication or an approved system identity.
 
@@ -197,5 +206,5 @@ The two admin centre routes to this setting are documented in different articles
 <!-- rationale
 risk: Medium. The Learn settings reference lists blocking as On by default, but the control does not unshare agents that are already shared, and the Learn pages describe it as preview.
 cost: Low. The only cost the sources show is admin and maker time; no feature-specific licence or Copilot Credit charge is published, and environment groups can only hold Managed Environments.
-impact: Medium. Makers meet blocked Share and Publish actions and must rework connections; end users are not asked to do anything.
+impact: Medium. Makers meet blocked Share and Publish actions and must rework connections.
 -->

@@ -1,0 +1,1043 @@
+{
+  "slug": "microsoft-purview-data-lifecycle-management-graph-api-support-for-archive-mailboxes",
+  "roadmapId": 567313,
+  "title": "Microsoft Purview: Microsoft Graph APIs for archive mailboxes as EWS retires",
+  "status": "verified-with-gaps",
+  "date": "2026-11-18",
+  "version": 2,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 79,
+    "confirmed": 79,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "The migration deadline, rollout dates, archive redirect behaviour, licensing and both control rows are supported. One minor qualification remains: Microsoft's two EWS control pages disagree about per-user exceptions to organisation-wide blocking.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; Scope",
+      "type": "record",
+      "claim": "Microsoft is adding Graph access to main archive mailboxes.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Access to Archive mailboxes (Main + Auxiliary) through Microsoft Graph.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The planned Graph archive access includes auxiliary archives.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Access to Archive mailboxes (Main + Auxiliary) through Microsoft Graph.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes a single seamless archive view across auxiliary mailboxes.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The goal is to give users a single, seamless Archive view, even though Archive data may physically reside across multiple auxiliary mailboxes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1469565 says Graph now supports importing and exporting mailbox data.",
+      "status": "supported",
+      "source": "Message Center post MC1469565",
+      "quote": "Microsoft Graph now provides API support for importing and exporting mailbox data",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "MC1469565 says Graph supports archive folder management, including auto-expanding archives.",
+      "status": "supported",
+      "source": "Message Center post MC1469565",
+      "quote": "and for managing archive mailbox folders, including support for auto-expanding archives.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Auto-expanding archiving creates auxiliary archive mailboxes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/handle-archive-mailbox-redirects",
+      "quote": "An archive mailbox can include a main archive mailbox and one or more auxiliary archive mailboxes (created through autoexpanding archive).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A folder can appear in the main archive while its contents reside in an auxiliary archive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/handle-archive-mailbox-redirects",
+      "quote": "In some cases, a folder appears in the main archive mailbox, but its contents actually reside in an auxiliary archive mailbox.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Accessing an auxiliary archive folder can return HTTP 308 Permanent Redirect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/handle-archive-mailbox-redirects",
+      "quote": "When you access a folder that physically resides in an auxiliary archive mailbox, the API returns an HTTP 308 Permanent Redirect with a Location header.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Exporting auto-expanded archive items can return ErrorArchiveFolderMovedPermanently for individual items.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/handle-archive-mailbox-redirects",
+      "quote": "When you export items from a mailbox that has autoexpanded archive folders, some items in the response might include an ErrorArchiveFolderMovedPermanently error instead of data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The application retries redirected folder and export requests using the URL supplied in the response.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/handle-archive-mailbox-redirects",
+      "quote": "Your app makes a new request to the URL indicated in the response.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "An import into a folder physically located in an auxiliary archive returns HTTP 409 Conflict identifying the target mailbox.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/handle-archive-mailbox-redirects",
+      "quote": "When you attempt to import an item into a folder that physically resides in an auxiliary (autoexpanded) archive mailbox, you receive an HTTP 409 Conflict response that indicates the correct target mailbox.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Resolving the import conflict requires a new import session targeting the mailbox named in the error.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/handle-archive-mailbox-redirects",
+      "quote": "To resolve this issue, create a new import session targeting the mailbox ID indicated in the error message",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Well-known folder names are not supported for archive mailboxes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/handle-archive-mailbox-redirects",
+      "quote": "Well-known folder names aren't supported for archive mailboxes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Applications must reference archive folders by folder ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/handle-archive-mailbox-redirects",
+      "quote": "Reference folders in archive mailboxes by folder ID rather than by well-known folder name.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 5 November 2026 at 23:59:28.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-05T23:59:28\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "MC1469565 says Worldwide General Availability rollout begins in late October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1469565",
+      "quote": "General Availability (Worldwide): Beginning in late October 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "MC1469565 expects rollout to complete by early November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1469565",
+      "quote": "expected to complete by early November 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "summary; What's changing; Governance guidance: Before rollout; changes",
+      "type": "record",
+      "claim": "Microsoft's act-by date is 1 October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1469565",
+      "quote": "Act by: 2026-10-01 (-48 days from today)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Why it matters",
+      "type": "date",
+      "claim": "The act-by date had passed by 48 days on the run date, 18 November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1469565",
+      "quote": "Act by: 2026-10-01 (-48 days from today)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Why it matters; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "EWS global disablement begins in October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1469565",
+      "quote": "Exchange Web Services (EWS) in Exchange Online will begin to be disabled globally in October 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "EWS is expected to be fully disabled by April 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1469565",
+      "quote": "is expected to be fully disabled by April 2027",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Governance guidance: After rollout; Open questions",
+      "type": "date",
+      "claim": "Learn lists Import-Export (Archive) as a parity gap targeted for Q4 CY2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/deprecation-of-ews-exchange-online",
+      "quote": "| Import-Export (Archive) | Export and import mailbox items in archive mailboxes in a full-fidelity format. | Q4 CY2026 |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "Learn lists In-Place Archive (Generic CRUD) as a parity gap targeted for Q4 CY2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/deprecation-of-ews-exchange-online",
+      "quote": "| In-Place Archive (Generic CRUD) | Access and manage mailbox items in an existing In-Place Archive. This capability doesn't create archive mailboxes. | Q4 CY2026 |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "Learn calls its parity estimates targets that might change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/deprecation-of-ews-exchange-online",
+      "quote": "Estimated availability dates are targets and might change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The In-Place Archive capability does not create archive mailboxes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/deprecation-of-ews-exchange-online",
+      "quote": "This capability doesn't create archive mailboxes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "summary; Why it matters; Risk assessment; Governance controls; rationale: risk",
+      "type": "record",
+      "claim": "Applications and scripts retaining EWS archive operations stop working after EWS is disabled.",
+      "status": "supported",
+      "source": "Message Center post MC1469565",
+      "quote": "Applications and scripts that continue to use EWS for archive mailbox operations will stop functioning after EWS is disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Why it matters; Scope; Governance guidance",
+      "type": "record",
+      "claim": "Affected examples include eDiscovery, compliance, records management, data lifecycle management, backup, export and custom archive applications.",
+      "status": "supported",
+      "source": "Message Center post MC1469565",
+      "quote": "eDiscovery solutions- Compliance and records management workflows- Data lifecycle management solutions- Backup and export tools- Custom applications that access archive mailboxes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "The Message Center compliance table confirms possible interruption of Purview-related workflows.",
+      "status": "supported",
+      "source": "Message Center post MC1469565",
+      "quote": "Yes. Organizations using EWS-based integrations for eDiscovery, compliance exports, retention-related processes, or data lifecycle management that access archive mailboxes must migrate to Microsoft Graph APIs before EWS is disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The default state of Graph archive API enablement is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Graph\" \"archive mailboxes\" \"default\"; \"archive\" \"Graph\" \"tenant\" \"enable\" mailbox import export default. Read roadmap, MC1469565, archive redirects and both mailbox import/export overviews; none states a default or an administrator enablement requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Why it matters; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No tenant-level switch specifically enabling or disabling the Graph archive APIs is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"archive\" \"Graph\" \"tenant-level\" switch; \"archive\" \"Graph\" \"tenant\" \"enable\" mailbox import export default. Opened archive redirects, both import/export overviews, exportItems and List folders; no API-specific tenant switch was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "No further consequence of inaction beyond EWS disablement and its effects is stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: EWS archive vendor fees; EWS usage report Microsoft Graph API PowerShell Exchange weekly usage report programmatic. Read MC1469565 and Learn's EWS deprecation page: they describe disablement, failing integrations and migration, without a separate additional consequence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Graph mailbox export preserves items in full fidelity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/mailbox-import-export-concept-overview",
+      "quote": "These items can be exported as an opaque stream in full fidelity (you can't change the export stream).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Exported items can be imported into the same or a different mailbox.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/mailbox-import-export-concept-overview",
+      "quote": "Items can be imported to the same mailbox or a different one.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "applicability",
+      "claim": "The exportItems reference lists MailboxItem.Export.All as an application permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/mailbox-exportitems",
+      "quote": "| Application | MailboxItem.Export.All | MailboxItem.ImportExport.All |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "The exportItems reference lists MailboxItem.ImportExport.All as a higher-privileged application permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/mailbox-exportitems",
+      "quote": "| Permission type | Least privileged permissions | Higher privileged permissions |\n| Application | MailboxItem.Export.All | MailboxItem.ImportExport.All |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The mailbox import/export APIs are not designed for mailbox backup and restore.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/mailbox-import-export-concept-overview",
+      "quote": "The mailbox import and export APIs in Microsoft Graph aren't designed for mailbox backup and restore.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "User-agent-based EWS blocking also affects REST and Graph connections.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/client-developer/exchange-web-services/how-to-control-access-to-ews-in-exchange",
+      "quote": "Note: User Agent based blocking also impacts connections using REST/Graph API",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "behaviour",
+      "claim": "Learn's archive redirect examples use beta endpoints.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/handle-archive-mailbox-redirects",
+      "quote": "GET https://graph.microsoft.com/beta/admin/exchange/mailboxes/MBX:e0643f21@a7809c93/folders/NJWt2LeVEAAAIBDAAAAA==",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "behaviour",
+      "claim": "The v1.0 import/export reference describes primary and shared mailbox support, while the concept overview also names archives.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/mailbox-import-export-api-overview",
+      "quote": "These APIs support access to data in users' primary mailboxes and shared mailboxes on Exchange Online.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Each user accessing Exchange Online Archiving needs an Exchange Online Archiving entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/exchange-online-archiving-service-description/exchange-online-archiving-service-description",
+      "quote": "Each user who accesses the Exchange Online Archiving service must have an Exchange Online Archiving subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Exchange Online Plan 2 includes archiving without an Exchange Online Archiving add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/exchange-online-archiving-service-description/exchange-online-archiving-service-description",
+      "quote": "Note that the following plans already include archiving and don't require Exchange Online Archiving as an add-on:  • Exchange Online Plan 2",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 E3 includes archiving.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/exchange-online-archiving-service-description/exchange-online-archiving-service-description",
+      "quote": "Note that the following plans already include archiving and don't require Exchange Online Archiving as an add-on:  • Exchange Online Plan 2  • Microsoft 365 Business Premium  • Microsoft 365 E3",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 E5 includes archiving.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/exchange-online-archiving-service-description/exchange-online-archiving-service-description",
+      "quote": "Note that the following plans already include archiving and don't require Exchange Online Archiving as an add-on:  • Exchange Online Plan 2  • Microsoft 365 Business Premium  • Microsoft 365 E3  • Microsoft 365 E5",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Exchange Online Archiving is available as an add-on for Exchange Online Plan 1.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/exchange-online-archiving-service-description/exchange-online-archiving-service-description",
+      "quote": "Cloud-based archive and in-place hold as an add-on for the following plans^1,2,3^: • Exchange Online Plan 1",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is mixed because archiving is included in some plans and an add-on in others.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/exchange-online-archiving-service-description/exchange-online-archiving-service-description",
+      "quote": "Cloud-based archive and in-place hold as an add-on for the following plans",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No licence specific to the Graph archive mailbox APIs has been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"mailbox import and export\" \"license\" pricing; Microsoft Graph archive mailbox APIs tenant enable disable switch default enablement licensing pricing meter. Read archiving service description, both import/export overviews and exportItems; no API-specific licence was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No price or meter specific to Graph archive mailbox APIs has been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"mailbox\" \"import\" \"export\" \"Graph\" \"metered\"; \"mailbox import and export\" \"license\" pricing. Read Graph metered API overview/list, both mailbox import/export overviews and exportItems; no archive API price or meter was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Standard Graph APIs within defined usage thresholds are available as part of the user licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/metered-api-overview",
+      "quote": "Access to standard APIs within the defined usage thresholds is available as part of the user license without additional costs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "High-capacity Graph APIs include purpose-built bulk export/import endpoints.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/metered-api-overview",
+      "quote": "This category includes purpose-built, bulk export or import endpoints and Microsoft Graph services. These APIs might be metered and incur additional costs beyond user subscription licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The Graph metered APIs list names only assignSensitivityLabel at the time of writing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/metered-api-list",
+      "quote": "The following table lists the metered APIs and services.\n| SharePoint and OneDrive for Business assignSensitivityLabel | $0.00185 (USD) per API call",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The listed assignSensitivityLabel rate is $0.00185 USD per API call.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/metered-api-list",
+      "quote": "$0.00185 (USD) per API call",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The pages read do not explicitly classify mailbox import/export APIs into a Graph metering category.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"mailbox\" \"import\" \"export\" \"Graph\" \"metered\". Read Graph metered-api-overview, metered-api-list, mailbox-import-export-concept-overview and mailbox-import-export-api-overview; none explicitly assigns these APIs to a billing category.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft has not specified vendor upgrade fees for this migration.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"EWS\" \"archive\" \"vendor\" \"fees\". Read MC1469565 and Learn's EWS deprecation page, which advise contacting vendors but specify no vendor upgrade fees.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Cost and licensing; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "MC1469565 names EWS Analyzer and an AI-assisted migration tutorial.",
+      "status": "supported",
+      "source": "Message Center post MC1469565",
+      "quote": "EWS Analyzer and migration tools: https://aka.ms/ewsTools- AI-assisted migration tutorial: https://aka.ms/ewsToolsAITutorial",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "MC1469565 names EWS-to-Graph mappings.",
+      "status": "supported",
+      "source": "Message Center post MC1469565",
+      "quote": "EWS-to-Microsoft Graph API mappings: https://aka.ms/ews2graphMap- Contact third-party vendors to confirm their plans and timelines for migrating from EWS to Microsoft Graph.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The exportItems page marks US Government L4, L5 and China operated by 21Vianet unavailable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/mailbox-exportitems",
+      "quote": "| Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet |\n| ✅ | ❌ | ❌ | ❌ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The List folders page marks US Government L4, L5 and China operated by 21Vianet unavailable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/mailbox-list-folders",
+      "quote": "| Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet |\n| ✅ | ❌ | ❌ | ❌ |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Scope",
+      "type": "record",
+      "claim": "MC1469565 names Microsoft Purview, Exchange Online and Microsoft Graph as affected services.",
+      "status": "supported",
+      "source": "Message Center post MC1469565",
+      "quote": "Platforms and services\n\n- Microsoft Purview- Exchange Online- Microsoft Graph",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Scope",
+      "type": "applicability",
+      "claim": "The mailbox APIs support work-or-school delegated and application permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/mailbox-exportitems",
+      "quote": "| Delegated (work or school account) | MailboxItem.Export | MailboxItem.ImportExport |\n| Application | MailboxItem.Export.All | MailboxItem.ImportExport.All |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The tenant EWS usage report is at Microsoft 365 admin center > Reports > Usage > Reports > Exchange > EWS usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/ews-usage",
+      "quote": "In the navigation menu, select Reports. If you don't see Reports, select Show all, and then select Reports.\nSelect Usage.\nOn the Usage page, under Reports, select Exchange.\nOn the report page, select the EWS usage tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[0].api; controls[0].note",
+      "type": "absence",
+      "claim": "No programmatic equivalent of the EWS usage report is documented, and the Graph usage reports list contains no EWS report.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: EWS usage report Microsoft Graph API PowerShell Exchange weekly usage report programmatic; \"EWS\" \"usage\" \"report\" \"API\" \"beta\". Read EWS usage report and Graph resources/report; no equivalent EWS reporting operation was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[0].note; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The EWS usage report shows SOAP actions per application ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/ews-usage",
+      "quote": "The following table provides a breakdown of the EWS usage per SOAP action by each active application in your tenant during the selected period.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[0].note; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "EWS usage data is collected and aggregated weekly.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/ews-usage",
+      "quote": "Usage data is collected and aggregated weekly, not daily.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[0].note; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "EWS usage can take up to 10 days to appear in the report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/ews-usage",
+      "quote": "It can take up to 10 days for usage to show in the report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The organisation-wide EWS control is under Show all > Settings > Org Settings > Security and Privacy > Baseline Security Mode > Authentication > Disable organization-wide access to Exchange Web Services (EWS).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/baseline-security-mode/baseline-security-mode-settings",
+      "quote": "Under Settings, select Org Settings.\nIn the Org Settings page, select the Security and Privacy tab.\nIn the Security and Privacy tab, select Baseline Security Mode.\n## Authentication\nDisable organization-wide access to Exchange Web Services (EWS)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "controls[1].api; controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "Set-OrganizationConfig -EwsEnabled $false blocks the entire organisation from using EWS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/client-developer/exchange-web-services/how-to-control-access-to-ews-in-exchange",
+      "quote": "Block the entire organization from using EWS. | Set-OrganizationConfig -EwsEnabled:$false\nThe way the EWSEnabled parameter operates will change in October 2026 due to the EWS Deprecation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "Configuring the admin center EWS blocking setting requires Exchange Administrator or Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/baseline-security-mode/block-access-exchange-web-services",
+      "quote": "You need to be a member of the Exchange Administrator role or Global Administrator to be able to configure this setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The EWS control-access page says organisation-wide disablement also disables per-user EWS overrides.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/client-developer/exchange-web-services/how-to-control-access-to-ews-in-exchange",
+      "quote": "Important: Disabling EWS in the organization also disables per-user EWS overrides.",
+      "severity": "minor",
+      "fix": "After this sentence add: \"The Baseline Security Mode EWS page instead says, 'You can still allow exceptions for specific users or workloads using Exchange Online PowerShell'; Microsoft's two pages disagree on exceptions.\" Cite https://learn.microsoft.com/microsoft-365/baseline-security-mode/block-access-exchange-web-services."
+    },
+    {
+      "n": 75,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The List folders reference lists MailboxFolder.Read.All as an application permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/mailbox-list-folders",
+      "quote": "| Application | MailboxFolder.Read.All | MailboxFolder.ReadWrite.All |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "controls[1].note; Governance controls",
+      "type": "date",
+      "claim": "The EWS control-access page says EwsEnabled behaviour changes in October 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/client-developer/exchange-web-services/how-to-control-access-to-ews-in-exchange",
+      "quote": "The way the EWSEnabled parameter operates will change in October 2026 due to the EWS Deprecation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "MC1469565 recommends contacting third-party vendors about migration plans and timelines.",
+      "status": "supported",
+      "source": "Message Center post MC1469565",
+      "quote": "Contact third-party vendors to confirm their plans and timelines for migrating from EWS to Microsoft Graph.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "High-capacity Graph APIs might be metered beyond user subscription licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/metered-api-overview",
+      "quote": "These APIs might be metered and incur additional costs beyond user subscription licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "front matter: products; title",
+      "type": "record",
+      "claim": "The roadmap identifies Microsoft Purview as the product.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-18T20:03:32.785Z",
+    "summary": {
+      "links": 16,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=567313",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/deprecation-of-ews-exchange-online",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/handle-archive-mailbox-redirects",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/mailbox-import-export-concept-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/mailbox-import-export-api-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/mailbox-exportitems",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/mailbox-list-folders",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/metered-api-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/metered-api-list",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/ews-usage",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/baseline-security-mode/baseline-security-mode-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/baseline-security-mode/block-access-exchange-web-services",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/exchange/client-developer/exchange-web-services/how-to-control-access-to-ews-in-exchange",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/report",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/exchange-online-archiving-service-description/exchange-online-archiving-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1469565",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which applications still call EWS (usage report)",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/activity-reports/ews-usage",
+        "reachable": true,
+        "segments": [
+          "Reports",
+          "Usage",
+          "Reports",
+          "Exchange",
+          "EWS usage"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether the organisation can use EWS",
+        "docs": "https://learn.microsoft.com/microsoft-365/baseline-security-mode/baseline-security-mode-settings",
+        "reachable": true,
+        "segments": [
+          "Show all",
+          "Settings",
+          "Org Settings",
+          "Security and Privacy",
+          "Baseline Security Mode",
+          "Authentication",
+          "Disable organization-wide access to Exchange Web Services"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether the organisation can use EWS",
+        "docs": "https://learn.microsoft.com/exchange/client-developer/exchange-web-services/how-to-control-access-to-ews-in-exchange",
+        "reachable": true,
+        "token": "Set-OrganizationConfig",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
+}

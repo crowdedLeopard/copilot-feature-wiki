@@ -89,15 +89,17 @@ changes:
     note: "First briefing for this item, based on Microsoft Learn's documentation of the Work IQ MCP retrieve tool (public preview) and the usage-based billing pages."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 68 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 75 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-18"
+  date: "2026-11-19"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 67
+  claims: 75
+  confirmed: 74
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -206,9 +208,10 @@ cost: Variable. Work IQ API usage consumes Copilot Credits through usage-based b
 impact: Low. The tool is called by developers' agents and apps through the Work IQ MCP endpoint; admins and the people building agents notice first, and end users only through agents that use it.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls: spending-policy API qualification / absence: No page found explicitly maps the API's service settings to Work IQ API as an individual billable service. | Found: Searched: site:learn.microsoft.com copilot costManagement serviceSettings Work IQ API services; "Work IQ API" "serviceId". Opened API overview, service-setting resource/list/create/update: workIQ is a governed-service category; multiple billable services can share a category. | Fix: Replace 'This briefing found no page saying that API's service settings expose Work IQ API specifically.' with 'The API documents a governed-service category named workIQ; multiple billable services can share a category.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/resources/spendingpolicyservicesetting. Do not equate that category with an individual billable service.
-- [contradicted, minor] Governance guidance: Before rollout, delegated consent bullet / consistency: Every governance checklist control is represented in the controls table. | Found: Decide who may grant the delegated `WorkIQAgent.Ask` permission for client apps. ... Controls table: Work IQ MCP tenant policy; Copilot Credit spending policies. | Fix: Remove the Before rollout bullet 'Decide who may grant the delegated `WorkIQAgent.Ask` permission for client apps.' The consent-governance decision has no corresponding control row; retain the existing permission prerequisite and security discussion.
+- [supported, minor] controls[1].api; Governance controls: second row / command: PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id} updates periodLimit, perUserLimit or billingMethods using an If-Match ETag. | Found: PATCH /copilot/costManagement/spendingPolicies/{id} ... If-Match | The ETag of the spending policy. Required. ... The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods. | Fix: Set controls[1].api.call and the rendered call to 'PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id}'. Add to its note: 'The request body sets periodLimit or perUserLimit to change spending limits; If-Match supplies the policy ETag.' Leave complete funding-change requirements to the linked reference. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update
+- [supported, minor] Governance controls: API service-setting qualification / absence: No page found maps the API's service settings specifically to Work IQ API as an individual billable service. | Found: Searched: "Work IQ" "serviceSettings" "workIQ". Read spendingpolicyservicesetting: serviceId identifies a category such as workIQ, and multiple billable services can share a category; it does not identify Work IQ API individually. | Fix: Replace 'This briefing found no page saying that API's service settings expose Work IQ API specifically.' with 'The API documents a governed-service category named workIQ; multiple billable services can share a category.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/resources/spendingpolicyservicesetting. Do not equate the category with an individual billable service.
+- [contradicted, minor] Governance guidance: Before rollout, delegated consent bullet / consistency: The consent-governance decision in the checklist is represented in the controls table. | Found: Decide who may grant the delegated `WorkIQAgent.Ask` permission for client apps. ... Controls table: Whether Work IQ MCP tools ... are allowed in the tenant; Who can consume Copilot Credits ... and the monthly limits. | Fix: Remove the Before rollout bullet 'Decide who may grant the delegated `WorkIQAgent.Ask` permission for client apps.' Keep the permission prerequisite and security discussion unchanged; the consent-governance decision has no corresponding control row.
 -->

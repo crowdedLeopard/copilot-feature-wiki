@@ -98,17 +98,19 @@ changes:
     note: "Corrected the environment allocation row: a published environment-group rule on tenant-capacity draw overrides it (TenantPoolLockedByPolicy). Qualified the standard-harness Monitor sentence to Copilot Credits-based billing."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 76 statements confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 76 statements not yet confirmed"
 version: 4
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "verified-with-gaps"
+  date: "2026-11-19"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 76
-  confirmed: 76
+  confirmed: 75
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
   hash: "a286cada3cb3bb5541889e6ef2b27516"
 ---
@@ -211,4 +213,11 @@ These are the existing controls that govern the spend the Monitor view reports. 
 risk: Low. The roadmap describes a read-only cost view for makers; it does not change what agents can reach or do, and spend limits sit in separate admin controls.
 cost: Variable. No separate charge for the view is published, but the credits it reports are metered as Copilot Credits, drawn from prepaid capacity or a pay-as-you-go plan.
 impact: Medium. Makers notice it: it puts credit figures beside their agents, and those figures will not match every admin report.
+-->
+
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[1].api / command: PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 accepts the printed environment scope, MCSMessages allocation quantity and enforcementRules body. | Found: Invoke-RestMethod -Method Put ` -Uri "$apiBaseUrl/licensing/allocationsV2?api-version=$apiVersion" ` -Headers $headers -ContentType "application/json" -Body $allocationBody | Fix: Replace the call in the structured row and rendered table with 'PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01'. Replace the note's opening '<rule> is ...' sentence with 'The request body sets scope.environmentId and allocatedEntitlements, with entitlementId MCSMessages, allocation.quantity, and enforcementRules containing ruleType TenantPool and enabled true or false.' Retain the environment-group override qualification. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
+- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist directs readers to compare consumption reports, but the controls table has no reporting row. | Found: Compare a maker's Monitor figure with the Power Platform admin center consumption report for the same agent and period; controls rows cover monthly agent limits and environment credit allocation only. | Fix: Remove the After rollout checklist bullet beginning 'Compare a maker's Monitor figure with the Power Platform admin center consumption report'; it names a reporting control absent from the table. The existing explanation of billed versus non-billed figures can remain.
 -->

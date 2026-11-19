@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for this feature. Learn says agents built with the Microsoft Copilot harness use usage-based billing and might consume Copilot Credits; no approval-specific treatment is documented at the time of writing (November 2026)."
+  model: "mixed"
+  notes: "General Copilot Studio entitlement applies: a Copilot Studio user license with a tenant prepaid Copilot Credit pack subscription, the Copilot Studio authors role for applicable pay-as-you-go scenarios, a Microsoft 365 Copilot license, or a trial license (which cannot publish agents). Microsoft publishes no approval-specific requirement or credit rate at the time of writing (November 2026)."
 audiences: ["maker","power-platform-admin","security","service-owner"]
 tags: ["copilot-studio","tool-approval","human-in-the-loop","guardrails","tools","teams","m365-copilot"]
 sources:
@@ -37,8 +37,14 @@ sources:
   - title: "Configure data policies for agents"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
     kind: "learn"
-  - title: "New-DlpPolicy"
-    url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest"
+  - title: "Add-ConnectorsToPolicy"
+    url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest"
+    kind: "learn"
+  - title: "Licensing for agents powered by the standard harness"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing"
+    kind: "learn"
+  - title: "Configure high-quality instructions for generative orchestration"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/guidance/generative-mode-guidance"
     kind: "learn"
 videos: []
 related: ["work-iq-human-in-the-loop","copilot-credits"]
@@ -52,7 +58,7 @@ controls:
     scope: "agent"
     ui:
       surface: "Copilot Studio (maker)"
-      path: "Tools > tool > Details > Additional details > Ask the end user before running"
+      path: "Agents > agent > Tools > tool > Details > Ask the end user before running"
       docs: "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent"
     api: null
     note: "Documented for the standard harness; set to No by default. Not confirmed as the roadmap toggle or as available on the Microsoft Copilot harness."
@@ -64,16 +70,16 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Security > Data and privacy > Data policy > New Policy"
+      path: "Security > Data and privacy > Data policy > New Policy > Add an environment > Available > environment > Add to policy > Assign connectors > connector > Block"
       docs: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
     api:
       kind: "powershell"
-      call: "New-DlpPolicy -DisplayName <String> -EnvironmentType <String> (Microsoft.PowerApps.Administration.PowerShell)"
-      docs: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest"
-    note: "General control: blocks a connector rather than pausing it for approval. Requires tenant admin or Environment Admin."
+      call: "Add-ConnectorsToPolicy -PolicyName <policy-guid> -Classification Blocked -Connectors <connector-objects> (Microsoft.PowerApps.Administration.PowerShell)"
+      docs: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest"
+    note: "General control: blocks a connector rather than pausing it for approval. Requires tenant admin or Environment Admin. Moves the supplied connectors into the policy's Blocked group; each connector object requires id, type and name."
 confidence: "medium"
 created: "2026-11-13"
-updated: "2026-11-17"
+updated: "2026-11-19"
 roadmapModified: "2026-09-01T22:59:38"
 changes:
   - date: "2026-11-13"
@@ -86,19 +92,25 @@ changes:
     note: "Corrected after verification: default state is now unknown, and the Approve for the session and authentication/input-collection statements are narrowed to what the roadmap says."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 52 statements not yet confirmed"
-version: 4
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 58 statements contradicted, 1 unconfirmed; taken offline until corrected"
+  - date: "2026-11-19"
+    note: "Corrected after verification: fixed the Ask the end user before running and data policy paths, replaced New-DlpPolicy with Add-ConnectorsToPolicy, stated the general Copilot Studio licence entitlement, and removed 'no new data access' from the risk rationale."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 60 statements confirmed"
+version: 5
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
-  version: 4
+  status: "verified"
+  date: "2026-11-19"
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 51
-  unconfirmed: 1
+  claims: 60
+  confirmed: 60
+  unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "b89d9fa679cdda0d6d507ffffda19930"
+  hash: "dd8c30be1e9a6547b6dc05d01f5b31e0"
 ---
 
 ## What's changing
@@ -136,7 +148,7 @@ The catch is that, as described, makers set it. Plan for it to protect only the 
 
 ## Cost and licensing
 
-**Licence:** Not yet published for this toggle. The roadmap item names no licence, and no Learn page read describes one.
+**Licence:** General Copilot Studio entitlement applies: a Copilot Studio user license with a tenant prepaid Copilot Credit pack subscription, the Copilot Studio authors role for applicable pay-as-you-go scenarios, a Microsoft 365 Copilot license, or a trial license (which cannot publish agents), as the [licensing page for the standard harness](https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing) sets out. Microsoft publishes no approval-specific licence requirement for this toggle at the time of writing (November 2026).
 
 **Meter:** No approval-specific meter or credit rate is documented at the time of writing (November 2026). General background: the Learn page for adding tools to Microsoft Copilot harness agents states that "the harness used to build this agent uses usage-based billing" and that using, building, testing and evaluating agents "might consume Copilot Credits". It does not say how a paused or approved tool call is billed. See [Copilot Credits](/concepts/copilot-credits/).
 
@@ -175,9 +187,9 @@ The catch is that, as described, makers set it. Plan for it to protect only the 
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>The per-tool, per-agent approval toggle described on the roadmap</strong><br><small>Agent</small><br><small class="controls__note">Maker-side according to the roadmap item. No Microsoft Learn page describes this toggle at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether the end user is asked before a tool runs (existing setting)</strong><br><small>Agent</small><br><small class="controls__note">Documented for the standard harness; set to No by default. Not confirmed as the roadmap toggle or as available on the Microsoft Copilot harness.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Tools › tool › Details › Additional details › Ask the end user before running <a href="https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether the end user is asked before a tool runs (existing setting)</strong><br><small>Agent</small><br><small class="controls__note">Documented for the standard harness; set to No by default. Not confirmed as the roadmap toggle or as available on the Microsoft Copilot harness.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Agents › agent › Tools › tool › Details › Ask the end user before running <a href="https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Tenant or environment enforcement of approval for tool calls</strong><br><small>Tenant</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which connectors can be used as tools at all</strong><br><small>Environment</small><br><small class="controls__note">General control: blocks a connector rather than pausing it for approval. Requires tenant admin or Environment Admin.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpPolicy -DisplayName &lt;String&gt; -EnvironmentType &lt;String&gt; (Microsoft.PowerApps.Administration.PowerShell)</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which connectors can be used as tools at all</strong><br><small>Environment</small><br><small class="controls__note">General control: blocks a connector rather than pausing it for approval. Requires tenant admin or Environment Admin. Moves the supplied connectors into the policy's Blocked group; each connector object requires id, type and name.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy › Add an environment › Available › environment › Add to policy › Assign connectors › connector › Block <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-ConnectorsToPolicy -PolicyName &lt;policy-guid&gt; -Classification Blocked -Connectors &lt;connector-objects&gt; (Microsoft.PowerApps.Administration.PowerShell)</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -191,17 +203,10 @@ Row 2 is documented on a page for the standard harness; Microsoft has not said i
 - Will administrators be able to require approval for specific connectors, tools or environments? Watch Message center.
 - Who receives and can answer the request for autonomous or scheduled runs with no live conversation?
 - Does the request show the parameters the agent will send, and are approval decisions recorded in audit logs with the approver's identity?
-- Does a paused, approved or denied tool call consume Copilot Credits, and is any licence required?
+- Does a paused, approved or denied tool call consume Copilot Credits, and does any approval-specific licence apply?
 
 <!-- rationale
-risk: Low. The feature adds a control and no new data access; its default is not stated, so this rates today's behaviour continuing, where an agent's tools run unless a maker gates them.
-cost: Low. The only cost known is maker and admin time to decide which tools to gate; licensing and any Copilot Credits treatment for this feature are not yet published.
+risk: Low. The feature adds a control; its default is not stated, so this rates today's behaviour continuing, where an agent's tools run unless a maker gates them.
+cost: Low. The only cost known is maker and admin time to decide which tools to gate; approval-specific licensing and any Copilot Credits treatment for this feature are not yet published.
 impact: Medium. Makers must adopt it tool by tool, and users of gated agents in Microsoft Teams and Microsoft 365 Copilot will see approval requests.
--->
-
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters / behaviour: A prompt instruction asking for confirmation is not a substitute for system-enforced behaviour. | Found: Use agent instructions for summarization and conversational flow, not for system-level behaviors. | Fix: Add https://learn.microsoft.com/microsoft-copilot-studio/guidance/generative-mode-guidance to sources for the instructions-versus-enforcement distinction in Why it matters. | Source: https://learn.microsoft.com/microsoft-copilot-studio/guidance/generative-mode-guidance#agent-instructions-and-behavior
-- [unsupported, minor] rationale: risk / behaviour: The feature adds no new data access. | Found: Searched: Copilot Studio human approval data access. Read the roadmap and both harnesses' tool pages; reviewed Application Card safety and limitations excerpts. None states the new approval feature's data-access implications. | Fix: Remove 'and no new data access' from the risk rationale. The roadmap establishes that this is a guardrail, but does not specify its data-access implications.
 -->

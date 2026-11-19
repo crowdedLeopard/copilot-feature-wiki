@@ -2,42 +2,39 @@
   "slug": "power-apps-form-fill-assistance-using-m365-files-in-model-driven-apps",
   "roadmapId": 576280,
   "title": "Power Apps: form fill assistance using Microsoft 365 files in model-driven apps",
-  "status": "verified-with-gaps",
-  "date": "2026-11-17",
+  "status": "held",
+  "date": "2026-11-19",
   "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 0,
-  "verifierVerdict": "pass",
+  "attempts": 1,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
   "notes": [],
-  "hold": null,
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-19",
+    "reasons": [
+      "2 blocking findings (claims 37, 40)"
+    ]
+  },
   "counts": {
-    "claims": 48,
+    "claims": 50,
     "confirmed": 46,
     "unconfirmed": 1,
-    "contradicted": 1,
-    "blocker": 0,
+    "contradicted": 3,
+    "blocker": 2,
     "major": 1,
     "minor": 1
   },
-  "summary": "The briefing passes: its roadmap facts, licensing requirements and documented control operations are supported. Microsoft documents the column-level control but does not call it the finest-grained control, and the checklist mentions column properties without a corresponding controls-table row.",
+  "summary": "Hold: the legacy environment path is presented as usable although Microsoft now describes those settings as removed from that page. The maker-side path also starts inside the app designer without explaining how to reach it; the roadmap facts, licensing statements and toolbar API are supported.",
   "claims": [
     {
       "n": 1,
-      "where": "title; front matter: products; Scope",
+      "where": "summary; What's changing",
       "type": "record",
-      "claim": "This Power Apps change applies to model-driven apps.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Power Apps: Form fill assistance using Microsoft 365 files in model-driven apps",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
-      "where": "summary; What's changing; Risk assessment: Data exposure",
-      "type": "record",
-      "claim": "Microsoft plans to expand form fill assistance to use Microsoft 365 files as a source for form entries.",
+      "claim": "Microsoft plans to extend form fill assistance to use Microsoft 365 files as a source for form entries.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "We’re expanding form fill assistance in Power Apps to use Microsoft 365 files as a source, helping users turn existing content into form entries with less manual effort.",
@@ -45,40 +42,18 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 2,
       "where": "front matter: status",
       "type": "record",
       "claim": "The roadmap status is In development.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "quote": "\"status\": \"In development\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 4,
-      "where": "front matter: targetDate; What's changing",
-      "type": "record",
-      "claim": "The roadmap target is January CY2027.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"January CY2027\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap preview date is October CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": \"October CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
+      "n": 3,
       "where": "front matter: releasePhase",
       "type": "record",
       "claim": "The roadmap lists General Availability and Preview release phases.",
@@ -89,7 +64,18 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 4,
+      "where": "front matter: products; title",
+      "type": "record",
+      "claim": "The roadmap product is Power Apps.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Power Apps\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
@@ -100,10 +86,10 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 6,
       "where": "front matter: platforms",
       "type": "record",
-      "claim": "The roadmap lists Android, iOS and Web platforms.",
+      "claim": "The roadmap platforms are Android, iOS and Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Android\", \"iOS\", \"Web\"]",
@@ -111,10 +97,32 @@
       "fix": null
     },
     {
+      "n": 7,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is January CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap preview date is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 9,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap description lists the Monthly release channel.",
+      "claim": "The roadmap availability table lists the Monthly release channel.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Release Channel\nMonthly",
@@ -125,7 +133,7 @@
       "n": 10,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap description lists version 2701.1.",
+      "claim": "The roadmap availability table lists version 2701.1.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Version\n2701.1",
@@ -134,31 +142,42 @@
     },
     {
       "n": 11,
-      "where": "What's changing",
+      "where": "title; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap feature-scope field mixes administrator-enabled, default-enabled and always-enabled audience values.",
+      "claim": "The extension applies to model-driven apps.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Admins or makers | Users (enabled by admins or makers) | Users (enabled by default) | Users (always enabled)",
+      "quote": "Applies to\nModel-driven apps",
       "severity": null,
       "fix": null
     },
     {
       "n": 12,
-      "where": "front matter: defaultState; What's changing; Open questions",
-      "type": "default",
-      "claim": "Microsoft has not stated the arrival default specifically for the Microsoft 365 files extension.",
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The feature scope field lists admins or makers and several different user-enablement categories.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"form fill assistance\" \"Microsoft 365 files\" \"settings\" \"default\". Read roadmap description and Learn's Use AI form fill assistance and Manage feature settings; existing-feature defaults do not specify the extension's arrival default.",
+      "source": "roadmap record",
+      "quote": "Feature Scope\nAdmins or makers | Users (enabled by admins or makers) | Users (enabled by default) | Users (always enabled)",
       "severity": null,
       "fix": null
     },
     {
       "n": 13,
+      "where": "front matter: defaultState; What's changing; Open questions",
+      "type": "default",
+      "claim": "The default state on arrival of the Microsoft 365 files extension is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"form fill assistance\" \"default\" \"Microsoft 365\" files. Read roadmap, form-filling-assistance, settings-features and powerapps-flow-licensing-faq; existing-feature defaults are documented, but no extension-specific arrival default was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
       "where": "front matter: licensing.model",
       "type": "licensing",
-      "claim": "The documented form fill assistance licensing model is per user.",
+      "claim": "The documented form fill assistance licensing model is per-user.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
       "quote": "The form fill assistance requires specific user licenses based on the product.",
@@ -166,10 +185,10 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 15,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Learn requires a Power Apps premium license for a Power Apps model-driven app user.",
+      "claim": "Form fill assistance in Power Apps model-driven apps requires a Power Apps premium licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
       "quote": "Power Apps model-driven app: The user must have a Power Apps premium license.",
@@ -177,10 +196,10 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 16,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Learn requires a Dynamics 365 enterprise or premium license for a Dynamics 365 model-driven app user.",
+      "claim": "Form fill assistance in Dynamics 365 model-driven apps requires a Dynamics 365 enterprise or premium licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
       "quote": "Dynamics 365 model-driven app: The user must have a Dynamics 365 enterprise or premium license as outlined in Dynamics 365 License Guide.",
@@ -188,10 +207,10 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 17,
       "where": "front matter: licensing.notes",
       "type": "licensing",
-      "claim": "Under the documented license enforcement, users without the required license do not see the feature.",
+      "claim": "Users without the required licence do not see the feature.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
       "quote": "If the user doesn't have the license, the feature is hidden.",
@@ -199,10 +218,10 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 18,
       "where": "front matter: licensing.notes",
-      "type": "behaviour",
-      "claim": "License enforcement rolls out gradually following general availability.",
+      "type": "licensing",
+      "claim": "Licence enforcement gradually rolls out following general availability.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
       "quote": "This license enforcement gradually rolls out following the feature's general availability.",
@@ -210,120 +229,10 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The environment form fill assistance control is moving to Power Platform admin center > Copilot > Settings > Power Apps > Data entry.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance#admin-control",
-      "quote": "The primary admin control for form fill assistance is moving to the Power Platform admin center under Copilot > Settings > Power Apps > Data entry.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 19,
-      "where": "controls[0].api; Governance controls prose and table",
-      "type": "absence",
-      "claim": "No API for the Copilot Data entry environment control is documented as of November 2026.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"form fill assistance\" \"Data entry\" \"API\"; Power Platform form fill assistance Data entry environment API PowerShell. Opened form-filling-assistance, settings-features, copilot-hub and get-update-setting-value-using-code; no mapping to the new Data entry control.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The legacy AI form fill assistance section is under Manage > Environments > environment > Settings > Product > Features in the Power Platform admin center.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/settings-features#ai-form-fill-assistance",
-      "quote": "In the navigation pane, select Manage. ... In the Manage pane, select Environments. ... On the Environments page, select an environment. ... In the command bar, select Settings. ... Expand Product, and then select Features. ... AI form fill assistance",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "controls[1].api; Governance controls table",
-      "type": "absence",
-      "claim": "An API equivalent for the legacy environment form fill assistance switch is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"AI form fill assistance\" \"PowerShell\" \"environment\"; \"form fill assistance\" \"environment\" \"SaveSettingValue\". Read settings-features, form-filling-assistance and the client setting API; no documented equivalent for this legacy environment switch.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "controls[1].note; Governance controls table",
-      "type": "behaviour",
-      "claim": "Legacy environment controls are being removed in favor of the Copilot settings experience.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/settings-features#ai-form-fill-assistance",
-      "quote": "Admin controls for the AI form fill assistance feature are changing. The primary admin control moves to Copilot > Settings > Power Apps > Data entry.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "controls[2].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Makers can configure the app's Form fill assist toolbar under App designer > Settings > Features.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties",
-      "quote": "When you select Settings from the command bar, select Features to enable or disable model-driven app features for the app. ... Form fill assist toolbar.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "controls[2].api; Governance controls table",
-      "type": "command",
-      "claim": "Xrm.Utility.getGlobalContext().saveSettingValue(\"FormFileUploadEnabled\", true, { overrideScope: 2, solutionUniqueName: \"<solution>\" }) uses the documented method and options to save a setting for the current app.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/get-update-setting-value-using-code",
-      "quote": "Xrm.Utility.getGlobalContext().saveSettingValue(settingName, value, saveSettingOptions).then(successCallback, errorCallback); ... Use 2 to add or update a setting app value.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "controls[2].api; Governance controls prose and table",
-      "type": "applicability",
-      "claim": "FormFileUploadEnabled is the app setting for the form fill assist toolbar, separate from the new primary environment control.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance#admin-control",
-      "quote": "Smart paste (FormPredictSmartPasteEnabled) and form fill assist toolbar (FormFileUploadEnabled) app settings ... You can now configure these settings at the app level",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "controls[2].note; Governance controls table",
-      "type": "behaviour",
-      "claim": "App setting changes in the designer require saving and publishing the app.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties",
-      "quote": "You must select Publish to activate an app settings change. ... Save and Publish the app.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "controls[3].ui; controls[3].api; Governance controls table",
-      "type": "absence",
-      "claim": "Neither an environment UI switch nor an API switch specific to Microsoft 365 files as a form fill source is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"form fill assistance\" \"Microsoft 365 files\"; \"form fill assistance\" \"Microsoft 365 files\" \"settings\" \"default\". Opened form-filling-assistance, settings-features and copilot-hub; no extension-specific UI or API control found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
       "where": "What's changing",
       "type": "availability",
-      "claim": "Learn describes existing form fill assistance as generally available in Dynamics 365 apps.",
+      "claim": "Learn describes current form fill assistance as generally available in Dynamics 365 apps.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
       "quote": "This feature is generally available in Dynamics 365 apps.",
@@ -331,10 +240,10 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 20,
       "where": "What's changing",
       "type": "availability",
-      "claim": "Learn describes existing form fill assistance as production-ready preview in Power Apps.",
+      "claim": "Learn describes current form fill assistance as production-ready preview in Power Apps.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
       "quote": "This feature is in production ready preview in Power Apps.",
@@ -342,21 +251,43 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 21,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Current form fill assistance uses app usage, smart paste and user-provided files as suggestion sources.",
+      "claim": "Current form fill suggestions can be based on app usage.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/common/faq-from-filling-assistance",
-      "quote": "based on the data they frequently use, or based on text or image they have copied and used smart paste (via button or keyboard shortcut) to paste into the form, or based on the file contents the user provides through the files capability.",
+      "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
+      "quote": "Based on the user's usage of the app, what information is already available in the form, and their frequently used data.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
+      "n": 22,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The current Files capability supports txt, docx, csv, pdf and image files.",
+      "claim": "Current form fill suggestions can use smart paste as a source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
+      "quote": "Based on the copied text the user provides through the Smart paste capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Current form fill suggestions can use user-provided files as a source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
+      "quote": "Based on the file contents the user provides through the Files capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The current files capability supports txt, docx, csv, pdf and image files.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
       "quote": "Supported file types are .txt, .docx, .csv, .pdf, .png, .jpg, .jpeg, and .bmp.",
@@ -364,10 +295,10 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 25,
       "where": "What's changing; Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "The current Files capability does not support files classified with sensitivity labels.",
+      "claim": "The current files capability does not support files classified with sensitivity labels.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
       "quote": "Files classified with sensitivity labels aren't supported.",
@@ -375,32 +306,32 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Risk assessment: Data exposure; Open questions",
+      "n": 26,
+      "where": "What's changing; Open questions: sensitivity labels",
       "type": "absence",
-      "claim": "The supported Microsoft 365 file locations and file-access boundaries of the planned extension are not documented.",
+      "claim": "Microsoft has not confirmed that current file limits and sensitivity-label behaviour describe the Microsoft 365 files extension.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"form fill assistance\" \"Microsoft 365 files\" \"access\". Read roadmap record and form-filling-assistance; uploaded files and Copilot-chat context are described, but no file locations or access mechanism for the roadmap extension.",
+      "quote": "Searched: \"form fill assistance\" \"Microsoft 365 files\" default licensing source locations permissions sensitivity labels. Opened form-filling-assistance and its FAQ; they describe user-provided files and a separate Copilot chat experience, not this extension's final limits.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
-      "where": "What's changing; Risk assessment: Security & identity; Open questions",
+      "n": 27,
+      "where": "Risk assessment: Data exposure",
       "type": "absence",
-      "claim": "Microsoft has not confirmed that current Files limits, including sensitivity-label handling, define the Microsoft 365 files extension.",
+      "claim": "Microsoft has not documented the Microsoft 365 files extension's file-access boundaries.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"form fill assistance\" \"Microsoft 365 files\"; \"form fill assistance\" \"Microsoft 365 files\" \"access\". Read roadmap record, form-filling-assistance and its FAQ; no passage specifies the extension's label handling or carries existing limits forward.",
+      "quote": "Searched: \"form fill assistance\" \"Microsoft 365 files\" default licensing source locations permissions sensitivity labels; \"Microsoft 365 files\" \"form\" \"Power Apps\". Read form-filling-assistance and its FAQ; no file-access boundaries for the roadmap extension were found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 35,
+      "n": 28,
       "where": "Risk assessment: Autonomy & actions; rationale: risk",
       "type": "behaviour",
-      "claim": "Suggestions are not saved until users accept them.",
+      "claim": "Suggestions are not saved until the user accepts them.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
       "quote": "Suggestions are entirely optional and aren't saved in the app until you accept them.",
@@ -408,18 +339,18 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Risk assessment: Change & support; rationale: risk",
+      "n": 29,
+      "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "AI-generated suggestions need user review for accuracy and appropriateness.",
+      "claim": "AI suggestions require user review for accuracy and appropriateness.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/common/faq-from-filling-assistance",
-      "quote": "Users are always required to review suggestions and explicitly accept the suggestions that are accurate and appropriate.",
+      "quote": "Users should ensure these suggestions are accurate and appropriate before accepting them.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
+      "n": 30,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "Fields with column security are not currently supported.",
@@ -430,7 +361,7 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 31,
       "where": "Cost and licensing",
       "type": "behaviour",
       "claim": "Usage may be throttled.",
@@ -441,21 +372,21 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 32,
       "where": "Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "Additional licensing or charges specifically for the Microsoft 365 files source have not been published.",
+      "claim": "An additional charge specific to the Microsoft 365 files source is not yet published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"form fill assistance\" \"Microsoft 365 files\" \"price\"; Power Apps licensing form fill assistance Microsoft 365 files Copilot Credits consumption pricing. Read form-filling-assistance licensing and pricing excerpts; no extension-specific charge found.",
+      "quote": "Searched: \"form fill assistance\" \"Microsoft 365 files\" pricing credits charge license. Opened form-filling-assistance and powerapps-flow-licensing-faq, including its form-fill licensing section; no additional charge specific to this source was found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 40,
+      "n": 33,
       "where": "Scope",
       "type": "availability",
-      "claim": "Current Learn prerequisites describe form fill assistance for web apps with the modern look enabled.",
+      "claim": "The documented current form fill experience is available in web apps with the modern look enabled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
       "quote": "Form fill assistance is available for all apps on the web where the modern, refreshed look is turned on.",
@@ -463,10 +394,10 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 34,
       "where": "Scope",
       "type": "applicability",
-      "claim": "Allow form fill assistance must be enabled for a column to receive form fill assistance.",
+      "claim": "The Allow form fill assistance column property must be enabled for the affected column.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance",
       "quote": "The Allow form fill assistance column property enabled for the column where form fill assistance occurs.",
@@ -474,21 +405,131 @@
       "fix": null
     },
     {
-      "n": 42,
-      "where": "Governance controls prose",
-      "type": "applicability",
-      "claim": "Makers can configure the preview Allow form fill assistance property per column.",
+      "n": 35,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The environment form fill control is reached in Power Platform admin center through Copilot > Settings > Power Apps > Data entry.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/create-edit-field-portal",
-      "quote": "Allow form fill assistance (preview) ... This is a preview feature. When enabled, users receive suggestions generated by AI for columns that support form fill assistance in main and quick create forms.",
+      "source": "https://learn.microsoft.com/power-apps/user/form-filling-assistance#admin-control",
+      "quote": "The primary admin control for form fill assistance is moving to the Power Platform admin center under Copilot > Settings > Power Apps > Data entry.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].api; Governance controls prose",
+      "type": "absence",
+      "claim": "An API for the Copilot Data entry control is not documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"form fill assistance\" \"Data entry\" Power Platform API PowerShell pac admin; site:learn.microsoft.com/power-platform \"API\" \"data entry agent\". Read Copilot hub, pac admin, PowerShell support and Environment Management Settings update reference; no mapped control API found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The legacy environment switch remains reachable through Manage > Environments > environment > Settings > Product > Features > AI form fill assistance.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/settings-features#ai-form-fill-assistance",
+      "quote": "The following settings are removed from the Environment > Settings > Features page. Access them through Manage model-driven app settings in the app designer or Solution Explorer App Settings.",
+      "severity": "blocker",
+      "fix": "Remove the legacy environment switch row from both controls and the rendered table. Its cited page now says those settings are removed from the environment Features page; retain the separately documented Copilot Data entry and app toolbar rows."
+    },
+    {
+      "n": 38,
+      "where": "controls[1].api; Governance controls table",
+      "type": "absence",
+      "claim": "No API is documented for the legacy environment switch as the row names it.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"form fill assistance\" environment settings PowerShell API PowerAppsFormPredict; \"FormPredictSmartPasteEnabled\" \"FormFileUploadEnabled\" environment SaveSettingValue. Read settings-features, client API and environment settings update reference; no API for the named legacy switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[1].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "Administration is moving from the legacy environment Features page to Copilot settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/settings-features#ai-form-fill-assistance",
+      "quote": "Admin controls for the AI form fill assistance feature are changing. The primary admin control moves to Copilot > Settings > Power Apps > Data entry.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The maker-side route is App designer > Settings > Features > Form fill assist toolbar.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/create-edit-app#play-your-app",
+      "quote": "Select Solutions. ... Choose the solution that contains the model-driven app where editing is required. ... On the left navigation pane select Apps, select a model-driven app, and then on the toolbar select Edit.",
+      "severity": "blocker",
+      "fix": "Replace the path in controls[2].ui and the table with 'Solutions > solution > Apps > app > Edit > Settings > Features > Form fill assist toolbar'. Cite https://learn.microsoft.com/power-apps/maker/model-driven-apps/create-edit-app for entering the designer, retaining app-properties for the setting itself."
+    },
+    {
+      "n": 41,
+      "where": "controls[2].api; Governance controls table and prose",
+      "type": "command",
+      "claim": "saveSettingValue(\"FormFileUploadEnabled\", true, { overrideScope: 2, solutionUniqueName: \"<solution>\" }) sets the current app's toolbar setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/get-update-setting-value-using-code",
+      "quote": "Xrm.Utility.getGlobalContext().saveSettingValue(settingName, value, saveSettingOptions).then(successCallback, errorCallback); ... Use 2 to add or update a setting app value.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[2].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "Designer setting changes require saving and publishing the app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties",
+      "quote": "You must select Publish to activate an app settings change. ... Save and Publish the app.",
       "severity": null,
       "fix": null
     },
     {
       "n": 43,
+      "where": "controls[3].ui; controls[3].api; Governance controls table",
+      "type": "absence",
+      "claim": "No separate UI or API switch specific to Microsoft 365 files as a source is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"form fill assistance\" \"Microsoft 365 files\" admin settings API switch. Opened form-filling-assistance, settings-features, app-properties and Copilot hub; found general form-fill and toolbar controls, not a source-specific switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
       "where": "Governance controls prose",
       "type": "applicability",
-      "claim": "The column property can be disabled for columns containing sensitive information.",
+      "claim": "Makers can configure Allow form fill assistance (preview) per column.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/create-edit-field-portal",
+      "quote": "Allow form fill assistance (preview) ... When enabled, users receive suggestions generated by AI for columns that support form fill assistance in main and quick create forms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls prose",
+      "type": "behaviour",
+      "claim": "The per-column property is the finest-grained control.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"form fill assistance\" \"column\" \"granular\". Opened create-edit-field-portal, form-filling-assistance, app-properties and Copilot hub; they document column and broader settings but do not state that no finer-grained control exists.",
+      "severity": "major",
+      "fix": "Remove 'which is the finest-grained control and the one to use for sensitive fields' and replace it with 'and disable it for columns that might contain sensitive information'."
+    },
+    {
+      "n": 46,
+      "where": "Governance controls prose",
+      "type": "applicability",
+      "claim": "The column property can be disabled for columns that might contain sensitive information.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/create-edit-field-portal",
       "quote": "You can disable for columns that might contain sensitive information, such as email address.",
@@ -496,21 +537,10 @@
       "fix": null
     },
     {
-      "n": 44,
-      "where": "Governance controls prose",
+      "n": 47,
+      "where": "Governance controls prose: usage",
       "type": "behaviour",
-      "claim": "The per-column property is the finest-grained control.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"form fill assistance\" \"column\" \"granular\". Opened create-edit-field-portal, form-filling-assistance and copilot-hub; these document column, app and environment controls but do not state the comparative claim.",
-      "severity": "major",
-      "fix": "Replace the sentence with: 'Makers can also set Allow form fill assistance (preview) per column and disable it for columns that might contain sensitive information.'"
-    },
-    {
-      "n": 45,
-      "where": "Governance controls prose",
-      "type": "behaviour",
-      "claim": "The Power Platform admin center's Copilot area reports data entry agent usage.",
+      "claim": "The Power Platform admin center Copilot area reports usage for the data entry agent.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub",
       "quote": "Admins can view usage analytics for the data entry agent and data exploration agent on the Power Apps page to understand the value that end users are getting from AI in Power Apps.",
@@ -518,44 +548,44 @@
       "fix": null
     },
     {
-      "n": 46,
-      "where": "Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Suggestions include citations users can review.",
+      "n": 48,
+      "where": "Open questions: Microsoft 365 file locations",
+      "type": "absence",
+      "claim": "Supported Microsoft 365 file locations for the roadmap extension remain undocumented.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/common/faq-from-filling-assistance",
-      "quote": "Suggestions also include citations for reference by users.",
+      "source": null,
+      "quote": "Searched: \"Microsoft 365 files\" \"form\" \"Power Apps\"; \"form fill assistance\" \"Microsoft 365 files\" default licensing source locations permissions sensitivity labels. Read form-filling-assistance and its FAQ; no extension-specific supported-location list found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 47,
+      "n": 49,
+      "where": "rationale: cost",
+      "type": "absence",
+      "claim": "Licensing specific to the Microsoft 365 files extension has not yet been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"form fill assistance\" \"Microsoft 365 files\" pricing credits charge license. Read the feature licensing section and Power Platform licensing FAQs; they document existing user licences but do not identify a licence specific to the new source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
       "where": "Governance guidance: Before rollout; Governance controls",
       "type": "consistency",
       "claim": "The checklist directs readers to review column properties, but the controls table has no column-property row.",
       "status": "contradicted",
       "source": "page",
-      "quote": "Review environment form fill settings and column properties. ... Table rows: Form fill assistance (data entry agent) per environment; Legacy environment switch; Form fill assist toolbar for an app; Switch specific to Microsoft 365 files as a source.",
+      "quote": "Review environment form fill settings and column properties. ... Table rows cover environment Data entry, the legacy environment switch, the app toolbar and a Microsoft 365 files source switch, but not column properties.",
       "severity": "minor",
-      "fix": "The 'Review environment form fill settings and column properties' checklist step has no row for column properties. Remove 'and column properties' from that step; do not add a control row as part of this correction."
-    },
-    {
-      "n": 48,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap record was modified on 2026-11-04T00:02:09.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-11-04T00:02:09\"",
-      "severity": null,
-      "fix": null
+      "fix": "Remove 'and column properties' from the checklist step, leaving 'Review environment form fill settings.' Do not add a control row."
     }
   ],
   "precheck": {
-    "at": "2026-11-17T00:01:32.786Z",
+    "at": "2026-11-19T06:20:52.476Z",
     "summary": {
       "links": 10,
-      "unreachable": 0,
+      "unreachable": 3,
       "uiPaths": 3,
       "uiPathsWithMissingWords": 0,
       "apiCalls": 1,
@@ -575,13 +605,13 @@
       },
       {
         "url": "https://learn.microsoft.com/power-apps/maker/common/faq-from-filling-assistance",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-apps/maker/data-platform/create-edit-field-portal",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties",
@@ -610,8 +640,8 @@
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub#settings",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -676,6 +706,12 @@
       "date": "2026-11-16",
       "status": "held",
       "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "verified-with-gaps",
+      "version": 3,
       "model": "gpt-6.1-sol"
     }
   ]

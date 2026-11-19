@@ -61,14 +61,17 @@ sources:
   - title: "Govern Copilot Credit consumption for agents powered by the Microsoft Copilot harness"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/guidance/govern-credit-consumption"
     kind: "learn"
+  - title: "Entitlement Insight - REST API (Power Platform API)"
+    url: "https://learn.microsoft.com/rest/api/power-platform/licensing/entitlement-insight"
+    kind: "learn"
 videos: []
 related: ["data-policies","copilot-credits","microsoft-dataverse-enable-semantic-data-understanding-for-agentic-use","work-iq","copilot-studio-cost-management-m365-admin-center"]
 controls:
-  - governs: "Whether Dataverse search (required for Dataverse knowledge) is on in an environment"
+  - governs: "Inspect whether Dataverse search is enabled in an environment"
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Manage > Environments > environment > Settings > Product > Features > Dataverse search"
+      path: "Manage > Environments > environment > Settings > Product > Features > Dataverse search > Turn on search indexing to support Dataverse intelligence (Work IQ) in AI and agent experiences"
       docs: "https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization"
     api:
       kind: "rest"
@@ -82,10 +85,10 @@ controls:
       path: "Licensing > Products > Copilot Studio > Summary > Manage Agents"
       docs: "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity"
     api: null
-    note: "General control: Microsoft has not confirmed anything specific to Dataverse knowledge. Limits are not applied instantly."
+    note: "Monthly limits apply to each Copilot Studio agent, whether its environment uses prepaid capacity or pay-as-you-go billing. Limits are not applied instantly."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-19"
 roadmapModified: "2026-08-10T22:43:02"
 changes:
   - date: "2026-11-18"
@@ -96,19 +99,25 @@ changes:
     note: "Corrected after verification: users' own access governs what Dataverse knowledge returns, data policies apply to agents in scope, billing qualified by harness, and Dataverse search storage counts towards tenant entitlements."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 71 statements not yet confirmed"
-version: 2
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 76 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-19"
+    note: "Corrected after verification: Dataverse search path now ends at the agent-experience option and the control is described as an inspection; the credit-limit note now says limits apply to each agent; added the agent-flow qualification; removed the record-access checklist step."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 81 statements not yet confirmed"
+version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-18"
-  version: 2
+  date: "2026-11-19"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 71
-  confirmed: 71
+  claims: 81
+  confirmed: 81
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "46edaf9d093820d7a2e10dbc7f166477"
+  hash: "bb8fab71aa93f9ffc2cba7df2ff609be"
 ---
 
 ## What's changing
@@ -152,7 +161,7 @@ Expect two practical effects. Makers will ask for Dataverse search to be turned 
 
 For standard-harness agents, eligible employee-facing usage is included in the Microsoft Copilot user subscription licence when the agent uses that licensed user's authenticated identity, subject to fair usage limits. Usage by agents powered by the Microsoft Copilot harness is not included with a user's Microsoft 365 Copilot licence.
 
-**Caps.** Admins can set a monthly consumption limit per Copilot Studio agent in the Power Platform admin center, with notifications and a hard stop that turns the agent off. Learn notes that limits are not applied instantly. See the second row of the controls table.
+**Caps.** Admins can set a monthly consumption limit per Copilot Studio agent in the Power Platform admin center, with notifications and a hard stop that turns the agent off. An agent's monthly limit does not stop the agent flows that the agent calls; agent flows are billed and checked for capacity separately. Learn notes that limits are not applied instantly. See the second row of the controls table.
 
 **Indirect cost.** Learn says creating a Dataverse search index incurs extra Dataverse capacity costs; that warning sits in the preview section on multiline text and file columns. Dataverse search also counts towards tenant storage entitlements and is part of database storage consumption; this platform rule is not limited to the multiline-text and file preview. Admins can see which tables are indexed and how much capacity each consumes, per the Dataverse search page. Any price specific to this feature is not yet published.
 
@@ -168,7 +177,6 @@ For standard-harness agents, eligible employee-facing usage is included in the M
 
 ### Before rollout
 - Check which production and non-production environments have Dataverse search turned on, and decide where Dataverse tables may ground agents.
-- Verify the intended users can access the selected records in the tables makers are likely to add.
 - Decide the monthly Copilot Credit limits for agents that will use Dataverse knowledge, and who approves increases.
 
 ### At rollout
@@ -185,8 +193,8 @@ For standard-harness agents, eligible employee-facing usage is included in the M
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Dataverse search (required for Dataverse knowledge) is on in an environment</strong><br><small>Environment</small><br><small class="controls__note">Learn gives the steps for a system administrator. The API call reads the flag; the page documents it as a check, not as a way to change it.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Dataverse search <a href="https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>GET [Organization URI]/api/data/v9.2/organizations?$select=isexternalsearchindexenabled</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/search/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Monthly Copilot Credit limit and hard stop for an individual agent</strong><br><small>Agent</small><br><small class="controls__note">General control: Microsoft has not confirmed anything specific to Dataverse knowledge. Limits are not applied instantly.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Summary › Manage Agents <a href="https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Inspect whether Dataverse search is enabled in an environment</strong><br><small>Environment</small><br><small class="controls__note">Learn gives the steps for a system administrator. The API call reads the flag; the page documents it as a check, not as a way to change it.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Dataverse search › Turn on search indexing to support Dataverse intelligence (Work IQ) in AI and agent experiences <a href="https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>GET [Organization URI]/api/data/v9.2/organizations?$select=isexternalsearchindexenabled</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/search/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Monthly Copilot Credit limit and hard stop for an individual agent</strong><br><small>Agent</small><br><small class="controls__note">Monthly limits apply to each Copilot Studio agent, whether its environment uses prepaid capacity or pay-as-you-go billing. Limits are not applied instantly.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Summary › Manage Agents <a href="https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -194,7 +202,7 @@ Dataverse search is the control Learn names for availability: if it is off, make
 
 The **Knowledge sources for agents** setting (Power Platform admin center > Security > Data and privacy) is a preview control at environment and environment group level. It lists SharePoint + OneDrive, Public websites and Documents; Dataverse is not among them. Microsoft has not confirmed that it governs Dataverse knowledge, so do not treat it as a control over this feature. Data policies apply to Copilot Studio agents in the environments within their scope; the cited knowledge-source settings do not document a Dataverse-specific source-type option.
 
-Per-agent limits apply to the agent, not the table. Microsoft Learn documents no API for setting the limit at the time of writing (November 2026); the Power Platform API reference lists consumption read operations (entitlement insight).
+Per-agent limits apply to the agent, not the table. Microsoft Learn documents no API for setting the limit at the time of writing (November 2026); the Power Platform API reference lists consumption read operations ([entitlement insight](https://learn.microsoft.com/rest/api/power-platform/licensing/entitlement-insight)).
 
 ## Open questions
 
@@ -207,8 +215,8 @@ cost: Variable. Copilot Studio bills agent answers in Copilot Credits (generativ
 impact: Medium. Makers who build agents over Dataverse data and the users who ask those agents notice it; admins who own Dataverse environments need to know the search setting it depends on.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls / behaviour: The Power Platform API Entitlement Insight reference lists consumption read operations. | Found: Get Tenant Resource Consumption By User | Get resource consumption by entitlement and user ID (deprecated). | Fix: Add https://learn.microsoft.com/en-us/rest/api/power-platform/licensing/entitlement-insight to sources and link 'entitlement insight' to it in Governance controls. | Source: https://learn.microsoft.com/en-us/rest/api/power-platform/licensing/entitlement-insight
+- [supported, minor] Risk assessment: Data exposure / behaviour: A fresh index needs a full synchronization when search is turned back on. | Found: If you turn on Dataverse search after it's been off for 12 hours, it creates a fresh index that needs to go through a full sync. | Fix: Replace the second clause with: 'If Dataverse search is turned back on after being off for 12 hours, it creates a fresh index that needs a full sync.' This preserves the timing qualification in https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization. | Source: https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization
 -->

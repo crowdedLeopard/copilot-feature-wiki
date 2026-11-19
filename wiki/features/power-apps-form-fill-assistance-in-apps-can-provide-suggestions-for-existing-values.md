@@ -34,6 +34,9 @@ sources:
   - title: "Manage model-driven app settings in the app designer"
     url: "https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties"
     kind: "learn"
+  - title: "Customize the command bar using command designer"
+    url: "https://learn.microsoft.com/power-apps/maker/model-driven-apps/use-command-designer"
+    kind: "learn"
   - title: "Create and edit columns in Dataverse using Power Apps"
     url: "https://learn.microsoft.com/power-apps/maker/data-platform/create-edit-field-portal"
     kind: "learn"
@@ -44,7 +47,7 @@ sources:
     url: "https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub"
     kind: "learn"
 videos: []
-related: ["power-apps-form-fill-assistance-supports-more-field-types","power-apps-form-fill-assistance-using-m365-files-in-model-driven-apps","power-apps-form-fill-assistance-using-speech-as-input-in-model-driven-apps","managed-environments"]
+related: ["power-apps-form-fill-assistance-using-m365-files-in-model-driven-apps","power-apps-form-fill-assistance-using-speech-as-input-in-model-driven-apps","managed-environments"]
 controls:
   - governs: "Whether form fill assistance is available in an environment"
     scope: "environment"
@@ -58,7 +61,7 @@ controls:
     scope: "app"
     ui:
       surface: "Power Apps (maker)"
-      path: "Settings > Features > Form fill assist toolbar"
+      path: "Solutions > solution > app > Edit > Settings > Features > Form fill assist toolbar"
       docs: "https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties"
     api:
       kind: "other"
@@ -75,26 +78,32 @@ controls:
     note: "Maker-side, preview property. The page does not say whether it covers suggestions on fields that already hold values."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-19"
 roadmapModified: "2026-10-21T23:02:10"
 changes:
   - date: "2026-11-18"
     note: "New briefing: planned form fill suggestions for fields that already hold values, with the documented settings, column property and licence."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 68 statements confirmed"
-version: 1
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 70 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-19"
+    note: "Corrected the maker path to the per-app form fill assist toolbar setting so it starts at Solutions in Power Apps."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 71 statements confirmed"
+version: 2
 verification:
   status: "verified"
-  date: "2026-11-18"
-  version: 1
+  date: "2026-11-19"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 68
+  claims: 71
+  confirmed: 71
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "3d634a9dacacf93472b60c906f0efcd2"
+  hash: "1eceabd31fdba694d4fa86fdfd4986ec"
 ---
 
 ## What's changing
@@ -175,7 +184,7 @@ Rollout: the roadmap target is December CY2026. Learn's prerequisites are at lea
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether form fill assistance is available in an environment</strong><br><small>Environment</small><br><small class="controls__note">Learn says this control is moving here and is rolling out gradually. The older Environment &gt; Settings &gt; Product &gt; Features location is described as removed.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Power Apps › Data entry <a href="https://learn.microsoft.com/power-apps/user/form-filling-assistance" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Form fill assist toolbar for one model-driven app</strong><br><small>App</small><br><small class="controls__note">Maker-side, per app. Learn names the app settings FormPredictSmartPasteEnabled and FormFileUploadEnabled; the API row is the general client API for setting values.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Settings › Features › Form fill assist toolbar <a href="https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Xrm.Utility.getGlobalContext().saveSettingValue(settingName, value, saveSettingOptions)</code> <a href="https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/get-update-setting-value-using-code" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Form fill assist toolbar for one model-driven app</strong><br><small>App</small><br><small class="controls__note">Maker-side, per app. Learn names the app settings FormPredictSmartPasteEnabled and FormFileUploadEnabled; the API row is the general client API for setting values.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Solutions › solution › app › Edit › Settings › Features › Form fill assist toolbar <a href="https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Xrm.Utility.getGlobalContext().saveSettingValue(settingName, value, saveSettingOptions)</code> <a href="https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/get-update-setting-value-using-code" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which Dataverse columns can receive suggestions</strong><br><small>Maker</small><br><small class="controls__note">Maker-side, preview property. The page does not say whether it covers suggestions on fields that already hold values.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Tables › table › Columns › column › Allow form fill assistance (preview) <a href="https://learn.microsoft.com/power-apps/maker/data-platform/create-edit-field-portal" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>

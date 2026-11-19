@@ -112,15 +112,17 @@ changes:
     note: "Correction: the cost section and cost rationale now cite Microsoft's Work IQ GA licensing notice for the variable and static Copilot Credits components."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 70 statements confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 75 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "verified-with-gaps"
+  date: "2026-11-19"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 70
+  claims: 75
+  confirmed: 75
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -223,4 +225,10 @@ Work IQ MCP policy is tenant-level only in the initial release: per-user, per-ap
 risk: Medium. Work IQ would hand work to custom agents and third-party tool calls, and Microsoft has not said what identity or data they use, though Work IQ MCP policy, tool blocking and agent blocking are documented. The default on arrival is not stated.
 cost: Variable. The Work IQ API page says use is paid through Copilot Credits; Microsoft has not published the specific charging treatment for invoking custom or third-party-tool agents.
 impact: Low. Work IQ's A2A, MCP and REST protocols are aimed at developers building agents, so users notice it only through agents built on it. The roadmap lists the Web platform only.
+-->
+
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[3].ui; Governance controls; Governance guidance: Before rollout / admin-path: The cited Admin agent page documents agent blocking through Microsoft 365 admin center > Agents > Registry > agent > Block. | Found: Select to Agents > Registry. Locate Microsoft 365 Admin in the registry. Use the available agent actions to Block the agent or to scope deployment to specific users or groups instead of the entire organization. | Fix: Keep the cited route and its Admin-agent qualification. Add to controls[3].note: 'The general agent-actions page instead gives Agents > All agents > agent > Block.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions, which documents that alternative route. | Source: https://learn.microsoft.com/copilot/manage/copilot-ai-admin-agent
 -->

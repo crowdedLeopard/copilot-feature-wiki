@@ -119,15 +119,17 @@ changes:
     note: "Corrected after verification: removed the unsupported opt-in statement, qualified spending-policy creation and Work IQ service principal setup, and removed two checklist items the controls table does not cover."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 98 statements confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 89 statements not yet confirmed"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "verified-with-gaps"
+  date: "2026-11-19"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 98
-  confirmed: 98
+  claims: 89
+  confirmed: 89
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -232,4 +234,10 @@ The Cost Management Graph APIs are in beta, and Microsoft says APIs under /beta 
 risk: Medium. Tasks that run beyond a single request extend how long an agent acts on Microsoft 365 data, and Learn does not yet say how identity, result storage or audit apply to them.
 cost: Variable. Work IQ API use consumes Copilot Credits shared with other services; Microsoft has not published whether long-running tasks are priced differently.
 impact: Low. The roadmap lists the Developer platform; Microsoft has not stated what happens on arrival.
+-->
+
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[1].api; Governance controls / command: POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies creates a spending policy with credit limits and selected services. | Found: POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies; Required properties are displayName, periodLimit, perUserLimit, and serviceSettings. | Fix: Append to controls[1].note: "The request body sets periodLimit, perUserLimit and serviceSettings." These deciding properties are documented at https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create
 -->

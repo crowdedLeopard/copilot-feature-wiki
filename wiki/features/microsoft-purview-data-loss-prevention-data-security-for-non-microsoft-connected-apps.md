@@ -9,7 +9,7 @@ status: "in-development"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Web"]
-targetDate: "December CY2026"
+targetDate: "March CY2027"
 previewDate: "October CY2026"
 risk: "medium"
 cost: "variable"
@@ -18,9 +18,9 @@ defaultState: "admin-opt-in"
 action: "prepare"
 licensing:
   model: "mixed"
-  notes: "MC1449180 says to have the required Enterprise tier Purview licensing and notes billing through the Purview At Rest Protection pay-as-you-go meter. Learn's feature pages point to licensing guidance without naming a plan. The per-unit price is not yet published on the pages read."
+  notes: "MC1449180 says to have the required Enterprise tier Purview licensing and notes billing through the Purview At Rest Protection pay-as-you-go meter. Learn's feature pages point to licensing guidance without naming a plan. The per-unit price is not yet published."
 audiences: ["security","compliance","finops","m365-admin"]
-tags: ["purview","dlp","information-protection","sensitivity-labels","pay-as-you-go","integration","defender-for-cloud-apps","data-governance"]
+tags: ["purview","dlp","information-protection","sensitivity-labels","auto-labeling","pay-as-you-go","integration","defender-for-cloud-apps","data-governance"]
 sources:
   - title: "Microsoft 365 Roadmap 568075"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=568075"
@@ -43,20 +43,11 @@ sources:
   - title: "Learn about Microsoft Purview billing models"
     url: "https://learn.microsoft.com/purview/purview-billing-models"
     kind: "learn"
-  - title: "Enable Microsoft Purview pay-as-you-go features for new customers"
-    url: "https://learn.microsoft.com/purview/purview-payg-subscription-based-enablement"
-    kind: "learn"
-  - title: "Tutorial: Create and manage budgets"
-    url: "https://learn.microsoft.com/azure/cost-management-billing/costs/tutorial-acm-create-budgets"
-    kind: "learn"
   - title: "Get started with Microsoft Defender for Cloud Apps"
     url: "https://learn.microsoft.com/defender-cloud-apps/get-started"
     kind: "learn"
-  - title: "Connect apps to get visibility and control with Microsoft Defender for Cloud Apps"
-    url: "https://learn.microsoft.com/defender-cloud-apps/enable-instant-visibility-protection-and-governance-actions-for-your-apps"
-    kind: "learn"
-  - title: "Discovered apps API in Microsoft Graph"
-    url: "https://learn.microsoft.com/defender-cloud-apps/discovered-apps-api-graph"
+  - title: "Defender for Cloud Apps REST API"
+    url: "https://learn.microsoft.com/defender-cloud-apps/api-introduction"
     kind: "learn"
   - title: "New-DlpCompliancePolicy"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps"
@@ -65,7 +56,7 @@ sources:
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-autosensitivitylabelpolicy?view=exchange-ps"
     kind: "learn"
 videos: []
-related: ["purview-dlp-block-sensitive-data-in-copilot-web-search"]
+related: ["microsoft-purview-data-loss-prevention-unmanaged-cloud-app-discovery-and-protection-with-m"]
 controls:
   - governs: "DLP policy for non-Microsoft connected apps"
     scope: "tenant"
@@ -90,7 +81,7 @@ controls:
       path: "Settings > Cloud Apps > Connected Apps > App Connectors > + Connect an app"
       docs: "https://learn.microsoft.com/defender-cloud-apps/get-started"
     api: null
-    note: "Prerequisite for any policy on these apps. Each app has its own connector guide. The connector overview also gives Cloud Apps > Connected apps > Connect an app or Add a new connector."
+    note: "Prerequisite for any policy on these apps. Each app has its own connector guide."
   - governs: "Defender for Cloud Apps file policies that overlap the Purview policies"
     scope: "tenant"
     ui:
@@ -112,8 +103,8 @@ controls:
     note: "Today's alternative, not a control over the new dedicated locations. Learn says this location retires on 6 January 2027. Cmdlet needs Compliance Administrator or Compliance Data Administrator."
 confidence: "high"
 created: "2026-11-17"
-updated: "2026-11-17"
-roadmapModified: "2026-11-03T00:14:11"
+updated: "2026-11-19"
+roadmapModified: "2026-11-19T00:53:06"
 changes:
   - date: "2026-11-17"
     note: "First briefing for this item: covers the dedicated DLP and auto-labeling locations, the pay-as-you-go meter and the 6 January 2027 Defender for Cloud Apps file policy retirement."
@@ -127,19 +118,27 @@ changes:
     note: "Correction: replaced the auto-labeling path with the full wizard path from the Learn page, and added the alternative connector route to the connectors row note."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 99 statements not yet confirmed"
-version: 3
+  - date: "2026-11-18"
+    note: "Rollout updated to MC1449180's 18 November 2026 timeline (General Availability from mid-March 2027, previously late December 2026); narrowed the Azure subscription checklist bullet."
+  - date: "2026-11-18"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 93 statements confirmed"
+  - date: "2026-11-19"
+    note: "General Availability target moved to March CY2027 on the roadmap, matching MC1449180's mid-March 2027 start; open question on the gap before the 6 January 2027 file policy retirement updated."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 88 statements not yet confirmed"
+version: 5
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
-  version: 3
+  date: "2026-11-19"
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 99
-  confirmed: 98
+  claims: 88
+  confirmed: 88
   unconfirmed: 0
-  contradicted: 1
+  contradicted: 0
   attempts: 0
-  hash: "4d666d878cc95d75555f7d1b0e97e9dd"
+  hash: "8854c106a1bcd10db473a9b9ca8f9040"
 ---
 
 ## What's changing
@@ -148,15 +147,15 @@ Microsoft Purview is adding dedicated policy locations for non-Microsoft apps, s
 
 Per MC1449180 and Learn, DLP supports Google Workspace, Box, Dropbox, Salesforce, ServiceNow, AWS and Cisco Webex. Auto-labeling supports Google Workspace and Box. The DLP policies detect, monitor and protect sensitive data at rest in these apps. Learn's pages for both capabilities are marked preview and say the apps roll out in phases, so not every app is available in every tenant at the same time.
 
-The roadmap item is In development, with a preview date of October CY2026 and a General Availability target of December CY2026. MC1449180 was updated on 30 October 2026 and gives General Availability for Worldwide beginning in late December 2026 and expected to complete in late December 2026 (both previously late October). It lists no act-by date and says no action is required before rollout. The roadmap lists Worldwide (Standard Multi-Tenant) only, and the platform as Web.
+The roadmap item is In development, with a preview date of October CY2026 and a General Availability target of March CY2027. MC1449180 was updated on 18 November 2026 and gives General Availability for Worldwide beginning in mid-March 2027 (previously late December 2026) and expected to complete by late March 2027. It lists no act-by date and says no action is required before rollout. The roadmap lists Worldwide (Standard Multi-Tenant) only, and the platform as Web.
 
 Separately, Learn says file policies in Defender for Cloud Apps retire on 6 January 2027, and that the **Instances** DLP location is retired on the same date. Policies in Purview and in Defender for Cloud Apps cannot coexist, per Learn, so teams that use file policies today have a migration to plan.
 
 ## Why it matters
 
-This extends the same Purview policy framework to data that sits outside Microsoft 365, so one team can govern sensitive files in Box or Google Workspace the way it governs SharePoint. It also adds a consumption meter: MC1449180 says usage is billed through the Purview At Rest Protection pay-as-you-go meter, so a policy scoped to a large repository carries a cost.
+This extends the same Purview policy framework to data that sits outside Microsoft 365, so one team can govern sensitive files in Box or Google Workspace the way it governs SharePoint. It also adds a consumption meter: MC1449180 says usage is billed through the Microsoft Purview At Rest Protection pay-as-you-go meter, so a policy scoped to a large repository carries a cost.
 
-Nothing in the sources says existing behaviour changes for tenants that create no policy. The pressure comes from the retirement of Defender for Cloud Apps file policies on 6 January 2027: tenants that rely on them need equivalent Purview policies, and Microsoft's notice MC1449180 says to turn off or delete the overlapping file policy before creating the Purview one.
+Nothing in the sources says existing behaviour changes for tenants that create no policy. The pressure comes from the retirement of Defender for Cloud Apps file policies on 6 January 2027, ahead of the March 2027 General Availability that MC1449180 gives: tenants that rely on file policies need equivalent Purview policies, and MC1449180 says to turn off or delete the overlapping file policy before creating the Purview one.
 
 ## Risk assessment
 
@@ -167,7 +166,7 @@ Nothing in the sources says existing behaviour changes for tenants that create n
 
 **Security & identity**
 
-- The apps are reached through Defender for Cloud Apps connectors, so whoever manages a connector affects what Purview can see. Learn lists the Purview roles that create these policies (Compliance administrator, Compliance data administrator, Information Protection, Information Protection Admin, Security administrator) and recommends the fewest permissions; Microsoft has not described which account the connector uses beyond the per-app connector guides.
+- The apps are reached through Defender for Cloud Apps connectors, so whoever manages a connector affects what Purview can see. Learn lists the role groups that create these policies (Compliance administrator, Compliance data administrator, Information Protection, Information Protection Admin, Security administrator) and recommends roles with the fewest permissions.
 
 **Autonomy & actions**
 
@@ -176,7 +175,7 @@ Nothing in the sources says existing behaviour changes for tenants that create n
 
 **Change & support**
 
-- Running a Purview policy and a Defender for Cloud Apps file policy on the same app can cause unexpected enforcement, per MC1449180 and Learn. Sequence the cut-over deliberately.
+- Running a Purview policy and a Defender for Cloud Apps file policy on the same app can cause unexpected enforcement, per MC1449180, and Learn says equivalent policies in both products create enforcement conflicts. Sequence the cut-over deliberately.
 - Auto-labeling for Box and Google Workspace has a documented limit: a label applied by one auto-labeling policy cannot be replaced by a higher-priority label from another auto-labeling policy.
 
 ## Cost and licensing
@@ -185,7 +184,7 @@ Nothing in the sources says existing behaviour changes for tenants that create n
 
 **Meter.** MC1449180 says usage is billed through the Microsoft Purview At Rest Protection pay-as-you-go meter, and that at-rest files in non-Microsoft applications are counted at 1,000 files = 1 data asset. It asks administrators to review the pricing and billing implications before enabling these capabilities. Learn's billing models page says pay-as-you-go billing is Azure based, so the Microsoft 365 tenant must be associated with an active Azure subscription, and that an Azure bill is generated at the end of the month.
 
-**Not yet published.** The price per data asset is not yet published on the pages read. A feature-specific hard cap is not documented. Azure Cost Management supports budgets and alerts for the associated Azure subscription or resource group; these monitor spending but do not stop consumption. Learn's billing page does not mention the At Rest Protection meter by name, so confirm the meter on your Azure bill and in the Microsoft Purview pricing page.
+**Not yet published.** The price per data asset is not yet published. A feature-specific spending cap is not documented on the billing models page at the time of writing (November 2026), which also does not name the At Rest Protection meter, so confirm the meter on your Azure bill and on the Microsoft Purview pricing page.
 
 **Indirect costs.** Admin time to connect apps, rebuild Defender for Cloud Apps file policies in Purview, and monitor alerts.
 
@@ -196,7 +195,7 @@ Nothing in the sources says existing behaviour changes for tenants that create n
 - **Prerequisites:** each app must first be connected through a Defender for Cloud Apps app connector. For auto-labeling, the sensitivity labels must already be published.
 - **Policy rules:** only the Custom policy template is supported, only advanced DLP rules are supported, administrative units are not supported (scope is Full directory), and non-Microsoft app locations cannot be combined with SharePoint, OneDrive, Exchange, Fabric or Devices in the same DLP policy, per Learn.
 - **Roles:** Compliance administrator, Compliance data administrator, Information Protection, Information Protection Admin or Security administrator role group membership, per Learn.
-- **Rollout:** a preview on Learn now; MC1449180 gives General Availability beginning in late December 2026. The roadmap's target is December CY2026 and is a plan, not a shipped date.
+- **Rollout:** a preview on Learn now; MC1449180 gives General Availability beginning in mid-March 2027. The roadmap's target is March CY2027 and is a plan, not a shipped date.
 
 ## Governance guidance
 
@@ -204,13 +203,13 @@ Nothing in the sources says existing behaviour changes for tenants that create n
 
 - Inventory which of the supported apps you use and whether any are connected under **Settings > Cloud Apps > Connected Apps > App Connectors** in the Microsoft Defender portal (row: Defender for Cloud Apps app connectors).
 - List existing Defender for Cloud Apps file policies on the same apps and plan the cut-over to the Purview equivalent (row: Defender for Cloud Apps file policies).
-- Ask finance to review Purview pay-as-you-go pricing and confirm the tenant is linked to an Azure subscription, then agree who owns the At Rest Protection charge.
+- Ask finance to review Purview pay-as-you-go pricing, then agree who owns the At Rest Protection charge.
 - Decide which role group will own these policies and confirm each member holds one of the role groups Learn lists.
 
 ### At rollout
 
 - Connect each supported app through a Defender for Cloud Apps connector before creating a policy (row: Defender for Cloud Apps app connectors).
-- Create DLP policies with the **Custom** template and advanced rules, scoped to specific instances first (row: DLP policy for non-Microsoft connected apps). Once Microsoft documents it for these locations, add the automation route.
+- Create DLP policies with the **Custom** template and advanced rules, scoped to specific instances first (row: DLP policy for non-Microsoft connected apps).
 - Create auto-labeling policies for Box or Google Workspace after publishing the labels they use (row: Auto-labeling policy for non-Microsoft connected apps).
 - Leave the policy turned off or scope it narrowly at first, because simulation mode is not supported.
 
@@ -228,34 +227,34 @@ Nothing in the sources says existing behaviour changes for tenants that create n
 <tbody>
 <tr><td data-label="Control"><strong>DLP policy for non-Microsoft connected apps</strong><br><small>Tenant</small><br><small class="controls__note">Preview page. Custom template and advanced rules only; no simulation mode. Role groups listed under Scope.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Loss Prevention › Policies › + Create policy › Enterprise applications &amp; devices › Custom › Custom policy › Assign admin units › Full directory › Choose where to apply the policy <a href="https://learn.microsoft.com/purview/dlp-non-microsoft-connected-applications" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Auto-labeling policy for non-Microsoft connected apps</strong><br><small>Tenant</small><br><small class="controls__note">Path continues: Choose a sensitivity label &gt; Add &gt; Assign admin units &gt; Full directory &gt; Choose locations where you want to apply the label. Preview page. Box and Google Workspace only. Labels must be published first.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information protection › Policies › Auto-labeling policies › + Create auto-labeling policy › Automatically apply labels only › Custom › Custom policy › Choose a label to auto-apply › Choose a label <a href="https://learn.microsoft.com/purview/information-protection-non-microsoft-connected-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Defender for Cloud Apps app connectors that Purview relies on</strong><br><small>Tenant</small><br><small class="controls__note">Prerequisite for any policy on these apps. Each app has its own connector guide. The connector overview also gives Cloud Apps &gt; Connected apps &gt; Connect an app or Add a new connector.</small></td><td data-label="Admin UI"><strong>Microsoft Defender portal</strong><br>Settings › Cloud Apps › Connected Apps › App Connectors › + Connect an app <a href="https://learn.microsoft.com/defender-cloud-apps/get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Defender for Cloud Apps app connectors that Purview relies on</strong><br><small>Tenant</small><br><small class="controls__note">Prerequisite for any policy on these apps. Each app has its own connector guide.</small></td><td data-label="Admin UI"><strong>Microsoft Defender portal</strong><br>Settings › Cloud Apps › Connected Apps › App Connectors › + Connect an app <a href="https://learn.microsoft.com/defender-cloud-apps/get-started" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Defender for Cloud Apps file policies that overlap the Purview policies</strong><br><small>Tenant</small><br><small class="controls__note">Where the migration page opens the file policy list. Retiring 6 January 2027. MC1449180 says to turn off or delete overlapping file policies first; the migration page says to disable them only after validating Purview policies.</small></td><td data-label="Admin UI"><strong>Microsoft Defender portal</strong><br>Cloud apps › Policies › Policy management › All policies <a href="https://learn.microsoft.com/defender-cloud-apps/migrate-file-policies-to-purview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Instances DLP location for non-Microsoft cloud apps (retiring)</strong><br><small>Tenant</small><br><small class="controls__note">Today's alternative, not a control over the new dedicated locations. Learn says this location retires on 6 January 2027. Cmdlet needs Compliance Administrator or Compliance Data Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Custom › Custom policy › Admin units › Locations › Instances › Edit › Specific instances › + Include instances <a href="https://learn.microsoft.com/purview/dlp-use-policies-non-microsoft-cloud-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpCompliancePolicy -Name &lt;policy name&gt; -ThirdPartyAppDlpLocation All</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The Purview portal steps for the dedicated locations are documented on Learn. At the time of writing (November 2026), those pages give no cmdlet, parameter or API for the dedicated DLP or auto-labeling locations. The New-DlpCompliancePolicy reference documents a ThirdPartyAppDlpLocation parameter for non-Microsoft cloud apps and links to the Instances page; it does not say whether that parameter addresses the dedicated app locations, so it is shown only against the retiring Instances row. The New-AutoSensitivityLabelPolicy reference lists no location parameter for these apps.
+The Purview portal steps for the dedicated locations are documented on Learn. At the time of writing (November 2026), those pages give no cmdlet, parameter or API for the dedicated DLP or auto-labeling locations. The New-DlpCompliancePolicy reference documents a ThirdPartyAppDlpLocation parameter for non-Microsoft cloud apps; it does not say whether that parameter addresses the dedicated app locations, so it is shown only against the retiring Instances row. The New-AutoSensitivityLabelPolicy reference names no parameter for these apps.
 
-Microsoft Learn documents no API for managing app connectors or Defender for Cloud Apps file policies on the pages read (November 2026). Microsoft's Graph page for Defender for Cloud Apps covers discovered apps.
+The Defender for Cloud Apps REST API page lists activities, alerts, data enrichment, entities and files as its supported resources, and no resource for app connectors or file policies (November 2026).
 
 The Purview roles that can create these policies are listed under Scope. Creating a Purview policy does not remove a Defender for Cloud Apps file policy. Microsoft's sources disagree on sequencing: MC1449180 says to turn off or delete overlapping file policies before creating the Purview policy, while Learn's migration page says to disable them only after validating and turning on Purview policies. Resolve this conflict with Microsoft before cut-over. Activity explorer and DLP alerts are the documented monitoring surfaces; Content explorer is not supported for these apps.
 
 ## Open questions
 
-- What is the price per data asset for the At Rest Protection meter, and is there a feature-specific hard cap for it? Watch the Microsoft Purview pricing page and the billing models page.
+- What is the price per data asset for the At Rest Protection meter, and is there a feature-specific spending cap for it? Watch the Microsoft Purview pricing page and the billing models page.
 - Which Enterprise tier Purview licence is required? Learn's feature pages point to licensing guidance without naming a plan.
 - Which cmdlet or API will manage the dedicated app locations? Watch the New-DlpCompliancePolicy and New-AutoSensitivityLabelPolicy references.
 - Will auto-labeling extend beyond Box and Google Workspace, and will further DLP attributes arrive for each app? Watch MC1449180 and the Learn preview pages.
-- Does General Availability in late December 2026 leave enough time before the 6 January 2027 Defender for Cloud Apps file policy retirement? Watch Message center and the migration page.
+- General Availability is now given as beginning in mid-March 2027, after the 6 January 2027 Defender for Cloud Apps file policy retirement that Learn gives. How should tenants that rely on file policies cover the period between? Watch Message center and the migration page.
 
 <!-- rationale
-risk: Medium. Policies can act on data in third-party services (the notice lists quarantine and access controls), simulation mode is not supported, and a policy can overlap a Defender for Cloud Apps file policy, which Microsoft says causes unexpected enforcement.
+risk: Medium. Policies can act on data in third-party services (the notice lists quarantine and access controls), simulation mode is not supported, and a policy that overlaps a Defender for Cloud Apps file policy can cause unexpected enforcement.
 cost: Variable. Microsoft's notice MC1449180 says usage is billed through the Microsoft Purview At Rest Protection pay-as-you-go meter, at 1,000 files = 1 data asset, on top of Enterprise tier Purview licensing.
 impact: Low. Administrators who create and run the policies notice it first; the roadmap and notice name no end-user experience, and Learn says policy tips and user overrides are not supported for these apps.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist asks readers to confirm the Azure subscription association, but no controls-table row covers that check. | Found: Ask finance to review Purview pay-as-you-go pricing and confirm the tenant is linked to an Azure subscription | Fix: Narrow that checklist bullet to: "Ask finance to review Purview pay-as-you-go pricing, then agree who owns the At Rest Protection charge." Keep the documented Azure subscription prerequisite in Cost and licensing.
+- [supported, minor] controls[2].ui; Governance guidance; Governance controls table / admin-path: App connectors are reached in Defender through Settings > Cloud Apps > Connected Apps > App Connectors > + Connect an app. | Found: In the Microsoft Defender Portal, select Settings. Then choose Cloud Apps. Under Connected Apps, select App Connectors. Select the +Connect an app to add an app and then select an app. | Fix: Keep the supported path. Add to controls[2].note: 'Microsoft also documents Cloud Apps > Connected apps > Connect an app (or Add a new connector) at https://learn.microsoft.com/defender-cloud-apps/enable-instant-visibility-protection-and-governance-actions-for-your-apps#enable-app-connectors.' Add that URL to sources. | Source: https://learn.microsoft.com/defender-cloud-apps/get-started
 -->

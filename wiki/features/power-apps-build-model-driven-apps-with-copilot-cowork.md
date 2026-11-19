@@ -37,20 +37,23 @@ sources:
   - title: "Get started with Copilot Cowork"
     url: "https://learn.microsoft.com/copilot/cowork/get-started"
     kind: "learn"
+  - title: "Copilot Cowork common questions"
+    url: "https://learn.microsoft.com/copilot/cowork/cowork-faq"
+    kind: "learn"
   - title: "Build and edit model-driven apps with AI code generation tools"
     url: "https://learn.microsoft.com/power-apps/maker/model-driven-apps/model-driven-app-external-tools"
     kind: "learn"
   - title: "Dataverse capacity-based storage details"
     url: "https://learn.microsoft.com/power-platform/admin/capacity-storage"
     kind: "learn"
-  - title: "Manage Copilot Credits with usage-based billing"
+  - title: "Managing AI experiences enabled by usage-based billing"
     url: "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-manage-copilot-credits"
+    kind: "learn"
+  - title: "Create spendingPolicy"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create"
     kind: "learn"
   - title: "Create and edit tables in Power Apps"
     url: "https://learn.microsoft.com/power-apps/maker/data-platform/create-edit-entities-portal"
-    kind: "learn"
-  - title: "Who can use Cowork, and the credit limits that apply (Microsoft Graph)"
-    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
     kind: "learn"
   - title: "Whether a Cowork plugin is available to users, or blocked (Microsoft Graph)"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
@@ -68,13 +71,13 @@ controls:
     scope: "group"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Copilot > Cost Management > Configuration > + Add spending policy"
-      docs: "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance"
+      path: "Copilot > Cost Management > Configuration > + Add spending policy > Identity > Specific groups > Select agents and services > Cowork > Set limits and alerts"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-manage-copilot-credits"
     api:
       kind: "graph"
       call: "POST /beta/copilot/costManagement/spendingPolicies"
-      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
-    note: "General Cowork control. A policy that selects Cowork grants access; a low limit does not block it. The Graph API is beta."
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create"
+    note: "Selecting Cowork grants access; a low limit does not block it. Beta API: sets serviceSettings (serviceId cowork, state enabled), periodLimit, perUserLimit. Group policies are created disabled; link their audience first."
   - governs: "Whether a Cowork plugin is available to users, or blocked"
     scope: "app"
     ui:
@@ -104,7 +107,7 @@ controls:
     note: "Microsoft Learn documents no such switch at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-18"
+updated: "2026-11-19"
 roadmapModified: "2026-11-17T18:36:41"
 changes:
   - date: "2026-11-17"
@@ -119,19 +122,29 @@ changes:
     note: "Correction: Cost and licensing and the licensing note now state that Cowork requires a Microsoft 365 Copilot licence and enabled usage-based billing, with any skill-specific licence or credit rate not yet published."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 76 statements confirmed"
-version: 3
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 72 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-19"
+    note: "Correction: the Cowork spending-policy path now runs through the wizard steps to the limits, and the Graph row notes the request properties and that group policies are created disabled."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 76 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-19"
+    note: "Correction: the Security & identity bullet, risk rationale and first open question now say Cowork actions are authorized through the user's Microsoft 365 account, and that the skill's Dataverse connection mechanism is not yet documented."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 75 statements confirmed"
+version: 5
 verification:
   status: "verified"
-  date: "2026-11-18"
-  version: 3
+  date: "2026-11-19"
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 76
-  confirmed: 76
+  claims: 75
+  confirmed: 75
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "0b2d771e96bae89c161313bd5a4797c5"
+  hash: "bc376d36b5334f4cb2c956f5c6aba473"
 ---
 
 ## What's changing
@@ -157,7 +170,7 @@ Microsoft has not stated what happens on arrival if nobody acts. Cowork access i
 
 **Security & identity**
 
-- For the code-tools version, Learn requires "permission to create and modify Dataverse and model-driven app artifacts" in the target environment. Microsoft has not said how the Cowork version obtains that access or which account it uses. Confirm this before relying on environment security roles to limit it.
+- For the code-tools version, Learn requires "permission to create and modify Dataverse and model-driven app artifacts" in the target environment. Microsoft says every Cowork action is authorized through your Microsoft 365 account; the model-app-builder skill's specific Dataverse connection mechanism is not yet documented. Confirm that mechanism before relying on environment security roles to limit it.
 
 **Autonomy & actions**
 
@@ -209,7 +222,7 @@ A user needs access to Cowork, which Learn says comes from a spending policy tha
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Who can use Cowork, and the credit limits that apply</strong><br><small>Group</small><br><small class="controls__note">General Cowork control. A policy that selects Cowork grants access; a low limit does not block it. The Graph API is beta.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › + Add spending policy <a href="https://learn.microsoft.com/copilot/cowork/cowork-admin-governance" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/costManagement/spendingPolicies</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who can use Cowork, and the credit limits that apply</strong><br><small>Group</small><br><small class="controls__note">Selecting Cowork grants access; a low limit does not block it. Beta API: sets serviceSettings (serviceId cowork, state enabled), periodLimit, perUserLimit. Group policies are created disabled; link their audience first.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › + Add spending policy › Identity › Specific groups › Select agents and services › Cowork › Set limits and alerts <a href="https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/costManagement/spendingPolicies</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether a Cowork plugin is available to users, or blocked</strong><br><small>App</small><br><small class="controls__note">General plugin control; not confirmed for this skill. API is beta, needs an Agent 365 licence. Blocking takes effect for new conversations; conversations already using the plugin continue until they end.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › plugin › Users › Block <a href="https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which users hold security roles in a Power Platform environment</strong><br><small>Environment</small><br><small class="controls__note">General control. Needs the System Administrator role by default. Microsoft has not confirmed how the Cowork skill uses environment roles.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Users + permissions › Users › user › Manage security roles <a href="https://learn.microsoft.com/power-platform/admin/assign-security-roles" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac admin assign-user --environment &lt;environment-id&gt; --user &lt;upn&gt; --role &quot;&lt;role-name&gt;&quot;</code> <a href="https://learn.microsoft.com/power-platform/developer/cli/reference/admin" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Tenant-wide switch for the model-app-builder skill in Cowork</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft Learn documents no such switch at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
@@ -222,13 +235,13 @@ The plugin availability row applies only if the skill ships as a Cowork plugin, 
 
 ## Open questions
 
-- Which Power Platform environment does the Cowork skill build into, and under whose identity and permissions does it write there? Watch the Learn page for Cowork and Power Apps.
+- Which Power Platform environment does the Cowork skill build into, and how does it establish its Dataverse connection? Watch the Learn page for Cowork and Power Apps.
 - Is the skill delivered as a Cowork plugin, so that it can be allowed or blocked under Agents > Tools, or is it built in? Watch the Manage plugins for Cowork page.
 - How many Copilot Credits does a build or an edit consume? Watch the Copilot Credits pages and Message center.
 - Is the skill on or off by default when the preview starts in November CY2026, and is a separate admin switch planned? Watch the roadmap item and Message center.
 
 <!-- rationale
-risk: Medium. The roadmap says the skill creates a model-driven app and Dataverse artifacts after the user reviews a plan; Microsoft Learn does not yet say which environment, identity or roles the Cowork version uses.
+risk: Medium. The roadmap says the skill creates a model-driven app and Dataverse artifacts after the user reviews a plan; Microsoft Learn does not yet say which environment or Dataverse connection mechanism the Cowork version uses.
 cost: Variable. Cowork activity, including skill calls, counts toward usage-based billing in Copilot Credits; what this skill consumes is not yet published.
 impact: Medium. The roadmap lists the feature scope as admins or makers, so makers are the people who will notice it first.
 -->

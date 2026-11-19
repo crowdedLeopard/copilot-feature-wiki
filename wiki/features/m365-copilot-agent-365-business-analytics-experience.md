@@ -4,7 +4,7 @@ slug: "m365-copilot-agent-365-business-analytics-experience"
 roadmapId: 577548
 topic: "m365-copilot"
 products: ["Microsoft Viva","Microsoft Copilot (Microsoft 365)"]
-summary: "Microsoft plans one Business Analytics app showing AI cost, usage, value and forecasts for leaders. Admins decide who sees which data; Learn documents it as a Frontier preview and states no licence or price."
+summary: "Microsoft plans one Business Analytics app showing AI cost, usage, value and forecasts for leaders. Admins decide who sees which data. The Frontier preview requires at least 50 assigned Copilot licences; no separate app price is specified."
 status: "in-development"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)","GCC","GCC High","DoD"]
@@ -18,7 +18,7 @@ defaultState: "unknown"
 action: "prepare"
 licensing:
   model: "unknown"
-  notes: "Not yet published. The Learn introduction lists at least 50 assigned Copilot licences and spending policies as prerequisites and names no price for the app. The app reports both Microsoft and GitHub AI credits separately."
+  notes: "The Frontier preview requires a tenant with at least 50 assigned Copilot licences; the introduction does not specify a separate app price. Spending policies for usage-based services are also a prerequisite. Microsoft documents the preview's 50-assigned-Copilot-licence prerequisite but does not explicitly state the app's inclusion or separate licensing terms."
 audiences: ["finops","m365-admin","service-owner","change-adoption"]
 tags: ["agent-365","analytics","finops","cost-management","spending-policies","copilot-credits","viva-insights","m365-copilot","viva-feature-access-management","gcc","gcc-high","dod"]
 sources:
@@ -70,6 +70,9 @@ sources:
   - title: "Microsoft 365 Copilot Cost Management API overview"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
     kind: "learn"
+  - title: "Update spendingPolicy"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update"
+    kind: "learn"
 videos: []
 related: ["copilot-credits","microsoft-viva-copilot-analytics-agent-dashboard","m365-admin-center-copilot-credits-usage-report","microsoft-viva-copilot-analytics-export-metrics-from-agent-dashboard","copilot-studio-cost-management-m365-admin-center"]
 controls:
@@ -85,24 +88,24 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Settings > Viva > Settings > Manage feature access > Create a policy"
+      path: "Settings > Viva > Settings > Manage feature access > Create a policy > app and feature > Access setting > On or Off"
       docs: "https://learn.microsoft.com/viva/control-access-admin-center"
     api:
       kind: "powershell"
       call: "Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId \"Viva Insights web app\" -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone"
       docs: "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard"
-    note: "General control: Microsoft has not confirmed it switches Business Analytics off. Not available in GCC High or DoD per Microsoft."
+    note: "Select the Viva Insights web app feature. General control: Microsoft has not confirmed it switches Business Analytics off. Not available in GCC High or DoD per Microsoft."
   - governs: "Spending limits and billing for Copilot Credits reported by the app"
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Copilot > Cost Management > Get Started"
+      path: "Copilot > Cost Management > Get Started > Activate the default spending policy for your organization > Set the monthly spending limit for this policy > Limit monthly spending"
       docs: "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup"
     api:
       kind: "graph"
-      call: "GET /beta/copilot/costManagement/spendingPolicies"
-      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
-    note: "Existing control that the app reports on, not a control over the app. Creating policies needs Global or Billing administrator. Beta API."
+      call: "PATCH /beta/copilot/costManagement/spendingPolicies/{id}"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update"
+    note: "Not a control over the app. Beta API. Body: periodLimit, perUserLimit set limits; billingMethods changes funding. Adding pay-as-you-go needs a complete billingInstrument; replacing an existing pay-as-you-go instrument is not defined."
   - governs: "Whether AI value metrics are displayed, and the assumptions behind them"
     scope: "tenant"
     ui:
@@ -110,7 +113,7 @@ controls:
       path: "Manage > Configurations > Metric calculators > Cowork assisted hours and value > Edit calculator > Value calculator > Value metrics"
       docs: "https://learn.microsoft.com/a365-business-analytics/manage/configurations"
     api: null
-    note: "Cowork value metrics toggle; off by default. Viva Insights admin, or Global admin for Copilot value metrics."
+    note: "Cowork value metrics toggle; off by default. Viva Insights admins configure Cowork value metrics; Copilot value metrics require both Viva Insights admin and Chief officer roles, or Global admin."
   - governs: "Minimum group size below which aggregated insights are hidden"
     scope: "tenant"
     ui:
@@ -121,7 +124,7 @@ controls:
     note: "Value of at least 5. Does not apply to user-level insights that are not aggregated."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-18"
+updated: "2026-11-19"
 roadmapModified: "2026-11-17T18:36:41"
 changes:
   - date: "2026-11-17"
@@ -132,19 +135,29 @@ changes:
     note: "Correction after verification: consumption-insights access, Copilot Credits billing and GitHub credits wording, three control paths, and two unsupported checklist items removed."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 80 statements not yet confirmed"
-version: 2
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 93 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-19"
+    note: "Correction after verification: licensing now reflects the 50-Copilot-licence prerequisite, and the Viva access policy path, spending policy API call and value-metrics roles were corrected."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 100 statements contradicted, 1 unconfirmed; taken offline until corrected"
+  - date: "2026-11-19"
+    note: "Correction after verification: licensing model changed to not yet published, with a note that the app's inclusion or separate licensing terms are not explicitly stated."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 98 statements not yet confirmed"
+version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-18"
-  version: 2
+  date: "2026-11-19"
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 80
-  confirmed: 80
+  claims: 98
+  confirmed: 98
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "c0750bc43a0ed67715c19c8916e71600"
+  hash: "bb1791c6f26ec061b5861e8ae5844189"
 ---
 
 ## What's changing
@@ -181,7 +194,7 @@ Microsoft has not stated how the app arrives at general availability, so treat a
 
 ## Cost and licensing
 
-Microsoft has not published a licence or price for the app. The Learn introduction lists its prerequisites: at least 50 Copilot licences assigned, spending policies for usage-based services, access set up, and billing turned on in the Microsoft 365 admin center. It names no separate licence or charge for the app itself. Plan on that gap being open until general availability.
+The Frontier preview requires a tenant with at least 50 assigned Copilot licences; the introduction does not specify a separate app price (Introduction to Agent 365 Business Analytics). Its other prerequisites are spending policies for usage-based services, access set up, and billing turned on in the Microsoft 365 admin center. Terms for general availability are not yet published.
 
 The app reports spend. For Copilot Credits, charges go to the subscription selected in the billing method; the app reports GitHub AI credits separately. When credits run out for that subscription, usage automatically continues on a pay-as-you-go basis (Set up usage-based billing for Copilot Credits). Copilot Credits spending limits are set in Copilot Credits spending policies in the Microsoft 365 admin center (controls table, row 3), not in the app. Cost and credit information on the GitHub Copilot page is for reference only; Microsoft points to GitHub.com for official GitHub billing and budget setting. Microsoft 365 Copilot per-user licence cost is not part of the Cost & forecast figures. Indirect costs are admin time, plus finance time to agree the value assumptions. See [Copilot Credits](/concepts/copilot-credits/) for the meter.
 
@@ -215,9 +228,9 @@ Audience and access, as the preview documentation states: leaders in the top thr
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Who can open Business Analytics, export, see named users, and whose data</strong><br><small>User</small><br><small class="controls__note">Permission sets, partitions and access policies. Global, AI or Viva Insights administrator. Preview documentation.</small></td><td data-label="Admin UI"><strong>Business Analytics (Agent 365)</strong><br>Manage › Access management <a href="https://learn.microsoft.com/a365-business-analytics/manage/access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether the Viva Insights web app is on, for the tenant, groups or users</strong><br><small>Tenant</small><br><small class="controls__note">General control: Microsoft has not confirmed it switches Business Analytics off. Not available in GCC High or DoD per Microsoft.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Viva › Settings › Manage feature access › Create a policy <a href="https://learn.microsoft.com/viva/control-access-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId &quot;Viva Insights web app&quot; -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Spending limits and billing for Copilot Credits reported by the app</strong><br><small>Tenant</small><br><small class="controls__note">Existing control that the app reports on, not a control over the app. Creating policies needs Global or Billing administrator. Beta API.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Get Started <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET /beta/copilot/costManagement/spendingPolicies</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether AI value metrics are displayed, and the assumptions behind them</strong><br><small>Tenant</small><br><small class="controls__note">Cowork value metrics toggle; off by default. Viva Insights admin, or Global admin for Copilot value metrics.</small></td><td data-label="Admin UI"><strong>Business Analytics (Agent 365)</strong><br>Manage › Configurations › Metric calculators › Cowork assisted hours and value › Edit calculator › Value calculator › Value metrics <a href="https://learn.microsoft.com/a365-business-analytics/manage/configurations" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether the Viva Insights web app is on, for the tenant, groups or users</strong><br><small>Tenant</small><br><small class="controls__note">Select the Viva Insights web app feature. General control: Microsoft has not confirmed it switches Business Analytics off. Not available in GCC High or DoD per Microsoft.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Viva › Settings › Manage feature access › Create a policy › app and feature › Access setting › On or Off <a href="https://learn.microsoft.com/viva/control-access-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId &quot;Viva Insights web app&quot; -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Spending limits and billing for Copilot Credits reported by the app</strong><br><small>Tenant</small><br><small class="controls__note">Not a control over the app. Beta API. Body: periodLimit, perUserLimit set limits; billingMethods changes funding. Adding pay-as-you-go needs a complete billingInstrument; replacing an existing pay-as-you-go instrument is not defined.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Get Started › Activate the default spending policy for your organization › Set the monthly spending limit for this policy › Limit monthly spending <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether AI value metrics are displayed, and the assumptions behind them</strong><br><small>Tenant</small><br><small class="controls__note">Cowork value metrics toggle; off by default. Viva Insights admins configure Cowork value metrics; Copilot value metrics require both Viva Insights admin and Chief officer roles, or Global admin.</small></td><td data-label="Admin UI"><strong>Business Analytics (Agent 365)</strong><br>Manage › Configurations › Metric calculators › Cowork assisted hours and value › Edit calculator › Value calculator › Value metrics <a href="https://learn.microsoft.com/a365-business-analytics/manage/configurations" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Minimum group size below which aggregated insights are hidden</strong><br><small>Tenant</small><br><small class="controls__note">Value of at least 5. Does not apply to user-level insights that are not aggregated.</small></td><td data-label="Admin UI"><strong>Business Analytics (Agent 365)</strong><br>Manage › Configurations › Privacy › Minimum group size <a href="https://learn.microsoft.com/a365-business-analytics/manage/configurations" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -238,13 +251,12 @@ Microsoft Learn documents no PowerShell or API for Business Analytics access pol
 
 <!-- rationale
 risk: Medium. Leaders and managers can see AI cost and usage by user, group and model, and can export it, under access rules that an admin has to review. Scenarios and budget targets do not change live policies.
-cost: Low. The only cost the sources show is admin time. Microsoft has not published a licence or price for the app; the Learn page lists at least 50 assigned Copilot licences as a prerequisite.
+cost: Low. The only cost the sources show is admin time. The Frontier preview requires at least 50 assigned Copilot licences, and the Learn introduction specifies no separate price for the app.
 impact: Medium. Executives, general managers and managers of larger teams are the audience.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] summary / licensing: Learn states no licence or price, meaning no separately specified licence or price for this app. | Found: Tenant must have at least 50 Copilot licenses assigned. | Fix: Replace 'states no licence or price' with 'does not specify a separate app licence or price'. The introduction does state a prerequisite of at least 50 assigned Copilot licences. | Source: https://learn.microsoft.com/a365-business-analytics/introduction
-- [supported, minor] controls[3].note; Governance controls / role: Viva Insights admins configure Cowork value metrics; Copilot value metrics require Global admin or both Viva Insights admin and Chief officer. | Found: Viva Insights admins can configure Cowork value metrics. Only users who have both Viva Insights admins and Chief officer roles, or who are global admins, can configure Copilot value metrics. | Fix: Replace the ambiguous role sentence in controls[3].note and its rendered table note with: 'Viva Insights admins configure Cowork value metrics; Copilot value metrics require both Viva Insights admin and Chief officer roles, or Global admin.' The body already gives this qualification. | Source: https://learn.microsoft.com/a365-business-analytics/manage/configurations
+- [supported, minor] front matter: cost; rationale: cost; Cost and licensing / cost: The low cost rating reflects known indirect administration effort, while no separate app price is specified. | Found: Tenant must have at least 50 Copilot licenses assigned. Spending policies for usage-based services must be set up for users to use these services and get cost insights. Admins can assign access and set up partitions | Fix: Append this sentence to the cost rationale: "The app's inclusion or separate licensing terms are not yet published." This makes the rationale explicitly state the licensing uncertainty, as required by the cost scale; retain the documented 50-assigned-Copilot-licence prerequisite. | Source: https://learn.microsoft.com/a365-business-analytics/introduction
 -->

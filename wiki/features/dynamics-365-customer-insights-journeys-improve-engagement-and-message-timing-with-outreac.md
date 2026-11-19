@@ -49,10 +49,10 @@ sources:
   - title: "Move data across regions for Copilots, AI agents, and generative AI features"
     url: "https://learn.microsoft.com/power-platform/admin/geographical-availability-copilot"
     kind: "learn"
-  - title: "Whether agent data may move across regions for the environment (PowerShell)"
+  - title: "Set-PowerPlatformGenerativeAiSettings"
     url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-powerplatformgenerativeaisettings"
     kind: "learn"
-  - title: "Quiet times the agent must respect (REST API)"
+  - title: "Quiet Time Setting (msdynmkt_quiettimesetting) table/entity reference"
     url: "https://learn.microsoft.com/dynamics365/customer-service/develop/reference/entities/msdynmkt_quiettimesetting"
     kind: "learn"
   - title: "Customer Insights license guidance"
@@ -79,7 +79,7 @@ controls:
     scope: "environment"
     ui:
       surface: "Customer Insights - Journeys (AI Hub)"
-      path: "AI Hub > Add and manage agents > Add an agent > Outreach Optimization Agent > Overview tab > Enable"
+      path: "Settings > AI Hub > Add and manage agents > Add an agent > Outreach Optimization Agent > Overview tab > Enable"
       docs: "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub"
     api: null
     note: "AI Hub is under Settings. Admin role by default; custom roles need msdynmkt_agentsettings permissions. Preview feature."
@@ -87,13 +87,13 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Licensing > Products > Copilot Studio > Summary > Manage Copilot Credits"
+      path: "Licensing > Products > Copilot Studio > Summary > Copilot Studio > Manage Copilot Credits"
       docs: "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity"
     api:
       kind: "power-platform-api"
-      call: "PUT /licensing/allocationsV2?api-version=2024-10-01 {\"scope\":{\"environmentId\":\"<id>\"},\"allocatedEntitlements\":[{\"entitlementId\":\"MCSMessages\",\"allocation\":{\"quantity\":<n>},\"enforcementRules\":[{\"ruleType\":\"TenantPool\",\"enabled\":false}]}]}"
+      call: "PUT /licensing/allocationsV2?api-version=2024-10-01"
       docs: "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations"
-    note: "Host: https://api.powerplatform.com. Disables tenant-pool draw, not every overage source. An environment-group rule can lock this; updates then fail with TenantPoolLockedByPolicy."
+    note: "Body: scope.environmentId; allocatedEntitlements[].entitlementId MCSMessages, allocation.quantity; enforcementRules[].ruleType TenantPool with enabled false. A group rule lock fails with TenantPoolLockedByPolicy."
   - governs: "Whether agent data may move across regions for the environment"
     scope: "environment"
     ui:
@@ -113,12 +113,12 @@ controls:
       docs: "https://learn.microsoft.com/dynamics365/customer-insights/journeys/real-time-marketing-quiet-times"
     api:
       kind: "rest"
-      call: "POST <organization URL>/api/data/v9.2/msdynmkt_quiettimesettings; Content-Type: application/json; body: <Quiet Time Setting JSON object>"
+      call: "POST /msdynmkt_quiettimesettings"
       docs: "https://learn.microsoft.com/dynamics365/customer-service/develop/reference/entities/msdynmkt_quiettimesetting"
-    note: "General control: the agent page says it honours configured quiet times. Up to 21 consecutive days. The POST creates a Quiet Time Setting record; the caller supplies its configuration."
+    note: "Creates a general Quiet Time Setting record. The body supplies quiet-time configuration through msdynmkt_commercialdates, msdynmkt_commercialweeklyhours, msdynmkt_transactionaldates and msdynmkt_transactionalweeklyhours as applicable."
 confidence: "high"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-19"
 roadmapModified: "2026-10-22T22:58:40"
 changes:
   - date: "2026-11-18"
@@ -129,19 +129,25 @@ changes:
     note: "Corrected after verification: AI Hub enablement path now includes the Overview tab, the quiet-times and capacity API calls are completed, Customer Insights - Journeys per-tenant licensing is stated, and an unsupported quiet-times gap and a checklist bullet were removed."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
-version: 2
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 79 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-19"
+    note: "Corrected after verification: AI Hub path now starts at Settings, the credit-limit question is replaced by what AI Hub documents, and the capacity and quiet-times calls, the AI prompts path and one checklist bullet are narrowed."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 89 statements not yet confirmed"
+version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-18"
-  version: 2
+  date: "2026-11-19"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 77
-  confirmed: 76
+  claims: 89
+  confirmed: 88
   unconfirmed: 0
   contradicted: 1
   attempts: 0
-  hash: "277ad945110006677c3a0015a82db93b"
+  hash: "00bd4b553fa7a210d04b3471bb51e404"
 ---
 
 ## What's changing
@@ -161,7 +167,7 @@ The Learn preview pages make it an admin decision: an administrator turns on AI 
 ## Risk assessment
 
 **Data exposure**
-- The agent reads your organisation's historical email interaction data (opens and clicks) to find peak engagement times. Microsoft says agent data might be processed and stored in regions outside the user's primary region, which is why the Move data across regions prerequisite exists. Control: the Move data across regions row.
+- The agent reads your organisation's historical email interaction data (opens and clicks) to find peak engagement times. Microsoft says agent data might be processed and stored in regions outside the user's primary region, which is why the Move data across regions prerequisite exists. The general Power Platform data-movement page separately says Microsoft does not log, store or retain inputs or outputs during this process. Control: the Move data across regions row.
 
 **Security & identity**
 - AI Hub is available to users with the Admin role by default; custom roles need agent settings permissions for the msdynmkt_agentsettings entity. Microsoft has not described which identity the agent runs as when it sends, so confirm that before relying on role-based reasoning.
@@ -203,7 +209,7 @@ A tenant administrator must enable AI agents in the Power Platform admin center,
 
 ### After rollout
 - Review credit consumption in the Copilot Studio licensing reports and the environment's capacity status.
-- Re-check the prerequisites after any change to data movement or AI prompts settings, because losing one disables all enabled agents.
+- Re-check the Move data across regions prerequisite after changing data movement settings, because losing a mandatory prerequisite disables all enabled agents.
 - Re-read the Learn pages when the roadmap status moves from In development, since the preview pages are subject to change.
 
 ## Governance controls
@@ -214,18 +220,18 @@ A tenant administrator must enable AI agents in the Power Platform admin center,
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether AI agents are available for Customer Insights - Journeys</strong><br><small>Environment</small><br><small class="controls__note">Set per environment or environment group. Turning it off immediately disables all active Journeys agents, not only this one.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Dynamics 365 Customer Insights – Journeys › AI agents › Use AI agents <a href="https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether Outreach Optimization Agent is enabled in an environment</strong><br><small>Environment</small><br><small class="controls__note">AI Hub is under Settings. Admin role by default; custom roles need msdynmkt_agentsettings permissions. Preview feature.</small></td><td data-label="Admin UI"><strong>Customer Insights - Journeys (AI Hub)</strong><br>AI Hub › Add and manage agents › Add an agent › Outreach Optimization Agent › Overview tab › Enable <a href="https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Copilot credit capacity and overage for the environment</strong><br><small>Environment</small><br><small class="controls__note">Host: https://api.powerplatform.com. Disables tenant-pool draw, not every overage source. An environment-group rule can lock this; updates then fail with TenantPoolLockedByPolicy.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Summary › Manage Copilot Credits <a href="https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT /licensing/allocationsV2?api-version=2024-10-01 {&quot;scope&quot;:{&quot;environmentId&quot;:&quot;&lt;id&gt;&quot;},&quot;allocatedEntitlements&quot;:[{&quot;entitlementId&quot;:&quot;MCSMessages&quot;,&quot;allocation&quot;:{&quot;quantity&quot;:&lt;n&gt;},&quot;enforcementRules&quot;:[{&quot;ruleType&quot;:&quot;TenantPool&quot;,&quot;enabled&quot;:false}]}]}</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Outreach Optimization Agent is enabled in an environment</strong><br><small>Environment</small><br><small class="controls__note">AI Hub is under Settings. Admin role by default; custom roles need msdynmkt_agentsettings permissions. Preview feature.</small></td><td data-label="Admin UI"><strong>Customer Insights - Journeys (AI Hub)</strong><br>Settings › AI Hub › Add and manage agents › Add an agent › Outreach Optimization Agent › Overview tab › Enable <a href="https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Copilot credit capacity and overage for the environment</strong><br><small>Environment</small><br><small class="controls__note">Body: scope.environmentId; allocatedEntitlements[].entitlementId MCSMessages, allocation.quantity; enforcementRules[].ruleType TenantPool with enabled false. A group rule lock fails with TenantPoolLockedByPolicy.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Summary › Copilot Studio › Manage Copilot Credits <a href="https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT /licensing/allocationsV2?api-version=2024-10-01</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether agent data may move across regions for the environment</strong><br><small>Environment</small><br><small class="controls__note">Mandatory prerequisite; the cmdlet page describes the parameter as allowing cross-geography data movement. The checkbox may not appear where the region has full in-region capacity.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Generative AI features › Edit › Move data across regions <a href="https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-PowerPlatformGenerativeAiSettings -EnvironmentName &lt;environment ID&gt; -CrossGeoDataMovement $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-powerplatformgenerativeaisettings" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Quiet times the agent must respect</strong><br><small class="controls__note">General control: the agent page says it honours configured quiet times. Up to 21 consecutive days. The POST creates a Quiet Time Setting record; the caller supplies its configuration.</small></td><td data-label="Admin UI"><strong>Customer Insights - Journeys</strong><br>Settings › Customer engagement › Quiet times <a href="https://learn.microsoft.com/dynamics365/customer-insights/journeys/real-time-marketing-quiet-times" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST &lt;organization URL&gt;/api/data/v9.2/msdynmkt_quiettimesettings; Content-Type: application/json; body: &lt;Quiet Time Setting JSON object&gt;</code> <a href="https://learn.microsoft.com/dynamics365/customer-service/develop/reference/entities/msdynmkt_quiettimesetting" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Quiet times the agent must respect</strong><br><small class="controls__note">Creates a general Quiet Time Setting record. The body supplies quiet-time configuration through msdynmkt_commercialdates, msdynmkt_commercialweeklyhours, msdynmkt_transactionaldates and msdynmkt_transactionalweeklyhours as applicable.</small></td><td data-label="Admin UI"><strong>Customer Insights - Journeys</strong><br>Settings › Customer engagement › Quiet times <a href="https://learn.microsoft.com/dynamics365/customer-insights/journeys/real-time-marketing-quiet-times" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST /msdynmkt_quiettimesettings</code> <a href="https://learn.microsoft.com/dynamics365/customer-service/develop/reference/entities/msdynmkt_quiettimesetting" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 The tenant switch and the AI Hub switch are separate: turning off Use AI agents in the Power Platform admin center disables all active Customer Insights - Journeys agents, while AI Hub lets you disable one agent in one environment. Microsoft Learn documents no API for either switch at the time of writing (November 2026).
 
-The AI prompts prerequisite is set at Power Platform admin center > Environments > environment > Settings > Product > Features, as described on the AI Hub prerequisites page, and can be governed by an environment group rule. The Move data across regions checkbox can also be controlled at scale with the Generative AI settings environment rule (geographical availability page).
+The AI prompts prerequisite is set at Power Platform admin center > Environments > environment > Settings > Product > Features > AI Builder > AI prompts, as described on the AI Hub prerequisites page, and can be governed by an environment group rule. The Move data across regions checkbox can also be controlled at scale with the Generative AI settings environment rule (geographical availability page).
 
-Capacity API changes need the Power Platform Administrator or Global Administrator role, or an equivalent role that can manage licensing and capacity. Whether the agent's monthly credit limit page in the admin centre lists this agent is not confirmed. The quiet-times table is a general control: the agent page says the agent honours configured quiet times, and the API row is the Dataverse table reference for the quiet time setting.
+Capacity API changes need the Power Platform Administrator or Global Administrator role, or an equivalent role that can manage licensing and capacity. AI Hub directs administrators to configure message consumption limits for Outreach Optimization Agent using the Copilot Studio capacity page. The quiet-times table is a general control: the agent page says the agent honours configured quiet times, and the API row is the Dataverse table reference for the quiet time setting.
 
 ## Open questions
 
@@ -233,7 +239,6 @@ Capacity API changes need the Power Platform Administrator or Global Administrat
 - Will the generally available version keep the preview's prerequisites and manual Enable step? Watch the roadmap item and the AI Hub page.
 - Does the agent stop or exit a plan early when a goal is met, as the roadmap describes, given the preview page says remaining emails are still sent?
 - Which identity does the agent send under, and where are its send-time decisions recorded for audit? Microsoft has not described either.
-- Does the per-agent monthly credit limit in the Power Platform admin center apply to this agent?
 
 <!-- rationale
 risk: Medium. The agent decides when customer emails go out and may process engagement data outside the environment's region, but Microsoft's preview pages require admins to accept prerequisites and enable it first.
@@ -241,9 +246,8 @@ cost: Variable. The Learn page states that use consumes Copilot credits, billed 
 impact: Medium. Marketers building journeys and the customers receiving their emails notice it; Microsoft's preview pages make enablement an admin step, so other users are unaffected.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure; rationale: risk / behaviour: Microsoft says agent data might be processed and stored outside the user's primary region. | Found: This means agent data might be processed and stored in regions outside the user's primary region, depending on service and infrastructure availability. | Fix: After this sentence, add: 'The general Power Platform data-movement page separately says this process does not log, store, or retain inputs or outputs (https://learn.microsoft.com/power-platform/admin/geographical-availability-copilot).' | Source: https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: Every control the governance checklist asks readers to check has a controls-table row. | Found: Re-check the prerequisites after any change to data movement or AI prompts settings The five controls rows cover agent availability, agent enablement, capacity, data movement and quiet times, but not AI prompts. | Fix: The After rollout checklist names AI prompts without a corresponding controls row. Narrow that bullet to: 'Re-check the Move data across regions prerequisite after changing data movement settings, because losing a mandatory prerequisite disables all enabled agents.'
+- [contradicted, minor] Governance guidance: After rollout, first bullet; Governance controls / consistency: The checklist's instruction to review consumption reports has a corresponding monitoring control row. | Found: Review credit consumption in the Copilot Studio licensing reports and the environment's capacity status. ... Table rows govern AI agent availability, individual enablement, credit capacity and overage, cross-region movement, and quiet times; none governs reporting. | Fix: Remove the first After rollout checklist bullet, 'Review credit consumption in the Copilot Studio licensing reports and the environment's capacity status.' It names a monitoring control that has no corresponding row; do not add a control row as part of this correction.
 -->

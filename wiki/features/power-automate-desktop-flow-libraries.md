@@ -4,7 +4,7 @@ slug: "power-automate-desktop-flow-libraries"
 roadmapId: 579910
 topic: "power-platform"
 products: ["Power Automate"]
-summary: "Makers will be able to publish libraries of reusable subflows and use them across desktop flows. Preview is targeted for January CY2027. Licensing, controls and sharing rules are not yet published; Microsoft has not stated whether admin enablement is required."
+summary: "Makers will be able to publish libraries of reusable subflows for use across desktop flows. Preview is targeted for January CY2027. Library-specific licensing, controls and sharing rules are not yet published; admin enablement is not stated."
 status: "in-development"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published. The roadmap item names no licence, and the Microsoft Learn page listing premium RPA features does not mention desktop flow libraries at the time of writing (November 2026)."
+  model: "included"
+  notes: "Microsoft lists Power Automate Premium as providing the full set of desktop authoring capabilities (Overview of Power Automate licensing). Library-specific licensing terms are not yet published."
 audiences: ["maker","power-platform-admin","change-adoption"]
 tags: ["power-automate","desktop-flows","automation","governance"]
 sources:
@@ -37,6 +37,18 @@ sources:
   - title: "Introduction to desktop flows"
     url: "https://learn.microsoft.com/power-automate/desktop-flows/introduction"
     kind: "learn"
+  - title: "Types of Power Automate licenses"
+    url: "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/overview"
+    kind: "learn"
+  - title: "Use connector actions in desktop flows"
+    url: "https://learn.microsoft.com/power-automate/desktop-flows/how-to/use-connector-actions"
+    kind: "learn"
+  - title: "Static analysis (Flow checker) for desktop flows"
+    url: "https://learn.microsoft.com/power-automate/desktop-flows/static-analysis"
+    kind: "learn"
+  - title: "Data loss prevention policies"
+    url: "https://learn.microsoft.com/power-automate/prevent-data-loss"
+    kind: "learn"
 videos: []
 related: ["power-automate-desktop-flows-configure-notifications-for-desktop-flow-checker-in-admin-por","power-automate-ai-assisted-ui-automation-repair","managed-environments"]
 controls:
@@ -47,7 +59,7 @@ controls:
     note: "Microsoft Learn documents no library-specific setting at the time of writing (November 2026)."
 confidence: "low"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-19"
 roadmapModified: "2026-11-17T18:36:41"
 changes:
   - date: "2026-11-17"
@@ -58,11 +70,17 @@ changes:
     note: "Corrected after verification: removed the unsupported maker-access control claim, reworded the unattended-flows sentence and the summary's admin-action clause, and added the Introduction to desktop flows source."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 50 statements not yet confirmed"
-version: 2
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 50 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-19"
+    note: "Corrected after verification: licensing model is now included, citing Power Automate Premium's desktop capabilities, with library-specific terms still unpublished; added three source links."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 50 statements confirmed"
+version: 3
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
-  version: 2
+  status: "verified"
+  date: "2026-11-19"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 50
@@ -70,7 +88,7 @@ verification:
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "85400180491a19a7e3977a5141ebf389"
+  hash: "87df9e12b2b324b5e4529d6cca71b3b5"
 ---
 
 ## What's changing
@@ -110,7 +128,7 @@ Microsoft has not stated what happens on arrival or whether an administrator has
 
 ## Cost and licensing
 
-Licence: Not yet published. The roadmap item names no licence for desktop flow libraries. Learn's Premium RPA features page lists features such as UI elements collections ("Create, share, and use groups of predefined UI elements in multiple desktop flows") and does not list desktop flow libraries at the time of writing (November 2026). Whether libraries follow the premium RPA features is therefore unconfirmed.
+Licence: Microsoft lists Power Automate Premium as providing the full set of desktop authoring capabilities. Library-specific licensing terms are not yet published. Learn's Premium RPA features page lists features such as UI elements collections ("Create, share, and use groups of predefined UI elements in multiple desktop flows") and does not list desktop flow libraries at the time of writing (November 2026).
 
 Meter: No meter is documented for this feature at the time of writing.
 
@@ -118,7 +136,7 @@ Indirect cost: maker and administrator time to define what belongs in a library 
 
 ## Scope
 
-The roadmap item names Power Automate, the Desktop platform and the Worldwide (Standard Multi-Tenant) cloud; no other clouds are listed on the item. Users, licences, roles and environments in scope are not yet published, and no rollout mechanics or prerequisites are documented. The roadmap lists both Preview and General Availability phases, with a preview targeted for January CY2027 and a target date of March CY2027.
+The roadmap item names Power Automate, the Desktop platform and the Worldwide (Standard Multi-Tenant) cloud; no other clouds are listed on the item. Microsoft lists Power Automate Premium as providing the full set of desktop authoring capabilities; library-specific licensing terms, roles and environments in scope are not yet published, and no rollout mechanics or prerequisites are documented. The roadmap lists both Preview and General Availability phases, with a preview targeted for January CY2027 and a target date of March CY2027.
 
 ## Governance guidance
 
@@ -156,19 +174,11 @@ No library-specific setting is documented, so the table has one row stating that
 
 - Does a flow that uses a library refer to the published library, or take a copy as desktop flow templates do? Watch the Power Automate for desktop release notes and the Learn desktop flows pages.
 - Who can publish, edit and consume a library, and how is access shared? Watch the Learn desktop flows pages.
-- Which licence does using or publishing a library need, and is any meter or storage charged? Watch the Premium RPA features page and Power Automate pricing.
+- Which library-specific licence terms apply to using or publishing a library, and is any meter or storage charged? Watch the Premium RPA features page and Power Automate pricing.
 - Is there an environment or tenant setting to turn libraries off or limit them, and does it have a Power Platform API, PowerShell or pac CLI equivalent? Watch the Power Platform admin center Features page.
 
 <!-- rationale
 risk: Low. The roadmap describes an authoring capability for makers and no source says existing flows change; how shared library content is permissioned and updated is not yet documented, so rate on today's behaviour continuing.
-cost: Low. The only cost the sources show is admin and maker time to agree reuse standards; Microsoft has not published a licence or meter for desktop flow libraries.
+cost: Low. The only cost the sources show is admin and maker time to agree reuse standards; Microsoft lists Power Automate Premium as providing the full set of desktop authoring capabilities, and library-specific licensing terms are not yet published.
 impact: Medium. Makers who build desktop flows would notice it; the roadmap item names no end-user or admin-facing change.
--->
-
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure / behaviour: Desktop automation actions may use connectors. | Found: In desktop flows, you can utilize not only the standard set of actions available in the action library but also some of the most popular connectors. | Fix: Add https://learn.microsoft.com/power-automate/desktop-flows/how-to/use-connector-actions to sources for the general connector-action premise; retain the explicit uncertainty about library credentials. | Source: https://learn.microsoft.com/power-automate/desktop-flows/how-to/use-connector-actions
-- [supported, minor] Governance guidance: At rollout / behaviour: Flow checker rules exist for desktop flows generally, without asserting library applicability. | Found: Administrators can now configure static analysis rules for desktop flows from the Power Automate portal, including overriding rule severity, enabling or disabling individual rules | Fix: Add https://learn.microsoft.com/power-platform/released-versions/power-automate-desktop/2607 to sources for the existing Flow checker rules premise; retain the request to confirm library applicability. | Source: https://learn.microsoft.com/power-platform/released-versions/power-automate-desktop/2607#installer-version-27018426183---microsoft-store-version-1126071840-updates
-- [supported, minor] Governance guidance: At rollout / applicability: Data policies exist for desktop flows generally, without asserting library applicability. | Found: The following PowerShell script adds two specific desktop flow modules to the default data group of a DLP policy. | Fix: Add https://learn.microsoft.com/power-automate/prevent-data-loss to sources for the existing desktop-flow data-policy premise; retain the request to confirm library applicability. | Source: https://learn.microsoft.com/power-automate/prevent-data-loss#data-loss-prevention-for-desktop-flows
 -->

@@ -1,0 +1,197 @@
+---
+title: "Microsoft 365 Copilot: accounting skills in Excel and Cowork"
+slug: "m365-copilot-m365-accounting-skills"
+roadmapId: 578864
+topic: "m365-copilot"
+products: ["Excel","Microsoft Copilot (Microsoft 365)"]
+summary: "Accounting skills for reconciliations, journal entries and reporting are planned for Copilot in Excel and Cowork. Admins can block the Cowork plugin; Excel controls and any separate price are not yet documented."
+status: "in-development"
+releasePhase: ["General Availability","Preview"]
+clouds: ["Worldwide (Standard Multi-Tenant)"]
+platforms: ["Desktop","Mac","Web"]
+targetDate: "November CY2026"
+previewDate: "October CY2026"
+risk: "medium"
+cost: "variable"
+impact: "medium"
+defaultState: "unknown"
+action: "review"
+licensing:
+  model: "mixed"
+  notes: "Microsoft's Manage plugins page says users of Cowork plugins must have Microsoft 365 Copilot licences assigned. Cowork uses usage-based billing in Copilot Credits, including skill calls. Copilot in Microsoft 365 apps is included with a Microsoft 365 Copilot licence; no additional accounting-specific Excel licence requirement is documented."
+audiences: ["m365-admin","service-owner","compliance"]
+tags: ["m365-copilot","cowork","skills","plugins","frontier-program","excel","accounting","m365-admin-center"]
+sources:
+  - title: "Microsoft 365 Roadmap 578864"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=578864"
+    kind: "roadmap"
+  - title: "Available plugins for Copilot Cowork"
+    url: "https://learn.microsoft.com/copilot/cowork/cowork-available-plugins"
+    kind: "learn"
+  - title: "Manage plugins for Copilot Cowork"
+    url: "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins"
+    kind: "learn"
+  - title: "Manage Copilot Cowork for your organization"
+    url: "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance"
+    kind: "learn"
+  - title: "Usage-Based Billing and Cost Management for Copilot Credits"
+    url: "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits"
+    kind: "learn"
+  - title: "Usage-Based Billing FAQ for Microsoft 365 Copilot Business"
+    url: "https://learn.microsoft.com/microsoft-365/commerce/usage-based-billing-faq-microsoft-365-copilot-business?view=o365-worldwide"
+    kind: "learn"
+  - title: "copilotPackage: block"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
+    kind: "learn"
+  - title: "List Copilot packages"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackages-list"
+    kind: "learn"
+  - title: "Overview of Copilot skills for Excel (preview)"
+    url: "https://learn.microsoft.com/office/dev/add-ins/excel/excel-skills"
+    kind: "learn"
+videos: []
+related: ["m365-copilot-copilot-cowork-access-business-applications-with-work-iq","auditing"]
+controls:
+  - governs: "Whether the Accounting for Cowork plugin is blocked or available to users or groups"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft 365 admin center"
+      path: "Agents > Tools > plugin > Users > Block"
+      docs: "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins"
+    api:
+      kind: "graph"
+      call: "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
+    note: "Role: tenant administrator or Copilot administrator. API needs an Agent 365 licence; confirm the plugin appears as a package. Beta API: subject to change, not supported in production."
+confidence: "medium"
+created: "2026-11-19"
+updated: "2026-11-19"
+roadmapModified: "2026-11-05T23:59:28"
+changes:
+  - date: "2026-11-19"
+    note: "First briefing for roadmap item 578864: accounting skills for Excel and Cowork, with the Cowork plugin block control and open questions on Excel."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 62 statements contradicted, 1 unconfirmed; taken offline until corrected"
+  - date: "2026-11-19"
+    note: "Corrected licensing to mixed and cost to variable: Cowork skill calls use Copilot Credits; Excel apps are covered by the Microsoft 365 Copilot licence. Narrowed the Excel risk bullet and removed the Purview checklist step."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 70 statements not yet confirmed"
+version: 2
+verification:
+  status: "verified-with-gaps"
+  date: "2026-11-19"
+  version: 2
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 70
+  confirmed: 69
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "f7ed0cfe7d98766cccd1545a6a5bf89a"
+---
+
+## What's changing
+
+The roadmap item adds accounting skills to Copilot in Excel and Cowork. Its description lists three groups of tasks: reconciling accounts (comparing balances and transactions, identifying discrepancies and preparing reconciling items for review), drafting journal entries (accruals, reclassifications, allocations, reversals and recurring entries, with checks for required inputs and balanced entries), and reporting (analysing financial performance against plan and explaining what changed). It adds that further capabilities span audit, tax, FP&A, compliance and training.
+
+The record also says finance professionals will be able to start an audit trail whenever they invoke an accounting capability. If chosen, it creates a record in their chat history of what Copilot changed and why. The roadmap states this is available today in Excel and coming soon to Cowork. It reports that in seven days of limited Insiders availability more than 8,000 unique users invoked accounting skills over 44,000 times across more than 18,000 Copilot conversations.
+
+On Cowork, Microsoft Learn documents a plugin called Accounting for Cowork (Frontier), described as currently available for users in the Frontier program. It includes skills for journal entries, reconciliation, financial statements, budget and forecast, financial presentations and tax preparation. A user adds it from the Plugins page in Cowork. The roadmap item does not name this plugin, so confirm that the two are the same before relying on the Learn page. At the time of writing (November 2026), the Learn pages found describe the Cowork plugin and not the Excel accounting skills, so the Excel behaviour below is the roadmap's description.
+
+The roadmap shows the status as In development, with a preview date of October CY2026 and a target date of November CY2026, for Desktop, Mac and Web in the Worldwide (Standard Multi-Tenant) cloud, in General Availability and Preview phases. The Learn page describes the Cowork plugin as already available to Frontier users, which differs from the roadmap's status. Treat the roadmap dates as Microsoft's targets.
+
+## Why it matters
+
+This puts an AI assistant into accounting work: reconciliations, journal entries and reporting. Microsoft's Learn page for the Cowork plugin says Copilot does not provide accounting, tax, audit or financial advice, that output must be reviewed and verified against source records before entries are posted to a system of record, and that the plugin does not replace an organisation's internal controls, review or approval processes. For a service owner, that makes the change a question of finance controls as much as of IT.
+
+Microsoft has not stated what happens on arrival in Excel, so no source says existing behaviour changes. The Cowork plugin is added by the user from the Plugins page or deployed by an administrator. Decide now whether finance staff in your tenant should use it, so that the answer is in place before the November CY2026 target.
+
+## Risk assessment
+
+**Data exposure**
+
+- The Cowork plugin is described as working from financial data in connected systems and materials the user provides, such as trial balances, general ledger and subledger detail, bank statements, invoices, budgets and supporting schedules. That puts finance records into Copilot conversations. Row 1 of the controls table limits who can use the plugin.
+- Test the Excel accounting experience on a sample workbook before using live ledger extracts.
+
+**Security & identity**
+
+- Managing the plugin needs a tenant administrator or the Copilot administrator role, so limit who holds those roles.
+- Confirm which identity the skills use when they reach connected accounting systems before connecting a production ledger.
+
+**Autonomy & actions**
+
+- The skills draft journal entries and prepare reconciling items, and the roadmap describes them as prepared for review. The Learn page warns that output must be verified before posting, so require a named reviewer and approval before any entry reaches a system of record.
+- The audit trail is an option each user chooses when invoking a capability, according to the roadmap. Do not treat it as an enforced control.
+
+**Change & support**
+
+- The roadmap shows In development with a November CY2026 target, while Learn describes the Cowork plugin as available to Frontier users, so users may ask for it before the roadmap date. Agree the answer in advance.
+- The roadmap says the audit trail is available in Excel today and coming soon to Cowork, so users may see different behaviour in the two apps.
+
+## Cost and licensing
+
+Licence: Microsoft's Manage plugins page lists, as a prerequisite, that users who use Cowork plugins must have Microsoft 365 Copilot licences assigned. That page also says admins need to be a tenant administrator or have the Copilot administrator role. Microsoft's usage-based billing FAQ says everyday AI experiences, such as chat and Copilot in Microsoft 365 apps, are included with a Microsoft 365 Copilot licence; no additional accounting-specific Excel licence requirement is documented at the time of writing (November 2026).
+
+Meter: Cowork skill calls count toward usage-based consumption measured in Copilot Credits; Microsoft's Cowork admin page gives no accounting-specific rate at the time of writing (November 2026). See [Copilot Credits](/concepts/copilot-credits/) for how that meter works generally.
+
+Indirect cost: finance reviewers need time to verify Copilot's output, as Microsoft's page requires. The Graph block call in the controls table needs a Microsoft Agent 365 licence according to its reference page.
+
+## Scope
+
+Users: finance and accounting staff who use Excel or Cowork. For Cowork plugins, Microsoft's page requires Microsoft 365 Copilot licences for users. Cowork availability for this plugin is described as currently available for users in the Frontier program.
+
+Platforms and cloud, from the roadmap record: Desktop, Mac and Web, in the Worldwide (Standard Multi-Tenant) cloud. Release phases are General Availability and Preview. Rollout mechanics for Excel are not stated.
+
+Roles: a tenant administrator or the Copilot administrator role manages Cowork plugins in the Microsoft 365 admin center.
+
+## Governance guidance
+
+### Before rollout
+
+- Decide with the finance lead which accountants may use accounting skills, and whether the Cowork plugin should be available to everyone or to specific groups (controls table, row 1).
+- Confirm with Microsoft's documentation or your account team whether the roadmap item and the Accounting for Cowork (Frontier) plugin are the same capability.
+- Write a review rule for AI-drafted journal entries and reconciliations that names who verifies output before it is posted, in line with Microsoft's warning.
+
+### At rollout
+
+- Set the plugin to be available to specific users or groups, or block it, on its Users tab in the Microsoft 365 admin center if the pilot is limited to finance.
+- Tell pilot users that the audit trail is a choice they make when invoking a capability, and ask them to switch it on for entries and reconciliations.
+
+### After rollout
+
+- Re-check the Learn plugin page for any move out of Frontier and for Excel documentation when the roadmap status changes.
+
+## Governance controls
+
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Whether the Accounting for Cowork plugin is blocked or available to users or groups</strong><br><small>Tenant</small><br><small class="controls__note">Role: tenant administrator or Copilot administrator. API needs an Agent 365 licence; confirm the plugin appears as a package. Beta API: subject to change, not supported in production.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › plugin › Users › Block <a href="https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
+</tbody>
+</table>
+
+Blocking a plugin takes effect for new conversations; conversations already in progress that use the plugin continue until they end. Microsoft's page names the plugin availability options as available to all users, available to specific users or groups, or block.
+
+This row governs the Cowork plugin only. The Learn pages read do not describe a control for the Excel accounting skills. Plugin activity appears in Microsoft Purview audit logs under Copilot activities; see [Auditing](/concepts/auditing/).
+
+## Open questions
+
+- Which admin control, if any, turns the Excel accounting skills on or off, and where is it documented? Watch the Microsoft 365 roadmap item and Learn.
+- Is the audit trail setting something an administrator can require, or does each user choose it, in Excel and in Cowork when it arrives?
+- Does use of accounting skills in Excel carry any accounting-specific licence or Copilot Credits consumption beyond Microsoft 365 Copilot?
+- Is the roadmap item the same capability as the Accounting for Cowork (Frontier) plugin, and when does it move out of the Frontier program?
+
+<!-- rationale
+risk: Medium. Accountants will point Copilot at ledgers, bank statements and journal entries, and Microsoft's own page says its output must be verified before entries are posted; the plugin can be blocked, but no Excel-side control is documented.
+cost: Variable. Cowork skill calls consume Copilot Credits under usage-based billing; admin and finance review time add indirect cost. No accounting-specific tariff was found.
+impact: Medium. Finance and accounting staff notice it, with roadmap figures of more than 8,000 Insiders users in seven days; most other users do not.
+-->
+
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [contradicted, minor] Governance guidance: At rollout, audit-trail bullet; Governance controls / consistency: The rollout checklist asks pilot users to switch on the audit trail without a corresponding controls-table row. | Found: Checklist: 'ask them to switch it on for entries and reconciliations.' The sole table row governs 'Whether the Accounting for Cowork plugin is blocked or available to users or groups', not the audit trail. | Fix: Remove 'and ask them to switch it on for entries and reconciliations' from the At rollout bullet, leaving: 'Tell pilot users that the audit trail is a choice they make when invoking a capability.'
+-->

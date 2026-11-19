@@ -17,14 +17,17 @@ impact: "medium"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published. The roadmap item names no licence or meter for the feature. Agents already consume Copilot Credits under the Copilot Studio billing rules, and that is the only documented meter nearby."
+  model: "included"
+  notes: "Existing Copilot Studio access entitlements apply: a Copilot Studio user license with a tenant prepaid pack, the Copilot Studio authors configuration for applicable pay-as-you-go scenarios, a Microsoft 365 Copilot license, or a trial license. Feature-specific restrictions and analysis charges are not yet published."
 audiences: ["maker","power-platform-admin","finops","change-adoption"]
 tags: ["copilot-studio","agents","copilot-credits","cost-management","agent-flows","automation"]
 sources:
   - title: "Microsoft 365 Roadmap item 570432"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=570432"
     kind: "roadmap"
+  - title: "Licensing for agents powered by the standard harness"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing"
+    kind: "learn"
   - title: "Billing rates and management"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management"
     kind: "learn"
@@ -58,7 +61,7 @@ controls:
     note: "General spend control, not specific to this feature. Hard stop is optional (Stop usage). Not applied instantly and does not stop agent flows the agent calls."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-17"
+updated: "2026-11-19"
 roadmapModified: "2026-09-30T23:31:03"
 changes:
   - date: "2026-11-16"
@@ -71,19 +74,25 @@ changes:
     note: "Corrected five unsupported statements: removed the claim that workflows are agent flows, the second-agent-definition and identical-error claims, the only-lever wording and the no-administrator-asked claim."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 54 statements not yet confirmed"
-version: 3
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 53 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-19"
+    note: "Corrected licensing: Copilot Studio access entitlements apply, so the model is now included; the gap is narrowed to feature-specific restrictions and charges, and the reasoning-model rate wording follows the billing page."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 65 statements confirmed"
+version: 4
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
-  version: 3
+  status: "verified"
+  date: "2026-11-19"
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 54
+  claims: 65
+  confirmed: 65
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "0c183e94f21cddbccd8d06cf5e90129b"
+  hash: "fb312ee39b76f339abc458bb40050c24"
 ---
 
 ## What's changing
@@ -123,9 +132,9 @@ The cost promise is also a governance question. If the feature works as describe
 
 ## Cost and licensing
 
-The roadmap item names no licence for the feature, and no price or meter is yet published for it. Do not assume it is included in the licences you hold.
+Existing Copilot Studio access entitlements apply. Microsoft lists a Copilot Studio user license with a tenant prepaid pack, the Copilot Studio authors configuration for applicable pay-as-you-go scenarios, a Microsoft 365 Copilot license, or a trial license; trial licenses cannot publish agents ([Licensing for agents powered by the standard harness](https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing)). Feature-specific entitlement restrictions and analysis charges are not yet published.
 
-Agents in Copilot Studio are measured in Copilot Credits, and the Billing rates and management page describes agent flows as predefined sequences of flow actions that run repetitive tasks "without requiring agent reasoning and orchestration at each step". This is general agent-flow billing background; the roadmap does not identify the type of workflow the feature will propose. The same page states that a reasoning model adds a premium charge of 10 Copilot Credits per 1,000 tokens, and that agent flow actions are billed separately from the agent that calls them.
+Agents in Copilot Studio are measured in Copilot Credits, and the Billing rates and management page describes agent flows as predefined sequences of flow actions that run repetitive tasks "without requiring agent reasoning and orchestration at each step". This is general agent-flow billing background; the roadmap does not identify the type of workflow the feature will propose. For billable standard-harness reasoning-model usage, the page lists an additional 10 Copilot Credits per 1,000 billed tokens, excluding tokens read from the prompt cache; eligible authenticated Microsoft 365 Copilot employee-facing usage is included in that licence, subject to fair usage limits and exclusions. This remains background pricing, not a verified rate for self-learning. The page also states that agent flow actions are billed separately from the agent that calls them.
 
 Maker review, testing and publishing take time. Testing may also consume credits, depending on the harness and tools. The FAQ for Copilot Studio billing and licensing says that testing an agent in the test chat does not consume Copilot Credits for the agent's own activity, on a page that describes agents powered by the standard harness. The Microsoft Copilot harness cost page says that building, testing, evaluating and running agents on that harness can consume Copilot Credits. This feature's harness and testing charges are not stated. A per-agent monthly limit exists (see the controls table) but Microsoft's page says it does not stop agent flows the agent calls.
 
@@ -133,7 +142,7 @@ Maker review, testing and publishing take time. Testing may also consume credits
 
 The roadmap record lists Microsoft Copilot Studio as the product, the Worldwide (Standard Multi-Tenant) cloud and the Web platform. It does not list any US Government cloud.
 
-The record does not say which makers or agents get the feature, whether it needs a particular licence, role or environment type, or whether it rolls out through a release channel. The record lists both Preview and General Availability phases. Eligibility, prerequisites and rollout mechanics are Not yet published.
+The record does not say which makers or agents get the feature, whether it needs a particular role or environment type, or whether it rolls out through a release channel. Copilot Studio access entitlements are those described under Cost and licensing; whether this feature adds its own restriction is not yet published. The record lists both Preview and General Availability phases. Feature-specific eligibility, prerequisites and rollout mechanics are Not yet published.
 
 ## Governance guidance
 
@@ -174,18 +183,12 @@ The monthly limit is a general Copilot Credit control, not a control over this f
 
 - Will there be a tenant, environment or maker-group setting to turn self-learning recommendations off, and where will it live? Watch the Copilot Studio What's new page and Message center.
 - Which run data is analysed, where is it processed and stored, and does it include user prompts and tool outputs?
-- Is the feature free, metered in Copilot Credits or tied to a licence, and does the analysis itself consume credits?
+- Does the feature carry any entitlement restriction or charge beyond Copilot Studio access, and does the analysis itself consume credits?
 - Does a refined copy replace the original or run beside it, and does it keep the original's sharing, channels, connections and monthly credit limit?
 - The roadmap preview and target months have passed but the status is still In development. When will it reach makers?
 
 <!-- rationale
 risk: Medium. The feature reads completed agent runs and proposes changes to instructions and tools, and Microsoft documents no admin switch for it, although the roadmap says makers accept, test and publish each change.
-cost: Low. The only cost the sources show is maker and admin time; the roadmap says the aim is to control costs, but no meter or licence for the feature itself is yet published.
+cost: Low. The only cost the sources show is maker and admin time; the roadmap says the aim is to control costs, but no feature-specific meter, licence restriction or charge is yet published.
 impact: Medium. Makers see the recommendations and publish the refined copies; end users notice only if a refined agent behaves differently from the original.
--->
-
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing / cost: The cited billing page states a reasoning-model premium rate of 10 Copilot Credits per 1,000 tokens. | Found: It's billed as Text and generative AI tools (premium) per 1000 tokens, at 10 Copilot Credits. | Fix: Replace the reasoning-model rate sentence with: 'For billable standard-harness reasoning-model usage, the page lists an additional 10 Copilot Credits per 1,000 billed tokens; eligible authenticated Microsoft 365 Copilot employee-facing usage is included in that licence, subject to fair usage limits and exclusions.' This is background pricing, not a verified rate for self-learning. Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management. | Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management
 -->

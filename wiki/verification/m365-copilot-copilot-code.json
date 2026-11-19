@@ -2,75 +2,55 @@
   "slug": "m365-copilot-copilot-code",
   "roadmapId": 571887,
   "title": "Microsoft Copilot: Copilot Code builds software and apps from plain-language descriptions",
-  "status": "verified",
-  "date": "2026-11-18",
-  "version": 2,
+  "status": "verified-with-gaps",
+  "date": "2026-11-19",
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
   "attempts": 0,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "pass",
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 108,
-    "confirmed": 108,
+    "claims": 94,
+    "confirmed": 94,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
-    "minor": 0
+    "minor": 1
   },
-  "summary": "The briefing matches the roadmap and the Microsoft documentation checked. Its licensing, spending controls and sandbox settings are supported, and it appropriately distinguishes the planned release from the documented Frontier preview.",
+  "summary": "The briefing's roadmap facts, licensing, spending controls and local sandbox policies are supported by Microsoft's documentation. The spending-policy path needs only a minor clarification to include the policy-scope heading.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: products",
-      "type": "record",
-      "claim": "The roadmap product is Microsoft Copilot (Microsoft 365).",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "quote": "\"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The General Availability target is December CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2026\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
-      "where": "front matter: releasePhase",
-      "type": "record",
-      "claim": "The roadmap lists General Availability and Preview release phases.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "front matter: targetDate; What's changing; Open questions",
-      "type": "record",
-      "claim": "The General Availability target is December CY2026, not a confirmed availability date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"targetDate\": \"December CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
-      "claim": "The roadmap preview target is October CY2026.",
+      "claim": "The preview target is October CY2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": \"October CY2026\"",
@@ -78,208 +58,65 @@
       "fix": null
     },
     {
-      "n": 6,
-      "where": "front matter: clouds; What's changing; Scope",
+      "n": 4,
+      "where": "front matter: releasePhase",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "claim": "The release phases are General Availability and Preview.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "quote": "\"releasePhase\": [ \"General Availability\", \"Preview\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Worldwide (Standard Multi-Tenant) only.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Android, Desktop, iOS, Mac and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Web\" ]",
       "severity": null,
       "fix": null
     },
     {
       "n": 7,
-      "where": "front matter: platforms; What's changing; Scope",
+      "where": "front matter: products; title",
       "type": "record",
-      "claim": "The roadmap lists Android, Desktop, iOS, Mac and Web.",
+      "claim": "The item belongs to Microsoft Copilot (Microsoft 365).",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Web\"]",
+      "quote": "\"products\": [ \"Microsoft Copilot (Microsoft 365)\" ]",
       "severity": null,
       "fix": null
     },
     {
       "n": 8,
-      "where": "front matter: roadmapModified",
+      "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-11-17T18:36:41.",
+      "claim": "The roadmap describes work grounding by Work IQ.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"modified\": \"2026-11-17T18:36:41\"",
+      "quote": "building through natural language, grounded in their work by Work IQ",
       "severity": null,
       "fix": null
     },
     {
       "n": 9,
-      "where": "front matter: defaultState; Why it matters; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not stated whether the Code tab itself is on or off by default in a new tenant.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Copilot Code\" \"default\" \"enabled\" Code tab discovery. Opened Code requirements, Code admin, billing overview and Discovery setting for AI experiences; none states the new-tenant Code-tab default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "front matter: licensing.model and licensing.notes",
-      "type": "licensing",
-      "claim": "The mixed licensing model combines a Copilot licence for building with metered Copilot Credits and separate runtime coverage.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/apps/licensing-credits",
-      "quote": "Build an app in Copilot Code | A Microsoft Copilot license, plus Copilot Credits billed through a spending policy that includes Copilot Code",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "front matter: cost; rationale: cost",
-      "type": "cost",
-      "claim": "Variable cost reflects consumption metered in Copilot Credits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
-      "quote": "Microsoft's usage-based billing model charges customers based on actual usage, measured in Copilot Credits.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "controls[0].ui; Cost and licensing; Governance controls table",
-      "type": "admin-path",
-      "claim": "Copilot > Cost management in the Microsoft 365 admin center is the documented location for Copilot Code spending policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/apps/licensing-credits",
-      "quote": "In the Microsoft 365 admin center, go to Copilot > Cost management and turn on usage-based billing if it isn't already on",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "The beta Graph spending-policy creation endpoint is POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies with the listed required body properties.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create",
-      "quote": "supply a JSON representation of a spendingPolicy object with a concrete @odata.type. Required properties are displayName, periodLimit, perUserLimit, and serviceSettings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "controls[0].note; Governance controls table",
+      "where": "title; summary; What's changing",
       "type": "behaviour",
-      "claim": "The spending-policy API is a beta API.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create",
-      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "controls[0].note; Governance controls table",
-      "type": "behaviour",
-      "claim": "The API page's example shows cowork and workIQ service identifiers, not a Copilot Code identifier.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create",
-      "quote": "\"serviceSettings\": [\n    { \"serviceId\": \"cowork\", \"state\": \"enabled\" },\n    { \"serviceId\": \"workIQ\", \"state\": \"enabled\" }\n  ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "controls[0].note; Governance controls",
-      "type": "role",
-      "claim": "Creating a spending policy through Graph requires the Billing Administrator or Global Administrator directory role.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create",
-      "quote": "At runtime, creating a policy also requires the Billing Administrator or Global Administrator directory role.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "controls[0].governs; Cost and licensing; Governance guidance",
-      "type": "cost",
-      "claim": "A Copilot Code spending policy can set a monthly per-user limit.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/apps/licensing-credits",
-      "quote": "Set a monthly per-user limit and alerts.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "controls[0].scope and governs; Governance guidance",
-      "type": "applicability",
-      "claim": "Spending policies govern access for users and groups using Copilot Code.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/apps/",
-      "quote": "create a spending policy in the Microsoft 365 admin center that selects the Copilot Code service and includes only the users, or a security group of users, who are allowed to build apps.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "controls[1].ui; Governance controls table; Governance guidance",
-      "type": "admin-path",
-      "claim": "After importing the Microsoft Copilot ADMX templates, the Windows device-policy location is Microsoft Copilot > Code Tab.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/code/code-admin",
-      "quote": "Download the Microsoft Copilot policy templates, then import the policy file (windows/admx/copilotapp.admx). ... Policy location: Microsoft Copilot > Code Tab.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "controls[1].api; Governance controls table; Governance guidance",
-      "type": "command",
-      "claim": "macOS sandbox policy uses CopilotDeviceCodeTabSandboxEnabled and CopilotDeviceCodeTabOutboundNetworkAccessMode in the com.microsoft.Copilot domain.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/code/code-admin",
-      "quote": "Domain: com.microsoft.Copilot. ... CopilotDeviceCodeTabSandboxEnabled ... CopilotDeviceCodeTabOutboundNetworkAccessMode",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "controls[1].governs; Governance controls table",
-      "type": "applicability",
-      "claim": "The sandbox-required policy determines whether local sessions must use the sandbox.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/code/code-admin",
-      "quote": "This policy setting specifies whether the sandbox is required for local Copilot sessions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "controls[1].governs; Governance controls table",
-      "type": "applicability",
-      "claim": "The outbound-network policy controls network connections from sandboxed local Copilot sessions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/code/code-admin",
-      "quote": "This policy setting specifies how sandboxed local Copilot sessions make outbound network connections.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "controls[1].note; Risk assessment; Governance controls",
-      "type": "applicability",
-      "claim": "These sandbox settings are device policies for local sessions, not controls over cloud agent sessions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/code/code-admin",
-      "quote": "Administrators manage the sandbox and preinstall it as a device policy. ... This policy doesn't affect Copilot Code Cloud agent sessions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "summary; What's changing",
-      "type": "behaviour",
-      "claim": "Copilot Code is a Code tab in Microsoft Copilot.",
+      "claim": "Copilot Code is a Code tab in Microsoft Copilot that builds software from plain-language descriptions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/",
       "quote": "The Code tab in Microsoft Copilot turns what you describe into working software.",
@@ -287,21 +124,10 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "title; summary; What's changing",
-      "type": "behaviour",
-      "claim": "Copilot Code builds working software from plain-language descriptions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/code/",
-      "quote": "Build real software from a description: Create apps, dashboards, internal tools, static websites, data transforms, and scripts in plain language.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
+      "n": 10,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Copilot Code shows a live preview of what it builds.",
+      "claim": "Copilot Code shows a live preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/",
       "quote": "Copilot Code builds it, shows you a live preview, and iterates with you until it works.",
@@ -309,30 +135,30 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 11,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Users can iterate on the generated software with Copilot Code.",
+      "claim": "Users can iterate on the software conversationally.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/use-code",
-      "quote": "Describe a change, such as adding a feature, adjusting the layout, or fixing a problem, and Copilot Code updates the project.",
+      "quote": "Refine: Describe a change, such as adding a feature, adjusting the layout, or fixing a problem, and Copilot Code updates the project.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 28,
+      "n": 12,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Learn lists dashboards, internal tools, static websites, data transforms and scripts as examples.",
+      "claim": "Microsoft lists dashboards, internal tools, static websites, data transforms and scripts as examples.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/",
-      "quote": "You explain the outcome you want—a dashboard, an internal tool, a static website, a data transform, or a script",
+      "quote": "Create apps, dashboards, internal tools, static websites, data transforms, and scripts in plain language.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 29,
-      "where": "What's changing; Risk assessment; rationale: risk",
+      "n": 13,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
       "type": "behaviour",
       "claim": "With permission, Copilot Code uses the user's Microsoft 365 documents, emails, meetings and calendar as context.",
       "status": "supported",
@@ -342,62 +168,40 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap describes Copilot Code as grounded in the user's work by Work IQ.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "building through natural language, grounded in their work by Work IQ.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
+      "n": 14,
       "where": "summary; What's changing",
       "type": "behaviour",
-      "claim": "Copilot Code apps can be published to Copilot Managed Runtime.",
+      "claim": "Apps can be published to Copilot Managed Runtime.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/use-code",
-      "quote": "you can publish it and share it with people in your organization.",
+      "quote": "Build and publish apps to Copilot Managed Runtime",
       "severity": null,
       "fix": null
     },
     {
-      "n": 32,
+      "n": 15,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Published apps can be shared with people or groups in the organisation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/use-code",
-      "quote": "Ask Code to share it with specific people or groups in your organization",
+      "quote": "Ask Code to share it with specific people or groups in your organization and choose if they can use it.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
+      "n": 16,
       "where": "What's changing; Governance guidance",
       "type": "behaviour",
-      "claim": "Building an app does not publish it.",
+      "claim": "Building does not publish an app; publication is a separate step requested by the user.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/use-code",
-      "quote": "Building doesn't publish it",
+      "quote": "Building doesn't publish it—publishing is a separate step that happens only when you ask for it.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
-      "where": "What's changing; Governance guidance",
-      "type": "behaviour",
-      "claim": "Publishing is a separate step that happens only when requested.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/code/use-code",
-      "quote": "publishing is a separate step that happens only when you ask for it.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
+      "n": 17,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Connecting GitHub is optional.",
@@ -408,10 +212,10 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 18,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Copilot Code can create branches in connected repositories.",
+      "claim": "Connected GitHub repositories support creating branches and commits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/code-github",
       "quote": "Create branches and commits.",
@@ -419,29 +223,7 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Copilot Code can create commits in connected repositories.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/code/code-github",
-      "quote": "Create branches and commits.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "What's changing; Risk assessment; rationale: risk",
-      "type": "behaviour",
-      "claim": "Copilot Code can push changes to GitHub.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/code/code-github",
-      "quote": "Push changes to GitHub.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
+      "n": 19,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Copilot Code can open draft pull requests.",
@@ -452,76 +234,54 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "summary; What's changing; Risk assessment",
+      "n": 20,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Copilot Code can push changes to GitHub.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/code/code-github",
+      "quote": "Push changes to GitHub.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "summary; What's changing; Scope; Governance controls",
       "type": "availability",
-      "claim": "Learn documents Copilot Code as a preview whose availability and capabilities may change.",
+      "claim": "Learn documents Copilot Code as a preview feature requiring Frontier preview membership.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/",
-      "quote": "This is a preview feature ... As these features are still in development, their availability and capabilities may change over time.",
+      "quote": "This is a preview feature provided under Microsoft Product Terms. ... You need to be part of the Frontier preview program to get early access.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 41,
-      "where": "What's changing; Scope; Governance controls; Open questions",
-      "type": "availability",
-      "claim": "Current early access requires membership in the Frontier preview programme.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/code/code-requirements",
-      "quote": "You need to be part of the Frontier preview program to get early access.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Why it matters",
+      "n": 22,
+      "where": "Risk assessment",
       "type": "behaviour",
-      "claim": "Copilot Code is intended to let people build software without knowing how to code.",
+      "claim": "Preview behaviour can change before general availability.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/",
-      "quote": "You don't need to know how to code.",
+      "quote": "As these features are still in development, their availability and capabilities may change over time.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 43,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "Local sessions can read and work with files on the user's device.",
+      "n": 23,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is mixed, combining a Copilot licence with credit-based usage.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/code/use-code",
-      "quote": "Copilot Code works inside the project folders on your device ... It can read the files there, install what the project needs, and run the app",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/apps/licensing-credits",
+      "quote": "Build an app in Copilot Code | A Microsoft Copilot license, plus Copilot Credits billed through a spending policy that includes Copilot Code",
       "severity": null,
       "fix": null
     },
     {
-      "n": 44,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "Copilot Code can make network connections subject to approval and policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/code/code-admin",
-      "quote": "Network access: Outbound network connections made by Copilot Code or by code it runs.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "summary; Why it matters; Cost and licensing",
-      "type": "cost",
-      "claim": "Copilot Code uses usage-based billing and requires a configured spending policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/code/code-admin",
-      "quote": "Copilot Code is a usage-based billing feature and requires a spending policy to be configured.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
+      "n": 24,
       "where": "front matter: licensing.notes; Why it matters; Cost and licensing; Scope",
       "type": "licensing",
-      "claim": "The feature requirements page lists a Microsoft Copilot licence for work accounts.",
+      "claim": "The feature requirements page requires a Microsoft Copilot licence for work accounts.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/code-requirements",
       "quote": "Work (organization) account | A Microsoft Copilot license, and the Code tab in Microsoft Copilot enabled by your organization.",
@@ -529,21 +289,98 @@
       "fix": null
     },
     {
-      "n": 47,
+      "n": 25,
       "where": "Why it matters; Cost and licensing; Scope",
       "type": "availability",
-      "claim": "The feature requirements include the organisation enabling the Code tab.",
+      "claim": "The requirements page says the organisation must have enabled the Code tab.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/code-requirements",
-      "quote": "the Code tab in Microsoft Copilot enabled by your organization.",
+      "quote": "A Microsoft Copilot license, and the Code tab in Microsoft Copilot enabled by your organization.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
+      "n": 26,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Managed Runtime licensing page says the Copilot licence does not include Code or Cowork usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/apps/licensing-credits",
+      "quote": "The license doesn't include Cowork or Code usage, which is billed through Copilot Credits",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Copilot overview specifically requires Microsoft 365 Copilot (Premium) for usage-based billing capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "To use usage-based billing capabilities, you must have a Microsoft 365 Copilot (Premium) license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Scope",
+      "type": "licensing",
+      "claim": "Learn also supports personal Microsoft accounts on a supported Copilot consumer plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/code/code-requirements",
+      "quote": "Personal Microsoft account | A supported Microsoft Copilot consumer plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "default",
+      "claim": "Microsoft has not stated whether the Code tab itself is on or off by default in a new tenant.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot Code\" \"default\" \"Code tab\" enable. Opened Code requirements, Code admin, Managed Runtime admin overview and usage-based billing management; none states the new-tenant default of the Code tab itself.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "Copilot Code can access the local file system.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/code/use-code",
+      "quote": "Copilot Code works inside the project folders on your device ... It can read the files there, install what the project needs, and run the app",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Copilot Code can make network connections subject to approval and policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/code/use-code",
+      "quote": "Copilot Code asks for your approval before it reaches outside that folder or makes a network connection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "summary; Why it matters; Cost and licensing",
+      "type": "cost",
+      "claim": "Copilot Code uses usage-based billing and requires a spending policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/code/code-admin",
+      "quote": "Copilot Code is a usage-based billing feature and requires a spending policy to be configured.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
       "where": "Why it matters",
       "type": "default",
-      "claim": "Spending policies have Auto-apply new services selected by default.",
+      "claim": "Auto-apply new services is selected by default for spending policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
       "quote": "By default, the Auto-apply new services toggle is selected for spending policies.",
@@ -551,10 +388,10 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 34,
       "where": "Why it matters",
-      "type": "applicability",
-      "claim": "Automatic inclusion of newly supported services can extend an existing spending policy to Code without a new Code-specific opt-in.",
+      "type": "behaviour",
+      "claim": "An existing spending policy with automatic service coverage can include newly supported Code usage.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
       "quote": "Code (Copilot license required) ... Spending policies can automatically apply to future supported Microsoft Copilot services and agents.",
@@ -562,10 +399,10 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 35,
       "where": "Risk assessment: Data exposure",
       "type": "default",
-      "claim": "Organizational Data in Copilot Code defaults to on for cloud sessions.",
+      "claim": "Organizational Data in Copilot Code defaults to on for cloud sessions and off for local sessions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/code-admin",
       "quote": "Organizational Data in Copilot Code | On for cloud; Off for local",
@@ -573,18 +410,7 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "Risk assessment: Data exposure",
-      "type": "default",
-      "claim": "Organizational Data in Copilot Code defaults to off for local sessions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/code/code-admin",
-      "quote": "Organizational Data in Copilot Code | On for cloud; Off for local",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
+      "n": 36,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Sharing an app does not share its underlying data.",
@@ -595,7 +421,7 @@
       "fix": null
     },
     {
-      "n": 53,
+      "n": 37,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Recipients see only data they already have permission to access in connected sources.",
@@ -606,10 +432,10 @@
       "fix": null
     },
     {
-      "n": 54,
+      "n": 38,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Recipients may need to approve a connection when opening the app.",
+      "claim": "Recipients may need to approve a connection on first opening the app.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/use-code",
       "quote": "might be asked to approve a connection the first time they open the app.",
@@ -617,21 +443,10 @@
       "fix": null
     },
     {
-      "n": 55,
+      "n": 39,
       "where": "Risk assessment: Data exposure",
       "type": "applicability",
-      "claim": "Managed Runtime apps inherit default environment group connector settings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/apps/",
-      "quote": "Every app inherits the default environment group settings ... These settings cover which connectors and MCP servers apps can use",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "Risk assessment: Data exposure",
-      "type": "applicability",
-      "claim": "Managed Runtime apps inherit default environment group sharing settings.",
+      "claim": "Managed Runtime apps inherit default environment group settings for connectors, sharing and external content.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/apps/",
       "quote": "Every app inherits the default environment group settings, which control what it can connect to, who it can be shared with, and what external content it can load.",
@@ -639,20 +454,9 @@
       "fix": null
     },
     {
-      "n": 57,
-      "where": "Risk assessment: Data exposure",
-      "type": "applicability",
-      "claim": "Managed Runtime apps inherit default environment group external-content settings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/apps/",
-      "quote": "Every app inherits the default environment group settings, which control what it can connect to, who it can be shared with, and what external content it can load.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
+      "n": 40,
       "where": "Risk assessment: Security & identity",
-      "type": "licensing",
+      "type": "behaviour",
       "claim": "For organisational use, a Microsoft Entra work account is the required sign-in.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/code-requirements",
@@ -661,7 +465,7 @@
       "fix": null
     },
     {
-      "n": 59,
+      "n": 41,
       "where": "Risk assessment: Security & identity",
       "type": "default",
       "claim": "The GitHub connection policy defaults to off.",
@@ -672,18 +476,18 @@
       "fix": null
     },
     {
-      "n": 60,
+      "n": 42,
       "where": "Risk assessment: Security & identity",
-      "type": "availability",
-      "claim": "The administrator must enable working with GitHub in Copilot Code.",
+      "type": "applicability",
+      "claim": "The administrator must enable GitHub use in Copilot Code.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/code-github",
-      "quote": "Your system administrator must enable working with GitHub in Copilot Code. This feature might not be available.",
+      "quote": "Your system administrator must enable working with GitHub in Copilot Code.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 61,
+      "n": 43,
       "where": "Risk assessment: Security & identity",
       "type": "default",
       "claim": "Allowed Github Connections list defaults to Both.",
@@ -694,10 +498,10 @@
       "fix": null
     },
     {
-      "n": 62,
-      "where": "Risk assessment: Autonomy & actions; Governance guidance",
+      "n": 44,
+      "where": "Risk assessment: Autonomy & actions",
       "type": "default",
-      "claim": "Copilot Code asks permission for network calls by default.",
+      "claim": "By default Copilot Code requests permission before network calls.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/use-code",
       "quote": "By default, Copilot Code asks for permission to: ... Make network calls, including accessing the internet.",
@@ -705,10 +509,10 @@
       "fix": null
     },
     {
-      "n": 63,
-      "where": "Risk assessment: Autonomy & actions; Governance guidance",
+      "n": 45,
+      "where": "Risk assessment: Autonomy & actions",
       "type": "default",
-      "claim": "Copilot Code asks permission to use extensions and MCP by default.",
+      "claim": "By default it requests permission before using extensions and MCP.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/use-code",
       "quote": "By default, Copilot Code asks for permission to: ... Use extensions and MCP.",
@@ -716,10 +520,10 @@
       "fix": null
     },
     {
-      "n": 64,
+      "n": 46,
       "where": "Risk assessment: Autonomy & actions; rationale: risk",
       "type": "default",
-      "claim": "Copilot Code asks permission to run shell or terminal commands by default.",
+      "claim": "By default it requests permission before running shell or terminal commands.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/use-code",
       "quote": "By default, Copilot Code asks for permission to: ... Run shell or terminal commands.",
@@ -727,10 +531,10 @@
       "fix": null
     },
     {
-      "n": 65,
-      "where": "Risk assessment: Autonomy & actions; Governance guidance",
+      "n": 47,
+      "where": "Risk assessment: Autonomy & actions",
       "type": "default",
-      "claim": "Copilot Code asks permission for file access outside projects and folders already in use.",
+      "claim": "By default it requests permission for file access outside projects and folders already in use.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/use-code",
       "quote": "Read or write files outside the projects and folders already in use in Copilot Code.",
@@ -738,10 +542,10 @@
       "fix": null
     },
     {
-      "n": 66,
+      "n": 48,
       "where": "Risk assessment: Autonomy & actions",
       "type": "default",
-      "claim": "The Auto-approve setting defaults to on.",
+      "claim": "The Auto-approve setting is on by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/code-admin",
       "quote": "Auto-approve setting | On",
@@ -749,10 +553,10 @@
       "fix": null
     },
     {
-      "n": 67,
+      "n": 49,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "The Auto-approve policy allows users to let Copilot approve permissions rather than confirming every action.",
+      "claim": "That policy lets users allow automatic approvals rather than confirming each action.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/code-admin",
       "quote": "This policy setting controls whether users can let Copilot auto-approve permissions in Copilot Code instead of confirming each action.",
@@ -760,7 +564,7 @@
       "fix": null
     },
     {
-      "n": 68,
+      "n": 50,
       "where": "Risk assessment: Autonomy & actions; Governance guidance",
       "type": "behaviour",
       "claim": "Always allow remains enabled until the user disables it.",
@@ -771,32 +575,43 @@
       "fix": null
     },
     {
-      "n": 69,
+      "n": 51,
       "where": "Risk assessment: Autonomy & actions",
       "type": "default",
-      "claim": "The local-session sandbox policy requires the sandbox when the policy is not configured.",
+      "claim": "The local sandbox is required on managed devices when its policy is unconfigured.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/code-admin",
-      "quote": "If you don't configure this policy, the sandbox is required and users can't turn it off.",
+      "quote": "If you don't configure this policy, the sandbox is required and users can't turn it off. ... On managed devices with no policy set, the sandbox stays on",
       "severity": null,
       "fix": null
     },
     {
-      "n": 70,
+      "n": 52,
+      "where": "Risk assessment; controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "The device sandbox policies do not affect cloud agent sessions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/code/code-admin",
+      "quote": "This policy doesn't affect Copilot Code Cloud agent sessions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
       "where": "Risk assessment: Autonomy & actions",
       "type": "applicability",
-      "claim": "The sandbox does not restrict an app the user runs outside a Copilot Code session.",
+      "claim": "The sandbox does not restrict a generated app run outside a Copilot Code session.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/code/code-admin",
-      "quote": "If a user runs an app that Copilot Code built outside of a Copilot Code session, the sandbox doesn't restrict it.",
+      "source": "https://learn.microsoft.com/copilot/code/code-secure-local-execution",
+      "quote": "If you run an app that Copilot Code built outside of a Copilot Code session, the Sandbox doesn't restrict it.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 71,
+      "n": 54,
       "where": "Risk assessment: Change & support",
       "type": "availability",
-      "claim": "Windows sandbox support requires Windows 11 version 24H2 or later.",
+      "claim": "The local sandbox supports Windows 11 version 24H2 or later.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/code-admin",
       "quote": "The sandbox works on Windows 11, version 24H2 or later, and on Mac.",
@@ -804,109 +619,76 @@
       "fix": null
     },
     {
-      "n": 72,
+      "n": 55,
       "where": "Risk assessment: Change & support",
       "type": "availability",
-      "claim": "The sandbox is supported on Mac.",
+      "claim": "The local sandbox supports Mac.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/code/code-admin",
-      "quote": "The sandbox works on Windows 11, version 24H2 or later, and on Mac.",
+      "source": "https://learn.microsoft.com/copilot/code/code-requirements",
+      "quote": "Mac | Supported.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 73,
+      "n": 56,
       "where": "Risk assessment: Change & support",
       "type": "availability",
-      "claim": "Windows 10 is not supported for the sandbox.",
+      "claim": "Windows 10 does not support the sandbox.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/code/code-admin",
-      "quote": "Windows 10 isn't supported.",
+      "source": "https://learn.microsoft.com/copilot/code/code-requirements",
+      "quote": "Windows 10 | Not supported.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 74,
+      "n": 57,
       "where": "Risk assessment: Change & support",
       "type": "availability",
-      "claim": "Users on devices unsupported by the sandbox can run projects in the cloud.",
+      "claim": "Users whose devices do not support the sandbox can run projects in the cloud.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/code/code-admin",
-      "quote": "Users on unsupported devices can run projects in the cloud.",
+      "source": "https://learn.microsoft.com/copilot/code/code-requirements",
+      "quote": "If your organization requires the Sandbox and your device doesn't support it, you can still run projects in the cloud.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 75,
+      "n": 58,
       "where": "front matter: licensing.notes; Risk assessment; Cost and licensing; Governance guidance",
       "type": "licensing",
-      "claim": "Running a published app requires Power Apps Premium or coverage through a spending policy including Copilot Managed Runtime.",
+      "claim": "Each app user needs Power Apps Premium or coverage through a spending policy including Copilot Managed Runtime.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/apps/licensing-credits",
-      "quote": "Each person running the app also needs a Power Apps Premium license or must be included in a spending policy that includes Copilot Managed Runtime, plus permissions and connections for the app's underlying data.",
+      "quote": "To run the app, each user need either a Power Apps Premium license or inclusion in a spending policy with Copilot Managed Runtime.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 76,
-      "where": "Cost and licensing: Licence; rationale: cost",
-      "type": "licensing",
-      "claim": "A Copilot licence does not include Cowork or Code usage, which is billed in Copilot Credits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/apps/licensing-credits",
-      "quote": "The license doesn't include Cowork or Code usage, which is billed through Copilot Credits",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 77,
-      "where": "Cost and licensing: Licence",
-      "type": "licensing",
-      "claim": "The Copilot overview specifically requires a Microsoft 365 Copilot (Premium) licence for usage-based billing capabilities.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
-      "quote": "To use usage-based billing capabilities, you must have a Microsoft 365 Copilot (Premium) license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 78,
-      "where": "Cost and licensing: Meter; Governance guidance",
-      "type": "admin-path",
-      "claim": "The spending-policy setup lets administrators select Copilot Code as a covered service.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/apps/licensing-credits",
-      "quote": "Create or edit a user-based spending policy that includes the makers, or a security group that contains them, and select Copilot Cowork and Copilot Code.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 79,
-      "where": "Cost and licensing: Meter",
+      "n": 59,
+      "where": "front matter: cost; licensing.notes; Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "Spending policies define limits rather than purchases.",
+      "claim": "Copilot Code usage is metered in Copilot Credits through a spending policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/apps/licensing-credits",
-      "quote": "Spending policies are limits, not purchases.",
+      "quote": "Build an app in Copilot Code | A Microsoft Copilot license, plus Copilot Credits billed through a spending policy that includes Copilot Code",
       "severity": null,
       "fix": null
     },
     {
-      "n": 80,
-      "where": "Cost and licensing: Meter",
-      "type": "cost",
-      "claim": "A spending policy does not reserve credits.",
+      "n": 60,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Spending policies are limits rather than purchases and do not reserve or allocate credits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/apps/licensing-credits",
-      "quote": "A policy doesn't reserve or allocate credits to anyone",
+      "quote": "Spending policies are limits, not purchases. A policy doesn't reserve or allocate credits to anyone",
       "severity": null,
       "fix": null
     },
     {
-      "n": 81,
-      "where": "Cost and licensing: Meter",
+      "n": 61,
+      "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Customers pay for actual consumption rather than the policy limit.",
+      "claim": "Customers pay for actual consumption.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/apps/licensing-credits",
       "quote": "you pay only for what is actually consumed.",
@@ -914,10 +696,10 @@
       "fix": null
     },
     {
-      "n": 82,
-      "where": "Cost and licensing: Meter",
+      "n": 62,
+      "where": "Cost and licensing; Governance guidance",
       "type": "cost",
-      "claim": "Learn describes building as the most credit-intensive part of the app lifecycle.",
+      "claim": "Microsoft says building is the most credit-intensive part of the app lifecycle.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/apps/licensing-credits",
       "quote": "Building is the most credit-intensive part of the lifecycle",
@@ -925,9 +707,9 @@
       "fix": null
     },
     {
-      "n": 83,
-      "where": "Cost and licensing: Meter; Governance guidance",
-      "type": "cost",
+      "n": 63,
+      "where": "Cost and licensing; Governance guidance",
+      "type": "behaviour",
       "claim": "Microsoft advises sizing build limits separately from runtime limits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/apps/licensing-credits",
@@ -936,10 +718,10 @@
       "fix": null
     },
     {
-      "n": 84,
-      "where": "Cost and licensing: Running published apps",
+      "n": 64,
+      "where": "Cost and licensing",
       "type": "cost",
-      "claim": "The runtime consumption rate is 0.1 Copilot Credits per API call the app makes.",
+      "claim": "Managed Runtime charges 0.1 Copilot Credits per API call for credit-billed app use.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/apps/licensing-credits",
       "quote": "Credits are consumed by the API calls an app makes, at 0.1 Copilot Credits per call (1 credit covers 10 API calls).",
@@ -947,8 +729,8 @@
       "fix": null
     },
     {
-      "n": 85,
-      "where": "Cost and licensing: Running published apps",
+      "n": 65,
+      "where": "Cost and licensing",
       "type": "cost",
       "claim": "Specialised services such as Work IQ APIs are charged separately at their own rates.",
       "status": "supported",
@@ -958,43 +740,32 @@
       "fix": null
     },
     {
-      "n": 86,
-      "where": "Cost and licensing: Not yet published; rationale: cost; Open questions",
+      "n": 66,
+      "where": "Cost and licensing; rationale: cost; Open questions",
       "type": "absence",
-      "claim": "The pages checked do not give a credit rate for building with Copilot Code.",
+      "claim": "A specific credit rate for building with Copilot Code is not published in the reviewed documentation.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Copilot Code\" \"credits\" \"rate\" building pricing. Opened Code admin, Code requirements, Managed Runtime licensing-credits and billing overview; none gives a Code build rate.",
+      "quote": "Searched: \"Copilot Code\" \"credit\" \"rate\" building licensing. Opened Code requirements, Code admin, Managed Runtime licensing-credits and usage-based billing overview; search also returned licensing-faq. No Code build rate was stated.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 87,
-      "where": "Cost and licensing: Not yet published; Open questions",
+      "n": 67,
+      "where": "Cost and licensing; Open questions",
       "type": "absence",
-      "claim": "The pages checked do not say what the roadmap General Availability target changes about licensing or preview requirements.",
+      "claim": "The reviewed pages do not state what the roadmap's GA target changes about licensing.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Copilot Code\" \"General Availability\" \"licensing\". Read Code landing, use-code, requirements and admin, Managed Runtime licensing-credits and Copilot overview; no target-date licensing or preview-exit commitment found.",
+      "quote": "Searched: \"Copilot Code\" \"General Availability\" licensing Frontier. Opened Code overview, requirements, admin and Managed Runtime licensing-credits; no GA-specific licensing transition is stated.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 88,
-      "where": "Scope: Users and licences",
-      "type": "licensing",
-      "claim": "Personal Microsoft accounts are supported on a supported Microsoft Copilot consumer plan.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/code/code-requirements",
-      "quote": "Personal Microsoft account | A supported Microsoft Copilot consumer plan.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 89,
+      "n": 68,
       "where": "Scope: Platforms",
       "type": "availability",
-      "claim": "The Microsoft Copilot Windows desktop app supports Copilot Code on x64 and Arm.",
+      "claim": "Windows x64 and Arm are supported through the Microsoft Copilot desktop app.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/code-requirements",
       "quote": "Windows | Supported (x64 and Arm), in the Microsoft Copilot desktop app.",
@@ -1002,10 +773,10 @@
       "fix": null
     },
     {
-      "n": 90,
+      "n": 69,
       "where": "Scope: Platforms",
       "type": "availability",
-      "claim": "Copilot Code is supported in the Microsoft Copilot desktop app on Mac.",
+      "claim": "Mac is supported in the Microsoft Copilot desktop app.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/code-requirements",
       "quote": "Mac | Supported (Intel and Apple silicon), in the Microsoft Copilot desktop app.",
@@ -1013,7 +784,7 @@
       "fix": null
     },
     {
-      "n": 91,
+      "n": 70,
       "where": "Scope: Platforms",
       "type": "availability",
       "claim": "Cloud development is supported on the web at https://m365.cloud.microsoft.",
@@ -1024,10 +795,10 @@
       "fix": null
     },
     {
-      "n": 92,
+      "n": 71,
       "where": "Scope: Platforms",
       "type": "availability",
-      "claim": "The mobile app supports cloud sessions on iOS, iPadOS and Android.",
+      "claim": "iOS, iPadOS and Android support cloud sessions in the mobile app.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/code-requirements",
       "quote": "iOS and iPadOS | Supported for cloud sessions, in the Microsoft Copilot mobile app. ... Android | Supported for cloud sessions, in the Microsoft Copilot mobile app.",
@@ -1035,10 +806,10 @@
       "fix": null
     },
     {
-      "n": 93,
+      "n": 72,
       "where": "Scope: Platforms",
       "type": "availability",
-      "claim": "Local sessions are not available on mobile devices.",
+      "claim": "Local sessions are unavailable on mobile.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/code-requirements",
       "quote": "Local sessions aren't available on mobile.",
@@ -1046,10 +817,10 @@
       "fix": null
     },
     {
-      "n": 94,
-      "where": "Scope: Apps; Open questions",
+      "n": 73,
+      "where": "Scope: Apps",
       "type": "availability",
-      "claim": "Building and publishing apps to Copilot Managed Runtime is documented as preview.",
+      "claim": "Building and publishing to Copilot Managed Runtime is documented as preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/use-code",
       "quote": "Building and publishing apps to Copilot Managed Runtime is a preview feature",
@@ -1057,7 +828,7 @@
       "fix": null
     },
     {
-      "n": 95,
+      "n": 74,
       "where": "Scope: Apps",
       "type": "behaviour",
       "claim": "Each Managed Runtime app appears in the Microsoft 365 admin center.",
@@ -1068,10 +839,10 @@
       "fix": null
     },
     {
-      "n": 96,
-      "where": "Governance guidance: Before rollout; rationale: impact",
+      "n": 75,
+      "where": "Governance guidance; rationale: impact",
       "type": "applicability",
-      "claim": "Only users included in a spending policy for Copilot Code can build apps with it.",
+      "claim": "Only users covered by a Copilot Code spending policy can build apps with it.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/apps/",
       "quote": "Only users who are included in a spending policy for Copilot Code can build apps with it.",
@@ -1079,10 +850,10 @@
       "fix": null
     },
     {
-      "n": 97,
+      "n": 76,
       "where": "Governance guidance: After rollout",
       "type": "admin-path",
-      "claim": "Administrators review consumption and adjust limits in Copilot > Cost management.",
+      "claim": "Consumption can be reviewed in Microsoft 365 admin center under Copilot > Cost management.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/apps/licensing-credits",
       "quote": "Use Copilot > Cost management in the Microsoft 365 admin center to review consumption by policy, service, and user, and adjust limits.",
@@ -1090,98 +861,186 @@
       "fix": null
     },
     {
-      "n": 98,
-      "where": "Governance controls: policy settings paragraph",
-      "type": "default",
-      "claim": "Learn names a Pre-install Copilot Code components policy and documents its default as off.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/code/code-admin",
-      "quote": "Pre-install Copilot Code components | Off",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 99,
-      "where": "Governance controls: policy settings paragraph",
-      "type": "default",
-      "claim": "Learn documents the Copilot Code execution location policy and its conditional cloud-only default.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/code/code-admin",
-      "quote": "Copilot Code execution location | On (cloud only) ... On if the admin has configured billing for Copilot Code.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 100,
-      "where": "Governance controls: policy settings paragraph; Open questions",
-      "type": "absence",
-      "claim": "No admin-centre navigation path was found for the named non-device Code policies, including GitHub connection and Organizational Data in Copilot Code.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Copilot Code\" \"Organizational Data\" \"policy\" admin center Graph API GitHub auto-approve execution location. Opened Code admin and Configure Microsoft Copilot settings; found policy descriptions, not their admin-centre paths.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 101,
-      "where": "Governance controls: policy settings paragraph; Open questions",
-      "type": "absence",
-      "claim": "No API was found for the named non-device Code policies; the documented device-policy exception is distinguished.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Graph Copilot Code settings GitHub connection organizational data code tab sandbox policy API; \"Copilot Code\" \"policySettings\" Graph. Read Code admin and copilotPolicySetting supported-settings excerpt; no matching Code policy API.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 102,
-      "where": "Governance controls: policy settings paragraph",
-      "type": "behaviour",
-      "claim": "The Code admin page documents Windows and macOS locations for the sandbox and preinstall device policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/code/code-admin",
-      "quote": "Policy location: Microsoft Copilot > Code Tab. ... Domain: com.microsoft.Copilot. ... Preinstall Copilot Code components ... CopilotDeviceCodeTabPreInstallEnabled",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 103,
-      "where": "Governance controls: cloud sessions paragraph",
-      "type": "applicability",
-      "claim": "The execution location policy can restrict where Copilot Code runs, including whether cloud sessions are available.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/code/code-admin",
-      "quote": "This policy setting controls where Copilot Code can run agent sessions: on the user's device, in the cloud, or both. Admins can restrict this to manage cost or data residency",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 104,
-      "where": "Governance controls: Frontier paragraph",
+      "n": 77,
+      "where": "controls[0].ui; Cost and licensing",
       "type": "admin-path",
-      "claim": "Copilot Frontier is configured at Copilot > Settings > View all > Copilot Frontier in the Microsoft 365 admin center.",
+      "claim": "The printed spending-policy wizard path reaches group scope, service selection and the limits section.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
-      "quote": "Copilot Frontier ... Copilot > Settings > View all > Copilot Frontier.",
-      "severity": null,
-      "fix": null
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "Select the Configuration tab and then select + Add spending policy. ... Define the policy scope ... Create and name the policy and then choose Identity as the scope.",
+      "severity": "minor",
+      "fix": "Insert the documented heading after '+ Add spending policy': 'Copilot > Cost management > Configuration > + Add spending policy > Define the policy scope > Identity > Specific groups > Select agents and services > Copilot Code > Set limits and alerts'. The remaining labels are supported by this page and the already-cited https://learn.microsoft.com/microsoft-365/admin/manage/apps/licensing-credits."
     },
     {
-      "n": 105,
-      "where": "Governance controls: Frontier paragraph",
+      "n": 78,
+      "where": "controls[0].ui",
       "type": "applicability",
-      "claim": "The Copilot Frontier setting selects users or groups with access to eligible preview features.",
+      "claim": "Copilot Code is a selectable service in a maker spending policy.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
-      "quote": "Copilot Frontier | Choose which users or groups can access eligible preview features.",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/apps/licensing-credits",
+      "quote": "Create or edit a user-based spending policy that includes the makers, or a security group that contains them, and select Copilot Cowork and Copilot Code.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 106,
-      "where": "Governance controls: audit paragraph",
+      "n": 79,
+      "where": "controls[0].ui; Cost and licensing",
       "type": "behaviour",
-      "claim": "Learn says Copilot Code generates audit logs that administrators can access.",
+      "claim": "The wizard supports Specific groups and monthly per-user limits under Set limits and alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "switch to Specific groups and select the directory group. ... Select monthly budget limits for users (optional). Use the toggle to select this option and to set a monthly limit for users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies creates a spending policy with the specified limits and serviceSettings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create",
+      "quote": "POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies ... Required properties are displayName, periodLimit, perUserLimit, and serviceSettings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "controls[0].note",
+      "type": "behaviour",
+      "claim": "The create API requires displayName and a concrete @odata.type as well as periodLimit, perUserLimit and serviceSettings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create",
+      "quote": "supply a JSON representation of a spendingPolicy object with a concrete @odata.type. Required properties are displayName, periodLimit, perUserLimit, and serviceSettings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "controls[0].note",
+      "type": "default",
+      "claim": "A policy created by the API starts disabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create",
+      "quote": "A new policy is created disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "controls[0].note",
+      "type": "behaviour",
+      "claim": "The API example uses serviceId cowork and workIQ rather than a Copilot Code identifier.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create",
+      "quote": "\"serviceSettings\": [ { \"serviceId\": \"cowork\", \"state\": \"enabled\" }, { \"serviceId\": \"workIQ\", \"state\": \"enabled\" } ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "Creating a spending policy through Graph requires Billing Administrator or Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create",
+      "quote": "At runtime, creating a policy also requires the Billing Administrator or Global Administrator directory role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "controls[0].note",
+      "type": "availability",
+      "claim": "The spending-policy API is a beta API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The Intune imported-template profile route followed by Microsoft Copilot > Code Tab locates the documented device policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/code/code-admin",
+      "quote": "import the policy file (windows/admx/copilotapp.admx). For more information ... Import custom ADMX and ADML administrative templates into Microsoft Intune. ... Policy location: Microsoft Copilot > Code Tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The Intune portion uses Devices > Manage devices > Configuration > Create > New policy, Windows 10 and later, Templates > Imported Administrative templates (Preview), Create and Configuration settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/intune/device-configuration/settings-catalog/import-custom-admx-templates",
+      "quote": "Select Devices > Manage devices > Configuration > Create > New policy. ... Platform: Select Windows 10 and later. ... Templates > Imported Administrative templates (Preview) ... Select Create. ... In Configuration settings, select and configure the settings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 88,
+      "where": "controls[1].api; Governance guidance",
+      "type": "command",
+      "claim": "The documented macOS policy keys are CopilotDeviceCodeTabSandboxEnabled and CopilotDeviceCodeTabOutboundNetworkAccessMode in com.microsoft.Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/code/code-admin",
+      "quote": "Domain: com.microsoft.Copilot. ... Copilot sandbox required ... CopilotDeviceCodeTabSandboxEnabled ... Copilot sandbox outbound network access mode ... CopilotDeviceCodeTabOutboundNetworkAccessMode",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 89,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Windows administrators must import the Copilot policy templates before configuring their Code Tab settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/code/code-admin",
+      "quote": "Download the Microsoft Copilot policy templates, then import the policy file (windows/admx/copilotapp.admx). ... Configure the policies - Policy location: Microsoft Copilot > Code Tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 90,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The named organisation-level Code feature policies have no documented admin-centre path or API, apart from the separately documented device preinstall policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot Code\" \"GitHub connection\" \"Organizational Data\" policy configure admin API Graph; \"Copilot Code\" \"Auto-approve\" \"Graph\" policy API; \"Copilot Code\" \"Pre-install\" \"execution location\" configure policy. Read Code admin and Copilot settings; no such routes or calls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 91,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Execution location policy can restrict local or cloud agent sessions, and spending policies limit Code access and usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/code/code-admin",
+      "quote": "This policy setting controls where Copilot Code can run agent sessions: on the user's device, in the cloud, or both. ... Copilot Code honors the usage and budget limits you set.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 92,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "Copilot > Settings > View all > Copilot Frontier in the Microsoft 365 admin center controls access to eligible previews by user or group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
+      "quote": "Copilot Frontier | Choose which users or groups can access eligible preview features. | Copilot > Settings > View all > Copilot Frontier.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 93,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Learn says Copilot Code audit logs exist and are accessible to IT administrators.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/code/code-admin",
       "quote": "Copilot Code logs the actions it takes so you can review them. IT administrators can access audit logs",
@@ -1189,35 +1048,24 @@
       "fix": null
     },
     {
-      "n": 107,
-      "where": "Governance controls: audit paragraph; Open questions",
+      "n": 94,
+      "where": "Governance controls; Open questions",
       "type": "absence",
-      "claim": "The Code admin page does not give a location for reading its code, command and file-action audit logs.",
+      "claim": "The Code administration page supplies no location or event names for its code, command and file-action audit logs.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Copilot Code\" audit logs Purview events location. Read Code admin in full and search excerpts for Copilot auditing and Managed Runtime auditing; Code admin supplies no location for its code/command/file-action logs.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 108,
-      "where": "Governance controls: audit paragraph; Open questions",
-      "type": "absence",
-      "claim": "The Code admin page does not give event names for its code, command and file-action audit logs.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Copilot Code\" audit logs Purview events location. Read Code admin in full and Copilot/Managed Runtime audit search excerpts; Code admin names generated code, commands and files, but no audit operation identifiers.",
+      "quote": "Searched: \"Copilot Code\" audit logs event names Purview. Read Code admin in full and Purview audit-copilot search excerpts. Code admin lists generated code, commands and file actions but gives no log location or event identifiers for those Code actions.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-18T06:03:20.506Z",
+    "at": "2026-11-19T03:09:26.818Z",
     "summary": {
-      "links": 14,
+      "links": 16,
       "unreachable": 0,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 2,
       "apiCalls": 2,
       "apiCallsNotOnPage": 1,
       "roadmapDrift": 0
@@ -1245,6 +1093,11 @@
       },
       {
         "url": "https://learn.microsoft.com/copilot/code/code-admin",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/code/code-secure-local-execution",
         "ok": true,
         "status": 200
       },
@@ -1279,6 +1132,11 @@
         "status": 200
       },
       {
+        "url": "https://learn.microsoft.com/intune/device-configuration/settings-catalog/import-custom-admx-templates",
+        "ok": true,
+        "status": 200
+      },
+      {
         "url": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
         "ok": true,
         "status": 200
@@ -1299,13 +1157,22 @@
         "index": 0,
         "side": "ui",
         "governs": "Who can use and build with Copilot Code, and their monthly spend limit",
-        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/apps/licensing-credits",
+        "docs": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
         "reachable": true,
         "segments": [
           "Copilot",
-          "Cost management"
+          "Cost management",
+          "Configuration",
+          "+ Add spending policy",
+          "Identity",
+          "Specific groups",
+          "Select agents and services",
+          "Copilot Code",
+          "Set limits and alerts"
         ],
-        "missing": []
+        "missing": [
+          "Copilot Code"
+        ]
       },
       {
         "index": 0,
@@ -1323,10 +1190,28 @@
         "docs": "https://learn.microsoft.com/copilot/code/code-admin",
         "reachable": true,
         "segments": [
+          "Devices",
+          "Manage devices",
+          "Configuration",
+          "Create",
+          "New policy",
+          "Windows 10 and later",
+          "Templates",
+          "Imported Administrative templates",
+          "Create",
+          "Configuration settings",
           "Microsoft Copilot",
           "Code Tab"
         ],
-        "missing": []
+        "missing": [
+          "Manage devices",
+          "Create",
+          "New policy",
+          "Windows 10 and later",
+          "Imported Administrative templates",
+          "Create",
+          "Configuration settings"
+        ]
       },
       {
         "index": 1,
@@ -1345,6 +1230,18 @@
       "date": "2026-11-18",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-18",
+      "status": "verified",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-19",
+      "status": "held",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

@@ -49,17 +49,17 @@ sources:
 videos: []
 related: []
 controls:
-  - governs: "Whether Dataverse auditing and Read logs (sent to Purview) are on for an environment"
+  - governs: "Whether Dataverse auditing is on for an environment"
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Manage > Environments > environment > Settings > Audit and logs > Audit settings"
+      path: "Manage > Environments > environment > Settings > Audit and logs > Audit settings > Global Audit Settings > Start Auditing"
       docs: "https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing"
     api:
       kind: "rest"
-      call: "GET [Organization URI]/api/data/v9.2/organizations?$select=auditsettings,isauditenabled,auditretentionperiodv2,isuseraccessauditenabled,useraccessauditinginterval"
+      call: "PATCH [Organization URI]/api/data/v9.2/organizations([Organization ID])"
       docs: "https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure"
-    note: "System Administrator or System Customizer role to change settings. The call reads the organization settings. Purview receives production environments only."
+    note: "System Administrator or System Customizer role to change settings. The request body sets isauditenabled to enable or disable environment auditing. Purview receives production environments only."
   - governs: "Where before-and-after field values can still be read: Dataverse audit data"
     scope: "environment"
     ui:
@@ -73,7 +73,7 @@ controls:
     note: "Needs the View Audit Summary privilege in the app; the Web API messages need prvReadRecordAuditHistory and prvReadAuditSummary. Reads values; does not send them to Purview."
 confidence: "high"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-19"
 roadmapModified: "2026-10-16T19:09:56"
 changes:
   - date: "2026-11-17"
@@ -84,11 +84,17 @@ changes:
     note: "Corrected after verification: the Audit Summary row now names the model-driven app as its surface, the Enable SAS Logging in Purview path is complete, and the action is now act-now."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 50 statements confirmed"
-version: 2
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 48 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-19"
+    note: "Corrected the auditing control row: the admin path now ends at Global Audit Settings > Start Auditing and the API call is the organizations PATCH that sets isauditenabled; removed 'Read logs' from that row and its checklist step."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 50 statements confirmed"
+version: 3
 verification:
   status: "verified"
-  date: "2026-11-17"
-  version: 2
+  date: "2026-11-19"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 50
@@ -96,7 +102,7 @@ verification:
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "683f0a0607bf71a92f35c7b810b3cf82"
+  hash: "ef97d490e4e105ad3e0beb27c2cf2f44"
 ---
 
 ## What's changing
@@ -146,7 +152,7 @@ To configure auditing you need a system administrator or system customizer role 
 
 ### Before rollout
 - Inventory the Purview audit searches, alert rules, SIEM or data pipelines and compliance checks that read old and new field values from Dataverse audit events, starting with the three examples in Microsoft's notice. Owner: security and compliance leads.
-- Confirm which production environments have auditing and Read logs turned on in Audit settings, since those are the environments whose events reach Purview (controls table, row 1).
+- Confirm which production environments have auditing turned on in Audit settings, since those are the environments whose events reach Purview (controls table, row 1).
 - Decide who needs Dataverse access to read before-and-after values, because the Purview roles alone are not described as giving it (controls table, row 2).
 
 ### At rollout
@@ -163,7 +169,7 @@ To configure auditing you need a system administrator or system customizer role 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Dataverse auditing and Read logs (sent to Purview) are on for an environment</strong><br><small>Environment</small><br><small class="controls__note">System Administrator or System Customizer role to change settings. The call reads the organization settings. Purview receives production environments only.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Audit and logs › Audit settings <a href="https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>GET [Organization URI]/api/data/v9.2/organizations?$select=auditsettings,isauditenabled,auditretentionperiodv2,isuseraccessauditenabled,useraccessauditinginterval</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Dataverse auditing is on for an environment</strong><br><small>Environment</small><br><small class="controls__note">System Administrator or System Customizer role to change settings. The request body sets isauditenabled to enable or disable environment auditing. Purview receives production environments only.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Audit and logs › Audit settings › Global Audit Settings › Start Auditing <a href="https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH [Organization URI]/api/data/v9.2/organizations([Organization ID])</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Where before-and-after field values can still be read: Dataverse audit data</strong><br><small>Environment</small><br><small class="controls__note">Needs the View Audit Summary privilege in the app; the Web API messages need prvReadRecordAuditHistory and prvReadAuditSummary. Reads values; does not send them to Purview.</small></td><td data-label="Admin UI"><strong>Model-driven app</strong><br>Settings › Advanced Settings › System › Auditing › Audit Summary view <a href="https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>GET [Organization URI]/api/data/v9.2/audits(&lt;audit id&gt;)/Microsoft.Dynamics.CRM.RetrieveAuditDetails</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/auditing/retrieve-audit-data" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>

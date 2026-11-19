@@ -91,15 +91,17 @@ changes:
     note: "Correction: Work IQ API Copilot Credits billing now stated (cost variable, licensing consumption); removed the claim that no control over the memory path is documented."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 55 statements not yet confirmed"
 version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-16"
+  date: "2026-11-19"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 58
+  claims: 55
+  confirmed: 55
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -181,8 +183,9 @@ cost: Variable. Work IQ API uses Copilot Credits consumption billing; a rate spe
 impact: Medium. Affects users whose memory is read by agents and admins who authorise agents.
 -->
 
-<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters / behaviour: Memory profiles can contain personal preferences. | Found: Copilot learns how you work and understands your needs and preferences through your chats, job profile, custom instructions, and more. | Fix: Add https://learn.microsoft.com/graph/control-enhanced-personalization-privacy to sources to support the statement that memory can contain personal preferences. | Source: https://learn.microsoft.com/graph/control-enhanced-personalization-privacy
+- [supported, minor] Why it matters / behaviour: Memory profiles can contain personal preferences. | Found: Copilot learns how you work and understands your needs and preferences through your chats, job profile, custom instructions, and more. | Fix: Add https://learn.microsoft.com/graph/control-enhanced-personalization-privacy to sources to support the personal-preferences statement. | Source: https://learn.microsoft.com/graph/control-enhanced-personalization-privacy
+- [supported, minor] controls[0].api; Governance controls table / command: PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization with isEnabledInOrganization false disables enhanced personalization. | Found: PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization isEnabledInOrganization | Boolean | If true, enables the enhanced personalization control | Fix: Replace the call in front matter and the table with 'PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization'. Add to the row note: 'The request body sets isEnabledInOrganization to false to disable enhanced personalization.' | Source: https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta
 -->

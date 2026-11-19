@@ -2,31 +2,39 @@
   "slug": "work-iq-granular-mcp-policies",
   "roadmapId": 570671,
   "title": "Work IQ: granular MCP policies to restrict platforms, workloads and operations",
-  "status": "verified-with-gaps",
-  "date": "2026-11-17",
+  "status": "held",
+  "date": "2026-11-19",
   "version": 1,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 0,
-  "verifierVerdict": "pass",
+  "attempts": 1,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
   "notes": [],
-  "hold": null,
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-19",
+    "reasons": [
+      "1 blocking finding (claim 60)"
+    ]
+  },
   "counts": {
-    "claims": 59,
-    "confirmed": 58,
+    "claims": 67,
+    "confirmed": 65,
     "unconfirmed": 0,
-    "contradicted": 1,
-    "blocker": 0,
+    "contradicted": 2,
+    "blocker": 1,
     "major": 0,
     "minor": 2
   },
-  "summary": "The briefing accurately separates the planned granular policies from the documented tenant-level policy controls. The roadmap facts, admin path and billing statements are supported. Minor corrections should acknowledge conflicting Microsoft tool counts and remove the checklist's unmatched cost-management instruction.",
+  "summary": "Hold: the licensing field says entitlement is unpublished, although Microsoft documents consumption-based licensing for the Work IQ API that these controls govern. The roadmap dates and policy navigation are supported; the tool count needs qualification, and the cost-management checklist step has no corresponding controls row.",
   "claims": [
     {
       "n": 1,
       "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "Microsoft plans granular policies restricting MCP access to trusted platforms, workloads and supported operations.",
+      "claim": "Microsoft plans policies restricting MCP access to trusted platforms.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Provide granular policies that restrict MCP access to trusted platforms, workloads, and supported operations.",
@@ -35,9 +43,31 @@
     },
     {
       "n": 2,
+      "where": "title; What's changing",
+      "type": "record",
+      "claim": "The planned policies restrict MCP access by workload.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Provide granular policies that restrict MCP access to trusted platforms, workloads, and supported operations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "title; What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes restrictions on supported MCP operations.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Provide granular policies that restrict MCP access to trusted platforms, workloads, and supported operations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
       "where": "front matter: status; What's changing",
       "type": "record",
-      "claim": "The roadmap status is In development.",
+      "claim": "The item is In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -45,21 +75,10 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "front matter: targetDate; What's changing",
-      "type": "record",
-      "claim": "The roadmap target is January CY2027, not a committed release date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"January CY2027\", \"status\": \"In development\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
+      "n": 5,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
-      "claim": "The roadmap preview target is November CY2026.",
+      "claim": "The preview target is November CY2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": \"November CY2026\"",
@@ -67,7 +86,18 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The target date is January CY2027, not a launch commitment.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The record lists General Availability and Preview as release phases.",
@@ -78,7 +108,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 8,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The listed cloud is Worldwide (Standard Multi-Tenant).",
@@ -89,7 +119,7 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 9,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The listed platform is Developer.",
@@ -100,10 +130,10 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 10,
       "where": "front matter: products; Scope",
       "type": "record",
-      "claim": "The record lists Work IQ and Microsoft Copilot (Microsoft 365) as products.",
+      "claim": "The record names Work IQ and Microsoft Copilot (Microsoft 365) as products.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"products\": [\"Work IQ\", \"Microsoft Copilot (Microsoft 365)\"]",
@@ -111,10 +141,10 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 11,
       "where": "Scope",
       "type": "record",
-      "claim": "The record does not list US Government clouds.",
+      "claim": "US Government clouds are not listed in the record.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -122,153 +152,21 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-11-17T19:53:11.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-11-17T19:53:11\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
-      "type": "absence",
-      "claim": "The planned granular control's default and automatic effects on existing behaviour are not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Work IQ MCP granular policies tenant policy governance trusted platforms licensing default API; Work IQ granular policies default trusted platforms. Read roadmap, Policy governance for Work IQ MCP, Work IQ overview and MCP overview; no granular-control default stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 12,
-      "where": "front matter: licensing.model; licensing.notes; Cost and licensing",
+      "where": "What's changing; Governance guidance: At rollout",
       "type": "absence",
-      "claim": "Licensing specifically for the planned granular policies is not yet published.",
+      "claim": "Microsoft Learn has not yet documented this roadmap item's granular policy design.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Work IQ granular MCP policies licensing price charge. Read Work IQ overview, Work IQ API overview licensing excerpt, Policy governance for Work IQ MCP and Plan licensing and cost; these document API billing, not separate granular-policy licensing.",
+      "quote": "Searched: Work IQ granular MCP policies per-platform per-workload per-agent operations admin controls; read policy-governance-mcp, MCP overview, Work IQ overview and Agent 365 MCP management; none documents this roadmap item's design.",
       "severity": null,
       "fix": null
     },
     {
       "n": 13,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No price, separate charge or meter change for granular policies has been published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Work IQ granular MCP policies licensing price charge. Opened Work IQ overview, Policy governance for Work IQ MCP and Plan licensing and cost; found Work IQ API consumption billing but no granular-policy price or meter change.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What's changing; Risk assessment; Governance guidance",
-      "type": "absence",
-      "claim": "Microsoft Learn has not yet documented the planned granular policies' detailed design.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Work IQ granular policies default trusted platforms; Work IQ MCP per-platform per-workload per-agent per-operation policy configuration. Read Policy governance for Work IQ MCP and both overviews; found initial tenant controls, not documentation for the planned design.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing; Risk assessment: Security & identity",
-      "type": "absence",
-      "claim": "The meaning and identification of trusted platforms in this roadmap item are not described.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Work IQ granular policies default trusted platforms. Read roadmap and Policy governance for Work IQ MCP; neither defines trusted platforms or a platform-identification mechanism.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not explicitly tied this roadmap item to the later templates mentioned by the policy-governance article.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Work IQ MCP granular policies tenant policy governance trusted platforms licensing default API. Read roadmap and Policy governance for Work IQ MCP; the article says more granular controls might be added later without identifying this roadmap item.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "controls[0].ui; Governance controls; Governance guidance: Before rollout",
-      "type": "admin-path",
-      "claim": "The tenant policy is reached in Microsoft 365 admin center through Agents > Tools > Work IQ MCP > Policy, when that tab is available.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "In the left navigation, select Agents > Tools.\nIn the tools registry, select Work IQ MCP.\nOn the Work IQ MCP details pane, select the Policy tab when it's available.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "controls[0].api; Governance controls",
-      "type": "absence",
-      "claim": "No API, endpoint or cmdlet for configuring this Work IQ MCP tenant policy is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Work IQ MCP policy settings API endpoint PowerShell. Read Policy governance for Work IQ MCP, MCP overview, migration guidance and Work IQ CLI reference excerpt; found policy-setting descriptions but no configuration endpoint or cmdlet.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "controls[1].ui and controls[1].api; Governance controls",
-      "type": "absence",
-      "claim": "UI paths and automation calls for the planned per-platform, per-workload, per-agent or per-operation granular restrictions are not yet documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Work IQ MCP per-platform per-workload per-agent per-operation policy configuration; Work IQ MCP policy settings API endpoint PowerShell. Read Policy governance for Work IQ MCP and MCP overview; no planned granular-control path or call found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "summary; controls[0]; What's changing; Why it matters; Governance controls; rationale: risk",
-      "type": "behaviour",
-      "claim": "The documented initial policy control is a tenant-wide on/off switch managed by tenant administrators.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "In the initial release, Work IQ MCP provides tenant-level policy control. In the Microsoft 365 admin center, tenant administrators can turn Work IQ MCP policy on or off for the tenant.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "controls[1].note; What's changing; Governance controls",
-      "type": "behaviour",
-      "claim": "Per-user, per-app, per-agent and scenario-specific templates are not part of the initial policy control surface.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "Per-user, per-app, per-agent, or scenario-specific policy templates aren't part of the initial policy control surface.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "What's changing; Open questions",
-      "type": "behaviour",
-      "claim": "Learn says more granular controls and policy templates might be added later.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "More granular controls and policy templates might be added later based on customer requests, feedback, and usage.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Work IQ's policy layer uses Rego.",
+      "claim": "Work IQ MCP uses a Rego-based policy layer.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
       "quote": "The policy layer uses Rego, the policy language from Open Policy Agent (OPA), to express authorization rules.",
@@ -276,7 +174,7 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 14,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Rego is the policy language of Open Policy Agent.",
@@ -287,10 +185,10 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 15,
       "where": "What's changing; Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Policy evaluates MCP tool requests at request time and can allow or deny them.",
+      "claim": "The request-time policy layer evaluates each MCP tool request and can allow or deny it.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
       "quote": "It adds a request-time governance layer that can allow or deny specific MCP tool requests based on tenant policy.",
@@ -298,10 +196,87 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 16,
+      "where": "What's changing; controls[0].note; Governance controls; rationale: risk",
+      "type": "behaviour",
+      "claim": "The initial Work IQ MCP policy control is tenant-level, rather than the planned granular control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "In the initial release, Work IQ MCP provides tenant-level policy control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "summary; What's changing; Why it matters; Governance controls",
+      "type": "behaviour",
+      "claim": "Tenant administrators have a documented tenant-wide policy on/off switch in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "In the Microsoft 365 admin center, tenant administrators can turn Work IQ MCP policy on or off for the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "Microsoft says more granular controls and policy templates might be added later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "More granular controls and policy templates might be added later based on customer requests, feedback, and usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Per-user policy templates are not part of the initial policy control surface.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "Per-user, per-app, per-agent, or scenario-specific policy templates aren't part of the initial policy control surface.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Per-app policy templates are not part of the initial policy control surface.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "Per-user, per-app, per-agent, or scenario-specific policy templates aren't part of the initial policy control surface.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Per-agent policy templates are not part of the initial policy control surface.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "Per-user, per-app, per-agent, or scenario-specific policy templates aren't part of the initial policy control surface.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Scenario-specific policy templates are not part of the initial policy control surface.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "Per-user, per-app, per-agent, or scenario-specific policy templates aren't part of the initial policy control surface.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
       "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance: At rollout",
       "type": "default",
-      "claim": "Mutation operations, including create, update, delete and sending email, are not allowed by default.",
+      "claim": "The documented Work IQ MCP tenant policy blocks mutation operations by default, including create, update, delete and actions such as sending email.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
       "quote": "By default, mutation operations aren't allowed for safety. This restriction includes create, update, delete, and action requests that modify data, such as sending email.",
@@ -309,9 +284,9 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 24,
       "where": "Risk assessment: Autonomy & actions",
-      "type": "applicability",
+      "type": "behaviour",
       "claim": "Administrators can enable supported mutation scenarios through tenant policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
@@ -320,29 +295,7 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "controls[0].note; Risk assessment: Change & support; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "A saved policy change can take up to 24 hours to apply across the tenant.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "After you save the setting, it can take up to 24 hours for the policy change to apply across your tenant.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "Risk assessment: Data exposure; rationale: risk",
-      "type": "behaviour",
-      "claim": "Work IQ MCP tools access mail, calendar, files, people, chat and sites.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
-      "quote": "10 generic tools that provide direct access to Microsoft 365 data (mail, calendar, files, people, chat, and sites) and the ability to act on that data.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
+      "n": 25,
       "where": "Why it matters",
       "type": "behaviour",
       "claim": "Work IQ MCP exposes ten generic tools.",
@@ -350,46 +303,68 @@
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
       "quote": "The Work IQ MCP collapses hundreds of operations into just 10 generic tools",
       "severity": "minor",
-      "fix": "Replace 'through ten generic tools that work on resource paths' with 'through generic tools that work on resource paths'. The cited overview says 10, but https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview lists 12 tool names across its Entity, Copilot and Schema rows."
+      "fix": "Replace 'through ten generic tools that work on resource paths' with 'through generic tools that work on resource paths'. The cited overview says 10, but https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview lists twelve tool names across its tool categories."
+    },
+    {
+      "n": 26,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Work IQ MCP's generic tools operate on resource paths.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview",
+      "quote": "Tools work with relative resource paths. The path shows the resource, and the tool acts as the verb",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Work IQ MCP enables agents to read and, where policy permits, change Microsoft 365 data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview",
+      "quote": "It provides tools that enable agents to read, create, update, and delete entities across Microsoft 365 and connected enterprise systems",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Work IQ MCP tools reach mail, calendar, files, people, chat and sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "provide direct access to Microsoft 365 data (mail, calendar, files, people, chat, and sites) and the ability to act on that data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "behaviour",
+      "claim": "Policy cannot grant access beyond the signed-in user's existing access, and policy approval does not bypass the user's permission check.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "If policy allows an MCP tool request, the underlying resource access is still checked against the signed-in user's Microsoft 365 permissions. The request fails if the user doesn't have access to the requested resource.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Data access scope is a documented default guardrail control area.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "Data access scope | Which Microsoft 365 resource paths MCP tools can access",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 31,
-      "where": "Why it matters",
+      "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The generic tools operate on resource paths and support reading and changing Microsoft 365 data subject to policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
-      "quote": "These tools function as simple verbs (such as fetch, create, and update), while resource paths define what the agent is working with.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Risk assessment: Data exposure; Governance controls",
-      "type": "applicability",
-      "claim": "Policy cannot grant access beyond the signed-in user's existing access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "Policy can't grant access beyond what the signed-in user is already allowed to access.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Risk assessment: Data exposure",
-      "type": "applicability",
-      "claim": "Data access scope is among the default policy guardrail areas.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "The default policy provides guardrails for common Work IQ MCP scenarios. The exact policy behavior can depend on tenant configuration, but the main control areas are:\nData access scope | Which Microsoft 365 resource paths MCP tools can access",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Risk assessment: Data exposure",
-      "type": "applicability",
-      "claim": "Data retrieval limits involving bounded collection reads are among the default guardrail areas.",
+      "claim": "Data retrieval limits, including bounded collection reads, are a documented default guardrail control area.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
       "quote": "Data retrieval limits | Whether collection reads are bounded to reduce large-scale data extraction risk",
@@ -397,10 +372,10 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 32,
       "where": "Risk assessment: Security & identity",
-      "type": "applicability",
-      "claim": "Policy complements rather than replaces Entra authentication, OAuth permissions and user permissions.",
+      "type": "behaviour",
+      "claim": "Policy supplements rather than replaces Entra authentication, OAuth permissions and user permissions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
       "quote": "For Work IQ MCP, policy governance doesn't replace Microsoft Entra authentication, OAuth permissions, or the signed-in user's existing Microsoft 365 permissions.",
@@ -408,7 +383,7 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 33,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
       "claim": "Policy evaluates the requested resource path.",
@@ -419,7 +394,7 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 34,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
       "claim": "Policy evaluates the requested operation.",
@@ -430,7 +405,7 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 35,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
       "claim": "Policy evaluates request content.",
@@ -441,7 +416,7 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 36,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
       "claim": "Policy evaluates tenant context.",
@@ -452,10 +427,10 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 37,
       "where": "Risk assessment: Change & support; rationale: impact",
       "type": "behaviour",
-      "claim": "Tenant policy can deny requests even when authentication and the required OAuth permission are present.",
+      "claim": "Tenant policy can deny a request despite successful authentication and the required OAuth permission.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
       "quote": "For developers, these controls mean an MCP request can fail because of tenant policy even when the user is authenticated and the app has the required OAuth permission.",
@@ -463,10 +438,10 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 38,
       "where": "Risk assessment: Change & support; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Microsoft advises treating policy-denied responses as governance decisions.",
+      "claim": "Microsoft tells developers to treat policy-denied responses as governance decisions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
       "quote": "Treat policy-denied responses as governance decisions, not transient failures to retry automatically.",
@@ -474,7 +449,18 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 39,
+      "where": "controls[0].note; Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "A saved policy change can take up to 24 hours to apply across the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "After you save the setting, it can take up to 24 hours for the policy change to apply across your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "Work IQ API access is independent of Microsoft 365 Copilot licensing.",
@@ -485,10 +471,10 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 41,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "Work IQ API access is available through usage-based billing.",
+      "claim": "Work IQ API access uses usage-based billing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
       "quote": "Work IQ API access is independent of Microsoft 365 Copilot licensing and available through usage-based billing.",
@@ -496,7 +482,18 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 42,
+      "where": "Cost and licensing; Governance guidance: After rollout",
+      "type": "cost",
+      "claim": "Work IQ cost can be managed in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Work IQ cost is variable based on usage and can be managed in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "cost",
       "claim": "Work IQ API usage consumes Copilot Credits shared with other eligible services.",
@@ -507,31 +504,31 @@
       "fix": null
     },
     {
-      "n": 45,
-      "where": "Cost and licensing; Governance guidance: After rollout",
-      "type": "cost",
-      "claim": "Work IQ cost can be managed in Microsoft 365 admin center.",
+      "n": 44,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 Copilot licensed users get Work IQ in all Microsoft 365 Copilot experiences and agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
-      "quote": "Work IQ cost is variable based on usage and can be managed in the Microsoft 365 admin center.",
+      "quote": "For Microsoft 365 Copilot licensed users, Work IQ is available in all Microsoft 365 Copilot experiences and agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Work IQ in custom and third-party agents is subject to usage-based billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "It is subject to usage-based billing for custom and third-party agents.",
       "severity": null,
       "fix": null
     },
     {
       "n": 46,
       "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Copilot-licensed users get Work IQ in Microsoft 365 Copilot experiences and agents, with usage billing for custom and third-party agents.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
-      "quote": "For Microsoft 365 Copilot licensed users, Work IQ is available in all Microsoft 365 Copilot experiences and agents. It is subject to usage-based billing for custom and third-party agents.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Cost and licensing",
-      "type": "licensing",
+      "type": "cost",
       "claim": "Users without a Microsoft 365 Copilot licence are billed based on usage.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
@@ -540,10 +537,32 @@
       "fix": null
     },
     {
+      "n": 47,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published a separate price for the planned granular policies.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ MCP granular policy licensing separate charge price Copilot Credits default trusted platforms; read Work IQ overview, API overview Licensing requirements, policy governance and Plan licensing and cost excerpts; no separate granular-policy price found.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 48,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not published whether the planned granular policies change the existing Work IQ usage meter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ MCP granular policy licensing separate charge price Copilot Credits default trusted platforms; read Work IQ overview, API overview and policy governance, plus Plan licensing and cost excerpts; none specifies a meter change for granular policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
       "where": "Scope",
       "type": "role",
-      "claim": "The policy procedure requires an account permitted to manage tenant-level Work IQ or Copilot settings.",
+      "claim": "Policy configuration requires an account with permission to manage tenant-level Work IQ or Copilot settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
       "quote": "Sign in with an account that has permission to manage tenant-level Work IQ or Copilot settings.",
@@ -551,24 +570,13 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "Scope",
-      "type": "absence",
-      "claim": "The cited policy procedure does not name a specific administrator role.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Work IQ MCP policy manage role permissions administrator. Read Policy governance for Work IQ MCP; it specifies permission to manage tenant-level settings but no named role. The Business Applications access-control result concerns server availability, not this policy setting.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 50,
       "where": "Scope",
-      "type": "behaviour",
-      "claim": "Microsoft advises checking tenant access and account permissions when policy settings do not appear.",
+      "type": "absence",
+      "claim": "The cited Work IQ MCP policy guidance does not name a specific administrator role for changing that policy.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "If you don't see the Work IQ MCP policy settings, check that your tenant has access to Work IQ MCP and that your admin account has the required permissions.",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"policy\" \"role\" \"administrator\"; read policy-governance-mcp in full and Agent 365 MCP management. The policy page specifies permission, not a named role; other management tasks have distinct role requirements.",
       "severity": null,
       "fix": null
     },
@@ -576,7 +584,29 @@
       "n": 51,
       "where": "Scope",
       "type": "behaviour",
-      "claim": "The Work IQ service principal is automatically created on first use.",
+      "claim": "Microsoft advises checking tenant access to Work IQ MCP if policy settings do not appear.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "If you don't see the Work IQ MCP policy settings, check that your tenant has access to Work IQ MCP and that your admin account has the required permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Microsoft advises checking the administrator account's permissions if policy settings do not appear.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "If you don't see the Work IQ MCP policy settings, check that your tenant has access to Work IQ MCP and that your admin account has the required permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "The Work IQ service principal is created automatically when Work IQ is first used.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview",
       "quote": "The Work IQ service principal is created automatically in the tenant when you use Work IQ for the first time.",
@@ -584,7 +614,7 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 54,
       "where": "Scope; Governance guidance: Before rollout",
       "type": "behaviour",
       "claim": "Policy configuration before any MCP use can fail because the service principal has not been provisioned.",
@@ -595,10 +625,10 @@
       "fix": null
     },
     {
-      "n": 53,
+      "n": 55,
       "where": "Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "Tenant administrators can provision the service principal using the linked Enable your tenant for Work IQ steps.",
+      "claim": "Microsoft directs tenant administrators to Enable your tenant for Work IQ to provision a missing service principal.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview",
       "quote": "Tenant administrators can provision it by following the steps in Enable your tenant for Work IQ.",
@@ -606,10 +636,65 @@
       "fix": null
     },
     {
-      "n": 54,
+      "n": 56,
+      "where": "controls[0].ui; Governance controls; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "The documented policy path is Microsoft 365 admin center > Agents > Tools > Work IQ MCP > Policy, when that tab is available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "In the left navigation, select Agents > Tools.\nIn the tools registry, select Work IQ MCP.\nOn the Work IQ MCP details pane, select the Policy tab when it's available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No API or cmdlet for changing the Work IQ MCP tenant policy is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ MCP tenant policy Microsoft Graph beta policy settings API PowerShell; site:learn.microsoft.com/graph/api Work IQ MCP policy settings beta update. Read policy governance and returned Work IQ reference excerpts; no setting-update endpoint or cmdlet found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[1].ui; controls[1].api; Governance controls; Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "No UI or API is documented for the planned per-platform, per-workload, per-agent or per-operation granular MCP policy configuration.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ granular MCP policies per-platform per-workload per-agent operations admin controls; Work IQ MCP tenant policy Microsoft Graph beta policy settings API PowerShell. Read policy governance and Agent 365 MCP management; neither documents this planned configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated the arrival default or automatic enforcement behavior of the planned granular policies.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ MCP granular policies trusted platforms workloads default policy licensing price; \"Work IQ\" \"granular\" \"default\" \"policy\". Read roadmap, Work IQ overview and MCP policy governance; current mutation defaults do not state the planned control's arrival default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The licensing model is unknown because no licence for granular policies has been published.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "Work IQ API is licensed under your agreement governing use of Microsoft Online Services, including the Microsoft Product Terms. You pay for use of the Work IQ API through a usage-based model that uses Copilot Credits.",
+      "severity": "blocker",
+      "fix": "Set licensing.model to 'consumption'. Replace 'Not yet published for the granular policies' in licensing.notes and 'No licence or price for the granular policies is published' in Cost and licensing with 'Work IQ API uses consumption-based licensing through Copilot Credits; no separate entitlement or price for the planned granular policies is published.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview. Keep the existing distinction between Work IQ usage charges and any separate charge for the controls."
+    },
+    {
+      "n": 61,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "The policy article discusses configuration experiences and editable policies.",
+      "claim": "The policy page refers to admin experiences configuring editable policy settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
       "quote": "If your experience configures policy settings, update only editable policies and validate values before sending updates.",
@@ -617,10 +702,10 @@
       "fix": null
     },
     {
-      "n": 55,
+      "n": 62,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "The article describes toggle-style values such as Allowed and Disallowed.",
+      "claim": "The policy page describes toggle values such as Allowed and Disallowed.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
       "quote": "Toggle-style settings use values such as Allowed and Disallowed.",
@@ -628,10 +713,10 @@
       "fix": null
     },
     {
-      "n": 56,
+      "n": 63,
       "where": "Governance controls",
-      "type": "applicability",
-      "claim": "Migration guidance says tenant-wide blocking stops Work IQ MCP for the entire tenant.",
+      "type": "behaviour",
+      "claim": "Microsoft's migration guidance says blocking Work IQ MCP tenant-wide stops it for the whole tenant.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/migrate-retrieval-api",
       "quote": "Block Work IQ MCP tenant-wide only when you intend to stop it for the entire tenant.",
@@ -639,44 +724,55 @@
       "fix": null
     },
     {
-      "n": 57,
+      "n": 64,
       "where": "Governance controls",
       "type": "absence",
-      "claim": "The migration article itself does not give the path for tenant-wide blocking.",
+      "claim": "The migration page itself does not give the navigation path for blocking Work IQ MCP tenant-wide.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Work IQ MCP policy settings API endpoint PowerShell; Work IQ MCP policy manage role permissions administrator. Read the full migration article: its rollback step names tenant-wide blocking without navigation steps; another search result documents server availability separately.",
+      "quote": "Searched: Work IQ MCP tenant policy Microsoft Graph beta policy settings API PowerShell; read migrate-retrieval-api in full, including Roll back and Troubleshoot migration issues. It refers to tenant-wide blocking and the Agent Tools registry without a blocking path.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 58,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Policy approval does not guarantee success because user permissions are checked separately.",
+      "n": 65,
+      "where": "What's changing; Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not defined trusted platforms or how platforms would be identified for this planned policy.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "Policy approval doesn't guarantee the operation succeeds. If policy allows an MCP tool request, the underlying resource access is still checked against the signed-in user's Microsoft 365 permissions.",
+      "source": null,
+      "quote": "Searched: Work IQ MCP granular policies trusted platforms workloads default policy licensing price. Read roadmap and Work IQ MCP policy governance; no platform definition or identification mechanism found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 59,
+      "n": 66,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not explicitly linked this roadmap item to the later granular controls and templates mentioned by Learn.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ granular MCP policies per-platform per-workload per-agent operations admin controls; read roadmap and policy-governance-mcp. The former describes planned restrictions; the latter says more controls might be added later without identifying this item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
       "where": "Governance guidance: After rollout; Governance controls",
       "type": "consistency",
       "claim": "Every control the governance checklist asks readers to review has a corresponding controls-table row.",
       "status": "contradicted",
       "source": "page",
-      "quote": "Checklist: 'Review Work IQ usage and cost in the Microsoft 365 admin center'. Table: 'Whether Work IQ MCP policy applies to the tenant' and 'Per-platform, per-workload, per-agent or per-operation MCP restrictions'. Neither row covers cost management.",
+      "quote": "Checklist: 'Review Work IQ usage and cost in the Microsoft 365 admin center'. Controls rows: 'Whether Work IQ MCP policy applies to the tenant'; 'Per-platform, per-workload, per-agent or per-operation MCP restrictions'. Neither covers cost management.",
       "severity": "minor",
-      "fix": "Remove the final After rollout bullet, 'Review Work IQ usage and cost in the Microsoft 365 admin center, where Learn says Work IQ cost can be managed.' Keep the supported cost-management statement in Cost and licensing."
+      "fix": "Remove the final After rollout bullet, 'Review Work IQ usage and cost in the Microsoft 365 admin center, where Learn says Work IQ cost can be managed.' Retain the supported cost-management statement in Cost and licensing."
     }
   ],
   "precheck": {
-    "at": "2026-11-17T22:07:05.328Z",
+    "at": "2026-11-19T06:20:51.394Z",
     "summary": {
       "links": 5,
-      "unreachable": 0,
+      "unreachable": 3,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 0,
       "apiCalls": 0,
@@ -696,18 +792,18 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/migrate-retrieval-api",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -727,5 +823,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-17",
+      "status": "verified-with-gaps",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

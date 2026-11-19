@@ -1,0 +1,1031 @@
+{
+  "slug": "microsoft-dataverse-prompt-column-values-in-bulk-for-existing-records-backfill",
+  "roadmapId": 570865,
+  "title": "Microsoft Dataverse: run prompt columns on existing records in bulk (backfill)",
+  "status": "verified-with-gaps",
+  "date": "2026-11-19",
+  "version": 2,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 77,
+    "confirmed": 77,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "The briefing's availability, licensing, defaults, job limits and controls are supported by the roadmap record and Microsoft Learn. Microsoft's two administration pages differ on the heading above the AI prompts switch; the briefing should acknowledge that navigation discrepancy.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Dataverse prompt columns can generate values for existing records in bulk, rather than only new or updated records.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Prompt columns can now generate AI values for records that already exist in your table, not just new or updated ones.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Makers can optionally filter the existing records to which a bulk prompt applies.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Makers can choose to apply a prompt to existing records in bulk, optionally filtered to just the rows they need",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap does not supply a preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The listed products are Power Apps, Microsoft Dataverse and Microsoft Power Platform governance and administration.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Power Apps\", \"Microsoft Dataverse\", \"Microsoft Power Platform governance and administration\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC and GCC High.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-10-15T22:47:30.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-15T22:47:30\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: defaultState; summary; Why it matters",
+      "type": "default",
+      "claim": "Backfill is admin-opt-in: an administrator must enable the environment setting before makers can use the bulk option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Allow bulk processing of existing records: This setting is off by default. Turn it on to run the prompt on existing records in bulk in an environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The bulk setting is at Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > Allow bulk processing of existing records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Two environment settings in the Power Platform admin center control this option. Select your environment and go to Settings > Features. ... Allow bulk processing of existing records",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[0].api",
+      "type": "absence",
+      "claim": "Microsoft has not documented an API or automation call for the Allow bulk processing of existing records switch.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Dataverse \"Allow bulk processing of existing records\" API organization; \"prompt column\" \"bulk\" \"API\" settings. Read prompt-column, settings-features and Organization reference; searched Organization for bulk/prompt/import/review. No matching setting operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[0].note; summary; Why it matters; Governance controls; rationale: risk",
+      "type": "default",
+      "claim": "Allow bulk processing of existing records is off by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Allow bulk processing of existing records: This setting is off by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[0].scope; controls[1].scope; controls[2].scope; Scope",
+      "type": "applicability",
+      "claim": "The bulk-processing, imported-job review and AI prompts switches are environment-scoped settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Two environment settings in the Power Platform admin center control this option. ... Copilot and AI Prompts features turned On in the Features area for the environment settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[0].note; Scope: Roles; Governance controls",
+      "type": "role",
+      "claim": "Updating settings in Features requires the System Administrator security role or equivalent permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/settings-features",
+      "quote": "Ensure you have the System Administrator security role or equivalent permissions to update the settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[1].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The import-review setting is at Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > Require review before processing imported prompt columns.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Select your environment and go to Settings > Features. ... Require review before processing imported prompt columns: This setting is on by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "Microsoft has not documented an API or automation call for the Require review before processing imported prompt columns switch.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Dataverse \"Require review before processing imported prompt columns\" API; \"prompt columns\" \"review\" \"organization\" settings automation. Read prompt-column and Organization reference; searched its bulk/prompt/import/review names. No matching setting operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[1].note; Risk assessment; Governance guidance; Governance controls",
+      "type": "default",
+      "claim": "Require review before processing imported prompt columns is on by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Require review before processing imported prompt columns: This setting is on by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[1].governs; controls[1].note; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "The enabled import-review setting pauses an imported job in System jobs until it is manually started after review.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "It controls the job's behavior on solution import in an environment. When enabled, an imported job pauses for review in System jobs and can be manually started after review.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "The Specialized columns using code page still says importing and exporting solutions with prompt columns is unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/specialized-columns#prompt-columns",
+      "quote": "Importing and exporting solutions with prompt columns is not supported at this time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[2].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "AI prompts is at Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > AI Builder > AI prompts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/ai-builder/administer",
+      "quote": "Select Environments > [select an environment] > Settings > Product > Features. ... On the Features settings page under AI Builder, enable or disable the AI prompts toggle.",
+      "severity": "minor",
+      "fix": "Add to controls[2].note and its rendered counterpart: \"Manage feature settings now lists a standalone AI prompts section with the setting 'Enable the AI prompts feature in Power Platform and Copilot Studio'; the AI Builder administration page still places the toggle under AI Builder.\" The differing page is https://learn.microsoft.com/power-platform/admin/settings-features#ai-prompts."
+    },
+    {
+      "n": 23,
+      "where": "controls[2].api; controls[2].note; Governance controls",
+      "type": "command",
+      "claim": "PATCH /organizations(<organizationid>) can set the Boolean aipromptsenabled property to enable or disable AI prompts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization",
+      "quote": "Update ... PATCH /organizations(organizationid) ... Writable columns/attributes ... AiPromptsEnabled ... Indicates whether AI Prompts feature is enabled. ... LogicalName aipromptsenabled ... Type Boolean",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[2].note",
+      "type": "default",
+      "claim": "The AI Builder administration page says AI prompts is enabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/ai-builder/administer",
+      "quote": "By default, the AI prompts feature is enabled for makers to create and experiment with various AI-generated content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[2].note",
+      "type": "default",
+      "claim": "The Organization table reference gives AiPromptsEnabled a DefaultValue of False.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization",
+      "quote": "AiPromptsEnabled ... LogicalName aipromptsenabled ... Type Boolean ... DefaultValue False",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[2].governs; controls[2].note; Governance guidance",
+      "type": "applicability",
+      "claim": "The general AI prompts switch, not a backfill-specific switch, controls a prerequisite that prompt columns rely on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Copilot and AI Prompts features turned On in the Features area for the environment settings. ... AI Prompt feature is disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Prompt columns have a consumption-based licensing model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Prompt columns use the same licensing model as AI builder prompts. ... Prompt columns consume credits every time a prompt is executed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "Prompt columns use the same licensing model as AI Builder prompts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Prompt columns use the same licensing model as AI builder prompts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "cost",
+      "claim": "Microsoft's prompt column page says prompt columns consume both AI Builder credits and Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Prompt columns consume both AI Builder credits and Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The prompt column page says AI Builder credits are retiring soon.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "AI Builder credits are retiring soon.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Overview of prompts page lists Copilot Credits as a prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/ai-builder/prompts-overview",
+      "quote": "Prerequisites ... You need Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The variable cost rating represents metered credit consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Prompt columns consume credits every time a prompt is executed. Copilot Credits are a common currency for eligible Microsoft services with usage-based billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn documents backfill under Apply prompt to existing records in bulk.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Apply prompt to existing records in bulk ... Use this option to run the prompt for existing records in bulk (backfill).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Scope",
+      "type": "admin-path",
+      "claim": "Makers access the bulk option by opening their prompt column from Tables in Power Apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Go to Power Apps, select Tables on the left navigation pane, and open your prompt column.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing; Governance controls",
+      "type": "admin-path",
+      "claim": "The maker selects Also generate values for Existing records in bulk on the column panel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "On the column panel, check Also generate values for Existing records in bulk.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing; Risk assessment; Cost and licensing; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "The maker is shown the number of records and estimated credit consumption before saving and running the backfill.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Review the number of records to process and the estimated credit consumption for the job, and save the column configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Governance guidance; Governance controls",
+      "type": "admin-path",
+      "claim": "After saving the column configuration, the maker selects Run prompt to queue the job.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Save the column configuration. ... Select Run prompt when you're ready to queue the job.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Backfill generates values through an asynchronous background job managed in System jobs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "When you select this option, the system generates the values as an asynchronous background job managed in System jobs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The system updates the prompt column and its Status and Details columns as each record completes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "The system updates the prompt column, along with its Status and Details columns, as each record completes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Creating a record triggers the prompt.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "A prompt executes when you create a record or update one or more of the columns that the prompt references.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Updating one or more columns referenced by the prompt triggers execution.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "A prompt executes when you create a record or update one or more of the columns that the prompt references.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft's FAQ says updating a prompt definition does not recalculate existing values until a later update to a referenced column.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Updating the prompt definition does not recalculate existing prompt values until a subsequent update occurs on one or more columns defined in the prompt.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The pre-backfill behavior did not automatically populate a newly added prompt column for existing records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/specialized-columns#prompt-columns",
+      "quote": "When prompt columns are added to tables with records, the existing records' new prompt columns aren't populated automatically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "summary; Why it matters; Cost and licensing: Meter; rationale: cost",
+      "type": "cost",
+      "claim": "Each prompt execution in the backfill consumes credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Prompt columns consume credits every time a prompt is executed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Why it matters; Cost and licensing: Capacity",
+      "type": "cost",
+      "claim": "Microsoft tells administrators to ensure sufficient AI credit capacity in the environment before enabling bulk processing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Ensure sufficient AI credit capacity is available in the environment before enabling it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "A prompt column passes its input-column data to an AI model for generation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "The AI model processes these prompts to generate relevant responses based on specified input columns.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Data exposure; rationale: impact",
+      "type": "behaviour",
+      "claim": "Generated prompt-column values persist in the table containing the source data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Natural language prompts tied to other columns in your table. ... The key function is that the prompt column contains generative AI results stored in the table persistently.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Microsoft's prompts overview says prompts use models powered by Azure Foundry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/ai-builder/prompts-overview",
+      "quote": "Prompts use models powered by Azure Foundry.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Users able to read a prompt output column can see its generated data, including information derived from secured input columns unless the output is secured too.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/field-level-security",
+      "quote": "When a calculated column or prompt column includes a column that is secured, data might be displayed in the calculated or prompt column to users that don't have permission to the secured column. Both the original column and the calculated or prompt column should be secured.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Microsoft lists insufficient user permissions on an input column as a cause of prompt-column execution failure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "The user doesn't have sufficient permissions on one or more input columns referenced in the prompt column definition.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "The pages read do not identify the execution identity of a bulk prompt-column backfill job.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Dataverse prompt column backfill job execution identity permissions user. Read prompt-column, specialized-columns, field-level-security, monitor-system-jobs; searched asynchronous-service for identity/user/security/permission/prompt. No backfill execution identity stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "behaviour",
+      "claim": "Prompt columns are not audited, so their changed values do not have a prompt-column value audit trail.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Are prompt columns audited? ... Prompt columns aren't audited.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "A System jobs entry records the backfill job.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "You can monitor and manage jobs, and view credits consumed in System jobs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "A successful prompt-column job remains viewable in System jobs for 30 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "A successful prompt column job is available to view in System jobs for 30 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "A failed or cancelled prompt-column job remains viewable for 60 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "A failed or canceled job is available for 60 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "After a maker queues the backfill, the job generates values across records without a separate human approval step for every generated value.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Select Run prompt when you're ready to queue the job. ... The system updates the prompt column, along with its Status and Details columns, as each record completes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Microsoft recommends human review of generated content before using it to inform a business decision.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/ai-builder/prompts-overview",
+      "quote": "A human should review the content before you post it online, send it to a customer, or use it to inform a business decision.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The job expires after seven days and is automatically cancelled regardless of status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "The job expires after seven days and is automatically canceled, regardless of the status.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Learn directs makers to use the Details and Status columns to investigate prompt execution problems.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Check Details and Status columns in the table. More information: View the prompt column status",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Risk assessment: Change & support",
+      "type": "applicability",
+      "claim": "Creating or editing prompt columns requires the Block unmanaged customizations environment setting to be disabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "To create or edit Prompt Columns, the 'Block unmanaged customizations' environment setting must be disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Cost and licensing: Meter; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Microsoft advises applying filters and testing a few records initially to understand credit consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Apply filters so the prompt runs only on the records you need, and test a few records initially to understand credit consumption for your data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Cost and licensing: Where it shows",
+      "type": "admin-path",
+      "claim": "Prompt-column consumption is accessible in Power Automate > Automation center > AI Builder activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Sign in to Power Automate. ... On the left navigation pane, select Automation center, and then select AI Builder activity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Cost and licensing: Where it shows",
+      "type": "cost",
+      "claim": "The Estimated consumption column shows credits consumed by each prompt execution.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Review the Estimated consumption column to see the credits consumed by each prompt execution.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Cost and licensing: Where it shows; rationale: cost",
+      "type": "cost",
+      "claim": "The activity report shows whether an execution consumed AI Builder credits or Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Prompt column executions appear alongside other AI Builder and Copilot Studio activity, and show whether the execution consumed AI Builder credits or Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Cost and licensing: Where it shows",
+      "type": "cost",
+      "claim": "The credits consumed by a backfill job can also be viewed in System jobs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "You can monitor and manage jobs, and view credits consumed in System jobs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Cost and licensing: Capacity",
+      "type": "absence",
+      "claim": "The prompt-column page does not state a per-record credit rate for backfill.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"prompt columns\" \"backfill\" \"rate\" credits. Read the full prompt-column page, including licensing, consumption and bulk-processing sections. It gives a job estimate, not a fixed backfill rate per record.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Scope: Prerequisites",
+      "type": "applicability",
+      "claim": "Learn lists Copilot and AI Prompts turned On in the environment Features settings as prerequisites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Copilot and AI Prompts features turned On in the Features area for the environment settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "A table can have up to five prompt columns.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "You can create up to five prompt columns per table.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Formula, file, image and other prompt columns cannot be used as input columns; their input values are ignored if selected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Input columns can't be formula columns, file columns, image data type, or another prompt column. If you select these data types, their input value is ignored.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance controls: Maker-side",
+      "type": "admin-path",
+      "claim": "The Allow prompt column execution checkbox is on the Edit column pane for a prompt column.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Open the table, select Columns, and then open the column that is of data type Prompt ... On the Edit column pane, clear the Allow prompt column execution checkbox",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance controls: Maker-side",
+      "type": "default",
+      "claim": "Allow prompt column execution is enabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "By default, the Allow prompt column execution setting is enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance controls: Maker-side",
+      "type": "behaviour",
+      "claim": "Clearing Allow prompt column execution stops AI analysis for that prompt column.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "When disabled, AI analysis isn't performed for the prompt column.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance controls: Maker-side",
+      "type": "applicability",
+      "claim": "Learn says both tenant-level and column-level settings must be enabled for prompts to execute.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "For prompts to be executed, both tenant level and column level settings need to be enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance controls: To monitor or stop a job",
+      "type": "admin-path",
+      "claim": "System jobs is at Power Platform admin center > Manage > Environments > environment > Settings > Audit and logs > System jobs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/monitor-system-jobs",
+      "quote": "Select Manage in the navigation pane. ... select Environments. Then select an environment. ... Select Settings > Audit and logs > System jobs to see a grid view of system jobs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Governance controls: To monitor or stop a job",
+      "type": "behaviour",
+      "claim": "Microsoft says a problematic system job can be cancelled, postponed, paused or resumed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/monitor-system-jobs",
+      "quote": "If there's a problem with a system job, you can cancel, postpone, pause, or resume it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Governance controls: To monitor or stop a job",
+      "type": "behaviour",
+      "claim": "The status of a completed or cancelled system job cannot be changed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/monitor-system-jobs",
+      "quote": "You can't make changes to the status of a system job that is completed or canceled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "What's changing; Scope: Rollout; Open questions",
+      "type": "availability",
+      "claim": "Learn already documents the bulk option but warns that it is rolling out and might not yet be available in the reader's region.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+      "quote": "Apply prompt to existing records in bulk ... This capability is in process of rolling out, and might not be available in your region yet.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-19T03:09:31.023Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 7,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 3,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=570865",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/settings-features",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/monitor-system-jobs",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/ai-builder/prompts-overview",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/ai-builder/administer",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/specialized-columns#prompt-columns",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/field-level-security",
+        "ok": false,
+        "status": 429
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization",
+        "ok": false,
+        "status": 429
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether prompt columns can be run on existing records in bulk in an environment",
+        "docs": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+        "reachable": false,
+        "segments": [
+          "Manage",
+          "Environments",
+          "Settings",
+          "Product",
+          "Features",
+          "Allow bulk processing of existing records"
+        ],
+        "missing": [
+          "Manage",
+          "Environments",
+          "Settings",
+          "Product",
+          "Features",
+          "Allow bulk processing of existing records"
+        ]
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether imported prompt column jobs pause for review before they run",
+        "docs": "https://learn.microsoft.com/power-apps/maker/data-platform/prompt-column",
+        "reachable": false,
+        "segments": [
+          "Manage",
+          "Environments",
+          "Settings",
+          "Product",
+          "Features",
+          "Require review before processing imported prompt columns"
+        ],
+        "missing": [
+          "Manage",
+          "Environments",
+          "Settings",
+          "Product",
+          "Features",
+          "Require review before processing imported prompt columns"
+        ]
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether AI prompts, which prompt columns rely on, are available in an environment",
+        "docs": "https://learn.microsoft.com/ai-builder/administer",
+        "reachable": false,
+        "segments": [
+          "Manage",
+          "Environments",
+          "Settings",
+          "Product",
+          "Features",
+          "AI Builder",
+          "AI prompts"
+        ],
+        "missing": [
+          "Manage",
+          "Environments",
+          "Settings",
+          "Product",
+          "Features",
+          "AI Builder",
+          "AI prompts"
+        ]
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether AI prompts, which prompt columns rely on, are available in an environment",
+        "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization",
+        "reachable": false,
+        "token": "PATCH /organizations(<organizationid>)",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-18",
+      "status": "verified",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    }
+  ]
+}

@@ -1,0 +1,638 @@
+{
+  "slug": "microsoft-teams-edu-tenant-type-selection-in-policy-wizard",
+  "roadmapId": 402185,
+  "title": "Microsoft Teams: choose the institution type in the Teams for Education Policy Wizard",
+  "status": "verified-with-gaps",
+  "date": "2026-11-19",
+  "version": 3,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 48,
+    "confirmed": 47,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "The briefing passes: the roadmap facts, wizard behaviour, licensing background and documented navigation are supported. One minor consistency issue remains: the checklist asks administrators to check educator and staff policies, but the controls table covers only institution type selection.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What's changing; title; summary",
+      "type": "record",
+      "claim": "Roadmap item 402185 describes administrators selecting their institution's tenant type in the policy wizard.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Admins can now select tenant type for their institution from the policy wizard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; summary",
+      "type": "record",
+      "claim": "The roadmap says the tenant type can be changed later through the wizard.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This setting can be changed anytime from the wizard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is November CY2024.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2024\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and does not list other clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Desktop, Mac and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; summary; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The wizard's educational institution type options are Primary or Secondary and Higher education.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+      "quote": "Select your educational institution type (**Primary or Secondary** or **Higher education**), and then select **Next**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Why it matters; Scope; Governance controls; rationale: risk",
+      "type": "behaviour",
+      "claim": "The wizard adjusts students' Global (Org-wide default) policy definitions according to institution type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+      "quote": "The wizard adjusts the Global (Org-wide default) policy definition of each policy area covered by the wizard with new default settings that are appropriate to keep your students safe.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "The wizard creates custom policy definitions for educators and staff.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+      "quote": "The wizard creates a set of custom policy definitions for each policy area covered by the wizard with settings tailored to the needs of educators and staff.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "The wizard assigns the educator and staff custom policies to groups selected by the administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+      "quote": "Then, it assigns the policy definitions to the group of educators and staff that you choose.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The administrator can select up to three educator and staff groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+      "quote": "You can select up to three groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The student policy areas are Teams, Meeting, Live events, App setup, App permission, Messaging and Calling.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+      "quote": "Teams policy\nMeeting policy\nLive events policy\nApp setup policy\nApp permission policy\nMessaging policy\nCalling policy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The five educator and staff custom policy areas are Teams, Meeting, Live events, Messaging and Calling.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+      "quote": "Teams policy | Primary or Secondary Educators and Staff - Teams\nMeeting policy | Primary or Secondary Educators and Staff - Meeting\nLive events policy | Primary or Secondary Educators and Staff - Live events\nMessaging policy | Primary or Secondary Educators and Staff - Messaging\nCalling policy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; controls[1].note; Why it matters",
+      "type": "behaviour",
+      "claim": "Changing only the institution type applies the new type's Global policy definitions to students.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+      "quote": "Change only the educational institution type | - **Students**: The Global (Org-wide default) policy definitions based on the new educational institution type are applied to students.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; controls[1].note; Why it matters",
+      "type": "behaviour",
+      "claim": "Changing only the institution type creates and assigns new custom policy definitions to the educator and staff groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+      "quote": "A set of custom policy definitions based on the new educational institution type is created and assigned to the educators and staff groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; controls[1].note; Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Changing institution type removes the previous type's custom policy definitions from the educator and staff groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+      "quote": "The custom policy definitions created for the previous educational institution type are removed from the educators and staff groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "The wizard's Learn page does not say when institution type selection was added.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams for Education Policy Wizard\" cost meter default Apply data institution type added. Read easy-policy-setup-edu in full; it documents selecting and changing type but gives no introduction date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Why it matters; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "After the wizard has run, education defaults for new Teams features are automatically added to Global policies without administrator intervention.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+      "quote": "whenever a new feature is added to Teams, the appropriate EDU relevant default value of the policy for that feature will be automatically added to the Global (Org-wide default) without requiring any admin intervention.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "The sources do not say this wizard changes existing policies if nobody runs it.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams for Education Policy Wizard\" cost meter default Apply data institution type added. Read the roadmap and easy-policy-setup-edu: policy application is described as occurring when the wizard runs, with Apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "The feature description documents no new data access.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams for Education Policy Wizard\" cost meter default Apply data institution type added. Read roadmap description and easy-policy-setup-edu, including policy tables; they describe policy configuration, not a new data-access mechanism.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The wizard's policies govern available Teams features and what students can share.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+      "quote": "you can use policies to control who can use private chat and private calling, who can schedule meetings, and what content types can be shared.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Learn describes student policies as more restrictive than educator and staff policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+      "quote": "Policies for students need to be more restrictive to reduce their risk of receiving inappropriate levels of access. Educators and staff need a separate set of policies that can be more permissive",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Security & identity; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Existing student direct and group policy assignments must be removed for the wizard's Global policies to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+      "quote": "Remove all existing direct assignments and group assignments from your students so that the Global (Org-wide default) policy definition applied by the wizard takes effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The wizard assigns educator and staff group policies at ranking 1, the highest ranking.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+      "quote": "the wizard assigns policies to your educators and staff group using a group assignment ranking of 1, which is the highest ranking.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "An existing policy in the same policy area on a selected educator and staff group is moved to a lower ranking.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+      "quote": "If your educators and staff group has an existing policy of the same policy area assigned to it, that existing policy is moved to a lower ranking and the policy assigned by the wizard takes effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Conflicting direct assignments override the wizard's educator and staff group policies and must be removed for those policies to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+      "quote": "Remove any conflicting direct assignments for your educators and staff so that the custom policy definition created by the wizard takes effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: defaultState; summary; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "default",
+      "claim": "Initial policy application is admin-opt-in: the administrator selects Apply to apply the wizard's changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+      "quote": "Select **Apply** to apply your changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The wizard starts automatically for someone new to Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+      "quote": "If you're new to Teams, the wizard automatically starts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Applying the wizard's changes may take a few minutes, with Global definitions immediately applied to students.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+      "quote": "This may take a few minutes to complete.The Global (Org-wide default) policy definitions are immediately applied to students.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Custom policy assignment to educator and staff group members can take a few hours depending on group size.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+      "quote": "For your educators and staff, it could take a few hours for the custom policies to be assigned to each member of the groups you selected, depending on the size of the groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Change & support",
+      "type": "absence",
+      "claim": "Learn describes no mechanism for carrying edits to previous custom policies into the new policies when institution type changes.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Education Policy Wizard institution type PowerShell Graph API tenant type Quick setup Change default role licensing. Read easy-policy-setup-edu, Make changes in the wizard: it describes creating new definitions and removing previous definitions, not migrating edits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost; Open questions",
+      "type": "licensing",
+      "claim": "Teams for Education requires an Education license in the Microsoft 365 tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/education/guide/2-baseline/applications/baseline-apps-teams-what-is-teams",
+      "quote": "## Prerequisites for Microsoft Teams for Education\n\n- An Education license in your Microsoft 365 tenant",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft lists Teams as part of the free Microsoft 365 A1 for Students SKU.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-edu-licensing",
+      "quote": "Microsoft Teams is part of the free Microsoft 365 A1 for Students SKU.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "absence",
+      "claim": "The wizard page states no separate wizard-specific licence requirement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams for Education Policy Wizard\" \"role\" \"license\". Read easy-policy-setup-edu, teams-edu-licensing and baseline-apps-teams-what-is-teams; the wizard page names no separate wizard-specific licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The wizard page publishes no meter for the wizard.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams for Education Policy Wizard\" cost meter default Apply data institution type added. Read easy-policy-setup-edu and teams-edu-licensing; the wizard page publishes no billing meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "absence",
+      "claim": "The wizard's Learn page names no required administrator role.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams for Education Policy Wizard\" \"role\" \"license\". Read easy-policy-setup-edu in full: no required role is named. The role in Set-CsTeamsEducationConfiguration concerns that cmdlet, not the wizard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[0].ui; Governance guidance: At rollout; Governance controls",
+      "type": "admin-path",
+      "claim": "The first-run wizard is reached in Microsoft Teams admin center through Home > Easy policy setup for a safe learning environment > Quick setup, with institution type chosen next.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+      "quote": "go to **Home**, and then in the **Easy policy setup for a safe learning environment** tile, select **Quick setup**.\n2. Select your educational institution type (**Primary or Secondary** or **Higher education**)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No PowerShell or API operation for the wizard's initial institution type selection is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"institution type\" \"Set-Cs\"; site:learn.microsoft.com graph education settings institution type policy wizard API. Read easy-policy-setup-edu, Set-CsTeamsEducationConfiguration and Graph education-overview; no initial type-selection call.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[1].ui; Governance guidance: After rollout; Governance controls",
+      "type": "admin-path",
+      "claim": "The wizard can be rerun to change institution type through Microsoft Teams admin center > Home > Easy policy setup for a safe learning environment > Change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+      "quote": "go to **Home**, and then in the **Easy policy setup for a safe learning environment** tile, select **Change**.\n2. From here, continue through each page of the wizard to make your changes. You can change your institution type",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No PowerShell or API control to change the wizard's institution type is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"institution type\" \"Set-Cs\"; site:learn.microsoft.com graph education settings institution type policy wizard API. Read easy-policy-setup-edu, Set-CsTeamsEducationConfiguration and Graph education-overview; no institution-type change operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Set-CsTeamsEducationConfiguration has no institution type parameter in its documented syntax.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"institution type\" \"Set-Cs\". Read Set-CsTeamsEducationConfiguration syntax and all parameters: ParentGuardianPreferredContactMethod, UpdateParentInformation, EduGenerativeAIEnhancements, Identity, WhatIf, Confirm and common parameters; no institution type.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is included under the Teams for Education product licence rather than a documented separate wizard entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/education/guide/2-baseline/applications/baseline-apps-teams-what-is-teams",
+      "quote": "## Prerequisites for Microsoft Teams for Education\n\n- An Education license in your Microsoft 365 tenant\n- Enable Microsoft Teams in the Microsoft Admin Center",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Learn instructs administrators without educator and staff groups to create a group and rerun the wizard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+      "quote": "If you don't have any groups set up yet for your educators and staff, create a group, and then rerun the wizard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The wizard includes a review step before Apply.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+      "quote": "4. Review your selections.\n5. Select **Apply** to apply your changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Microsoft recommends checking Message Center for new Teams features, policies and settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+      "quote": "But do check the Message Center (in the Microsoft 365 admin center) frequently to stay up to date on new features and their policies and policy settings in Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "consistency",
+      "claim": "Every control the governance checklist asks administrators to check is represented in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Check the educators and staff policies a few hours after applying; controls table: Institution type chosen on the first run of the wizard; Institution type changed after the wizard has run.",
+      "severity": "minor",
+      "fix": "Remove the After rollout bullet 'Check the educators and staff policies a few hours after applying, as Learn says assignment can take that long.' It asks for a policy check not represented by either institution-type control row."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-19T06:20:46.608Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=402185",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseducationconfiguration?view=teams-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/education/guide/2-baseline/applications/baseline-apps-teams-what-is-teams",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/teams-edu-licensing",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Institution type chosen on the first run of the wizard",
+        "docs": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+        "reachable": true,
+        "segments": [
+          "Home",
+          "Easy policy setup for a safe learning environment",
+          "Quick setup"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Institution type changed after the wizard has run",
+        "docs": "https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu",
+        "reachable": true,
+        "segments": [
+          "Home",
+          "Easy policy setup for a safe learning environment",
+          "Change"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-19",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-19",
+      "status": "held",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    }
+  ]
+}

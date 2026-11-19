@@ -75,7 +75,7 @@ controls:
     note: "Retired: existing settings were honoured until November 1, 2026. Valid values are AllSites, IncludeSelectedSites, ExcludeSelectedSites and NoSites."
 confidence: "high"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-19"
 roadmapModified: "2026-11-11T00:53:22"
 changes:
   - date: "2026-11-17"
@@ -86,19 +86,27 @@ changes:
     note: "Corrected: Microsoft documents spending-policy creation through a beta Microsoft Graph API, so the spending-policy control row and the claim of no automation were removed; added the setup-page link and the Auto-apply new services label."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 110 statements not yet confirmed"
-version: 2
+  - date: "2026-11-19"
+    note: "Archived: Microsoft marked the roadmap item as cancelled. The briefing is kept for reference."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 111 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-19"
+    note: "Corrected the roadmap status to Launched (the page had been archived as cancelled in error) and reworded the 20% credit-limit warning to match the Learn page."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 108 statements not yet confirmed"
+version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
-  version: 2
+  date: "2026-11-19"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 110
-  confirmed: 109
+  claims: 108
+  confirmed: 107
   unconfirmed: 0
   contradicted: 1
   attempts: 0
-  hash: "406426cdbb064b9169e2cadbf709b312"
+  hash: "02065335591452acfc66a70b4cfd5b99"
 ---
 
 ## What's changing
@@ -136,7 +144,7 @@ The tenant-wide opt-in or opt-out that preview used is retired. After the Novemb
 **Change & support**
 
 - Spend: the Learn page says existing cost management policies might include the new service automatically when the **Allow new agents and services as they become available** option is on. The general spending-policy guide calls this setting **Auto-apply new services**. Review each policy before users start asking for advanced work.
-- Users who run out of credits get an explanation of what Copilot cannot complete, and users warned at 20% of their monthly limit may request more credits. Expect requests to reach IT.
+- Users who run out of credits get an explanation of what Copilot cannot complete, and users warned when 20% of their monthly credit limit remains may request more credits. Expect requests to reach IT.
 - Support: the preview PowerShell parameters retain their preview names and were honoured only until November 1, 2026, so scripts and runbooks that use them need updating.
 
 ## Cost and licensing
@@ -217,10 +225,8 @@ cost: Variable. Everyday use is included with the Microsoft 365 Copilot licence;
 impact: Medium. Copilot-licensed SharePoint users see it; site and content managers are the people most likely to reach the credit-consuming capabilities.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Change & support / behaviour: Users are warned at 20% of their monthly limit. | Found: When 20% of the monthly credit limit remains, Copilot notifies the user that usage-based features pause until the next month when the limit is reached. | Fix: Replace 'users warned at 20% of their monthly limit' with 'users warned when 20% of their monthly credit limit remains'. | Source: https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started
-- [supported, minor] What's changing: replacement availability controls; Why it matters; Governance controls / applicability: After November 1, 2026, availability is managed using Site AI settings and Restricted Content Discovery. | Found: After November 1, 2026, manage availability using Site AI settings and Restricted Content Discovery. | Fix: Add: 'The separate Create sites with AI page still calls site creation preview and requires tenant opt-in using All Sites or Exclude Selected Sites, which conflicts with the get-started page's retirement guidance (https://learn.microsoft.com/sharepoint/create-sites-with-ai).' | Source: https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started
-- [contradicted, minor] Governance guidance: Before rollout and At rollout; Governance controls table / consistency: The governance checklist's spending-policy control is represented in the controls table. | Found: Checklist: 'Create or edit a spending policy'. Table controls: 'Whether Copilot in SharePoint appears on a site'; 'Removing Copilot in SharePoint and AI actions from selected sites'; 'Preview-era tenant and site availability scope for Copilot in SharePoint'. | Fix: The checklist steps to review and configure spending policies, including service coverage, group scope, limits and alerts, have no corresponding controls-table row. Record this omission; this correction does not require adding a row.
+- [contradicted, minor] Governance guidance: Before rollout and At rollout; Governance controls table / consistency: The checklist's spending-policy configuration instructions have no corresponding controls-table row. | Found: Create or edit a spending policy that selects Advanced work in SharePoint, scoped to a security group, with limits and alerts set ... Table: Site AI settings; Restricted Content Discovery; preview-era PowerShell scope. | Fix: Remove the checklist bullet beginning 'Create or edit a spending policy' and the Before rollout bullet beginning 'Review every existing spending policy'; those steps name a control absent from the table. Retain the verified spending-policy discussion in the body.
 -->

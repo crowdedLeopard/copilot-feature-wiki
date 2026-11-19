@@ -17,8 +17,8 @@ impact: "high"
 defaultState: "on"
 action: "act-now"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for this change. The ComposeInlineEnabled policy page says the writing features are for eligible users with access to Microsoft 365 Copilot Chat."
+  model: "included"
+  notes: "The writing features require access to Microsoft 365 Copilot Chat, which requires an eligible Microsoft 365 subscription; an additional Microsoft Copilot license is not required for eligible users. A separate meter for this change is not yet published."
 audiences: ["m365-admin","security","compliance","change-adoption"]
 tags: ["copilot-chat","microsoft-edge","edge-for-business","enterprise-data-protection","entra-id","dlp","policy","admin-controls"]
 sources:
@@ -30,6 +30,12 @@ sources:
     kind: "message-center"
   - title: "ComposeInlineEnabled"
     url: "https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled"
+    kind: "learn"
+  - title: "Microsoft Copilot requirements"
+    url: "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements"
+    kind: "learn"
+  - title: "User data and privacy in Microsoft Edge"
+    url: "https://learn.microsoft.com/legal/microsoft-edge/privacy#compose"
     kind: "learn"
   - title: "Configuring Copilot Features"
     url: "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features"
@@ -77,8 +83,8 @@ controls:
     note: "General control. The blocking settings are listed for Copilot Chat in the Edge sidepane; Microsoft has not confirmed they cover Writing Assistance."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-17"
-roadmapModified: "2026-11-11T00:53:22"
+updated: "2026-11-19"
+roadmapModified: "2026-11-19T00:53:06"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this item; records the March 20, 2026 pause and the Edge policy that governs Rewrite."
@@ -88,19 +94,27 @@ changes:
     note: "Corrected: removed the New-DlpCompliancePolicy call from the DLP row, replaced the claim that any page not covered by DLP or Edge policy is open to the feature, softened the late January 2027 timing and dropped Intune MAM from the checklist."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 63 statements not yet confirmed"
-version: 3
+  - date: "2026-11-19"
+    note: "Corrected the WorkIQ grounding clause in Cost and licensing to match the ComposeInlineEnabled policy page, adding its qualification."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 63 statements contradicted, 1 unconfirmed; taken offline until corrected"
+  - date: "2026-11-19"
+    note: "Corrected: removed the unsupported March 20, 2026 pause claim, set licensing to included (Copilot Chat needs an eligible Microsoft 365 subscription, no extra Copilot license), and cited the Edge privacy page for text transfer."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
+version: 5
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
-  version: 3
+  date: "2026-11-19"
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 63
+  claims: 65
+  confirmed: 65
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "c77bb57c1b99c2e0f0f8549e345d6fb3"
+  hash: "82b596947c9bb71853a1ac7e7730659f"
 ---
 
 ## What's changing
@@ -109,7 +123,7 @@ Microsoft plans to add enterprise data protection to Rewrite by Copilot in Micro
 
 Microsoft's notice MC1146821 (updated November 9, 2026) says it is associated with this roadmap item and describes the same capability as Writing Assistance, powered by Microsoft 365 Copilot Chat. Users highlight editable text and right-click to open the context menu. The notice says Writing Assistance will be enabled by default for Edge for Business users, and that it will not work on content where Data Loss Prevention (DLP) policies restrict Microsoft 365 Copilot from accessing page content. It names the InlineComposeEnabled policy setting as the admin control and says no admin action is required before rollout.
 
-The two Microsoft sources differ on timing. The roadmap record shows status In development, a target of January CY2027, and an update dated March 20, 2026 saying Microsoft had paused release temporarily and would announce new timelines. The notice gives a Worldwide rollout start and completion of late January 2027 (previously end of October 2026 for the start and late October for completion). It sets no act-by date. Treat January CY2027 as a target.
+The roadmap shows In development and a January CY2027 target. MC1146821 expects Worldwide rollout to begin and complete in late January 2027, previously end of October 2026 for the start and late October for completion. It sets no act-by date. Treat these dates as targets.
 
 The notice and Microsoft Learn also differ on the policy name. The notice says InlineComposeEnabled; the Learn policy reference documents ComposeInlineEnabled (Commercial Writing), which enables eligible users with access to Microsoft 365 Copilot Chat to draft, rewrite and dictate text in web editing fields in Edge. At the time of writing (November 2026) no Learn page documents a policy named InlineComposeEnabled, so do not assume the two names are the same setting.
 
@@ -123,7 +137,7 @@ If nobody acts, Microsoft currently expects eligible users to receive the right-
 
 **Data exposure**
 
-- Writing Assistance is powered by Microsoft 365 Copilot Chat (MC1146821), so text a user chooses to rewrite goes to Copilot. The roadmap says enterprise data protection will apply for users signed in with a Microsoft Entra ID; the Learn pages read do not describe how it applies to this feature specifically.
+- Writing Assistance is powered by Microsoft 365 Copilot Chat (MC1146821), so text a user chooses to rewrite goes to Copilot. Microsoft's Edge privacy page says text highlighted or inputted for Compose is sent to Microsoft after the user clicks the Rewrite or Generate button ([User data and privacy in Microsoft Edge](https://learn.microsoft.com/legal/microsoft-edge/privacy#compose)). The roadmap says enterprise data protection will apply for users signed in with a Microsoft Entra ID; the Learn pages read do not describe how it applies to this feature specifically.
 - The notice and the policy page say the feature is unavailable where DLP blocks access. The Learn page on Copilot Chat page-content access lists the Purview and Intune MAM settings that block Copilot Chat in the Edge sidepane; Microsoft has not confirmed that the same list governs Writing Assistance.
 
 **Security & identity**
@@ -137,11 +151,11 @@ If nobody acts, Microsoft currently expects eligible users to receive the right-
 **Change & support**
 
 - The feature is on by default per MC1146821, and the Learn policy page says an unconfigured policy leaves the writing features available. Expect questions about the new menu item and about why it is missing on DLP-protected pages.
-- Release timing has moved more than once, and the roadmap still carries the March 20, 2026 pause note, so confirm in Message center before you brief users.
+- The notice moved rollout from October 2026 to January 2027; confirm Message center before briefing users.
 
 ## Cost and licensing
 
-Microsoft has not published a licence requirement or meter for this change. The roadmap record and MC1146821 name none. The ComposeInlineEnabled policy page (Learn) says the writing features are for eligible users with access to Microsoft 365 Copilot Chat, and adds that users licensed for Microsoft 365 Copilot (Premium) can also use WorkIQ grounding when available. That page lists no price.
+The writing features require access to Microsoft 365 Copilot Chat. Copilot Chat requires an eligible Microsoft 365 subscription; an additional Microsoft Copilot license is not required for eligible users ([Microsoft Copilot requirements](https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements), [ComposeInlineEnabled](https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled)). A separate meter for this change is not yet published. The ComposeInlineEnabled policy page adds that users licensed for Microsoft 365 Copilot (Premium) can also use WorkIQ grounding when available, subject to content permissions and tenant controls. That page lists no price.
 
 No meter or cap for this feature is documented at the time of writing (November 2026). The known cost is admin time: setting the Edge policy, reviewing DLP coverage and communicating with users.
 
@@ -195,18 +209,18 @@ The Edge management service page lists AI-generated text and editing but does no
 ## Open questions
 
 - Is InlineComposeEnabled in MC1146821 the same setting as the documented ComposeInlineEnabled policy, or a separate control? Watch Message center and the Edge policy reference.
-- Will the March 20, 2026 pause note be withdrawn from the roadmap item, and will the late January 2027 rollout hold? Watch MC1146821 and the roadmap.
-- Which licence, if any, does Writing Assistance with enterprise data protection require, and will it be metered? Microsoft has not published this.
+- Will the late January 2027 rollout hold? Watch MC1146821 and the roadmap.
+- Will Microsoft publish a separate meter or price for Writing Assistance with enterprise data protection? Watch the ComposeInlineEnabled Learn page and Message center.
 - Which DLP settings block Writing Assistance specifically, as opposed to Copilot Chat in the Edge sidepane? Watch the Learn page on Copilot Chat access to page content.
 
 <!-- rationale
 risk: Medium. Microsoft's notice says the feature is enabled by default for Edge for Business users and sends text to Microsoft 365 Copilot Chat; an Edge policy and DLP can limit it, but both need setting.
-cost: Low. The only cost the sources show is admin time to set policy and tell users; Microsoft has not published a separate licence or meter for this change.
+cost: Low. The writing features need access to Microsoft 365 Copilot Chat, which requires an eligible Microsoft 365 subscription and no additional Microsoft Copilot license for eligible users; the cost shown is admin time.
 impact: High. Microsoft's notice says Writing Assistance is enabled by default for Edge for Business users, so eligible users will see a new option in the right-click menu on editable text.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing / licensing: Users licensed for Microsoft 365 Copilot (Premium) can also use WorkIQ grounding when available. | Found: Users licensed for Microsoft 365 Copilot (Premium) can also use WorkIQ grounding when available, subject to content permissions and tenant controls. | Fix: Replace the WorkIQ clause with 'users licensed for Microsoft 365 Copilot (Premium) can also use WorkIQ grounding when available, subject to content permissions and tenant controls.' | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled
+- [supported, minor] Governance controls / behaviour: With the policy unconfigured, users can turn Commercial Writing off using 'Collaborate with Copilot as you write on the web' in Edge settings. | Found: Users can turn Commercial Writing off using 'Collaborate with Copilot as you write on the web' in Microsoft Edge settings. | Fix: Append: "Microsoft's Edge privacy page instead names the user toggle 'Draft with Microsoft 365 Copilot as you write on the web' under Settings > Languages > Writing assistance (https://learn.microsoft.com/legal/microsoft-edge/privacy#compose); the two pages differ on this label." Keep the policy-reference wording attributed to that reference. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/composeinlineenabled
 -->

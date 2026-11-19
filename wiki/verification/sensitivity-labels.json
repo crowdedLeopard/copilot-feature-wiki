@@ -1,0 +1,1324 @@
+{
+  "slug": "sensitivity-labels",
+  "kind": "concept",
+  "roadmapId": null,
+  "title": "Sensitivity labels: what they classify, protect and tell Copilot to leave alone",
+  "status": "verified",
+  "date": "2026-11-19",
+  "version": 2,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 97,
+    "confirmed": 97,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 0
+  },
+  "summary": "The page passes: its controls, licensing statements and documented limits are supported by Microsoft documentation. It preserves the important Copilot exceptions and explicitly reports Microsoft's conflicting licensing and label-deletion guidance.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Labels are created under Solutions > Information Protection > Sensitivity labels > + Create a label, with + Create > Label in the modern scheme.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "Solutions > Information Protection > Sensitivity labels\nOn the Sensitivity labels page, select + Create a label\nOn the Sensitivity labels page, select + Create and then Label",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "New-Label -Name <label name> -DisplayName <display name> -Tooltip <tooltip> creates a sensitivity label in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-label?view=exchange-ps",
+      "quote": "This cmdlet is available only in Security & Compliance PowerShell.\nUse the New-Label cmdlet to create sensitivity labels in your organization.\nNew-Label\n    [-Name] <String>\n    -DisplayName <String>\n    -Tooltip <String>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Label publishing policies are created in the Purview portal under Solutions > Information Protection > Publishing policies > Publish label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "Sign in to the Microsoft Purview portal > Solutions > Information Protection > Publishing policies.\nOn the Label policies page, select Publish label to start the Create policy configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "New-LabelPolicy -Name <policy name> -Labels <label names> creates a label policy in Security & Compliance PowerShell, whose reference also lists ExchangeLocation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-labelpolicy?view=exchange-ps",
+      "quote": "This cmdlet is available only in Security & Compliance PowerShell.\nNew-LabelPolicy\n    -Name <String>\n    -Labels <MultiValuedProperty>\n    [-ExchangeLocation <MultiValuedProperty>]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "The Purview portal enables SharePoint and OneDrive label support through Solutions > Information Protection > Sensitivity labels > Turn on now.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "Sign in to the Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels.\nIf you see a message to turn on the ability to process content in Office online files, select Turn on now",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "Set-SPOTenant -EnableAIPIntegration $true enables sensitivity-label support for SharePoint and OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "To enable the new capabilities, use the Set-SPOTenant cmdlet with the EnableAIPIntegration parameter:\nSet-SPOTenant -EnableAIPIntegration $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "controls[3].ui",
+      "type": "absence",
+      "claim": "Microsoft does not document an admin UI for enabling the tenant's container-label support.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: enable sensitivity labels groups sites EnableMIPLabels admin center portal enable support PowerShell. Opened groups-assign-sensitivity-labels and sensitivity-labels-teams-groups-sites on Learn; enablement uses PowerShell, while UI instructions assign labels after enablement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "Update-MgBetaDirectorySetting -DirectorySettingId <setting id> -BodyParameter <params> enables container labels when params sets EnableMIPLabels to True.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-assign-sensitivity-labels",
+      "quote": "Name = \"EnableMIPLabels\"\nValue = \"True\"\nUpdate-MgBetaDirectorySetting -DirectorySettingId $grpUnifiedSetting.Id -BodyParameter $params",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "Auto-labeling policies are created under Purview Solutions > Information Protection > Policies > Auto-labeling policies > + Create auto-labeling policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "Sign in to the Microsoft Purview portal > Solutions > Information Protection > Policies > Auto-labeling policies.\nSelect + Create auto-labeling policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "controls[4].api",
+      "type": "command",
+      "claim": "New-AutoSensitivityLabelPolicy with Name, SharePointLocation, ApplySensitivityLabel and Mode TestWithoutNotifications creates an auto-labeling policy in simulation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "New-AutoSensitivityLabelPolicy -Name <AutoLabelingPolicyName> -SharePointLocation \"<SharePointSiteLocation>\" -ApplySensitivityLabel <Label> -Mode TestWithoutNotifications",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[5].ui",
+      "type": "admin-path",
+      "claim": "The Copilot DLP location is reached through Purview Data Loss Prevention > Policies > + Create policy > Custom > Custom policy > Locations > Microsoft Copilot, Copilot Chat, and Copilot Cowork.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Go to Data Loss Prevention > Policies and select + Create policy.\nSelect the Custom template, then Custom policy.\nOn the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[5].api",
+      "type": "command",
+      "claim": "New-DlpComplianceRule with Name, Policy, AdvancedRule and RestrictAccess can block Copilot content processing by setting ExcludeContentProcessing to Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps",
+      "quote": "New-DLPComplianceRule -Name \"Copilot Rule\" -Policy \"Copilot Policy\" -AdvancedRule $advrule -RestrictAccess @(@{setting=\"ExcludeContentProcessing\";value=\"Block\"})",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "Set-Label changes an existing label's settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "Additional label settings are available with the Set-Label cmdlet from Security & Compliance PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "Set-LabelPolicy changes label-policy settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "Additional label policy settings are available with the Set-LabelPolicy cmdlet from Security & Compliance PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[2].note; Governance controls",
+      "type": "role",
+      "claim": "Enabling SharePoint and OneDrive label support from the portal requires a global administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "This option is the easiest way to enable sensitivity labels for SharePoint and OneDrive. You must sign in as a global administrator for your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "Multi-Geo tenants must use PowerShell to enable support separately for every geo-location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "If you have Microsoft 365 Multi-Geo, you must use PowerShell to enable this support for all your geo-locations.\nFor Microsoft 365 Multi-Geo: Repeat steps 1 and 2 for each of your remaining geo-locations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[2].note",
+      "type": "command",
+      "claim": "OneNote label support requires an additional Set-SPOTenant parameter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "If you want to additionally enable sensitivity labels for OneNote (supported at the section level), run Set-SPOTenant again, but use the following command:\nSet-SPOTenant -EnableSensitivityLabelforOneNote $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[3].note; Cost and licensing: Groups and sites",
+      "type": "licensing",
+      "claim": "Configuring label support for Microsoft 365 groups requires at least one active Microsoft Entra ID P1 licence in the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-assign-sensitivity-labels",
+      "quote": "To configure this feature, there must be at least one active Microsoft Entra ID P1 license in your Microsoft Entra organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[3].note; What to check",
+      "type": "command",
+      "claim": "Container labels must be synchronised to Entra ID with Execute-AzureAdLabelSync in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-assign-sensitivity-labels",
+      "quote": "Labels are synchronized to Microsoft Entra ID with the Execute-AzureAdLabelSync cmdlet in the Security & Compliance PowerShell module.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[5].note; Why it matters; What to check",
+      "type": "applicability",
+      "claim": "A Copilot-location DLP rule can exclude labelled files and emails using Content contains > Sensitivity labels and Prevent Copilot and Cowork from processing content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Content contains > Sensitivity labels | Prevent Copilot and Cowork from processing content | Detects when a file or an email in Exchange has a chosen sensitivity label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[5].note",
+      "type": "command",
+      "claim": "The documented Copilot DLP policy example sets EnforcementPlanes to CopilotExperiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps",
+      "quote": "New-DLPCompliancePolicy -Name \"Copilot Policy\" -Locations $loc -EnforcementPlanes @(\"CopilotExperiences\")",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "Sensitivity labels are Microsoft Purview Information Protection classifications that can protect content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "Sensitivity labels from Microsoft Purview Information Protection let you classify and protect your organization's data",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "A label is stamped on content and persists with files and emails through their metadata.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "When you assign a sensitivity label to content, it's like a stamp that you apply.\nBecause the label is stored in metadata for files and emails, the label stays with the content, no matter where you save or store it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "Labels can encrypt files and emails and control who can read their content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "Control access to content by using encryption for emails, meeting invites, and documents to prevent unauthorized people from accessing this data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Labels can enforce content markings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "Content markings include headers and footers as well as watermarks",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "Labels for sites and groups can control privacy and sharing settings rather than encrypting the container.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "These settings include privacy settings, external user access and external sharing, access from unmanaged devices, private teams discoverability, and sharing controls for channels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Administrators create labels and publish them through label policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+      "quote": "Create the labels.\nPublish the labels. After your sensitivity labels are configured, publish them by using a label policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Users can apply labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "For documents and emails, a label can be assigned manually by the user, automatically as a result of a condition that you configure, or be assigned by default",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Office and other supporting apps and services enforce label protection settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+      "quote": "Finally, Office or third-party apps/services enforce protection based on the applied labels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What it is: Parts of the mechanism, Scope; What to check",
+      "type": "behaviour",
+      "claim": "A label's scope determines whether it is available for files and other data assets, emails, meetings, or groups and sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "The scope determines two things:\n- Which label settings you can configure for that label\n- The availability of the label to apps and services, which includes whether users can see and select the label",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What it is: Scope; Risks and limits: Container labels do not reach items",
+      "type": "behaviour",
+      "claim": "Container labels do not label documents or other items inside the container.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites",
+      "quote": "Items in these containers however, do not inherit the labels and therefore don't apply any item-level label settings, such as content markings and encryption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What it is: Parts of the mechanism, Priority; What to check",
+      "type": "behaviour",
+      "claim": "List order sets label priority, and Microsoft recommends placing the most restrictive label at the bottom.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "the order of the labels is important because it sets their priority. You want your most restrictive sensitivity label, such as Highly Confidential, to appear at the bottom of the list",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What it is: Parts of the mechanism, Priority",
+      "type": "behaviour",
+      "claim": "An item can carry one sensitivity label from the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "Each item that supports sensitivity labels can have a single sensitivity label applied to it from your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What it is: Parts of the mechanism, Label policy",
+      "type": "behaviour",
+      "claim": "Label policies can specify a default label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "Specify a default label for unlabeled documents and Loop components and pages, emails and meeting invites, new containers",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What it is: Parts of the mechanism, Label policy",
+      "type": "behaviour",
+      "claim": "Label policies can require justification for lowering a label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "if a user tries to remove a label or replace it with a label that has a lower priority, by default the user must provide a justification to perform this action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What it is: Parts of the mechanism, Label policy",
+      "type": "behaviour",
+      "claim": "Label policies can require mandatory labelling.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "Require users to apply a label for the different types of items and the containers that support sensitivity labels. Also known as mandatory labeling",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What it is: Parts of the mechanism, Auto-labeling",
+      "type": "behaviour",
+      "claim": "Client-side auto-labeling can apply or recommend labels in Office apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "Client-side labeling when users edit documents or compose (also reply or forward) emails\nThis method supports recommending a label to users, as well as automatically applying a label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What it is: Parts of the mechanism, Auto-labeling",
+      "type": "applicability",
+      "claim": "Service-side auto-labeling policies cover SharePoint, OneDrive and Exchange.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "Service-side labeling when content is already saved (in SharePoint or OneDrive) or emailed (processed by Exchange Online): Use an auto-labeling policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What it is: Copilot and labels",
+      "type": "applicability",
+      "claim": "Microsoft 365 Copilot, Copilot Chat and Copilot agents recognise sensitivity labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "Microsoft 365 Copilot, Microsoft 365 Copilot Chat, and Copilot agents recognize and use the sensitivity labels that you apply to protect your organization's data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What it is: Copilot and labels",
+      "type": "behaviour",
+      "claim": "Copilot Chat displays the highest-priority sensitivity label among the data used.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "in Microsoft 365 Copilot Chat conversations that can reference data from different types of items, users see the sensitivity label with the highest priority",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What it is: Copilot and labels; Why it matters",
+      "type": "behaviour",
+      "claim": "For label-encrypted content, Copilot and agents require the user's EXTRACT copy permission to return data, subject to the stated Edge exception.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "If the labels apply encryption from Microsoft Purview Information Protection, Copilot and agents check the usage rights for the user. Then, Copilot and agents return data from an item only if the user is granted permissions to copy (the EXTRACT usage right) from that item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What it is: Copilot and labels",
+      "type": "behaviour",
+      "claim": "Without DLP in Edge, Copilot in Edge and Windows can reference encrypted content in the active Edge tab without EXTRACT.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-m365-copilot-considerations",
+      "quote": "Microsoft 365 Copilot in Edge, Microsoft 365 Copilot in Windows: Unless data loss prevention (DLP) is used in Edge, Copilot can reference encrypted content from the active browser tab in Edge when that content doesn't grant the user EXTRACT usage rights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "What it is: Copilot and labels",
+      "type": "behaviour",
+      "claim": "Copilot in Word, PowerPoint and Outlook supports source-label inheritance for newly created content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-m365-copilot",
+      "quote": "If you use Copilot in Word, Copilot in PowerPoint, and Copilot in Outlook to create new content based on an item that has a sensitivity label applied, the sensitivity label from the source file is automatically inherited, with the label's protection settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "What it is: Copilot and labels",
+      "type": "behaviour",
+      "claim": "Label inheritance is unsupported for source encryption with user-defined permissions, and users cannot send that data to the destination item.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-m365-copilot-considerations",
+      "quote": "label inheritance isn't supported when the encryption is configured for user-defined permissions or if the encryption was applied independently from the label. The user won't be able to send this data to the destination item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "What it is: link to retention",
+      "type": "behaviour",
+      "claim": "Retention is the separate mechanism for retaining or deleting content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+      "quote": "Apply a retention label to retain or delete files or emails that have a specific sensitivity label",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Why it matters",
+      "type": "applicability",
+      "claim": "eDiscovery search conditions support sensitivity labels on content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "The condition builder to create search queries in eDiscovery supports sensitivity labels that are applied to content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "Microsoft's service description says Information Protection features are enabled at tenant level for all users by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "By default, Information Protection features are enabled at the tenant level for all users within the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Several per-user subscriptions support labels for Microsoft 365, with user requirements depending on the features used.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+      "quote": "A number of different per-user subscriptions support sensitivity labels for Microsoft 365 apps and services, and the licensing requirements for users depend on the features you use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing; Why it matters",
+      "type": "licensing",
+      "claim": "Administrators need a licence to manage sensitivity labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+      "quote": "Admins also need a license to manage sensitivity labels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Why it matters",
+      "type": "licensing",
+      "claim": "End users need appropriate licences to use Information Protection functionality.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Similarly, end users also need the appropriate licenses to use the functionality in their respective client applications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing: Manual labelling; Open questions",
+      "type": "licensing",
+      "claim": "The service-description table includes manual labelling for Microsoft 365 E5/A5/G5/E3/A3/G3/F1/F3 and Business Premium, among other plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Feature | Microsoft 365 E5/A5/G5/E3/A3/G3/F1/F3/Business Premium | OneDrive for Business (Plan 2)\nManual Sensitivity Labeling | Included | Included | Included | Included | Included",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing: Manual labelling; Open questions",
+      "type": "licensing",
+      "claim": "The service-description introduction also says sensitivity labelling requires E5 or IPG, conflicting with its manual-labelling table.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Sensitivity labeling, including automatic or policy-based labeling, requires a Microsoft 365 E5 license or Microsoft 365 Information Protection and Governance (IPG).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing: Auto-labeling",
+      "type": "licensing",
+      "claim": "E3 and Business Premium do not include auto-labeling of files and emails.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "You have E3 or Business Premium. Auto-labeling of files and emails isn't included at this SKU.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing: Auto-labeling; controls[4].note",
+      "type": "licensing",
+      "claim": "Auto-labeling requires an E5 or P2-tier entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "Sensitivity labels and manual labeling are — auto-labeling requires an E5 / P2-tier add-on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing: Copilot DLP",
+      "type": "licensing",
+      "claim": "The service description includes Copilot DLP for files and emails in the listed E5/A5, Purview Suite, Defender + Purview FLW, IPG and Office 365 E5/A5 plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5, Microsoft Purview Suite/EDU/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5 Information Protection and Governance | Office 365 E5/A5\nNot included | Not included | Not included | Included | Included",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing: Copilot DLP",
+      "type": "licensing",
+      "claim": "The Copilot files-and-emails DLP row excludes the listed Business, Microsoft 365 E3-tier and Office 365 E3-tier plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 Business Basic/Standard/Premium | Microsoft 365 E3/A3/A1/G3/F3/F1 | Office 365 E3/E1/A3/A1/G3/G1/F3\nPurview Data Loss Prevention (DLP) to restrict Copilot from processing files and emails | Not included | Not included | Not included",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing: Non-Microsoft 365 data",
+      "type": "cost",
+      "claim": "Applying labels in Data Map and using protection policies for non-Microsoft 365 data requires pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+      "quote": "Specific to non-Microsoft 365 data sources, applying sensitivity labels in the Data Map and using protection policies requires you to set up pay-as-you-go billing in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing: Non-Microsoft 365 data",
+      "type": "availability",
+      "claim": "Extending sensitivity labels to Data Map assets is documented as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "When you turn on this capability, currently in preview, you can apply your sensitivity labels to files and schematized data assets in Microsoft Purview Data Map.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing: Non-Microsoft 365 data",
+      "type": "availability",
+      "claim": "Protection policies for content outside Microsoft 365 are documented as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "Protection policies are currently in preview and apply to items stored outside Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Risks and limits: Labels not enabled for SharePoint and OneDrive files",
+      "type": "behaviour",
+      "claim": "Until label integration is enabled, SharePoint and OneDrive cannot process label-encrypted files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "Until you enable this feature, these services can't process encrypted files",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Risks and limits: Labels not enabled for SharePoint and OneDrive files",
+      "type": "behaviour",
+      "claim": "Without that integration, coauthoring, eDiscovery, DLP and search do not work on those encrypted files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "which means that coauthoring, eDiscovery, data loss prevention, search, and other collaborative features won't work for these files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Risks and limits: Auto-labeling saved without a check",
+      "type": "default",
+      "claim": "An auto-labeling policy automatically created from a label configuration runs in simulation when saved.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "Although an auto-labeling policy is automatically created for you by auto-populating the values\nBy default, all locations for SharePoint, OneDrive, and Exchange are included in the auto-label policy, and when the policy is saved, it runs in simulation mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Risks and limits: Auto-labeling saved without a check",
+      "type": "behaviour",
+      "claim": "Automatic policy creation does not check the prerequisite that label support is enabled for SharePoint and OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "There's no check that you've enabled sensitivity labels for Office files in SharePoint and OneDrive, which is one of the prerequisites for auto-labeling to apply to content in SharePoint and OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Risks and limits: Auto-labeling saved without a check",
+      "type": "behaviour",
+      "claim": "The auto-labeling throughput ceiling is 500,000 files per day.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "The absolute maximum throughput is 500,000 automatically labeled SharePoint and OneDrive files per tenant per day, in aggregate across all auto-labeling policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Risks and limits: Auto-labeling saved without a check",
+      "type": "behaviour",
+      "claim": "There is a maximum of 100 auto-labeling policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "Maximum of 100 auto-labeling policies per tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Risks and limits: Auto-labeling saved without a check",
+      "type": "behaviour",
+      "claim": "The documented limit for explicitly selected SharePoint sites is 1,000 per policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "In the portal, each policy can target up to 1,000 explicitly included or excluded SharePoint sites",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Risks and limits: Auto-labeling saved without a check",
+      "type": "behaviour",
+      "claim": "Auto-labeling simulation supports up to 20,000,000 matched files per policy simulation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "Simulation mode supports up to 20,000,000 matched files. If more than this number of files are matched from an auto-labeling policy, you can't turn on the policy to apply the labels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Risks and limits: Deleting a label",
+      "type": "behaviour",
+      "claim": "The labels overview says deletion does not automatically remove labels or their protection from content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "If you delete a sensitivity label from the Microsoft Purview portal, the label isn't automatically removed from content, and any protection settings continue to be enforced on content that had that label applied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Risks and limits: Deleting a label",
+      "type": "behaviour",
+      "claim": "The detailed deletion guide says deleted container labels are removed and their settings cease to be enforced.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "For containers, such as sites in SharePoint and Teams: The label is removed and any settings that were configured with that label are no longer enforced.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Risks and limits: Deleting a label",
+      "type": "behaviour",
+      "claim": "The detailed deletion guide documents encryption removal for processable documents in enabled SharePoint and OneDrive services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "For documents stored in SharePoint or OneDrive and you've enabled sensitivity labels for Office files\nIf the deleted label applied encryption and the services can process the encrypted contents, the encryption is removed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Risks and limits: Deleting a label",
+      "type": "behaviour",
+      "claim": "Deleting an encrypting label archives its protection template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "If the label applied encryption, the underlying protection template is archived so that previously protected content can still be opened.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Risks and limits: Deleting a label",
+      "type": "behaviour",
+      "claim": "The archived protection template prevents creating a new label with the same name.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "Because of this archived protection template, you can't create a new label with the same name.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Risks and limits: An encrypting default label hinders external sharing",
+      "type": "behaviour",
+      "claim": "Microsoft usually advises against an encrypting default document label because external recipients may lack compatible apps or authorised accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "It's usually not a good idea to select a label that applies encryption as a default label to documents.\nexternal users who might not have apps that support the encryption or they might not use an account that can be authorized.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Risks and limits: A policy scope is not an access list",
+      "type": "behaviour",
+      "claim": "Azure Rights Management protection does not support non-email-enabled security groups or exclusions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "For labels that apply protection, Azure Rights Management doesn't support non-email-enabled security groups or exclusions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Risks and limits: A policy scope is not an access list",
+      "type": "behaviour",
+      "claim": "A label's publishing-policy scope does not necessarily determine access to protected content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "the publishing policy scope doesn't necessarily determine who can access protected content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Risks and limits: Container labels do not reach items",
+      "type": "behaviour",
+      "claim": "A site owner can change external-sharing options by changing a site's label when those settings are configured and published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites",
+      "quote": "When you configure and publish the label settings for external sharing options and the authentication context, a site owner can now set and change these options for a site by applying or changing the sensitivity label for a team or site.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Risks and limits: Container labels do not reach items",
+      "type": "behaviour",
+      "claim": "Edits to a published label's group settings do not automatically update already-labelled groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-assign-sensitivity-labels",
+      "quote": "When you make changes to group settings for a published label in the Microsoft Purview portal, those policy changes aren't automatically applied on the labeled groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Risks and limits: Changes take time",
+      "type": "behaviour",
+      "claim": "Microsoft says to allow 24 hours for label and policy changes to propagate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "For labels and label policy settings, allow 24 hours for the changes to propagate through the services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Risks and limits: Changes take time",
+      "type": "behaviour",
+      "claim": "Changes dependent on group population or membership can take 24 to 48 hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "for configurations that depend on populating a new group and group membership changes, or network replication latency and bandwidth restrictions, these changes might take 24-48 hours.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "Risks and limits: Copilot DLP gaps",
+      "type": "behaviour",
+      "claim": "Copilot DLP does not scan file contents uploaded directly into prompts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "DLP can't scan the contents of files that you upload directly into prompts, so evaluation of the uploaded file for sensitive data doesn't occur.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Risks and limits: Copilot DLP gaps; What to check",
+      "type": "behaviour",
+      "claim": "Word, Excel and PowerPoint evaluate this Copilot DLP policy at file open, so a mid-session label change requires reopening the file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "In Word, Excel, and PowerPoint the Microsoft Copilot, Copilot Chat, and Copilot Cowork policy to prevent Copilot from processing content is evaluated at file open. If a sensitivity label is applied mid-session, the policy will be enforced starting the next time the file is opened.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "Risks and limits: Copilot DLP gaps",
+      "type": "date",
+      "claim": "The sensitivity-label rule covers emails sent on or after 1 January 2025.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Emails sent on or after January 1, 2025.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Risks and limits: Copilot DLP gaps",
+      "type": "behaviour",
+      "claim": "The Copilot DLP sensitivity-label rule does not support calendar invites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Calendar invites aren't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "Risks and limits: Copilot DLP gaps",
+      "type": "behaviour",
+      "claim": "Items excluded from processing can still appear in citations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Identified items still appear in the citations of the response, but Copilot and Cowork don't access or use the content of the item in the response.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "Risks and limits: Connected-experiences exclusion is partial",
+      "type": "applicability",
+      "claim": "The advanced label setting BlockContentAnalysisServices can exclude labelled content from Microsoft 365 Copilot in supported Office apps without making encryption a prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "you want to prevent all documents and emails with this label in Office apps from being sent to Microsoft connected experiences for analysis:\nSet-Label -Identity \"8faca7b8-8d20-48a3-8ea2-0f96310a848e\" -AdvancedSettings @{BlockContentAnalysisServices=\"True\"}",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "Risks and limits: Connected-experiences exclusion is partial",
+      "type": "behaviour",
+      "claim": "That setting does not exclude the content from Copilot in other scenarios such as Teams and Copilot Chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "Although content with the configured sensitivity label will be excluded from Microsoft 365 Copilot in the named Office apps, the content remains available to Microsoft 365 Copilot for other scenarios. For example, in Teams, and in Microsoft 365 Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "Risks and limits: Encryption cap",
+      "type": "behaviour",
+      "claim": "At most 500 labels per tenant can apply encryption specifying users and permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "If the label applies encryption that specifies the users and permissions, there's a maximum of 500 labels per tenant supported with this configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 88,
+      "where": "Governance controls: permissions",
+      "type": "role",
+      "claim": "The Information Protection role groups are documented options for label-management permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+      "quote": "You can use the following role groups:\n- Information Protection\n- Information Protection Admins\n- Information Protection Analysts\n- Information Protection Investigators\n- Information Protection Readers",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 89,
+      "where": "Governance controls: permissions",
+      "type": "role",
+      "claim": "A custom role group with Sensitivity Label Administrator is another documented option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+      "quote": "Alternatively to using the default role groups, you can create a new role group and add the Sensitivity Label Administrator role to this group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 90,
+      "where": "Governance controls: permissions",
+      "type": "role",
+      "claim": "Sensitivity Label Reader provides read-only access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+      "quote": "For a read-only role, use Sensitivity Label Reader.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 91,
+      "where": "Governance controls: permissions",
+      "type": "role",
+      "claim": "Compliance Data Administrator, Compliance Administrator and Security Administrator role groups are also documented options.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+      "quote": "Another option is to add users to the Compliance Data Administrator, Compliance Administrator, or Security Administrator role group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 92,
+      "where": "Governance controls: permissions",
+      "type": "role",
+      "claim": "Those label-administration permissions are not required merely to apply labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+      "quote": "These permissions are required only to create and configure sensitivity labels and their label policies. They are not required to apply the labels in apps or services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 93,
+      "where": "Governance controls: permissions",
+      "type": "role",
+      "claim": "Assigning a sensitivity label to an existing group requires group ownership or at least Groups Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/users/groups-assign-sensitivity-labels",
+      "quote": "Has sufficient privileges to assign sensitivity labels. The user must be the group owner or at least a Groups Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 94,
+      "where": "Governance controls: auditing",
+      "type": "behaviour",
+      "claim": "Microsoft documents sensitivity-label activities in Audit log activities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+      "quote": "Audit sensitivity labeling in my organization | Audit log activities - Sensitivity label activities",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 95,
+      "where": "Governance controls: reports",
+      "type": "admin-path",
+      "claim": "Information Protection reports are in the Purview portal under Information Protection > Reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Posture Reports are accessible in the Microsoft Purview portal under Information Protection > Reports, Data Loss Prevention > Reports, or DSPM > Reports.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 96,
+      "where": "What it is: Parts of the mechanism, Label policy; controls[1]; What to check",
+      "type": "behaviour",
+      "claim": "Label publishing policies determine which users and groups receive labels and their policy settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+      "quote": "After your sensitivity labels are configured, publish them by using a label policy. Decide which users and groups should have the labels and what policy settings to use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 97,
+      "where": "What to check: policy order",
+      "type": "behaviour",
+      "claim": "Label-policy order determines which settings win when policies conflict.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "If there's a conflict in settings from multiple policies, the settings from the policy with the highest priority (highest order number) is applied.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-19T02:04:19.174Z",
+    "summary": {
+      "links": 15,
+      "unreachable": 0,
+      "uiPaths": 5,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 6,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/purview/sensitivity-labels",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/ai-m365-copilot",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/ai-m365-copilot-considerations",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/users/groups-assign-sensitivity-labels",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-label?view=exchange-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-labelpolicy?view=exchange-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which sensitivity labels exist, their scope and protection settings",
+        "docs": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Information Protection",
+          "Sensitivity labels",
+          "+ Create a label"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which sensitivity labels exist, their scope and protection settings",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-label?view=exchange-ps",
+        "reachable": true,
+        "token": "New-Label",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which users and groups see the labels, and label policy settings",
+        "docs": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Information Protection",
+          "Publishing policies",
+          "Publish label"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which users and groups see the labels, and label policy settings",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-labelpolicy?view=exchange-ps",
+        "reachable": true,
+        "token": "New-LabelPolicy",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether SharePoint and OneDrive support labels and encrypted files",
+        "docs": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Information Protection",
+          "Sensitivity labels",
+          "Turn on now"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether SharePoint and OneDrive support labels and encrypted files",
+        "docs": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+        "reachable": true,
+        "token": "Set-SPOTenant",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Whether labels can be applied to Microsoft 365 groups, teams and sites",
+        "docs": "https://learn.microsoft.com/entra/identity/users/groups-assign-sensitivity-labels",
+        "reachable": true,
+        "token": "Update-MgBetaDirectorySetting",
+        "found": true
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Service-side auto-labeling of SharePoint, OneDrive and Exchange content",
+        "docs": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Information Protection",
+          "Policies",
+          "Auto-labeling policies",
+          "+ Create auto-labeling policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 4,
+        "side": "api",
+        "governs": "Service-side auto-labeling of SharePoint, OneDrive and Exchange content",
+        "docs": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+        "reachable": true,
+        "token": "New-AutoSensitivityLabelPolicy",
+        "found": true
+      },
+      {
+        "index": 5,
+        "side": "ui",
+        "governs": "Which labelled files and emails Copilot and Cowork may not process",
+        "docs": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+        "reachable": true,
+        "segments": [
+          "Data Loss Prevention",
+          "Policies",
+          "+ Create policy",
+          "Custom",
+          "Custom policy",
+          "Locations",
+          "Microsoft Copilot, Copilot Chat, and Copilot Cowork"
+        ],
+        "missing": []
+      },
+      {
+        "index": 5,
+        "side": "api",
+        "governs": "Which labelled files and emails Copilot and Cowork may not process",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps",
+        "reachable": true,
+        "token": "New-DlpComplianceRule",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
+}

@@ -9,7 +9,7 @@ status: "in-development"
 releasePhase: ["General Availability","Targeted Release"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Android","Desktop","iOS","Mac","Web"]
-targetDate: "December CY2026"
+targetDate: "January CY2027"
 previewDate: null
 risk: "medium"
 cost: "low"
@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "on"
 action: "act-now"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for the new policies. Learn lists an add-on Microsoft Copilot licence for intended users as the prerequisite for Copilot in Teams meetings and events; no separate meter is documented for these settings."
+  model: "included"
+  notes: "Teams is licensed through qualifying Microsoft 365 offerings or a standalone Teams SKU. No separate requirement for these replacement policy settings is published. Learn lists an add-on Microsoft Copilot licence for intended users as the prerequisite for Copilot in Teams meetings and events; no separate meter is documented for these settings."
 audiences: ["m365-admin","service-owner","compliance"]
 tags: ["teams","copilot","m365-copilot","meeting-policy","powershell","facilitator","intelligent-recap","meeting-transcripts","admin-controls"]
 sources:
@@ -28,6 +28,9 @@ sources:
   - title: "MC1532253: (Updated) Enhanced Copilot and AI controls for meetings"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1532253"
     kind: "message-center"
+  - title: "Microsoft Teams service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/teams-service-description"
+    kind: "learn"
   - title: "Manage Teams meeting transcription"
     url: "https://learn.microsoft.com/microsoftteams/copilot-teams-transcription"
     kind: "learn"
@@ -86,11 +89,11 @@ controls:
       kind: "powershell"
       call: "Set-CsTeamsMeetingConfiguration -EnableWorkIQTranscriptAccess $true -Identity Global"
       docs: "https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access"
-    note: "Adjacent control. Learn says AI must be allowed in the meeting for an app to receive a transcript; Work IQ access is off by default."
+    note: "Adjacent control. Learn says AI must be allowed in the meeting for an app to receive a transcript; Work IQ access is off by default. The PowerShell parameter requires the latest version of the Teams PowerShell module."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-17"
-roadmapModified: "2026-11-04T00:02:09"
+updated: "2026-11-19"
+roadmapModified: "2026-11-19T00:53:06"
 changes:
   - date: "2026-11-16"
     note: "First briefing: Microsoft's notice MC1532253 replaces the Copilot meeting policy with MeetingAI and TranscriptionWithMeetingAI; rollout moved to December 2026 and January 2027."
@@ -104,19 +107,27 @@ changes:
     note: "Corrected after verification: removed the MeetingAI and TranscriptionWithMeetingAI table rows; the planned admin UI and the PowerShell parameters are now described in the notes under the table."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 75 statements not yet confirmed"
-version: 4
+  - date: "2026-11-19"
+    note: "Corrected the roadmap target date to January CY2027, as the roadmap record now gives it; the rest of the page is carried over unchanged."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 74 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-19"
+    note: "Corrected after verification: licensing model is now included, citing the Teams service description; noted the Teams PowerShell module requirement for the Work IQ parameter; marked the MeetingAI checklist steps as documented only in the notes under the table."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
+version: 6
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
-  version: 4
+  date: "2026-11-19"
+  version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 74
+  claims: 77
+  confirmed: 76
   unconfirmed: 0
   contradicted: 1
   attempts: 0
-  hash: "33ab232cd118b3d615b81b81062780b1"
+  hash: "e07ffc2ebd3f9fd427a57b1ba580cd8b"
 ---
 
 ## What's changing
@@ -127,7 +138,7 @@ The new policies arrive without administrator action. Microsoft's notice MC15322
 
 The notice says the Teams admin center meeting policy will show the new settings under **Recording and transcription** and **Copilot and other AI**, with Allow AI in meetings (On; Off but organisers can change; Off and organisers cannot change) and Start transcription when AI is turned on (On but organisers can change; On and organisers cannot change; Off). The Transcription policy stays and still controls whether transcription is allowed. Meeting options for organisers change too: **Who can manage AI** replaces the Allow Copilot and Facilitator option (and is set to No one if an admin turns Meeting AI off), and **Who can use AI**, **Start Transcription with AI** and Intelligent Recap controls are added. Microsoft says administrators can also control Start Transcription with AI in the Teams admin center.
 
-Status is In development with a roadmap target of December CY2026. MC1532253 (updated 3 November 2026) gives Targeted Release starting early December 2026 and completing mid-December 2026, and General Availability (Worldwide) starting early January 2027 and completing mid-January 2027. The notice sets no act-by date.
+Status is In development with a roadmap target of January CY2027. MC1532253 (updated 3 November 2026) gives Targeted Release starting early December 2026 and completing mid-December 2026, and General Availability (Worldwide) starting early January 2027 and completing mid-January 2027. The notice sets no act-by date.
 
 ## Why it matters
 
@@ -158,7 +169,7 @@ The change also makes AI governance in meetings more precise. This page's view: 
 
 ## Cost and licensing
 
-Microsoft has not published a licence requirement or meter for MeetingAI or TranscriptionWithMeetingAI, and neither the roadmap item nor MC1532253 mentions a charge. The Learn page Manage Teams meeting transcription lists an add-on Microsoft Copilot licence for intended users as its prerequisite; that page describes the current Copilot policy, not the new ones.
+Teams is licensed through qualifying Microsoft 365 offerings or a standalone Teams SKU, according to the Microsoft Teams service description. No separate requirement for these replacement policy settings is published, and neither the roadmap item nor MC1532253 mentions a charge. The Learn page Manage Teams meeting transcription lists an add-on Microsoft Copilot licence for intended users as its prerequisite; that page describes the current Copilot policy, not the new ones.
 
 The known cost is indirect: admin time to update scripts, runbooks and documentation, and to confirm that the mapped values match intent. No cap or budget control is relevant to these settings.
 
@@ -175,13 +186,13 @@ The settings sit in Teams meeting policies, which Learn says can be applied to g
 - Inventory scripts, runbooks and documentation that run Set-CsTeamsMeetingPolicy with -Copilot, and plan changes to -MeetingAI and -TranscriptionWithMeetingAI, which Learn says must be used together.
 - Record each meeting policy's current Copilot value (On, On with saved transcript required, On with transcript saved by default, or Off) so the mapped result can be checked afterwards.
 - Tell Teams administrators and help-desk staff that existing behaviour will appear as two settings in the Teams admin center.
-- Decide, per policy, whether organisers may override the AI and transcription settings.
+- Decide, per policy, whether organisers may override the AI and transcription settings (MeetingAI and TranscriptionWithMeetingAI are documented only in the notes under the controls table, not as table rows).
 
 ### At rollout
 
 - Watch Message center for MC1532253 updates; Microsoft has already moved the dates once.
 - Switch updated scripts over once the controls reach your tenant, because the Copilot policy cannot then be updated directly.
-- Compare each policy's mapped MeetingAI and TranscriptionWithMeetingAI values with the values you recorded.
+- Compare each policy's mapped MeetingAI and TranscriptionWithMeetingAI values with the values you recorded (documented only in the notes under the controls table).
 
 ### After rollout
 
@@ -199,7 +210,7 @@ The settings sit in Teams meeting policies, which Learn says can be applied to g
 <tr><td data-label="Control"><strong>Current Copilot meeting policy, which Microsoft says the new policies replace</strong><br><small>User</small><br><small class="controls__note">Today's control. Per MC1532253 it can no longer be updated directly once the new controls are enabled. The cmdlet reference lists only Enabled and EnabledWithTranscript for -Copilot.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Recording &amp; transcription › Copilot <a href="https://learn.microsoft.com/microsoftteams/copilot-teams-transcription" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -Copilot &lt;Enabled|EnabledWithTranscript|EnabledWithTranscriptDefaultOn|Disabled&gt;</code> <a href="https://learn.microsoft.com/microsoftteams/copilot-teams-transcription" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether transcription is allowed (Transcription policy, which remains)</strong><br><small>User</small><br><small class="controls__note">MC1532253 says this policy remains and still controls whether transcription is allowed; TranscriptionWithMeetingAI only controls whether it starts with AI.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Recording &amp; transcription <a href="https://learn.microsoft.com/microsoftteams/copilot-teams-transcription" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -AllowTranscription &lt;$true|$false&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether intelligent recap is allowed in meetings (AllowIntelligentRecap)</strong><br><small>User</small><br><small class="controls__note">Learn says this turns off recap for all meetings, with or without saved transcripts. The cmdlet reference says the parameter is not fully released and has no effect; the two pages disagree.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policyname&gt; -AllowIntelligentRecap $false</code> <a href="https://learn.microsoft.com/microsoftteams/intelligent-recap-without-saving-transcripts" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether agents and apps receive real-time transcripts through Work IQ</strong><br><small>Tenant</small><br><small class="controls__note">Adjacent control. Learn says AI must be allowed in the meeting for an app to receive a transcript; Work IQ access is off by default.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting settings › Transcript API access › WorkIQ access <a href="https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingConfiguration -EnableWorkIQTranscriptAccess $true -Identity Global</code> <a href="https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether agents and apps receive real-time transcripts through Work IQ</strong><br><small>Tenant</small><br><small class="controls__note">Adjacent control. Learn says AI must be allowed in the meeting for an app to receive a transcript; Work IQ access is off by default. The PowerShell parameter requires the latest version of the Teams PowerShell module.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting settings › Transcript API access › WorkIQ access <a href="https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingConfiguration -EnableWorkIQTranscriptAccess $true -Identity Global</code> <a href="https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -216,7 +227,7 @@ Intelligent Recap has its own policy parameter. Learn says turning it off disabl
 - What is the Teams admin center path and the exact setting labels for MeetingAI and TranscriptionWithMeetingAI once documented on Learn? Watch the Set-CsTeamsMeetingPolicy reference and the Manage Teams meeting transcription page.
 - How will a tenant know the new controls have been enabled, and is the Copilot policy retired per tenant or per policy? Watch MC1532253.
 - How does -AllowIntelligentRecap interact with MeetingAI, and will administrators get controls over Who can use AI? Microsoft has not said; watch the Learn pages and MC1532253.
-- Does the roadmap target of December CY2026 or the notice's General Availability window of early to mid-January 2027 apply to each tenant? Watch the roadmap item and MC1532253.
+- Does the roadmap target of January CY2027 or the notice's General Availability window of early to mid-January 2027 apply to each tenant? Watch the roadmap item and MC1532253.
 
 <!-- rationale
 risk: Medium. Existing behaviour is mapped across, but once the new controls are enabled the Copilot policy can no longer be updated directly, so scripts and runbooks that set it will fail, and organisers gain new AI options.
@@ -224,8 +235,8 @@ cost: Low. The only cost the sources show is admin time to update scripts and ru
 impact: Medium. Teams administrators see two settings where there was one, and organisers get new AI options in their meeting options; Microsoft says the one-time mapping preserves each policy's current effective behaviour.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout and At rollout; Governance controls / consistency: The checklist names MeetingAI and TranscriptionWithMeetingAI, but neither replacement control has a controls-table row. | Found: plan changes to -MeetingAI and -TranscriptionWithMeetingAI ... Compare each policy's mapped MeetingAI and TranscriptionWithMeetingAI values ... [The table contains current Copilot, Transcription, AllowIntelligentRecap and Work IQ rows.] | Fix: The Before rollout inventory step and At rollout comparison step refer to MeetingAI and TranscriptionWithMeetingAI without corresponding table rows; the controls are currently described only in the notes below the table.
+- [contradicted, minor] Governance guidance: Before rollout, At rollout and After rollout / consistency: The checklist asks readers to decide, compare and test replacement-policy settings that do not appear in the controls table. | Found: Decide, per policy, whether organisers may override the AI and transcription settings ... not as table rows. ... Compare each policy's mapped MeetingAI and TranscriptionWithMeetingAI values ... Test a policy where Copilot is enforced off | Fix: Remove the Before rollout bullet beginning 'Decide, per policy', the At rollout bullet beginning 'Compare each policy', and the After rollout bullet beginning 'Test a policy'. The replacement-policy descriptions and migration recommendations can remain in the prose; noting missing table rows does not satisfy the checklist/table consistency rule.
 -->

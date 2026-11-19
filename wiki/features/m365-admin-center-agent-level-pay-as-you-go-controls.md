@@ -70,6 +70,9 @@ sources:
   - title: "Tutorial: Create and manage budgets"
     url: "https://learn.microsoft.com/azure/cost-management-billing/costs/tutorial-acm-create-budgets"
     kind: "learn"
+  - title: "Quickstart: Create a budget with Bicep"
+    url: "https://learn.microsoft.com/azure/cost-management-billing/costs/quick-create-budget-bicep"
+    kind: "learn"
 videos: []
 related: ["copilot-credits"]
 controls:
@@ -77,7 +80,7 @@ controls:
     scope: "group"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Copilot > Cost management > Classic Billing & usage > Billing policies > Add a billing policy"
+      path: "Copilot > Cost management > Classic Billing & usage > Billing policies > Add a billing policy > Choose users"
       docs: "https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-copilot"
     api: null
     note: "Choose users step: All users or one group (Copilot Chat); SharePoint agents use a security group. Roles: Billing, AI or Global Administrator."
@@ -104,13 +107,10 @@ controls:
     scope: "agent"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Copilot > Cost Management > Configuration > Add spending policy"
+      path: "Copilot > Cost Management > Configuration > Add spending policy > Resources > Specific resources"
       docs: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs"
-    api:
-      kind: "graph"
-      call: "GET /beta/copilot/costManagement/spendingPolicies (lists spending policies; beta)"
-      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-list"
-    note: "Copilot Studio agents only; not documented for Copilot Chat or SharePoint agents. The API call lists policies and is not the full configuration equivalent."
+    api: null
+    note: "Copilot Studio agents only; not documented for Copilot Chat or SharePoint agents. Select the agents, set the monthly limit and optional per-agent limit, choose the billing method; for environments choose Specific or All environments."
   - governs: "Prepaid Copilot credits for specific user groups in Copilot Chat"
     scope: "group"
     ui:
@@ -123,7 +123,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Reports > Usage > Microsoft Copilot > Credits"
+      path: "Reports > Usage > Reports > Microsoft Copilot > Credits"
       docs: "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits"
     api: null
     note: "Documentation mentions preview: 30 days of history; alerts for users above 2,000 credits."
@@ -131,16 +131,16 @@ controls:
     scope: "tenant"
     ui:
       surface: "Azure portal (Microsoft Cost Management)"
-      path: "Monitoring > Budgets"
+      path: "scope > Monitoring > Budgets"
       docs: "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing"
     api:
-      kind: "other"
-      call: "Create a budget in Microsoft Cost Management with a Bicep file or ARM template"
-      docs: "https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing"
-    note: "Page documents it for SharePoint agents; budgets send alerts and do not stop usage."
+      kind: "azure-cli"
+      call: "az deployment sub create --name <deployment-name> --location <location> --template-file main.bicep --parameters startDate=<start-date> endDate=<end-date> contactEmails=<contact-emails-array>"
+      docs: "https://learn.microsoft.com/azure/cost-management-billing/costs/quick-create-budget-bicep"
+    note: "Budgets alert and do not stop usage. Scope: the subscription used for SharePoint agents. Deploy the quickstart No filter Bicep template saved as main.bicep, with start date, end date and contact emails."
 confidence: "medium"
 created: "2026-11-13"
-updated: "2026-11-17"
+updated: "2026-11-19"
 roadmapModified: "2026-01-22T00:00:09"
 changes:
   - date: "2026-11-13"
@@ -153,19 +153,25 @@ changes:
     note: "Corrected after verification: added the documented Graph beta block and unblock calls for agents, fixed the credit-policy admin path, narrowed the Copilot Chat blocking scope and removed an unsupported billing claim."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
-version: 4
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 84 statements contradicted, 1 unconfirmed; taken offline until corrected"
+  - date: "2026-11-19"
+    note: "Corrected after verification: completed the billing-policy, spending-policy, Credits report and Azure budget paths, removed the read-only spending-policy API, replaced the Bicep technique with an az deployment call, and removed an unmatched budget step from the checklist."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 89 statements not yet confirmed"
+version: 5
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
-  version: 4
+  date: "2026-11-19"
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 77
-  confirmed: 77
+  claims: 89
+  confirmed: 88
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
-  hash: "c84b7209b9e939fa8ec162c4629a1e97"
+  hash: "ba9e1eeb254e5b7cae80a275f98c3266"
 ---
 
 ## What's changing
@@ -229,7 +235,7 @@ If nobody acts, nothing is billed: Microsoft states that pay-as-you-go billing i
 - Check the Agents section of the Copilot Control System for agents you would block.
 
 ### At rollout
-- Create the billing policy, choose its group, and set a budget with alert percentages and recipients.
+- Create the billing policy and choose its group.
 - Connect the policy to Microsoft Copilot Chat or SharePoint agents on the Pay-as-you-go services tab, one service at a time.
 - Block any agent you do not want available in Copilot Chat, remembering that blocking an agent created in SharePoint affects only its availability in Copilot Chat.
 - Create an Azure budget on the same subscription, since the Microsoft 365 budget does not stop usage.
@@ -246,19 +252,19 @@ If nobody acts, nothing is billed: Microsoft states that pay-as-you-go billing i
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which users can use metered agents, via a billing policy and its group</strong><br><small>Group</small><br><small class="controls__note">Choose users step: All users or one group (Copilot Chat); SharePoint agents use a security group. Roles: Billing, AI or Global Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost management › Classic Billing &amp; usage › Billing policies › Add a billing policy <a href="https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-copilot" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which users can use metered agents, via a billing policy and its group</strong><br><small>Group</small><br><small class="controls__note">Choose users step: All users or one group (Copilot Chat); SharePoint agents use a security group. Roles: Billing, AI or Global Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost management › Classic Billing &amp; usage › Billing policies › Add a billing policy › Choose users <a href="https://learn.microsoft.com/microsoft-365/commerce/services/pay-as-you-go-setup-copilot" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which service (Copilot Chat or SharePoint agents) a billing policy pays for</strong><br><small>Tenant</small><br><small class="controls__note">Service-level, not per agent. Disconnecting can take up to two hours to take effect.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Billing &amp; usage › Pay-as-you-go services › service › billing policy <a href="https://learn.microsoft.com/copilot/implement/setup-pay-as-you-go" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether an agent is available in Copilot Chat (block or unblock)</strong><br><small>Agent</small><br><small class="controls__note">Tenant admins and AI admins. Availability, not billing. Blocking a SharePoint-created agent affects Copilot Chat only. API: preview, Agent 365 licence, delegated CopilotPackages.ReadWrite.All.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot Control System › Agents <a href="https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Spending limit and billing method for individual Copilot Studio agents or environments</strong><br><small>Agent</small><br><small class="controls__note">Copilot Studio agents only; not documented for Copilot Chat or SharePoint agents. The API call lists policies and is not the full configuration equivalent.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › Add spending policy <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET /beta/copilot/costManagement/spendingPolicies (lists spending policies; beta)</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-list" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Spending limit and billing method for individual Copilot Studio agents or environments</strong><br><small>Agent</small><br><small class="controls__note">Copilot Studio agents only; not documented for Copilot Chat or SharePoint agents. Select the agents, set the monthly limit and optional per-agent limit, choose the billing method; for environments choose Specific or All environments.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › Add spending policy › Resources › Specific resources <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Prepaid Copilot credits for specific user groups in Copilot Chat</strong><br><small>Group</small><br><small class="controls__note">Global Administrator to create. Copilot Chat only, not SharePoint agents.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Billing &amp; usage › Pay-as-you-go services › Microsoft Copilot Chat › Copilot credit policies › Create a Copilot credit policy <a href="https://learn.microsoft.com/copilot/implement/copilot-capacity-packs" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Credits consumed per user, agent and billing policy</strong><br><small>Tenant</small><br><small class="controls__note">Documentation mentions preview: 30 days of history; alerts for users above 2,000 credits.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Reports › Usage › Microsoft Copilot › Credits <a href="https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Azure cost analysis and budget alerts for the billing subscription</strong><br><small>Tenant</small><br><small class="controls__note">Page documents it for SharePoint agents; budgets send alerts and do not stop usage.</small></td><td data-label="Admin UI"><strong>Azure portal (Microsoft Cost Management)</strong><br>Monitoring › Budgets <a href="https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Create a budget in Microsoft Cost Management with a Bicep file or ARM template</code> <a href="https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Credits consumed per user, agent and billing policy</strong><br><small>Tenant</small><br><small class="controls__note">Documentation mentions preview: 30 days of history; alerts for users above 2,000 credits.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Reports › Usage › Reports › Microsoft Copilot › Credits <a href="https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Azure cost analysis and budget alerts for the billing subscription</strong><br><small>Tenant</small><br><small class="controls__note">Budgets alert and do not stop usage. Scope: the subscription used for SharePoint agents. Deploy the quickstart No filter Bicep template saved as main.bicep, with start date, end date and contact emails.</small></td><td data-label="Admin UI"><strong>Azure portal (Microsoft Cost Management)</strong><br>scope › Monitoring › Budgets <a href="https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Azure CLI</strong><br><code>az deployment sub create --name &lt;deployment-name&gt; --location &lt;location&gt; --template-file main.bicep --parameters startDate=&lt;start-date&gt; endDate=&lt;end-date&gt; contactEmails=&lt;contact-emails-array&gt;</code> <a href="https://learn.microsoft.com/azure/cost-management-billing/costs/quick-create-budget-bicep" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 The rows are the nearest existing controls.
 
-Billing-policy setup is documented in the Microsoft 365 admin center only; no API for creating or connecting billing policies is documented in the pages searched. Two admin-centre entry points appear in Microsoft's pages: **Copilot** > **Billing & usage**, and **Copilot** > **Cost management** with **Classic Billing & usage** selected from the banner. Blocking an agent changes availability in Copilot Chat, not billing. Microsoft documents a Graph beta call to block a package, `POST /beta/copilot/admin/catalog/packages/{id}/block`, and one to unblock it, `POST /beta/copilot/admin/catalog/packages/{id}/unblock` ([unblock reference](https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-unblock)). Both are preview APIs that need a Microsoft Agent 365 licence and the delegated CopilotPackages.ReadWrite.All permission, and Microsoft states that beta APIs are not supported in production applications. The package overview lists declarative agents among the agent types a package can contain. The Copilot Studio spending-policy row governs Copilot Studio agents only; when such a policy covers an environment or agent, it takes precedence over Power Platform admin center controls for that usage, and it does not apply to AI Builder credits. If a user is in more than one billing policy, the Credits report attributes the usage to the oldest configured policy.
+The billing-policy setup paths in this table use the Microsoft 365 admin center; no API for creating or connecting billing policies is documented in the pages searched. Two admin-centre entry points appear in Microsoft's pages: **Copilot** > **Billing & usage**, and **Copilot** > **Cost management** with **Classic Billing & usage** selected from the banner. Blocking an agent changes availability in Copilot Chat, not billing. Microsoft documents a Graph beta call to block a package, `POST /beta/copilot/admin/catalog/packages/{id}/block`, and one to unblock it, `POST /beta/copilot/admin/catalog/packages/{id}/unblock` ([unblock reference](https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-unblock)). Both are preview APIs that need a Microsoft Agent 365 licence and the delegated CopilotPackages.ReadWrite.All permission, and Microsoft states that beta APIs are not supported in production applications. The package overview lists declarative agents among the agent types a package can contain. The Copilot Studio spending-policy row governs Copilot Studio agents only; when such a policy covers an environment or agent, it takes precedence over Power Platform admin center controls for that usage, and it does not apply to AI Builder credits. If a user is in more than one billing policy, the Credits report attributes the usage to the oldest configured policy.
 
 ## Open questions
 
@@ -274,9 +280,9 @@ cost: Variable. The meter is Copilot Credits, billed to an Azure subscription fo
 impact: Medium. Users without a Microsoft Copilot licence, SharePoint and Copilot administrators and the finance owner of the Azure subscription notice it; licensed users are not metered for interactive SharePoint agent use.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[3].api / command: GET /beta/copilot/costManagement/spendingPolicies lists spending policies, not their complete configuration. | Found: Read service settings, alert settings, recipients, and group assignments on their dedicated endpoints. | Fix: Set controls[3].api.call to 'GET /beta/copilot/costManagement/spendingPolicies'. Keep '(lists spending policies; beta)' as prose in the existing note rather than inside the code-formatted call. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-list
-- [supported, minor] controls[6].api / command: An Azure Cost Management budget can be created with Bicep or an ARM template. | Found: You can also create a budget in Microsoft Cost Management with Bicep and ARM template. | Fix: Replace the descriptive api.call with 'az deployment sub create --name <deployment-name> --location <location> --template-file main.bicep --parameters startDate=<start-date> endDate=<end-date> contactEmails=<contact-emails-array>', set kind to 'azure-cli' and docs to 'https://learn.microsoft.com/azure/cost-management-billing/costs/quick-create-budget-bicep'. In the existing note, say: 'Save the quickstart No filter Bicep template as main.bicep and deploy against the billing subscription; fill in its dates and contact email array.' | Source: https://learn.microsoft.com/sharepoint/sharepoint-agents-azure-billing
+- [supported, minor] controls[2].ui; Governance guidance: Before rollout / admin-path: The cited SharePoint page locates agent blocking under the Agents section of the Copilot Control System. | Found: Tenant admins and AI admins can manage actively used agents in SharePoint in the Microsoft 365 admin center, under the Agents section of the Copilot Control System | Fix: Note the alternative full route in the already-cited https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions: 'Microsoft also documents Microsoft 365 admin center > Agents > All agents > agent > Block or Unblock.' The SharePoint page uses the older Copilot Control System section description. | Source: https://learn.microsoft.com/sharepoint/manage-access-agents-in-sharepoint
+- [contradicted, minor] Governance guidance: Before rollout; After rollout / consistency: Every checklist control has a matching controls-table row. | Found: Create a security group per business unit ... Confirm ... who holds the Owner or Contributor role ... remove users who no longer need metered access. The table covers billing-policy scope, not group membership or Azure role assignments. | Fix: The checklist's security-group creation, ownership and membership-management steps and its Azure role-assignment check have no corresponding controls-table rows. Remove these unmatched control-management instructions from the checklist; keep the existing billing-policy group-selection guidance.
 -->

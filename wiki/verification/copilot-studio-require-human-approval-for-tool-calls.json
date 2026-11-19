@@ -2,66 +2,44 @@
   "slug": "copilot-studio-require-human-approval-for-tool-calls",
   "roadmapId": 570434,
   "title": "Copilot Studio: makers can require human approval before an agent runs a tool",
-  "status": "verified-with-gaps",
-  "date": "2026-11-17",
-  "version": 4,
+  "status": "verified",
+  "date": "2026-11-19",
+  "version": 5,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
   "attempts": 0,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "pass",
-  "notes": [
-    "claim 52: severity major on a rationale: risk rating lowered to minor; ratings are judgements and cannot hold a page"
-  ],
+  "notes": [],
   "hold": null,
   "counts": {
-    "claims": 52,
-    "confirmed": 51,
-    "unconfirmed": 1,
+    "claims": 60,
+    "confirmed": 60,
+    "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
-    "minor": 2
+    "minor": 0
   },
-  "summary": "The briefing passes: the roadmap facts and existing control references check out, and searches did not locate documentation for the new toggle or central enforcement. The risk rationale should drop its unsupported assurance about new data access, and the distinction between instructions and enforcement needs a supporting citation.",
+  "summary": "The briefing accurately separates the planned approval toggle from the existing confirmation setting. The roadmap facts, documented control paths, PowerShell operation and general licensing requirements are supported; targeted searches did not establish documentation for the planned toggle's default, central enforcement or approval-specific billing.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: title, products; What's changing",
+      "where": "title; summary; What's changing; Scope; controls[0].note",
       "type": "record",
-      "claim": "This roadmap change concerns Microsoft Copilot Studio.",
+      "claim": "The roadmap describes a maker-configured, per-tool, per-agent approval toggle.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Copilot Studio\"]",
+      "quote": "Copilot Studio now let’s makers require human approval before an agent runs specific tools. With a per-tool, per-agent toggle",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "summary; What's changing; Scope; controls[0].note; rationale: impact",
-      "type": "record",
-      "claim": "The roadmap describes makers configuring human approval for specific tools.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Copilot Studio now let’s makers require human approval before an agent runs specific tools.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "summary; What's changing; Scope; controls[0].governs; rationale: impact",
-      "type": "record",
-      "claim": "The planned approval toggle is per tool and per agent.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "With a per-tool, per-agent toggle",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
       "where": "summary; What's changing; Risk assessment: Change & support",
       "type": "record",
-      "claim": "A gated tool call pauses for approval before execution.",
+      "claim": "A gated tool call pauses before the action runs.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "any gated tool call pauses and shows an approval request describing what the agent intends to do",
@@ -69,10 +47,10 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 3,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "record",
-      "claim": "The approval request describes the agent's intended action.",
+      "claim": "The approval request describes what the agent intends to do.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "shows an approval request describing what the agent intends to do",
@@ -80,10 +58,32 @@
       "fix": null
     },
     {
+      "n": 4,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "A person can approve the pending action.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "so a person can approve, approve for the session, or deny before the action runs",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap lists an Approve for the session option.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "so a person can approve, approve for the session, or deny before the action runs",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 6,
       "where": "What's changing",
       "type": "record",
-      "claim": "A person can approve the requested action.",
+      "claim": "A person can deny the pending action before it runs.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "so a person can approve, approve for the session, or deny before the action runs",
@@ -92,31 +92,9 @@
     },
     {
       "n": 7,
-      "where": "What's changing; Risk assessment: Security & identity",
-      "type": "record",
-      "claim": "The roadmap lists an approve-for-the-session option.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "so a person can approve, approve for the session, or deny before the action runs",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
       "where": "What's changing",
       "type": "record",
-      "claim": "A person can deny the requested action before it runs.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "so a person can approve, approve for the session, or deny before the action runs",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap gives sending emails, closing tickets and processing payments as examples.",
+      "claim": "The roadmap's examples are sending emails, closing tickets and processing payments.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "high-stakes or sensitive operations like sending emails, closing tickets, or processing payments",
@@ -124,32 +102,21 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 8,
       "where": "What's changing; Why it matters",
       "type": "record",
-      "claim": "The roadmap describes the approval mechanism as a deterministic guardrail.",
+      "claim": "The roadmap describes a deterministic guardrail independent of the agent's instructions.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "This gives organizations a deterministic guardrail for high-stakes or sensitive operations",
+      "quote": "This gives organizations a deterministic guardrail for high-stakes or sensitive operations like sending emails, closing tickets, or processing payments, independent of the agent's instructions.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing; Why it matters",
-      "type": "record",
-      "claim": "The roadmap describes the guardrail as independent of the agent's instructions.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "independent of the agent's instructions",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
+      "n": 9,
       "where": "What's changing",
       "type": "record",
-      "claim": "Approval requests appear inline in the deployment channel according to the roadmap.",
+      "claim": "Approval requests appear inline in the agent's deployment channel.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Approval requests appear inline in the channel where the agent is deployed",
@@ -157,10 +124,10 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 10,
       "where": "What's changing; Scope: Channels; rationale: impact",
       "type": "record",
-      "claim": "Microsoft Teams is a channel example, not an exhaustive channel list.",
+      "claim": "Microsoft Teams is a channel example named by the roadmap.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "including Microsoft Teams and Microsoft 365 Copilot",
@@ -168,10 +135,10 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 11,
       "where": "What's changing; Scope: Channels; rationale: impact",
       "type": "record",
-      "claim": "Microsoft 365 Copilot is another channel example.",
+      "claim": "Microsoft 365 Copilot is a channel example named by the roadmap.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "including Microsoft Teams and Microsoft 365 Copilot",
@@ -179,10 +146,10 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 12,
       "where": "front matter: status; What's changing",
       "type": "record",
-      "claim": "The supplied record still lists the feature as In development.",
+      "claim": "The roadmap status is In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -190,10 +157,10 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 13,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
-      "claim": "The roadmap target is September CY2026, which is past on the run date.",
+      "claim": "The roadmap target is September CY2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"September CY2026\"",
@@ -201,7 +168,18 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 14,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The record was fetched in November 2026 after its September CY2026 target had passed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2026\"; \"fetchedAt\": \"2026-11-13T21:57:28.411Z\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The listed release phase is General Availability.",
@@ -212,10 +190,10 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "front matter: clouds; What's changing; Scope: Cloud and platform",
+      "n": 16,
+      "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed, without asserting exclusion elsewhere.",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the record.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -223,8 +201,8 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "front matter: platforms; What's changing; Scope: Cloud and platform",
+      "n": 17,
+      "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The listed platform is Web.",
       "status": "supported",
@@ -234,10 +212,10 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 18,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The record provides no preview date.",
+      "claim": "The record supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -245,197 +223,65 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-09-01T22:59:38.",
+      "n": 19,
+      "where": "front matter: defaultState; rationale: risk",
+      "type": "absence",
+      "claim": "The planned roadmap toggle's default state is not stated.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-09-01T22:59:38\"",
+      "source": null,
+      "quote": "Searched: Copilot Studio approval default tool; human approval tool session. Read the roadmap, Add tools to custom agents and both Microsoft Copilot harness tool pages. Only the distinct existing confirmation setting has a documented default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0]; What's changing; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft Learn does not document the roadmap toggle's UI or API as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio human approval tool; approval tool session; approval tool Power Platform API pac PowerShell. Opened both harnesses' tool pages and the botcomponent reference; none identifies the roadmap toggle or its setting property.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[1].ui; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The existing confirmation control is at Copilot Studio (maker) > Agents > agent > Tools > tool > Details > Ask the end user before running.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent",
+      "quote": "In Copilot Studio, select Agents, and then select your agent. Go to the agent's Tools page. To view or change a tool's settings, go to your agent's Tools page and select the tool. The configuration page has three sections: Details, Inputs, and Completion.",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The supplied roadmap record was fetched in November 2026.",
+      "where": "controls[1].governs; What's changing",
+      "type": "behaviour",
+      "claim": "Ask the end user before running requests user confirmation before a tool runs.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"fetchedAt\": \"2026-11-13T21:57:28.411Z\"",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent",
+      "quote": "| Ask the end user before running | Asks the user to confirm before the tool runs. Set to No by default. |",
       "severity": null,
       "fix": null
     },
     {
       "n": 23,
-      "where": "controls[0]; What's changing; Governance controls",
-      "type": "absence",
-      "claim": "No Learn UI path or automation operation was located for the specific roadmap approval toggle.",
+      "where": "controls[1].note; What's changing",
+      "type": "default",
+      "claim": "The existing Ask the end user before running setting defaults to No.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio human approval tool calls; approval Dataverse botcomponent; approval Power Platform API PowerShell pac admin. Opened both harnesses' tool pages and botcomponent Web API; no matching toggle contract.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent",
+      "quote": "| Ask the end user before running | Asks the user to confirm before the tool runs. Set to No by default. |",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
-      "where": "front matter: defaultState; rationale: risk",
-      "type": "default",
-      "claim": "The new approval control's default state is not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio require human approval tools default; Copilot Studio human approval default prerequisites. Read the roadmap and both harnesses' tool pages; the existing standard-harness setting's default is not identified as this control's default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "front matter: licensing.model, licensing.notes; Cost and licensing: Licence; rationale: cost",
-      "type": "licensing",
-      "claim": "A licence requirement specific to the roadmap approval toggle has not been published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio human approval tools licensing billing Copilot Credits paused approved denied tool calls. Opened Licensing for agents powered by the standard harness and Overview of usage-based billing; neither identifies this toggle or its licence.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "front matter: licensing.notes; Cost and licensing: Meter; rationale: cost",
-      "type": "absence",
-      "claim": "An approval-specific meter, credit rate or billing treatment for paused and approved calls was not located.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio human approval tools licensing billing Copilot Credits paused approved denied tool calls; Copilot Studio approval tool credits paused. Opened both harness billing overviews and Microsoft Copilot tool pages; no approval-specific billing rule.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "front matter: licensing.notes; Cost and licensing: Meter",
-      "type": "cost",
-      "claim": "The Microsoft Copilot harness tool page says the harness uses usage-based billing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-tools-custom-agent",
-      "quote": "The harness used to build this agent uses usage-based billing.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "front matter: licensing.notes; Cost and licensing: Meter",
-      "type": "cost",
-      "claim": "That page says using, building, testing and evaluating agents might consume Copilot Credits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-tools-custom-agent",
-      "quote": "Using, building, testing, and evaluating agents might consume Copilot Credits.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "Scope: Prerequisites",
-      "type": "absence",
-      "claim": "Prerequisites specific to the roadmap toggle have not been published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio human approval default prerequisites; Copilot Studio require human approval tools tenant environment enforce approval policy default prerequisites. Opened standard and Microsoft Copilot harness tool pages; no prerequisites for the roadmap toggle.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "What's changing; Scope: Harness",
-      "type": "absence",
-      "claim": "The roadmap toggle's harness is not identified.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio human approval tool calls per tool approve session approval toggle admin enforcement default licensing. Read the roadmap and both harnesses' tool pages; none assigns the roadmap toggle to a harness.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "What's changing; Risk assessment: Data exposure; Open questions",
-      "type": "absence",
-      "claim": "Whether the new approval request displays tool parameters is undocumented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio tool approval request parameters transcript audit approver autonomous scheduled approval session. Read the roadmap and both harnesses' tool pages; no parameter-display specification for this toggle.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Risk assessment: Data exposure",
-      "type": "absence",
-      "claim": "The approval request's viewer permissions are not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio tool approval request parameters transcript audit approver autonomous scheduled approval session. Read the roadmap and both harnesses' tool pages; no viewer-permission specification for this toggle.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Risk assessment: Data exposure; Open questions",
-      "type": "absence",
-      "claim": "Transcript storage and approver-identified audit logging for the roadmap approval request are unconfirmed.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio tool approval request parameters transcript audit approver autonomous scheduled approval session. Read the roadmap, tool pages and downloaded-session-data search excerpt; none specifies this toggle's transcript or audit events.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "What's changing; Risk assessment: Security & identity; Open questions",
-      "type": "absence",
-      "claim": "Who receives approval requests for autonomous or scheduled runs without a live conversation is undocumented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio tool approval request parameters transcript audit approver autonomous scheduled approval session. Read the roadmap and tool pages; results about agent-flow approvals and computer-use supervision concern other mechanisms.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Risk assessment: Security & identity",
-      "type": "absence",
-      "claim": "The roadmap does not define which later calls approve-for-the-session covers.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: site:learn.microsoft.com/microsoft-copilot-studio approval tool session; Copilot Studio tool approval request parameters transcript audit approver autonomous scheduled approval session. Read the roadmap and tool pages; no session-scope definition for this toggle.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "controls[1].ui; Governance controls table; Governance guidance: At rollout",
-      "type": "admin-path",
-      "claim": "The existing confirmation setting is under Tools > tool > Details > Additional details > Ask the end user before running.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent",
-      "quote": "Go to the Tools page for your agent, and select the tool from the list of tools. ... Details ... Additional details ... Ask the end user before running",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "controls[1].api; Governance controls table",
-      "type": "absence",
-      "claim": "An automation equivalent for the existing Ask the end user before running setting was not located.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio Ask the end user before running Dataverse Web API botcomponent confirmation PowerShell pac; Copilot Studio approval Dataverse botcomponent. Opened the tool-setting page and botcomponent Web API; read pac copilot excerpts; no setting contract.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
       "where": "controls[1].note; What's changing; Scope: Harness; Governance controls",
       "type": "applicability",
-      "claim": "The page documenting Ask the end user before running describes the standard harness.",
+      "claim": "The page documenting the existing confirmation setting applies to the standard harness.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent",
       "quote": "This article describes features used in agents or agent flows powered by the standard harness.",
@@ -443,109 +289,351 @@
       "fix": null
     },
     {
-      "n": 39,
-      "where": "controls[1].note; What's changing; Governance controls table",
-      "type": "default",
-      "claim": "The existing Ask the end user before running setting defaults to No.",
+      "n": 25,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "An API operation and deciding property for Ask the end user before running are not documented.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent",
-      "quote": "Ask the end user before running: In the end user chat experience, ask the agent for confirmation before running the tool. This option is set to No by default.",
+      "source": null,
+      "quote": "Searched: Ask the end user before running API Dataverse botcomponent confirmation; Copilot Studio approval tool Power Platform API pac PowerShell. Read the tool page and searched botcomponent reference for approval, confirmation and tool; no setting contract found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[2]; summary; Why it matters; Scope; Governance controls",
+      "type": "absence",
+      "claim": "No tenant or environment UI or API requiring human approval for tool calls is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio tool approval enforce tenant environment admin policy; approval tool Power Platform API pac PowerShell. Read data-policy documentation, tool pages and governance search excerpts; no central approval-enforcement setting found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[1].note; What's changing; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not identify the existing confirmation setting as the roadmap toggle.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio human approval tool; approval tool session; Ask the end user before running. Read the roadmap and cited tool pages; none equates that setting with the planned approve, approve-for-session and deny experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Scope: Harness; controls[1].note",
+      "type": "absence",
+      "claim": "The Microsoft Copilot harness add-tools and manage-tools pages list no approval setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio human approval tool; approval default tool. Opened Add a tool to an agent (Microsoft Copilot) and Manage and delete tools in an agent (Microsoft Copilot) in full; neither documents an approval setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Prompt instructions asking for confirmation are not a deterministic system-level guardrail.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/guidance/generative-mode-guidance",
+      "quote": "Use agent instructions for summarization and conversational flow, not for system-level behaviors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not specified whether the roadmap approval request displays tool parameters.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio approval tool parameters audit; human approval tool. Read the roadmap and both harnesses' tool pages. Plugin confirmation and computer-use supervision results describe different mechanisms, not this toggle's parameter display.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Microsoft has not documented who can see this toggle's inline approval request.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio human approval tool licensing credits billing prerequisites default parameters transcript autonomous; approval tool parameters audit. Read the roadmap and tool pages; no visibility rules for this toggle were found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Microsoft has not documented whether this toggle's approval request is stored in the conversation transcript.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio human approval tool licensing credits billing prerequisites default parameters transcript autonomous. Read tool pages and the downloaded-session-data search excerpt; general transcript rules do not identify this approval request's storage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "The recipient of this toggle's approval request for an autonomous run without a live conversation is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio human approval tool licensing credits billing prerequisites default parameters transcript autonomous; human approval tool. Read roadmap, tool pages and computer-use supervision excerpts; the latter concerns a different review mechanism.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Microsoft does not define which later calls Approve for the session covers.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com/microsoft-copilot-studio approval tool session; human approval tool. Read the roadmap and tool pages. The roadmap names the option without defining its scope; search results did not document that scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Autonomy & actions; Why it matters",
+      "type": "applicability",
+      "claim": "Existing data-policy restrictions continue to apply to Copilot Studio agents and their tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "These data policies apply to Copilot Studio agents in the environments included in the policy's scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.model; Cost and licensing",
+      "type": "licensing",
+      "claim": "General Copilot Studio entitlement uses a mixed model rather than an unpublished entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
+      "quote": "The following sections describe the different ways you can use Copilot Studio, based on how you license Copilot Studio and purchase Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "A Copilot Studio user license is one documented way to obtain access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
+      "quote": "To use Copilot Studio, you need one of the following configurations: ... Copilot Studio user license (free).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Obtaining that user license requires a tenant prepaid Copilot Credit pack subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
+      "quote": "You need a Copilot Studio tenant prepaid Copilot Credit pack subscription before you can get this user license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Copilot Studio authors role or setting grants access for applicable pay-as-you-go scenarios.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
+      "quote": "The Copilot Studio authors setting grants access for applicable pay-as-you-go scenarios.",
       "severity": null,
       "fix": null
     },
     {
       "n": 40,
-      "where": "controls[1].note; What's changing; Scope: Harness; Governance controls",
-      "type": "absence",
-      "claim": "No source identifies the existing confirmation setting as the roadmap toggle or confirms it for the Microsoft Copilot harness.",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "A Microsoft 365 Copilot license is another documented access configuration.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio human approval tool calls per tool approve session approval toggle admin enforcement default licensing; Copilot Studio Ask the end user before running Dataverse Web API botcomponent confirmation PowerShell pac. Read the roadmap and both harnesses' tool pages.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
+      "quote": "To use Copilot Studio, you need one of the following configurations: ... Microsoft 365 Copilot license",
       "severity": null,
       "fix": null
     },
     {
       "n": 41,
-      "where": "What's changing; Scope: Harness",
-      "type": "absence",
-      "claim": "The Microsoft Copilot harness adding-tools and managing-tools pages list no approval setting.",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "A Copilot Studio trial license provides access to create and test agents.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio human approval tool calls; opened Add a tool to an agent (Microsoft Copilot) and Manage and delete tools in an agent (Microsoft Copilot) in full. Their configuration sections contain no approval setting.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
+      "quote": "The trial license gives you access to Copilot Studio to create agents. You can test your agents using the test chat panel.",
       "severity": null,
       "fix": null
     },
     {
       "n": 42,
-      "where": "controls[2]; summary; Scope; Risk assessment: Change & support; Governance controls",
-      "type": "absence",
-      "claim": "No tenant or environment UI or API enforcement of the roadmap tool-approval gate was located.",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The trial license does not permit publishing an agent.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio require human approval tools tenant environment enforce approval policy default prerequisites; Copilot Studio tool approval Power Platform API PowerShell pac admin. Read data-policy and tool pages, pac admin and Power Platform API excerpts; no approval-enforcement switch.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
+      "quote": "The trial license gives you access to Copilot Studio to create agents. You can test your agents using the test chat panel. However, you can't publish the agent.",
       "severity": null,
       "fix": null
     },
     {
       "n": 43,
-      "where": "controls[3].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "A data policy can be created through Power Platform admin center > Security > Data and privacy > Data policy > New Policy.",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft publishes no approval-specific license requirement for the planned toggle.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
-      "quote": "On the sidebar, select Security, and then select Data and privacy. ... Select Data policy. ... To create a new data policy, select New Policy",
+      "source": null,
+      "quote": "Searched: Copilot Studio human approval tool licensing credits billing prerequisites default parameters transcript autonomous. Opened billing-licensing and both harnesses' tool pages; none names an approval-specific entitlement.",
       "severity": null,
       "fix": null
     },
     {
       "n": 44,
-      "where": "controls[3].api; Governance controls table",
-      "type": "command",
-      "claim": "Microsoft.PowerApps.Administration.PowerShell provides New-DlpPolicy with DisplayName and EnvironmentType parameters to create a data policy.",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No approval-specific meter or credit rate is documented.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest",
-      "quote": "Module: Microsoft.PowerApps.Administration.PowerShell Module ... New-DlpPolicy -DisplayName <String> -EnvironmentType <String> ... The New-DlpPolicy cmdlet creates a new DLP policy for the logged in admin's tenant.",
+      "source": null,
+      "quote": "Searched: Copilot Studio human approval tool licensing credits billing prerequisites default parameters transcript autonomous. Read billing-licensing and searched Billing rates and management for approval, paused and denied; no approval-specific rate found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 45,
-      "where": "controls[3].note; Governance controls",
-      "type": "role",
-      "claim": "The cited data-policy procedure requires a tenant admin or the Environment Admin role.",
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "The Microsoft Copilot harness add-tools page states that its harness uses usage-based billing.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
-      "quote": "Prerequisites ... Be a tenant admin or have the Environment Admin role.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-tools-custom-agent",
+      "quote": "The harness used to build this agent uses usage-based billing.",
       "severity": null,
       "fix": null
     },
     {
       "n": 46,
-      "where": "controls[3].governs; Why it matters; Risk assessment: Autonomy & actions; Governance controls",
-      "type": "applicability",
-      "claim": "Data policies govern connectors used as tools in Copilot Studio agents.",
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Using, building, testing and evaluating Microsoft Copilot harness agents might consume Copilot Credits.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
-      "quote": "To prevent agent makers from using Power Platform connectors as tools in Copilot Studio agents, configure a data policy with the connectors you want to block.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-tools-custom-agent",
+      "quote": "Using, building, testing, and evaluating agents might consume Copilot Credits.",
       "severity": null,
       "fix": null
     },
     {
       "n": 47,
-      "where": "Governance guidance: After rollout; Governance controls",
-      "type": "behaviour",
-      "claim": "A data-policy-blocked tool cannot be selected in the tool picker.",
+      "where": "Cost and licensing: Meter; rationale: cost; Open questions",
+      "type": "absence",
+      "claim": "The documentation does not specify the billing treatment of a paused, approved or denied call under this toggle.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent",
-      "quote": "When a data policy blocks a tool, the tool appears disabled in the Add tool panel and you can't select it.",
+      "source": null,
+      "quote": "Searched: Copilot Studio human approval tool licensing credits billing prerequisites default parameters transcript autonomous. Read tool and licensing pages; searched Billing rates and management for approval, paused and denied. General action rates do not describe the approval lifecycle.",
       "severity": null,
       "fix": null
     },
     {
       "n": 48,
-      "where": "Governance controls",
+      "where": "Scope: Harness; What's changing",
+      "type": "absence",
+      "claim": "The roadmap toggle's applicable harness is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio human approval tool; approval tool session. Read the roadmap and standard and Microsoft Copilot harness tool pages; none identifies a harness for the roadmap's approve-for-session experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Scope: Prerequisites",
+      "type": "absence",
+      "claim": "Prerequisites specific to the planned roadmap toggle are not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio human approval tool licensing credits billing prerequisites default parameters transcript autonomous. Read the roadmap, tool pages and general licensing page; no toggle-specific prerequisites found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "The stated Power Platform admin center path through Security, Data and privacy, Data policy, New Policy, environment selection and Assign connectors reaches Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "select Security, and then select Data and privacy ... Select Data policy ... select New Policy ... The Add an environment page appears ... Available tab ... Add to policy ... The Assign connectors page appears ... select Block.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "Microsoft.PowerApps.Administration.PowerShell provides Add-ConnectorsToPolicy with PolicyName, Classification Blocked and Connectors for classifying the specified connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest",
+      "quote": "Add-ConnectorsToPolicy [-PolicyName] <String> [-Classification] <String> [-Connectors] <Object[]> [[-ApiVersion] <String>] [<CommonParameters>] ... Allowed values are 'General', 'Confidential', and 'Blocked'",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[3].note; Governance controls",
+      "type": "role",
+      "claim": "The data-policy procedure requires a tenant admin or the Environment Admin role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "Be a tenant admin or have the Environment Admin role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[3].note",
       "type": "behaviour",
-      "claim": "Blocking Power Platform connectors also blocks access to tools in connected MCP servers.",
+      "claim": "Add-ConnectorsToPolicy moves connectors already classified elsewhere into the supplied classification group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest",
+      "quote": "If any of the connectors are already classified in a different group, they are moved to the specified group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[3].note",
+      "type": "command",
+      "claim": "Each connector object passed to Connectors requires id, type and name.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest",
+      "quote": "Each entry in the list is required to have 3 properties: ... id: The unique identifier of the connector. ... type: The type of the connector: ... name: The friendly name of the connector",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "A tool blocked by a data policy cannot be selected in the maker experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "a blocked connector appears disabled when a maker adds tools to an agent ... Because the capability can't be selected, makers can identify the policy restriction before configuring it in their agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Blocking Power Platform connectors also blocks access to tools in connected MCP servers that rely on them.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
       "quote": "Blocking Power Platform connectors also blocks access to tools in connected MCP servers, which rely on Power Platform connectors for connectivity.",
@@ -553,10 +641,21 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 57,
+      "where": "Why it matters; controls[3].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The documented connector-blocking control prevents connector use rather than providing a human-approval pause.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "To prevent agent makers from using the features associated with the connector, select Block.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
       "where": "Governance controls",
       "type": "applicability",
-      "claim": "Tenant-scope data policies apply to all agents in all environments across the tenant.",
+      "claim": "Policies with tenant scope apply to all agents in all environments across the tenant.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
       "quote": "Policies with a tenant scope apply to all agents in all environments across the tenant.",
@@ -564,48 +663,37 @@
       "fix": null
     },
     {
-      "n": 50,
-      "where": "controls[3].note; Why it matters; Governance guidance: Before rollout; Governance controls",
-      "type": "behaviour",
-      "claim": "The documented connector-blocking data policy prevents use rather than pausing the tool for approval.",
+      "n": 59,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Rows 2 and 4 describe existing confirmation and connector-blocking controls, not a documented means of configuring the new roadmap toggle.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
-      "quote": "To prevent agent makers from using the features associated with the connector, select Block. ... Because the capability can't be selected, makers can identify the policy restriction before configuring it in their agent.",
+      "source": null,
+      "quote": "Searched: Copilot Studio human approval tool; Ask the end user before running API Dataverse botcomponent confirmation; tool approval enforce tenant environment admin policy. Read both cited control pages; neither identifies its control as configuring the roadmap toggle.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 51,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "A prompt instruction asking for confirmation is not a substitute for system-enforced behaviour.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/guidance/generative-mode-guidance#agent-instructions-and-behavior",
-      "quote": "Use agent instructions for summarization and conversational flow, not for system-level behaviors.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/microsoft-copilot-studio/guidance/generative-mode-guidance to sources for the instructions-versus-enforcement distinction in Why it matters."
-    },
-    {
-      "n": 52,
+      "n": 60,
       "where": "rationale: risk",
-      "type": "behaviour",
-      "claim": "The feature adds no new data access.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Copilot Studio human approval data access. Read the roadmap and both harnesses' tool pages; reviewed Application Card safety and limitations excerpts. None states the new approval feature's data-access implications.",
-      "severity": "minor",
-      "fix": "Remove 'and no new data access' from the risk rationale. The roadmap establishes that this is a guardrail, but does not specify its data-access implications."
+      "type": "default",
+      "claim": "The existing tool-confirmation behaviour does not require confirmation unless a maker enables the setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent",
+      "quote": "| Ask the end user before running | Asks the user to confirm before the tool runs. Set to No by default. |",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-17T00:44:04.653Z",
+    "at": "2026-11-19T05:19:14.894Z",
     "summary": {
-      "links": 6,
-      "unreachable": 3,
+      "links": 8,
+      "unreachable": 0,
       "uiPaths": 2,
       "uiPathsWithMissingWords": 0,
       "apiCalls": 1,
-      "apiCallsNotOnPage": 1,
+      "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -621,13 +709,13 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-tools-custom-agent",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/tools-manage",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
@@ -635,9 +723,19 @@
         "status": 200
       },
       {
-        "url": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest",
-        "ok": false,
-        "status": 429
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/guidance/generative-mode-guidance",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -648,9 +746,9 @@
         "docs": "https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent",
         "reachable": true,
         "segments": [
+          "Agents",
           "Tools",
           "Details",
-          "Additional details",
           "Ask the end user before running"
         ],
         "missing": []
@@ -665,7 +763,12 @@
           "Security",
           "Data and privacy",
           "Data policy",
-          "New Policy"
+          "New Policy",
+          "Add an environment",
+          "Available",
+          "Add to policy",
+          "Assign connectors",
+          "Block"
         ],
         "missing": []
       },
@@ -673,10 +776,10 @@
         "index": 3,
         "side": "api",
         "governs": "Which connectors can be used as tools at all",
-        "docs": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest",
-        "reachable": false,
-        "token": "New-DlpPolicy",
-        "found": false
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest",
+        "reachable": true,
+        "token": "Add-ConnectorsToPolicy",
+        "found": true
       }
     ],
     "roadmapDrift": []
@@ -692,6 +795,18 @@
       "date": "2026-11-16",
       "status": "held",
       "version": 3,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "verified-with-gaps",
+      "version": 4,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-19",
+      "status": "held",
+      "version": 4,
       "model": "gpt-6.1-sol"
     }
   ]

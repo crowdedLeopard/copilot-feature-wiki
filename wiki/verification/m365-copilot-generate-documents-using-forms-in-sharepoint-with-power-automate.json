@@ -2,135 +2,41 @@
   "slug": "m365-copilot-generate-documents-using-forms-in-sharepoint-with-power-automate",
   "roadmapId": 561026,
   "title": "Power Automate: generate documents from SharePoint document generation forms",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-18",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 2,
+  "attempts": 0,
   "standard": "cd5b21ff3a5b",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-18",
-    "reasons": [
-      "4 blocking findings (claims 46, 48, 49, 52)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 54,
-    "confirmed": 49,
+    "claims": 57,
+    "confirmed": 56,
     "unconfirmed": 0,
-    "contradicted": 5,
-    "blocker": 4,
+    "contradicted": 1,
+    "blocker": 0,
     "major": 0,
     "minor": 1
   },
-  "summary": "Hold: the governance path stops before connector classification, and the PowerShell command creates a policy without setting the connector restriction it claims to configure. The Dataverse role qualification is too broad, and the statement that Microsoft publishes no storage cost overlooks published SharePoint storage pricing.",
+  "summary": "The briefing passes: its roadmap facts, licensing statements and data policy control are supported. A minor completeness issue remains: the checklist asks administrators to review library permissions and licence assignments that have no corresponding controls-table rows.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: status; What's changing",
-      "type": "record",
-      "claim": "The roadmap status is Launched.",
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "Generate document from form creates documents by mapping input data to document generation template fields.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
+      "quote": "Generate document from form (Preview) creates documents by mapping input data to a document generation template and saves the output to a SharePoint library.",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "front matter: targetDate; What's changing",
-      "type": "record",
-      "claim": "The roadmap target date is October CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"October CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "front matter: previewDate; What's changing",
-      "type": "record",
-      "claim": "The roadmap preview date is May CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": \"May CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "front matter: releasePhase; What's changing; Open questions",
-      "type": "record",
-      "claim": "The roadmap lists General Availability and Preview release phases.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and does not list other clouds.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists the Web platform.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "front matter: products; Scope",
-      "type": "record",
-      "claim": "The roadmap products are Power Automate, SharePoint and Microsoft Copilot (Microsoft 365).",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Power Automate\", \"SharePoint\", \"Microsoft Copilot (Microsoft 365)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap record was modified on 2026-11-04T00:02:09.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-11-04T00:02:09\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "summary; What's changing",
-      "type": "record",
-      "claim": "The new Power Automate action creates documents from a template by mapping input data to predefined fields.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Generate document from form (Preview) allows customers to create documents from a template by mapping data inputs to predefined template fields.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
       "where": "summary; What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "The action saves generated documents to a SharePoint library.",
@@ -141,10 +47,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 3,
       "where": "What's changing",
       "type": "record",
-      "claim": "The action returns the generated document with metadata such as location and status.",
+      "claim": "The roadmap says the action returns the generated document with metadata such as location and status.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "The action works by mapping input data to template fields and returns the generated document along with file metadata such as location and status.",
@@ -152,10 +58,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 4,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap gives contracts, invoices, letters and reports as example scenarios.",
+      "claim": "The roadmap gives contracts, invoices, letters and reports as example uses.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "This capability supports scenarios such as creating contracts, invoices, letters, or reports using structured templates and form-driven inputs.",
@@ -163,21 +69,21 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "Why it matters; Risk assessment: Autonomy & actions; rationale: risk",
-      "type": "record",
-      "claim": "Document generation can run as part of an automated flow rather than requiring a person to submit each document manually.",
+      "n": 5,
+      "where": "summary; What's changing; rationale: impact",
+      "type": "behaviour",
+      "claim": "The capability involves makers building flows and content managers creating and configuring document generation forms.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "We are introducing a new Power Automate action that enables automated document generation using document generation (DocGen) forms in SharePoint. Documents are generated as part of an automated flow and stored in SharePoint.",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
+      "quote": "Content manager (template creator) - Creates and governs templates and forms. They define the document structure, required fields, and conditional rules",
       "severity": null,
       "fix": null
     },
     {
-      "n": 14,
+      "n": 6,
       "where": "What's changing; Scope: Template",
       "type": "behaviour",
-      "claim": "Document generation forms use Microsoft Word documents in .docx format as their source templates.",
+      "claim": "The source template must be a Word document in .docx format.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
       "quote": "The source document must be a Microsoft Word document (.docx format).",
@@ -185,21 +91,21 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 7,
       "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Content managers begin creating a document generation form from the Forms command in a document library.",
+      "type": "admin-path",
+      "claim": "Form creation starts from the Forms command in a SharePoint document library.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
-      "quote": "In a SharePoint document library, select Forms from the command bar. Select Document generation form to start the form creation process.",
+      "quote": "In a SharePoint document library, select Forms from the command bar.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 16,
+      "n": 8,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Submitting a form merges its values into a document saved in the library folder configured for the form.",
+      "claim": "Generated documents are stored in the library folder associated with the form by its creator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
       "quote": "Open the folder that's linked with the form. Each generated document is stored here with the submitted values merged into the template.",
@@ -207,8 +113,19 @@
       "fix": null
     },
     {
-      "n": 17,
-      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "n": 9,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Submitting a document generation form automatically creates a document with the submitted values merged into its template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
+      "quote": "When a user submits a form, the system automatically generates a new document from the template with the submitted values merged into the appropriate fields.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
       "type": "behaviour",
       "claim": "Form submitted (Preview) triggers a flow when a form is submitted.",
       "status": "supported",
@@ -218,10 +135,10 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "n": 11,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Get form metadata (Preview) retrieves form structure for mapping responses to fields.",
+      "claim": "Get form metadata (Preview) retrieves the form structure for mapping responses to fields.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
       "quote": "Get form metadata (Preview) retrieves the form structure, so you can map responses to fields without manual configuration.",
@@ -229,21 +146,109 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 12,
       "where": "What's changing; Risk assessment: Change & support; Governance guidance; Open questions",
       "type": "availability",
-      "claim": "Learn labels Generate document from form as Preview, despite the roadmap's Launched status.",
+      "claim": "Learn labels all three Power Automate items Preview despite the roadmap's Launched status.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
-      "quote": "Generate document from form (Preview) creates documents by mapping input data to a document generation template and saves the output to a SharePoint library.",
+      "quote": "Form submitted (Preview) ... Get form metadata (Preview) ... Generate document from form (Preview)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: status; What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: releasePhase; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview as release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and does not list other clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Power Automate, SharePoint and Microsoft Copilot (Microsoft 365) as products.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Power Automate\", \"SharePoint\", \"Microsoft Copilot (Microsoft 365)\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "What's changing; Why it matters",
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-11-04T00:02:09.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-04T00:02:09\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
       "type": "availability",
-      "claim": "The SharePoint connector documentation describes document generation forms as part of AI in SharePoint Public Preview.",
+      "claim": "The SharePoint connector documentation calls document generation forms part of AI in SharePoint Public Preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/connectors/sharepointonline/",
       "quote": "Document generation forms is a part of AI in SharePoint Public Preview.",
@@ -251,21 +256,21 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 22,
       "where": "Why it matters; Scope: Rollout",
       "type": "availability",
-      "claim": "The connector guidance says access to document generation capabilities may be limited to preview programme customers.",
+      "claim": "The SharePoint connector overview says access to document generation capabilities may be limited to preview-programme customers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/dev/business-apps/power-automate/sharepoint-connector-actions-triggers",
-      "quote": "Document generation forms are part of AI in SharePoint Public Preview. Access to document generation capabilities may be limited to customers enrolled in the preview program.",
+      "quote": "Access to document generation capabilities may be limited to customers enrolled in the preview program.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 22,
+      "n": 23,
       "where": "Scope: Rollout",
       "type": "availability",
-      "claim": "The connector guidance's action section says document generation forms are available only to customers enrolled in the preview programme.",
+      "claim": "The overview's document generation action section says document generation forms are available only to preview-programme customers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/dev/business-apps/power-automate/sharepoint-connector-actions-triggers",
       "quote": "Document generation forms are part of AI in SharePoint Public Preview and are available only to customers enrolled in the preview program.",
@@ -273,29 +278,51 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "front matter: licensing.notes; Risk assessment; Cost and licensing; Scope; rationale: cost",
-      "type": "licensing",
-      "claim": "Content managers who create and configure forms must have a Microsoft Copilot licence assigned.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
-      "quote": "Content managers, or users who create and configure forms, must have a Microsoft Copilot license assigned.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 24,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "Per-user licensing describes the assigned licence prerequisite for the people who create forms.",
+      "where": "front matter: defaultState; Why it matters; Scope: Rollout",
+      "type": "absence",
+      "claim": "Microsoft has not stated the default arrival state of this Power Automate action.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
-      "quote": "Content managers, or users who create and configure forms, must have a Microsoft Copilot license assigned.",
+      "source": null,
+      "quote": "Searched: \"document generation forms\" \"default\". Read roadmap, structured-generation page, connector overview/reference and Copilot in SharePoint get-started; no action-specific arrival default.",
       "severity": null,
       "fix": null
     },
     {
       "n": 25,
+      "where": "Scope: Rollout; Why it matters",
+      "type": "absence",
+      "claim": "No rollout mechanism for this action beyond the roadmap and stated preview-access qualifications is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint document generation forms administrator disable tenant site Set-SPOTenant default rollout. Read roadmap, structured-generation, connector overview/reference and Copilot get-started; no specific action rollout mechanism.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The per-user licensing model reflects the assigned Copilot licence prerequisite for form creators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
+      "quote": "Content managers, or users who create and configure forms, must have a Microsoft Copilot license assigned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: licensing.notes; Risk assessment; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Content managers who create and configure forms need a Microsoft Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
+      "quote": "Content managers, or users who create and configure forms, must have a Microsoft Copilot license assigned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
       "where": "Risk assessment: Security & identity; Cost and licensing; Scope; Governance guidance; Governance controls",
       "type": "role",
       "claim": "Creating a form requires Edit permissions on the SharePoint document library.",
@@ -306,10 +333,10 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 29,
       "where": "Scope: Who submits; rationale: impact",
       "type": "behaviour",
-      "claim": "Form submitters need the shared form link.",
+      "claim": "Form submitters use the shared form link.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
       "quote": "Form submitters need only the form link (Read access to the template is granted automatically).",
@@ -317,10 +344,10 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 30,
       "where": "Scope: Who submits",
       "type": "behaviour",
-      "claim": "Form submitters automatically receive Read access to the template.",
+      "claim": "Read access to the template is granted automatically to form submitters.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
       "quote": "Form submitters need only the form link (Read access to the template is granted automatically).",
@@ -328,10 +355,10 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 31,
       "where": "Scope: Who submits",
       "type": "behaviour",
-      "claim": "Submitting a form does not require access to the destination document library.",
+      "claim": "Submitting a form does not require access to its destination library.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
       "quote": "You don't need access to the destination document library to submit the form. You only need access to view the generated document afterward.",
@@ -339,10 +366,10 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 32,
       "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Form submitters do not automatically receive access to the destination library.",
+      "claim": "Form submitters do not automatically receive destination-library access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
       "quote": "Form submitters don't automatically receive access to the destination document library.",
@@ -350,7 +377,7 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 33,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Access to view generated documents must be granted separately, or the form creator can enable the receipt option.",
@@ -361,21 +388,10 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Users with read access to a generated document can read the values merged into that document.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
-      "quote": "Each generated document is stored here with the submitted values merged into the template. You only need access to view the generated document afterward.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
+      "n": 34,
       "where": "Risk assessment: Change & support; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "PDF generation does not work if sensitivity labels are enabled for the site or library.",
+      "type": "applicability",
+      "claim": "PDF generation does not work when sensitivity labels are enabled for the site or library.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
       "quote": "PDF generation doesn't work if sensitivity labels are enabled for the site or library.",
@@ -383,7 +399,7 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 35,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "Learn says support for PDF generation with sensitivity labels is coming soon.",
@@ -394,10 +410,32 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 36,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The values merged into a generated document are visible to readers of that document.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
+      "quote": "Each generated document is stored here with the submitted values merged into the template.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Why it matters; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "Document generation can run as part of an automated flow rather than requiring a person to submit the form at the keyboard.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Documents are generated as part of an automated flow and stored in SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Learn names approvals and notifications as workflows that can follow form submission.",
+      "claim": "Learn lists approvals and notifications as workflows that form submission can start.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
       "quote": "Form submitted (Preview) triggers a flow when a form is submitted, so you can start workflows such as approvals or notifications.",
@@ -405,65 +443,43 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 39,
       "where": "Risk assessment: Security & identity; Open questions",
       "type": "absence",
-      "claim": "Microsoft Learn does not specify which identity this document generation action runs under.",
+      "claim": "Learn does not identify which identity this action uses to write generated documents.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Generate a document from a form\" connection identity authentication; SharePoint \"document generation\" \"identity\" \"connection\". Opened structured document generation, connector guidance and SharePoint connector reference, including its connection and SubmitDocGenForm sections.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "front matter: defaultState; Why it matters; Scope: Rollout; rationale: impact",
-      "type": "default",
-      "claim": "Microsoft has not stated the action's default state, rollout mechanism or a change to existing users' behaviour on arrival.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: SharePoint document generation forms rollout default admin switch enable disable preview; \"document generation forms\" \"default\" rollout. Read roadmap, structured document generation, connector guidance and connector reference; these give Preview availability, not an arrival default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The structured document generation page does not name a licence for form submitters.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
-      "quote": "Content managers, or users who create and configure forms, must have a Microsoft Copilot license assigned. Form submitters need only the form link (Read access to the template is granted automatically).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "The structured document generation page gives no price.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-structured-document-generation",
-      "quote": "Prerequisites: Content managers, or users who create and configure forms, must have a Microsoft Copilot license assigned. To create a form, users must have Edit permissions on the document library. The source document must be a Microsoft Word document (.docx format).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Generate a document from a form (preview) is an operation of the Standard SharePoint connector in Power Automate.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/connectors/sharepointonline/",
-      "quote": "| **Power Automate** | Standard | All Power Automate regions | Generate a document from a form (preview) | Use this action to create documents from a document generation template.",
+      "quote": "Searched: \"Generate document from form\" \"identity\"; \"SubmitDocGenForm\" connection user permissions. Read structured-generation, connector overview, SubmitDocGenForm and connector authentication; no execution identity stated.",
       "severity": null,
       "fix": null
     },
     {
       "n": 40,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The SharePoint connector is classified Standard for Power Automate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/connectors/sharepointonline/",
+      "quote": "| Power Automate | Standard | All Power Automate regions |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.notes; Cost and licensing; controls[0].note; rationale: cost",
+      "type": "applicability",
+      "claim": "Generate a document from a form (preview) is an operation of the SharePoint connector.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/connectors/sharepointonline/",
+      "quote": "Generate a document from a form (preview)\n\n- Operation ID:\n    - SubmitDocGenForm",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Standard connector entitlement is required to add and trigger a standard connector in a cloud flow and therefore applies to this action.",
+      "claim": "Using a standard connector in a cloud flow requires the standard-connectors entitlement.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types",
       "quote": "The standard connectors entitlement is needed to add a standard connector to a cloud flow and trigger it.",
@@ -471,7 +487,7 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 43,
       "where": "Cost and licensing",
       "type": "licensing",
       "claim": "Power Automate Free includes creating and running cloud flows without sharing, limited to standard connectors.",
@@ -482,65 +498,87 @@
       "fix": null
     },
     {
-      "n": 42,
-      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "Microsoft has not published an additional action-specific licence requirement.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Generate a document from a form\" license meter pricing; SharePoint \"document generation forms\" pricing storage licence. Read structured document generation, SharePoint connector and Power Automate licence types; no additional SubmitDocGenForm licence requirement stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Cost and licensing; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not published a meter specific to this action.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Generate a document from a form\" license meter pricing; SharePoint \"document generation\" \"Power Automate\" \"credits\" license pricing. Read connector reference, licence types and content assembly overview; content assembly pricing concerns a distinct modern-template operation.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 44,
-      "where": "Cost and licensing",
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
       "type": "absence",
-      "claim": "Microsoft has not published an action-specific credit rate.",
+      "claim": "Microsoft has not published an additional licence requirement specific to this action.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: SharePoint \"document generation\" \"Power Automate\" \"credits\" license pricing. Read structured document generation, SharePoint connector reference and Power Automate licence types; none states a credit rate for SubmitDocGenForm.",
+      "quote": "Searched: \"Generate a document from a form\" \"license\". Read structured-generation prerequisites, SharePoint connector reference, Power Automate licence types, Copilot licensing and SharePoint get-started; no extra action-specific requirement.",
       "severity": null,
       "fix": null
     },
     {
       "n": 45,
-      "where": "Cost and licensing: indirect costs",
+      "where": "Cost and licensing; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not published a figure for the maker time needed to map this action's fields.",
+      "claim": "Microsoft has not published a meter specific to this action.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"structured document generation\" storage pricing cost maker. Read structured document generation and the SharePoint connector action parameters; they describe mapping fields but give no maker-time estimate.",
+      "quote": "Searched: SharePoint Generate document from form Power Automate licensing meter credits connection identity; \"document generation\" \"SharePoint\" \"credits\". Read structured-generation, connector, Power Automate licence and Copilot in SharePoint billing text; no action-specific meter.",
       "severity": null,
       "fix": null
     },
     {
       "n": 46,
-      "where": "Cost and licensing: indirect costs",
+      "where": "Cost and licensing",
       "type": "absence",
-      "claim": "Microsoft has not published a figure for SharePoint library storage costs for generated files.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-pay-as-you-go-services?view=o365-worldwide#storage-services",
-      "quote": "| Microsoft 365 SharePoint Storage | The number of gigabytes (GB) of data that exceeds the SharePoint tenant quota. | $0.20/GB/month (shows on invoice as $0.00667/GB/day) |",
-      "severity": "blocker",
-      "fix": "Remove 'Microsoft has not published a figure for either.' Keep the preceding sentence about maker time and SharePoint library storage; it does not claim that general storage pricing is unpublished."
+      "claim": "Microsoft has not published a credit rate specific to this action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"document generation\" \"SharePoint\" \"credits\"; SharePoint Generate document from form Power Automate licensing meter credits connection identity. Opened connector, structured-generation, licence types and Copilot in SharePoint get-started; no rate for SubmitDocGenForm.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 47,
-      "where": "controls[0].note; controls[0].governs; Governance controls",
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The structured document generation page does not name a licence for form submitters.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint \"structured document generation\" \"licensing\"; \"Generate a document from a form\" \"license\". Read the structured-generation page's prerequisites and requirements: the licence prerequisite names content managers, not submitters.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The structured document generation page gives no price.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint \"structured document generation\" \"licensing\"; \"document generation\" \"SharePoint\" \"credits\". Read the structured-generation page in full; it lists a Copilot licence prerequisite but no price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Power Platform admin center > Security > Settings > Data and privacy > Data policy > + New Policy > Pre-built connectors > SharePoint > Move to Business reaches connector classification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
+      "quote": "In the Security pane, under Settings, select Data and privacy. ... select the Data policy section. Select + New Policy. ... In the Pre-built connectors page ... select the Salesforce and SharePoint connectors, and then select Move to Business",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "Add-ConnectorsToPolicy -PolicyName <policy GUID> -Classification Confidential -Connectors <connector objects> adds or moves connectors to a policy's Business group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy",
+      "quote": "Add-ConnectorsToPolicy -PolicyName 7b914a18-ad8b-4f15-8da5-3155c77aa70a -Connectors $connectorsToClassifyAsBusiness -Classification Confidential Adds the MSN Weather connector to the Business group of the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[0].governs; controls[0].scope; controls[0].note; Governance controls",
       "type": "applicability",
-      "claim": "Data policies govern which connectors flows in the scoped environments can combine with the SharePoint connector.",
+      "claim": "Data policies control which other connectors flows in the policy's environments may combine with SharePoint.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
       "quote": "By moving the Salesforce and SharePoint connectors to the Business data group, you're preventing users from creating flows and apps that combine these two connectors with any of the connectors in the Non-business or Blocked groups.",
@@ -548,32 +586,10 @@
       "fix": null
     },
     {
-      "n": 48,
-      "where": "controls[0].ui; Governance controls: table",
-      "type": "admin-path",
-      "claim": "Security > Settings > Data and privacy > Data policy reaches the control that sets which connectors a flow may combine with SharePoint.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
-      "quote": "Select the Data policy section. Select + New Policy. In the Pre-built connectors page, review the various attributes and settings you can make on the Assign connectors screen. Select the Salesforce and SharePoint connectors, and then select Move to Business from the top menu bar.",
-      "severity": "blocker",
-      "fix": "The printed labels are present, as the pre-check found, but the path ends at the policy list rather than connector classification. Replace the path with 'Security > Settings > Data and privacy > Data policy > + New Policy > Pre-built connectors > SharePoint > Move to Business'. The cited page documents this route for putting SharePoint in the Business group; its later environment scope and confirmation steps remain in the reference."
-    },
-    {
-      "n": 49,
-      "where": "controls[0].api; Governance controls: table",
-      "type": "command",
-      "claim": "New-DlpPolicy -DisplayName <policy name> -EnvironmentType <environment type> sets which connectors may be combined with SharePoint.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy",
-      "quote": "The New-DlpPolicy cmdlet creates a new DLP policy for the logged in admin's tenant. -DisplayName: Creates the policy with the input display name. -EnvironmentType: The type of the environment: trial, production, sandbox, default.",
-      "severity": "blocker",
-      "fix": "The command and its printed parameters exist, but this invocation only creates the policy and supplies no connector classification. Replace controls[0].api.call with 'Add-ConnectorsToPolicy -PolicyName <policy GUID> -Classification Confidential -Connectors <connector objects>' and its docs URL with 'https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy'. Add that URL to sources. The reference says this operation adds or moves the supplied connectors to the Business group; each connector object requires id, type and name."
-    },
-    {
-      "n": 50,
+      "n": 52,
       "where": "Governance controls; rationale: risk",
       "type": "applicability",
-      "claim": "The data policy page says SharePoint cannot be placed in the Blocked group through the Block action.",
+      "claim": "The data policy page says SharePoint cannot be placed in the Blocked group.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
       "quote": "For connectors like SharePoint that aren't blockable, the Block action isn't available and a warning appears.",
@@ -581,52 +597,63 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "Governance controls: roles",
-      "type": "role",
-      "claim": "The data policy page requires Environment Admin or Power Platform admin permissions to create, edit or delete policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
-      "quote": "To create, edit, or delete data policies, you must have either Environment Admin or Power Platform admin permissions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "Governance controls: roles",
-      "type": "role",
-      "claim": "For environments with a Dataverse database, System Administrator replaces the preceding Environment Admin or Power Platform admin role requirement.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
-      "quote": "Tenant-level policies: sign in as a user with the Power Platform Administrator role. Environment-level policies: you need to have Power Apps Environment Admin permissions. For environments with a Dataverse database, you need to be assigned the System Administrator role instead.",
-      "severity": "blocker",
-      "fix": "Replace the role sentence with 'Tenant-level data policies require the Power Platform Administrator role. Environment-level data policies require Power Apps Environment Admin permissions, or the System Administrator role for environments with a Dataverse database.' The Dataverse exception replaces Environment Admin for environment-level policies, not Power Platform Administrator for tenant-level policies."
-    },
-    {
       "n": 53,
-      "where": "Governance controls: tenant switch; Open questions",
-      "type": "absence",
-      "claim": "Microsoft Learn does not document a tenant-wide switch specifically for document generation forms or their three Power Automate operations as of November 2026.",
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "The documented tenant-level data policy steps require the Power Platform Administrator role.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: SharePoint \"document generation forms\" \"tenant\" disable admin; \"document generation\" \"Set-SPOTenant\" disable forms. Read structured document generation, connector guidance and reference, and returned Set-SPOTenant excerpts; no feature-specific tenant switch found.",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
+      "quote": "To follow the steps described in this article for tenant-level policies, sign in as a user with the Power Platform Administrator role.",
       "severity": null,
       "fix": null
     },
     {
       "n": 54,
-      "where": "Governance guidance; Governance controls: table",
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Environment-level data policy steps require Power Apps Environment Admin permissions outside the Dataverse-database exception.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
+      "quote": "To follow the steps for environment-level policies, you need to have Power Apps Environment Admin permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Environment-level policies in environments with a Dataverse database instead require the System Administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
+      "quote": "For environments with a Dataverse database, you need to be assigned the System Administrator role instead.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Learn does not document a tenant switch specifically for document generation forms or their three Power Automate items.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Set-SPOTenant\" \"DocGen\"; SharePoint \"document generation forms\" \"admin\". Read structured-generation, connector pages and Copilot get-started; searched Set-SPOTenant for DocGen, forms and document generation; no specific tenant switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance guidance: Before rollout and After rollout",
       "type": "consistency",
-      "claim": "The checklist tells readers to check library permissions and assigned Copilot licences, but the controls table contains only a data policy row.",
+      "claim": "The controls table covers every control the governance checklist asks administrators to review.",
       "status": "contradicted",
       "source": "page",
-      "quote": "Review Edit permissions on the libraries; Check which Microsoft Copilot licences are assigned; Review the destination libraries for who can open the generated documents. The sole controls row governs which connectors flows may combine with SharePoint.",
+      "quote": "Review Edit permissions on the libraries ... Check which Microsoft Copilot licences are assigned ... Review the destination libraries for who can open the generated documents. The sole table row concerns connector combinations.",
       "severity": "minor",
-      "fix": "The Before rollout checks of library Edit permissions and assigned Copilot licences, and the After rollout check of document access permissions, have no corresponding controls-table rows. The tenant-switch absence stated in Governance controls is also not represented in the table."
+      "fix": "The Before rollout steps to review library Edit permissions and Copilot licence assignments, and the After rollout step to review generated-document access, have no corresponding controls-table rows."
     }
   ],
   "precheck": {
-    "at": "2026-11-18T09:02:05.963Z",
+    "at": "2026-11-18T14:04:49.353Z",
     "summary": {
       "links": 8,
       "unreachable": 0,
@@ -668,7 +695,7 @@
         "status": 200
       },
       {
-        "url": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy",
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy",
         "ok": true,
         "status": 200
       },
@@ -689,7 +716,11 @@
           "Security",
           "Settings",
           "Data and privacy",
-          "Data policy"
+          "Data policy",
+          "+ New Policy",
+          "Pre-built connectors",
+          "SharePoint",
+          "Move to Business"
         ],
         "missing": []
       },
@@ -697,9 +728,9 @@
         "index": 0,
         "side": "api",
         "governs": "Which connectors flows in an environment may combine with the SharePoint connector",
-        "docs": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy",
         "reachable": true,
-        "token": "New-DlpPolicy",
+        "token": "Add-ConnectorsToPolicy",
         "found": true
       }
     ],
@@ -710,6 +741,12 @@
       "date": "2026-11-18",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-18",
+      "status": "held",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

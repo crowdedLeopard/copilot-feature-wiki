@@ -46,6 +46,18 @@ sources:
   - title: "copilotPackage: block"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
     kind: "learn"
+  - title: "copilotPackage: reject"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-reject"
+    kind: "learn"
+  - title: "Supported Agent resources for Tenant Configuration Management (preview)"
+    url: "https://learn.microsoft.com/graph/utcm-agent-resources"
+    kind: "learn"
+  - title: "Supported resources for remediation and applyOnce (preview)"
+    url: "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources"
+    kind: "learn"
+  - title: "Create configurationMonitor"
+    url: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
+    kind: "learn"
   - title: "Control how agents are shared"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits"
     kind: "learn"
@@ -74,7 +86,7 @@ sources:
     url: "https://learn.microsoft.com/copilot/manage/copilot-agent-store"
     kind: "learn"
 videos: []
-related: ["work-iq-agent-policy-governance"]
+related: []
 controls:
   - governs: "Automated lifecycle rules for agents"
     scope: "tenant"
@@ -101,17 +113,25 @@ controls:
       surface: "Microsoft 365 admin center"
       path: "Agents > Settings > User access"
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access"
-    api: null
+    api:
+      kind: "graph"
+      call: "POST /beta/admin/configurationManagement/configurationMonitors"
+      docs: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
+    note: "Preview; production use unsupported. mode applyOnce; baseline resourceType microsoft.agent.useraccess, userAssignmentCategory everyone or noOne. Needs AI Administrator and delegated ConfigurationMonitoring.ReadWrite.All."
   - governs: "Approving or rejecting agent publish requests"
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
       path: "Agents > All agents > Requests > agent > Publish to store / Reject submission"
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests#actions-for-requested-agents"
-    api: null
+    api:
+      kind: "graph"
+      call: "POST /beta/copilot/admin/catalog/packages/{packageId}/reject"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-reject"
+    note: "Beta, rejection only; production use unsupported. Needs Agent 365 and CopilotPackages.ReadWrite.All. Rejects a pending title submission, not an individual user request; supply the matching version."
 confidence: "high"
 created: "2026-11-13"
-updated: "2026-11-18"
+updated: "2026-11-19"
 roadmapModified: "2026-05-12T23:00:33"
 changes:
   - date: "2026-11-13"
@@ -132,19 +152,25 @@ changes:
     note: "Corrected the user-access and publish-request admin paths to the current Learn pages, and replaced the retired inventory filter labels with the Agents without owners card."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 72 statements confirmed"
-version: 5
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 74 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-19"
+    note: "Corrected the API side of the user access and publish-request controls: both now name the preview Microsoft Graph operations that Microsoft Learn documents."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
+version: 6
 verification:
-  status: "verified"
-  date: "2026-11-18"
-  version: 5
+  status: "verified-with-gaps"
+  date: "2026-11-19"
+  version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
-  confirmed: 72
+  claims: 77
+  confirmed: 76
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
-  hash: "0fe169e8808ee2f5a89d280783af7c36"
+  hash: "78c8b041ee22f25e4de9bb5ed4e5c724"
 ---
 
 ## What's changing
@@ -213,8 +239,8 @@ Rules let you apply a written lifecycle policy in bulk after you have reviewed t
 <tbody>
 <tr><td data-label="Control"><strong>Automated lifecycle rules for agents</strong><br><small>Tenant</small><br><small class="controls__note">Rules include installing Microsoft agents, reassigning ownerless Agent Builder agents to the manager, blocking ownerless agents without usage, applying a template (one-time) and rejecting stale publish requests.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › Agent management rules › Add rule <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#agent-management-rules" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Manual block or unblock for an agent</strong><br><small>Agent</small><br><small class="controls__note">Graph side is beta and block only; production use is unsupported. Needs delegated CopilotPackages.ReadWrite.All (no application permission) and an Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block / Unblock <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions#block-or-unblock-agents" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Who may use agents</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Approving or rejecting agent publish requests</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › Requests › agent › Publish to store / Reject submission <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests#actions-for-requested-agents" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Who may use agents</strong><br><small>Tenant</small><br><small class="controls__note">Preview; production use unsupported. mode applyOnce; baseline resourceType microsoft.agent.useraccess, userAssignmentCategory everyone or noOne. Needs AI Administrator and delegated ConfigurationMonitoring.ReadWrite.All.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Approving or rejecting agent publish requests</strong><br><small>Tenant</small><br><small class="controls__note">Beta, rejection only; production use unsupported. Needs Agent 365 and CopilotPackages.ReadWrite.All. Rejects a pending title submission, not an individual user request; supply the matching version.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › Requests › agent › Publish to store / Reject submission <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-requests#actions-for-requested-agents" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{packageId}/reject</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-reject" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -234,4 +260,10 @@ Agents built in Copilot Studio can also be governed by sharing limits, which you
 risk: Low. Reduces sprawl; main hazards are over-aggressive automation and inaccurate manager data.
 cost: None. Included in Copilot controls.
 impact: Medium. Users can lose agents; managers inherit ownership.
+-->
+
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist asks administrators to check Entra manager attributes, but the controls table has no corresponding row. | Found: Check manager attributes in Entra for the maker population of Agent Builder agents so reassignment works. The table covers lifecycle rules, block/unblock, user access and publish requests, not manager attributes. | Fix: The checklist step 'Check manager attributes in Entra for the maker population of Agent Builder agents so reassignment works' has no controls-table row. Remove that checklist bullet; retain the existing explanation that reassignment depends on accurate manager data.
 -->
