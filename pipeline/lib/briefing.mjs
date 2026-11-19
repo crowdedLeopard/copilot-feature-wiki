@@ -8,6 +8,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { briefingOutput, featureFrontmatter, isAllowedSourceUrl } from './schema.mjs';
 import { renderBriefing, API_KIND_LABEL } from './render.mjs';
+import { lifecycleFields } from './lifecycle.mjs';
 import { RAW_DIR, WIKI_DIR, FEATURES_DIR, DATA_DIR, readJson, today } from './util.mjs';
 import { HELD_DIR, withCurrentFindingsComment } from './verify.mjs';
 import { TOPIC_IDS, TOPIC_BY_ID, topicForProducts } from '../../config/taxonomy.mjs';
@@ -120,10 +121,13 @@ export async function loadExisting(slug) {
   try {
     const existing = await fs.readFile(file, 'utf8');
     const yaml = existing.match(/^---\n([\s\S]*?)\n---/)?.[1] || '';
+    // The archived block is set by lib/lifecycle.mjs (archiveBriefing) and carried over by writeBriefingPage.
+    const archived = yaml.match(/^archived:\n  reason: "(cancelled|removed)"\n  date: "(\d{4}-\d{2}-\d{2})"\n  lastSeen: (null|"\d{4}-\d{2}-\d{2}")/m);
     const existingFm = {
       created: yaml.match(/^created:\s*"([^"]+)"/m)?.[1],
       version: Number(yaml.match(/^version:\s*(\d+)/m)?.[1] || 1),
       changes: [...yaml.matchAll(/- date: "(\d{4}-\d{2}-\d{2})"\n\s+note: "((?:[^"\\]|\\.)*)"/g)].map((m) => ({ date: m[1], note: JSON.parse(`"${m[2]}"`) })),
+      ...(archived ? { archived: { reason: archived[1], date: archived[2], lastSeen: JSON.parse(archived[3]) } } : {}),
     };
     return { file, existing, existingFm };
   } catch {
@@ -273,7 +277,7 @@ export function mergeControlDocsIntoSources(sources, controls = []) {
  * Validate a structured output and write the page. Throws with a readable message on schema
  * failure. Returns { file, slug, title }.
  */
-export async function writeBriefingPage(item, rawOutput, { slug, existingFm, indexSlugs }) {
+export async function writeBriefingPage(item, rawOutput, { slug, existingFm, indexSlugs, restore = false }) {
   const parsed = briefingOutput.safeParse(rawOutput);
   if (!parsed.success) {
     throw new Error('Output failed schema: ' + parsed.error.issues.map((i) => i.path.join('.') + ' ' + i.message).join('; '));
@@ -300,7 +304,7 @@ export async function writeBriefingPage(item, rawOutput, { slug, existingFm, ind
   sources = mergeControlDocsIntoSources(sources, controls);
   const fm = {
     title: out.title, slug, roadmapId: item.id, topic: item.topic, products: item.products, summary: out.summary,
-    status: item.statusKey, releasePhase: item.releasePhase, clouds: item.clouds, platforms: item.platforms,
+    ...lifecycleFields(item, existingFm, { restore }), releasePhase: item.releasePhase, clouds: item.clouds, platforms: item.platforms,
     targetDate: item.targetDate, previewDate: item.previewDate || null,
     risk: out.risk, cost: out.cost, impact: out.impact, defaultState: out.defaultState, action: out.action,
     licensing: { model: out.licensingModel, notes: out.licensingNotes },

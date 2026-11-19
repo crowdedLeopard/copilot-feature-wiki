@@ -39,6 +39,20 @@ export function archiveNote(reason, lastSeen) {
 }
 
 /**
+ * The lifecycle-owned front matter a rewrite carries over. The `archived` block and the cancelled status that goes
+ * with a cancellation belong to this module, not to the writer: a correction or refresh of an archived page keeps
+ * them, so a check that faults something else on the page cannot put the page back online (a correction did that
+ * on 19 Nov 2026). Only a `restored` task, queued when the item is back on the roadmap, drops them.
+ */
+export function lifecycleFields(item, existingFm, { restore = false } = {}) {
+  const archived = !restore && existingFm?.archived ? existingFm.archived : null;
+  return {
+    status: archived?.reason === 'cancelled' ? 'cancelled' : item.statusKey,
+    ...(archived ? { archived } : {}),
+  };
+}
+
+/**
  * Archive one briefing in place. Touches only the front-matter lines it owns: status (cancelled
  * only), updated, the changes list and a new `archived` block. The result is validated against the
  * briefing schema before anything is written. Returns the change note, or null if already archived.

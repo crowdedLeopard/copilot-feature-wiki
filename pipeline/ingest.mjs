@@ -128,6 +128,11 @@ async function main() {
     } else if (item) {
       lifecycle.seen[id] = today();
       delete lifecycle.missing[id];
+    } else if ((await readJson(path.join(ITEMS_DIR, `${id}.json`)))?.statusKey === 'cancelled') {
+      // Microsoft drops a cancelled item from the feed soon after marking it cancelled. Its last record is
+      // Microsoft's last word on it, so the page is archived as cancelled rather than waiting out the grace.
+      if (await archiveBriefing(brief.slug, { reason: 'cancelled', lastSeen: lifecycle.seen[id] || null })) archivedNow.push(`${brief.slug} (cancelled by Microsoft, then removed from the roadmap)`);
+      delete lifecycle.seen[id]; delete lifecycle.missing[id];
     } else {
       const gone = lifecycle.missing[id] || { lastSeen: lifecycle.seen[id] || null, missingSince: today() };
       lifecycle.missing[id] = gone;
@@ -139,16 +144,23 @@ async function main() {
   }
   await writeJson(path.join(DATA_DIR, 'lifecycle.json'), { generated: new Date().toISOString(), graceDays: REMOVED_GRACE_DAYS, seen: lifecycle.seen, missing: lifecycle.missing });
 
-  for (const item of inScope) {
+  // The raw record is what the writer and the independent check treat as authoritative for status and dates, so it
+  // has to follow a cancellation too: a cancelled item that already has a record or a briefing is recorded as
+  // cancelled, and a status change counts as a change even when Microsoft leaves the modified date alone. (On
+  // 19 Nov 2026 a page was archived as cancelled while its record still said Launched; the check faulted the page
+  // for contradicting the record and the correction put it back online.) Cancelled items are not queued.
+  for (const item of feed) {
     const file = path.join(ITEMS_DIR, `${item.id}.json`);
     const prev = await readJson(file);
+    const brief = briefings.get(item.id);
+    if (item.statusKey === 'cancelled' && !prev && !brief) continue;
     const isNew = !prev;
-    const isChanged = prev && prev.modified !== item.modified;
+    const isChanged = prev && (prev.modified !== item.modified || prev.status !== item.status);
     if (isNew || isChanged) {
       await writeJson(file, { ...item, fetchedAt: new Date().toISOString() });
       if (isNew) added++; else changed++;
     }
-    const brief = briefings.get(item.id);
+    if (item.statusKey === 'cancelled') continue;
     const posts = messagesForRoadmap(messages, item.id);
     if (posts.length) withPosts++;
     let reason = null;
