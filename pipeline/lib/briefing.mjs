@@ -120,7 +120,7 @@ export async function siblingsFor(item, { index, pages } = {}) {
     if (Number(sib.id) === Number(item.id)) continue;
     out.push({
       id: sib.id, title: sib.title, status: sib.status, targetDate: sib.targetDate, previewDate: sib.previewDate,
-      clouds: sib.clouds, platforms: sib.platforms, releasePhase: sib.releasePhase, modified: sib.modified,
+      clouds: sib.clouds, platforms: sib.platforms, releasePhase: sib.releasePhase, products: sib.products, modified: sib.modified,
       roadmapUrl: sib.roadmapUrl, briefing: await existingSlugForRoadmapId(sib.id, pages),
     });
   }
@@ -140,6 +140,44 @@ export function titleForPage(title, item, siblings = []) {
   if (shorts.some((s) => new RegExp(`\\b${s.replace(/\s+/g, '\\s+')}\\b`, 'i').test(title))) return title;
   const suffix = ` (${shorts.join(', ')})`;
   return title.length + suffix.length <= 160 ? title + suffix : title;
+}
+
+const sortedList = (xs) => [...(xs || [])].map(String).sort().join('|');
+
+/**
+ * Two roadmap items are the same listing when everything a page would state about them agrees: clouds, platforms,
+ * release phases, dates and products. Status and the modified date are left out, since Microsoft moves the two
+ * entries at different times. Such a pair is Microsoft listing one feature twice, not a cloud or platform variant.
+ */
+export function sameRecord(a, b) {
+  return sortedList(a.clouds) === sortedList(b.clouds)
+    && sortedList(a.platforms) === sortedList(b.platforms)
+    && sortedList(a.releasePhase) === sortedList(b.releasePhase)
+    && sortedList(a.products) === sortedList(b.products)
+    && (a.targetDate || null) === (b.targetDate || null)
+    && (a.previewDate || null) === (b.previewDate || null);
+}
+
+/**
+ * The twin whose page covers this item: a sibling with the same record that already has a briefing (or, with
+ * `also`, one being written in the same run). An item with a page of its own is never covered. Null for most items.
+ * A covered item is not queued and not written; the covering page lists its roadmap id among its sources.
+ */
+export function coveredBy(item, siblings = [], { also = new Set(), ownPage = false } = {}) {
+  if (ownPage) return null;
+  return siblings.find((s) => (s.briefing || also.has(Number(s.id))) && sameRecord(item, s)) || null;
+}
+
+/** Source rows for the roadmap ids this page also covers (coveredBy), added to those already present. */
+export function duplicateSources(item, siblings = [], sources = []) {
+  const urls = new Set(sources.map((s) => String(s.url).replace(/\/+$/, '').toLowerCase()));
+  const out = [...sources];
+  for (const s of siblings) {
+    if (!sameRecord(item, s) || !s.roadmapUrl || urls.has(String(s.roadmapUrl).replace(/\/+$/, '').toLowerCase())) continue;
+    urls.add(String(s.roadmapUrl).replace(/\/+$/, '').toLowerCase());
+    out.push({ title: `Microsoft 365 Roadmap ${s.id} (the same feature, listed again)`, url: s.roadmapUrl, kind: 'roadmap' });
+  }
+  return out;
 }
 
 /**
@@ -271,7 +309,7 @@ export function linkCandidates(item, indexSlugs, max = 60) {
 export function siblingSection(item, siblings) {
   return `## Other roadmap items with this title
 
-Microsoft lists this feature under more than one roadmap item. This briefing is about item ${item.id} alone, and the page's front matter takes its clouds, dates and status from the record above. Each item below is a separate entry with its own status, dates, clouds and platforms, and has or will have its own briefing; \`briefing\` is that page's slug when it exists, for relatedSlugs. Where the records differ, state what this item covers (its clouds or platform) so a reader can tell the pages apart.
+Microsoft lists this feature under more than one roadmap item. This briefing is about item ${item.id} alone, and the page's front matter takes its clouds, dates and status from the record above. Each item below is a separate entry with its own status, dates, clouds and platforms, and has or will have its own briefing; \`briefing\` is that page's slug when it exists, for relatedSlugs. Where the records differ, name what this item covers (its clouds or its platform) in the title and the summary, so that a reader can tell the two pages apart. Where they do not differ, say that Microsoft lists the feature under both roadmap ids and name no difference between them.
 
 \`\`\`json
 ${JSON.stringify(siblings, null, 2)}
@@ -413,7 +451,7 @@ export async function writeBriefingPage(item, rawOutput, { slug, existingFm, ind
     .map((s) => ({ ...s, url: canonicalUrl(s.url) }))
     .filter((s) => { const key = s.url.replace(/\/+$/, '').toLowerCase(); return seenSource.has(key) ? false : seenSource.add(key); });
   if (!sources.some((s) => s.kind === 'roadmap')) sources.unshift({ title: `Microsoft 365 Roadmap ${item.id}`, url: item.roadmapUrl, kind: 'roadmap' });
-  sources = mergeControlDocsIntoSources(sources, controls);
+  sources = mergeControlDocsIntoSources(duplicateSources(item, siblings, sources), controls);
   const fm = {
     title: titleForPage(out.title, item, siblings), slug, roadmapId: item.id, topic: item.topic, products: item.products, summary: out.summary,
     ...lifecycleFields(item, existingFm, { restore }), releasePhase: item.releasePhase, clouds: item.clouds, platforms: item.platforms,

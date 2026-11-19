@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { slugForItem, siblingsFor, titleForPage, researchBrief } from './briefing.mjs';
+import { slugForItem, siblingsFor, titleForPage, researchBrief, sameRecord, coveredBy, duplicateSources } from './briefing.mjs';
 
 const WW = 'Worldwide (Standard Multi-Tenant)';
 const item = (id, title, clouds, extra = {}) => ({
@@ -91,6 +91,37 @@ test('titleForPage: a government twin names its clouds once; others keep the wri
   assert.equal(titleForPage('Microsoft Purview: Azure PST Import', gov, []), 'Microsoft Purview: Azure PST Import');
   const long = 'x'.repeat(150);
   assert.equal(titleForPage(long, gov, sibs), long);
+});
+
+test('sameRecord: the same listing agrees in clouds, platforms, phases, dates and products, whatever its status', () => {
+  const a = item(562222, 'Copilot Studio: agent node', [WW], { products: ['Microsoft Copilot Studio'], releasePhase: ['General Availability', 'Preview'], previewDate: 'April CY2026', status: 'Launched' });
+  const b = { ...a, id: 566998, status: 'Rolling out', modified: '2026-10-26T23:15:50', releasePhase: ['Preview', 'General Availability'] };
+  assert.equal(sameRecord(a, b), true);
+  assert.equal(sameRecord(a, { ...b, clouds: ['GCC'] }), false);
+  assert.equal(sameRecord(a, { ...b, platforms: ['Desktop'] }), false);
+  assert.equal(sameRecord(a, { ...b, targetDate: 'October CY2026' }), false);
+  assert.equal(sameRecord(a, { ...b, previewDate: null }), false);
+  assert.equal(sameRecord(a, { ...b, products: ['Microsoft Copilot Studio', 'Power Automate'] }), false);
+});
+
+test('coveredBy: a duplicate listing is covered by its briefed twin, or one written in this run; variants and items with a page are not', () => {
+  const dup = { ...ww, id: 566998 };
+  assert.equal(coveredBy(dup, [{ ...ww, briefing: base }])?.id, 557559);
+  assert.equal(coveredBy(dup, [{ ...ww, briefing: null }]), null);
+  assert.equal(coveredBy(dup, [{ ...ww, briefing: null }], { also: new Set([557559]) })?.id, 557559);
+  assert.equal(coveredBy(dup, [{ ...ww, briefing: base }], { ownPage: true }), null);
+  assert.equal(coveredBy(gov, [{ ...ww, briefing: base }]), null);
+  assert.equal(coveredBy(dup, []), null);
+});
+
+test('duplicateSources: the covered twin\'s roadmap id joins the sources once; a variant does not', () => {
+  const dup = { ...ww, id: 566998, roadmapUrl: 'https://www.microsoft.com/microsoft-365/roadmap?id=566998' };
+  const own = [{ title: 'Microsoft 365 Roadmap 557559', url: ww.roadmapUrl, kind: 'roadmap' }];
+  const out = duplicateSources(ww, [dup, gov], own);
+  assert.equal(out.length, 2);
+  assert.deepEqual(out[1], { title: 'Microsoft 365 Roadmap 566998 (the same feature, listed again)', url: dup.roadmapUrl, kind: 'roadmap' });
+  assert.equal(duplicateSources(ww, [dup], out).length, 2);
+  assert.equal(duplicateSources(ww, [gov], own).length, 1);
 });
 
 test('researchBrief: the sibling section carries the records and the twin page is offered as a link', async () => {
