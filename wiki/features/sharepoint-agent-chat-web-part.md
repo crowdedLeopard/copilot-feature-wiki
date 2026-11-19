@@ -34,13 +34,22 @@ sources:
   - title: "Governance and lifecycle actions for agents available in Microsoft 365 admin center"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions"
     kind: "learn"
-  - title: "Whether an agent can be used at all in the organisation (Microsoft Graph)"
+  - title: "copilotPackage: block"
     url: "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackage-block"
+    kind: "learn"
+  - title: "Set-SPOTenant"
+    url: "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant?view=sharepoint-ps"
+    kind: "learn"
+  - title: "Use developer mode in Microsoft 365 Copilot to test and debug agents"
+    url: "https://learn.microsoft.com/plugins/debugging-agents-copilot-studio"
+    kind: "learn"
+  - title: "Licensing for agents powered by the standard harness"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing"
     kind: "learn"
 videos: []
 related: ["m365-copilot-copilot-in-sharepoint","microsoft-teams-adaptive-card-based-app-and-copilot-agent-link-unfurling-in-teams","microsoft-copilot-studio-streamlining-experiences-from-copilot-studio-agents-in-m365-copil"]
 controls:
-  - governs: "Whether an agent can be used at all in the organisation"
+  - governs: "Whether an agent is blocked in Microsoft Copilot"
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
@@ -50,7 +59,7 @@ controls:
       kind: "graph"
       call: "POST /beta/copilot/admin/catalog/packages/{id}/block"
       docs: "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackage-block"
-    note: "Existing control for agents, not specific to this web part. API is beta, needs a Microsoft Agent 365 licence. Effect on the web part is not stated."
+    note: "For agents created in SharePoint or Foundry, blocking affects Microsoft Copilot Chat only. The API is available in the Global service only; US Government L4, US Government L5 (DOD), and China operated by 21Vianet are not supported."
 confidence: "medium"
 created: "2026-11-19"
 updated: "2026-11-19"
@@ -60,19 +69,23 @@ changes:
     note: "New briefing on the Agent Chat web part, from the roadmap item and Microsoft's notice MC1559633."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 47 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-19"
+    note: "Corrected the Block control's scope, cloud availability and SharePoint/Foundry limitation; removed the claim that it is the only tenant-wide agent control and two unsupported statements; narrowed agent configuration, action and billing wording."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 46 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 43
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "09788ffe158df5e1e56e53f287226e5b"
+  claims: 46
+  confirmed: 46
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "974d7c979a6f5c45a137f077470ecd50"
 ---
 
 ## What's changing
@@ -93,8 +106,8 @@ Microsoft's notice says no admin action is required before rollout and recommend
 
 **Data exposure**
 
-- Microsoft's notice says SharePoint page content is not automatically passed to the agent and that SharePoint does not store the agent chat data. Whatever data the embedded agent reaches is governed by that agent's own configuration, which this web part does not change according to the notice.
-- Microsoft's notice says page permissions and agent access permissions remain independent. Review who can read a page that carries an agent and who can use the agent separately; the Block row in the controls table is the one documented tenant-wide switch for an agent.
+- Microsoft's notice says SharePoint page content is not automatically passed to the agent and that SharePoint does not store the agent chat data. An agent's configured capabilities define the scope of its accessible knowledge sources.
+- Microsoft's notice says page permissions and agent access permissions remain independent. Review who can read a page that carries an agent and who can use the agent separately; the controls table records the existing Block control.
 
 **Security & identity**
 
@@ -102,7 +115,7 @@ Microsoft's notice says no admin action is required before rollout and recommend
 
 **Autonomy & actions**
 
-- The notice describes chat with an agent from a page and a full-screen continuation. Whatever actions the chosen agent can take are decided by that agent; the notice does not describe any approval step added by the web part.
+- The notice describes chat with an agent from a page and a full-screen continuation. Review the chosen agent's configured actions. The notice does not describe any approval step added by the web part.
 
 **Change & support**
 
@@ -112,7 +125,7 @@ Microsoft's notice says no admin action is required before rollout and recommend
 
 **Licence.** Microsoft's notice MC1559633 names users with a Microsoft 365 Copilot licence and access to the configured agent as the users affected. Page authors are named as the people who add the web part.
 
-**Meter.** No credit rate, meter or price specific to the web part is published at the time of writing (November 2026). Any charge for the chosen agent follows that agent's own licensing; check the agent's owner for its cost.
+**Meter.** No credit rate, meter or price specific to the web part is published at the time of writing (November 2026). Check the chosen agent's licensing and billing conditions with its owner; Copilot Studio documents billing conditions for agents used in SharePoint.
 
 **Indirect costs.** Author training, support-desk briefing and page review time.
 
@@ -151,11 +164,11 @@ Microsoft's notice says no admin action is required before rollout and recommend
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether an agent can be used at all in the organisation</strong><br><small>Tenant</small><br><small class="controls__note">Existing control for agents, not specific to this web part. API is beta, needs a Microsoft Agent 365 licence. Effect on the web part is not stated.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether an agent is blocked in Microsoft Copilot</strong><br><small>Tenant</small><br><small class="controls__note">For agents created in SharePoint or Foundry, blocking affects Microsoft Copilot Chat only. The API is available in the Global service only; US Government L4, US Government L5 (DOD), and China operated by 21Vianet are not supported.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The only tenant-wide control documented at the time of writing that acts on the agent itself is blocking it in the Microsoft 365 admin center or through the Package Management API. Whether a block also removes the agent from this web part is not stated: Learn says that blocking an agent created in SharePoint or Foundry only affects its availability in Microsoft Copilot Chat. The Package Management API requires a Microsoft Agent 365 licence and the block operation is in preview.
+Blocking is an existing tenant-wide control for an agent; its effect depends on where the agent was created. Whether a block also removes the agent from this web part is not stated: Learn says that blocking an agent created in SharePoint or Foundry only affects its availability in Microsoft Copilot Chat. The Package Management API requires a Microsoft Agent 365 licence and the block operation is in preview.
 
 Microsoft Learn documents no setting named for this web part. The Set-SPOTenant reference lists a -DisabledWebPartIds parameter, but no page read for this briefing says it covers this web part or gives the web part's ID, so confirm that before using it.
 
@@ -172,16 +185,9 @@ cost: Low. Microsoft's notice names users with a Microsoft 365 Copilot licence a
 impact: Low. Page authors who choose to add the web part, and Copilot-licensed users who open those pages, are the people who notice it; nothing changes for other users.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].governs; Governance controls table / applicability: Blocking decides whether an agent can be used at all in the organisation. | Found: However, blocking an agent that you created by using SharePoint or Microsoft Foundry only impacts its availability in Microsoft Copilot Chat. | Fix: Replace the row's governs text, including its rendered table heading, with 'Whether an agent is blocked in Microsoft Copilot'. Add to its note: 'For agents created in SharePoint or Microsoft Foundry, blocking affects Microsoft Copilot Chat only.' The existing note about unconfirmed web-part effects can remain. Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions
-- [contradicted, blocker] controls[0].api and note; Scope: Clouds / availability: The block API is presented without a cloud restriction alongside a briefing that covers US Government deployments. | Found: | Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet | | --- | --- | --- | --- | | ✅ | ❌ | ❌ | ❌ | | Fix: Add this exact qualification to controls[0].note and the rendered table note: 'The API is available in the Global service only; US Government L4, US Government L5 (DOD), and China operated by 21Vianet are not supported.' Keep the feature's roadmap cloud list unchanged. Source: https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackage-block. | Source: https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackage-block
-- [contradicted, blocker] Governance controls; Risk assessment: Data exposure / absence: Blocking is the only documented tenant-wide control that acts on an agent itself. | Found: You can uninstall first-party or external agents across the whole organization or for specific users or groups ... When you delete an agent ... A soft-deleted agent is unavailable to its maker and end users | Fix: Replace the first sentence after the controls table with 'Blocking is an existing tenant-wide control for an agent; its effect depends on where the agent was created.' In Risk assessment, replace 'the Block row in the controls table is the one documented tenant-wide switch for an agent' with 'the controls table records the existing Block control'. Retain the following documented limitation for SharePoint- and Foundry-created agents. Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions
-- [unsupported, major] Risk assessment: Data exposure / behaviour: MC1559633 says the web part does not change the agent's configuration. | Found: Searched: '"Agent Chat web part" "data" "configuration"'. Read MC1559633 and Manage access to agents in SharePoint. The notice says data processing is unchanged, but does not state that agent configuration is unchanged. | Fix: Remove ', which this web part does not change according to the notice'. The existing What's changing statement that SharePoint does not change how agent data is processed can remain.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls / command: The Set-SPOTenant reference lists a DisabledWebPartIds parameter. | Found: ### -DisabledWebPartIds ... Type: System.Guid[] | Fix: Add https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant?view=sharepoint-ps to sources for the existing Set-SPOTenant parameter statement. | Source: https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant?view=sharepoint-ps
-- [supported, minor] Risk assessment: Data exposure / behaviour: The chosen agent's configuration governs its accessible knowledge sources. | Found: The Agent Capabilities section displays the configured capabilities for the agent, defining the scope of its accessible knowledge sources. | Fix: Replace 'Whatever data the embedded agent reaches is governed by that agent's own configuration' with 'An agent's configured capabilities define the scope of its accessible knowledge sources.' Add https://learn.microsoft.com/plugins/debugging-agents-copilot-studio to sources; do not attribute this general agent statement to MC1559633. | Source: https://learn.microsoft.com/plugins/debugging-agents-copilot-studio#use-developer-mode-in-copilot
-- [supported, minor] Risk assessment: Autonomy & actions / behaviour: The chosen agent has its own configured actions. | Found: Agent actions display the action ID and version number, configured functions for the action, along with their matching and selection status. | Fix: Replace 'Whatever actions the chosen agent can take are decided by that agent' with 'Review the chosen agent's configured actions.' Add https://learn.microsoft.com/plugins/debugging-agents-copilot-studio to sources. Keep the separate, supported statement that the notice describes no added approval step. | Source: https://learn.microsoft.com/plugins/debugging-agents-copilot-studio#use-developer-mode-in-copilot
-- [supported, minor] Cost and licensing: Meter / cost: Charges for the chosen agent depend on that agent's licensing rather than a published web-part-specific price. | Found: If you have a Microsoft 365 Copilot license, using agents in Copilot Chat, Microsoft Teams, or SharePoint for classic answers, generative answers, or Microsoft Graph tenant grounding isn't charged when the agent runs with your authenticated identity. | Fix: Narrow 'Any charge for the chosen agent follows that agent's own licensing; check the agent's owner for its cost' to 'Check the chosen agent's licensing and billing conditions with its owner; Copilot Studio documents billing conditions for agents used in SharePoint.' Add https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing to sources. | Source: https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing
+- [supported, minor] Risk assessment: Change & support / absence: The notice states no admin switch for the web part. | Found: Searched: '"Agent Chat" "SharePoint" disable block admin tenant site'. Read MC1559633, Manage access to agents in SharePoint and Set-SPOTenant. No web-part-specific switch found; the notice says no admin action is required. | Fix: Replace 'the notice states no admin switch for it' with 'the notice says no admin action is required before rollout'. This avoids presenting the notice's silence as an explicit statement that a switch does not exist.
+- [supported, minor] Governance controls: Set-SPOTenant paragraph / absence: No page found says -DisabledWebPartIds covers Agent Chat or gives its web part ID. | Found: Searched: 'Set-SPOTenant DisabledWebPartIds Agent Chat web part'. Read -DisabledWebPartIds and searched the reference for Agent Chat: the supported list contains Amazon Kindle, YouTube, Twitter, Embed, Microsoft Bookings and Stream, not Agent Chat. | Fix: Replace the sentence beginning 'The Set-SPOTenant reference lists' with 'The Set-SPOTenant reference documents -DisabledWebPartIds for Amazon Kindle, YouTube, Twitter, Embed, Microsoft Bookings and Stream only; it does not list Agent Chat.' The reference explicitly limits the supported web parts, rather than merely omitting an ID.
 -->

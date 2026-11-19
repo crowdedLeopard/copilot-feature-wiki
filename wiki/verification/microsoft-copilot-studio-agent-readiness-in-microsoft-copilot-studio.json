@@ -4,10 +4,10 @@
   "title": "Copilot Studio: Review panel shows agent readiness and policy blocks while building",
   "status": "held",
   "date": "2026-11-19",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "cd5b21ff3a5b",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,297 +16,22 @@
     "reason": "failed",
     "since": "2026-11-19",
     "reasons": [
-      "2 blocking findings (claims 43, 50)"
+      "1 blocking finding (claim 43)"
     ]
   },
   "counts": {
-    "claims": 75,
-    "confirmed": 73,
+    "claims": 70,
+    "confirmed": 69,
     "unconfirmed": 0,
-    "contradicted": 2,
-    "blocker": 2,
+    "contradicted": 1,
+    "blocker": 1,
     "major": 0,
     "minor": 0
   },
-  "summary": "Hold: the automation listed for blocking connectors only reads policies and cannot apply the restriction. Licensing is also incorrectly marked unpublished even though Microsoft documents access and usage-based billing for the harness. The roadmap details and the description of Review are supported.",
+  "summary": "Hold: the statement that Microsoft Learn names no role for the guidance settings is too broad. Microsoft documents Power Platform tenant administrators configuring environment-group rules, which include Maker guidelines; the roadmap facts, billing statements and listed commands are supported.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; What's changing; Scope; rationale: impact",
-      "type": "behaviour",
-      "claim": "Makers of Microsoft Copilot harness agents have a Review entry point while building.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
-      "quote": "As you build an agent powered by the Microsoft Copilot harness, the Review entry point gives you a single place to see issues that affect your agent's readiness, governance, and security.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Review consolidates readiness, governance and security issues.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
-      "quote": "the Review entry point gives you a single place to see issues that affect your agent's readiness, governance, and security.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "What's changing; Why it matters",
-      "type": "applicability",
-      "claim": "Review surfaces restrictions caused by data policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
-      "quote": "It surfaces problems caused by data policies, Advanced Connector Policies, and other organizational controls, so you can find and resolve them before they block publishing.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "What's changing",
-      "type": "applicability",
-      "claim": "Review surfaces restrictions caused by Advanced Connector Policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
-      "quote": "It surfaces problems caused by data policies, Advanced Connector Policies, and other organizational controls",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The Review icon appears in the top menu bar.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
-      "quote": "The Review icon appears in the top menu bar.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: defaultState; What's changing; Why it matters",
-      "type": "default",
-      "claim": "Review is on and its icon is always visible while makers build, without an administrator configuring guidance.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
-      "quote": "It's always visible while you build your agent, and the icon shows the number of outstanding issues.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The Review icon shows the number of outstanding issues.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
-      "quote": "the icon shows the number of outstanding issues.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "What's changing; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Blocking issues prevent publishing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
-      "quote": "Blocking | Issues that prevent you from publishing the agent",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
-      "type": "behaviour",
-      "claim": "Warning issues do not prevent publishing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
-      "quote": "Warnings don't stop publishing, but review them to understand how they might affect your agent.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Warnings might affect agent behaviour or compliance.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
-      "quote": "Warning | Issues that don't block publishing but might affect the agent's behavior or compliance",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "An example Review issue is a data policy blocking an agent's tool, connector or knowledge source.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
-      "quote": "A data policy blocks a tool, connector, or knowledge source your agent uses.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "What's changing; Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "Review can surface an issue that sign-in is not required and anyone with the link can use the agent.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
-      "quote": "The Review panel can surface issues such as: ... Sign-in isn't required, so anyone with the link can use the agent.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "No configured channel is an example of a Review issue.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
-      "quote": "No channel is configured, so people need another entry point to use the agent once it's published.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Using an experimental or preview model is an example of a Review issue.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
-      "quote": "The agent uses an experimental or preview model, which hasn't completed full testing.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing; Why it matters; Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Each issue has a call to action, such as Update settings or Contact admin, leading to where it can be resolved.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
-      "quote": "Each issue shows a short title, a one-line explanation, and a call to action, such as Update settings or Contact admin, that takes you to where you can resolve it.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "summary; What's changing; controls[0].governs; rationale: impact",
-      "type": "behaviour",
-      "claim": "Tools, connectors, AI models and skills blocked by data policy or Advanced Connector Policy appear disabled where makers select them.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
-      "quote": "When a data policy or Advanced Connector Policy blocks a tool, connector, AI model, or skill, that item appears disabled wherever you'd normally select it, such as the tools list, model list, or skills list.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Hovering over the cross icon beside a disabled item explains its restriction.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
-      "quote": "Hover over the cross icon next to the disabled item to see why it's blocked.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What's changing; Scope",
-      "type": "behaviour",
-      "claim": "The standard harness experience has an Agent status summary on the agent's Overview page.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
-      "quote": "This article describes features used in agents or agent flows powered by the standard harness. ... On the Overview page, the Agent status summary provides a single view of issues",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Selecting Review in the standard harness Agent status summary opens the agent's issues.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
-      "quote": "When you select Review in the Agent status summary, you see agent issues grouped by severity",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "What's changing; Risk assessment: Change & support; Scope",
-      "type": "availability",
-      "claim": "The standard harness Agent status documentation is prerelease and subject to change.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
-      "quote": "[This section is prerelease documentation and is subject to change.]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The standard harness Agent status experience includes an Info severity.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
-      "quote": "Info | Advisory messages that don't affect readiness",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Standard harness issues indicate whether they affect the draft agent, published agent or both.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
-      "quote": "State | The state the issue applies to, showing whether it affects the draft agent, the published agent, or both",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Policy-blocked channel cards appear grayed out in the standard harness experience.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
-      "quote": "On the Channels tab, channel cards blocked by policy appear grayed out.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "What's changing",
-      "type": "availability",
-      "claim": "Standard harness agents remain fully supported alongside Microsoft Copilot harness agents.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/overview",
-      "quote": "Agents built with the standard harness remain fully supported alongside agents powered by the Microsoft Copilot harness.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "What's changing; Open questions",
-      "type": "record",
-      "claim": "The roadmap description does not specify which harness the item covers.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Agent Readiness gives makers a real-time, always-visible health check for their Copilot Studio agents.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is Launched.",
@@ -317,7 +42,7 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 2,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The roadmap release phase is General Availability.",
@@ -328,7 +53,7 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 3,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is September CY2026.",
@@ -339,29 +64,7 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed, without an explicit exclusion of other clouds.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists the Web platform.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
+      "n": 4,
       "where": "front matter: previewDate",
       "type": "record",
       "claim": "The roadmap supplies no preview date.",
@@ -372,29 +75,271 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "front matter: roadmapId",
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap item ID is 568762.",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"id\": 568762",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "A blocked connector can be identified as restricted before a maker configures it.",
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
-      "quote": "Because the capability can't be selected, makers can identify the policy restriction before configuring it in their agent.",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
+      "n": 7,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap description does not identify which harness it covers.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Agent Readiness gives makers a real-time, always-visible health check for their Copilot Studio agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "title; summary",
+      "type": "record",
+      "claim": "Agent Readiness surfaces publishing risks and policy restrictions during building, with blocked capabilities grayed out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "A single \"Review\" indicator in the build experience surfaces anything blocking or at risk — from policy restrictions to missing evaluations — before it derails a publish. Blocked capabilities are grayed out up front with a clear reason",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Review is a single place for Microsoft Copilot harness makers to see readiness, governance and security issues.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
+      "quote": "As you build an agent powered by the Microsoft Copilot harness, the Review entry point gives you a single place to see issues that affect your agent's readiness, governance, and security.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "applicability",
+      "claim": "Review surfaces problems caused by data policies and Advanced Connector Policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
+      "quote": "It surfaces problems caused by data policies, Advanced Connector Policies, and other organizational controls, so you can find and resolve them before they block publishing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Review icon appears in the top menu bar.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
+      "quote": "The Review icon appears in the top menu bar.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing; rationale: impact",
+      "type": "behaviour",
+      "claim": "The Review icon is always visible while the maker builds the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
+      "quote": "It's always visible while you build your agent, and the icon shows the number of outstanding issues.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Review icon shows the number of outstanding issues.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
+      "quote": "the icon shows the number of outstanding issues.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Blocking issues prevent publishing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
+      "quote": "Blocking | Issues that prevent you from publishing the agent",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Warnings do not block publishing but might affect behavior or compliance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
+      "quote": "Warning | Issues that don't block publishing but might affect the agent's behavior or compliance",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A data policy blocking a tool, connector or knowledge source is an example of a surfaced issue.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
+      "quote": "A data policy blocks a tool, connector, or knowledge source your agent uses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Review can surface an issue that sign-in is not required, allowing anyone with the link to use the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
+      "quote": "The Review panel can surface issues such as: ... Sign-in isn't required, so anyone with the link can use the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "No configured channel is an example of a surfaced issue.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
+      "quote": "No channel is configured, so people need another entry point to use the agent once it's published.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Use of an experimental or preview model is an example of a surfaced issue.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
+      "quote": "The agent uses an experimental or preview model, which hasn't completed full testing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Why it matters; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Each issue has a call to action such as Update settings or Contact admin that takes the maker to its resolution.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
+      "quote": "Each issue shows a short title, a one-line explanation, and a call to action, such as Update settings or Contact admin, that takes you to where you can resolve it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Why it matters; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Tools, connectors, AI models and skills blocked by data policy or Advanced Connector Policy appear disabled where makers select them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
+      "quote": "When a data policy or Advanced Connector Policy blocks a tool, connector, AI model, or skill, that item appears disabled wherever you'd normally select it, such as the tools list, model list, or skills list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Hovering over the cross icon beside a disabled item explains its block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
+      "quote": "Hover over the cross icon next to the disabled item to see why it's blocked.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "For standard harness agents, the Overview page has an Agent status summary with a Review entry point.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
+      "quote": "The Agent status summary appears on the overview page for an agent, under the Copilot details card. ... When you select Review in the Agent status summary, you see agent issues grouped by severity",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Scope; Risk assessment: Change & support",
+      "type": "availability",
+      "claim": "The standard harness Agent status documentation is prerelease and subject to change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
+      "quote": "[This section is prerelease documentation and is subject to change.] ... This article describes features used in agents or agent flows powered by the standard harness.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Standard harness Agent status includes an Info severity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
+      "quote": "Info | Advisory messages that don't affect readiness",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Standard harness issues identify whether draft, published or both agent states are affected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
+      "quote": "State | The state the issue applies to, showing whether it affects the draft agent, the published agent, or both",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Policy-blocked channel cards appear grayed out in the standard harness experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
+      "quote": "On the Channels tab, channel cards blocked by policy appear grayed out.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "Standard harness agents remain fully supported alongside Microsoft Copilot harness agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/overview",
+      "quote": "Agents built with the standard harness remain fully supported alongside agents powered by the Microsoft Copilot harness.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
       "where": "Why it matters; Governance controls",
       "type": "behaviour",
       "claim": "Review does not replace admin-level governance or compliance reporting.",
@@ -405,42 +350,31 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 30,
       "where": "Risk assessment: Data exposure; rationale: risk",
       "type": "absence",
-      "claim": "No new data access is documented for Review itself.",
+      "claim": "No new data access is documented for Review.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Copilot Studio Review data access readiness. Read both authoring-agent-status pages and agents-experience/overview; no new data-access grant for Review was described.",
+      "quote": "Searched: 'Review panel Copilot Studio data access'; read both authoring-agent-status pages and agents-experience/overview. They describe configuration and policy reporting, not new data access granted by Review.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Review reports on agent configuration and organizational policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
-      "quote": "Whether your agent is blocked or ready to publish ... What's causing an issue, and what to do about it ... When an organization policy is the source of a restriction",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
+      "n": 31,
       "where": "Risk assessment: Autonomy & actions",
       "type": "absence",
-      "claim": "No autonomous behaviour is described for Review itself.",
+      "claim": "No autonomous behavior is described for Review itself.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Copilot Studio Review autonomous readiness. Read both authoring-agent-status pages; Review lists issues and offers maker-selected actions, with no autonomous action described for the panel.",
+      "quote": "Searched: 'Review panel Copilot Studio autonomous'; read both authoring-agent-status pages. Review displays issues and maker actions; autonomous behavior of agents in general is not behavior of the Review panel.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
+      "n": 32,
       "where": "Risk assessment: Change & support",
-      "type": "behaviour",
+      "type": "default",
       "claim": "A default policy-error message appears when the organization has not configured contact guidance.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
@@ -449,10 +383,10 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 33,
       "where": "summary; controls[1].governs",
       "type": "applicability",
-      "claim": "Configured policy-error contact and help guidance appears alongside blocked items and in Review.",
+      "claim": "Configured policy-error contact and help links appear alongside blocked items and in Review.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
       "quote": "If your organization configured a contact or help link for policy-related errors, that guidance appears alongside blocked items and in the Review panel.",
@@ -460,74 +394,85 @@
       "fix": null
     },
     {
+      "n": 34,
+      "where": "front matter: licensing.model and licensing.notes",
+      "type": "licensing",
+      "claim": "The Microsoft Copilot harness uses consumption billing measured in Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "Usage is billed based on consumption and measured in Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes",
+      "type": "licensing",
+      "claim": "An individually assigned Copilot Studio user license is not required to access the Microsoft Copilot harness experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/overview",
+      "quote": "You don't need an individually assigned Copilot Studio user license to access the Microsoft Copilot harness experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes",
+      "type": "licensing",
+      "claim": "Creating agents depends on applicable Copilot Studio and environment permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/overview",
+      "quote": "Creating agents depends on the applicable Copilot Studio and environment permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Using, building, testing and evaluating Microsoft Copilot harness agents might consume Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
+      "quote": "The harness used to build this agent uses usage-based billing. Using, building, testing, and evaluating agents might consume Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate Review-panel license is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot Studio Review agent readiness panel license pricing meter data access autonomous actions'; opened Review, harness overview and usage-based billing pages. No separate Review-panel license was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to the Review panel is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot Studio Review agent readiness panel license pricing meter data access autonomous actions'; opened Review, harness overview and usage-based billing pages. Harness consumption is documented, but no separate Review meter was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 40,
       "where": "Cost and licensing",
       "type": "absence",
-      "claim": "The Review feature page lists no licence specifically for the panel.",
+      "claim": "Microsoft has not published a price specific to Review as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Copilot Studio Review readiness licensing price meter Copilot harness license. Read agents-experience/authoring-agent-status: its billing note covers the harness, not a separate Review-panel licence.",
+      "quote": "Searched: 'Review Copilot Studio separate price' and 'Copilot Studio Review agent readiness panel license pricing meter data access autonomous actions'; opened Review, harness overview and billing-credit-overview. No separate Review price was found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 41,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No separate meter is documented for the Review panel itself.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio Review readiness licensing price meter Copilot harness license. Read the Review page, harness overview, requirements-licensing and billing-credit-overview; none names a separate Review-panel meter.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "No separate price for Review is published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio Review separate price; Review readiness licensing price meter. Read the Review page, harness overview, requirements-licensing and billing-credit-overview; none supplies a separate Review price.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "front matter: licensing.model and notes",
-      "type": "licensing",
-      "claim": "The licensing model for this authoring experience is unknown because Review has no separately published licence.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/overview",
-      "quote": "You don't need an individually assigned Copilot Studio user license to access the Microsoft Copilot harness experience. Creating agents depends on the applicable Copilot Studio and environment permissions.",
-      "severity": "blocker",
-      "fix": "Set licensing.model to consumption. Replace the notes with: 'The Microsoft Copilot harness uses usage-based billing measured in Copilot Credits. An individually assigned Copilot Studio user license is not required to access this harness; creating agents depends on applicable Copilot Studio and environment permissions. No separate Review-panel licence or meter is documented.' Cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/overview and https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview. A missing panel-specific licence does not make the documented product entitlement unknown."
-    },
-    {
-      "n": 44,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "cost",
-      "claim": "The Microsoft Copilot harness uses usage-based billing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/overview",
-      "quote": "The harness used to build this agent uses usage-based billing.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "Microsoft warns that using, building, testing and evaluating agents might consume Copilot Credits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/overview",
-      "quote": "Using, building, testing, and evaluating agents might consume Copilot Credits.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "controls[2].note; Cost and licensing; Governance guidance",
+      "where": "Cost and licensing; controls[2].note; Governance guidance: Before rollout",
       "type": "availability",
       "claim": "Maker guidelines is available only for managed environments.",
       "status": "supported",
@@ -537,76 +482,76 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "Scope; controls[2].scope; controls[3].scope",
+      "n": 42,
+      "where": "Scope; Governance controls",
       "type": "behaviour",
-      "claim": "The guidance settings can be configured for environments or environment groups.",
+      "claim": "Maker guidelines can be configured for an individual managed environment or an environment group in the Power Platform admin center.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
-      "quote": "You can configure different messages for different environments and environment groups to tailor guidance by governance zone.",
+      "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
+      "quote": "You can configure maker guidelines for an individual managed environment or for an environment group. ... Sign in to the Power Platform admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope; Open questions: roles",
+      "type": "absence",
+      "claim": "Microsoft Learn names no role for the guidance settings.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/environment-groups",
+      "quote": "After you create the environment group, Power Platform tenant administrators can immediately add managed environments or configure the group's rules.",
+      "severity": "blocker",
+      "fix": "Remove 'Microsoft Learn names no role for these settings at the time of writing.' Maker guidelines is explicitly an environment-group rule at https://learn.microsoft.com/power-platform/admin/environment-groups-rules, and https://learn.microsoft.com/power-platform/admin/environment-groups names Power Platform tenant administrators for configuring group rules. In the last Open questions bullet, replace 'with which roles and API support' with 'with what API support'."
+    },
+    {
+      "n": 44,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Power Platform admin center path Security > Data and privacy > Data policy > policy > Edit Policy > Next > Next > connector > three dots > Block reaches connector blocking.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "select Security, and then select Data and privacy. ... Select Data policy. ... select the data policy and select Edit Policy. ... Select Next. ... Select Next. ... Select the three dots ... next to the connector ... select Block.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].api; controls[0].note; Governance controls table",
+      "type": "command",
+      "claim": "Set-DlpPolicy -PolicyName <policy name> -UpdatedPolicy <DLPPolicyDefinition object> updates a data policy using its updated policy object.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-dlppolicy?view=pa-ps-latest",
+      "quote": "Updates a policy by using the UpdatedPolicy DLPPolicyDefinition object. ... Set-DlpPolicy -PolicyName <String> -UpdatedPolicy <Object>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].scope and note; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Data policies govern Copilot Studio agents in the environments in their scope and are general controls that Review reports on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "These data policies apply to Copilot Studio agents in the environments included in the policy's scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[1].ui",
+      "type": "absence",
+      "claim": "No admin UI is documented for the tenant-wide data-policy-error contact email and Learn more link setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Power Platform data policy error settings contact email Learn more admin center UI New-PowerAppDlpErrorSettings'; read admin-data-loss-prevention and Power Apps PowerShell/data-policy-impact search excerpts. They document PowerShell, not a UI for this tenant setting.",
       "severity": null,
       "fix": null
     },
     {
       "n": 48,
-      "where": "Scope; Open questions",
-      "type": "absence",
-      "claim": "The guidance documentation names no specific required security role for these settings.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: maker guidelines role; Maker guidance role admin; Maker guidance permissions Power Platform Administrator. Read maker-guidelines and authoring-agent-status: they address administrators but name no specific prerequisite security role for the guidance settings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "controls[0].ui; Governance controls; Governance guidance: Before rollout",
-      "type": "admin-path",
-      "claim": "The data-policy Block action is at Security > Data and privacy > Data policy > policy > Edit Policy > Next > Next > connector > more options > Block in the Power Platform admin center.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
-      "quote": "select Security, and then select Data and privacy ... Select Data policy ... select the data policy and select Edit Policy ... Select Next ... Select Next ... Select the three dots ... select Block.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "controls[0].api; Governance controls",
+      "where": "controls[1].api; Governance controls table",
       "type": "command",
-      "claim": "Get-DlpPolicy -PolicyName <policy name> is the automation counterpart to the row's control over permitted or blocked capabilities.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-dlppolicy?view=pa-ps-latest",
-      "quote": "Retrieves a list of DLP policy objects. ... The Get-DlpPolicy cmdlet retrieves policy objects for the logged in admin's tenant.",
-      "severity": "blocker",
-      "fix": "Replace the read-only call with 'Set-DlpPolicy -PolicyName <policy name> -UpdatedPolicy <DLPPolicyDefinition object>' and set its docs to https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-dlppolicy?view=pa-ps-latest, which documents updating the policy through UpdatedPolicy. Replace the row note with 'General control that Review reports on. UpdatedPolicy supplies the updated DLPPolicyDefinition object.' Keep Get-DlpPolicy, if mentioned, only as a read-only inventory operation, not as the operation that applies the control."
-    },
-    {
-      "n": 51,
-      "where": "controls[0].note; Governance controls",
-      "type": "command",
-      "claim": "Get-DlpPolicy reads policies rather than blocking a connector.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-dlppolicy?view=pa-ps-latest",
-      "quote": "The Get-DlpPolicy cmdlet retrieves policy objects for the logged in admin's tenant.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "controls[1].ui; Governance controls",
-      "type": "absence",
-      "claim": "No admin UI is documented for the tenant-wide data-policy error email and Learn more link.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Platform data policy error contact email Learn more UI New-PowerAppDlpErrorSettings admin center. Read admin-data-loss-prevention and the powerapps-powershell search excerpt; both document PowerShell, not a UI for this tenant setting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "controls[1].api; Governance controls",
-      "type": "command",
-      "claim": "New-PowerAppDlpErrorSettings -TenantId \"<tenant ID>\" -ErrorSettings $ErrorSettingsObj configures the tenant's policy-error contact and help link.",
+      "claim": "New-PowerAppDlpErrorSettings -TenantId \"<tenant ID>\" -ErrorSettings $ErrorSettingsObj creates the tenant's data-policy-error email and help-link configuration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
       "quote": "New-PowerAppDlpErrorSettings -TenantId \"<tenant ID>\" -ErrorSettings $ErrorSettingsObj",
@@ -614,8 +559,8 @@
       "fix": null
     },
     {
-      "n": 54,
-      "where": "controls[1].note; Governance controls",
+      "n": 49,
+      "where": "controls[1].note; Governance controls table",
       "type": "command",
       "claim": "Set-PowerAppDlpErrorSettings updates an existing configuration.",
       "status": "supported",
@@ -625,10 +570,10 @@
       "fix": null
     },
     {
-      "n": 55,
+      "n": 50,
       "where": "controls[1].scope and note; Governance guidance: Before rollout",
       "type": "applicability",
-      "claim": "The data-policy error guidance settings apply to all Power Platform apps in the specified tenant.",
+      "claim": "The error settings apply to all Power Platform apps in the specified tenant.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
       "quote": "These settings apply to all Power Platform apps within the specified tenant.",
@@ -636,29 +581,18 @@
       "fix": null
     },
     {
-      "n": 56,
-      "where": "controls[2].ui; Governance controls",
+      "n": 51,
+      "where": "controls[2].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "Environment Maker guidelines settings are reached through Copilot > Settings > Maker guidelines > Environments > environment > Edit setting.",
+      "claim": "Copilot > Settings > Maker guidelines > Environments > environment > Edit setting opens the environment's Maker guidelines configuration in the Power Platform admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
-      "quote": "Select Copilot > Settings, and then select Maker guidelines. Select the Environments tab, select the environment, and then select Edit setting.",
+      "quote": "Environment: Select Copilot > Settings, and then select Maker guidelines. Select the Environments tab, select the environment, and then select Edit setting.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 57,
-      "where": "controls[2].api; Governance controls",
-      "type": "absence",
-      "claim": "No API or PowerShell operation is documented for Maker guidelines.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: site:learn.microsoft.com/power-platform maker guidelines API; maker guidelines PowerShell API; Maker guidelines API Power Platform environment settings. Read maker-guidelines and Power Apps PowerShell search excerpts; no operation for this setting found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
+      "n": 52,
       "where": "controls[2].note; Governance guidance: At rollout; Governance controls",
       "type": "availability",
       "claim": "Maker guidelines is a preview setting.",
@@ -669,10 +603,10 @@
       "fix": null
     },
     {
-      "n": 59,
-      "where": "controls[2].note; Governance controls",
+      "n": 53,
+      "where": "controls[2].note; Governance controls table",
       "type": "admin-path",
-      "claim": "For Maker guidelines at environment-group scope, the Copilot-area route uses Environment groups and Edit rule.",
+      "claim": "The Maker guidelines route for environment groups uses the Environment groups tab and Edit rule.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
       "quote": "Select Copilot > Settings, and then select Maker guidelines. Select the Environment groups tab, select the environment group, and then select Edit rule.",
@@ -680,32 +614,65 @@
       "fix": null
     },
     {
-      "n": 60,
-      "where": "controls[3].ui; Governance controls",
-      "type": "admin-path",
-      "claim": "Custom Maker guidance is reached through Copilot > Settings > Copilot Studio > Maker guidance > environment > Edit setting.",
+      "n": 54,
+      "where": "controls[2].governs; summary; Governance controls",
+      "type": "applicability",
+      "claim": "Maker guidelines displays the organization's message in the Copilot Studio Review pane.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
-      "quote": "select Copilot, and then select Settings ... under the Copilot Studio section, select Maker guidance ... select the environments or environment groups ... Select Edit setting",
+      "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
+      "quote": "The guidance appears in the Copilot Studio Review pane.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 61,
-      "where": "controls[3].api; Governance controls",
+      "n": 55,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Maker selects Review is the message-display choice for Maker guidelines.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
+      "quote": "Under Where to show the message, select Maker selects Review.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Maker guidelines messages can contain up to 400 plain-text characters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
+      "quote": "Enter a plain-text message of up to 400 characters.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[2].api; Governance controls",
       "type": "absence",
-      "claim": "No API or PowerShell operation is documented for the custom Maker guidance message.",
+      "claim": "No API for Maker guidelines is documented as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Maker guidance API Copilot; site:learn.microsoft.com/microsoft-copilot-studio Maker guidance PowerShell. Read authoring-agent-status and Power Apps PowerShell search excerpts; no operation for this guidance setting found.",
+      "quote": "Searched: 'Maker guidelines API', 'Maker guidelines Dataverse table', 'Maker guidelines PowerShell Power Platform API'; read maker-guidelines, environment-groups and rules pages and pac admin set-governance-config excerpt. No operation setting Maker guidelines was found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 62,
+      "n": 58,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Copilot > Settings > Copilot Studio > Maker guidance > environment > Edit setting opens custom guidance configuration in the Power Platform admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
+      "quote": "select Copilot, and then select Settings. ... under the Copilot Studio section, select Maker guidance. ... select the environments or environment groups ... Select Edit setting ... A panel for configuring a custom message opens.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
       "where": "controls[3].note; Governance controls",
       "type": "availability",
-      "claim": "The standard harness custom guidance message is documented as preview.",
+      "claim": "The standard harness Agent status page documents Custom guidance message as preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
       "quote": "Custom guidance message (preview)",
@@ -713,10 +680,10 @@
       "fix": null
     },
     {
-      "n": 63,
+      "n": 60,
       "where": "controls[3].note; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Custom guidance messages support plain text of up to 400 characters.",
+      "claim": "Custom guidance messages support plain text up to 400 characters.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
       "quote": "Custom guidance messages support plain text only and can be up to 400 characters.",
@@ -724,18 +691,29 @@
       "fix": null
     },
     {
-      "n": 64,
-      "where": "controls[4]; Why it matters; Governance controls",
-      "type": "absence",
-      "claim": "No UI or API switch is documented to hide or turn off Review.",
+      "n": 61,
+      "where": "controls[3].scope; Scope; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "Custom guidance for blocked or disabled capabilities can be configured differently for environments and environment groups.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio Review panel hide disable turn off admin switch readiness; Review panel Copilot Studio disable. Read both authoring-agent-status pages and the harness overview; no Review-panel off switch found.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
+      "quote": "As an admin, you can set an environment-level guidance message for users when they encounter a blocked or disabled capability. ... You can configure different messages for different environments and environment groups",
       "severity": null,
       "fix": null
     },
     {
-      "n": 65,
+      "n": 62,
+      "where": "controls[3].api; Governance controls",
+      "type": "absence",
+      "claim": "No API for Maker guidance custom messages is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Maker guidance Power Platform API settings', 'Maker guidance pac PowerShell', 'Maker guidance table entity reference'; read authoring-agent-status, environment-groups and pac admin set-governance-config excerpt. No operation setting this message was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
       "where": "Governance controls",
       "type": "behaviour",
       "claim": "Custom guidance messages are not localized.",
@@ -746,10 +724,10 @@
       "fix": null
     },
     {
-      "n": 66,
+      "n": 64,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "An environment-group custom guidance message overrides the environment-level message.",
+      "claim": "The environment-group custom guidance message overrides the environment-level message.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
       "quote": "The environment group message overrides the environment-level message.",
@@ -757,21 +735,32 @@
       "fix": null
     },
     {
-      "n": 67,
-      "where": "Governance guidance: At rollout",
-      "type": "admin-path",
-      "claim": "The Maker guidelines message can be configured for the Maker selects Review location.",
+      "n": 65,
+      "where": "controls[4].ui and controls[4].api; Why it matters; Governance controls",
+      "type": "absence",
+      "claim": "No UI or API switch to hide or turn off Review is documented as of November 2026.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
-      "quote": "Under Where to show the message, select Maker selects Review.",
+      "source": null,
+      "quote": "Searched: 'Copilot Studio Review panel hide disable turn off admin setting' and 'Copilot Studio Review disable authoring-agent-status'; read both Agent status pages, harness overview and pac admin excerpt. No Review visibility switch was found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 68,
+      "n": 66,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The cited documentation does not explain how Maker guidelines and Maker guidance interact.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Maker guidelines Maker guidance interaction precedence'; read maker-guidelines and both authoring-agent-status pages. They describe the two settings separately without cross-setting precedence or interaction.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
       "where": "Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "The standard harness documentation says a previously allowed resource can later be blocked by a new policy.",
+      "claim": "A previously allowed resource can later be blocked by a new policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
       "quote": "If a resource (such as a knowledge source) was previously allowed but later blocked by a new policy, Agent status indicates which state (draft, published, or both) is affected.",
@@ -779,92 +768,48 @@
       "fix": null
     },
     {
-      "n": 69,
-      "where": "front matter: products",
-      "type": "record",
-      "claim": "The roadmap lists Microsoft Copilot Studio as the product.",
+      "n": 68,
+      "where": "Why it matters; Governance controls; rationale: risk",
+      "type": "behaviour",
+      "claim": "Data policy restrictions enforce blocks while Review reports them rather than supplying a replacement enforcement control.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Copilot Studio\"]",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "When a data policy prevents the use of a supported capability, Copilot Studio surfaces the restriction directly in the maker experience. ... Because the capability can't be selected, makers can identify the policy restriction before configuring it in their agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Power Platform admin center > Security > Data and privacy > Data policy opens the data-policy list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "On the sidebar, select Security, and then select Data and privacy. ... Select Data policy. The Data policies list appears.",
       "severity": null,
       "fix": null
     },
     {
       "n": 70,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap record was modified at 2026-10-01T23:00:07.",
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "Review is on by default for its intended makers, visible during building without an administrator configuring guidance.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-10-01T23:00:07\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 71,
-      "where": "Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "The Maker guidelines message also has a 400-character limit.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
-      "quote": "Enter a plain-text message of up to 400 characters.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 72,
-      "where": "Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Microsoft does not document how Maker guidelines and Maker guidance interact.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Maker guidance Maker guidelines. Read maker-guidelines and authoring-agent-status and their returned search passages; neither explains interaction or precedence between the two named settings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 73,
-      "where": "controls[0].scope; Governance guidance: Before rollout",
-      "type": "applicability",
-      "claim": "Data policies govern Copilot Studio agents in the environments included in the policy scope.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
-      "quote": "These data policies apply to Copilot Studio agents in the environments included in the policy's scope.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 74,
-      "where": "Governance controls; rationale: risk",
-      "type": "applicability",
-      "claim": "Existing data policies, rather than Review's warnings, enforce restrictions on agent capabilities.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
-      "quote": "Since early 2025, data policy enforcement is in effect for all tenants ... To prevent agent makers from using the features associated with the connector, select Block.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 75,
-      "where": "controls[3].governs; Governance controls",
-      "type": "behaviour",
-      "claim": "The custom guidance message is shown when users encounter a blocked or disabled capability.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
-      "quote": "As an admin, you can set an environment-level guidance message for users when they encounter a blocked or disabled capability. This plain-text message replaces the default Contact your admin prompt.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-agent-status",
+      "quote": "It's always visible while you build your agent ... If your organization hasn't configured this guidance, a default message appears instead.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-19T02:04:23.871Z",
+    "at": "2026-11-19T03:09:21.488Z",
     "summary": {
-      "links": 7,
-      "unreachable": 4,
+      "links": 8,
+      "unreachable": 0,
       "uiPaths": 3,
-      "uiPathsWithMissingWords": 2,
+      "uiPathsWithMissingWords": 0,
       "apiCalls": 2,
-      "apiCallsNotOnPage": 1,
+      "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -880,13 +825,18 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/overview",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
@@ -894,14 +844,14 @@
         "status": 200
       },
       {
-        "url": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-dlppolicy?view=pa-ps-latest",
-        "ok": false,
-        "status": 429
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-dlppolicy?view=pa-ps-latest",
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -926,10 +876,10 @@
         "index": 0,
         "side": "api",
         "governs": "Which tools, connectors, models and skills makers can use (shown as disabled in Review)",
-        "docs": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-dlppolicy?view=pa-ps-latest",
-        "reachable": false,
-        "token": "Get-DlpPolicy",
-        "found": false
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-dlppolicy?view=pa-ps-latest",
+        "reachable": true,
+        "token": "Set-DlpPolicy",
+        "found": true
       },
       {
         "index": 1,
@@ -945,7 +895,7 @@
         "side": "ui",
         "governs": "Maker guidelines message shown in the Review pane (preview)",
         "docs": "https://learn.microsoft.com/power-platform/admin/maker-guidelines",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Copilot",
           "Settings",
@@ -953,20 +903,14 @@
           "Environments",
           "Edit setting"
         ],
-        "missing": [
-          "Copilot",
-          "Settings",
-          "Maker guidelines",
-          "Environments",
-          "Edit setting"
-        ]
+        "missing": []
       },
       {
         "index": 3,
         "side": "ui",
         "governs": "Custom guidance message for blocked or disabled capabilities (preview)",
         "docs": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Copilot",
           "Settings",
@@ -974,13 +918,7 @@
           "Maker guidance",
           "Edit setting"
         ],
-        "missing": [
-          "Copilot",
-          "Settings",
-          "Copilot Studio",
-          "Maker guidance",
-          "Edit setting"
-        ]
+        "missing": []
       }
     ],
     "roadmapDrift": []
@@ -995,6 +933,12 @@
     {
       "date": "2026-11-18",
       "status": "verified",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-19",
+      "status": "held",
       "version": 2,
       "model": "gpt-6.1-sol"
     }

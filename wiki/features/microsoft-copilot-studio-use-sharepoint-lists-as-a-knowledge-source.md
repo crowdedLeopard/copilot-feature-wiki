@@ -90,15 +90,17 @@ changes:
     note: "Corrected after verification: licensing model is now mixed (standard-harness inclusion added), storage and attachment statements narrowed to what Learn says, and the unmatched permission-review checklist step removed."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 81 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-18"
+  date: "2026-11-19"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 77
-  confirmed: 77
+  claims: 81
+  confirmed: 81
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -197,8 +199,11 @@ cost: Variable. Usage is metered in Copilot Credits: Learn says Microsoft Copilo
 impact: Medium. Makers who build agents, and the users of agents that gain list knowledge, notice it; nothing changes for existing agents until a maker adds a list.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing / behaviour: Learn says the list connection is real-time. | Found: When you add a SharePoint list as a knowledge source, you create a real-time connection to the source, so the most current data is used for queries and reasoning. | Fix: After this sentence add: 'However, the Unstructured data as a knowledge source FAQ describes the file-upload route, which also supports lists, as synchronizing content every four to six hours; Microsoft's descriptions of freshness differ.' Cite https://learn.microsoft.com/microsoft-copilot-studio/knowledge-unstructured-data#faq, whose Runtime differences table says 'Content is synchronized every four to six hours, based on ingestion completion' for Option 1 and marks SharePoint lists supported. | Source: https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-sharepoint
+- [supported, minor] What's changing / behaviour: Learn describes the list connection as real-time. | Found: When you add a SharePoint list as a knowledge source, you create a real-time connection to the source, so the most current data is used for queries and reasoning. | Fix: After the real-time statement add: 'However, the Unstructured data as a knowledge source FAQ describes the file-upload route, which also supports lists, as synchronizing content every four to six hours; Microsoft's descriptions of freshness differ.' Add https://learn.microsoft.com/microsoft-copilot-studio/knowledge-unstructured-data#faq to sources; its Runtime differences table lists SharePoint lists as supported for Option 1 and gives that synchronization interval. | Source: https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-sharepoint
+- [supported, minor] front matter: licensing; Cost and licensing: Licence / licensing: The billing rates page includes standard-harness employee-facing usage when the user is licensed and the agent uses that authenticated user's identity. | Found: are included in the Microsoft Copilot USL when the user of the agent is licensed with Microsoft Copilot, and the agent operates using the authenticated Microsoft Copilot USL user's identity. | Fix: After the standard-harness inclusion sentence add: 'The Manage costs for agents powered by the Microsoft Copilot harness page qualifies standard-harness licence coverage as applying in Microsoft 365 channels and says usage outside Microsoft 365 channels is billed.' That already-cited page's What consumes Copilot Credits table states this narrower coverage. | Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management
+- [supported, minor] Cost and licensing: Caps; controls[1].governs; Governance guidance: Before rollout / cost: An agent monthly limit has a hard stop that turns off the agent at its defined limit. | Found: **Hard stop**: The agent is automatically turned off once it hits the defined limit. | Fix: After the hard-stop sentence in Caps add: 'An agent's monthly limit does not stop the agent flows it calls; those flows are billed and checked for capacity separately.' The cited capacity page now states this qualification. The existing claim about turning off the agent remains true; do not describe the limit as stopping flow consumption. | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity
+- [supported, minor] Governance guidance: Before rollout / role: Power Platform administrators can configure environment-group governance rules. | Found: Users with the Power Platform admin role can: - Sign in to and manage multiple environments. - Perform admin functions in Microsoft Power Platform because they have the System Administrator role. | Fix: Add https://learn.microsoft.com/power-platform/admin/use-service-admin-role-manage-tenant to sources for the Power Platform administrator role statement; the already-cited Environment groups page describes configuration by Power Platform tenant administrators. | Source: https://learn.microsoft.com/power-platform/admin/use-service-admin-role-manage-tenant
 -->

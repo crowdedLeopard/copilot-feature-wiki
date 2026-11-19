@@ -4,10 +4,10 @@
   "title": "OneNote: Copilot Chat can create, edit and refine notebook content",
   "status": "held",
   "date": "2026-11-19",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "cd5b21ff3a5b",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,135 +16,36 @@
     "reason": "failed",
     "since": "2026-11-19",
     "reasons": [
-      "4 blocking findings (claims 28, 31, 34, 53)"
+      "1 blocking finding (claim 64)"
     ]
   },
   "counts": {
-    "claims": 59,
-    "confirmed": 54,
-    "unconfirmed": 2,
-    "contradicted": 3,
-    "blocker": 4,
+    "claims": 70,
+    "confirmed": 69,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 1,
     "major": 0,
-    "minor": 3
+    "minor": 1
   },
-  "summary": "Hold: the table presents a web-app Frontier policy API as automation for OneNote preview enrolment without documentation establishing that equivalence. The licensing field asserts an unverified mixed model, and the blanket statements that licensing and permission boundaries are undocumented overlook published Copilot and Frontier rules.",
+  "summary": "The rollout, capabilities and licensing caveats are supported. The controls table incorrectly says AI Administrator is required for Frontier enrollment, although Microsoft also permits Security Administrator and Office Apps Administrator; that actionable role requirement needs correction.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing",
-      "type": "record",
-      "claim": "Microsoft plans an edit mode for Copilot Chat in OneNote.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Copilot in OneNote can generate new content and directly edit when in edit mode.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
-      "where": "summary; What's changing; Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The planned edit mode can create pages, sections and notebooks.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "In this mode you can create, rename, and delete pages, sections, or notebooks",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "summary; What's changing; Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The planned edit mode can rename pages, sections and notebooks.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "In this mode you can create, rename, and delete pages, sections, or notebooks",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "summary; What's changing; Why it matters; rationale: risk",
-      "type": "record",
-      "claim": "The planned edit mode can delete pages, sections and notebooks.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "In this mode you can create, rename, and delete pages, sections, or notebooks",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The planned edit mode can add content to pages.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "as well as add or edit content in pages.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The planned edit mode can edit existing page content.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Copilot in OneNote can generate new content and directly edit when in edit mode.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
-      "type": "record",
-      "claim": "The roadmap describes bringing content from across Work IQ into OneNote.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Copilot can bring content from across WorkIQ",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "What's changing; Risk assessment: Data exposure; Open questions",
-      "type": "record",
-      "claim": "The roadmap describes cross-workflow actions such as creating Word, Excel and PowerPoint files.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "complete actions across other workflows such as creating Word, Excel, and PowerPoint files.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "quote": "\"status\": \"In development\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 10,
-      "where": "front matter: releasePhase",
-      "type": "record",
-      "claim": "The roadmap release phase is General Availability.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
+      "n": 2,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
-      "claim": "The roadmap general-availability target is January CY2027.",
+      "claim": "The roadmap general availability target is January CY2027.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"January CY2027\"",
@@ -152,7 +53,7 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 3,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview target is November CY2026.",
@@ -163,21 +64,21 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "front matter: platforms; What's changing; Scope: Platforms",
+      "n": 4,
+      "where": "front matter: releasePhase",
       "type": "record",
-      "claim": "The roadmap lists Desktop as the platform.",
+      "claim": "The listed release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"platforms\": [\"Desktop\"]",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 14,
-      "where": "front matter: clouds; What's changing; Scope: Clouds",
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant).",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -185,10 +86,21 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Desktop.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
       "where": "front matter: products",
       "type": "record",
-      "claim": "The record names OneNote and Microsoft Copilot (Microsoft 365) as products.",
+      "claim": "The roadmap lists OneNote and Microsoft Copilot (Microsoft 365) as products.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"products\": [\"OneNote\", \"Microsoft Copilot (Microsoft 365)\"]",
@@ -196,10 +108,10 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 8,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-11-11T00:51:09.",
+      "claim": "The roadmap record was modified at 2026-11-11T00:51:09.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-11-11T00:51:09\"",
@@ -207,7 +119,183 @@
       "fix": null
     },
     {
+      "n": 9,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The planned Copilot experience in OneNote has an edit mode for generating content and directly editing it.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Copilot in OneNote can generate new content and directly edit when in edit mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Risk assessment",
+      "type": "record",
+      "claim": "The roadmap says edit mode can create pages.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "In this mode you can create, rename, and delete pages, sections, or notebooks",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Risk assessment",
+      "type": "record",
+      "claim": "The roadmap says edit mode can rename pages.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "In this mode you can create, rename, and delete pages, sections, or notebooks",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap says edit mode can delete pages.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "In this mode you can create, rename, and delete pages, sections, or notebooks",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; What's changing; Risk assessment",
+      "type": "record",
+      "claim": "The roadmap says edit mode can create sections.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "In this mode you can create, rename, and delete pages, sections, or notebooks",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; What's changing; Risk assessment",
+      "type": "record",
+      "claim": "The roadmap says edit mode can rename sections.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "In this mode you can create, rename, and delete pages, sections, or notebooks",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "summary; What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap says edit mode can delete sections.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "In this mode you can create, rename, and delete pages, sections, or notebooks",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "summary; What's changing; Risk assessment",
+      "type": "record",
+      "claim": "The roadmap says edit mode can create notebooks.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "In this mode you can create, rename, and delete pages, sections, or notebooks",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 17,
+      "where": "summary; What's changing; Risk assessment",
+      "type": "record",
+      "claim": "The roadmap says edit mode can rename notebooks.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "In this mode you can create, rename, and delete pages, sections, or notebooks",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "summary; What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap says edit mode can delete notebooks.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "In this mode you can create, rename, and delete pages, sections, or notebooks",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment",
+      "type": "record",
+      "claim": "The roadmap says edit mode can add page content.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "as well as add or edit content in pages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment",
+      "type": "record",
+      "claim": "The roadmap says edit mode can edit page content.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "as well as add or edit content in pages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap says Copilot can bring content from across Work IQ into OneNote.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Copilot can bring content from across WorkIQ",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment; Open questions",
+      "type": "record",
+      "claim": "The roadmap includes creating Word files among actions in other workflows.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "complete actions across other workflows such as creating Word, Excel, and PowerPoint files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment; Open questions",
+      "type": "record",
+      "claim": "The roadmap includes creating Excel files among actions in other workflows.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "complete actions across other workflows such as creating Word, Excel, and PowerPoint files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Risk assessment; Open questions",
+      "type": "record",
+      "claim": "The roadmap includes creating PowerPoint files among actions in other workflows.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "complete actions across other workflows such as creating Word, Excel, and PowerPoint files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
       "where": "What's changing",
       "type": "record",
       "claim": "MC1559641 was published on 18 November 2026.",
@@ -218,10 +306,10 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 26,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "record",
-      "claim": "The notice describes expanded editing and reasoning across ink, annotations and embedded files.",
+      "claim": "The notice describes expanded editing and reasoning across ink.",
       "status": "supported",
       "source": "Message Center post MC1559641",
       "quote": "expanded edit and reasoning capabilities across notebook content, including ink, annotations, and embedded files.",
@@ -229,10 +317,32 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "What's changing; Scope: Users and licences; rationale: impact",
+      "n": 27,
+      "where": "What's changing; Risk assessment: Data exposure",
       "type": "record",
-      "claim": "The notice promises broader capabilities to eligible users on supported OneNote app versions.",
+      "claim": "The notice describes expanded editing and reasoning across annotations.",
+      "status": "supported",
+      "source": "Message Center post MC1559641",
+      "quote": "expanded edit and reasoning capabilities across notebook content, including ink, annotations, and embedded files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The notice describes expanded editing and reasoning across embedded files.",
+      "status": "supported",
+      "source": "Message Center post MC1559641",
+      "quote": "expanded edit and reasoning capabilities across notebook content, including ink, annotations, and embedded files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "Eligible users on supported versions of OneNote on Windows are in scope.",
       "status": "supported",
       "source": "Message Center post MC1559641",
       "quote": "Eligible users will have broader Copilot capabilities in OneNote on supported app versions on Windows and iPad",
@@ -240,21 +350,21 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What's changing; Scope: Platforms; rationale: impact",
+      "n": 30,
+      "where": "What's changing; Scope; rationale: impact",
       "type": "record",
-      "claim": "The notice includes OneNote on Windows and iPad in this rollout.",
+      "claim": "Eligible users on supported versions of OneNote on iPad are in scope.",
       "status": "supported",
       "source": "Message Center post MC1559641",
-      "quote": "OneNote on supported app versions on Windows and iPad",
+      "quote": "Eligible users will have broader Copilot capabilities in OneNote on supported app versions on Windows and iPad",
       "severity": null,
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What's changing; Scope: Platforms; Risk assessment: Change & support; rationale: impact",
+      "n": 31,
+      "where": "What's changing; Risk assessment; Scope; rationale: impact",
       "type": "record",
-      "claim": "Mac, iPhone, Android and web are excluded from this particular rollout and will receive the update later.",
+      "claim": "Mac, iPhone, Android and web are excluded from this rollout and will receive the update later.",
       "status": "supported",
       "source": "Message Center post MC1559641",
       "quote": "OneNote on Mac, iPhone, Android, and web is not included in this rollout and will receive this update later.",
@@ -262,8 +372,8 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "summary; What's changing; Scope: Rollout; changes",
+      "n": 32,
+      "where": "summary; What's changing; Scope; changes",
       "type": "record",
       "claim": "Frontier Public began in November 2026.",
       "status": "supported",
@@ -273,32 +383,21 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "summary; What's changing; Scope: Rollout; Governance guidance: After rollout",
+      "n": 33,
+      "where": "summary; What's changing; Scope; Governance guidance",
       "type": "record",
-      "claim": "Worldwide general availability is expected to begin in January 2027.",
+      "claim": "The notice expects Worldwide general availability rollout to begin in January 2027.",
       "status": "supported",
       "source": "Message Center post MC1559641",
       "quote": "General Availability (Worldwide): we expect rollout to begin in January 2027.",
-      "severity": "minor",
-      "fix": "In Governance guidance, replace 'when general availability starts in January 2027' with 'when general availability begins, currently expected from January 2027'."
-    },
-    {
-      "n": 24,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The notice sets no act-by date.",
-      "status": "supported",
-      "source": "Message Center post MC1559641",
-      "quote": "Act by: none",
       "severity": null,
       "fix": null
     },
     {
-      "n": 25,
+      "n": 34,
       "where": "summary; What's changing; Why it matters; rationale: risk",
       "type": "record",
-      "claim": "The notice requires no immediate administrator action.",
+      "claim": "Microsoft says no immediate admin action is required.",
       "status": "supported",
       "source": "Message Center post MC1559641",
       "quote": "No immediate admin action is required.",
@@ -306,21 +405,43 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "n": 35,
+      "where": "What's changing",
       "type": "record",
-      "claim": "Microsoft recommends informing affected users and updating internal OneNote and Copilot guidance and training.",
+      "claim": "The supplied notice sets no act-by date.",
       "status": "supported",
       "source": "Message Center post MC1559641",
-      "quote": "We recommend informing impacted users and updating internal OneNote + Copilot guidance and training materials.",
+      "quote": "Act by: none",
       "severity": null,
       "fix": null
     },
     {
-      "n": 27,
-      "where": "front matter: defaultState",
+      "n": 36,
+      "where": "What's changing; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft recommends informing affected users.",
+      "status": "supported",
+      "source": "Message Center post MC1559641",
+      "quote": "We recommend informing impacted users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft recommends updating internal OneNote and Copilot guidance and training materials.",
+      "status": "supported",
+      "source": "Message Center post MC1559641",
+      "quote": "updating internal OneNote + Copilot guidance and training materials.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: defaultState; Why it matters; rationale: risk",
       "type": "default",
-      "claim": "The change reaches eligible users without administrator action, represented as defaultState on.",
+      "claim": "The change reaches eligible users without admin action, supporting defaultState on under the schema.",
       "status": "supported",
       "source": "Message Center post MC1559641",
       "quote": "Eligible users will have broader Copilot capabilities in OneNote on supported app versions on Windows and iPad ... No immediate admin action is required.",
@@ -328,106 +449,51 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "OneNote edit mode has a mixed licensing model.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: '\"OneNote\" \"edit mode\" Copilot license pricing credits'; opened Microsoft Copilot requirements, License options for Microsoft Copilot, Microsoft Copilot overview and Get started with the Microsoft Frontier Program. None establishes a mixed entitlement for this feature.",
-      "severity": "blocker",
-      "fix": "Set licensing.model to 'per-user' for the documented Frontier entitlement, and replace the notes with: 'For Copilot-related Frontier features, users need a Microsoft Copilot license or a license that includes access to Copilot. The general-availability entitlement for OneNote edit mode is not yet published.' Cite https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier."
-    },
-    {
-      "n": 29,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "The requirements page says Microsoft Copilot users need a Microsoft Copilot licence and a qualifying prerequisite licence.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
-      "quote": "Users need a Microsoft Copilot license and a qualifying prerequisite license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Microsoft Copilot Chat is available with an eligible Microsoft 365 subscription.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
-      "quote": "Microsoft Copilot Chat is available to users with an eligible Microsoft 365 subscription.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "Which entitlement covers OneNote edit mode is not yet published, without distinguishing Frontier from general availability.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
-      "quote": "to use Frontier features for Copilot, users need a Microsoft Copilot license or a license that includes access to Copilot.",
-      "severity": "blocker",
-      "fix": "Replace the unqualified licensing gap throughout with: 'For Copilot-related Frontier features, users need a Microsoft Copilot license or a license that includes access to Copilot. The general-availability entitlement for OneNote edit mode is not yet published.' Keep the open licensing question limited to general availability."
-    },
-    {
-      "n": 32,
+      "n": 39,
       "where": "What's changing",
       "type": "absence",
-      "claim": "Learn does not yet describe the specific OneNote edit mode in November 2026.",
+      "claim": "Microsoft Learn does not describe this OneNote edit mode at the time of writing.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: '\"Copilot\" \"OneNote\" \"573446\"' and '\"OneNote\" \"Copilot\" \"edit mode\" approval permissions files saved'; opened Copilot overview and read release-note search excerpts. Results describe drafting, Copilot Notebooks or Cowork, not this OneNote edit mode.",
+      "quote": "Searched: \"OneNote\" \"edit mode\"; Copilot OneNote new edit mode license requirements Frontier 573446. Opened Copilot overview, requirements and Frontier guidance; results cover older OneNote features or Cowork, not this edit mode.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "Copilot in OneNote already provides drafting, which the planned notebook-structure editing extends.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
-      "quote": "OneNote: Draft plans, ideas, and lists",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Risk assessment: Data exposure; Security & identity; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not described whose permissions bound edit-mode data access or any applicable identity and permission model.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
-      "quote": "Microsoft Copilot presents only data that each individual can access using the same underlying controls for data access used in other Microsoft 365 services. Semantic Index honors the user identity-based access boundary",
-      "severity": "blocker",
-      "fix": "In Data exposure, replace 'Which data an edit run can read, and under whose permissions, is not described: confirm it before rollout' with 'The edit-mode-specific scope of retrieved data is not described: confirm it before rollout'. Remove the Security & identity bullet beginning 'No identity or permission model'. In Open questions, remove 'and under whose permissions'. These narrower gaps do not deny the published general Copilot permission boundary."
-    },
-    {
-      "n": 35,
+      "n": 40,
       "where": "Risk assessment: Data exposure; Open questions",
       "type": "absence",
-      "claim": "The specific retrieval scope of an edit run is not described.",
+      "claim": "The edit-mode-specific scope of retrieved Work IQ data is not described.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: '\"OneNote\" \"Copilot\" \"edit mode\" approval permissions files saved'; opened Copilot overview and Data, Privacy, and Security for Microsoft Copilot. General user-permission boundaries are documented, but no edit-mode-specific retrieval scope was found.",
+      "quote": "Searched: OneNote Copilot \"edit mode\" admin setting approval saved files Work IQ licensing credits; \"OneNote\" \"edit mode\" admin disable approval save Work IQ. Read Copilot privacy and Work IQ overview search excerpts; neither defines this mode's retrieval scope.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
+      "n": 41,
       "where": "Risk assessment: Data exposure; Open questions",
       "type": "absence",
-      "claim": "The output location for Word, Excel and PowerPoint files created by OneNote edit mode is not described.",
+      "claim": "The save location for files created by this OneNote edit mode is not described.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'OneNote Copilot edit mode output files saved approval undo'; opened Copilot overview and read Use Copilot Cowork search excerpts. Cowork output storage is documented, but no source links that storage mechanism to OneNote edit mode.",
+      "quote": "Searched: \"OneNote\" \"edit mode\" admin disable approval save Work IQ; OneNote Copilot \"edit mode\" admin setting approval saved files Work IQ licensing credits. Read Copilot overview and returned Cowork file-output excerpt; Cowork is a different experience.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
+      "n": 42,
+      "where": "Risk assessment: Autonomy & actions; Open questions",
+      "type": "absence",
+      "claim": "Whether this edit mode asks for approval before each change is not described.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"OneNote\" \"edit mode\" admin disable approval save Work IQ; \"OneNote\" \"edit mode\" \"Copilot\" \"policy\". Read Copilot overview, privacy and Cowork approval excerpts; Cowork approval does not establish this mode's approval behavior.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
       "claim": "Frontier features are preview.",
@@ -438,10 +504,10 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 44,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Frontier experiences may be modified, suspended or discontinued.",
+      "claim": "Microsoft may modify, suspend or discontinue Frontier experiences.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
       "quote": "As preview features, Frontier experiences may be modified, suspended, or discontinued",
@@ -449,10 +515,10 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 45,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Frontier experiences may not have standard support commitments.",
+      "claim": "Frontier experiences may not be covered by standard support commitments.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
       "quote": "may not be covered by standard support commitments or service level agreements",
@@ -460,10 +526,10 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 46,
       "where": "Risk assessment: Security & identity",
       "type": "applicability",
-      "claim": "HIPAA Business Associate Agreement coverage is excluded for Frontier experiences.",
+      "claim": "HIPAA Business Associate Agreement coverage is not included for Frontier experiences.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
       "quote": "HIPAA Business Associate Agreement coverage is not included for Frontier experiences.",
@@ -471,32 +537,76 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "Risk assessment: Autonomy & actions; Open questions",
-      "type": "absence",
-      "claim": "Per-change approval and undo behaviour are not documented for this OneNote edit mode.",
+      "n": 47,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The requirements page says Microsoft Copilot users need a Microsoft Copilot license and a qualifying prerequisite license.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'OneNote Copilot edit mode output files saved approval undo'; opened Copilot overview and read Use Copilot Cowork excerpts. Cowork documents approvals for its own notebook edits, not approvals or undo for the OneNote edit mode in this record.",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+      "quote": "Users need a Microsoft Copilot license and a qualifying prerequisite license.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 42,
-      "where": "controls[1]; Why it matters; Risk assessment: Autonomy & actions; Governance controls",
-      "type": "absence",
-      "claim": "No tenant-wide OneNote-edit-mode-specific switch is documented on the admin UI or API surface.",
+      "n": 48,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft Copilot Chat is available to users with an eligible Microsoft 365 subscription.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: '\"OneNote\" \"Copilot\" disable admin policy edit mode Microsoft Graph PowerShell' and '\"OneNote\" \"Copilot\" \"edit mode\" \"disable\"'; opened Configure Microsoft Copilot settings and TCM Copilot resources. No dedicated tenant switch for this edit mode was found.",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+      "quote": "Microsoft Copilot Chat is available to users with an eligible Microsoft 365 subscription.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 43,
+      "n": 49,
+      "where": "Cost and licensing: eligible users attribution",
+      "type": "record",
+      "claim": "The sources provide only an eligible-users description rather than a feature-specific license entitlement.",
+      "status": "supported",
+      "source": "Message Center post MC1559641",
+      "quote": "Eligible users will have broader Copilot capabilities in OneNote on supported app versions on Windows and iPad",
+      "severity": "minor",
+      "fix": "Replace 'The roadmap record and Microsoft's notice say only \"eligible users\".' with 'Microsoft's notice refers to \"eligible users\" without naming a licence.' The roadmap description does not use that phrase."
+    },
+    {
+      "n": 50,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Copilot-related Frontier features require a Microsoft Copilot license or a license that includes access to Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "However, to use Frontier features for Copilot, users need a Microsoft Copilot license or a license that includes access to Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The documented Frontier entitlement is user-license based, consistent with model per-user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Assign users licenses that provide access to the products you want them to preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "The general-availability entitlement for this OneNote edit mode is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"OneNote\" \"edit mode\" license pricing credits; Copilot OneNote new edit mode license requirements Frontier 573446. Opened Frontier, Copilot requirements, license options and overview; none identifies the GA entitlement for this mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Some Frontier experiences may be paid.",
+      "claim": "Certain Frontier experiences may only be available on a paid basis.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
       "quote": "Certain Frontier experiences may only be available on a paid basis.",
@@ -504,10 +614,10 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 54,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Frontier documentation directs readers to the Microsoft Copilot Credits Guide for credit consumption requirements.",
+      "claim": "The Frontier guidance directs readers to the Microsoft Copilot Credits Guide for credit consumption requirements.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
       "quote": "Copilot credit consumption requirements are described in the Microsoft Copilot Credits Guide.",
@@ -515,21 +625,21 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 55,
       "where": "Cost and licensing; Open questions; rationale: cost",
       "type": "absence",
-      "claim": "No credit rate or separate charge specific to OneNote edit mode is published.",
+      "claim": "A credit rate or separate charge specific to this edit mode is not yet published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Microsoft Copilot Credits Guide OneNote edit mode credit rate'; opened Meters for Microsoft Copilot pay-as-you-go services, Copilot license options, Copilot requirements and Frontier documentation. No OneNote-edit-mode-specific rate or separate charge was found.",
+      "quote": "Searched: \"OneNote\" \"edit mode\" license pricing credits; Copilot OneNote new edit mode license requirements Frontier 573446. Opened Frontier, requirements, license options and overview; none publishes an edit-mode rate or separate charge.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 46,
-      "where": "Scope: Users and licences",
+      "n": 56,
+      "where": "Scope: Users and licences; controls[0].scope",
       "type": "behaviour",
-      "claim": "Frontier is managed at tenant level.",
+      "claim": "Frontier enrollment is managed at tenant level.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
       "quote": "Frontier is managed at the tenant level.",
@@ -537,32 +647,21 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "Scope: Users and licences; controls[0].ui",
+      "n": 57,
+      "where": "Scope: Users and licences; Governance guidance",
       "type": "behaviour",
-      "claim": "Administrators can enrol all users or specific users and groups in Frontier.",
+      "claim": "Admins can assign Frontier access to all users or specific users and groups.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
-      "quote": "All users - All users automatically receive Frontier features and agents. Specific users and groups - Only specified users and groups automatically receive Frontier features and agents.",
+      "quote": "All users - All users automatically receive Frontier features and agents.\nSpecific users and groups - Only specified users and groups automatically receive Frontier features and agents.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
-      "where": "Scope: Users and licences",
-      "type": "licensing",
-      "claim": "Copilot-related Frontier features require a Microsoft Copilot licence or a licence including access to Copilot.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
-      "quote": "to use Frontier features for Copilot, users need a Microsoft Copilot license or a license that includes access to Copilot.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
+      "n": 58,
       "where": "Scope: Rollout",
       "type": "behaviour",
-      "claim": "Core Copilot experiences in OneNote require the Office Feature Updates task to run regularly and reach required network resources.",
+      "claim": "The Office Feature Updates task must run on its regular schedule for core Copilot experiences including OneNote.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
       "quote": "The Office Feature Updates task must run on its regular schedule and reach the required network resources for core Copilot experiences in apps such as Word, Excel, PowerPoint, and OneNote.",
@@ -570,32 +669,32 @@
       "fix": null
     },
     {
-      "n": 50,
-      "where": "Scope: Roles; Governance guidance: Before rollout",
-      "type": "role",
-      "claim": "Frontier enrolment requires AI Administrator, Security Administrator or Office Apps Administrator.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
-      "quote": "You need an account that includes one of the following roles: AI Administrator Security Administrator Office Apps Administrator",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "Governance guidance: At rollout",
-      "type": "applicability",
-      "claim": "Privacy controls for connected experiences can affect Copilot feature availability.",
+      "n": 59,
+      "where": "Scope: Rollout",
+      "type": "behaviour",
+      "claim": "The Office Feature Updates task must reach its required network resources.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
-      "quote": "Review the privacy controls for connected experiences. These controls can affect the availability of Copilot features.",
+      "quote": "The Office Feature Updates task must run on its regular schedule and reach the required network resources",
       "severity": null,
       "fix": null
     },
     {
-      "n": 52,
+      "n": 60,
+      "where": "Scope: Roles; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "AI Administrator, Security Administrator or Office Apps Administrator can enroll users in Frontier.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "You need an account that includes one of the following roles:\nAI Administrator\nSecurity Administrator\nOffice Apps Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
       "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "The Microsoft 365 admin center path Copilot > Settings > View all > Copilot Frontier reaches the Frontier access setting.",
+      "claim": "The Frontier user-access control is at Microsoft 365 admin center > Copilot > Settings > View all > Copilot Frontier.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
       "quote": "Copilot Frontier | Choose which users or groups can access eligible preview features. | Copilot > Settings > View all > Copilot Frontier.",
@@ -603,32 +702,43 @@
       "fix": null
     },
     {
-      "n": 53,
-      "where": "controls[0].api; Governance controls table",
-      "type": "applicability",
-      "claim": "POST /beta/admin/configurationManagement/configurationMonitors with microsoft.copilot.frontier is automation for selecting OneNote Frontier users.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: '\"Microsoft Graph\" \"Frontier\" \"OneNote\" settings'; opened Create configurationMonitor and TCM Copilot resources. The frontier resource controls web apps with value 0 or 1; neither source documents OneNote desktop enrolment or selecting Frontier users/groups.",
-      "severity": "blocker",
-      "fix": "Set controls[0].api to null and remove its applyOnce instructions. Keep the existing warning that the documented microsoft.copilot.frontier resource covers Microsoft 365 web apps and that desktop OneNote coverage is unconfirmed; do not present it as equivalent automation for this row. References: https://learn.microsoft.com/graph/utcm-copilot-resources and https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta."
-    },
-    {
-      "n": 54,
-      "where": "controls[0].note; Governance controls",
-      "type": "command",
-      "claim": "The beta configurationMonitors POST operation can apply a desired-state baseline once in applyOnce mode.",
+      "n": 62,
+      "where": "controls[0].api; Governance controls: automation",
+      "type": "absence",
+      "claim": "An API equivalent for selecting Frontier users for desktop OneNote is not documented.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-      "quote": "Create a new configurationMonitor object ... or applies a desired-state baseline once in applyOnce mode. POST /admin/configurationManagement/configurationMonitors",
+      "source": null,
+      "quote": "Searched: \"Frontier\" \"enroll\" \"Graph\"; Copilot Frontier enrollment API Microsoft Graph tenant release preferences. Opened TCM Copilot resources and Create configurationMonitor; the Frontier resource has a web-app value, not user/group enrollment.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 55,
-      "where": "controls[0].note; Governance controls",
+      "n": 63,
+      "where": "controls[1].ui and controls[1].api; Why it matters; Risk assessment; rationale: risk",
+      "type": "absence",
+      "claim": "A tenant-wide UI or API switch specific to OneNote edit mode is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"OneNote\" \"edit mode\" \"Copilot\" \"policy\"; Microsoft Graph Frontier enrollment users groups OneNote desktop PowerShell settings. Opened Configure Copilot settings, Frontier guidance, TCM Copilot resources and Copilot privacy; no mode-specific switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[0].note; Governance controls table",
+      "type": "role",
+      "claim": "Frontier enrollment needs the AI Administrator role.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "You need an account that includes one of the following roles:\nAI Administrator\nSecurity Administrator\nOffice Apps Administrator",
+      "severity": "blocker",
+      "fix": "Replace 'Needs AI Administrator.' in controls[0].note and the rendered table with 'Requires AI Administrator, Security Administrator or Office Apps Administrator.' This matches https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier and the page's Scope section."
+    },
+    {
+      "n": 65,
+      "where": "controls[0].note; Governance controls: TCM resource",
       "type": "applicability",
-      "claim": "The preview frontier resource is documented for Microsoft 365 web apps, with desktop OneNote coverage unconfirmed.",
+      "claim": "The documented microsoft.copilot.frontier resource governs Frontier access in Microsoft 365 web apps.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
       "quote": "Controls whether users can access experimental Frontier features in Microsoft 365 web apps.",
@@ -636,58 +746,69 @@
       "fix": null
     },
     {
-      "n": 56,
-      "where": "controls[0].note",
-      "type": "role",
-      "claim": "AI Administrator is the required least-privileged signed-in user role for Copilot-resource applyOnce.",
+      "n": 66,
+      "where": "controls[0].note; Governance controls: TCM resource",
+      "type": "absence",
+      "claim": "Coverage of desktop OneNote by that TCM Frontier resource is unconfirmed.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
-      "quote": "For remediation and applyOnce, AI Administrator is the least-privileged Microsoft Entra role for the signed-in user. This role requirement applies to the user, not to the TCM service principal.",
+      "source": null,
+      "quote": "Searched: Microsoft Graph Frontier enrollment users groups OneNote desktop PowerShell settings; \"Frontier\" \"enroll\" \"Graph\". Opened TCM Copilot resources and searched its text for OneNote and Frontier; its documented scope is web apps, not desktop OneNote.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 57,
-      "where": "Why it matters; Risk assessment: Autonomy & actions; Governance controls",
+      "n": 67,
+      "where": "Governance controls: TCM resource",
+      "type": "behaviour",
+      "claim": "The Tenant Configuration Management Copilot resource is documented as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-copilot-resources",
+      "quote": "This article lists the Copilot resource types supported in preview for monitoring and snapshots through the Tenant Configuration Management (TCM) APIs in Microsoft Graph beta.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance controls: unified release preferences path",
+      "type": "admin-path",
+      "claim": "The unified release preferences experience is at Microsoft 365 admin center > Settings > Org settings > Organization profile > Release preferences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "In the Microsoft 365 admin center, go to Settings > Org settings.\nUnder the Organization profile tab, select Release preferences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance controls: unified release preferences rollout",
+      "type": "date",
+      "claim": "The unified release preferences experience is rolling out gradually from mid-November 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "The unified release preferences experience is rolling out gradually in mid-November 2026, so it might not be available in your organization yet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[0].governs; Risk assessment; Governance controls",
       "type": "applicability",
-      "claim": "Frontier enrolment controls access to eligible preview features before general availability, including the announced Frontier phase of this feature.",
+      "claim": "Frontier enrollment governs access to eligible preview features before general availability, including this feature's Frontier phase.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
       "quote": "Users who are opted in to Frontier receive eligible Microsoft 365 features before general availability.",
       "severity": null,
       "fix": null
-    },
-    {
-      "n": 58,
-      "where": "Governance controls: unified release preferences paragraph",
-      "type": "admin-path",
-      "claim": "A unified Frontier release preferences experience is rolling out from mid-November 2026 at Settings > Org settings > Release preferences.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
-      "quote": "The unified release preferences experience is rolling out gradually in mid-November 2026 ... go to Settings > Org settings. Under the Organization profile tab, select Release preferences.",
-      "severity": "minor",
-      "fix": "Expand the path to 'Microsoft 365 admin center > Settings > Org settings > Organization profile > Release preferences'."
-    },
-    {
-      "n": 59,
-      "where": "Governance guidance: At rollout; Governance controls",
-      "type": "consistency",
-      "claim": "The checklist asks administrators to review connected-experience privacy controls, but the controls table has no corresponding row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Review the privacy controls for connected experiences ... Table rows: Which users get Frontier preview features; Tenant-wide switch for Copilot edit mode in OneNote.",
-      "severity": "minor",
-      "fix": "Remove the checklist bullet beginning 'Review the privacy controls for connected experiences' because it directs a control review not represented in the table; do not add a control row as part of this correction."
     }
   ],
   "precheck": {
-    "at": "2026-11-19T02:04:18.689Z",
+    "at": "2026-11-19T03:09:25.856Z",
     "summary": {
-      "links": 9,
+      "links": 10,
       "unreachable": 0,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 0,
-      "apiCalls": 1,
+      "apiCalls": 0,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
@@ -728,6 +849,11 @@
         "status": 200
       },
       {
+        "url": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
+        "ok": true,
+        "status": 200
+      },
+      {
         "url": "https://learn.microsoft.com/graph/utcm-copilot-resources",
         "ok": true,
         "status": 200
@@ -752,18 +878,16 @@
           "Copilot Frontier"
         ],
         "missing": []
-      },
-      {
-        "index": 0,
-        "side": "api",
-        "governs": "Which users get Frontier preview features, including the Frontier phase of OneNote edit mode",
-        "docs": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
-        "reachable": true,
-        "token": "/beta/admin/configurationManagement",
-        "found": true
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-19",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

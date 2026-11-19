@@ -31,6 +31,9 @@ sources:
   - title: "Microsoft Copilot"
     url: "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot"
     kind: "learn"
+  - title: "Microsoft Agent 365"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365"
+    kind: "learn"
   - title: "MCP and API plugins for declarative agents"
     url: "https://learn.microsoft.com/plugins/overview-plugins"
     kind: "learn"
@@ -62,7 +65,7 @@ sources:
     url: "https://learn.microsoft.com/plugins/overview-declarative-agent"
     kind: "learn"
 videos: []
-related: ["mcp","m365-copilot-copilot-extensibility-users-in-gcc-h-will-be-able-to-use-custom-engine-agents","m365-copilot-new-m365-copilot-usage-reports-for-copilot-search-connectors-and-agents-for-u","m365-copilot-use-agent-365-agents-within-m365-copilot-chat-and-declarative-agents"]
+related: ["mcp","m365-copilot-copilot-extensibility-users-in-gcc-h-will-be-able-to-use-custom-engine-agents","m365-copilot-new-m365-copilot-usage-reports-for-copilot-search-connectors-and-agents-for-u"]
 controls:
   - governs: "Whether an agent is blocked for the whole organisation"
     scope: "agent"
@@ -77,7 +80,7 @@ controls:
     note: "Blocks the selected agent, not necessarily a shared MCP server or its connected-service permissions or credentials. API is preview, needs an Agent 365 licence and is listed as unavailable in US Government L4 and L5."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-19"
 roadmapModified: "2026-11-11T00:52:46"
 changes:
   - date: "2026-11-18"
@@ -94,19 +97,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 61 statements confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 61 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-19"
+    note: "Corrected after the independent check: replaced the statement that Learn documents no MCP tool-access control with the Agent 365 service description's tenant-wide tool-access control, available in GCC, and reworded the matching open question."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 67 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-19"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 60
+  claims: 67
+  confirmed: 67
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "24ee4053f5b9c6521b98895d84de7c7e"
+  contradicted: 0
+  attempts: 0
+  hash: "33b14a4ff7a19cd83bf1f831761017c7"
 ---
 
 ## What's changing
@@ -189,24 +196,18 @@ The block control is Learn's general control for agents. It blocks the selected 
 
 The API side is a preview Microsoft Graph beta call. Learn says it needs a Microsoft Agent 365 licence and lists the API as not available in US Government L4 and L5, so it cannot be assumed to work in government tenants. The user-interface page has a note that publishing agents to the organisation is supported in GCCH and GCCM; it gives no equivalent statement for blocking in DoD.
 
-Microsoft Learn documents no MCP-specific tenant switch or allow list of MCP servers for Microsoft 365 Copilot government clouds at the time of writing (November 2026).
+The Agent 365 service description lists tenant-wide control of agent access to tools, including Microsoft MCP servers, as available in GCC with Microsoft 365 E7 / G7 or Agent 365. This does not establish support in GCC High or DoD, or coverage of every MCP integration route.
 
 ## Open questions
 
 - Which of the three clouds actually support MCP-based agents today, given that the service description lists declarative agents as not currently available in DoD and limited in GCC High? Watch the service description and the roadmap item.
 - How is the roadmap launch reconciled with Learn's restriction on authenticated custom actions?
 - Are there any MCP-specific government licensing terms beyond the general agent entitlements?
-- Can an administrator limit which MCP servers agents may call, and do the Agent 365 tool-management controls apply in US Government clouds?
+- Do Agent 365 tool-access controls cover these MCP-based agents in GCC High and DoD, and which integration routes do they govern?
 - What is the default state on arrival? Microsoft has not stated it.
 
 <!-- rationale
 risk: Medium. An MCP plugin lets an agent call a separately hosted server that can create, update and delete data, and Learn lists government-cloud limits for agents that the roadmap item does not mention.
 cost: Low. The only cost the sources show is admin and developer time; Learn documents general agent entitlements but no separate MCP-specific government licensing terms, and says usage-based billing is not supported in GCC or GCCH.
 impact: Medium. Developers who build the agents and the users they share them with notice it; nothing in the sources says other users see a change.
--->
-
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: final paragraph; Open questions: MCP server controls / absence: Microsoft Learn documents no MCP-specific tenant switch or server allow list for Microsoft 365 Copilot government clouds. | Found: | Control which tools (including Microsoft MCP servers) agents can access tenant-wide | Microsoft 365 Admin Center | No | Yes | Yes | | Fix: Replace the final Governance controls paragraph with: "The Agent 365 service description lists tenant-wide control of agent access to tools, including Microsoft MCP servers, as available in GCC with Microsoft 365 E7 / G7 or Agent 365. This does not establish support in GCC High or DoD, or coverage of every MCP integration route." Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365. Replace the corresponding open question with: "Do Agent 365 tool-access controls cover these MCP-based agents in GCC High and DoD, and which integration routes do they govern?" | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
 -->

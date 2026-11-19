@@ -43,6 +43,9 @@ sources:
   - title: "Governance and lifecycle actions for agents available in Microsoft 365 admin center"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions"
     kind: "learn"
+  - title: "Manage Microsoft Agent 365 agents in the Microsoft 365 admin center"
+    url: "https://learn.microsoft.com/microsoft-agent-365/admin/manage-agents#actions-for-agent-365-agents"
+    kind: "learn"
   - title: "Manage agent instances in Microsoft 365 admin center"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/manage-agent-instances"
     kind: "learn"
@@ -58,6 +61,9 @@ sources:
   - title: "copilotPackage: block"
     url: "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackage-block"
     kind: "learn"
+  - title: "copilotPackage: activate"
+    url: "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate"
+    kind: "learn"
   - title: "Blocking the Sales Development agent for the organisation (Microsoft 365 admin center)"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions#block-or-unblock-agents"
     kind: "learn"
@@ -70,8 +76,11 @@ controls:
       surface: "Microsoft 365 admin center"
       path: "Agents > All Agents > Sales Development (Frontier) > Activate"
       docs: "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent"
-    api: null
-    note: "Preview page. Needs AI Administrator or Global Administrator. Activation lets you choose users or groups and apply a policy template."
+    api:
+      kind: "graph"
+      call: "POST /beta/copilot/admin/catalog/packages/{id}/activate"
+      docs: "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate"
+    note: "Needs AI Administrator or Global Administrator. API is a reviewed beta contract: deployed availability and the Sales Development package ID are not confirmed; needs an Agent 365 licence."
   - governs: "Blocking the Sales Development agent for the organisation"
     scope: "agent"
     ui:
@@ -90,7 +99,7 @@ controls:
     note: "No page documents one at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-19"
 roadmapModified: "2026-10-22T22:58:40"
 changes:
   - date: "2026-11-18"
@@ -103,19 +112,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 75 statements not yet confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 78 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-19"
+    note: "Corrected after the independent check: the activation row now lists the documented beta activate call, and the checklist and notes cite the Agent 365 page for blocking an agent and no longer mention blocking an instance."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 79 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-19"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 78
-  confirmed: 76
+  claims: 79
+  confirmed: 79
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "87c520899b298d5f14f2b75cf91e9133"
+  contradicted: 0
+  attempts: 0
+  hash: "782804ce0e801659c2556245b2d693fb"
 ---
 
 ## What's changing
@@ -183,7 +196,7 @@ The preview overview page says the agent is available to customers who opt into 
 
 ### After rollout
 
-- Block the agent or an instance if booked meetings show wrong or unauthorised behaviour; blocking an agent turns off all instances created under it.
+- Block the agent if booked meetings show wrong or unauthorised behaviour; blocking an agent turns off all instances created under it.
 - Watch the roadmap item and the Sales Development agent pages on Learn for documentation of the scheduling capability.
 
 ## Governance controls
@@ -193,15 +206,15 @@ The preview overview page says the agent is available to customers who opt into 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Who can activate the Sales Development agent and create instances</strong><br><small>Tenant</small><br><small class="controls__note">Preview page. Needs AI Administrator or Global Administrator. Activation lets you choose users or groups and apply a policy template.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All Agents › Sales Development (Frontier) › Activate <a href="https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Who can activate the Sales Development agent and create instances</strong><br><small>Tenant</small><br><small class="controls__note">Needs AI Administrator or Global Administrator. API is a reviewed beta contract: deployed availability and the Sales Development package ID are not confirmed; needs an Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All Agents › Sales Development (Frontier) › Activate <a href="https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/activate</code> <a href="https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Blocking the Sales Development agent for the organisation</strong><br><small>Agent</small><br><small class="controls__note">General control: Microsoft has not confirmed the Sales Development agent is a package in this API. API is preview and needs an Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block › Block agent › Save <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions#block-or-unblock-agents" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>A switch for the meeting-scheduling capability alone</strong><br><small>Agent</small><br><small class="controls__note">No page documents one at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The activation step is documented for the Microsoft 365 admin center and needs the AI Administrator or Global Administrator role. At the time of writing (November 2026), Microsoft Learn documents no API for activating the Sales Development agent or choosing who can create instances.
+The activation step is documented for the Microsoft 365 admin center and needs the AI Administrator or Global Administrator role. Microsoft documents `POST /beta/copilot/admin/catalog/packages/{id}/activate` as a reviewed beta contract for activating onboarded agent templates: `agentManagerScope` selects who may create instances and `policyTemplateId` selects the saved policy template. Availability depends on the matching schema and backend release; the reference does not confirm deployed availability or the Sales Development agent's package identifier.
 
-The Block action works on the agent as a whole. The Learn page says blocking an agent turns off all instances created under it; the [manage agent instances](https://learn.microsoft.com/microsoft-agent-365/admin/manage-agent-instances#block-agent-instances) page documents blocking individual instances in the same Agents > All Agents area. The Package Management API lists block, unblock and reassign operations for packages, but Microsoft has not confirmed that the Sales Development agent appears as a package there, and the API requires a Microsoft Agent 365 licence. No page documents a switch that disables only meeting scheduling.
+The Block action works on the agent as a whole. The [Agent 365 agent management](https://learn.microsoft.com/microsoft-agent-365/admin/manage-agents#actions-for-agent-365-agents) page says blocking an agent turns off all instances created under it; the [manage agent instances](https://learn.microsoft.com/microsoft-agent-365/admin/manage-agent-instances#block-agent-instances) page documents blocking individual instances in the same Agents > All Agents area. The Package Management API lists block, unblock and reassign operations for packages, but Microsoft has not confirmed that the Sales Development agent appears as a package there, and the API requires a Microsoft Agent 365 licence. No page documents a switch that disables only meeting scheduling.
 
 ## Open questions
 
@@ -214,13 +227,4 @@ The Block action works on the agent as a whole. The Learn page says blocking an 
 risk: Medium. The agent would act on its own, writing to a seller's calendar and sending invitations to an external prospect; Microsoft documents admin activation scoping and a Block action, but no switch for scheduling alone.
 cost: Variable. Microsoft publishes Copilot Credits consumption billing for the Sales Development agent public preview from December 1, 2026; general-availability pricing for meeting scheduling is not yet confirmed.
 impact: Low. Sellers and prospects of the sales teams that use a Sales Development agent notice it; the preview page lets admins choose which users or groups can create instances.
--->
-
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls table and following activation paragraph / absence: No API is documented for activating the Sales Development template or choosing who can create instances. | Found: Activate an already-onboarded agent template for the users or groups allowed to create instances from it, and apply the selected policy template. This reference describes the reviewed beta contract. | Fix: Replace the blanket absence with: 'Microsoft documents POST /beta/copilot/admin/catalog/packages/{id}/activate as a reviewed beta contract for activating onboarded agent templates. agentManagerScope selects who may create instances and policyTemplateId selects the saved policy template. Availability depends on the matching schema and backend release; this reference does not confirm deployed availability or the Sales Development agent's package identifier.' Set controls[0].api to kind graph, that call, and docs https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate; retain these qualifications in its note and rendered table. Cite the reference in sources. | Source: https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance guidance: After rollout; Governance controls / behaviour: Blocking an agent turns off all instances created under it. | Found: Blocking an agent automatically turns off all instances created under that agent. These instances remain inactive until the IT admin unblocks the agent. | Fix: Cite https://learn.microsoft.com/microsoft-agent-365/admin/manage-agents#actions-for-agent-365-agents for the all-instances statement and add it to sources. Its Learn search excerpt states this; the currently cited agent-actions page does not. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-agents#actions-for-agent-365-agents
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The governance checklist's individual-instance blocking instruction is represented in the controls table. | Found: Checklist: 'Block the agent or an instance'. Controls rows cover activation, organization-wide blocking and a scheduling-only switch; no row covers individual-instance blocking. | Fix: In the After rollout checklist, replace 'Block the agent or an instance if booked meetings show wrong or unauthorised behaviour' with 'Block the agent if booked meetings show wrong or unauthorised behaviour'.
 -->

@@ -96,18 +96,20 @@ changes:
     note: "Corrected after verification: users' own access governs what Dataverse knowledge returns, data policies apply to agents in scope, billing qualified by harness, and Dataverse search storage counts towards tenant entitlements."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 71 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 76 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-18"
+  status: "held"
+  date: "2026-11-19"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 71
-  confirmed: 71
+  claims: 76
+  confirmed: 72
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 4
+  attempts: 1
   hash: "46edaf9d093820d7a2e10dbc7f166477"
 ---
 
@@ -207,8 +209,14 @@ cost: Variable. Copilot Studio bills agent answers in Copilot Credits (generativ
 impact: Medium. Makers who build agents over Dataverse data and the users who ask those agents notice it; admins who own Dataverse environments need to know the search setting it depends on.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: Manage > Environments > environment > Settings > Product > Features > Dataverse search ends at the control for enabling Dataverse agent knowledge. | Found: Under Dataverse search, select the options you want to turn on: Turn on search indexing to support Dataverse intelligence (Work IQ) in AI and agent experiences | Fix: Replace controls[0].ui.path and its rendered counterpart with "Manage > Environments > environment > Settings > Product > Features > Dataverse search > Turn on search indexing to support Dataverse intelligence (Work IQ) in AI and agent experiences". The cited page now distinguishes that option from "Show global search bar in all model-driven apps and turn on search indexing to support search-only experiences"; stopping at the shared heading does not identify which option enables agent knowledge. | Source: https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization
+- [contradicted, blocker] controls[0].api; Governance controls table / command: GET [Organization URI]/api/data/v9.2/organizations?$select=isexternalsearchindexenabled is the automation equivalent of changing the environment search setting. | Found: This Web API query returns the IsExternalSearchIndexEnabled property value for the organization. | Fix: Narrow controls[0].governs to "Inspect whether Dataverse search is enabled in an environment" in both the structured control and rendered row, retaining the GET and its read-only note as inspection rather than configuration automation. Keep the existing prose explaining that the GET does not change the setting. Do not describe this GET as an operation that enables or disables search. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/search/overview
+- [contradicted, blocker] controls[1].note; Governance controls table / applicability: Microsoft has not confirmed that the general agent credit-limit control covers the Dataverse knowledge case. | Found: Admins can set monthly consumption limits for each Copilot Studio agent, regardless of whether the environment uses prepaid capacity or pay-as-you-go billing. | Fix: Replace "General control: Microsoft has not confirmed anything specific to Dataverse knowledge." in controls[1].note and the rendered row with "Monthly limits apply to each Copilot Studio agent, whether its environment uses prepaid capacity or pay-as-you-go billing." Retain "Limits are not applied instantly." The published scope already includes agents using Dataverse knowledge. | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls / behaviour: The Power Platform API Entitlement Insight reference lists consumption read operations. | Found: Get Tenant Resource Consumption By User | Get resource consumption by entitlement and user ID (deprecated). | Fix: Add https://learn.microsoft.com/en-us/rest/api/power-platform/licensing/entitlement-insight to sources and link 'entitlement insight' to it in Governance controls. | Source: https://learn.microsoft.com/en-us/rest/api/power-platform/licensing/entitlement-insight
+- [supported, minor] Cost and licensing: Caps; controls[1].governs / behaviour: The optional hard stop turns an agent off when it reaches the monthly limit. | Found: Hard stop: The agent is automatically turned off once it hits the defined limit. ... An agent's monthly limit doesn't stop the agent flows that the agent calls. | Fix: After the hard-stop sentence in Cost and licensing, add: "An agent's monthly limit does not stop the agent flows that the agent calls; agent flows are billed and checked for capacity separately." This qualification is on the already-cited capacity page. | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity
+- [supported, minor] Governance controls: final paragraph / behaviour: The Power Platform API Entitlement Insight reference lists consumption read operations. | Found: Get Tenant Resource Consumption By User | Get resource consumption by entitlement and user ID (deprecated). | Fix: Add https://learn.microsoft.com/rest/api/power-platform/licensing/entitlement-insight to sources and link "entitlement insight" in the final Governance controls paragraph to it. | Source: https://learn.microsoft.com/rest/api/power-platform/licensing/entitlement-insight
+- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist's instruction to verify users' record access has no corresponding Dataverse permissions control row. | Found: Verify the intended users can access the selected records in the tables makers are likely to add. ... Controls: Whether Dataverse search ... is on in an environment; Monthly Copilot Credit limit and hard stop for an individual agent. | Fix: Remove the Before rollout checklist bullet "Verify the intended users can access the selected records in the tables makers are likely to add." It instructs checking Dataverse record permissions, but neither existing control row covers those permissions; this correction does not require adding a row.
 -->

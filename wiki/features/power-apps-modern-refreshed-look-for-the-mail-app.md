@@ -89,15 +89,17 @@ changes:
     note: "Corrected after verification: licensing now states the Power Apps premium use rights that model-driven apps need, and the unconfirmed New look setting row is removed from the controls table."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 48 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 47 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-18"
+  date: "2026-11-19"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 47
+  claims: 47
+  confirmed: 46
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -190,10 +192,10 @@ cost: Low. The only cost specific to this change is admin and training time. Mod
 impact: Medium. Users of the mail app in semi-annual-channel environments see a different look without choosing it; the roadmap lists the feature scope as users, always enabled.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui / admin-path: The environment channel is reached in Power Platform admin center through Manage > Environments > environment > Settings > Product > Behavior. | Found: In the command bar, select Settings. 6. Expand Product, and then select Behavior. ## Release channel | Settings | Description | Default value | | --- | --- | --- | | Model-driven app release channel | Fix: Complete controls[0].ui.path as 'Manage > Environments > environment > Settings > Product > Behavior > Release channel > Model-driven app release channel', using the section and setting labels at https://learn.microsoft.com/power-platform/admin/settings-behavior. | Source: https://learn.microsoft.com/power-platform/admin/settings-behavior
-- [supported, minor] controls[0].governs; Governance guidance: Before rollout; Scope / applicability: The environment release channel governs availability of this model-driven app refresh, subject to app and user channel settings. | Found: If you set this setting to Semi-annual channel, users in the organization use features from the current semi-annual release | Fix: Append to the release-channel controls note: 'Learn also says model-driven apps in Power Platform environments use Monthly when the app channel is Auto regardless of the environment channel; check the app channel as well.' Cite https://learn.microsoft.com/power-apps/maker/model-driven-apps/channel-change#keep-semi-annual-release-channel, which qualifies the general environment-channel guidance. | Source: https://learn.microsoft.com/power-platform/admin/settings-behavior
-- [contradicted, minor] Governance guidance: After rollout / consistency: Every control the governance checklist asks readers to review appears in the controls table. | Found: Review the New look app setting before telling users that the classic look can be restored The New look for model driven apps app setting is not a row in the table. | Fix: Remove the After rollout checklist bullet 'Review the New look app setting before telling users that the classic look can be restored, given the conflicting Learn pages.' Keep the existing explanatory controls note and Open questions; do not add a control row.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The environment channel is reached in Power Platform admin center through Manage > Environments > environment > Settings > Product > Behavior. | Found: In the command bar, select Settings. 6. Expand Product, and then select Behavior. ## Release channel | Settings | Description | Default value | | --- | --- | --- | | Model-driven app release channel | Fix: Set controls[0].ui.path to 'Manage > Environments > environment > Settings > Product > Behavior > Release channel > Model-driven app release channel', using the section and setting names at https://learn.microsoft.com/power-platform/admin/settings-behavior. | Source: https://learn.microsoft.com/power-platform/admin/settings-behavior
+- [supported, minor] controls[0].governs; Governance guidance: Before rollout; Scope / applicability: The environment release channel governs availability of this model-driven app refresh, subject to app and user settings. | Found: If you set this setting to Semi-annual channel, users in the organization use features from the current semi-annual release | Fix: Append to controls[0].note: 'Learn also says model-driven apps in Power Platform environments use Monthly when the app channel is Auto regardless of the environment channel; check the app channel as well.' Cite https://learn.microsoft.com/power-apps/maker/model-driven-apps/channel-change#keep-semi-annual-release-channel, which conflicts with the general environment-channel guidance. | Source: https://learn.microsoft.com/power-platform/admin/settings-behavior
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: Every control the governance checklist asks readers to review appears in the controls table. | Found: Review the New look app setting before telling users that the classic look can be restored, given the conflicting Learn pages. The New look for model driven apps app setting is not a row in the table. | Fix: Remove the After rollout bullet 'Review the New look app setting before telling users that the classic look can be restored, given the conflicting Learn pages.' Keep the explanatory controls note and Open questions; do not add a control row.
 -->

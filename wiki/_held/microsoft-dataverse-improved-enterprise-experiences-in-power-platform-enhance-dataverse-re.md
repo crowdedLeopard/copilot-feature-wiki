@@ -55,18 +55,20 @@ changes:
     note: "Correction: removed the claim that enabled environments get the new labels without further steps, set action to prepare, and stated the System Administrator role from Manage feature settings."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 45 statements confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 47 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-18"
+  status: "held"
+  date: "2026-11-19"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 45
-  confirmed: 45
+  claims: 47
+  confirmed: 46
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "0e599ad356b252ec240429404693ac3f"
 ---
 
@@ -160,4 +162,10 @@ The setting is not specific to the new labels: it governs whether /mention offer
 risk: Low. The change is the label text on records that the /mention setting already makes available; the sync of environment, app and record names that sits behind it is documented separately and is set per environment.
 cost: Low. The only cost the sources show is administrator time to review the per-environment setting; the Learn page for /mention names no licence or meter, and licensing for this change is not yet published.
 impact: Medium. Users of Dynamics 365 and model-driven Power Apps who reference business records in Microsoft 365 Copilot will see the new labels; people who never use /mention will not notice.
+-->
+
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost / licensing: The licensing model is unknown because Microsoft has not published which licence covers the change. | Found: Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans. | Fix: Set licensing.model to included for this label enhancement within Microsoft Copilot. Replace the broad unpublished-entitlement statements with: 'Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible subscription plans. No separate licensing requirement for this label enhancement is documented.' Cite https://learn.microsoft.com/copilot/plan/copilot-license-options. Keep the narrower statement that the /mention page itself names no licence; narrow the licensing open question and cost rationale to any requirement specific to this enhancement. | Source: https://learn.microsoft.com/copilot/plan/copilot-license-options
 -->

@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "on"
 action: "prepare"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for Review on its own. The Microsoft Copilot harness page says the harness uses usage-based billing and that using, building, testing and evaluating agents might consume Copilot Credits."
+  model: "consumption"
+  notes: "The Microsoft Copilot harness uses usage-based billing measured in Copilot Credits. An individually assigned Copilot Studio user license is not required to access this harness; creating agents depends on applicable Copilot Studio and environment permissions. No separate Review-panel licence or meter is documented."
 audiences: ["power-platform-admin","maker","change-adoption","security"]
 tags: ["copilot-studio","copilot-harness","agents","data-policies","maker-guidelines","publish-controls","governance","managed-environments"]
 sources:
@@ -34,11 +34,14 @@ sources:
   - title: "About agents powered by the Microsoft Copilot harness"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/overview"
     kind: "learn"
+  - title: "Overview of usage-based billing"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview"
+    kind: "learn"
   - title: "Which tools, connectors, models and skills makers can use (shown as disabled in Review) (Power Platform admin center)"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
     kind: "learn"
-  - title: "Which tools, connectors, models and skills makers can use (shown as disabled in Review) (PowerShell)"
-    url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-dlppolicy?view=pa-ps-latest"
+  - title: "Set-DlpPolicy (PowerShell)"
+    url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-dlppolicy?view=pa-ps-latest"
     kind: "learn"
   - title: "Maker guidelines message shown in the Review pane (preview) (Power Platform admin center)"
     url: "https://learn.microsoft.com/power-platform/admin/maker-guidelines"
@@ -54,9 +57,9 @@ controls:
       docs: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
     api:
       kind: "powershell"
-      call: "Get-DlpPolicy -PolicyName <policy name>"
-      docs: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-dlppolicy?view=pa-ps-latest"
-    note: "General control that Review reports on. The cmdlet reads policies; it is a different operation from blocking a connector."
+      call: "Set-DlpPolicy -PolicyName <policy name> -UpdatedPolicy <DLPPolicyDefinition object>"
+      docs: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-dlppolicy?view=pa-ps-latest"
+    note: "General control that Review reports on. UpdatedPolicy supplies the updated DLPPolicyDefinition object."
   - governs: "Contact email and Learn more link shown with data policy errors"
     scope: "tenant"
     ui: null
@@ -88,7 +91,7 @@ controls:
     note: "No such setting is documented at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-19"
 roadmapModified: "2026-10-01T23:00:07"
 changes:
   - date: "2026-11-18"
@@ -101,19 +104,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 71 statements confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 75 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-19"
+    note: "Corrected after verification: licensing model now consumption (Copilot harness usage-based billing, no individual Copilot Studio licence required), and the data policy control now names Set-DlpPolicy instead of the read-only Get-DlpPolicy."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 70 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-19"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 73
+  claims: 70
+  confirmed: 69
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "300f018dc1d6eaa0d402f5c2a85c2860"
+  contradicted: 1
+  attempts: 2
+  hash: "577cdce64446c0da7c5f38e776e498b0"
 ---
 
 ## What's changing
@@ -190,7 +197,7 @@ The Agent status summary on the Overview page is documented for standard harness
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which tools, connectors, models and skills makers can use (shown as disabled in Review)</strong><br><small>Environment</small><br><small class="controls__note">General control that Review reports on. The cmdlet reads policies; it is a different operation from blocking a connector.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › policy › Edit Policy › Next › Next › connector › ⋮ › Block <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Get-DlpPolicy -PolicyName &lt;policy name&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-dlppolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which tools, connectors, models and skills makers can use (shown as disabled in Review)</strong><br><small>Environment</small><br><small class="controls__note">General control that Review reports on. UpdatedPolicy supplies the updated DLPPolicyDefinition object.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › policy › Edit Policy › Next › Next › connector › ⋮ › Block <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-DlpPolicy -PolicyName &lt;policy name&gt; -UpdatedPolicy &lt;DLPPolicyDefinition object&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-dlppolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Contact email and Learn more link shown with data policy errors</strong><br><small>Tenant</small><br><small class="controls__note">Use Set-PowerAppDlpErrorSettings to update. The page warns the settings apply to all Power Platform apps in the tenant.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-PowerAppDlpErrorSettings -TenantId &quot;&lt;tenant ID&gt;&quot; -ErrorSettings $ErrorSettingsObj</code> <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Maker guidelines message shown in the Review pane (preview)</strong><br><small>Environment</small><br><small class="controls__note">Preview. Managed environments only. Environment groups use the Environment groups tab and Edit rule.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Maker guidelines › Environments › environment › Edit setting <a href="https://learn.microsoft.com/power-platform/admin/maker-guidelines" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Custom guidance message for blocked or disabled capabilities (preview)</strong><br><small>Environment</small><br><small class="controls__note">Documented as preview on the standard harness Agent status page. Plain text up to 400 characters.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Copilot Studio › Maker guidance › environment › Edit setting <a href="https://learn.microsoft.com/microsoft-copilot-studio/authoring-agent-status" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
@@ -218,6 +225,5 @@ impact: Medium. Makers building agents on the Microsoft Copilot harness see the 
 <!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model and notes / licensing: The licensing model for this authoring experience is unknown because Review has no separately published licence. | Found: You don't need an individually assigned Copilot Studio user license to access the Microsoft Copilot harness experience. Creating agents depends on the applicable Copilot Studio and environment permissions. | Fix: Set licensing.model to consumption. Replace the notes with: 'The Microsoft Copilot harness uses usage-based billing measured in Copilot Credits. An individually assigned Copilot Studio user license is not required to access this harness; creating agents depends on applicable Copilot Studio and environment permissions. No separate Review-panel licence or meter is documented.' Cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/overview and https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview. A missing panel-specific licence does not make the documented product entitlement unknown. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/overview
-- [contradicted, blocker] controls[0].api; Governance controls / command: Get-DlpPolicy -PolicyName <policy name> is the automation counterpart to the row's control over permitted or blocked capabilities. | Found: Retrieves a list of DLP policy objects. ... The Get-DlpPolicy cmdlet retrieves policy objects for the logged in admin's tenant. | Fix: Replace the read-only call with 'Set-DlpPolicy -PolicyName <policy name> -UpdatedPolicy <DLPPolicyDefinition object>' and set its docs to https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-dlppolicy?view=pa-ps-latest, which documents updating the policy through UpdatedPolicy. Replace the row note with 'General control that Review reports on. UpdatedPolicy supplies the updated DLPPolicyDefinition object.' Keep Get-DlpPolicy, if mentioned, only as a read-only inventory operation, not as the operation that applies the control. | Source: https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-dlppolicy?view=pa-ps-latest
+- [contradicted, blocker] Scope; Open questions: roles / absence: Microsoft Learn names no role for the guidance settings. | Found: After you create the environment group, Power Platform tenant administrators can immediately add managed environments or configure the group's rules. | Fix: Remove 'Microsoft Learn names no role for these settings at the time of writing.' Maker guidelines is explicitly an environment-group rule at https://learn.microsoft.com/power-platform/admin/environment-groups-rules, and https://learn.microsoft.com/power-platform/admin/environment-groups names Power Platform tenant administrators for configuring group rules. In the last Open questions bullet, replace 'with which roles and API support' with 'with what API support'. | Source: https://learn.microsoft.com/power-platform/admin/environment-groups
 -->

@@ -2,39 +2,36 @@
   "slug": "dynamics-365-customer-insights-journeys-improve-engagement-and-message-timing-with-outreac",
   "roadmapId": 577417,
   "title": "Customer Insights - Journeys: Outreach Optimization Agent picks email send times",
-  "status": "verified-with-gaps",
-  "date": "2026-11-18",
+  "status": "held",
+  "date": "2026-11-19",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 0,
-  "verifierVerdict": "pass",
+  "attempts": 1,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
   "notes": [],
-  "hold": null,
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-19",
+    "reasons": [
+      "2 blocking findings (claims 59, 76)"
+    ]
+  },
   "counts": {
-    "claims": 77,
+    "claims": 79,
     "confirmed": 76,
     "unconfirmed": 0,
-    "contradicted": 1,
-    "blocker": 0,
+    "contradicted": 3,
+    "blocker": 2,
     "major": 0,
-    "minor": 2
+    "minor": 6
   },
-  "summary": "The briefing passes: its roadmap facts, admin enablement, consumption licensing and control operations are supported. Minor corrections should acknowledge differing Microsoft statements about cross-region storage and remove the checklist's unmatched AI prompts control instruction.",
+  "summary": "Hold for corrections to the enablement route and spending-control guidance. The AI Hub route omits Settings, and Microsoft already directs administrators to consumption limits for this agent rather than leaving their applicability unconfirmed. The roadmap facts and the main preview behaviour are supported.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: products",
-      "type": "record",
-      "claim": "The roadmap associates this change with Microsoft Copilot (Microsoft 365) and Dynamics 365 Customer Insights - Journeys.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Customer Insights - Journeys\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
       "where": "front matter: status; What's changing; Governance guidance",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -45,13 +42,24 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "front matter: releasePhase; What's changing",
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Risk assessment; Scope",
       "type": "record",
-      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "claim": "The roadmap target is April CY2027, not a committed availability date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "quote": "\"targetDate\": \"April CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap gives a preview date of July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"July CY2026\"",
       "severity": null,
       "fix": null
     },
@@ -70,7 +78,7 @@
       "n": 5,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap platform is Web.",
+      "claim": "The roadmap lists the Web platform.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -79,75 +87,31 @@
     },
     {
       "n": 6,
-      "where": "front matter: targetDate; What's changing; Risk assessment; Scope",
+      "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The roadmap target is April CY2027, described as a target rather than a commitment.",
+      "claim": "The roadmap release phases are General Availability and Preview.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"targetDate\": \"April CY2027\"",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 7,
-      "where": "front matter: previewDate; What's changing",
+      "where": "front matter: products",
       "type": "record",
-      "claim": "The roadmap preview date is July CY2026.",
+      "claim": "The roadmap associates the item with Microsoft Copilot (Microsoft 365) and Dynamics 365 Customer Insights - Journeys.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"previewDate\": \"July CY2026\"",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Customer Insights - Journeys\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 8,
-      "where": "front matter: roadmapModified",
+      "where": "What's changing: first paragraph",
       "type": "record",
-      "claim": "The roadmap record was modified at 2026-10-22T22:58:40.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-10-22T22:58:40\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "title; summary; What's changing; Why it matters; rationale: risk",
-      "type": "behaviour",
-      "claim": "Outreach Optimization Agent is an AI-powered journey step that chooses marketing email send times.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/outreach-optimization-agent",
-      "quote": "Outreach Optimization Agent is an AI-powered journey step in Dynamics 365 Customer Insights - Journeys that optimizes when your marketing emails are sent.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "A maker adds the agent to a journey like another step and it handles scheduling.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/outreach-optimization-agent",
-      "quote": "You add Outreach Optimization Agent to a customer journey like any other step, and the agent handles scheduling from there.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "The maker selects one or more email messages to send.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/outreach-optimization-agent",
-      "quote": "When configuring the step, select one or more email messages.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "What's changing: roadmap description",
-      "type": "record",
-      "claim": "The roadmap says the agent builds a baseline messaging plan from historical engagement.",
+      "claim": "The roadmap describes a baseline messaging plan built from historical engagement.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Outreach Optimization Agent automatically creates a baseline messaging plan for your audience by analyzing overall historical engagement patterns",
@@ -155,10 +119,10 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "What's changing; Risk assessment; Open questions",
+      "n": 9,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Open questions",
       "type": "record",
-      "claim": "The roadmap describes adapting timing and cadence or exiting the plan as signals and goal progress change.",
+      "claim": "The roadmap describes adapting timing and cadence or exiting the plan as engagement signals and goal progress change.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "The agent continuously monitors incoming signals, including engagement and non-responsiveness, and adjusts follow-up timing and cadence, or exits the plan based on whether the goal is progressing or has been achieved.",
@@ -166,8 +130,8 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing: roadmap description",
+      "n": 10,
+      "where": "What's changing: first paragraph",
       "type": "record",
       "claim": "The roadmap describes quiet times as a hard constraint.",
       "status": "supported",
@@ -177,21 +141,32 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "What's changing; Risk assessment; controls[1].note",
-      "type": "availability",
-      "claim": "The agent and AI Hub documentation describe a preview subject to change.",
+      "n": 11,
+      "where": "title; summary; What's changing; Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "Outreach Optimization Agent is an AI journey step that chooses marketing email send times.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/outreach-optimization-agent",
-      "quote": "[This article is prerelease documentation and is subject to change.]\nThis is a preview feature.",
+      "quote": "Outreach Optimization Agent is an AI-powered journey step in Dynamics 365 Customer Insights - Journeys that optimizes when your marketing emails are sent.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What's changing; Risk assessment: Data exposure",
+      "n": 12,
+      "where": "What's changing: first paragraph; Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "The agent uses aggregated organizational historical email opens and clicks to identify peak engagement times.",
+      "claim": "A maker adds the step to a journey and selects one or more emails for it to schedule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/outreach-optimization-agent",
+      "quote": "You add Outreach Optimization Agent to a customer journey like any other step, and the agent handles scheduling from there. When configuring the step, select one or more email messages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing: second paragraph; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The agent reads aggregated historical email interaction data, including opens and clicks, to find high-engagement send times.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/outreach-optimization-agent",
       "quote": "It accesses your organization's historical interaction data, such as when past emails were opened or clicked, to identify general patterns of peak engagement across your audience.",
@@ -199,32 +174,54 @@
       "fix": null
     },
     {
-      "n": 17,
-      "where": "What's changing",
+      "n": 14,
+      "where": "What's changing: second paragraph",
       "type": "behaviour",
-      "claim": "The agent uses a generic fallback strategy if historical engagement data is unavailable.",
+      "claim": "The agent uses a generic fallback strategy when historical engagement data is unavailable.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/outreach-optimization-agent",
-      "quote": "If historical engagement data isn't yet available (for example, for a first-time user), the agent uses a generic fallback strategy so your emails are still sent at a reasonable time.",
+      "quote": "If historical engagement data isn't yet available (for example, for a first-time user), the agent uses a generic fallback strategy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing: second paragraph",
+      "type": "behaviour",
+      "claim": "All emails sent is a goal option for a multi-email sequence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/outreach-optimization-agent",
+      "quote": "All emails are sent: The goal is met when the agent has delivered every email in the sequence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing: second paragraph",
+      "type": "behaviour",
+      "claim": "Any link clicked is a goal option for a multi-email sequence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/outreach-optimization-agent",
+      "quote": "Any link in any email is clicked: The goal is met as soon as the contact clicks any link in any of the emails in the sequence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing: second paragraph",
+      "type": "behaviour",
+      "claim": "Selected links clicked is a goal option for a multi-email sequence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/outreach-optimization-agent",
+      "quote": "Selected links are clicked: The goal is met when the contact clicks one of the specific links you designate across the emails.",
       "severity": null,
       "fix": null
     },
     {
       "n": 18,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Multi-email sequences have goals of all emails sent, any link clicked, or selected links clicked.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/outreach-optimization-agent",
-      "quote": "When using multiple emails, choose one of three goal criteria:\nAll emails are sent\nAny link in any email is clicked\nSelected links are clicked",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing; Risk assessment; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "The maker specifies an end date before which all selected emails must be sent.",
+      "claim": "The configured end date bounds when the agent can send the selected emails.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/outreach-optimization-agent",
       "quote": "The end date defines the latest point in time by which the agent can send emails. The agent schedules all selected emails at optimal times, but ensures that all sends occur before this date.",
@@ -232,8 +229,8 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What's changing; Risk assessment; Governance guidance; Open questions",
+      "n": 19,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance; Open questions",
       "type": "behaviour",
       "claim": "The preview agent page says remaining emails are sent even if the sequence goal is met early.",
       "status": "supported",
@@ -243,21 +240,21 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What's changing",
+      "n": 20,
+      "where": "What's changing: second paragraph",
       "type": "behaviour",
-      "claim": "The agent records the goal as achieved when its condition is satisfied.",
+      "claim": "The agent records the goal as met at the point it is achieved.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/outreach-optimization-agent",
-      "quote": "However, it records the goal as achieved at the point the condition was satisfied",
+      "quote": "it records the goal as achieved at the point the condition was satisfied",
       "severity": null,
       "fix": null
     },
     {
-      "n": 22,
-      "where": "summary; What's changing: AI Hub comparison",
+      "n": 21,
+      "where": "What's changing: second paragraph; summary",
       "type": "behaviour",
-      "claim": "AI Hub separately describes analyzing engagement history and real-time signals to adjust timing, frequency and follow-up.",
+      "claim": "The AI Hub page describes using engagement history and real-time signals to adjust timing, frequency and follow-up behaviour.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
       "quote": "It analyzes engagement history and real-time signals to adjust message timing, frequency, and follow-up behavior.",
@@ -265,21 +262,43 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What's changing; Risk assessment; Open questions",
+      "n": 22,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "absence",
-      "claim": "The agent page does not describe the roadmap's early exit from the messaging plan.",
+      "claim": "The feature's own preview page does not describe the roadmap's early exit from the plan.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Outreach Optimization Agent\" \"exit\" \"general availability\"; opened outreach-optimization-agent and ai-hub. The agent page instead says remaining emails continue after the goal is met.",
+      "quote": "Searched: Outreach Optimization Agent rollout generally available enable default; read the agent page in full, including multi-email sequences and goal evaluation. It documents continuing queued sends, not early exit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Scope; controls[1].note; Governance guidance",
+      "type": "availability",
+      "claim": "The feature documentation is preview documentation and subject to change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/outreach-optimization-agent",
+      "quote": "[This article is prerelease documentation and is subject to change.] This is a preview feature.",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
-      "where": "summary; licensing.notes; Why it matters; Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "Using Outreach Optimization Agent consumes Copilot credits.",
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Microsoft says preview features are not meant for production use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/outreach-optimization-agent",
+      "quote": "Preview features aren't meant for production use and might have restricted functionality.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: licensing.model, cost; summary; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Use of the agent consumes Copilot credits, supporting the consumption licensing model and variable cost field.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/outreach-optimization-agent",
       "quote": "Use of Outreach Optimization Agent consumes Copilot credits.",
@@ -287,164 +306,10 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "front matter: defaultState; summary; Why it matters; Scope; rationales",
-      "type": "default",
-      "claim": "The feature requires admin enablement rather than arriving usable without admin action.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
-      "quote": "To use AI agents in Customer Insights – Journeys, a tenant administrator must first enable AI agents at the tenant level in the Power Platform Admin Center.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 26,
-      "where": "Why it matters; Scope; Governance guidance; rationale: risk",
-      "type": "applicability",
-      "claim": "Copilot Studio capacity, Move data across regions and AI prompts are required prerequisites before enabling the agent.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
-      "quote": "The following prerequisites must be reviewed and accepted:\nMicrosoft Copilot Studio capacity\nMove data across regions\nAI prompts",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "Risk assessment: Data exposure; rationale: risk",
-      "type": "behaviour",
-      "claim": "Microsoft says agent data might be processed and stored outside the user's primary region.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites",
-      "quote": "This means agent data might be processed and stored in regions outside the user's primary region, depending on service and infrastructure availability.",
-      "severity": "minor",
-      "fix": "After this sentence, add: 'The general Power Platform data-movement page separately says this process does not log, store, or retain inputs or outputs (https://learn.microsoft.com/power-platform/admin/geographical-availability-copilot).'"
-    },
-    {
-      "n": 28,
-      "where": "controls[1].note; Risk assessment: Security & identity",
-      "type": "role",
-      "claim": "AI Hub is available to users with the Admin role by default.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
-      "quote": "AI Hub is available to users with the Admin role by default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "controls[1].note; Risk assessment: Security & identity",
-      "type": "role",
-      "claim": "Custom roles need agent settings permissions for msdynmkt_agentsettings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
-      "quote": "If you use custom roles and permissions, add agent settings permissions for the msdynmkt_agentsettings entity.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "Risk assessment: Security & identity; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not described which identity this agent uses when sending.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Outreach Optimization Agent\" \"identity\" \"audit\" and Outreach Optimization Agent run identity send audit decisions approval; opened agent, AI Hub and responsible AI FAQ pages. No sending identity is specified.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "absence",
-      "claim": "The Learn agent page describes no per-send approval.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Outreach Optimization Agent\" \"approval\" \"generally available\"; opened outreach-optimization-agent and faqs-outreach-optimization-agent. Setup selects emails, goals and end date; no per-send approval is described.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Risk assessment: Autonomy & actions; Scope",
-      "type": "availability",
-      "claim": "The agent supports email only.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/faqs-outreach-optimization-agent",
-      "quote": "Current limitations of Outreach Optimization Agent include:\nEmail-only channel support.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Risk assessment; controls[4].note; Governance controls",
-      "type": "applicability",
-      "claim": "The agent honors configured quiet times.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/outreach-optimization-agent",
-      "quote": "Even if historical data suggests a high-engagement window outside permitted hours (for example, late at night), the agent won't schedule emails during quiet-time periods.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "applicability",
-      "claim": "The agent honors contact point consent.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/outreach-optimization-agent",
-      "quote": "If a contact has opted out of email communication on a specific address, no email is sent to that address.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "controls[4].note; Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Quiet times can cover up to 21 consecutive days.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/real-time-marketing-quiet-times",
-      "quote": "The combined quiet times effect (both quiet dates and quiet hours) must stay within the 21 day maximum.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Risk assessment: Change & support",
-      "type": "availability",
-      "claim": "Microsoft says preview features are not meant for production use.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/outreach-optimization-agent",
-      "quote": "Preview features aren’t meant for production use and might have restricted functionality.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Losing acceptance of a mandatory prerequisite automatically disables all enabled agents.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
-      "quote": "If any mandatory prerequisite is no longer accepted in the Power Platform Admin Center:\nAll enabled agents are automatically disabled.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "controls[0].note; Risk assessment: Change & support; Governance controls",
-      "type": "behaviour",
-      "claim": "Disabling AI agents in the Power Platform admin center immediately disables all active agents, not just Outreach Optimization Agent.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
-      "quote": "If a tenant administrator disables AI agents in the Power Platform Admin Center:\nAll active agents are immediately disabled.\nNew agents can't be created or configured.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "Prepaid Copilot Studio message pack capacity is a billing option for Journeys AI capabilities.",
+      "claim": "Prepaid Copilot Studio message pack capacity is a supported billing model for Journeys AI capabilities.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites",
       "quote": "Prepaid capacity: Uses Copilot Studio message pack subscriptions, which are a licensing option for Microsoft Copilot Studio that you purchase in advance.",
@@ -452,10 +317,10 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Pay-as-you-go charges for the actual messages consumed by agents during the month.",
+      "n": 27,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Pay-as-you-go charges for messages consumed by Journeys AI agents during the month.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites",
       "quote": "Pay-as-you-go: Charges for the actual number of messages consumed by agents during the month.",
@@ -463,10 +328,10 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "Why it matters",
+      "n": 28,
+      "where": "Why it matters: first paragraph",
       "type": "cost",
-      "claim": "Pay-as-you-go credit usage can be billed to an Azure subscription.",
+      "claim": "Pay-as-you-go credit usage is charged through an Azure subscription.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity",
       "quote": "By using a billing plan, administrators can track and bill Copilot Studio credit capacity usage directly to an Azure subscription on a pay-as-you-go basis.",
@@ -474,41 +339,8 @@
       "fix": null
     },
     {
-      "n": 42,
-      "where": "Cost and licensing; Governance guidance: Before rollout",
-      "type": "applicability",
-      "claim": "Copilot Studio capacity must be allocated to the environment for Journeys AI agents.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites",
-      "quote": "Before using AI agents, administrators need to make sure enough Copilot Studio capacity is allocated to the environment. Capacity allocation is managed in the Power Platform Admin Center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "If no overage source is enabled, an environment can consume only its allocated prepaid credits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity",
-      "quote": "If no overage source is enabled, the environment can consume only its allocated prepaid credits.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Cost and licensing",
-      "type": "behaviour",
-      "claim": "Experiences requiring credits can stop working after the allocation is exhausted.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity",
-      "quote": "Experiences that require credits can stop working after that allocation is exhausted.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "licensing.notes; Cost and licensing",
+      "n": 29,
+      "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "Customer Insights - Journeys is licensed per tenant.",
       "status": "supported",
@@ -518,43 +350,120 @@
       "fix": null
     },
     {
-      "n": 46,
-      "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "n": 30,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
       "type": "absence",
-      "claim": "Microsoft has not published an agent-specific credit rate per email, contact or decision, and the cited billing rate table has no entry for it.",
+      "claim": "An agent-specific credit rate per email, contact or decision is not yet published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Outreach Optimization Agent Copilot credits rate per email pricing; opened agent, AI Hub prerequisites and requirements-messages-management, and searched its text for Outreach, Journeys and Dynamics. No agent-specific rate or unit was found.",
+      "quote": "Searched: Outreach Optimization Agent credits rate monthly limit; Outreach Optimization Agent credit rate. Opened agent, AI Hub, prerequisites and Copilot Studio Billing rates and management pages; none gives an Outreach-specific rate or unit.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 47,
-      "where": "Cost and licensing: prerequisites wording",
+      "n": 31,
+      "where": "Cost and licensing: third paragraph",
       "type": "absence",
-      "claim": "The agent page lists AI Hub enablement as its prerequisite, and the agent and AI Hub prerequisite lists name no Customer Insights - Journeys license.",
+      "claim": "The cited Copilot Studio billing rates page lists no Outreach Optimization Agent-specific rate.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Outreach Optimization Agent Customer Insights Journeys AI Hub prerequisites; opened outreach-optimization-agent, ai-hub and ai-hub-prerequisites and read their prerequisite lists. None names a Customer Insights - Journeys license.",
+      "quote": "Searched: Outreach Optimization Agent credit rate. Read Billing rates and management in full, including its feature-rate tables; Outreach Optimization Agent is not listed.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
-      "where": "Scope: geographical availability",
-      "type": "availability",
-      "claim": "Learn points to the Dynamics 365, Power Platform and Copilot Studio product availability list for supported regions.",
+      "n": 32,
+      "where": "Cost and licensing: third paragraph",
+      "type": "licensing",
+      "claim": "The agent page lists enabling it in AI Hub as its prerequisite and does not name a Customer Insights - Journeys licence.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites",
-      "quote": "AI agents in Customer Insights - Journeys are available in the geographical regions listed in Dynamics 365, Power Platform, and Copilot Studio product availability.",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/outreach-optimization-agent",
+      "quote": "Prerequisites: To use Outreach Optimization Agent in journeys, you need to: Enable Outreach Optimization Agent in the AI Hub.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 49,
-      "where": "Scope: update requirement",
+      "n": 33,
+      "where": "Cost and licensing: third paragraph",
+      "type": "licensing",
+      "claim": "The AI Hub pages add capacity and tenant prerequisites but name no Customer Insights - Journeys licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
+      "quote": "The following prerequisites must be reviewed and accepted: Microsoft Copilot Studio capacity; Move data across regions; AI prompts",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing; Governance guidance: Before rollout",
+      "type": "cost",
+      "claim": "Credit capacity is allocated to an environment through the Power Platform admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity",
+      "quote": "In the allocation panel, select an environment and specify the number of Copilot Credits to allocate in the Copilot Credits textbox.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing: second paragraph",
+      "type": "cost",
+      "claim": "With no overage source enabled, the environment can consume only its allocated prepaid credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity",
+      "quote": "If no overage source is enabled, the environment can consume only its allocated prepaid credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing: second paragraph",
+      "type": "behaviour",
+      "claim": "Experiences requiring credits can stop working when that allocation is exhausted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity",
+      "quote": "Experiences that require credits can stop working after that allocation is exhausted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk, impact",
+      "type": "default",
+      "claim": "The preview requires administrator enablement before use, supporting admin-opt-in rather than automatic activation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
+      "quote": "a tenant administrator must first enable AI agents at the tenant level in the Power Platform Admin Center. After all required prerequisites are accepted, you can enable individual agents in Add and manage agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Scope: second paragraph",
+      "type": "role",
+      "claim": "A tenant administrator must enable AI agents in the Power Platform admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
+      "quote": "To use AI agents in Customer Insights – Journeys, a tenant administrator must first enable AI agents at the tenant level in the Power Platform Admin Center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Why it matters; Scope; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Copilot Studio capacity, Move data across regions and AI prompts must be accepted before agents can be used.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
+      "quote": "administrators must accept required prerequisites before agents can be used in Customer Insights – Journeys. The following prerequisites must be reviewed and accepted: Microsoft Copilot Studio capacity; Move data across regions; AI prompts",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope: second paragraph",
       "type": "availability",
-      "claim": "AI Hub requires Customer Insights - Journeys update 1.1.65002.153.",
+      "claim": "AI Hub is available as part of update 1.1.65002.153.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
       "quote": "AI Hub is available as part of the 1.1.65002.153 update. To use AI Hub, navigate to Settings > Versions and upgrade to 1.1.65002.153.",
@@ -562,10 +471,87 @@
       "fix": null
     },
     {
-      "n": 50,
-      "where": "Scope",
+      "n": 41,
+      "where": "Risk assessment: Security & identity; controls[1].note",
+      "type": "role",
+      "claim": "AI Hub is available to the Admin role by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
+      "quote": "AI Hub is available to users with the Admin role by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Security & identity; controls[1].note",
+      "type": "role",
+      "claim": "Custom roles require agent settings permissions for msdynmkt_agentsettings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
+      "quote": "If you use custom roles and permissions, add agent settings permissions for the msdynmkt_agentsettings entity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure; rationale: risk",
       "type": "behaviour",
-      "claim": "The agent operates within predefined scenarios with fixed goals and exit conditions.",
+      "claim": "The prerequisites page says agent data might be processed and stored outside the user's primary region.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites",
+      "quote": "This means agent data might be processed and stored in regions outside the user's primary region, depending on service and infrastructure availability.",
+      "severity": "minor",
+      "fix": "After this sentence add: 'The general Power Platform data-movement page separately says Microsoft does not log, store or retain inputs or outputs during this process (https://learn.microsoft.com/power-platform/admin/geographical-availability-copilot).'"
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not described the identity under which this agent sends messages.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outreach Optimization Agent identity audit approval sends; Outreach Optimization Agent audit identity. Read agent, AI Hub and responsible AI FAQ pages; none identifies its runtime sending identity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Open questions: fourth question",
+      "type": "absence",
+      "claim": "Microsoft has not described where this agent's send-time decisions are recorded for audit.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outreach Optimization Agent audit identity; Outreach Optimization Agent identity audit approval sends. Read agent, AI Hub and responsible AI FAQ pages; no send-time decision audit location is documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The agent page describes scheduled sending without describing per-send approval.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outreach Optimization Agent approval; Outreach Optimization Agent identity audit approval sends. Read the feature's full sending procedure and responsible AI FAQ; no per-send approval is described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Autonomy & actions; Scope",
+      "type": "behaviour",
+      "claim": "The agent supports email only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/faqs-outreach-optimization-agent",
+      "quote": "Current limitations of Outreach Optimization Agent include: Email-only channel support.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope: second paragraph",
+      "type": "behaviour",
+      "claim": "Operation is limited to predefined scenarios with fixed goals and exit conditions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/faqs-outreach-optimization-agent",
       "quote": "Operation limited to predefined scenarios with fixed goals and exit conditions.",
@@ -573,109 +559,186 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "Scope; Open questions: generally available version",
-      "type": "absence",
-      "claim": "Learn does not describe rollout beyond the preview or confirm GA prerequisites and enablement behavior.",
+      "n": 49,
+      "where": "Risk assessment: Autonomy & actions; controls[4].note; Governance controls",
+      "type": "applicability",
+      "claim": "Configured quiet times apply to this agent.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Outreach Optimization Agent\" \"exit\" \"general availability\" and \"Outreach Optimization Agent\" \"approval\" \"generally available\"; opened agent, AI Hub and prerequisites pages. They describe preview, not a GA rollout or final prerequisites.",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/outreach-optimization-agent",
+      "quote": "The agent respects your organization's configured quiet times. Even if historical data suggests a high-engagement window outside permitted hours (for example, late at night), the agent won't schedule emails during quiet-time periods.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "applicability",
+      "claim": "The agent honours contact point consent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/outreach-optimization-agent",
+      "quote": "The agent respects the communication preferences set for each contact or lead. If a contact has opted out of email communication on a specific address, no email is sent to that address.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Autonomy & actions; controls[4].note",
+      "type": "behaviour",
+      "claim": "Quiet times can apply for up to 21 consecutive days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/real-time-marketing-quiet-times",
+      "quote": "Quiet times can apply for up to 21 consecutive days. The combined quiet times effect (both quiet dates and quiet hours) must stay within the 21 day maximum.",
       "severity": null,
       "fix": null
     },
     {
       "n": 52,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Use AI agents is at Power Platform admin center > Copilot > Settings > Dynamics 365 Customer Insights - Journeys > AI agents > Use AI agents.",
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Losing acceptance of a mandatory prerequisite automatically disables all enabled agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
-      "quote": "Go to Power Platform Admin Center > Copilot > Settings.\nScroll to the Dynamics 365 Customer Insights – Journeys section.\nSelect AI agents.\nSet Use AI agents to On for the selected environment or environment group.",
+      "quote": "If any mandatory prerequisite is no longer accepted in the Power Platform Admin Center: All enabled agents are automatically disabled. Agents remain unavailable until the prerequisite is accepted again.",
       "severity": null,
       "fix": null
     },
     {
       "n": 53,
-      "where": "controls[0].api; Governance controls",
-      "type": "absence",
-      "claim": "Microsoft Learn documents no API for the Journeys Use AI agents switch.",
+      "where": "controls[0].note; Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "Disabling AI agents at tenant level immediately disables all active Journeys agents.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Customer Insights Journeys Use AI agents enable disable PowerShell API AI Hub msdynmkt_agentsettings; opened ai-hub and ai-hub-prerequisites. Search results document UI setup, not an API for this switch.",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
+      "quote": "If a tenant administrator disables AI agents in the Power Platform Admin Center: All active agents are immediately disabled. New agents can't be created or configured.",
       "severity": null,
       "fix": null
     },
     {
       "n": 54,
-      "where": "controls[0].scope and note; Governance guidance: At rollout",
-      "type": "applicability",
-      "claim": "The Use AI agents setting can be set for an environment or environment group.",
+      "where": "Governance controls: first paragraph after table",
+      "type": "behaviour",
+      "claim": "AI Hub can disable an individual agent in the selected environment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
-      "quote": "Set Use AI agents to On for the selected environment or environment group.",
+      "quote": "To disable a specific agent: In AI Hub, go to Add and manage agents. Select the agent. Set the agent status to Disabled. Once disabled, the agent is no longer available for use in the selected environment.",
       "severity": null,
       "fix": null
     },
     {
       "n": 55,
-      "where": "controls[1].ui; controls[1].note; Governance controls table",
-      "type": "admin-path",
-      "claim": "AI Hub is under Settings, and agent activation follows AI Hub > Add and manage agents > Add an agent > Outreach Optimization Agent > Overview tab > Enable.",
+      "where": "Scope: first paragraph",
+      "type": "availability",
+      "claim": "Learn points to the Dynamics 365, Power Platform and Copilot Studio availability page for supported regions.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
-      "quote": "In AI Hub, select Add and manage agents.\nSelect Add an agent and choose Outreach Optimization Agent.\nIn the Overview tab, review how the agent works.\nTo activate the agent, select Enable.",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites",
+      "quote": "AI agents in Customer Insights - Journeys are available in the geographical regions listed in Dynamics 365, Power Platform, and Copilot Studio product availability.",
       "severity": null,
       "fix": null
     },
     {
       "n": 56,
-      "where": "controls[1].api; Governance controls",
+      "where": "Scope: second paragraph",
       "type": "absence",
-      "claim": "Microsoft Learn documents no API for enabling or disabling this individual agent in AI Hub.",
+      "claim": "Rollout mechanics beyond the preview are not described.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Outreach Optimization Agent enable disable API msdynmkt_agentsettings; \"msdynmkt_agentsettings\" API enable; opened ai-hub. Results for msdyn_agentsetting concern a different table, not a documented API for this agent's switch.",
+      "quote": "Searched: Outreach Optimization Agent rollout generally available enable default. Read the roadmap record and agent, AI Hub, prerequisites and FAQ pages; no post-preview rollout mechanics are given.",
       "severity": null,
       "fix": null
     },
     {
       "n": 57,
-      "where": "controls[2].ui; Governance controls table",
+      "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "Capacity management is at Power Platform admin center > Licensing > Products > Copilot Studio > Summary > Manage Copilot Credits.",
+      "claim": "The AI-agents switch is at Power Platform admin center > Copilot > Settings > Dynamics 365 Customer Insights – Journeys > AI agents > Use AI agents.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity",
-      "quote": "On the navigation pane, select Licensing.\nIn the Licensing pane, under Products, select Copilot Studio.\nSelect the Summary tab.\nUnder the Copilot Studio heading, select Manage Copilot Credits or Manage sessions.",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
+      "quote": "Go to Power Platform Admin Center > Copilot > Settings. Scroll to the Dynamics 365 Customer Insights – Journeys section. Select AI agents. Set Use AI agents to On for the selected environment or environment group.",
       "severity": null,
       "fix": null
     },
     {
       "n": 58,
-      "where": "controls[2].api; controls[2].note; Governance controls table",
-      "type": "command",
-      "claim": "The Power Platform API accepts the printed allocationsV2 PUT with version 2024-10-01, environment scope, MCSMessages quantity and TenantPool enforcement rule.",
+      "where": "controls[0].api; Governance controls: first paragraph after table",
+      "type": "absence",
+      "claim": "An API for the Journeys Use AI agents switch is not documented.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
-      "quote": "scope = @{ environmentId = $environmentId }\nentitlementId = \"MCSMessages\"\nallocation = @{ quantity = 5000 }\n@{ ruleType = \"TenantPool\"; enabled = $false }\nInvoke-RestMethod -Method Put `\n-Uri \"$apiBaseUrl/licensing/allocationsV2?api-version=$apiVersion\"",
+      "source": null,
+      "quote": "Searched: Customer Insights Journeys Use AI agents API PowerShell tenant setting; Customer Insights AI agents API tenant enable Power Platform. Read AI Hub and returned Microsoft excerpts; none documents an operation for this switch.",
       "severity": null,
       "fix": null
     },
     {
       "n": 59,
-      "where": "controls[2].note",
-      "type": "behaviour",
-      "claim": "Disabling TenantPool disables tenant-pool draw, not every possible overage source.",
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The enablement route starts at AI Hub > Add and manage agents > Add an agent > Outreach Optimization Agent > Overview tab > Enable.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
+      "quote": "To open AI Hub, go to Settings and select AI Hub in the left navigation.",
+      "severity": "blocker",
+      "fix": "Replace the path in front matter and the rendered table with 'Settings > AI Hub > Add and manage agents > Add an agent > Outreach Optimization Agent > Overview tab > Enable'. The cited page documents Settings as the way into AI Hub; include it in the route rather than starting inside AI Hub."
+    },
+    {
+      "n": 60,
+      "where": "controls[1].api; Governance controls: first paragraph after table",
+      "type": "absence",
+      "claim": "An API for enabling or disabling this individual agent through AI Hub is not documented.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity",
-      "quote": "Select Draw from the available capacity in my tenant to let the environment use unallocated prepaid capacity from the tenant pool.\nSelect Bill to my pay-as-you-go billing plan to let the environment continue usage through the selected billing plan.",
+      "source": null,
+      "quote": "Searched: msdynmkt_agentsettings Web API enable agents; msdynmkt_agentsetting entity reference Outreach Optimization enable API; msdynmkt_agentsettings Dataverse Web API table enable disable. Read AI Hub and reference excerpts; msdyn_agentsetting is a different table, not a documented mapping.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 60,
+      "n": 61,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Manage Copilot Credits is reached through Licensing > Products > Copilot Studio > Summary > Manage Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity",
+      "quote": "Select the Summary tab. Under the Copilot Studio heading, select Manage Copilot Credits or Manage sessions.",
+      "severity": "minor",
+      "fix": "Include the omitted heading: 'Licensing > Products > Copilot Studio > Summary > Copilot Studio > Manage Copilot Credits'."
+    },
+    {
+      "n": 62,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "PUT /licensing/allocationsV2?api-version=2024-10-01 sets the environment's MCSMessages allocation and TenantPool enforcement rule using the printed body properties.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
+      "quote": "Copilot Credits are represented by the entitlement ID MCSMessages and are managed through the licensing/allocationsV2 operations of the Power Platform API. All programmatic examples in this article use API version 2024-10-01.",
+      "severity": "minor",
+      "fix": "Set the call to 'PUT /licensing/allocationsV2?api-version=2024-10-01'. In its note add: 'The request body identifies scope.environmentId, sets allocatedEntitlements[].entitlementId to MCSMessages and allocation.quantity to the allocation, and sets enforcementRules[].ruleType to TenantPool with enabled false to disable tenant-pool draw.'"
+    },
+    {
+      "n": 63,
+      "where": "controls[2].note",
+      "type": "command",
+      "claim": "The capacity API host is https://api.powerplatform.com.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
+      "quote": "$apiBaseUrl = \"https://api.powerplatform.com\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[2].note",
+      "type": "cost",
+      "claim": "Disabling TenantPool draw does not disable every overage source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity",
+      "quote": "Select Draw from the available capacity in my tenant to let the environment use unallocated prepaid capacity from the tenant pool. Select Bill to my pay-as-you-go billing plan to let the environment continue usage through the selected billing plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
       "where": "controls[2].note",
       "type": "behaviour",
-      "claim": "A published environment-group rule can lock tenant-pool draw and cause individual updates to fail with TenantPoolLockedByPolicy.",
+      "claim": "An environment-group rule can lock tenant-pool draw and cause updates to fail with TenantPoolLockedByPolicy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
       "quote": "Updates through the Power Platform admin center, Power Platform API, or administration SDKs are rejected with the TenantPoolLockedByPolicy error.",
@@ -683,40 +746,40 @@
       "fix": null
     },
     {
-      "n": 61,
+      "n": 66,
       "where": "controls[3].ui; Governance controls table",
       "type": "admin-path",
       "claim": "Move data across regions is at Power Platform admin center > Manage > Environments > environment > Generative AI features > Edit > Move data across regions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites",
-      "quote": "In the navigation pane, select Manage.\nSelect Environments.\nOn the Environments page, select the target environment.\nIn the environment details page, locate the Generative AI features card and select Edit.\nSelect the Move data across regions checkbox.",
+      "quote": "select Manage. Select Environments. On the Environments page, select the target environment. In the environment details page, locate the Generative AI features card and select Edit. Select the Move data across regions checkbox.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 62,
+      "n": 67,
       "where": "controls[3].api; controls[3].note; Governance controls table",
       "type": "command",
-      "claim": "Microsoft.PowerApps.Administration.PowerShell provides Set-PowerPlatformGenerativeAiSettings with EnvironmentName and CrossGeoDataMovement $true to allow cross-geography movement.",
+      "claim": "Set-PowerPlatformGenerativeAiSettings -EnvironmentName <environment ID> -CrossGeoDataMovement $true allows cross-geography data movement for the environment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-powerplatformgenerativeaisettings",
-      "quote": "Set-PowerPlatformGenerativeAiSettings -EnvironmentName 00aa00aa-bb11-cc22-dd33-44ee44ee44ee -CrossGeoDataMovement $true -BingSearch $true -Microsoft365Services $true\nSets the generative AI settings allowing for cross-geography data movement, Bing Search, and Microsoft 365 services",
+      "quote": "Set-PowerPlatformGenerativeAiSettings -EnvironmentName <String> [-CrossGeoDataMovement <Boolean>] [-BingSearch <Boolean>] [-Microsoft365Services <Boolean>] [-ApiVersion <String>]. -CrossGeoDataMovement: Enables or disables cross-geo data movement.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 63,
+      "n": 68,
       "where": "controls[3].note",
       "type": "behaviour",
-      "claim": "The cross-region checkbox may not appear in regions with full in-region capacity.",
+      "claim": "The Move data across regions checkbox may be absent in regions with full in-region capacity.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/geographical-availability-copilot",
-      "quote": "If your environment is in a region that has full in region capacity, the Move data across regions checkbox doesn't appear.",
+      "quote": "If your environment is in a region that has full in-region capacity, the Move data across regions checkbox doesn't appear.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 64,
+      "n": 69,
       "where": "controls[4].ui; Governance controls table",
       "type": "admin-path",
       "claim": "Quiet times is at Customer Insights - Journeys > Settings > Customer engagement > Quiet times.",
@@ -727,54 +790,32 @@
       "fix": null
     },
     {
-      "n": 65,
-      "where": "controls[4].api; controls[4].note; Governance controls table",
+      "n": 70,
+      "where": "controls[4].api; controls[4].note; Governance controls table and closing paragraph",
       "type": "command",
-      "claim": "A POST to the Dataverse msdynmkt_quiettimesettings entity set creates a Quiet Time Setting record with caller-supplied configuration.",
+      "claim": "POST to the msdynmkt_quiettimesettings entity set creates a Quiet Time Setting record using caller-supplied configuration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/reference/entities/msdynmkt_quiettimesetting",
-      "quote": "Create Event: True | POST /msdynmkt_quiettimesettings See Create\nEntitySetName | msdynmkt_quiettimesettings\nThese columns/attributes return true for either IsValidForCreate or IsValidForUpdate",
-      "severity": null,
-      "fix": null
+      "quote": "Create: POST /msdynmkt_quiettimesettings. EntitySetName: msdynmkt_quiettimesettings. Writable columns/attributes: msdynmkt_commercialdates, msdynmkt_commercialweeklyhours, msdynmkt_transactionaldates, msdynmkt_transactionalweeklyhours.",
+      "severity": "minor",
+      "fix": "Set the call to 'POST /msdynmkt_quiettimesettings', removing the header and body description. Add to the note: 'The request body supplies quiet-time configuration through msdynmkt_commercialdates, msdynmkt_commercialweeklyhours, msdynmkt_transactionaldates and msdynmkt_transactionalweeklyhours as applicable.' Keep the existing qualification that this creates a general Quiet Time Setting record."
     },
     {
-      "n": 66,
-      "where": "Governance guidance: Before rollout",
-      "type": "applicability",
-      "claim": "Messages use quiet times through the compliance profile associated with them.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/real-time-marketing-quiet-times",
-      "quote": "Once a quiet time has been added to a compliance profile, all messages designated with that compliance profile respect the quiet times configured.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 67,
-      "where": "Governance controls: separate switches",
-      "type": "behaviour",
-      "claim": "AI Hub can disable an individual agent in the selected environment.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
-      "quote": "In AI Hub, go to Add and manage agents.\nSelect the agent.\nSet the agent status to Disabled.\nOnce disabled, the agent is no longer available for use in the selected environment.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 68,
-      "where": "Governance controls: AI prompts",
+      "n": 71,
+      "where": "Governance controls: AI prompts paragraph",
       "type": "admin-path",
-      "claim": "The AI prompts prerequisite is configured at Power Platform admin center > Environments > environment > Settings > Product > Features.",
+      "claim": "AI prompts is configured on the environment's Settings > Product > Features page.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites",
-      "quote": "In the admin center, select Environments > [select an environment] > Settings > Product > Features.\nOn the Features settings page under AI Builder, enable the AI prompts toggle.",
-      "severity": null,
-      "fix": null
+      "quote": "In the admin center, select Environments > [select an environment] > Settings > Product > Features. On the Features settings page under AI Builder, enable the AI prompts toggle.",
+      "severity": "minor",
+      "fix": "Complete the printed path as 'Power Platform admin center > Environments > environment > Settings > Product > Features > AI Builder > AI prompts'."
     },
     {
-      "n": 69,
-      "where": "Governance controls: AI prompts",
+      "n": 72,
+      "where": "Governance controls: AI prompts paragraph",
       "type": "applicability",
-      "claim": "An environment-group rule can govern AI prompts availability.",
+      "claim": "An environment-group AI prompts rule can govern AI prompts availability.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites",
       "quote": "If your environment is part of an environment group, you can also govern the AI prompts feature availability through the AI prompts environment group rule.",
@@ -782,103 +823,92 @@
       "fix": null
     },
     {
-      "n": 70,
-      "where": "Governance controls: cross-region rule",
+      "n": 73,
+      "where": "Governance controls: AI prompts paragraph",
       "type": "applicability",
-      "claim": "The Generative AI settings environment rule controls Move data across regions at scale.",
+      "claim": "The Generative AI settings environment rule can control Move data across regions at scale.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/geographical-availability-copilot",
-      "quote": "Is it possible to modify the \"Move data across regions\" checkbox at scale across all my environments?\nYes, you can use the Generative AI settings environment rule to control this at scale.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 71,
-      "where": "Governance controls: capacity API permissions",
-      "type": "role",
-      "claim": "Capacity API changes require Power Platform Administrator, Global Administrator or equivalent licensing and capacity permissions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
-      "quote": "Sign in as a user with the Power Platform Administrator or Global Administrator role, or an equivalent role that can manage licensing and capacity.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 72,
-      "where": "Governance controls; Open questions: monthly limit",
-      "type": "absence",
-      "claim": "The reviewed documentation does not confirm whether the admin center's monthly agent-limit list includes this agent.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Outreach Optimization Agent\" \"monthly\" \"limits\"; opened AI Hub and manage-copilot-studio-messages-capacity. AI Hub links capacity management, but neither page identifies this agent as listed in Manage Agents.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 73,
-      "where": "Open questions: audit",
-      "type": "absence",
-      "claim": "Microsoft has not described where this agent's send-time decisions are recorded for audit.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Outreach Optimization Agent\" \"identity\" \"audit\"; opened agent, AI Hub and responsible AI FAQ pages. None identifies an audit record of send-time decisions; generic Entra audit excerpts do not establish this agent's implementation.",
+      "quote": "Is it possible to modify the \"Move data across regions\" checkbox at scale across all my environments? Yes, you can use the Generative AI settings environment rule to control this at scale.",
       "severity": null,
       "fix": null
     },
     {
       "n": 74,
-      "where": "Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Copilot Studio licensing reports show credit consumption and environment capacity status.",
+      "where": "Governance controls: final paragraph",
+      "type": "role",
+      "claim": "Capacity API changes require Power Platform Administrator, Global Administrator or equivalent licensing and capacity permissions.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity",
-      "quote": "The Environments tab provides details on the Copilot Studio credit capacity consumed per environment",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
+      "quote": "Permission to manage licensing and capacity. Sign in as a user with the Power Platform Administrator or Global Administrator role, or an equivalent role that can manage licensing and capacity.",
       "severity": null,
       "fix": null
     },
     {
       "n": 75,
-      "where": "Governance guidance: After rollout; Governance controls table",
-      "type": "consistency",
-      "claim": "Every control the governance checklist asks readers to check has a controls-table row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Re-check the prerequisites after any change to data movement or AI prompts settings\nThe five controls rows cover agent availability, agent enablement, capacity, data movement and quiet times, but not AI prompts.",
-      "severity": "minor",
-      "fix": "The After rollout checklist names AI prompts without a corresponding controls row. Narrow that bullet to: 'Re-check the Move data across regions prerequisite after changing data movement settings, because losing a mandatory prerequisite disables all enabled agents.'"
+      "where": "Governance controls: final paragraph",
+      "type": "absence",
+      "claim": "Microsoft does not explicitly show whether this named agent appears in the monthly credit-limit page's inventory.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Outreach Optimization Agent credits rate monthly limit. Read AI Hub setup and Manage Copilot Credits and capacity, including Manage monthly consumption limits; no inventory example explicitly names Outreach Optimization Agent.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 76,
-      "where": "front matter: licensing.model and cost; rationale: cost",
-      "type": "licensing",
-      "claim": "Consumption licensing and variable cost correctly describe the documented Copilot credit meter.",
+      "where": "Open questions: final question",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed whether the per-agent monthly credit-limit control applies to this agent.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
+      "quote": "Steps to set up Outreach Optimization Agent: To control agent usage, configure message consumption limits. For more information, see Manage capacity.",
+      "severity": "blocker",
+      "fix": "Remove the final Open questions bullet. Replace the uncertainty with the narrower documented statement: 'AI Hub directs administrators to configure message consumption limits for Outreach Optimization Agent using the Copilot Studio capacity page.' Both https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub and https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity are already cited. Do not equate the separate uncertainty about an inventory example with an absence of applicability guidance."
+    },
+    {
+      "n": 77,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Copilot Studio licensing reports and environment capacity status can be used to review credit consumption.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/outreach-optimization-agent",
-      "quote": "Use of Outreach Optimization Agent consumes Copilot credits.",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity",
+      "quote": "Administrators can view capacity and consumption data at the environment and agent level, and can download consumption reports by environment, agent, or user.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 77,
-      "where": "controls[4].api: version, content type and body",
-      "type": "command",
-      "claim": "The quiet-times create call uses the Dataverse /api/data/v9.2 base and a JSON request body with Content-Type application/json.",
+      "n": 78,
+      "where": "Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Linking quiet times to the compliance profile used by journey messages makes those messages respect the configured quiet times.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/create-entity-web-api",
-      "quote": "POST [Organization URI]/api/data/v9.2/accounts\nContent-Type: application/json; charset=utf-8\nTo create a record, you must identify the valid entity set name, property names, and types.",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/real-time-marketing-quiet-times",
+      "quote": "Once a quiet time has been added to a compliance profile, all messages designated with that compliance profile respect the quiet times configured.",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Governance guidance: After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The governance checklist's controls are all represented by rows in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Re-check the prerequisites after any change to data movement or AI prompts settings. The five rows cover agent availability, agent enablement, capacity, data movement and quiet times, but not AI prompts.",
+      "severity": "minor",
+      "fix": "Narrow that After rollout bullet to: 'Re-check the Move data across regions prerequisite after changing data movement settings, because losing a mandatory prerequisite disables all enabled agents.' The At rollout bullet may continue to refer to accepting prerequisites as part of enabling the agent."
     }
   ],
   "precheck": {
-    "at": "2026-11-18T02:52:57.433Z",
+    "at": "2026-11-19T03:09:30.240Z",
     "summary": {
       "links": 14,
-      "unreachable": 0,
+      "unreachable": 12,
       "uiPaths": 5,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 5,
       "apiCalls": 3,
-      "apiCallsNotOnPage": 2,
+      "apiCallsNotOnPage": 3,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -889,63 +919,63 @@
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/outreach-optimization-agent",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/faqs-outreach-optimization-agent",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/real-time-marketing-quiet-times",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/geographical-availability-copilot",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-powerplatformgenerativeaisettings",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/customer-service/develop/reference/entities/msdynmkt_quiettimesetting",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/license-setup",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/create-entity-web-api",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
@@ -959,7 +989,7 @@
         "side": "ui",
         "governs": "Whether AI agents are available for Customer Insights - Journeys",
         "docs": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Copilot",
           "Settings",
@@ -967,14 +997,20 @@
           "AI agents",
           "Use AI agents"
         ],
-        "missing": []
+        "missing": [
+          "Copilot",
+          "Settings",
+          "Dynamics 365 Customer Insights – Journeys",
+          "AI agents",
+          "Use AI agents"
+        ]
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Whether Outreach Optimization Agent is enabled in an environment",
         "docs": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "AI Hub",
           "Add and manage agents",
@@ -983,14 +1019,21 @@
           "Overview tab",
           "Enable"
         ],
-        "missing": []
+        "missing": [
+          "AI Hub",
+          "Add and manage agents",
+          "Add an agent",
+          "Outreach Optimization Agent",
+          "Overview tab",
+          "Enable"
+        ]
       },
       {
         "index": 2,
         "side": "ui",
         "governs": "Copilot credit capacity and overage for the environment",
         "docs": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Licensing",
           "Products",
@@ -998,14 +1041,20 @@
           "Summary",
           "Manage Copilot Credits"
         ],
-        "missing": []
+        "missing": [
+          "Licensing",
+          "Products",
+          "Copilot Studio",
+          "Summary",
+          "Manage Copilot Credits"
+        ]
       },
       {
         "index": 2,
         "side": "api",
         "governs": "Copilot credit capacity and overage for the environment",
         "docs": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
-        "reachable": true,
+        "reachable": false,
         "token": "PUT /licensing/allocationsV2?api-version=2024-10-01",
         "found": false
       },
@@ -1014,7 +1063,7 @@
         "side": "ui",
         "governs": "Whether agent data may move across regions for the environment",
         "docs": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Manage",
           "Environments",
@@ -1022,36 +1071,46 @@
           "Edit",
           "Move data across regions"
         ],
-        "missing": []
+        "missing": [
+          "Manage",
+          "Environments",
+          "Generative AI features",
+          "Edit",
+          "Move data across regions"
+        ]
       },
       {
         "index": 3,
         "side": "api",
         "governs": "Whether agent data may move across regions for the environment",
         "docs": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-powerplatformgenerativeaisettings",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-PowerPlatformGenerativeAiSettings",
-        "found": true
+        "found": false
       },
       {
         "index": 4,
         "side": "ui",
         "governs": "Quiet times the agent must respect",
         "docs": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/real-time-marketing-quiet-times",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Settings",
           "Customer engagement",
           "Quiet times"
         ],
-        "missing": []
+        "missing": [
+          "Settings",
+          "Customer engagement",
+          "Quiet times"
+        ]
       },
       {
         "index": 4,
         "side": "api",
         "governs": "Quiet times the agent must respect",
         "docs": "https://learn.microsoft.com/dynamics365/customer-service/develop/reference/entities/msdynmkt_quiettimesetting",
-        "reachable": true,
+        "reachable": false,
         "token": "Content-Type",
         "found": false
       }
@@ -1063,6 +1122,12 @@
       "date": "2026-11-18",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-18",
+      "status": "verified-with-gaps",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

@@ -82,18 +82,20 @@ changes:
     note: "New briefing: planned form fill suggestions for fields that already hold values, with the documented settings, column property and licence."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 68 statements confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 70 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 1
 verification:
-  status: "verified"
-  date: "2026-11-18"
+  status: "held"
+  date: "2026-11-19"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 68
+  claims: 70
+  confirmed: 69
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "3d634a9dacacf93472b60c906f0efcd2"
 ---
 
@@ -199,4 +201,10 @@ Learn marks the Allow form fill assistance column property as a preview feature.
 risk: Medium. Suggestions would target data users have already entered, so an accepted wrong suggestion replaces a value; Learn says nothing is saved until the user accepts, but does not yet describe this behaviour.
 cost: Medium. Learn says users of a Power Apps model-driven app need a Power Apps premium licence for form fill assistance; no separate meter or price is published for suggestions on existing values.
 impact: Medium. People who use model-driven apps where form fill assistance is switched on would see suggestions on fields they have already filled; Learn gives the default for Power Apps users as off.
+-->
+
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[1].ui; Governance controls / admin-path: The maker-portal route to the per-app toolbar control is Settings > Features > Form fill assist toolbar. | Found: In the app designer select Settings on the command bar. | Fix: Replace controls[1].ui.path and the matching table path with 'Solutions > solution > app > Edit > Settings > Features > Form fill assist toolbar'. The existing path starts inside the designer, not at the Power Apps maker navigation. Add https://learn.microsoft.com/power-apps/maker/model-driven-apps/use-command-designer to sources: its 'Open an existing model-driven app using app designer' steps give Solutions, the solution, the app and Edit. Keep app-properties as the control's docs link. | Source: https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties
 -->

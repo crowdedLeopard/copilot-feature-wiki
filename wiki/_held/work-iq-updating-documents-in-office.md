@@ -75,18 +75,20 @@ changes:
     note: "Correction: reworded the data-exposure and oversharing statements to match the Learn pages, set the licensing model to not yet published, added the agent step to the Sources path and removed an unsupported credits-review checklist item."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 68 statements confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 8 of 62 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-18"
+  status: "held"
+  date: "2026-11-19"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 68
+  claims: 62
+  confirmed: 54
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 8
+  attempts: 1
   hash: "03c01fd48d76fc1a707ffc545ce21f09"
 ---
 
@@ -181,4 +183,19 @@ The Tools page in the Microsoft 365 admin center also lists a Block action that 
 risk: Medium. The roadmap says agents will edit documents, which is a write action; Learn says Work IQ MCP blocks mutation operations by default but also says Copilot Studio write operations are on by default, and neither page covers this feature.
 cost: Variable. Learn says Work IQ usage is billed through usage-based billing and consumes Copilot Credits; no rate for document creation or editing is yet published.
 impact: Low. The roadmap lists the Developer platform, so builders of agents and the admins who govern Work IQ notice first; no user-facing rollout is stated.
+-->
+
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] summary; What's changing; Governance guidance; rationale: risk / absence: Microsoft Learn has no page describing this feature, leaving the roadmap as its only account. | Found: By using Office Document Tools in Work IQ, agents can create and edit Word documents, Excel workbooks, and PowerPoint presentations. | Fix: Replace the claims that Learn does not describe the feature with: 'Microsoft Learn now documents Office Document Tools in Work IQ in preview.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/office-agent-iq. Retain the roadmap status and dates as roadmap targets, and explicitly report that Learn already describes the preview. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/office-agent-iq
+- [contradicted, blocker] What's changing / absence: How an agent creates or edits a document is not described. | Found: Both actions accept an optional `userRequest`. Invoke an available action through `do_action`, following its discovered schema. | Fix: Replace with: 'In preview, agents invoke /office-agent-mcp/generate_artifact or /office-agent-mcp/edit_artifact through do_action, using a complete content or change outline and the discovered schema.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/office-agent-iq. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/office-agent-iq
+- [contradicted, blocker] What's changing; Scope / absence: The covered file types are not described. | Found: By using Office Document Tools in Work IQ, agents can create and edit Word documents, Excel workbooks, and PowerPoint presentations. | Fix: Replace with: 'The documented preview covers Word documents, Excel workbooks and PowerPoint presentations.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/office-agent-iq. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/office-agent-iq
+- [contradicted, blocker] front matter: licensing.model and notes; Cost and licensing / licensing: The licensing model is unknown because nothing has been published for this feature. | Found: Work IQ API access is independent of Microsoft 365 Copilot licensing and available through usage-based billing. | Fix: Set licensing.model to 'consumption'. Replace 'Nothing is published for this feature' and the blanket unpublished-licence statement with: 'Office Document Tools use the Work IQ MCP interface; Work IQ API access uses consumption billing in Copilot Credits, independently of Microsoft 365 Copilot licensing. A document-specific rate is not yet published.' Cite the Work IQ overview and https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/office-agent-iq. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/
+- [contradicted, blocker] Cost and licensing; Open questions / absence: Whether a Microsoft 365 Copilot licence is a prerequisite remains unpublished. | Found: Work IQ API access is independent of Microsoft 365 Copilot licensing and available through usage-based billing. | Fix: Replace with: 'Office Document Tools use Work IQ MCP, whose API access is independent of Microsoft 365 Copilot licensing and uses consumption billing.' Remove the corresponding licence-prerequisite open question; retain the narrower question about a document-specific rate. Cite the Work IQ overview and https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/office-agent-iq. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/
+- [contradicted, blocker] Scope / absence: Prerequisites for this feature are not stated. | Found: Before using Office Document Tools, enable Work IQ in your organization. | Fix: Replace with: 'The preview requires Work IQ to be enabled in the organisation.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/office-agent-iq. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/office-agent-iq
+- [contradicted, blocker] Scope / absence: No prerequisite setup role is stated for this feature. | Found: A user with Global Administrator role for the one-time Work IQ setup | Fix: Replace the broad roles-unstated claim with: 'The linked Work IQ enablement guide requires a Global Administrator for the one-time Work IQ setup.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq. Do not infer a feature-specific day-to-day administrator role. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq
+- [contradicted, blocker] controls[0].note; Governance controls; Open questions / applicability: Microsoft has not confirmed that Work IQ MCP mutation policy covers this feature. | Found: It adds a request-time governance layer that can allow or deny specific MCP tool requests based on tenant policy. | Fix: Replace this control's applicability disclaimer with: 'The documented Office Document Tools preview uses Work IQ MCP do_action requests, which fall within the Work IQ MCP tenant policy layer.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/office-agent-iq and the policy page. Remove the blanket sentence that none of the controls is confirmed for this feature; retain any narrower uncertainty about the maker workload selector. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] What's changing; Open questions / absence: Microsoft has not stated that the document feature uses create_entity and update_entity. | Found: Searched: Work IQ updating documents Office create edit documents licensing November 2026. Opened Office Document Tools and MCP tool reference. Neither assigns create_entity or update_entity to this feature; Office Document Tools instead explicitly documents do_action. | Fix: Replace 'Whether the roadmap feature uses these tools is not stated' with 'The documented Office Document Tools preview uses do_action rather than describing creation and editing through create_entity and update_entity.' Remove the open question asking which of those tools it uses. Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/office-agent-iq.
 -->

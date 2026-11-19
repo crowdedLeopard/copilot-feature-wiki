@@ -46,8 +46,14 @@ sources:
   - title: "Microsoft 365 Copilot Cost Management API overview"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
     kind: "learn"
+  - title: "Update spendingPolicy"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update"
+    kind: "learn"
   - title: "Microsoft MCP management MCP server reference (preview)"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/mcp-management"
+    kind: "learn"
+  - title: "MCP and API plugins for declarative agents"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-plugins"
     kind: "learn"
 videos: []
 related: ["work-iq","mcp","work-iq-agent-policy-governance","work-iq-custom-agents-3p-calls","copilot-credits"]
@@ -84,9 +90,9 @@ controls:
       docs: "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits"
     api:
       kind: "graph"
-      call: "GET /beta/copilot/costManagement/spendingPolicies"
-      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
-    note: "Beta API, subject to change. General control: Work IQ API is a listed service; whether REST endpoint tool calls are metered is not published."
+      call: "PATCH /beta/copilot/costManagement/spendingPolicies/{id}"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update"
+    note: "Beta API. General control: whether REST endpoint tool calls are metered is not published. The request body sets periodLimit for the policy spending limit or perUserLimit for the per-user limit."
   - governs: "A switch specific to REST endpoint tools in Work IQ"
     scope: "tenant"
     ui: null
@@ -94,7 +100,7 @@ controls:
     note: "Microsoft Learn documents no such control at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-19"
 roadmapModified: "2026-10-13T23:01:05"
 changes:
   - date: "2026-11-18"
@@ -107,26 +113,30 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 66 statements not yet confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 69 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-19"
+    note: "Corrected the spending-limit automation call to the documented PATCH operation, removed the tool count for Work IQ MCP, and added the plugins page as a source."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 70 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 69
-  confirmed: 68
+  claims: 70
+  confirmed: 70
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "479b2127f57202aac925c5d789098563"
+  contradicted: 0
+  attempts: 0
+  hash: "adf0ee5e01b84a3f1a09b7c5561c846c"
 ---
 
 ## What's changing
 
 The roadmap item says Microsoft is enabling agents to use supported REST endpoints as tools through governed Work IQ integrations. Microsoft Learn does not describe this capability yet, so what follows about how it behaves is the roadmap's one-sentence description. The Learn pages cited below cover the surrounding product (Work IQ, the Tools registry and Copilot Credits) and are background, not a description of this feature.
 
-Microsoft has not said which REST endpoints count as "supported", how an endpoint is registered, whose credentials a call carries or where the tool appears to makers and admins. Learn describes Work IQ's current tools surface as Work IQ MCP, a single MCP endpoint with 10 generic tools. The roadmap item does not say whether REST endpoint tools join that server or arrive another way.
+Microsoft has not said which REST endpoints count as "supported", how an endpoint is registered, whose credentials a call carries or where the tool appears to makers and admins. Learn describes Work IQ's current tools surface as Work IQ MCP, a single MCP endpoint. The roadmap item does not say whether REST endpoint tools join that server or arrive another way.
 
 The roadmap record gives the status as In development, with Preview and General Availability as release phases, the Developer platform and Worldwide (Standard Multi-Tenant) as the cloud. It targets October CY2026 for preview and November CY2026 for the release; these are Microsoft's targets, not commitments. The record has no more-info link and was last modified on 13 October 2026.
 
@@ -195,7 +205,7 @@ For background, Work IQ requests are user-scoped and application-only authentica
 <tr><td data-label="Control"><strong>Whether a registered MCP server, and every tool it exposes, is available to agents</strong><br><small>Tenant</small><br><small class="controls__note">General control: Microsoft has not confirmed that REST endpoint tools appear in the registry as an MCP server.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Registry › MCP server › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which individual tools on a supported MCP server are enabled</strong><br><small>Tenant</small><br><small class="controls__note">Rolling out; supports specific types of MCP server registered on Agent 365. General control, not confirmed for this feature.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Registry › MCP server › Tools › Enabled or Disabled toggle › Save <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Work IQ MCP request policy (read-only by default, tenant-level on or off)</strong><br><small>Tenant</small><br><small class="controls__note">The Policy tab appears when it is available. General control: Microsoft has not confirmed it applies to REST endpoint tools.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Policy <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Spending limits and consumption for Work IQ API usage in Copilot Credits</strong><br><small>Tenant</small><br><small class="controls__note">Beta API, subject to change. General control: Work IQ API is a listed service; whether REST endpoint tool calls are metered is not published.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost management <a href="https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET /beta/copilot/costManagement/spendingPolicies</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Spending limits and consumption for Work IQ API usage in Copilot Credits</strong><br><small>Tenant</small><br><small class="controls__note">Beta API. General control: whether REST endpoint tool calls are metered is not published. The request body sets periodLimit for the policy spending limit or perUserLimit for the per-user limit.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost management <a href="https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>A switch specific to REST endpoint tools in Work IQ</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft Learn documents no such control at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -220,11 +230,8 @@ cost: Low. The only established cost of this roadmap change is administrative re
 impact: Low. The roadmap lists the Developer platform, so developers and the admins who govern agent tools notice first; Microsoft has not said whether end users see any change.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[3].api; Governance controls: fourth row / command: GET /beta/copilot/costManagement/spendingPolicies is the automation counterpart for the row governing spending limits and consumption. | Found: List spendingPolicies | GET /copilot/costManagement/spendingPolicies | Get a list of spending policies. ... Update spendingPolicy | PATCH /copilot/costManagement/spendingPolicies/{id} | Update a spending policy. | Fix: Replace the call with 'PATCH /beta/copilot/costManagement/spendingPolicies/{id}' and its docs URL with https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update. Add to the row note: 'The request body sets periodLimit for the policy spending limit or perUserLimit for the per-user limit.' Make the same replacement in the rendered table. The current GET only lists policies and cannot configure a spending limit. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing / behaviour: Learn describes Work IQ MCP as having 10 generic tools. | Found: collapses hundreds of operations into just 10 generic tools | Fix: Remove 'with 10 generic tools'. The cited overview says 10, but https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview lists 12 tool names in its Entity, Copilot and Schema rows, including fetch_blob and the preview retrieve tool. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/
-- [supported, minor] Why it matters; Risk assessment: Autonomy & actions / behaviour: REST endpoints can expose operations that create, update or delete data. | Found: users can ask a declarative agent to query an MCP server or REST API for information and, when supported, create, update, and delete data and objects through natural language prompts. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-plugins to sources for the general statement that REST endpoints can expose write operations. Do not describe that plugin mechanism as the implementation of this roadmap capability. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-plugins
+- [supported, minor] controls[2].ui; Governance guidance / admin-path: Agents > Tools > Work IQ MCP > Policy opens Work IQ MCP policy settings in the Microsoft 365 admin center. | Found: In the left navigation, select Agents > Tools. ... In the tools registry, select Work IQ MCP. ... On the Work IQ MCP details pane, select the Policy tab when it's available. | Fix: Use 'Agents > Tools > Registry > Work IQ MCP > Policy' in controls[2].ui and its rendered table row. The Registry list tab is documented at https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers; the existing policy reference gives the remaining steps. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp
 -->

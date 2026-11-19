@@ -348,3 +348,12 @@ Append-only record of ingests, compiles and lint passes. One line per event.
 - 2026-11-19 lint: 257 briefings ok, 0 errors (0 quarantined), 35 warnings, 278 notes; 268 checked, 0 awaiting correction, 33 held
 - 2026-11-19 index: 257 briefings, 0 archived, 11 concepts indexed
 - 2026-11-19 digest: 2026-w47 written (257 updated briefings)
+- 2026-11-19 message-center: 908 posts read (federated credential (GitHub Actions OIDC)), 643 in scope and published, 0 new, 0 changed, 244 outside the topics, 21 withheld by the tenant screen (11 targeted-wording, 4 tenant-word, 1 tenant-domain, 1 email-address, 5 guid); 647 in the ledger, 19 with an act-by date ahead (3s)
+- 2026-11-19 ingest: 2383 roadmap items fetched, 1905 in scope, 0 new, 0 changed, 1648 queued for compile (copilot-studio 11, power-platform 4, governance 356, m365-copilot 470, modern-work 807; 0 review due; 0 refresh after a Message Center post), 241 with Message Center posts, 0 archived, 0 briefed item(s) missing from the feed (1s)
+2026-11-19 source watch: 440 of 1174 Microsoft pages cited by 268 live pages re-read in 80s (734 read earlier today), 27 read for the first time, 7 changed (31 briefings queued for a re-check)
+- 2026-11-19 compile: 22 briefings written, 1 concept page written and 1 declined, 0 rejected by schema, 0 not reached, 24 attempted (copilot, claude-sonnet-5.5, 907 AI credits)
+- 2026-11-19 verify: 47 checked (6 verified, 19 verified with gaps, 15 held, 7 not reached, 8 live page(s) held on re-check) on copilot gpt-6.1-sol; stopped early: the run budget of 2000 AI credits was spent (VERIFY_MAX_RUN_CREDITS); 26 page(s) held in total
+- 2026-11-19 spend: 2,881 AI credits this run (907 writing, 1,974 checking); 6,057 of 15,000 today over 2 runs; next run starts when this one finishes
+- 2026-11-19 lint: 265 briefings ok, 0 errors (0 quarantined), 27 warnings, 275 notes; 276 checked, 0 awaiting correction, 26 held
+- 2026-11-19 index: 265 briefings, 0 archived, 11 concepts indexed
+- 2026-11-19 digest: 2026-w47 written (265 updated briefings)

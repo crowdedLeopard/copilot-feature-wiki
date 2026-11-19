@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for this feature. Learn says Work IQ API access is independent of Microsoft 365 Copilot licensing and available through usage-based billing, and that usage consumes Copilot Credits."
+  model: "mixed"
+  notes: "Work IQ follows the published access rules: Microsoft 365 Copilot licensed users have access in Microsoft 365 Copilot experiences and agents; custom and third-party agents are subject to usage-based billing, and users without that licence are billed on usage. A rate for dynamic skill selection is Not yet published."
 audiences: ["m365-admin","service-owner","maker","security"]
 tags: ["work-iq","agents","business-skills","mcp","agent-governance"]
 sources:
@@ -43,6 +43,9 @@ sources:
   - title: "Update Copilot package"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update"
     kind: "learn"
+  - title: "copilotPackage resource type"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/resources/copilotpackage"
+    kind: "learn"
 videos: []
 related: ["work-iq-business-skills-to-manage-your-business-processes-in-work-iq-mcp","work-iq","work-iq-execute-recipes","mcp","work-iq-agent-policy-governance"]
 controls:
@@ -65,9 +68,9 @@ controls:
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers"
     api:
       kind: "graph"
-      call: "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} with JSON body {\"availableTo\":\"allowedForNone\"}"
+      call: "PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update"
-    note: "Choices are All users, No users or Specific users and groups. General control for skill packages, not confirmed for this feature. Example makes the package unavailable to all users; beta API requires a Microsoft Agent 365 licence."
+    note: "General control for skill packages, not confirmed for this feature. The request body sets availableTo to allowedForNone to make the package unavailable to all users. Beta API needs an Agent 365 licence."
   - governs: "Setting specific to dynamic skill selection"
     scope: "tenant"
     ui: null
@@ -75,7 +78,7 @@ controls:
     note: "Learn documents no such setting at the time of writing (November 2026)."
 confidence: "low"
 created: "2026-11-17"
-updated: "2026-11-18"
+updated: "2026-11-19"
 roadmapModified: "2026-11-17T20:22:13"
 changes:
   - date: "2026-11-17"
@@ -88,19 +91,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 53 statements not yet confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-19"
+    note: "Corrected the licensing model to mixed and replaced the 'licence not yet published' statements with Work IQ's published access rules; tidied the Update package call and added the copilotPackage resource source."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 59
+  claims: 58
+  confirmed: 58
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "42f39e120048051c960a255bc56a005b"
+  contradicted: 0
+  attempts: 0
+  hash: "0553eea413ac5beb2f79ba380cbb000f"
 ---
 
 ## What's changing
@@ -135,7 +142,7 @@ Microsoft has not stated how this arrives or whether anything changes for existi
 
 ## Cost and licensing
 
-A licence or price for this feature is Not yet published, and the roadmap item names none.
+Work IQ follows the published access rules: Microsoft 365 Copilot licensed users have access in Microsoft 365 Copilot experiences and agents; custom and third-party agents are subject to usage-based billing, and users without a Microsoft 365 Copilot licence are billed based on usage. Work IQ API usage consumes Copilot Credits. A separate rate or meter for dynamic skill selection is Not yet published.
 
 The Work IQ overview page on Learn sets the general rule for Work IQ: API access is independent of Microsoft 365 Copilot licensing and available through usage-based billing. For Microsoft 365 Copilot licensed users, Work IQ is available in all Microsoft 365 Copilot experiences and agents, subject to usage-based billing for custom and third-party agents. Users without a Microsoft 365 Copilot licence are billed based on usage. Work IQ API usage consumes Copilot Credits shared with other eligible services, and cost can be managed in the Microsoft 365 admin center. See /concepts/copilot-credits/.
 
@@ -145,7 +152,7 @@ What is not yet published is a rate or meter specific to dynamic skill selection
 
 The roadmap lists Worldwide (Standard Multi-Tenant) and the Developer platform; it lists no other cloud. The record lists release phases General Availability and Preview, with targets of October CY2026 (preview) and November CY2026.
 
-Who receives the feature, which licences are needed and what prerequisites apply are Not yet documented. Learn says skills and Work IQ requests are user scoped in general, and that the Microsoft 365 admin center controls apply to skill packages. Rollout mechanics are not stated.
+Who receives the feature and what prerequisites apply are Not yet documented. Licensing follows the Work IQ access rules in Cost and licensing, and a separate rate or meter for dynamic skill selection is Not yet published. Learn says skills and Work IQ requests are user scoped in general, and that the Microsoft 365 admin center controls apply to skill packages. Rollout mechanics are not stated.
 
 ## Governance guidance
 
@@ -170,7 +177,7 @@ Who receives the feature, which licences are needed and what prerequisites apply
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Blocking a skill package so agents cannot use it</strong><br><small>Tenant</small><br><small class="controls__note">General control: Microsoft has not confirmed it applies to dynamically selected skills. Graph API is beta and needs an Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Plugins › plugin or skill › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users can use a skill package</strong><br><small>User</small><br><small class="controls__note">Choices are All users, No users or Specific users and groups. General control for skill packages, not confirmed for this feature. Example makes the package unavailable to all users; beta API requires a Microsoft Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Plugins › plugin › Users <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} with JSON body {&quot;availableTo&quot;:&quot;allowedForNone&quot;}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users can use a skill package</strong><br><small>User</small><br><small class="controls__note">General control for skill packages, not confirmed for this feature. The request body sets availableTo to allowedForNone to make the package unavailable to all users. Beta API needs an Agent 365 licence.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Plugins › plugin › Users <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Setting specific to dynamic skill selection</strong><br><small>Tenant</small><br><small class="controls__note">Learn documents no such setting at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -192,12 +199,8 @@ cost: Variable. Work IQ API usage consumes Copilot Credits per Microsoft Learn; 
 impact: Medium. Developers, makers and the users of their agents would notice different skills being applied; the roadmap lists the Developer platform.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model and notes; Cost and licensing: opening; Scope: licences / licensing: The licensing model is unknown because Microsoft has not published which licence covers this feature. | Found: For Microsoft 365 Copilot licensed users, Work IQ is available in all Microsoft 365 Copilot experiences and agents. It is subject to usage-based billing for custom and third-party agents. | Fix: Set licensing.model to mixed. Replace the blanket unpublished-licensing statements in the notes, opening cost paragraph and Scope with: 'Work IQ follows the published access rules: Microsoft 365 Copilot licensed users have access in Microsoft 365 Copilot experiences and agents; custom and third-party agents are subject to usage-based billing, and users without a Microsoft 365 Copilot licence are billed based on usage. Work IQ API usage consumes Copilot Credits. A separate rate or meter for dynamic skill selection is Not yet published.' Retain the existing Work IQ overview citation. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].api; Governance controls: second row / command: PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} can update availability using the printed availableTo request-body property. | Found: PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id} availableTo | packageAllowStatus | Enum value specifying which users or groups within the tenant can access this package. | Fix: Set controls[1].api.call and the rendered call to 'PATCH https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}'. Move the body explanation into the note as: 'The request body sets availableTo to allowedForNone to make the package unavailable to all users.' | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update
-- [supported, minor] What's changing; Autonomy & actions; Governance guidance; rationale: risk / behaviour: Microsoft describes business-skill selection as probabilistic. | Found: Agent selection is probabilistic, so test representative requests before you share a skill broadly. | Fix: Change 'For business skills, a related Work IQ capability' to 'For business skills (preview), a related Work IQ capability'. The cited Work IQ overview's Skills and tools section labels business skills as preview. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview
-- [supported, minor] controls[1].api; controls[1].note; Governance controls: second row / command: The availableTo value allowedForNone makes the package unavailable to any users. | Found: allowedForNone | Not available to any users. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/resources/copilotpackage to sources as 'copilotPackage resource type'; it documents the allowedForNone value used in the example. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/resources/copilotpackage
+- [supported, minor] What's changing: related business skills / behaviour: Related business skills are a Work IQ capability that supplies process instructions to agents. | Found: Business skills with Dataverse intelligence (preview) are natural-language instructions that encode your organization's processes, policies, and domain knowledge in a format agents can interpret and execute. | Fix: Change 'For business skills, a related Work IQ capability' to 'For business skills, a related Work IQ capability documented as preview'. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq#skills-and-tools
 -->

@@ -92,15 +92,17 @@ changes:
     note: "Corrected after verification: added the Dataverse Web API call for the AI prompts switch, reworded the per-record credit, maker-side and credit-type statements, and removed checklist items that had no table row."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 73 statements confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-18"
+  status: "verified-with-gaps"
+  date: "2026-11-19"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 73
-  confirmed: 73
+  claims: 77
+  confirmed: 77
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -216,4 +218,10 @@ To monitor or stop a job, go to Power Platform admin center > Manage > Environme
 risk: Medium. A backfill writes AI-generated values into many existing records at once, but the environment setting that allows it is off by default and Microsoft documents filters and a review step.
 cost: Variable. Prompt columns consume credits each time a prompt executes; the activity report shows whether an execution used AI Builder credits or Copilot Credits, so a bulk backfill can consume substantial credits.
 impact: Medium. Makers using prompt columns notice it first, and the generated values then appear for the app users who read those tables; admins decide where the setting is turned on.
+-->
+
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[2].ui; Governance controls / admin-path: AI prompts is at Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > AI Builder > AI prompts. | Found: Select Environments > [select an environment] > Settings > Product > Features. ... On the Features settings page under AI Builder, enable or disable the AI prompts toggle. | Fix: Add to controls[2].note and its rendered counterpart: "Manage feature settings now lists a standalone AI prompts section with the setting 'Enable the AI prompts feature in Power Platform and Copilot Studio'; the AI Builder administration page still places the toggle under AI Builder." The differing page is https://learn.microsoft.com/power-platform/admin/settings-features#ai-prompts. | Source: https://learn.microsoft.com/ai-builder/administer
 -->

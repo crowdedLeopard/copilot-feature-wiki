@@ -1,0 +1,1306 @@
+{
+  "slug": "connectors",
+  "kind": "concept",
+  "roadmapId": null,
+  "title": "Connectors: how Power Platform apps, flows and agents reach other services",
+  "status": "held",
+  "date": "2026-11-19",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-19",
+    "reasons": [
+      "2 blocking findings (claims 32, 76)"
+    ]
+  },
+  "counts": {
+    "claims": 96,
+    "confirmed": 93,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "The licensing guidance applies Power Apps and Power Automate requirements too broadly to Copilot Studio and omits an exception stated on the app licensing page. The control paths and commands are documented, including the advanced connector policy API flagged by the pre-check.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Prebuilt connector classification is reached through Security > Settings > Data and privacy > Data policy > policy > Edit Policy > Prebuilt connectors > connector > Move to Business.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
+      "quote": "In the Security pane, under Settings, select Data and privacy. ... select a policy, and then select Edit Policy. ... Select the Prebuilt connectors step ... select Move to Business from the top menu bar.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "Add-ConnectorsToPolicy accepts PolicyName as a policy GUID, Classification as General, Confidential or Blocked, and Connectors as connector objects to set their group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy",
+      "quote": "Add-ConnectorsToPolicy\n    [-PolicyName] <String>\n    [-Classification] <String>\n    [-Connectors] <Object[]> ... If any of the connectors are already classified in a different group, they are moved to the specified group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Tenant custom connector patterns are reached through Security > Settings > Data and privacy > Data policy > policy > Edit Policy > Custom connectors > Add connector pattern.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/dlp-connector-classification",
+      "quote": "You can add new rules by selecting Add connector pattern on the Custom connectors page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "New-PowerAppPolicyUrlPatterns sets custom connector URL patterns using TenantId, PolicyName and NewUrlPatterns.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-powerapppolicyurlpatterns",
+      "quote": "Creates new URL patterns for a DLP policy by using the NewUrlPatterns UrlPatternsDefinition object. ... New-PowerAppPolicyUrlPatterns\n    -TenantId <String>\n    -PolicyName <String>\n    -NewUrlPatterns <Object>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Connector action controls are reached through Security > Data and privacy > Data policy > policy > Edit policy > Prebuilt connectors > connector > More actions > Configure connectors > Connector actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/connector-action-control",
+      "quote": "In the Prebuilt connectors section, select a Blockable connector and then select More actions next to it. ... Select Configure connectors and then Connector actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "New-PowerAppDlpPolicyConnectorConfigurations configures action rules using TenantId, PolicyName and NewDlpPolicyConnectorConfigurations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/connector-action-control",
+      "quote": "New-PowerAppDlpPolicyConnectorConfigurations -TenantId $TenantId -PolicyName $PolicyName -NewDlpPolicyConnectorConfigurations $ConnectorConfigurations",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Environment-group advanced connector policies are reached through Manage > Environment groups > environment group > Rules > Advanced connector policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
+      "quote": "In the Manage pane, select Environment groups. ... select the environment group where you want to apply the policy. ... Select the Rules tab. ... Select Advanced connector policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "POST https://api.powerplatform.com/governance/ruleBasedPolicies?api-version=2024-10-01 creates an advanced connector policy with an allowlist.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-advanced-connector-policies",
+      "quote": "$apiBaseUrl = \"https://api.powerplatform.com\"\n$apiVersion = \"2024-10-01\" ... $policy = Invoke-RestMethod -Method Post ... -Uri \"$apiBaseUrl/governance/ruleBasedPolicies?api-version=$apiVersion\"",
+      "severity": "minor",
+      "fix": "Keep the call. Add to its note: 'The request body sets ruleSets with id ConnectorManagement and inputs.AllowedConnectorList; entries use AllowedConnector, AllowedActionsMode and, for SomeAllowed, AllowedActions.' These properties are documented in the cited tutorial."
+    },
+    {
+      "n": 9,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "Tenant-level data policies require the Power Platform Administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
+      "quote": "To follow the steps described in this article for tenant-level policies, sign in as a user with the Power Platform Administrator role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "Environment-level data policies require Environment Admin permissions, subject to the Dataverse exception explained in the body.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
+      "quote": "To follow the steps for environment-level policies, you need to have Power Apps Environment Admin permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Environment-level policies in environments with a Dataverse database require the System Administrator role instead.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
+      "quote": "For environments with a Dataverse database, you need to be assigned the System Administrator role instead.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "General, Confidential and Blocked map respectively to Non-business, Business and Blocked.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy",
+      "quote": "Allowed values are 'General', 'Confidential', and 'Blocked' (for Non-business, Business, and Blocked, respectively).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "New-PowerAppPolicyUrlPatterns is enabled only for tenant-level policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-powerapppolicyurlpatterns",
+      "quote": "Currently, this cmdlet is only enabled for polices at the tenant level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "Environment-level policies classify individual custom connectors by name.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/dlp-custom-connector-parity",
+      "quote": "Environment admins can use the Power Platform admin center to classify individual, custom connectors by name for environment-level data policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[2].note",
+      "type": "applicability",
+      "claim": "Classic connector action control is unavailable for unblockable connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/connector-action-control",
+      "quote": "You can configure connector actions for all blockable connectors, but not for unblockable connectors and custom connectors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[2].note",
+      "type": "applicability",
+      "claim": "Classic connector action control is unavailable for custom connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/connector-action-control",
+      "quote": "You can configure connector actions for all blockable connectors, but not for unblockable connectors and custom connectors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[2].note; Open questions",
+      "type": "behaviour",
+      "claim": "Allowing and blocking individual triggers in classic connector action control is currently PowerShell-only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/connector-action-control",
+      "quote": "Support for allowing and blocking individual triggers is currently available only via PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Open questions",
+      "type": "behaviour",
+      "claim": "Microsoft plans admin-center support for individual trigger controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/connector-action-control",
+      "quote": "Support is planned for the Power Platform admin center in the future.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[2].note",
+      "type": "role",
+      "claim": "The administrator needs Power Apps maker access to retrieve the list of connector actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/connector-action-control",
+      "quote": "Admins need to have maker access to Power Apps ... The admin must sign in to Power Apps and have access to complete the user consent process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[3].note",
+      "type": "behaviour",
+      "claim": "Environment-group ACP rules must be published after saving.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
+      "quote": "When all connectors are set as you require, select Save. ... After you update all rules to your requirements, select Publish rules in the command bar.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[3].note",
+      "type": "admin-path",
+      "claim": "Single-environment ACP configuration is reached through Security > Data and privacy > Advanced connector policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
+      "quote": "In the navigation pane, select Security. ... In the Security pane, select Data and privacy. ... Select Advanced connector policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[3].note",
+      "type": "command",
+      "claim": "A second POST assigns the created ACP policy to an environment group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-advanced-connector-policies",
+      "quote": "Adding ACP to an environment group is a two-part operation: create the policy, then assign it to the group. ... Invoke-RestMethod -Method Post ... /environmentGroups/$environmentGroupId/assignments?api-version=$apiVersion",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "Connectors wrap service APIs so Power Apps, Power Automate and Copilot Studio can communicate with other services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/advanced-connectors",
+      "quote": "Connectors from Microsoft Power Platform act as proxies or \"wrappers\" around APIs. They enable Copilot Studio, Power Automate, Power Apps, and Azure Logic Apps to communicate with other apps and services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "SharePoint, SQL Server and Salesforce are examples of services reached through connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/connections-list",
+      "quote": "Power Apps has connectors for many popular services and on-premises data sources, including SharePoint, SQL Server, Office 365, Salesforce, and Twitter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "A connection is the stored sign-in information for a connector.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/advanced-clu-integration",
+      "quote": "Connections are stored authentication credentials for a connector, such as OAuth credentials for the SharePoint connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Apps, flows and agents use connections to invoke connector operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/connectors/custom-connectors/",
+      "quote": "Custom connectors are used the same way prebuilt connectors are used. You need to create a connection to your API in order to use that connection to call any operations that you expose in your custom connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "A connector can provide tables, actions or both.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/connections-list",
+      "quote": "A connector might provide tables of data or actions. Some connectors provide only tables, some provide only actions, and some provide both.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What it is; Kinds of connector",
+      "type": "behaviour",
+      "claim": "The connector reference distinguishes Standard and Premium tiers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/connectors/connector-reference/",
+      "quote": "Tier ... Standard ... Premium ... This is a Premium connector for Power Automate and Power Apps or a Standard connector for Azure Logic Apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "The connector reference distinguishes Preview and Production release status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/connectors/connector-reference/",
+      "quote": "Release Status ... Preview ... Production ... This is a Preview connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "The connector reference identifies MCP server connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/connectors/connector-reference/",
+      "quote": "This is an MCP Server connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Kinds of connector; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft states that standard connectors do not require special licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/connections-list",
+      "quote": "Standard connectors don't require special licensing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Kinds of connector: Premium and Custom; Cost and licensing",
+      "type": "licensing",
+      "claim": "Premium and custom connectors require a standalone Power Apps or Power Automate plan, without distinguishing the Copilot Studio usage this page also covers.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-licensing-subscriptions",
+      "quote": "The standalone Copilot Studio subscription allows you to build agents on any supported channel and connect to any data by using premium connectors.",
+      "severity": "blocker",
+      "fix": "Scope both table licence signals to 'Power Apps and Power Automate use rights included with Microsoft 365: standalone Power Apps or Power Automate plan'. Replace the body's standalone-plan sentence with: 'For Power Apps and Power Automate use rights included with Microsoft 365, the Power Platform licensing FAQ specifies a standalone Power Apps or Power Automate plan for premium, on-premises and custom connectors. Copilot Studio premium connectors are available in select Copilot Studio plans.' Cite https://learn.microsoft.com/microsoft-copilot-studio/advanced-connectors alongside the existing FAQ."
+    },
+    {
+      "n": 33,
+      "where": "Kinds of connector: Custom",
+      "type": "behaviour",
+      "claim": "A custom connector is a wrapper around a REST API defined by a maker or developer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/connectors/custom-connectors/",
+      "quote": "Custom connectors address this scenario by allowing you to create (and even share) a connector with its own triggers and actions. ... A custom connector is a wrapper around a REST API",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Kinds of connector",
+      "type": "applicability",
+      "claim": "Custom connectors created in Power Apps or Power Automate are available in Power Apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/connectors/custom-connectors/",
+      "quote": "Connectors you create in Power Automate or Power Apps are available in: ... Power Apps",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Kinds of connector",
+      "type": "applicability",
+      "claim": "Custom connectors created in Power Apps or Power Automate are available in Power Automate cloud flows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/connectors/custom-connectors/",
+      "quote": "Connectors you create in Power Automate or Power Apps are available in: ... Power Automate cloud flows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Kinds of connector",
+      "type": "applicability",
+      "claim": "Custom connectors created in Power Apps or Power Automate are available in Copilot Studio agents and workflows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/connectors/custom-connectors/",
+      "quote": "Connectors you create in Power Automate or Power Apps are available in: ... Copilot Studio agents and workflows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Connections and sign-in",
+      "type": "behaviour",
+      "claim": "SQL Server connector authentication options include Microsoft Entra Integrated, SQL Server Authentication and Windows Authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/connections-list",
+      "quote": "For instance, the SQL Server connector allows you to use Microsoft Entra Integrated, SQL Server Authentication, and Windows Authentication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Connections and sign-in",
+      "type": "behaviour",
+      "claim": "With an implicitly shared Power Apps connection, the author's connection authentication is shared with end users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/connections-list",
+      "quote": "In a shared connection, the Power Apps author provides the user name and password for the connection when creating the data source in the application. The connection authentication to the data source is then implicitly shared with end users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "A different use of the word",
+      "type": "behaviour",
+      "claim": "Microsoft 365 Copilot connectors were formerly called Microsoft Graph connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/connectors-api-overview",
+      "quote": "You can use Microsoft 365 Copilot connectors (formerly Microsoft Graph connectors) to bring data from external services into Microsoft Graph.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "A different use of the word",
+      "type": "behaviour",
+      "claim": "A Microsoft 365 Copilot connector defines an external-data connection and syncs content into Microsoft 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview",
+      "quote": "A Copilot connector defines a connection to an external data source and syncs content into Microsoft 365. ... Federated connectors: Use a Model Context Protocol (MCP) model to fetch data in real time, without indexing content into Microsoft 365.",
+      "severity": "minor",
+      "fix": "Narrow the description to the synced type: 'Microsoft 365 Copilot connectors (formerly Microsoft Graph connectors) are a separate mechanism. Synced Copilot connectors define a connection to an external data source and sync content into Microsoft 365.' The cited overview separately describes federated connectors that do not index content."
+    },
+    {
+      "n": 41,
+      "where": "summary; Why it matters",
+      "type": "behaviour",
+      "claim": "Classic data policies classify connectors into Business, Non-Business and Blocked groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/dlp-connector-classification",
+      "quote": "The three data groups are the Business data group, the Non-Business data group, and the Blocked data group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Connectors in different data groups cannot be combined in one app or flow.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/dlp-connector-classification",
+      "quote": "if you place SharePoint and Salesforce connectors in the Business group and you place Gmail in the Non-Business group, makers can't create an app or flow that uses both the SharePoint and Gmail connectors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "A connector in Blocked cannot be used where the data policy applies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
+      "quote": "Blocked connectors can't be used where this policy is applied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Why it matters",
+      "type": "applicability",
+      "claim": "A data policy protects the environments within its scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
+      "quote": "these test environments are now excluded from the policy scope, and the data policy settings are applied to all the remaining (Available) environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Microsoft's example allows any combination of connectors in environments with no data policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
+      "quote": "Because no data policy is applied to test environments, apps and flows can use any set of connectors together in these environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Why it matters; Risks and limits: New connectors",
+      "type": "default",
+      "claim": "A newly created classic policy places all connectors in Non-Business by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/dlp-connector-classification",
+      "quote": "When you create a new policy, all connectors are placed in the Non-Business group by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risks and limits: New connectors",
+      "type": "behaviour",
+      "claim": "Microsoft recommends retaining Non-business as the default group for newly added connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
+      "quote": "We recommend keeping the default setting as Non-business to map any new connectors added to Power Platform by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risks and limits: New connectors",
+      "type": "behaviour",
+      "claim": "When the default group is Blocked, new unblockable connectors are assigned to Non-business instead.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
+      "quote": "However, any new connectors that are unblockable are mapped to Non-business because by design they can't be blocked.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risks and limits: Some connectors cannot be blocked",
+      "type": "applicability",
+      "claim": "Classic data policies cannot block core connectors such as Dataverse, Approvals and Notifications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/dlp-connector-classification",
+      "quote": "you can't block connectors that drive core Microsoft Power Platform functionality, such as Dataverse, Approvals, and Notifications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risks and limits: Some connectors cannot be blocked",
+      "type": "applicability",
+      "claim": "SharePoint is among the connectors that classic data policies cannot block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
+      "quote": "For connectors like SharePoint that aren't blockable, the Block action isn't available and a warning appears.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risks and limits: Some connectors cannot be blocked",
+      "type": "behaviour",
+      "claim": "Nonblockable connectors can still be classified as Business or Non-Business.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/dlp-connector-classification",
+      "quote": "You can classify these nonblockable connectors into Business or Non-Business data groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risks and limits: Some connectors cannot be blocked",
+      "type": "applicability",
+      "claim": "ACP can block classically nonblockable certified connectors on managed environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
+      "quote": "On managed environments (single or environment group), you can block any connector or any action, including those that are nonblockable in classic data policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risks and limits: Some connectors cannot be blocked",
+      "type": "applicability",
+      "claim": "On non-managed environments, classically nonblockable connectors remain nonblockable under ACP.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
+      "quote": "However, on non-managed environments, the nonblockable connectors remain nonblockable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risks and limits: HTTP classification",
+      "type": "behaviour",
+      "claim": "HTTP connector grouping can prevent child flows from running because of their internal HTTP dependency.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/dlp-connector-classification",
+      "quote": "Because child flows share an internal dependency with the HTTP connector, the grouping that admins choose for HTTP connectors in a data policy might affect the ability to run child flows in that environment or tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risks and limits: Custom connectors",
+      "type": "behaviour",
+      "claim": "Tenant-level data policies classify custom connectors by host URL pattern.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/dlp-connector-classification",
+      "quote": "The Power Platform admin center supports tenant admins in classifying custom connectors by their Host URL endpoints by using a pattern-matching construct for tenant-level data policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risks and limits: Custom connectors",
+      "type": "default",
+      "claim": "The wildcard custom connector pattern defaults to Ignore in new data policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/dlp-connector-classification",
+      "quote": "Admins can tag the * pattern to Blocked, Business, Non-business, or Ignore. By default, the pattern is set as Ignore for new data policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risks and limits: Custom connectors",
+      "type": "behaviour",
+      "claim": "Ignore defers custom connector classification to other applicable policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/dlp-connector-classification",
+      "quote": "Ignore ignores data policy classification for all connectors in this tenant-level policy, and defers evaluation of a pattern to other environments or tenant-level policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risks and limits: Custom connectors",
+      "type": "behaviour",
+      "claim": "Custom connector data policy evaluation happens before Set Host URL.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/dlp-custom-connector-parity",
+      "quote": "Custom connector evaluation with data policies happens before the use of Set Host URL",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Risks and limits: Custom connectors",
+      "type": "behaviour",
+      "claim": "Set Host URL can repoint a custom connector to another REST API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/dlp-custom-connector-parity",
+      "quote": "Set Host URL which can dynamically change the custom connector to point to any other REST API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Risks and limits: Older apps",
+      "type": "date",
+      "claim": "Data policies do not enforce custom connector use in apps last published before October 2020.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/dlp-custom-connector-parity",
+      "quote": "The use of custom connectors isn't enforced by data policies in apps that were last published before October 2020.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Risks and limits: Older apps",
+      "type": "date",
+      "claim": "Some apps published before October 1, 2020 require republishing for connector action rules to be enforced.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/connector-action-control",
+      "quote": "Some Power Apps, published before October 1, 2020, need to be republished for connector action rules to enforce data policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Risks and limits: Advanced connector policies",
+      "type": "default",
+      "claim": "ACP uses a default-deny allowlist that blocks connectors not explicitly allowed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
+      "quote": "ACP enforces a strict allowlist ... every connector that isn't explicitly allowed is blocked.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Risks and limits: Advanced connector policies",
+      "type": "behaviour",
+      "claim": "ACP takes effect on saving a single-environment policy or publishing an environment-group policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
+      "quote": "ACP enforces a strict allowlist as soon as you save it (single environment) or publish it (environment group)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[3].note; Risks and limits: Advanced connector policies",
+      "type": "applicability",
+      "claim": "ACP currently applies to certified connectors only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
+      "quote": "Advanced connector policies currently apply to certified connectors only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Risks and limits: Advanced connector policies; Open questions",
+      "type": "applicability",
+      "claim": "Custom connectors are not yet supported in ACP and are planned for a future rule type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
+      "quote": "Custom connectors and HTTP connectors aren't yet supported. They're planned as a separate rule type in the future.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Risks and limits: Advanced connector policies; Open questions",
+      "type": "applicability",
+      "claim": "HTTP connectors are not yet supported in ACP and are planned for a future rule type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
+      "quote": "Custom connectors and HTTP connectors aren't yet supported. They're planned as a separate rule type in the future.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Risks and limits: Advanced connector policies",
+      "type": "behaviour",
+      "claim": "ACP design-time enforcement is rolling out separately across maker portals.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
+      "quote": "Design-time enforcement is rolling out across maker portals in the following order: ... Power Automate maker portal ... Copilot Studio ... Power Apps maker portal",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Risks and limits: Advanced connector policies",
+      "type": "behaviour",
+      "claim": "ACP is runtime-only for a workload until its maker portal receives design-time support.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
+      "quote": "Until design-time support is available in a given maker portal, ACP operates as a runtime-only enforcement for that workload.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Open questions",
+      "type": "availability",
+      "claim": "ACP general availability is determined per workload by the release of design-time enforcement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
+      "quote": "Each maker portal's release of design-time enforcement for ACP marks the general availability of ACP for that workload.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Risks and limits: Shared connections",
+      "type": "date",
+      "claim": "New shared connections created after January 2024 are secured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/connections-list",
+      "quote": "after January 2024, all newly created shared connections are secured.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Risks and limits: Shared connections",
+      "type": "behaviour",
+      "claim": "Existing apps with older shared connections need republishing to secure them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/connections-list",
+      "quote": "To secure existing apps, republish them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Risks and limits: App size",
+      "type": "behaviour",
+      "claim": "Microsoft advises a maximum of 10 connectors per canvas app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/connections-list",
+      "quote": "Keep the number of connectors in a canvas app to a maximum of 10",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Risks and limits: App size",
+      "type": "behaviour",
+      "claim": "Microsoft advises no more than 20 connection references per canvas app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/connections-list",
+      "quote": "and connection references to no more than 20.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Risks and limits: App size",
+      "type": "behaviour",
+      "claim": "Exceeding the recommended connector and connection-reference limits can increase loading times and cause saving problems.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/connections-list",
+      "quote": "Going beyond these limits can lead to longer loading times for users when launching the app and can cause problems when saving the app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "An app using a premium connector, custom connector or on-premises gateway is designated Premium.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/license-designation",
+      "quote": "Premium | An app that uses at least one premium connector, a custom connector, or an on-premises gateway.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Every end user of an app designated Premium needs a per app or per user plan.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-apps/maker/canvas-apps/license-designation",
+      "quote": "End-users with a Microsoft 365 subscription including Dataverse for Teams use rights will be able to run these apps in Microsoft Teams.",
+      "severity": "blocker",
+      "fix": "Delete ', and its end user needs a per app plan or per user plan', leaving the verified Premium designation definition. The cited page explicitly qualifies that licence requirement for apps run within Teams; the cited Power Apps licensing FAQ also lists the per app pay-as-you-go meter among qualifying entitlements."
+    },
+    {
+      "n": 77,
+      "where": "Cost and licensing",
+      "type": "date",
+      "claim": "The 2019 premium connector reclassification included SQL Server, Azure SQL and Dynamics 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "The SQL, Azure, and Dynamics 365 connectors in the following list are now classified as Premium. ... Azure SQL ... Dynamics 365 ... SQL Server ... apps and flows created prior to October 1, 2019",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Cost and licensing",
+      "type": "date",
+      "claim": "The Power Platform licensing FAQ says extended use rights concluded on October 1, 2024.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "The period for extended use rights concludes on October 1, 2024 and users are required to have appropriate licenses to maintain compliance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Cost and licensing; Open questions",
+      "type": "date",
+      "claim": "The Power Platform licensing FAQ gives April 1, 2025 as the in-product enforcement date.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+      "quote": "In-product licensing enforcement begins April 1, 2025",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "Cost and licensing; Open questions",
+      "type": "date",
+      "claim": "The Power Apps licensing FAQ refers to enforcement beginning February 2027.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq",
+      "quote": "prepare for licensing enforcement beginning February 2027.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Microsoft directs readers to the Power Apps pricing guide for purchase details.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq",
+      "quote": "How can I purchase licenses? ... Take a look at the Power Apps pricing guide for details.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Environment admins cannot edit tenant-admin-created data policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
+      "quote": "Environment admins can't edit policies created by the tenant admin.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Environment admins cannot delete tenant-admin-created data policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
+      "quote": "Environment admins can't delete policies created by the tenant admin.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Environment-level data policies cannot override tenant-wide data policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
+      "quote": "Environment-level data policies can't override tenant-wide data policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "Governance controls",
+      "type": "default",
+      "claim": "Mixed mode is ACP's default enforcement mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
+      "quote": "Mixed mode (default): ACP runs alongside classic data policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Mixed mode enforces the most restrictive settings from ACP and classic data policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
+      "quote": "ACP runs alongside classic data policies, and the most restrictive settings from both are enforced.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "ACP-only mode ignores classic data policies for the affected environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
+      "quote": "All classic data policies are ignored for those environments, even if they're still configured.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 88,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "ACP-only mode does not delete classic data policy configurations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
+      "quote": "Data policy configurations aren't deleted. They remain in place but aren't enforced while ACP-only mode is active.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 89,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Classic data policies provide connector action control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/connector-action-control",
+      "quote": "You can use connector action control to allow or block individual actions or triggers within a given connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 90,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Classic data policies provide endpoint filtering alongside ACP in mixed mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
+      "quote": "This approach allows you to complement configurations so that data policies can achieve action control and endpoint filtering until such time as those features are native to ACP.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 91,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Get-AdminPowerAppConnection returns connections from environments where the calling user is an environment admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-adminpowerappconnection",
+      "quote": "Returns all connections from all environments where the calling user is an environment admin. For global admins, this searches across all environments in the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 92,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Get-AdminPowerAppConnector lists custom connector details in the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-powershell",
+      "quote": "Get-AdminPowerAppConnector ... Returns a list of all custom connector details in the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 93,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Get-AdminPowerAppConnector does not list custom connectors in a solution.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-powershell",
+      "quote": "Get-AdminPowerAppConnector doesn't list custom connectors that are in a solution. This is a known limitation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 94,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Enforcing data policies on connections disables existing violating connections.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
+      "quote": "Enforcing data policies disable existing connections that violate any data policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 95,
+      "where": "What to check",
+      "type": "consistency",
+      "claim": "Every control the checklist tells readers to review or inventory is represented in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review which policies cover each environment ... List custom connectors and connections with the PowerShell cmdlets above ... Compare the licence designation of important apps with the plans your users hold.",
+      "severity": "minor",
+      "fix": "The checklist's policy-scope review, connection/custom-connector inventory and app licence-designation review have no corresponding control rows. Remove those three control-specific checklist bullets; retain their already documented explanatory prose. This finding does not request additional rows."
+    },
+    {
+      "n": 96,
+      "where": "What it is; sources",
+      "type": "behaviour",
+      "claim": "The API-wrapper and stored-credentials definitions are supported by Microsoft pages missing from the source list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/advanced-clu-integration",
+      "quote": "Connections are stored authentication credentials for a connector, such as OAuth credentials for the SharePoint connector.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-copilot-studio/advanced-connectors and https://learn.microsoft.com/microsoft-copilot-studio/advanced-clu-integration to sources. The former explicitly defines connectors as API wrappers across the named products; the latter defines connections as stored authentication credentials."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-19T03:09:23.997Z",
+    "summary": {
+      "links": 18,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 4,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/canvas-apps/connections-list",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/connectors/custom-connectors/",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/connectors/connector-reference/",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/powerapps-flow-licensing-faq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/maker/canvas-apps/license-designation",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/dlp-connector-classification",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/dlp-custom-connector-parity",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/connector-action-control",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-advanced-connector-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-powerapppolicyurlpatterns",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-adminpowerappconnection",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/powerapps-powershell",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/connectors-api-overview",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which group (Business, Non-Business or Blocked) each prebuilt connector is in",
+        "docs": "https://learn.microsoft.com/power-platform/admin/create-dlp-policy",
+        "reachable": true,
+        "segments": [
+          "Security",
+          "Settings",
+          "Data and privacy",
+          "Data policy",
+          "Edit Policy",
+          "Prebuilt connectors",
+          "Move to Business"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which group (Business, Non-Business or Blocked) each prebuilt connector is in",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy",
+        "reachable": true,
+        "token": "Add-ConnectorsToPolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "How custom connectors are classified, by host URL pattern",
+        "docs": "https://learn.microsoft.com/power-platform/admin/dlp-connector-classification",
+        "reachable": true,
+        "segments": [
+          "Security",
+          "Settings",
+          "Data and privacy",
+          "Data policy",
+          "Edit Policy",
+          "Custom connectors",
+          "Add connector pattern"
+        ],
+        "missing": [
+          "Security",
+          "Settings",
+          "Data and privacy",
+          "Edit Policy"
+        ]
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "How custom connectors are classified, by host URL pattern",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-powerapppolicyurlpatterns",
+        "reachable": true,
+        "token": "New-PowerAppPolicyUrlPatterns",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which actions of a blockable connector are allowed",
+        "docs": "https://learn.microsoft.com/power-platform/admin/connector-action-control",
+        "reachable": true,
+        "segments": [
+          "Security",
+          "Data and privacy",
+          "Data policy",
+          "Edit policy",
+          "Prebuilt connectors",
+          "More actions",
+          "Configure connectors",
+          "Connector actions"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Which actions of a blockable connector are allowed",
+        "docs": "https://learn.microsoft.com/power-platform/admin/connector-action-control",
+        "reachable": true,
+        "token": "New-PowerAppDlpPolicyConnectorConfigurations",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Allowlist of connectors and actions for an environment group or environment (advanced connector policy)",
+        "docs": "https://learn.microsoft.com/power-platform/admin/advanced-connector-policies",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Environment groups",
+          "Rules",
+          "Advanced connector policies"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Allowlist of connectors and actions for an environment group or environment (advanced connector policy)",
+        "docs": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-advanced-connector-policies",
+        "reachable": true,
+        "token": "api.powerplatform.com/governance/ruleBasedPolicies",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

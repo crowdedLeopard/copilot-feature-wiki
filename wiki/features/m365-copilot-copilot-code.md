@@ -37,6 +37,9 @@ sources:
   - title: "Manage Copilot Code for your organization (Frontier)"
     url: "https://learn.microsoft.com/copilot/code/code-admin"
     kind: "learn"
+  - title: "Sandbox in Copilot Code (Frontier)"
+    url: "https://learn.microsoft.com/copilot/code/code-secure-local-execution"
+    kind: "learn"
   - title: "Copilot Code (Frontier) requirements"
     url: "https://learn.microsoft.com/copilot/code/code-requirements"
     kind: "learn"
@@ -55,6 +58,9 @@ sources:
   - title: "Managing AI experiences enabled by usage-based billing"
     url: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits"
     kind: "learn"
+  - title: "Import custom ADMX and ADML administrative templates into Microsoft Intune (public preview)"
+    url: "https://learn.microsoft.com/intune/device-configuration/settings-catalog/import-custom-admx-templates"
+    kind: "learn"
   - title: "Usage-Based Billing and Cost Management for Copilot Credits"
     url: "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits"
     kind: "learn"
@@ -68,27 +74,27 @@ controls:
     scope: "user"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Copilot > Cost management"
-      docs: "https://learn.microsoft.com/microsoft-365/admin/manage/apps/licensing-credits"
+      path: "Copilot > Cost management > Configuration > + Add spending policy > Identity > Specific groups > Select agents and services > Copilot Code > Set limits and alerts"
+      docs: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits"
     api:
       kind: "graph"
-      call: "POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies (body: @odata.type, displayName, periodLimit, perUserLimit, serviceSettings)"
+      call: "POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create"
-    note: "Beta API. The page's example shows serviceId values cowork and workIQ, not one for Copilot Code. Creation needs the Billing Administrator or Global Administrator role."
+    note: "Beta API. Body sets periodLimit, perUserLimit, serviceSettings; displayName and @odata.type required. Created disabled. Example shows serviceId cowork and workIQ, not Copilot Code. Needs Billing Administrator or Global Administrator."
   - governs: "Whether the local sandbox is required and what outbound network access it allows"
     scope: "tenant"
     ui:
       surface: "Microsoft Intune (Microsoft Copilot ADMX templates)"
-      path: "Microsoft Copilot > Code Tab"
+      path: "Devices > Manage devices > Configuration > Create > New policy > Windows 10 and later > Templates > Imported Administrative templates (Preview) > Create > Configuration settings > Microsoft Copilot > Code Tab"
       docs: "https://learn.microsoft.com/copilot/code/code-admin"
     api:
       kind: "other"
       call: "macOS: set CopilotDeviceCodeTabSandboxEnabled and CopilotDeviceCodeTabOutboundNetworkAccessMode in domain com.microsoft.Copilot"
       docs: "https://learn.microsoft.com/copilot/code/code-admin"
-    note: "Device policy for local sessions only; it does not affect Copilot Code cloud agent sessions."
+    note: "Import the Microsoft Copilot ADMX templates first. Device policy for local sessions only; it does not affect Copilot Code cloud agent sessions."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-19"
 roadmapModified: "2026-11-17T18:36:41"
 changes:
   - date: "2026-11-18"
@@ -101,19 +107,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 108 statements confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 104 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-19"
+    note: "Corrected the admin paths for the spending policy wizard and the Intune sandbox policies, shortened the Graph call, and narrowed the sandbox default to managed devices."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 94 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 104
-  confirmed: 102
+  claims: 94
+  confirmed: 94
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "7b43554a49e91cb74f8d493701a8bf5c"
+  contradicted: 0
+  attempts: 0
+  hash: "86d63a1c6f92dcaf4b0d1a427277b541"
 ---
 
 ## What's changing
@@ -144,7 +154,7 @@ Microsoft Learn says the feature needs a Microsoft Copilot licence with the Code
 **Autonomy & actions**
 
 - By default Copilot Code asks permission before network calls, use of extensions and MCP, shell commands, and file access outside folders already in use. The "Auto-approve setting" is documented as on by default and lets users approve actions without confirming each one, and **Always allow** stays on until the user turns it off.
-- For local sessions the sandbox is required if the sandbox policy is not configured. It does not apply to cloud agent sessions, and it does not restrict an app a user runs outside a Copilot Code session.
+- For local sessions on managed devices, the sandbox is required if the sandbox policy is not configured. It does not apply to cloud agent sessions, and it does not restrict an app a user runs outside a Copilot Code session.
 
 **Change & support**
 
@@ -155,7 +165,7 @@ Microsoft Learn says the feature needs a Microsoft Copilot licence with the Code
 
 **Licence.** For a work account, Microsoft Learn lists a Microsoft Copilot licence and the Code tab enabled by your organisation as the requirement ([Copilot Code requirements](https://learn.microsoft.com/copilot/code/code-requirements)). The Copilot Managed Runtime licensing page says the licence does not include Cowork or Code usage, which is billed in Copilot Credits. The [Copilot overview](https://learn.microsoft.com/copilot/plan/copilot-overview#copilot-features-in-microsoft-365-apps) is more specific, stating that usage-based billing capabilities require a Microsoft 365 Copilot (Premium) licence.
 
-**Meter.** Copilot Code is a usage-based billing feature and requires a spending policy. You create it in the Microsoft 365 admin center under Copilot > Cost management, select Copilot Code, and can set a per-user limit. Spending policies are limits, not purchases: a policy does not reserve credits, and you pay for what is consumed. See [Copilot Credits](/concepts/copilot-credits/). The same page says building is the most credit-intensive part of the app lifecycle and advises sizing build limits separately from run limits.
+**Meter.** Copilot Code is a usage-based billing feature and requires a spending policy. You create it in the Microsoft 365 admin center under Copilot > Cost management > Configuration > + Add spending policy, choose Identity as the scope, select Copilot Code under Select agents and services, and can set a per-user limit under Set limits and alerts. Spending policies are limits, not purchases: a policy does not reserve credits, and you pay for what is consumed. See [Copilot Credits](/concepts/copilot-credits/). The same page says building is the most credit-intensive part of the app lifecycle and advises sizing build limits separately from run limits.
 
 **Running published apps.** Running an app requires Power Apps Premium or Copilot Credits through a spending policy that includes Copilot Managed Runtime. The licensing page gives 0.1 Copilot Credits per API call the app makes, with specialised services such as Work IQ APIs charged separately at their own rates.
 
@@ -194,14 +204,14 @@ Microsoft Learn says the feature needs a Microsoft Copilot licence with the Code
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Who can use and build with Copilot Code, and their monthly spend limit</strong><br><small>User</small><br><small class="controls__note">Beta API. The page's example shows serviceId values cowork and workIQ, not one for Copilot Code. Creation needs the Billing Administrator or Global Administrator role.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost management <a href="https://learn.microsoft.com/microsoft-365/admin/manage/apps/licensing-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies (body: @odata.type, displayName, periodLimit, perUserLimit, serviceSettings)</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether the local sandbox is required and what outbound network access it allows</strong><br><small>Tenant</small><br><small class="controls__note">Device policy for local sessions only; it does not affect Copilot Code cloud agent sessions.</small></td><td data-label="Admin UI"><strong>Microsoft Intune (Microsoft Copilot ADMX templates)</strong><br>Microsoft Copilot › Code Tab <a href="https://learn.microsoft.com/copilot/code/code-admin" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>macOS: set CopilotDeviceCodeTabSandboxEnabled and CopilotDeviceCodeTabOutboundNetworkAccessMode in domain com.microsoft.Copilot</code> <a href="https://learn.microsoft.com/copilot/code/code-admin" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who can use and build with Copilot Code, and their monthly spend limit</strong><br><small>User</small><br><small class="controls__note">Beta API. Body sets periodLimit, perUserLimit, serviceSettings; displayName and @odata.type required. Created disabled. Example shows serviceId cowork and workIQ, not Copilot Code. Needs Billing Administrator or Global Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost management › Configuration › + Add spending policy › Identity › Specific groups › Select agents and services › Copilot Code › Set limits and alerts <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether the local sandbox is required and what outbound network access it allows</strong><br><small>Tenant</small><br><small class="controls__note">Import the Microsoft Copilot ADMX templates first. Device policy for local sessions only; it does not affect Copilot Code cloud agent sessions.</small></td><td data-label="Admin UI"><strong>Microsoft Intune (Microsoft Copilot ADMX templates)</strong><br>Devices › Manage devices › Configuration › Create › New policy › Windows 10 and later › Templates › Imported Administrative templates (Preview) › Create › Configuration settings › Microsoft Copilot › Code Tab <a href="https://learn.microsoft.com/copilot/code/code-admin" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>macOS: set CopilotDeviceCodeTabSandboxEnabled and CopilotDeviceCodeTabOutboundNetworkAccessMode in domain com.microsoft.Copilot</code> <a href="https://learn.microsoft.com/copilot/code/code-admin" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 Microsoft Learn names the Copilot Code policy settings (Pre-install Copilot Code components, Auto-approve setting, Copilot Code execution location, GitHub connection, Allowed Github Connections list, Organizational Data in Copilot Code) and their defaults, but at the time of writing (November 2026) it gives no admin centre path or API for them, so they are not in the table. Only the Windows and macOS device policies for the sandbox and preinstall have a documented location.
 
-Creating a spending policy through Microsoft Graph also needs the Billing Administrator or Global Administrator directory role. The sandbox policies do not affect cloud agent sessions, so cloud sessions are limited through the spending policy and the execution location setting instead.
+On Windows, the Microsoft Copilot ADMX and ADML policy templates must first be imported into Intune before the Code Tab policies appear. Creating a spending policy through Microsoft Graph also needs the Billing Administrator or Global Administrator directory role. The sandbox policies do not affect cloud agent sessions, so cloud sessions are limited through the spending policy and the execution location setting instead.
 
 Copilot Code is a Frontier preview feature, so the Copilot Frontier setting (Copilot > Settings > View all > Copilot Frontier in the Microsoft 365 admin center) also decides which users or groups can access eligible preview features. Learn says audit logs exist, but the page read gives no location or event names.
 
@@ -219,12 +229,8 @@ cost: Variable. Usage is metered in Copilot Credits through a spending policy, o
 impact: Medium. Makers and developers who are included notice it; Microsoft Learn says only users in a spending policy for Copilot Code can build apps, so other users are not reached until included.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui / admin-path: Microsoft 365 admin center > Copilot > Cost management is the complete path to configure who can build and their monthly limit. | Found: Select the **Configuration** tab and then select **+ Add spending policy**. ... Create and name the policy and then choose **Identity** as the scope. | Fix: Replace the row's path with 'Copilot > Cost management > Configuration > + Add spending policy > Identity > Specific groups > Select agents and services > Copilot Code > Set limits and alerts'. The cited licensing page supplies the Code selection; the already-cited https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits supplies the wizard navigation. Apply the same complete route where the prose gives creation instructions. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits
-- [contradicted, blocker] controls[1].ui / admin-path: In Microsoft Intune, Microsoft Copilot > Code Tab is a complete route from the admin centre to the sandbox policies. | Found: Select **Devices** > **Manage devices** > **Configuration** > **Create** > **New policy**. ... **Profile type**: Select **Templates** > **Imported Administrative templates (Preview)** | Fix: Replace the Intune path with 'Devices > Manage devices > Configuration > Create > New policy > Windows 10 and later > Templates > Imported Administrative templates (Preview) > Create > Configuration settings > Microsoft Copilot > Code Tab'. Add https://learn.microsoft.com/intune/device-configuration/settings-catalog/import-custom-admx-templates to sources for the route into the imported-template profile. Keep the existing code-admin docs link for the policy's own location, and state that the Microsoft Copilot ADMX/ADML templates must first be imported. | Source: https://learn.microsoft.com/intune/device-configuration/settings-catalog/import-custom-admx-templates
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].api / command: POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies with the listed body properties implements the row's access and monthly-limit control. | Found: POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies ... Required properties are `displayName`, `periodLimit`, `perUserLimit`, and `serviceSettings`. | Fix: Replace the call with 'POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies', retaining its docs link. Replace the row note with 'Beta API. The request body sets periodLimit, perUserLimit and serviceSettings and requires displayName and a concrete @odata.type. New policies are created disabled; for group-scoped policies, link the audience with Add assigned group and let the service enable the policy once its requirements are satisfied. The example shows serviceId values cowork and workIQ, not one for Copilot Code. Creation also requires Billing Administrator or Global Administrator.' The endpoint and printed keys are valid; omitted audience and other request details are left to the reference, not treated as an invalid call. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create
-- [supported, minor] Risk assessment: Autonomy & actions / default: For local sessions, the sandbox is required when the sandbox policy is not configured. | Found: If you don't configure this policy, the sandbox is required and users can't turn it off. | Fix: Narrow the sentence to 'For local sessions on managed devices, the sandbox is required if the sandbox policy is not configured.' Add https://learn.microsoft.com/copilot/code/code-secure-local-execution to sources: its Managed and unmanaged devices table says unmanaged devices have the sandbox on by default but users can turn it off. | Source: https://learn.microsoft.com/copilot/code/code-admin
+- [supported, minor] controls[0].ui; Cost and licensing / admin-path: The printed spending-policy wizard path reaches group scope, service selection and the limits section. | Found: Select the Configuration tab and then select + Add spending policy. ... Define the policy scope ... Create and name the policy and then choose Identity as the scope. | Fix: Insert the documented heading after '+ Add spending policy': 'Copilot > Cost management > Configuration > + Add spending policy > Define the policy scope > Identity > Specific groups > Select agents and services > Copilot Code > Set limits and alerts'. The remaining labels are supported by this page and the already-cited https://learn.microsoft.com/microsoft-365/admin/manage/apps/licensing-credits. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits
 -->

@@ -2,37 +2,31 @@
   "slug": "work-iq-rest-endpoint-tools",
   "roadmapId": 570868,
   "title": "Work IQ: REST endpoint tools for agents",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-19",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "cd5b21ff3a5b",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-19",
-    "reasons": [
-      "1 blocking finding (claim 54)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 69,
-    "confirmed": 68,
+    "claims": 70,
+    "confirmed": 70,
     "unconfirmed": 0,
-    "contradicted": 1,
-    "blocker": 1,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 2
+    "minor": 1
   },
-  "summary": "Hold: the spending-control automation only lists spending policies; it cannot set a spending limit. The roadmap facts and cited admin paths are supported, but the tool count needs qualification and the general statement about REST write operations needs its supporting citation.",
+  "summary": "The briefing distinguishes the roadmap's planned REST endpoint tools from the documented controls for surrounding services. The roadmap facts and spending-policy update call check out; the Work IQ MCP policy path should also name the Registry tab.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; What's changing; rationale: risk",
+      "where": "summary; What's changing",
       "type": "record",
       "claim": "Microsoft plans to enable agents to use supported REST endpoints as tools through governed Work IQ integrations.",
       "status": "supported",
@@ -43,7 +37,7 @@
     },
     {
       "n": 2,
-      "where": "front matter: status; What's changing; Risk assessment: Change & support",
+      "where": "front matter: status; What's changing; Risk assessment",
       "type": "record",
       "claim": "The roadmap status is In development.",
       "status": "supported",
@@ -56,51 +50,40 @@
       "n": 3,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists General Availability and Preview as release phases.",
+      "claim": "The roadmap release phases are General Availability and Preview.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "quote": "\"releasePhase\": [ \"General Availability\", \"Preview\" ]",
       "severity": null,
       "fix": null
     },
     {
       "n": 4,
-      "where": "front matter: platforms; What's changing; Scope; rationale: impact",
-      "type": "record",
-      "claim": "The roadmap platform is Developer.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Developer\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) as the cloud.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap lists Developer as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Developer\" ]",
       "severity": null,
       "fix": null
     },
     {
       "n": 6,
-      "where": "front matter: previewDate; What's changing; Risk assessment: Change & support",
+      "where": "front matter: targetDate; What's changing; Risk assessment",
       "type": "record",
-      "claim": "The roadmap targets preview for October CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": \"October CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "front matter: targetDate; What's changing; Risk assessment: Change & support",
-      "type": "record",
-      "claim": "The roadmap targets release for November CY2026.",
+      "claim": "The roadmap targets November CY2026 for release rather than committing to that date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"November CY2026\"",
@@ -108,7 +91,29 @@
       "fix": null
     },
     {
+      "n": 7,
+      "where": "front matter: previewDate; What's changing; Risk assessment",
+      "type": "record",
+      "claim": "The roadmap targets October CY2026 for preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 8,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap products are Work IQ and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [ \"Work IQ\", \"Microsoft Copilot (Microsoft 365)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
       "where": "front matter: roadmapModified; What's changing",
       "type": "record",
       "claim": "The roadmap record was last modified on 13 October 2026.",
@@ -119,7 +124,7 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 10,
       "where": "What's changing",
       "type": "record",
       "claim": "The roadmap record has no more-info link.",
@@ -130,87 +135,362 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "front matter: products",
-      "type": "record",
-      "claim": "The roadmap products are Work IQ and Microsoft Copilot (Microsoft 365).",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Work IQ\", \"Microsoft Copilot (Microsoft 365)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 11,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap's description of this capability consists of one sentence.",
+      "where": "summary; What's changing",
+      "type": "absence",
+      "claim": "Learn does not yet describe the specific REST endpoint tools capability identified by this roadmap item.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"description\": \"Enable agents to use supported REST endpoints as tools through governed Work IQ integrations.\"",
+      "source": null,
+      "quote": "Searched: Work IQ \"REST endpoint tools\" licensing default registration supported endpoints credentials policy; \"Work IQ\" \"REST endpoints\". Opened Work IQ overview, API overview, plugins overview and MCP management; related REST mechanisms do not identify this roadmap capability.",
       "severity": null,
       "fix": null
     },
     {
       "n": 12,
-      "where": "summary; What's changing",
+      "where": "front matter: defaultState; summary; Why it matters",
       "type": "absence",
-      "claim": "Microsoft Learn does not yet describe the specific REST endpoint tools capability identified by this roadmap item.",
+      "claim": "The default state of REST endpoint tools is not stated.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ\" \"REST endpoint tools\"; \"Work IQ\" \"supported REST endpoints\". Read Work IQ and API overviews, MCP options and MCP management; related REST mechanisms are documented but none identifies this roadmap capability.",
+      "quote": "Searched: \"Work IQ\" \"REST endpoint tools\" \"default\". Read roadmap description and opened Work IQ overview, API overview and policy governance; none states this feature's arrival behaviour.",
       "severity": null,
       "fix": null
     },
     {
       "n": 13,
-      "where": "What's changing; Open questions",
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; Scope; rationale: cost",
       "type": "absence",
-      "claim": "Microsoft has not specified which REST endpoints are supported by this capability.",
+      "claim": "Microsoft has not published the entitlement model for the planned REST endpoint tools capability.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ\" \"supported REST endpoints\"; \"Work IQ\" \"REST endpoint tools\". Read Work IQ overview, API overview and MCP management; no supported-endpoint list for this item.",
+      "quote": "Searched: Work IQ REST endpoint tools Copilot Credits licensing meter rate; Work IQ licensing requirements REST tools pricing Copilot Credits licensing guide. Read API overview licensing, Work IQ access/pricing and Plan licensing and cost; none identifies the planned external-endpoint feature.",
       "severity": null,
       "fix": null
     },
     {
       "n": 14,
-      "where": "What's changing; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not specified how REST endpoints for this roadmap capability are registered and approved.",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Work IQ API access is independent of Microsoft 365 Copilot licensing.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"REST\" \"registration\" \"tools\". Read MCP management, the Tools registry approval procedure and Work IQ overview; no text ties their registration routes to this roadmap item.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Work IQ API access is independent of Microsoft 365 Copilot licensing and available through usage-based billing.",
       "severity": null,
       "fix": null
     },
     {
       "n": 15,
-      "where": "What's changing; Risk assessment: Data exposure and Security & identity; Open questions",
-      "type": "absence",
-      "claim": "The credentials or user identity carried by this capability's REST endpoint calls have not been stated.",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "cost",
+      "claim": "Work IQ API usage is billed through a usage-based model using Copilot Credits.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Work IQ REST endpoint tools supported endpoints licensing default policy; \"Work IQ\" \"REST\" \"registration\" \"tools\". Read API authentication, Work IQ overview and MCP management; no feature-specific call identity.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "You pay for use of the Work IQ API through a usage-based model that uses Copilot Credits.",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
-      "where": "What's changing",
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
       "type": "absence",
-      "claim": "Microsoft has not specified where these REST endpoint tools appear to makers and administrators.",
+      "claim": "A rate specific to REST endpoint tools has not been published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ\" \"REST endpoint tools\"; \"Work IQ\" \"REST\" \"registration\" \"tools\". Read MCP server options and registry management; neither places this specific capability in a maker or admin surface.",
+      "quote": "Searched: Work IQ REST endpoint tools Copilot Credits licensing meter rate. Opened Work IQ overview, API overview and usage-based billing overview; read Plan licensing and cost results. No rate identifies the roadmap's REST endpoint tools.",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
+      "where": "front matter: licensing.notes; controls[3].note; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Whether REST endpoint tool calls have their own meter or consume credits is not established by the published documentation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ REST endpoint tools Copilot Credits licensing meter rate. Read Work IQ API licensing and usage-based billing service coverage; neither identifies how calls to the planned REST endpoint tools are implemented or metered.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Agents > Tools > Registry > MCP server > Block in the Microsoft 365 admin center blocks a registered MCP server and all its tools across the organization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Select Agents > Tools, and then select the Registry tab. ... Select an MCP server from the list to open its overview pane. ... Select Block to restrict the server across your organization ... Blocking an MCP server disables all the tools it exposes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "An API for the Tools registry's server-blocking action is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Tools registry MCP server block disable individual tools Microsoft Graph API; \"Tools registry\" \"API\" \"disable\" MCP. Read registry management and gateway search results; none documents an API for the registry action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed that this roadmap's REST endpoint tools are represented as an MCP server in the Tools registry.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"REST endpoint tools\" registry tool toggles authentication logging. Opened tooling server options, registry management and MCP management; none connects the roadmap item to a registered MCP server.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[1].ui; Risk assessment; Governance guidance",
+      "type": "admin-path",
+      "claim": "Agents > Tools > Registry > MCP server > Tools > Enabled or Disabled toggle > Save manages individual tools on supported MCP servers in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Select Agents > Tools, and then select the Registry tab. ... Select an MCP server ... Select the Tools tab. ... an Enabled or Disabled toggle. ... Turn individual tools on or off as needed. ... Select Save to apply your changes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "An API for the registry's individual-tool availability toggles is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Tools registry MCP server block disable individual tools Microsoft Graph API; \"Tools registry\" \"API\" \"disable\" MCP. Read registry tool-control procedures, MCP management and gateway results; none gives an API for these registry toggles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[1].note",
+      "type": "availability",
+      "claim": "Tool-level granular control is rolling out and supports only specific types of MCP server registered on Agent 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
+      "quote": "Tool-level granular control is rolling out to tenants and supports only specific types of MCP servers registered on Agent 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[1].note; Risk assessment; Open questions",
+      "type": "absence",
+      "claim": "Application of the registry tool toggles to REST endpoint tools is unconfirmed.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"REST endpoint tools\" registry tool toggles authentication logging. Opened registry management and tooling server options; controls cover supported registered MCP servers, with no placement or support statement for the roadmap feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[2].ui; Governance guidance",
+      "type": "admin-path",
+      "claim": "Agents > Tools > Work IQ MCP > Policy opens Work IQ MCP policy settings in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "In the left navigation, select Agents > Tools. ... In the tools registry, select Work IQ MCP. ... On the Work IQ MCP details pane, select the Policy tab when it's available.",
+      "severity": "minor",
+      "fix": "Use 'Agents > Tools > Registry > Work IQ MCP > Policy' in controls[2].ui and its rendered table row. The Registry list tab is documented at https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers; the existing policy reference gives the remaining steps."
+    },
+    {
+      "n": 26,
+      "where": "controls[2].api; Governance controls",
+      "type": "absence",
+      "claim": "No API for changing Work IQ MCP tenant policy is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ MCP tenant policy settings API update policy Allowed Disallowed; \"Work IQ MCP\" \"policy\" \"API\" \"PATCH\". Opened policy governance; it describes editable settings and errors but provides no API operation or reference.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[2].governs; Why it matters; Risk assessment",
+      "type": "default",
+      "claim": "Work IQ MCP blocks mutation operations by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "By default, mutation operations aren't allowed for safety.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[2].governs; Governance controls",
+      "type": "behaviour",
+      "claim": "The initial Work IQ MCP policy control is tenant-level and can be turned on or off for the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "In the initial release, Work IQ MCP provides tenant-level policy control. In the Microsoft 365 admin center, tenant administrators can turn Work IQ MCP policy on or off for the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[2].note",
+      "type": "availability",
+      "claim": "The Policy tab is qualified as appearing when available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "On the Work IQ MCP details pane, select the Policy tab when it's available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[2].note; Why it matters; Risk assessment; Governance controls; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed that Work IQ MCP policy governs the planned REST endpoint tools.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"REST endpoint tools\" \"policy\". Opened policy governance and Work IQ overview; the policy article focuses on MCP tool requests and does not establish that the roadmap's REST endpoint integrations use that request surface.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[3].ui; Cost and licensing; Governance guidance",
+      "type": "admin-path",
+      "claim": "Copilot > Cost management in the Microsoft 365 admin center is the dashboard for Work IQ API spending and consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits",
+      "quote": "In the Microsoft admin center, Copilot > Cost management, admins can monitor Copilot Credit consumption and manage spending associated with the supported services such as Cowork, running apps hosted on the Copilot Managed Runtime, and Work IQ API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[3].api",
+      "type": "command",
+      "claim": "PATCH /beta/copilot/costManagement/spendingPolicies/{id} updates a spending policy through Microsoft Graph.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "Update a spendingPolicy object. ... PATCH /copilot/costManagement/spendingPolicies/{id} ... PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/3f9e2c1a-0000-0000-0000-00000000c21b",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[3].note",
+      "type": "command",
+      "claim": "The update request body can set periodLimit for the policy consumption limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[3].note",
+      "type": "command",
+      "claim": "The update request body can set perUserLimit for the per-user consumption limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[3].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The Cost Management API is beta and its use in production applications is not supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing: Not yet published; Open questions",
+      "type": "absence",
+      "claim": "The spending-policy service that will cover REST endpoint tools is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ REST endpoint tools Copilot Credits licensing meter rate. Opened usage-based billing overview, Work IQ overview and Cost Management API overview; no service mapping is given for this planned tool-registration capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[4].ui; controls[4].api; controls[4].note",
+      "type": "absence",
+      "claim": "No UI or API switch specific to REST endpoint tools in Work IQ is documented in November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"REST endpoint tools\" \"default\"; \"Work IQ\" \"REST endpoint tools\" \"policy\". Opened Work IQ overview, API overview, policy governance, registry management and MCP management; none documents a switch specific to this roadmap feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not identified which REST endpoints are supported by this roadmap capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ \"REST endpoint tools\" licensing default registration supported endpoints credentials policy; \"Work IQ\" \"REST endpoints\". Read roadmap, Work IQ overview, API overview and MCP management; no supported-endpoint list is tied to this item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated how endpoints are registered for this roadmap capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ \"REST endpoint tools\" licensing default registration supported endpoints credentials policy. Opened registry management, plugins overview and MCP management; their registration mechanisms are not identified as the mechanism for this item.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing; Risk assessment; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated whose credentials the planned REST endpoint tool calls carry.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"REST endpoint tools\" registry tool toggles authentication logging. Read API authentication, Work IQ overview and plugins overview; delegated Work IQ requests and plugin credentials are documented separately, with no mapping for this roadmap feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft has not stated where these REST endpoint tools appear to makers and administrators.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ \"REST endpoint tools\" licensing default registration supported endpoints credentials policy; \"Work IQ\" \"REST endpoint tools\" registry tool toggles authentication logging. Opened registry management and tooling server options; no feature-specific placement is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn describes Work IQ MCP as a single MCP endpoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/tooling-servers-overview",
+      "quote": "Work IQ MCP | A single MCP endpoint with 10 generic tools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap does not say whether REST endpoint tools join the Work IQ MCP server.",
+      "claim": "The roadmap does not say whether REST endpoint tools join Work IQ MCP or arrive another way.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Enable agents to use supported REST endpoints as tools through governed Work IQ integrations.",
@@ -218,30 +498,8 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Work IQ MCP exposes its tools through a single MCP endpoint.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/tooling-servers-overview",
-      "quote": "A single MCP endpoint with 10 generic tools.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Learn describes Work IQ MCP as having 10 generic tools.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
-      "quote": "collapses hundreds of operations into just 10 generic tools",
-      "severity": "minor",
-      "fix": "Remove 'with 10 generic tools'. The cited overview says 10, but https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview lists 12 tool names in its Entity, Copilot and Schema rows, including fetch_blob and the preview retrieve tool."
-    },
-    {
-      "n": 20,
-      "where": "Why it matters; Governance controls",
+      "n": 44,
+      "where": "Why it matters",
       "type": "behaviour",
       "claim": "Work IQ MCP governance uses a Rego-based policy engine.",
       "status": "supported",
@@ -251,29 +509,18 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "Why it matters; Risk assessment: Autonomy & actions; controls[2]",
-      "type": "default",
-      "claim": "Work IQ MCP mutation operations are blocked by default.",
+      "n": 45,
+      "where": "Why it matters; rationale: impact",
+      "type": "absence",
+      "claim": "No source found says that this roadmap change automatically changes existing agents or end-user behaviour.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "By default, mutation operations aren't allowed for safety.",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"REST endpoint tools\" \"default\"; \"Work IQ\" \"REST endpoint tools\" roles users prerequisites rollout. Read roadmap, Work IQ overview and API overview; no automatic change to existing agents or users is specified for this item.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 22,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Blocked mutations include create, update, delete and action requests that modify data, such as sending email.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "This restriction includes create, update, delete, and action requests that modify data, such as sending email.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
+      "n": 46,
       "where": "Risk assessment: Data exposure; Scope; Open questions",
       "type": "behaviour",
       "claim": "Documented Work IQ requests run in the context of the signed-in user.",
@@ -284,7 +531,7 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 47,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
       "claim": "Work IQ uses Microsoft Entra ID delegated authentication.",
@@ -295,7 +542,7 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 48,
       "where": "Risk assessment: Security & identity; Scope",
       "type": "behaviour",
       "claim": "Work IQ does not support application-only authentication.",
@@ -306,10 +553,10 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 49,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Approval of a developer-registered MCP server and Microsoft Entra consent are separate steps.",
+      "claim": "For developer-registered MCP servers, approval and Microsoft Entra consent are separate steps.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
       "quote": "Approval in this flow applies to the selected MCP server registration, not to a whole plugin package that uses the server. Granting the required Microsoft Entra consent is a separate step.",
@@ -317,10 +564,43 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 50,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed that REST endpoint tools use the MCP registration approval-and-consent route.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ \"REST endpoint tools\" licensing default registration supported endpoints credentials policy. Opened registry management, tooling server options and MCP management; none identifies the roadmap's tools as registrations governed by that approval flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Work IQ MCP's default mutation restriction includes create, update, delete and actions that modify data such as sending email.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "This restriction includes create, update, delete, and action requests that modify data, such as sending email.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Autonomy & actions; Why it matters",
+      "type": "behaviour",
+      "claim": "A REST endpoint used as an agent tool can expose operations that write data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-plugins",
+      "quote": "users can ask a declarative agent to query an MCP server or REST API for information and, when supported, create, update, and delete data and objects through natural language prompts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Learn says every Work IQ tool invocation is logged and evaluated.",
+      "claim": "Learn says every Work IQ tool invocation is logged.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
       "quote": "Every tool invocation is logged and evaluated, enabling auditability, usage analytics, rate limiting, and real-time compliance enforcement across agents and data sources.",
@@ -328,62 +608,18 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "front matter: defaultState; summary; Why it matters",
-      "type": "absence",
-      "claim": "The default state of REST endpoint tools is not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"REST endpoint\" \"default\"; \"Work IQ\" \"REST endpoint tools\". Read Work IQ overview, API overview, MCP options and policy governance; none states this feature's arrival default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "front matter: licensing.model and notes; Cost and licensing: Licence; rationale: cost",
-      "type": "absence",
-      "claim": "A licensing model or licence specific to REST endpoint tools has not been published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"REST\" \"tools\" pricing Copilot Credits licensing; \"Work IQ\" \"REST endpoint tools\". Read Work IQ Access and pricing, API Licensing requirements and billing overview; no feature-specific licence.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "front matter: licensing.notes; Cost and licensing: Not yet published; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not published a meter or credit rate specific to REST endpoint tools.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"REST endpoint\" \"rate\"; \"Work IQ\" \"REST\" \"tools\" pricing Copilot Credits licensing. Read Work IQ pricing, API licensing and usage-based billing; no separate REST endpoint tool meter or rate.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "front matter: licensing.notes; Cost and licensing: Licence",
-      "type": "licensing",
-      "claim": "Work IQ API access is independent of Microsoft 365 Copilot licensing.",
+      "n": 54,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Learn says every Work IQ tool invocation is evaluated.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
-      "quote": "Work IQ API access is independent of Microsoft 365 Copilot licensing and available through usage-based billing.",
+      "quote": "Every tool invocation is logged and evaluated, enabling auditability, usage analytics, rate limiting, and real-time compliance enforcement across agents and data sources.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 32,
-      "where": "front matter: licensing.notes; Cost and licensing: Licence and Meter",
-      "type": "cost",
-      "claim": "Work IQ API use is billed on a usage basis in Copilot Credits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
-      "quote": "You pay for use of the Work IQ API through a usage-based model that uses Copilot Credits.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
+      "n": 55,
       "where": "Cost and licensing: Licence",
       "type": "licensing",
       "claim": "For Microsoft 365 Copilot licensed users, Work IQ is available in all Microsoft 365 Copilot experiences and agents.",
@@ -394,21 +630,21 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 56,
       "where": "Cost and licensing: Licence",
       "type": "cost",
-      "claim": "Work IQ use in custom and third-party agents is subject to usage-based billing, including for Microsoft 365 Copilot licensed users.",
+      "claim": "Work IQ is subject to usage-based billing for custom and third-party agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
-      "quote": "For Microsoft 365 Copilot licensed users, Work IQ is available in all Microsoft 365 Copilot experiences and agents. It is subject to usage-based billing for custom and third-party agents.",
+      "quote": "It is subject to usage-based billing for custom and third-party agents.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 35,
+      "n": 57,
       "where": "Cost and licensing: Meter",
       "type": "cost",
-      "claim": "Work IQ API usage consumes Copilot Credits shared with other eligible services.",
+      "claim": "Work IQ API consumes Copilot Credits shared with other eligible services.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
       "quote": "Work IQ API usage consumes Copilot Credits shared with other eligible services.",
@@ -416,7 +652,7 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 58,
       "where": "Cost and licensing: Meter",
       "type": "cost",
       "claim": "Learn describes Work IQ cost as variable based on usage.",
@@ -427,10 +663,10 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "Cost and licensing: Meter; controls[3].note",
+      "n": 59,
+      "where": "Cost and licensing: Meter",
       "type": "applicability",
-      "claim": "Work IQ API for custom apps and agents is listed among services managed by usage-based billing in the Microsoft 365 admin center.",
+      "claim": "The usage-based billing page lists Work IQ API for custom apps and agents among services managed in the Microsoft 365 admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits",
       "quote": "Services managed by usage-based billing in the Microsoft admin center now include: ... Work IQ API for custom apps and agents",
@@ -438,98 +674,76 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 60,
       "where": "Cost and licensing: Caps; controls[3].governs",
       "type": "cost",
-      "claim": "The Cost management dashboard supports spending limits for supported users, environments and agents.",
+      "claim": "The Cost management dashboard supports setting spending limits for supported users, environments and agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits",
-      "quote": "Set spending limits for supported users, environments, and agents.",
+      "quote": "Administrators can use the dashboard to: ... Set spending limits for supported users, environments, and agents.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
-      "where": "Cost and licensing: Caps; Governance guidance: Before rollout",
+      "n": 61,
+      "where": "Cost and licensing: Caps; Governance guidance",
       "type": "default",
       "claim": "Auto-apply new services is enabled by default for spending policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits",
-      "quote": "The Auto-apply new services setting is enabled by default for spending policies.",
+      "quote": "The Auto-apply new services setting is enabled by default for spending policies. Administrators can turn off the setting for policies where future services and agents should be reviewed before they're added.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 40,
-      "where": "Cost and licensing: Not yet published; controls[3].note; rationale: cost",
-      "type": "absence",
-      "claim": "Microsoft has not confirmed whether this REST endpoint tool capability's calls are metered.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"REST endpoint\" \"rate\"; \"Work IQ\" \"REST\" \"tools\" pricing Copilot Credits licensing. Read Work IQ pricing, API licensing and usage-based billing; none identifies the roadmap tool calls as billable API calls.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Cost and licensing: Not yet published; Open questions; controls[3].note",
-      "type": "absence",
-      "claim": "The spending policy service governing REST endpoint tool calls has not been specified.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"REST endpoint\" \"rate\"; Work IQ REST endpoint tools supported endpoints licensing default policy. Read usage-based billing, API licensing and Cost Management API overview; no service mapping for these tools.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
+      "n": 62,
       "where": "Scope",
       "type": "absence",
-      "claim": "Microsoft has not published which users are in scope for REST endpoint tools.",
+      "claim": "Microsoft has not published which users are in scope for the REST endpoint tools roadmap item.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ\" \"REST endpoint tools\"; Work IQ REST endpoint tools supported endpoints licensing default policy. Read Work IQ overview, API overview and MCP options; no feature-specific user scope.",
+      "quote": "Searched: \"Work IQ\" \"REST endpoint tools\" roles users prerequisites rollout. Read roadmap, Work IQ overview and API overview; general Work IQ access is described, but no user audience is specified for this planned endpoint-tool capability.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 43,
+      "n": 63,
       "where": "Scope",
       "type": "absence",
       "claim": "Microsoft has not published which roles configure REST endpoint tools.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ\" \"REST\" \"registration\" \"tools\"; \"Work IQ\" \"REST endpoint tools\". Read registry approval roles, MCP management and Work IQ policy instructions; no roles stated for this roadmap capability.",
+      "quote": "Searched: \"Work IQ\" \"REST endpoint tools\" roles users prerequisites rollout. Opened registry management and policy governance; they identify permissions for their own MCP controls, not a configuration role for the roadmap's REST endpoint tools.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 44,
+      "n": 64,
       "where": "Scope",
       "type": "absence",
-      "claim": "Microsoft has not published the rollout mechanics of REST endpoint tools.",
+      "claim": "Microsoft has not published rollout mechanics for REST endpoint tools.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ\" \"REST endpoint tools\"; \"Work IQ\" \"REST endpoint\" \"default\". Read Work IQ overview, API overview and MCP server options; no feature-specific rollout mechanism.",
+      "quote": "Searched: \"Work IQ\" \"REST endpoint tools\" roles users prerequisites rollout. Read roadmap, Work IQ overview, API overview and registry documentation; only roadmap target months were found for this feature.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 45,
+      "n": 65,
       "where": "Scope",
       "type": "absence",
       "claim": "Microsoft has not published prerequisites specific to REST endpoint tools.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ\" \"REST endpoint tools\"; \"Work IQ\" \"REST\" \"registration\" \"tools\". Read API overview, MCP management and Foundry setup search excerpts; no prerequisites tied to this roadmap capability.",
+      "quote": "Searched: \"Work IQ\" \"REST endpoint tools\" roles users prerequisites rollout. Read Work IQ API overview and Foundry prerequisite search excerpts; they cover established Work IQ connection paths, not prerequisites for this roadmap's endpoint-tool integration.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 46,
+      "n": 66,
       "where": "Scope",
       "type": "availability",
-      "claim": "Registry contents can vary by tenant, region, rollout status, licensing, administrator approval and organisational policy.",
+      "claim": "Tools registry contents can vary by tenant, region, rollout status, licensing, administrator approval and organizational policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/tooling-servers-overview",
       "quote": "What appears in the registry and in agent-building experiences can vary by tenant, region, rollout status, licensing, administrator approval, and organizational policy.",
@@ -537,161 +751,7 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "controls[0].ui; Governance controls: first row",
-      "type": "admin-path",
-      "claim": "Agents > Tools > Registry > MCP server > Block in the Microsoft 365 admin center blocks that server and all its exposed tools.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Select Agents > Tools, and then select the Registry tab. ... Select an MCP server from the list to open its overview pane. ... Select Block ... Blocking an MCP server disables all the tools it exposes.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "controls[0].api; Governance controls: first row and following prose",
-      "type": "absence",
-      "claim": "No API for the Tools registry server-blocking action is documented at the time of writing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Agent 365 Tools registry block MCP server tool enabled disabled Microsoft Graph API PowerShell; \"MCP\" \"registry\" \"block\" \"graph.microsoft.com\". Read registry management and gateway search excerpts; no registry blocking API.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "controls[1].ui; Governance controls: second row; Risk assessment: Autonomy & actions",
-      "type": "admin-path",
-      "claim": "Agents > Tools > Registry > MCP server > Tools > Enabled or Disabled toggle > Save manages individual tools on supported MCP servers.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Select Agents > Tools, and then select the Registry tab. ... Select an MCP server ... Select the Tools tab. ... an Enabled or Disabled toggle. ... Select Save to apply your changes",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "controls[1].api; Governance controls: second row and following prose",
-      "type": "absence",
-      "claim": "No API for the Tools registry individual-tool toggles is documented at the time of writing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"MCP\" \"tools\" \"disable\" \"Microsoft Graph\" API registry; Agent 365 Tools registry block MCP server tool enabled disabled Microsoft Graph API PowerShell. Read registry tool controls and gateway excerpts; no API for these toggles.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "controls[2].ui; Governance guidance: At rollout; Governance controls: third row",
-      "type": "admin-path",
-      "claim": "Work IQ MCP policy settings are under Agents > Tools > Work IQ MCP > Policy in the Microsoft 365 admin center.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "In the left navigation, select Agents > Tools. ... In the tools registry, select Work IQ MCP. ... On the Work IQ MCP details pane, select the Policy tab when it's available.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "controls[2].api; Governance controls: third row and following prose",
-      "type": "absence",
-      "claim": "Microsoft Learn documents no API for this Work IQ MCP policy control at the time of writing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"policy\" Microsoft Graph API settings MCP; \"Work IQ MCP\" \"policy\" \"PATCH\". Read policy governance and tool-reference excerpts; settings are described but no versioned policy API operation is documented.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "controls[3].ui; Cost and licensing; Governance guidance; Governance controls: fourth row",
-      "type": "admin-path",
-      "claim": "Copilot > Cost management in the Microsoft 365 admin center provides Work IQ API spending management and consumption monitoring.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits",
-      "quote": "In the Microsoft admin center, Copilot > Cost management, admins can monitor Copilot Credit consumption and manage spending associated with the supported services such as Cowork, running apps hosted on the Copilot Managed Runtime, and Work IQ API.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "controls[3].api; Governance controls: fourth row",
-      "type": "command",
-      "claim": "GET /beta/copilot/costManagement/spendingPolicies is the automation counterpart for the row governing spending limits and consumption.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
-      "quote": "List spendingPolicies | GET /copilot/costManagement/spendingPolicies | Get a list of spending policies. ... Update spendingPolicy | PATCH /copilot/costManagement/spendingPolicies/{id} | Update a spending policy.",
-      "severity": "blocker",
-      "fix": "Replace the call with 'PATCH /beta/copilot/costManagement/spendingPolicies/{id}' and its docs URL with https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update. Add to the row note: 'The request body sets periodLimit for the policy spending limit or perUserLimit for the per-user limit.' Make the same replacement in the rendered table. The current GET only lists policies and cannot configure a spending limit."
-    },
-    {
-      "n": 55,
-      "where": "controls[4]; Governance controls: fifth row",
-      "type": "absence",
-      "claim": "Microsoft Learn documents no admin UI or API switch specific to REST endpoint tools in Work IQ.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"REST endpoint tools\"; \"Work IQ\" \"REST endpoint\" \"policy\"; \"Work IQ\" \"REST endpoint\" \"default\". Read Work IQ overview, registry management, policy governance and MCP management; no feature-specific switch.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "controls[0].note; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not confirmed that these REST endpoint tools appear as a registered MCP server governed by registry blocking.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"REST endpoint tools\"; \"Work IQ\" \"REST\" \"registration\" \"tools\". Read MCP options, registry blocking and MCP management; no passage places these roadmap tools in that registered-server class.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "controls[1].note; Risk assessment: Autonomy & actions; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not confirmed that individual-tool registry toggles apply to this REST endpoint tools capability.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"REST endpoint\" \"policy\"; \"Work IQ\" \"REST endpoint tools\". Read registry tool-control scope and MCP options; the capability is not identified as one of the supported server types.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "controls[2].note; Why it matters; Risk assessment: Autonomy & actions; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not confirmed that Work IQ MCP request policy governs REST endpoint tools, including their write calls.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"REST endpoint\" \"policy\"; \"Work IQ\" \"supported REST endpoints\". Read policy governance, Work IQ overview and MCP overview; no text identifies the roadmap tools as Work IQ MCP requests.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "controls[2].governs and scope; Governance controls",
-      "type": "behaviour",
-      "claim": "The initial Work IQ MCP policy control can be turned on or off for the tenant.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "In the initial release, Work IQ MCP provides tenant-level policy control. In the Microsoft 365 admin center, tenant administrators can turn Work IQ MCP policy on or off for the tenant.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "controls[2].note; Governance controls: third row",
-      "type": "availability",
-      "claim": "The Work IQ MCP Policy tab is conditional on availability.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "On the Work IQ MCP details pane, select the Policy tab when it's available.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
+      "n": 67,
       "where": "Governance controls",
       "type": "behaviour",
       "claim": "A saved Work IQ MCP policy change can take up to 24 hours to apply across the tenant.",
@@ -702,103 +762,48 @@
       "fix": null
     },
     {
-      "n": 62,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Per-user policy templates are not part of the initial Work IQ MCP policy control surface.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "Per-user, per-app, per-agent, or scenario-specific policy templates aren't part of the initial policy control surface.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 63,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Per-app policy templates are not part of the initial Work IQ MCP policy control surface.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "Per-user, per-app, per-agent, or scenario-specific policy templates aren't part of the initial policy control surface.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 64,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Per-agent policy templates are not part of the initial Work IQ MCP policy control surface.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "Per-user, per-app, per-agent, or scenario-specific policy templates aren't part of the initial policy control surface.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 65,
-      "where": "controls[3].note; Governance controls",
-      "type": "behaviour",
-      "claim": "The Cost Management API is beta, subject to change and not supported for production applications.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
-      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 66,
-      "where": "Why it matters; Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "REST endpoints can expose operations that create, update or delete data.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-plugins",
-      "quote": "users can ask a declarative agent to query an MCP server or REST API for information and, when supported, create, update, and delete data and objects through natural language prompts.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-plugins to sources for the general statement that REST endpoints can expose write operations. Do not describe that plugin mechanism as the implementation of this roadmap capability."
-    },
-    {
-      "n": 67,
-      "where": "Open questions: final bullet",
-      "type": "behaviour",
-      "claim": "The Microsoft MCP management MCP server preview supports creating a tool with a remote API.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-management",
-      "quote": "This is a preview feature. ... CreateToolWithRemoteAPI ... Creates a new tool with a remote API in an MCP server.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 68,
-      "where": "controls[1].note; Governance controls: second row",
-      "type": "availability",
-      "claim": "Individual-tool granular control is rolling out to tenants.",
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Per-user, per-app and per-agent policy templates are not part of the initial Work IQ MCP policy control surface.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Tool-level granular control is rolling out to tenants and supports only specific types of MCP servers registered on Agent 365.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "Per-user, per-app, per-agent, or scenario-specific policy templates aren't part of the initial policy control surface.",
       "severity": null,
       "fix": null
     },
     {
       "n": 69,
-      "where": "controls[1].governs and note; Risk assessment: Autonomy & actions; Governance controls",
-      "type": "applicability",
-      "claim": "Individual-tool granular control supports only specific types of MCP server registered on Agent 365.",
+      "where": "Open questions: remote API comparison",
+      "type": "behaviour",
+      "claim": "The Microsoft MCP management MCP server preview documents creating a tool with a remote API.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-      "quote": "Tool-level granular control is rolling out to tenants and supports only specific types of MCP servers registered on Agent 365.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-management",
+      "quote": "This is a preview feature. ... Remote API tools ... CreateToolWithRemoteAPI ... Creates a new tool with a remote API in an MCP server.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The Cost management dashboard can show consumption by agent and service for supported services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits",
+      "quote": "Review consumption by spending policy, user, group, agent, service, and funding source.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-19T02:04:25.579Z",
+    "at": "2026-11-19T03:09:29.371Z",
     "summary": {
-      "links": 9,
-      "unreachable": 7,
+      "links": 11,
+      "unreachable": 4,
       "uiPaths": 4,
-      "uiPathsWithMissingWords": 3,
+      "uiPathsWithMissingWords": 1,
       "apiCalls": 1,
-      "apiCallsNotOnPage": 1,
+      "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -809,8 +814,8 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
@@ -819,13 +824,13 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-agent-365/tooling-servers-overview",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
@@ -839,11 +844,21 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-management",
         "ok": false,
         "status": 429
       },
       {
-        "url": "https://learn.microsoft.com/microsoft-copilot-studio/mcp-management",
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-plugins",
         "ok": false,
         "status": 429
       }
@@ -854,7 +869,7 @@
         "side": "ui",
         "governs": "Whether a registered MCP server, and every tool it exposes, is available to agents",
         "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Agents",
           "Tools",
@@ -862,20 +877,14 @@
           "MCP server",
           "Block"
         ],
-        "missing": [
-          "Agents",
-          "Tools",
-          "Registry",
-          "MCP server",
-          "Block"
-        ]
+        "missing": []
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Which individual tools on a supported MCP server are enabled",
         "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Agents",
           "Tools",
@@ -885,15 +894,7 @@
           "Enabled or Disabled toggle",
           "Save"
         ],
-        "missing": [
-          "Agents",
-          "Tools",
-          "Registry",
-          "MCP server",
-          "Tools",
-          "Enabled or Disabled toggle",
-          "Save"
-        ]
+        "missing": []
       },
       {
         "index": 2,
@@ -927,10 +928,10 @@
         "index": 3,
         "side": "api",
         "governs": "Spending limits and consumption for Work IQ API usage in Copilot Credits",
-        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
-        "reachable": false,
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+        "reachable": true,
         "token": "/beta/copilot/costManagement",
-        "found": false
+        "found": true
       }
     ],
     "roadmapDrift": []
@@ -945,6 +946,12 @@
     {
       "date": "2026-11-18",
       "status": "verified-with-gaps",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-19",
+      "status": "held",
       "version": 2,
       "model": "gpt-6.1-sol"
     }

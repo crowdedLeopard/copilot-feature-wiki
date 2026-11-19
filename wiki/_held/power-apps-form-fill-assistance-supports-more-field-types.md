@@ -82,18 +82,20 @@ changes:
     note: "New briefing: planned support for lookup, rich text and multi-select choice fields in form fill assistance, with the documented settings, column property and licence."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 65 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 1
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-18"
+  status: "held"
+  date: "2026-11-19"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 67
-  unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  claims: 65
+  confirmed: 63
+  unconfirmed: 1
+  contradicted: 1
+  attempts: 1
   hash: "3b643af97fe4e6d49ea86210d0cda1d3"
 ---
 
@@ -199,8 +201,9 @@ cost: Medium. Learn says Power Apps model-driven app users need a Power Apps pre
 impact: Medium. Users of model-driven apps where form fill assistance is switched on would see suggestions on more kinds of field; Learn says the default for Power Apps users is off.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters / behaviour: Rich text fields hold free-form text content. | Found: It lets you create, paste, and edit formatted text in your model-driven apps. | Fix: Replace 'rich text fields hold longer free-form content' with 'rich text fields allow formatted text' and cite https://learn.microsoft.com/power-apps/maker/model-driven-apps/rich-text-editor-control. The source supports formatted text, not a comparative claim about length. | Source: https://learn.microsoft.com/power-apps/maker/model-driven-apps/rich-text-editor-control
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, major] Why it matters / behaviour: Rich text fields hold longer free-form content. | Found: Searched: Power Apps rich text editor formatted text lookup columns related table; rich text It lets you create paste. Read rich-text-editor-control: it describes formatted text, not a comparative content length. | Fix: Replace 'rich text fields hold longer free-form content' with 'rich text fields allow formatted text' and cite https://learn.microsoft.com/power-apps/maker/model-driven-apps/rich-text-editor-control.
+- [contradicted, blocker] controls[1].ui; Governance guidance: At rollout; Governance controls / admin-path: Settings > Features > Form fill assist toolbar is the route from the Power Apps maker portal to the per-app toolbar control. | Found: On the left navigation pane, select Solutions. ... Open the solution containing the existing model-driven app. ... Select the model-driven app, and then select ... > Edit to open the modern app designer. | Fix: Replace controls[1].ui.path and its rendered route with 'Solutions > solution > app > Edit > Settings > Features > Form fill assist toolbar'. Cite https://learn.microsoft.com/power-apps/maker/model-driven-apps/use-command-designer for opening the designer, keeping app-properties as the control's docs link. | Source: https://learn.microsoft.com/power-apps/maker/model-driven-apps/use-command-designer
 -->

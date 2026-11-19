@@ -2,31 +2,39 @@
   "slug": "work-iq-updating-documents-in-office",
   "roadmapId": 570871,
   "title": "Work IQ: agents create and edit Office documents",
-  "status": "verified",
-  "date": "2026-11-18",
+  "status": "held",
+  "date": "2026-11-19",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 0,
-  "verifierVerdict": "pass",
+  "attempts": 1,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
   "notes": [],
-  "hold": null,
-  "counts": {
-    "claims": 68,
-    "confirmed": 68,
-    "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
-    "major": 0,
-    "minor": 0
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-19",
+    "reasons": [
+      "8 blocking findings (claims 10, 11, 12, 39, 41, 42, 43, 51)"
+    ]
   },
-  "summary": "The briefing passes: its roadmap facts and both control paths match the sources checked. It distinguishes documented Work IQ controls and billing from the unpublished details of document editing, and reports the conflicting write defaults without choosing one.",
+  "counts": {
+    "claims": 62,
+    "confirmed": 54,
+    "unconfirmed": 0,
+    "contradicted": 8,
+    "blocker": 8,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "Hold: Microsoft now documents Office Document Tools in preview, including supported applications, the creation and editing actions, and the prerequisite to enable Work IQ. The briefing incorrectly calls those details unpublished and leaves the licensing model unknown even though the documented tools use the consumption-billed Work IQ API.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; rationale: risk",
+      "where": "title; summary; What's changing; Risk assessment; rationale: risk",
       "type": "record",
-      "claim": "The roadmap plans to let Work IQ agents create Microsoft Office documents.",
+      "claim": "The roadmap plans agents creating and editing Microsoft Office documents using organisational context.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Work IQ enables agents to create and edit Microsoft Office documents using organizational context, helping users produce and update content more efficiently.",
@@ -35,39 +43,6 @@
     },
     {
       "n": 2,
-      "where": "title; summary; What's changing; Risk assessment",
-      "type": "record",
-      "claim": "The roadmap plans to let Work IQ agents edit Microsoft Office documents.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Work IQ enables agents to create and edit Microsoft Office documents using organizational context",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "summary; What's changing",
-      "type": "record",
-      "claim": "The planned document operations use organisational context.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "create and edit Microsoft Office documents using organizational context",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap describes the intended benefit as producing and updating content more efficiently.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "helping users produce and update content more efficiently.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
       "where": "front matter: products; What's changing",
       "type": "record",
       "claim": "The record lists Microsoft Copilot (Microsoft 365) and Work IQ as products.",
@@ -78,10 +53,10 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 3,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The record lists Worldwide (Standard Multi-Tenant).",
+      "claim": "The listed cloud is Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -89,7 +64,7 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 4,
       "where": "front matter: platforms; What's changing; Scope; rationale: impact",
       "type": "record",
       "claim": "The record lists the Developer platform.",
@@ -100,18 +75,7 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "front matter: releasePhase; What's changing; Scope",
-      "type": "record",
-      "claim": "The release phases are General Availability and Preview.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
+      "n": 5,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -122,7 +86,7 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 6,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "General Availability is targeted for January CY2027, not promised.",
@@ -133,7 +97,7 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 7,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "Preview is targeted for November CY2026.",
@@ -144,98 +108,109 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "front matter: roadmapModified",
+      "n": 8,
+      "where": "front matter: releasePhase; Scope",
       "type": "record",
-      "claim": "The roadmap record was modified on 2026-10-12T23:01:05.",
+      "claim": "The release phases are General Availability and Preview.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"modified\": \"2026-10-12T23:01:05\"",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 13,
-      "where": "summary; What's changing; Governance guidance",
+      "n": 9,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The record does not list other clouds, without asserting their exclusion.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Governance guidance; rationale: risk",
       "type": "absence",
-      "claim": "No Microsoft Learn page describes this specific roadmap feature as of November 2026.",
+      "claim": "Microsoft Learn has no page describing this feature, leaving the roadmap as its only account.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/office-agent-iq",
+      "quote": "By using Office Document Tools in Work IQ, agents can create and edit Word documents, Excel workbooks, and PowerPoint presentations.",
+      "severity": "blocker",
+      "fix": "Replace the claims that Learn does not describe the feature with: 'Microsoft Learn now documents Office Document Tools in Work IQ in preview.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/office-agent-iq. Retain the roadmap status and dates as roadmap targets, and explicitly report that Learn already describes the preview."
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "How an agent creates or edits a document is not described.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/office-agent-iq",
+      "quote": "Both actions accept an optional `userRequest`. Invoke an available action through `do_action`, following its discovered schema.",
+      "severity": "blocker",
+      "fix": "Replace with: 'In preview, agents invoke /office-agent-mcp/generate_artifact or /office-agent-mcp/edit_artifact through do_action, using a complete content or change outline and the discovered schema.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/office-agent-iq."
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope",
+      "type": "absence",
+      "claim": "The covered file types are not described.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/office-agent-iq",
+      "quote": "By using Office Document Tools in Work IQ, agents can create and edit Word documents, Excel workbooks, and PowerPoint presentations.",
+      "severity": "blocker",
+      "fix": "Replace with: 'The documented preview covers Word documents, Excel workbooks and PowerPoint presentations.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/office-agent-iq."
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "A storage location for newly generated documents is not documented for this feature.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ\" \"Updating documents in Office\"; \"Work IQ\" \"create\" \"Office documents\". Opened Work IQ overview, MCP tool reference, policy governance, Copilot Studio Work IQ and Word, Excel, and PowerPoint Agents; none identifies this roadmap feature.",
+      "quote": "Searched: 'Office Document Tools' 'OneDrive'; 'office-agent-mcp' storage approval billing rate policy Sources. Opened Office Document Tools, Work IQ overview and Word/Excel/PowerPoint Agents pages; only the separate agents page names OneDrive for its outputs.",
       "severity": null,
       "fix": null
     },
     {
       "n": 14,
       "where": "What's changing",
-      "type": "absence",
-      "claim": "The mechanism for creating or editing documents in this feature is not described.",
+      "type": "behaviour",
+      "claim": "The Work IQ MCP reference lists create_entity for creating entities.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"Office\" \"editing\"; \"Work IQ\" \"create\" \"Office documents\". Opened Work IQ overview and MCP tool reference; they describe general tools, not this feature's document-editing mechanism.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/tool-reference",
+      "quote": "Creates a new entity in a collection.",
       "severity": null,
       "fix": null
     },
     {
       "n": 15,
-      "where": "What's changing; Scope",
-      "type": "absence",
-      "claim": "The file types covered by this feature are not stated.",
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The reference lists update_entity for updating entities.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"document\" \"file types\" \"approval\" \"roles\". Read SharePoint Tools covered scenarios and Work IQ overview results; opened MCP tool reference and Word, Excel, and PowerPoint Agents. No file-type list is tied to this feature.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/tool-reference",
+      "quote": "Updates an existing entity.",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
-      "where": "What's changing; Risk assessment: Data exposure",
-      "type": "absence",
-      "claim": "The storage destination for this feature's generated content is not documented.",
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Entity tools use relative resource paths, with Microsoft 365 paths mapping to Graph endpoints.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"document\" \"editing\" licensing approval storage. Opened Work IQ overview and Word, Excel, and PowerPoint Agents; generic workspaces and those agents' OneDrive storage are documented, but neither is linked to this feature.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/tool-reference",
+      "quote": "These tools operate on relative resource paths; Microsoft 365 resource paths map to Microsoft Graph endpoints.",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "What's changing; Open questions",
-      "type": "behaviour",
-      "claim": "The Work IQ MCP tool reference lists create_entity.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/tool-reference",
-      "quote": "### create_entity\n\nCreates a new entity in a collection.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What's changing; Open questions",
-      "type": "behaviour",
-      "claim": "The Work IQ MCP tool reference lists update_entity.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/tool-reference",
-      "quote": "### update_entity\n\nUpdates an existing entity.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "These entity tools operate on relative resource paths mapping to Microsoft Graph endpoints.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/tool-reference",
-      "quote": "Entity tools provide CRUD operations and actions on Microsoft 365 resources. These tools operate on relative resource paths that map to Microsoft Graph endpoints.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The fetch_blob tool fetches binary content including documents and Office files.",
+      "claim": "fetch_blob fetches binary content including documents and Office files.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/tool-reference",
       "quote": "Fetches binary content, such as documents, images, and Office files from a relative Work IQ path.",
@@ -243,21 +218,21 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What's changing; controls[0].note; Governance controls; Open questions",
+      "n": 18,
+      "where": "What's changing; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not confirmed that this feature uses these MCP tools or is governed by their tenant mutation policy.",
+      "claim": "Microsoft has not stated that the document feature uses create_entity and update_entity.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ\" \"Updating documents in Office\"; \"Work IQ\" \"Office\" \"editing\". Opened MCP tool reference and policy governance; neither connects its tools or policy to this roadmap feature.",
-      "severity": null,
-      "fix": null
+      "quote": "Searched: Work IQ updating documents Office create edit documents licensing November 2026. Opened Office Document Tools and MCP tool reference. Neither assigns create_entity or update_entity to this feature; Office Document Tools instead explicitly documents do_action.",
+      "severity": "minor",
+      "fix": "Replace 'Whether the roadmap feature uses these tools is not stated' with 'The documented Office Document Tools preview uses do_action rather than describing creation and editing through create_entity and update_entity.' Remove the open question asking which of those tools it uses. Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/office-agent-iq."
     },
     {
-      "n": 22,
+      "n": 19,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Word, Excel, and PowerPoint Agents create files within Microsoft Copilot.",
+      "claim": "The separate Word, Excel and PowerPoint Agents create files within Microsoft Copilot.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
       "quote": "These agents use advanced AI models to create Word, Excel, and PowerPoint files within Microsoft Copilot.",
@@ -265,10 +240,10 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 20,
       "where": "What's changing; Cost and licensing",
       "type": "licensing",
-      "claim": "Word, Excel, and PowerPoint Agents are premium capabilities requiring a paid Microsoft 365 Copilot licence.",
+      "claim": "Word, Excel and PowerPoint Agents are premium capabilities requiring a paid Microsoft 365 Copilot licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
       "quote": "Word, Excel, and PowerPoint Agents are premium capabilities available only to users with a paid Microsoft 365 Copilot license.",
@@ -276,43 +251,32 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 21,
       "where": "What's changing; Cost and licensing; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not linked Word, Excel, and PowerPoint Agents or their requirements to this roadmap item.",
+      "claim": "Microsoft has not identified this roadmap item as the separate Word, Excel and PowerPoint Agents product.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ\" \"Updating documents in Office\"; \"Work IQ\" \"Office documents\" \"license\" \"price\". Opened Word, Excel, and PowerPoint Agents and Work IQ overview; neither identifies those agents with this roadmap feature.",
+      "quote": "Searched: Work IQ updating documents Office create edit documents licensing November 2026; Office Document Tools Work IQ default enable permissions approval storage pricing Copilot Credits. Opened Office Document Tools and Word/Excel/PowerPoint Agents; neither equates the products or names this roadmap id.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 25,
-      "where": "Why it matters; Risk assessment: Data exposure; Governance guidance",
+      "n": 22,
+      "where": "Why it matters; Risk assessment; Governance guidance",
       "type": "behaviour",
-      "claim": "Work IQ requests run in a specific user's context.",
+      "claim": "Work IQ actions run in a specific user's context and access only what that user may see or do.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
-      "quote": "Actions are user scoped, meaning every request runs in the context of a specific user",
+      "quote": "Actions are user scoped, meaning every request runs in the context of a specific user and only accesses what that user is allowed to see or do.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 26,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Work IQ accesses only what that user is allowed to see or do.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
-      "quote": "every request runs in the context of a specific user and only accesses what that user is allowed to see or do.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
+      "n": 23,
       "where": "Risk assessment: Data exposure; Scope",
       "type": "behaviour",
-      "claim": "Work IQ MCP tools use the signed-in user's Microsoft 365 permissions for Microsoft Graph resource access.",
+      "claim": "Tools accessing Microsoft Graph paths use the signed-in user's Microsoft 365 permissions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/tool-reference",
       "quote": "Work IQ MCP uses Microsoft Entra authentication and the signed-in user's Microsoft 365 permissions when its tools access Microsoft Graph resource paths.",
@@ -320,7 +284,7 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 24,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
       "claim": "Work IQ MCP policy cannot grant access beyond the signed-in user's existing access.",
@@ -331,10 +295,10 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 25,
       "where": "Why it matters; Risk assessment: Autonomy & actions; rationale: risk",
       "type": "default",
-      "claim": "The Work IQ MCP documentation says mutation operations are blocked by default.",
+      "claim": "Work IQ MCP documentation says mutation operations, including create, update, delete and action requests, are blocked by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
       "quote": "By default, mutation operations aren't allowed for safety. This restriction includes create, update, delete, and action requests that modify data, such as sending email.",
@@ -342,51 +306,51 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "controls[0].governs; Risk assessment: Autonomy & actions; Governance guidance",
+      "n": 26,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Administrators can enable supported create, update, delete and action requests through Work IQ MCP tenant policy.",
+      "claim": "Administrators can enable supported mutation operations through tenant policy.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/tool-reference",
-      "quote": "Administrators can enable supported create, update, delete, and action requests through tenant policy.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "Administrators can enable supported mutation scenarios through tenant policy in the Microsoft 365 admin center when those capabilities are needed.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
+      "n": 27,
       "where": "Why it matters; Risk assessment: Autonomy & actions; Open questions; rationale: risk",
       "type": "default",
-      "claim": "The Copilot Studio Work IQ page says write operations are on by default, subject to permissions and policies.",
+      "claim": "The Copilot Studio page says Work IQ write operations are on by default, subject to permissions and policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq",
-      "quote": "Write operations are on by default, subject to those permissions and policies.",
+      "quote": "Write operations are on by default. Your organization's permissions and policies still apply.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 32,
-      "where": "front matter: defaultState; Why it matters; Open questions",
-      "type": "default",
-      "claim": "The default state of the roadmap document-editing feature itself is unknown.",
+      "n": 28,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "absence",
+      "claim": "The feature's arrival behaviour is not stated, so defaultState is unknown.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ\" \"Office documents\" \"default\"; \"Work IQ\" \"Updating documents in Office\". Opened Work IQ overview, MCP policy and Copilot Studio Work IQ; their different general write defaults are not tied to this feature.",
+      "quote": "Searched: 'Office Document Tools' 'default'; Office Document Tools Work IQ default enable permissions approval storage pricing Copilot Credits. Opened Office Document Tools, enable-work-iq and both policy/Studio pages. No feature-specific arrival default resolves the conflicting general write defaults.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
+      "n": 29,
       "where": "Risk assessment: Autonomy & actions; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not described whether a person approves this feature's edits before saving.",
+      "claim": "Microsoft does not describe a feature-specific human approval requirement before saving an edit.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ\" \"document creation\" billing default approval; \"Work IQ\" \"document\" \"file types\" \"approval\" \"roles\". Opened MCP policy and Copilot Studio Work IQ; read Foundry approval guidance, which is not linked to this feature.",
+      "quote": "Searched: 'office-agent-mcp' 'approve'; Office Document Tools Work IQ default enable permissions approval storage pricing Copilot Credits. Opened Office Document Tools and policy governance. No feature-specific approval requirement is stated; generic client approval mechanisms do not establish one.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
+      "n": 30,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "Work IQ API access is independent of Microsoft 365 Copilot licensing.",
@@ -397,7 +361,7 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 31,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "cost",
       "claim": "Work IQ API access is available through usage-based billing.",
@@ -408,40 +372,7 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "Work IQ API usage consumes Copilot Credits shared with other eligible services.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
-      "quote": "Work IQ API usage consumes Copilot Credits shared with other eligible services.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "front matter: cost; Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "The known Work IQ cost model is variable with usage.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
-      "quote": "Work IQ cost is variable based on usage",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Work IQ costs can be managed in the Microsoft 365 admin center.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
-      "quote": "Work IQ cost is variable based on usage and can be managed in the Microsoft 365 admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
+      "n": 32,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "For Microsoft 365 Copilot licensed users, Work IQ is available in all Microsoft 365 Copilot experiences and agents.",
@@ -452,10 +383,10 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 33,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "cost",
-      "claim": "Work IQ remains subject to usage-based billing for custom and third-party agents used by those licensed users.",
+      "claim": "Custom and third-party agents remain subject to Work IQ usage-based billing for licensed users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
       "quote": "It is subject to usage-based billing for custom and third-party agents.",
@@ -463,10 +394,10 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 34,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Users without a Microsoft 365 Copilot licence are billed for Work IQ based on usage.",
+      "claim": "Users without a Microsoft 365 Copilot licence are billed based on usage.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
       "quote": "Users without a Microsoft 365 Copilot license are billed based on usage.",
@@ -474,7 +405,29 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 35,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Work IQ API usage consumes Copilot Credits shared with other eligible services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Work IQ API usage consumes Copilot Credits shared with other eligible services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: cost; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Work IQ has variable usage-based cost that can be managed in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Work IQ cost is variable based on usage and can be managed in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
       "where": "Cost and licensing",
       "type": "cost",
       "claim": "The Copilot Studio page says Work IQ uses consumption billing.",
@@ -485,7 +438,7 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 38,
       "where": "Cost and licensing",
       "type": "cost",
       "claim": "The Copilot Studio page says a separate spending policy is not required for Work IQ.",
@@ -496,84 +449,62 @@
       "fix": null
     },
     {
-      "n": 44,
-      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; Open questions",
+      "n": 39,
+      "where": "front matter: licensing.model and notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Licensing for this specific document-editing feature, including any Microsoft 365 Copilot prerequisite, is not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"Office documents\" \"license\" \"price\". Opened Work IQ overview and Copilot Credits billing overview; read Work IQ API licensing requirements. General usage billing is stated, but no feature-specific entitlement or Copilot prerequisite is identified.",
-      "severity": null,
-      "fix": null
+      "claim": "The licensing model is unknown because nothing has been published for this feature.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Work IQ API access is independent of Microsoft 365 Copilot licensing and available through usage-based billing.",
+      "severity": "blocker",
+      "fix": "Set licensing.model to 'consumption'. Replace 'Nothing is published for this feature' and the blanket unpublished-licence statement with: 'Office Document Tools use the Work IQ MCP interface; Work IQ API access uses consumption billing in Copilot Credits, independently of Microsoft 365 Copilot licensing. A document-specific rate is not yet published.' Cite the Work IQ overview and https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/office-agent-iq."
     },
     {
-      "n": 45,
+      "n": 40,
       "where": "Cost and licensing; Open questions; rationale: cost",
       "type": "absence",
-      "claim": "A document-creation or document-editing rate of its own has not been published for this feature.",
+      "claim": "A rate specifically for Office document creation or editing is not published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ\" \"document creation\" billing default approval; \"Work IQ\" \"Office documents\" \"license\" \"price\". Opened Work IQ overview and Copilot Credits billing overview; neither identifies a rate specific to this feature.",
+      "quote": "Searched: Work IQ licensing consumption Office Document Tools billing; 'Work IQ' 'document' 'Copilot Credits' 'rate'. Opened Office Document Tools, Work IQ overview and Plan licensing and cost; none names a document-specific rate. Search also returned standard-harness rates, not these tools.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 46,
-      "where": "Cost and licensing",
+      "n": 41,
+      "where": "Cost and licensing; Open questions",
       "type": "absence",
-      "claim": "No price specific to this roadmap feature has been published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"Office documents\" \"license\" \"price\". Opened Work IQ overview and Copilot Credits billing overview; general Work IQ billing is documented, but this feature is not identified or priced.",
-      "severity": null,
-      "fix": null
+      "claim": "Whether a Microsoft 365 Copilot licence is a prerequisite remains unpublished.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Work IQ API access is independent of Microsoft 365 Copilot licensing and available through usage-based billing.",
+      "severity": "blocker",
+      "fix": "Replace with: 'Office Document Tools use Work IQ MCP, whose API access is independent of Microsoft 365 Copilot licensing and uses consumption billing.' Remove the corresponding licence-prerequisite open question; retain the narrower question about a document-specific rate. Cite the Work IQ overview and https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/office-agent-iq."
     },
     {
-      "n": 47,
+      "n": 42,
       "where": "Scope",
       "type": "absence",
-      "claim": "Prerequisites specific to this roadmap feature are not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"document\" \"file types\" \"approval\" \"roles\"; \"Work IQ\" \"Updating documents in Office\". Read Enable your tenant for Work IQ prerequisites and opened Copilot Studio Work IQ; neither identifies prerequisites for this feature.",
-      "severity": null,
-      "fix": null
+      "claim": "Prerequisites for this feature are not stated.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/office-agent-iq",
+      "quote": "Before using Office Document Tools, enable Work IQ in your organization.",
+      "severity": "blocker",
+      "fix": "Replace with: 'The preview requires Work IQ to be enabled in the organisation.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/office-agent-iq."
     },
     {
-      "n": 48,
+      "n": 43,
       "where": "Scope",
       "type": "absence",
-      "claim": "Roles required specifically for this roadmap feature are not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"document\" \"file types\" \"approval\" \"roles\". Read Enable your tenant for Work IQ setup-role requirements and opened MCP policy governance; neither specifies roles for the roadmap document-editing feature.",
-      "severity": null,
-      "fix": null
+      "claim": "No prerequisite setup role is stated for this feature.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+      "quote": "A user with Global Administrator role for the one-time Work IQ setup",
+      "severity": "blocker",
+      "fix": "Replace the broad roles-unstated claim with: 'The linked Work IQ enablement guide requires a Global Administrator for the one-time Work IQ setup.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq. Do not infer a feature-specific day-to-day administrator role."
     },
     {
-      "n": 49,
-      "where": "controls[0].scope; Scope; Governance controls",
-      "type": "behaviour",
-      "claim": "Work IQ MCP policy control is tenant-level in the initial release.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "In the initial release, Work IQ MCP provides tenant-level policy control.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Per-user, per-app, per-agent and scenario-specific templates are not part of the initial policy control surface.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "Per-user, per-app, per-agent, or scenario-specific policy templates aren't part of the initial policy control surface.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
+      "n": 44,
       "where": "Scope",
       "type": "default",
       "claim": "Work IQ is added by default to every new Copilot Studio agent using the Microsoft Copilot harness.",
@@ -584,10 +515,10 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 45,
       "where": "Scope",
       "type": "default",
-      "claim": "All available workloads are selected by default in that Work IQ configuration.",
+      "claim": "All available workloads are selected by default for that Work IQ tool.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq",
       "quote": "All available workloads are selected by default.",
@@ -595,32 +526,43 @@
       "fix": null
     },
     {
-      "n": 53,
+      "n": 46,
       "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "The Work IQ MCP policy path is Microsoft 365 admin center > Agents > Tools > Work IQ MCP > Policy.",
+      "claim": "Work IQ MCP tenant policy is reached in Microsoft 365 admin center at Agents > Tools > Work IQ MCP > Policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "In the left navigation, select Agents > Tools.\nIn the tools registry, select Work IQ MCP.\nOn the Work IQ MCP details pane, select the Policy tab when it's available.",
+      "quote": "In the left navigation, select Agents > Tools. ... In the tools registry, select Work IQ MCP. ... On the Work IQ MCP details pane, select the Policy tab when it's available.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 54,
-      "where": "controls[0].api; Governance controls",
+      "n": 47,
+      "where": "controls[0].api; Governance controls table and prose",
       "type": "absence",
-      "claim": "Microsoft Learn documents no automation endpoint for changing this Work IQ MCP tenant policy.",
+      "claim": "Microsoft Learn does not document an API operation to set this Work IQ MCP tenant mutation policy.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ\" policy API Graph beta tenant settings endpoint; \"Work IQ\" \"policy\" \"graph\" \"beta\" settings API. Opened policy governance; read Work IQ API and Graph-related search results. No policy-management endpoint was documented.",
+      "quote": "Searched: Work IQ MCP tenant policy settings Microsoft Graph API update Allowed Disallowed. Opened policy governance; it describes editable settings and errors but no endpoint. Search results exposed no Work IQ policy setter; Graph app-management policy results concern a different policy.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 55,
-      "where": "controls[0].note; Governance controls",
+      "n": 48,
+      "where": "controls[0].scope; Scope; Governance controls",
+      "type": "behaviour",
+      "claim": "The initial Work IQ MCP policy control is tenant-wide.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "In the initial release, Work IQ MCP provides tenant-level policy control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].note; Governance controls table",
       "type": "availability",
-      "claim": "The Policy tab is qualified as appearing when available.",
+      "claim": "The policy instructions qualify the Policy tab with 'when it's available'.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
       "quote": "On the Work IQ MCP details pane, select the Policy tab when it's available.",
@@ -628,8 +570,8 @@
       "fix": null
     },
     {
-      "n": 56,
-      "where": "controls[0].note; Governance controls",
+      "n": 50,
+      "where": "controls[0].note; Governance controls table and prose",
       "type": "behaviour",
       "claim": "A saved Work IQ MCP policy change can take up to 24 hours to apply.",
       "status": "supported",
@@ -639,54 +581,65 @@
       "fix": null
     },
     {
-      "n": 57,
+      "n": 51,
+      "where": "controls[0].note; Governance controls; Open questions",
+      "type": "applicability",
+      "claim": "Microsoft has not confirmed that Work IQ MCP mutation policy covers this feature.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "It adds a request-time governance layer that can allow or deny specific MCP tool requests based on tenant policy.",
+      "severity": "blocker",
+      "fix": "Replace this control's applicability disclaimer with: 'The documented Office Document Tools preview uses Work IQ MCP do_action requests, which fall within the Work IQ MCP tenant policy layer.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/office-agent-iq and the policy page. Remove the blanket sentence that none of the controls is confirmed for this feature; retain any narrower uncertainty about the maker workload selector."
+    },
+    {
+      "n": 52,
       "where": "controls[1].ui; Governance controls table; Governance guidance",
       "type": "admin-path",
-      "claim": "Workload selection is reached in Copilot Studio by opening the agent, then Build > Tools > Work IQ > Edit tool > Sources.",
+      "claim": "The maker workload selector is at Copilot Studio > agent > Build > Tools > Work IQ > Edit tool > Sources.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq",
-      "quote": "Sign in to Copilot Studio and open your agent.\nOn the Build tab, under Tools, select Work IQ.\nIn the Edit tool dialog, review the Connection.\nUnder Sources, select the workloads to use",
+      "quote": "Sign in to Copilot Studio and open your agent. ... On the Build tab, under Tools, select Work IQ. ... In the Edit tool dialog ... Under Sources, select the workloads to use",
       "severity": null,
       "fix": null
     },
     {
-      "n": 58,
-      "where": "controls[1].api; Governance controls",
+      "n": 53,
+      "where": "controls[1].api; Governance controls table and prose",
       "type": "absence",
-      "claim": "Microsoft Learn documents no API for this Copilot Studio Work IQ Sources setting.",
+      "claim": "Microsoft Learn does not document an API setter for the Work IQ Sources workload selection.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Copilot Studio Work IQ Sources workload configuration API Dataverse tool; \"Work IQ\" \"Sources\" \"API\" \"workloads\". Opened Copilot Studio Work IQ; read Dataverse and API search results. No automation for this setting was documented.",
+      "quote": "Searched: Copilot Studio Work IQ Sources workloads Dataverse API configuration. Opened add-work-iq; search returned Work IQ, Dataverse intelligence and MCP references, but no Dataverse table column or API operation documented as setting this Sources selection.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 59,
-      "where": "controls[1].governs; scope; note; Governance guidance",
-      "type": "behaviour",
-      "claim": "The agent's Work IQ configuration lets its maker limit which workloads the agent uses through Work IQ.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq",
-      "quote": "You can remove workloads your agent doesn't need from its Work IQ configuration.\nThe agent no longer uses the workloads you remove through Work IQ.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
+      "n": 54,
       "where": "controls[1].note; Governance controls",
       "type": "behaviour",
-      "claim": "Workload selection is limited to whole workloads, not individual sites or mailboxes.",
+      "claim": "The Sources setting selects only whole workloads.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq",
-      "quote": "Selection is limited to whole workloads. You can't use this setting to select individual sites, mailboxes, or other resources within a workload.",
+      "quote": "Selection is limited to whole workloads.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 61,
-      "where": "controls[1].note; Risk assessment: Data exposure; Governance controls",
+      "n": 55,
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Workload selection does not override organisational permissions or policies.",
+      "claim": "Sources cannot select individual sites, mailboxes or other resources within a workload.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq",
+      "quote": "You can't use this setting to select individual sites, mailboxes, or other resources within a workload.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Selecting a workload does not override organisational permissions or policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq",
       "quote": "Selecting a workload doesn't override your organization's permissions or policies.",
@@ -694,88 +647,77 @@
       "fix": null
     },
     {
-      "n": 62,
+      "n": 57,
       "where": "controls[1].note; Governance controls",
       "type": "absence",
-      "claim": "Microsoft has not confirmed that the Copilot Studio Sources control governs this particular roadmap feature.",
+      "claim": "The documentation does not specifically confirm how the maker workload selector governs the Office document actions.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ\" \"Updating documents in Office\"; \"Work IQ\" \"Office\" \"editing\". Opened Copilot Studio Work IQ and MCP tool reference; neither ties workload selection to this specific roadmap feature.",
+      "quote": "Searched: 'Office Document Tools' 'Sources'; Copilot Studio Work IQ Sources workloads Dataverse API configuration. Opened Office Document Tools and add-work-iq. The selector describes product-service context; neither maps /office-agent-mcp actions to a selectable workload.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 63,
+      "n": 58,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "The Microsoft 365 admin center Tools page lists a Block action preventing supported selected tools from being used by agents or workflows.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-tools-overview",
-      "quote": "For supported items, you can take the following actions:\nBlock | Prevents the selected tool from being used by agents or workflows.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 64,
-      "where": "Governance controls",
-      "type": "absence",
-      "claim": "Microsoft has not stated whether blocking Work IQ MCP on the Tools page stops this feature's document operations.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"Updating documents in Office\"; \"Work IQ\" \"Office\" \"editing\". Opened Tools page overview and Work IQ MCP policy governance; neither identifies the effect of blocking on this feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 65,
-      "where": "Open questions",
-      "type": "behaviour",
-      "claim": "Word, Excel, and PowerPoint Agents depend on Anthropic models being enabled.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
-      "quote": "These agents exclusively use Anthropic's AI models. This AI model must be enabled. These requirements are mandatory for Word, Excel, and PowerPoint Agents to function.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 66,
-      "where": "Scope",
-      "type": "record",
-      "claim": "The roadmap record does not list other clouds, rather than expressly excluding them.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 67,
-      "where": "Why it matters; rationale: impact",
-      "type": "absence",
-      "claim": "No source states a user-facing rollout or a change to existing behaviour on arrival for this feature.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"Office documents\" \"default\"; \"Work IQ\" \"Updating documents in Office\". Read roadmap record and opened Work IQ overview, MCP policy and Copilot Studio Work IQ; none specifies this feature's rollout mechanics or replacement of existing behaviour.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 68,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The policy page discusses clients configuring editable tenant-scoped settings without specifying an endpoint.",
+      "claim": "Per-user, per-app, per-agent and scenario-specific templates are not part of the initial MCP policy control surface.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "If your experience configures policy settings, update only editable policies and validate values before sending updates.\nPolicy settings are tenant-scoped and can include default values, effective values, and metadata that indicates whether a setting can be edited.",
+      "quote": "Per-user, per-app, per-agent, or scenario-specific policy templates aren't part of the initial policy control surface.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Tools page documents a Block action preventing a selected supported tool from being used by agents or workflows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-tools-overview",
+      "quote": "For supported items, you can take the following actions: ... Block ... Prevents the selected tool from being used by agents or workflows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Microsoft has not specifically described the effect of blocking Work IQ MCP in the Tools registry on Office Document Tools.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'office-agent-mcp' storage approval billing rate policy Sources; Office Document Tools Work IQ default enable permissions approval storage pricing Copilot Credits. Opened Office Document Tools and Tools overview; no explicit block mapping, and overview warns blocks need not cross products.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Open questions",
+      "type": "behaviour",
+      "claim": "The separate Word, Excel and PowerPoint Agents depend on Anthropic models being enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
+      "quote": "These agents exclusively use Anthropic's AI models. This AI model must be enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Why it matters; rationale: impact",
+      "type": "absence",
+      "claim": "No source states that this roadmap change automatically alters existing behaviour or rolls out a new user experience.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ updating documents Office create edit documents licensing November 2026; 'Office Document Tools' 'default'. Read roadmap and Office Document Tools page; both describe capabilities, not automatic changes to existing agents or a user-facing rollout.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-18T03:37:05.357Z",
+    "at": "2026-11-19T03:09:32.934Z",
     "summary": {
       "links": 7,
-      "unreachable": 0,
+      "unreachable": 3,
       "uiPaths": 2,
       "uiPathsWithMissingWords": 0,
       "apiCalls": 0,
@@ -795,8 +737,8 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/tool-reference",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
@@ -810,13 +752,13 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-tools-overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/copilot/manage/wordexcelppt-agents",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -856,6 +798,12 @@
       "date": "2026-11-18",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-18",
+      "status": "verified",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

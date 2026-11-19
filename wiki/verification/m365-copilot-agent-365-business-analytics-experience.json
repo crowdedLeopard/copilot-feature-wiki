@@ -4,10 +4,10 @@
   "title": "Microsoft 365 Copilot: Agent 365 Business Analytics for AI spend, usage and value",
   "status": "held",
   "date": "2026-11-19",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "cd5b21ff3a5b",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,47 +16,69 @@
     "reason": "failed",
     "since": "2026-11-19",
     "reasons": [
-      "3 blocking findings (claims 33, 69, 75)"
+      "1 blocking finding (claim 14)"
     ]
   },
   "counts": {
-    "claims": 93,
-    "confirmed": 90,
-    "unconfirmed": 0,
-    "contradicted": 3,
-    "blocker": 3,
+    "claims": 100,
+    "confirmed": 99,
+    "unconfirmed": 1,
+    "contradicted": 0,
+    "blocker": 1,
     "major": 0,
-    "minor": 2
+    "minor": 0
   },
-  "summary": "Hold: the spending-control automation only lists policies; it cannot set spending limits or billing. The licensing field also reports entitlement as unpublished despite the documented Copilot licence prerequisite, and the Viva access-control path stops before the feature and access-setting choices.",
+  "summary": "Hold: the licensing field says the app is included, but the documentation establishes a 50-assigned-Copilot-licence prerequisite without explicitly stating that the app is included in that licence. The roadmap facts and the documented preview controls are supported; the absence of a separately published app price should not be presented as confirmed inclusion.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: title, roadmapId",
+      "where": "summary; What's changing; title",
       "type": "record",
-      "claim": "This briefing concerns roadmap item 577548, Agent 365 Business Analytics.",
+      "claim": "Agent 365 Business Analytics brings AI spend, usage and value together in one place.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"id\": 577548, \"title\": \"Microsoft Copilot (Microsoft 365): Agent 365 Business Analytics experience\"",
+      "quote": "Agent 365 Business Analytics brings AI spend, usage, and value together in one place",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "front matter: products",
+      "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap associates this change with Microsoft Viva and Microsoft Copilot (Microsoft 365).",
+      "claim": "The roadmap describes exploring cost across services, models, agents and users.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Viva\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "quote": "Explore cost across services, models, agents, and users",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes understanding the business use cases AI supports and their value.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "understand the business use cases AI supports and the value it creates",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap describes forecasting future AI spend to inform investment decisions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "forecast future spend to make more informed investment decisions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
       "where": "front matter: status; What's changing",
       "type": "record",
-      "claim": "The item is In development.",
+      "claim": "The roadmap status is In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -64,54 +86,32 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "front matter: releasePhase; Scope",
-      "type": "record",
-      "claim": "The roadmap lists General Availability and Preview phases.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is listed on the roadmap.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 6,
-      "where": "front matter: clouds; What's changing; Scope",
+      "where": "front matter: targetDate; What's changing",
       "type": "record",
-      "claim": "GCC is listed on the roadmap.",
+      "claim": "General availability is targeted for December CY2026, not promised.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "quote": "\"targetDate\": \"December CY2026\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 7,
-      "where": "front matter: clouds; What's changing; Scope",
+      "where": "front matter: previewDate; What's changing",
       "type": "record",
-      "claim": "GCC High is listed on the roadmap.",
+      "claim": "Preview is targeted for November CY2026.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "quote": "\"previewDate\": \"November CY2026\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 8,
-      "where": "front matter: clouds; What's changing; Scope",
+      "where": "front matter: clouds; What's changing; Scope; Open questions",
       "type": "record",
-      "claim": "DoD is listed on the roadmap.",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
@@ -131,75 +131,97 @@
     },
     {
       "n": 10,
-      "where": "front matter: targetDate; What's changing",
+      "where": "front matter: releasePhase; Scope",
       "type": "record",
-      "claim": "The general availability target is December CY2026, not a committed date.",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"targetDate\": \"December CY2026\"",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 11,
-      "where": "front matter: previewDate; What's changing",
+      "where": "front matter: products",
       "type": "record",
-      "claim": "The preview target is November CY2026.",
+      "claim": "The roadmap products are Microsoft Viva and Microsoft Copilot (Microsoft 365).",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"previewDate\": \"November CY2026\"",
+      "quote": "\"products\": [\"Microsoft Viva\", \"Microsoft Copilot (Microsoft 365)\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 12,
-      "where": "summary; What's changing",
+      "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "Microsoft plans one place bringing AI spend, usage and value together for investment decisions.",
+      "claim": "The roadmap record was modified on 2026-11-17T18:36:41.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Agent 365 Business Analytics brings AI spend, usage, and value together in one place, helping leaders understand where AI investment is going, what value it’s delivering, and where to invest next.",
+      "quote": "\"modified\": \"2026-11-17T18:36:41\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 13,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The planned experience explores cost across services, models, agents and users.",
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated the app's general-availability arrival or enablement default.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "Explore cost across services, models, agents, and users",
+      "source": null,
+      "quote": "Searched: \"Agent 365 Business Analytics\" \"general availability\" \"default\"; opened /a365-business-analytics/introduction and /manage/introduction on Learn. They describe automatic preview access, not a GA rollout or GA enablement default; the roadmap supplies targets only.",
       "severity": null,
       "fix": null
     },
     {
       "n": 14,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap describes understanding business use cases and the value AI creates.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "understand the business use cases AI supports and the value it creates",
-      "severity": null,
-      "fix": null
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Business Analytics is included in an existing product licence.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Business Analytics\" \"included\" \"license\" \"Frontier\" and \"Business Analytics\" \"licensing\" \"Copilot\" \"included\"; read the introduction, Viva Insights environment requirements and Copilot licence options. None explicitly states app inclusion.",
+      "severity": "blocker",
+      "fix": "Change licensing.model from \"included\" to \"unknown\" and retain the documented prerequisite in licensing.notes. Add to those notes: \"Microsoft documents the preview's 50-assigned-Copilot-licence prerequisite but does not explicitly state the app's inclusion or separate licensing terms.\" Do not change the supported 50-licence prerequisite or infer an add-on charge."
     },
     {
       "n": 15,
-      "where": "summary; What's changing",
-      "type": "record",
-      "claim": "The planned experience forecasts future spend.",
+      "where": "summary; licensing.notes; Cost and licensing; Governance guidance; rationale: cost",
+      "type": "licensing",
+      "claim": "The Frontier preview requires at least 50 assigned Copilot licences in the tenant.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "forecast future spend to make more informed investment decisions.",
+      "source": "https://learn.microsoft.com/a365-business-analytics/introduction",
+      "quote": "Tenant must have at least 50 Copilot licenses assigned.",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
-      "where": "summary; What's changing; Scope",
+      "where": "summary; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The introduction specifies no separate app price.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Agent 365 Business Analytics\" licensing included price general availability default rollout; read the full Learn introduction and its Prerequisites. It specifies 50 assigned Copilot licences and operational prerequisites but no separate app price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "Licensing and price terms for the app at general availability are not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Agent 365 Business Analytics\" licensing included price general availability default rollout; \"Business Analytics\" \"licensing\" \"Copilot\" \"included\". Read the introduction, Copilot licence options and Viva Insights environment requirements; no Business Analytics GA terms found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope; controls[0].note",
       "type": "availability",
-      "claim": "Learn documents Business Analytics as a Frontier preview rather than a final design.",
+      "claim": "Learn documents Business Analytics as a Frontier preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/introduction",
       "quote": "This feature is part of the Frontier preview program.",
@@ -207,7 +229,18 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft warns that preview availability and capabilities might change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/introduction",
+      "quote": "As these features are still in development, their availability and capabilities might change over time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Frontier provides early access to Microsoft's AI innovations.",
@@ -218,21 +251,10 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Preview availability and capabilities might change.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/introduction",
-      "quote": "As these features are still in development, their availability and capabilities might change over time.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
+      "n": 21,
       "where": "What's changing; rationale: impact",
       "type": "behaviour",
-      "claim": "The dedicated app is aimed at business decision makers and general managers.",
+      "claim": "Business Analytics is a dedicated app for business decision makers and general managers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/introduction",
       "quote": "Business Analytics is a dedicated app for business decision makers and general managers (GMs) to view and track the cost and usage of their organization's Microsoft AI services in one place.",
@@ -240,21 +262,21 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 22,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "The app has Overview, Use cases, Cost & forecast, Users & groups and service pages.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/introduction",
-      "quote": "Overview | How is my organization using AI, what is it costing, and what needs my attention?",
+      "quote": "Overview; Use cases; Cost & forecast; Users & groups; Services pages (Microsoft Copilot, GitHub Copilot, and Agents)",
       "severity": null,
       "fix": null
     },
     {
-      "n": 21,
+      "n": 23,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The app combines licensed Microsoft 365 Copilot with usage-based services including Cowork, agents and GitHub Copilot.",
+      "claim": "The app combines licensed Microsoft 365 Copilot insights with usage-based services such as Cowork, agents and GitHub Copilot.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/introduction",
       "quote": "brings insights for licensed Microsoft 365 Copilot and usage-based AI services, such as Copilot Cowork, agents, and GitHub Copilot, together in a single experience.",
@@ -262,10 +284,21 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 24,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "behaviour",
+      "claim": "The app shows Microsoft AI credits and GitHub AI credits separately.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/overview",
+      "quote": "In the credits view, Microsoft AI credits and GitHub AI credits are shown separately.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
       "where": "What's changing; Cost and licensing",
       "type": "cost",
-      "claim": "Cost & forecast focuses on usage-based billing and excludes Microsoft Copilot user subscription licence costs.",
+      "claim": "Cost & forecast covers usage-based billing and excludes Microsoft Copilot user subscription licence costs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/cost-forecast",
       "quote": "The Cost & forecast page focuses on usage-based billing. Microsoft Copilot user subscription license costs aren't included.",
@@ -273,10 +306,10 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 26,
       "where": "What's changing",
       "type": "cost",
-      "claim": "The Overview service cost for Microsoft 365 Copilot is shown as Included in license.",
+      "claim": "The Overview service card shows Microsoft 365 Copilot cost as Included in license.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/overview",
       "quote": "For Microsoft 365 Copilot, cost shows as \"Included in license\" because it's covered by the per-user license.",
@@ -284,10 +317,10 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 27,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Forecast options include base and growth forecasts.",
+      "claim": "Cost & forecast offers a base forecast.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/cost-forecast",
       "quote": "Base or steady forecast, which assumes future usage is consistent with recent usage.",
@@ -295,21 +328,54 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 28,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "What-if forecasting includes spend-cap and model-mix scenarios.",
+      "claim": "Cost & forecast offers a growth forecast.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/cost-forecast",
-      "quote": "Spend cap: Estimate the impact of applying a monthly spending cap\nModel mix: Estimate the impact of shifting usage between models or providers",
+      "quote": "Growth forecast, which allows recent usage growth to continue in the projection.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 26,
-      "where": "What's changing; Why it matters; Risk assessment; Governance guidance; Governance controls; rationale: risk",
+      "n": 29,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "A reporting budget target does not create or modify a spending policy or enforce a spending limit.",
+      "claim": "Cost & forecast offers a spend-cap what-if scenario.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/cost-forecast",
+      "quote": "Spend cap: Estimate the impact of applying a monthly spending cap",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Cost & forecast offers a model-mix what-if scenario.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/cost-forecast",
+      "quote": "Model mix: Estimate the impact of shifting usage between models or providers",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing; Risk assessment; Governance controls",
+      "type": "behaviour",
+      "claim": "Creating a reporting budget target does not create or modify a spending policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/cost-forecast",
+      "quote": "Creating a reporting budget target doesn't create or modify an enforced spending policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Why it matters; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "A reporting budget target does not enforce a spending limit.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/cost-forecast",
       "quote": "A reporting budget target helps you analyze spending. Creating the target doesn't configure a spending policy or enforce a spending limit.",
@@ -317,10 +383,10 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 33,
       "where": "What's changing; Risk assessment; rationale: risk",
       "type": "behaviour",
-      "claim": "A scenario changes only the forecast comparison, not live policies, limits, budgets, routing or access.",
+      "claim": "A scenario changes only the forecast comparison, not live policies, limits or access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/cost-forecast",
       "quote": "A scenario changes only the forecast comparison. It doesn't modify live access, model routing, spending policies, budgets, or user limits.",
@@ -328,30 +394,52 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 34,
       "where": "What's changing; Risk assessment",
       "type": "behaviour",
-      "claim": "AI value estimates labour value rather than realised savings.",
+      "claim": "AI value is an estimate.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/reference/ai-value",
-      "quote": "AI value is an estimate of the labor value associated with AI's contribution. It doesn't represent realized cost savings, increased revenue, or a guaranteed return on investment.",
+      "quote": "AI value is an estimate of the labor value associated with AI's contribution.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 29,
-      "where": "Why it matters; rationale: risk",
-      "type": "behaviour",
-      "claim": "The app provides AI-cost views by user, group and model alongside value metrics where available.",
+      "n": 35,
+      "where": "What's changing",
+      "type": "applicability",
+      "claim": "The cited AI-value methodology is documented for Cowork.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/cost-forecast",
-      "quote": "Which services, models, groups, or job functions are driving changes in cost?\nThe Users tab shows people who have an assigned usage limit.\nAI value, when available",
+      "source": "https://learn.microsoft.com/a365-business-analytics/reference/ai-value",
+      "quote": "This entire article applies to Cowork assisted hours and value, including customization. It does not apply to Copilot assisted hours and Copilot assisted value, including customization.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
-      "where": "Why it matters; Scope",
+      "n": 36,
+      "where": "What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "AI value does not represent realised financial savings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/reference/ai-value",
+      "quote": "It doesn't represent realized cost savings, increased revenue, or a guaranteed return on investment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "summary; Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "Administrators control which app capabilities users can use and whose data they can see.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/manage/access",
+      "quote": "Global administrators, AI administrators, and Viva Insights administrators can use the Access management page to control which capabilities people can use in the app and whose data they can see",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Why it matters; Scope; Open questions",
       "type": "default",
       "claim": "Some people receive access automatically in the documented preview.",
       "status": "supported",
@@ -361,153 +449,10 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "front matter: defaultState; Why it matters; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not stated the app's general availability arrival/default behaviour, distinguished from preview access.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Agent 365 Business Analytics\" \"general availability\" default rollout; read roadmap, introduction, manage/introduction and Viva dashboard settings. Preview access is documented; no GA rollout/default statement found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "summary; Why it matters; controls[0].note",
-      "type": "behaviour",
-      "claim": "Permission sets, partitions and access policies let administrators determine capabilities and whose data users can see.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/manage/access",
-      "quote": "A permission set defines what users can do in the app, such as view dashboards and reports, export data, view identifiable data, customize reports, and publish reports.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "front matter: licensing.model; summary; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "The licensing model is unknown because Microsoft has not published a licence requirement for the app.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/a365-business-analytics/introduction",
-      "quote": "Prerequisites\nTenant must have at least 50 Copilot licenses assigned.",
-      "severity": "blocker",
-      "fix": "Set licensing.model to 'included' for the published Copilot-licence prerequisite. Replace broad claims that no licence is published, including the summary's 'states no licence or price', with 'The Frontier preview requires a tenant with at least 50 assigned Copilot licences; the introduction does not specify a separate app price.' Retain the open question about general availability terms. The schema distinguishes an unpublished separate price from a documented licence prerequisite."
-    },
-    {
-      "n": 34,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "No separate app price is specified in the introduction or found for this Business Analytics preview.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Agent 365 Business Analytics\" licensing price general availability default enabled; \"Agent 365 Business Analytics\" \"license\" pricing licensing. Read introduction and Agent 365 licensing/service-description excerpts; no separate Business Analytics app price found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "licensing.notes; Cost and licensing; Governance guidance; rationale: cost",
-      "type": "licensing",
-      "claim": "The introduction requires at least 50 assigned Copilot licences in the tenant.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/introduction",
-      "quote": "Tenant must have at least 50 Copilot licenses assigned.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "licensing.notes; Risk assessment; Cost and licensing; Governance guidance",
-      "type": "behaviour",
-      "claim": "Spending policies must be set up for usage-based services and their cost insights.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/introduction",
-      "quote": "Spending policies for usage-based services must be set up for users to use these services and get cost insights.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Risk assessment; Cost and licensing; Governance guidance",
-      "type": "behaviour",
-      "claim": "An administrator must turn on billing in the Microsoft 365 admin center for usage-based service and agent metrics.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/introduction",
-      "quote": "The admin must turn on billing in the Microsoft 365 admin center for users to see usage-based services and agents metrics.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Cost and licensing",
-      "type": "behaviour",
-      "claim": "The prerequisites include access configuration and partitions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/introduction",
-      "quote": "Admins can assign access and set up partitions for viewing Business Analytics and its various components using the access management page.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 39,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "cost",
-      "claim": "Microsoft AI credits and GitHub AI credits are reported separately.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/overview",
-      "quote": "In the credits view, Microsoft AI credits and GitHub AI credits are shown separately.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Copilot Credits are charged to the subscription selected in the billing method.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
-      "quote": "Copilot credits are billed to the subscription that you select in the billing method.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "When that subscription's credits run out, usage automatically continues on a pay-as-you-go basis.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
-      "quote": "When credits run out for that subscription, usage automatically continues on a pay-as-you-go basis.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Cost and licensing; Governance controls",
-      "type": "cost",
-      "claim": "GitHub cost and credit figures are reference-only; official billing and GitHub budget setting are on GitHub.com.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/services/github-copilot",
-      "quote": "Cost and credit information on this page is for reference only. For official billing and detailed charges for GitHub AI credits and budget setting, go to GitHub.com.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Why it matters; Cost and licensing; controls[2].note; Governance guidance; Governance controls",
-      "type": "behaviour",
-      "claim": "Copilot Credits spending limits are configured through spending policies in the Microsoft 365 admin center, not the reporting app.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
-      "quote": "Use the Cost Management dashboard in the Microsoft 365 admin center to enable usage-based billing, activate the default spending policy, create identity-based and resource-based spending policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
       "where": "Risk assessment: Data exposure; Scope",
       "type": "default",
-      "claim": "Leaders in the top three organisational layers receive tenant-level preview access.",
+      "claim": "Leaders in the top three organisational layers receive tenant-level access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/introduction",
       "quote": "The top three layers in the organization (CEO, their direct reports, and their next level of reports) get tenant-level access to the app.",
@@ -515,10 +460,10 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 40,
       "where": "Risk assessment: Data exposure; Scope; rationale: impact",
       "type": "default",
-      "claim": "Managers of teams meeting the minimum group size of 10 can access insights for their own organisation.",
+      "claim": "Managers of teams meeting the documented minimum group size of 10 can access their own organisation's insights.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/introduction",
       "quote": "Managers of teams meeting the minimum group size of 10 can access insights for their own organization, including cost insights.",
@@ -526,7 +471,7 @@
       "fix": null
     },
     {
-      "n": 46,
+      "n": 41,
       "where": "Risk assessment: Data exposure; Scope",
       "type": "default",
       "claim": "Microsoft 365 global administrators have preview access by default.",
@@ -537,8 +482,8 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "Risk assessment: Data exposure; Scope",
+      "n": 42,
+      "where": "Risk assessment: Data exposure",
       "type": "default",
       "claim": "Consumption insights are on by default for general managers.",
       "status": "supported",
@@ -548,98 +493,43 @@
       "fix": null
     },
     {
-      "n": 48,
+      "n": 43,
       "where": "Risk assessment: Data exposure; Scope",
       "type": "default",
-      "claim": "Business leaders need an administrator to turn consumption insights on before they see cost insights.",
+      "claim": "An administrator must turn consumption insights on for business leaders to see cost insights.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/introduction",
-      "quote": "Cost, budget, and usage-based service insights appear only when consumption insights are turned on for your role.\nFor business leaders, an admin must turn them on.",
+      "quote": "Cost, budget, and usage-based service insights appear only when consumption insights are turned on for your role. Consumption insights are on by default for GMs. For business leaders, an admin must turn them on.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 49,
-      "where": "Scope",
+      "n": 44,
+      "where": "Risk assessment: Data exposure; Governance guidance",
       "type": "behaviour",
-      "claim": "Existing Viva Insights role assignments and their organisational scope carry over.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/introduction",
-      "quote": "Users inherit the access and organizational scope of their existing roles from Viva Insights; role assignments don't need to be renewed.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "Scope",
-      "type": "behaviour",
-      "claim": "Existing tenant minimum group size settings carry over.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/introduction",
-      "quote": "existing tenant-level settings such as minimum group size carry over from Viva Insights",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "Scope",
-      "type": "role",
-      "claim": "Insights analysts, Insights admins and other leaders or GMs not detected automatically need access assigned by a Global admin.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/manage/introduction",
-      "quote": "Access assigned by a Global admin | - Insights analysts - Insights admins - Other leaders or GMs who aren't detected automatically",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "controls[0].note; Scope; Governance controls",
-      "type": "role",
-      "claim": "Global, AI and Viva Insights administrators can manage access policies, permission sets and partitions.",
+      "claim": "A permission set's Identification setting determines whether users can see identifiable or de-identified data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/manage/access",
-      "quote": "The following admin roles can view and manage access policies, permission sets, and partitions in Business Analytics:\n- Global administrator\n- AI administrator\n- Viva Insights administrator",
+      "quote": "Whether users can view identifiable data, such as individual names, where your policies allow it. When identification is off, users see de-identified data instead.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 53,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "Effective app access combines valid assignments, and one assignment does not remove access another grants.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/manage/access",
-      "quote": "A capability that's turned on by any assignment is available to the user, and one assignment never removes access that another assignment grants.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "Risk assessment: Data exposure; controls[0]; Governance guidance",
-      "type": "behaviour",
-      "claim": "Identification in a permission set controls named versus de-identified data.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/manage/access",
-      "quote": "Identification | Whether users can view identifiable data, such as individual names, where your policies allow it. When identification is off, users see de-identified data instead.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
+      "n": 45,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The Cost & forecast Users tab lists people with assigned usage limits when the viewer's role permits access.",
+      "claim": "The Cost & forecast Users tab lists users with an assigned usage limit when the viewer's role permits access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/cost-forecast",
-      "quote": "The Users tab under Spending limits appears when user limits are assigned and your role permits access.\nThe Users tab shows people who have an assigned usage limit.",
+      "quote": "The Users tab under Spending limits appears when user limits are assigned and your role permits access.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 56,
+      "n": 46,
       "where": "Risk assessment: Data exposure",
       "type": "default",
-      "claim": "Export is enabled by default, subject to access management.",
+      "claim": "Export is enabled by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/advanced/export",
       "quote": "Export is only available when it's enabled for employees using access management. It's enabled by default.",
@@ -647,7 +537,7 @@
       "fix": null
     },
     {
-      "n": 57,
+      "n": 47,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "CSV download is a documented export option.",
@@ -658,10 +548,10 @@
       "fix": null
     },
     {
-      "n": 58,
+      "n": 48,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "MCP connection setup is among the documented export options.",
+      "claim": "An MCP connection is a documented export option.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/advanced/export",
       "quote": "MCP connection: View the setup information for making the service data available through an MCP connection",
@@ -669,7 +559,7 @@
       "fix": null
     },
     {
-      "n": 59,
+      "n": 49,
       "where": "Risk assessment: Data exposure",
       "type": "default",
       "claim": "Including user identifiers in exports is off by default.",
@@ -680,10 +570,10 @@
       "fix": null
     },
     {
-      "n": 60,
+      "n": 50,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Identifiable exports depend on permission.",
+      "claim": "Identifiable exports depend on the user's assigned permissions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/advanced/export",
       "quote": "If you don't have permission to export identifiable information, the setting isn't displayed and the export uses anonymized identifiers.",
@@ -691,8 +581,63 @@
       "fix": null
     },
     {
-      "n": 61,
-      "where": "Risk assessment: Change & support; controls[3].scope",
+      "n": 51,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Effective Business Analytics access combines all valid assignments, including security-group assignments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/manage/access",
+      "quote": "A user can receive access from more than one source, such as a system-defined policy, a custom policy, or membership in a security group that's assigned to a policy. When this happens, the user's effective access is the combination of all of their valid assignments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "One Business Analytics assignment never removes access granted by another assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/manage/access",
+      "quote": "A capability that's turned on by any assignment is available to the user, and one assignment never removes access that another assignment grants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "licensing.notes; Risk assessment; Cost and licensing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Spending policies are a prerequisite for usage-based services and their cost insights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/introduction",
+      "quote": "Spending policies for usage-based services must be set up for users to use these services and get cost insights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment; Cost and licensing; Governance guidance",
+      "type": "behaviour",
+      "claim": "An administrator must turn on billing in the Microsoft 365 admin center for usage-based service and agent metrics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/introduction",
+      "quote": "The admin must turn on billing in the Microsoft 365 admin center for users to see usage-based services and agents metrics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Some spending-limit sections appear only when limit data exists.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/cost-forecast",
+      "quote": "The Spending limits section appears only when at least one user limit or spending policy applies to the selected scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "Metric calculator configurations apply tenant-wide.",
       "status": "supported",
@@ -702,10 +647,10 @@
       "fix": null
     },
     {
-      "n": 62,
+      "n": 57,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Calculator changes affect dependent metrics.",
+      "claim": "Calculator changes affect dependent metrics and historical trends.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/manage/configurations",
       "quote": "The changes also apply to dependent metrics and historical trends.",
@@ -713,18 +658,7 @@
       "fix": null
     },
     {
-      "n": 63,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "Calculator changes affect historical trends.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/manage/configurations",
-      "quote": "The changes also apply to dependent metrics and historical trends.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 64,
+      "n": 58,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "Calculator changes appear after the affected data, query or report refreshes.",
@@ -735,10 +669,10 @@
       "fix": null
     },
     {
-      "n": 65,
+      "n": 59,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Previously completed queries and existing Interactive insights sessions are not recalculated automatically.",
+      "claim": "Previously completed queries and existing Interactive insights sessions are not recalculated by calculator changes.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/manage/configurations",
       "quote": "Previously completed queries and existing Interactive insights sessions aren't recalculated; rerun or refresh them to use the updated configuration.",
@@ -746,21 +680,131 @@
       "fix": null
     },
     {
-      "n": 66,
+      "n": 60,
       "where": "Risk assessment: Change & support; Governance guidance",
       "type": "behaviour",
-      "claim": "Administrators can change time and hourly-rate assumptions that affect AI-value estimates.",
+      "claim": "Administrators can customise time assumptions used in Cowork AI-value calculations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/reference/ai-value",
-      "quote": "Administrators can customize the estimated time per successful use case and hourly rate. These settings allow organizations to adjust calculations to reflect their own workflows and labor-cost assumptions.",
+      "quote": "Administrators can customize the estimated time per successful use case and hourly rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Administrators can customise the hourly rate used in AI-value calculations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/reference/ai-value",
+      "quote": "Hourly rate | Estimated hourly labor cost used to calculate AI value. Administrators can adjust this value to reflect their organization's labor-cost assumptions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Copilot Credits are billed to the subscription selected in the billing method.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "Copilot credits are billed to the subscription that you select in the billing method.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Usage automatically continues on a pay-as-you-go basis when that subscription's credits run out.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "When credits run out for that subscription, usage automatically continues on a pay-as-you-go basis.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Cost and credit information on the GitHub Copilot page is for reference only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/services/github-copilot",
+      "quote": "Cost and credit information on this page is for reference only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Microsoft directs readers to GitHub.com for official GitHub billing and budget setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/services/github-copilot",
+      "quote": "For official billing and detailed charges for GitHub AI credits and budget setting, go to GitHub.com.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[1].note; Scope; Open questions",
+      "type": "availability",
+      "claim": "The documented Viva feature access management controls are unavailable in GCC High and DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "The access controls described in this document aren't available in GCC-High or DoD.",
       "severity": null,
       "fix": null
     },
     {
       "n": 67,
-      "where": "controls[0].ui; Governance controls: row 1",
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Microsoft has not specified Business Analytics control behaviour in the government clouds listed on its roadmap.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Agent 365 Business Analytics\" \"Viva Insights web app\" FeatureId GCC DoD; read the introduction, configurations, VFAM and supported-environments excerpts. No Business Analytics-specific government-cloud control behaviour was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Existing Viva Insights role assignments and their organisational scope carry over.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/introduction",
+      "quote": "Users inherit the access and organizational scope of their existing roles from Viva Insights; role assignments don't need to be renewed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Existing minimum-group-size settings carry over from Viva Insights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/introduction",
+      "quote": "existing tenant-level settings such as minimum group size carry over from Viva Insights, which continue to hide aggregated insights for groups smaller than your configured thresholds.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Insights analysts, Insights admins and leaders or GMs not detected automatically need access assigned by a Global admin, unless their existing roles transfer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/manage/introduction",
+      "quote": "Access assigned by a Global admin | - Insights analysts<br>- Insights admins<br>- Other leaders or GMs who aren't detected automatically",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "controls[0].ui; Governance controls",
       "type": "admin-path",
-      "claim": "Access controls are reached in Business Analytics through Manage > Access management.",
+      "claim": "Access management is reached in Business Analytics through Manage > Access management.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/manage/access",
       "quote": "In Business Analytics, on the left, under Manage, select Access management.",
@@ -768,32 +812,54 @@
       "fix": null
     },
     {
-      "n": 68,
+      "n": 72,
       "where": "controls[0].api; Governance controls; Open questions",
       "type": "absence",
-      "claim": "No PowerShell or API for Business Analytics access policies is documented.",
+      "claim": "No PowerShell or API operation is documented for Business Analytics permission sets, partitions and access policies.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Agent 365 Business Analytics\" access policies permission sets PowerShell Graph API. Read manage/access, manage/introduction, Viva feature-access-management and manage-access-policies; found UI policy management and general VFAM, not an app access-policy API.",
+      "quote": "Searched: \"Agent 365 Business Analytics\" \"access policies\" \"API\" \"PowerShell\" permission sets; read Learn /a365-business-analytics/manage/access, /manage/introduction and /viva/manage-access-policies. No operation for the in-app access-policy objects was found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 69,
-      "where": "controls[1].ui; Governance controls: row 2",
-      "type": "admin-path",
-      "claim": "Settings > Viva > Settings > Manage feature access > Create a policy reaches the Viva Insights web app on/off control.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/viva/control-access-admin-center",
-      "quote": "Name the policy and select the app and feature for which you'd like to set the policy.\nSelect the Access setting option and choose On or Off to enable or disable the feature.",
-      "severity": "blocker",
-      "fix": "Extend the UI path and rendered row to 'Settings > Viva > Settings > Manage feature access > Create a policy > app and feature > Access setting > On or Off'. In the note, specify selecting the Viva Insights web app feature. The present path stops before the feature choice and the control; these steps are documented at https://learn.microsoft.com/viva/control-access-admin-center."
+      "n": 73,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "role",
+      "claim": "Global, AI and Viva Insights administrators can manage Business Analytics access policies, permission sets and partitions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/manage/access",
+      "quote": "The following admin roles can view and manage access policies, permission sets, and partitions in Business Analytics: Global administrator; AI administrator; Viva Insights administrator",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 70,
-      "where": "controls[1].api; Governance controls: row 2",
+      "n": 74,
+      "where": "controls[0].note; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Business Analytics has Chief Officer, Group Manager and Analyst system-defined permission sets controlling capabilities such as export.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/manage/access",
+      "quote": "Three permission sets: Chief Officer, Group Manager, and Analyst. Each one carries the capabilities that are typical for that role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "controls[1].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "A Viva feature policy can be created through Settings > Viva > Settings > Manage feature access > Create a policy > app and feature > Access setting > On or Off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/control-access-admin-center",
+      "quote": "Select Create a policy. Name the policy and select the app and feature for which you'd like to set the policy. Select the Access setting option and choose On or Off to enable or disable the feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "controls[1].api; Governance controls",
       "type": "command",
-      "claim": "The printed Add-VivaModuleFeaturePolicy call disables the Viva Insights web app for everyone in the tenant.",
+      "claim": "Add-VivaModuleFeaturePolicy with ModuleId VivaInsights, FeatureId \"Viva Insights web app\", IsFeatureEnabled $false and Everyone creates a tenant-wide disabling policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
       "quote": "Example: Turn off the Viva Insights web app for all users in your tenant\nModuleId : VivaInsights\nFeatureId : Viva Insights web app\nName : DisableFeatureForAll\nIsFeatureEnabled : false\nEveryone",
@@ -801,106 +867,139 @@
       "fix": null
     },
     {
-      "n": 71,
+      "n": 77,
       "where": "controls[1].note; Governance guidance; Open questions",
       "type": "absence",
-      "claim": "The documentation does not unambiguously confirm that this particular Viva Insights web app feature ID disables Business Analytics.",
+      "claim": "The documentation does not unambiguously confirm that the Viva Insights web app feature ID switches off Business Analytics.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Business Analytics\" \"Viva Insights web app\" FeatureId; \"Agent 365 Business Analytics\" \"FeatureId\". Read manage/introduction, VFAM and dashboard settings: VFAM is linked for app on/off, but settings apply only 'where applicable'; no explicit ID-to-app statement.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 72,
-      "where": "controls[1].note; Scope; Open questions",
-      "type": "availability",
-      "claim": "Microsoft says the documented Viva feature access controls are unavailable in GCC High and DoD.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/feature-access-management",
-      "quote": "The access controls described in this document aren't available in GCC-High or DoD. For GCC (Government Community Cloud), see the documentation for your specific app for availability.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 73,
-      "where": "Scope; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not explained Business Analytics control behaviour in the government clouds listed on the roadmap.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Agent 365 Business Analytics\" \"GCC\" controls. Read VFAM cloud exclusion and Business Analytics introduction, manage/access and configurations; no Business Analytics-specific government-cloud control behaviour found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 74,
-      "where": "controls[2].ui; Governance controls: row 3",
-      "type": "admin-path",
-      "claim": "Copilot > Cost Management > Get Started is the documented entry to configure Copilot Credits spending limits and billing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
-      "quote": "go to Copilot and then the Cost Management node.\nTo unlock AI experiences enabled by usage-based billing, select Get Started.",
-      "severity": "minor",
-      "fix": "Extend the path to 'Copilot > Cost Management > Get Started > Activate the default spending policy for your organization > Set the monthly spending limit for this policy > Limit monthly spending'. The omitted panel/section headings and final option are on the cited setup page. Keep billing-method configuration described in the note rather than implying Get Started itself sets a limit."
-    },
-    {
-      "n": 75,
-      "where": "controls[2].api; Governance controls: row 3",
-      "type": "command",
-      "claim": "GET /beta/copilot/costManagement/spendingPolicies is automation that sets the spending limits and billing described by the row.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
-      "quote": "List spendingPolicies | GET /copilot/costManagement/spendingPolicies | Get a list of spending policies.\nUpdate spendingPolicy | PATCH /copilot/costManagement/spendingPolicies/{id} | Update a spending policy.",
-      "severity": "blocker",
-      "fix": "Replace the call with 'PATCH /beta/copilot/costManagement/spendingPolicies/{id}' and its docs link with https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update; cite that reference. Add to the note: 'For existing policies, request-body periodLimit and perUserLimit set limits; billingMethods changes funding. Adding pay-as-you-go funding requires a complete billingInstrument; replacing an already-pay-as-you-go instrument is not supported.' The update reference and spendingPolicy resource reference document these properties and restrictions."
-    },
-    {
-      "n": 76,
-      "where": "controls[2].note; Governance controls: row 3",
-      "type": "role",
-      "claim": "Creating a spending policy requires Global administrator or Billing administrator.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
-      "quote": "Creating a spending policy also requires the Billing Administrator or Global Administrator directory role at runtime.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 77,
-      "where": "controls[2].note",
-      "type": "availability",
-      "claim": "The cited Cost Management API is a beta API.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
-      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "quote": "Searched: \"Agent 365 Business Analytics\" \"Viva Insights web app\" FeatureId GCC DoD; \"Business Analytics\" \"FeatureId\". Read Business Analytics admin introduction, VFAM and dashboard settings; they say \"where applicable\", without an explicit app-to-ID mapping.",
       "severity": null,
       "fix": null
     },
     {
       "n": 78,
-      "where": "controls[3].ui; Governance controls: row 4",
+      "where": "controls[2].ui; Governance controls",
       "type": "admin-path",
-      "claim": "The Cowork Value metrics toggle is reached through Manage > Configurations > Metric calculators > Cowork assisted hours and value > Edit calculator > Value calculator > Value metrics.",
+      "claim": "The default spending limit is reached through Copilot > Cost Management > Get Started > Activate the default spending policy for your organization > Set the monthly spending limit for this policy > Limit monthly spending.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/manage/configurations",
-      "quote": "Under Cowork assisted hours and value, select Edit calculator.\nSelect the Value calculator tab.\nOn the right, use the Value metrics toggle to turn AI value metrics on or off for your organization.",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "In the Set the monthly spending limit for this policy section, select one of the options. ... Limit monthly spending - Limits the number of credits the default policy can spend each month.",
       "severity": null,
       "fix": null
     },
     {
       "n": 79,
-      "where": "controls[3].note; Governance guidance: At rollout",
-      "type": "default",
-      "claim": "The tenant-wide Cowork value-metrics display setting is off by default.",
+      "where": "controls[2].api; Governance controls",
+      "type": "command",
+      "claim": "PATCH /beta/copilot/costManagement/spendingPolicies/{id} updates spending policies.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/manage/configurations",
-      "quote": "Administrators can control whether AI value metrics for Cowork are displayed to users in their organization. This setting applies across the tenant and is turned off by default.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/3f9e2c1a-0000-0000-0000-00000000c21b",
       "severity": null,
       "fix": null
     },
     {
       "n": 80,
+      "where": "controls[2].note",
+      "type": "availability",
+      "claim": "The spending-policy update API is beta.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "controls[2].note",
+      "type": "command",
+      "claim": "The spending-policy update request can set periodLimit and perUserLimit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "controls[2].note",
+      "type": "command",
+      "claim": "The spending-policy update request can change funding through billingMethods.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "Use this method to change updatable properties, including billingMethods.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "controls[2].note",
+      "type": "command",
+      "claim": "Adding pay-as-you-go funding requires a complete billingInstrument.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "When changing stored non-pay-as-you-go funding to include pay-as-you-go, supply a complete billingInstrument; no separate billing endpoint or action is used.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "controls[2].note",
+      "type": "command",
+      "claim": "The update method does not define replacement of an existing pay-as-you-go instrument.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "This method doesn't define instrument-only updates or replacement of an already-pay-as-you-go instrument.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "controls[3].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The Cowork Value metrics toggle is reached through Manage > Configurations > Metric calculators > Cowork assisted hours and value > Edit calculator > Value calculator > Value metrics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/manage/configurations",
+      "quote": "Under Cowork assisted hours and value, select Edit calculator. Select the Value calculator tab. On the right, use the Value metrics toggle to turn AI value metrics on or off for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "controls[3].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No PowerShell or API operation is documented for Business Analytics calculator configuration or the Cowork Value metrics toggle.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Agent 365 Business Analytics\" \"Metric calculators\" \"API\"; \"Agent 365 Business Analytics\" calculator privacy minimum group size API PowerShell. Read Learn /a365-business-analytics/manage/configurations and VFAM. No matching calculator or Cowork-toggle operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "controls[3].note; Governance guidance: At rollout",
+      "type": "default",
+      "claim": "The Cowork Value metrics toggle is off by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/manage/configurations",
+      "quote": "This setting applies across the tenant and is turned off by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 88,
+      "where": "controls[3].scope; controls[3].governs",
+      "type": "behaviour",
+      "claim": "The Cowork Value metrics toggle controls AI-value visibility across the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/a365-business-analytics/manage/configurations",
+      "quote": "Administrators can control whether AI value metrics for Cowork are displayed to users in their organization. This setting applies across the tenant",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 89,
       "where": "controls[3].note; Governance controls",
       "type": "role",
       "claim": "Viva Insights administrators can configure Cowork value metrics.",
@@ -911,43 +1010,43 @@
       "fix": null
     },
     {
-      "n": 81,
+      "n": 90,
       "where": "controls[3].note; Governance controls",
       "type": "role",
-      "claim": "Copilot value metrics require Global admin or both Viva Insights admin and Chief officer, as the body clarifies.",
+      "claim": "Configuring Copilot value metrics requires both Viva Insights admin and Chief officer roles, or Global admin.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/manage/configurations",
       "quote": "Only users who have both Viva Insights admins and Chief officer roles, or who are global admins, can configure Copilot value metrics.",
-      "severity": "minor",
-      "fix": "Replace the ambiguous role sentence in controls[3].note and the rendered row with 'Viva Insights admins configure Cowork value metrics; Copilot value metrics require both Viva Insights admin and Chief officer roles, or Global admin.' The body already states the qualification correctly."
-    },
-    {
-      "n": 82,
-      "where": "controls[3].api; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "No PowerShell or API for Business Analytics metric calculators or value-metric display is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Agent 365 Business Analytics\" metric calculators privacy minimum group size API PowerShell. Read configurations, manage/introduction, VFAM and manage-access-policies; no automation for these app calculators or the Cowork Value metrics toggle found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 83,
-      "where": "controls[4].ui; Governance controls: row 5",
+      "n": 91,
+      "where": "controls[4].ui; Governance controls",
       "type": "admin-path",
-      "claim": "Minimum group size is reached in Business Analytics through Manage > Configurations > Privacy > Minimum group size.",
+      "claim": "Minimum group size is configured through Manage > Configurations > Privacy > Minimum group size in Business Analytics.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/manage/configurations",
-      "quote": "To open the page in Business Analytics, on the left under Manage, select Configurations.\nUse the Privacy tab\nMinimum group size",
+      "quote": "To open the page in Business Analytics, on the left under Manage, select Configurations. ... Use the Privacy tab ... Minimum group size",
       "severity": null,
       "fix": null
     },
     {
-      "n": 84,
-      "where": "controls[4].note; Governance guidance: At rollout",
+      "n": 92,
+      "where": "controls[4].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No PowerShell or API operation is documented for Business Analytics minimum-group-size privacy configuration.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Agent 365 Business Analytics\" \"Privacy\" \"PowerShell\"; \"Agent 365 Business Analytics\" calculator privacy minimum group size API PowerShell. Read Learn /manage/configurations, /manage/introduction and Viva dashboard settings; no corresponding automation operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 93,
+      "where": "controls[4].note",
       "type": "behaviour",
-      "claim": "The minimum group size setting accepts a value of at least five and hides smaller aggregated groups.",
+      "claim": "Minimum group size must be at least five.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/manage/configurations",
       "quote": "Minimum group size is the minimum number of people that must be in a group before aggregated insights are shown. Enter a value of at least 5.",
@@ -955,54 +1054,43 @@
       "fix": null
     },
     {
-      "n": 85,
-      "where": "controls[4].note",
+      "n": 94,
+      "where": "controls[4].governs; controls[4].note; Governance guidance",
       "type": "behaviour",
-      "claim": "The minimum group size threshold does not apply to nonaggregated user-level insights.",
+      "claim": "The tenant minimum-group-size threshold suppresses aggregated insights below the threshold but does not apply to unaggregated user-level insights.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/manage/configurations",
-      "quote": "It doesn't apply to user-level insights that aren't aggregated.",
+      "quote": "This threshold helps protect privacy in aggregated insights, including group insights in Advanced Analysis and insights for organization leaders. It doesn't apply to user-level insights that aren't aggregated.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 86,
-      "where": "controls[4].api; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "No PowerShell or API for Business Analytics privacy settings is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Agent 365 Business Analytics\" metric calculators privacy minimum group size API PowerShell. Read configurations and Viva dashboard settings (including minimum group size), VFAM and manage-access-policies; no privacy/minimum-group-size setting API found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 87,
-      "where": "Governance controls; Open questions",
-      "type": "absence",
-      "claim": "No read page names a Business Analytics-specific VFAM feature ID.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Agent 365 Business Analytics\" \"FeatureId\"; \"Business Analytics\" \"Viva Insights web app\" FeatureId. Read manage/introduction, VFAM feature table, manage-access-policies and dashboard settings; no Business Analytics-specific feature ID found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 88,
+      "n": 95,
       "where": "Governance controls",
       "type": "command",
-      "claim": "Get-VivaModuleFeature -ModuleId VivaInsights lists the available Viva Insights feature IDs.",
+      "claim": "Get-VivaModuleFeature -ModuleId VivaInsights lists Viva Insights features and their IDs for verification.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/manage-access-policies",
-      "quote": "For example, to see which features are supported in Viva Insights, run the following cmdlet:\nGet-VivaModuleFeature -ModuleId VivaInsights",
+      "quote": "For example, to see which features are supported in Viva Insights, run the following cmdlet: Get-VivaModuleFeature -ModuleId VivaInsights",
       "severity": null,
       "fix": null
     },
     {
-      "n": 89,
+      "n": 96,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The pages checked do not name a distinct Business Analytics feature ID.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Business Analytics\" \"FeatureId\"; \"Agent 365 Business Analytics\" \"Viva Insights web app\" FeatureId GCC DoD. Read VFAM, Viva PowerShell access policies, dashboard settings and Business Analytics admin introduction; no distinct Business Analytics feature ID found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 97,
       "where": "Governance controls",
-      "type": "applicability",
-      "claim": "The Business Analytics admin documentation points to VFAM for turning the app on or off.",
+      "type": "behaviour",
+      "claim": "The Business Analytics admin introduction points to VFAM for turning the app on or off.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/manage/introduction",
       "quote": "Manage other feature controls: turn the app on or off, publish reports, export data, Copilot assisted value, Copilot Chat in Viva Insights, and delegation | VFAM",
@@ -1010,10 +1098,10 @@
       "fix": null
     },
     {
-      "n": 90,
+      "n": 98,
       "where": "Governance controls",
-      "type": "applicability",
-      "claim": "The Business Analytics admin page also points to VFAM for managing the exclusion list.",
+      "type": "behaviour",
+      "claim": "The same admin introduction lists the exclusion list as managed through VFAM.",
       "status": "supported",
       "source": "https://learn.microsoft.com/a365-business-analytics/manage/introduction",
       "quote": "Manage the exclusion list | VFAM",
@@ -1021,48 +1109,37 @@
       "fix": null
     },
     {
-      "n": 91,
-      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "n": 99,
+      "where": "Why it matters; Cost and licensing; Governance controls; controls[2].note",
       "type": "behaviour",
-      "claim": "The Spending limits section appears only when limit data exists for the current scope.",
+      "claim": "The app reports spend, while Copilot Credits spending limits are configured through spending policies in the Microsoft 365 admin center.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/cost-forecast",
-      "quote": "The section appears only when limit data exists for the current scope.",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "Use the Cost Management dashboard in the Microsoft 365 admin center to enable usage-based billing, activate the default spending policy, create identity-based and resource-based spending policies.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 92,
-      "where": "Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Forecasts are estimates rather than guarantees.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/cost-forecast",
-      "quote": "Forecast values are estimates and aren't a guarantee of future cost.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 93,
-      "where": "What's changing",
+      "n": 100,
+      "where": "Governance controls",
       "type": "applicability",
-      "claim": "The cited AI assisted hours and AI value methodology article applies to Cowork.",
+      "claim": "The row 3 Copilot Credits spending policy is not the GitHub budget-setting control.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/a365-business-analytics/reference/ai-value",
-      "quote": "This entire article applies to Cowork assisted hours and value, including customization. It does not apply to Copilot assisted hours and Copilot assisted value, including customization.",
+      "source": "https://learn.microsoft.com/a365-business-analytics/services/github-copilot",
+      "quote": "For official billing and detailed charges for GitHub AI credits and budget setting, go to GitHub.com.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-19T02:04:22.582Z",
+    "at": "2026-11-19T03:09:22.905Z",
     "summary": {
-      "links": 16,
-      "unreachable": 15,
+      "links": 17,
+      "unreachable": 0,
       "uiPaths": 5,
-      "uiPathsWithMissingWords": 5,
+      "uiPathsWithMissingWords": 0,
       "apiCalls": 2,
-      "apiCallsNotOnPage": 2,
+      "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -1073,78 +1150,83 @@
       },
       {
         "url": "https://learn.microsoft.com/a365-business-analytics/introduction",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/a365-business-analytics/cost-forecast",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/a365-business-analytics/overview",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/a365-business-analytics/services/github-copilot",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/a365-business-analytics/reference/ai-value",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/a365-business-analytics/manage/access",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/a365-business-analytics/manage/introduction",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/a365-business-analytics/manage/configurations",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/a365-business-analytics/advanced/export",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/viva/feature-access-management",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/viva/control-access-admin-center",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/viva/manage-access-policies",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -1153,78 +1235,71 @@
         "side": "ui",
         "governs": "Who can open Business Analytics, export, see named users, and whose data",
         "docs": "https://learn.microsoft.com/a365-business-analytics/manage/access",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Manage",
           "Access management"
         ],
-        "missing": [
-          "Manage",
-          "Access management"
-        ]
+        "missing": []
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Whether the Viva Insights web app is on, for the tenant, groups or users",
         "docs": "https://learn.microsoft.com/viva/control-access-admin-center",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Settings",
           "Viva",
           "Settings",
           "Manage feature access",
-          "Create a policy"
+          "Create a policy",
+          "app and feature",
+          "Access setting",
+          "On or Off"
         ],
-        "missing": [
-          "Settings",
-          "Viva",
-          "Settings",
-          "Manage feature access",
-          "Create a policy"
-        ]
+        "missing": []
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Whether the Viva Insights web app is on, for the tenant, groups or users",
         "docs": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
-        "reachable": false,
+        "reachable": true,
         "token": "Add-VivaModuleFeaturePolicy",
-        "found": false
+        "found": true
       },
       {
         "index": 2,
         "side": "ui",
         "governs": "Spending limits and billing for Copilot Credits reported by the app",
         "docs": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Copilot",
           "Cost Management",
-          "Get Started"
+          "Get Started",
+          "Activate the default spending policy for your organization",
+          "Set the monthly spending limit for this policy",
+          "Limit monthly spending"
         ],
-        "missing": [
-          "Copilot",
-          "Cost Management",
-          "Get Started"
-        ]
+        "missing": []
       },
       {
         "index": 2,
         "side": "api",
         "governs": "Spending limits and billing for Copilot Credits reported by the app",
-        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
-        "reachable": false,
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+        "reachable": true,
         "token": "/beta/copilot/costManagement",
-        "found": false
+        "found": true
       },
       {
         "index": 3,
         "side": "ui",
         "governs": "Whether AI value metrics are displayed, and the assumptions behind them",
         "docs": "https://learn.microsoft.com/a365-business-analytics/manage/configurations",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Manage",
           "Configurations",
@@ -1234,34 +1309,21 @@
           "Value calculator",
           "Value metrics"
         ],
-        "missing": [
-          "Manage",
-          "Configurations",
-          "Metric calculators",
-          "Cowork assisted hours and value",
-          "Edit calculator",
-          "Value calculator",
-          "Value metrics"
-        ]
+        "missing": []
       },
       {
         "index": 4,
         "side": "ui",
         "governs": "Minimum group size below which aggregated insights are hidden",
         "docs": "https://learn.microsoft.com/a365-business-analytics/manage/configurations",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Manage",
           "Configurations",
           "Privacy",
           "Minimum group size"
         ],
-        "missing": [
-          "Manage",
-          "Configurations",
-          "Privacy",
-          "Minimum group size"
-        ]
+        "missing": []
       }
     ],
     "roadmapDrift": []
@@ -1276,6 +1338,12 @@
     {
       "date": "2026-11-18",
       "status": "verified-with-gaps",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-19",
+      "status": "held",
       "version": 2,
       "model": "gpt-6.1-sol"
     }

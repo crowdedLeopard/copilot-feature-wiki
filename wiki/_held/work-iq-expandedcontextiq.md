@@ -52,8 +52,11 @@ sources:
   - title: "List packages"
     url: "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackages-list"
     kind: "learn"
+  - title: "copilotPackage: block"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
+    kind: "learn"
 videos: []
-related: ["work-iq","work-iq-dynamic-skills","work-iq-agent-policy-governance","work-iq-federated-connectors"]
+related: ["work-iq","work-iq-agent-policy-governance","work-iq-federated-connectors"]
 controls:
   - governs: "Tenant-wide switch for the new agent, skill and source choices in the Context IQ menu"
     scope: "tenant"
@@ -68,12 +71,12 @@ controls:
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions"
     api:
       kind: "graph"
-      call: "GET https://graph.microsoft.com/v1.0/copilot/admin/catalog/packages (lists agents; preview)"
-      docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview"
-    note: "Microsoft has not confirmed it decides what the Context IQ menu shows. The Graph call lists agents and works with the AI Admin Role; it needs a Microsoft Agent 365 licence and CopilotPackages.Read.All permission."
+      call: "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
+    note: "The block operation is preview, requires a Microsoft Agent 365 licence and delegated CopilotPackages.ReadWrite.All permission, and is not supported for production use."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-19"
 roadmapModified: "2026-09-29T23:05:21"
 changes:
   - date: "2026-11-18"
@@ -86,19 +89,21 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 52 statements confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 55 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-19"
+    note: "Corrected the agent-blocking automation: the row now gives the Graph block operation (beta, preview) in place of the list call, which stays in the notes as an inventory operation."
+version: 3
 verification:
   status: "held"
   date: "2026-11-19"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 55
   confirmed: 54
   unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "6dff0581813ab4fb45691bdf4fb00696"
+  attempts: 2
+  hash: "8a19825a5ee1e4c813368731fdc7e2ac"
 ---
 
 ## What's changing
@@ -176,13 +181,13 @@ The record gives release phases of General Availability and Preview, with a prev
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Tenant-wide switch for the new agent, skill and source choices in the Context IQ menu</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft Learn documents no such setting at the time of writing (November 2026). The Work IQ button in Copilot Chat is a per-user control.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which agents are in the tenant inventory and whether they are blocked</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft has not confirmed it decides what the Context IQ menu shows. The Graph call lists agents and works with the AI Admin Role; it needs a Microsoft Agent 365 licence and CopilotPackages.Read.All permission.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET https://graph.microsoft.com/v1.0/copilot/admin/catalog/packages (lists agents; preview)</code> <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which agents are in the tenant inventory and whether they are blocked</strong><br><small>Tenant</small><br><small class="controls__note">The block operation is preview, requires a Microsoft Agent 365 licence and delegated CopilotPackages.ReadWrite.All permission, and is not supported for production use.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › agent › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 Microsoft Learn documents no tenant switch for the Context IQ menu or for its agent, skill or source choices at the time of writing (November 2026), so the first row has no path or call. The only user-level control the support article describes is the **Work IQ** button at the top right of the chat page: with it on, users can reference people, files, meetings and emails, and with it off only files.
 
-The agent row is a general control. The Manage agents page says members of an organisation can only access the agents the administrator has allowed, and the block action covers any agent in the list. Microsoft has not confirmed that the Context IQ menu respects it. The Graph call on the registry page is a preview call that lists agents, and the page does not show a block call. It works with the AI Admin Role. The Package Management API requires a Microsoft Agent 365 licence and CopilotPackages.Read.All permission (or CopilotPackages.ReadWrite.All).
+The agent row is a general control. The Manage agents page says members of an organisation can only access the agents the administrator has allowed, and the block action covers any agent in the list. Microsoft has not confirmed that the Context IQ menu respects it. The block call in the row is a preview operation documented on its own page. The `GET /v1.0/copilot/admin/catalog/packages` call on the registry page is a preview inventory operation that lists agents; it works with the AI Admin Role. The Package Management API requires a Microsoft Agent 365 licence and CopilotPackages.Read.All permission (or CopilotPackages.ReadWrite.All).
 
 Business Applications in Work IQ has its own tenant setting in the Microsoft 365 admin center, named **Business Applications data in Work IQ available to Copilot**, which governs whether Power Apps and Dynamics 365 data can be used in Microsoft 365 Copilot Chat. Microsoft has not said whether it governs Context IQ choices. See [Work IQ](/concepts/work-iq/) and the page [Business Applications in Work IQ default settings](https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings).
 
@@ -203,5 +208,7 @@ impact: Medium. It changes the prompt box in Copilot Chat on the web for users w
 <!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].api; Governance controls table and lead / command: GET /v1.0/copilot/admin/catalog/packages is the automation counterpart beside the control deciding whether agents are blocked. | Found: Block a Copilot package to prevent its usage. POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block | Fix: Replace controls[1].api.call with 'POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block' and its docs URL with https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block. Replace the row's Graph-call note with 'The block operation is preview, requires a Microsoft Agent 365 licence and delegated CopilotPackages.ReadWrite.All permission, and is not supported for production use.' Make the rendered row consistent. Keep the existing GET call only in the prose as an inventory operation, not as the automation for blocking. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block
+- [contradicted, blocker] front matter: licensing.model and notes; Cost and licensing / licensing: The licensing model is unknown because entitlement to this Copilot Chat change is not yet published. | Found: Declarative agents that are grounded in instructions and public websites are included with Copilot Chat (Basic), and Microsoft 365 Copilot (Basic) and (Premium). | Fix: Set licensing.model to mixed. Replace the blanket unpublished-entitlement wording with: 'Copilot Chat requires an eligible Microsoft 365 subscription. Declarative agents grounded in instructions and public websites are included with Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) and (Premium); agents accessing shared tenant data are metered for the Basic licences. Microsoft has not specified which new Context IQ choices each licence will show or published a separate charge for the menu interaction.' Cite https://learn.microsoft.com/microsoft-365/copilot/microsoft-copilot-requirements and the existing https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat. The standard requires known product entitlement rather than unknown for a new option inside that product. | Source: https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Governance controls / availability: The registry overview labels the package inventory API preview. | Found: Microsoft Graph API for Agent Registry and Agent Details (preview) By using the new Microsoft Graph API endpoints, now in preview | Fix: Replace 'The GET /v1.0/copilot/admin/catalog/packages call on the registry page is a preview inventory operation that lists agents' with 'The registry overview labels its inventory API preview, while the List packages reference documents GET /v1.0/copilot/admin/catalog/packages as well as a beta version; its production-use warning is attached to beta.' Both pages are already cited: https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview and https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackages-list. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview
 -->

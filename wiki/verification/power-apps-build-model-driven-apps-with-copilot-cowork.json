@@ -4,10 +4,10 @@
   "title": "Power Apps: build model-driven apps with Copilot Cowork",
   "status": "held",
   "date": "2026-11-19",
-  "version": 3,
+  "version": 4,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "cd5b21ff3a5b",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,19 +16,19 @@
     "reason": "failed",
     "since": "2026-11-19",
     "reasons": [
-      "1 blocking finding (claim 49)"
+      "1 blocking finding (claim 36)"
     ]
   },
   "counts": {
-    "claims": 72,
-    "confirmed": 71,
+    "claims": 76,
+    "confirmed": 75,
     "unconfirmed": 0,
     "contradicted": 1,
     "blocker": 1,
     "major": 0,
-    "minor": 1
+    "minor": 0
   },
-  "summary": "Hold: the spending-policy navigation stops at opening the wizard, before the choices that grant Cowork access and configure credit limits. The roadmap facts and licensing are supported. The Graph call exists, but its note should identify the request properties that select Cowork and set limits.",
+  "summary": "Hold: the briefing reports Cowork's acting identity as undocumented, although Microsoft's Cowork guidance says every action is authorized through the user's Microsoft 365 account. The roadmap facts and published control paths and commands are supported; the skill's specific Dataverse connection mechanism remains undocumented.",
   "claims": [
     {
       "n": 1,
@@ -54,7 +54,7 @@
     },
     {
       "n": 3,
-      "where": "What's changing; Risk assessment; rationale: risk",
+      "where": "What's changing; Risk assessment: Autonomy; rationale: risk",
       "type": "record",
       "claim": "The roadmap describes a build plan for review before app creation.",
       "status": "supported",
@@ -65,9 +65,9 @@
     },
     {
       "n": 4,
-      "where": "What's changing; Why it matters",
+      "where": "What's changing; summary",
       "type": "record",
-      "claim": "The planned skill creates the model-driven app and supporting Power Apps artifacts.",
+      "claim": "The planned skill creates supporting Power Apps artifacts.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "creating the model-driven app and its supporting Power Apps and Microsoft Dataverse artifacts",
@@ -76,9 +76,9 @@
     },
     {
       "n": 5,
-      "where": "summary; What's changing; rationale: risk",
+      "where": "What's changing; summary; rationale: risk",
       "type": "record",
-      "claim": "The planned skill creates supporting Microsoft Dataverse artifacts.",
+      "claim": "The planned skill creates supporting Dataverse artifacts.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "creating the model-driven app and its supporting Power Apps and Microsoft Dataverse artifacts",
@@ -98,9 +98,9 @@
     },
     {
       "n": 7,
-      "where": "What's changing",
+      "where": "What's changing; Governance guidance: After rollout",
       "type": "record",
-      "claim": "Makers can open generated artifacts in Power Apps for direct customization.",
+      "claim": "Generated artifacts can be opened in Power Apps for direct customization.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "or open the generated artifacts in Power Apps for direct customization.",
@@ -111,16 +111,16 @@
       "n": 8,
       "where": "front matter: status; What's changing",
       "type": "record",
-      "claim": "The roadmap item is In development.",
+      "claim": "The roadmap status is In development.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "quote": "\"status\": \"In development\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 9,
-      "where": "summary; front matter: previewDate; What's changing; Open questions",
+      "where": "front matter: previewDate; summary; What's changing; Open questions",
       "type": "record",
       "claim": "Preview is targeted for November CY2026.",
       "status": "supported",
@@ -142,34 +142,34 @@
     },
     {
       "n": 11,
-      "where": "front matter: clouds; What's changing; Scope",
+      "where": "front matter: releasePhase; Risk assessment: Change & support",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed on this roadmap item.",
+      "claim": "The roadmap lists Preview and General Availability release phases.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "quote": "\"releasePhase\": [\n    \"General Availability\",\n    \"Preview\"\n  ]",
       "severity": null,
       "fix": null
     },
     {
       "n": 12,
-      "where": "front matter: platforms; What's changing; Scope",
+      "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists the Web platform.",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
+      "quote": "\"clouds\": [\n    \"Worldwide (Standard Multi-Tenant)\"\n  ]",
       "severity": null,
       "fix": null
     },
     {
       "n": 13,
-      "where": "front matter: releasePhase; What's changing; Risk assessment",
+      "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap includes Preview and General Availability release phases.",
+      "claim": "The roadmap lists the Web platform.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "quote": "\"platforms\": [\n    \"Web\"\n  ]",
       "severity": null,
       "fix": null
     },
@@ -177,7 +177,7 @@
       "n": 14,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap description gives the release channel as Not applicable.",
+      "claim": "The roadmap's release channel is Not applicable.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Release Channel\nNot applicable",
@@ -188,7 +188,7 @@
       "n": 15,
       "where": "Scope; rationale: impact",
       "type": "record",
-      "claim": "The roadmap gives the feature scope as Admins or makers.",
+      "claim": "The roadmap's feature scope is Admins or makers.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Feature Scope\nAdmins or makers",
@@ -199,32 +199,32 @@
       "n": 16,
       "where": "front matter: products; Scope",
       "type": "record",
-      "claim": "The roadmap lists Power Apps and Microsoft Copilot (Microsoft 365) as products.",
+      "claim": "The roadmap products are Power Apps and Microsoft Copilot (Microsoft 365).",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [\"Power Apps\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "quote": "\"products\": [\n    \"Power Apps\",\n    \"Microsoft Copilot (Microsoft 365)\"\n  ]",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "Learn does not yet describe the model-app-builder skill specifically in Cowork.",
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap item lists no other cloud.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"model-app-builder\" \"Cowork\"; \"model-driven apps\" \"Cowork\" \"skill\". Read external-tools, Cowork build-apps and Dataverse-plugin pages: the latter describe the App skill and Dataverse plugin, not this named model-driven-app skill.",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\n    \"Worldwide (Standard Multi-Tenant)\"\n  ]",
       "severity": null,
       "fix": null
     },
     {
       "n": 18,
       "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Learn documents the model app-builder skill for AI code generation tools such as GitHub Copilot CLI and Claude Code.",
+      "type": "absence",
+      "claim": "Learn does not yet describe the Cowork version of the model-app-builder skill in November 2026.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/model-driven-app-external-tools",
-      "quote": "Use the model app-builder skill with an AI code generation tool, such as GitHub Copilot CLI or Claude Code, to build and edit model-driven apps from natural-language requirements.",
+      "source": null,
+      "quote": "Searched: \"model-app-builder\" \"Cowork\". Opened model-driven-app-external-tools, cowork-build-apps and dataverse-plugin. The latter two describe the built-in App skill and Dataverse plugin, not this model-driven app skill.",
       "severity": null,
       "fix": null
     },
@@ -232,10 +232,10 @@
       "n": 19,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The code-tools version presents an app specification for review.",
+      "claim": "Learn documents the model app-builder skill for code tools such as GitHub Copilot CLI and Claude Code.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/model-driven-app-external-tools",
-      "quote": "Review the app spec. The skill presents an app spec that can include personas, jobs to be done, tables, relationships, forms, views, charts",
+      "quote": "Use the model app-builder skill with an AI code generation tool, such as GitHub Copilot CLI or Claude Code, to build and edit model-driven apps from natural-language requirements.",
       "severity": null,
       "fix": null
     },
@@ -243,10 +243,10 @@
       "n": 20,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The code-tools version presents a dry-run build plan.",
+      "claim": "The code-tools skill presents an app specification.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/model-driven-app-external-tools",
-      "quote": "The skill validates the app spec and presents a dry-run plan in the conversation, grouped by build phase.",
+      "quote": "Review the app spec. The skill presents an app spec that can include personas, jobs to be done, tables, relationships, forms, views, charts",
       "severity": null,
       "fix": null
     },
@@ -254,10 +254,10 @@
       "n": 21,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The code-tools version creates no app artifacts until the user approves the plan.",
+      "claim": "The code-tools skill presents a dry-run build plan.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/model-driven-app-external-tools",
-      "quote": "No app artifacts are created until you approve the plan.",
+      "quote": "The skill validates the app spec and presents a dry-run plan in the conversation, grouped by build phase.",
       "severity": null,
       "fix": null
     },
@@ -265,10 +265,10 @@
       "n": 22,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The code-tools version can create tables.",
+      "claim": "The code-tools skill creates no app artifacts until the plan is approved.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/model-driven-app-external-tools",
-      "quote": "Create supporting tables, columns, relationships, forms with subgrids, quick-create forms, quick-view forms, views, charts, business rules, business process flows, and sample data.",
+      "quote": "No app artifacts are created until you approve the plan.",
       "severity": null,
       "fix": null
     },
@@ -276,7 +276,7 @@
       "n": 23,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The code-tools version can create forms.",
+      "claim": "The code-tools skill can create tables.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/model-driven-app-external-tools",
       "quote": "Create supporting tables, columns, relationships, forms with subgrids, quick-create forms, quick-view forms, views, charts, business rules, business process flows, and sample data.",
@@ -287,10 +287,10 @@
       "n": 24,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The code-tools version can create views.",
+      "claim": "The code-tools skill can create forms.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/model-driven-app-external-tools",
-      "quote": "Create supporting tables, columns, relationships, forms with subgrids, quick-create forms, quick-view forms, views, charts, business rules, business process flows, and sample data.",
+      "quote": "Create supporting tables, columns, relationships, forms with subgrids, quick-create forms, quick-view forms",
       "severity": null,
       "fix": null
     },
@@ -298,29 +298,29 @@
       "n": 25,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The code-tools version can create business rules.",
+      "claim": "The code-tools skill can create views.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/model-driven-app-external-tools",
-      "quote": "Create supporting tables, columns, relationships, forms with subgrids, quick-create forms, quick-view forms, views, charts, business rules, business process flows, and sample data.",
+      "quote": "Create supporting tables, columns, relationships, forms with subgrids, quick-create forms, quick-view forms, views, charts",
       "severity": null,
       "fix": null
     },
     {
       "n": 26,
-      "where": "What's changing; Risk assessment",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "The code-tools version can create security roles.",
+      "claim": "The code-tools skill can create business rules.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/model-driven-app-external-tools",
-      "quote": "Add security roles based on the planned personas and data access needs.",
+      "quote": "views, charts, business rules, business process flows, and sample data.",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
-      "where": "Risk assessment: Data exposure",
+      "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The code-tools version bases security roles on planned personas and data access needs.",
+      "claim": "The code-tools skill can add security roles.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/model-driven-app-external-tools",
       "quote": "Add security roles based on the planned personas and data access needs.",
@@ -330,19 +330,19 @@
     {
       "n": 28,
       "where": "Risk assessment: Data exposure",
-      "type": "absence",
-      "claim": "Microsoft has not documented which data the Cowork model-app-builder skill reads to write its specification.",
+      "type": "behaviour",
+      "claim": "The code-tools skill bases its security roles on planned personas and data access needs.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Cowork\" \"model-app-builder\"; \"model-driven apps\" \"Cowork\" \"skill\". Read the roadmap, external-tools, Cowork build-apps and Dataverse-plugin pages; none specifies the named skill's specification inputs.",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/model-driven-app-external-tools",
+      "quote": "Add security roles based on the planned personas and data access needs.",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
-      "where": "Risk assessment: Security & identity; Governance guidance",
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
       "type": "role",
-      "claim": "The code-tools version requires permission to create and modify Dataverse and model-driven app artifacts in the target environment.",
+      "claim": "The code-tools skill requires permission to create and modify Dataverse and model-driven app artifacts in its target environment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/model-driven-app-external-tools",
       "quote": "A Power Platform environment where you have permission to create and modify Dataverse and model-driven app artifacts.",
@@ -351,39 +351,6 @@
     },
     {
       "n": 30,
-      "where": "Risk assessment: Security & identity; Open questions; rationale: risk",
-      "type": "absence",
-      "claim": "Microsoft has not specified the identity or access acquisition used by this model-app-builder skill in Cowork.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Cowork\" \"model-app-builder\" default enabled permissions environment plugin pricing credits. Read external-tools and Dataverse-plugin: the latter documents its own user sign-in, not the named model-app-builder skill.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Cowork generally asks for approval before taking actions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/get-started",
-      "quote": "Before Cowork takes an action on your behalf, like sending an email, posting a Teams message, or scheduling a meeting, it asks for your permission.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Learn advises reviewing and testing code-tools artifacts for correctness, security, accessibility and compliance before sharing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/model-driven-app-external-tools",
-      "quote": "Review and test new or edited artifacts for correctness, security, accessibility, and compliance with your organization's standards before sharing the app.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "The code-tools skill is updated regularly.",
@@ -394,7 +361,7 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 31,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "The code-tools skill does not currently support every model-driven app artifact or concept.",
@@ -405,7 +372,7 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 32,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "Changes made outside the code-tools skill can affect later AI-assisted edits.",
@@ -416,8 +383,74 @@
       "fix": null
     },
     {
+      "n": 33,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Microsoft advises reviewing and testing code-tools-generated artifacts for correctness, security, accessibility and compliance before sharing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/model-driven-app-external-tools",
+      "quote": "Review and test new or edited artifacts for correctness, security, accessibility, and compliance with your organization's standards before sharing the app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "The sources do not document which data the Cowork model-app-builder reads to write its specification.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"model-app-builder\" \"Cowork\" reads data specification identity. Read roadmap, model-driven-app-external-tools, cowork-admin-governance, cowork-build-apps and dataverse-plugin; no model-app-builder-specific spec input description.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The Cowork model-app-builder's mechanism for obtaining Dataverse create and modify access is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"model-app-builder\" \"Cowork\" environment identity permissions default admin switch. Opened model-driven-app-external-tools, dataverse-plugin and cowork-faq; no connection mechanism identifying this skill.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 36,
-      "where": "front matter: licensing.notes; Cost and licensing",
+      "where": "Risk assessment: Security & identity; rationale: risk; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not said which account or identity the Cowork version uses.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-faq#is-cowork-secure",
+      "quote": "Every action Cowork takes is authorized through your Microsoft 365 account. Cowork accesses only the services and data you're already permitted to use.",
+      "severity": "blocker",
+      "fix": "Replace the Security & identity absence sentence with: 'Microsoft says every Cowork action is authorized through your Microsoft 365 account; the model-app-builder skill's specific Dataverse connection mechanism is not yet documented.' Cite https://learn.microsoft.com/copilot/cowork/cowork-faq#is-cowork-secure. In the risk rationale replace 'which environment, identity or roles the Cowork version uses' with 'which environment or Dataverse connection mechanism the Cowork version uses'. Narrow the first Open question to: 'Which Power Platform environment does the Cowork skill build into, and how does it establish its Dataverse connection?' Do not infer the skill's Dataverse token, service principal or connection implementation from the general account statement."
+    },
+    {
+      "n": 37,
+      "where": "Scope; rationale: risk; Open questions",
+      "type": "absence",
+      "claim": "The target environment and prerequisites specific to the Cowork model-app-builder are not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"model-driven\" \"Cowork\" \"skill\" default permissions environment. Opened cowork-build-apps, dataverse-plugin and model-driven-app-external-tools; they document other app-building surfaces, not this skill's target environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
+      "type": "default",
+      "claim": "The skill's state on arrival is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"model-app-builder\" \"Cowork\" environment identity permissions default admin switch. Read roadmap and cowork-build-apps; the documented All users default is for the built-in App skill, not identified as this model-driven app skill.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "Cowork requires an active Microsoft 365 Copilot licence.",
       "status": "supported",
@@ -427,7 +460,7 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 40,
       "where": "Cost and licensing",
       "type": "licensing",
       "claim": "Administrators must enable usage-based billing before users can access Cowork.",
@@ -438,21 +471,10 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "n": 41,
+      "where": "Cost and licensing; licensing.notes; rationale: cost",
       "type": "cost",
-      "claim": "Cowork consumption is metered in Copilot Credits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-manage-copilot-credits",
-      "quote": "Use spending policies in the Cost Management dashboard to control access and Copilot Credit spending for AI experiences enabled by usage-based billing.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "cost",
-      "claim": "Model responses, tool and skill calls, image generation and browser tasks count toward Cowork usage-based consumption.",
+      "claim": "Cowork usage-based billing counts model responses, tool and skill calls, image generation and browser tasks toward consumption.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
       "quote": "Cowork uses a usage-based billing model. Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption.",
@@ -460,51 +482,128 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "absence",
-      "claim": "Microsoft has not published an additional licence requirement specific to the Cowork model-app-builder skill.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"model-app-builder\" \"Cowork\" \"credits\" \"license\". Read Cowork get-started, governance, build-apps and Dataverse-plugin plus model-driven-app-external-tools; none names an additional licence for this skill.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "Microsoft has not published a credit rate specific to the Cowork model-app-builder skill.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"model-app-builder\" \"Cowork\" \"credits\" \"license\". Read Cowork governance, build-apps, usage-based-billing-manage-copilot-credits and model-driven-app-external-tools; no named-skill build or edit credit rate found.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 42,
-      "where": "Cost and licensing",
+      "where": "Cost and licensing; licensing.notes; rationale: cost",
       "type": "cost",
-      "claim": "Dataverse database capacity covers table rows, metadata and relational data created by custom model-driven apps.",
+      "claim": "Cowork consumption is measured in Copilot Credits.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/capacity-storage",
-      "quote": "Tracks structured data stored directly in Dataverse, including table rows, metadata, and relational data created by Power Apps, Power Automate, Dynamics 365 customer engagement apps (Dynamics 365 Sales, Dynamics 365 Service, Dynamics 365 Marketing), and custom model-driven apps.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-manage-copilot-credits",
+      "quote": "Use spending policies in the Cost Management dashboard to control access and Copilot Credit spending for AI experiences enabled by usage-based billing.",
       "severity": null,
       "fix": null
     },
     {
       "n": 43,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Dataverse capacity reporting excludes trial, preview, support and developer environments from consumption.",
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is mixed, combining a Microsoft 365 Copilot licence with usage-based billing.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/capacity-storage",
-      "quote": "The capacity report counts default, production, and sandbox environments for consumption. It doesn't count trial, preview, support, and developer environments.",
+      "source": "https://learn.microsoft.com/copilot/cowork/get-started",
+      "quote": "Microsoft Copilot access: An active Microsoft 365 Copilot license assigned to your account.\n\nUsage-based billing: Usage-based and Cowork billing has been enabled.",
       "severity": null,
       "fix": null
     },
     {
       "n": 44,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "An additional licence requirement specific to the Cowork model-app-builder skill has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"model-app-builder\" \"Cowork\" \"plugin\" \"license\". Read get-started, cowork-manage-plugins, usage-based-billing-overview-copilot-credits and model-driven-app-external-tools; no additional licence named for this skill.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "licensing.notes; Cost and licensing; rationale: cost; Open questions",
+      "type": "absence",
+      "claim": "A credit rate or credit quantity per build or edit specific to this skill has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Cowork\" \"model\" \"builder\" skill licensing credits rate plugin; \"Copilot Cowork\" \"Copilot Credits\" model skill rate licensing. Read Cowork billing guidance and usage-based-billing-copilot-credits-cost; no skill-specific rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "Variable cost is appropriate because Cowork skill activity is metered.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "Cowork uses a usage-based billing model. Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Why it matters; Cost and licensing; Scope; controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "Users in scope of a spending policy selecting Cowork have Cowork access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-access",
+      "quote": "Any user in the scope of a spending policy that selects Cowork can use Cowork, regardless of how small the credit limit is.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing; controls[0].note; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "A low credit limit does not prevent Cowork access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-access",
+      "quote": "A policy with a limit of one credit still grants access. To remove access for a user, remove them from every spending policy that includes Cowork. A low credit limit doesn't block access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "A Cowork-selecting spending policy can be scoped to a security group for a pilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "On the Scope user and group step, choose Specific groups and select the security group.\nOn the Select agents and services step, select Cowork.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Removing a user from every spending policy that includes Cowork removes their access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-access",
+      "quote": "To remove access for a user, remove them from every spending policy that includes Cowork.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Configuration on the Cowork entry under Agents > All Agents has no effect on who can use Cowork.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "The Cowork agent entry is still visible under Agents > All Agents, but any configuration on it has no effect on who can use Cowork.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Credit limits are not a real-time access gate, so users may start tasks after reaching a limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-access",
+      "quote": "Credit consumption and limit enforcement are evaluated asynchronously, so a user might be able to start one or more tasks after their limit is reached before enforcement takes effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
       "where": "Cost and licensing",
       "type": "licensing",
       "claim": "Users of Cowork plugins must have Microsoft 365 Copilot licences.",
@@ -515,18 +614,7 @@
       "fix": null
     },
     {
-      "n": 45,
-      "where": "controls[1].note; Cost and licensing; Governance guidance; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not confirmed whether this model-app-builder skill is delivered as a Cowork plugin.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"model-app-builder\" \"Cowork\"; \"model-driven apps\" \"Cowork\" \"skill\". Read available-plugins, manage-plugins, Dataverse-plugin and build-apps. None identifies this named skill as a Cowork plugin; Dataverse and App are distinct offerings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
+      "n": 54,
       "where": "Scope",
       "type": "role",
       "claim": "Managing Cowork plugins requires a tenant administrator or the Copilot administrator role.",
@@ -537,153 +625,87 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "controls[2].note; Scope",
-      "type": "role",
-      "claim": "System Administrator is the default security role used to assign Power Platform security roles.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
-      "quote": "By default, the System Administrator security role has all the required privileges to assign security roles to any user, including assigning the System Administrator security role.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "Scope; Open questions; rationale: risk",
+      "n": 55,
+      "where": "Cost and licensing; Governance guidance; controls[1].note; Governance controls; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not documented the target environment prerequisites specific to this Cowork model-app-builder skill.",
+      "claim": "Microsoft has not confirmed that this skill is delivered as a Cowork plugin governed under Agents > Tools.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Cowork\" \"model-app-builder\" default enabled permissions environment plugin pricing credits. Read external-tools, Cowork build-apps and Dataverse-plugin; their environment rules concern other authoring tools or skills, not this named skill.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "controls[0].ui; Governance controls row 1",
-      "type": "admin-path",
-      "claim": "Copilot > Cost Management > Configuration > + Add spending policy is the complete path to the Cowork access and credit-limit control.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-manage-copilot-credits",
-      "quote": "Create and name the policy and then choose Identity as the scope. ... switch to Specific groups and select the directory group. ... Select the agents and services that users and groups in this policy can access.",
-      "severity": "blocker",
-      "fix": "The printed path only opens the wizard. Set controls[0].ui.docs to https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-manage-copilot-credits and extend the front-matter and rendered path to 'Copilot > Cost Management > Configuration > + Add spending policy > Identity > Specific groups > Select agents and services > Cowork > Set limits and alerts'. The cited governance page also explicitly requires choosing Specific groups and selecting Cowork after opening the wizard."
-    },
-    {
-      "n": 50,
-      "where": "controls[0].api; Governance controls row 1",
-      "type": "command",
-      "claim": "POST /beta/copilot/costManagement/spendingPolicies creates a spending policy with service selection and credit limits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create",
-      "quote": "POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies ... Required properties are displayName, periodLimit, perUserLimit, and serviceSettings. ... { \"serviceId\": \"cowork\", \"state\": \"enabled\" }",
-      "severity": "minor",
-      "fix": "Keep the call. Add to controls[0].note and the rendered note: 'The request sets serviceSettings with serviceId cowork and state enabled, and sets periodLimit and perUserLimit. Group policies are created disabled; link their audience before the service enables them.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create, whose example and request-body reference document these properties and lifecycle."
-    },
-    {
-      "n": 51,
-      "where": "controls[0].scope; Governance guidance",
-      "type": "applicability",
-      "claim": "Cowork spending policies can be scoped to security groups.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
-      "quote": "On the Scope user and group step, choose Specific groups and select the security group.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "controls[0].note; Why it matters; Cost and licensing; Scope; Governance guidance; Governance controls",
-      "type": "applicability",
-      "claim": "Users in scope of a spending policy that selects Cowork receive Cowork access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-access",
-      "quote": "Any user in the scope of a spending policy that selects Cowork can use Cowork, regardless of how small the credit limit is.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "controls[0].note; Cost and licensing; Governance guidance; Governance controls",
-      "type": "behaviour",
-      "claim": "A low credit limit does not prevent Cowork access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-access",
-      "quote": "A policy with a limit of one credit still grants access. To remove access for a user, remove them from every spending policy that includes Cowork. A low credit limit doesn't block access.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Removing a user from every spending policy selecting Cowork removes their access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-access",
-      "quote": "If no policy in scope selects Cowork, the user has no access.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "The Cowork entry under Agents > All Agents no longer controls who can use Cowork.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
-      "quote": "The Cowork agent entry is still visible under Agents > All Agents, but any configuration on it has no effect on who can use Cowork.",
+      "quote": "Searched: \"model-app-builder\" \"Cowork\" \"plugin\" \"license\". Opened cowork-manage-plugins, cowork-build-apps, dataverse-plugin and model-driven-app-external-tools. None identifies the roadmap skill's Cowork package or built-in delivery.",
       "severity": null,
       "fix": null
     },
     {
       "n": 56,
-      "where": "Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Cowork credit-limit enforcement is asynchronous, so a user can sometimes start tasks after reaching a limit.",
+      "where": "controls[0].ui; Governance controls: row 1",
+      "type": "admin-path",
+      "claim": "The spending-policy path is Copilot > Cost Management > Configuration > + Add spending policy > Identity > Specific groups > Select agents and services > Cowork > Set limits and alerts.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-access",
-      "quote": "Credit consumption and limit enforcement are evaluated asynchronously, so a user might be able to start one or more tasks after their limit is reached before enforcement takes effect.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-manage-copilot-credits",
+      "quote": "go to Copilot > Cost Management.\nSelect the Configuration tab and then select + Add spending policy.\nchoose Identity as the scope.\nswitch to Specific groups\nSelect agents and services\nSet limits and alerts",
       "severity": null,
       "fix": null
     },
     {
       "n": 57,
-      "where": "controls[1].ui; Governance guidance; Governance controls row 2",
-      "type": "admin-path",
-      "claim": "Cowork plugins can be blocked in Microsoft 365 admin center under Agents > Tools > plugin > Users > Block.",
+      "where": "controls[0].api; Governance controls: row 1",
+      "type": "command",
+      "claim": "POST /beta/copilot/costManagement/spendingPolicies creates a spending policy with service settings and credit limits, initially disabled as the note explains.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
-      "quote": "select Agents > Tools. ... Find the plugin you want to manage and go to the Users tab. ... Select Block: No users in your tenant can access the plugin.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create",
+      "quote": "POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies\n\nRequired properties are displayName, periodLimit, perUserLimit, and serviceSettings.\n\nNew policies are created disabled.",
       "severity": null,
       "fix": null
     },
     {
       "n": 58,
-      "where": "controls[1].api; Governance controls row 2",
+      "where": "controls[0].note",
       "type": "command",
-      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package.",
+      "claim": "The create API supports serviceSettings with serviceId cowork and state enabled, plus periodLimit and perUserLimit.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "Block a Copilot package to prevent its usage. ... POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create",
+      "quote": "Required properties are displayName, periodLimit, perUserLimit, and serviceSettings.\n\n{ \"serviceId\": \"cowork\", \"state\": \"enabled\" }",
       "severity": null,
       "fix": null
     },
     {
       "n": 59,
-      "where": "controls[0].note; Governance controls row 1",
-      "type": "availability",
-      "claim": "The Cost Management Graph API is beta.",
+      "where": "controls[0].note",
+      "type": "behaviour",
+      "claim": "New group spending policies are disabled and their audience should be linked before the service enables them.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
-      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create",
+      "quote": "A new policy is created disabled. For a group-scoped policy, follow the safe-create sequence: create the policy disabled, link its audience with Add assigned group, and let the service enable it once its requirements are satisfied.",
       "severity": null,
       "fix": null
     },
     {
       "n": 60,
+      "where": "controls[1].ui; Governance controls: row 2",
+      "type": "admin-path",
+      "claim": "The general plugin-blocking path is Agents > Tools > plugin > Users > Block in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
+      "quote": "select Agents > Tools.\nFind the plugin you want to manage and go to the Users tab.\nSelect Block: No users in your tenant can access the plugin.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[1].api; Governance controls: row 2",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage.\n\nPOST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
       "where": "controls[1].note; Governance controls",
       "type": "availability",
-      "claim": "The Package Management block API is beta.",
+      "claim": "The package-block API is beta.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
       "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
@@ -691,7 +713,7 @@
       "fix": null
     },
     {
-      "n": 61,
+      "n": 63,
       "where": "controls[1].note; Governance controls",
       "type": "licensing",
       "claim": "Access to the Package Management API requires a Microsoft Agent 365 licence.",
@@ -702,32 +724,32 @@
       "fix": null
     },
     {
-      "n": 62,
+      "n": 64,
       "where": "Governance controls",
       "type": "applicability",
-      "claim": "The package block API supports delegated work or school permissions, not application permissions.",
+      "claim": "The package-block API supports delegated work or school permissions, not application permissions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "Delegated (work or school account) | CopilotPackages.ReadWrite.All ... Application | Not available. | Not available.",
+      "quote": "Delegated (work or school account) | CopilotPackages.ReadWrite.All\nDelegated (personal Microsoft account) | Not supported.\nApplication | Not available.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 63,
+      "n": 65,
       "where": "Governance controls",
       "type": "availability",
-      "claim": "The package block API is available in Global service but not US Government L4, US Government L5 or China operated by 21Vianet.",
+      "claim": "The package-block API is unavailable in the listed US Government and China national clouds.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet ... ✅ | ❌ | ❌ | ❌",
+      "quote": "| Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet |\n| --- | --- | --- | --- |\n| ✅ | ❌ | ❌ | ❌ |",
       "severity": null,
       "fix": null
     },
     {
-      "n": 64,
-      "where": "controls[1].note; Governance controls row 2",
+      "n": 66,
+      "where": "controls[1].note",
       "type": "behaviour",
-      "claim": "Plugin blocking affects new conversations; conversations already using the plugin continue until they end.",
+      "claim": "Plugin blocking takes effect for new conversations, while conversations already using it continue until they end.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
       "quote": "Blocking takes effect for new conversations. Conversations already in progress that use the plugin continue until they end.",
@@ -735,32 +757,43 @@
       "fix": null
     },
     {
-      "n": 65,
-      "where": "controls[2].ui; Governance controls row 3",
+      "n": 67,
+      "where": "controls[2].ui; Governance controls: row 3",
       "type": "admin-path",
-      "claim": "User security roles are managed in Power Platform admin center under Manage > Environments > environment > Settings > Users + permissions > Users > user > Manage security roles.",
+      "claim": "The security-role path is Manage > Environments > environment > Settings > Users + permissions > Users > user > Manage security roles in the Power Platform admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
-      "quote": "select Manage. ... select Environments, and then select an environment ... Select Settings. ... Select Users + permissions, and then select Users. ... select a user, and then select Manage security roles.",
+      "quote": "select Manage.\nselect Environments, and then select an environment from the list.\nSelect Settings.\nSelect Users + permissions, and then select Users.\nOn the Users page select a user, and then select Manage security roles.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 66,
-      "where": "controls[2].api; Governance controls row 3",
+      "n": 68,
+      "where": "controls[2].api; Governance controls: row 3",
       "type": "command",
       "claim": "pac admin assign-user --environment <environment-id> --user <upn> --role \"<role-name>\" assigns a user and security role to the target Dataverse environment.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/developer/cli/reference/admin",
-      "quote": "Assign a user to a target Dataverse environment with specified security role. ... --role ... Name or ID of security role ... --user ... user principal name (UPN) ... --environment ... ID or URL of the environment",
+      "source": "https://learn.microsoft.com/power-platform/developer/cli/reference/admin#pac-admin-assign-user",
+      "quote": "Assign a user to a target Dataverse environment with specified security role.\n--role: Name or ID of security role to be applied to user\n--user: Object ID or user principal name (UPN)\n--environment: ID or URL of the environment to assign a user to.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 67,
-      "where": "Governance guidance: Before rollout; Governance controls",
+      "n": 69,
+      "where": "Scope; controls[2].note",
+      "type": "role",
+      "claim": "The System Administrator role provides the required security-role-assignment privileges by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
+      "quote": "By default, the System Administrator security role has all the required privileges to assign security roles to any user, including assigning the System Administrator security role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance controls; Governance guidance: Before rollout",
       "type": "applicability",
-      "claim": "Environment security roles are general Power Platform controls over permissions, including permission to create tables.",
+      "claim": "Environment security roles are an existing control over permission to build Dataverse artifacts.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/data-platform/create-edit-entities-portal",
       "quote": "A system or custom security role that has Create, Read, and Write privileges to the Entity table. These privileges allow the user to create and edit tables in Dataverse.",
@@ -768,70 +801,81 @@
       "fix": null
     },
     {
-      "n": 68,
-      "where": "controls[2].note; Risk assessment; Governance controls; rationale: risk",
-      "type": "absence",
-      "claim": "Microsoft has not documented how this specific Cowork model-app-builder skill uses environment security roles.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"model-driven\" \"Cowork\" \"admin\" \"enable\"; \"model-app-builder\" \"Cowork\". Read assign-security-roles, external-tools and Dataverse-plugin. Dataverse plugin role enforcement is explicit, but no text identifies it as this skill.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 69,
-      "where": "controls[3]; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not documented a separate tenant-wide UI or API switch specific to the model-app-builder skill in Cowork.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"model app-builder\" \"Cowork\" \"switch\"; \"Cowork\" \"model-app-builder\" \"default\" \"tenant\". Read governance, manage-plugins and build-apps. Build apps in Copilot controls the distinct App skill; none names a switch for model-app-builder.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 70,
-      "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
-      "type": "default",
-      "claim": "The arrival default of the Cowork model-app-builder skill is unknown.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Cowork\" \"model-app-builder\" \"default\" \"tenant\". Read roadmap, Cowork governance, get-started, build-apps and available-plugins. None states this named skill's arrival default; the built-in App skill's default is not evidence for it.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 71,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "Mixed licensing reflects the Microsoft 365 Copilot licence prerequisite together with usage-based Cowork consumption.",
+      "where": "controls[2].note; Governance controls",
+      "type": "absence",
+      "claim": "The specific way the Cowork model-app-builder uses environment security roles has not been documented.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/get-started",
-      "quote": "Microsoft Copilot access: An active Microsoft 365 Copilot license assigned to your account. ... Usage-based billing: Usage-based and Cowork billing has been enabled.",
+      "source": null,
+      "quote": "Searched: \"model-driven\" \"Cowork\" \"skill\" default permissions environment. Read assign-security-roles, model-driven-app-external-tools, dataverse-plugin and cowork-faq. General user permissions are documented; this skill's Dataverse connection is not.",
       "severity": null,
       "fix": null
     },
     {
       "n": 72,
-      "where": "front matter: cost; rationale: cost",
-      "type": "cost",
-      "claim": "Variable cost is consistent with Cowork usage-based billing.",
+      "where": "controls[3]; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No separate tenant-wide UI or API switch for the model-app-builder skill in Cowork is documented in November 2026.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
-      "quote": "Cowork uses a usage-based billing model. Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption.",
+      "source": null,
+      "quote": "Searched: \"Cowork\" \"model-app-builder\" Power Platform API tenant settings disable. Read pac admin, Cowork governance and cowork-build-apps; the built-in App skill setting is not identified as a model-app-builder switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Dataverse database capacity covers table rows, metadata and relational data created by custom model-driven apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/capacity-storage",
+      "quote": "including table rows, metadata, and relational data created by Power Apps, Power Automate, Dynamics 365 customer engagement apps (Dynamics 365 Sales, Dynamics 365 Service, Dynamics 365 Marketing), and custom model-driven apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "The capacity report does not count trial, preview, support or developer environments for consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/capacity-storage",
+      "quote": "The capacity report counts default, production, and sandbox environments for consumption. It doesn't count trial, preview, support, and developer environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "controls[0].note",
+      "type": "availability",
+      "claim": "The spending-policy create API is beta.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Cowork generally asks for approval before taking actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/get-started",
+      "quote": "Before Cowork takes an action on your behalf, like sending an email, posting a Teams message, or scheduling a meeting, it asks for your permission.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-19T02:04:24.739Z",
+    "at": "2026-11-19T03:09:21.970Z",
     "summary": {
       "links": 13,
-      "unreachable": 12,
+      "unreachable": 0,
       "uiPaths": 3,
-      "uiPathsWithMissingWords": 3,
+      "uiPathsWithMissingWords": 0,
       "apiCalls": 3,
-      "apiCallsNotOnPage": 3,
+      "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -842,63 +886,63 @@
       },
       {
         "url": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/copilot/cowork/cowork-access",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/copilot/cowork/get-started",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/model-driven-app-external-tools",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/capacity-storage",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-manage-copilot-credits",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create",
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/power-apps/maker/data-platform/create-edit-entities-portal",
-        "ok": false,
-        "status": 429
-      },
-      {
-        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/power-platform/developer/cli/reference/admin",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -906,36 +950,36 @@
         "index": 0,
         "side": "ui",
         "governs": "Who can use Cowork, and the credit limits that apply",
-        "docs": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
-        "reachable": false,
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-manage-copilot-credits",
+        "reachable": true,
         "segments": [
           "Copilot",
           "Cost Management",
           "Configuration",
-          "+ Add spending policy"
+          "+ Add spending policy",
+          "Identity",
+          "Specific groups",
+          "Select agents and services",
+          "Cowork",
+          "Set limits and alerts"
         ],
-        "missing": [
-          "Copilot",
-          "Cost Management",
-          "Configuration",
-          "+ Add spending policy"
-        ]
+        "missing": []
       },
       {
         "index": 0,
         "side": "api",
         "governs": "Who can use Cowork, and the credit limits that apply",
-        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview",
-        "reachable": false,
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create",
+        "reachable": true,
         "token": "/beta/copilot/costManagement",
-        "found": false
+        "found": true
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Whether a Cowork plugin is available to users, or blocked",
         "docs": "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Agents",
           "Tools",
@@ -943,29 +987,23 @@
           "Users",
           "Block"
         ],
-        "missing": [
-          "Agents",
-          "Tools",
-          "plugin",
-          "Users",
-          "Block"
-        ]
+        "missing": []
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Whether a Cowork plugin is available to users, or blocked",
         "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-        "reachable": false,
+        "reachable": true,
         "token": "/beta/copilot/admin",
-        "found": false
+        "found": true
       },
       {
         "index": 2,
         "side": "ui",
         "governs": "Which users hold security roles in a Power Platform environment",
         "docs": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Manage",
           "Environments",
@@ -974,23 +1012,16 @@
           "Users",
           "Manage security roles"
         ],
-        "missing": [
-          "Manage",
-          "Environments",
-          "Settings",
-          "Users + permissions",
-          "Users",
-          "Manage security roles"
-        ]
+        "missing": []
       },
       {
         "index": 2,
         "side": "api",
         "governs": "Which users hold security roles in a Power Platform environment",
         "docs": "https://learn.microsoft.com/power-platform/developer/cli/reference/admin",
-        "reachable": false,
+        "reachable": true,
         "token": "pac admin assign-user",
-        "found": false
+        "found": true
       }
     ],
     "roadmapDrift": []
@@ -1011,6 +1042,12 @@
     {
       "date": "2026-11-18",
       "status": "verified",
+      "version": 3,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-19",
+      "status": "held",
       "version": 3,
       "model": "gpt-6.1-sol"
     }

@@ -55,6 +55,9 @@ sources:
   - title: "New-RetentionComplianceRule"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule"
     kind: "learn"
+  - title: "Whether a retention policy archives inactive SharePoint files (Microsoft Purview portal)"
+    url: "https://learn.microsoft.com/purview/retention-settings#archiving-retained-sharepoint-files"
+    kind: "learn"
 videos: []
 related: ["microsoft-purview-archive-sharepoint-files-under-retention-policies","purview-retention-last-accessed-sharepoint-onedrive","m365-paygo-consumption-based-meter-for-your-extra-sharepoint-storage-needs","auditing","microsoft-purview-data-lifecycle-management-hard-delete-capability-for-onedrive-and-sharep"]
 controls:
@@ -62,15 +65,15 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy"
-      docs: "https://learn.microsoft.com/purview/create-retention-policies"
+      path: "Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy > Choose the type of retention policy to create > Static > Choose locations > Decide if you want to retain content, delete it, or both"
+      docs: "https://learn.microsoft.com/purview/retention-settings#archiving-retained-sharepoint-files"
     api: null
-    note: "The archive option is selected in the retention settings, as 'Archive retained items in secure and compliant Microsoft 365 Archive to reduce cost'. Not enabled by default."
+    note: "Turn on the SharePoint sites location, then on the retain/delete page select 'Archive retained items in secure and compliant Microsoft 365 Archive to reduce cost'. Not enabled by default."
   - governs: "Connection of Microsoft 365 Archive to a pay-as-you-go billing policy"
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Billing > Pay-as-you-go > Services > Microsoft 365 Archive > Connect a policy"
+      path: "Billing > Pay-as-you-go > Services > Microsoft 365 Archive > Connect a policy > Connection status"
       docs: "https://learn.microsoft.com/microsoft-365/archive/archive-setup"
     api: null
     note: "Flow for new configurations after October 2026; the page gives an earlier flow under Settings > Org settings. SharePoint Administrator or Global Administrator."
@@ -102,19 +105,23 @@ changes:
     note: "First briefing: retention-policy archive action for SharePoint files, with its E5 and pay-as-you-go billing requirements, opt-in default and controls."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 81 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-19"
+    note: "Corrected the retention-policy and billing-connection admin paths, described the Public Preview dates as planned in MC1325441, and removed the optional budget step from the pre-rollout checklist."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 75 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 81
-  confirmed: 78
+  claims: 75
+  confirmed: 75
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "db6195bdd624f488d7710e9218476a48"
+  contradicted: 0
+  attempts: 0
+  hash: "a049295603ea5b3f1910c9a86b6b715c"
 ---
 
 ## What's changing
@@ -125,7 +132,7 @@ The archive action is not enabled by default, and existing retention policies an
 
 A user with read access can reactivate an archived file. After reactivation the file cannot be archived manually or by policy for 120 days, and retention and hold requirements continue to apply.
 
-The roadmap record shows status In development, with a preview target of September CY2026 and a General Availability target of November CY2026, for Worldwide (Standard Multi-Tenant) on the web. Microsoft's notice MC1325441 (updated 19 October 2026) says Public Preview began rolling out in early September 2026 and should finish by early October 2026, and that General Availability (Worldwide) begins in mid-November 2026 and should finish by early December 2026. The notice sets no act-by date and says no immediate action is required.
+The roadmap record shows status In development, with a preview target of September CY2026 and a General Availability target of November CY2026, for Worldwide (Standard Multi-Tenant) on the web. Microsoft's notice MC1325441 (updated 19 October 2026) gives a planned Public Preview rollout from early September 2026 to early October 2026, and says General Availability (Worldwide) begins in mid-November 2026 and should finish by early December 2026. The notice sets no act-by date and says no immediate action is required.
 
 ## Why it matters
 
@@ -178,7 +185,7 @@ If nobody acts, the notice says the feature is not enabled by default and existi
 ### Before rollout
 - Review current retention policies in Microsoft Purview Data Lifecycle Management and list the SharePoint locations where an archive period would suit inactive content, as the notice recommends.
 - Confirm Microsoft 365 E5 licensing against the Learn requirement, and ask finance owners to approve the archive storage meter.
-- Connect Microsoft 365 Archive to a pay-as-you-go billing policy in the Microsoft 365 admin center, with a budget and alerts if wanted.
+- Connect Microsoft 365 Archive to a pay-as-you-go billing policy in the Microsoft 365 admin center.
 - Decide whether users keep the manual **Archive** action; hide it with the tenant PowerShell setting if policies alone should archive files.
 
 ### At rollout
@@ -197,8 +204,8 @@ If nobody acts, the notice says the feature is not enabled by default and existi
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether a retention policy archives inactive SharePoint files</strong><br><small>Tenant</small><br><small class="controls__note">The archive option is selected in the retention settings, as 'Archive retained items in secure and compliant Microsoft 365 Archive to reduce cost'. Not enabled by default.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Policies › Retention policies › New retention policy <a href="https://learn.microsoft.com/purview/create-retention-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Connection of Microsoft 365 Archive to a pay-as-you-go billing policy</strong><br><small>Tenant</small><br><small class="controls__note">Flow for new configurations after October 2026; the page gives an earlier flow under Settings &gt; Org settings. SharePoint Administrator or Global Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Pay-as-you-go › Services › Microsoft 365 Archive › Connect a policy <a href="https://learn.microsoft.com/microsoft-365/archive/archive-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether a retention policy archives inactive SharePoint files</strong><br><small>Tenant</small><br><small class="controls__note">Turn on the SharePoint sites location, then on the retain/delete page select 'Archive retained items in secure and compliant Microsoft 365 Archive to reduce cost'. Not enabled by default.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Policies › Retention policies › New retention policy › Choose the type of retention policy to create › Static › Choose locations › Decide if you want to retain content, delete it, or both <a href="https://learn.microsoft.com/purview/retention-settings#archiving-retained-sharepoint-files" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Connection of Microsoft 365 Archive to a pay-as-you-go billing policy</strong><br><small>Tenant</small><br><small class="controls__note">Flow for new configurations after October 2026; the page gives an earlier flow under Settings &gt; Org settings. SharePoint Administrator or Global Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Pay-as-you-go › Services › Microsoft 365 Archive › Connect a policy › Connection status <a href="https://learn.microsoft.com/microsoft-365/archive/archive-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether users can archive files manually, separate from policy archiving</strong><br><small>Tenant</small><br><small class="controls__note">Hides the Archive action from users; admin-defined policies can still archive eligible files. SharePoint Administrator or Global Administrator.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -AllowFileArchive $false</code> <a href="https://learn.microsoft.com/microsoft-365/archive/archive-manage" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Audit records of files archived by users or policies</strong><br><small>Tenant</small><br><small class="controls__note">Needs the Audit Logs or View-Only Audit Logs role. Run the cmdlet in Exchange Online PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Search <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Search-UnifiedAuditLog -Operations FileArchived</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -223,12 +230,8 @@ cost: Variable. Learn says file-level archive requires a Microsoft 365 E5 licenc
 impact: Low. Compliance and SharePoint admins see a new option; users notice once a policy archives their files, which then need reactivating before they can be read.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy is the route to the retention-policy archive control. | Found: For the Choose the type of retention policy to create page, select Adaptive or Static ... For Decide if you want to retain content, delete it, or both page, specify the configuration options | Fix: Replace the path in front matter and the table with 'Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy > Choose the type of retention policy to create > Static > Choose locations > SharePoint sites > Decide if you want to retain content, delete it, or both > Archive retained items in secure and compliant Microsoft 365 Archive to reduce cost'. Set its docs URL to https://learn.microsoft.com/purview/retention-settings#archiving-retained-sharepoint-files, which documents the archive setting itself; retain the already cited https://learn.microsoft.com/purview/create-retention-policies for the wizard route. | Source: https://learn.microsoft.com/purview/create-retention-policies
-- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: Billing > Pay-as-you-go > Services > Microsoft 365 Archive > Connect a policy reaches the control that connects Archive billing. | Found: Select Connect a policy, turn on the Connection status toggle for the billing policy, and then select Save. | Fix: Replace the path in front matter and the table with 'Billing > Pay-as-you-go > Services > Microsoft 365 Archive > Connect a policy > Connection status'. The cited setup page requires turning on Connection status for the chosen policy; opening Connect a policy alone does not connect it. | Source: https://learn.microsoft.com/microsoft-365/archive/archive-setup
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: Public Preview rollout sentence / record: The notice says Public Preview began in early September 2026 and should finish by early October 2026. | Found: Public Preview: We will begin rolling out early September 2026 (previously mid-August) and expect to complete by early October 2026 (previously early September). | Fix: Replace the preview clause with 'Microsoft's notice MC1325441 (updated 19 October 2026) gives a planned Public Preview rollout from early September 2026 to early October 2026'. The notice gives a schedule, not confirmation that rollout began.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist recommends setting optional budgets and alerts without a controls-table entry for that setting. | Found: with a budget and alerts if wanted. ... Controls: retention-policy archiving; connection to a billing policy; manual file archiving; audit records. | Fix: Remove ', with a budget and alerts if wanted' from the Before rollout checklist step. The supported budget discussion can remain in Cost and licensing; no new control row is required.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The static retention-policy route goes through Solutions, Data Lifecycle Management, Policies, Retention policies, New retention policy, policy type, Static, Choose locations and the retain/delete page. | Found: For the Assign admin units page, keep the default of Full directory. Currently, admin units aren't supported for this policy. | Fix: Include the intervening scope step: 'Solutions > Data Lifecycle Management > Policies > Retention policies > New retention policy > Assign admin units > Full directory > Choose the type of retention policy to create > Static > Choose locations > Decide if you want to retain content, delete it, or both'. The existing retention-settings docs link supports the control itself; create-retention-policies, already cited, supplies the navigation. | Source: https://learn.microsoft.com/purview/create-retention-policies
 -->

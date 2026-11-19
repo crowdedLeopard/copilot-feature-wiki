@@ -2,138 +2,47 @@
   "slug": "microsoft-dataverse-improved-enterprise-experiences-in-power-platform-enhance-dataverse-re",
   "roadmapId": 576788,
   "title": "Microsoft Dataverse: richer record labels for Copilot /mention in Microsoft 365 apps",
-  "status": "verified",
-  "date": "2026-11-18",
+  "status": "held",
+  "date": "2026-11-19",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 0,
-  "verifierVerdict": "pass",
+  "attempts": 1,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
   "notes": [],
-  "hold": null,
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-19",
+    "reasons": [
+      "1 blocking finding (claim 42)"
+    ]
+  },
   "counts": {
-    "claims": 45,
-    "confirmed": 45,
+    "claims": 47,
+    "confirmed": 46,
     "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
+    "contradicted": 1,
+    "blocker": 1,
     "major": 0,
     "minor": 0
   },
-  "summary": "The briefing passes: its roadmap facts, environment setting, navigation path and required administrator role are supported. It distinguishes the existing search setting's documented default from the unstated arrival behaviour of the label change, and does not invent a licence, meter or automation command.",
+  "summary": "Hold: the briefing describes licensing as unpublished even though Microsoft documents the licensing of the Copilot product in which these labels appear. Distinguish that existing entitlement from the absence of a separate licence or meter for the label enhancement. The documented environment setting, its path and the roadmap facts check out.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; rationale: risk and impact",
-      "type": "record",
-      "claim": "Microsoft plans richer Dataverse, Dynamics 365 and Power Apps record reference labels for Microsoft 365 Copilot.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "End users of Microsoft 365 Copilot will see improved Microsoft Dataverse, Dynamics 365, and Power Apps record references in Context IQ with richer, more descriptive labels",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
-      "where": "What's changing; Open questions",
-      "type": "record",
-      "claim": "The roadmap describes labels containing environment, app and table information.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "richer, more descriptive labels that include environment, app, and table information.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The roadmap calls the surface Context IQ.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "record references in Context IQ",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "summary; What's changing; Risk assessment: Data exposure; Open questions",
-      "type": "behaviour",
-      "claim": "Learn describes the enhanced label as Environment Name + App Name + Record Name.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
-      "quote": "Each record is displayed with an enhanced label that includes the **Environment Name** + **App Name** + **Record Name**, helping users quickly identify the correct record and its source.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "What's changing; Scope; rationale: impact",
-      "type": "behaviour",
-      "claim": "The /mention experience offers recently viewed Dynamics 365 and Power Apps records, including records viewed in model-driven apps.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
-      "quote": "Most recently viewed Dynamics 365 and Power Apps records are available in Microsoft 365 Copilot through the /mention experience",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "What's changing; Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "When the same record is opened through multiple apps, its label reflects the most recently used app.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
-      "quote": "If you access the same record through multiple apps, the label reflects the most recently used app from which you viewed the record.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "What's changing; Risk assessment: Change & support; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "A viewed record can take up to 15 minutes to become available through /mention.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
-      "quote": "It can take up to 15 minutes after you view a record on your Dynamics 365 or model-driven apps before you can **/mention** that record on Microsoft 365 Copilot Chat in your productivity apps, like Outlook web client.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "What's changing",
-      "type": "availability",
-      "claim": "The feature page describes /mention in Outlook on the web, Copilot Chat, Researcher, Word and Teams.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
-      "quote": "## Link to business records in email messages in your Outlook web client\n### Copilot Chat\n## Link to business records in Copilot Chat, Researcher, Word, and Teams clients",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
       "where": "front matter: status; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap status is Launched.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "quote": "\"status\": \"Launched\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 10,
-      "where": "front matter: previewDate; What's changing",
-      "type": "record",
-      "claim": "The roadmap preview date is July CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": \"July CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
+      "n": 2,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target date is August CY2026.",
@@ -144,7 +53,18 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists General Availability and Preview as release phases.",
@@ -155,10 +75,10 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 5,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap platform is Web.",
+      "claim": "The roadmap lists Web as the platform.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -166,10 +86,10 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 6,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap cloud is Worldwide (Standard Multi-Tenant).",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) as the cloud.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -177,7 +97,7 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 7,
       "where": "front matter: products; Scope",
       "type": "record",
       "claim": "The roadmap products are Microsoft Copilot (Microsoft 365) and Microsoft Dataverse.",
@@ -188,10 +108,54 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-10-16T19:09:06.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-16T19:09:06\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "title; summary; What's changing; rationale: risk and impact",
+      "type": "record",
+      "claim": "Dataverse, Dynamics 365 and Power Apps record references in Microsoft 365 Copilot receive richer descriptive labels.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "End users of Microsoft 365 Copilot will see improved Microsoft Dataverse, Dynamics 365, and Power Apps record references in Context IQ with richer, more descriptive labels",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap describes the labels as including environment, app and table information.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "labels that include environment, app, and table information",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap says the feature is enabled by admins/makers/marketers for end users.",
+      "claim": "The roadmap calls the record-reference surface Context IQ.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "record references in Context IQ",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says Enabled by admins/makers/marketers for end users.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Enabled by admins/makers/marketers for end users",
@@ -199,7 +163,62 @@
       "fix": null
     },
     {
+      "n": 13,
+      "where": "summary; What's changing; Risk assessment: Data exposure; Open questions",
+      "type": "behaviour",
+      "claim": "Learn describes the enhanced label as Environment Name + App Name + Record Name.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
+      "quote": "Each record is displayed with an enhanced label that includes the **Environment Name** + **App Name** + **Record Name**",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Scope; rationale: impact",
+      "type": "behaviour",
+      "claim": "The /mention experience offers recently viewed Dynamics 365 and Power Apps records, including model-driven app records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
+      "quote": "Most recently viewed Dynamics 365 and Power Apps records are available in Microsoft 365 Copilot through the /mention experience ... after you view a record on your Dynamics 365 or model-driven apps",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "When a record is viewed through multiple apps, its label reflects the most recently used app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
+      "quote": "If you access the same record through multiple apps, the label reflects the most recently used app from which you viewed the record.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "A viewed record can take up to 15 minutes to become available through /mention.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
+      "quote": "It can take up to 15 minutes after you view a record on your Dynamics 365 or model-driven apps before you can **/mention** that record on Microsoft 365 Copilot Chat in your productivity apps, like Outlook web client.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The /mention page describes Outlook on the web, Copilot Chat, Researcher, Word and Teams experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
+      "quote": "## Link to business records in email messages in your Outlook web client\n## Link to business records in Copilot Chat, Researcher, Word, and Teams clients",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
       "where": "What's changing; Governance guidance: Before rollout; Open questions",
       "type": "default",
       "claim": "Manage feature settings lists On as the default for Search for records in Microsoft 365 apps.",
@@ -210,120 +229,87 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "front matter: defaultState; What's changing; Why it matters",
-      "type": "default",
-      "claim": "The sources do not state what the new label format does on arrival, separately from the existing /mention setting.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Dataverse\" \"record\" \"/mention\" \"label\" \"default\". Read the roadmap record, Use /mention to link to business records via Microsoft 365 Copilot, and the relevant default and Search sections of Manage feature settings; none states label-specific arrival behaviour.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 19,
-      "where": "front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "licensing",
-      "claim": "Microsoft has not published licensing specific to this label change, so its licensing model is unknown.",
+      "where": "front matter: defaultState; What's changing; Why it matters",
+      "type": "absence",
+      "claim": "Microsoft has not stated what the label enhancement does on arrival without administrator action, so its defaultState is unknown.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Dataverse /mention Microsoft 365 Copilot record labels licensing billing requirements meter; \"/mention\" \"licensing\" \"Copilot\" \"Dataverse\". Read the feature page, Power Platform licensing overview and Copilot license options; no label-change-specific licensing was found.",
+      "quote": "Searched: Dataverse Copilot /mention enhanced labels default enabled; Dataverse /mention default labels. Read the roadmap, /power-platform/admin/link-records-outlook-web and /power-platform/admin/settings-features on Learn; only the general setting has a default.",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "The /mention feature page names no licence requirement.",
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The path is Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > Search > Search for records in Microsoft 365 apps.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"/mention\" \"licensing\" \"Copilot\" \"Dataverse\". Read Use /mention to link to business records via Microsoft 365 Copilot in full, including its enablement instructions and Important notices; it names no licence.",
+      "source": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
+      "quote": "select **Manage**. ... select **Environments**. ... select an environment. ... select **Settings**. ... Expand **Product**, and then select **Features**. ... Under the **Search** section, turn on **Search for records in Microsoft 365 apps**.",
       "severity": null,
       "fix": null
     },
     {
       "n": 21,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "The /mention feature page names no meter.",
+      "where": "controls[0].governs and scope; summary; Scope; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "The environment-level Search for records in Microsoft 365 apps setting controls /mention record availability.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Dataverse /mention Microsoft 365 Copilot record labels licensing billing requirements meter. Read Use /mention to link to business records via Microsoft 365 Copilot in full; it names no meter.",
+      "source": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
+      "quote": "On the **Environments** page, select an environment. ... When you turn on this setting, you can link to business records in productivity apps by using the **/mention** feature.",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
-      "where": "Cost and licensing",
+      "where": "controls[0].api; Governance controls; Open questions",
       "type": "absence",
-      "claim": "No charge for the setting itself is documented in the sources checked.",
+      "claim": "No API or automation operation is documented for this specific environment setting.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Dataverse /mention Microsoft 365 Copilot record labels licensing billing requirements meter. Opened the /mention page, Manage feature settings and Power Platform licensing overview; none documents a charge for this setting.",
+      "quote": "Searched: \"Search for records in Microsoft 365 apps\" API PowerShell setting. Read Learn's /power-platform/admin/link-records-outlook-web; searched /power-apps/developer/data-platform/reference/entities/organization for mention, Context IQ and Microsoft 365.",
       "severity": null,
       "fix": null
     },
     {
       "n": 23,
-      "where": "Cost and licensing",
+      "where": "summary; controls[0].note; Governance controls",
       "type": "absence",
-      "claim": "No separate meter for the label change is documented at the time of writing.",
+      "claim": "No separate switch is documented for the new label format.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Dataverse /mention Microsoft 365 Copilot record labels licensing billing requirements meter. Opened the /mention page, Power Platform licensing overview and Copilot license options; found no separate meter for enhanced labels.",
+      "quote": "Searched: Dataverse Copilot /mention enhanced labels disable label format; \"/mention\" \"label\" \"control\" \"Dataverse\". Read https://learn.microsoft.com/power-platform/admin/link-records-outlook-web and https://learn.microsoft.com/power-platform/admin/settings-features.",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The setting is at Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > Search > Search for records in Microsoft 365 apps.",
+      "where": "Scope; Governance controls",
+      "type": "role",
+      "claim": "Manage feature settings requires the System Administrator security role or equivalent permissions to update these settings.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
-      "quote": "select **Manage** ... select **Environments** ... select an environment ... select **Settings** ... Expand **Product**, and then select **Features** ... Under the **Search** section, turn on **Search for records in Microsoft 365 apps**.",
+      "source": "https://learn.microsoft.com/power-platform/admin/settings-features",
+      "quote": "Ensure you have the System Administrator security role or equivalent permissions to update the settings.",
       "severity": null,
       "fix": null
     },
     {
       "n": 25,
-      "where": "controls[0].governs and scope; summary; Scope; Governance guidance; Governance controls",
-      "type": "applicability",
-      "claim": "Search for records in Microsoft 365 apps controls /mention record availability per environment.",
+      "where": "Scope; Governance controls",
+      "type": "absence",
+      "claim": "The /mention page itself does not name the role required to configure the setting.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
-      "quote": "When you turn on this setting, you can link to business records in productivity apps by using the **/mention** feature.\n4. On the **Environments** page, select an environment.",
+      "source": null,
+      "quote": "Searched: Dataverse /mention authorization. Read Learn's /power-platform/admin/link-records-outlook-web in full: its configuration steps name no administrator role. Read /power-platform/admin/settings-features for the role.",
       "severity": null,
       "fix": null
     },
     {
       "n": 26,
-      "where": "controls[0].api; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "No API, PowerShell or CLI equivalent for this specific environment setting was found.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Search for records in Microsoft 365 apps\" API PowerShell organization setting; \"/mention\" \"Power Platform API\"; \"/mention\" \"pac admin\". Read feature instructions, pac admin excerpts and searched organization Web API reference for mention, ContextIQ and Microsoft 365.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "summary; controls[0].note; Governance controls",
-      "type": "absence",
-      "claim": "No separate switch governing the enhanced label format is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"/mention\" \"label\" \"switch\" Dataverse; \"Dataverse\" \"record\" \"/mention\" \"label\" \"default\". Read the /mention feature page and relevant Manage feature settings sections; neither documents a separate label-format switch.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "Why it matters; rationale: risk",
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
       "type": "behaviour",
-      "claim": "A small set of Dataverse data syncs with Microsoft 365 data for this experience.",
+      "claim": "The /mention data path syncs a small set of Dataverse data into Microsoft 365.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
       "quote": "A small set of data from Dataverse syncs with Microsoft 365 data.",
@@ -331,10 +317,10 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 27,
       "where": "Why it matters; Risk assessment: Data exposure; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "The sync might cross geo boundaries in multi-geo organisations.",
+      "claim": "The sync can cross geographic boundaries for multi-geo organisations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
       "quote": "This sync might cross geo boundaries for multi-geo organizations where the Dataverse data might be in a different geographic region than the data stored for a user in Microsoft 365.",
@@ -342,10 +328,10 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 28,
       "where": "Why it matters; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The sync crosses service and compliance boundaries between Dataverse and Microsoft 365.",
+      "claim": "The sync crosses service boundaries between Dataverse and Microsoft 365.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
       "quote": "Be aware that this sync also crosses service and compliance boundaries between the two platforms.",
@@ -353,10 +339,21 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 29,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The sync crosses compliance boundaries between Dataverse and Microsoft 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
+      "quote": "Be aware that this sync also crosses service and compliance boundaries between the two platforms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
       "where": "Risk assessment: Data exposure; Governance guidance: Before rollout; rationale: risk",
       "type": "behaviour",
-      "claim": "Synced data includes the environment name, app name, record name and a link to the most recently used record.",
+      "claim": "The synced dataset includes environment, app and record names and a link to the most recently used record.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
       "quote": "Synced data includes the environment name, app name, and record name, and a link to the most recently used record.",
@@ -364,10 +361,21 @@
       "fix": null
     },
     {
+      "n": 31,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Updates to the synced data update the record in Microsoft 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
+      "quote": "If you make any changes to the synced data, including updates or deletions, the record updates or deletes in Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 32,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Updates to synced data update the record in Microsoft 365.",
+      "claim": "Deletions of the synced data delete the record in Microsoft 365.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
       "quote": "If you make any changes to the synced data, including updates or deletions, the record updates or deletes in Microsoft 365.",
@@ -376,20 +384,9 @@
     },
     {
       "n": 33,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "Deletions of synced data delete the record in Microsoft 365.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
-      "quote": "If you make any changes to the synced data, including updates or deletions, the record updates or deletes in Microsoft 365.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Risk assessment: Security & identity; Scope; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Only records a user has access to and has most recently used are offered.",
+      "where": "Risk assessment: Security & identity; Scope; Governance controls",
+      "type": "applicability",
+      "claim": "The records offered through /mention are restricted to records the user has access to and has most recently used.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
       "quote": "Security is top of mind, so only records that a user has access to and most recently used are available in the Microsoft 365 Copilot and productivity apps.",
@@ -397,10 +394,10 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 34,
       "where": "Risk assessment: Security & identity; Governance controls",
       "type": "role",
-      "claim": "An email recipient needs environment access, security roles granting data access and access to the shared record.",
+      "claim": "An email recipient needs environment access with security roles granting access to the data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
       "quote": "The recipient of the email must have access to the environment with security roles that grant access to the data and must be able to access the shared record.",
@@ -408,21 +405,21 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Risk assessment: Security & identity",
-      "type": "absence",
-      "claim": "The feature documentation does not explain the /mention authorisation mechanism beyond its access requirements.",
+      "n": 35,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "applicability",
+      "claim": "Opening the shared record requires the recipient to have access to the environment, app and record.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Dataverse\" \"/mention\" \"authorization\" \"actions\". Read the /mention feature page in full; it states user access and recipient role requirements but no further /mention authorisation mechanism. Other results concerned general Dataverse security or unrelated integrations.",
+      "source": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
+      "quote": "The recipient of the email can select the link and open the record, assuming the recipient has access to the environment, the app, and the record.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
+      "n": 36,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Researcher uses a referenced record as contextual grounding.",
+      "claim": "Researcher uses the referenced record as contextual grounding.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
       "quote": "Currently, Researcher uses the referenced record as contextual grounding to gather and synthesize information from the web and your Microsoft 365 productivity data (such as emails, files, meetings, and chats).",
@@ -430,10 +427,10 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 37,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Researcher does not currently retrieve or reason over live Dynamics 365 or Power Apps data associated with the referenced record.",
+      "claim": "Researcher does not currently retrieve or reason over live Dynamics 365 or Power Apps data for the referenced record.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
       "quote": "Researcher doesn't currently retrieve or reason over live Dynamics 365 or Power Apps data associated with the referenced record.",
@@ -441,7 +438,7 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 38,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "Copilot uses the referenced record as context to ground its response.",
@@ -452,10 +449,10 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 39,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "The feature page says Copilot can perform actions against relevant business data using the referenced record.",
+      "claim": "The /mention page says Copilot can perform actions against the relevant business data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
       "quote": "Copilot uses the referenced record as context to ground its response and perform actions against the relevant business data.",
@@ -463,68 +460,101 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 40,
       "where": "Risk assessment: Autonomy & actions",
       "type": "absence",
-      "claim": "The feature page does not enumerate which actions against the referenced business data are supported.",
+      "claim": "The /mention page does not enumerate which business-data actions are supported.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Dataverse\" \"/mention\" \"authorization\" \"actions\". Read the feature page in full: it provides prompts and email, Word and Teams examples, but no enumeration of supported actions against the referenced Dynamics 365 or Power Apps business data.",
+      "quote": "Searched: Dataverse /mention referenced records Copilot supported actions authorization mechanism licensing price. Read https://learn.microsoft.com/power-platform/admin/link-records-outlook-web; it gives examples but no supported-action inventory.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Learn's /mention documentation does not further explain the authorisation mechanism beyond access requirements.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"/mention\" \"authorization\" Dataverse; Dataverse /mention referenced records Copilot supported actions authorization mechanism. Read https://learn.microsoft.com/power-platform/admin/link-records-outlook-web; no further mechanism is described.",
       "severity": null,
       "fix": null
     },
     {
       "n": 42,
-      "where": "Scope; Governance controls",
-      "type": "role",
-      "claim": "Manage feature settings requires the System Administrator security role or equivalent permissions to update the settings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/settings-features",
-      "quote": "Ensure you have the System Administrator security role or equivalent permissions to update the settings.",
-      "severity": null,
-      "fix": null
+      "where": "front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing model is unknown because Microsoft has not published which licence covers the change.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-license-options",
+      "quote": "Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans.",
+      "severity": "blocker",
+      "fix": "Set licensing.model to included for this label enhancement within Microsoft Copilot. Replace the broad unpublished-entitlement statements with: 'Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible subscription plans. No separate licensing requirement for this label enhancement is documented.' Cite https://learn.microsoft.com/copilot/plan/copilot-license-options. Keep the narrower statement that the /mention page itself names no licence; narrow the licensing open question and cost rationale to any requirement specific to this enhancement."
     },
     {
       "n": 43,
-      "where": "Scope; Governance controls",
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
       "type": "absence",
-      "claim": "The /mention page does not name an administrator role for changing the setting.",
+      "claim": "The /mention Learn page itself names no licence requirement.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Dataverse\" \"/mention\" \"authorization\" \"actions\". Read the /mention feature page in full and the administrator prerequisite in Manage feature settings; the former names recipient security roles but no administrator role for updating this setting.",
+      "quote": "Searched: \"/mention\" \"licens\" Dataverse Copilot. Read all of https://learn.microsoft.com/power-platform/admin/link-records-outlook-web; it specifies the environment setting and access requirements, but no licence.",
       "severity": null,
       "fix": null
     },
     {
       "n": 44,
-      "where": "Cost and licensing",
-      "type": "record",
-      "claim": "The roadmap record names neither a licence nor a meter for this change.",
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The /mention Learn page itself names no meter.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "End users of Microsoft 365 Copilot will see improved Microsoft Dataverse, Dynamics 365, and Power Apps record references in Context IQ with richer, more descriptive labels that include environment, app, and table information.",
+      "source": null,
+      "quote": "Searched: \"Dataverse\" \"/mention\" \"meter\"; \"Copilot\" \"/mention\" \"pricing\" \"records\". Read all of https://learn.microsoft.com/power-platform/admin/link-records-outlook-web; no meter or rate is named.",
       "severity": null,
       "fix": null
     },
     {
       "n": 45,
-      "where": "front matter: roadmapModified",
+      "where": "Cost and licensing",
       "type": "record",
-      "claim": "The roadmap record's modification timestamp is 2026-10-16T19:09:06.",
+      "claim": "The roadmap record names neither a licence nor a meter.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"modified\": \"2026-10-16T19:09:06\"",
+      "quote": "Searched: Read the complete supplied roadmap record, including description and all fields, for licence, license, licensing, price and meter; none are specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No charge for the setting itself is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot\" \"/mention\" \"pricing\" \"records\"; Dataverse /mention licensing price. Read https://learn.microsoft.com/power-platform/admin/link-records-outlook-web and https://learn.microsoft.com/copilot/plan/copilot-license-options; no setting-specific charge found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No separate meter is documented for the label enhancement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Dataverse\" \"/mention\" \"meter\"; \"Copilot\" \"/mention\" \"pricing\" \"records\". Read https://learn.microsoft.com/power-platform/admin/link-records-outlook-web and https://learn.microsoft.com/copilot/plan/copilot-license-options; no enhancement-specific meter found.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-18T07:41:03.944Z",
+    "at": "2026-11-19T03:09:30.883Z",
     "summary": {
       "links": 3,
-      "unreachable": 0,
+      "unreachable": 1,
       "uiPaths": 1,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 1,
       "apiCalls": 0,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
@@ -537,8 +567,8 @@
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/settings-features",
@@ -552,7 +582,7 @@
         "side": "ui",
         "governs": "Whether records from an environment are searchable through /mention in Microsoft 365 apps",
         "docs": "https://learn.microsoft.com/power-platform/admin/link-records-outlook-web",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Manage",
           "Environments",
@@ -562,7 +592,15 @@
           "Search",
           "Search for records in Microsoft 365 apps"
         ],
-        "missing": []
+        "missing": [
+          "Manage",
+          "Environments",
+          "Settings",
+          "Product",
+          "Features",
+          "Search",
+          "Search for records in Microsoft 365 apps"
+        ]
       }
     ],
     "roadmapDrift": []
@@ -572,6 +610,12 @@
       "date": "2026-11-18",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-18",
+      "status": "verified",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

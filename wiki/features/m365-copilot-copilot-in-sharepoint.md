@@ -5,7 +5,7 @@ roadmapId: 501451
 topic: "m365-copilot"
 products: ["SharePoint","SharePoint Syntex","Microsoft Copilot (Microsoft 365)"]
 summary: "Copilot in SharePoint is rolling out to general availability. Everyday use is included with a Microsoft 365 Copilot licence; advanced work uses Copilot Credits and needs a spending policy. Admins should check policies and site controls."
-status: "cancelled"
+status: "launched"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Web"]
@@ -90,23 +90,23 @@ changes:
     note: "Archived: Microsoft marked the roadmap item as cancelled. The briefing is kept for reference."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 111 statements contradicted, 0 unconfirmed; taken offline until corrected"
-archived:
-  reason: "cancelled"
-  date: "2026-11-19"
-  lastSeen: "2026-11-19"
-version: 2
+  - date: "2026-11-19"
+    note: "Corrected the roadmap status to Launched (the page had been archived as cancelled in error) and reworded the 20% credit-limit warning to match the Learn page."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 108 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 111
-  confirmed: 108
+  claims: 108
+  confirmed: 107
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "07652595a4b305ce8250854b5f9d6983"
+  contradicted: 1
+  attempts: 0
+  hash: "02065335591452acfc66a70b4cfd5b99"
 ---
 
 ## What's changing
@@ -144,7 +144,7 @@ The tenant-wide opt-in or opt-out that preview used is retired. After the Novemb
 **Change & support**
 
 - Spend: the Learn page says existing cost management policies might include the new service automatically when the **Allow new agents and services as they become available** option is on. The general spending-policy guide calls this setting **Auto-apply new services**. Review each policy before users start asking for advanced work.
-- Users who run out of credits get an explanation of what Copilot cannot complete, and users warned at 20% of their monthly limit may request more credits. Expect requests to reach IT.
+- Users who run out of credits get an explanation of what Copilot cannot complete, and users warned when 20% of their monthly credit limit remains may request more credits. Expect requests to reach IT.
 - Support: the preview PowerShell parameters retain their preview names and were honoured only until November 1, 2026, so scripts and runbooks that use them need updating.
 
 ## Cost and licensing
@@ -225,14 +225,8 @@ cost: Variable. Everyday use is included with the Microsoft 365 Copilot licence;
 impact: Medium. Copilot-licensed SharePoint users see it; site and content managers are the people most likely to reach the credit-consuming capabilities.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: status, archived, changes[4]; What's changing / record: Microsoft marked this roadmap item cancelled, so the briefing is archived for cancellation. | Found: "status": "Launched", "statusKey": "launched" | Fix: Set status to "launched", remove the archived object, and remove the November 19 changelog entry claiming Microsoft cancelled the item. Retain the body's statement that the roadmap status is Launched.
-- [contradicted, blocker] front matter: status / record: status is "cancelled" | Found: The roadmap record now gives status = "launched" (pipeline pre-check). | Fix: Rewrite the page from the current roadmap record (status is now "launched").
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Why it matters; Governance controls / applicability: After November 1, availability is managed using Site AI settings and Restricted Content Discovery. | Found: After November 1, 2026, manage availability using Site AI settings and Restricted Content Discovery. | Fix: Add: 'The separate Create sites with AI page still calls site creation preview and requires tenant opt-in using All Sites or Exclude Selected Sites, which conflicts with the get-started page's retirement guidance (https://learn.microsoft.com/sharepoint/create-sites-with-ai).' | Source: https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started
-- [supported, minor] Risk assessment: Change & support / behaviour: Users are warned at 20% of their monthly limit. | Found: When 20% of the monthly credit limit remains, Copilot notifies the user that usage-based features pause until the next month when the limit is reached. | Fix: Replace 'users warned at 20% of their monthly limit' with 'users warned when 20% of their monthly credit limit remains'. | Source: https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started
-- [supported, minor] controls[2].note; Governance controls table / command: The preview scope values are AllSites, IncludeSelectedSites, ExcludeSelectedSites and NoSites. | Found: `AllSites`: Copilot in SharePoint is available on all sites. - `IncludeSelectedSites`: Copilot in SharePoint is available only on sites specified in KnowledgeAgentSelectedSitesList. | Fix: Add to the row note: 'The Set-SPOTenant reference lists AllSites, ExcludeSelectedSites and NoSites, but not IncludeSelectedSites, unlike the get-started page (https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant?view=sharepoint-ps).' | Source: https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started
-- [contradicted, minor] Governance guidance: Before rollout and At rollout; Governance controls table / consistency: The spending-policy control that the governance checklist tells readers to configure is represented in the controls table. | Found: Checklist: 'Create or edit a spending policy'. Table: 'Whether Copilot in SharePoint appears on a site'; 'Removing Copilot in SharePoint and AI actions from selected sites'; 'Preview-era tenant and site availability scope for Copilot in SharePoint'. | Fix: Record that the spending-policy checklist steps covering service coverage, security-group scope, limits and alerts have no corresponding controls-table row. This correction does not require adding a row.
+- [contradicted, minor] Governance guidance: Before rollout and At rollout; Governance controls table / consistency: The checklist's spending-policy configuration instructions have no corresponding controls-table row. | Found: Create or edit a spending policy that selects Advanced work in SharePoint, scoped to a security group, with limits and alerts set ... Table: Site AI settings; Restricted Content Discovery; preview-era PowerShell scope. | Fix: Remove the checklist bullet beginning 'Create or edit a spending policy' and the Before rollout bullet beginning 'Review every existing spending policy'; those steps name a control absent from the table. Retain the verified spending-policy discussion in the body.
 -->

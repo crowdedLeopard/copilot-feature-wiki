@@ -2,56 +2,64 @@
   "slug": "dynamics-365-customer-insights-journeys-create-journeys-in-minutes-with-journey-creation-a",
   "roadmapId": 577418,
   "title": "Customer Insights - Journeys: Journey Creation Agent builds journeys from a plain-language description",
-  "status": "verified-with-gaps",
-  "date": "2026-11-18",
+  "status": "held",
+  "date": "2026-11-19",
   "version": 4,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 0,
-  "verifierVerdict": "pass",
+  "attempts": 1,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
   "notes": [],
-  "hold": null,
-  "counts": {
-    "claims": 93,
-    "confirmed": 93,
-    "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
-    "major": 0,
-    "minor": 1
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-19",
+    "reasons": [
+      "1 blocking finding (claim 55)"
+    ]
   },
-  "summary": "The briefing passes: the roadmap facts, enablement controls, automation calls and consumption licensing are supported. One minor clarification should acknowledge that Microsoft's feature page and responsible AI FAQ give different names for the journey review action.",
+  "counts": {
+    "claims": 96,
+    "confirmed": 95,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 5
+  },
+  "summary": "The statement that no price is published is too broad: Microsoft publishes a Copilot Studio pay-as-you-go price of $0.01 per credit, although credits consumed per journey remain undocumented. The roadmap facts, preview qualifications and principal enablement controls are supported; several control descriptions need minor clarification.",
   "claims": [
     {
       "n": 1,
+      "where": "front matter: roadmapId; What's changing",
+      "type": "record",
+      "claim": "Roadmap item 577418 concerns Journey Creation Agent in Dynamics 365 Customer Insights - Journeys.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 577418; \"title\": \"Dynamics 365 Customer Insights - Journeys: Create journeys in minutes with Journey Creation Agent\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap lists Microsoft Copilot (Microsoft 365) and Dynamics 365 Customer Insights - Journeys.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Customer Insights - Journeys\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
-      "where": "front matter: targetDate; What's changing; Why it matters",
-      "type": "record",
-      "claim": "The roadmap target is April CY2027, presented as a target rather than a commitment.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"April CY2027\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "front matter: previewDate; What's changing",
-      "type": "record",
-      "claim": "The roadmap preview date is June CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": \"June CY2026\"",
       "severity": null,
       "fix": null
     },
@@ -70,7 +78,7 @@
       "n": 5,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "claim": "The roadmap cloud is Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -81,7 +89,7 @@
       "n": 6,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists the Web platform.",
+      "claim": "The roadmap platform is Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -90,20 +98,53 @@
     },
     {
       "n": 7,
-      "where": "front matter: products",
+      "where": "front matter: targetDate; What's changing; Why it matters; Open questions",
       "type": "record",
-      "claim": "The record associates the item with Microsoft Copilot (Microsoft 365) and Dynamics 365 Customer Insights - Journeys.",
+      "claim": "April CY2027 is the roadmap target, not a committed availability date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Customer Insights - Journeys\"]",
+      "quote": "\"status\": \"In development\"; \"targetDate\": \"April CY2027\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 8,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Journey Creation Agent is admin-opt-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
+      "quote": "To use AI agents in Customer Insights – Journeys, a tenant administrator must first enable AI agents at the tenant level in the Power Platform Admin Center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: licensing.model; cost; rationale: cost",
+      "type": "licensing",
+      "claim": "Consumption licensing and a variable cost rating describe the documented Copilot credit billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites",
+      "quote": "AI capabilities in Dynamics 365 Customer Insights – Journeys support two billing models: ... Prepaid capacity ... Pay-as-you-go",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
       "where": "title; summary; What's changing",
       "type": "behaviour",
-      "claim": "Journey Creation Agent is an AI assistant in Customer Insights - Journeys that builds journey structures from natural language.",
+      "claim": "The agent drafts customer journeys from a marketing goal described in plain language.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent",
       "quote": "Journey Creation Agent is an AI-powered assistant in Dynamics 365 Customer Insights - Journeys that lets you build customer journey structures through natural language conversation.",
@@ -111,10 +152,10 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 12,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The proposed structure includes steps, timing and branching logic.",
+      "claim": "The proposed journey structure contains steps, timing and branching logic.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent",
       "quote": "Describe your journey in conversational language and the agent proposes a journey structure with steps, timing, and branching logic.",
@@ -122,7 +163,18 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 13,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "availability",
+      "claim": "Microsoft Learn documents the feature as a preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent",
+      "quote": "This is a preview feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Journey Creation Agent replaces the previously released Journey Copilot for journey creation.",
@@ -133,21 +185,10 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing; Risk assessment; Governance guidance",
-      "type": "availability",
-      "claim": "Learn documents the feature as a preview with documentation subject to change.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent",
-      "quote": "[This article is prerelease documentation and is subject to change.]\nThis is a preview feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
+      "n": 15,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The agent assembles journeys using existing segments and content assets in the environment.",
+      "claim": "The agent assembles journeys using segments and content assets already in the environment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent",
       "quote": "The agent works with segments and content assets that already exist in your Customer Insights - Journeys environment.",
@@ -155,7 +196,7 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 16,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "The agent does not create segments in this release.",
@@ -166,7 +207,7 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 17,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "The agent does not write content in this release.",
@@ -177,10 +218,10 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 18,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The agent presents a visual preview before publication.",
+      "claim": "The agent shows a visual preview before publishing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent",
       "quote": "Before you publish, the agent presents a visual preview of the proposed journey.",
@@ -188,7 +229,7 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 19,
       "where": "What's changing; Risk assessment: Change & support",
       "type": "admin-path",
       "claim": "Review and refine opens the proposal in the standard journey designer.",
@@ -196,24 +237,24 @@
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent",
       "quote": "When the proposed structure looks right, select **Review and refine** in the agent panel. The journey opens on the standard journey canvas with all proposed steps, conditions, and content assignments populated.",
       "severity": "minor",
-      "fix": "After the existing Review and refine sentence, add: \"The feature page calls this action Review and refine; the responsible AI FAQ calls its review option Review and publish.\" The differing wording is at https://learn.microsoft.com/dynamics365/customer-insights/journeys/faqs-journey-creation-agent, under Human review is required before publishing: \"Use the \\\"Review and publish\\\" option\"."
+      "fix": "After the Review and refine sentence, add: \"The feature page calls this action Review and refine; the responsible AI FAQ calls its review option Review and publish.\" The differing wording is at https://learn.microsoft.com/dynamics365/customer-insights/journeys/faqs-journey-creation-agent."
     },
     {
-      "n": 17,
+      "n": 20,
       "where": "What's changing; Risk assessment: Autonomy & actions; rationale: risk",
       "type": "behaviour",
-      "claim": "Nothing goes live until a person reviews and approves the journey and publishes it as usual.",
+      "claim": "Nothing goes live until the marketer approves and publishes the journey.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent",
-      "quote": "Nothing goes live until you approve it.\nWhen the journey structure is correct, you can publish the journey as you usually would.",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/faqs-journey-creation-agent",
+      "quote": "Nothing goes live until you review and explicitly publish the journey.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 18,
+      "n": 21,
       "where": "What's changing; Scope; Governance guidance",
       "type": "availability",
-      "claim": "The preview is available only in English.",
+      "claim": "Only English is supported during the preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent",
       "quote": "Journey Creation Agent is currently available only in English.",
@@ -221,10 +262,10 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 22,
       "where": "What's changing; Scope",
       "type": "date",
-      "claim": "Learn says North America and Oceania customers receive the agent with the June 2026 update.",
+      "claim": "Learn says customers in North America and Oceania receive the agent with the June 2026 update.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent",
       "quote": "If you're a customer in the North America (NAM) or Oceania (OCE) region, Journey Creation Agent will be available to you with the June 2026 update.",
@@ -232,8 +273,19 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "summary; Why it matters; Risk assessment; rationale: risk",
+      "n": 23,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The preview documentation is subject to change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent",
+      "quote": "[This article is prerelease documentation and is subject to change.]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "summary; Why it matters; Risk assessment: Data exposure; rationale: risk",
       "type": "behaviour",
       "claim": "Journey Creation Agent uses Anthropic models.",
       "status": "supported",
@@ -243,10 +295,10 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 25,
       "where": "Why it matters; Scope; Governance guidance",
       "type": "applicability",
-      "claim": "Anthropic must be allowed through both the Microsoft 365 and Power Platform admin centres for this agent.",
+      "claim": "Anthropic must be allowed through both the Microsoft 365 and Power Platform admin centers for this agent.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent",
       "quote": "Ensure your tenant is opted in through the Microsoft 365 admin center and Power Platform Admin Center to allow Anthropic to be used.",
@@ -254,10 +306,21 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 26,
+      "where": "Why it matters; Risk assessment: Data exposure; Scope; controls[5].note",
+      "type": "applicability",
+      "claim": "Move data across regions is an AI Hub prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
+      "quote": "The following prerequisites must be reviewed and accepted: ... Microsoft Copilot Studio capacity ... Move data across regions ... AI prompts",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
       "where": "Risk assessment: Data exposure; Governance guidance",
       "type": "availability",
-      "claim": "Anthropic models in Microsoft Copilot and Power Platform are excluded from the EU Data Boundary.",
+      "claim": "Anthropic models in Microsoft Copilot and Power Platform are currently excluded from the EU Data Boundary.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connect-to-ai-subprocessor",
       "quote": "Claude models deployed in Microsoft offerings such as Microsoft Copilot, Researcher, Copilot Studio, Power Platform, and Copilot in Microsoft 365 apps are currently excluded from the EU Data Boundary",
@@ -265,10 +328,10 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "Why it matters; Risk assessment: Data exposure",
+      "n": 28,
+      "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "AI agent data might be processed and stored outside the user's primary region.",
+      "claim": "AI Hub documentation says agent data might be processed outside the user's primary region.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites",
       "quote": "This means agent data might be processed and stored in regions outside the user's primary region, depending on service and infrastructure availability.",
@@ -276,7 +339,18 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 29,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "AI Hub documentation says agent data might be stored outside the user's primary region.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites",
+      "quote": "This means agent data might be processed and stored in regions outside the user's primary region, depending on service and infrastructure availability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Prompts containing personally identifiable information or sensitive data may be blocked.",
@@ -287,10 +361,10 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 31,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Users can use only segments and content assets their account has permission to access.",
+      "claim": "Users can use only segments and content assets their accounts have permission to access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent",
       "quote": "You can only use segments and content assets that your user account has permission to access.",
@@ -298,7 +372,7 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 32,
       "where": "Risk assessment: Security & identity; Cost and licensing; Scope; rationale: impact",
       "type": "role",
       "claim": "Creating and publishing journeys requires Marketing Manager, Marketing Professional or equivalent permissions.",
@@ -309,10 +383,10 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 33,
       "where": "Risk assessment: Security & identity; controls[1].note",
       "type": "role",
-      "claim": "AI Hub is available to the Admin role by default.",
+      "claim": "AI Hub is available to users with the Admin role by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
       "quote": "AI Hub is available to users with the **Admin** role by default.",
@@ -320,10 +394,10 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 34,
       "where": "Risk assessment: Security & identity; controls[1].note",
       "type": "role",
-      "claim": "Custom roles need agent settings permissions for msdynmkt_agentsettings.",
+      "claim": "Custom roles require agent settings permissions for msdynmkt_agentsettings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
       "quote": "If you use custom roles and permissions, add agent settings permissions for the *msdynmkt_agentsettings* entity.",
@@ -331,10 +405,10 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 35,
       "where": "Risk assessment: Security & identity; controls[3].note",
       "type": "behaviour",
-      "claim": "The Microsoft 365 admin centre can restrict AI provider access to users or Microsoft Entra ID security groups.",
+      "claim": "AI provider access can be restricted to assigned users or Microsoft Entra ID security groups.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connect-to-ai-subprocessor",
       "quote": "You can restrict user access to AI provider subprocessors by assigning permissions to specific users or Microsoft Entra ID security groups in the Microsoft 365 admin center.",
@@ -342,7 +416,7 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 36,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
       "claim": "The Anthropic page says only assigned users can use agents relying on a provider when provider access is restricted.",
@@ -353,7 +427,7 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 37,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "The agent may match a similarly named segment or trigger.",
@@ -364,10 +438,10 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 38,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "The agent may omit steps for channels that have not been configured.",
+      "claim": "The agent may omit steps for channels that are not configured.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent",
       "quote": "If you referenced a channel not yet configured (for example, push notifications when no push app is set up), the agent may omit those steps.",
@@ -375,18 +449,29 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 39,
       "where": "Risk assessment: Autonomy & actions; Scope",
       "type": "behaviour",
-      "claim": "Journeys can start from Dynamics 365 Sales or Customer Service events.",
+      "claim": "Journeys can start from Dynamics 365 Sales events.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent",
-      "quote": "You can describe journeys that start from events in Dynamics 365 Sales—such as when an opportunity is created or stalls—or from Dynamics 365 Customer Service events, such as when a case is resolved.",
+      "quote": "Dynamics 365 Sales: Journeys can be triggered by sales milestones such as opportunity creation, stalled deals, or won or lost outcomes",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
+      "n": 40,
+      "where": "Risk assessment: Autonomy & actions; Scope",
+      "type": "behaviour",
+      "claim": "Journeys can start from Dynamics 365 Customer Service events.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent",
+      "quote": "Dynamics 365 Customer Service: Journeys can start from service events such as case creation or resolution",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
       "where": "Risk assessment: Autonomy & actions; Scope",
       "type": "applicability",
       "claim": "Sales and Customer Service integrations require those applications in the deployment.",
@@ -397,10 +482,10 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 42,
       "where": "Risk assessment: Autonomy & actions; Scope",
       "type": "applicability",
-      "claim": "Sales and Customer Service integrations require an administrator to configure the relevant connections.",
+      "claim": "Sales and Customer Service integrations require connections configured by an administrator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent",
       "quote": "the relevant connections are configured by your administrator.",
@@ -408,10 +493,10 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 43,
       "where": "Risk assessment: Change & support",
       "type": "availability",
-      "claim": "Microsoft says the preview is not meant for production use.",
+      "claim": "Microsoft says preview features are not meant for production use.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent",
       "quote": "Preview features aren’t meant for production use and might have restricted functionality.",
@@ -419,10 +504,10 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 44,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Refreshing the creation experience discards the current proposal.",
+      "claim": "Refreshing during the creation experience discards the current proposal.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent",
       "quote": "Refreshing the page while on the creation experience discards the current proposal.",
@@ -430,10 +515,10 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 45,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "A proposal already transferred through Review and refine is preserved on refresh.",
+      "claim": "Work survives refresh after transfer to the journey builder through Review and refine.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent",
       "quote": "If the proposal was already transferred to the journey builder by selecting **Review and refine**, your work is preserved.",
@@ -441,21 +526,21 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 46,
       "where": "Risk assessment: Change & support; controls[5].note; Governance controls",
       "type": "behaviour",
-      "claim": "Withdrawal of a mandatory prerequisite automatically disables all enabled agents.",
+      "claim": "All enabled agents are automatically disabled if a mandatory prerequisite is no longer accepted.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
-      "quote": "If any mandatory prerequisite is no longer accepted in the Power Platform Admin Center:\n- All enabled agents are *automatically disabled*.",
+      "quote": "If any mandatory prerequisite is no longer accepted in the Power Platform Admin Center: ... All enabled agents are *automatically disabled*.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 40,
+      "n": 47,
       "where": "Risk assessment: Change & support; Governance controls",
       "type": "behaviour",
-      "claim": "Agents remain unavailable until the withdrawn prerequisite is accepted again.",
+      "claim": "Those agents remain unavailable until the prerequisite is accepted again.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
       "quote": "Agents remain unavailable until the prerequisite is accepted again.",
@@ -463,8 +548,8 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "summary; Cost and licensing; Why it matters; rationale: cost",
+      "n": 48,
+      "where": "summary; licensing.notes; Cost and licensing; rationale: cost",
       "type": "cost",
       "claim": "Journey Creation Agent consumes Copilot credits.",
       "status": "supported",
@@ -474,10 +559,10 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 49,
       "where": "Cost and licensing",
-      "type": "behaviour",
-      "claim": "AI Hub describes agents as available out of the box and consuming Copilot credits.",
+      "type": "availability",
+      "claim": "AI Hub says its agents are available out of the box.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
       "quote": "Agents are available out of the box and consume Copilot credits.",
@@ -485,41 +570,41 @@
       "fix": null
     },
     {
-      "n": 43,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "n": 50,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "Prepaid Copilot Studio message pack capacity is a supported billing model for these AI capabilities.",
+      "claim": "Customer Insights - Journeys AI capabilities support prepaid Copilot Studio message pack capacity.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites",
-      "quote": "**Prepaid capacity**: Uses Copilot Studio message pack subscriptions, which are a licensing option for Microsoft Copilot Studio that you purchase in advance.",
+      "quote": "Prepaid capacity: Uses Copilot Studio message pack subscriptions, which are a licensing option for Microsoft Copilot Studio that you purchase in advance.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 44,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "n": 51,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "Pay-as-you-go charges for actual messages consumed by agents during the month.",
+      "claim": "The prerequisites page describes pay-as-you-go charges based on messages consumed during the month.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites",
-      "quote": "**Pay-as-you-go**: Charges for the actual number of messages consumed by agents during the month.",
+      "quote": "Pay-as-you-go: Charges for the actual number of messages consumed by agents during the month.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 45,
-      "where": "front matter: licensing.notes; Cost and licensing",
+      "n": 52,
+      "where": "licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "The feature page's prerequisites name AI Hub enablement and journey permissions but no licence.",
+      "claim": "The feature page's prerequisites name permissions and AI Hub enablement, but not a licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent",
-      "quote": "Enable Journey Creation Agent using [AI Hub](ai-hub).\n**Set up permissions**: A Marketing Manager or Marketing Professional role, or equivalent permissions are required to create and publish journeys.",
+      "quote": "Before you use Journey Creation Agent, make sure you: ... Enable Journey Creation Agent using AI Hub. ... Set up permissions",
       "severity": null,
       "fix": null
     },
     {
-      "n": 46,
-      "where": "front matter: licensing.notes; Cost and licensing",
+      "n": 53,
+      "where": "licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "The responsible AI FAQ requires a Dynamics 365 Customer Insights - Journeys license.",
       "status": "supported",
@@ -529,32 +614,32 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost; Open questions",
+      "n": 54,
+      "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
       "type": "absence",
-      "claim": "The number of Copilot credits per journey creation is not published as of November 2026.",
+      "claim": "A number of Copilot credits consumed per journey creation is not published as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Journey Creation Agent pricing credits per journey general availability April 2027 billing; \"Journey Creation Agent\" \"credits\" \"price\" rate per journey. Opened journey-creation-agent, ai-hub-prerequisites and microsoft-copilot-studio/billing-licensing; no agent-specific rate.",
+      "quote": "Searched: 'Journey Creation Agent pricing credits rate per journey'; opened journey-creation-agent, faqs-journey-creation-agent, ai-hub-prerequisites, Copilot Studio billing-licensing; read requirements-messages-management search excerpts. No per-journey rate found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "No price specific to journey creation is published at the time of writing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Journey Creation Agent\" \"credits\" \"price\" rate per journey. Opened journey-creation-agent, faqs-journey-creation-agent, ai-hub-prerequisites and microsoft-copilot-studio/billing-licensing; no journey-specific price.",
-      "severity": null,
-      "fix": null
+      "n": 55,
+      "where": "Cost and licensing: second paragraph",
+      "type": "cost",
+      "claim": "Any price is not yet published at the time of writing in November 2026.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters",
+      "quote": "The Copilot Studio pay-as-you-go meter counts the total number of Copilot Credits consumed by agents. ... $0.01 per credit",
+      "severity": "blocker",
+      "fix": "Replace \"The number of credits one journey draws, and any price, are not yet published at the time of writing (November 2026).\" with \"The number of credits one journey draws is not yet published at the time of writing (November 2026).\" The narrower gap is supported; the general meter price is published at https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters."
     },
     {
-      "n": 49,
+      "n": 56,
       "where": "Cost and licensing; Governance guidance",
       "type": "applicability",
-      "claim": "Administrators allocate Copilot Studio capacity to the Customer Insights - Journeys environment in Power Platform admin center.",
+      "claim": "Copilot Studio capacity for these agents is allocated per environment in the Power Platform admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites",
       "quote": "Before using AI agents, administrators need to make sure enough Copilot Studio capacity is allocated to the environment. Capacity allocation is managed in the Power Platform Admin Center.",
@@ -562,43 +647,43 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 57,
       "where": "Cost and licensing",
-      "type": "applicability",
-      "claim": "AI Hub directs administrators to configure message consumption limits to control Journey Creation Agent usage.",
+      "type": "behaviour",
+      "claim": "AI Hub tells administrators to configure message consumption limits to control agent usage.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
-      "quote": "To control agent usage, configure *message consumption limits*. For more information, see [Manage capacity](/en-us/power-platform/admin/manage-copilot-studio-messages-capacity#manage-capacity).",
+      "quote": "To control agent usage, configure *message consumption limits*. For more information, see Manage capacity.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 51,
+      "n": 58,
       "where": "Cost and licensing",
       "type": "behaviour",
-      "claim": "Draw from the available capacity in my tenant permits consumption of unallocated tenant capacity after an environment exhausts its allocation.",
+      "claim": "Enabling Draw from the available capacity in my tenant permits use of unallocated tenant capacity after the allocation is exhausted.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
-      "quote": "when it's enabled, the environment continues to draw from unallocated tenant capacity after its own allocation is exhausted",
+      "quote": "Selected: after the environment's allocated credits are consumed, it continues to draw from your tenant's unallocated capacity.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 52,
+      "n": 59,
       "where": "Cost and licensing",
       "type": "behaviour",
-      "claim": "The allocation tutorial describes disabling tenant draw as capping the environment at its allocation.",
+      "claim": "The allocation tutorial describes clearing the tenant-draw option as capping the environment at its allocation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
-      "quote": "when it's disabled, the environment is capped at its allocation.",
+      "quote": "Cleared: the environment is capped at its allocation and stops consuming when the allocation is exhausted.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 53,
+      "n": 60,
       "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Bill to my pay-as-you-go billing plan is a separate capacity overage option.",
+      "type": "behaviour",
+      "claim": "Bill to my pay-as-you-go billing plan is a separate overage source.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity",
       "quote": "Select **Bill to my pay-as-you-go billing plan** to let the environment continue usage through the selected billing plan.",
@@ -606,54 +691,65 @@
       "fix": null
     },
     {
-      "n": 54,
+      "n": 61,
       "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "An environment can consume only its allocated prepaid credits when no overage source is enabled.",
+      "type": "behaviour",
+      "claim": "Without an enabled overage source, an environment can consume only its allocated prepaid credits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity",
-      "quote": "If no overage source is enabled, the environment can consume only its allocated prepaid credits.",
+      "quote": "If no overage source is enabled, the environment can consume only its allocated prepaid credits. Experiences that require credits can stop working after that allocation is exhausted.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 55,
+      "n": 62,
       "where": "Cost and licensing; controls[2].note; Open questions",
       "type": "absence",
-      "claim": "Beyond directing readers to general capacity management, the documentation does not expressly describe this agent's enforcement of the tenant-draw credit cap.",
+      "claim": "The linked general allocation documentation does not explicitly describe a Journey Creation Agent-specific spending cap.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Journey Creation Agent pricing credits per journey general availability April 2027 billing. Opened journey-creation-agent, ai-hub, ai-hub-prerequisites, manage-copilot-studio-messages-capacity and programmability-tutorial-manage-copilot-credit-allocations; no agent-specific cap enforcement.",
+      "quote": "Searched: 'Journey Creation Agent Draw from limit credits capacity cap'; opened journey-creation-agent, ai-hub-prerequisites, manage-copilot-studio-messages-capacity and the allocation tutorial. General capacity controls are linked; no agent-specific cap guarantee found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 56,
+      "n": 63,
       "where": "Cost and licensing",
       "type": "absence",
-      "claim": "The cited prerequisite pages state no separate cost for allowing cross-region data movement.",
+      "claim": "The cited prerequisite pages state no separate cost for enabling cross-region data movement.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Dynamics 365 Journey Creation Agent AI Hub prerequisites Copilot credits. Opened ai-hub-prerequisites and geographical-availability-copilot; neither states a separate charge for the data-movement permission.",
+      "quote": "Searched: 'AI Hub prerequisites Anthropic Move data across regions cost charge pricing'; opened ai-hub-prerequisites and geographical-availability-copilot. Neither states a separate charge for accepting the data-movement prerequisite.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 57,
+      "n": 64,
       "where": "Cost and licensing",
       "type": "absence",
       "claim": "The cited pages state no separate cost for allowing Anthropic models.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Journey Creation Agent pricing credits per journey general availability April 2027 billing. Opened journey-creation-agent, connect-to-ai-subprocessor and allow-llm-generative-responses; no separate charge for enabling the provider is stated.",
+      "quote": "Searched: 'AI Hub prerequisites Anthropic Move data across regions cost charge pricing'; opened ai-hub-prerequisites, connect-to-ai-subprocessor and allow-llm-generative-responses. No separate price for enabling the provider is stated.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 58,
+      "n": 65,
       "where": "Scope",
       "type": "availability",
-      "claim": "Learn specifies update 1.1.65002.153 for using Journey Creation Agent.",
+      "claim": "The feature page requires the 1.1.65002.153 update.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent",
+      "quote": "Journey Creation Agent is available as part of the 1.1.65002.153 update.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Scope",
+      "type": "admin-path",
+      "claim": "Settings > Versions is the documented route to upgrade the application.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent",
       "quote": "To use Journey Creation Agent, navigate to **Settings** > **Versions** and upgrade to 1.1.65002.153.",
@@ -661,32 +757,21 @@
       "fix": null
     },
     {
-      "n": 59,
-      "where": "Scope",
-      "type": "admin-path",
-      "claim": "Settings > Versions is the documented update path.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent",
-      "quote": "navigate to **Settings** > **Versions** and upgrade to 1.1.65002.153.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
+      "n": 67,
       "where": "Scope",
       "type": "availability",
-      "claim": "The documentation links to Microsoft's availability reports for geographical and language availability.",
+      "claim": "The Microsoft pages link to product availability reports for geographical and language availability.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/geographical-availability-copilot",
-      "quote": "Learn more about product-specific Copilot availability in the [Copilot international availability report]",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites",
+      "quote": "Geographical availability and languages supported ... AI agents in Customer Insights - Journeys are available in the geographical regions listed in Dynamics 365, Power Platform, and Copilot Studio product availability.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 61,
+      "n": 68,
       "where": "Scope",
       "type": "record",
-      "claim": "The roadmap record lists no US Government cloud.",
+      "claim": "The roadmap record does not list a US Government cloud.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -694,7 +779,7 @@
       "fix": null
     },
     {
-      "n": 62,
+      "n": 69,
       "where": "Scope",
       "type": "availability",
       "claim": "Claude models are unavailable for federal GCC customers and all GCC High and DoD customers.",
@@ -705,43 +790,32 @@
       "fix": null
     },
     {
-      "n": 63,
-      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
-      "type": "default",
-      "claim": "The agent is admin-opt-in: it must be enabled by an administrator before use.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
-      "quote": "To use AI agents in Customer Insights – Journeys, a tenant administrator must first enable AI agents at the tenant level in the Power Platform Admin Center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 64,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The licensing model is consumption.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent",
-      "quote": "Journey Creation Agent uses Copilot credits.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 65,
-      "where": "controls[0].ui; Governance controls table; Governance guidance",
+      "n": 70,
+      "where": "controls[0].ui; Governance controls; Governance guidance",
       "type": "admin-path",
-      "claim": "The environment or environment-group agent switch is at Power Platform admin center > Copilot > Settings > Dynamics 365 Customer Insights – Journeys > AI agents > Use AI agents.",
+      "claim": "Use AI agents is under Power Platform admin center > Copilot > Settings > Dynamics 365 Customer Insights - Journeys > AI agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
-      "quote": "Go to **Power Platform Admin Center** > **Copilot** > **Settings**.\nScroll to the **Dynamics 365 Customer Insights – Journeys** section.\nSelect **AI agents**.\nSet **Use AI agents** to **On** for the selected environment or environment group.",
+      "quote": "Go to **Power Platform Admin Center** > **Copilot** > **Settings**. ... Scroll to the **Dynamics 365 Customer Insights – Journeys** section. ... Select **AI agents**. ... Set **Use AI agents** to **On** for the selected environment or environment group.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 66,
-      "where": "controls[0].note; Governance controls table",
+      "n": 71,
+      "where": "controls[0].api; Governance controls: closing automation statement",
+      "type": "absence",
+      "claim": "No automation operation is documented for the Customer Insights - Journeys Use AI agents setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Power Platform Use AI agents Customer Insights API PowerShell tenant settings'; opened ai-hub and list-tenantsettings; read Set-TenantSettings and pac admin search excerpts. No documented property or operation for this switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "controls[0].note; Governance controls",
       "type": "role",
-      "claim": "A tenant administrator enables the Power Platform agent setting.",
+      "claim": "A tenant administrator enables or disables AI agents through the tenant-level governance setting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
       "quote": "a tenant administrator must first enable AI agents at the tenant level in the Power Platform Admin Center.",
@@ -749,21 +823,21 @@
       "fix": null
     },
     {
-      "n": 67,
+      "n": 73,
       "where": "controls[0].note; Governance controls",
       "type": "behaviour",
-      "claim": "Disabling AI agents in Power Platform admin center immediately disables active agents.",
+      "claim": "Disabling AI agents in the Power Platform admin center immediately disables all active agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
-      "quote": "If a tenant administrator disables AI agents in the **Power Platform Admin Center**:\n- All active agents are **immediately disabled**.",
+      "quote": "If a tenant administrator disables AI agents in the **Power Platform Admin Center**: ... All active agents are **immediately disabled**.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 68,
+      "n": 74,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Disabling AI agents at tenant level prevents new agents being created or configured.",
+      "claim": "Disabling AI agents prevents new agents from being created or configured.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
       "quote": "New agents can't be created or configured.",
@@ -771,76 +845,65 @@
       "fix": null
     },
     {
-      "n": 69,
-      "where": "controls[0].api; Governance controls closing paragraph",
-      "type": "absence",
-      "claim": "Microsoft documents no automation operation for the Customer Insights - Journeys Use AI agents switch.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Customer Insights\" \"Use AI agents\" \"API\"; \"Use AI agents\" \"Customer Insights\" \"PowerShell\" \"Power Platform API\" \"pac\". Opened ai-hub and power-platform/admin/list-tenantsettings; no operation for this switch.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 70,
-      "where": "controls[1].ui; Governance controls table",
+      "n": 75,
+      "where": "controls[1].ui; Governance controls; Governance guidance",
       "type": "admin-path",
-      "claim": "The individual enablement path is Customer Insights - Journeys > Settings > AI Hub > Add and manage agents > Add an agent > Journey Creation Agent > Overview tab > Enable.",
+      "claim": "Enable Journey Creation Agent through Settings > AI Hub > Add and manage agents > Add an agent > Journey Creation Agent > Overview tab > Enable.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
-      "quote": "go to **Settings** and select **AI Hub** in the left navigation.\nIn **AI Hub**, select **Add and manage agents**.\nSelect **Add an agent** and choose **Journey Creation Agent**.\nIn the **Overview tab**, review how the agent works.\nTo activate the agent, select **Enable**.",
+      "quote": "To open AI Hub, go to **Settings** and select **AI Hub** in the left navigation. ... select **Add and manage agents**. ... Select **Add an agent** and choose **Journey Creation Agent**. ... In the **Overview tab** ... To activate the agent, select **Enable**.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 71,
+      "n": 76,
+      "where": "controls[1].api; Governance controls: closing automation statement",
+      "type": "absence",
+      "claim": "No automation operation is documented for enabling Journey Creation Agent.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'msdynmkt_agentsettings Web API Journey Creation Agent enable AI agents API' and 'msdynmkt_agentsettings table entity reference'; opened ai-hub and read returned entity excerpts. Results for msdyn_agentsetting do not document this agent's enablement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
       "where": "controls[1].note; Governance controls",
       "type": "admin-path",
-      "claim": "An individual agent can be disabled in AI Hub's Add and manage agents area by selecting it and setting its status to Disabled.",
+      "claim": "An individual agent can be disabled by selecting it in AI Hub's Add and manage agents and setting its status to Disabled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
-      "quote": "In AI Hub, go to **Add and manage agents**.\nSelect the agent.\nSet the agent status to **Disabled**.",
+      "quote": "In AI Hub, go to **Add and manage agents**. ... Select the agent. ... Set the agent status to **Disabled**.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 72,
-      "where": "controls[1].api; Governance controls closing paragraph",
-      "type": "absence",
-      "claim": "Microsoft documents no automation operation for enabling Journey Creation Agent in AI Hub.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"msdynmkt_agentsettings\" \"Web API\" enable Journey Creation Agent; \"msdynmkt_agentsettings\" Dataverse reference. Opened ai-hub and journey-creation-agent; results describe msdyn_agentsetting, not this marketing entity or its enablement operation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 73,
-      "where": "controls[2].ui; Governance controls table",
+      "n": 78,
+      "where": "controls[2].ui; Governance controls",
       "type": "admin-path",
-      "claim": "Credit allocation is at Power Platform admin center > Licensing > Products > Copilot Studio > Manage Copilot Credits > environment.",
+      "claim": "Environment credit allocation and tenant-pool draw are managed through Licensing > Products > Copilot Studio > Manage Copilot Credits > environment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
-      "quote": "In the navigation pane, select **Licensing**.\nUnder **Products**, select **Copilot Studio**, and then select **Manage Copilot Credits**.\nSelect the environment that you want to manage.",
-      "severity": null,
-      "fix": null
+      "quote": "Under **Products**, select **Copilot Studio**, and then select **Manage Copilot Credits**. ... Select the environment ... Under **Capacity overages**, select or clear **Draw from the available capacity in my tenant**",
+      "severity": "minor",
+      "fix": "Keep the documented route and clarify the note: \"Enter credits under Allocate capacity; under Capacity overages, select or clear Draw from the available capacity in my tenant. If a published environment group rule governs tenant-capacity draw, change and republish that rule instead; per-environment updates are rejected.\" This qualification is on the cited allocation tutorial."
     },
     {
-      "n": 74,
-      "where": "controls[2].api; Governance controls table",
+      "n": 79,
+      "where": "controls[2].api; Governance controls",
       "type": "command",
-      "claim": "PUT /licensing/allocationsV2?api-version=2024-10-01 accepts scope.environmentId and allocatedEntitlements with MCSMessages, allocation.quantity and enforcementRules containing TenantPool enabled false.",
+      "claim": "PUT /licensing/allocationsV2?api-version=2024-10-01 sets MCSMessages allocation quantity and TenantPool enforcement for an environment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
-      "quote": "All programmatic examples in this article use API version `2024-10-01`.\nInvoke-RestMethod -Method Put\n-Uri \"$apiBaseUrl/licensing/allocationsV2?api-version=$apiVersion\"\n@{ ruleType = \"TenantPool\"; enabled = $false }",
-      "severity": null,
-      "fix": null
+      "quote": "scope = @{ environmentId = $environmentId } ... entitlementId = \"MCSMessages\" ... allocation = @{ quantity = 5000 } ... @{ ruleType = \"TenantPool\"; enabled = $false } ... -Method Put ... /licensing/allocationsV2?api-version=$apiVersion",
+      "severity": "minor",
+      "fix": "Set controls[2].api.call to \"PUT /licensing/allocationsV2?api-version=2024-10-01\". In the row note state: \"The body identifies scope.environmentId and sets allocatedEntitlements[].allocation.quantity for entitlementId MCSMessages; enforcementRules with ruleType TenantPool and enabled false disables tenant-pool draw.\" Remove the request body from the rendered call as well."
     },
     {
-      "n": 75,
-      "where": "controls[2].note; Governance controls table",
+      "n": 80,
+      "where": "controls[2].note; Governance controls",
       "type": "role",
-      "claim": "Power Platform Administrator or Global Administrator can manage credit allocations.",
+      "claim": "Power Platform Administrator or Global Administrator can manage the credit allocations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
       "quote": "Sign in as a user with the **Power Platform Administrator** or **Global Administrator** role, or an equivalent role that can manage licensing and capacity.",
@@ -848,131 +911,120 @@
       "fix": null
     },
     {
-      "n": 76,
-      "where": "controls[3].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Tenant Anthropic opt-in is at Microsoft 365 admin center > Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connect-to-ai-subprocessor",
-      "quote": "select **Copilot** > **Settings** > **View all**.\nSelect **AI providers operating as Microsoft subprocessors**.\nOn the **AI providers operating as Microsoft subprocessors** page, under **Available subprocessors for your organization**, select **Anthropic**, and **Save**.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 77,
-      "where": "controls[3].note; Governance guidance; Governance controls",
-      "type": "role",
-      "claim": "AI Administrator or Global Administrator can configure tenant Anthropic access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connect-to-ai-subprocessor",
-      "quote": "You must be a member of the [AI Administrator] or [Global Administrator] role to perform this task.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 78,
-      "where": "controls[3].api; Governance controls closing paragraph",
-      "type": "absence",
-      "claim": "Microsoft documents no automation operation for the tenant Anthropic provider setting.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Anthropic provider enable disable Microsoft 365 Copilot Microsoft Graph API Power Platform environment PowerShell settings; \"Anthropic\" \"API\" \"settings\" \"Graph\" provider admin. Opened connect-to-ai-subprocessor; no corresponding Graph operation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 79,
-      "where": "controls[4].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Environment provider settings are at Power Platform admin center > Manage > Environments > environment > Settings > Product > Features.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses",
-      "quote": "select **Manage**.\nIn the **Manage** pane, select **Environments**, and then select the environment.\nOn the command bar, select **Settings**.\nOn the **Settings** page, select **Product** > **Features**.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 80,
-      "where": "controls[4].note; Governance controls",
-      "type": "applicability",
-      "claim": "Enabling the provider in Microsoft 365 is required first and does not automatically allow it in Power Platform.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses",
-      "quote": "First, a Microsoft 365 AI administrator enables access to a model provider. Then, a Power Platform system admin allows the provider's models in an environment or environment group. Enabling a provider in Microsoft 365 doesn't automatically make its models available in Power Platform.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 81,
-      "where": "controls[4].note; Governance controls",
-      "type": "applicability",
-      "claim": "Environment groups use the Power Platform Anthropic rule to govern Anthropic models.",
+      "where": "controls[3].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Tenant Anthropic access is under Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses",
-      "quote": "**Power Platform Anthropic** | Controls Power Platform Anthropic models.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connect-to-ai-subprocessor",
+      "quote": "select **Copilot** > **Settings** > **View all**. ... Select **AI providers operating as Microsoft subprocessors**. ... under **Available subprocessors for your organization**, select **Anthropic**",
       "severity": null,
       "fix": null
     },
     {
       "n": 82,
-      "where": "Governance controls",
-      "type": "role",
-      "claim": "A Power Platform system admin allows provider models in an environment or environment group.",
+      "where": "controls[3].api; Governance controls: closing automation statement",
+      "type": "absence",
+      "claim": "No automation operation is documented for the Microsoft 365 Anthropic provider-access setting.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses",
-      "quote": "a Power Platform system admin allows the provider's models in an environment or environment group.",
+      "source": null,
+      "quote": "Searched: 'Anthropic Microsoft Graph settings provider access' and 'Anthropic provider Microsoft 365 Power Platform enable models API Graph PowerShell settings'; opened connect-to-ai-subprocessor. No Graph or PowerShell operation for this setting found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 83,
-      "where": "controls[4].api; Governance controls closing paragraph",
-      "type": "absence",
-      "claim": "Microsoft documents no automation operation for the Power Platform Anthropic environment setting.",
+      "where": "controls[3].note; Governance controls; Governance guidance",
+      "type": "role",
+      "claim": "AI Administrator or Global Administrator can change the Microsoft 365 Anthropic setting.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Anthropic\" \"PowerShell\" \"environment\" models; \"Anthropic\" \"Power Platform\" \"API\" \"TenantSettings\". Opened allow-llm-generative-responses, list-tenantsettings and organization Web API reference; no corresponding provider setting operation.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connect-to-ai-subprocessor",
+      "quote": "You must be a member of the AI Administrator or Global Administrator role to perform this task.",
       "severity": null,
       "fix": null
     },
     {
       "n": 84,
-      "where": "controls[5].ui; Governance controls table",
+      "where": "controls[4].ui; Governance controls",
       "type": "admin-path",
-      "claim": "Cross-region consent is at Power Platform admin center > Manage > Environments > environment > Generative AI features > Edit > Move data across regions.",
+      "claim": "Environment external-model controls are reached through Manage > Environments > environment > Settings > Product > Features.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites",
-      "quote": "select **Manage**.\nSelect **Environments**.\nOn the **Environments** page, select the target environment.\nIn the environment details page, locate the **Generative AI features** card and select **Edit**.\nReview the terms of use.\nSelect the **Move data across regions** checkbox.",
-      "severity": null,
-      "fix": null
+      "source": "https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses",
+      "quote": "select **Manage**. ... select **Environments**, and then select the environment. ... select **Settings**. ... select **Product** > **Features**. ... turn each applicable model provider setting **On** or **Off**.",
+      "severity": "minor",
+      "fix": "Retain the documented path and add to controls[4].note: \"On the Features page, turn the applicable model provider setting On or Off.\" Carry this note into the rendered table; the current path stops at the page rather than explaining the setting there."
     },
     {
       "n": 85,
-      "where": "controls[5].api; Governance controls table; Governance controls closing paragraph",
-      "type": "command",
-      "claim": "Set-PowerPlatformGenerativeAiSettings -EnvironmentName <environment-id> -CrossGeoDataMovement $true enables cross-geo data movement.",
+      "where": "controls[4].api; Governance controls: closing automation statement",
+      "type": "absence",
+      "claim": "No automation operation is documented for allowing Anthropic models in the Power Platform environment.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-powerplatformgenerativeaisettings?view=pa-ps-latest",
-      "quote": "Set-PowerPlatformGenerativeAiSettings\n    -EnvironmentName <String>\n    [-CrossGeoDataMovement <Boolean>]\n-CrossGeoDataMovement\nEnables or disables cross-geo data movement.",
+      "source": null,
+      "quote": "Searched: 'Anthropic organization Web API enable models' and 'Anthropic Power Platform pac admin PowerShell API enable'; opened allow-llm-generative-responses and searched the organization reference for anthropic/externalmodel. No setting operation found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 86,
-      "where": "Governance controls closing paragraph",
-      "type": "command",
-      "claim": "Set-PowerPlatformGenerativeAiSettings belongs to Microsoft.PowerApps.Administration.PowerShell.",
+      "where": "controls[4].note; Governance controls",
+      "type": "applicability",
+      "claim": "The Power Platform Anthropic environment group rule governs Anthropic models across an environment group.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-powerplatformgenerativeaisettings?view=pa-ps-latest",
-      "quote": "Module:\nMicrosoft.PowerApps.Administration.PowerShell Module",
+      "source": "https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses",
+      "quote": "If an environment is part of an environment group, use environment group rules to manage external models across the group. ... **Power Platform Anthropic** ... Controls Power Platform Anthropic models.",
       "severity": null,
       "fix": null
     },
     {
       "n": 87,
-      "where": "controls[5].note; Governance controls table",
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Microsoft describes the Power Platform side as an action by a Power Platform system admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses",
+      "quote": "Then, a Power Platform system admin allows the provider's models in an environment or environment group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 88,
+      "where": "controls[4].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Enabling a provider in Microsoft 365 does not automatically make its models available in Power Platform.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses",
+      "quote": "Enabling a provider in Microsoft 365 doesn't automatically make its models available in Power Platform.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 89,
+      "where": "controls[5].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Move data across regions is at Manage > Environments > environment > Generative AI features > Edit > Move data across regions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites",
+      "quote": "select **Manage**. ... Select **Environments**. ... select the target environment. ... locate the **Generative AI features** card and select **Edit**. ... Select the **Move data across regions** checkbox.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 90,
+      "where": "controls[5].api; Governance controls",
+      "type": "command",
+      "claim": "Microsoft.PowerApps.Administration.PowerShell provides Set-PowerPlatformGenerativeAiSettings -EnvironmentName <environment-id> -CrossGeoDataMovement $true.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-powerplatformgenerativeaisettings?view=pa-ps-latest",
+      "quote": "Module: Microsoft.PowerApps.Administration.PowerShell Module ... -EnvironmentName ... Specifies the ID of the environment you want to modify. ... -CrossGeoDataMovement ... Enables or disables cross-geo data movement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 91,
+      "where": "controls[5].note; Governance controls",
       "type": "availability",
-      "claim": "The data-movement checkbox is not displayed for environments in U.S. or government cloud regions.",
+      "claim": "The cross-region checkbox is not displayed for environments in U.S. or government cloud regions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/geographical-availability-copilot",
       "quote": "The **Move data across regions** checkbox isn't displayed for environments in U.S. or government cloud regions.",
@@ -980,30 +1032,30 @@
       "fix": null
     },
     {
-      "n": 88,
-      "where": "controls[6].ui; Governance controls table",
+      "n": 92,
+      "where": "controls[6].ui; Governance controls; Scope",
       "type": "admin-path",
-      "claim": "AI prompts are enabled at Power Platform admin center > Environments > environment > Settings > Product > Features > AI Builder > AI prompts.",
+      "claim": "The AI prompts prerequisite is at Environments > environment > Settings > Product > Features > AI Builder > AI prompts.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites",
-      "quote": "select **Environments** > [*select an environment*] > **Settings** > **Product** > **Features**.\nOn the **Features** settings page under **AI Builder**, enable the **AI prompts** toggle.",
+      "quote": "select **Environments** > [select an environment] > **Settings** > **Product** > **Features**. ... under **AI Builder**, enable the **AI prompts** toggle.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 89,
-      "where": "controls[6].api; Governance controls table; Governance controls closing paragraph",
+      "n": 93,
+      "where": "controls[6].api; Governance controls",
       "type": "command",
       "claim": "PATCH <organization-uri>/api/data/v9.2/organizations(<organization-id>) with aipromptsenabled true enables AI prompts.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/organization",
-      "quote": "Entity set path: [organization URI]/api/data/v9.2/organizations\nPrimary key: organizationid\nOperations supported: GETPATCH\n| aipromptsenabled | Edm.Boolean | Indicates whether AI Prompts feature is enabled.",
-      "severity": null,
-      "fix": null
+      "quote": "Entity set path: [organization URI]/api/data/v9.2/organizations ... Primary key: organizationid ... Operations supported: GETPATCH ... aipromptsenabled | Edm.Boolean | Indicates whether AI Prompts feature is enabled.",
+      "severity": "minor",
+      "fix": "Set controls[6].api.call to \"PATCH <organization-uri>/api/data/v9.2/organizations(<organization-id>)\" and add \"The request body sets aipromptsenabled to true to enable AI prompts\" to the note. Remove the request body from the rendered call as well."
     },
     {
-      "n": 90,
-      "where": "controls[6].note; Governance controls table",
+      "n": 94,
+      "where": "controls[6].note; Governance controls",
       "type": "applicability",
       "claim": "An AI prompts environment group rule can govern AI prompts availability.",
       "status": "supported",
@@ -1013,48 +1065,37 @@
       "fix": null
     },
     {
-      "n": 91,
-      "where": "Scope; Governance guidance; controls[5].note; controls[6].note",
-      "type": "applicability",
-      "claim": "AI Hub requires acceptance of Microsoft Copilot Studio capacity, Move data across regions and AI prompts before agents can be used.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
-      "quote": "administrators must accept required prerequisites before agents can be used in Customer Insights – Journeys. The following prerequisites must be reviewed and accepted:\n- Microsoft Copilot Studio capacity\n- Move data across regions\n- AI prompts",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 92,
+      "n": 95,
       "where": "Why it matters; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not stated what tenant defaults or enablement changes will accompany general availability.",
+      "claim": "Microsoft has not stated what the April CY2027 general availability target changes for tenant defaults or enablement.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Journey Creation Agent pricing credits per journey general availability April 2027 billing. Opened journey-creation-agent, faqs-journey-creation-agent and ai-hub; these describe the preview and do not specify general-availability defaults or changed enablement.",
+      "quote": "Searched: 'Journey Creation Agent general availability default enabled'; opened journey-creation-agent and ai-hub, read whats-new-marketing search excerpt. Sources describe the preview; no April 2027 default or replacement enablement procedure found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 93,
-      "where": "front matter: cost; rationale: cost",
-      "type": "cost",
-      "claim": "Variable cost correctly reflects the documented Copilot credit consumption meter.",
+      "n": 96,
+      "where": "Why it matters; Scope; Governance guidance",
+      "type": "applicability",
+      "claim": "The tenant-level Use AI agents prerequisite is set On for a selected environment or environment group before configuring the agent in AI Hub.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent",
-      "quote": "Journey Creation Agent uses Copilot credits.",
+      "source": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
+      "quote": "Set **Use AI agents** to **On** for the selected environment or environment group. ... Once enabled at the tenant level, AI agents can be configured and managed within AI Hub in Customer Insights – Journeys.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-18T03:37:02.775Z",
+    "at": "2026-11-19T03:09:30.101Z",
     "summary": {
       "links": 12,
-      "unreachable": 0,
+      "unreachable": 11,
       "uiPaths": 7,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 7,
       "apiCalls": 3,
-      "apiCallsNotOnPage": 2,
+      "apiCallsNotOnPage": 3,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -1065,58 +1106,58 @@
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/faqs-journey-creation-agent",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/connect-to-ai-subprocessor",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-messages-capacity",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/geographical-availability-copilot",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/organization",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-powerplatformgenerativeaisettings?view=pa-ps-latest",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -1125,7 +1166,7 @@
         "side": "ui",
         "governs": "Whether AI agents are on for Customer Insights - Journeys in an environment or environment group",
         "docs": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Copilot",
           "Settings",
@@ -1133,14 +1174,20 @@
           "AI agents",
           "Use AI agents"
         ],
-        "missing": []
+        "missing": [
+          "Copilot",
+          "Settings",
+          "Dynamics 365 Customer Insights – Journeys",
+          "AI agents",
+          "Use AI agents"
+        ]
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Whether Journey Creation Agent is enabled in an environment",
         "docs": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Settings",
           "AI Hub",
@@ -1150,28 +1197,41 @@
           "Overview tab",
           "Enable"
         ],
-        "missing": []
+        "missing": [
+          "Settings",
+          "AI Hub",
+          "Add and manage agents",
+          "Add an agent",
+          "Journey Creation Agent",
+          "Overview tab",
+          "Enable"
+        ]
       },
       {
         "index": 2,
         "side": "ui",
         "governs": "Copilot credits allocated to the environment and whether it can draw on tenant capacity",
         "docs": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Licensing",
           "Products",
           "Copilot Studio",
           "Manage Copilot Credits"
         ],
-        "missing": []
+        "missing": [
+          "Licensing",
+          "Products",
+          "Copilot Studio",
+          "Manage Copilot Credits"
+        ]
       },
       {
         "index": 2,
         "side": "api",
         "governs": "Copilot credits allocated to the environment and whether it can draw on tenant capacity",
         "docs": "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations",
-        "reachable": true,
+        "reachable": false,
         "token": "PUT /licensing/allocationsV2?api-version=2024-10-01",
         "found": false
       },
@@ -1180,7 +1240,7 @@
         "side": "ui",
         "governs": "Whether Anthropic models are available to the tenant and to which users",
         "docs": "https://learn.microsoft.com/microsoft-365/copilot/connect-to-ai-subprocessor",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Copilot",
           "Settings",
@@ -1189,14 +1249,21 @@
           "Available subprocessors for your organization",
           "Anthropic"
         ],
-        "missing": []
+        "missing": [
+          "Copilot",
+          "Settings",
+          "View all",
+          "AI providers operating as Microsoft subprocessors",
+          "Available subprocessors for your organization",
+          "Anthropic"
+        ]
       },
       {
         "index": 4,
         "side": "ui",
         "governs": "Whether Anthropic models are allowed in a Power Platform environment",
         "docs": "https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Manage",
           "Environments",
@@ -1204,14 +1271,20 @@
           "Product",
           "Features"
         ],
-        "missing": []
+        "missing": [
+          "Manage",
+          "Environments",
+          "Settings",
+          "Product",
+          "Features"
+        ]
       },
       {
         "index": 5,
         "side": "ui",
         "governs": "Whether data may move across regions for AI agents",
         "docs": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Manage",
           "Environments",
@@ -1219,23 +1292,29 @@
           "Edit",
           "Move data across regions"
         ],
-        "missing": []
+        "missing": [
+          "Manage",
+          "Environments",
+          "Generative AI features",
+          "Edit",
+          "Move data across regions"
+        ]
       },
       {
         "index": 5,
         "side": "api",
         "governs": "Whether data may move across regions for AI agents",
         "docs": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-powerplatformgenerativeaisettings?view=pa-ps-latest",
-        "reachable": true,
+        "reachable": false,
         "token": "Set-PowerPlatformGenerativeAiSettings",
-        "found": true
+        "found": false
       },
       {
         "index": 6,
         "side": "ui",
         "governs": "Whether AI prompts are available in the environment",
         "docs": "https://learn.microsoft.com/dynamics365/customer-insights/journeys/ai-hub-prerequisites",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Environments",
           "Settings",
@@ -1244,14 +1323,21 @@
           "AI Builder",
           "AI prompts"
         ],
-        "missing": []
+        "missing": [
+          "Environments",
+          "Settings",
+          "Product",
+          "Features",
+          "AI Builder",
+          "AI prompts"
+        ]
       },
       {
         "index": 6,
         "side": "api",
         "governs": "Whether AI prompts are available in the environment",
         "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/organization",
-        "reachable": true,
+        "reachable": false,
         "token": "PATCH <organization-uri>/api/data/v9.2/organizations(<organization-id>)",
         "found": false
       }
@@ -1275,6 +1361,12 @@
       "date": "2026-11-18",
       "status": "held",
       "version": 3,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-18",
+      "status": "verified-with-gaps",
+      "version": 4,
       "model": "gpt-6.1-sol"
     }
   ]

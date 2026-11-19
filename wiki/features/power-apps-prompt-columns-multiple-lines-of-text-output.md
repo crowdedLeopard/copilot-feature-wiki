@@ -85,15 +85,17 @@ changes:
     note: "Correction: the environment AI prompts setting now lists its Dataverse Web API call (PATCH on the organization table, aipromptsenabled); the API open question now covers only the column-level setting."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 69 statements confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 66 statements not yet confirmed"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-18"
+  status: "verified-with-gaps"
+  date: "2026-11-19"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 69
-  confirmed: 69
+  claims: 66
+  confirmed: 66
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -187,4 +189,10 @@ For monitoring, add the Status and Details columns for each prompt column to a v
 risk: Low. The roadmap item describes only a change to the text a prompt column can hold, and the existing AI prompts and column settings still govern prompt columns; Learn says prompt columns aren't audited.
 cost: Variable. Prompt columns support AI Builder credits and Copilot Credits each time a prompt runs; prompt-run cost depends on input tokens, output tokens and the model version.
 impact: Low. Only makers who define prompt columns and people who read the tables that hold them are in scope; the roadmap item lists the web platform only.
+-->
+
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance controls: first row / admin-path: The environment control is at Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > AI Builder > AI prompts. | Found: select Environments > [select an environment] > Settings > Product > Features. On the Features settings page under AI Builder, enable or disable the AI prompts toggle. | Fix: Append to controls[0].note: 'Administer AI Builder places this toggle under AI Builder; Manage feature settings lists it under AI prompts (https://learn.microsoft.com/power-platform/admin/settings-features#ai-prompts).' The latter page also confirms the initial Manage > Environments steps. | Source: https://learn.microsoft.com/ai-builder/administer
 -->

@@ -71,15 +71,17 @@ changes:
     note: "New briefing: roadmap-only description of the PPAC Reporting API, with the documented admin centre reports and preview licensing report operation shown as today's alternatives."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 52 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 54 statements not yet confirmed"
 version: 1
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-18"
+  date: "2026-11-19"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 52
+  claims: 54
+  confirmed: 54
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -176,8 +178,9 @@ cost: Low. Microsoft has not published a licence or charge for this API, so the 
 impact: Low. Administrators, FinOps analysts and report builders would notice it; the roadmap describes no change for makers or end users.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: The cited licensing page says creating and managing Copilot Studio agents requires a Copilot Studio User License for each user. | Found: To create and manage agents with Copilot Studio, you need: A license for each user, also known as a per user license (or Copilot Studio User License as referred to on the Microsoft 365 admin center). | Fix: Qualify the background licensing statement in licensing.notes and Cost and licensing: 'The cited page lists a Copilot Studio User License per author and a tenant licence for standard-harness agent authoring. The licensing overview also lists Copilot Studio authors access, a Microsoft 365 Copilot licence or a trial licence as access routes.' Cite https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing, whose 'Get started in Copilot Studio' section lists those alternatives. Keep the new reporting API's own entitlement open. | Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-licensing
+- [supported, minor] What's changing: Learn documentation; Cost and licensing / absence: Learn does not document an API explicitly under the roadmap name PPAC Reporting API. | Found: Searched: "PPAC Reporting API" Copilot Studio default license permissions limits; "PPAC" "Reporting" "API" "Copilot". Read cited capacity, REST and CLI pages and the linked preview usage-report tutorial; none explicitly uses that roadmap name. | Fix: Replace the documentation-gap sentence with: 'Learn now documents programmatic Copilot Studio usage reporting in preview, including an end-to-end tutorial, but does not explicitly identify it as the PPAC Reporting API named in the roadmap.' Cite https://learn.microsoft.com/power-platform/admin/programmability-tutorial-download-copilot-credit-usage-reports. Retain the distinction between the documented preview operation and the roadmap description.
+- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: The cited licensing page says creating and managing agents needs a Copilot Studio User License for each author. | Found: To create and manage agents with Copilot Studio, you need: A license for each user ... Copilot Studio User License | Fix: Replace the background authoring-licence statement in licensing.notes and Cost and licensing with: 'For standard-harness agent authoring, the cited page lists a Copilot Studio User License per author and a tenant licence. The licensing overview also lists Copilot Studio authors access, a Microsoft 365 Copilot licence or a trial licence as access routes.' Cite https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing. Keep the reporting API's own entitlement open. | Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-licensing
 -->

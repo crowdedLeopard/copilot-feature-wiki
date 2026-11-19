@@ -147,18 +147,20 @@ changes:
     note: "Corrected: the Move data across regions row now lists Set-PowerPlatformGenerativeAiSettings (Microsoft.PowerApps.Administration.PowerShell), and the closing automation sentence no longer says none is documented for it."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 93 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 96 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 4
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-18"
+  status: "held"
+  date: "2026-11-19"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 93
-  confirmed: 93
+  claims: 96
+  confirmed: 95
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "4c4b7aec9c0206969f19b01f03b642ea"
 ---
 
@@ -260,8 +262,14 @@ cost: Variable. Microsoft Learn says Journey Creation Agent uses Copilot credits
 impact: Low. Administrators configure it and users with the Marketing Manager or Marketing Professional role (or equivalent permissions) build journeys with it.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Cost and licensing: second paragraph / cost: Any price is not yet published at the time of writing in November 2026. | Found: The Copilot Studio pay-as-you-go meter counts the total number of Copilot Credits consumed by agents. ... $0.01 per credit | Fix: Replace "The number of credits one journey draws, and any price, are not yet published at the time of writing (November 2026)." with "The number of credits one journey draws is not yet published at the time of writing (November 2026)." The narrower gap is supported; the general meter price is published at https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters. | Source: https://learn.microsoft.com/power-platform/admin/pay-as-you-go-meters
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Risk assessment: Change & support / admin-path: Review and refine opens the proposal in the standard journey designer. | Found: When the proposed structure looks right, select **Review and refine** in the agent panel. The journey opens on the standard journey canvas with all proposed steps, conditions, and content assignments populated. | Fix: After the existing Review and refine sentence, add: "The feature page calls this action Review and refine; the responsible AI FAQ calls its review option Review and publish." The differing wording is at https://learn.microsoft.com/dynamics365/customer-insights/journeys/faqs-journey-creation-agent, under Human review is required before publishing: "Use the \"Review and publish\" option". | Source: https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent
+- [supported, minor] What's changing; Risk assessment: Change & support / admin-path: Review and refine opens the proposal in the standard journey designer. | Found: When the proposed structure looks right, select **Review and refine** in the agent panel. The journey opens on the standard journey canvas with all proposed steps, conditions, and content assignments populated. | Fix: After the Review and refine sentence, add: "The feature page calls this action Review and refine; the responsible AI FAQ calls its review option Review and publish." The differing wording is at https://learn.microsoft.com/dynamics365/customer-insights/journeys/faqs-journey-creation-agent. | Source: https://learn.microsoft.com/dynamics365/customer-insights/journeys/journey-creation-agent
+- [supported, minor] controls[2].ui; Governance controls / admin-path: Environment credit allocation and tenant-pool draw are managed through Licensing > Products > Copilot Studio > Manage Copilot Credits > environment. | Found: Under **Products**, select **Copilot Studio**, and then select **Manage Copilot Credits**. ... Select the environment ... Under **Capacity overages**, select or clear **Draw from the available capacity in my tenant** | Fix: Keep the documented route and clarify the note: "Enter credits under Allocate capacity; under Capacity overages, select or clear Draw from the available capacity in my tenant. If a published environment group rule governs tenant-capacity draw, change and republish that rule instead; per-environment updates are rejected." This qualification is on the cited allocation tutorial. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
+- [supported, minor] controls[2].api; Governance controls / command: PUT /licensing/allocationsV2?api-version=2024-10-01 sets MCSMessages allocation quantity and TenantPool enforcement for an environment. | Found: scope = @{ environmentId = $environmentId } ... entitlementId = "MCSMessages" ... allocation = @{ quantity = 5000 } ... @{ ruleType = "TenantPool"; enabled = $false } ... -Method Put ... /licensing/allocationsV2?api-version=$apiVersion | Fix: Set controls[2].api.call to "PUT /licensing/allocationsV2?api-version=2024-10-01". In the row note state: "The body identifies scope.environmentId and sets allocatedEntitlements[].allocation.quantity for entitlementId MCSMessages; enforcementRules with ruleType TenantPool and enabled false disables tenant-pool draw." Remove the request body from the rendered call as well. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
+- [supported, minor] controls[4].ui; Governance controls / admin-path: Environment external-model controls are reached through Manage > Environments > environment > Settings > Product > Features. | Found: select **Manage**. ... select **Environments**, and then select the environment. ... select **Settings**. ... select **Product** > **Features**. ... turn each applicable model provider setting **On** or **Off**. | Fix: Retain the documented path and add to controls[4].note: "On the Features page, turn the applicable model provider setting On or Off." Carry this note into the rendered table; the current path stops at the page rather than explaining the setting there. | Source: https://learn.microsoft.com/power-platform/admin/allow-llm-generative-responses
+- [supported, minor] controls[6].api; Governance controls / command: PATCH <organization-uri>/api/data/v9.2/organizations(<organization-id>) with aipromptsenabled true enables AI prompts. | Found: Entity set path: [organization URI]/api/data/v9.2/organizations ... Primary key: organizationid ... Operations supported: GETPATCH ... aipromptsenabled | Edm.Boolean | Indicates whether AI Prompts feature is enabled. | Fix: Set controls[6].api.call to "PATCH <organization-uri>/api/data/v9.2/organizations(<organization-id>)" and add "The request body sets aipromptsenabled to true to enable AI prompts" to the note. Remove the request body from the rendered call as well. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/organization
 -->

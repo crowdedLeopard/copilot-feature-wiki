@@ -4,10 +4,10 @@
   "title": "Work IQ: Context IQ adds agents, skills and content sources to the prompt menu",
   "status": "held",
   "date": "2026-11-19",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "cd5b21ff3a5b",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,7 +16,7 @@
     "reason": "failed",
     "since": "2026-11-19",
     "reasons": [
-      "1 blocking finding (claim 45)"
+      "1 blocking finding (claim 33)"
     ]
   },
   "counts": {
@@ -26,15 +26,15 @@
     "contradicted": 1,
     "blocker": 1,
     "major": 0,
-    "minor": 0
+    "minor": 1
   },
-  "summary": "Hold: the automation beside the agent Block control only retrieves inventory; it cannot block an agent. Microsoft documents a separate preview blocking operation. The roadmap facts and the cited Work IQ overview statements are supported, and the previously rate-limited Microsoft pages were accessible.",
+  "summary": "Hold: the licensing field says entitlement is unpublished even though Microsoft documents the Copilot Chat subscription requirement and the existing agent entitlement and billing rules. The roadmap details and the corrected agent-blocking path and API are supported; the expansion's default, dedicated switch and any separate menu-interaction charge remain undocumented.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; rationale",
+      "where": "summary; What's changing; Risk assessment; rationale: risk and impact",
       "type": "record",
-      "claim": "Microsoft plans to expand Context IQ to discover and select additional agents, skills and content sources while composing prompts.",
+      "claim": "Microsoft plans to expand Context IQ with additional agents, skills and content sources selectable while composing prompts.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Expand Context IQ so users can discover and select additional agents, skills, and content sources while composing prompts.",
@@ -43,108 +43,9 @@
     },
     {
       "n": 2,
-      "where": "What's changing; changes",
-      "type": "absence",
-      "claim": "Microsoft Learn does not yet describe this specific Context IQ expansion.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"ExpandedContextIQ\"; \"Context IQ\" \"agents\" \"skills\"; \"Context IQ\" \"570854\" rollout license agents skills. Read Work IQ overview, Context IQ support article and release-note search excerpts; none describes this expansion.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "What's changing; Why it matters",
-      "type": "behaviour",
-      "claim": "Context IQ already provides a references menu in Copilot Chat.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
-      "quote": "Use the Context IQ menu to search for and select a Teams channel.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "What's changing",
-      "type": "date",
-      "claim": "The March 10, 2026 Copilot release notes describe selecting Teams channels to ground Copilot Chat responses.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#march-10,-2026",
-      "quote": "## March 10, 2026\nYou can now search for and select Microsoft Teams channels in Context IQ to ground Copilot Chat prompts in the conversations and content that matter most.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "What's changing; Governance controls",
-      "type": "behaviour",
-      "claim": "Typing / in the compose box opens the references menu.",
-      "status": "supported",
-      "source": "https://support.microsoft.com/topic/using-context-iq-to-refer-to-specific-files-people-and-more-in-microsoft-365-copilot-and-copilot-chat-272ac2c1-c5f7-49c9-8a42-2a8a87846fa0",
-      "quote": "To reference a specific piece of information, type **/** and begin typing the people, file, meeting, or email you wish to link.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The existing references menu supports files, people, meetings and emails.",
-      "status": "supported",
-      "source": "https://support.microsoft.com/topic/using-context-iq-to-refer-to-specific-files-people-and-more-in-microsoft-365-copilot-and-copilot-chat-272ac2c1-c5f7-49c9-8a42-2a8a87846fa0",
-      "quote": "People, Microsoft 365 files, meetings, and emails are accessible through tabs.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The existing menu supports Teams chats and channels.",
-      "status": "supported",
-      "source": "https://support.microsoft.com/topic/using-context-iq-to-refer-to-specific-files-people-and-more-in-microsoft-365-copilot-and-copilot-chat-272ac2c1-c5f7-49c9-8a42-2a8a87846fa0",
-      "quote": "Copilot suggests your relevant Teams group and meeting chats based on recent activity and number of participants under the **Chats** tab. Copilot also displays your recently used Teams channels under the **Channels** tab.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The existing menu supports SharePoint sites and lists.",
-      "status": "supported",
-      "source": "https://support.microsoft.com/topic/using-context-iq-to-refer-to-specific-files-people-and-more-in-microsoft-365-copilot-and-copilot-chat-272ac2c1-c5f7-49c9-8a42-2a8a87846fa0",
-      "quote": "Copilot displays SharePoint sites, pages, and lists that you've recently interacted with or were shared with you. Select a site to scope your prompt to its contents.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The existing references menu supports content from Copilot connectors.",
-      "status": "supported",
-      "source": "https://support.microsoft.com/topic/using-context-iq-to-refer-to-specific-files-people-and-more-in-microsoft-365-copilot-and-copilot-chat-272ac2c1-c5f7-49c9-8a42-2a8a87846fa0",
-      "quote": "You can now ground your Copilot prompts on third-party data using your organization's Graph Connector content, accessible from the references menu in Copilot Chat.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "The cited Context IQ support article does not list agents or skills as reference types.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Context IQ\" \"agents\" \"skills\". Read the full cited support article: its reference sections cover people, meetings, Teams content, emails, files and images, SharePoint sites and connectors, not agents or skills.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
       "where": "front matter: status; What's changing; Open questions",
       "type": "record",
-      "claim": "The roadmap record still shows In development.",
+      "claim": "The roadmap status is In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -152,43 +53,32 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "front matter: previewDate; What's changing; Scope; Open questions",
-      "type": "record",
-      "claim": "The roadmap preview target is October CY2026, which has passed as of the run date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": \"October CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
+      "n": 3,
       "where": "front matter: targetDate; What's changing; Why it matters; Scope; Open questions",
       "type": "record",
-      "claim": "The roadmap general availability target is November CY2026, not a confirmed rollout commitment.",
+      "claim": "The general availability target is November CY2026, not a confirmed rollout commitment.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"targetDate\": \"November CY2026\", \"status\": \"In development\"",
+      "quote": "\"targetDate\": \"November CY2026\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 14,
-      "where": "front matter: releasePhase; Scope",
+      "n": 4,
+      "where": "front matter: previewDate; What's changing; Scope; Open questions",
       "type": "record",
-      "claim": "The roadmap release phases are General Availability and Preview.",
+      "claim": "The preview target is October CY2026, which has passed at the run date while the record remains In development.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "quote": "\"previewDate\": \"October CY2026\", \"status\": \"In development\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 15,
+      "n": 5,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "claim": "The record lists Worldwide (Standard Multi-Tenant), without listing US Government clouds.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -196,10 +86,10 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 6,
       "where": "front matter: platforms; What's changing; Scope; rationale: impact",
       "type": "record",
-      "claim": "The roadmap platform is Web.",
+      "claim": "Web is the platform listed for this expansion.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -207,10 +97,10 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 7,
       "where": "front matter: products; What's changing",
       "type": "record",
-      "claim": "The roadmap products are Work IQ and Microsoft Copilot (Microsoft 365).",
+      "claim": "The record names Work IQ and Microsoft Copilot (Microsoft 365) as its products.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"products\": [\"Work IQ\", \"Microsoft Copilot (Microsoft 365)\"]",
@@ -218,10 +108,21 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 8,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap record has no more-info link.",
+      "claim": "The record has no more-info link.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"moreInfoLink\": null",
@@ -229,21 +130,10 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "Scope",
+      "n": 10,
+      "where": "Cost and licensing; Scope",
       "type": "record",
-      "claim": "The roadmap does not list US Government clouds, without establishing their exclusion.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "Cost and licensing; Scope; rationale: impact",
-      "type": "record",
-      "claim": "The roadmap record does not specify affected user groups, licences, roles or a billing meter.",
+      "claim": "The record specifies no licence, meter, user eligibility or configuring role.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Expand Context IQ so users can discover and select additional agents, skills, and content sources while composing prompts.",
@@ -251,54 +141,109 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "front matter: defaultState; summary; Why it matters; Open questions; rationale: risk",
-      "type": "default",
-      "claim": "The default state and rollout enablement of the specific expansion are not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Context IQ\" \"default\"; \"Context IQ\" admin disable Graph PowerShell policy; \"ExpandedContextIQ\". Read roadmap, support article, Work IQ overview and Agent settings; none states how this expansion arrives.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "front matter: licensing.model and notes; Cost and licensing; Scope",
-      "type": "licensing",
-      "claim": "Microsoft has not published the entitlement model for the new Context IQ choices.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Context IQ\" licensing pricing meter Copilot Chat; \"Context IQ\" \"570854\" rollout license agents skills. Read License options, Purchase and manage agents, Work IQ overview and Context IQ support; none specifies entitlement for this expansion.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "controls[0]; Governance controls; Open questions",
+      "n": 11,
+      "where": "What's changing; summary; rationale: risk",
       "type": "absence",
-      "claim": "No dedicated tenant-wide UI switch or API for the expanded Context IQ menu choices is documented.",
+      "claim": "Microsoft Learn does not yet describe the particular Context IQ expansion or enumerate its new agents, skills and sources.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Context IQ\" admin disable Graph PowerShell policy; \"Context IQ\" \"skills\" \"policy\". Read Agent settings, registry, Package Management overview, Work IQ overview and support article; none documents a switch or API for the menu expansion itself.",
+      "quote": "Searched: \"Context IQ\" \"570854\" agents skills; \"Context IQ\" \"agents\" \"select\" \"skills\" \"menu\". Read release-notes excerpts, Context IQ support, Work IQ overview and agent management; no expansion-specific description found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 24,
-      "where": "What's changing; Risk assessment: Data exposure; Open questions; rationale: risk",
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Context IQ already exists in Copilot Chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#march-10,-2026",
+      "quote": "Context IQ now allows you to search for and select Microsoft Teams channels when creating prompts in Copilot Chat",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The 10 March 2026 release notes document selecting a Teams channel in Context IQ to ground Copilot Chat responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#march-10,-2026",
+      "quote": "## March 10, 2026\nContext IQ now allows you to search for and select Microsoft Teams channels when creating prompts in Copilot Chat, so responses are grounded in a specific channel instead of across all Teams content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Why it matters",
+      "type": "admin-path",
+      "claim": "Typing / in Copilot Chat opens the reference selection interaction.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/topic/using-context-iq-to-refer-to-specific-files-people-and-more-in-microsoft-365-copilot-and-copilot-chat-272ac2c1-c5f7-49c9-8a42-2a8a87846fa0",
+      "quote": "To reference a specific piece of information, type **/** and begin typing the people, file, meeting, or email you wish to link.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Scope; Governance controls",
+      "type": "behaviour",
+      "claim": "The existing licensed reference menu offers people, Microsoft 365 files, meetings and emails.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/topic/using-context-iq-to-refer-to-specific-files-people-and-more-in-microsoft-365-copilot-and-copilot-chat-272ac2c1-c5f7-49c9-8a42-2a8a87846fa0",
+      "quote": "People, Microsoft 365 files, meetings, and emails are accessible through tabs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The existing reference menu supports Teams chats and channels.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/topic/using-context-iq-to-refer-to-specific-files-people-and-more-in-microsoft-365-copilot-and-copilot-chat-272ac2c1-c5f7-49c9-8a42-2a8a87846fa0",
+      "quote": "Copilot suggests your relevant Teams group and meeting chats ... under the **Chats** tab. Copilot also displays your recently used Teams channels under the **Channels** tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The support article documents referencing SharePoint sites and lists.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/topic/using-context-iq-to-refer-to-specific-files-people-and-more-in-microsoft-365-copilot-and-copilot-chat-272ac2c1-c5f7-49c9-8a42-2a8a87846fa0",
+      "quote": "Copilot displays SharePoint sites, pages, and lists that you've recently interacted with or were shared with you. Select a site to scope your prompt to its contents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The existing references menu supports enabled Copilot connector content.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/topic/using-context-iq-to-refer-to-specific-files-people-and-more-in-microsoft-365-copilot-and-copilot-chat-272ac2c1-c5f7-49c9-8a42-2a8a87846fa0",
+      "quote": "You can now ground your Copilot prompts on third-party data using your organization's Graph Connector content, accessible from the references menu in Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
       "type": "absence",
-      "claim": "Microsoft has not specified which additional agents, skills and content sources will appear.",
+      "claim": "The cited Context IQ support article does not list agents or skills as reference types.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"ExpandedContextIQ\"; \"Context IQ\" \"agents\" \"skills\". Read roadmap description, Work IQ overview and Context IQ support article; none enumerates the expansion's additions.",
+      "quote": "Searched: agents and skills in the complete Context IQ support article. Read its licensed/unlicensed instructions and all reference-type sections; it lists people, meetings, Teams content, emails, files/images, SharePoint and connectors, not agents or skills.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 25,
+      "n": 20,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Reference suggestions scan the user's files, emails, conversations and other Microsoft 365 apps and services.",
+      "claim": "Reference suggestions are based on scanning the user's files, emails, conversations and other Microsoft 365 services.",
       "status": "supported",
       "source": "https://support.microsoft.com/topic/using-context-iq-to-refer-to-specific-files-people-and-more-in-microsoft-365-copilot-and-copilot-chat-272ac2c1-c5f7-49c9-8a42-2a8a87846fa0",
       "quote": "When you initiate the references menu, relevant content is suggested based on scanning of your files, emails, conversations, and other Microsoft 365 apps and services.",
@@ -306,10 +251,10 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 21,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Copilot refers to content the user includes as part of its response.",
+      "claim": "Copilot refers to user-included content as part of its response.",
       "status": "supported",
       "source": "https://support.microsoft.com/topic/using-context-iq-to-refer-to-specific-files-people-and-more-in-microsoft-365-copilot-and-copilot-chat-272ac2c1-c5f7-49c9-8a42-2a8a87846fa0",
       "quote": "Copilot refers to the content you include as part of its response.",
@@ -317,10 +262,10 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 22,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The Work IQ overview says actions are user scoped and requests access only what that user may see or do.",
+      "claim": "The Work IQ overview describes user-scoped requests restricted to what the user may see or do.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq",
       "quote": "Actions are user scoped, meaning every request runs in the context of a specific user and only accesses what that user is allowed to see or do.",
@@ -328,18 +273,7 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "Risk assessment: Data exposure",
-      "type": "absence",
-      "claim": "The Work IQ overview does not establish that the expanded Context IQ menu uses its described request path.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Context IQ\" \"identity\" \"actions\" governance. Read full Work IQ overview and Context IQ support article; the overview discusses Work IQ MCP requests but does not connect the expanded menu to those requests.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
+      "n": 23,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
       "claim": "The Work IQ overview states that every tool invocation is logged and evaluated.",
@@ -350,40 +284,29 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "Risk assessment: Security & identity",
+      "n": 24,
+      "where": "Risk assessment: Data exposure; Security & identity",
       "type": "absence",
-      "claim": "Microsoft has not specified whether selecting an agent or skill in Context IQ follows the Work IQ tool-invocation path.",
+      "claim": "Microsoft has not documented whether this Context IQ expansion uses the Work IQ API execution and logging path or which identity a selected agent uses.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Context IQ\" \"identity\" \"actions\" governance; \"Context IQ\" \"agents\" \"skills\". Read Work IQ overview and Context IQ support article; neither maps agent or skill selection to Work IQ tool invocation.",
+      "quote": "Searched: \"Context IQ\" agents skills identity actions permissions Work IQ. Read Work IQ overview, API overview search excerpt and Context IQ support; none connects the planned menu selections to that API execution path or specifies the selected agent's identity.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
-      "where": "Risk assessment: Security & identity",
-      "type": "absence",
-      "claim": "Microsoft has not specified the identity an agent uses when selected through the expanded Context IQ menu.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Context IQ\" \"identity\" \"actions\" governance. Read Work IQ overview, Context IQ support and Agents FAQ search excerpt; general identity rules do not identify the execution model of this selection mechanism.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
+      "n": 25,
       "where": "Risk assessment: Autonomy & actions",
       "type": "absence",
-      "claim": "Microsoft has not specified whether agents or skills selected through this menu can take actions or only read content.",
+      "claim": "Microsoft has not specified whether selecting an agent or skill through the new Context IQ menu enables read-only work or actions.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Context IQ\" \"identity\" \"actions\" governance; \"Context IQ\" \"agents\" \"skills\". Read roadmap, support article and Work IQ overview; general agent action capabilities do not describe the new menu's execution model.",
+      "quote": "Searched: \"Context IQ\" agents skills identity actions permissions Work IQ; \"Context IQ\" \"agents\" \"select\" \"skills\" \"menu\". Read Work IQ overview and Context IQ support; general agent action capabilities do not describe the new selection interaction.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
+      "n": 26,
       "where": "Risk assessment: Change & support; Governance controls",
       "type": "applicability",
       "claim": "The Manage agents page says organisation members can access only agents the administrator has allowed.",
@@ -394,21 +317,21 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 27,
       "where": "Risk assessment: Change & support; Scope; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not specified how licence status or the Work IQ button affects the newly added agents, skills and sources.",
+      "claim": "The licence and Work IQ toggle rules determining which new Context IQ choices appear have not been specified.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Context IQ\" \"Work IQ\" \"files\" \"license\"; \"Context IQ\" licensing pricing meter Copilot Chat. Read support article, Work IQ overview and Purchase and manage agents; none describes the new choices' licence or button filtering.",
+      "quote": "Searched: \"Context IQ\" licensing Copilot Chat agents skills price; \"Context IQ\" \"570854\" agents skills. Read Context IQ support, Work IQ overview and agent licensing pages; none specifies the expansion's menu-visibility split.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 35,
+      "n": 28,
       "where": "Risk assessment: Change & support; Scope",
       "type": "licensing",
-      "claim": "The support article says users without a Microsoft Copilot licence can reference only files.",
+      "claim": "The support article limits references to files for users without a Microsoft Copilot licence.",
       "status": "supported",
       "source": "https://support.microsoft.com/topic/using-context-iq-to-refer-to-specific-files-people-and-more-in-microsoft-365-copilot-and-copilot-chat-272ac2c1-c5f7-49c9-8a42-2a8a87846fa0",
       "quote": "Only files are available to reference for users without a Microsoft Copilot license.",
@@ -416,10 +339,10 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 29,
       "where": "Risk assessment: Change & support; Scope; Governance controls",
       "type": "behaviour",
-      "claim": "With Work IQ turned off, the existing references menu offers only files.",
+      "claim": "Turning off Work IQ restricts the existing chat reference menu to files.",
       "status": "supported",
       "source": "https://support.microsoft.com/topic/using-context-iq-to-refer-to-specific-files-people-and-more-in-microsoft-365-copilot-and-copilot-chat-272ac2c1-c5f7-49c9-8a42-2a8a87846fa0",
       "quote": "Only files are available to reference when you've turned off **Work IQ** in chat.",
@@ -427,18 +350,62 @@
       "fix": null
     },
     {
-      "n": 37,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "No separate price or meter is published for the new Context IQ menu interaction itself.",
+      "n": 30,
+      "where": "Scope; Governance controls; controls[0].note",
+      "type": "admin-path",
+      "claim": "A licensed user can turn on Work IQ using the button at the top right of the Copilot Chat page to reference work items.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Context IQ\" licensing pricing meter Copilot Chat. Read Work IQ overview, Purchase and manage agents, License options and Meters search excerpt; they document API or agent usage, not a separate charge for the new menu selection.",
+      "source": "https://support.microsoft.com/topic/using-context-iq-to-refer-to-specific-files-people-and-more-in-microsoft-365-copilot-and-copilot-chat-272ac2c1-c5f7-49c9-8a42-2a8a87846fa0",
+      "quote": "Go to Copilot Chat and sign in with your Microsoft 365 account.\nAt the top right of the chat page, make sure the **Work IQ** button is turned on.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
+      "n": 31,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The default state and rollout mechanics of the Context IQ expansion are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Context IQ\" tenant admin switch Graph API settings default expanded; \"Context IQ\" \"expanded\" \"default\". Read roadmap, Context IQ support, release-notes excerpts and Work IQ overview; none states how this expansion arrives.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].ui; controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No dedicated tenant-wide UI switch or API for the expanded Context IQ menu choices is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Context IQ\" tenant admin switch Graph API settings default expanded; \"Context IQ\" \"Graph\" \"settings\" \"menu\". Read Context IQ support, agent settings search excerpts, package API references and Business Applications defaults; no dedicated switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.model and notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The licensing model is unknown because entitlement to this Copilot Chat change is not yet published.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat",
+      "quote": "Declarative agents that are grounded in instructions and public websites are included with Copilot Chat (Basic), and Microsoft 365 Copilot (Basic) and (Premium).",
+      "severity": "blocker",
+      "fix": "Set licensing.model to mixed. Replace the blanket unpublished-entitlement wording with: 'Copilot Chat requires an eligible Microsoft 365 subscription. Declarative agents grounded in instructions and public websites are included with Copilot Chat (Basic) and Microsoft 365 Copilot (Basic) and (Premium); agents accessing shared tenant data are metered for the Basic licences. Microsoft has not specified which new Context IQ choices each licence will show or published a separate charge for the menu interaction.' Cite https://learn.microsoft.com/microsoft-365/copilot/microsoft-copilot-requirements and the existing https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat. The standard requires known product entitlement rather than unknown for a new option inside that product."
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No separate price or meter for the new Context IQ menu interaction is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Context IQ\" licensing Copilot Chat agents skills price. Read Work IQ overview, Purchase and manage agents in Copilot Chat, Copilot requirements and billing-rates search excerpt; none names a separate menu-selection charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "cost",
       "claim": "Work IQ API usage consumes Copilot Credits shared with other eligible services.",
@@ -449,10 +416,10 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 36,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "For Microsoft 365 Copilot licensed users, Work IQ is available in all Microsoft 365 Copilot experiences and agents.",
+      "claim": "Work IQ is available in all Microsoft 365 Copilot experiences and agents for Microsoft 365 Copilot licensed users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq",
       "quote": "For Microsoft 365 Copilot licensed users, Work IQ is available in all Microsoft 365 Copilot experiences and agents.",
@@ -460,10 +427,10 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 37,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "The Work IQ availability statement is qualified by usage-based billing for custom and third-party agents.",
+      "claim": "The Work IQ overview makes custom and third-party agent use subject to usage-based billing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq",
       "quote": "It is subject to usage-based billing for custom and third-party agents.",
@@ -471,9 +438,9 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 38,
       "where": "Cost and licensing",
-      "type": "licensing",
+      "type": "cost",
       "claim": "Agents accessing shared tenant data are metered for Copilot Chat (Basic) and Microsoft 365 (Basic) licences.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat",
@@ -482,7 +449,7 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 39,
       "where": "Cost and licensing",
       "type": "licensing",
       "claim": "Declarative agents grounded in instructions and public websites are included under the cited Copilot Chat licensing rules.",
@@ -493,21 +460,10 @@
       "fix": null
     },
     {
-      "n": 43,
-      "where": "Scope; Governance controls",
-      "type": "licensing",
-      "claim": "The support article describes people, files, meetings and email references for licensed users with Work IQ on.",
-      "status": "supported",
-      "source": "https://support.microsoft.com/topic/using-context-iq-to-refer-to-specific-files-people-and-more-in-microsoft-365-copilot-and-copilot-chat-272ac2c1-c5f7-49c9-8a42-2a8a87846fa0",
-      "quote": "## Users with a Microsoft Copilot license (Microsoft Copilot users)\n### Work IQ turned on\nTo add links to Microsoft 365 files, reference people, and include calendar events and emails, follow these steps:",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "controls[1].ui; Governance guidance; Governance controls",
+      "n": 40,
+      "where": "controls[1].ui; Governance guidance; rendered controls table",
       "type": "admin-path",
-      "claim": "The agent Block control is at Microsoft 365 admin center > Agents > All agents > agent > Block.",
+      "claim": "An administrator reaches agent blocking through Microsoft 365 admin center > Agents > All agents > agent > Block.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
       "quote": "Select **Agents** > **All agents**.\nIn the **All agents** page, select an agent from the list of agents.\nIn the agent details pane that opens, immediately under the agent's name, select **Block** or **Unblock**.",
@@ -515,21 +471,54 @@
       "fix": null
     },
     {
-      "n": 45,
-      "where": "controls[1].api; Governance controls table and lead",
+      "n": 41,
+      "where": "controls[1].api; Governance controls; rendered controls table",
       "type": "command",
-      "claim": "GET /v1.0/copilot/admin/catalog/packages is the automation counterpart beside the control deciding whether agents are blocked.",
-      "status": "contradicted",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package to prevent its use.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
       "quote": "Block a Copilot package to prevent its usage.\nPOST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
-      "severity": "blocker",
-      "fix": "Replace controls[1].api.call with 'POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block' and its docs URL with https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block. Replace the row's Graph-call note with 'The block operation is preview, requires a Microsoft Agent 365 licence and delegated CopilotPackages.ReadWrite.All permission, and is not supported for production use.' Make the rendered row consistent. Keep the existing GET call only in the prose as an inventory operation, not as the automation for blocking."
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 46,
+      "n": 42,
       "where": "controls[1].note; Governance controls",
+      "type": "licensing",
+      "claim": "The Package Management API, including the block operation, requires a Microsoft Agent 365 licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].note; rendered controls table",
       "type": "command",
-      "claim": "GET https://graph.microsoft.com/v1.0/copilot/admin/catalog/packages exists and lists agent packages.",
+      "claim": "The block operation requires delegated CopilotPackages.ReadWrite.All permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "| Delegated (work or school account) | CopilotPackages.ReadWrite.All | Not available. |\n| Application | Not available. | Not available. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].note; Governance controls",
+      "type": "availability",
+      "claim": "The beta block operation is preview and is not supported for production use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "APIs under the `/beta` version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "GET /v1.0/copilot/admin/catalog/packages is an inventory operation listing tenant packages containing agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackages-list",
       "quote": "Retrieves a list of the packages available in the tenant.\nBy default, the response contains only titles that contain an agent.\nGET https://graph.microsoft.com/v1.0/copilot/admin/catalog/packages",
@@ -537,21 +526,21 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "controls[1].api; Governance controls",
-      "type": "behaviour",
-      "claim": "The cited registry page presents its Microsoft Graph agent inventory APIs as preview.",
+      "n": 46,
+      "where": "Governance controls",
+      "type": "availability",
+      "claim": "The registry overview labels the package inventory API preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview",
-      "quote": "## Microsoft Graph API for Agent Registry and Agent Details (preview)\nBy using the new Microsoft Graph API endpoints, now in preview, administrators can integrate the following tasks into existing workflows across agents in Microsoft 365:",
-      "severity": null,
-      "fix": null
+      "quote": "Microsoft Graph API for Agent Registry and Agent Details (preview)\nBy using the new Microsoft Graph API endpoints, now in preview",
+      "severity": "minor",
+      "fix": "Replace 'The GET /v1.0/copilot/admin/catalog/packages call on the registry page is a preview inventory operation that lists agents' with 'The registry overview labels its inventory API preview, while the List packages reference documents GET /v1.0/copilot/admin/catalog/packages as well as a beta version; its production-use warning is attached to beta.' Both pages are already cited: https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview and https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackages-list."
     },
     {
-      "n": 48,
-      "where": "controls[1].note; Governance controls",
+      "n": 47,
+      "where": "Governance controls",
       "type": "role",
-      "claim": "The registry page says its API works with the AI Admin Role.",
+      "claim": "The registry overview says its API works with the AI Admin Role.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview",
       "quote": "The API works with the **AI Admin Role**.",
@@ -559,21 +548,10 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "controls[1].note; Governance controls",
-      "type": "licensing",
-      "claim": "Access to the Package Management API requires a Microsoft Agent 365 licence.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackages-list",
-      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "controls[1].note; Governance controls",
+      "n": 48,
+      "where": "Governance controls",
       "type": "command",
-      "claim": "The list-packages operation accepts CopilotPackages.Read.All or CopilotPackages.ReadWrite.All permission.",
+      "claim": "Listing packages accepts CopilotPackages.Read.All or the higher-privileged CopilotPackages.ReadWrite.All permission.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackages-list",
       "quote": "| Delegated (work or school account) | CopilotPackages.Read.All | CopilotPackages.ReadWrite.All |\n| Application | CopilotPackages.Read.All | CopilotPackages.ReadWrite.All |",
@@ -581,21 +559,32 @@
       "fix": null
     },
     {
-      "n": 51,
+      "n": 49,
       "where": "Governance controls",
-      "type": "absence",
-      "claim": "The registry overview itself does not show a block API call.",
+      "type": "applicability",
+      "claim": "Agent blocking is a general tenant control, not a dedicated Context IQ setting.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: copilot admin catalog packages API block agent availability update. Searched the fetched registry overview for Graph, packages, preview, v1.0 and beta; its API section shows inventory GET, not a block call. The separate Package Management reference documents blocking.",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Block or unblock agents for the entire organization by using the same controls that work for any other app in the Microsoft 365 admin center.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 52,
+      "n": 50,
+      "where": "Governance controls; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not described how agent allow and block decisions affect visibility in the new Context IQ selection menu.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Context IQ\" agents skills identity actions permissions Work IQ; \"Context IQ\" tenant admin switch Graph API settings default expanded. Read Manage agents, agent-actions and Context IQ support; general use blocking is documented, new-menu visibility is not.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
       "where": "Governance controls",
       "type": "admin-path",
-      "claim": "Business Applications data in Work IQ available to Copilot is a tenant setting in the Microsoft 365 admin center.",
+      "claim": "Microsoft 365 admin center has a tenant setting named Business Applications data in Work IQ available to Copilot.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
       "quote": "In **Copilot settings**, select **View all** > **Business Applications data in Work IQ available to Copilot**.",
@@ -603,10 +592,10 @@
       "fix": null
     },
     {
-      "n": 53,
+      "n": 52,
       "where": "Governance controls",
       "type": "applicability",
-      "claim": "That Business Applications tenant setting governs whether Power Apps and Dynamics 365 data can be used in Microsoft 365 Copilot Chat.",
+      "claim": "The Business Applications tenant setting governs whether Power Apps and Dynamics 365 data can be used in Microsoft 365 Copilot Chat.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
       "quote": "Use the tenant-level setting to manage whether Power Apps and Dynamics 365 data can be used in Microsoft 365 Copilot Chat across the tenant.",
@@ -614,37 +603,48 @@
       "fix": null
     },
     {
-      "n": 54,
-      "where": "controls[1].note; Governance guidance; Governance controls; Open questions",
+      "n": 53,
+      "where": "Governance controls",
       "type": "absence",
-      "claim": "Microsoft has not specified how agent allow/block decisions or the Business Applications setting filter choices displayed in the expanded Context IQ menu.",
+      "claim": "Microsoft has not said whether the Business Applications setting governs which choices the new Context IQ menu shows.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Context IQ\" \"agents\" \"block\"; \"Context IQ\" \"Work IQ\" \"setting\". Read agent actions, Agent settings, Business Applications default settings and Context IQ support; they establish access and data controls, not this new menu's display filtering.",
+      "quote": "Searched: \"Context IQ\" tenant admin switch Graph API settings default expanded. Read Business Applications in Work IQ default settings, including tenant-level instructions, and Context IQ support; data access is covered, but expanded-menu choices are not described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The support article describes the Work IQ button as the user-level control for switching between its work-reference and files-only modes.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/topic/using-context-iq-to-refer-to-specific-files-people-and-more-in-microsoft-365-copilot-and-copilot-chat-272ac2c1-c5f7-49c9-8a42-2a8a87846fa0",
+      "quote": "At the top right of the chat page, make sure the **Work IQ** button is turned on.\nOnly files are available to reference when you've turned off **Work IQ** in chat.",
       "severity": null,
       "fix": null
     },
     {
       "n": 55,
-      "where": "controls[0].note; Governance controls",
-      "type": "admin-path",
-      "claim": "The support article describes a user-operated Work IQ button at the top right of the chat page.",
+      "where": "Cost and licensing; front matter: licensing.notes",
+      "type": "absence",
+      "claim": "Microsoft has not published an additional licence requirement specific to the expanded menu interaction.",
       "status": "supported",
-      "source": "https://support.microsoft.com/topic/using-context-iq-to-refer-to-specific-files-people-and-more-in-microsoft-365-copilot-and-copilot-chat-272ac2c1-c5f7-49c9-8a42-2a8a87846fa0",
-      "quote": "At the top right of the chat page, make sure the **Work IQ** button is turned on.",
+      "source": null,
+      "quote": "Searched: \"Context IQ\" licensing Copilot Chat agents skills price. Read Microsoft Copilot requirements, Context IQ support, Work IQ overview and Purchase and manage agents in Copilot Chat; general entitlements are stated, but no additional expansion-specific licence is named.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-19T02:04:25.423Z",
+    "at": "2026-11-19T03:09:28.282Z",
     "summary": {
-      "links": 10,
-      "unreachable": 7,
+      "links": 11,
+      "unreachable": 0,
       "uiPaths": 1,
-      "uiPathsWithMissingWords": 1,
+      "uiPathsWithMissingWords": 0,
       "apiCalls": 1,
-      "apiCallsNotOnPage": 1,
+      "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -665,38 +665,43 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-copilot-agents-integrated-apps",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365-copilot/extensibility/api/admin-settings/package/copilotpackages-list",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -705,26 +710,22 @@
         "side": "ui",
         "governs": "Which agents are in the tenant inventory and whether they are blocked",
         "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Agents",
           "All agents",
           "Block"
         ],
-        "missing": [
-          "Agents",
-          "All agents",
-          "Block"
-        ]
+        "missing": []
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Which agents are in the tenant inventory and whether they are blocked",
-        "docs": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview",
-        "reachable": false,
-        "token": "/v1.0/copilot/admin",
-        "found": false
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+        "reachable": true,
+        "token": "/beta/copilot/admin",
+        "found": true
       }
     ],
     "roadmapDrift": []
@@ -739,6 +740,12 @@
     {
       "date": "2026-11-18",
       "status": "verified",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-19",
+      "status": "held",
       "version": 2,
       "model": "gpt-6.1-sol"
     }
