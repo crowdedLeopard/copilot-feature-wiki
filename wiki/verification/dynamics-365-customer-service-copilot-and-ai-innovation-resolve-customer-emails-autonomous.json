@@ -1,0 +1,995 @@
+{
+  "slug": "dynamics-365-customer-service-copilot-and-ai-innovation-resolve-customer-emails-autonomous",
+  "roadmapId": 578064,
+  "title": "Dynamics 365 Customer Service: email resolution answers customer emails without creating a case",
+  "status": "held",
+  "date": "2026-11-19",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-19",
+    "reasons": [
+      "3 blocking findings (claims 55, 59, 64)"
+    ]
+  },
+  "counts": {
+    "claims": 78,
+    "confirmed": 74,
+    "unconfirmed": 1,
+    "contradicted": 3,
+    "blocker": 3,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "Hold: the briefing reports automation APIs as undocumented even though Microsoft publishes writable email-agent and line-of-business automation settings. It also tells administrators to use the case-resolution review setting for email resolution without establishing that this setting controls the new email workflow. The roadmap dates, preview qualification and consumption-billing description are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: releasePhase; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target date is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap preview date is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap associates this item with Microsoft Copilot (Microsoft 365) and Dynamics 365 Customer Service.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Customer Service\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "Scope: Who it affects",
+      "type": "applicability",
+      "claim": "The feature's Learn page applies to Dynamics 365 Customer Service only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "Applies to: Dynamics 365 Customer Service only",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "title; summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Email resolution can respond directly to an incoming customer email without creating a case first.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "Use email resolution to analyze incoming customer emails and respond directly from the email channel without creating a case.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Email resolution applies Case Management Agent capabilities to analyze customer intent and draft responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "Email resolution is a feature that applies Case Management Agent capabilities to analyze customer intent and draft responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Email resolution uses Customer Intent Agent to identify intent from the incoming email content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "Email resolution uses Customer Intent Agent to identify the intent from the incoming email.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Email resolution can generate an email requesting more information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "Generates an email to request more information or drafts a suggested or final resolution.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Email resolution can draft a suggested or final resolution.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "Generates an email to request more information or drafts a suggested or final resolution.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Why it matters; Risk assessment: Autonomy; rationale: risk",
+      "type": "behaviour",
+      "claim": "In the autonomous configuration the feature sends customer responses without a person reviewing them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "Based on your configuration, email resolution sends responses autonomously.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "summary; What's changing; Risk assessment; rationale: impact",
+      "type": "behaviour",
+      "claim": "If email resolution cannot resolve the issue, it creates a case for a service representative.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "If the issue isn't resolved, email resolution creates a case for a service representative to address.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Change & support; rationale: impact",
+      "type": "behaviour",
+      "claim": "The email is associated with the fallback case.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "If the issue can't be resolved, creates a case for a customer service representative to work on and associates the email with the case.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Security & identity; controls[0].note",
+      "type": "behaviour",
+      "claim": "The administrator selects an application user to reply to emails and create cases autonomously if needed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "In Select the application user for email management, select the user you want to reply to emails and create a case autonomously if needed from the Application user dropdown.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Email resolution runs when an incoming email matches the email rules configured for a line of business in Customer Intent Agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "Email resolution runs when an incoming email from a customer matches the email rules configured for a line of business in Customer Intent Agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Email resolution uses case-resolution capabilities and available knowledge to generate its response.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "Email resolution uses case resolution capabilities and available knowledge to generate a response.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says the response can draw on enterprise knowledge.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Using enterprise knowledge, configured business instructions, connectors, and custom agents, the system constructs a resolution dynamically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says configured business instructions contribute to the resolution.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Using enterprise knowledge, configured business instructions, connectors, and custom agents, the system constructs a resolution dynamically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The roadmap says connectors can contribute to the resolution.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Using enterprise knowledge, configured business instructions, connectors, and custom agents, the system constructs a resolution dynamically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The roadmap says custom agents can contribute to the resolution.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Using enterprise knowledge, configured business instructions, connectors, and custom agents, the system constructs a resolution dynamically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; controls[2].note; Governance controls",
+      "type": "record",
+      "claim": "The roadmap describes an administrator setting the email-resolution automation level for each line of business.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "An administrator enables the setting and sets the automation level for each line of business",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Why it matters; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes email-resolution levels ranging from fully autonomous resolution to drafting for representative review and sending.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "from fully autonomous resolution to drafting a response for a service representative to review and send.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Scope; controls[0].note; Open questions",
+      "type": "availability",
+      "claim": "The email-resolution Learn page still describes the feature as a production-ready preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "Configure email resolution to resolve customer issues (preview)\nThis is a production-ready preview feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: defaultState; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Email resolution is admin-opt-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "Enable email resolution\nIn Copilot Service admin center, select Email settings.\nSet the Turn on email resolution toggle to On.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure; Scope",
+      "type": "behaviour",
+      "claim": "The feature requires data movement to be set up for the environment in Power Platform admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "Data movement is set up for your environment in Power Platform admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "The email-resolution prerequisites call for a Power Platform pay-as-you-go plan with consumption-based billing configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "The Power Platform pay-as-you-go plan requires an Azure subscription for the system to charge when the agent runs. Make sure consumption-based billing is set up.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; Governance guidance",
+      "type": "licensing",
+      "claim": "The pay-as-you-go plan requires an Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "The Power Platform pay-as-you-go plan requires an Azure subscription for the system to charge when the agent runs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The Azure subscription enables the system to charge when the agent runs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "The Power Platform pay-as-you-go plan requires an Azure subscription for the system to charge when the agent runs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Scope: Prerequisites; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Customer Intent Agent must be configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "Configure Customer Intent Agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope: Prerequisites; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The guided setup for autonomous email resolution must be completed through the linked Configure Case Management Agent instructions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "The guided setup for autonomous email resolution is completed. Learn more in Configure Case Management Agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope: Prerequisites; Cost and licensing; Governance guidance",
+      "type": "behaviour",
+      "claim": "The fully autonomous email-resolution flow requires an application user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "To configure the fully autonomous email resolution flow, create the application user and set up the shared mailbox.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope: Prerequisites; Cost and licensing; Governance guidance",
+      "type": "behaviour",
+      "claim": "The fully autonomous email-resolution flow requires a shared mailbox.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "To configure the fully autonomous email resolution flow, create the application user and set up the shared mailbox.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "The linked case-resolution setup requires the Customer Service Representative role for the application user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/set-up-case-resolution-agent",
+      "quote": "Assign the Customer Service Representative role to the application user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The shared mailbox makes automated outbound emails come from a centralized address.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/set-up-case-resolution-agent",
+      "quote": "For automated outbound emails, a shared mailbox is used to ensure messages come from a centralized address.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The agent manages autonomous cases and customer correspondence through the application user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/set-up-case-resolution-agent",
+      "quote": "Through the application user, the agent manages autonomous cases and handles customer correspondence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Autonomy & actions; controls[2].governs",
+      "type": "behaviour",
+      "claim": "Case resolution offers Full automation that automatically resolves cases.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/set-up-case-resolution-agent",
+      "quote": "Full: The AI agent automatically resolves cases.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Autonomy & actions; controls[2].governs",
+      "type": "behaviour",
+      "claim": "Case resolution offers Require agent confirmation, where a representative reviews and sends drafted email.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/set-up-case-resolution-agent",
+      "quote": "Require agent confirmation: The AI agent drafts email responses, but requires a representative to review and send the email.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Autonomy & actions; controls[2].note",
+      "type": "availability",
+      "claim": "Case resolution offers Shadow mode as a preview feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/set-up-case-resolution-agent",
+      "quote": "Enable shadow mode and view results (preview)\nThis is a preview feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Autonomy & actions; controls[2].governs",
+      "type": "behaviour",
+      "claim": "Case resolution offers a Disabled automation level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/set-up-case-resolution-agent",
+      "quote": "Disabled: The agent doesn't draft email responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Case-resolution simulations use sample case records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/set-up-case-resolution-agent",
+      "quote": "Run simulations to evaluate case resolution by Case Management Agent (preview)\nUse sample records to test and compare case resolution by Case Management Agent before enabling the agent in production.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Autonomy & actions; Cost and licensing",
+      "type": "cost",
+      "claim": "Case-resolution simulations consume Copilot or AI credits in the same way as agent runs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/set-up-case-resolution-agent",
+      "quote": "Simulations consume Copilot or AI credits in the same way as agent runs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Autonomy & actions; Cost and licensing",
+      "type": "cost",
+      "claim": "Case-resolution shadow mode consumes Copilot or AI credits in the same way as agent runs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/set-up-case-resolution-agent",
+      "quote": "Shadow mode consumes Copilot or AI credits in the same way as agent runs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The email-resolution page configures a single language for all emails.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "In Language settings, select the single language to use for all emails from the dropdown menu.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Configure Case Management Agent lists the CSR Manager or Customer Service Representative role as a prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/case-management-global-settings",
+      "quote": "The CSR Manager or Customer Service Representative role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "Configure Case Management Agent lists the Application Developer role to create app registrations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/case-management-global-settings",
+      "quote": "The Application Developer role to create app registrations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "front matter: licensing.model and notes; summary; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "These Dynamics 365 agent capabilities use consumption-based billing in Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
+      "quote": "Selected Copilot and agent capabilities in Dynamics 365 use consumption-based billing, charging per use. These capabilities use Copilot Credits for AI interactions and tasks, like retrieving information and responding to prompts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Dynamics 365 supports prepaid capacity using Copilot Studio message packs as well as pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
+      "quote": "Dynamics 365 supports two billing models: prepaid capacity and pay-as-you-go. The prepaid capacity model uses Copilot Studio message pack subscriptions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Prepaid capacity is consumed first when both billing models are used.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
+      "quote": "Both billing models can be used on the Dynamics 365 environment. Prepaid capacity is consumed first.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Both billing models require linking the Dynamics 365 environment to a Power Platform environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
+      "quote": "Both models require that you link your Dynamics 365 environment to a Power Platform environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The Dynamics 365 billing page says the AI capability is unavailable when its quota is depleted until capacity is added.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
+      "quote": "When the quota is depleted, the AI capability is unavailable until more capacity is added.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Copilot Service admin center > Email settings > Email resolution (preview) > Turn on email resolution reaches the feature toggle.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "In Copilot Service admin center, select Email settings.\nOn the Email settings page, select Manage next to Email resolution (preview). The Email Resolution (preview) page appears.\nSet the Turn on email resolution toggle to On.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[0].api; Governance controls: no API operation; Open questions",
+      "type": "absence",
+      "claim": "Microsoft documents no API operation for enabling email resolution.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_agentcopilotsetting",
+      "quote": "Update: PATCH /msdyn_agentcopilotsettings(msdyn_agentcopilotsettingid)\nWritable columns/attributes: msdyn_emailresolutionagentenabled\nDisplayName: Is Email Management Agent Enabled\nType: Boolean",
+      "severity": "blocker",
+      "fix": "Replace the blanket API absence with: 'Dataverse documents PATCH /msdyn_agentcopilotsettings(msdyn_agentcopilotsettingid), with the writable Boolean msdyn_emailresolutionagentenabled (Is Email Management Agent Enabled). The reference does not explicitly map it to the UI toggle or document application-user selection.' Use that call and reference for controls[0].api, name the Boolean in its note, and retain only the narrower UI-mapping question."
+    },
+    {
+      "n": 56,
+      "where": "controls[1].api; Governance controls: no API operation",
+      "type": "absence",
+      "claim": "No API operation is documented for the email-resolution line-of-business Deployment status setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'email resolution deployment status Dataverse table'; 'email resolution deployment entity reference'. Read configure-email-resolution and the msdyn_intentfamily, msdyn_agentcopilotsetting and msdyn_intentfamily_emailtemplateconfig references; no email-deployment property mapping found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[1].ui; controls[1].note; Governance controls table",
+      "type": "admin-path",
+      "claim": "The LOB deployment settings are on Copilot Service admin center > Email settings > Email resolution (preview) > LOB (lines of business) deployment settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "In the LOB (lines of business) deployment settings section, select the checkbox next to a category for which you want to edit the deployment settings. The Configure LOB (lines of business) deployment settings pane appears",
+      "severity": "minor",
+      "fix": "The pre-check's missing words are present; the path is real but stops at the section. Extend it to 'Email settings > Email resolution (preview) > LOB (lines of business) deployment settings > category > Configure LOB (lines of business) deployment settings > Deployment status'. The cited page documents LOB (lines of business) and Deployment status in that pane."
+    },
+    {
+      "n": 58,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Customer support > Case settings > Case Management Agent > Case resolution > Level of automation per line of business reaches the case-resolution automation settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/set-up-case-resolution-agent",
+      "quote": "Select Manage for Case Management Agent in Case settings.\nSelect Manage for Case resolution.\nIn Level of automation per line of business, the lines of business you configured for Customer Intent Agent appear. Select the required line of business and then select Edit.",
+      "severity": "minor",
+      "fix": "Customer support is confirmed by the already-cited https://learn.microsoft.com/dynamics365/customer-service/administer/case-management-global-settings ('Select Case settings in Customer support'). Complete the existing route as 'Customer support > Case settings > Case Management Agent > Case resolution > Level of automation per line of business > line of business > Edit > Settings > Level of automation'. Keep its description limited to case resolution."
+    },
+    {
+      "n": 59,
+      "where": "controls[2].api; Governance controls: no API operation",
+      "type": "absence",
+      "claim": "Microsoft documents no API operation for the case-resolution automation level per line of business.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_intentfamily",
+      "quote": "Update: PATCH /msdyn_intentfamilies(msdyn_intentfamilyid)\nmsdyn_CPAAutomationLevel: CPA Automation Level for the Line of Business\n0 Disabled; 1 Require agent confirmation; 2 Full automation; 3 Shadow",
+      "severity": "blocker",
+      "fix": "Set controls[2].api to kind 'rest', call 'PATCH /msdyn_intentfamilies(msdyn_intentfamilyid)', docs 'https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_intentfamily'. State in the note: 'The request body sets msdyn_CPAAutomationLevel: 0 Disabled, 1 Require agent confirmation, 2 Full automation, 3 Shadow.' Add that reference to sources. Remove this setting from the blanket API-absence sentence; do not claim that this proves applicability to email resolution."
+    },
+    {
+      "n": 60,
+      "where": "Governance controls: Representative Copilot Setting column",
+      "type": "behaviour",
+      "claim": "The Representative Copilot Setting reference lists msdyn_emailresolutionagentenabled with display name Is Email Management Agent Enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_agentcopilotsetting",
+      "quote": "DisplayName: Is Email Management Agent Enabled\nLogicalName: msdyn_emailresolutionagentenabled\nType: Boolean\nDefaultValue: False",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance controls; Open questions: toggle-to-column mapping",
+      "type": "absence",
+      "claim": "The documentation does not explicitly identify msdyn_emailresolutionagentenabled as the backing column for the UI's Turn on email resolution toggle.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'email resolution msdyn_emailresolutionagentenabled toggle'; 'email resolution application user Web API setting'. Read configure-email-resolution and msdyn_agentcopilotsetting: UI steps and a writable enablement Boolean are documented, but no explicit UI-to-column mapping was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A credit rate or generic-rate mapping specific to an email-resolution run is not yet published in the documentation checked.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'email resolution Copilot Credits rate billing'; 'email resolution Copilot Credit consumption rate Dynamics 365 Customer Service'. Read configure-email-resolution, setup-pay-as-you-go and requirements-messages-management; no email-resolution rate or event mapping found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The governance checklist names controls that are not represented in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Decide the single reply language and whether to use the Copilot-recommended email template'; 'agree an Azure Cost Management budget and alert owner'. Table: email enablement/application user, LOB deployment, case-resolution automation.",
+      "severity": "minor",
+      "fix": "The checklist's language setting, Copilot-recommended-template setting and Azure budget/alert controls have no table rows. Remove those configuration instructions from the checklist, leaving their existing explanatory coverage in Risk assessment and Cost and licensing; no additional rows are requested."
+    },
+    {
+      "n": 64,
+      "where": "Governance guidance: At rollout, second bullet",
+      "type": "applicability",
+      "claim": "Setting the third row's case-resolution automation level to a reviewed level controls autonomous email resolution.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Case Management Agent email resolution Level of automation per line'. Read configure-email-resolution, set-up-case-resolution-agent and case-management-global-settings: no passage explicitly connects this case-resolution setting to the new email-resolution workflow.",
+      "severity": "blocker",
+      "fix": "Replace the rollout bullet with 'Enable one line of business first through its deployment status (second row).' Remove the instruction to set email resolution through the third row. Retain the roadmap's statement that automation levels are planned and the existing question about how the two settings interact."
+    },
+    {
+      "n": 65,
+      "where": "Why it matters: If nobody acts",
+      "type": "absence",
+      "claim": "The sources checked do not say existing email handling changes without administrator action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'email resolution default enabled'. Read configure-email-resolution and the roadmap record: both describe administrator enablement; neither states an automatic change to existing email handling.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Copilot Studio's billing page publishes generic agent-feature rates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "Agent feature | Billing rate\nClassic answer | 1 Copilot Credit\nGenerative answer | 2 Copilot Credits\nAgent action | 5 Copilot Credits",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The variable cost rating reflects metered Copilot Credits consumption rather than a fixed included feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
+      "quote": "Selected Copilot and agent capabilities in Dynamics 365 use consumption-based billing, charging per use. These capabilities use Copilot Credits",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The roadmap says fallback cases carry customer intent, actions taken and generated responses.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "the system creates a case that carries the full conversation context, including customer intent, actions taken, and generated responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Cost and licensing; Governance controls: Azure budgets",
+      "type": "cost",
+      "claim": "The Dynamics 365 billing page directs pay-as-you-go users to Microsoft Cost Management in Azure for usage and budgets.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
+      "quote": "For pay-as-you-go, use Microsoft Cost Management in the Azure portal to view detailed usage and adjust spending limits (budgets) to free up more capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Azure Cost Management supports budgets at a billing-policy level through the corresponding Power Platform account resource.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-usage-costs",
+      "quote": "You can use these capabilities to set budgets at a billing policy level by setting a budget for its corresponding Power Platform account resource.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Azure Cost Management also supports budgets for individual Power Platform meters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-usage-costs",
+      "quote": "You can also set budgets for individual Power Platform meters.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Cost and licensing; Governance guidance: Before rollout",
+      "type": "cost",
+      "claim": "Azure Cost Management can alert when budget amounts are approached or reached.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-usage-costs",
+      "quote": "When budget amounts are approached or reached, you can configure alerts to be sent automatically or trigger actions to take place.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Power Platform admin center provides a downloadable billing-plan usage report, while Azure Cost Management shows billed charges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-usage-costs",
+      "quote": "Aggregated billing information is available in the Azure portal, and detailed usage drill-downs are available in the Power Platform admin center.\nFor this level of information, a downloadable report is available on the Billing plan page in the Power Platform admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Using the Copilot-recommended email template requires email template recommendations to be enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "If you want to use the Copilot-recommended template, select the Use Copilot-recommended template for drafting emails check box\nTo use this setting, email template recommendations must be enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "controls[1].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "The email-resolution LOB deployment pane edits LOB (lines of business) and Deployment status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "The Configure LOB (lines of business) deployment settings pane appears, where you can edit the settings for the following features:\nLOB (lines of business)\nDeployment status",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "The lines of business used in this workflow are configured in Customer Intent Agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "Email resolution runs when an incoming email from a customer matches the email rules configured for a line of business in Customer Intent Agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Governance controls: relationship between email and case resolution",
+      "type": "behaviour",
+      "claim": "The email-resolution configuration page lists Deployment status rather than an automation-level setting in its per-line-of-business pane.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+      "quote": "where you can edit the settings for the following features:\nLOB (lines of business)\nDeployment status",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "availability",
+      "claim": "Case-resolution simulation is documented as a preview feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/set-up-case-resolution-agent",
+      "quote": "Run simulations to evaluate case resolution by Case Management Agent (preview)\nThis is a preview feature.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-19T14:01:41.417Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 2,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=578064",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/customer-service/administer/set-up-case-resolution-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/customer-service/administer/case-management-global-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-usage-costs",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_agentcopilotsetting",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether email resolution is turned on, and which application user replies",
+        "docs": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+        "reachable": true,
+        "segments": [
+          "Email settings",
+          "Email resolution",
+          "Turn on email resolution"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which lines of business email resolution is deployed for",
+        "docs": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution",
+        "reachable": true,
+        "segments": [
+          "Email settings",
+          "Email resolution",
+          "LOB  deployment settings"
+        ],
+        "missing": [
+          "LOB  deployment settings"
+        ]
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Level of automation per line of business: autonomous reply, draft for review, shadow mode or disabled",
+        "docs": "https://learn.microsoft.com/dynamics365/customer-service/administer/set-up-case-resolution-agent",
+        "reachable": true,
+        "segments": [
+          "Customer support",
+          "Case settings",
+          "Case Management Agent",
+          "Case resolution",
+          "Level of automation per line of business"
+        ],
+        "missing": [
+          "Customer support"
+        ]
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

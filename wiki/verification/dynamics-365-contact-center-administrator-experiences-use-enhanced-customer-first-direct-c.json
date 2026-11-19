@@ -1,0 +1,823 @@
+{
+  "slug": "dynamics-365-contact-center-administrator-experiences-use-enhanced-customer-first-direct-c",
+  "roadmapId": 577801,
+  "title": "Dynamics 365 Contact Center: customer-first direct callback with callback profiles",
+  "status": "held",
+  "date": "2026-11-19",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-19",
+    "reasons": [
+      "3 blocking findings (claims 11, 21, 57)"
+    ]
+  },
+  "counts": {
+    "claims": 61,
+    "confirmed": 57,
+    "unconfirmed": 1,
+    "contradicted": 3,
+    "blocker": 3,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "Hold: the queue configuration route omits a required selection, and the enablement control is labelled tenant-wide without supporting documentation. Microsoft also documents administrator roles covering the app's configuration entries, so the role guidance should not present this as wholly unpublished.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap item is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is August CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap describes enablement by admins, makers or marketers for end users.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enabled by admins/makers/marketers for end users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Customer-first direct callback requires administrator enablement rather than starting automatically.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "Save the profile. After you save the first profile, the system enables customer-first direct callback and makes the profile available for queue configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The enablement toggle is at Copilot Service admin center > Routing > Callback management > Customer-first direct callback.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "In the site map of Copilot Service admin center, go to Routing > Callback management. ... After provisioning completes, select the Customer-first direct callback toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft has not documented an API equivalent for the customer-first direct callback enablement toggle.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"customer-first direct callback\" enable API organization settings table; \"customer-first\" \"callback\" \"msdyn\" enable organization table API. Opened configure-customer-first-callback and msdyn_proactive_callback_config; the latter does not identify its Enabled column as this toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[0].scope; Governance controls",
+      "type": "applicability",
+      "claim": "The enablement control has tenant-wide scope.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"customer-first direct callback\" \"tenant\" \"environment\". Opened configure-customer-first-callback, cs-admin-center and msdyn_proactive_callback_config; none states that this toggle governs all environments in a tenant.",
+      "severity": "blocker",
+      "fix": "Set controls[0].scope to \"other\" and remove the rendered \"Tenant\" label; the feature documentation does not establish tenant-wide enforcement."
+    },
+    {
+      "n": 12,
+      "where": "summary; controls[0].note; Why it matters; Risk assessment; Governance controls; rationale: risk",
+      "type": "behaviour",
+      "claim": "Enabling customer-first direct callback cannot be undone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "After you enable customer-first direct callback, you can't disable the feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "Why it matters; Risk assessment; Governance guidance: Before rollout; rationale: risk",
+      "type": "behaviour",
+      "claim": "The first profile automatically applies to queues already using direct callback as an overflow action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "During initial setup, the first callback profile automatically applies to queues that already use direct callback as an overflow action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Once customer-first direct callback is enabled, administrators cannot revert to classic direct callback.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/voice-channel-direct-callback",
+      "quote": "If you enable customer-first direct callback, it becomes the default callback experience and you can't revert to direct callback.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[0].note; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Enable Copilot AI agent for callback management under Routing > Callback management before selecting the customer-first toggle.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "In the site map of Copilot Service admin center, go to Routing > Callback management. ... Enable Copilot AI agent for callback management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The administrator must wait for Callback Agent provisioning before selecting the customer-first toggle.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "Wait for the system to provision Callback Agent and verify that it provisions the agent without errors. ... After provisioning completes, select the Customer-first direct callback toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0].note",
+      "type": "behaviour",
+      "claim": "At least one callback profile is required to enable the feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "You can't enable the feature until you create at least one callback profile.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Saving the first callback profile completes enablement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "After you save the first profile, the system enables customer-first direct callback and makes the profile available for queue configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[1].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Callback profiles are configured through Copilot Service admin center > Routing > Callback management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "In the site map of Copilot Service admin center, go to Routing > Callback management. ... On Create new direct callback profile, enter the following details:",
+      "severity": "minor",
+      "fix": "Keep the documented route, but replace controls[1].note's first sentence with: \"The route reaches Callback management; profile creation continues on Create new direct callback profile, then Dialing and Behaviors > Retry Settings.\""
+    },
+    {
+      "n": 20,
+      "where": "controls[1].api; controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "POST /msdyn_proactive_callback_profiles creates a callback profile configuration record.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/reference/entities/msdyn_proactive_callback_profile",
+      "quote": "Configuration entity for callback profiles used in direct and scheduled callback scenarios. ... Create ... POST /msdyn_proactive_callback_profiles",
+      "severity": "minor",
+      "fix": "Keep the call and append to controls[1].note: \"The request body can set msdyn_callback_offering_windows for offering windows, msdyn_callback_phone_number for the outbound number, msdyn_number_of_retries for retry attempts, and msdyn_fallback_action for fallback behaviour.\""
+    },
+    {
+      "n": 21,
+      "where": "controls[2].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The queue route goes directly from Overflow handling to Before work items are queued > Add condition-action pair.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
+      "quote": "Under Overflow handling, select Add condition-action pair. ... In the Overflow handling page, in Before work items are queued, select Add condition-action pair.",
+      "severity": "blocker",
+      "fix": "Replace controls[2].ui.path with \"Customer support > Queues > Advanced queues > queue > Overflow handling > Add condition-action pair > Before work items are queued > Add condition-action pair\". The first Add condition-action pair opens the Overflow handling page and must not be omitted."
+    },
+    {
+      "n": 22,
+      "where": "controls[2].api; Governance controls",
+      "type": "command",
+      "claim": "PATCH /msdyn_overflowactionconfigs(msdyn_overflowactionconfigid) updates the overflow action configuration that carries the callback profile lookup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_overflowactionconfig",
+      "quote": "Update ... PATCH /msdyn_overflowactionconfigs(msdyn_overflowactionconfigid)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The Customer Service extension supplies the writable msdyn_proactive_callback_profileId lookup for associating the profile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/reference/entities/msdyn_overflowactionconfig",
+      "quote": "Lookup to the Callback Profile associated with overflow action config ... LogicalName: msdyn_proactive_callback_profileid ... ReferencingEntityNavigationPropertyName: msdyn_proactive_callback_profileId",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Classic direct callback assigns the request to a representative before calling the customer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "In the classic direct callback experience, the system assigns a callback request to a representative before it calls the customer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "In classic direct callback, the representative waits while the customer call attempt completes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "If the customer doesn't answer, the call reaches voicemail, or the number is unavailable, the representative waits while the call attempt completes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "summary; What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Customer-first direct callback calls the customer first when the request reaches the front of the queue.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "With customer-first direct callback, the system calls the customer first when the callback request reaches the front of the queue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "At least one representative must be available when the system initiates the callback.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "When the callback request reaches the front of the queue and at least one representative is available, the system initiates the callback.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "summary; What's changing; Why it matters; Risk assessment",
+      "type": "behaviour",
+      "claim": "The representative joins after the customer answers and completes any required verification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "After the customer answers and completes any required verification, the system connects the customer to an available representative.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "summary; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "An AI agent can verify the customer before transfer to a representative.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "An AI agent can engage the customer, collect information, or perform verification. ... The system transfers the customer to an available representative.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The AI agent can collect information before a representative joins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "An AI agent can engage the customer, collect information, or perform verification.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Verification is optional per profile, with an informational-message profile as an alternative to a verification profile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "For example, a profile can require customer verification before the call is connected, while another profile can play an informational message before the transfer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Governance guidance: Before rollout; controls[1]",
+      "type": "behaviour",
+      "claim": "A callback profile configures the initial callback offer message.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "Initial callback offer: Edit the default message that the system plays when customer opts for a callback.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A callback profile can ask the customer for an alternate callback number.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "Ask for alternate number: Select to call customers at a number of their choice.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Governance guidance: Before rollout; controls[1]",
+      "type": "behaviour",
+      "claim": "A callback profile can define a callback offering window.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "Callback offering window: Turn on the toggle to define when the system can offer callback requests.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Profile duplicate prevention identifies existing callback requests using the customer's phone number.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "The system performs duplicate detection only when the overflow action triggers a direct callback experience. It uses the customer phone number to identify existing callback requests.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Queue allocation configures the maximum number of active callback requests per queue.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "Queue allocation: Specify the maximum number of active callback requests that a queue can hold.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "When the queue allocation limit is reached, callers continue through the standard queue experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "When the queue reaches the configured limit: The system stops offering callbacks. Customers continue through the standard queue experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; Risk assessment: Security & identity; Governance guidance; controls[1]",
+      "type": "behaviour",
+      "claim": "The profile configures the outbound callback number.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "On the Dialing page, in Callback number, select one of the following options to determine the number from which callback is offered.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing; controls[1]",
+      "type": "behaviour",
+      "claim": "The profile selects the Copilot Studio agent that engages customers after connection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "AI agent: Select the Copilot Studio agent that handles customer engagement after the callback connects.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "When the agent cannot engage the customer, fallback options are prompt and hang up or prompt and escalate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "Fallback action: Select one of the following options and customize the prompt and prompt message if agent is unable to engage with the customer: Prompt and hang up; Prompt and escalate",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Profile rules delay new callback attempts when average callback wait time exceeds the configured threshold.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "The system continuously monitors recently dialed callbacks and, when the average wait time exceeds the configured threshold, automatically delays new callback attempts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What's changing; Governance guidance: After rollout; controls[1]",
+      "type": "behaviour",
+      "claim": "Retry settings cover no answer, failed and answering-machine outcomes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "On the Behaviors page, in Retry Settings, select the retry options to configure the behavior for the following triggers: No answer; Failed; Answering machine",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The minimum retry wait is five minutes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "Wait time: Select the duration in minutes or hours to wait before retrying. The minimum duration is five minutes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Direct callback requests close automatically after seven days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "The system automatically closes direct callback requests after seven days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "One callback profile can be configured per overflow condition for a single queue.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "You can configure one callback profile per overflow condition for a single queue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "What's changing; Scope; controls[2].note; Governance guidance; rationale: impact",
+      "type": "applicability",
+      "claim": "The profile is selected for a voice queue whose overflow action is Direct callback.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "In Copilot Service admin center, for a voice queue, select Direct callback as the overflow action for any of the conditions. ... In Callback profile, select a callback profile.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "Microsoft warns that editing or deleting the alternate-number capture agent might break callbacks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "Avoid editing or deleting the AI agent that's configured for taking the alternative number. Any changes to the agent might result in callback not working as expected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Using different phone platforms for inbound calls and outbound callbacks prevents initiation and closes the request.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "if a customer calls an Azure Communication Services number but the callback uses a Microsoft Teams number, the system doesn't initiate the callback and automatically closes the callback request.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing; Scope",
+      "type": "behaviour",
+      "claim": "A provisioned Microsoft Copilot Studio agent in the environment is a prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "Provision the Microsoft Copilot Studio agent in your environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing; Scope",
+      "type": "behaviour",
+      "claim": "Phone numbers with outbound calling enabled are a prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "Configure phone numbers with outbound calling enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing; Scope",
+      "type": "behaviour",
+      "claim": "Administrators must create any Copilot Studio agents they plan to use for verification or information collection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "Create any Copilot Studio agents that you plan to use for customer verification or information collection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "summary; licensing.notes; Why it matters; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "AI agent use in customer-first direct callback can consume available Copilot or Microsoft service credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "Customer-first direct callback uses AI agents. AI agent use can consume available Copilot or Microsoft service credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Callback agents have the licensing and usage requirements applicable to other AI agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "Licensing and usage requirements that apply to other AI agents also apply to callback agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Specific licensing requirements apply to each Contact Center channel user for voice, chat and digital messaging.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/implement/system-requirements-contact-center",
+      "quote": "Specific licensing requirements apply for each channel user to use voice, chat, and digital messaging in Dynamics 365 Contact Center",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is mixed, combining channel-user licensing requirements with potential AI credit consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "AI agent use can consume available Copilot or Microsoft service credits. ... Licensing and usage requirements that apply to other AI agents also apply to callback agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A dedicated price or credit rate specific to callback agents has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"customer-first direct callback\" licensing credits rate pricing. Opened configure-customer-first-callback, system-requirements-contact-center, usage-based-billing-overview-copilot-credits and requirements-messages-management; general agent and voice rates exist, but no dedicated callback rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Scope: Who configures it; Open questions: administrator role",
+      "type": "absence",
+      "claim": "Administrator roles for configuring the setting remain undocumented.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/implement/cs-admin-center",
+      "quote": "System Administrator: To access and edit all the site map entries. System Customizer: To access and edit all the site map entries.",
+      "severity": "blocker",
+      "fix": "Replace \"The pages read give no admin role for this setting\" with \"The Copilot Service admin center prerequisites document System Administrator and System Customizer access to edit all site map entries; the callback page names no narrower role.\" Cite https://learn.microsoft.com/dynamics365/customer-service/implement/cs-admin-center. Reword the role question as \"Is a narrower role documented specifically for callback management?\""
+    },
+    {
+      "n": 58,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The variable cost rating reflects usage measured in Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+      "quote": "AI agent use can consume available Copilot or Microsoft service credits. Learn more in Understand usage-based billing and cost management for Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[1].scope",
+      "type": "applicability",
+      "claim": "Callback profile configuration belongs to the environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/reference/entities/msdyn_proactive_callback_profile",
+      "quote": "Configuration entity for callback profiles used in direct and scheduled callback scenarios. ... EntitySetName: msdyn_proactive_callback_profiles ... TableType: Standard",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[2].scope",
+      "type": "applicability",
+      "claim": "Queue overflow configuration belongs to the environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_overflowactionconfig",
+      "quote": "Overflow action configurations. ... EntitySetName: msdyn_overflowactionconfigs ... TableType: Standard",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance guidance: After rollout",
+      "type": "consistency",
+      "claim": "The checklist directs readers to monitor Copilot Credits consumption, but no controls row covers consumption monitoring.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Watch Copilot Credits consumption for the callback agents with your finance owner. / Controls cover enablement, callback profile settings and queue overflow profile selection only.",
+      "severity": "minor",
+      "fix": "Remove the final After rollout bullet, \"Watch Copilot Credits consumption for the callback agents with your finance owner\", because its monitoring control has no table row."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-19T14:01:40.359Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=577801",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/customer-service/administer/voice-channel-direct-callback",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/contact-center/implement/system-requirements-contact-center",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/customer-service/develop/reference/entities/msdyn_overflowactionconfig",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/customer-service/develop/reference/entities/msdyn_proactive_callback_profile",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_overflowactionconfig",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether customer-first direct callback is enabled (irreversible)",
+        "docs": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+        "reachable": true,
+        "segments": [
+          "Routing",
+          "Callback management",
+          "Customer-first direct callback"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Callback profile settings (offer message, window, dialling, retries, AI agent)",
+        "docs": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback",
+        "reachable": true,
+        "segments": [
+          "Routing",
+          "Callback management"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Callback profile settings (offer message, window, dialling, retries, AI agent)",
+        "docs": "https://learn.microsoft.com/dynamics365/customer-service/develop/reference/entities/msdyn_proactive_callback_profile",
+        "reachable": true,
+        "token": "POST /msdyn_proactive_callback_profiles",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which callback profile a queue uses for each overflow condition",
+        "docs": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
+        "reachable": true,
+        "segments": [
+          "Customer support",
+          "Queues",
+          "Advanced queues",
+          "queue",
+          "Overflow handling",
+          "Before work items are queued",
+          "Add condition-action pair"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Which callback profile a queue uses for each overflow condition",
+        "docs": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_overflowactionconfig",
+        "reachable": true,
+        "token": "PATCH /msdyn_overflowactionconfigs(msdyn_overflowactionconfigid)",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

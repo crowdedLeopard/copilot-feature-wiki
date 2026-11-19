@@ -43,8 +43,11 @@ sources:
   - title: "Whether governance is turned on for the environment (REST API)"
     url: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_governanceagent_status"
     kind: "learn"
-  - title: "Which governance policies exist, what they check and how strictly they enforce (REST API)"
+  - title: "msdyn_guardrail_rule table/entity reference"
     url: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_guardrail_rule"
+    kind: "learn"
+  - title: "msdyn_guardrail_rule_version table/entity reference"
+    url: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_guardrail_rule_version"
     kind: "learn"
 videos: []
 related: ["copilot-credits","security-roles","dynamics-365-customer-service-manage-intraday-operations-with-ai-agent"]
@@ -60,17 +63,17 @@ controls:
       call: "PATCH /msdyn_governanceagent_statuses(msdyn_governanceagent_statusid)"
       docs: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_governanceagent_status"
     note: "Needs the CSR Manager role. The request body would set msdyn_isenabled, which the reference describes as whether the governance agent is enabled; Learn does not tie the toggle to it."
-  - governs: "Which governance policies exist, what they check and how strictly they enforce"
+  - governs: "Creation of governance policy records"
     scope: "environment"
     ui:
       surface: "Copilot Service workspace"
-      path: "Service > Governance > New policy > Content to check > How strictly to enforce"
+      path: "Service > Governance > New policy > Add a policy > Content to check > How strictly to enforce"
       docs: "https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies"
     api:
       kind: "rest"
       call: "POST /msdyn_guardrail_rules"
       docs: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_guardrail_rule"
-    note: "The Learn page lists this table in the administrator prerequisites and grants Write on it for the Governance site-map entry. The reference does not say which column holds enforcement or strictness."
+    note: "The request body sets msdyn_name to name the new policy record. This Create operation does not document configuring content checks or enforcement strictness; use the documented UI for those settings."
 confidence: "high"
 created: "2026-11-19"
 updated: "2026-11-19"
@@ -80,19 +83,23 @@ changes:
     note: "New briefing: governance policies for outgoing Customer Service email, with the toggle, policy settings, Copilot credits prerequisite and a Block-versus-override discrepancy."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 64 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-19"
+    note: "Correction: the policy-creation API row now covers only creating the policy record, the policy path includes the Add a policy dialog, and the notification checklist item follows Microsoft's wording."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 68 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 62
+  claims: 68
+  confirmed: 67
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "0b3268157a02138011a0ef06e5e82778"
+  contradicted: 1
+  attempts: 0
+  hash: "632a56e4f6d121ed7140ab4cf8b84c77"
 ---
 
 ## What's changing
@@ -144,15 +151,15 @@ Prerequisites on the Learn page: the **CSR Manager** role for administrators, th
 ## Governance guidance
 
 ### Before rollout
-- Confirm the **CSR Manager** role holders and the table privileges for custom administrator and representative roles listed on the Learn page.
-- Set up Microsoft Copilot credits for the environment (prepaid capacity or pay-as-you-go) and agree who owns the spend.
-- Decide whether the organisation can provide consent for potential cross-region data movement, and enable AI agents for the Dynamics 365 environment in Power Platform admin center.
-- Agree with legal and HR how representatives and customers are notified that communications may be monitored, as Microsoft's notice on the page requires.
+- Note the **CSR Manager** role holders and the table privileges for custom administrator and representative roles that the Learn page lists as prerequisites.
+- Note that Microsoft Copilot credits must be set up for the environment (prepaid capacity or pay-as-you-go), and agree who owns the spend.
+- Decide whether the organisation can provide consent for potential cross-region data movement, and confirm AI agents are enabled for the Dynamics 365 environment in Power Platform admin center.
+- Agree with legal and HR how users are notified that communications may be monitored, as Microsoft requires; Microsoft also encourages informing service representatives.
 
 ### At rollout
 - Turn on the governance toggle in Copilot Service admin center, then start with the default system policies on **Flag** or **Warn**.
 - Run a simulation on sample emails before publishing any **Block** policy.
-- Check every custom **Send** command and call `validateForSend` where needed.
+- Ask developers to confirm that every custom **Send** command calls `validateForSend` where needed.
 
 ### After rollout
 - Review the **Policy flags/blocks log** regularly for repeated patterns and adjust policy descriptions to refine the prompts.
@@ -167,7 +174,7 @@ Prerequisites on the Learn page: the **CSR Manager** role for administrators, th
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether governance is turned on for the environment</strong><br><small>Environment</small><br><small class="controls__note">Needs the CSR Manager role. The request body would set msdyn_isenabled, which the reference describes as whether the governance agent is enabled; Learn does not tie the toggle to it.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Customer Support › Quality management › Governance › Manage › Governance <a href="https://learn.microsoft.com/dynamics365/customer-service/administer/configure-governance-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH /msdyn_governanceagent_statuses(msdyn_governanceagent_statusid)</code> <a href="https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_governanceagent_status" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which governance policies exist, what they check and how strictly they enforce</strong><br><small>Environment</small><br><small class="controls__note">The Learn page lists this table in the administrator prerequisites and grants Write on it for the Governance site-map entry. The reference does not say which column holds enforcement or strictness.</small></td><td data-label="Admin UI"><strong>Copilot Service workspace</strong><br>Service › Governance › New policy › Content to check › How strictly to enforce <a href="https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST /msdyn_guardrail_rules</code> <a href="https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_guardrail_rule" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Creation of governance policy records</strong><br><small>Environment</small><br><small class="controls__note">The request body sets msdyn_name to name the new policy record. This Create operation does not document configuring content checks or enforcement strictness; use the documented UI for those settings.</small></td><td data-label="Admin UI"><strong>Copilot Service workspace</strong><br>Service › Governance › New policy › Add a policy › Content to check › How strictly to enforce <a href="https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST /msdyn_guardrail_rules</code> <a href="https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_guardrail_rule" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -191,13 +198,8 @@ cost: Variable. Learn lists Microsoft Copilot credits setup as a prerequisite an
 impact: Medium. Service representatives and supervisors who send email, and anyone running autonomous email agents, notice warnings or blocks once policies are published; other users do not.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].api; Governance controls / command: POST /msdyn_guardrail_rules configures which policies exist, what they check and how strictly they enforce. | Found: Create ... POST /msdyn_guardrail_rules ... msdyn_active_versionid: Look up fetching specific version of guardrail rule | Fix: Narrow controls[1].governs and its rendered label to 'Creation of governance policy records'. Replace its note with 'The request body sets msdyn_name to name the new policy record. This Create operation does not document configuring content checks or enforcement strictness; use the documented UI for those settings.' Keep POST /msdyn_guardrail_rules and its existing reference URL. Do not present creation of the policy record as automation for its content checks and enforcement. | Source: https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_guardrail_rule
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; What's changing; Governance controls / admin-path: Policy enforcement is configured in Copilot Service workspace at Service > Governance > New policy > Content to check > How strictly to enforce. | Found: If you select New policy, then on the Add a policy dialog, configure the following settings: ... In the Content to check section ... How strictly to enforce | Fix: Include the intervening dialog heading in the structured and rendered path: Service > Governance > New policy > Add a policy > Content to check > How strictly to enforce. | Source: https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies
-- [supported, minor] Risk assessment: Autonomy & actions / behaviour: The policy evaluation underlying strictness uses AI judgement rather than only a deterministic rule match. | Found: Score threshold for violation determination. LLM score less than threshold equals violated, score greater than or equal to threshold equals pass. | Fix: Add https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_guardrail_rule_version to sources as support for the AI-judgement statement. | Source: https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_guardrail_rule_version
-- [supported, minor] Governance guidance: Before rollout, notification bullet / behaviour: The checklist attributes notification of both representatives and customers to Microsoft's requirements. | Found: customers must adequately notify users ... In addition, customers are encouraged to have a mechanism in place to inform their service representatives | Fix: Replace the bullet with 'Agree with legal and HR how users are notified that communications may be monitored, as Microsoft requires; Microsoft also encourages informing service representatives.' Microsoft requires user notification but only encourages representative notification. | Source: https://learn.microsoft.com/dynamics365/customer-service/administer/configure-governance-policies
-- [contradicted, minor] Governance guidance; Governance controls / consistency: All controls the governance checklist tells readers to configure or check are represented in the controls table. | Found: Confirm the CSR Manager role holders ... Set up Microsoft Copilot credits ... provide consent ... enable AI agents ... Check every custom Send command ... The table contains only governance enablement and policy authoring. | Fix: The Before rollout steps for security roles/table privileges, Copilot credits setup, cross-region consent and AI-agent enablement, and the At rollout custom Send validation step have no corresponding control rows. Keep these as prerequisite or developer notes rather than table-backed configuration checklist steps; do not add rows as part of this correction.
+- [contradicted, minor] Governance guidance / consistency: Several checklist instructions concern controls not represented by either controls-table row. | Found: Checklist: role privileges, credits setup, cross-region consent, AI agents, simulation, custom Send validation, logs and consumption. Table: Whether governance is turned on for the environment; Creation of governance policy records. | Fix: Remove the checklist instructions to take stock of role privileges, check credits setup, provide cross-region consent, enable AI agents, run simulations, check custom Send integration, review logs and monitor credits where no corresponding table row exists. Retain their sourced explanatory prose; do not add control rows as part of this correction.
 -->

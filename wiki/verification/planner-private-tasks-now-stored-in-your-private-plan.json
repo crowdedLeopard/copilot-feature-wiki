@@ -1,0 +1,682 @@
+{
+  "slug": "planner-private-tasks-now-stored-in-your-private-plan",
+  "roadmapId": 569426,
+  "title": "Planner: private tasks stored in your private plan instead of Microsoft To Do",
+  "status": "held",
+  "date": "2026-11-19",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-19",
+    "reasons": [
+      "2 blocking findings (claims 34, 49)"
+    ]
+  },
+  "counts": {
+    "claims": 52,
+    "confirmed": 50,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 2,
+    "major": 0,
+    "minor": 0
+  },
+  "summary": "Hold: the cited PowerShell reference describes the printed command as unblocking an app, not blocking it. The briefing also treats private-plan eDiscovery as undocumented despite Microsoft's published exclusion of non-group plans. The rollout dates and automatic deployment match Microsoft's notice.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is December CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed, without an assertion that other clouds are excluded.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope; Governance controls; Open questions",
+      "type": "record",
+      "claim": "Web is the only platform listed on the roadmap.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-11-04T00:02:09.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-04T00:02:09\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "title; summary; What's changing; Scope; Governance guidance; rationale: impact",
+      "type": "record",
+      "claim": "New private tasks created in Planner and Planner-powered experiences will be stored in the user's private Planner plan instead of the Microsoft To Do task store.",
+      "status": "supported",
+      "source": "Message Center post MC1488845",
+      "quote": "Beginning in December 2026, private tasks created in Planner and Planner-powered experiences will be stored in a user's own private Planner plan instead of the Microsoft To Do task store.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes a single place for the user's private tasks.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "providing a single place for tasks visible only to that user",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Private tasks remain visible only to their owner.",
+      "status": "supported",
+      "source": "Message Center post MC1488845",
+      "quote": "Private tasks remain visible only to the task owner",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "Private tasks cannot be shared with others.",
+      "status": "supported",
+      "source": "Message Center post MC1488845",
+      "quote": "Private tasks remain visible only to the task owner and cannot be shared or assigned to others.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "Private tasks cannot be assigned to others.",
+      "status": "supported",
+      "source": "Message Center post MC1488845",
+      "quote": "Private tasks cannot be shared or assigned to others.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Existing tasks continue to work and appear alongside the new private tasks.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "existing tasks continue to work and appear alongside them",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Users continue to see existing private tasks in Planner My Tasks.",
+      "status": "supported",
+      "source": "Message Center post MC1488845",
+      "quote": "Users will continue to see existing private tasks in Planner My Tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance; rationale: impact",
+      "type": "record",
+      "claim": "New private tasks created in Planner will no longer appear in Microsoft To Do.",
+      "status": "supported",
+      "source": "Message Center post MC1488845",
+      "quote": "New private tasks created in Planner will no longer appear in Microsoft To Do.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The storage change enables labels for private tasks.",
+      "status": "supported",
+      "source": "Message Center post MC1488845",
+      "quote": "This enables richer Planner capabilities, such as labels and task history",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft's notice says the change enables task history.",
+      "status": "supported",
+      "source": "Message Center post MC1488845",
+      "quote": "This enables richer Planner capabilities, such as labels and task history",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: defaultState; summary; What's changing; Scope; Governance controls; rationale",
+      "type": "default",
+      "claim": "The default state is on because the feature is enabled automatically.",
+      "status": "supported",
+      "source": "Message Center post MC1488845",
+      "quote": "The feature is enabled automatically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0].note; What's changing; Cost and licensing; Governance controls",
+      "type": "record",
+      "claim": "No administrator action is required for deployment.",
+      "status": "supported",
+      "source": "Message Center post MC1488845",
+      "quote": "No administrator action is required for deployment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1488845 was updated on 3 November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1488845",
+      "quote": "Updated November 3, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Scope; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "The rollout begins in early December 2026, previously November.",
+      "status": "supported",
+      "source": "Message Center post MC1488845",
+      "quote": "General Availability (Worldwide): Rollout begins in early December 2026 (previously November).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Scope; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Rollout completion is expected in late December 2026, previously November.",
+      "status": "supported",
+      "source": "Message Center post MC1488845",
+      "quote": "Expected completion: late December 2026 (previously November).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft's notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1488845",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "Microsoft answers yes to whether the change alters how existing customer data is processed, stored or accessed.",
+      "status": "supported",
+      "source": "Message Center post MC1488845",
+      "quote": "Does the change alter how existing customer data is processed, stored, or accessed?Yes. Private task storage changes from Microsoft To Do to Planner for new private tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "summary; Why it matters; Risk assessment; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "Microsoft asks organisations to validate retention, discovery, reporting and governance processes that depend on Microsoft To Do storage.",
+      "status": "supported",
+      "source": "Message Center post MC1488845",
+      "quote": "Organizations should validate any retention, discovery, reporting, or governance processes that depend on Microsoft To Do storage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "Microsoft's notice says existing compliance and security protections continue to apply.",
+      "status": "supported",
+      "source": "Message Center post MC1488845",
+      "quote": "Existing compliance and security protections continue to apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "This is a storage and experience update, not a generative AI capability.",
+      "status": "supported",
+      "source": "Message Center post MC1488845",
+      "quote": "No. This is a Planner task storage and experience update, not a generative AI capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The current Teams administration documentation describes private tasks and their attachments as stored in Microsoft Exchange.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "Private tasks and their attachments\n\nThese are stored in Microsoft Exchange.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Tasks in basic plans are stored in Azure and managed by the Planner service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "Basic plans and the tasks in them\n\nThese tasks and plans are stored in Azure and managed by the Planner service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Learn does not yet identify the precise storage backend for the new private Planner plan.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner private plan storage Azure; Planner private tasks private plan storage To Do. Opened manage-planner-app, planner-security-privacy-compliance and planner-for-admins; these describe Exchange, basic and premium storage, not the new private plan's backend.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Storage of new private tasks moves from To Do to the Planner platform.",
+      "status": "supported",
+      "source": "Message Center post MC1488845",
+      "quote": "This change aligns private task management with the Planner platform while preserving enterprise compliance and security protections.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Purview eDiscovery and history are supported for basic plans contained by groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-security-privacy-compliance",
+      "quote": "Purview eDiscovery and history are supported for basic plans contained by groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Premium plans and non-group plans are not currently supported for Purview eDiscovery and history.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-security-privacy-compliance",
+      "quote": "Purview eDiscovery and history are supported for basic plans contained by groups. Premium plans and non-group plans aren't currently supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance: After rollout; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not said how a user's private, non-shared Planner plan is treated for eDiscovery.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/planner/planner-security-privacy-compliance",
+      "quote": "Purview eDiscovery and history are supported for basic plans contained by groups. Premium plans and non-group plans aren't currently supported.",
+      "severity": "blocker",
+      "fix": "Replace 'It does not say how a private plan is treated, which is the point to confirm for eDiscovery of new private tasks.' with 'Microsoft documents no current Purview eDiscovery and history support for non-group plans.' In What's changing, replace 'Learn does not yet describe the private plan storage, so what the change does to storage, discovery and retention is known only from the roadmap item and the notice.' with 'Learn does not yet identify the precise storage backend for the new private plan.' In After rollout, remove the reason 'because Learn's Planner security page does not say how private plans are treated'. Remove eDiscovery and content search from the first Open questions bullet rather than presenting their support for a non-group plan as undocumented. Keep the existing source https://learn.microsoft.com/planner/planner-security-privacy-compliance."
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Change & support",
+      "type": "applicability",
+      "claim": "The Planner security page says retention policy is not currently supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-security-privacy-compliance",
+      "quote": "Retention policy isn't currently supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Learn points to Microsoft To Do for Power Automate support for private tasks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "For Power Automate support, see Using Microsoft To Do with Power Automate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Learn lists the Power Automate Planner connector for tasks in basic plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "Planner tasks can be managed using Microsoft Graph and the Power Automate connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "Which Power Automate route and Graph APIs apply to the newly introduced private plan is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner private tasks Power Automate private plan Graph. Opened manage-planner-app and graph/planner-concept-overview. General task APIs and existing connectors are documented, but their reach into this new private plan is not stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Learn says users with a Microsoft 365 licence are entitled to the Planner app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "Users with a Microsoft 365 license are entitled to the Planner app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Planner for admins lists Office 365 E3 and Microsoft 365 Business Basic among the subscriptions that include Planner.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/planner/planner-for-admins",
+      "quote": "Planner in Microsoft 365 is included with the following subscription plans:\n\n- Microsoft 365 Business Basic\n- Microsoft 365 Business Standard with Copilot\n- Microsoft 365 Business Premium with Copilot\n- Office 365 E1\n- Office 365 E3",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Included is the licensing model for this change inside the licensed Planner product.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/planner/planner-for-admins",
+      "quote": "Users with a qualifying Microsoft 365 license have access to a rich set of capabilities for individual and team work management. These include basic plan creation and editing capabilities, task creation and editing capabilities",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "A licence requirement specific to the private-task storage change has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner private tasks license pricing; Planner private plan private tasks licensing price meter. Opened Planner for admins and manage-planner-app; read Planner service-description licensing excerpts. No licence specific to the storage change was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to this private-task storage change is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner private plan private tasks licensing price meter. Opened Planner for admins and manage-planner-app; read service-description entitlements, including its general Graph metering caveat. No meter for this storage change was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No price specific to the storage change has been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner private tasks license pricing; Planner private plan private tasks licensing price meter. Opened Planner for admins and manage-planner-app and read service-description results. No price for the private-task storage change was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "The Planner app in Teams displays Private Tasks under My Tasks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "My Tasks: This view includes:\n- Private Tasks: A dedicated place for the user to quickly create tasks in a default place.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "Learn does not yet describe the Teams-specific presentation of this storage change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner private plan new private tasks Teams My Tasks experience December 2026. Opened manage-planner-app and Planner for admins. They describe the existing My Tasks view but not how this storage update will appear in Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0]; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "Neither an admin UI nor an API switch to keep new Planner private tasks in the To Do store is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner private tasks private plan storage To Do administrator opt out Set-PlannerConfiguration; Planner keep To Do private storage setting. Opened manage-planner-app, disable-planner and Planner for admins. No storage-selection UI or API setting was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Teams admin center > Teams apps > Manage apps > Planner > Block turns off the Planner app for the organisation in Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "In the left pane of the Teams admin center, go to Teams apps > Manage apps.\n\nTo turn off Planner for your organization, search for the Planner app, select it, and then select Block.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "Update-M365TeamsApp -Id <Teams app ID> -IsBlocked $true is documented as blocking the Planner app in Teams.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true\n\nUnblocks Bookings app (App ID 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b).",
+      "severity": "blocker",
+      "fix": "Remove the printed PowerShell call and set controls[1].api to null; retain the verified UI Block path. Add to the row note: 'The PowerShell reference labels its -IsBlocked $true example as unblocking an app, so the blocking call is not verified.' Do not reverse the Boolean by inference: the same reference also labels its $false example as unblocking."
+    },
+    {
+      "n": 50,
+      "where": "controls[1].governs; controls[1].scope; Governance controls; Governance guidance",
+      "type": "applicability",
+      "claim": "The listed Teams app control governs Planner app availability in Teams at organisation scope, not the Web rollout itself.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "Planner is enabled by default for all Teams users in your organization. You can turn off or turn on the app at the org level on the Manage apps page in the Teams admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].note; Governance controls",
+      "type": "absence",
+      "claim": "Blocking Planner in Teams is not documented as a way to retain private-task storage in Microsoft To Do.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner keep To Do private storage setting; Planner private tasks private plan storage To Do administrator opt out. Opened manage-planner-app and disable-planner. The Teams Block action controls app access; neither page describes reverting private-task storage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope",
+      "type": "record",
+      "claim": "Microsoft's notice names Microsoft Planner, Planner on the web, Planner-powered experiences and Microsoft To Do as the affected platforms or services.",
+      "status": "supported",
+      "source": "Message Center post MC1488845",
+      "quote": "Platforms/Services:\n\n- Microsoft Planner- Planner on the web- Planner-powered experiences- Microsoft To Do",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-19T14:01:44.800Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=569426",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1488845",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/planner/planner-security-privacy-compliance",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/planner/planner-for-admins",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/planner/disable-planner",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether the Planner app is available in Microsoft Teams",
+        "docs": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Manage apps",
+          "Planner",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether the Planner app is available in Microsoft Teams",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "reachable": true,
+        "token": "Update-M365TeamsApp",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

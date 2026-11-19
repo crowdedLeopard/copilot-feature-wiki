@@ -1,0 +1,733 @@
+{
+  "slug": "microsoft-teams-invite-attendees-to-register",
+  "roadmapId": 573250,
+  "title": "Microsoft Teams: invite people to register for events by email",
+  "status": "verified-with-gaps",
+  "date": "2026-11-19",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 54,
+    "confirmed": 54,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "The briefing accurately reports Microsoft's rollout notice, custom-domain restriction and existing attendee-access controls. The sending-domain path reaches the correct settings page but should continue to the option that enables the custom domain.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; Scope",
+      "type": "record",
+      "claim": "Organisers of Teams events with registration enabled can send email invitations containing a registration link.",
+      "status": "supported",
+      "source": "Message Center post MC1537353",
+      "quote": "Microsoft Teams is expanding the Invite to register experience for Teams events with registration enabled. Organizers can select people to receive an email invitation with a link to register for the event.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Invitations go to selected people and groups.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "For an event that needs registration, send email invites to the selected people and groups who will be invited to register to the event",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft describes this change as an expansion of the existing Invite to register experience.",
+      "status": "supported",
+      "source": "Message Center post MC1537353",
+      "quote": "Microsoft Teams is expanding the Invite to register experience for Teams events with registration enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Invite to register will be available for public events.",
+      "status": "supported",
+      "source": "Message Center post MC1537353",
+      "quote": "Invite to register will be available across event access types, including public, organization-wide, and events limited to specific people and groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Invite to register will be available for organisation-wide events.",
+      "status": "supported",
+      "source": "Message Center post MC1537353",
+      "quote": "Invite to register will be available across event access types, including public, organization-wide, and events limited to specific people and groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing; Scope; Governance controls",
+      "type": "record",
+      "claim": "Invite to register will be available for events limited to specific people and groups.",
+      "status": "supported",
+      "source": "Message Center post MC1537353",
+      "quote": "Invite to register will be available across event access types, including public, organization-wide, and events limited to specific people and groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; Risk assessment; Governance controls; rationale: risk",
+      "type": "record",
+      "claim": "An invitation to a public event does not change who is eligible to register.",
+      "status": "supported",
+      "source": "Message Center post MC1537353",
+      "quote": "For public and organization-wide events, sending an invitation does not change who is eligible to register.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Risk assessment; Governance controls; rationale: risk",
+      "type": "record",
+      "claim": "An invitation to an organisation-wide event does not change who is eligible to register.",
+      "status": "supported",
+      "source": "Message Center post MC1537353",
+      "quote": "For public and organization-wide events, sending an invitation does not change who is eligible to register.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "For events limited to specific people and groups, the selected audience continues to determine registration eligibility.",
+      "status": "supported",
+      "source": "Message Center post MC1537353",
+      "quote": "For events limited to specific people and groups, the selected audience continues to determine registration eligibility.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft updated the notice on 10 November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1537353",
+      "quote": "Updated November 10, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "record",
+      "claim": "The notice schedules the start of General Availability rollout for Worldwide and GCC in late November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1537353",
+      "quote": "General Availability (Worldwide, GCC): We will begin rolling out in late November 2026 (previously mid-November) and expect to complete by late November 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice expects rollout completion by late November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1537353",
+      "quote": "expect to complete by late November 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The previous rollout start was mid-November.",
+      "status": "supported",
+      "source": "Message Center post MC1537353",
+      "quote": "late November 2026 (previously mid-November)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "summary; Why it matters",
+      "type": "record",
+      "claim": "Microsoft says no special preparation is required.",
+      "status": "supported",
+      "source": "Message Center post MC1537353",
+      "quote": "No special preparation is required. However, if your tenant does not have a custom domain configured for M365 notifications, this capability will be restricted due to spam concerns.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "summary; controls[0].note; Why it matters; Risk assessment; Scope; Governance guidance",
+      "type": "record",
+      "claim": "A tenant without a custom domain configured for Microsoft 365 notifications will have this capability restricted.",
+      "status": "supported",
+      "source": "Message Center post MC1537353",
+      "quote": "if your tenant does not have a custom domain configured for M365 notifications, this capability will be restricted due to spam concerns.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "Microsoft attributes the restriction to spam concerns.",
+      "status": "supported",
+      "source": "Message Center post MC1537353",
+      "quote": "this capability will be restricted due to spam concerns.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Why it matters; Scope; Governance controls; front matter: changes",
+      "type": "record",
+      "claim": "Microsoft asks administrators to configure their custom domain for Microsoft 365 notifications to allow full use.",
+      "status": "supported",
+      "source": "Message Center post MC1537353",
+      "quote": "Admins should configure their custom domain for M365 notifications to allow full use of this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not specified what the missing-domain restriction looks like to an organiser.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams \"Invite to register\" custom domain restrictions price meter; \"Teams\" \"Invite to register\" \"restrictions\". Read MC1537353 and Learn manage-email-communications; neither describes the restriction's mechanics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe Invite to register itself beyond the supplied record and notice.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Invite to register\"; \"microsoftteams\" \"invite\" \"register\". Read manage-email-communications, set-up-events, events-licensing and the Support Events app registration page; none describes this invitation experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Teams events documentation recommends a custom sending domain to improve email deliverability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-email-communications",
+      "quote": "Set up a custom domain for event emails (recommended) ... Increase email deliverability and reduce spam classification.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Teams events documentation says a custom sending domain reduces spam classification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-email-communications",
+      "quote": "Increase email deliverability and reduce spam classification.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Without a custom domain, event emails come from Microsoft-provided addresses that might be less recognisable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-email-communications",
+      "quote": "While events can function without a custom domain, emails are sent from Microsoft-provided addresses that might be less recognizable to recipients.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Microsoft says a custom domain builds greater trust for external audiences receiving invitations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-email-communications",
+      "quote": "Build greater trust for external audiences receiving invitations and updates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The sending-domain setting is at Microsoft 365 admin center > Settings > Org settings > Organization profile > Send email notifications from your domain.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/email/select-domain-to-use-for-email-from-microsoft-365-products",
+      "quote": "On the Organization profile page, select Send email notifications from your domain. ... In the Send email notifications from your domain page, select Use a custom send-from domain address.",
+      "severity": "minor",
+      "fix": "Extend controls[0].ui.path and the matching table path to 'Settings > Org settings > Organization profile > Send email notifications from your domain > Use a custom send-from domain address'. The current path stops on the correct page before its enabling control."
+    },
+    {
+      "n": 32,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "No automation operation for the Microsoft 365 notification sending-domain setting is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Send email notifications from your domain\" PowerShell Graph API; \"send-from\" \"domain\" \"Graph\" notification settings; \"custom send-from\" \"PowerShell\". Read the domain-setting page; Graph emailSettings search result covers Lifecycle Workflows, not this setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].note; Governance controls table",
+      "type": "default",
+      "claim": "The notification sending-domain setting is opt-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/email/select-domain-to-use-for-email-from-microsoft-365-products",
+      "quote": "This setting is an opt-in setting that allows the Microsoft 365 system administrators to select a verified domain within the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].note; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "The notification sending-domain setting can take up to 24 hours to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/email/select-domain-to-use-for-email-from-microsoft-365-products",
+      "quote": "The setting can take up to 24 hours to take effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Only domains registered within the tenant can be used for the notification sending-domain setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/email/select-domain-to-use-for-email-from-microsoft-365-products",
+      "quote": "Only domains registered within your tenant can be used.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Ownership of the selected domain must be verified.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/email/select-domain-to-use-for-email-from-microsoft-365-products",
+      "quote": "Domain ownership must be verified through the existing add domains process within Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Scope; controls[0].governs",
+      "type": "applicability",
+      "claim": "Microsoft Teams supports the tenant's Microsoft 365 notification sending-domain setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/email/select-domain-to-use-for-email-from-microsoft-365-products",
+      "quote": "Supported products ... The following products currently support this feature: ... Microsoft Teams",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "When configured, event notification emails can use the verified custom domain selected by administrators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-email-communications",
+      "quote": "admins can configure Teams events email notifications to be sent from a verified custom domain instead of Microsoft default addresses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The webinar-size attendance setting is at Teams admin center > Meetings > Events policies > policy > Who can attend events up to 1k attendees.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "go to Meetings > Events policies. ... Select an existing policy or create a new one. ... in the Who can attend events up to 1k attendees dropdown list, select one of the following",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsEventsPolicy -Identity <policy name> -EventAccessType EveryoneInCompanyExcludingGuests configures the attendee-access restriction for events up to 1,000 attendees.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "To only allow users in your organization to attend events with up to 1,000 attendees created by organizers with this policy, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -EventAccessType EveryoneInCompanyExcludingGuests",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The large-audience attendance setting is at Teams admin center > Meetings > Events policies > policy > Who can attend events optimized for a large audience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "go to Meetings > Events policies. ... Select an existing policy or create a new one. ... in the Who can attend events optimized for a large audience dropdown list, select one of the following",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallEventAttendeeAccess EveryoneInOrganizationAndGuests configures attendance for large-audience events.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "To only allow users in your organization and guests to attend events optimized for large audiences created by organizers with this policy, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -TownhallEventAttendeeAccess EveryoneInOrganizationAndGuests",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].governs; controls[1].scope; Governance controls; Governance guidance",
+      "type": "applicability",
+      "claim": "The first attendee-access policy setting governs who can attend events up to 1,000 attendees, such as webinars, created by organisers assigned that policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "Controls who can attend events with up to 1,000 attendees (such as webinars) created by organizers with this policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[2].governs; controls[2].scope; Governance controls; Governance guidance",
+      "type": "applicability",
+      "claim": "The second attendee-access policy setting governs who can attend large-audience events, such as town halls, created by organisers assigned that policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "Controls who can attend events optimized for large audiences (such as town halls) created by organizers with this policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[1].note; Governance controls",
+      "type": "default",
+      "claim": "Who can attend events up to 1k attendees defaults to Everyone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "By default, both settings are set to Everyone.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[2].note; Governance controls",
+      "type": "default",
+      "claim": "Who can attend events optimized for a large audience defaults to Everyone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/set-up-events",
+      "quote": "By default, both settings are set to Everyone.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[3]; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No dedicated admin UI switch or PowerShell parameter to turn Invite to register on or off is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"Invite to register\" licensing policy disable; \"Teams\" \"Invite to register\" \"policy\" \"Set-CsTeamsEventsPolicy\". Read set-up-events, manage-email-communications and Set-CsTeamsEventsPolicy syntax and registration parameters; no dedicated invitation switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "front matter: defaultState; Risk assessment: Autonomy & actions",
+      "type": "default",
+      "claim": "Invite to register is user-opt-in because organisers choose to send invitations.",
+      "status": "supported",
+      "source": "Message Center post MC1537353",
+      "quote": "Organizers can select people to receive an email invitation with a link to register for the event.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "front matter: licensing.model and licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The product's foundational event capabilities are included in eligible Teams licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "All eligible Teams licenses include the foundational capabilities needed to create and run events, engage attendees, review attendance reports, and publish event recordings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Basic registration is listed as a foundational event feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/events-licensing",
+      "quote": "Foundational event features ... Basic registration | Organizers can add registration to their events through a customizable form.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No licence specific to Invite to register is published, and the events licensing page does not name this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"Invite to register\" licensing policy disable; \"Teams\" \"invitations\" \"registration\" \"license\". Read events-licensing and its foundational and advanced feature tables; no Invite to register-specific entitlement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No invitation-specific price or billing meter is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams \"Invite to register\" custom domain restrictions price meter; \"Teams\" \"invitations\" \"registration\" \"license\". Read events-licensing and manage-email-communications; neither publishes an invitation-specific price or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "In the Events app, registration is chosen while scheduling the event.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/teams/meetings-events/events-app-manage-registration",
+      "quote": "While scheduling your event, you can choose to turn registration on or off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "In the Events app, the registration setting cannot be changed after the event is first saved.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/teams/meetings-events/events-app-manage-registration",
+      "quote": "After you save your event, you won’t be able to change this setting.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-19T14:01:40.662Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=573250",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1537353",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/manage-email-communications",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/email/select-domain-to-use-for-email-from-microsoft-365-products",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/events-licensing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/set-up-events",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://support.microsoft.com/teams/meetings-events/events-app-manage-registration",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Sending domain for Microsoft 365 system notification emails, including Teams events",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/email/select-domain-to-use-for-email-from-microsoft-365-products",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Org settings",
+          "Organization profile",
+          "Send email notifications from your domain"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Who can attend events up to 1,000 attendees, such as webinars",
+        "docs": "https://learn.microsoft.com/microsoftteams/set-up-events",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Events policies",
+          "Who can attend events up to 1k attendees"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Who can attend events up to 1,000 attendees, such as webinars",
+        "docs": "https://learn.microsoft.com/microsoftteams/set-up-events",
+        "reachable": true,
+        "token": "Set-CsTeamsEventsPolicy",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Who can attend events optimised for a large audience, such as town halls",
+        "docs": "https://learn.microsoft.com/microsoftteams/set-up-events",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Events policies",
+          "Who can attend events optimized for a large audience"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Who can attend events optimised for a large audience, such as town halls",
+        "docs": "https://learn.microsoft.com/microsoftteams/set-up-events",
+        "reachable": true,
+        "token": "Set-CsTeamsEventsPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -22,12 +22,9 @@ licensing:
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["outlook","exchange","word","excel","powerpoint","user-experience","adoption","gcc"]
 sources:
-  - title: "Microsoft 365 Roadmap 557675"
-    url: "https://www.microsoft.com/microsoft-365/roadmap?id=557675"
-    kind: "roadmap"
-  - title: "MC1245222: (Updated) Outlook: Share Word, Excel and PowerPoint local files via the new Outlook for Windows"
-    url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1245222"
-    kind: "message-center"
+  - title: "Manage updates in new Outlook for Windows"
+    url: "https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-updates-new-outlook-windows"
+    kind: "learn"
   - title: "Licensing in new Outlook for Windows"
     url: "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options"
     kind: "learn"
@@ -40,6 +37,12 @@ sources:
   - title: "Control Installing and Using New Outlook"
     url: "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/control-install"
     kind: "learn"
+  - title: "MC1245222: (Updated) Outlook: Share Word, Excel and PowerPoint local files via the new Outlook for Windows"
+    url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1245222"
+    kind: "message-center"
+  - title: "Microsoft 365 Roadmap 557675"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=557675"
+    kind: "roadmap"
 videos: []
 related: []
 controls:
@@ -65,19 +68,23 @@ changes:
     note: "First briefing for this item: covers the roadmap target, the updated Message Center timeline and the existing mailbox-access control."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 52 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-19"
+    note: "Corrected after the independent check: the release-ring statement now cites Microsoft's documented Targeted Release then Standard Release sequence, and the OneWinNativeOutlookEnabled step now says it describes access permission, not usage."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 52 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-19"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 52
-  confirmed: 50
+  confirmed: 52
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "ede03d1b7a2bf16d208a9aed50a42bc5"
+  contradicted: 0
+  attempts: 0
+  hash: "ced40a17d11de2a66c91417c40089226"
 ---
 
 ## What's changing
@@ -124,14 +131,14 @@ The indirect costs the sources show are admin time: briefing the help desk and u
 
 **Clouds and platform:** the roadmap item lists Worldwide (Standard Multi-Tenant) and GCC, on the Desktop platform, at the General Availability phase. Rollout windows per the notice: Worldwide from mid-January 2027 to mid-February 2027; GCC from late February 2027 to late March 2027.
 
-**Rollout:** Microsoft Learn says new Outlook for Windows features are flighted to different release rings and that some tenants or users can opt into Targeted release. Which ring this feature uses is not stated.
+**Rollout:** Microsoft documents the general new Outlook sequence as Targeted Release for 30 days, then Standard Release (General Availability); MC1245222 gives General Availability windows but no feature-specific Targeted Release dates.
 
 **Prerequisites:** the new Outlook for Windows, with a plan that includes the desktop Microsoft 365 apps. Other prerequisites are not yet published.
 
 ## Governance guidance
 
 ### Before rollout
-- Identify who uses the new Outlook for Windows by checking the OneWinNativeOutlookEnabled value on mailboxes (see the first controls row); blank or True means access is enabled.
+- Review the OneWinNativeOutlookEnabled mailbox access setting (see the first controls row); Microsoft documents True or blank as access enabled. This setting describes access permission, not actual usage.
 - Decide whether the notice's "no action required" suits you, given that no control specific to this feature is documented, and record the decision with the service owner.
 - Brief help desk staff on the new route, as Microsoft's notice suggests.
 - Update internal documentation that references classic Outlook workflows, as the notice suggests.
@@ -163,7 +170,7 @@ The same Learn page documents `Set-OwaMailboxPolicy -Identity <PolicyIdentity> -
 ## Open questions
 
 - Will Microsoft document a setting, policy or Outlook on the web mailbox policy option that turns this feature off on its own? Watch MC1245222 and the new Outlook pages on Microsoft Learn.
-- Which release ring will the feature use, and will it appear in Targeted release first? The notice gives rollout windows but not the ring.
+- What are the feature-specific Targeted Release dates? MC1245222 does not give them.
 - Does the feature carry a licence or prerequisite of its own beyond a plan that includes the desktop Microsoft 365 apps? None is published.
 - Why does the roadmap item give a single January CY2027 target when the notice gives later GCC dates, and will the roadmap be updated to match?
 
@@ -171,11 +178,4 @@ The same Learn page documents `Set-OwaMailboxPolicy -Identity <PolicyIdentity> -
 risk: Low. Microsoft's notice says there is no change to existing admin controls and that all existing Outlook and Exchange policies continue to apply; no new data access is described.
 cost: Low. No licence, meter or price is published for this feature; the only cost the sources show is admin time for help desk briefing and updating documentation.
 impact: Medium. Users of the new Outlook for Windows who work with locally stored Office files will notice it, and Microsoft's notice says it is on by default.
--->
-
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Scope: Rollout; Open questions: release ring / absence: Which release ring this feature uses, including whether Targeted Release comes first, is not stated. | Found: In new Outlook, new features become available first in Targeted Release for 30 days and then are rolled out to Standard Release (General Availability). | Fix: Replace 'Which ring this feature uses is not stated' with 'Microsoft documents the general new Outlook sequence as Targeted Release for 30 days, then Standard Release (General Availability); MC1245222 gives General Availability windows but no feature-specific Targeted Release dates.' Replace the release-ring Open question with 'What are the feature-specific Targeted Release dates? MC1245222 does not give them.' Cite https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-updates-new-outlook-windows. | Source: https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-updates-new-outlook-windows
-- [contradicted, blocker] Governance guidance: Before rollout, first bullet / applicability: Checking OneWinNativeOutlookEnabled identifies who uses new Outlook for Windows. | Found: The default value for the OneWinNativeOutlookEnabled parameter on both cmdlets is blank ($null), which is equivalent to the value $true (users aren't restricted from accessing their work or school mailboxes using Outlook for Windows). | Fix: Replace the first Before rollout bullet with 'Review the OneWinNativeOutlookEnabled mailbox access setting (see the first controls row); Microsoft documents True or blank as access enabled. This setting describes access permission, not actual usage.' The source is https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-on-the-web/enable-disable-employee-access-new-outlook. | Source: https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-on-the-web/enable-disable-employee-access-new-outlook
 -->

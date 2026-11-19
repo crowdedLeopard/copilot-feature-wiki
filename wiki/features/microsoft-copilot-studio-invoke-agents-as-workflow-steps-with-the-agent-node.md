@@ -1,7 +1,7 @@
 ---
 title: "Copilot Studio: agent node runs an AI agent as a workflow step"
 slug: "microsoft-copilot-studio-invoke-agents-as-workflow-steps-with-the-agent-node"
-roadmapId: 566998
+roadmapId: 562222
 topic: "copilot-studio"
 products: ["Microsoft Copilot (Microsoft 365)","Microsoft Copilot Studio"]
 summary: "Makers can add an agent node to a Copilot Studio workflow so an AI agent decides and acts mid-flow. It uses Copilot Credits and no switch dedicated to the node is documented, so administrators should review credit and tool controls."
@@ -102,7 +102,7 @@ controls:
 confidence: "medium"
 created: "2026-11-16"
 updated: "2026-11-19"
-roadmapModified: "2026-10-26T23:15:50"
+roadmapModified: "2026-11-17T00:31:56"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this item: documents the agent node, its credit billing and the environment-level cost controls; no agent-node admin switch is documented."
@@ -216,19 +216,25 @@ changes:
     note: "Re-read the Learn pages on 19 November 2026: status and dates unchanged; credit-allocation page now at its Microsoft Copilot harness address; removed statements the pages did not support and added the Work IQ policy question."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 88 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 31
+  - date: "2026-11-19"
+    note: "Corrected after verification: removed the open question on whether the Work IQ MCP tenant policy covers the Work IQ setting, since Learn states it applies across the tenant."
+  - date: "2026-11-19"
+    note: "Corrected after verification: removed the open question about whether the Work IQ MCP tenant policy governs Work IQ in an agent node."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 78 statements not yet confirmed"
+version: 33
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 31
+  version: 33
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 88
-  confirmed: 87
+  claims: 78
+  confirmed: 78
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "aec59e5d012619eb21e1595d1ac3ac65"
+  contradicted: 0
+  attempts: 0
+  hash: "f2cbe0eaf2900d859da58e8013ec3b16"
 ---
 
 ## What's changing
@@ -325,7 +331,6 @@ Platform controls outside the table: data policies govern Power Platform connect
 - What does a workflow run with an agent node cost in Copilot Credits? Watch the billing pages for the Microsoft Copilot harness.
 - Will Microsoft add a setting dedicated to the agent node? Watch Message center and the Workflows overview.
 - Which parts of the feature are still in preview, given the roadmap lists both General Availability and Preview as release phases? Watch the roadmap item.
-- Does the Work IQ MCP tenant policy govern the **Work IQ** setting inside an agent node? Watch the Work IQ MCP policy page.
 
 <!-- rationale
 risk: Medium. The agent picks at run time which attached tools and connector actions to call, and Microsoft Learn documents no switch dedicated to the node itself.
@@ -333,8 +338,8 @@ cost: Variable. The node's usage is billed in Copilot Credits, drawn from an env
 impact: Medium. Makers who build workflows notice it first; the people who feed or receive a workflow's output see decisions made by an agent instead of a fixed rule.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Open questions: final bullet / absence: Whether the Work IQ MCP tenant policy governs Work IQ inside an agent node remains an open documentation question. | Found: When you turn on the policy, it applies across the tenant and helps control MCP tool access at request time. ... Tenant-level control applies across the tenant. | Fix: Remove the final Open questions bullet, 'Does the Work IQ MCP tenant policy govern the Work IQ setting inside an agent node? Watch the Work IQ MCP policy page.' The cited https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq identifies Work IQ in Copilot Studio as using Work IQ MCP tools and centrally governed in the Microsoft 365 admin center; https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp states that the policy applies across the tenant. Keep the existing regional-availability qualification. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: status; What's changing / record: Roadmap item 562222 has status Launched. | Found: "id": 562222; "status": "Launched"; "roadmapUrl": "https://www.microsoft.com/microsoft-365/roadmap?id=562222" | Fix: Replace the source titled 'Microsoft 365 Roadmap 566998' with title 'Microsoft 365 Roadmap 562222' and URL 'https://www.microsoft.com/microsoft-365/roadmap?id=562222'. The supplied record supports the facts, but its roadmap item is not the one cited.
 -->
