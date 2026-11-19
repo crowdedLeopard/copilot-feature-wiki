@@ -5,7 +5,7 @@ roadmapId: 501451
 topic: "m365-copilot"
 products: ["SharePoint","SharePoint Syntex","Microsoft Copilot (Microsoft 365)"]
 summary: "Copilot in SharePoint is rolling out to general availability. Everyday use is included with a Microsoft 365 Copilot licence; advanced work uses Copilot Credits and needs a spending policy. Admins should check policies and site controls."
-status: "launched"
+status: "cancelled"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Web"]
@@ -94,6 +94,12 @@ changes:
     note: "Corrected the roadmap status to Launched (the page had been archived as cancelled in error) and reworded the 20% credit-limit warning to match the Learn page."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 108 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Archived: Microsoft marked the roadmap item as cancelled. The briefing is kept for reference."
+archived:
+  reason: "cancelled"
+  date: "2026-11-19"
+  lastSeen: "2026-11-19"
 version: 3
 verification:
   status: "verified-with-gaps"
