@@ -11,8 +11,8 @@
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { DATA_DIR, readJson, writeJson, slugify } from './lib/util.mjs';
-import { loadIndexSlugs, loadRawItem, loadExisting, writeBriefingPage, existingSlugForRoadmapId } from './lib/briefing.mjs';
+import { DATA_DIR, readJson, writeJson } from './lib/util.mjs';
+import { loadIndexSlugs, loadRawItem, loadExisting, writeBriefingPage, slugForItem, siblingsFor } from './lib/briefing.mjs';
 
 const [, , idArg, outputFile] = process.argv;
 const id = Number(idArg);
@@ -43,12 +43,15 @@ try {
   process.exit(1);
 }
 
-const slug = task?.slug || (await existingSlugForRoadmapId(id)) || slugify(item.title);
+// compile-tasks.mjs chose the slug for the run (slugForItem keeps twin items on separate pages); the fallback is
+// for a session run by hand without a task file.
+const slug = task?.slug || (await slugForItem(item));
 const { existingFm } = await loadExisting(slug);
 const indexSlugs = await loadIndexSlugs();
+const siblings = await siblingsFor(item);
 try {
   // Only a 'restored' task (the item is back on the roadmap) may drop an archived page's archived block and status.
-  const { file, title, tags } = await writeBriefingPage(item, raw, { slug, existingFm, indexSlugs, restore: task?.reason === 'restored' });
+  const { file, title, tags } = await writeBriefingPage(item, raw, { slug, existingFm, indexSlugs, restore: task?.reason === 'restored', siblings });
   // The task's reason (no-briefing, revise, fresh-draft, forced, ...) lets a reader of the run's results tell a first
   // draft from a correction or a parked page written again, which the page's version number cannot.
   await record({ ok: true, slug, title, reason: task?.reason, file: path.relative(process.cwd(), file), newTags: tags.added, stubTags: tags.stubs });
