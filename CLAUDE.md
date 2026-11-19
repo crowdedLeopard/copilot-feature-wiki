@@ -98,7 +98,9 @@ daily by GitHub Actions.
 - Briefings are never deleted. `pipeline/lib/lifecycle.mjs` archives a page in place (front-matter `archived` block, a
   dated change note) when ingest finds its roadmap item cancelled, or missing from the feed for `LIFECYCLE.removedGraceDays`
   (`data/lifecycle.json` tracks last-seen dates). The site keeps the page's URL, lists it under `/archive/` and leaves it
-  out of lists, the Atlas and the digest. Live pages untouched for `LIFECYCLE.reviewAfterDays` are queued as `review-due`,
+  out of lists, the Atlas and the digest. The check leaves archived pages alone (`verificationDue` is null for a page with an
+  `archived` block; 19 Nov 2026: the archive edit queued a page, the check faulted its cancelled status against a record that
+  had not captured the cancellation, and the correction un-archived it). Live pages untouched for `LIFECYCLE.reviewAfterDays` are queued as `review-due`,
   which takes its turn in the topic lanes rather than jumping the queue. Rules live in `config/taxonomy.mjs`.
 - `.github/workflows/teams-digest.yml` posts one Adaptive Card a week (Monday 07:17 UTC) to a Teams channel through a
   Workflows webhook held in the `TEAMS_WEBHOOK_URL` secret. `pipeline/teams-digest.mjs` builds it from the committed

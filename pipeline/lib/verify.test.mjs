@@ -25,6 +25,9 @@ test('verificationDue names the reason in order', () => {
   assert.equal(verificationDue({ ...data, verification: v }, now, { body, sourceChangedAt: '2026-11-16' }), null, 'a change seen on the check day was covered by the check');
   assert.equal(verificationDue({ ...data, verification: v }, now + (MAX_AGE_DAYS + 1) * 86400000, { body }), 'check-expired');
   assert.equal(verificationDue({ ...data, verification: { ...v, hash: undefined } }, now, { body: 'anything' }), null, 'a stamp without a hash is not re-checked for text');
+  const archived = { reason: 'cancelled', date: '2026-11-19' };
+  assert.equal(verificationDue({ ...data, archived }, now, { body }), null, 'an archived page that was never checked is left alone');
+  assert.equal(verificationDue({ ...data, archived, status: 'cancelled', verification: v }, now + (MAX_AGE_DAYS + 1) * 86400000, { body: 'edited' }), null, 'an archived page is never due, however old or changed');
 });
 
 test('checkNote reads as a change-log line', () => {

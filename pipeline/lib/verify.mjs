@@ -714,13 +714,17 @@ export async function writeHeldIndex() {
   return items;
 }
 
-/** Is this page due a check? Never checked, edited since its last check, or checked too long ago. */
 /**
  * Why a live page needs the verifier, or null. In order: never checked; its text changed since the check (a new
  * version, or any edit: the stamp carries a hash of what was checked); a Microsoft page it cites changed after the
  * check (the daily source watch, passed in as sourceChangedAt); or the check is older than MAX_AGE_DAYS.
+ * An archived page is never due: it is kept for reference, out of every list, its cancelled or removed item will
+ * drift away from Microsoft's pages, and a correction cannot change its archived state (lifecycle.mjs), so a check
+ * could only take it offline. On 19 Nov 2026 the archive edit itself queued a page, the check faulted its cancelled
+ * status against a record that had not captured the cancellation, and the correction un-archived it.
  */
 export function verificationDue(data, now = Date.now(), { body = null, sourceChangedAt = null } = {}) {
+  if (data.archived) return null;
   const v = data.verification;
   if (!v) return 'never-checked';
   if (v.version !== (data.version || 1)) return 'changed-since-check';
