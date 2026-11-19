@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "on"
 action: "prepare"
 licensing:
-  model: "unknown"
-  notes: "The Learn pages on unified agent and app management and on Teams admin center app management name the Teams Administrator role and no licence for this feature. A licence statement is not yet published."
+  model: "included"
+  notes: "For agent management in the Microsoft 365 admin center, Microsoft requires the organisation to have the required subscription and licences for Microsoft 365, Microsoft Copilot or Microsoft Agent 365, and appropriate licences for users who create, publish or use agents. A separate licence or meter for unification itself is not yet published."
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["teams","outlook","m365-admin-center","governance","app-management"]
 sources:
@@ -51,6 +51,9 @@ sources:
     kind: "learn"
   - title: "Purchase third-party Microsoft Teams apps and manage subscriptions and licenses"
     url: "https://learn.microsoft.com/microsoftteams/purchase-third-party-apps"
+    kind: "learn"
+  - title: "Agent management in Microsoft 365 admin center"
+    url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-365-overview"
     kind: "learn"
 videos: []
 related: ["microsoft-teams-enable-agents-for-existing-applications-in-your-organization"]
@@ -121,19 +124,23 @@ changes:
     note: "Correction: the Open questions roles bullet and the controls note now state that the cross-application app guide limits its Integrated apps controls to Global Admins; third-party app purchasing page added as a source."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 63 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-19"
+    note: "Correction: licensing set to included, citing the Microsoft 365 admin center agent management requirements; the cost, licensing notes and licence open question now say only that a separate licence or meter for unification is not yet published."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 62
+  claims: 64
+  confirmed: 63
   unconfirmed: 0
   contradicted: 1
-  attempts: 3
-  hash: "f2118ca08731bb8ecb2bef91fa37eb9d"
+  attempts: 0
+  hash: "9504e0bed4c7e7baccab7d5cfd27d732"
 ---
 
 ## What's changing
@@ -170,7 +177,7 @@ If nobody acts, the outcome depends on the tenant. A never-modified tenant is un
 
 ## Cost and licensing
 
-No licence or meter for unified agent and app management is stated on the pages read: the Teams admin center page on agent and app management names the Teams Administrator role as the requirement, and the unified management page names no licence. A licence statement for this feature is not yet published. Licences or fees for individual third-party apps are a separate matter set by their publishers.
+For agent management in the Microsoft 365 admin center, Microsoft requires the organisation to have the required subscription and licences for Microsoft 365, Microsoft Copilot or Microsoft Agent 365, and appropriate licences for users who create, publish or use agents ([Agent management in Microsoft 365 admin center](https://learn.microsoft.com/microsoft-agent-365/admin/agent-365-overview)). A separate licence or meter for unification itself is not yet published. Licences or fees for individual third-party apps are a separate matter set by their publishers.
 
 The cost Microsoft's pages show is admin time: comparing org-wide and app-level settings across the two centres, resolving differences in the wizard, and communicating the result to users.
 
@@ -221,17 +228,17 @@ The PowerShell cmdlets listed are the Teams module's documented ways to set app 
 
 - When will Phase 3 (automatic unification of tenants that have not acted) begin? Microsoft says the timeline will come at least 60 days beforehand; watch MC796790 in Message center.
 - The cited cross-application app guide says its Integrated apps controls are available only to Global Admins. It does not explain how those permissions interact with the Teams Administrator role after unification.
-- Which licence, if any, does unified agent and app management depend on? A licence statement is not yet published.
+- Is a separate licence or meter for unification itself planned? One is not yet published.
 - Is there a documented way to script the move to unified app management, or to confirm a tenant's unification state, other than the Teams admin center?
 
 <!-- rationale
 risk: Medium. After unification a change in either admin centre is synchronised to the other, and Microsoft plans an automatic Phase 3 for tenants that have not unified, with a date not yet announced.
-cost: Low. The only cost the sources show is admin time to align settings; a licence or meter for unified management is not yet published.
+cost: Low. The only cost the sources show is admin time to align settings; a separate licence or meter for unification itself is not yet published.
 impact: Medium. Admins of both centres see the change first; users notice only if aligning settings changes which apps or agents are available to them in Teams, Outlook or the Microsoft 365 app.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model; licensing.notes; Cost and licensing; Open questions; rationale: cost / licensing: The licensing model for this app and agent management capability is unknown because Microsoft has not published an entitlement statement. | Found: Before you can manage agents in the Microsoft 365 admin center, confirm the following requirements are met: Your organization has the required subscription and licenses for either Microsoft 365, Microsoft Copilot, or Microsoft Agent 365. | Fix: Set licensing.model to included. Replace the licensing notes and the first two sentences of Cost and licensing with: 'For agent management in the Microsoft 365 admin center, Microsoft requires the organisation to have the required subscription and licences for Microsoft 365, Microsoft Copilot or Microsoft Agent 365, and appropriate licences for users who create, publish or use agents. A separate licence or meter for unification itself is not yet published.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/agent-365-overview. In the licensing Open question and cost rationale, replace the broad claim that licensing is unpublished with the narrower statement that a separate licence or meter for unification itself is not yet published. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-365-overview
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [contradicted, minor] Governance guidance: Before rollout, setup-policy installation inventory / consistency: Every control the governance checklist asks the reader to take stock of is represented in the controls table. | Found: Checklist: 'List apps that users received through Teams app setup policies'. The table covers tenant unification, app blocking, app availability, Custom apps and MAC availability, but not setup-policy installation assignments. | Fix: Remove the Before rollout bullet beginning 'List apps that users received through Teams app setup policies'. Keep the supported setup-policy installation limitation in Risk assessment.
 -->

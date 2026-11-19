@@ -1,0 +1,819 @@
+{
+  "slug": "microsoft-purview-insider-risk-management-policy-recommendation-panel-in-irm",
+  "roadmapId": 560600,
+  "title": "Microsoft Purview Insider Risk Management: Policy Recommendation panel",
+  "status": "held",
+  "date": "2026-11-19",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-19",
+    "reasons": [
+      "2 blocking findings (claims 39, 40)"
+    ]
+  },
+  "counts": {
+    "claims": 64,
+    "confirmed": 62,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 2,
+    "major": 0,
+    "minor": 0
+  },
+  "summary": "Hold: Microsoft documents PowerShell for managing role group membership, so that automation control must not be reported as undocumented. The membership path also stops before the documented editing controls. The rollout dates and enabled-by-default description match Microsoft's notice and roadmap.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "General Availability is targeted for February CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"February CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; summary; What's changing; Governance guidance",
+      "type": "record",
+      "claim": "Preview is targeted for January CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Web is the listed platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "title; front matter: products; What's changing; Scope",
+      "type": "record",
+      "claim": "The change is a Policy Recommendation panel in Microsoft Purview Insider Risk Management.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"title\": \"Microsoft Purview: Insider Risk Management – Policy Recommendation Panel in IRM\", \"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The feature guides customers toward missing protections or policy configurations with the most incremental value.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "IRM now provides guidance on what protections are missing or which policy configurations deliver the most incremental value",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 29 September 2026 at 23:05:21.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-09-29T23:05:21\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1387681 was updated on 29 September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1387681",
+      "quote": "Updated September 29, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Scope; Governance guidance",
+      "type": "record",
+      "claim": "The new panel appears on the Policies page in Insider Risk Management.",
+      "status": "supported",
+      "source": "Message Center post MC1387681",
+      "quote": "A new Policy Recommendation panel will be available on the Policies page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The panel analyses existing policies.",
+      "status": "supported",
+      "source": "Message Center post MC1387681",
+      "quote": "The panel will analyze existing policies and identify potential gaps in coverage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The panel identifies potential gaps in policy coverage.",
+      "status": "supported",
+      "source": "Message Center post MC1387681",
+      "quote": "The panel will analyze existing policies and identify potential gaps in coverage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "Administrators receive policy recommendations addressing risks such as data leakage, data theft and risky AI usage.",
+      "status": "supported",
+      "source": "Message Center post MC1387681",
+      "quote": "Administrators will receive recommendations to create policies addressing risks such as data leakage, data theft, and risky AI usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: defaultState; summary; controls[0].note; Risk assessment; rationale: risk",
+      "type": "default",
+      "claim": "The panel is enabled by default.",
+      "status": "supported",
+      "source": "Message Center post MC1387681",
+      "quote": "The feature is enabled by default and available automatically as part of the rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Why it matters; Risk assessment",
+      "type": "record",
+      "claim": "The panel becomes available automatically during rollout, without an administrator enabling it.",
+      "status": "supported",
+      "source": "Message Center post MC1387681",
+      "quote": "The feature is enabled by default and available automatically as part of the rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Why it matters; Risk assessment; Scope; rationales",
+      "type": "record",
+      "claim": "Existing policies remain unchanged when the panel rolls out.",
+      "status": "supported",
+      "source": "Message Center post MC1387681",
+      "quote": "Existing policies and configurations remain unchanged.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment",
+      "type": "record",
+      "claim": "Existing configurations remain unchanged when the panel rolls out.",
+      "status": "supported",
+      "source": "Message Center post MC1387681",
+      "quote": "Existing policies and configurations remain unchanged.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; rationale: risk; rationale: impact",
+      "type": "record",
+      "claim": "Microsoft says there is no impact to user workflows.",
+      "status": "supported",
+      "source": "Message Center post MC1387681",
+      "quote": "There is no impact to user workflows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice schedules Public Preview from mid-January through late January 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1387681",
+      "quote": "Public Preview: Rolling out mid-January 2027 (previously late November 2026) through late January 2027 (previously mid-December 2026).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice schedules Worldwide General Availability to start mid-February 2027 and expects completion by late February 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1387681",
+      "quote": "General Availability (Worldwide): Rolling out mid-February 2027 (previously mid-December 2026) and expected to complete by late February 2027",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1387681",
+      "quote": "Act by: none; No action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Scope; rationale: impact",
+      "type": "record",
+      "claim": "The notice identifies Insider Risk Management administrators as affected.",
+      "status": "supported",
+      "source": "Message Center post MC1387681",
+      "quote": "Who is affected - Microsoft Purview Insider Risk Management administrators",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The notice identifies organisations using Insider Risk Management policies as affected.",
+      "status": "supported",
+      "source": "Message Center post MC1387681",
+      "quote": "Organizations using Insider Risk Management policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "summary; Scope",
+      "type": "record",
+      "claim": "Microsoft says no action is required.",
+      "status": "supported",
+      "source": "Message Center post MC1387681",
+      "quote": "No action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "The panel processes existing policy configurations and organisational signals within IRM, introducing additional processing of customer data signals.",
+      "status": "supported",
+      "source": "Message Center post MC1387681",
+      "quote": "The feature analyzes existing policy configurations and organizational signals within Insider Risk Management to generate recommendations, which introduces additional processing of customer data signals.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "The panel uses analytics-driven intelligence and correlated signals to generate recommendations.",
+      "status": "supported",
+      "source": "Message Center post MC1387681",
+      "quote": "The policy recommendation panel uses analytics-driven intelligence to identify gaps in policy coverage and generate recommendations based on correlated signals.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "The announced change is a recommendation view over existing policies rather than a new detection policy.",
+      "status": "supported",
+      "source": "Message Center post MC1387681",
+      "quote": "The panel will analyze existing policies and identify potential gaps in coverage. Administrators will receive recommendations to create policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Neither the notice nor the roadmap says the panel creates or edits policies without an administrator.",
+      "status": "supported",
+      "source": "Message Center post MC1387681",
+      "quote": "Administrators will receive recommendations to create policies addressing risks such as data leakage, data theft, and risky AI usage. Existing policies and configurations remain unchanged.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe this specific Policy Recommendation panel.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"policy recommendation panel\" \"Insider\"'. Opened IRM policies, analytics settings, permissions, plan and configure pages; results describe existing analytics recommendations, not this panel.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].ui; controls[0].api; Risk assessment; Governance controls",
+      "type": "absence",
+      "claim": "No UI setting or automation operation is documented to hide, disable or limit the new panel.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"policy recommendation panel\" disable roles signals analytics administrative units'; 'purview insider risk management policy recommendation panel settings disable licensing analytics API Add-RoleGroupMember'. Opened IRM policies and analytics settings; no panel switch or API found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The analytics setting is reached in Microsoft Purview portal through Settings > Insider Risk Management > Insider risk settings > Analytics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-analytics",
+      "quote": "Select Settings in the upper-right corner of the page. Select Insider Risk Management to go to the Insider Risk Management settings. Under Insider risk settings, select Analytics, and then turn off the setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[1].api; Governance controls table",
+      "type": "absence",
+      "claim": "No API or PowerShell operation is documented for changing the insider risk analytics scanning setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Insider Risk\" \"analytics\" \"PowerShell\" settings API'; '\"Insider Risk Management\" \"analytics\" \"Graph\" settings API disable'; '\"Insider Risk Management\" \"analytics\" \"Set-\" \"PowerShell\"'. Read analytics settings and configure pages; only portal operations found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1].note; Governance controls table",
+      "type": "role",
+      "claim": "Enabling or disabling analytics requires membership in Insider Risk Management, Insider Risk Management Admins or Microsoft 365 Global admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-analytics",
+      "quote": "To turn off insider risk analytics, you must be a member of the Insider Risk Management, Insider Risk Management Admins, or Microsoft 365 Global admin role group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[1].scope",
+      "type": "applicability",
+      "claim": "The analytics scanning setting has tenant-wide scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-analytics",
+      "quote": "Selecting Run scan turns on analytics scanning for your organization",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Existing insider risk analytics scans Microsoft 365 audit logs and other sources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-analytics",
+      "quote": "Analytics scans several sources for risk management activity to help you identify insights into potential areas of risk. Microsoft 365 audit logs: Included in all scans",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[1].governs; What's changing; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Existing analytics results provide policy recommendations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+      "quote": "Policy recommendations from analytics ... If you decide to act on analytics scan results for data leaks or data theft by departing users policies, you can even configure a quick policy based on these results.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[1].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Whether the new panel depends on the existing analytics setting or uses its scan is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"policy recommendation panel\" disable roles signals analytics administrative units'; '\"Insider Risk Management\" \"analytics\" \"Graph\" settings API disable'. Read policies and analytics settings and supplied notice; none links this panel to the analytics toggle or scan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Settings > Roles and groups > Roles groups > Insider Risk Management is the complete path to the membership control.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "Select the Insider Risk Management role group, then select Edit. Select Choose users, then select the checkboxes for all the users you want to add to the role group.",
+      "severity": "blocker",
+      "fix": "Extend controls[2].ui.path and the rendered table path to 'Settings > Roles and groups > Roles groups > Insider Risk Management > Edit > Choose users', as documented at https://learn.microsoft.com/purview/insider-risk-management-permissions. The current path stops before membership can be changed."
+    },
+    {
+      "n": 40,
+      "where": "controls[2].api; Governance controls table",
+      "type": "absence",
+      "claim": "Microsoft has not documented automation for managing Insider Risk Management role group membership.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember?view=exchange-ps",
+      "quote": "Use the Add-RoleGroupMember cmdlet to add members to a management role group. ... The Identity parameter specifies the role group to add a member to. ... The Member parameter specifies who you want to add to the role group.",
+      "severity": "blocker",
+      "fix": "Replace controls[2].api null with kind 'powershell', call 'Add-RoleGroupMember -Identity \"Insider Risk Management\" -Member <user-UPN>', and docs 'https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember?view=exchange-ps'. Name Security & Compliance PowerShell in the note; the reference lists Security & Compliance applicability for Identity and Member. Update the rendered automation cell and cite the reference."
+    },
+    {
+      "n": 41,
+      "where": "controls[2].note; Risk assessment; Governance controls",
+      "type": "role",
+      "claim": "The Insider Risk Management and Insider Risk Management Admins role groups can configure policies and settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "| Actions | Insider Risk Management | Insider Risk Management Admins | ... | Configure policies and settings | Yes | Yes | No | No | No | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope; Governance controls",
+      "type": "role",
+      "claim": "Assignment to a qualifying role or role group, including Insider Risk Management or Insider Risk Management Admins, makes IRM available as a Purview menu option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "To make Insider Risk Management available as a menu option in Microsoft Purview ... you must be assigned to one of the following roles or role groups: ... Insider Risk Management role group ... Insider Risk Management Admins role group",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Role group members assigned administrative units become restricted administrators with limited access to IRM settings, policies and user data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+      "quote": "After you assign admin units to members of role groups, those members become restricted administrators and have limited access to Insider Risk Management settings, policies, and user data in the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Accessing existing analytics insights requires being an unrestricted administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+      "quote": "You must be an unrestricted administrator to access analytics insights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[2].note; Risk assessment; Scope; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The specific role groups that can see the new panel are not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"policy recommendation panel\" disable roles signals analytics administrative units'; '\"policy recommendation panel\" \"Insider Risk Management\" \"signals\" storage roles'. Read IRM permissions and policies; neither gives panel-specific visibility roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Administrative unit scoping and unrestricted-administrator requirements are not specifically documented for the new panel.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"policy recommendation panel\" disable roles signals analytics administrative units'. Read IRM permissions, policies and the administrative-units search excerpts; they cover existing IRM tasks but do not place this new panel in a scoped task.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Microsoft has not specified exactly which organisational signals the new panel reads.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"policy recommendation panel\" \"Insider Risk Management\" \"signals\" storage roles'. Read policy indicators, policies and analytics settings and supplied notice; only the notice's general description of organizational and correlated signals identifies panel inputs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Microsoft has not documented where the new panel's signals are stored.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"policy recommendation panel\" \"Insider Risk Management\" \"signals\" storage roles'. Read IRM policies, analytics settings, plan and configure pages and supplied notice; no panel-specific signal storage location found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Data exposure",
+      "type": "default",
+      "claim": "IRM pseudonymises users by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-plan",
+      "quote": "Built with privacy by design, users are pseudonymized by default",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "IRM uses role-based access controls to help ensure user-level privacy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-plan",
+      "quote": "role-based access controls and audit logs are in place to help ensure user-level privacy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "IRM uses audit logs to help ensure user-level privacy, and the notice announces no change to these privacy safeguards.",
+      "status": "supported",
+      "source": "Message Center post MC1387681",
+      "quote": "built with privacy by design, including pseudonymization by default, role-based access controls, and audit logging to help protect user privacy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft offers IRM as part of a wide selection of Microsoft 365 licensing subscriptions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-plan",
+      "quote": "Microsoft offers Insider Risk Management as part of a wide selection of Microsoft 365 licensing subscriptions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Using IRM requires a supported subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "To access and use Insider Risk Management, administrators need to verify their organization has a supported subscription and assign the appropriate licenses to users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Administrators must assign the appropriate licences to IRM users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "administrators need to verify their organization has a supported subscription and assign the appropriate licenses to users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "front matter: licensing.model; Cost and licensing",
+      "type": "licensing",
+      "claim": "The panel is treated as included within the supported IRM subscription entitlement, with no separately published panel requirement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "To access and use Insider Risk Management, administrators need to verify their organization has a supported subscription and assign the appropriate licenses to users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "cost",
+      "claim": "Some IRM indicators require enabling pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "Some indicators included in Insider Risk Management are only available if you enable the pay-as-you-go billing model for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Purview provides a Usage center in the Microsoft Purview portal for understanding and managing licensed and pay-as-you-go usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "This feature uses pay-as-you-go billing or per-user licensing for Microsoft Purview capabilities or both. To help you understand and manage your usage, Microsoft Purview provides a Usage center in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "No licence requirement specific to the panel is published in the roadmap, notice or Microsoft documentation found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"policy recommendation panel\" \"license\" \"Purview\"'; '\"policy recommendation panel\" \"Insider Risk Management\" \"pricing\"'. Read IRM plan, configure and Purview service description, and supplied record and notice; no panel-specific licence requirement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "No meter specifically covering the panel or its recommendations is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"policy recommendation panel\" \"license\" \"Purview\"'; '\"policy recommendation panel\" \"Insider Risk Management\" \"pricing\"'. Read IRM configure, plan, policy indicators and Purview service description; no panel or recommendation meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No price or charge specific to the panel has been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"policy recommendation panel\" \"Insider Risk Management\" \"pricing\"'; '\"policy recommendation panel\" \"license\" \"Purview\"'. Read IRM plan, configure and Purview service description; no panel-specific price or charge found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The documented pay-as-you-go dependency is on using certain policy indicators, rather than a documented charge for displaying the panel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+      "quote": "Some indicators included in Insider Risk Management are only available if you enable the pay-as-you-go billing model for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft recommends communicating the enhancement to security and compliance teams.",
+      "status": "supported",
+      "source": "Message Center post MC1387681",
+      "quote": "Communicate this enhancement to security and compliance teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance guidance: At rollout; Governance guidance: After rollout",
+      "type": "record",
+      "claim": "Microsoft recommends reviewing the panel's recommendations and evaluating suggested policies.",
+      "status": "supported",
+      "source": "Message Center post MC1387681",
+      "quote": "Review recommendations in the Policy Recommendation panel. Evaluate suggested policies to improve insider risk coverage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance guidance: After rollout",
+      "type": "record",
+      "claim": "Microsoft recommends updating internal governance or risk management processes as needed.",
+      "status": "supported",
+      "source": "Message Center post MC1387681",
+      "quote": "Update internal governance or risk management processes as needed.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-19T07:24:35.212Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=560600",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1387681",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-plan",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-configure",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-settings-analytics",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-policies",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Insider risk analytics scanning, the documented source of policy recommendations today",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-settings-analytics",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Insider Risk Management",
+          "Insider risk settings",
+          "Analytics"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Who can configure Insider Risk Management policies and settings, through role group membership",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and groups",
+          "Roles groups",
+          "Insider Risk Management"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -37,6 +37,9 @@ sources:
   - title: "Manage model-driven app settings in the app designer"
     url: "https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties"
     kind: "learn"
+  - title: "Create a model-driven app using the classic app designer"
+    url: "https://learn.microsoft.com/power-apps/maker/model-driven-apps/create-edit-app"
+    kind: "learn"
   - title: "Get or update a setting value using client API"
     url: "https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/get-update-setting-value-using-code"
     kind: "learn"
@@ -45,9 +48,6 @@ sources:
     kind: "learn"
   - title: "Form fill assistance (data entry agent) per environment (Power Platform admin center)"
     url: "https://learn.microsoft.com/power-apps/user/form-filling-assistance#admin-control"
-    kind: "learn"
-  - title: "Legacy environment switch for form fill assistance (Power Platform admin center)"
-    url: "https://learn.microsoft.com/power-platform/admin/settings-features#ai-form-fill-assistance"
     kind: "learn"
 videos: []
 related: []
@@ -59,19 +59,11 @@ controls:
       path: "Copilot > Settings > Power Apps > Data entry"
       docs: "https://learn.microsoft.com/power-apps/user/form-filling-assistance#admin-control"
     api: null
-  - governs: "Legacy environment switch for form fill assistance"
-    scope: "environment"
-    ui:
-      surface: "Power Platform admin center"
-      path: "Manage > Environments > environment > Settings > Product > Features > AI form fill assistance"
-      docs: "https://learn.microsoft.com/power-platform/admin/settings-features#ai-form-fill-assistance"
-    api: null
-    note: "Being removed in favour of the Copilot settings page."
   - governs: "Form fill assist toolbar for an app"
     scope: "app"
     ui:
       surface: "Power Apps (maker)"
-      path: "App designer > Settings > Features > Form fill assist toolbar"
+      path: "Solutions > solution > Apps > app > Edit > Settings > Features > Form fill assist toolbar"
       docs: "https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties"
     api:
       kind: "other"
@@ -84,7 +76,7 @@ controls:
     api: null
 confidence: "medium"
 created: "2026-11-14"
-updated: "2026-11-16"
+updated: "2026-11-19"
 roadmapModified: "2026-11-04T00:02:09"
 changes:
   - date: "2026-11-14"
@@ -99,19 +91,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 48 statements not yet confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 50 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-19"
+    note: "Correction: removed the legacy environment switch row, fixed the app toolbar designer path, replaced the finest-grained claim for column settings, and dropped column properties from the checklist."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 46 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 46
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "a54111ca20796518e7e7aafbec609ac5"
+  claims: 46
+  confirmed: 45
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "381c30d22f12868c2fa734bb8a69cd53"
 ---
 
 ## What's changing
@@ -151,7 +147,7 @@ Model-driven apps on the web with the modern look, Worldwide (Standard Multi-Ten
 ## Governance guidance
 
 ### Before rollout
-- Review environment form fill settings and column properties.
+- Review environment form fill settings.
 - Confirm treatment of sensitivity-labelled files.
 
 ### At rollout
@@ -170,13 +166,12 @@ Model-driven apps on the web with the modern look, Worldwide (Standard Multi-Ten
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Form fill assistance (data entry agent) per environment</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Power Apps › Data entry <a href="https://learn.microsoft.com/power-apps/user/form-filling-assistance#admin-control" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Legacy environment switch for form fill assistance</strong><br><small>Environment</small><br><small class="controls__note">Being removed in favour of the Copilot settings page.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › AI form fill assistance <a href="https://learn.microsoft.com/power-platform/admin/settings-features#ai-form-fill-assistance" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Form fill assist toolbar for an app</strong><br><small>App</small><br><small class="controls__note">Save and Publish the app after changing the setting in the designer.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>App designer › Settings › Features › Form fill assist toolbar <a href="https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Xrm.Utility.getGlobalContext().saveSettingValue(&quot;FormFileUploadEnabled&quot;, true, { overrideScope: 2, solutionUniqueName: &quot;&lt;solution&gt;&quot; })</code> <a href="https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/get-update-setting-value-using-code" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Form fill assist toolbar for an app</strong><br><small>App</small><br><small class="controls__note">Save and Publish the app after changing the setting in the designer.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Solutions › solution › Apps › app › Edit › Settings › Features › Form fill assist toolbar <a href="https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Xrm.Utility.getGlobalContext().saveSettingValue(&quot;FormFileUploadEnabled&quot;, true, { overrideScope: 2, solutionUniqueName: &quot;&lt;solution&gt;&quot; })</code> <a href="https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/get-update-setting-value-using-code" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Switch specific to Microsoft 365 files as a source</strong><br><small>Environment</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-Microsoft has not documented an API for the Copilot Data entry control as of November 2026. The app-level toolbar setting is separate and does have documented automation, shown in the table. Makers can also set Allow form fill assistance (preview) per column, which is the finest-grained control and the one to use for sensitive fields. Usage appears in the Power Platform admin center's [Copilot hub](https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub#settings) under the data entry agent.
+Microsoft has not documented an API for the Copilot Data entry control as of November 2026. The app-level toolbar setting is separate and does have documented automation, shown in the table. Makers can also set Allow form fill assistance (preview) per column, and disable it for columns that might contain sensitive information. Usage appears in the Power Platform admin center's [Copilot hub](https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub#settings) under the data entry agent.
 
 ## Open questions
 
@@ -190,12 +185,10 @@ cost: Low. The known cost is review and training effort; any licensing or charge
 impact: Medium. Affects users of model-driven apps with form fill assistance enabled.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: The legacy environment switch remains reachable through Manage > Environments > environment > Settings > Product > Features > AI form fill assistance. | Found: The following settings are removed from the Environment > Settings > Features page. Access them through Manage model-driven app settings in the app designer or Solution Explorer App Settings. | Fix: Remove the legacy environment switch row from both controls and the rendered table. Its cited page now says those settings are removed from the environment Features page; retain the separately documented Copilot Data entry and app toolbar rows. | Source: https://learn.microsoft.com/power-platform/admin/settings-features#ai-form-fill-assistance
-- [contradicted, blocker] controls[2].ui; Governance controls table / admin-path: The maker-side route is App designer > Settings > Features > Form fill assist toolbar. | Found: Select Solutions. ... Choose the solution that contains the model-driven app where editing is required. ... On the left navigation pane select Apps, select a model-driven app, and then on the toolbar select Edit. | Fix: Replace the path in controls[2].ui and the table with 'Solutions > solution > Apps > app > Edit > Settings > Features > Form fill assist toolbar'. Cite https://learn.microsoft.com/power-apps/maker/model-driven-apps/create-edit-app for entering the designer, retaining app-properties for the setting itself. | Source: https://learn.microsoft.com/power-apps/maker/model-driven-apps/create-edit-app#play-your-app
-- [unsupported, major] Governance controls prose / behaviour: The per-column property is the finest-grained control. | Found: Searched: "form fill assistance" "column" "granular". Opened create-edit-field-portal, form-filling-assistance, app-properties and Copilot hub; they document column and broader settings but do not state that no finer-grained control exists. | Fix: Remove 'which is the finest-grained control and the one to use for sensitive fields' and replace it with 'and disable it for columns that might contain sensitive information'.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist directs readers to review column properties, but the controls table has no column-property row. | Found: Review environment form fill settings and column properties. ... Table rows cover environment Data entry, the legacy environment switch, the app toolbar and a Microsoft 365 files source switch, but not column properties. | Fix: Remove 'and column properties' from the checklist step, leaving 'Review environment form fill settings.' Do not add a control row.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The environment form fill assistance control is at Power Platform admin center > Copilot > Settings > Power Apps > Data entry. | Found: The primary admin control for form fill assistance is moving to the Power Platform admin center under Copilot > Settings > Power Apps > Data entry. Learn more in Copilot hub. This change is gradually rolling out. | Fix: Add the row note 'The move to this control is gradually rolling out.' The cited Learn page describes a transition rather than universal availability. | Source: https://learn.microsoft.com/power-apps/user/form-filling-assistance#admin-control
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: The app toolbar control is reached through Solutions > solution > Apps > app > Edit > Settings > Features > Form fill assist toolbar. | Found: When you select Settings from the command bar, select Features to enable or disable model-driven app features for the app. ... Form fill assist toolbar. | Fix: Use 'environment > Solutions > solution > Apps > app > Edit > Settings > Features > Form fill assist toolbar'. The cited create-edit-app page's 'Edit an app' section confirms the existing entry steps and first says to choose the environment. | Source: https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties
+- [contradicted, minor] Governance guidance: At rollout / consistency: The checklist's instruction to enable tables has a corresponding control in the controls table. | Found: Enable for a pilot app and tables first. | Controls: Form fill assistance (data entry agent) per environment; Form fill assist toolbar for an app; Switch specific to Microsoft 365 files as a source. | Fix: Replace 'Enable for a pilot app and tables first.' with 'Enable for a pilot app first.' The table has no table-level control; do not add a row.
 -->

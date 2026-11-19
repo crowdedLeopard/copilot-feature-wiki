@@ -1,15 +1,15 @@
 ---
-title: "Microsoft Teams Rooms on Windows: Facilitator AI notes for in-person meetings"
+title: "Microsoft Teams Rooms on Android: Facilitator AI notes for in-person meetings"
 slug: "microsoft-teams-ai-powered-notes-for-in-person-meetings-with-facilitator-in-teams-rooms-on"
-roadmapId: 560318
+roadmapId: 560700
 topic: "m365-copilot"
-products: ["Microsoft Copilot (Microsoft 365)","Microsoft Teams"]
-summary: "Teams Rooms on Windows rooms with a Teams Rooms Pro licence get a Take notes button for Facilitator AI notes in in-person meetings. Microsoft's notice says no extra admin enablement is needed once prerequisites are met."
-status: "rolling-out"
+products: ["Microsoft Teams","Microsoft Copilot (Microsoft 365)"]
+summary: "Teams Rooms on Android rooms with a Teams Rooms Pro licence get a Take notes button for Facilitator AI notes in in-person meetings. Microsoft's notice says no extra admin enablement is needed once prerequisites are met."
+status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)","GCC"]
 platforms: ["Teams and Surface Devices"]
-targetDate: "October CY2026"
+targetDate: "November CY2026"
 previewDate: null
 risk: "medium"
 cost: "low"
@@ -43,14 +43,14 @@ sources:
   - title: "Release notes for Microsoft Teams Rooms"
     url: "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note"
     kind: "learn"
-  - title: "MC1307512: (Updated) Microsoft Teams: AI-powered notes for in-person meetings with Facilitator in Teams Rooms on Windows"
-    url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1307512"
+  - title: "MC1307888: (Updated) Microsoft Teams: AI-powered notes for in-person meetings with Facilitator in Teams Rooms on Android"
+    url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1307888"
     kind: "message-center"
-  - title: "Microsoft 365 Roadmap 560318"
-    url: "https://www.microsoft.com/microsoft-365/roadmap?id=560318"
+  - title: "Microsoft 365 Roadmap 560700"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=560700"
     kind: "roadmap"
 videos: []
-related: ["meeting-policy","microsoft-teams-intelliframe-people-labels-in-teams-rooms-on-windows","microsoft-teams-facilitator-s-enhanced-protection-skill-can-alert-you-to-potential-scams","microsoft-teams-one-stop-admin-portal-for-teams-devices-with-teams-rooms-pro-management"]
+related: ["meeting-policy","microsoft-teams-one-stop-admin-portal-for-teams-devices-with-teams-rooms-pro-management","microsoft-teams-facilitator-detects-and-answers-questions","microsoft-teams-facilitator-s-enhanced-protection-skill-can-alert-you-to-potential-scams","microsoft-teams-audio-announcement-for-recording-and-transcription"]
 controls:
   - governs: "Take notes button on the room console home screen"
     scope: "other"
@@ -68,7 +68,7 @@ controls:
       docs: "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions"
     api:
       kind: "powershell"
-      call: "Set-CsTeamsMeetingPolicy -Identity \"Your Policy Name\" -AllowTranscription $true"
+      call: "Set-CsTeamsMeetingPolicy -Identity Global -AllowTranscription $true"
       docs: "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions"
     note: "General meeting policy that Learn's setup steps point to; Learn names no policy for room accounts."
   - governs: "Loop components in Teams (IsLoopEnabled)"
@@ -78,11 +78,11 @@ controls:
       kind: "powershell"
       call: "Set-SPOTenant -IsLoopEnabled $true"
       docs: "https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration"
-    note: "MC1307512 also asks admins to verify IsCollabMeetingNotesFluidEnabled, which the Loop page lists as a tenant-wide property."
+    note: "MC1307888 also asks admins to verify IsCollabMeetingNotesFluidEnabled, which the Loop page lists as a tenant-wide property."
 confidence: "medium"
 created: "2026-11-18"
 updated: "2026-11-19"
-roadmapModified: "2026-10-21T23:02:10"
+roadmapModified: "2026-09-24T22:58:55"
 changes:
   - date: "2026-11-18"
     note: "New briefing on Facilitator AI notes for in-person meetings in Teams Rooms on Windows, covering licensing, prerequisites and controls."
@@ -132,34 +132,38 @@ changes:
     note: "Rewritten for the Windows item (roadmap 560318): the existing page described the Android item, so none of it was carried over; status is Rolling out and MC1307512 gives a late October to mid-November 2026 window."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 70 statements not yet confirmed"
-version: 13
+  - date: "2026-11-19"
+    note: "Rewritten for the Android item (roadmap 560700): the brief's existing page described the Windows item, so none of it was carried over; the Facilitator app checklist step is not repeated and the transcription call is the Global-policy command."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 77 statements confirmed"
+version: 14
 verification:
-  status: "verified-with-gaps"
+  status: "verified"
   date: "2026-11-19"
-  version: 13
+  version: 14
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 68
+  claims: 77
+  confirmed: 77
   unconfirmed: 0
-  contradicted: 2
+  contradicted: 0
   attempts: 0
-  hash: "8beac5ba5d8085a2a0df329b730cfe05"
+  hash: "fefc1c997dc7f2a523aeafbaf7c230be"
 ---
 
 ## What's changing
 
-Facilitator, the AI agent that takes notes in scheduled Teams meetings, is being extended to in-person discussions in Teams Rooms on Windows rooms. The roadmap item says someone invites Facilitator with one tap on the room console, and notes appear on the front-of-room display or touch board. According to Message Center post MC1307512, the button is **Take notes**, and notes are stored in tenant-owned SharePoint Embedded storage. MC1307512 says no meeting data is stored or cached on the Teams Rooms device after the meeting ends.
+Facilitator, the AI agent that takes notes in scheduled Teams meetings, is being extended to in-person discussions in Teams Rooms on Android rooms. The roadmap item says someone invites Facilitator with one tap on the room console, and notes appear on the front-of-room display or touch board. According to Message Center post MC1307888, the button is **Take notes**, and notes are stored in tenant-owned SharePoint Embedded storage. MC1307888 says no meeting data is stored or cached on the Teams Rooms device after the meeting ends.
 
-After the meeting, MC1307512 says participants who were added with the **Access notes** button on the console can view and edit the notes through the meeting recap in the meeting chat on the Teams desktop client, and that notes are deleted automatically if no participant was added. The roadmap item words this as notes being available via meeting recap when shared and deleted if no one is selected. Microsoft Learn's Facilitator in Teams Rooms page describes the same step as **Save notes** and says unsaved notes are deleted after the session ends, so the two pages name it differently. Learn says to find the notes in the Teams meeting chat titled "Meeting with [conference room name]", on the **Recap** tab under **Notes**.
+After the meeting, MC1307888 says participants who were added with the **Access notes** button on the console can view and edit the notes through the meeting recap in the meeting chat on the Teams desktop client, and that notes are deleted automatically if no participant was added. The roadmap item words this as notes being available via meeting recap when shared and deleted if no one is selected. Microsoft Learn's Facilitator in Teams Rooms page describes the same step as **Save notes** and says unsaved notes are deleted after the session ends, so the two pages name it differently. Learn says to find the notes in the Teams meeting chat titled "Meeting with [conference room name]", on the **Recap** tab under **Notes**.
 
-The roadmap item lists the feature as Rolling out, General Availability, with a target of October CY2026, for Worldwide (Standard Multi-Tenant) and GCC. MC1307512 (published 11 May 2026, updated 27 August 2026) says rollout begins in late October 2026 (previously early September) and is expected to complete by mid-November 2026 (previously late September), and sets no act-by date. At the time of writing (19 November 2026) the roadmap still shows Rolling out. The Teams Rooms release notes list the feature in the Teams Rooms on Windows 5.7.112.0 (9/28/2026) entry.
+The roadmap item lists the feature as In development, General Availability, with a target of November CY2026, for Worldwide (Standard Multi-Tenant) and GCC. MC1307888 (published 11 May 2026, updated 24 September 2026) says rollout begins in early November 2026 (previously late October) and is expected to complete by early December 2026 (previously mid-November), and sets no act-by date. At the time of writing (19 November 2026) the roadmap still shows In development.
 
-The sources differ on maturity: Learn marks in-person note-taking as preview and warns that the licensing model may change before final release, while the roadmap shows General Availability.
+The sources differ on maturity and platform. Learn marks in-person note-taking as preview, warns that the licensing model may change before final release, and its FAQ says Facilitator is available on Teams Rooms on Windows and is projected to release on Teams Rooms on Android in a future release. The Teams Rooms release notes list a preview of Facilitator note taking for offline and ad hoc discussions in an entry headed May 2025 in their Android section.
 
 ## Why it matters
 
-This puts meeting transcription and AI notes into physical rooms where people may not think of themselves as being in a Teams meeting. MC1307512 says the feature is available automatically once licensing and prerequisite configuration are met, with no additional admin enablement required beyond existing settings. Windows rooms that already meet the prerequisites can therefore expect the Take notes entry point as the update reaches them, and the roadmap shows that rollout under way.
+This puts meeting transcription and AI notes into physical rooms where people may not think of themselves as being in a Teams meeting. MC1307888 says the feature is available automatically once licensing and prerequisite configurations are met, with no additional admin enablement required beyond existing settings. Android rooms that already meet the prerequisites can therefore expect the Take notes button as the update reaches them, and Microsoft's notice puts that rollout in November and early December 2026.
 
 The decisions are about whether you want it: whether the Facilitator app, Loop and transcription settings it depends on stay on for room accounts, whether the room-level Take notes setting stays on, and what you tell people about where notes are stored and who can read them. Helpdesk will also field questions about how to start notes and where they went.
 
@@ -167,58 +171,56 @@ The decisions are about whether you want it: whether the Facilitator app, Loop a
 
 **Data exposure**
 
-- Meeting audio and transcription data from the room are processed to generate summaries, decisions and action items (MC1307512). Notes are stored in tenant-owned SharePoint Embedded storage; Learn says they are saved as a Loop file there and treated as meeting transcript data.
-- Notes appear on the front-of-room display or touch board while the session runs (MC1307512), so what is said in the room is shown back in the room.
+- Meeting audio and transcription data from the room are processed to generate summaries, decisions and action items (MC1307888). Notes are stored in tenant-owned SharePoint Embedded storage; Learn says they are saved as a Loop file there and treated as meeting transcript data.
+- Notes appear on the front-of-room display or touch board while the session runs (MC1307888), so what is said in the room is shown back in the room.
 
 **Security & identity**
 
-- Access to notes depends on who is added during the session: MC1307512 describes adding a work account with the Access notes button, and Learn describes adding participants' names in the Save notes dialog. Learn says only participants who add their names at the beginning of the session and have enrolled their profiles are identified and attributed.
-- Learn's setup steps apply to the room resource account: the Facilitator app must be enabled for it, and if app availability is scoped to People and Groups the room account must be included.
+- Access to notes depends on who is added during the session: MC1307888 describes adding a work account with the Access notes button, and Learn describes adding participants' names in the Save notes dialog. Learn says currently only participants who add their names at the beginning of the session and have enrolled their profiles are identified and attributed.
 
 **Autonomy & actions**
 
-- Facilitator starts when someone selects Take notes on the console (MC1307512). Learn says muting the room microphone stops Facilitator or transcription capturing content, and that Facilitator only turns on transcription during the meeting and does not record it.
+- Facilitator starts when someone selects Take notes on the console (MC1307888). MC1307888 describes notes, summaries, decisions and action items; it describes no other actions by Facilitator in the room. Learn says muting the room microphone stops Facilitator or transcription capturing content, and that Facilitator only turns on transcription during the meeting and does not record it.
 
 **Change & support**
 
 - Learn marks the feature preview while the roadmap says General Availability, so behaviour and licensing described on Learn may differ from what reaches your rooms.
-- Learn names the save step Save notes and MC1307512 names it Access notes; brief helpdesk on both. The Pro Management portal setting **Show Take notes button on the home screen** is documented as enabled by default.
+- Learn names the save step Save notes and MC1307888 names it Access notes; brief helpdesk on both. The Pro Management portal setting **Show Take notes button on the home screen** is documented as enabled by default.
 
 ## Cost and licensing
 
-Licence: the Learn page for Facilitator in Teams Rooms says in-person note-taking is currently included with Teams Rooms Pro, and its prerequisite is a Teams Rooms Pro licence on each resource account used for your Teams Rooms devices. The roadmap item says "Available with Teams Rooms Pro", and MC1307512 names rooms licensed with Teams Rooms Pro as the affected group. The same Learn page says only the meeting organiser needs a Copilot licence for Facilitator in scheduled meetings; its in-person setup steps name no Copilot licence.
+Licence: the Learn page for Facilitator in Teams Rooms says in-person note-taking is currently included with Teams Rooms Pro, and its prerequisite is a Teams Rooms Pro licence on each resource account used for your Teams Rooms devices. The roadmap item says "Available with Teams Rooms Pro", and MC1307888 names rooms licensed with Teams Rooms Pro as the affected group. The same Learn page says only the meeting organiser needs a Copilot licence for Facilitator in scheduled meetings; its in-person setup steps name no Copilot licence.
 
-Learn warns that the licensing model may change before final release. The Microsoft Teams Rooms licenses page states no price for Teams Rooms Pro, and the Facilitator in Teams Rooms page names no meter or separate charge for in-person notes.
+Learn warns that the licensing model may change before final release. The Microsoft Teams Rooms licenses page publishes no price for Teams Rooms Pro, and the Facilitator in Teams Rooms page names no meter or separate charge for in-person notes.
 
 Indirect costs: admin time to confirm the prerequisites on room accounts, and helpdesk briefing.
 
 ## Scope
 
-Who: Teams Rooms on Windows rooms whose resource accounts hold a Teams Rooms Pro licence (MC1307512). Learn's FAQ says Facilitator is available on Teams Rooms on Windows and is projected to release on Teams Rooms on Android in a future release.
+Who: Teams Rooms on Android rooms whose resource accounts hold a Teams Rooms Pro licence (MC1307888). Learn's FAQ says Facilitator is available on Teams Rooms on Windows and is projected to release on Teams Rooms on Android in a future release.
 
-Clouds and rollout: the roadmap lists Worldwide (Standard Multi-Tenant) and GCC, platform Teams and Surface Devices. MC1307512 gives a Worldwide and GCC rollout beginning in late October 2026, expected to complete by mid-November 2026, and sets no act-by date.
+Clouds and rollout: the roadmap lists Worldwide (Standard Multi-Tenant) and GCC, platform Teams and Surface Devices. MC1307888 gives a Worldwide and GCC rollout beginning in early November 2026, expected to complete by early December 2026, and sets no act-by date.
 
-Prerequisites: MC1307512 asks administrators to confirm Teams Rooms Pro licences, Facilitator enabled in the tenant, the Loop settings IsLoopEnabled and IsCollabMeetingNotesFluidEnabled, and meeting transcription enabled in Teams meeting policies. Learn adds the Pro Management portal note-taking setting. Notes are read afterwards on the Teams desktop client through the meeting recap. Learn's Pro Management portal settings page says configuring device settings needs role-based access control permissions for Rooms Management.
+Prerequisites: MC1307888 asks administrators to confirm Teams Rooms Pro licences, Facilitator enabled in the tenant, the Loop settings IsLoopEnabled and IsCollabMeetingNotesFluidEnabled, and meeting transcription enabled in Teams meeting policies. Learn adds the Facilitator app for the room resource account and the Pro Management portal note-taking setting. Notes are read afterwards on the Teams desktop client through the meeting recap. Learn's Pro Management portal settings page lists Teams Rooms on Android among the devices whose settings are configured there, and says configuring them needs role-based access control permissions for Rooms Management.
 
 ## Governance guidance
 
 ### Before rollout
 
-- Confirm Teams Rooms Pro licences are assigned to the resource accounts of the Windows rooms you want covered.
-- Check the Facilitator app is enabled for each room resource account in the Teams admin center, and that the account is included if app availability is scoped to People and Groups.
+- Confirm Teams Rooms Pro licences are assigned to the resource accounts of the Android rooms you want covered.
 - Check meeting transcription is on in the meeting policy that applies to the room accounts, using the transcription row below.
-- Check IsLoopEnabled is on, using the Loop row below; MC1307512 also asks you to verify IsCollabMeetingNotesFluidEnabled.
-- Decide in the Pro Management portal whether **Show Take notes button on the home screen** stays on for each room.
+- Check IsLoopEnabled is on, using the Loop row below.
+- Decide in the Pro Management portal whether **Show Take notes button on the home screen** stays on for each room, using the first row below, and confirm on one Android room that the setting is present.
 
 ### At rollout
 
-- Test one Windows room end to end: select Take notes, add a work account with Access notes, then open the notes from the meeting recap in the meeting chat on the Teams desktop client.
+- Test one Android room end to end: select Take notes, add a work account with Access notes, then open the notes from the meeting recap in the meeting chat on the Teams desktop client.
 - Brief helpdesk and room users on how to start notes and where they are stored and read afterwards.
-- Watch Message center for further updates to MC1307512, which moved its schedule on 27 August 2026.
+- Watch Message center for further updates to MC1307888, which moved its schedule on 24 September 2026.
 
 ### After rollout
 
-- Spot-check a few rooms: confirm a session where nobody was added leaves no notes in the recap, as MC1307512 describes.
+- Spot-check a few rooms: confirm a session where nobody was added leaves no notes in the recap, as MC1307888 describes.
 - Re-read the Learn Facilitator in Teams Rooms page for changes to licensing and preview status.
 
 ## Governance controls
@@ -229,35 +231,28 @@ Prerequisites: MC1307512 asks administrators to confirm Teams Rooms Pro licences
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Take notes button on the room console home screen</strong><br><small class="controls__note">Learn says the default setting is enabled. The step is given for Facilitator in Teams Rooms without naming a platform.</small></td><td data-label="Admin UI"><strong>Pro Management portal</strong><br>Rooms › room › Settings › Device › Show Take notes button on the home screen <a href="https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Meeting transcription for users and room accounts</strong><br><small>User</small><br><small class="controls__note">General meeting policy that Learn's setup steps point to; Learn names no policy for room accounts.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Transcription <a href="https://learn.microsoft.com/microsoftteams/meeting-transcription-captions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &quot;Your Policy Name&quot; -AllowTranscription $true</code> <a href="https://learn.microsoft.com/microsoftteams/meeting-transcription-captions" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Loop components in Teams (IsLoopEnabled)</strong><br><small>Tenant</small><br><small class="controls__note">MC1307512 also asks admins to verify IsCollabMeetingNotesFluidEnabled, which the Loop page lists as a tenant-wide property.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -IsLoopEnabled $true</code> <a href="https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Meeting transcription for users and room accounts</strong><br><small>User</small><br><small class="controls__note">General meeting policy that Learn's setup steps point to; Learn names no policy for room accounts.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Transcription <a href="https://learn.microsoft.com/microsoftteams/meeting-transcription-captions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity Global -AllowTranscription $true</code> <a href="https://learn.microsoft.com/microsoftteams/meeting-transcription-captions" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Loop components in Teams (IsLoopEnabled)</strong><br><small>Tenant</small><br><small class="controls__note">MC1307888 also asks admins to verify IsCollabMeetingNotesFluidEnabled, which the Loop page lists as a tenant-wide property.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -IsLoopEnabled $true</code> <a href="https://learn.microsoft.com/microsoft-365/loop/loop-admin-configuration" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-Availability depends on the room's Teams Rooms Pro licence, the Facilitator app, transcription, Loop and the room-level portal setting. Learn's Teams Rooms setup step asks for the Facilitator app to be enabled for the room resource account in the Teams admin center, and says that if availability is scoped to People and Groups the resource account must be included; the steps to allow the app are on the [Set up Facilitator in Microsoft Teams](https://learn.microsoft.com/microsoftteams/facilitator-teams) page.
+Availability depends on the room's Teams Rooms Pro licence, the Facilitator app, transcription, Loop and the room-level portal setting. Learn's Teams Rooms setup step asks for the Facilitator app to be enabled for the room resource account in the Teams admin center, and says that if availability is scoped to People and Groups the resource account must be included. The steps to allow or block the app (Teams apps > Manage apps, then select Facilitator) are on the [Set up Facilitator in Microsoft Teams](https://learn.microsoft.com/microsoftteams/facilitator-teams) page, which says Facilitator is allowed by default.
 
 Pro Management portal settings are applied as jobs: Learn says **Apply Now** queues a job and restarts the device as soon as possible, and **Schedule Later** applies the change in the nightly maintenance window. Microsoft Learn documents no API for the Take notes setting at the time of writing (November 2026), and the Learn setup step does not name a platform.
 
-The Loop page documents the Teams Loop settings as SharePoint PowerShell properties and gives no admin centre path for them. It also says the collaborative meeting notes property does not apply to collaborative meeting notes in Teams New Calendar.
+The Loop page documents the Teams Loop settings as SharePoint PowerShell properties and gives no admin centre path for them. It also says the collaborative meeting notes property, IsCollabMeetingNotesFluidEnabled, does not apply to collaborative meeting notes in Teams New Calendar; MC1307888 asks administrators to verify it.
 
 The transcription row is the general meeting policy. Learn's setup step points to it without naming a policy for room accounts, so which policy the room account's in-person notes use is not stated.
 
 ## Open questions
 
-- Will Learn's preview label and its "licensing model may change" warning change now that the roadmap shows General Availability? Watch the Learn Facilitator in Teams Rooms page.
-- Does the Pro Management portal **Show Take notes button on the home screen** setting apply to Windows rooms as the Learn step reads, given that it names no platform? Watch the Learn page.
+- Does the Pro Management portal **Show Take notes button on the home screen** setting apply to Android rooms, given that the Learn step names no platform? Watch the Learn Facilitator in Teams Rooms page.
 - Which meeting policy does the room resource account use for these notes?
-- MC1307512 expects rollout to complete by mid-November 2026 while the roadmap still shows Rolling out: will Message center or the roadmap give a firmer completion date?
+- Will Learn's preview label and its "licensing model may change" warning change once the roadmap moves from In development to General Availability? Watch the Learn page and MC1307888.
+- MC1307888 expects rollout to start in early November 2026 while the roadmap still shows In development: will Message center or the roadmap give a firmer availability date for Android?
 
 <!-- rationale
 risk: Medium. Room audio is transcribed and summarised into notes stored in tenant SharePoint Embedded storage, and Microsoft's notice says the feature is available automatically once licensing and prerequisites are met.
-cost: Low. Learn says in-person notes are currently included with Teams Rooms Pro, so the cost shown is admin time plus a Teams Rooms Pro licence for any room without one; Learn warns the licensing model may change.
-impact: Medium. People in Teams Rooms on Windows rooms licensed with Teams Rooms Pro see a new Take notes entry point on the console and notes on the front-of-room display or touch board.
--->
-
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout, Facilitator app bullet; Governance controls / consistency: Every control the governance checklist asks administrators to check is represented in the controls table. | Found: Check the Facilitator app is enabled for each room resource account in the Teams admin center Table rows: Take notes button; Meeting transcription; Loop components in Teams (IsLoopEnabled). | Fix: Remove the Before rollout bullet beginning 'Check the Facilitator app is enabled for each room resource account'. Keep the documented app prerequisite in Scope and Governance controls; do not add a control row.
-- [contradicted, minor] Governance guidance: Before rollout, Loop bullet; controls[2] / consistency: The Loop checklist step only asks administrators to check controls represented in the table. | Found: Check IsLoopEnabled is on, using the Loop row below; MC1307512 also asks you to verify IsCollabMeetingNotesFluidEnabled. Table row: Loop components in Teams (IsLoopEnabled). | Fix: Replace the Loop checklist bullet with 'Check IsLoopEnabled is on, using the Loop row below.' Keep the attributed IsCollabMeetingNotesFluidEnabled prerequisite in Scope and the table note; do not add a control row.
+cost: Low. Learn says in-person notes are currently included with Teams Rooms Pro, so the known cost is admin time plus a Teams Rooms Pro licence for any room without one; Learn warns the licensing model may change.
+impact: Medium. People in Teams Rooms on Android rooms licensed with Teams Rooms Pro see a new Take notes button on the console and notes on the front-of-room display or touch board.
 -->

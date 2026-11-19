@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published. The roadmap item and the Learn pages read name no licence or meter for this feature."
+  model: "included"
+  notes: "Microsoft Teams can be licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU; all supported subscription plans provide access to Teams mobile apps. Microsoft has not published a licensing requirement specific to changing the background while recording a clip."
 audiences: ["m365-admin","end-user","change-adoption"]
 tags: ["teams","mobile","channels","policy","powershell","admin-center","gcc","gcc-high","dod"]
 sources:
@@ -67,19 +67,23 @@ changes:
     note: "Corrected the admin path to Messaging policies > policy > Edit > Video messages, and removed the claim that the roadmap item does not use the name video clip."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 38 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-19"
+    note: "Corrected licensing: Teams is licensed with qualifying Microsoft 365 offerings or as a standalone SKU, and no feature-specific licensing requirement is published."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 35 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-19"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 38
-  confirmed: 37
+  claims: 35
+  confirmed: 35
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "5ca5ca66aaf29379f2f689a45cdd786d"
+  contradicted: 0
+  attempts: 0
+  hash: "3129726c3a529005b018d27bc1a58ee0"
 ---
 
 ## What's changing
@@ -112,7 +116,7 @@ Microsoft has not stated what happens on arrival, so base your plan on no source
 
 ## Cost and licensing
 
-The roadmap item and the Learn pages read name no licence, add-on or meter for changing the background while recording a clip. A licence for this feature is not yet published, so no extra cost should be assumed or ruled out from these sources.
+Microsoft Teams can be licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU, and all supported subscription plans provide access to Teams mobile apps ([Microsoft Teams service description](https://learn.microsoft.com/office365/servicedescriptions/teams-service-description)). Microsoft has not published a licensing requirement specific to changing the background while recording a clip.
 
 The cost the sources show is indirect: admin time to review the Video messages messaging policy setting and to brief users. The Learn page for the Video messages setting names no licence requirement either.
 
@@ -157,16 +161,10 @@ Microsoft Learn does not describe a setting for the background option itself. Th
 - Is the background option on by default for iOS users, and does Microsoft plan to change that? Watch the Teams release notes and the roadmap item.
 - Does the Video messages messaging policy setting cover clips recorded with a changed background? Confirm with a test user.
 - Does the meeting policy setting for video effects (**Participants can use video effects**) or a customisation policy affect backgrounds in clips? Watch the Learn pages for meeting policies.
-- Which licence, if any, does the background option need? Watch the Teams service description.
+- Does Microsoft publish any licensing requirement specific to this background option? Watch the Teams service description.
 
 <!-- rationale
 risk: Low. It is a camera effect on a clip a user chooses to record and share in Teams chat or a channel, which the Video messages messaging policy setting already covers.
-cost: Low. The only cost the sources show is admin time to check the messaging policy and tell users; no licence or meter for this feature is published.
+cost: Low. The only cost the sources show is admin time to check the messaging policy and tell users; no licence or meter specific to this feature is published.
 impact: Low. Only users who record video clips in Teams on iOS notice it, and the record lists no other platform.
--->
-
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost / licensing: The licensing model is unknown because a licence covering this Teams feature is not yet published. | Found: Microsoft Teams can be licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU. / All supported subscription plans are eligible for access to the Teams web client, desktop clients, and mobile apps. | Fix: Set licensing.model to included. Replace the licensing notes and the broad unpublished-licence statements with: 'Microsoft Teams can be licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU; all supported subscription plans provide access to Teams mobile apps. Microsoft has not published a licensing requirement specific to changing the background while recording a clip.' Cite https://learn.microsoft.com/office365/servicedescriptions/teams-service-description. Narrow the licensing open question to 'Does Microsoft publish any licensing requirement specific to this background option?' Keep the cost rationale's uncertainty limited to feature-specific licensing and metering. | Source: https://learn.microsoft.com/office365/servicedescriptions/teams-service-description
 -->

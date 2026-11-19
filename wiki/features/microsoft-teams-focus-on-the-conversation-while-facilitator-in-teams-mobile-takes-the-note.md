@@ -1,0 +1,162 @@
+---
+title: "Microsoft Teams: Facilitator on mobile takes notes of in-person conversations with speaker attribution"
+slug: "microsoft-teams-focus-on-the-conversation-while-facilitator-in-teams-mobile-takes-the-note"
+roadmapId: 579864
+topic: "modern-work"
+products: ["Microsoft Teams"]
+summary: "Microsoft plans speaker attribution for Facilitator notes captured from Teams on Android and iOS. Targeted December CY2026; Microsoft has not stated whether admins must act, and no mobile-specific control is documented."
+status: "in-development"
+releasePhase: ["General Availability"]
+clouds: ["Worldwide (Standard Multi-Tenant)"]
+platforms: ["Android","iOS"]
+targetDate: "December CY2026"
+previewDate: null
+risk: "medium"
+cost: "low"
+impact: "medium"
+defaultState: "unknown"
+action: "review"
+licensing:
+  model: "included"
+  notes: "Microsoft Learn states Facilitator is included with a Microsoft Copilot licence and subject to available capacity. A price, meter or licence specific to mobile speaker attribution is not yet published."
+audiences: ["m365-admin","service-owner","compliance","end-user"]
+tags: ["teams","facilitator","mobile","meeting-transcripts","ai","privacy"]
+sources:
+  - title: "Microsoft 365 Roadmap 579864"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=579864"
+    kind: "roadmap"
+  - title: "Set up Facilitator in Microsoft Teams"
+    url: "https://learn.microsoft.com/microsoftteams/facilitator-teams"
+    kind: "learn"
+  - title: "Overview of agent and app management and governance in Teams admin center"
+    url: "https://learn.microsoft.com/microsoftteams/manage-apps"
+    kind: "learn"
+  - title: "Facilitator in Microsoft Teams Rooms"
+    url: "https://learn.microsoft.com/microsoftteams/rooms/facilitator-teams-rooms"
+    kind: "learn"
+videos: []
+related: ["microsoft-teams-ai-powered-notes-for-in-person-meetings-with-facilitator-in-teams-rooms-on","microsoft-teams-facilitator-detects-and-answers-questions","microsoft-teams-audio-announcement-for-recording-and-transcription","meeting-policy"]
+controls:
+  - governs: "Whether Facilitator is available to everyone, specific users or groups, or no one"
+    scope: "tenant"
+    ui:
+      surface: "Teams admin center"
+      path: "Teams apps > Built-in Teams agents > agent > Edit availability"
+      docs: "https://learn.microsoft.com/microsoftteams/manage-apps"
+    api: null
+    note: "Learn does not say this setting covers mobile note-taking or speaker attribution. The Facilitator page also gives Teams apps > Manage apps > Facilitator > Allow or Block."
+  - governs: "A switch specific to mobile note-taking or speaker attribution"
+    scope: "tenant"
+    ui: null
+    api: null
+    note: "Not yet documented at the time of writing (November 2026)."
+confidence: "medium"
+created: "2026-11-19"
+updated: "2026-11-19"
+roadmapModified: "2026-11-19T00:35:27"
+changes:
+  - date: "2026-11-19"
+    note: "First briefing: roadmap-only for speaker attribution on mobile; Learn documents Facilitator licensing and availability controls but nothing mobile-specific."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 48 statements confirmed"
+version: 1
+verification:
+  status: "verified"
+  date: "2026-11-19"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 48
+  confirmed: 48
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "9bd1e09a133e7142dedbb96bf38dbf88"
+---
+
+## What's changing
+
+Microsoft plans to add speaker attribution to Facilitator's note-taking in Teams mobile. The roadmap item describes a user starting note-taking from their phone so that Facilitator captures and transcribes an ad hoc, in-person discussion, then generates notes, summaries and follow-up actions in which speaker attribution distinguishes who said what.
+
+Microsoft Learn does not yet describe this change. Its Facilitator setup page already lists "Mobile capture of ad-hoc discussions and action items" as generally available, and the roadmap item (status In development) targets December CY2026 for the speaker attribution version. What follows about behaviour is therefore the roadmap's description, plus what Learn says about Facilitator in general.
+
+The roadmap item lists Android and iOS, the Worldwide (Standard Multi-Tenant) cloud and General Availability as the release phase. Separately, Learn documents Facilitator in Teams Rooms for unscheduled in-person discussions as a preview, included with Teams Rooms Pro; that is a different surface from a phone.
+
+## Why it matters
+
+This puts AI transcription of in-person speech, with names attached, into a phone app that is not tied to a scheduled meeting or a meeting room. For a service owner that raises questions about who is being captured, where the notes are kept and who can open them, none of which the roadmap item answers.
+
+Microsoft has not stated what happens on arrival, so base planning on no source saying existing behaviour changes. Facilitator itself is documented as allowed by default, so users who hold the licence may be able to use the capability once it ships; confirm that before the December CY2026 target rather than after.
+
+## Risk assessment
+
+**Data exposure**
+- The roadmap item says Facilitator transcribes an in-person conversation and generates notes, summaries and follow-up actions. For Teams meetings, Learn says Facilitator data is stored as a .loop file in the Meetings folder in OneDrive of the user who initiated Facilitator and is treated as meeting transcript data. Where notes from a phone-started conversation are stored is not documented.
+- Speaker attribution links spoken words to named people. Which people can be attributed on mobile, and how, is not yet documented.
+
+**Security & identity**
+- Only licensed users can initiate Facilitator, per Learn. How mobile speaker attribution identifies a speaker is not described, so confirm it before telling staff what is captured about them.
+
+**Autonomy & actions**
+- Facilitator generates follow-up actions from the conversation. The roadmap item does not say whether it sends or assigns them; check this once documentation exists.
+
+**Change & support**
+- People in the conversation who are not using Teams may not know capture is running. Plan guidance for staff on when to tell others they are being transcribed.
+- Learn documents Facilitator availability controls but none specific to mobile capture or speaker attribution at the time of writing (November 2026).
+
+## Cost and licensing
+
+Learn's Facilitator setup page states that Facilitator is included with a Microsoft Copilot licence and subject to available capacity. It lists three licensing requirements: an eligible Microsoft 365 base licence, an eligible Microsoft Teams licence and a Microsoft Copilot licence. It also says unlicensed users cannot prompt Facilitator, though they can see others' prompts and Facilitator's responses.
+
+A price, meter or licence specific to mobile speaker attribution is not yet published. The cost the sources show is therefore indirect: admin time to check availability and to brief users. The Teams Rooms in-person note-taking preview is documented as included with Teams Rooms Pro; that statement is about Teams Rooms devices and is not evidence for phones.
+
+## Scope
+
+The roadmap item lists Microsoft Teams on Android and iOS, the Worldwide (Standard Multi-Tenant) cloud and General Availability. No other cloud is listed on the roadmap item, which is a record fact and not a statement that the feature is unavailable elsewhere.
+
+The Learn Facilitator page requires an eligible Microsoft 365 base licence, an eligible Teams licence and a Microsoft Copilot licence. Whether mobile note-taking needs anything beyond that, such as Loop experiences in Teams, is not stated for mobile. The target is December CY2026 and the status is In development, so treat dates as targets until the status is Launched.
+
+## Governance guidance
+
+### Before rollout
+- Check whether Facilitator is allowed for your users in the Teams admin center under Teams apps > Built-in Teams agents (see the controls table), and decide which users or groups should have it.
+- Identify which users hold a Microsoft Copilot licence, since only licensed users can initiate Facilitator.
+- Draft guidance for staff on telling other people when they start phone note-taking in a conversation.
+
+### At rollout
+- Watch Message center and the roadmap item for a change in status from In development, and for any post that sets a default or an act-by date.
+- Test the feature with a pilot group on Android and iOS and record where the notes are saved and who can open them.
+
+### After rollout
+- Confirm with your compliance team how notes saved from phone-started conversations are retained and searched, once Microsoft documents where they are stored.
+- Revisit the availability setting if pilot results show notes landing somewhere your retention or eDiscovery processes do not reach.
+
+## Governance controls
+
+<p class="controls__lead">Where each control lives. The left column says what the setting decides and how far it reaches; the middle gives the admin centre and the exact path; the right gives the script, API or command that does the same. <em>Not yet documented</em> means Microsoft has not published a control for that surface, so there is nothing to configure yet.</p>
+
+<table class="controls">
+<thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
+<tbody>
+<tr><td data-label="Control"><strong>Whether Facilitator is available to everyone, specific users or groups, or no one</strong><br><small>Tenant</small><br><small class="controls__note">Learn does not say this setting covers mobile note-taking or speaker attribution. The Facilitator page also gives Teams apps &gt; Manage apps &gt; Facilitator &gt; Allow or Block.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Built-in Teams agents › agent › Edit availability <a href="https://learn.microsoft.com/microsoftteams/manage-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>A switch specific to mobile note-taking or speaker attribution</strong><br><small>Tenant</small><br><small class="controls__note">Not yet documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+</tbody>
+</table>
+
+Learn gives two routes for Facilitator availability. The Facilitator setup page says to allow or block Facilitator under Teams apps > Manage apps, and says Facilitator is allowed by default unless all apps are blocked for the organisation. The Teams agent and app management page says built-in agents such as Facilitator are managed from Teams apps > Built-in Teams agents, not Manage apps. The two pages disagree; the table uses the later one, and you should check which page your tenant shows.
+
+Learn also documents that Loop experiences in Teams control AI-generated notes for meetings, using the `IsCollabMeetingNotesFluidEnabled` setting in PowerShell, tenant-wide. That is documented for meetings; it is not confirmed to apply to notes started on a phone.
+
+## Open questions
+
+- Where are notes from a phone-started conversation stored, who can open them, and do retention and eDiscovery cover them? Watch the Facilitator setup page and Purview guidance on Microsoft Learn.
+- How does speaker attribution identify people on mobile? The Teams Rooms page says only participants who add their names at the start and have enrolled profiles are attributed; whether that applies to phones is not stated.
+- Is the capability on by default for licensed users when it launches, and will Microsoft send a Message center post? The default is not stated.
+- Which control governs mobile capture: Built-in Teams agents availability, the transcription policy, the Loop setting or something new?
+- Does speaker attribution carry a licence, price or capacity limit beyond the Microsoft Copilot licence?
+
+<!-- rationale
+risk: Medium. A phone can capture an in-person conversation and turn it into notes attributed to named speakers, and Microsoft has not yet documented where these notes are stored or a control specific to mobile capture.
+cost: Low. Facilitator is documented as included with a Microsoft Copilot licence, subject to available capacity; no separate price or meter for mobile speaker attribution is published, so the known cost is admin time.
+impact: Medium. Licensed users on Android and iOS who start note-taking notice it, and the people being recorded in a conversation are affected without using Teams themselves.
+-->

@@ -1,0 +1,726 @@
+{
+  "slug": "microsoft-edge-ask-copilot-about-an-image",
+  "roadmapId": 566864,
+  "title": "Microsoft Edge: Ask Copilot about an image from the context menu",
+  "status": "held",
+  "date": "2026-11-19",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-19",
+    "reasons": [
+      "2 blocking findings (claims 43, 50)"
+    ]
+  },
+  "counts": {
+    "claims": 55,
+    "confirmed": 53,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 2,
+    "major": 0,
+    "minor": 0
+  },
+  "summary": "The control paths, registry references and roadmap details are supported. The briefing nevertheless labels licensing as mixed while saying the feature's entitlement is unpublished, and says Microsoft has not confirmed availability controls that the roadmap explicitly names.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "Microsoft plans an Edge context-menu action that sends web images directly to Copilot.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Ask Copilot about an image in Edge enables users to instantly analyze images from the web by sending them directly to Copilot from the Edge context menu",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The planned image action lets users ask questions and gain insights without leaving their browsing experience.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "making it easy to ask questions, gain insights, and understand visual content without leaving their browsing experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing; controls notes; Governance controls",
+      "type": "record",
+      "claim": "The roadmap names EdgeEntraCopilotPageContext and Microsoft365CopilotChatIconEnabled as availability controls.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Admins can control availability to this feature using the EdgeEntraCopilotPageContext and Microsoft365CopilotChatIconEnabled policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is January CY2027, presented as a plan rather than a commitment.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant), not US Government clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: products; What's changing",
+      "type": "record",
+      "claim": "The listed products are Microsoft Edge and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Edge\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-28T23:04:31.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-28T23:04:31\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The stated Group Policy path and setting label locate EdgeEntraCopilotPageContext.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "GP name: Control Copilot access to Microsoft Edge page content, browsing history, and video transcript for Entra account user profiles when using Copilot in the Microsoft Edge sidepane\n- GP path (Mandatory): Administrative Templates/Microsoft Edge",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "The Windows registry control is EdgeEntraCopilotPageContext, REG_DWORD, under SOFTWARE\\Policies\\Microsoft\\Edge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge\n- Path (Recommended): N/A\n- Value name: EdgeEntraCopilotPageContext\n- Value type: REG\\_DWORD",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The stated Group Policy path and setting label locate Microsoft365CopilotChatIconEnabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-browser-policies/microsoft365copilotchaticonenabled",
+      "quote": "GP name: Control whether Microsoft 365 Copilot Chat shows in the Microsoft Edge for Business toolbar\n- GP path (Mandatory): Administrative Templates/Microsoft Edge",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "The Windows registry control is Microsoft365CopilotChatIconEnabled, REG_DWORD, under SOFTWARE\\Policies\\Microsoft\\Edge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-browser-policies/microsoft365copilotchaticonenabled",
+      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge\n- Path (Recommended): SOFTWARE\\Policies\\Microsoft\\Edge\\Recommended\n- Value name: Microsoft365CopilotChatIconEnabled\n- Value type: REG\\_DWORD",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[0].governs; Why it matters; Scope",
+      "type": "applicability",
+      "claim": "EdgeEntraCopilotPageContext applies to Entra users using side-pane Copilot, including Business Chat and EDP experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "This policy applies only to users who are signed in to Microsoft Edge with a Microsoft Entra account and are using Copilot in the side pane. It applies to Copilot experiences in the side pane, including Microsoft 365 Copilot Business Chat and Microsoft Copilot with enterprise data protection (EDP).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "EdgeEntraCopilotPageContext does not apply to Microsoft-account profiles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "Applies to a profile that is signed in with a Microsoft account: No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The policy page says Copilot cannot access DLP-protected page content even when the policy is enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "Copilot can't access page content on pages protected by data loss prevention (DLP) policies, even if this policy is enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Risk assessment: Data exposure",
+      "type": "default",
+      "claim": "Unconfigured side-pane context access is enabled by default in non-EU regions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "If you don't configure this policy:\n\n- Access is enabled by default in non-EU regions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Data exposure",
+      "type": "default",
+      "claim": "Unconfigured side-pane context access is disabled by default in EU regions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "If you don't configure this policy:\n\n- Access is enabled by default in non-EU regions.\n- Access is disabled by default in EU regions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Users can change side-pane context access in Edge settings when the policy is not configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "If you don't configure this policy:\n\n- Access is enabled by default in non-EU regions.\n- Access is disabled by default in EU regions.\n- Users can turn this setting on or off in Microsoft Edge settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope",
+      "type": "availability",
+      "claim": "EdgeEntraCopilotPageContext is supported on Windows from version 130.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "Windows: ≥ 130",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope",
+      "type": "availability",
+      "claim": "EdgeEntraCopilotPageContext is supported on macOS from version 130.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "macOS: ≥ 130",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Security & identity; Scope; Open questions",
+      "type": "availability",
+      "claim": "EdgeEntraCopilotPageContext is not supported on Android.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "Android: Not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Security & identity; Scope; Open questions",
+      "type": "availability",
+      "claim": "EdgeEntraCopilotPageContext is not supported on iOS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "iOS: Not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "EdgeEntraCopilotPageContext can be mandatory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "Can be mandatory: Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "EdgeEntraCopilotPageContext cannot be recommended.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "Can be recommended: No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[1].governs; Risk assessment: Change & support; Scope",
+      "type": "applicability",
+      "claim": "Microsoft365CopilotChatIconEnabled controls toolbar icon visibility for Entra ID Edge profiles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-browser-policies/microsoft365copilotchaticonenabled",
+      "quote": "For users in an Entra ID Microsoft Edge profile, this policy controls whether the Microsoft 365 Copilot Chat icon is shown in the Microsoft Edge for Business toolbar for Microsoft 365 Copilot licensed and unlicensed users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Scope",
+      "type": "applicability",
+      "claim": "Microsoft365CopilotChatIconEnabled covers both Copilot licensed and unlicensed users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-browser-policies/microsoft365copilotchaticonenabled",
+      "quote": "for Microsoft 365 Copilot licensed and unlicensed users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[1].note; Scope",
+      "type": "applicability",
+      "claim": "Microsoft365CopilotChatIconEnabled applies only when users access Copilot in the side pane.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-browser-policies/microsoft365copilotchaticonenabled",
+      "quote": "This policy only applies when users are accessing Copilot in the sidepane.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[1].note; Scope",
+      "type": "availability",
+      "claim": "Microsoft365CopilotChatIconEnabled is supported on Windows from version 139.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-browser-policies/microsoft365copilotchaticonenabled",
+      "quote": "Windows: ≥ 139",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[1].note; Scope",
+      "type": "availability",
+      "claim": "Microsoft365CopilotChatIconEnabled is supported on macOS from version 139.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-browser-policies/microsoft365copilotchaticonenabled",
+      "quote": "macOS: ≥ 139",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope; Open questions",
+      "type": "availability",
+      "claim": "Microsoft365CopilotChatIconEnabled is not supported on Android.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-browser-policies/microsoft365copilotchaticonenabled",
+      "quote": "Android: Not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope; Open questions",
+      "type": "availability",
+      "claim": "Microsoft365CopilotChatIconEnabled is not supported on iOS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-browser-policies/microsoft365copilotchaticonenabled",
+      "quote": "iOS: Not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Microsoft365CopilotChatIconEnabled can be mandatory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-browser-policies/microsoft365copilotchaticonenabled",
+      "quote": "Can be mandatory: Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Microsoft365CopilotChatIconEnabled can be recommended.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-browser-policies/microsoft365copilotchaticonenabled",
+      "quote": "Can be recommended: Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; front matter: changes",
+      "type": "absence",
+      "claim": "No Microsoft Learn page describing this specific image context-menu feature was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Ask Copilot about an image\"'; 'Edge \"image\" \"context menu\" Copilot licensing default price'. Opened Configuring Copilot Features and both cited policy references; no feature-specific Learn description found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[0].note; What's changing; Governance controls",
+      "type": "absence",
+      "claim": "The EdgeEntraCopilotPageContext reference does not explicitly mention images or a context-menu action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"EdgeEntraCopilotPageContext\" \"image\"'. Opened the complete EdgeEntraCopilotPageContext reference; it describes page content, browsing history, video transcript and contextual queries, but not images or the context menu.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing; Risk assessment: Change & support; Governance controls",
+      "type": "absence",
+      "claim": "The Microsoft365CopilotChatIconEnabled reference does not explicitly describe a context-menu image control.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Microsoft365CopilotChatIconEnabled\" \"context menu\"'. Opened the complete Microsoft365CopilotChatIconEnabled reference; it documents toolbar visibility and side-pane applicability, not the image context-menu option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: defaultState; summary; Why it matters; Open questions; rationale: impact",
+      "type": "absence",
+      "claim": "The default state of the new image option is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Edge\" \"Ask Copilot\" \"image\" \"default\"'; '\"Ask Copilot about an image\"'. Read roadmap, both policy references and Configuring Copilot Features; none states this image option's arrival default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft Copilot Chat is available with an eligible Microsoft 365 subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+      "quote": "Microsoft Copilot Chat is available to users with an eligible Microsoft 365 subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "A Microsoft Copilot licence is required for licensed Microsoft Copilot capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+      "quote": "| Microsoft Copilot license | Required for licensed Microsoft Copilot capabilities | Not required for eligible users |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "front matter: licensing.model",
+      "type": "consistency",
+      "claim": "The feature's licensing model is mixed, although its notes and body say which entitlement covers it is not published.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "model: \"mixed\"; \"Which applies to this feature is not yet published.\"; \"the licence for this feature is not yet published.\"",
+      "severity": "blocker",
+      "fix": "Change licensing.model from \"mixed\" to \"unknown\" to match the stated uncertainty about this feature's entitlement; retain the documented general Copilot requirements in the notes. No source checked establishes that this image option uses a mixed entitlement model."
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The sources do not identify which Copilot entitlement specifically covers the new image option.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Edge \"image\" \"context menu\" Copilot licensing default price'; 'Microsoft Edge Copilot Chat license image upload included subscription'. Read requirements, Copilot overview, roadmap and both policies; general entitlements are documented, but no image-option mapping was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No price specific to the image context-menu feature is published in the sources found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Edge \"image\" \"context menu\" Copilot licensing default price'. Read Microsoft Copilot requirements, Copilot overview, roadmap and both policy references; no price specific to this image option found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to this image option is published in the sources found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Edge\" \"Ask Copilot about an image\" context menu default license pricing Android DLP'; 'Edge \"image\" \"context menu\" Copilot licensing default price'. Read requirements, Copilot overview and both policy references; no image-option meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Availability of the image option on Android and iOS is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Edge\" \"Ask Copilot about an image\" context menu default license pricing Android DLP'; '\"Ask Copilot about an image\"'. Read roadmap, both policies and Configuring Copilot Features; no image-option mobile availability statement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes a user-initiated menu action rather than autonomous Copilot activity.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "enables users to instantly analyze images from the web by sending them directly to Copilot from the Edge context menu",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The roadmap provides no link to user-facing documentation for this feature.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"moreInfoLink\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed whether the named policies switch off availability of the image option.",
+      "status": "contradicted",
+      "source": "roadmap record",
+      "quote": "Admins can control availability to this feature using the EdgeEntraCopilotPageContext and Microsoft365CopilotChatIconEnabled policies.",
+      "severity": "blocker",
+      "fix": "Replace the final sentence of the first paragraph after the controls table with: \"The roadmap states that admins can control this feature's availability using these policies; their Learn pages do not yet describe the image-specific interaction.\" Replace the first Open questions bullet with: \"How do the two named policies interact for the image context-menu option? Watch the two policy pages and the roadmap item.\""
+    },
+    {
+      "n": 51,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Edge management service Copilot page lists an Access to browser context dropdown.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features",
+      "quote": "use each dropdown to select Enabled or Disabled and assign the changes to either a new or existing configuration policy.\n\n- Access to browser context: Allows Microsoft 365 Copilot Chat to use a user’s browser context, such as page content, to provide contextual responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Edge management service Copilot page lists Copilot icon in the toolbar.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features",
+      "quote": "Copilot icon in the toolbar: Shows the Copilot icon in the Microsoft Edge for Business toolbar.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The cited Edge management service page does not name the policies behind its dropdowns.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"EdgeEntraCopilotPageContext\" \"image\"'; '\"Microsoft365CopilotChatIconEnabled\" \"context menu\"'. Opened all of Configuring Copilot Features and checked for both policy identifiers; neither appears.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Data exposure; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "The documentation does not explicitly establish whether DLP page-content restrictions cover sending an image through this new option.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Edge Copilot images DLP page content context menu policy'. Read EdgeEntraCopilotPageContext and Microsoft 365 Copilot Chat in Edge and Access to Page Content; they cover page-context grounding, not the planned direct image-send operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[0].governs; Why it matters",
+      "type": "behaviour",
+      "claim": "EdgeEntraCopilotPageContext controls side-pane Copilot access to page content, browsing history and video transcript.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+      "quote": "This policy controls whether Copilot in the Microsoft Edge side pane can access page content, browsing history, and video transcript.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-19T07:24:35.397Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=566864",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-browser-policies/microsoft365copilotchaticonenabled",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Copilot access to page content, browsing history and video transcript in the Edge side pane",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+        "reachable": true,
+        "segments": [
+          "Administrative Templates",
+          "Microsoft Edge",
+          "Control Copilot access to Microsoft Edge page content, browsing history, and video transcript for Entra account user profiles when using Copilot in the Microsoft Edge sidepane"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Copilot access to page content, browsing history and video transcript in the Edge side pane",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/edgeentracopilotpagecontext",
+        "reachable": true,
+        "token": "Registry value",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether the Microsoft 365 Copilot Chat icon shows in the Edge for Business toolbar",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-browser-policies/microsoft365copilotchaticonenabled",
+        "reachable": true,
+        "segments": [
+          "Administrative Templates",
+          "Microsoft Edge",
+          "Control whether Microsoft 365 Copilot Chat shows in the Microsoft Edge for Business toolbar"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether the Microsoft 365 Copilot Chat icon shows in the Edge for Business toolbar",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-browser-policies/microsoft365copilotchaticonenabled",
+        "reachable": true,
+        "token": "Registry value",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -49,8 +49,11 @@ sources:
   - title: "Microsoft 365 Copilot Cost Management API overview"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
     kind: "learn"
+  - title: "Update spendingPolicy"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update"
+    kind: "learn"
 videos: []
-related: ["work-iq","copilot-credits","mcp","work-iq-agent-policy-governance","agent-identity"]
+related: ["work-iq-agent-policy-governance","agent-identity","spending-policies","knowledge-grounding"]
 controls:
   - governs: "Work IQ MCP tenant policy, including whether mutation operations are allowed"
     scope: "tenant"
@@ -68,12 +71,12 @@ controls:
       docs: "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits"
     api:
       kind: "graph"
-      call: "GET https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies"
-      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
-    note: "General control for Work IQ API: Microsoft has not confirmed it applies to this roadmap item. Beta API, subject to change."
+      call: "PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id}"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update"
+    note: "General control for Work IQ API: Microsoft has not confirmed it applies to this roadmap item. Beta API, subject to change. Set periodLimit in the request body to change the policy spending limit."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-19"
 roadmapModified: "2026-10-13T23:01:05"
 changes:
   - date: "2026-11-17"
@@ -86,19 +89,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 67 statements confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 72 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-19"
+    note: "Corrected the spending-policy API row: the automation call is now PATCH on spendingPolicies/{id}, with periodLimit as the body property that sets the limit."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 76 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
-  confirmed: 71
+  claims: 76
+  confirmed: 76
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "efff8de7d7d268732629c4db3d974a8e"
+  contradicted: 0
+  attempts: 0
+  hash: "5fc0448f696b17680dc968f8ab38b5d2"
 ---
 
 ## What's changing
@@ -179,7 +186,7 @@ For Work IQ, Learn names a one-time setup by a user with the Global Administrato
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Work IQ MCP tenant policy, including whether mutation operations are allowed</strong><br><small>Tenant</small><br><small class="controls__note">General control: Microsoft has not confirmed it applies to this roadmap item. The Policy tab appears when it is available. Changes can take up to 24 hours to apply.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Policy <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Spending policies and consumption for Work IQ API usage</strong><br><small>Tenant</small><br><small class="controls__note">General control for Work IQ API: Microsoft has not confirmed it applies to this roadmap item. Beta API, subject to change.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost management <a href="https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Spending policies and consumption for Work IQ API usage</strong><br><small>Tenant</small><br><small class="controls__note">General control for Work IQ API: Microsoft has not confirmed it applies to this roadmap item. Beta API, subject to change. Set periodLimit in the request body to change the policy spending limit.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost management <a href="https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -198,8 +205,8 @@ cost: Low. The known cost for this roadmap change is admin review time; licensin
 impact: Medium. Makers, developers and agent owners who build on Work IQ are most likely to notice; Microsoft has not said whether ordinary Microsoft 365 Copilot users see any change.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].api / command: GET https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies supplies the automation for the row's spending-policy control. | Found: List spendingPolicies | GET /copilot/costManagement/spendingPolicies | Get a list of spending policies. ... Update spendingPolicy | PATCH /copilot/costManagement/spendingPolicies/{id} | Update a spending policy. | Fix: Replace controls[1].api.call with 'PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id}' and api.docs with 'https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update'. Add to its note: 'Set periodLimit in the request body to change the policy spending limit.' Update the rendered table accordingly. The existing GET only lists policies; the update reference documents periodLimit as writable. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] summary / cost: The summary abbreviates the existing API billing rule as Work IQ usage being billed in Copilot Credits. | Found: For Microsoft 365 Copilot licensed users, Work IQ is available in all Microsoft 365 Copilot experiences and agents. It is subject to usage-based billing for custom and third-party agents. | Fix: Replace the summary's final clause, 'Work IQ usage is billed in Copilot Credits', with 'custom and third-party agents using Work IQ are subject to usage-based billing in Copilot Credits'. The body already states the licensing qualification. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/
 -->

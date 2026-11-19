@@ -17,13 +17,19 @@ impact: "low"
 defaultState: "unknown"
 action: "none"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for this feature: the roadmap names no licence. Microsoft Learn's anonymous-join page notes that some features it describes, such as email-code verification of anonymous users, need Teams Premium."
+  model: "included"
+  notes: "Microsoft requires organisational users to have a Teams license, except when joining Teams meetings anonymously. Anonymous meeting join is exempt from that requirement; no separate licence or price for this refresh was found. Email-code verification of anonymous users needs Teams Premium."
 audiences: ["m365-admin","change-adoption"]
 tags: ["teams","meeting-policy","user-experience","performance","admin-center","powershell","gcc","gcc-high","dod"]
 sources:
   - title: "Manage anonymous participant access to Teams meetings and events (IT admins)"
     url: "https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings"
+    kind: "learn"
+  - title: "Manage Teams licenses"
+    url: "https://learn.microsoft.com/microsoftteams/user-access"
+    kind: "learn"
+  - title: "Set-CsTeamsMeetingConfiguration"
+    url: "https://learn.microsoft.com/powershell/module/teams/set-csteamsmeetingconfiguration"
     kind: "learn"
   - title: "Teams for Web - Overview and prerequisites"
     url: "https://learn.microsoft.com/microsoftteams/teams-client-web"
@@ -45,8 +51,8 @@ controls:
       docs: "https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings"
     api:
       kind: "powershell"
-      call: "Set-CsTeamsMeetingConfiguration -Identity <policy name> -DisableAnonymousJoin $true"
-      docs: "https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings"
+      call: "Set-CsTeamsMeetingConfiguration -Identity Global -DisableAnonymousJoin $true"
+      docs: "https://learn.microsoft.com/powershell/module/teams/set-csteamsmeetingconfiguration"
     note: "Learn says this organisation-wide setting is going away and recommends leaving it On. $true prevents anonymous join."
   - governs: "Which organisers can host meetings that allow anonymous participants"
     scope: "user"
@@ -72,19 +78,23 @@ changes:
     note: "Correction: Unverified label wording, anonymous-join scope, Teams for Web and unchanged-join-rules statements narrowed to what Learn says; lobby-policy checklist step removed."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 45 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-19"
+    note: "Correction: licensing set to included on Teams licence page (anonymous join exempt); wording on what the controls govern narrowed; organisation-wide PowerShell call now uses -Identity Global."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 52 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-19"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 45
-  confirmed: 43
+  claims: 52
+  confirmed: 52
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "aa4cfbe53fc716e150d8e54450af4cc9"
+  contradicted: 0
+  attempts: 0
+  hash: "e6821a86c2d0fda72f943710087ed721"
 ---
 
 ## What's changing
@@ -121,6 +131,8 @@ Microsoft has not stated what happens on arrival, so the page cannot say whether
 - External guests on Safari or Firefox may see a different pre-join screen, stage and toolbar from the ones in your existing join instructions. Check any screenshots in guest-facing meeting guidance.
 
 ## Cost and licensing
+
+Microsoft requires organisational users to have a Teams license, except when joining Teams meetings anonymously. Anonymous meeting join is exempt from that requirement; no separate licence or price for this refresh was found. This is stated on Microsoft Learn's [Manage Teams licenses](https://learn.microsoft.com/microsoftteams/user-access) page.
 
 The roadmap item names no licence, add-on or meter for this experience, and Microsoft Learn's anonymous-access page names none for joining as an anonymous participant. A licence or price specific to this experience is not yet published.
 
@@ -161,35 +173,28 @@ The indirect cost is admin and helpdesk time to update guest-facing guidance.
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether anonymous users can join meetings, organisation-wide</strong><br><small>Tenant</small><br><small class="controls__note">Learn says this organisation-wide setting is going away and recommends leaving it On. $true prevents anonymous join.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting settings › Participants › Anonymous users can join a meeting <a href="https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingConfiguration -Identity &lt;policy name&gt; -DisableAnonymousJoin $true</code> <a href="https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether anonymous users can join meetings, organisation-wide</strong><br><small>Tenant</small><br><small class="controls__note">Learn says this organisation-wide setting is going away and recommends leaving it On. $true prevents anonymous join.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting settings › Participants › Anonymous users can join a meeting <a href="https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingConfiguration -Identity Global -DisableAnonymousJoin $true</code> <a href="https://learn.microsoft.com/powershell/module/teams/set-csteamsmeetingconfiguration" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which organisers can host meetings that allow anonymous participants</strong><br><small>User</small><br><small class="controls__note">Per-organiser policy that Learn recommends for managing anonymous join. Changes might take up to 24 hours to take effect.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Meeting join &amp; lobby › Anonymous users can join a meeting unverified <a href="https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -AllowAnonymousUsersToJoinMeeting $false</code> <a href="https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-These controls decide whether anonymous participants can join meetings at all. Microsoft Learn describes no setting that selects the meeting experience those participants see in Safari or Firefox.
+These controls manage unverified anonymous meeting join; joining after email-code verification is governed separately.
 
 The page describing them says the organisation-wide **Anonymous users can join a meeting** setting is going away, and recommends leaving it On and using the per-organiser policy. Meeting policy changes might take up to 24 hours to take effect. Roles required to change them are not covered here.
 
 For how meeting policies work, see [Teams meeting policy](/concepts/meeting-policy/).
 
+Microsoft Learn describes no setting that selects the meeting experience those participants see in Safari or Firefox.
+
 ## Open questions
 
 - Is there an admin setting or policy that controls the meeting experience anonymous participants see in Safari and Firefox? Watch the Teams for Web and anonymous-access pages on Microsoft Learn.
 - What was the default on arrival, and did existing behaviour change for anonymous joiners? The roadmap item and Learn do not state it.
-- Does any licence apply to this experience? Watch the Teams licensing pages on Microsoft Learn.
+- Will Microsoft publish any licensing terms specific to this refresh? Watch the Teams licensing pages on Microsoft Learn.
 - Which Safari and Firefox versions does this anonymous-join experience support? Learn's Teams for Web page does not identify browser-version requirements specific to this refresh.
 
 <!-- rationale
 risk: Low. The roadmap item describes interface and performance changes for anonymous joiners on Safari and Firefox, and names no new data access or autonomous action.
 cost: Low. The roadmap names no licence or meter, so the only cost the sources show is admin and helpdesk time; licensing for this experience is not yet published.
 impact: Low. People who notice are anonymous participants joining from Safari or Firefox.
--->
-
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model; licensing.notes; Open questions / licensing: The licensing model is unknown because Microsoft has not published the entitlement covering this anonymous-join experience. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Set licensing.model to 'included' rather than 'unknown' and cite https://learn.microsoft.com/microsoftteams/user-access. Begin the licensing notes and section with: 'Microsoft requires organisational users to have a Teams license, except when joining Teams meetings anonymously. Anonymous meeting join is exempt from that requirement; no separate licence or price for this refresh was found.' Replace the open question 'Does any licence apply to this experience?' with 'Will Microsoft publish any licensing terms specific to this refresh?' Keep the separate Teams Premium email-verification qualification. | Source: https://learn.microsoft.com/microsoftteams/user-access
-- [contradicted, blocker] Governance controls: paragraph immediately after table / applicability: These controls decide whether anonymous participants can join meetings at all. | Found: If you turn off the organization-wide Anonymous users can join a meeting setting and Anonymous users can join a meeting after verifying is set to No, anonymous users can't join meetings in your organization. | Fix: Replace 'These controls decide whether anonymous participants can join meetings at all.' with 'These controls manage unverified anonymous meeting join; joining after email-code verification is governed separately.' The cited article makes blocking all anonymous participation conditional on the separate verification policy also being set to No. | Source: https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].api; Governance controls table / command: Set-CsTeamsMeetingConfiguration -Identity <policy name> -DisableAnonymousJoin $true is the documented organisation-wide blocking call. | Found: Set-CsTeamsMeetingConfiguration -Identity <policy name> -DisableAnonymousJoin $true | Fix: The cited article prints this exact example, but https://learn.microsoft.com/powershell/module/teams/set-csteamsmeetingconfiguration says of -Identity: 'The only valid input is Global'. Replace the call in both places with 'Set-CsTeamsMeetingConfiguration -Identity Global -DisableAnonymousJoin $true' and cite that reference alongside the article. | Source: https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings
 -->

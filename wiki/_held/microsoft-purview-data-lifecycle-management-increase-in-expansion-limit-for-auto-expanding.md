@@ -1,15 +1,15 @@
 ---
-title: "Microsoft Purview: auto-expanding archive limit rises from 1.5 TB to 3 TB for eligible mailboxes"
+title: "Microsoft Purview: auto-expanding archive limit rising from 1.5 TB to 3 TB for eligible mailboxes (GCC, GCC High, DoD)"
 slug: "microsoft-purview-data-lifecycle-management-increase-in-expansion-limit-for-auto-expanding"
-roadmapId: 560820
+roadmapId: 573702
 topic: "governance"
 products: ["Microsoft Purview"]
-summary: "Eligible Exchange Online archive mailboxes with auto-expanding archiving on can now grow to 3 TB instead of 1.5 TB. Needs an E5-level licence; Microsoft says no action is required if the feature is already on."
-status: "launched"
+summary: "Eligible Exchange Online archive mailboxes with auto-expanding archiving on are set to grow to 3 TB instead of 1.5 TB in GCC, GCC High and DoD. Needs an E5-level licence; Microsoft says no action is required if the feature is already on."
+status: "in-development"
 releasePhase: ["General Availability"]
-clouds: ["Worldwide (Standard Multi-Tenant)"]
+clouds: ["GCC","GCC High","DoD"]
 platforms: ["Web"]
-targetDate: "October CY2026"
+targetDate: "November CY2026"
 previewDate: null
 risk: "low"
 cost: "low"
@@ -20,10 +20,13 @@ licensing:
   model: "included"
   notes: "The 3 TB ceiling applies to mailboxes assigned an eligible licence such as Office 365 E5 or Microsoft 365 E5 (full list on Microsoft Learn). Microsoft's notice says no per-GB consumption charge is introduced."
 audiences: ["m365-admin","compliance","service-owner"]
-tags: ["purview","data-lifecycle-management","exchange","licensing","retention","powershell"]
+tags: ["purview","data-lifecycle-management","exchange","licensing","retention","powershell","gcc","gcc-high","dod"]
 sources:
-  - title: "MC1472592: (Updated) Microsoft Purview: Auto-expanding archive capacity increases to 3 TB for eligible mailboxes"
-    url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1472592"
+  - title: "Microsoft 365 Roadmap 573702"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=573702"
+    kind: "roadmap"
+  - title: "MC1521615: Microsoft Purview: Data Lifecycle Management increases the auto-expanding archive limit from 1.5 TB to 3 TB"
+    url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1521615"
     kind: "message-center"
   - title: "Enable auto-expanding archiving"
     url: "https://learn.microsoft.com/purview/enable-autoexpanding-archiving"
@@ -31,14 +34,8 @@ sources:
   - title: "Learn about auto-expanding archiving"
     url: "https://learn.microsoft.com/purview/autoexpanding-archiving"
     kind: "learn"
-  - title: "Learn about archive mailboxes"
-    url: "https://learn.microsoft.com/purview/archive-mailboxes"
-    kind: "learn"
-  - title: "Microsoft 365 Roadmap item 560820"
-    url: "https://www.microsoft.com/microsoft-365/roadmap?id=560820"
-    kind: "roadmap"
 videos: []
-related: ["microsoft-purview-data-lifecycle-management-azure-pst-import"]
+related: []
 controls:
   - governs: "Auto-expanding archiving for the whole organisation"
     scope: "tenant"
@@ -58,8 +55,8 @@ controls:
     note: "Archive mailbox must be enabled first; Mail Recipients role suffices. Can't be turned off. Needs cloud primary and archive mailboxes; for an on-premises primary with a cloud archive, use Set-OrganizationConfig -AutoExpandingArchive."
 confidence: "high"
 created: "2026-11-18"
-updated: "2026-11-18"
-roadmapModified: "2026-11-11T00:53:22"
+updated: "2026-11-19"
+roadmapModified: "2026-10-06T22:56:31"
 changes:
   - date: "2026-11-18"
     note: "First briefing for this item: archive ceiling rises from 1.5 TB to 3 TB for eligible licences; roadmap status Launched, rollout October 2026."
@@ -69,32 +66,36 @@ changes:
     note: "Corrected: the per-user enablement command needs cloud primary and archive mailboxes (hybrid users with an on-premises primary need the organisation-wide command); removed the Records Management checklist bullet."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 81 statements not yet confirmed"
-version: 2
+  - date: "2026-11-19"
+    note: "Rewritten for the GCC, GCC High and DoD roadmap item (In development, target November CY2026, notice MC1521615); removed the monitoring checklist bullet that had no control row."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 73 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-18"
-  version: 2
+  status: "held"
+  date: "2026-11-19"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 81
-  confirmed: 80
+  claims: 73
+  confirmed: 71
   unconfirmed: 0
-  contradicted: 1
-  attempts: 0
-  hash: "31de0bf9baf4a53ad76cb593d195620d"
+  contradicted: 2
+  attempts: 1
+  hash: "8b371eb3c72e03cd6c20a0cf41a42af2"
 ---
 
 ## What's changing
 
-Microsoft is raising the maximum size of an auto-expanding archive for eligible Exchange Online archive mailboxes from 1.5 TB to 3 TB. The roadmap item describes the old behaviour as expansion supported only up to 1.5 TB, after which mailboxes would become inoperative, and says archives can now expand beyond that limit for customers with eligible E5 licences.
+Microsoft is raising the maximum size of an auto-expanding archive for eligible Exchange Online archive mailboxes from 1.5 TB to 3 TB. The roadmap item describes the old behaviour as expansion supported only up to 1.5 TB, after which mailboxes would become inoperative, and says archives are to expand beyond that limit for customers with eligible E5 licences.
 
-Microsoft's notice MC1472592 (updated 28 September 2026) gives the detail. Eligible mailboxes that already have auto-expanding archiving enabled can grow to a maximum of 3 TB per mailbox. No additional configuration is required for them, no per-GB consumption charge is introduced, existing archive content, retention configurations, policies and holds are unchanged, and no new administrator workflow or user interface is introduced. Mailboxes without an eligible licence stay limited to 1.5 TB.
+Microsoft's notice MC1521615 (published 22 October 2026) gives the detail. Eligible mailboxes that already have auto-expanding archiving enabled can grow to a maximum of 3 TB per mailbox. No additional configuration is required for them, no per-GB consumption charge is introduced, existing archive content, retention configurations, policies and holds are unchanged, and no new administrator workflow or user interface is introduced. Mailboxes without an eligible licence stay limited to 1.5 TB.
 
-The roadmap item is Launched, General Availability, Worldwide (Standard Multi-Tenant), Web, with a target of October CY2026. The notice gives a rollout of mid-October 2026, expected to complete by late October 2026, and no act-by date. Microsoft Learn carries the same notice on its archive pages, while the body text of "Learn about auto-expanding archiving" still describes a 1.5 TB maximum at the time of writing (November 2026).
+The roadmap item is In development, General Availability, GCC, GCC High and DoD, Web, with a target of November CY2026. The notice gives a rollout beginning in mid-November 2026, expected to complete by early December 2026, for those clouds, and no act-by date. Microsoft Learn carries a notice on its archive pages that gives a rollout of mid-October to late October 2026 without naming clouds, while the body text of "Learn about auto-expanding archiving" still describes a 1.5 TB maximum at the time of writing (November 2026).
 
 ## Why it matters
 
-The archive ceiling now depends on the licence assigned to each mailbox, so a tenant with a mix of E5 and lower licences has two limits: 3 TB and 1.5 TB. Heavy archive users on eligible licences gain headroom without a support request; users on other licences hit the old ceiling exactly as before.
+The archive ceiling now depends on the licence assigned to each mailbox, so a tenant with a mix of E5 and lower licences has two limits: 3 TB and 1.5 TB. Heavy archive users on eligible licences gain headroom without a support request once the change reaches the tenant; users on other licences hit the old ceiling exactly as before.
 
 Because the feature arrives with no admin action for mailboxes that already have auto-expanding archiving on, the work is communication and licence review: update help desk and retention guidance, and decide what to do for users with large archives who are not eligible. Microsoft's notice recommends the same. Note that the growth-rate rule is unchanged on Learn: auto-expanding archiving supports mailboxes with a growth rate that does not exceed 1 GB per day.
 
@@ -121,7 +122,7 @@ Microsoft's notice says no per-GB consumption charge is introduced, and Learn sa
 
 ## Scope
 
-The roadmap record lists Worldwide (Standard Multi-Tenant) and the Web platform. It lists no other cloud; whether the G5 and GOV licences in the eligibility list matter for other clouds is not stated (see Open questions).
+The roadmap record lists GCC, GCC High and DoD, and the Web platform; Microsoft's notice MC1521615 lists the same three clouds for General Availability.
 
 The change applies to Exchange Online archive mailboxes that have auto-expanding archiving enabled and an eligible licence. Auto-expanding archiving also supports shared mailboxes, needs the user's archive mailbox to be enabled first, and is supported for cloud-based archive mailboxes in an Exchange hybrid deployment, not for on-premises mailboxes. Learn says the feature cannot be enabled from the Exchange admin center or the Microsoft Purview portal; Exchange Online PowerShell is required.
 
@@ -136,7 +137,6 @@ The change applies to Exchange Online archive mailboxes that have auto-expanding
 - Update help desk and retention guidance to state the 3 TB ceiling for eligible licences and the 1.5 TB ceiling for all others.
 
 ### After rollout
-- Monitor archive mailbox growth with Exchange Online PowerShell, as Microsoft's notice recommends, and flag mailboxes approaching their applicable limit.
 - Review licensing and retention strategy for users with non-eligible licences whose archives are nearing 1.5 TB.
 
 ## Governance controls
@@ -158,7 +158,7 @@ Neither control selects the 1.5 TB or 3 TB ceiling: Microsoft's notice ties the 
 ## Open questions
 
 - Do shared mailboxes, which Learn says auto-expanding archiving supports, qualify for 3 TB, and which licence decides it? Watch the Learn page "Enable auto-expanding archiving".
-- The eligible list includes G5 and GOV licences but the roadmap item lists only Worldwide (Standard Multi-Tenant). Will the 3 TB limit reach other clouds, and when? Watch Message center and the roadmap item.
+- The Learn banner gives a rollout of mid-October to late October 2026 without naming clouds, while Microsoft's notice gives mid-November to early December 2026 for GCC, GCC High and DoD. Which dates apply to government tenants? Watch Message center and the roadmap item.
 - What happens to an archive that has grown past 1.5 TB if the user's eligible licence is later removed? Microsoft has not stated it on the pages for this change.
 - When will the "Learn about auto-expanding archiving" body text, which still says 1.5 TB, be updated to the 3 TB limit?
 
@@ -168,8 +168,10 @@ cost: Low. Microsoft's notice says no per-GB consumption charge is introduced; t
 impact: Low. Administrators and the users with the largest archives notice it; no change to what users see is described, and mailboxes without an eligible licence are unaffected.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Open questions: shared mailboxes / absence: Whether shared mailboxes qualify for 3 TB and which assigned licence decides their eligibility remain undocumented. | Found: The increase applies to mailboxes assigned the following eligible licenses: ... Auto-expanding archiving also supports shared mailboxes. | Fix: Remove the first Open questions bullet. The cited page includes shared mailboxes in auto-expanding archiving and applies the increased ceiling to mailboxes assigned the listed eligible licences; it does not exclude shared mailboxes from that rule. | Source: https://learn.microsoft.com/purview/enable-autoexpanding-archiving
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist's instruction to monitor archive mailbox growth has no corresponding control row in the table. | Found: Checklist: "Monitor archive mailbox growth with Exchange Online PowerShell". Table rows: "Auto-expanding archiving for the whole organisation" and "Auto-expanding archiving for specific users". | Fix: The After rollout monitoring step has no control row. Remove that checklist bullet; this correction does not require adding a row or an unverified monitoring command.
+- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: The checklist tells administrators to check assigned licences, but the controls table contains no licence-assignment control. | Found: check which licence each holds against the eligible list in Cost and licensing; controls: Auto-expanding archiving for the whole organisation; Auto-expanding archiving for specific users | Fix: Remove the first Before rollout checklist bullet, which tells readers to check licence assignments without a corresponding control row. Keep the existing licensing explanation and Microsoft's recommendation in Why it matters.
 -->

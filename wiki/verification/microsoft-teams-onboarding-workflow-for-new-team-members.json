@@ -1,0 +1,499 @@
+{
+  "slug": "microsoft-teams-onboarding-workflow-for-new-team-members",
+  "roadmapId": 573452,
+  "title": "Microsoft Teams: onboarding workflow connects new team members to channels",
+  "status": "verified",
+  "date": "2026-11-19",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 36,
+    "confirmed": 36,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 0
+  },
+  "summary": "The briefing passes: its rollout dates and administrator recommendations match Microsoft's notice, and the membership path and PowerShell command match Microsoft Learn. It distinguishes existing membership controls from the new workflow and accurately identifies the documentation gaps.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "Microsoft Teams plans an onboarding workflow that automatically connects new members to relevant channels when they join a team.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Help people get started faster by automatically connecting new team members to relevant channels when they join a team.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Scope: Who it affects; rationale: impact",
+      "type": "record",
+      "claim": "Team owners can automatically add new members to relevant channels through the workflow when members are added to a team.",
+      "status": "supported",
+      "source": "Message Center post MC1518033",
+      "quote": "With this update, team owners can automatically add new members to relevant channels through the onboarding workflow when they are added to a team.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap General Availability target is March CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"March CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview target is November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope: Clouds and platforms",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and does not list other clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope: Clouds and platforms",
+      "type": "record",
+      "claim": "The roadmap lists Android, Desktop, iOS and Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-11-19T00:53:06.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-19T00:53:06\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Risk assessment: Change & support; front matter: changes",
+      "type": "record",
+      "claim": "The supplied notice contains an update dated 18 November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1518033",
+      "quote": "Updated November 18, 2026: We have clarified the supported channel types and updated the rollout timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope: Channel types; Open questions",
+      "type": "record",
+      "claim": "The notice says its update clarifies the supported channel types.",
+      "status": "supported",
+      "source": "Message Center post MC1518033",
+      "quote": "We have clarified the supported channel types and updated the rollout timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "MC1518033 schedules gradual Targeted Release (R3.6) rollout from November 2026 through January 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1518033",
+      "quote": "Targeted Release (R3.6): Rollout will proceed gradually from November 2026 through January 2027.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Scope: Rollout; Risk assessment: Change & support; front matter: changes",
+      "type": "record",
+      "claim": "MC1518033 gives mid-March 2027 as the planned start of General Availability rollout in Worldwide.",
+      "status": "supported",
+      "source": "Message Center post MC1518033",
+      "quote": "General Availability (Worldwide): We will begin rolling out in mid-March 2027 (previously early December 2026)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Change & support; Why it matters",
+      "type": "record",
+      "claim": "The previous planned General Availability start was early December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1518033",
+      "quote": "mid-March 2027 (previously early December 2026)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Scope: Rollout",
+      "type": "record",
+      "claim": "MC1518033 expects General Availability rollout to complete by end of March 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1518033",
+      "quote": "expect to complete by end of March 2027 (previously mid-December 2026).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The previous planned General Availability completion was mid-December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1518033",
+      "quote": "end of March 2027 (previously mid-December 2026).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "summary; Why it matters",
+      "type": "record",
+      "claim": "MC1518033 says no admin action is required.",
+      "status": "supported",
+      "source": "Message Center post MC1518033",
+      "quote": "No admin action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Why it matters; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "MC1518033 suggests informing team owners about the upcoming workflow.",
+      "status": "supported",
+      "source": "Message Center post MC1518033",
+      "quote": "You may want to inform team owners about this upcoming improvement so they understand how to connect new members to relevant channels more efficiently during onboarding.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe this Teams channel-onboarding workflow.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"onboarding workflow\"; Microsoft Teams onboarding workflow channel types owner configure member change after joining. Read standard-channels and the teams-channels-overview search excerpt; results describe other onboarding products, not this workflow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Data exposure; Scope: Channel types; Governance guidance: Before rollout",
+      "type": "absence",
+      "claim": "The supplied roadmap and notice do not identify supported channel types, and Microsoft Learn does not document them for this workflow.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams onboarding workflow channel types owner configure member change after joining. Read roadmap, MC1518033 and standard-channels; the notice claims clarification but names no supported types, and Learn results do not describe this workflow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Microsoft has not documented how an owner configures this workflow.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams onboarding workflow channel types owner configure member change after joining. Read roadmap, MC1518033, assign-roles-permissions and teams-channels-overview excerpt; none supplies workflow setup instructions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
+      "type": "default",
+      "claim": "The workflow's default state is unknown: Microsoft does not state what happens for a team whose owner does nothing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"onboarding\" \"channels\" \"default\"; \"Teams\" \"onboarding workflow\". Read roadmap, MC1518033, standard-channels and teams-policies. Automatic connection and no admin action do not specify whether owners must configure this workflow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Microsoft has not described what a member can change afterwards in this workflow.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams onboarding workflow channel types owner configure member change after joining. Read roadmap, MC1518033 and standard-channels; results describe general channel permissions, not members' choices in this workflow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The supplied roadmap and notice describe no new permission, identity or external-sharing behaviour.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: the complete roadmap description and supplied MC1518033 for permission, identity and external-sharing changes. Both describe connecting new members to relevant channels; neither specifies changes to permissions, identity or external sharing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The supplied roadmap and notice name no guest or external-user handling.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: the complete roadmap description and supplied MC1518033 for guest and external-user handling. Neither document names guests or external users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Standard channels are visible and accessible to all team members.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/standard-channels",
+      "quote": "In Teams, a standard channel is visible and accessible to all team members.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Private channels are viewable only by team members and guests specifically added to the channel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/standard-channels",
+      "quote": "| ***Private*** | Only team members and guests specifically added to the channel | Sensitive information, restricted discussions |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0]; summary; Risk assessment: Change & support; Governance guidance; Governance controls",
+      "type": "absence",
+      "claim": "No tenant or team switch for this onboarding workflow is documented on either the admin UI or automation surface.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams onboarding workflow tenant team enable disable admin center setting Graph PowerShell. Read assign-roles-permissions, teams-policies, Set-CsTeamsChannelsPolicy, Set-Team and Graph team resource; none documents an onboarding switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[1].ui; Governance guidance: At rollout; Governance controls table",
+      "type": "admin-path",
+      "claim": "Teams admin center > Teams > Manage teams > team > Members reaches the documented place to add or remove team members.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/assign-roles-permissions",
+      "quote": "In the Teams admin center, expand Teams and select Manage teams. Select the team name under the display name column. In the Members tab, you can add or remove members and assign owner and moderator roles to members.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "MicrosoftTeams PowerShell Add-TeamUser -GroupId <team GroupId> -User <user principal name> adds a member to the specified team.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/add-teamuser?view=teams-ps",
+      "quote": "Add-TeamUser -GroupId <String> -User <String> [-Role <String>]; -GroupId: GroupId of the team. -User: UPN of a user of the organization (user principal name - e.g. johndoe@example.com). -Role default value: Member.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The existing membership control adds people to a team rather than configuring channels or the new workflow.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/add-teamuser?view=teams-ps",
+      "quote": "This cmdlet adds an owner or member to the team, and to the unified group which backs the team.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[1].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether adding members through the admin centre, PowerShell or group sync starts this workflow.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams onboarding workflow new members trigger Add-TeamUser admin center Entra group sync audit. Read MC1518033, Add-TeamUser, assign-roles-permissions and teams-channels-overview excerpt; none identifies the workflow's supported membership-entry routes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.model and notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The included licensing model rests on the underlying Teams licence, available through qualifying Microsoft 365 offerings or a standalone SKU.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/teams-service-description",
+      "quote": "Microsoft Teams can be licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No licence requirement or further entitlement condition specific to this onboarding workflow is published in the checked sources.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams onboarding workflow new team members license pricing charge Teams Premium; \"Teams\" \"onboarding workflow\" \"license\". Read roadmap, MC1518033, Teams service description and Teams Premium licensing excerpts; none names this workflow's own licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No workflow-specific charge or meter is published in the checked sources.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams onboarding workflow new team members license pricing charge Teams Premium. Read roadmap, MC1518033, Teams service description and Teams add-on licensing search excerpts; none publishes a charge or meter for this workflow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The Teams service description lists feature availability by plan without an onboarding-workflow entry.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams onboarding workflow new team members license pricing charge Teams Premium. Read the full Feature availability table at learn.microsoft.com/office365/servicedescriptions/teams-service-description; it lists channel types but no onboarding workflow.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-19T07:24:47.032Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=573452",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1518033",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/teams-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/standard-channels",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/assign-roles-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/add-teamuser?view=teams-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamschannelspolicy?view=teams-ps",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Who is a member of a team (today's way to add people)",
+        "docs": "https://learn.microsoft.com/microsoftteams/assign-roles-permissions",
+        "reachable": true,
+        "segments": [
+          "Teams",
+          "Manage teams",
+          "Members"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Who is a member of a team (today's way to add people)",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/add-teamuser?view=teams-ps",
+        "reachable": true,
+        "token": "Add-TeamUser",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

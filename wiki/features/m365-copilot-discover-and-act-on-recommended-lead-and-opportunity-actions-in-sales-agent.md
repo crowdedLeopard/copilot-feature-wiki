@@ -17,14 +17,23 @@ impact: "high"
 defaultState: "on"
 action: "act-now"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for this item. Learn says Sales agent in Microsoft 365 Copilot is available to users with a Microsoft 365 Copilot licence, and that recommended actions in Dynamics 365 Sales are charged per action processed."
+  model: "included"
+  notes: "Sales agent needs a Microsoft 365 Copilot licence plus Dynamics 365 Sales or Salesforce access (CRM data and Graph grounding), or Dynamics 365 Sales Enterprise or Premium access without that licence (CRM data only). Entitlement or metering specific to these recommended actions is not yet published."
 audiences: ["m365-admin","service-owner","finops","change-adoption"]
 tags: ["sales-agent","m365-copilot","agents","dynamics-365","usage-based-billing","admin-controls"]
 sources:
   - title: "Microsoft 365 Roadmap 579977"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=579977"
     kind: "roadmap"
+  - title: "Set up Sales agent in Microsoft 365 Copilot"
+    url: "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat"
+    kind: "learn"
+  - title: "Manage access to Sales agent and Dynamics 365 Sales plugins across Microsoft apps"
+    url: "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps"
+    kind: "learn"
+  - title: "msdyn_recommendedactionsourceagentconfig table/entity reference (Microsoft Dynamics 365)"
+    url: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_recommendedactionsourceagentconfig"
+    kind: "learn"
   - title: "Recommended actions overview"
     url: "https://learn.microsoft.com/dynamics365/sales/recommended-actions-overview"
     kind: "learn"
@@ -36,12 +45,6 @@ sources:
     kind: "learn"
   - title: "Manage consumption-based billing for agent capabilities"
     url: "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing"
-    kind: "learn"
-  - title: "Manage access to Sales agent and Dynamics 365 Sales plugins across Microsoft apps"
-    url: "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps"
-    kind: "learn"
-  - title: "Set up Sales agent in Microsoft 365 Copilot"
-    url: "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat"
     kind: "learn"
   - title: "Welcome to Sales agent"
     url: "https://learn.microsoft.com/microsoft-sales-copilot/introduction"
@@ -56,7 +59,7 @@ sources:
     url: "https://learn.microsoft.com/dynamics365/sales/configure-sales-opportunity-agent-connected-skills"
     kind: "learn"
 videos: []
-related: ["copilot-credits"]
+related: []
 controls:
   - governs: "Whether Sales agent can be used in Microsoft 365 Copilot, and by which groups"
     scope: "tenant"
@@ -72,11 +75,14 @@ controls:
       surface: "Dynamics 365 Sales Hub app settings"
       path: "Change area > App Settings > General settings > Dynamics 365 AI hub > Create and manage agents > agent > Connected skills > Recommended Actions"
       docs: "https://learn.microsoft.com/dynamics365/sales/configure-recommended-actions"
-    api: null
-    note: "Documented for the Recommended Actions agent in Dynamics 365 Sales. Microsoft has not confirmed it governs the Sales agent experience in Microsoft 365 Copilot."
+    api:
+      kind: "rest"
+      call: "PATCH /msdyn_recommendedactionsourceagentconfigs(msdyn_recommendedactionsourceagentconfigid)"
+      docs: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_recommendedactionsourceagentconfig"
+    note: "Documented for the Recommended Actions agent in Dynamics 365 Sales. Microsoft has not confirmed it governs the Sales agent experience in Microsoft 365 Copilot. The request body sets msdyn_isrecommendedactionagentenabled."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-16"
+updated: "2026-11-19"
 roadmapModified: "2026-11-13T19:37:39"
 changes:
   - date: "2026-11-16"
@@ -87,19 +93,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 61 statements not yet confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 69 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-19"
+    note: "Corrected after the independent check: licensing now states the two Sales agent licence options, the setup prerequisites are cited, and the Dynamics 365 source-agent control has its Dataverse Web API operation."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 71 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 69
-  confirmed: 64
+  claims: 71
+  confirmed: 71
   unconfirmed: 0
-  contradicted: 5
-  attempts: 1
-  hash: "bb378295de954cc33a63ea8520f96082"
+  contradicted: 0
+  attempts: 0
+  hash: "5afa29e9dbedde54bbda3b79689ce9d7"
 ---
 
 ## What's changing
@@ -142,9 +152,9 @@ The larger gap is spend. Dynamics 365 Sales documentation says recommended actio
 
 ## Cost and licensing
 
-Licensing for this roadmap item is not yet published.
+Sales agent in Microsoft 365 Copilot has two licensing options on its setup page (Set up Sales agent in Microsoft 365 Copilot). The first is an appropriate Microsoft 365 Copilot licence plus access to Dynamics 365 Sales or Salesforce, which gives CRM data and Microsoft 365 Graph grounding. The second is Dynamics 365 Sales Enterprise or Premium access without a Microsoft 365 Copilot licence, which gives CRM data only. A Microsoft 365 Copilot licence is required for Sales agent to access Microsoft 365 Graph grounded data. Any additional entitlement or metering specific to these recommended actions is not yet published.
 
-What Learn does say, as background. Sales agent in Microsoft 365 Copilot "is available to users who have access to a Microsoft 365 Copilot license" (Set up Sales agent in Microsoft 365 Copilot). Another page says access to either Dynamics 365 Sales Enterprise or Dynamics 365 Sales Premium can make a user eligible for Sales agent and automatic distribution, and that additional Microsoft 365 licences or entitlements might be required for Microsoft 365-grounded features.
+Another page says access to either Dynamics 365 Sales Enterprise or Dynamics 365 Sales Premium can make a user eligible for Sales agent and automatic distribution, and that additional Microsoft 365 licences or entitlements might be required for Microsoft 365-grounded features.
 
 For the meter, the Dynamics 365 Sales recommended actions overview says the system "charges for recommended actions based on the number of actions the prioritization engine processes", and lists Sales Opportunity Agent and Sales Qualification Agent as charged. The billing page says these capabilities use Microsoft Copilot Studio messages, with prepaid capacity or pay-as-you-go, and that when quota is depleted "the AI capability is unavailable until more capacity is added". The Dynamics 365 Sales page on connecting a custom agent to Recommended Actions instead says "Recommended Actions uses Copilot credits", so the two pages use different terms. Microsoft has not stated that either applies to Sales agent in Microsoft 365 Copilot, and no rate for recommended actions is published on the pages read.
 
@@ -154,7 +164,7 @@ The record lists Worldwide (Standard Multi-Tenant) and the Web platform, at Gene
 
 Sellers who use Sales agent are in scope. Learn says Sales agent works with Dynamics 365 Sales and Salesforce, and is useful only when users are connected to a CRM system. The roadmap item names only Sales qualification agent and Sales opportunity agent as sources in the initial release.
 
-Prerequisites for this feature are not yet documented. The roles that can change Sales agent access settings are Global Administrator, Exchange Administrator or Power Platform Administrator.
+Sales agent prerequisites are documented in Set up Sales agent in Microsoft 365 Copilot; additional prerequisites specific to the recommended-actions experience are not yet documented. The roles that can change Sales agent access settings are Global Administrator, Exchange Administrator or Power Platform Administrator.
 
 ## Governance guidance
 
@@ -173,7 +183,6 @@ Prerequisites for this feature are not yet documented. The roles that can change
 
 ### After rollout
 
-- Review Copilot Studio message capacity and pay-as-you-go usage if your Dynamics 365 Sales environment is linked to a Power Platform environment, as the billing page describes.
 - Re-check Message center and the Sales agent Learn pages, since Microsoft documents this item only through the roadmap at the time of writing.
 
 ## Governance controls
@@ -184,7 +193,7 @@ Prerequisites for this feature are not yet documented. The roles that can change
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether Sales agent can be used in Microsoft 365 Copilot, and by which groups</strong><br><small>Tenant</small><br><small class="controls__note">Role: Global Administrator, Exchange Administrator or Power Platform Administrator. Governs Sales agent as a whole; Microsoft has not documented it as a switch for recommended actions.</small></td><td data-label="Admin UI"><strong>Sales agent administrator settings</strong><br>Tenant › Access settings › Allow access to Sales agent <a href="https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether a source agent's actions appear in the recommended actions experience (Dynamics 365 Sales)</strong><br><small>Agent</small><br><small class="controls__note">Documented for the Recommended Actions agent in Dynamics 365 Sales. Microsoft has not confirmed it governs the Sales agent experience in Microsoft 365 Copilot.</small></td><td data-label="Admin UI"><strong>Dynamics 365 Sales Hub app settings</strong><br>Change area › App Settings › General settings › Dynamics 365 AI hub › Create and manage agents › agent › Connected skills › Recommended Actions <a href="https://learn.microsoft.com/dynamics365/sales/configure-recommended-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether a source agent's actions appear in the recommended actions experience (Dynamics 365 Sales)</strong><br><small>Agent</small><br><small class="controls__note">Documented for the Recommended Actions agent in Dynamics 365 Sales. Microsoft has not confirmed it governs the Sales agent experience in Microsoft 365 Copilot. The request body sets msdyn_isrecommendedactionagentenabled.</small></td><td data-label="Admin UI"><strong>Dynamics 365 Sales Hub app settings</strong><br>Change area › App Settings › General settings › Dynamics 365 AI hub › Create and manage agents › agent › Connected skills › Recommended Actions <a href="https://learn.microsoft.com/dynamics365/sales/configure-recommended-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH /msdyn_recommendedactionsourceagentconfigs(msdyn_recommendedactionsourceagentconfigid)</code> <a href="https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_recommendedactionsourceagentconfig" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -192,7 +201,7 @@ No documented control switches recommended actions in Sales agent in Microsoft 3
 
 The tenant access settings control whether Sales agent can be used in each application and by whom. They do not install apps, assign licences or grant CRM data access. The changes can take up to 15 minutes to take effect, and Entra group membership changes up to one hour.
 
-The Dynamics 365 toggle is documented for the Recommended Actions agent in Dynamics 365 Sales. Learn says disabling it keeps the source agent running but its insights no longer appear in the recommended actions interface. A separate Learn page marks the Sales Opportunity Agent integration with recommended actions as a preview feature and places its toggle under Advanced > Connected skills > Recommended action. No PowerShell, Graph or other API was found for either control at the time of writing.
+The Dynamics 365 toggle is documented for the Recommended Actions agent in Dynamics 365 Sales. Learn says disabling it keeps the source agent running but its insights no longer appear in the recommended actions interface. A separate Learn page marks the Sales Opportunity Agent integration with recommended actions as a preview feature and places its toggle under Advanced > Connected skills > Recommended action. No automation equivalent was found for the tenant Sales agent access settings at the time of writing; the Dynamics 365 source-agent configuration has the Dataverse Web API operation shown in the table.
 
 ## Open questions
 
@@ -203,18 +212,12 @@ The Dynamics 365 toggle is documented for the Recommended Actions agent in Dynam
 
 <!-- rationale
 risk: Medium. The roadmap item says recommended actions will be on by default, and sellers act on CRM leads and opportunities, but the documented Sales agent access settings and CRM privileges still apply. No control for this feature itself is documented.
-cost: Low. The known cost is administrator preparation and seller communication; licensing and metering for this roadmap item are not yet published.
+cost: Low. The known cost is administrator preparation and seller communication; Sales agent needs the licences on its setup page, and any additional entitlement or metering specific to these recommended actions is not yet published.
 impact: High. The roadmap item states the feature is on by default, so every seller who can use Sales agent would see a changed experience without an admin action.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model and notes; Cost and licensing; rationale: cost / licensing: Licensing is unknown and not yet published for this roadmap item. | Found: To use Sales agent in Microsoft 365 Copilot, you must meet one of the following licensing options: ... Dynamics 365 Sales Enterprise or Premium access, without a Microsoft 365 Copilot license | CRM data only | Fix: Set licensing.model to included. State: 'Sales agent requires either an appropriate Microsoft 365 Copilot license and access to Dynamics 365 Sales or Salesforce, for CRM data and Microsoft 365 Graph grounding, or Dynamics 365 Sales Enterprise or Premium access without a Microsoft 365 Copilot license, for CRM data only. Any additional entitlement or metering specific to these recommended actions is not yet published.' Use https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat. Replace the blanket unpublished-licensing statements in the notes, body and cost rationale with the narrower additional-entitlement caveat; retain cost low for the known preparation work. | Source: https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat
-- [contradicted, blocker] licensing.notes; Cost and licensing: quotation from Set up Sales agent / licensing: The setup page says Sales agent in Microsoft 365 Copilot is available to users who have access to a Microsoft 365 Copilot license. | Found: An appropriate license to access Microsoft 365 Copilot and access to Dynamics 365 Sales or Salesforce | CRM data and Microsoft 365 Graph grounding | Fix: Replace the outdated quotation and corresponding licensing note with: 'The setup page lists two options: an appropriate Microsoft 365 Copilot license plus access to Dynamics 365 Sales or Salesforce for CRM data and Microsoft 365 Graph grounding; or Dynamics 365 Sales Enterprise or Premium access without a Microsoft 365 Copilot license for CRM data only. A Microsoft 365 Copilot license is required for Microsoft 365 Graph-grounded data.' Cite https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat. | Source: https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat
-- [contradicted, blocker] Scope: Prerequisites / absence: Prerequisites for using this feature are not yet documented. | Found: Prerequisites ... The Sales agent is installed in both Outlook and Teams. ... Sales Chat must be turned on in Access settings. ... The Sales agent must be connected to a CRM system. | Fix: Replace 'Prerequisites for this feature are not yet documented' with 'Sales agent prerequisites are documented in Set up Sales agent in Microsoft 365 Copilot; additional prerequisites specific to the recommended-actions experience are not yet documented.' Cite https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat. | Source: https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat
-- [contradicted, blocker] controls[1].api; Governance controls table and final sentence / absence: Microsoft has not documented an API for enabling recommended actions for a Dynamics 365 source agent. | Found: Update ... PATCH /msdyn_recommendedactionsourceagentconfigs(msdyn_recommendedactionsourceagentconfigid) ... msdyn_isrecommendedactionagentenabled ... Indicates whether the recommended actions agent is enabled for this source agent config | Fix: Set controls[1].api.kind to rest, call to 'PATCH /msdyn_recommendedactionsourceagentconfigs(msdyn_recommendedactionsourceagentconfigid)', and docs to https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_recommendedactionsourceagentconfig. Add to the existing note: 'The request body sets msdyn_isrecommendedactionagentenabled, a Boolean indicating whether the Recommended Actions agent is enabled for this source-agent configuration.' Replace the final blanket no-API sentence with 'No automation equivalent was found for the tenant Sales agent access settings at the time of writing; the Dynamics 365 source-agent configuration has the Dataverse Web API operation shown in the table.' Retain the caveat that applicability to the new Microsoft 365 experience is unconfirmed. | Source: https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_recommendedactionsourceagentconfig
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance guidance: Before rollout; Governance controls table / admin-path: Sales agent administrator settings > Tenant > Access settings > Allow access to Sales agent leads to the tenant access settings. | Found: Open Sales agent administrator settings. ... Under Tenant, select Access settings. ... Select Allow access to Sales agent. ... In the Sales agent pane, locate the application you want to configure | Fix: Extend the UI path to 'Tenant > Access settings > Allow access to Sales agent > Microsoft 365 Copilot' to identify the application whose toggle is being set. Add to the existing note: 'To configure groups, expand Microsoft 365 Copilot and, under Who can use this feature?, select Set access restrictions, then configure Allow access and Restrict access.' The omitted application target is a permitted target-selection omission, not an invented path. Source: https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps. | Source: https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist's capacity and pay-as-you-go monitoring instruction has no corresponding controls-table row. | Found: Review Copilot Studio message capacity and pay-as-you-go usage ... Table controls: Whether Sales agent can be used in Microsoft 365 Copilot; Whether a source agent's actions appear in the recommended actions experience. | Fix: Remove the After rollout bullet beginning 'Review Copilot Studio message capacity and pay-as-you-go usage'; it instructs readers to check a control not represented in the existing controls table.
+- [supported, minor] controls[0].ui; Governance guidance: Before rollout; Governance controls / admin-path: Tenant > Access settings > Allow access to Sales agent opens the tenant Sales agent access settings. | Found: Under Tenant, select Access settings. ... Select Allow access to Sales agent. ... Microsoft 365 Copilot: Allows access to the Sales agent in Microsoft 365 Copilot. ... Use the toggle next to the application to turn Sales agent access on or off: | Fix: Extend controls[0].ui.path and the corresponding rendered path to 'Tenant > Access settings > Allow access to Sales agent > Microsoft 365 Copilot' to identify the application whose adjacent toggle controls access, as documented at https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps. | Source: https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps
 -->

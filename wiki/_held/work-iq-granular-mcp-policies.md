@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for the granular policies. Learn says Work IQ API access is independent of Microsoft 365 Copilot licensing, is available through usage-based billing, and consumes Copilot Credits."
+  model: "consumption"
+  notes: "Work IQ API uses consumption-based licensing through Copilot Credits; no separate entitlement or price for the planned granular policies is published. Learn says Work IQ API access is independent of Microsoft 365 Copilot licensing."
 audiences: ["m365-admin","security","service-owner","maker"]
 tags: ["work-iq","mcp","agent-governance","policy","guardrails","least-privilege","write-actions","m365-admin-center","admin-controls"]
 sources:
@@ -37,8 +37,11 @@ sources:
   - title: "Migrate agentic retrieval workflows to Work IQ MCP"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/migrate-retrieval-api"
     kind: "learn"
+  - title: "Microsoft Work IQ API"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview"
+    kind: "learn"
 videos: []
-related: ["work-iq-agent-policy-governance","work-iq","mcp","work-iq-a2a-and-mcp-elicitation","agent-identity"]
+related: ["work-iq-agent-policy-governance","agent-identity"]
 controls:
   - governs: "Whether Work IQ MCP policy applies to the tenant"
     scope: "tenant"
@@ -55,7 +58,7 @@ controls:
     note: "Learn says per-user, per-app, per-agent and scenario-specific templates are not part of the initial control surface."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-19"
 roadmapModified: "2026-11-17T19:53:11"
 changes:
   - date: "2026-11-17"
@@ -64,19 +67,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 59 statements not yet confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 67 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-19"
+    note: "Corrected licensing to consumption through Copilot Credits (Work IQ API page), removed the unsupported tool count and dropped the After rollout cost-review step."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 63 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-19"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 65
+  claims: 63
+  confirmed: 62
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "4596dc52260f7b75fa78c9ce090b886b"
+  contradicted: 1
+  attempts: 2
+  hash: "4350fa70d1cc9a7b357cb1e5873c1e25"
 ---
 
 ## What's changing
@@ -89,7 +96,7 @@ The same page says per-user, per-app, per-agent and scenario-specific policy tem
 
 ## Why it matters
 
-Work IQ MCP lets agents read and, where policy allows, change Microsoft 365 data through ten generic tools that work on resource paths. Today an administrator's documented choice is the tenant-wide policy switch. Finer controls over which platforms, workloads and operations may use MCP would decide how far an agent can go without a custom build, so this item matters to security teams and to owners of agents that call Work IQ MCP.
+Work IQ MCP lets agents read and, where policy allows, change Microsoft 365 data through generic tools that work on resource paths. Today an administrator's documented choice is the tenant-wide policy switch. Finer controls over which platforms, workloads and operations may use MCP would decide how far an agent can go without a custom build, so this item matters to security teams and to owners of agents that call Work IQ MCP.
 
 Microsoft has not stated what happens on arrival, so plan on today's behaviour continuing: no source says existing behaviour changes. Use the preview to learn what the policies cover before anyone relies on them, and keep the existing tenant policy decision deliberate in the meantime.
 
@@ -117,7 +124,7 @@ Microsoft has not stated what happens on arrival, so plan on today's behaviour c
 
 ## Cost and licensing
 
-No licence or price for the granular policies is published. Learn's Work IQ overview says Work IQ API access is independent of Microsoft 365 Copilot licensing and available through usage-based billing, that Work IQ cost can be managed in the Microsoft 365 admin center, and that Work IQ API usage consumes Copilot Credits shared with other eligible services. See [Copilot Credits](/concepts/copilot-credits/).
+Work IQ API uses consumption-based licensing through Copilot Credits; no separate entitlement or price for the planned granular policies is published. Learn's Work IQ overview says Work IQ API access is independent of Microsoft 365 Copilot licensing and available through usage-based billing, that Work IQ cost can be managed in the Microsoft 365 admin center, and that Work IQ API usage consumes Copilot Credits shared with other eligible services. See [Copilot Credits](/concepts/copilot-credits/).
 
 The overview adds that Microsoft 365 Copilot licensed users get Work IQ in all Microsoft 365 Copilot experiences and agents, subject to usage-based billing for custom and third-party agents, and that users without a Microsoft 365 Copilot licence are billed on usage. Whether the granular policies change that meter or carry a separate charge is not yet published. The known indirect cost is administrator time to define, test and monitor policy.
 
@@ -146,7 +153,6 @@ The current policy control is configured in the Microsoft 365 admin center by an
 
 - Watch Message center and the Work IQ MCP policy governance page for the granular controls and update the controls table when they are documented.
 - Triage agent failures reported by developers against policy denials before treating them as outages.
-- Review Work IQ usage and cost in the Microsoft 365 admin center, where Learn says Work IQ cost can be managed.
 
 ## Governance controls
 
@@ -183,8 +189,7 @@ impact: Medium. Administrators configure it, but developers and makers whose age
 <!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model; licensing.notes; Cost and licensing / licensing: The licensing model is unknown because no licence for granular policies has been published. | Found: Work IQ API is licensed under your agreement governing use of Microsoft Online Services, including the Microsoft Product Terms. You pay for use of the Work IQ API through a usage-based model that uses Copilot Credits. | Fix: Set licensing.model to 'consumption'. Replace 'Not yet published for the granular policies' in licensing.notes and 'No licence or price for the granular policies is published' in Cost and licensing with 'Work IQ API uses consumption-based licensing through Copilot Credits; no separate entitlement or price for the planned granular policies is published.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview. Keep the existing distinction between Work IQ usage charges and any separate charge for the controls. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview
+- [contradicted, blocker] Risk assessment: Data exposure, second bullet / absence: Controls that restrict by platform or workload are not documented yet, leaving tenant policy and user permissions as today's boundary. | Found: You can remove workloads your agent doesn't need from its Work IQ configuration. ... The agent no longer uses the workloads you remove through Work IQ. | Fix: Replace the sentence beginning 'Controls that restrict by platform or workload' with 'The planned tenant-level granular policy controls that restrict by platform or workload are not yet documented.' The existing Copilot Studio maker workload selection is a different control, so do not describe workload restrictions generally as undocumented. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters / behaviour: Work IQ MCP exposes ten generic tools. | Found: The Work IQ MCP collapses hundreds of operations into just 10 generic tools | Fix: Replace 'through ten generic tools that work on resource paths' with 'through generic tools that work on resource paths'. The cited overview says 10, but https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview lists twelve tool names across its tool categories. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: Every control the governance checklist asks readers to review has a corresponding controls-table row. | Found: Checklist: 'Review Work IQ usage and cost in the Microsoft 365 admin center'. Controls rows: 'Whether Work IQ MCP policy applies to the tenant'; 'Per-platform, per-workload, per-agent or per-operation MCP restrictions'. Neither covers cost management. | Fix: Remove the final After rollout bullet, 'Review Work IQ usage and cost in the Microsoft 365 admin center, where Learn says Work IQ cost can be managed.' Retain the supported cost-management statement in Cost and licensing.
+- [supported, minor] What's changing; Autonomy & actions; Governance guidance: At rollout / default: Mutation operations are blocked by default. | Found: By default, mutation operations aren't allowed for safety. | Fix: Attribute the default explicitly to the MCP policy page and add: 'The Copilot Studio Work IQ page describes write operations as on by default, subject to organizational permissions and policies; verify the effective behavior in your client and tenant.' Cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq, which states 'Write operations are on by default. Your organization's permissions and policies still apply.' | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp
 -->

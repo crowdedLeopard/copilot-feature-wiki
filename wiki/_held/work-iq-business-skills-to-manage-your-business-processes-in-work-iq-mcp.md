@@ -80,8 +80,9 @@ controls:
       docs: "https://learn.microsoft.com/microsoft-sales-copilot/business-skills-dataverse#enable-business-skills-in-dataverse"
     api:
       kind: "rest"
-      call: "PATCH [organization URI]/api/data/v9.2/allowedmcpclients({allowedmcpclientid}) with body {\"isenabled\": false}"
+      call: "PATCH [organization URI]/api/data/v9.2/allowedmcpclients({allowedmcpclientid})"
       docs: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient"
+    note: "The request body sets isenabled to false to disable the client."
   - governs: "Work IQ MCP server access in Microsoft 365"
     scope: "tenant"
     ui:
@@ -91,7 +92,7 @@ controls:
     api: null
 confidence: "high"
 created: "2026-11-14"
-updated: "2026-11-16"
+updated: "2026-11-19"
 roadmapModified: "2026-11-11T00:53:34"
 changes:
   - date: "2026-11-14"
@@ -112,19 +113,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 68 statements confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 64 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-19"
+    note: "Corrected after the independent check: removed the September 30 and EU/EFTA general-availability statements, noted Microsoft has deferred default enablement for existing environments, and moved the Allowed MCP Clients request body out of the call."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 63 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 5
 verification:
   status: "held"
   date: "2026-11-19"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 61
-  unconfirmed: 2
+  claims: 63
+  confirmed: 62
+  unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "65554afc2ee0fd52d39c36c0d34bd321"
+  attempts: 2
+  hash: "7759db3f3d838d50f7e16c49aae855e5"
 ---
 
 ## What's changing
@@ -133,15 +138,15 @@ Business skills are natural-language instructions that capture how an organisati
 
 Per Microsoft Learn, skills have frontmatter (name, description, metadata), instructions and attached resource files. Agents query the frontmatter to find relevant skills and retrieve the full instructions only when needed. Skills are not executable code.
 
-Microsoft Learn's default-settings page (prerelease documentation) says that starting September 30, 2026 Microsoft turns on Business Applications in Work IQ by default for new environments that are not listed as exceptions, and that starting in November 2026 it does the same for existing environments that are not listed as exceptions. The default applies to public production environments. The exceptions are EU and EFTA environments (Microsoft plans to enable them when the feature becomes generally available; during public preview customers can turn on Work IQ with the corresponding setting in the Microsoft 365 admin center), government-related environments, and nonproduction (trial, sandbox and developer) environments. The business skills overview describes the manual route: a Power Platform administrator turns on Work IQ in the environment.
+Microsoft Learn's default-settings page (prerelease documentation) says Business Applications in Work IQ is on by default for new public production environments created for new or existing tenants, subject to the exceptions below. Microsoft has deferred the previously documented November 2026 plan to turn on Business Applications in Work IQ for eligible existing environments; the current page gives no replacement date. The default applies to public production environments. The exceptions are EU and EFTA environments (during public preview customers can turn on Work IQ with the corresponding setting in the Microsoft 365 admin center), government-related environments, and nonproduction (trial, sandbox and developer) environments. The business skills overview describes the manual route: a Power Platform administrator turns on Work IQ in the environment.
 
 The roadmap target is November 2026, status In development; the Learn page is marked preview.
 
 ## Why it matters
 
-Skills become a governed layer that shapes agent behaviour. Work IQ has to be on in a Dataverse environment before business skills are used there, either automatically under Microsoft's default for eligible environments or manually by a Power Platform admin, and skill selection is probabilistic, so testing matters before broad sharing.
+Skills become a governed layer that shapes agent behaviour. Work IQ has to be on in a Dataverse environment before business skills are used there, either automatically under Microsoft's default for eligible new environments or manually by a Power Platform admin, and skill selection is probabilistic, so testing matters before broad sharing.
 
-For an eligible existing environment, Microsoft's default starts in November 2026, so decide now whether it should take part rather than finding out after it has been turned on.
+Review whether existing environments should participate; Microsoft has deferred their automatic enablement from November 2026.
 
 ## Risk assessment
 
@@ -165,7 +170,7 @@ Learn also says that for consumption-based services, usage of underlying applica
 
 ## Scope
 
-Dataverse environments where Work IQ is on, either through Microsoft's default for eligible public production environments (see What's changing for the dates and exceptions) or because a Power Platform admin turned it on. Used in Copilot, Work IQ connected agents and agents connected to the Dataverse MCP server.
+Dataverse environments where Work IQ is on, either through Microsoft's default for eligible new public production environments (see What's changing for the exceptions) or because a Power Platform admin turned it on. Used in Copilot, Work IQ connected agents and agents connected to the Dataverse MCP server.
 
 The roadmap lists Worldwide (Standard Multi-Tenant). Learn states that Business Applications in Work IQ is not currently available in sovereign or government cloud environments, including DoD, GCC and GCC High.
 
@@ -190,7 +195,7 @@ The roadmap lists Worldwide (Standard Multi-Tenant). Learn states that Business 
 <tbody>
 <tr><td data-label="Control"><strong>Work IQ participation for a Dataverse environment</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › environment › Settings › Product › Features › Work IQ <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation#environment-features-for-work-iq" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Business Applications data in Work IQ available to Copilot (tenant)</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › Business Applications data in Work IQ available to Copilot <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings#cascading-control-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Allowed MCP clients for the Dataverse MCP server</strong><br><small>Environment</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Dataverse Model Context Protocol › Advanced Settings › Allowed MCP Clients <a href="https://learn.microsoft.com/microsoft-sales-copilot/business-skills-dataverse#enable-business-skills-in-dataverse" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH [organization URI]/api/data/v9.2/allowedmcpclients({allowedmcpclientid}) with body {&quot;isenabled&quot;: false}</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Allowed MCP clients for the Dataverse MCP server</strong><br><small>Environment</small><br><small class="controls__note">The request body sets isenabled to false to disable the client.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Dataverse Model Context Protocol › Advanced Settings › Allowed MCP Clients <a href="https://learn.microsoft.com/microsoft-sales-copilot/business-skills-dataverse#enable-business-skills-in-dataverse" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH [organization URI]/api/data/v9.2/allowedmcpclients({allowedmcpclientid})</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Work IQ MCP server access in Microsoft 365</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Block <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access#work-iq-mcp-server-access-control" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -203,7 +208,7 @@ For Allowed MCP Clients, the Dataverse Web API reference documents the allowedmc
 
 - Pricing and metering at general availability.
 - Audit coverage of skill creation and use.
-- On what date will EU and EFTA environments be enabled by default? Learn says Microsoft plans to do so when the feature becomes generally available.
+- On what date will EU and EFTA environments be enabled by default?
 
 <!-- rationale
 risk: Medium. Skills steer agent behaviour across surfaces, so a wrong or over-shared skill changes how agents act on business processes.
@@ -214,10 +219,7 @@ impact: Medium. Affects makers, process owners and users of agents that discover
 <!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] What's changing: default enablement paragraph / date: Microsoft starts default enablement for eligible new environments on September 30, 2026. | Found: Searched: "Work IQ" "September 30, 2026"; read default-settings, manage-participation and quickstart. Current default-settings confirms eligible new environments are on by default but supplies no September 30 start date. | Fix: Replace the dated new-environment clause with: 'Microsoft Learn says Business Applications in Work IQ is on by default for new public production environments created for new or existing tenants, subject to the exceptions below.'
-- [contradicted, blocker] What's changing; Why it matters: existing-environment warning / date: Microsoft starts default enablement for eligible existing environments in November 2026. | Found: The plan to turn on Business Applications in Work IQ for existing environments that aren't listed as exceptionshas been deferred from the previously documented November 2026 schedule. Check this article for updates. | Fix: Replace the existing-environment November statement with: 'Microsoft has deferred the previously documented November 2026 plan to turn on Business Applications in Work IQ for eligible existing environments; the current page gives no replacement date.' Replace the Why it matters warning with: 'Review whether existing environments should participate; Microsoft has deferred their automatic enablement from November 2026.' | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings
-- [unsupported, blocker] What's changing: EU/EFTA parenthesis; Open questions / date: Microsoft plans to enable EU and EFTA environments by default when the feature becomes generally available. | Found: Searched: "Work IQ" "EFTA" "generally available"; read default-settings and returned Work IQ excerpts. Current default-settings lists EU/EFTA as exceptions but gives no general-availability trigger for their default enablement. | Fix: Remove 'Microsoft plans to enable them when the feature becomes generally available' from What's changing. In Open questions, retain only: 'On what date will EU and EFTA environments be enabled by default?'
+- [contradicted, blocker] What's changing: EU/EFTA parenthesis / applicability: Customers can turn on Work IQ for EU/EFTA environments during public preview with the corresponding Microsoft 365 admin center setting. | Found: If Business Applications in Work IQ isn't on by default in your environment, you can turn it on. Turn on the tenant-level setting in the Microsoft 365 admin center and the environment-level setting in the Power Platform admin center. | Fix: Replace the EU/EFTA parenthesis with: '(customers can turn on Work IQ by enabling both the tenant-level setting in the Microsoft 365 admin center and the environment-level setting in the Power Platform admin center)'. The current source requires both settings and no longer phrases this as an EU/EFTA public-preview-specific route. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: defaultState; What's changing; Scope / default: Work IQ has an on-by-default route for eligible environments, represented by defaultState on. | Found: Business Applications in Work IQ is on by default for new public production environments created for new or existing tenants. | Fix: Keep defaultState on, but qualify the default as applying to eligible new public production environments. Note that https://learn.microsoft.com/power-platform/admin/settings-features#dataverse-intelligence-preview separately lists 'Turn on Dataverse intelligence (Work IQ) for agents and AI experiences' with default Off. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings
-- [supported, minor] controls[2].api; Governance controls table and API prose / command: PATCH [organization URI]/api/data/v9.2/allowedmcpclients({allowedmcpclientid}) with body {"isenabled": false} changes an allowed client's enabled setting. | Found: Entity set path: [organization URI]/api/data/v9.2/allowedmcpclients Primary key: allowedmcpclientid Operations supported: POSTGETPATCHDELETE isenabled | Edm.Boolean | Display name: Is Enabled | Fix: Set controls[2].api.call to 'PATCH [organization URI]/api/data/v9.2/allowedmcpclients({allowedmcpclientid})' and add api.note 'The request body sets isenabled to false to disable the client.' Make the rendered row match; do not print the body as part of the call. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient
+- [supported, minor] front matter: defaultState; What's changing; Why it matters; Scope / default: Work IQ is on by default for eligible new public production environments in new or existing tenants. | Found: Business Applications in Work IQ is on by default for new public production environments created for new or existing tenants. | Fix: Keep the qualified on-by-default statement, but add: 'The general feature-settings reference still lists the Dataverse intelligence (Work IQ) setting's default as Off; the dedicated default-settings page describes the new-environment default above.' Cite https://learn.microsoft.com/power-platform/admin/settings-features#dataverse-intelligence-preview. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings
 -->

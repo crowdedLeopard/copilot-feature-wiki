@@ -18,7 +18,7 @@ defaultState: "unknown"
 action: "review"
 licensing:
   model: "consumption"
-  notes: "Work IQ API access is independent of Microsoft 365 Copilot licensing and is available through usage-based billing, consuming Copilot Credits. Whether elicitation carries its own rate is not yet published."
+  notes: "Work IQ API access is independent of Microsoft 365 Copilot licensing and is available through usage-based billing, consuming Copilot Credits. The Foundry connection quickstart separately lists a Microsoft 365 Copilot licence for each user who calls Work IQ through the agent. Whether elicitation carries its own rate is not yet published."
 audiences: ["m365-admin","security","finops","service-owner"]
 tags: ["work-iq","mcp","a2a","agents","authorisation","human-in-the-loop","usage-based-billing","copilot-credits","spending-policies"]
 sources:
@@ -49,6 +49,15 @@ sources:
   - title: "Microsoft 365 Copilot Cost Management API overview"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
     kind: "learn"
+  - title: "Update spendingPolicy"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update"
+    kind: "learn"
+  - title: "List costManagementServiceUsageRecords"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/costmanagementserviceusagerecord-list"
+    kind: "learn"
+  - title: "Connect a Microsoft Foundry project to Work IQ"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/quickstart/foundry"
+    kind: "learn"
   - title: "Collect structured input with elicitation forms in Copilot Cowork"
     url: "https://learn.microsoft.com/copilot/cowork/cowork-elicitation-forms"
     kind: "learn"
@@ -77,9 +86,9 @@ controls:
       docs: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits"
     api:
       kind: "graph"
-      call: "GET https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies (POST to create; PATCH and DELETE use https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id})"
-      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
-    note: "General control for credit spend; not documented as specific to elicitation. Graph is beta and not supported in production. Creating a policy needs the Billing Administrator or Global Administrator role."
+      call: "PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id}"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update"
+    note: "Not documented as specific to elicitation. Graph is beta, unsupported in production. This call updates periodLimit, perUserLimit and billingMethods; it does not change the group audience or service access."
   - governs: "Monitoring Work IQ API credit use by user, group and service"
     scope: "tenant"
     ui:
@@ -89,7 +98,7 @@ controls:
     api:
       kind: "graph"
       call: "GET https://graph.microsoft.com/beta/copilot/costManagement/usageReports/serviceUsageRecords?startDate=YYYY-MM-DD&endDate=YYYY-MM-DD"
-      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/costmanagementserviceusagerecord-list"
     note: "Shows active users, credits used and session count per service; elicitation is not broken out. Graph is beta; endDate must be startDate plus one day."
   - governs: "Whether tasks may request missing information or authorisation, and from which agents"
     scope: "tenant"
@@ -98,7 +107,7 @@ controls:
     note: "Not documented at the time of writing (November 2026); the roadmap item describes the capability only."
 confidence: "medium"
 created: "2026-11-16"
-updated: "2026-11-16"
+updated: "2026-11-19"
 roadmapModified: "2026-10-13T23:01:05"
 changes:
   - date: "2026-11-16"
@@ -113,19 +122,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 2 of 85 statements not yet confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 87 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-19"
+    note: "Corrected after verification: spending-policy row now gives the PATCH update call, usage-report row links its own reference, and the paused-task, licence and per-user-limit wording was narrowed."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 89 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 87
-  confirmed: 83
-  unconfirmed: 2
-  contradicted: 2
-  attempts: 1
-  hash: "017fbe1f91b2e2a94388ee259b894c20"
+  claims: 89
+  confirmed: 89
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "b7ce2e680c5780720e719367558dd4e0"
 ---
 
 ## What's changing
@@ -134,7 +147,7 @@ Microsoft plans to let tasks run over the Work IQ A2A (Agent-to-Agent) and MCP (
 
 Microsoft Learn does not describe this feature for Work IQ at the time of writing (November 2026), so what follows about its behaviour is the roadmap's wording. For background, Learn describes elicitation as an MCP mechanism by which a server mid-tool-call "can use elicitation to pause execution and present a native form", after which tool execution resumes with the data. That page is written for Copilot Cowork, not Work IQ, and does not confirm how Work IQ will behave.
 
-Work IQ today offers A2A, a remote MCP server and a REST API. Learn documents A2A task methods (GetTask, CancelTask and SubscribeToTask) and states that Work IQ A2A and the Work IQ MCP server both use Microsoft Entra ID authentication, delegated in the A2A case. Separately, Learn's Foundry guidance for the Work IQ MCP endpoint says an `oauth_consent_request` "means the request is waiting for user authorization". That is existing Foundry behaviour, not a description of this roadmap item.
+Work IQ today offers A2A, a remote MCP server and a REST API. Learn documents A2A task methods (GetTask, CancelTask and SubscribeToTask) and states that Work IQ A2A and the Work IQ MCP server both use Microsoft Entra ID authentication, delegated in the A2A case. Separately, Learn's Foundry preview guidance for the Work IQ MCP endpoint says an `oauth_consent_request` "means the request is waiting for user authorization". That is existing Foundry behaviour, not a description of this roadmap item.
 
 The roadmap record shows status In development, a preview date of October CY2026, a target date of November CY2026, release phases General Availability and Preview, Worldwide (Standard Multi-Tenant) only, and the Web platform. These are Microsoft's targets, not commitments.
 
@@ -162,14 +175,14 @@ If the capability is enabled or adopted in your tenant, review the existing Work
 
 **Change & support**
 
-- Pause-and-resume is a new task state for agent builders and support teams. Not yet documented: how long a paused task stays resumable and what happens if the user never answers.
+- Plan support for tasks that request information or authorisation and then resume. Not yet documented: how long a paused task stays resumable and what happens if the user never answers.
 - The Copilot Cowork page notes "Not all MCP hosts support elicitation yet", so MCP clients may behave differently from one another.
 
 ## Cost and licensing
 
-Work IQ API usage is metered, not licensed per user. The Work IQ overview states that access "is independent of Microsoft 365 Copilot licensing and available through usage-based billing", that "Work IQ cost is variable based on usage" and that usage "consumes Copilot Credits shared with other eligible services". For Microsoft 365 Copilot licensed users it adds that Work IQ is "subject to usage-based billing for custom and third-party agents", and that users without that licence "are billed based on usage".
+Work IQ API usage is metered, not licensed per user. The Work IQ overview states that access "is independent of Microsoft 365 Copilot licensing and available through usage-based billing", that "Work IQ cost is variable based on usage" and that usage "consumes Copilot Credits shared with other eligible services". For Microsoft 365 Copilot licensed users it adds that Work IQ is "subject to usage-based billing for custom and third-party agents", and that users without that licence "are billed based on usage". The Foundry connection quickstart separately lists a Microsoft 365 Copilot licence for each user who calls Work IQ through the agent.
 
-Spending policies control access and credit spending: the Learn page states they "don't reserve or allocate Copilot Credits to users or groups". A policy with a limited monthly budget caps what its scope can spend, and users who hit the limit "lose access to agents and services for the rest of the month". Whether Work IQ API sits under your default policy or a specific one is something to check in the controls table.
+Spending policies control access and credit spending: the Learn page states they "don't reserve or allocate Copilot Credits to users or groups". A policy with a limited monthly budget caps what its scope can spend, and users who hit the limit "lose access to agents and services for the rest of the month". The monitoring guidance qualifies per-user limits: if a running task exceeds the per-user limit, it can complete without interruption. Whether Work IQ API sits under your default policy or a specific one is something to check in the controls table.
 
 A paused and resumed task may involve more calls than one that completes at once, but Microsoft has not published a rate or any charge specific to elicitation. Not yet published: whether waiting for input is metered.
 
@@ -206,8 +219,8 @@ The affected surfaces are the Work IQ A2A endpoint and the Work IQ MCP server. L
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether Work IQ MCP tool requests are governed by tenant policy</strong><br><small>Tenant</small><br><small class="controls__note">MCP only as documented; the page does not say it covers A2A or elicitation. The Policy tab appears &quot;when it's available&quot;. Changes can take up to 24 hours.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Policy <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Who can consume Copilot Credits for Work IQ API, and the limits and billing method</strong><br><small>Group</small><br><small class="controls__note">General control for credit spend; not documented as specific to elicitation. Graph is beta and not supported in production. Creating a policy needs the Billing Administrator or Global Administrator role.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › + Add spending policy <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies (POST to create; PATCH and DELETE use https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id})</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Monitoring Work IQ API credit use by user, group and service</strong><br><small>Tenant</small><br><small class="controls__note">Shows active users, credits used and session count per service; elicitation is not broken out. Graph is beta; endDate must be startDate plus one day.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Consumption › Agents and services <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET https://graph.microsoft.com/beta/copilot/costManagement/usageReports/serviceUsageRecords?startDate=YYYY-MM-DD&amp;endDate=YYYY-MM-DD</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Who can consume Copilot Credits for Work IQ API, and the limits and billing method</strong><br><small>Group</small><br><small class="controls__note">Not documented as specific to elicitation. Graph is beta, unsupported in production. This call updates periodLimit, perUserLimit and billingMethods; it does not change the group audience or service access.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › + Add spending policy <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Monitoring Work IQ API credit use by user, group and service</strong><br><small>Tenant</small><br><small class="controls__note">Shows active users, credits used and session count per service; elicitation is not broken out. Graph is beta; endDate must be startDate plus one day.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Consumption › Agents and services <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET https://graph.microsoft.com/beta/copilot/costManagement/usageReports/serviceUsageRecords?startDate=YYYY-MM-DD&amp;endDate=YYYY-MM-DD</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/costmanagementserviceusagerecord-list" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether tasks may request missing information or authorisation, and from which agents</strong><br><small>Tenant</small><br><small class="controls__note">Not documented at the time of writing (November 2026); the roadmap item describes the capability only.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -227,22 +240,13 @@ Spending policies limit who can consume credits and how much; they do not decide
 - The roadmap item gives a preview date of October CY2026 and a target date of November CY2026 and still reads In development: which phase is reaching tenants, and when? Watch Message center and the roadmap item.
 
 <!-- rationale
-risk: Medium. A task that can stop and ask for authorisation adds a new prompt path into agent runs, and Microsoft Learn documents no control specific to it; the existing Work IQ MCP tenant policy covers MCP tool requests only.
+risk: Medium. A task that can stop and ask for authorisation adds a new prompt path into agent runs, and Microsoft Learn documents no control specific to it; the existing Work IQ MCP tenant policy is documented for MCP tool requests, without specifying coverage of A2A tasks or elicitation.
 cost: Variable. Work IQ API usage consumes Copilot Credits under usage-based billing; no rate or charge specific to elicitation is published.
 impact: Low. The roadmap item is aimed at A2A and MCP callers, so those who notice are developers, agent owners and the users their agents prompt; administrators see nothing unless they govern Work IQ access.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Change & support / behaviour: Pause-and-resume is a new task state for agent builders and support teams. | Found: Searched: "Work IQ" "elicitation"; "Work IQ" elicitation resume timeout paused task authorization default rollout administrator. Opened A2A overview and MCP overview; neither establishes a new task state or its history. | Fix: Replace 'Pause-and-resume is a new task state for agent builders and support teams.' with 'Plan support for tasks that request information or authorisation and then resume.'
-- [contradicted, blocker] controls[1].api; Governance controls: second row / command: The printed GET spendingPolicies call and parenthetical operation list are automation that sets access, limits and billing method. | Found: List spendingPolicies | GET /copilot/costManagement/spendingPolicies | Get a list of spending policies. | Fix: Replace the call with 'PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id}' and docs with https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update. Add to the note: 'This call updates periodLimit, perUserLimit and billingMethods; it does not change the group audience or service access.' Remove the parenthetical list of other operations. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview
-- [contradicted, blocker] controls[2].api; Governance controls: third row / command: The cited Cost Management overview documents the printed beta serviceUsageRecords GET operation and its date selectors. | Found: For the user, group, service, funding, and raw user detail operations, see Choose a report. The Usage reports overview explains which report to use and how to query it. | Fix: Keep 'GET https://graph.microsoft.com/beta/copilot/costManagement/usageReports/serviceUsageRecords?startDate=YYYY-MM-DD&endDate=YYYY-MM-DD', but replace controls[2].api.docs and the rendered row link with https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/costmanagementserviceusagerecord-list. That reference prints the operation, beta example and both date parameters; the current overview no longer does. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: Foundry oauth_consent_request / behaviour: Foundry guidance says oauth_consent_request means a Work IQ MCP request is waiting for user authorisation. | Found: An `oauth_consent_request` means the request is waiting for user authorization, not that retrieval succeeded. | Fix: Change 'Learn's Foundry guidance' to 'Learn's Foundry preview guidance'; the cited article is titled 'Connect agents to Microsoft 365 with Work IQ (preview)'. | Source: https://learn.microsoft.com/azure/foundry/agents/how-to/tools/work-iq
-- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: Work IQ API access is independent of Microsoft 365 Copilot licensing. | Found: Work IQ API access is independent of Microsoft 365 Copilot licensing and available through usage-based billing. | Fix: Keep the overview's statement, but add: 'The Foundry connection quickstart separately lists a Microsoft 365 Copilot licence for each user who calls Work IQ through the agent.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/quickstart/foundry, whose prerequisites state that requirement. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/
-- [supported, minor] Cost and licensing: opening sentence / licensing: Work IQ API has no separate per-user licence. | Found: There's no separate Work IQ API subscription, SKU, or per-user license. | Fix: Add https://learn.microsoft.com/partner-center/announcements/2026-june#work-iq-api-and-consumptive-pricing-update to sources for the explicit no-separate-per-user-licence statement. | Source: https://learn.microsoft.com/partner-center/announcements/2026-june#work-iq-api-and-consumptive-pricing-update
-- [supported, minor] controls[1].governs; Cost and licensing; Governance guidance / applicability: Spending policies govern user and group access and credit spending for Work IQ API. | Found: Services managed by usage-based billing in the Microsoft admin center now include: Work IQ API for custom apps and agents | Fix: Add https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits to sources for explicit applicability of the spending-policy experience to Work IQ API. | Source: https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits
-- [supported, minor] Cost and licensing: spending-limit effect / behaviour: Users who hit a spending limit lose access to agents and services for the rest of the month. | Found: When users hit the limit, they lose access to agents and services for the rest of the month until credits reset on the first of the month. | Fix: Add after this sentence: 'The monitoring guidance qualifies per-user limits: if a running task exceeds the per-user limit, it can complete without interruption.' The qualification is at https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits
-- [unsupported, minor] rationale: risk / applicability: The existing Work IQ MCP tenant policy covers MCP tool requests only. | Found: Searched: Work IQ A2A policy governance; "Work IQ" policy settings API Graph PowerShell tenant update policy. Read MCP policy governance and Work IQ overview; they establish MCP coverage and a potentially broader policy layer, not MCP-exclusive applicability. | Fix: Replace 'the existing Work IQ MCP tenant policy covers MCP tool requests only' with 'the existing Work IQ MCP tenant policy is documented for MCP tool requests, without specifying coverage of A2A tasks or elicitation'.
+- [supported, minor] controls[2].note; Governance controls table / behaviour: The monitoring row shows active users, credits used and session count per service. | Found: In the Agents and services view ... This view shows active users, credits used, cost, and session count for each supported service. | Fix: Replace the first sentence of controls[2].note and its rendered counterpart with: 'The admin-center view shows active users, credits used and session count per service; the Graph call returns consumedQuantity by service.' The Graph reference at https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/costmanagementserviceusagerecord-list documents serviceId, consumedQuantity and unit, not active-user or session-count fields. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending
 -->
