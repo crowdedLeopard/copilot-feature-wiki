@@ -52,8 +52,8 @@ sources:
   - title: "Overview of the Tools page in Microsoft 365 admin center"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-tools-overview"
     kind: "learn"
-  - title: "Get-DlpPolicy"
-    url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-dlppolicy?view=pa-ps-latest"
+  - title: "Add-ConnectorsToPolicy"
+    url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest"
     kind: "learn"
   - title: "Package Management API overview"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview"
@@ -95,16 +95,16 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Security > Data and privacy > Data policy > New Policy > Next > Available > environment > Add to policy > Next > connector > three dots (⋮) > Block"
+      path: "Security > Data and privacy > Data policy > New Policy > Next > Add an environment > Available > environment > Add to policy > Next > Assign connectors > connector > three dots (⋮) > Block"
       docs: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
     api:
       kind: "powershell"
-      call: "Get-DlpPolicy"
-      docs: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-dlppolicy?view=pa-ps-latest"
-    note: "General control: the page does not mention MCP apps. Get-DlpPolicy lists the tenant's policies; it does not block anything."
+      call: "Add-ConnectorsToPolicy -PolicyName <policy-guid> -Classification Blocked -Connectors <connector-objects>"
+      docs: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest"
+    note: "General control: the page does not mention MCP apps. Add-ConnectorsToPolicy moves the specified connectors into the Blocked group. Each connector object must contain id, type, and name."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-19"
 roadmapModified: "2026-09-02T22:56:59"
 changes:
   - date: "2026-11-17"
@@ -121,19 +121,21 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 80 statements confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 91 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-19"
+    note: "Corrected the data policy control: its automation is now Add-ConnectorsToPolicy with -Classification Blocked (Get-DlpPolicy only lists policies), and the admin path now includes the Add an environment and Assign connectors steps."
+version: 4
 verification:
   status: "held"
   date: "2026-11-19"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 91
   confirmed: 90
   unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "3264fc927ff9a1df2e9eea7237895eb5"
+  attempts: 2
+  hash: "6f1f0526720f1e8d2847e3b603240704"
 ---
 
 ## What's changing
@@ -212,13 +214,13 @@ Makers need an agent with an MCP server added as a tool. The related Learn how-t
 <tr><td data-label="Control"><strong>Whether an MCP server is available to agents across the organisation</strong><br><small>Tenant</small><br><small class="controls__note">Blocking a server disables all its tools. Not stated to apply to MCP apps. API: preview, not for production; needs a Microsoft Agent 365 licence and delegated CopilotPackages.ReadWrite.All; no request body.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Registry › MCP server › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which individual tools on a supported MCP server are enabled</strong><br><small>Tenant</small><br><small class="controls__note">Rolling out; supports only specific MCP server types registered on Agent 365. General control: not stated to apply to MCP apps.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Registry › MCP server › Tools › Enabled or Disabled toggle › Save <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Approval of MCP servers that developers register</strong><br><small>Tenant</small><br><small class="controls__note">Needs AI Administrator or Global Administrator. Entra consent is a separate step after approval.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Requests (preview) › request › Approve or Reject <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which connectors, and so MCP server tools, makers can use in Copilot Studio</strong><br><small>Environment</small><br><small class="controls__note">General control: the page does not mention MCP apps. Get-DlpPolicy lists the tenant's policies; it does not block anything.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy › Next › Available › environment › Add to policy › Next › connector › three dots (⋮) › Block <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Get-DlpPolicy</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-dlppolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which connectors, and so MCP server tools, makers can use in Copilot Studio</strong><br><small>Environment</small><br><small class="controls__note">General control: the page does not mention MCP apps. Add-ConnectorsToPolicy moves the specified connectors into the Blocked group. Each connector object must contain id, type, and name.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy › Next › Add an environment › Available › environment › Add to policy › Next › Assign connectors › connector › three dots (⋮) › Block <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-ConnectorsToPolicy -PolicyName &lt;policy-guid&gt; -Classification Blocked -Connectors &lt;connector-objects&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 No setting specific to MCP apps is documented at the time of writing (November 2026), so the rows below govern the MCP server and its tools, not the rendered interface. Microsoft 365 admin center controls cover plugins, skills and MCP servers; Learn says Power Platform data policies still control which tools makers can add in Copilot Studio, and that Agent 365 and Copilot Studio can have separate controls, so a block in one place is not shown to apply in the other.
 
-Tool-level control is described as rolling out and as supporting only specific types of MCP server registered on Agent 365. The Power Platform data policy page covers Power Platform connectors used as tools and does not mention MCP apps, so confirm that a server added through the new Copilot Studio experience is covered. To apply a data policy after choosing Block, select Next, define scope if prompted and select Next, then review and select Create policy. The PowerShell cmdlet reads existing policies; this briefing does not describe how to change a connector's classification from PowerShell.
+Tool-level control is described as rolling out and as supporting only specific types of MCP server registered on Agent 365. The Power Platform data policy page covers Power Platform connectors used as tools and does not mention MCP apps, so confirm that a server added through the new Copilot Studio experience is covered. To apply a data policy after choosing Block, select Next, define scope if prompted and select Next, then review and select Create policy. Add-ConnectorsToPolicy moves the specified connectors into the Blocked group. Each connector object must contain id, type, and name.
 
 ## Open questions
 
@@ -237,7 +239,5 @@ impact: Low. Makers who connect a UI-enabled MCP server and the users of those a
 <!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[3].api; Governance controls row 4 / command: Get-DlpPolicy is the automation counterpart of the connector-blocking control. | Found: Retrieves a list of DLP policy objects. | Fix: Replace controls[3].api.call and the rendered call with Add-ConnectorsToPolicy -PolicyName <policy-guid> -Classification Blocked -Connectors <connector-objects>. Use https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest as api.docs and add it to sources. Replace the row's Get-DlpPolicy note and its closing prose with: 'Add-ConnectorsToPolicy moves the specified connectors into the Blocked group. Each connector object must contain id, type, and name.' The reference explicitly accepts Blocked and documents these three required properties. | Source: https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-dlppolicy?view=pa-ps-latest
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[3].ui; Governance controls row 4 / admin-path: Connector Block is reached through Security > Data and privacy > Data policy > New Policy > Next > Available > environment > Add to policy > Next > connector > three dots (⋮) > Block. | Found: Select Next. The Add an environment page appears. Select Next. The Assign connectors page appears. | Fix: Use the full path: Security > Data and privacy > Data policy > New Policy > Next > Add an environment > Available > environment > Add to policy > Next > Assign connectors > connector > three dots (⋮) > Block. Apply this to controls[3].ui.path and the rendered table. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
+- [contradicted, blocker] controls[2].api; Governance controls table / absence: Automation for reviewing developer-submitted MCP server registrations is not documented. | Found: A package represents an agent or a tool, such as a plugin, MCP server, or skill, in the organization catalog. ... Reject package title ... POST `/copilot/admin/catalog/packages/{packageId}/reject` ... Reject a pending staged package title/version submission. | Fix: Replace controls[2].api null with kind graph, call 'POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{packageId}/reject', and docs 'https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-reject'; update the rendered API cell and cite that page. Add to the row note: 'API rejects a pending package title submission; it does not approve a registration or grant consent. Use the title ID confirmed for submission review and supply the matching staged version in the version body property, not an individual request identifier. Beta, not for production; requires Microsoft Agent 365 and CopilotPackages.ReadWrite.All.' | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview
 -->

@@ -2,58 +2,41 @@
   "slug": "power-apps-new-view-layout-in-model-driven-apps",
   "roadmapId": 575294,
   "title": "Power Apps: calendar and card layouts for views in model-driven apps",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-19",
-  "version": 3,
+  "version": 4,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "cd5b21ff3a5b",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-19",
-    "reasons": [
-      "1 blocking finding (claim 16)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 32,
-    "confirmed": 31,
+    "claims": 36,
+    "confirmed": 36,
     "unconfirmed": 0,
-    "contradicted": 1,
-    "blocker": 1,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 0
+    "minor": 1
   },
-  "summary": "Hold: the briefing incorrectly reports licensing as unpublished. Microsoft documents that model-driven apps require Power Apps premium use rights; only requirements specific to the new layouts remain undocumented. The roadmap facts and the general environment path and CLI command are supported.",
+  "summary": "The briefing passes: its roadmap facts, admin path and CLI operation are supported, and searches did not find controls or licensing specific to the planned layouts. One minor correction should acknowledge conflicting Microsoft guidance about whether Environment Makers need licences to run model-driven apps.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: products; title",
+      "where": "front matter: status; summary",
       "type": "record",
-      "claim": "This feature belongs to Power Apps.",
+      "claim": "The planned feature is in development and not yet available.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [\"Power Apps\"]",
+      "quote": "\"status\": \"In development\", \"previewDate\": \"December CY2026\", \"targetDate\": \"February CY2027\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "front matter: status; summary",
-      "type": "record",
-      "claim": "The roadmap lists the layouts as in development, not yet available.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is February CY2027.",
@@ -64,7 +47,7 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 3,
       "where": "front matter: previewDate",
       "type": "record",
       "claim": "The roadmap preview target is December CY2026.",
@@ -75,7 +58,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 4,
       "where": "front matter: releasePhase",
       "type": "record",
       "claim": "The roadmap lists General Availability and Preview release phases.",
@@ -86,7 +69,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 5,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) availability.",
@@ -97,10 +80,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 6,
       "where": "front matter: platforms",
       "type": "record",
-      "claim": "The roadmap platform is Web.",
+      "claim": "The listed platform is Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -108,10 +91,21 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "summary; What's changing",
+      "n": 7,
+      "where": "title; front matter: products; Scope",
       "type": "record",
-      "claim": "The roadmap plans a calendar layout for displaying model-driven app data.",
+      "claim": "The change concerns views in Power Apps model-driven apps.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"title\": \"Power Apps: New view layout in model-driven apps\"; Applies to: Model-driven apps",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap plans a calendar layout for displaying data.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Makers can now choose to display their data as a calendar or a stack of cards instead of the default grid layout.",
@@ -120,9 +114,9 @@
     },
     {
       "n": 9,
-      "where": "summary; What's changing",
+      "where": "title; summary; What's changing",
       "type": "record",
-      "claim": "The roadmap plans a stack-of-cards layout for displaying model-driven app data.",
+      "claim": "The roadmap plans a stack-of-cards layout for displaying data.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Makers can now choose to display their data as a calendar or a stack of cards instead of the default grid layout.",
@@ -133,7 +127,7 @@
       "n": 10,
       "where": "summary; What's changing",
       "type": "record",
-      "claim": "The roadmap describes these layouts as alternatives to the default grid layout.",
+      "claim": "The roadmap describes these layouts as alternatives to the default grid.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "instead of the default grid layout",
@@ -142,9 +136,9 @@
     },
     {
       "n": 11,
-      "where": "summary; What's changing; Scope; controls[1].note; rationale: risk",
+      "where": "summary; What's changing; Scope; controls[1].note; rationales",
       "type": "record",
-      "claim": "The roadmap says makers configure these layouts directly in the model-driven app designer.",
+      "claim": "Makers are to configure the layouts directly in the model-driven app designer.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Makers can configure these layouts directly in the model driven app designer, giving users more intuitive ways to visualize and work with their data.",
@@ -153,6 +147,17 @@
     },
     {
       "n": 12,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap feature scope is users, enabled by admins or makers.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Feature Scope\nUsers (enabled by admins or makers)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
       "where": "What's changing",
       "type": "record",
       "claim": "The roadmap lists the Weekly release channel.",
@@ -163,7 +168,7 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 14,
       "where": "What's changing",
       "type": "record",
       "claim": "The roadmap lists version 2612.2.",
@@ -174,21 +179,142 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap applies to model-driven apps and lists its feature scope as users, enabled by admins or makers.",
+      "n": 15,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The planned layouts are maker-chosen, corresponding to user-opt-in under the wiki's definition.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Applies to\nModel-driven apps\n\nFeature Scope\nUsers (enabled by admins or makers)",
+      "quote": "Makers can now choose to display their data as a calendar or a stack of cards instead of the default grid layout. Makers can configure these layouts directly in the model driven app designer",
       "severity": null,
       "fix": null
     },
     {
-      "n": 15,
-      "where": "front matter: defaultState",
-      "type": "default",
-      "claim": "The layouts are user-opt-in: makers choose whether to use them, with no documented prerequisite admin switch.",
+      "n": 16,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Entitlement is included within the premium use rights required for the model-driven app product.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq",
+      "quote": "Model-driven apps use Dataverse and are premium apps by default. Every user who runs a model-driven app needs a license that provides Power Apps premium use rights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Running model-driven apps requires a licence providing Power Apps premium use rights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq",
+      "quote": "Every user who runs a model-driven app needs a license that provides Power Apps premium use rights.",
+      "severity": "minor",
+      "fix": "Keep the licensing FAQ requirement, but add: \"Microsoft's Share a model-driven app page separately says users assigned the Environment Maker security role don't require licences to use model-driven apps, which conflicts with the licensing FAQ.\" Link that sentence to https://learn.microsoft.com/power-apps/maker/model-driven-apps/share-model-driven-app#app-sharing-privilege-and-licensing-requirements."
+    },
+    {
+      "n": 18,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Power Apps Premium is a general premium entitlement option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq",
+      "quote": "While Power Apps Premium, Power Apps per app plans, and the Power Apps per app pay-as-you-go meter that give premium Power Apps usage rights satisfy the requirement generally, use rights differ by license and by the context the app runs in.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Power Apps per app plans are a general premium entitlement option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq",
+      "quote": "While Power Apps Premium, Power Apps per app plans, and the Power Apps per app pay-as-you-go meter that give premium Power Apps usage rights satisfy the requirement generally, use rights differ by license and by the context the app runs in.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Power Apps per app pay-as-you-go meter is a general premium entitlement option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq",
+      "quote": "While Power Apps Premium, Power Apps per app plans, and the Power Apps per app pay-as-you-go meter that give premium Power Apps usage rights satisfy the requirement generally, use rights differ by license and by the context the app runs in.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Qualifying Dynamics 365 Power Apps use rights depend on the app's context.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq",
+      "quote": "Dynamics 365 licenses include Power Apps use rights within the context of and in the same environment as the licensed Dynamics 365 application.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Licensing requirements specific to the new calendar and card layouts are not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"model-driven apps\" \"calendar\" \"card\" \"licensing\"; Power Apps model driven new view layouts calendar stack cards 575294 configure licensing tenant environment switch. Opened Power Apps licensing FAQs; no layout-specific requirement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap entry describes no additional licence or consumption charge.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Makers can configure these layouts directly in the model driven app designer, giving users more intuitive ways to visualize and work with their data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "No Learn documentation for the planned new layouts was found at review time.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Power Apps\" \"new view layout\"; \"model-driven\" \"calendar\" \"card\" \"layouts\". Opened Understand model-driven app views; read results for Add the calendar control to tables and Create a card form, which describe existing controls, not this planned layout feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "absence",
+      "claim": "Detailed data-editing behaviour for the planned layouts is not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"model-driven\" \"new view layout\" calendar card edit actions supported tables. Opened Understand model-driven app views; read existing calendar and editable-grid search excerpts; none identifies the planned layouts or their editing behaviour.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The record actions available in the planned layouts are not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"model-driven\" \"new view layout\" calendar card edit actions supported tables. Opened Understand model-driven app views; read Work with rows in the calendar view excerpts for the existing Calendar control, not the roadmap's new layouts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes no autonomous capability.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Makers can now choose to display their data as a calendar or a stack of cards instead of the default grid layout.",
@@ -196,65 +322,10 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Licensing is unknown because neither the roadmap nor Microsoft Learn states a licence for the new layouts.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq#model-driven-apps",
-      "quote": "Model-driven apps use Dataverse and are premium apps by default. Every user who runs a model-driven app needs a license that provides Power Apps premium use rights.",
-      "severity": "blocker",
-      "fix": "Set licensing.model to \"included\". Replace the licensing notes and the opening \"Not yet published\" in Cost and licensing with: \"Model-driven apps require a licence providing Power Apps premium use rights. Microsoft lists Power Apps Premium, Power Apps per app plans and the Power Apps per app pay-as-you-go meter as general entitlement options; qualifying Dynamics 365 rights depend on context. Requirements specific to the new layouts are not yet published.\" Cite https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq. In the cost rationale, replace \"licensing for the new layouts is not yet published\" with \"requirements specific to the new layouts are not yet published\". Keep cost low: the briefing rates the change, not the existing app entitlement."
-    },
-    {
-      "n": 17,
-      "where": "front matter: licensing.notes",
-      "type": "absence",
-      "claim": "Microsoft has not published a meter specific to the new layouts.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Apps new view layout calendar stack cards model driven apps designer enable license; Power Apps calendar card layouts tenant environment switch default settings license meter model driven. Opened pricing-billing-skus and powerapps-licensing-faq; no layout-specific meter found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "Cost and licensing",
-      "type": "record",
-      "claim": "The roadmap entry describes no additional licence or consumption charge.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Makers can now choose to display their data as a calendar or a stack of cards instead of the default grid layout. Makers can configure these layouts directly in the model driven app designer, giving users more intuitive ways to visualize and work with their data.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing; Open questions",
-      "type": "absence",
-      "claim": "No Microsoft Learn page documenting these new layouts was found at review time.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Power Apps\" \"new view layout\"; \"model-driven\" \"calendar\" \"card\" \"layouts\". Read create-edit-views and results for add-calendar-control and create-card-forms: existing controls, not this planned combined layout feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
-      "type": "absence",
-      "claim": "Detailed data-editing behaviour for the planned layouts is not yet documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"model-driven\" \"calendar\" \"card\" \"layouts\" \"editing\"; Power Apps new view layout calendar stack cards model driven apps designer enable license. Read create-edit-views; found no editing specification for the new layouts.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
+      "n": 28,
       "where": "Risk assessment: Security & identity",
       "type": "applicability",
-      "claim": "Existing table security applies to the model-driven app data shown by the layouts.",
+      "claim": "Existing table security continues to govern model-driven app data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/maker/model-driven-apps/share-model-driven-app",
       "quote": "Model-driven apps use role-based security for sharing. The fundamental concept in role-based security is that a security role contains privileges that define a set of actions that can be performed on tables within the app.",
@@ -262,10 +333,10 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 29,
       "where": "Risk assessment: Security & identity",
       "type": "applicability",
-      "claim": "Existing column security applies to data accessed through the layouts.",
+      "claim": "Existing column security continues to govern access to model-driven app data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/field-level-security",
       "quote": "Column-level security configurations are organization-wide and apply to all data access requests.",
@@ -273,120 +344,87 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The roadmap describes no autonomous capability.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Makers can now choose to display their data as a calendar or a stack of cards instead of the default grid layout. Makers can configure these layouts directly in the model driven app designer, giving users more intuitive ways to visualize and work with their data.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "absence",
-      "claim": "The record actions available in the new layouts are not yet documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"model-driven\" \"calendar\" \"card\" \"layouts\" \"editing\". Read create-edit-views and search excerpts for calendar controls; the existing calendar's actions do not establish actions for the planned layouts.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
+      "n": 30,
       "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
       "claim": "Environment grid and view settings are at Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > Grids and views.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/settings-features#grids-and-views",
-      "quote": "select **Manage** ... select **Environments** ... select an environment ... select **Settings** ... Expand **Product**, and then select **Features**. ... ## Grids and views",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "pac env update-settings --name advancedcolumneditorenabled --value <true|false> updates the named environment setting.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/developer/cli/reference/env#pac-env-update-settings",
-      "quote": "## pac env update-settings\n\nUpdate environment settings ... --name ... Name of the setting to update ... --value ... Value to which setting should be updated to",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "Governance controls: paragraph below table",
-      "type": "behaviour",
-      "claim": "pac env update-settings changes settings stored in organization table columns.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/developer/cli/reference/env#pac-env-update-settings",
-      "quote": "The pac env list-settings command returns all the columns from the first and only row of the organization entity type. Use `pac env update-settings` to change those settings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "controls[0].note; Governance controls: paragraph below table",
-      "type": "behaviour",
-      "claim": "advancedcolumneditorenabled is a writable Boolean organization column enabling display-column options on model-driven app views.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization#advancedcolumneditorenabled",
-      "quote": "Writable columns/attributes ... AdvancedColumnEditorEnabled ... Description | Flag to indicate if the display column options on a view in model-driven apps is enabled ... LogicalName | advancedcolumneditorenabled ... Type | Boolean",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "controls[1].ui and api; Governance controls; Open questions: admin restrictions",
-      "type": "absence",
-      "claim": "No separate tenant or environment UI switch or API control for the new calendar and card layouts is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"model-driven\" \"calendar\" \"card\" \"admin\" \"switch\"; Power Apps calendar card layouts tenant environment switch default settings license meter model driven. Read settings-features, pac env, and organization reference matches for calendar/card/layout; no new-layout switch found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "controls[0].note; Governance controls: paragraph below table",
-      "type": "absence",
-      "claim": "Microsoft does not document advancedcolumneditorenabled as controlling the new layouts.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: site:learn.microsoft.com advancedcolumneditorenabled organization writable boolean; \"model-driven\" \"calendar\" \"card\" \"layouts\". Opened organization reference, pac env and settings-features: the column concerns display-column options, not the new layouts.",
+      "quote": "select **Manage**. ... select **Environments**. ... select an environment. ... select **Settings**. ... Expand **Product**, and then select **Features**. ... ## Grids and views",
       "severity": null,
       "fix": null
     },
     {
       "n": 31,
-      "where": "Open questions: supported tables and column types",
-      "type": "absence",
-      "claim": "The tables and column types supported by these new layouts are not yet documented.",
+      "where": "controls[0].api; Governance controls table and prose",
+      "type": "command",
+      "claim": "pac env update-settings --name advancedcolumneditorenabled --value <true|false> updates the named environment organization setting.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Power Apps new view layout calendar stack cards model driven apps designer enable license; \"model-driven\" \"calendar\" \"card\" \"layouts\". Read create-edit-views and existing calendar/card search excerpts; no support matrix for the planned layouts found.",
+      "source": "https://learn.microsoft.com/power-platform/developer/cli/reference/env#pac-env-update-settings",
+      "quote": "## pac env update-settings\nUpdate environment settings ... --name ... Name of the setting to update ... --value ... Value to which setting should be updated to ... Use `pac env update-settings` to change those settings.",
       "severity": null,
       "fix": null
     },
     {
       "n": 32,
-      "where": "Open questions: configuration level",
+      "where": "controls[0].note; Governance controls prose",
+      "type": "behaviour",
+      "claim": "advancedcolumneditorenabled is a writable Boolean organization column controlling display column options on model-driven app views.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization#writable-columns-attributes",
+      "quote": "These columns/attributes return true for either IsValidForCreate or IsValidForUpdate ... Flag to indicate if the display column options on a view in model-driven apps is enabled ... LogicalName: advancedcolumneditorenabled ... Type: Boolean",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].note; Governance controls prose",
       "type": "absence",
-      "claim": "The precise app, view or table level at which makers configure the new layouts is not yet documented.",
+      "claim": "The related grid settings and advancedcolumneditorenabled are not documented as controlling the new layouts.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Power Apps\" \"new view layout\"; \"model-driven\" \"calendar\" \"card\" \"layouts\". Read create-edit-views and app-designer search excerpts; only the roadmap identifies the designer, without the configuration level for this feature.",
+      "quote": "Searched: \"Power Apps\" \"calendar\" \"card\" \"layout\" \"settings\" API organization. Opened Manage feature settings, pac env and Organization table/entity reference; searched the latter for calendar, card and layout. None ties these settings to the planned layouts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1].ui; controls[1].api; Governance controls prose; Open questions",
+      "type": "absence",
+      "claim": "No separate tenant or environment UI switch or API for the planned calendar and card layouts was found as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"model-driven apps\" \"calendar\" \"card\" \"admin\" \"enable\"; \"calendar\" \"card\" \"layouts\" \"Power Platform\" \"API\"; \"model-driven\" \"layout\" \"calendar\" \"PowerShell\". Opened Manage feature settings, pac env and Organization table/entity reference; no switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Open questions: configuration level",
+      "type": "absence",
+      "claim": "The precise app, view or table level at which makers configure the new layouts remains undocumented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Power Apps\" \"new view layout\"; \"model-driven\" \"calendar\" \"card\" \"layouts\". Opened Understand model-driven app views; read existing Calendar control configuration excerpts. The roadmap names the designer but not the new layouts' configuration level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Open questions: supported tables and column types",
+      "type": "absence",
+      "claim": "Supported tables and column types for the planned layouts remain undocumented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"model-driven\" \"new view layout\" calendar card edit actions supported tables. Opened Understand model-driven app views; read existing Calendar control and editable-grid excerpts. None establishes supported tables or columns for the planned new layouts.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-19T05:19:30.286Z",
+    "at": "2026-11-19T06:20:48.876Z",
     "summary": {
-      "links": 8,
+      "links": 10,
       "unreachable": 0,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 0,
@@ -397,6 +435,11 @@
     "linkChecks": [
       {
         "url": "https://www.microsoft.com/microsoft-365/roadmap?id=575294",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq",
         "ok": true,
         "status": 200
       },
@@ -432,6 +475,11 @@
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/settings-features#grids-and-views",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq#model-driven-apps",
         "ok": true,
         "status": 200
       }
@@ -475,6 +523,12 @@
     {
       "date": "2026-11-17",
       "status": "verified",
+      "version": 3,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-19",
+      "status": "held",
       "version": 3,
       "model": "gpt-6.1-sol"
     }

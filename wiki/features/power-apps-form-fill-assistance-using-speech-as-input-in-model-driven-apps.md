@@ -4,7 +4,7 @@ slug: "power-apps-form-fill-assistance-using-speech-as-input-in-model-driven-app
 roadmapId: 576281
 topic: "power-platform"
 products: ["Power Apps"]
-summary: "Users in model-driven apps can record speech with a microphone icon and have the transcript fill form fields. Recordings are transient and not saved."
+summary: "Microsoft plans to let users in model-driven apps record speech with a microphone icon and use the transcript as a source for form fields. Recordings are transient and not saved."
 status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -51,7 +51,7 @@ controls:
       docs: "https://learn.microsoft.com/power-apps/user/form-filling-assistance#admin-control"
     api: null
     note: "This move is gradually rolling out. Selecting the setting opens a panel to select the environment and Edit setting (Copilot hub page)."
-  - governs: "Smart paste and the form fill toolbar for an app"
+  - governs: "Form fill assist toolbar for an app"
     scope: "app"
     ui:
       surface: "Power Apps (maker)"
@@ -69,7 +69,7 @@ controls:
     note: "Microsoft has not yet documented which existing controls govern the speech source."
 confidence: "medium"
 created: "2026-11-14"
-updated: "2026-11-17"
+updated: "2026-11-19"
 roadmapModified: "2026-10-23T21:59:27"
 changes:
   - date: "2026-11-14"
@@ -84,19 +84,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 46 statements not yet confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 47 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-19"
+    note: "Corrected the app-level control row: it now names only the form fill assist toolbar setting, with Smart paste noted as a separate setting; summary now attributes the speech plan to Microsoft."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 47 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-19"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 47
-  confirmed: 46
+  confirmed: 47
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "ad7e5c4792c83c5c4860ea9e6b3696cf"
+  contradicted: 0
+  attempts: 0
+  hash: "3c87dd84af4395c432fac8a52cfc290c"
 ---
 
 ## What's changing
@@ -139,16 +143,16 @@ Users of model-driven apps with form fill assistance on, including mobile platfo
 ## Governance guidance
 
 ### Before rollout
-- [ ] Decide whether speech input is acceptable for each app and data class.
-- [ ] Review the form fill assistance settings per environment.
-- [ ] Draft user guidance on dictation in shared spaces.
+- Decide whether speech input is acceptable for each app and data class.
+- Review the form fill assistance settings per environment.
+- Draft user guidance on dictation in shared spaces.
 
 ### At rollout
-- [ ] Check the Data entry setting under Copilot > Settings > Power Apps before the roadmap target of December CY2026.
+- Check the Data entry setting under Copilot > Settings > Power Apps before the roadmap target of December CY2026.
 
 ### After rollout
-- [ ] Sample records for transcription errors.
-- [ ] Gather user feedback and adjust settings.
+- Sample records for transcription errors.
+- Gather user feedback and adjust settings.
 
 ## Governance controls
 
@@ -158,7 +162,7 @@ Users of model-driven apps with form fill assistance on, including mobile platfo
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Form fill assistance (data entry agent) per environment</strong><br><small>Environment</small><br><small class="controls__note">This move is gradually rolling out. Selecting the setting opens a panel to select the environment and Edit setting (Copilot hub page).</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Power Apps › Data entry <a href="https://learn.microsoft.com/power-apps/user/form-filling-assistance#admin-control" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Smart paste and the form fill toolbar for an app</strong><br><small>App</small><br><small class="controls__note">Save and Publish the app. The designer page shows the toolbar label only; Smart paste is the FormPredictSmartPasteEnabled app setting.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>app designer › Settings › Features › Form fill assist toolbar <a href="https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Xrm.Utility.getGlobalContext().saveSettingValue(&quot;FormFileUploadEnabled&quot;, value, {overrideScope: 2, solutionUniqueName: mySolutionName})</code> <a href="https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/get-update-setting-value-using-code" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Form fill assist toolbar for an app</strong><br><small>App</small><br><small class="controls__note">Save and Publish the app. The designer page shows the toolbar label only; Smart paste is the FormPredictSmartPasteEnabled app setting.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>app designer › Settings › Features › Form fill assist toolbar <a href="https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Xrm.Utility.getGlobalContext().saveSettingValue(&quot;FormFileUploadEnabled&quot;, value, {overrideScope: 2, solutionUniqueName: mySolutionName})</code> <a href="https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/get-update-setting-value-using-code" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Speech-specific switch</strong><br><small>Environment</small><br><small class="controls__note">Microsoft has not yet documented which existing controls govern the speech source.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -177,12 +181,4 @@ The legacy environment feature flag is listed in the [feature settings reference
 risk: Medium. It is enabled by default for users and processes spoken content, which may include personal or sensitive information.
 cost: Low. Learn says form fill assistance needs a Power Apps premium or Dynamics 365 licence; no additional charge for speech is published.
 impact: High. The roadmap lists users as enabled by default, so many users of enabled apps may see the microphone.
--->
-
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].governs; Governance controls: second row / applicability: The displayed toolbar UI setting and FormFileUploadEnabled API govern both Smart paste and the form fill toolbar. | Found: Smart paste (FormPredictSmartPasteEnabled) and form fill assist toolbar (FormFileUploadEnabled) app settings | Fix: Change controls[1].governs and the corresponding rendered row heading to 'Form fill assist toolbar for an app'. Keep the existing UI path and API, which configure the toolbar, and the note identifying the separate Smart paste setting. Do not present this call as changing Smart paste. | Source: https://learn.microsoft.com/power-apps/user/form-filling-assistance
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] summary; title; What's changing; Scope / record: Power Apps form fill assistance in model-driven apps accepts speech as an input source. | Found: We’re expanding form fill assistance in Power Apps to use speech as a source, providing users a more natural way to fill forms. | Fix: Replace the summary's first sentence with 'Microsoft plans to let users in model-driven apps record speech with a microphone icon and use the transcript as a source for form fields.' The roadmap status is still In development.
 -->

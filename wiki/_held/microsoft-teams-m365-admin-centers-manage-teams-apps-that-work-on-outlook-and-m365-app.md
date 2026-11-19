@@ -49,6 +49,9 @@ sources:
   - title: "Understand Microsoft Teams apps and their capabilities"
     url: "https://learn.microsoft.com/microsoftteams/apps-in-teams"
     kind: "learn"
+  - title: "Purchase third-party Microsoft Teams apps and manage subscriptions and licenses"
+    url: "https://learn.microsoft.com/microsoftteams/purchase-third-party-apps"
+    kind: "learn"
 videos: []
 related: ["microsoft-teams-enable-agents-for-existing-applications-in-your-organization"]
 controls:
@@ -114,19 +117,23 @@ changes:
     note: "Correction: default state set to on (never-modified tenants unify automatically); Microsoft 365 admin center path and source corrected; MC796790 date and installation wording narrowed; two Teams admin center paths completed; installation checklist bullet removed."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-19"
+    note: "Correction: the Open questions roles bullet and the controls note now state that the cross-application app guide limits its Integrated apps controls to Global Admins; third-party app purchasing page added as a source."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 63 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-19"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 59
+  claims: 63
+  confirmed: 62
   unconfirmed: 0
   contradicted: 1
-  attempts: 2
-  hash: "06431ed62ddfa2699ca34f9ecc518235"
+  attempts: 3
+  hash: "f2118ca08731bb8ecb2bef91fa37eb9d"
 ---
 
 ## What's changing
@@ -208,12 +215,12 @@ The cost Microsoft's pages show is admin time: comparing org-wide and app-level 
 
 Unification is a tenant-wide step; after it, the per-app and org-wide controls below are shared between the two centres. Microsoft documents no PowerShell or API operation for the unification step itself at the time of writing (November 2026), so it is done in the Teams admin center.
 
-The PowerShell cmdlets listed are the Teams module's documented ways to set app state and availability. Microsoft's page does not say how each call appears in the Microsoft 365 admin center. The cmdlet for the org-wide **Custom apps** switch covers that switch only; no cmdlet for the other org-wide switches is listed here. The Teams Administrator role is the role Microsoft names for the Teams admin center; roles for the Integrated apps page are not covered here.
+The PowerShell cmdlets listed are the Teams module's documented ways to set app state and availability. Microsoft's page does not say how each call appears in the Microsoft 365 admin center. The cmdlet for the org-wide **Custom apps** switch covers that switch only; no cmdlet for the other org-wide switches is listed here. The Teams Administrator role is the role Microsoft names for the Teams admin center. The cross-application app guide says its Integrated apps controls are available only to Global Admins.
 
 ## Open questions
 
 - When will Phase 3 (automatic unification of tenants that have not acted) begin? Microsoft says the timeline will come at least 60 days beforehand; watch MC796790 in Message center.
-- Which Microsoft 365 admin center roles can change app availability on the Integrated apps page once a tenant is unified, and how do they interact with the Teams Administrator role? Not covered on the pages read.
+- The cited cross-application app guide says its Integrated apps controls are available only to Global Admins. It does not explain how those permissions interact with the Teams Administrator role after unification.
 - Which licence, if any, does unified agent and app management depend on? A licence statement is not yet published.
 - Is there a documented way to script the move to unified app management, or to confirm a tenant's unification state, other than the Teams admin center?
 
@@ -226,7 +233,5 @@ impact: Medium. Admins of both centres see the change first; users notice only i
 <!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Open questions: Microsoft 365 admin center roles / absence: The pages read do not cover which Microsoft 365 admin center roles can change availability on Integrated apps. | Found: The following controls on the integrated apps portal in the Microsoft 365 Admin Center are only available to Global Admins. Check your credentials before you proceed. | Fix: Replace the roles bullet in Open questions with: "The cited cross-application app guide says its Integrated apps controls are available only to Global Admins. It does not explain how those permissions interact with the Teams Administrator role after unification." | Source: https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing: third-party app fees / licensing: Individual third-party apps can have their own publisher-provided paid subscriptions or licenses. | Found: Some Teams apps require purchasing a service subscription to use app functionality. These service subscriptions are called Software as a Service (SaaS) offers. | Fix: Add https://learn.microsoft.com/microsoftteams/purchase-third-party-apps to sources for the sentence about separate third-party app licenses and fees. | Source: https://learn.microsoft.com/microsoftteams/purchase-third-party-apps
+- [contradicted, blocker] front matter: licensing.model; licensing.notes; Cost and licensing; Open questions; rationale: cost / licensing: The licensing model for this app and agent management capability is unknown because Microsoft has not published an entitlement statement. | Found: Before you can manage agents in the Microsoft 365 admin center, confirm the following requirements are met: Your organization has the required subscription and licenses for either Microsoft 365, Microsoft Copilot, or Microsoft Agent 365. | Fix: Set licensing.model to included. Replace the licensing notes and the first two sentences of Cost and licensing with: 'For agent management in the Microsoft 365 admin center, Microsoft requires the organisation to have the required subscription and licences for Microsoft 365, Microsoft Copilot or Microsoft Agent 365, and appropriate licences for users who create, publish or use agents. A separate licence or meter for unification itself is not yet published.' Cite https://learn.microsoft.com/microsoft-agent-365/admin/agent-365-overview. In the licensing Open question and cost rationale, replace the broad claim that licensing is unpublished with the narrower statement that a separate licence or meter for unification itself is not yet published. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-365-overview
 -->

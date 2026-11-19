@@ -181,17 +181,19 @@ changes:
     note: "Corrected after the independent check: the data policy row now gives the full path (Security > Settings > Data and privacy > Data policy > + New Policy), and the Work IQ MCP policy path now includes Registry."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 110 statements confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 120 statements contradicted, 0 unconfirmed; taken offline until corrected"
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-19"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 110
-  confirmed: 110
+  claims: 120
+  confirmed: 119
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "d0cd32d4822acd475ba6d1b079549eef"
 ---
 
@@ -283,3 +285,13 @@ No licence or meter for the protocol itself is documented at the time of writing
 - Is there a PowerShell, Microsoft Graph or REST call for blocking an MCP server or a tool in the Microsoft 365 admin center? Not yet documented.
 - Are write operations through Work IQ MCP on or off by default? The Work IQ MCP policy page says mutation operations aren't allowed by default; the Copilot Studio what's-new page says Work IQ write operations are enabled by default in that product.
 - When will tool-level control cover bring-your-own MCP servers? Microsoft calls it a planned future release.
+
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[8].api / command: New-DlpPolicy -DisplayName <name> -EnvironmentType <type> [-Environments <environments>] controls which connectors agents may use. | Found: The New-DlpPolicy cmdlet creates a new DLP policy for the logged in admin's tenant. ... -DisplayName ... Creates the policy with the input display name. ... -EnvironmentType ... The type of the environment: trial, production, sandbox, default. | Fix: Replace the API call with 'Add-ConnectorsToPolicy -PolicyName <policy-guid> -Classification Blocked -Connectors <connector-objects>' and its docs URL with https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest. Add to the note: 'For an existing policy, this classifies the specified connectors as Blocked; each connector object needs id, type and name.' Add that reference to sources. The current call creates a policy but names no parameter that selects or blocks connectors. | Source: https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[2].note / behaviour: The Agent 365 CLI reference instead points administrators to Requested Agents for pending requests. | Found: pending requests are reviewed on the Requested Agents page. ... Before any agent can use the server, a tenant administrator must approve it on the Requested Tools page | Fix: Replace the note's second sentence with: 'The Agent 365 CLI reference mentions both Requested Agents and Requested Tools for pending requests.' The introduction names Requested Agents, but the publish section now names Requested Tools. | Source: https://learn.microsoft.com/microsoft-agent-365/developer/reference/cli/develop-mcp
+- [supported, minor] controls[7].api / command: POST /governance/ruleBasedPolicies?api-version=2024-10-01 creates an ACP and POST /governance/ruleBasedPolicies/<policyId>/environmentGroups/<environmentGroupId>/assignments?api-version=2024-10-01 with {} assigns it. | Found: Adding ACP to an environment group is a two-part operation: create the policy, then assign it to the group. ... To assign the policy to the whole group, send an assignment request with an empty body ({}). | Fix: Keep the two documented method-and-path operations, but remove 'creates an unassigned policy', 'with {}' and 'assigns it' from the call. Put that explanation in the note: 'Create the policy, then assign it to the group with an empty request body ({}).' | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-advanced-connector-policies
+- [supported, minor] controls[9].api / command: PATCH <organization URI>/api/data/v9.2/allowedmcpclients(<allowedmcpclientid>) with isenabled false or true disables or enables a client. | Found: Entity set path: ... [organization URI]/api/data/v9.2/allowedmcpclients ... Primary key: ... allowedmcpclientid ... Operations supported: ... POSTGETPATCHDELETE ... isenabled | Edm.Boolean | Display name: Is Enabled | Fix: Set the call to 'PATCH <organization URI>/api/data/v9.2/allowedmcpclients(<allowedmcpclientid>)'. Move the body explanation into the note: 'The request body sets isenabled to false to disable the selected client, or true to enable it.' | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient?view=dataverse-latest
+-->

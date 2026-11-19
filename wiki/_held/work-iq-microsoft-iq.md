@@ -84,18 +84,20 @@ changes:
     note: "Corrected after the independent check: licensing model and cost rating now reflect that the release's licensing is not yet published; added the harness write-default note and service-principal auto-creation note; removed the service-principal setup step from the checklist."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 67 statements confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 72 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-19"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 67
+  claims: 72
+  confirmed: 71
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "efff8de7d7d268732629c4db3d974a8e"
 ---
 
@@ -194,4 +196,10 @@ Both rows are controls for Work IQ and Copilot Credits that Learn documents toda
 risk: Medium. The roadmap describes agents discovering and using organisational knowledge, and the default state is not stated; the Work IQ controls Learn documents cover part of this, but none is confirmed for the new item.
 cost: Low. The known cost for this roadmap change is admin review time; licensing and metering for the release are not yet published. Existing Work IQ API usage separately consumes Copilot Credits.
 impact: Medium. Makers, developers and agent owners who build on Work IQ are most likely to notice; Microsoft has not said whether ordinary Microsoft 365 Copilot users see any change.
+-->
+
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[1].api / command: GET https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies supplies the automation for the row's spending-policy control. | Found: List spendingPolicies | GET /copilot/costManagement/spendingPolicies | Get a list of spending policies. ... Update spendingPolicy | PATCH /copilot/costManagement/spendingPolicies/{id} | Update a spending policy. | Fix: Replace controls[1].api.call with 'PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id}' and api.docs with 'https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update'. Add to its note: 'Set periodLimit in the request body to change the policy spending limit.' Update the rendered table accordingly. The existing GET only lists policies; the update reference documents periodLimit as writable. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview
 -->

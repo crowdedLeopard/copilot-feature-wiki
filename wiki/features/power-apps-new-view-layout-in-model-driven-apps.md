@@ -17,14 +17,17 @@ impact: "low"
 defaultState: "user-opt-in"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published. Neither the roadmap nor Microsoft Learn states a licence or meter for the new layouts."
+  model: "included"
+  notes: "Model-driven apps require a licence providing Power Apps premium use rights. Microsoft lists Power Apps Premium, Power Apps per app plans and the Power Apps per app pay-as-you-go meter as general entitlement options; qualifying Dynamics 365 rights depend on context. Requirements specific to the new layouts are not yet published."
 audiences: ["maker","power-platform-admin","end-user"]
 tags: ["power-apps","model-driven-apps","views","app-designer"]
 sources:
   - title: "Microsoft 365 Roadmap 575294"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=575294"
     kind: "roadmap"
+  - title: "Power Apps licensing FAQs"
+    url: "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq"
+    kind: "learn"
   - title: "Understand model-driven app views"
     url: "https://learn.microsoft.com/power-apps/maker/model-driven-apps/create-edit-views"
     kind: "learn"
@@ -67,7 +70,7 @@ controls:
     note: "The roadmap says makers configure the layouts in the model-driven app designer."
 confidence: "low"
 created: "2026-11-14"
-updated: "2026-11-17"
+updated: "2026-11-19"
 roadmapModified: "2026-11-11T00:51:09"
 changes:
   - date: "2026-11-14"
@@ -82,19 +85,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 28 statements confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 32 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-19"
+    note: "Correction: licensing model set to included and the cost section now states the premium use-rights requirement for model-driven apps from the Power Apps licensing FAQs."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 36 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 32
-  confirmed: 31
+  claims: 36
+  confirmed: 36
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "4c63c2ae16686205665499242ee4c21a"
+  contradicted: 0
+  attempts: 0
+  hash: "e2f85ac5390e62d82bac29683d2975aa"
 ---
 
 ## What's changing
@@ -125,7 +132,7 @@ Layouts could change how users scan records, which can affect training and acces
 
 ## Cost and licensing
 
-Not yet published. No additional licence or consumption is described in the roadmap entry.
+Model-driven apps require a licence providing Power Apps premium use rights. Microsoft lists Power Apps Premium, Power Apps per app plans and the Power Apps per app pay-as-you-go meter as general entitlement options; qualifying Dynamics 365 rights depend on context. Requirements specific to the new layouts are not yet published. See [Power Apps licensing FAQs](https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq#model-driven-apps). No additional licence or consumption is described in the roadmap entry.
 
 ## Scope
 
@@ -168,12 +175,12 @@ No separate tenant or environment switch for the new layouts was found in Micros
 
 <!-- rationale
 risk: Low. The roadmap describes a presentation choice that makers configure; detailed behaviour is not yet documented, so we expect limited change to data boundaries.
-cost: Low. The only cost the sources show is app review, accessibility checking and communication effort; licensing for the new layouts is not yet published.
+cost: Low. The only cost the sources show is app review, accessibility checking and communication effort; requirements specific to the new layouts are not yet published.
 impact: Low. Affects makers and the users of apps where makers choose the layouts.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model and notes; Cost and licensing; rationale: cost / licensing: Licensing is unknown because neither the roadmap nor Microsoft Learn states a licence for the new layouts. | Found: Model-driven apps use Dataverse and are premium apps by default. Every user who runs a model-driven app needs a license that provides Power Apps premium use rights. | Fix: Set licensing.model to "included". Replace the licensing notes and the opening "Not yet published" in Cost and licensing with: "Model-driven apps require a licence providing Power Apps premium use rights. Microsoft lists Power Apps Premium, Power Apps per app plans and the Power Apps per app pay-as-you-go meter as general entitlement options; qualifying Dynamics 365 rights depend on context. Requirements specific to the new layouts are not yet published." Cite https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq. In the cost rationale, replace "licensing for the new layouts is not yet published" with "requirements specific to the new layouts are not yet published". Keep cost low: the briefing rates the change, not the existing app entitlement. | Source: https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq#model-driven-apps
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: Running model-driven apps requires a licence providing Power Apps premium use rights. | Found: Every user who runs a model-driven app needs a license that provides Power Apps premium use rights. | Fix: Keep the licensing FAQ requirement, but add: "Microsoft's Share a model-driven app page separately says users assigned the Environment Maker security role don't require licences to use model-driven apps, which conflicts with the licensing FAQ." Link that sentence to https://learn.microsoft.com/power-apps/maker/model-driven-apps/share-model-driven-app#app-sharing-privilege-and-licensing-requirements. | Source: https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq
 -->

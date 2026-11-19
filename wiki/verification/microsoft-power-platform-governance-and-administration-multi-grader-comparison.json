@@ -3,30 +3,32 @@
   "roadmapId": 577183,
   "title": "Power Platform governance: multi-grader comparison for agent evaluations",
   "status": "verified-with-gaps",
-  "date": "2026-11-17",
+  "date": "2026-11-19",
   "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
   "attempts": 0,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "pass",
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 42,
-    "confirmed": 41,
+    "claims": 44,
+    "confirmed": 43,
     "unconfirmed": 1,
     "contradicted": 0,
     "blocker": 0,
     "major": 1,
     "minor": 1
   },
-  "summary": "The briefing passes: its roadmap facts, comparison path and evaluation API match the sources checked. The statement that the new comparison shows agent responses is not established by those sources; the signed-in-profile statement should also be scoped to the preview experience it documents.",
+  "summary": "Pass with a descriptive gap: the roadmap promises supporting evidence, but does not say the new comparison displays agent responses. The signed-in-user statement should be narrowed to the preview experience; the cited standard-harness API also supports unauthenticated runs. Embedded historical correction directions were ignored as instructions.",
   "claims": [
     {
       "n": 1,
       "where": "front matter: status",
       "type": "record",
-      "claim": "The feature is in development.",
+      "claim": "The roadmap item is in development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -70,7 +72,7 @@
       "n": 5,
       "where": "front matter: platforms; Scope",
       "type": "record",
-      "claim": "The roadmap lists the Web platform.",
+      "claim": "The roadmap lists Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -90,9 +92,9 @@
     },
     {
       "n": 7,
-      "where": "front matter: products; What's changing; Scope",
+      "where": "front matter: products; What's changing",
       "type": "record",
-      "claim": "The record groups the feature under Microsoft Copilot and Power Platform governance and administration without naming a specific product surface such as Copilot Studio.",
+      "claim": "The item is listed under Microsoft Copilot and Power Platform governance and administration.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Microsoft Power Platform governance and administration\"]",
@@ -101,9 +103,9 @@
     },
     {
       "n": 8,
-      "where": "title; summary; What's changing; Scope; rationale: impact",
+      "where": "summary; What's changing; Scope; rationale: impact",
       "type": "record",
-      "claim": "Multi-grader comparison enables makers to compare multiple graders applied to the same evaluation.",
+      "claim": "Makers can compare multiple graders applied to the same evaluation.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Multi-grader comparison enables makers to compare the results of multiple graders applied to the same evaluation.",
@@ -112,9 +114,9 @@
     },
     {
       "n": 9,
-      "where": "summary; What's changing",
+      "where": "What's changing",
       "type": "record",
-      "claim": "The experience highlights agreement between graders.",
+      "claim": "The experience highlights agreement, differences and overall grading behaviour.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "The experience highlights agreement, differences, and overall grading behavior.",
@@ -123,28 +125,6 @@
     },
     {
       "n": 10,
-      "where": "summary; What's changing",
-      "type": "record",
-      "claim": "The experience highlights differences between graders.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "The experience highlights agreement, differences, and overall grading behavior.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The experience highlights overall grading behaviour.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "The experience highlights agreement, differences, and overall grading behavior.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
       "where": "What's changing",
       "type": "record",
       "claim": "Graders can be compared side by side.",
@@ -155,32 +135,32 @@
       "fix": null
     },
     {
+      "n": 11,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The feature compares grader scores.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Compare scores.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Results provide each grader's explanation.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Review explanations from each grader.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 13,
-      "where": "summary; What's changing",
-      "type": "record",
-      "claim": "Results provide a comparative score view for comparing scores.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Compare scores.\nComparative score view.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "summary; What's changing",
-      "type": "record",
-      "claim": "Results include explanations from each grader.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Review explanations from each grader.\nGrader explanations.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
       "where": "What's changing",
       "type": "record",
-      "claim": "Makers can analyse grading consistency.",
+      "claim": "The feature supports analysis of grading consistency.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Analyze grading consistency.",
@@ -188,7 +168,18 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 14,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Results include a comparative score view.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Comparative score view.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
       "where": "summary; What's changing",
       "type": "record",
       "claim": "Results include pass or fail comparison.",
@@ -199,7 +190,7 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 16,
       "where": "summary; What's changing; Risk assessment: Data exposure",
       "type": "record",
       "claim": "Results include evidence supporting each evaluation.",
@@ -210,18 +201,18 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "n": 17,
+      "where": "What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap describes a comparison experience and does not describe new autonomous actions.",
+      "claim": "The roadmap does not name a specific product surface such as Copilot Studio.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "The core capabilities include:\n\n- Compare graders side-by-side.\n- Compare scores.\n- Review explanations from each grader.\n- Analyze grading consistency.",
+      "quote": "Multi-grader comparison enables makers to compare the results of multiple graders applied to the same evaluation.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 19,
+      "n": 18,
       "where": "Why it matters",
       "type": "behaviour",
       "claim": "Learn advises investigating grader reliability when run-to-run variance is high.",
@@ -232,54 +223,43 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "Learn states that up to 5% variance between runs is normal for language model graders.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/guidance/evaluation-triage-readiness",
-      "quote": "Up to 5% variance between runs is normal for language model graders.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
+      "n": 19,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Multi-grader comparison results show agent responses.",
       "status": "unsupported",
       "source": null,
-      "quote": "Searched: \"multi-grader comparison\" agent responses permissions identity; opened analytics-agent-evaluation-results and agents-experience/analytics-agent-evaluation-intro. These document existing evaluations, not agent-response display in the new comparison.",
+      "quote": "Searched: \"multi-grader comparison\" \"agent responses\" identity. Opened analytics-agent-evaluation-results and agents-experience/analytics-agent-evaluation-intro; these describe existing evaluations, not agent-response display in this roadmap feature.",
       "severity": "major",
       "fix": "Replace 'Results show agent responses and evidence.' with 'The roadmap says results include evidence supporting each evaluation.'"
     },
     {
+      "n": 20,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Permissions for multi-grader comparison are not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"multi-grader comparison\" \"default\" \"permissions\"; \"multi-grader comparison\" credits licensing permissions responses. Opened analytics-agent-evaluation-results and agents-experience/analytics-agent-evaluation-intro; neither identifies this feature's permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0].note; Risk assessment; Governance controls",
+      "type": "absence",
+      "claim": "Existing evaluation controls are background and are not confirmed to govern the new multi-grader comparison.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"multi-grader comparison\" enable tenant Power Platform API Dataverse. Opened analytics-agent-evaluation-results, analytics-agent-evaluation-rest-api and admin-data-loss-prevention; none identifies the roadmap feature or places it within a particular harness.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 22,
-      "where": "Risk assessment: Data exposure; rationale: risk",
-      "type": "absence",
-      "claim": "Permissions and data-access details for multi-grader comparison are not yet documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"multi-grader comparison\" agent responses permissions identity; \"multi-grader comparison\" permissions admin switch default state. Opened analytics-agent-evaluation-results and agents-experience/analytics-agent-evaluation-intro; neither describes this comparison's permissions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "Risk assessment: Security & identity",
-      "type": "absence",
-      "claim": "No new identity or permission model has been published for this comparison.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"multi-grader comparison\" agent responses permissions identity; \"multi-grader comparison\" permissions admin switch default state. Opened analytics-agent-evaluation-results, analytics-agent-evaluation-rest-api and the preview evaluation introduction; no feature-specific model found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
       "where": "controls[0].note; Risk assessment: Data exposure",
       "type": "role",
-      "claim": "For existing evaluations, only the maker who initiated the test run can view agent responses and result explanations.",
+      "claim": "For existing evaluations, only the maker who initiated a test run sees agent responses.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-results",
       "quote": "Makers can see the run status and result metrics of any test run, but only the maker who initiated the test run can view the agent responses and result explanations.",
@@ -287,65 +267,76 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "n": 23,
+      "where": "Risk assessment: Security & identity",
       "type": "absence",
-      "claim": "Feature-specific licensing has not yet been published, so the licensing model is unknown.",
+      "claim": "No new identity or permission model has been published for multi-grader comparison.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"multi-grader comparison\" license pricing Copilot Credits; \"multi-grader comparison\" admin enable default permissions licensing credits harness. Opened agents-experience/billing-credit-overview and the preview evaluation introduction; neither assigns this comparison a licence.",
+      "quote": "Searched: \"multi-grader comparison\" \"agent responses\" identity; \"multi-grader comparison\" \"default\" \"permissions\". Opened analytics-agent-evaluation-results and agents-experience/analytics-agent-evaluation-intro; no feature-specific identity model was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes a comparison experience and does not describe new autonomous actions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The core capabilities include:\n\n- Compare graders side-by-side.\n- Compare scores.\n- Review explanations from each grader.\n- Analyze grading consistency.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Learn says up to 5% variance between runs is normal for language model graders.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/guidance/evaluation-triage-readiness",
+      "quote": "Up to 5% variance between runs is normal for language model graders.",
       "severity": null,
       "fix": null
     },
     {
       "n": 26,
-      "where": "front matter: defaultState",
-      "type": "absence",
-      "claim": "The default state of multi-grader comparison is not stated.",
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing model for this feature is unknown.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"multi-grader comparison\" permissions admin switch default state. Read the roadmap record, analytics-agent-evaluation-results and the preview evaluation introduction; none states how this comparison arrives or a default setting.",
+      "quote": "Searched: Power Platform governance administration multi-grader comparison licensing Copilot Credits. Opened billing-licensing and agents-experience/billing-credit-overview; these cover named harnesses, but the roadmap does not establish this feature's product surface or harness.",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
-      "where": "controls[1].ui; controls[1].api; Governance controls",
-      "type": "absence",
-      "claim": "No tenant admin UI switch or API switch for multi-grader comparison is documented as of November 2026.",
+      "where": "Cost and licensing",
+      "type": "availability",
+      "claim": "Learn marks the new agent experience's evaluation capability as preview.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"multi-grader comparison\" permissions admin switch default state; \"multi-grader comparison\" Power Platform API PowerShell pac admin comparison export. Read evaluation results/API articles and pac admin and Power Apps PowerShell search excerpts; no comparison switch found.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro",
+      "quote": "Evaluate an agent (preview)\n\n[This article is prerelease documentation and is subject to change.]",
       "severity": null,
       "fix": null
     },
     {
       "n": 28,
-      "where": "controls[0].note; Risk assessment; Governance controls",
-      "type": "absence",
-      "claim": "Microsoft has not confirmed that existing evaluation controls, permissions or data policies govern the new comparison.",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "cost",
+      "claim": "The preview Evaluate experience surfaces estimated Copilot Credit usage.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: site:learn.microsoft.com/microsoft-copilot-studio \"multi-grader comparison\"; \"multi-grader comparison\" permissions admin switch default state. Opened evaluation results/API, data-policy and preview evaluation pages; no passage places this feature within those controls.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro",
+      "quote": "Evaluate surfaces estimated Copilot Credit usage throughout the testing process, so you can understand the cost of testing quality before you run larger test suites.",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
-      "where": "Cost and licensing",
-      "type": "behaviour",
-      "claim": "Learn marks evaluation in the new agent experience as preview.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro",
-      "quote": "# Evaluate an agent (preview)\n[This article is prerelease documentation and is subject to change.]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "cost",
-      "claim": "The preview Evaluate experience shows estimated Copilot Credit usage, including at the individual test-case level.",
+      "claim": "Estimated credit usage is available at individual test-case level in the preview experience.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro",
       "quote": "You can see which experiences use credits, an estimated total for each evaluation run, a breakdown between generating and scoring responses, and credit usage at the individual test-case level.",
@@ -353,10 +344,10 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 30,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "For the Microsoft Copilot harness, generating and creating agent evaluations consume credits.",
+      "claim": "Generating and creating agent evaluations consume credits for the Microsoft Copilot harness.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
       "quote": "Experiences such as creating an automated solution with natural language, previewing and testing an agent, and generating and creating agent evaluations all consume credits.",
@@ -364,24 +355,35 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 31,
       "where": "Cost and licensing; Governance controls",
       "type": "absence",
-      "claim": "Microsoft has not identified which harness the new comparison uses.",
+      "claim": "Microsoft has not said which harness multi-grader comparison uses.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"multi-grader comparison\" admin enable default permissions licensing credits harness; site:learn.microsoft.com/microsoft-copilot-studio \"multi-grader comparison\". Read the roadmap, evaluation results/API, preview introduction and billing overview; no harness assignment found.",
+      "quote": "Searched: \"multi-grader\" comparison Copilot evaluation; Power Platform governance administration multi-grader comparison licensing Copilot Credits. Opened agents-experience/analytics-agent-evaluation-intro and analytics-agent-evaluation-overview; neither identifies the roadmap feature's harness.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing; Governance controls; rationale: cost",
+      "type": "absence",
+      "claim": "Feature-specific charges or additional charges for multi-grader comparison are not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"multi-grader comparison\" credits licensing permissions responses. Opened billing-licensing and agents-experience/billing-credit-overview; no charge for this named comparison was stated and its harness remains unidentified.",
       "severity": null,
       "fix": null
     },
     {
       "n": 33,
-      "where": "Cost and licensing; Governance controls; rationale: cost",
-      "type": "absence",
-      "claim": "Feature-specific extra charges or metering for multi-grader comparison are not published; the low cost assessment is limited to known preparation and review effort.",
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The feature's default state is unknown.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"multi-grader comparison\" license pricing Copilot Credits. Opened agents-experience/billing-credit-overview and agents-experience/analytics-agent-evaluation-intro; they describe evaluation credit use but do not establish this comparison's harness, additional charge or rate.",
+      "quote": "Searched: \"multi-grader comparison\" \"default\" \"permissions\"; \"multi-grader comparison\" enable tenant Power Platform API Dataverse. Read the roadmap and opened analytics-agent-evaluation-results and agents-experience/analytics-agent-evaluation-intro; no feature-specific arrival default was stated.",
       "severity": null,
       "fix": null
     },
@@ -389,7 +391,7 @@
       "n": 34,
       "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "Existing runs are compared in Copilot Studio at agent > Evaluation > Recent test results > test run > Compare with > comparison run.",
+      "claim": "Existing run comparisons are reached in Copilot Studio at agent > Evaluation > Recent test results > test run > Compare with > comparison run.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-results#compare-test-results",
       "quote": "In your agent's Evaluation page, under Recent test results, open the test run you want to use as the base for the comparison.\nSelect the Compare with dropdown, and then select the time and date of the test run you want to compare with the currently open test results.",
@@ -400,10 +402,10 @@
       "n": 35,
       "where": "controls[0].api; controls[0].note; Governance controls table",
       "type": "command",
-      "claim": "The printed Power Platform API POST operation runs an evaluation for the specified test set.",
+      "claim": "The Power Platform API runs an existing evaluation test set with POST https://api.powerplatform.com/copilotstudio/environments/{EnvironmentId}/bots/{BotId}/api/makerevaluation/testsets/{TestSetId}/run?api-version=2024-10-01.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-rest-api",
-      "quote": "POST https://api.powerplatform.com/copilotstudio/environments/{EnvironmentId}/bots/{BotId}/api/makerevaluation/testsets/{TestSetId}/run?api-version=2024-10-01",
+      "quote": "Endpoint: POST https://api.powerplatform.com/copilotstudio/environments/{EnvironmentId}/bots/{BotId}/api/makerevaluation/testsets/{TestSetId}/run?api-version=2024-10-01\nPurpose: Run an evaluation for a test set by using the test set's id.",
       "severity": null,
       "fix": null
     },
@@ -411,7 +413,7 @@
       "n": 36,
       "where": "controls[0].note; Governance controls table",
       "type": "command",
-      "claim": "GET of the evaluation testruns/{TestRunId} resource returns run details and results.",
+      "claim": "GET .../testruns/{TestRunId} retrieves existing evaluation results.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-rest-api",
       "quote": "GET https://api.powerplatform.com/copilotstudio/environments/{EnvironmentId}/bots/{BotId}/api/makerevaluation/testruns/{TestRunId}?api-version=2024-10-01\nPurpose: Retrieve the details of an evaluation by using the runId for your target evaluation run.",
@@ -420,9 +422,31 @@
     },
     {
       "n": 37,
+      "where": "controls[1].ui; controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "No tenant admin UI switch or API switch for multi-grader comparison is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"multi-grader comparison\" enable tenant Power Platform API Dataverse. Opened analytics-agent-evaluation-results, analytics-agent-evaluation-rest-api and admin-data-loss-prevention; no UI or automation switch for this named comparison was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Existing evaluations are maker-facing and can be started by selecting Evaluate at the end of creating or editing a test set.",
+      "claim": "Existing evaluation is a maker feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-results",
+      "quote": "An evaluation test set can be run multiple times by several \"makers\" of the same agent. Makers can run evaluations using test sets created by other makers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "In the existing experience, Evaluate is a separate action selected at the end of creating or editing a test set.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-results",
       "quote": "At the end of creating or editing a test set, select Evaluate.",
@@ -430,21 +454,21 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Governance controls",
+      "n": 40,
+      "where": "Governance controls: connector data policy paragraph",
       "type": "applicability",
-      "claim": "Blocking the Microsoft Copilot Studio connector through a data policy prevents existing evaluations using user authentication.",
+      "claim": "Blocking the Microsoft Copilot Studio connection prevents existing authenticated evaluation tests.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
-      "quote": "To prevent agent makers from adding event triggers to their agents or running automated evaluations by using an authenticated account, configure a data policy that blocks the Microsoft Copilot Studio connector.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-results#run-a-test-with-a-test-set",
+      "quote": "Agent evaluations that use user authentication require access through the Microsoft Copilot Studio connector. If your admin turns off this connection, you can't run tests by using the evaluation tool.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
-      "where": "Governance controls: data-policy paragraph",
+      "n": 41,
+      "where": "Governance controls: connector data policy paragraph",
       "type": "admin-path",
-      "claim": "Data policies are reached in Power Platform admin center through Security > Data and privacy > Data policy.",
+      "claim": "Data policies are located in the Power Platform admin center under Security > Data and privacy > Data policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
       "quote": "On the sidebar, select Security, and then select Data and privacy. The Data protection and privacy page opens.\nSelect Data policy. The Data policies list appears.",
@@ -452,18 +476,18 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "Governance controls: agent-sharing paragraph",
+      "n": 42,
+      "where": "Governance controls: agent sharing paragraph",
       "type": "role",
-      "claim": "Existing evaluation access can be granted through agent sharing and the agent viewer sharing role.",
+      "claim": "Existing evaluation access can be managed through agent sharing and the agent viewer role.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-results#share-evaluations-using-the-agent-viewer-role",
-      "quote": "If you're the agent owner and want to grant access only to the Evaluation page of your agent, share the agent and enable the agent viewer sharing role.",
+      "quote": "If you're the agent owner and want to grant access only to the Evaluation page of your agent, share the agent and enable the agent viewer sharing role. Users with this role can manage evaluations for a specific agent without access to the agent itself.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 41,
+      "n": 43,
       "where": "Governance controls: signed-in user paragraph",
       "type": "behaviour",
       "claim": "Existing evaluations run with the currently signed-in user profile.",
@@ -471,13 +495,13 @@
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro#user-profile",
       "quote": "Evaluations and connections used by tools run with the currently signed-in user profile.",
       "severity": "minor",
-      "fix": "Replace the sentence with 'In the preview new agent experience, evaluations and connections used by tools run with the currently signed-in user profile.' The separately cited standard-harness API article says that without mcsConnectionId the evaluation runs without authentication."
+      "fix": "Replace the sentence with 'In the preview new agent experience, evaluations and connections used by tools run with the currently signed-in user profile.' The cited standard-harness API page https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-rest-api says: 'If you don't add an mcsConnectionId to your call, the evaluation runs without authentication.'"
     },
     {
-      "n": 42,
-      "where": "Governance controls: evaluation methods link",
+      "n": 44,
+      "where": "Governance controls: available graders sentence",
       "type": "behaviour",
-      "claim": "The linked evaluation-methods page lists available methods for existing evaluations.",
+      "claim": "The linked evaluation methods page lists available graders for existing evaluations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-overview",
       "quote": "When you create test sets, choose from different test methods to evaluate your agent's responses. Each test method has its own strengths and suits different types of evaluations.",
@@ -486,14 +510,14 @@
     }
   ],
   "precheck": {
-    "at": "2026-11-17T00:01:30.563Z",
+    "at": "2026-11-19T06:20:52.319Z",
     "summary": {
       "links": 14,
-      "unreachable": 0,
+      "unreachable": 9,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 1,
       "apiCalls": 1,
-      "apiCallsNotOnPage": 0,
+      "apiCallsNotOnPage": 1,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -509,13 +533,13 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-rest-api",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/guidance/evaluation-triage-readiness",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro",
@@ -534,38 +558,38 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-results#compare-test-results",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/guidance/evaluation-triage-readiness#handling-non-determinism-in-scores",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro#key-concepts",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-results#run-a-test-with-a-test-set",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-results#share-evaluations-using-the-agent-viewer-role",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro#user-profile",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -574,7 +598,7 @@
         "side": "ui",
         "governs": "Running and comparing existing evaluation runs",
         "docs": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-results#compare-test-results",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Evaluation",
           "Recent test results",
@@ -583,6 +607,10 @@
           "comparison run"
         ],
         "missing": [
+          "Evaluation",
+          "Recent test results",
+          "test run",
+          "Compare with",
           "comparison run"
         ]
       },
@@ -591,9 +619,9 @@
         "side": "api",
         "governs": "Running and comparing existing evaluation runs",
         "docs": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-rest-api",
-        "reachable": true,
+        "reachable": false,
         "token": "api.powerplatform.com/copilotstudio/environments/{EnvironmentId}/bots/{BotId}/api/makerevaluation/testsets/{TestSetId}/run",
-        "found": true
+        "found": false
       }
     ],
     "roadmapDrift": []
@@ -603,6 +631,12 @@
       "date": "2026-11-16",
       "status": "held",
       "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "verified-with-gaps",
+      "version": 3,
       "model": "gpt-6.1-sol"
     }
   ]

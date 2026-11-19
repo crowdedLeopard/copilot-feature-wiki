@@ -161,17 +161,19 @@ changes:
     note: "Corrected: the Work IQ Tool API rate (0.1 Copilot Credits per API call) is now stated, the claim that no environment data-participation path is documented is removed, and the general Features reference defaults are noted."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 108 statements confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 101 statements contradicted, 2 unconfirmed; taken offline until corrected"
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-19"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 108
-  confirmed: 108
-  unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  claims: 101
+  confirmed: 97
+  unconfirmed: 2
+  contradicted: 2
+  attempts: 1
   hash: "e4b10423be38a6069143b9a840564cd6"
 ---
 
@@ -265,3 +267,16 @@ Microsoft publishes a Work IQ Tool API rate of 0.1 Copilot Credits per API call;
 - Is there a PowerShell, Graph or Power Platform API for the Work IQ MCP policy and Block settings, or for the environment Work IQ setting? None is documented at the time of writing (November 2026).
 - Under which Microsoft Purview audit event names do Work IQ tool invocations appear?
 - Will Work IQ MCP policy gain per-user, per-app or per-agent scope? Microsoft says more granular controls might be added later.
+
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, blocker] Why it matters / date: Default enablement for new environments began on 30 September 2026. | Found: Searched: "Work IQ" "September 30, 2026" default environments; opened Business Applications in Work IQ default settings and Manage feature settings. The current default-settings page gives no September 30 start date. | Fix: Remove 'from 30 September 2026 for new environments'. Retain the documented statement that new public production environments are on by default except the listed exceptions, without a start date.
+- [contradicted, blocker] Why it matters / date: Existing nonexcepted public production environments are enabled by default from November 2026. | Found: The plan to turn on Business Applications in Work IQ for existing environments that aren't listed as exceptionshas been deferred from the previously documented November 2026 schedule. | Fix: Replace 'and from November 2026 for existing ones' with 'Microsoft has deferred the previously documented November 2026 automatic-enablement schedule for existing environments and has not given a replacement date on this page.' | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings
+- [contradicted, blocker] controls[7].api / absence: No API automation is documented for allowing or blocking applications in an environment. | Found: Update | PATCH /applications(applicationid) Writable columns/attributes Access Description | Application Access LogicalName | access Access Choices/Options 0 | Allowed 1 | Blocked | Fix: Replace the null API side with kind 'rest', call 'PATCH /applications(applicationid)', and docs 'https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/application'. Add to the note: 'The request body sets access to 0 (Allowed) or 1 (Blocked).' This controls the app's access; retain the UI procedure for enabling environment enforcement. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/application
+- [unsupported, major] controls[2].note / behaviour: Learn labels the cited Manage AI experience access page preview. | Found: Searched: "manage-ai-experience-access" "preview" "Work IQ". Opened Manage AI experience access to Business Applications in Work IQ; its current title and content do not label the page preview. | Fix: Remove 'Learn labels this page preview.' from this row's note; the current cited page does not carry that label.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].api / command: POST https://graph.microsoft.com/v1.0/servicePrincipals with appId fdcc1f02-fc51-4226-8753-f668596af7f7 provisions the Work IQ service principal. | Found: Set the method to POST and the URL to https://graph.microsoft.com/v1.0/servicePrincipals. { "appId": "fdcc1f02-fc51-4226-8753-f668596af7f7" } | Fix: Set the call to 'POST https://graph.microsoft.com/v1.0/servicePrincipals' and add to the note: 'The request body sets appId to fdcc1f02-fc51-4226-8753-f668596af7f7.' | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq
+- [supported, minor] controls[4].api / command: Graph beta supports GET and POST /copilot/costManagement/spendingPolicies and PATCH /copilot/costManagement/spendingPolicies/{id}. | Found: List spendingPolicies | GET /copilot/costManagement/spendingPolicies Create spendingPolicy | POST /copilot/costManagement/spendingPolicies Update spendingPolicy | PATCH /copilot/costManagement/spendingPolicies/{id} | Fix: Use the single configuring operation 'PATCH /beta/copilot/costManagement/spendingPolicies/{id}' and add to the note: 'The request body sets periodLimit and perUserLimit.' These writable properties are documented at https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview
+- [supported, minor] controls[8].ui; What to check / admin-path: Copilot Studio workload selection is under Build > Tools > Work IQ > Edit tool > Sources. | Found: Sign in to Copilot Studio and open your agent. On the Build tab, under Tools, select Work IQ. In the Edit tool dialog, review the Connection. Under Sources, select the workloads to use | Fix: Prefix the maker path with the agent-selection step: 'agent > Build > Tools > Work IQ > Edit tool > Sources'. | Source: https://learn.microsoft.com/microsoft-copilot-studio/use-work-iq
+-->

@@ -128,18 +128,20 @@ changes:
     note: "Correction: cost and licensing now follow the documented add-on licence for federated connectors; added the Researcher read-only qualification; removed two checklist steps without a control row."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 52 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 55 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 4
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-16"
+  status: "held"
+  date: "2026-11-19"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 52
+  claims: 55
+  confirmed: 50
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 5
+  attempts: 1
   hash: "66913e6dea21978fa5cfd4d661a48ebb"
 ---
 
@@ -224,8 +226,15 @@ cost: Medium. Existing federated Copilot connectors require a Microsoft 365 Copi
 impact: Medium. Affects users of Work IQ-enabled agents and admins who approve connectors.
 -->
 
-<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] What's changing: How Work IQ will surface them / absence: How Work IQ surfaces federated connectors is not described in detail. | Found: Connected enterprise sources participate in Work IQ Copilot, entity, and schema tools. Connected enterprise sources refer to data sources connected in Copilot Chat. Connector developers must enable participation in Work IQ APIs. | Fix: Replace the sentence with: 'Learn now describes connected enterprise sources as participating in Work IQ Copilot, entity and schema tools; connector developers must enable participation in Work IQ APIs. The roadmap still lists this item as In development.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/
+- [contradicted, blocker] front matter: licensing.model / licensing: The Work IQ capability's licensing model is add-on. | Found: Work IQ API access is independent of Microsoft 365 Copilot licensing and available through usage-based billing. | Fix: Set licensing.model to 'consumption'. Replace the notes with 'Work IQ API access is independent of Microsoft 365 Copilot licensing and uses usage-based billing through Copilot Credits. Connector-backed Microsoft 365 tools have separate connector-specific licensing requirements.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/ and retain the Foundry prerequisites source for the separate connection paths. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/
+- [contradicted, blocker] front matter: licensing.notes; Cost and licensing; rationale: cost / absence: Published Work IQ API billing and connector-licensing guidance are not confirmed rules for this capability. | Found: Work IQ API through A2A, REST, or MCP | Usage-based billing | Enable billing with Copilot Credits. This path doesn't use connector licensing. | Fix: Remove 'Microsoft has not published whether this Work IQ capability changes those requirements' and 'Neither is a confirmed rule for this roadmap capability.' Replace 'Background, labelled separately:' with 'For Work IQ API access:'. Add 'The Foundry prerequisites distinguish Work IQ API access through A2A, REST or MCP, which uses Copilot Credits and does not use connector licensing, from connector-backed Microsoft 365 tools, whose connector-specific requirements must be checked.' Keep the existing connector add-on requirement explicitly scoped to those connectors, not Work IQ API access. | Source: https://learn.microsoft.com/azure/foundry/agents/how-to/tools/work-iq
+- [contradicted, blocker] front matter: cost; rationale: cost / consistency: Cost is medium because the documented cost is a connector add-on rather than applicable metered Work IQ consumption. | Found: Work IQ cost is variable based on usage and can be managed in the Microsoft 365 admin center. ... Work IQ API usage consumes Copilot Credits shared with other eligible services. | Fix: Set cost to 'variable'. Replace the cost rationale with 'Variable. Work IQ API usage consumes Copilot Credits; connector-backed Microsoft 365 tools have separate connector-specific licence requirements.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/ in the licensing section. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/
+- [contradicted, blocker] controls[0].note; controls[1-2].note; Governance guidance; Governance controls; Open questions / applicability: Microsoft has not confirmed that existing connector availability and access controls carry over to Work IQ. | Found: Existing administrator controls in the Microsoft 365 admin center to allow or block Copilot Connectors also apply when Connectors are accessed through Work IQ APIs. | Fix: Replace the applicability caveats on the existing connector controls, the At rollout bullet and the paragraph after the table with 'Existing Microsoft 365 admin-center controls to allow or block Copilot Connectors also apply when connectors are accessed through Work IQ APIs.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/. Remove the Open questions bullet 'Whether existing connector approvals carry over.' Preserve the separate, narrower uncertainty about the Work IQ MCP policy's application to federated connector operations. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity / behaviour: Federated connectors use OAuth 2.0. | Found: OAuth 2.0 and encrypted communication ensure secure access and authentication. | Fix: Remove 'Uses OAuth 2.0 and' from the bullet and retain 'Uses the user's permissions in the source system.' The cited overview supports OAuth, but https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors also lists 'No Auth' with 'Users don't need to authenticate.' | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview
+- [supported, minor] Risk assessment: Security & identity / behaviour: Federated connectors use OAuth 2.0. | Found: OAuth 2.0 and encrypted communication ensure secure access and authentication. | Fix: Remove 'Uses OAuth 2.0 and' and retain 'Uses the user's permissions in the source system.' The cited overview supports OAuth, but https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors also lists 'No Auth' with 'Users don't need to authenticate.' | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview
+- [supported, minor] Governance controls: user write-tool approvals / behaviour: Users approve connector write tools in Copilot Chat rather than through an administrator approval control. | Found: Always allow and Allow for conversation apply to the individual tool, not to the whole connector. Users can decide which tools to allow. | Fix: Replace 'Write tools on a connector are approved by users per connector in Copilot Chat, which is not an admin control' with 'Users approve individual write tools in Copilot Chat; Always allow and Allow for conversation apply to the individual tool, not the whole connector.' | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview
 -->

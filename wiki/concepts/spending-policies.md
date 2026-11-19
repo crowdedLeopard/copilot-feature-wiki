@@ -5,7 +5,7 @@ slug: "spending-policies"
 summary: "A spending policy is a rule in the Microsoft 365 admin center that sets which users, groups, agents or environments may consume Copilot Credits, on which services, up to what monthly limit and billed to which method."
 created: "2026-11-18"
 updated: "2026-11-19"
-version: 3
+version: 4
 tags: ["spending-policies","copilot-credits","usage-based-billing","cost-management","finops","m365-admin-center","microsoft-graph"]
 covers: []
 sources:
@@ -59,7 +59,7 @@ controls:
       kind: "graph"
       call: "POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create"
-    note: "Beta; delegated permissions only. Created disabled. Needs Billing Administrator or Global Administrator. The request body sets a concrete @odata.type, displayName, periodLimit, perUserLimit and serviceSettings."
+    note: "Beta; delegated permissions only. Created disabled. Needs Billing Administrator or Global Administrator. Body sets @odata.type, displayName, periodLimit, perUserLimit, serviceSettings. Set billingMethods to select the funding method."
   - governs: "Changing a policy's scope, services, billing method, limits and alerts"
     scope: "group"
     ui:
@@ -70,7 +70,7 @@ controls:
       kind: "graph"
       call: "PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id}"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update"
-    note: "AI administrator and License administrator can edit but not create. Beta. Graph updates only displayName, periodLimit, perUserLimit and billingMethods, with an If-Match ETag header; not scope, services or alerts."
+    note: "Beta. Updates displayName, periodLimit, perUserLimit, billingMethods, with If-Match ETag; not scope, services or alerts. Adding payAsYouGo to other funding needs billingInstrument: billingSubscriptionId, billingResourceGroup, billingRegion."
   - governs: "Alert thresholds on a policy"
     scope: "group"
     ui:
@@ -118,18 +118,22 @@ changes:
     note: "Corrected after the independent check: create and update (not all) policy API operations are delegated-only; identity and resource policy paths now include the Identity and Resources choice; Graph rows list properties in notes; alert row names the alerts section."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 100 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-19"
+    note: "Corrected after the independent check: the Graph update row now says billingInstrument is needed when adding pay-as-you-go funding, and the create row names billingMethods."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 101 statements confirmed"
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-19"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 100
-  confirmed: 99
+  claims: 101
+  confirmed: 101
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "f4254f5b01ae7896215e2422eb5c460a"
+  contradicted: 0
+  attempts: 0
+  hash: "3cddcae3e4f74367e14ec2ebda369951"
 ---
 
 ## What it is
@@ -186,8 +190,8 @@ Licences depend on the service a policy covers: Microsoft lists Cowork as requir
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Activating the default spending policy for the whole organisation</strong><br><small>Tenant</small><br><small class="controls__note">Global administrator or Billing administrator signs in to activate. The Graph page does not say that creating an allUsersSpendingPolicy is the same as activating this policy.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Get Started <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Creating identity-based policies for users or groups, with services, limits and billing method</strong><br><small>Group</small><br><small class="controls__note">Beta; delegated permissions only. Created disabled. Needs Billing Administrator or Global Administrator. The request body sets a concrete @odata.type, displayName, periodLimit, perUserLimit and serviceSettings.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › + Add spending policy › Identity <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Changing a policy's scope, services, billing method, limits and alerts</strong><br><small>Group</small><br><small class="controls__note">AI administrator and License administrator can edit but not create. Beta. Graph updates only displayName, periodLimit, perUserLimit and billingMethods, with an If-Match ETag header; not scope, services or alerts.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › policy › Save changes <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Creating identity-based policies for users or groups, with services, limits and billing method</strong><br><small>Group</small><br><small class="controls__note">Beta; delegated permissions only. Created disabled. Needs Billing Administrator or Global Administrator. Body sets @odata.type, displayName, periodLimit, perUserLimit, serviceSettings. Set billingMethods to select the funding method.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › + Add spending policy › Identity <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Changing a policy's scope, services, billing method, limits and alerts</strong><br><small>Group</small><br><small class="controls__note">Beta. Updates displayName, periodLimit, perUserLimit, billingMethods, with If-Match ETag; not scope, services or alerts. Adding payAsYouGo to other funding needs billingInstrument: billingSubscriptionId, billingResourceGroup, billingRegion.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › policy › Save changes <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Alert thresholds on a policy</strong><br><small>Group</small><br><small class="controls__note">Alerts notify; they do not stop use. Beta. The Graph request body sets isEnabled and thresholds.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › policy › Alerts, and Email alert settings <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id}/emailThresholdSettings</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Resource-based policies for Copilot Studio agents and environments, with per-agent limits</strong><br><small>Environment</small><br><small class="controls__note">Choose Resources as the scope. Opt-in: covered scopes stop using Power Platform admin center allocations and billing plans.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › Add spending policy › Resources <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Removing a policy and its limits</strong><br><small>Group</small><br><small class="controls__note">Deleting does not remove, reallocate or reset credits. Beta.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › More actions (⋮) › Delete <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>DELETE https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview" rel="noopener" class="controls__docs">Learn</a></td></tr>
@@ -217,11 +221,3 @@ Microsoft's setup page is inconsistent about License Administrator: it also list
 - Which credit rate applies to each service a policy covers? The spending policy pages do not state rates.
 - When is excess per-user usage billed, given Microsoft's "sole discretion" wording?
 - How soon does a limit change take effect for identity-based policies? The 12-minute figure is stated only for resource-based policies.
-
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[2].note; Governance controls table: changing a policy / command: Graph updates only displayName, periodLimit, perUserLimit and billingMethods. | Found: When billingMethods changes stored funding from non-pay-as-you-go to a value that includes payAsYouGo, including prepaidCredits,payAsYouGo, also supply a billingInstrument | Fix: Replace the Graph-update sentence in controls[2].note and its rendered counterpart with: 'Graph updates displayName, periodLimit, perUserLimit and billingMethods, with an If-Match ETag header; not scope, services or alerts. When changing non-pay-as-you-go funding to include payAsYouGo, also supply billingInstrument with billingSubscriptionId, billingResourceGroup and billingRegion (a supported billing-geography key, not an arbitrary Azure region).' Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].api / command: POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies creates an identity policy with limits, services and a billing method. | Found: Required properties are displayName, periodLimit, perUserLimit, and serviceSettings. You can optionally supply billingMethods and billingInstrument. | Fix: Append 'Set billingMethods to select the funding method.' to controls[1].note and its rendered counterpart. The row governs billing method selection but currently names only the other deciding request properties. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create
--->

@@ -1,28 +1,28 @@
 ---
-title: "Microsoft Purview: DLP for network traffic through Entra Global Secure Access Internet Access"
+title: "Microsoft Purview: DLP for file and text traffic through Entra Global Secure Access Internet Access"
 slug: "microsoft-purview-integration-with-entra-gsa-internet-access-to-enable-sensitive-file-filt"
 roadmapId: 522096
 topic: "governance"
 products: ["Microsoft Purview"]
-summary: "Purview DLP policies can inspect and block sensitive files and text sent to unmanaged cloud and AI apps through Entra Global Secure Access. It needs configuration in both portals and add-on licences; nothing changes until then."
+summary: "Purview DLP gains an Inline web traffic policy that inspects files and text sent to unmanaged cloud apps through Entra Global Secure Access. Nothing is enforced until admins configure both sides, and licences are required."
 status: "launched"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Web"]
 targetDate: "September CY2026"
 previewDate: "November CY2025"
-risk: "low"
+risk: "medium"
 cost: "medium"
-impact: "medium"
+impact: "low"
 defaultState: "admin-opt-in"
 action: "review"
 licensing:
-  model: "add-on"
-  notes: "Learn: Microsoft 365 E7, or Purview E5 (or equivalent) plus Entra Internet Access (or equivalent) licences. Microsoft's notice names E3 or E5 tenants and pay-as-you-go; Learn says pay-as-you-go is not required for this integration."
-audiences: ["security","compliance","m365-admin","finops"]
-tags: ["purview","dlp","global-secure-access","network-data-security","conditional-access","pay-as-you-go"]
+  model: "per-user"
+  notes: "Learn says network data security with Entra Global Secure Access requires Microsoft 365 E7 per-seat licences, or Purview E5 (or equivalent) per-seat licences and Entra Internet Access (or equivalent) licences. A price for either is not stated on that page."
+audiences: ["security","compliance","m365-admin"]
+tags: ["purview","dlp","network-data-security","global-secure-access","conditional-access","pay-as-you-go","sensitivity-labels"]
 sources:
-  - title: "Microsoft 365 Roadmap 522096"
+  - title: "Microsoft 365 Roadmap item 522096"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=522096"
     kind: "roadmap"
   - title: "MC1181769: Microsoft Purview: Integration with Entra GSA Internet Access to enable sensitive file filtering at the network layer"
@@ -37,54 +37,31 @@ sources:
   - title: "Use Network Data Security to help prevent sharing sensitive information with unmanaged AI"
     url: "https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security"
     kind: "learn"
-  - title: "What is Global Secure Access?"
-    url: "https://learn.microsoft.com/entra/global-secure-access/overview-what-is-global-secure-access"
-    kind: "learn"
   - title: "New-DlpCompliancePolicy"
-    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps"
-    kind: "learn"
-  - title: "Create conditionalAccessPolicy"
-    url: "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-policies?view=graph-rest-beta"
-    kind: "learn"
-  - title: "conditionalAccessSessionControls resource type"
-    url: "https://learn.microsoft.com/graph/api/resources/conditionalaccesssessioncontrols?view=graph-rest-beta"
-    kind: "learn"
-  - title: "Configure Microsoft Entra Internet Access using Microsoft Graph APIs"
-    url: "https://learn.microsoft.com/graph/tutorial-entra-internet-access"
-    kind: "learn"
-  - title: "filteringRule resource type"
-    url: "https://learn.microsoft.com/graph/api/resources/networkaccess-filteringrule?view=graph-rest-beta"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy"
     kind: "learn"
 videos: []
-related: ["microsoft-purview-data-loss-prevention-unmanaged-cloud-app-discovery-and-protection-with-m","microsoft-purview-data-loss-prevention-new-guided-experience-to-diagnose-and-resolve-dlp-i"]
+related: ["microsoft-purview-data-loss-prevention-extend-purview-data-security-to-the-network-layer-v","microsoft-purview-data-loss-prevention-unmanaged-cloud-app-discovery-and-protection-with-m","sensitivity-labels","auditing"]
 controls:
-  - governs: "Which traffic is sent to Purview for inspection (content policy rule with Scan with Purview)"
-    scope: "tenant"
-    ui:
-      surface: "Microsoft Entra admin center"
-      path: "Global Secure Access > Secure > Content policies > + Create Policy > Basics > Rules > rule > Action > Scan with Purview"
-      docs: "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering"
-    api: null
-    note: "Requires the Global Secure Access Administrator role. Needs a matching Purview DLP policy. Learn documents no Graph operation for content policy rules at the time of writing (November 2026)."
-  - governs: "Whether sensitive files and text sent to unmanaged cloud apps are audited or blocked (Inline web traffic DLP policy)"
+  - governs: "Which Purview DLP policy inspects and acts on network traffic"
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > Choose where to enforce the policy > Network and non-Microsoft secure browsers > Create or customize advanced DLP rules"
-      docs: "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering"
-    api: null
-    note: "New-DlpCompliancePolicy accepts Network for EnforcementPlanes, but that parameter selects the enforcement layer, not the audit or block action. In the rule: Actions > + Add an action > Restrict browser and network activities."
-  - governs: "Which users the Global Secure Access security profile applies to (Conditional Access)"
-    scope: "user"
-    ui:
-      surface: "Microsoft Entra admin center"
-      path: "Identity > Protection > Conditional Access > + Create new policy > Session > Use Global Secure Access Security Profile"
+      path: "Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > Choose where to enforce the policy > Network and non-Microsoft secure browsers"
       docs: "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering"
     api:
-      kind: "graph"
-      call: "POST /beta/identity/conditionalAccess/policies"
-      docs: "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-policies?view=graph-rest-beta"
-    note: "Conditional Access Administrator role. Preview API; production use is not supported. The request body sets sessionControls.globalSecureAccessFilteringProfile.profileId and isEnabled; conditions.users scopes the users."
+      kind: "powershell"
+      call: "New-DlpCompliancePolicy -Name <policy name> -EnforcementPlanes @(\"Network\")"
+      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy"
+    note: "Security & Compliance PowerShell. The portal steps then add a rule with Content contains conditions and the Restrict browser and network activities action, set to Audit or Block."
+  - governs: "Which traffic Global Secure Access sends to Purview for inspection"
+    scope: "tenant"
+    ui:
+      surface: "Microsoft Entra admin center"
+      path: "Global Secure Access > Secure > Content policies > + Create Policy > Rules > Action > Scan with Purview"
+      docs: "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering"
+    api: null
+    note: "Needs the Global Secure Access Administrator role. The rule is linked to a security profile and then to a Conditional Access policy."
 confidence: "high"
 created: "2026-11-18"
 updated: "2026-11-19"
@@ -106,89 +83,103 @@ changes:
     note: "Corrected the Purview policy path to include the Custom and Custom policy choices and the enforcement location, and added the Basics step to the Entra content policy path."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 92 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-19"
+    note: "First briefing: covers the two-sided setup, the licence combinations Learn lists, the pay-as-you-go conflict between notice and Learn, and the inspection gaps."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 82 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 5
 verification:
   status: "held"
   date: "2026-11-19"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 92
-  confirmed: 91
+  claims: 82
+  confirmed: 79
   unconfirmed: 0
-  contradicted: 1
-  attempts: 4
-  hash: "9cad30f37bc139d6e193228ed63a1539"
+  contradicted: 3
+  attempts: 5
+  hash: "8d68f405dfd89e7c781b1198c9e5f48d"
 ---
 
 ## What's changing
 
-Microsoft Purview data loss prevention (DLP) can now be applied to files and text in transit by integrating with Microsoft Entra Global Secure Access Internet Access. In an Entra content policy, a rule with the action **Scan with Purview** sends matching traffic to Purview; Purview evaluates it against a DLP policy, and Global Secure Access enforces the result. Learn describes the Purview actions as **Audit only** and **Block**.
+Purview Data Loss Prevention (DLP) can now run as an **Inline web traffic** policy that acts on files and text leaving the network for unmanaged cloud apps. The traffic is routed through Microsoft Entra Global Secure Access Internet Access, which sends matching content to Purview for inspection. Microsoft's notice MC1181769 describes it as a way to stop sensitive files reaching untrusted cloud apps, including generative AI platforms, cloud storage and content-sharing services, through browsers, apps, APIs and add-ins, with alerts and incidents managed in Purview and Microsoft Defender.
 
-On the Purview side, a new **Inline web traffic** policy scenario is used. Learn says the destinations can be unmanaged cloud apps from the Microsoft Defender for Cloud Apps catalogue (over 35,000 discoverable apps) or adaptive app scopes such as generative AI, cloud storage, collaboration, social network and webmail. The activities are text or files sent to, and received from, those apps. Matches appear in DLP alerts when alerts are configured, and in activity explorer, where events can be filtered by the enforcement plane *network*. Microsoft's notice MC1181769 says the feature is available by default but requires configuration to activate.
+The feature has two halves. In the Microsoft Entra admin center, a Global Secure Access administrator creates a content policy rule whose action is **Scan with Purview**, links the policy to a security profile and attaches that profile to a Conditional Access policy. In the Microsoft Purview portal, a matching DLP policy decides whether to audit or block. Learn states that without a matching Purview DLP policy the content policy cannot inspect content or enforce audit or block decisions. The notice says admins can target more than 35,000 unmanaged cloud apps, and Learn lists four activities: text sent, text received, file uploaded and file downloaded, each set to **Audit** or **Block**.
 
-The roadmap record shows status Launched, with a target of September CY2026, a preview date of November CY2025 and release phases General Availability and Preview. MC1181769 (updated 11 September 2026) says general availability rollout begins at the end of September and completes by the end of October 2026, previously the end of September. It sets no act-by date. One Learn page for the DLP policy scenario still says some features in it are in preview.
+The roadmap record shows status Launched, with a General Availability target of September CY2026 and a preview date of November CY2025; its description says the GA release has moved. Microsoft's notice, last updated 2026-09-11, gives a public preview rollout from mid-November 2025 to mid-December 2025 and a general availability rollout beginning at the end of September and completing by the end of October 2026 (previously the end of September). The notice's end date is 2026-11-30 and it sets no act-by date. Learn's Purview scenario article for network data security still carries the note that some features it uses are in preview, so confirm in your tenant which parts are generally available.
 
 ## Why it matters
 
-This gives security and compliance teams a control point on traffic to generative AI and file-sharing sites that is separate from the browser or app a person chooses. The wiki's view is that its value depends on both halves being configured: Learn says a content policy using Scan with Purview cannot inspect or enforce without a matching Purview DLP policy that targets inline web traffic.
+This closes a gap that endpoint and Microsoft 365 DLP do not reach: files and text sent from managed devices to apps the organisation has not sanctioned. The notice says the feature is available by default but needs configuration to activate, so nothing is enforced until both the Global Secure Access rule and the Purview policy exist. If nobody acts, existing behaviour continues and uploads to unmanaged apps stay as open as they are today.
 
-If nobody acts, the notice says activation needs configuration, so expect no new blocking. Plan for the work to span the Global Secure Access administrator, the Conditional Access administrator and the Purview DLP team, and for the licences to be settled before anyone is scoped in.
+The work spans two teams that often sit apart, the network or identity team that owns Global Secure Access and the compliance team that owns DLP. It also depends on TLS inspection, a licence combination and a Conditional Access policy, so plan the joint owner and licences before piloting.
 
 ## Risk assessment
 
 **Data exposure**
-- Matching file and text content is forwarded from Global Secure Access to Purview for inspection, and the notice lists this as altering how existing customer data is processed. Scope content policy destinations to the apps you intend to cover.
-- Inspection has documented gaps: Learn gives a 3 MB limit for files and says OCR is not yet supported, and it says files encoded within JSON or split across encrypted requests may escape inspection. The two Learn pages give different text limits (3 MB and 4 MB), so test your own cases.
-- Learn says that when Purview inspection cannot complete, for example a payload too large or an internal error, traffic is allowed (fail-open). The **PurviewStatus** field in the traffic logs identifies those transactions.
+
+- Until a Scan with Purview rule and a matching Inline web traffic DLP policy both exist, sensitive files and text can still reach unmanaged apps; Learn says the content policy cannot enforce audit or block decisions without the DLP policy.
+- Learn lists limits that leave content uninspected: the maximum content size for Scan with Purview is 3 MB for files and text, OCR is not yet supported, and WebSocket traffic bypasses file-type filtering although text types are still evaluated.
+- Learn says file detection is limited to files sent as unencoded or multipart request and response bodies, so an app that encodes a file inside JSON or splits it across encrypted requests may not be inspected.
+- Traffic is allowed (fail-open) where Purview inspection cannot complete; Learn says such transactions can be found in Traffic logs using the PurviewStatus field.
 
 **Security & identity**
-- Learn says Scan with Purview applies only to traffic associated with an Entra user identity, and that Purview network data security policies do not apply to B2B guest users. Traffic that cannot be mapped to a user is not sent to Purview.
-- Learn requires TLS inspection and the Global Secure Access client on Windows or macOS, on a device that is Microsoft Entra ID joined or hybrid joined. QUIC (UDP) is not supported, so traffic falls back to TCP where the site allows it.
+
+- Scan with Purview applies only to traffic that can be mapped to an Entra user identity; Learn says other traffic is not sent to Purview. Learn also says network data security policies do not apply to B2B guest users.
+- Enforcement relies on the Conditional Access policy that carries the Global Secure Access security profile, so users outside that policy's scope are not covered.
+- Learn says the Global Secure Access client runs on Windows or macOS and requires an Entra ID joined or hybrid joined device.
 
 **Autonomy & actions**
-- With the Block action, Global Secure Access stops the matched upload or text. Learn offers simulation mode on the DLP policy and shows a blocked ChatGPT upload as an error to the user.
-- Learn cautions that blocking HTML or JSON text types in a basic content rule can block normal web and API traffic, and says requests are rate limited and traffic is blocked (fail-closed) when limits are exceeded.
+
+- A **Block** action stops the matched upload or download for the user; Learn's network data security page lists Audit only and Block as the supported actions.
+- Learn says requests are subject to API rate limiting, and traffic is blocked (fail-closed) when limits are exceeded.
 
 **Change & support**
-- Two portals must agree: Learn says the actions in the Purview rule should match the activities and content types in the content policy. Expect helpdesk questions when a mismatch lets traffic through or an upload fails.
-- Learn says policies can take up to 24 hours to reach the network solution after the integration is configured, and up to 30 minutes for data on a request to appear in the audit log and activity explorer.
+
+- A blocked upload will reach the helpdesk. Learn cautions that blocking HTML or JSON text types in a basic content rule can block normal web and API traffic.
+- Learn says to allow up to 24 hours for policies to reach the network security solution and for the first data to appear, so test results may lag.
 
 ## Cost and licensing
 
-**Licence.** Learn's network data security page says the Global Secure Access integration requires one of two combinations: Microsoft 365 E7 per-seat licences, or Purview E5 (or equivalent) per-seat licences and Entra Internet Access (or equivalent) licences. The Global Secure Access overview says Entra Internet Access is included in the Microsoft Entra Suite licence and sold standalone, that users need Microsoft Entra ID P1 or P2, and that most Global Secure Access services use a per-user model. The content policy page lists a valid Entra Internet Access licence and a valid Purview licence for Scan with Purview, and says basic content filtering works without a Purview licence.
+Learn's network data security page says integration with Microsoft Entra Global Secure Access requires one of two licence combinations: Microsoft 365 E7 per-seat licences, or Purview E5 (or equivalent) per-seat licences and Entra Internet Access (or equivalent) licences. The Global Secure Access content policy page also lists a valid Microsoft Entra Internet Access licence and a valid Microsoft Purview licence, required for Scan with Purview inspection, as prerequisites. Basic content filtering that does not use Purview needs no Purview licence.
 
-**Differences between sources.** Microsoft's notice says affected tenants have Microsoft 365 E3 or E5 licences, while the DLP note on the content policy page mentions a Microsoft 365 E5/A5 subscription or a Microsoft Purview DLP add-on. Quote the Learn network data security page in a budget request and confirm the rest with Microsoft.
+Pay-as-you-go is a conflict between sources. Microsoft's notice MC1181769 says a global admin must activate Purview pay-as-you-go to enable the capability and that no charges apply during public preview. Learn's network data security page says pay-as-you-go is not required for the Global Secure Access integration, and that its request-based pay-as-you-go billing applies to non-Microsoft SASE and secure browser integrations. Confirm in your tenant before budgeting for either.
 
-**Pay-as-you-go.** The notice says a global admin must activate Purview pay-as-you-go and that no charges apply during public preview. Learn says pay-as-you-go is not required for the Global Secure Access integration, and ties its request-based meter to non-Microsoft SASE and secure browser integrations. Treat this as an open question.
-
-**Indirect costs.** Time for the Global Secure Access, Conditional Access and Purview administrators, client deployment and TLS inspection set-up. The Global Secure Access overview points to Microsoft Entra Plans & Pricing for licence costs; no price is quoted here.
+The notice describes affected tenants as Microsoft 365 E3 or E5; Learn's licence combinations above are the more specific statement. A price for Entra Internet Access or for Purview E5 is not stated on those pages. Admin time for TLS inspection, rule design and testing is the other cost.
 
 ## Scope
 
-**Who is affected.** Users covered by the Internet Access traffic forwarding profile and by a Conditional Access policy that applies the Global Secure Access security profile. Learn says network content filtering is supported with the Internet access profile only. The notice names Microsoft 365 tenants with E3 or E5 licences and the admins who manage Purview DLP and Entra Global Secure Access.
+**Who is covered.** Users whose traffic is mapped to an Entra identity and routed through Global Secure Access Internet Access under the Conditional Access policy that carries the security profile. Learn says B2B guest users are not covered by network data security policies.
 
-**Roles.** Learn lists the Global Secure Access Administrator role for Global Secure Access settings and the Conditional Access Administrator role for Conditional Access policies. For Purview DLP it names a role such as DLP Compliance Management or Information Protection Admin.
+**Roles.** Learn lists the Global Secure Access Administrator role to configure Global Secure Access settings and the Conditional Access Administrator role for Conditional Access policies. In Purview, it says you need a role such as DLP Compliance Management or Information Protection Admin, and a Microsoft 365 E5/A5 subscription or a Microsoft Purview DLP add-on.
 
-**Clouds and platforms.** The roadmap record lists Worldwide (Standard Multi-Tenant) and the Web platform. Learn requires the Global Secure Access client on Windows or macOS.
+**Clouds and platforms.** The roadmap record lists Worldwide (Standard Multi-Tenant) and the platform Web. Learn says the Global Secure Access client installs on Windows or macOS, and that the Internet Access traffic forwarding profile and a TLS inspection policy must be configured first.
 
-**Prerequisites.** Per Learn: the Internet Access traffic profile with correct user assignments, a TLS inspection policy, a content policy, a security profile linked to a Conditional Access policy, and a matching Inline web traffic DLP policy in Purview.
+**Rollout.** The roadmap status is Launched; the notice gives the general availability rollout as end of September to end of October 2026.
 
 ## Governance guidance
 
 ### Before rollout
-- Confirm the licence position for the in-scope users against the Learn network data security page, and ask Microsoft whether the pay-as-you-go step in MC1181769 applies to you.
-- Assign the Global Secure Access Administrator, Conditional Access Administrator and a Purview DLP role to named people before work starts.
-- Inventory which AI and file-sharing apps and which user groups you intend to cover, and list the URLs and FQDNs each app uses for uploads.
-- Check that target devices are Microsoft Entra ID joined or hybrid joined and run the Global Secure Access client on Windows or macOS.
+
+- Assign an owner in each of security and network teams, and confirm the Global Secure Access Administrator, Conditional Access Administrator and DLP Compliance Management (or Information Protection Admin) roles are held by the right people.
+- Confirm licences against Learn's two combinations (Microsoft 365 E7, or Purview E5 plus Entra Internet Access) for the pilot users, and ask your Microsoft account team whether pay-as-you-go activation applies, given the notice and Learn differ.
+- Enable the Internet Access traffic forwarding profile, check user assignments and configure a TLS inspection policy before any content rule is created.
+- Choose pilot apps and the Purview sensitivity labels or sensitive information types to match, and list the file and text activities you want to audit first.
 
 ### At rollout
-- Create a content policy rule with the action Scan with Purview.
-- Create the Inline web traffic DLP policy in Purview with matching actions, and start in simulation mode before turning it on.
-- Scope the Conditional Access policy to a pilot group first, using the Use Global Secure Access Security Profile session control.
+
+- Create the Inline web traffic DLP policy with **Network and non-Microsoft secure browsers** enabled, and run it in simulation mode or with the action set to **Audit** before using **Block**.
+- Create a Global Secure Access content policy with a **Scan with Purview** rule whose activities and content types match the DLP rule's actions, link it to a security profile and attach the profile to a Conditional Access policy for the pilot group.
+- Validate each activity you rely on with a test file or text, and confirm the result in Traffic logs and in Purview.
+- Tell the helpdesk which upload and download blocks to expect and what the user sees.
 
 ### After rollout
-- Retest after any change to an app's upload endpoints, because the content policy depends on the URLs and FQDNs you listed.
+
+- Review Purview **Data loss prevention > Alerts** and Activity explorer for the Network DLP activities filter, and Global Secure Access Traffic logs for transactions with a PurviewStatus showing skipped inspection.
+- Widen the user group and app scope in steps, and switch audit rules to block only after reviewing false positives.
+- Recheck the notice and Learn for the pay-as-you-go position and the GA rollout status.
 
 ## Governance controls
 
@@ -197,32 +188,36 @@ If nobody acts, the notice says activation needs configuration, so expect no new
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which traffic is sent to Purview for inspection (content policy rule with Scan with Purview)</strong><br><small>Tenant</small><br><small class="controls__note">Requires the Global Secure Access Administrator role. Needs a matching Purview DLP policy. Learn documents no Graph operation for content policy rules at the time of writing (November 2026).</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Global Secure Access › Secure › Content policies › + Create Policy › Basics › Rules › rule › Action › Scan with Purview <a href="https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether sensitive files and text sent to unmanaged cloud apps are audited or blocked (Inline web traffic DLP policy)</strong><br><small>Tenant</small><br><small class="controls__note">New-DlpCompliancePolicy accepts Network for EnforcementPlanes, but that parameter selects the enforcement layer, not the audit or block action. In the rule: Actions &gt; + Add an action &gt; Restrict browser and network activities.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Inline web traffic › Custom › Custom policy › Choose where to enforce the policy › Network and non-Microsoft secure browsers › Create or customize advanced DLP rules <a href="https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which users the Global Secure Access security profile applies to (Conditional Access)</strong><br><small>User</small><br><small class="controls__note">Conditional Access Administrator role. Preview API; production use is not supported. The request body sets sessionControls.globalSecureAccessFilteringProfile.profileId and isEnabled; conditions.users scopes the users.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Identity › Protection › Conditional Access › + Create new policy › Session › Use Global Secure Access Security Profile <a href="https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/identity/conditionalAccess/policies</code> <a href="https://learn.microsoft.com/graph/api/conditionalaccessroot-post-policies?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which Purview DLP policy inspects and acts on network traffic</strong><br><small>Tenant</small><br><small class="controls__note">Security &amp; Compliance PowerShell. The portal steps then add a rule with Content contains conditions and the Restrict browser and network activities action, set to Audit or Block.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Inline web traffic › Custom › Custom policy › Choose where to enforce the policy › Network and non-Microsoft secure browsers <a href="https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpCompliancePolicy -Name &lt;policy name&gt; -EnforcementPlanes @(&quot;Network&quot;)</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which traffic Global Secure Access sends to Purview for inspection</strong><br><small>Tenant</small><br><small class="controls__note">Needs the Global Secure Access Administrator role. The rule is linked to a security profile and then to a Conditional Access policy.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Global Secure Access › Secure › Content policies › + Create Policy › Rules › Action › Scan with Purview <a href="https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-All three rows are needed for enforcement: the content policy chooses what is sent to Purview, the Purview policy decides audit or block, and Conditional Access applies the security profile to users. The Purview policy page describes selecting **Network and non-Microsoft secure browsers** as the enforcement location and **Restrict browser and network activities** as the rule action.
+Both sides must be configured. A **Scan with Purview** rule has no effect on content without a matching Inline web traffic DLP policy, and a DLP policy has nothing to inspect until Global Secure Access routes traffic to it. Learn says the actions in the Purview rule should match the content types and activities in the Global Secure Access content policy.
 
-The TLS inspection policy and the Internet Access traffic forwarding profile are prerequisites on the Learn page and are set up on their own Global Secure Access pages, which the content policy page links to. Troubleshooting and review use Purview DLP alerts, activity explorer and the Global Secure Access traffic logs.
+The content policy takes effect through a security profile linked in **Global Secure Access > Secure > Security profiles** and a Conditional Access policy that sets **Use Global Secure Access Security Profile** under Session. Those steps are described on the same Learn page and need the Global Secure Access Administrator and Conditional Access Administrator roles respectively.
+
+Learn says Purview alerts and Activity explorer apply only when Scan with Purview is used; a basic Allow or Block content policy is reviewed in Global Secure Access traffic logs instead.
 
 ## Open questions
 
-- Does the pay-as-you-go activation step in MC1181769 apply to the Global Secure Access integration, given that Learn says it is not required? Watch the notice and the Purview billing models page.
-- Which licence statement applies to a tenant: E3 or E5 (the notice), E7 or Purview E5 plus Entra Internet Access (Learn), or E5/A5 or a DLP add-on (the content policy page)?
-- Which parts of the DLP policy scenario are still preview now that the roadmap shows the item as Launched, as the scenario page still says some features in it are in preview?
-- Is the inline text limit 3 MB (content policy page) or 4 MB (network data security page)?
-- Will Microsoft document a Microsoft Graph operation for content policy rules? Watch the Global Secure Access Graph reference.
+- Does pay-as-you-go activation apply to the Global Secure Access integration? Microsoft's notice MC1181769 says a global admin must activate it, while Learn's network data security page says it is not required; watch the notice and that page.
+- Which licences apply to tenants that hold only Microsoft 365 E3 or E5? The notice names E3 or E5, while Learn names Microsoft 365 E7 or Purview E5 plus Entra Internet Access.
+- Is every part of the feature now generally available? The roadmap record says Launched, the notice gives a general availability rollout ending by the end of October 2026, and Learn's Purview scenario article still carries a preview note.
+- Will Microsoft document a Microsoft Graph operation for Global Secure Access content policies, so rules can be scripted alongside the DLP policy?
 
 <!-- rationale
-risk: Low. Microsoft's notice says the feature is available by default but needs configuration to activate, so an untouched tenant sees no change; once configured, inspection can fail open and leave gaps.
-cost: Medium. Learn lists Microsoft 365 E7, or Purview E5 plus Entra Internet Access licences, for the Global Secure Access integration; admin time in two portals comes on top.
-impact: Medium. Only users routed through Internet Access and covered by a Conditional Access policy are affected, but those users can see uploads blocked to AI and file-sharing sites.
+risk: Medium. Microsoft's notice says the feature needs configuration to activate, so uploads to unmanaged apps stay uncontrolled until then, and Learn lists gaps once active: traffic that cannot be mapped to an Entra user, and inspection that fails open.
+cost: Medium. Learn requires Microsoft 365 E7, or Purview E5 plus Entra Internet Access licences, for the Global Secure Access route; notice MC1181769 also asks a global admin to activate Purview pay-as-you-go, which Learn says is not required.
+impact: Low. Security, compliance and network administrators do the setup; end users notice only if a rule blocks an upload or download for the users and apps in scope.
 -->
 
 <!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; controls[1].note; Governance controls: second row / admin-path: The printed Purview route reaches the audit or block control, with its remaining action steps supplied by the row note. | Found: Select Create or customize advanced DLP rules and select Next. Select + Create rule and configure the rule: ... Under Actions, select + Add an action > Restrict browser and network activities. | Fix: Replace controls[1].ui.path with 'Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > Choose where to enforce the policy > Network and non-Microsoft secure browsers > Create or customize advanced DLP rules > + Create rule > Actions > + Add an action > Restrict browser and network activities'. Keep the note explaining that the relevant activities are set to Audit or Block there. The cited page documents the missing + Create rule step between the printed path and the note's action steps. | Source: https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering
+- [contradicted, blocker] Why it matters: first sentence / applicability: Endpoint and Microsoft 365 DLP do not reach files and text sent from managed devices to unsanctioned apps. | Found: This scenario demonstrates how to restrict unintentional sharing of sensitive information to unapproved cloud applications and services using Microsoft Purview DLP. | Fix: Replace the first sentence with: 'This extends Purview DLP inspection to files and text routed through Global Secure Access to unmanaged cloud apps.' The cited content filtering page supports that narrower statement; do not claim Endpoint DLP cannot protect sharing to unapproved apps. | Source: https://learn.microsoft.com/purview/endpoint-dlp-create-policy-unauthorized-cloud-apps-services
+- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: Global Secure Access > Secure > Content policies > + Create Policy > Rules > Action > Scan with Purview reaches the content rule action. | Found: On the Rules tab: 1. Add a new rule. 2. Enter the Rule name, Description, Priority, and Status as appropriate. 3. Select the appropriate option for the Action menu | Fix: The Action menu is inside a new rule, not directly on the Rules tab. Replace both copies with 'Global Secure Access > Secure > Content policies > + Create Policy > Basics > Rules > add a new rule > Action > Scan with Purview', following https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering. | Source: https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Purview path reaches Network and non-Microsoft secure browsers during Inline web traffic policy creation. | Found: Configure the cloud apps to monitor: ... Select + Add cloud apps. ... On the Adaptive app scopes tab, choose the app categories ... On the Choose where to enforce the policy page, ensure Network and non-Microsoft secure browsers is enabled | Fix: Include the omitted app-scope selection in both copies of the path: 'Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > + Add cloud apps > Adaptive app scopes > app categories > Choose where to enforce the policy > Network and non-Microsoft secure browsers'. | Source: https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering
+- [contradicted, minor] Governance guidance; Governance controls table / consistency: The governance checklist tells readers to configure or check controls not represented by controls-table rows. | Found: Checklist: 'Enable the Internet Access traffic forwarding profile, check user assignments and configure a TLS inspection policy'; 'Review Purview Data loss prevention > Alerts and Activity explorer'. The table has only DLP policy and content policy rows. | Fix: Remove the Before rollout bullet beginning 'Enable the Internet Access traffic forwarding profile' and the After rollout bullet beginning 'Review Purview'. Replace the At rollout content-policy bullet with 'Create a Global Secure Access content policy with a Scan with Purview rule whose activities and content types match the DLP rule's actions.' Replace its validation bullet with 'Validate each activity you rely on with a test file or text.' These remove checklist instructions for forwarding, TLS, profile linking, Conditional Access and monitoring controls that lack rows; retain the factual explanations elsewhere.
 -->

@@ -79,15 +79,17 @@ changes:
     note: "Correction: cost lowered to low, unsupported permission and no-action claims narrowed, existing-evaluation controls labelled as background, run API added, connector data-policy row removed."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 42 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 44 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-19"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 42
-  confirmed: 41
+  claims: 44
+  confirmed: 43
   unconfirmed: 1
   contradicted: 0
   attempts: 0
@@ -171,10 +173,10 @@ cost: Low. Only preparation and review effort is presently established; feature-
 impact: Low. It is used by makers and quality owners who test agents.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Data exposure / behaviour: Multi-grader comparison results show agent responses. | Found: Searched: "multi-grader comparison" agent responses permissions identity; opened analytics-agent-evaluation-results and agents-experience/analytics-agent-evaluation-intro. These document existing evaluations, not agent-response display in the new comparison. | Fix: Replace 'Results show agent responses and evidence.' with 'The roadmap says results include evidence supporting each evaluation.'
+- [unsupported, major] Risk assessment: Data exposure / behaviour: Multi-grader comparison results show agent responses. | Found: Searched: "multi-grader comparison" "agent responses" identity. Opened analytics-agent-evaluation-results and agents-experience/analytics-agent-evaluation-intro; these describe existing evaluations, not agent-response display in this roadmap feature. | Fix: Replace 'Results show agent responses and evidence.' with 'The roadmap says results include evidence supporting each evaluation.'
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls: signed-in user paragraph / behaviour: Existing evaluations run with the currently signed-in user profile. | Found: Evaluations and connections used by tools run with the currently signed-in user profile. | Fix: Replace the sentence with 'In the preview new agent experience, evaluations and connections used by tools run with the currently signed-in user profile.' The separately cited standard-harness API article says that without mcsConnectionId the evaluation runs without authentication. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro#user-profile
+- [supported, minor] Governance controls: signed-in user paragraph / behaviour: Existing evaluations run with the currently signed-in user profile. | Found: Evaluations and connections used by tools run with the currently signed-in user profile. | Fix: Replace the sentence with 'In the preview new agent experience, evaluations and connections used by tools run with the currently signed-in user profile.' The cited standard-harness API page https://learn.microsoft.com/microsoft-copilot-studio/analytics-agent-evaluation-rest-api says: 'If you don't add an mcsConnectionId to your call, the evaluation runs without authentication.' | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro#user-profile
 -->

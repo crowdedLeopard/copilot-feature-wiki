@@ -40,6 +40,9 @@ sources:
   - title: "Overview of Dataverse semantic model"
     url: "https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview"
     kind: "learn"
+  - title: "Business Applications in Work IQ"
+    url: "https://learn.microsoft.com/power-apps/maker/data-platform/business-applications-work-iq"
+    kind: "learn"
   - title: "Create and configure Dataverse semantic models"
     url: "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals"
     kind: "learn"
@@ -87,7 +90,7 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Apps (maker)"
-      path: "More > Discover all > Semantic models > model > Configure > Configure table sources > Included in model > table > Remove table"
+      path: "environment > More > Discover all > AI > Semantic models > model > Configure > Configure table sources > Included in model > table > Remove table"
       docs: "https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals"
     api: null
     note: "New semantic model experience, where available. Needs System Administrator, or Dataverse Search, Semantic Model and Environment Maker. The Sales agent model is SalesSpecificQnA, shared with Copilot in Dynamics 365 Sales."
@@ -95,10 +98,13 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Apps (maker)"
-      path: "More > Discover all > Semantic models > model > Glossary > Add term"
+      path: "environment > More > Discover all > AI > Semantic models > model > Glossary > Add term"
       docs: "https://learn.microsoft.com/power-apps/maker/data-platform/manage-semantic-model-glossary"
-    api: null
-    note: "Preview. Changes are picked up at the next regeneration unless an admin regenerates manually."
+    api:
+      kind: "rest"
+      call: "POST /api/data/v9.2/copilotglossaryterms"
+      docs: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/copilotglossaryterm"
+    note: "Preview. Changes are picked up at the next regeneration. API creates CopilotGlossaryTerm rows using term and description; skill associates a DVTableSearch model. Reference does not explain sync with the Power Apps Glossary screen."
   - governs: "Which CRM tables or objects Sales agent can query"
     scope: "environment"
     ui:
@@ -133,19 +139,23 @@ changes:
     note: "Corrected after verification: Work IQ default now limited to new public production environments (November 2026 plan for existing environments deferred), table and glossary admin paths, roles, minimum versions, licensing model, API wording, preview wording."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 95 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-19"
+    note: "Corrected after verification: form summaries wording, CopilotGlossaryTerm Web API call on the glossary row, Work IQ name in the environment copy or move step, and fuller semantic model and glossary paths."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 93 statements not yet confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 95
+  claims: 93
   confirmed: 93
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 2
-  hash: "0288885f153bfda2023b83ea00dfaefd"
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "e0aed7fa3a2237b2d39b8fabc12cbc8d"
 ---
 
 ## What's changing
@@ -167,7 +177,7 @@ The larger decision is upstream. Learn states that Business Applications in Work
 ## Risk assessment
 
 **Data exposure**
-- The model reads metadata (relationships, views, form display names, description summaries). Turning on the Sample table rows signal, which is off by default, lets the system read sample data rows, so keep it off for tables holding personal or regulated data.
+- The model reads metadata (relationships, views, form summaries, description summaries). Turning on the Sample table rows signal, which is off by default, lets the system read sample data rows, so keep it off for tables holding personal or regulated data.
 - Sales agent already has access to all columns in each table or object added in its admin settings. The model adds context about those tables, and removing a table under Configure > Configure table sources > Included in model is the lever for sensitive ones (new semantic model experience, where available).
 - Work IQ respects existing access permissions, so the model does not by itself widen who can read CRM rows.
 
@@ -181,7 +191,7 @@ The larger decision is upstream. Learn states that Business Applications in Work
 **Change & support**
 - Sales agent and Copilot in Dynamics 365 Sales share the SalesSpecificQnA model, so a change for one applies to both.
 - Computed signals are read-only; the way to correct a misreading is a glossary entry. Changes can take until the next 12-hourly regeneration unless an admin regenerates manually.
-- The model does not support environment copy or move. After either, turn Dataverse Intelligence off and on again in Power Platform admin center.
+- The model does not support environment copy or move. After either, turn Work IQ (formerly Dataverse intelligence) off and on again in Power Platform admin center.
 - The Sales agent semantic-model setup step is documented as preview, which Learn says might have restricted functionality.
 
 ## Cost and licensing
@@ -217,7 +227,7 @@ The documented indirect cost is storage. The Sales agent page says enabling Data
 
 ### After rollout
 - Review the model after schema changes; automatic regeneration runs every 12 hours.
-- Turn Dataverse Intelligence off and on again after any environment copy or move.
+- Turn Work IQ (formerly Dataverse intelligence) off and on again after any environment copy or move.
 - Re-read the Learn pages when the status moves from preview, because limits and prerequisites may change.
 
 ## Governance controls
@@ -229,8 +239,8 @@ The documented indirect cost is storage. The Sales agent page says enabling Data
 <tbody>
 <tr><td data-label="Control"><strong>Whether Work IQ features, including semantic models, are on in an environment</strong><br><small>Environment</small><br><small class="controls__note">Preview. The quickstart names the Power Platform Administrator role; the default-settings page says an environment administrator account.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › environment › Settings › Product › Features › Work IQ <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/quickstart" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether Business Applications data in Work IQ is available to Copilot, for all users, groups or no one</strong><br><small>Tenant</small><br><small class="controls__note">Preview. Tenant administrator. Learn says this must be on for environments to use Work IQ capabilities.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › Business Applications data in Work IQ available to Copilot <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which tables, signal types, views and relationships feed the Sales agent semantic model</strong><br><small>Environment</small><br><small class="controls__note">New semantic model experience, where available. Needs System Administrator, or Dataverse Search, Semantic Model and Environment Maker. The Sales agent model is SalesSpecificQnA, shared with Copilot in Dynamics 365 Sales.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>More › Discover all › Semantic models › model › Configure › Configure table sources › Included in model › table › Remove table <a href="https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Business terms and definitions that correct how the model reads CRM data</strong><br><small>Environment</small><br><small class="controls__note">Preview. Changes are picked up at the next regeneration unless an admin regenerates manually.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>More › Discover all › Semantic models › model › Glossary › Add term <a href="https://learn.microsoft.com/power-apps/maker/data-platform/manage-semantic-model-glossary" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which tables, signal types, views and relationships feed the Sales agent semantic model</strong><br><small>Environment</small><br><small class="controls__note">New semantic model experience, where available. Needs System Administrator, or Dataverse Search, Semantic Model and Environment Maker. The Sales agent model is SalesSpecificQnA, shared with Copilot in Dynamics 365 Sales.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>environment › More › Discover all › AI › Semantic models › model › Configure › Configure table sources › Included in model › table › Remove table <a href="https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Business terms and definitions that correct how the model reads CRM data</strong><br><small>Environment</small><br><small class="controls__note">Preview. Changes are picked up at the next regeneration. API creates CopilotGlossaryTerm rows using term and description; skill associates a DVTableSearch model. Reference does not explain sync with the Power Apps Glossary screen.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>environment › More › Discover all › AI › Semantic models › model › Glossary › Add term <a href="https://learn.microsoft.com/power-apps/maker/data-platform/manage-semantic-model-glossary" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST /api/data/v9.2/copilotglossaryterms</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/copilotglossaryterm" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which CRM tables or objects Sales agent can query</strong><br><small>Environment</small><br><small class="controls__note">Existing control today, not a semantic model setting. Learn does not say it limits the model's data scope. At least one entity must remain.</small></td><td data-label="Admin UI"><strong>Sales agent administrator settings</strong><br>Features › Sales Chat › Add <a href="https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Scripted switch for Work IQ or the Sales agent semantic model</strong><br><small>Environment</small><br><small class="controls__note">Microsoft Learn documents no API for changing the Work IQ environment setting or editing the preprovisioned Sales agent model's signal settings at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
@@ -256,13 +266,9 @@ cost: Low. The only costs Learn shows are admin time and extra Dataverse storage
 impact: Medium. Sellers using Sales agent will notice changed answers; the admins and makers who manage the CRM environment do the configuring.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Data exposure / behaviour: The metadata the model reads specifically includes form display names. | Found: Searched: 'Dataverse semantic model display names forms' and 'Dataverse semantic model form display'; opened semantic-model-overview and fine-tune-semantic-model-signals. They describe form summaries, not specifically form display names. | Fix: Replace 'form display names' with 'form summaries' in the Data exposure parenthesis, matching https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview.
-- [contradicted, blocker] controls[3].api / absence: No API is documented for the control governing business terms and definitions used to interpret CRM data. | Found: Entity set path: [organization URI]/api/data/v9.2/copilotglossaryterms Operations supported: POSTGETPATCHDELETE term | Edm.String description | Edm.String | Explanation of the term. skill | dvtablesearch | CopilotGlossaryTerm_DVTableSearch | Fix: Replace the broad null automation assertion with a rest API side whose call is 'POST /api/data/v9.2/copilotglossaryterms' and docs is https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/copilotglossaryterm. Add to the note: 'The API creates CopilotGlossaryTerm rows using term and description, with skill associating the term with a DVTableSearch model. The reference does not explain synchronization with the Power Apps Glossary screen.' Do not extend this operation to signal settings or the Work IQ switch. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/copilotglossaryterm
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Change & support; Governance guidance: After rollout / admin-path: After an environment copy or move, administrators should turn Dataverse Intelligence off and back on in Power Platform admin center. | Found: After any environment copy or move, turn Dataverse Intelligence off and back on in the Power Platform Admin Center to force a restart. | Fix: Keep the recovery instruction but name the current setting: 'After any environment copy or move, turn Work IQ (formerly Dataverse intelligence) off and back on in Power Platform admin center.' Cite https://learn.microsoft.com/power-apps/maker/data-platform/business-applications-work-iq, which explicitly documents the rename, alongside the overview. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview
-- [supported, minor] controls[2].ui; Governance guidance; Governance controls / admin-path: A model table can be removed through More > Discover all > Semantic models > model > Configure > Configure table sources > Included in model > table > Remove table. | Found: select Discover all, and then select Semantic models under AI section. Under Configure table sources, select All tables to find an available table, or Included in model to review the current selection. | Fix: Complete the path as 'environment > More > Discover all > AI > Semantic models > model > Configure > Configure table sources > Included in model > table > Remove table'. The omitted environment selection and AI heading are documented at https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals
-- [supported, minor] controls[3].ui; Governance controls / admin-path: The Power Apps model glossary is reached through More > Discover all > Semantic models > model > Glossary > Add term. | Found: Open the semantic models page and select the model you want to update. Select Glossary. In Glossary, select Add term. | Fix: Complete the path as 'environment > More > Discover all > AI > Semantic models > model > Glossary > Add term'. The cited glossary page documents the final steps; the already-cited https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals supplies Discover all and the AI heading, so the pre-check's missing-word lead is not a wrong destination. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/manage-semantic-model-glossary
+- [supported, minor] Why it matters; rationale: risk / default: Business Applications in Work IQ is on by default for new public production environments subject to exceptions. | Found: Business Applications in Work IQ is on by default for new public production environments created for new or existing tenants. The following environments are exceptions: | Fix: After the scoped default statement, add: 'The older Manage feature settings reference still lists Turn on Dataverse intelligence (Work IQ) for agents and AI experiences as Off by default; the Work IQ default-settings page gives the newer, environment-qualified default.' Cite https://learn.microsoft.com/power-platform/admin/settings-features#dataverse-intelligence-preview. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings
+- [supported, minor] Risk assessment: Change & support / behaviour: The semantic model does not support environment copy or move. | Found: No ALM support. The semantic model currently doesn't support environment copy or move operations. | Fix: Replace the sentence with: 'The overview says environment copy or move is unsupported; the configuration guide separately says semantic models are solution-aware and can move configuration through solutions.' Both pages are already cited: https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview and https://learn.microsoft.com/power-apps/maker/data-platform/fine-tune-semantic-model-signals#add-semantic-model-to-a-solution. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/semantic-model-overview
 -->

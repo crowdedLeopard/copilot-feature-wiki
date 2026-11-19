@@ -5,7 +5,7 @@ slug: "security-roles"
 summary: "Dataverse security roles are the permission sets that decide which tables and records a user, team or application user can read, change, assign or share in one environment. Use them to set least-privilege access and to see who holds what."
 created: "2026-11-19"
 updated: "2026-11-19"
-version: 2
+version: 3
 tags: ["security-roles","dataverse","authorisation","least-privilege","power-platform-admin-center","row-level-security","filter-based-security"]
 covers: []
 sources:
@@ -45,6 +45,9 @@ sources:
   - title: "Create and Update Table Definitions Using the Web API"
     url: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/create-update-entity-definitions-using-web-api"
     kind: "learn"
+  - title: "Security Role (Role) table/entity reference (Microsoft Dataverse)"
+    url: "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/role"
+    kind: "learn"
   - title: "Work with Microsoft Entra ID group teams"
     url: "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team"
     kind: "learn"
@@ -54,6 +57,9 @@ sources:
   - title: "pac admin"
     url: "https://learn.microsoft.com/power-platform/developer/cli/reference/admin"
     kind: "learn"
+  - title: "OrgDBOrgSettings tool for Microsoft Dynamics CRM"
+    url: "https://support.microsoft.com/help/2691237/orgdborgsettings-tool-for-microsoft-dynamics-crm"
+    kind: "docs"
   - title: "Secure your Copilot Studio projects"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/guidance/sec-gov-phase3"
     kind: "learn"
@@ -91,7 +97,7 @@ controls:
     scope: "app"
     ui:
       surface: "Power Platform admin center"
-      path: "Manage > Environments > environment > Settings > Users + permissions > Application users > + New app user"
+      path: "Manage > Environments > environment > Settings > Users + permissions > Application users > + New app user > Create a new app user > edit icon (security roles)"
       docs: "https://learn.microsoft.com/power-platform/admin/manage-application-users"
     api:
       kind: "pac-cli"
@@ -114,9 +120,9 @@ controls:
       docs: "https://learn.microsoft.com/power-platform/admin/wp-security-cds"
     api:
       kind: "other"
-      call: "OrgDBOrgSettings tool: change the EnableOwnershipAcrossBusinessUnits setting"
-      docs: "https://learn.microsoft.com/power-platform/admin/wp-security-cds"
-    note: "Needs a Dynamics 365 admin or Power Platform admin. Microsoft names an OrgDBOrgSettings tool for the underlying setting."
+      call: "Microsoft.Crm.SE.OrgDBOrgSettingsTool.exe Update /u <organization-unique-name> EnableOwnershipAcrossBusinessUnits <value>"
+      docs: "https://support.microsoft.com/help/2691237/orgdborgsettings-tool-for-microsoft-dynamics-crm"
+    note: "Needs a Dynamics 365 admin or Power Platform admin. EnableOwnershipAcrossBusinessUnits stores the feature state, as documented at https://learn.microsoft.com/power-platform/admin/wp-security-cds."
   - governs: "Audit trail of security role changes"
     scope: "environment"
     ui:
@@ -139,25 +145,29 @@ changes:
     note: "Corrected after the independent check: the role-privilege call, ownership-across-business-units and audit-trail automation, the Copilot Studio role wording, predefined-role copying and the unsupported exclusions were fixed or removed."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 81 statements contradicted, 1 unconfirmed; taken offline until corrected"
+  - date: "2026-11-19"
+    note: "Corrected after the independent check: the ownership-across-business-units command now uses the documented OrgDBOrgSettings syntax, and the application-user path, audit report path and two checklist items were narrowed."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 87 statements not yet confirmed"
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 81
-  confirmed: 79
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 2
-  hash: "4700b0dcbc630f2d41e83b7f2fb082a7"
+  claims: 87
+  confirmed: 87
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "c84179e9c62b0d17393fc7e3be96a8fa"
 ---
 
 ## What it is
 
 A Dataverse security role is a named set of privileges that decides which tables and records a user, team or application user can create, read, change, delete, assign or share in one environment. Microsoft documents the model as applying only to environments that have a Dataverse database.
 
-**How a role is built.** A role holds three kinds of privilege: table privileges (Create, Read, Write, Delete, Append, Append to, Assign, Share), miscellaneous task privileges, and privacy-related privileges such as exporting data to Excel. Each privilege has an access level that sets how far up the business unit hierarchy it reaches: Organization, Parent: Child Business Unit, Business Unit, User or None.
+**How a role is built.** A role holds three kinds of privilege: table privileges (Create, Read, Write, Delete, Append, Append to, Assign, Share), miscellaneous task privileges, and privacy-related privileges such as exporting data to Excel. Each privilege has an access level that sets how far up the business unit hierarchy it reaches: Organization, Parent: Child Business Unit, Business Unit, User or None. For organization-owned tables, miscellaneous privileges and privacy-related privileges, the available levels are only Organization or None.
 
 **How a role reaches a person.** Roles are assigned directly to users or to Dataverse teams, and team members receive the team's privileges. A user can hold several roles and the privileges add together. A business unit is a security boundary: roles are associated with business units, and every user belongs to one.
 
@@ -202,16 +212,16 @@ Auditing role changes uses the Dataverse audit log, which stores audit logs in l
 <tbody>
 <tr><td data-label="Control"><strong>Which privileges and access levels each security role grants</strong><br><small>Environment</small><br><small class="controls__note">The Privileges request-body array supplies RolePrivilege entries, including PrivilegeId and Depth. The predefined-role reference says its listed roles can't be edited; the editing guide excludes System Administrator.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Users + Permissions › Security roles › security role <a href="https://learn.microsoft.com/power-platform/admin/security-roles-privileges" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST [Organization Uri]/api/data/v9.2/roles(&lt;role-id&gt;)/Microsoft.Dynamics.CRM.AddPrivilegesRole</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/web-api-functions-actions-sample" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which Dataverse roles a user holds in an environment</strong><br><small>User</small><br><small class="controls__note">Needs System Administrator or a custom role with Read and Assign on the Security Role table; the role overview's troubleshooting table lists only System Administrator or a tenant-level admin role. Body: @odata.id of the role.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Users + permissions › Users › user › Manage security roles <a href="https://learn.microsoft.com/power-platform/admin/assign-security-roles" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=&lt;user object ID&gt;)/systemuserroles_association/$ref</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which roles an application user (a Microsoft Entra app registration) holds</strong><br><small>App</small><br><small class="controls__note">One application user per Microsoft Entra app registration in an environment. In Create a new app user, choose the application and business unit, then select the edit icon to select security roles.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Users + permissions › Application users › + New app user <a href="https://learn.microsoft.com/power-platform/admin/manage-application-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac admin assign-user --environment &lt;environment-id&gt; --user &lt;application-id&gt; --role &lt;role&gt; --application-user</code> <a href="https://learn.microsoft.com/power-platform/developer/cli/reference/admin" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which roles an application user (a Microsoft Entra app registration) holds</strong><br><small>App</small><br><small class="controls__note">One application user per Microsoft Entra app registration in an environment. In Create a new app user, choose the application and business unit, then select the edit icon to select security roles.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Users + permissions › Application users › + New app user › Create a new app user › edit icon (security roles) <a href="https://learn.microsoft.com/power-platform/admin/manage-application-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac admin assign-user --environment &lt;environment-id&gt; --user &lt;application-id&gt; --role &lt;role&gt; --application-user</code> <a href="https://learn.microsoft.com/power-platform/developer/cli/reference/admin" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Roles assigned automatically from a user's licence</strong><br><small>Environment</small><br><small class="controls__note">Does not apply in Dataverse for Teams, Trial or Developer environments.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Environments › environment › Settings › Users + Permissions › License To Role mapping <a href="https://learn.microsoft.com/power-platform/admin/assign-security-roles" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether a user can hold roles from business units other than their own</strong><br><small>Environment</small><br><small class="controls__note">Needs a Dynamics 365 admin or Power Platform admin. Microsoft names an OrgDBOrgSettings tool for the underlying setting.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Record ownership across business units <a href="https://learn.microsoft.com/power-platform/admin/wp-security-cds" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>OrgDBOrgSettings tool: change the EnableOwnershipAcrossBusinessUnits setting</code> <a href="https://learn.microsoft.com/power-platform/admin/wp-security-cds" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether a user can hold roles from business units other than their own</strong><br><small>Environment</small><br><small class="controls__note">Needs a Dynamics 365 admin or Power Platform admin. EnableOwnershipAcrossBusinessUnits stores the feature state, as documented at https://learn.microsoft.com/power-platform/admin/wp-security-cds.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Record ownership across business units <a href="https://learn.microsoft.com/power-platform/admin/wp-security-cds" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Microsoft.Crm.SE.OrgDBOrgSettingsTool.exe Update /u &lt;organization-unique-name&gt; EnableOwnershipAcrossBusinessUnits &lt;value&gt;</code> <a href="https://support.microsoft.com/help/2691237/orgdborgsettings-tool-for-microsoft-dynamics-crm" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Audit trail of security role changes</strong><br><small>Environment</small><br><small class="controls__note">Auditing must first be on for the environment. Set IsAuditEnabled.Value in the retrieved table definition, preserving the other properties; publish the table customizations for the change to take effect.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Environments › environment › Settings › Audit and logs › Entity and field audit settings › Entities › Security Role › General › Data Services › Auditing <a href="https://learn.microsoft.com/power-platform/admin/audit-security-roles" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PUT [Organization URI]/api/data/v9.2/EntityDefinitions(LogicalName='role')</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/create-update-entity-definitions-using-web-api" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 **Who can change roles.** Assigning roles needs the System Administrator role or a custom Dataverse role with at least Read and Assign on the Security Role table. Power Platform, Dynamics 365 and Global Administrators must self-elevate first, and a Dynamics 365 Administrator must belong to the environment's security group.
 
-**How the controls interact.** Roles belong to business units, so the business unit structure limits which roles a user sees unless Record ownership across business units is on. Where licence-to-role mapping is defined, roles are assigned automatically according to the user's licence. The audit row only records changes after auditing is on for the environment, and the report is under Settings > Users + permissions > Security roles > Audit report. Role assignments appear in the audit table as events 53 to 56 (assign or remove for team and user).
+**How the controls interact.** Roles belong to business units, so the business unit structure limits which roles a user sees unless Record ownership across business units is on. Where licence-to-role mapping is defined, roles are assigned automatically according to the user's licence. The audit row only records changes after auditing is on for the environment, and the report is under Power Platform admin center > Environments > environment > Settings > Users + permissions > Security roles > Audit report. Role assignments appear in the audit table as events 53 to 56 (assign or remove for team and user).
 
 **What the controls do not enforce.** Data policies let administrators control connector access (see [Data policies](/concepts/data-policies/)). See also [Managed Environments](/concepts/managed-environments/) and [Agent identity](/concepts/agent-identity/).
 
@@ -222,8 +232,8 @@ Auditing role changes uses the Dataverse audit log, which stores audit logs in l
 - Check License To Role mapping for roles that arrive with a licence.
 - Compare the access levels on custom roles and flag any privilege set to Organization.
 - List application users and the roles each holds.
-- Turn on auditing for the Security Role table and read the Audit report for recent role changes.
-- Confirm which admins have self-elevated, and who may assign roles.
+- Turn on auditing for the Security Role table.
+- Confirm who may assign roles.
 
 ## Open questions
 
@@ -231,14 +241,8 @@ Auditing role changes uses the Dataverse audit log, which stores audit logs in l
 - Is there a documented API or command for the License To Role mapping? None was found.
 - When does filtered record ownership leave preview, and is a licence or add-on needed for it?
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] controls[4].api / command: 'OrgDBOrgSettings tool: change the EnableOwnershipAcrossBusinessUnits setting' is an automation call for the control. | Found: Searched: OrgDBOrgSettingsTool.exe Update EnableOwnershipAcrossBusinessUnits command syntax. Read wp-security-cds and support.microsoft.com/help/2691237: they document the setting and executable Update syntax, not the printed prose as a call. | Fix: Replace the call with 'Microsoft.Crm.SE.OrgDBOrgSettingsTool.exe Update /u <organization-unique-name> EnableOwnershipAcrossBusinessUnits <value>' and set its docs URL to https://support.microsoft.com/help/2691237/orgdborgsettings-tool-for-microsoft-dynamics-crm. Add to the note: 'EnableOwnershipAcrossBusinessUnits stores the feature state, as documented at https://learn.microsoft.com/power-platform/admin/wp-security-cds.' The support page gives 'Update [/u] <OrgName> <SettingName> <Value>'; retain a value placeholder rather than inventing a value format.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What it is: How a role is built / behaviour: The access levels are Organization, Parent: Child Business Unit, Business Unit, User and None. | Found: For organization-owned tables, miscellaneous privileges and privacy-related privileges only have access levels of Organization or None. | Fix: After the list, add: 'For organization-owned tables, miscellaneous privileges and privacy-related privileges, the available levels are only Organization or None.' | Source: https://learn.microsoft.com/power-platform/admin/security-roles-privileges
-- [supported, minor] controls[2].ui / admin-path: The path through Manage > Environments > environment > Settings > Users + permissions > Application users > + New app user opens application-user role selection. | Found: Select + New app user to open the Create a new app user pane. | Fix: Extend the UI path to 'Manage > Environments > environment > Settings > Users + permissions > Application users > + New app user > Create a new app user > edit icon (security roles)'. The existing note already explains choosing the target application and business unit; the omitted final icon is the role-selection control. | Source: https://learn.microsoft.com/power-platform/admin/manage-application-users
-- [supported, minor] controls[5].api; controls[5].note / command: PUT to v9.2 EntityDefinitions(LogicalName='role') updates the Security Role table definition. | Found: PUT [Organization URI]/api/data/v9.2/EntityDefinitions(LogicalName='new_bankaccount') HTTP/1.1 | Fix: Add https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/role to sources: its Properties table identifies Security Role's LogicalName as 'role', substantiating the target used with the cited generic table-definition update operation. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/create-update-entity-definitions-using-web-api
-- [supported, minor] Governance controls: How the controls interact / admin-path: The security-role Audit report is under Settings > Users + permissions > Security roles > Audit report. | Found: Select Environments > [select an environment] > Settings > Users + permissions > Security roles. 3. Select Audit report in the command bar. | Fix: Replace the prose path with 'Power Platform admin center > Environments > environment > Settings > Users + permissions > Security roles > Audit report' so the route includes the environment-selection context. | Source: https://learn.microsoft.com/power-platform/admin/audit-security-roles
-- [contradicted, minor] What to check / consistency: The checklist asks readers to review the Audit report and confirm self-elevation, but neither operation has its own control row. | Found: Turn on auditing for the Security Role table and read the Audit report for recent role changes. / Confirm which admins have self-elevated, and who may assign roles. | Fix: In What to check, narrow the audit bullet to 'Turn on auditing for the Security Role table.' Narrow the final bullet to 'Confirm who may assign roles.' The existing table covers enabling table auditing and assigning roles, not opening the report or reviewing self-elevation.
+- [supported, minor] controls[2].ui / admin-path: The application-user creation path runs through Application users > + New app user > Create a new app user > edit icon for security roles. | Found: Select + Add an app to choose the registered Microsoft Entra application that was created for the selected user, and then select Add. | Fix: Use the fuller path 'Manage > Environments > environment > Settings > Users + permissions > Application users > + New app user > Create a new app user > + Add an app > application > Add > Business Unit > business unit > edit icon (security roles)'. Keep the note explaining the application and business-unit selections; these omitted target selections are not a blocker. | Source: https://learn.microsoft.com/power-platform/admin/manage-application-users
 -->

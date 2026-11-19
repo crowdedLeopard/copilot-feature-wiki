@@ -110,18 +110,20 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 64 statements confirmed"
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 68 statements confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 64 statements contradicted, 2 unconfirmed; taken offline until corrected"
 version: 4
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-19"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 68
-  unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  claims: 64
+  confirmed: 61
+  unconfirmed: 2
+  contradicted: 1
+  attempts: 1
   hash: "65554afc2ee0fd52d39c36c0d34bd321"
 ---
 
@@ -207,4 +209,15 @@ For Allowed MCP Clients, the Dataverse Web API reference documents the allowedmc
 risk: Medium. Skills steer agent behaviour across surfaces, so a wrong or over-shared skill changes how agents act on business processes.
 cost: Variable. The meter is Copilot Credits for Work IQ API and Cowork use; licensed Microsoft 365 Copilot Chat business-data grounding is included in the applicable entitlement. No rate specific to business skills is published.
 impact: Medium. Affects makers, process owners and users of agents that discover skills.
+-->
+
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, blocker] What's changing: default enablement paragraph / date: Microsoft starts default enablement for eligible new environments on September 30, 2026. | Found: Searched: "Work IQ" "September 30, 2026"; read default-settings, manage-participation and quickstart. Current default-settings confirms eligible new environments are on by default but supplies no September 30 start date. | Fix: Replace the dated new-environment clause with: 'Microsoft Learn says Business Applications in Work IQ is on by default for new public production environments created for new or existing tenants, subject to the exceptions below.'
+- [contradicted, blocker] What's changing; Why it matters: existing-environment warning / date: Microsoft starts default enablement for eligible existing environments in November 2026. | Found: The plan to turn on Business Applications in Work IQ for existing environments that aren't listed as exceptionshas been deferred from the previously documented November 2026 schedule. Check this article for updates. | Fix: Replace the existing-environment November statement with: 'Microsoft has deferred the previously documented November 2026 plan to turn on Business Applications in Work IQ for eligible existing environments; the current page gives no replacement date.' Replace the Why it matters warning with: 'Review whether existing environments should participate; Microsoft has deferred their automatic enablement from November 2026.' | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings
+- [unsupported, blocker] What's changing: EU/EFTA parenthesis; Open questions / date: Microsoft plans to enable EU and EFTA environments by default when the feature becomes generally available. | Found: Searched: "Work IQ" "EFTA" "generally available"; read default-settings and returned Work IQ excerpts. Current default-settings lists EU/EFTA as exceptions but gives no general-availability trigger for their default enablement. | Fix: Remove 'Microsoft plans to enable them when the feature becomes generally available' from What's changing. In Open questions, retain only: 'On what date will EU and EFTA environments be enabled by default?'
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: defaultState; What's changing; Scope / default: Work IQ has an on-by-default route for eligible environments, represented by defaultState on. | Found: Business Applications in Work IQ is on by default for new public production environments created for new or existing tenants. | Fix: Keep defaultState on, but qualify the default as applying to eligible new public production environments. Note that https://learn.microsoft.com/power-platform/admin/settings-features#dataverse-intelligence-preview separately lists 'Turn on Dataverse intelligence (Work IQ) for agents and AI experiences' with default Off. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings
+- [supported, minor] controls[2].api; Governance controls table and API prose / command: PATCH [organization URI]/api/data/v9.2/allowedmcpclients({allowedmcpclientid}) with body {"isenabled": false} changes an allowed client's enabled setting. | Found: Entity set path: [organization URI]/api/data/v9.2/allowedmcpclients Primary key: allowedmcpclientid Operations supported: POSTGETPATCHDELETE isenabled | Edm.Boolean | Display name: Is Enabled | Fix: Set controls[2].api.call to 'PATCH [organization URI]/api/data/v9.2/allowedmcpclients({allowedmcpclientid})' and add api.note 'The request body sets isenabled to false to disable the client.' Make the rendered row match; do not print the body as part of the call. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient
 -->

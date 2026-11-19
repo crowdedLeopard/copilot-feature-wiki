@@ -12,13 +12,13 @@ platforms: ["Desktop","Mac","Web"]
 targetDate: "November CY2026"
 previewDate: "October CY2026"
 risk: "medium"
-cost: "low"
+cost: "variable"
 impact: "medium"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "included"
-  notes: "Microsoft's Manage plugins page says users of Cowork plugins must have Microsoft 365 Copilot licences assigned. No separate price or meter for accounting skills, and no licence statement for the Excel side, is published."
+  model: "mixed"
+  notes: "Microsoft's Manage plugins page says users of Cowork plugins must have Microsoft 365 Copilot licences assigned. Cowork uses usage-based billing in Copilot Credits, including skill calls. Copilot in Microsoft 365 apps is included with a Microsoft 365 Copilot licence; no additional accounting-specific Excel licence requirement is documented."
 audiences: ["m365-admin","service-owner","compliance"]
 tags: ["m365-copilot","cowork","skills","plugins","frontier-program","excel","accounting","m365-admin-center"]
 sources:
@@ -31,8 +31,20 @@ sources:
   - title: "Manage plugins for Copilot Cowork"
     url: "https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins"
     kind: "learn"
+  - title: "Manage Copilot Cowork for your organization"
+    url: "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance"
+    kind: "learn"
+  - title: "Usage-Based Billing and Cost Management for Copilot Credits"
+    url: "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits"
+    kind: "learn"
+  - title: "Usage-Based Billing FAQ for Microsoft 365 Copilot Business"
+    url: "https://learn.microsoft.com/microsoft-365/commerce/usage-based-billing-faq-microsoft-365-copilot-business?view=o365-worldwide"
+    kind: "learn"
   - title: "copilotPackage: block"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
+    kind: "learn"
+  - title: "List Copilot packages"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackages-list"
     kind: "learn"
   - title: "Overview of Copilot skills for Excel (preview)"
     url: "https://learn.microsoft.com/office/dev/add-ins/excel/excel-skills"
@@ -50,7 +62,7 @@ controls:
       kind: "graph"
       call: "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
-    note: "Role: tenant administrator or Copilot administrator. The API needs an Agent 365 licence; its page does not name plugins, so confirm the plugin appears as a package."
+    note: "Role: tenant administrator or Copilot administrator. API needs an Agent 365 licence; confirm the plugin appears as a package. Beta API: subject to change, not supported in production."
 confidence: "medium"
 created: "2026-11-19"
 updated: "2026-11-19"
@@ -60,19 +72,23 @@ changes:
     note: "First briefing for roadmap item 578864: accounting skills for Excel and Cowork, with the Cowork plugin block control and open questions on Excel."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 62 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-19"
+    note: "Corrected licensing to mixed and cost to variable: Cowork skill calls use Copilot Credits; Excel apps are covered by the Microsoft 365 Copilot licence. Narrowed the Excel risk bullet and removed the Purview checklist step."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 70 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 62
-  confirmed: 56
-  unconfirmed: 1
-  contradicted: 5
-  attempts: 1
-  hash: "44e4898362c5d10c4ff792b5991430c6"
+  claims: 70
+  confirmed: 69
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "f7ed0cfe7d98766cccd1545a6a5bf89a"
 ---
 
 ## What's changing
@@ -96,7 +112,7 @@ Microsoft has not stated what happens on arrival in Excel, so no source says exi
 **Data exposure**
 
 - The Cowork plugin is described as working from financial data in connected systems and materials the user provides, such as trial balances, general ledger and subledger detail, bank statements, invoices, budgets and supporting schedules. That puts finance records into Copilot conversations. Row 1 of the controls table limits who can use the plugin.
-- The Excel skills work on workbooks, so test them on a sample workbook before pointing them at live ledger extracts.
+- Test the Excel accounting experience on a sample workbook before using live ledger extracts.
 
 **Security & identity**
 
@@ -115,9 +131,9 @@ Microsoft has not stated what happens on arrival in Excel, so no source says exi
 
 ## Cost and licensing
 
-Licence: Microsoft's Manage plugins page lists, as a prerequisite, that users who use Cowork plugins must have Microsoft 365 Copilot licences assigned. That page also says admins need to be a tenant administrator or have the Copilot administrator role.
+Licence: Microsoft's Manage plugins page lists, as a prerequisite, that users who use Cowork plugins must have Microsoft 365 Copilot licences assigned. That page also says admins need to be a tenant administrator or have the Copilot administrator role. Microsoft's usage-based billing FAQ says everyday AI experiences, such as chat and Copilot in Microsoft 365 apps, are included with a Microsoft 365 Copilot licence; no additional accounting-specific Excel licence requirement is documented at the time of writing (November 2026).
 
-Meter: no separate price, meter or credit rate for accounting skills is published on the pages read at the time of writing (November 2026). Whether Cowork or Excel use of these skills draws on a Copilot Credits meter is not stated for this feature; see [Copilot Credits](/concepts/copilot-credits/) for how that meter works generally.
+Meter: Cowork skill calls count toward usage-based consumption measured in Copilot Credits; Microsoft's Cowork admin page gives no accounting-specific rate at the time of writing (November 2026). See [Copilot Credits](/concepts/copilot-credits/) for how that meter works generally.
 
 Indirect cost: finance reviewers need time to verify Copilot's output, as Microsoft's page requires. The Graph block call in the controls table needs a Microsoft Agent 365 licence according to its reference page.
 
@@ -144,7 +160,6 @@ Roles: a tenant administrator or the Copilot administrator role manages Cowork p
 
 ### After rollout
 
-- Search Microsoft Purview audit logs for Copilot activities, which Microsoft says capture Cowork and plugin interactions, to see who is using the plugin.
 - Re-check the Learn plugin page for any move out of Frontier and for Excel documentation when the roadmap status changes.
 
 ## Governance controls
@@ -154,7 +169,7 @@ Roles: a tenant administrator or the Copilot administrator role manages Cowork p
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether the Accounting for Cowork plugin is blocked or available to users or groups</strong><br><small>Tenant</small><br><small class="controls__note">Role: tenant administrator or Copilot administrator. The API needs an Agent 365 licence; its page does not name plugins, so confirm the plugin appears as a package.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › plugin › Users › Block <a href="https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether the Accounting for Cowork plugin is blocked or available to users or groups</strong><br><small>Tenant</small><br><small class="controls__note">Role: tenant administrator or Copilot administrator. API needs an Agent 365 licence; confirm the plugin appears as a package. Beta API: subject to change, not supported in production.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › plugin › Users › Block <a href="https://learn.microsoft.com/copilot/cowork/cowork-manage-plugins" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -166,25 +181,17 @@ This row governs the Cowork plugin only. The Learn pages read do not describe a 
 
 - Which admin control, if any, turns the Excel accounting skills on or off, and where is it documented? Watch the Microsoft 365 roadmap item and Learn.
 - Is the audit trail setting something an administrator can require, or does each user choose it, in Excel and in Cowork when it arrives?
-- Does use of accounting skills in Excel or Cowork consume Copilot Credits or need any licence beyond Microsoft 365 Copilot?
+- Does use of accounting skills in Excel carry any accounting-specific licence or Copilot Credits consumption beyond Microsoft 365 Copilot?
 - Is the roadmap item the same capability as the Accounting for Cowork (Frontier) plugin, and when does it move out of the Frontier program?
 
 <!-- rationale
 risk: Medium. Accountants will point Copilot at ledgers, bank statements and journal entries, and Microsoft's own page says its output must be verified before entries are posted; the plugin can be blocked, but no Excel-side control is documented.
-cost: Low. Microsoft's plugin page lists Microsoft 365 Copilot licences as the prerequisite for Cowork plugin users and publishes no separate accounting price; the known cost is admin and review time.
+cost: Variable. Cowork skill calls consume Copilot Credits under usage-based billing; admin and finance review time add indirect cost. No accounting-specific tariff was found.
 impact: Medium. Finance and accounting staff notice it, with roadmap figures of more than 8,000 Insiders users in seven days; most other users do not.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Data exposure / behaviour: The built-in Excel accounting skills work on workbooks. | Found: Searched: Copilot in Excel accounting skills workbook; Excel Copilot accounting skills. Read excel-skills, which describes custom skills using Office.js, not these built-in accounting skills; the roadmap does not specify their workbook interaction. | Fix: Remove the unsupported premise and retain the advice as: 'Test the Excel accounting experience on a sample workbook before using live ledger extracts.'
-- [contradicted, blocker] front matter: licensing.model / licensing: The feature's licensing model is included, without a consumption component. | Found: Cowork uses a usage-based billing model. Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption. | Fix: Set licensing.model to 'mixed'. In licensing.notes retain the documented Microsoft 365 Copilot prerequisite and add: 'Cowork uses usage-based billing in Copilot Credits, including skill calls.' Cite https://learn.microsoft.com/copilot/cowork/cowork-admin-governance and https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits. | Source: https://learn.microsoft.com/copilot/cowork/cowork-admin-governance
-- [contradicted, blocker] Cost and licensing: Meter; Open questions / cost: Whether Cowork use of accounting skills draws on a Copilot Credits meter is not stated. | Found: Cowork uses a usage-based billing model. Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption. | Fix: Replace the sentence beginning 'Whether Cowork or Excel use' with: 'Cowork skill calls count toward usage-based consumption measured in Copilot Credits; no accounting-specific rate was found.' Cite https://learn.microsoft.com/copilot/cowork/cowork-admin-governance and https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits. Narrow the related open question to accounting-specific Excel licensing or consumption. | Source: https://learn.microsoft.com/copilot/cowork/cowork-admin-governance
-- [contradicted, blocker] front matter: licensing.notes / licensing: No licence statement is published for the Excel side. | Found: Everyday AI experiences, such as chat and Copilot in Microsoft 365 apps, are included with your Microsoft 365 Copilot license. | Fix: Replace 'no licence statement for the Excel side, is published' with 'Copilot in Microsoft 365 apps is included with a Microsoft 365 Copilot licence; no additional accounting-specific Excel licence requirement was found'. Cite https://learn.microsoft.com/microsoft-365/commerce/usage-based-billing-faq-microsoft-365-copilot-business?view=o365-worldwide. Do not equate absence of accounting-specific documentation with absence of the product's licensing statement. | Source: https://learn.microsoft.com/microsoft-365/commerce/usage-based-billing-faq-microsoft-365-copilot-business?view=o365-worldwide
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: Cost is low because the known cost is only admin and review time. | Found: Briefing: 'the known cost is admin and review time.' Microsoft: 'Cowork uses a usage-based billing model. Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption.' | Fix: Set cost to 'variable'. Replace the cost rationale with: 'Variable. Cowork skill calls consume Copilot Credits under usage-based billing; admin and finance review time add indirect cost. No accounting-specific tariff was found.' Cite https://learn.microsoft.com/copilot/cowork/cowork-admin-governance and https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits. | Source: https://learn.microsoft.com/copilot/cowork/cowork-admin-governance
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].api; Governance controls table / command: POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package. | Found: Block a Copilot package to prevent its usage. POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block | Fix: Retain the call and add to the row note: 'This beta API is subject to change and is not supported for production applications.' The cited reference explicitly gives that warning. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block
-- [supported, minor] controls[0].governs; controls[0].api / applicability: Copilot package management includes tools such as plugins, making the block operation relevant to a plugin package. | Found: To return titles that contain tools, such as plugins, MCP servers, and skills, filter on elementTypes. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackages-list to sources; it supplies the documented connection between package management and plugins that the block reference alone does not state. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackages-list
-- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist instructs readers to search Purview audit logs, but that control has no controls-table row. | Found: Checklist: 'Search Microsoft Purview audit logs for Copilot activities'. The only controls row is 'Whether the Accounting for Cowork plugin is blocked or available to users or groups'. | Fix: The 'After rollout' step beginning 'Search Microsoft Purview audit logs' names a control with no table row. Remove that checklist step; the separately supported audit-logging description can remain.
+- [contradicted, minor] Governance guidance: At rollout, audit-trail bullet; Governance controls / consistency: The rollout checklist asks pilot users to switch on the audit trail without a corresponding controls-table row. | Found: Checklist: 'ask them to switch it on for entries and reconciliations.' The sole table row governs 'Whether the Accounting for Cowork plugin is blocked or available to users or groups', not the audit trail. | Fix: Remove 'and ask them to switch it on for entries and reconciliations' from the At rollout bullet, leaving: 'Tell pilot users that the audit trail is a choice they make when invoking a capability.'
 -->

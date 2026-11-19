@@ -47,7 +47,7 @@ controls:
     scope: "user"
     ui:
       surface: "Teams admin center"
-      path: "Messaging policies > policy > Video messages"
+      path: "Messaging policies > policy > Edit > Video messages"
       docs: "https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams"
     api:
       kind: "powershell"
@@ -63,26 +63,30 @@ changes:
     note: "New briefing: Launched iOS option to blur or replace the background while recording a Teams video clip, and the Video messages policy that governs sending clips."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 42 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-19"
+    note: "Corrected the admin path to Messaging policies > policy > Edit > Video messages, and removed the claim that the roadmap item does not use the name video clip."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 38 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-19"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 42
-  confirmed: 40
+  claims: 38
+  confirmed: 37
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "13fb87f12c481ddc015633826c211daf"
+  contradicted: 1
+  attempts: 2
+  hash: "5ca5ca66aaf29379f2f689a45cdd786d"
 ---
 
 ## What's changing
 
 Users of Microsoft Teams on iOS can now change their background while they record a video clip on their phone. The roadmap item says they can switch the background to any picture they want or make it blurry, and then share the clip with coworkers in a Teams chat or channel.
 
-Microsoft Learn has no page for this background option. It does describe the wider capability: Microsoft's Government Channel release notes describe Video clip as a feature that lets a user "record, review, send, and view short-form video in Teams chat from desktop and mobile". Learn's messaging policy page calls the matching admin setting **Video messages**. What follows about behaviour beyond the roadmap description therefore comes from those pages, and the roadmap item does not use the name "Video clip".
+Microsoft Learn has no page for this background option. It does describe the wider capability: Microsoft's Government Channel release notes describe Video clip as a feature that lets a user "record, review, send, and view short-form video in Teams chat from desktop and mobile". Learn's messaging policy page calls the matching admin setting **Video messages**. What follows about behaviour beyond the roadmap description therefore comes from those pages.
 
 The roadmap record gives the status as Launched, the target date as May CY2024 and the platform as iOS. The release phase is General Availability, and the clouds listed are Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.
 
@@ -140,7 +144,7 @@ The messaging policy page says users in your organisation automatically get the 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether users can send video messages in chats and channels</strong><br><small>User</small><br><small class="controls__note">Learn describes sending video messages, and does not name video clips or the background option. Confirm that the setting covers clips on iOS.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Messaging policies › policy › Video messages <a href="https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMessagingPolicy -Identity &lt;policy name&gt; -AllowVideoMessages $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingpolicy?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether users can send video messages in chats and channels</strong><br><small>User</small><br><small class="controls__note">Learn describes sending video messages, and does not name video clips or the background option. Confirm that the setting covers clips on iOS.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Messaging policies › policy › Edit › Video messages <a href="https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMessagingPolicy -Identity &lt;policy name&gt; -AllowVideoMessages $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingpolicy?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -151,7 +155,7 @@ Microsoft Learn does not describe a setting for the background option itself. Th
 ## Open questions
 
 - Is the background option on by default for iOS users, and does Microsoft plan to change that? Watch the Teams release notes and the roadmap item.
-- Does the Video messages messaging policy setting cover clips recorded with a changed background? The roadmap item does not use that name, so confirm with a test user.
+- Does the Video messages messaging policy setting cover clips recorded with a changed background? Confirm with a test user.
 - Does the meeting policy setting for video effects (**Participants can use video effects**) or a customisation policy affect backgrounds in clips? Watch the Learn pages for meeting policies.
 - Which licence, if any, does the background option need? Watch the Teams service description.
 
@@ -164,6 +168,5 @@ impact: Low. Only users who record video clips in Teams on iOS notice it, and th
 <!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing; Open questions / record: The roadmap item does not use the name video clip. | Found: You can record a video clip with your phone camera and switch your background to any picture you want or make it blurry. | Fix: Remove 'and the roadmap item does not use the name "Video clip"' from What's changing and remove 'The roadmap item does not use that name, so' from Open questions. The roadmap description explicitly says 'video clip'.
-- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: Teams admin center > Messaging policies > policy > Video messages is the path to edit the setting. | Found: Select the policy by clicking to the left of the policy name, and then select Edit. | Fix: Replace controls[0].ui.path and the rendered table path with 'Messaging policies > policy > Edit > Video messages'. The cited page requires selecting Edit after selecting the policy. | Source: https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams
+- [contradicted, blocker] front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost / licensing: The licensing model is unknown because a licence covering this Teams feature is not yet published. | Found: Microsoft Teams can be licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU. / All supported subscription plans are eligible for access to the Teams web client, desktop clients, and mobile apps. | Fix: Set licensing.model to included. Replace the licensing notes and the broad unpublished-licence statements with: 'Microsoft Teams can be licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU; all supported subscription plans provide access to Teams mobile apps. Microsoft has not published a licensing requirement specific to changing the background while recording a clip.' Cite https://learn.microsoft.com/office365/servicedescriptions/teams-service-description. Narrow the licensing open question to 'Does Microsoft publish any licensing requirement specific to this background option?' Keep the cost rationale's uncertainty limited to feature-specific licensing and metering. | Source: https://learn.microsoft.com/office365/servicedescriptions/teams-service-description
 -->

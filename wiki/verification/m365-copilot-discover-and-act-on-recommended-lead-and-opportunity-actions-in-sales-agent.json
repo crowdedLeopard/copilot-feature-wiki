@@ -2,53 +2,61 @@
   "slug": "m365-copilot-discover-and-act-on-recommended-lead-and-opportunity-actions-in-sales-agent",
   "roadmapId": 579977,
   "title": "Sales agent: recommended lead and opportunity actions in Microsoft 365 Copilot",
-  "status": "verified-with-gaps",
-  "date": "2026-11-17",
+  "status": "held",
+  "date": "2026-11-19",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 0,
-  "verifierVerdict": "pass",
+  "attempts": 1,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
   "notes": [],
-  "hold": null,
-  "counts": {
-    "claims": 61,
-    "confirmed": 60,
-    "unconfirmed": 0,
-    "contradicted": 1,
-    "blocker": 0,
-    "major": 0,
-    "minor": 1
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-19",
+    "reasons": [
+      "4 blocking findings (claims 35, 36, 51, 56)"
+    ]
   },
-  "summary": "The briefing passes: its roadmap facts and documented controls are supported, and it clearly distinguishes Dynamics 365 background from the planned Microsoft 365 Copilot experience. The capacity-monitoring checklist names a control that is missing from the controls table, a minor presentation gap.",
+  "counts": {
+    "claims": 69,
+    "confirmed": 64,
+    "unconfirmed": 0,
+    "contradicted": 5,
+    "blocker": 4,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "Hold: Microsoft now documents two licensing options for Sales agent, so the unpublished-entitlement statement and older licensing quotation need correction. Microsoft also documents a Dataverse API for enabling recommended actions for a source agent, contrary to the automation gap reported here. The roadmap status, target and on-by-default statement match the record.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; What's changing; rationale: impact",
+      "where": "title; front matter: products; What's changing",
       "type": "record",
-      "claim": "Microsoft plans a single prioritised list of lead and opportunity actions for sellers in Sales agent.",
+      "claim": "This roadmap item concerns recommended lead and opportunity actions in Sales agent in Microsoft 365 Copilot.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Sellers can discover and act on lead and opportunity recommendations that are already prioritized for them in Sales agent. A single prioritized list helps sellers see what needs attention",
+      "quote": "Microsoft Copilot (Microsoft 365): Discover and act on recommended lead and opportunity actions in Sales agent",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "What's changing",
+      "where": "summary; What's changing",
       "type": "record",
-      "claim": "Sellers can review each recommendation's details and business context without monitoring each agent separately.",
+      "claim": "Microsoft plans a single prioritised list so sellers need not monitor each source agent separately.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "without monitoring each agent separately or prioritizing the actions themselves. Sellers can review each recommended action, understand its details and business context",
+      "quote": "A single prioritized list helps sellers see what needs attention without monitoring each agent separately or prioritizing the actions themselves.",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap plans for sellers to take action from the same experience.",
+      "claim": "Sellers can review each recommended action's details and business context.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Sellers can review each recommended action, understand its details and business context, and take action from the same experience.",
@@ -57,40 +65,40 @@
     },
     {
       "n": 4,
-      "where": "What's changing; Risk assessment; Scope; Governance guidance",
+      "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "The initial release includes lead outreach actions from Sales qualification agent.",
+      "claim": "The planned experience lets sellers act on recommendations from the same place.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "The initial release focuses on lead outreach actions from Sales qualification agent",
+      "quote": "Sellers can review each recommended action, understand its details and business context, and take action from the same experience.",
       "severity": null,
       "fix": null
     },
     {
       "n": 5,
-      "where": "What's changing; Risk assessment; Scope; Governance guidance",
+      "where": "What's changing; Scope; Governance guidance: Before rollout",
       "type": "record",
-      "claim": "The initial release includes opportunity risk actions from Sales opportunity agent.",
+      "claim": "The initial release includes lead outreach actions from Sales qualification agent.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "and opportunity risk actions from Sales opportunity agent.",
+      "quote": "The initial release focuses on lead outreach actions from Sales qualification agent and opportunity risk actions from Sales opportunity agent.",
       "severity": null,
       "fix": null
     },
     {
       "n": 6,
-      "where": "front matter: defaultState; summary; What's changing; Risk assessment; rationales",
-      "type": "default",
-      "claim": "Recommended actions are planned to be on by default.",
+      "where": "What's changing; Scope; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "The initial release includes opportunity risk actions from Sales opportunity agent.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Recommended actions will be turned on by default.",
+      "quote": "The initial release focuses on lead outreach actions from Sales qualification agent and opportunity risk actions from Sales opportunity agent.",
       "severity": null,
       "fix": null
     },
     {
       "n": 7,
-      "where": "What's changing",
+      "where": "What's changing; Scope",
       "type": "record",
       "claim": "Additional agents, including custom agents, are a future direction outside the initial release commitment.",
       "status": "supported",
@@ -101,6 +109,17 @@
     },
     {
       "n": 8,
+      "where": "front matter: defaultState; summary; What's changing; rationale: risk and impact",
+      "type": "default",
+      "claim": "Recommended actions are planned to be on by default for the sellers who can use the experience.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Recommended actions will be turned on by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -111,10 +130,10 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "front matter: targetDate; summary; What's changing; Why it matters; Open questions",
+      "n": 10,
+      "where": "front matter: targetDate; summary; What's changing; Open questions",
       "type": "record",
-      "claim": "The roadmap target is November CY2026, presented as a target rather than a commitment.",
+      "claim": "The roadmap target is November CY2026, not a committed release date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"November CY2026\"",
@@ -122,10 +141,10 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 11,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
-      "claim": "The roadmap record has no preview date.",
+      "claim": "The roadmap record gives no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -133,10 +152,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 12,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The record lists Worldwide (Standard Multi-Tenant) and does not list US Government clouds.",
+      "claim": "The record lists Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -144,10 +163,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 13,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The record lists the Web platform.",
+      "claim": "The record lists Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -155,10 +174,10 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 14,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The record lists General Availability as the release phase.",
+      "claim": "The listed release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\"]",
@@ -166,10 +185,21 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 15,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap record does not list US Government clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-11-13T19:37:39.",
+      "claim": "The roadmap record was modified on 2026-11-13T19:37:39.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-11-13T19:37:39\"",
@@ -177,21 +207,21 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 17,
       "where": "What's changing; Governance guidance: After rollout; front matter: changes",
       "type": "absence",
-      "claim": "No Learn page was found describing this specific recommended-actions experience in Sales agent in Microsoft 365 Copilot.",
+      "claim": "A Learn description of this specific recommended-actions experience inside Sales agent in Microsoft 365 Copilot was not found.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Sales agent Microsoft 365 Copilot recommended actions licensing configuration; opened set-up-sales-chat, use-sales-chat, access-settings-apps and Dynamics 365 recommended-actions-overview. Results describe Sales chat or the separate Dynamics 365 carousel.",
+      "quote": "Searched: Sales agent recommended actions Microsoft 365 Copilot; opened set-up-sales-chat, use-sales-chat, recommended-actions-overview, configure-recommended-actions. Results describe general Sales agent or Dynamics 365 recommendations, not this new experience.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 16,
+      "n": 18,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The Dynamics 365 Recommended Actions agent evaluates actions from multiple agents in one prioritised experience.",
+      "claim": "The Dynamics 365 Sales Recommended Actions agent evaluates actions from multiple agents in one prioritised experience.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/sales/recommended-actions-overview",
       "quote": "This agent evaluates actions from multiple agents and presents them in a single, prioritized experience.",
@@ -199,164 +229,54 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 19,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The documented Dynamics 365 experience displays action cards in a list-page carousel.",
+      "claim": "The documented Dynamics 365 Sales experience presents cards in a list-page carousel.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/sales/next-best-actions-to-manage-opportunities",
-      "quote": "The action cards appear in a carousel for contacts, opportunities, leads, and accounts that you and your team own in Dynamics 365 Sales.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "front matter: licensing.notes; Why it matters; Cost and licensing",
-      "type": "cost",
-      "claim": "Dynamics 365 Sales charges recommended actions by the number of actions the prioritisation engine processes.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/sales/recommended-actions-overview",
-      "quote": "The system charges for recommended actions based on the number of actions the prioritization engine processes.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "The Dynamics 365 overview lists Sales Opportunity Agent prioritised actions as charged.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/sales/recommended-actions-overview",
-      "quote": "| Sales Opportunity Agent | Provides prioritized actions | Charged |",
+      "quote": "Go to Contacts, Opportunities, Leads, or Accounts page in your sales app. ... Select Read Only Grid from the top of the list. ... Wait for the Suggested actions carousel to load.",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "The Dynamics 365 overview lists Sales Qualification Agent prioritised actions as charged.",
+      "where": "controls[1].note; What's changing; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not confirmed that the Dynamics 365 Recommended Actions experience and its source-agent toggle govern this new Microsoft 365 Copilot experience.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/sales/recommended-actions-overview",
-      "quote": "| Sales Qualification Agent | Provides prioritized actions | Charged |",
+      "source": null,
+      "quote": "Searched: Sales agent recommended actions Microsoft 365 Copilot disable; opened configure-recommended-actions, configure-sales-opportunity-agent-connected-skills, set-up-sales-chat, use-sales-chat. No passage connects the Dynamics 365 source toggle to this roadmap experience.",
       "severity": null,
       "fix": null
     },
     {
       "n": 21,
-      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Licensing and meter applicability for this specific roadmap experience are not yet published, so its licensing model is unknown.",
+      "where": "licensing.notes; Why it matters; Cost and licensing",
+      "type": "cost",
+      "claim": "Dynamics 365 Sales recommended actions are charged by actions evaluated and prioritised by the prioritisation engine.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Sales agent recommended actions Microsoft 365 Copilot billing credits rate license; read set-up-sales-chat, access-settings-apps, Dynamics 365 billing and Copilot Studio requirements-messages-management. None identifies this feature's billing execution or licence treatment.",
+      "source": "https://learn.microsoft.com/dynamics365/sales/recommended-actions-overview",
+      "quote": "The system charges for recommended actions based on the number of actions the prioritization engine processes. Each action from a supported agent that the engine evaluates and prioritizes counts toward your usage.",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "The cited setup page says Sales agent is available to users with access to a Microsoft 365 Copilot licence.",
+      "where": "Why it matters; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether the Dynamics 365 recommended-actions meter applies to this new Sales agent experience.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat",
-      "quote": "The Sales agent is available to users who have access to a Microsoft 365 Copilot license.",
+      "source": null,
+      "quote": "Searched: Sales agent recommended actions rate Copilot licensing; opened set-up-sales-chat, use-sales-chat, recommended-actions-overview, copilot-consumption-based-billing, connect-custom-agent-recommended-actions. No explicit meter mapping to the Microsoft 365 experience.",
       "severity": null,
       "fix": null
     },
     {
       "n": 23,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Dynamics 365 Sales Enterprise or Premium access can make users eligible for Sales agent and automatic distribution.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
-      "quote": "Access to either Dynamics 365 Sales Enterprise or Dynamics 365 Sales Premium can make a user eligible for Sales agent and automatic distribution.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Additional Microsoft 365 licences or entitlements might be needed for Microsoft 365-grounded features.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
-      "quote": "Additional Microsoft 365 licenses or entitlements might be required to access Microsoft 365-grounded features and data.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "The Dynamics 365 billing page describes Microsoft Copilot Studio messages as billing units.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing",
-      "quote": "These capabilities use Microsoft Copilot Studio messages for AI interactions and tasks, like retrieving information and responding to prompts. Messages are the billing units that measure usage.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "The Dynamics 365 billing page supports prepaid capacity.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing",
-      "quote": "The prepaid capacity model uses Copilot Studio message pack subscriptions, which are a licensing option for Microsoft Copilot Studio that you purchase in advance.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "The Dynamics 365 billing page supports pay-as-you-go.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing",
-      "quote": "The pay-as-you-go model charges for the actual number of messages consumed by agents during the month.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "Cost and licensing",
-      "type": "behaviour",
-      "claim": "The Dynamics 365 billing page says the AI capability is unavailable when quota is depleted until capacity is added.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing",
-      "quote": "When the quota is depleted, the AI capability is unavailable until more capacity is added.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "Cost and licensing; front matter: changes",
-      "type": "cost",
-      "claim": "The custom-agent quick start instead describes Recommended Actions as using Copilot credits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/sales/connect-custom-agent-recommended-actions",
-      "quote": "Recommended Actions uses Copilot credits.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "The reviewed pages do not publish a numerical rate specifically for recommended actions.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Sales agent recommended actions rate license; opened recommended-actions-overview, copilot-consumption-based-billing, connect-custom-agent-recommended-actions and Copilot Studio requirements-messages-management. No recommended-action-specific numerical rate found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
       "where": "Risk assessment: Data exposure; rationale: risk",
       "type": "applicability",
-      "claim": "Sales agent CRM access is limited to environments, records, tables and fields permitted by users' security roles and privileges.",
+      "claim": "Sales agent users can access only CRM environments, records, tables and fields their security roles and privileges permit.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
       "quote": "Users can access only the CRM environments, records, tables, and fields permitted by their assigned security roles and privileges.",
@@ -364,20 +284,31 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "Risk assessment: Security & identity; Governance guidance; Governance controls",
-      "type": "applicability",
-      "claim": "Tenant settings control Sales agent access separately by application using Microsoft Entra security groups.",
+      "n": 24,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Microsoft has not documented the additional data used for ranking in this Microsoft 365 Copilot feature.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
-      "quote": "Manage access separately in Microsoft 365 Copilot, the Sales pane in Outlook, Teams, and Dynamics 365.",
+      "source": null,
+      "quote": "Searched: Sales agent recommended actions disable ranking data prerequisites licensing; opened set-up-sales-chat, use-sales-chat, next-best-actions-to-manage-opportunities; read Recommended Actions responsible-AI FAQ excerpts. Ranking data is described for Dynamics 365 only.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Risk assessment: Security & identity; Governance controls",
+      "n": 25,
+      "where": "controls[0].governs; Risk assessment: Security & identity; Governance controls",
       "type": "applicability",
+      "claim": "Tenant-level Sales agent access can be controlled separately per application using Microsoft Entra security groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+      "quote": "Sales agent: Manage access separately in Microsoft 365 Copilot, the Sales pane in Outlook, Teams, and Dynamics 365. ... For each, you can turn access on or off and use Microsoft Entra security groups to control who has access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "behaviour",
       "claim": "Tenant access settings do not grant access to CRM data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
@@ -386,65 +317,76 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 27,
       "where": "Risk assessment: Security & identity",
       "type": "default",
-      "claim": "After automatic installation, Microsoft 365 Copilot blocks auto-installed Sales agent users by default while other eligible users have access.",
+      "claim": "Auto-installed users are blocked from Sales agent in Microsoft 365 Copilot by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
-      "quote": "| Microsoft 365 Copilot | Auto-installed users are blocked. Other eligible users have access. |",
+      "quote": "Default access after automatic installation ... Microsoft 365 Copilot | Auto-installed users are blocked. Other eligible users have access.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Risk assessment: Data exposure",
-      "type": "absence",
-      "claim": "Additional ranking data inputs are not documented for this specific Microsoft 365 Copilot feature.",
+      "n": 28,
+      "where": "Risk assessment: Security & identity",
+      "type": "default",
+      "claim": "Other eligible users have access to Sales agent in Microsoft 365 Copilot by default.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Sales agent recommended actions Microsoft 365 pricing licensing prerequisites ranking data confirmation disable; read set-up-sales-chat, use-sales-chat and Dynamics 365 next-best-actions-to-manage-opportunities. Ranking details found describe Dynamics 365 only.",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+      "quote": "Microsoft 365 Copilot | Auto-installed users are blocked. Other eligible users have access.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
+      "n": 29,
       "where": "Risk assessment: Autonomy & actions; Open questions",
       "type": "absence",
-      "claim": "The exact executable actions for this specific experience are not yet documented beyond the roadmap's broad action categories.",
+      "claim": "The precise actions sellers can execute from this new list are not yet documented beyond the roadmap's action categories.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Sales agent recommended actions Microsoft 365 Copilot feedback email; opened use-sales-chat, set-up-sales-chat and next-best-actions-to-manage-opportunities. No feature-specific executable-action list found.",
+      "quote": "Searched: Sales agent recommended actions confirmation email feedback; opened use-sales-chat, next-best-actions-to-manage-opportunities, recommended-actions-overview. Detailed card operations concern Dynamics 365, not the new Sales agent list.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
+      "n": 30,
       "where": "Risk assessment: Autonomy & actions; Open questions",
       "type": "absence",
-      "claim": "Whether actions in this experience require seller confirmation or can send email is not yet documented.",
+      "claim": "Microsoft has not documented whether this new experience runs actions without seller confirmation.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Sales agent recommended actions Microsoft 365 confirmation disable; Sales agent recommended actions Microsoft 365 Copilot feedback email. Opened use-sales-chat and Dynamics 365 action-card documentation; no feature-specific confirmation or mail behavior found.",
+      "quote": "Searched: Sales agent recommended actions confirmation email feedback; opened use-sales-chat, set-up-sales-chat, next-best-actions-to-manage-opportunities; read responsible-AI FAQ excerpts. No confirmation contract for the new Microsoft 365 experience.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
+      "n": 31,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "Sales Qualification Agent can send outreach emails to leads.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/copilot/ai-get-started",
-      "quote": "Helps sales teams qualify leads effortlessly by autonomously researching leads, determining if they're a good fit for further engagement, sending outreach emails, and engaging with leads.",
+      "quote": "Sales Qualification Agent | Helps sales teams qualify leads effortlessly by autonomously researching leads, determining if they're a good fit for further engagement, sending outreach emails, and engaging with leads.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
+      "n": 32,
+      "where": "Risk assessment: Autonomy & actions; Open questions",
+      "type": "absence",
+      "claim": "It is not documented whether recommended actions in this new experience themselves send email.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Sales agent recommended actions confirmation email feedback; opened use-sales-chat, next-best-actions-to-manage-opportunities and ai-get-started. Source-agent outreach is documented, but mail sending from the new list is not.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Dynamics 365 action cards offer thumbs-up and thumbs-down feedback.",
+      "claim": "Dynamics 365 Sales action cards offer thumbs-up and thumbs-down feedback.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/sales/next-best-actions-to-manage-opportunities",
       "quote": "To provide feedback on the relevance of an action card, hover over the card and select the thumbs up or thumbs down icon on the card.",
@@ -452,21 +394,164 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 34,
       "where": "Risk assessment: Change & support",
       "type": "absence",
-      "claim": "The same action-card feedback has not been documented for this specific Microsoft 365 Copilot experience.",
+      "claim": "Microsoft has not confirmed that the same card-feedback controls appear in this new Sales agent experience.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Sales agent recommended actions Microsoft 365 Copilot feedback email; read use-sales-chat and next-best-actions-to-manage-opportunities. General Sales chat feedback exists, but recommended-action card feedback is documented only for Dynamics 365.",
+      "quote": "Searched: Sales agent recommended actions confirmation email feedback; opened use-sales-chat and next-best-actions-to-manage-opportunities; read responsible-AI FAQ excerpts. Card ratings are described for Dynamics 365, not the new Microsoft 365 list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Licensing is unknown and not yet published for this roadmap item.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat",
+      "quote": "To use Sales agent in Microsoft 365 Copilot, you must meet one of the following licensing options: ... Dynamics 365 Sales Enterprise or Premium access, without a Microsoft 365 Copilot license | CRM data only",
+      "severity": "blocker",
+      "fix": "Set licensing.model to included. State: 'Sales agent requires either an appropriate Microsoft 365 Copilot license and access to Dynamics 365 Sales or Salesforce, for CRM data and Microsoft 365 Graph grounding, or Dynamics 365 Sales Enterprise or Premium access without a Microsoft 365 Copilot license, for CRM data only. Any additional entitlement or metering specific to these recommended actions is not yet published.' Use https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat. Replace the blanket unpublished-licensing statements in the notes, body and cost rationale with the narrower additional-entitlement caveat; retain cost low for the known preparation work."
+    },
+    {
+      "n": 36,
+      "where": "licensing.notes; Cost and licensing: quotation from Set up Sales agent",
+      "type": "licensing",
+      "claim": "The setup page says Sales agent in Microsoft 365 Copilot is available to users who have access to a Microsoft 365 Copilot license.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat",
+      "quote": "An appropriate license to access Microsoft 365 Copilot and access to Dynamics 365 Sales or Salesforce | CRM data and Microsoft 365 Graph grounding",
+      "severity": "blocker",
+      "fix": "Replace the outdated quotation and corresponding licensing note with: 'The setup page lists two options: an appropriate Microsoft 365 Copilot license plus access to Dynamics 365 Sales or Salesforce for CRM data and Microsoft 365 Graph grounding; or Dynamics 365 Sales Enterprise or Premium access without a Microsoft 365 Copilot license for CRM data only. A Microsoft 365 Copilot license is required for Microsoft 365 Graph-grounded data.' Cite https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat."
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Dynamics 365 Sales Enterprise access can make users eligible for Sales agent and automatic distribution.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+      "quote": "Access to either Dynamics 365 Sales Enterprise or Dynamics 365 Sales Premium can make a user eligible for Sales agent and automatic distribution.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Dynamics 365 Sales Premium access can make users eligible for Sales agent and automatic distribution.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+      "quote": "Access to either Dynamics 365 Sales Enterprise or Dynamics 365 Sales Premium can make a user eligible for Sales agent and automatic distribution.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Additional Microsoft 365 licenses or entitlements might be needed for Microsoft 365-grounded features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+      "quote": "Additional Microsoft 365 licenses or entitlements might be required to access Microsoft 365-grounded features and data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Sales Opportunity Agent recommendations are charged in the documented Dynamics 365 prioritisation experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/recommended-actions-overview",
+      "quote": "Sales Opportunity Agent | Provides prioritized actions | Charged",
       "severity": null,
       "fix": null
     },
     {
       "n": 41,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Sales Qualification Agent recommendations are charged in the documented Dynamics 365 prioritisation experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/recommended-actions-overview",
+      "quote": "Sales Qualification Agent | Provides prioritized actions | Charged",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The Dynamics 365 Sales billing page describes Microsoft Copilot Studio messages as the billing units.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing",
+      "quote": "These capabilities use Microsoft Copilot Studio messages for AI interactions and tasks, like retrieving information and responding to prompts. Messages are the billing units that measure usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The Dynamics 365 Sales billing page documents prepaid capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing",
+      "quote": "Copilot and agent capabilities in Dynamics 365 Sales support two billing models: prepaid capacity and pay-as-you-go.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The Dynamics 365 Sales billing page documents pay-as-you-go.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing",
+      "quote": "The pay-as-you-go model charges for the actual number of messages consumed by agents during the month.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "The cited Dynamics 365 billing page says the AI capability is unavailable when quota is depleted until more capacity is added.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing",
+      "quote": "When the quota is depleted, the AI capability is unavailable until more capacity is added.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The custom-agent connection guide instead uses the term Copilot credits for Recommended Actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/connect-custom-agent-recommended-actions",
+      "quote": "In Dynamics 365 AI hub > Create and manage agents > Prerequisites, every item shows Done. ... Recommended Actions uses Copilot credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The pages cited in the briefing publish no numeric recommended-actions-specific rate.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: recommended actions Sales agent rate Copilot licensing; opened recommended-actions-overview, copilot-consumption-based-billing, connect-custom-agent-recommended-actions, set-up-sales-chat. These pages name units or licensing links, not a numeric recommended-actions rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
       "where": "Scope",
-      "type": "availability",
-      "claim": "Sales agent supports Dynamics 365 Sales and Salesforce.",
+      "type": "behaviour",
+      "claim": "Sales agent supports Dynamics 365 Sales.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat",
       "quote": "Currently, it supports Dynamics 365 Sales and Salesforce.",
@@ -474,7 +559,18 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 49,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Sales agent supports Salesforce.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat",
+      "quote": "Currently, it supports Dynamics 365 Sales and Salesforce.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
       "where": "Scope",
       "type": "behaviour",
       "claim": "Sales agent is useful only when users are connected to a CRM system.",
@@ -485,87 +581,76 @@
       "fix": null
     },
     {
-      "n": 43,
-      "where": "Scope",
+      "n": 51,
+      "where": "Scope: Prerequisites",
       "type": "absence",
-      "claim": "Prerequisites specific to this roadmap feature have not yet been documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Sales agent recommended actions Microsoft 365 pricing licensing prerequisites ranking data confirmation disable; read set-up-sales-chat and connect-custom-agent-recommended-actions. Prerequisites found cover Sales agent generally or Dynamics 365, not this new experience.",
-      "severity": null,
-      "fix": null
+      "claim": "Prerequisites for using this feature are not yet documented.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat",
+      "quote": "Prerequisites ... The Sales agent is installed in both Outlook and Teams. ... Sales Chat must be turned on in Access settings. ... The Sales agent must be connected to a CRM system.",
+      "severity": "blocker",
+      "fix": "Replace 'Prerequisites for this feature are not yet documented' with 'Sales agent prerequisites are documented in Set up Sales agent in Microsoft 365 Copilot; additional prerequisites specific to the recommended-actions experience are not yet documented.' Cite https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat."
     },
     {
-      "n": 44,
-      "where": "controls[0].note; Scope; Governance controls table",
+      "n": 52,
+      "where": "controls[0].note; Scope",
       "type": "role",
       "claim": "Global Administrator, Exchange Administrator or Power Platform Administrator can configure tenant Sales agent access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
-      "quote": "You must have one of the following Microsoft Entra roles:\n- Global Administrator\n- Exchange Administrator\n- Power Platform Administrator",
+      "quote": "You must have one of the following Microsoft Entra roles: Global Administrator; Exchange Administrator; Power Platform Administrator.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 45,
+      "n": 53,
       "where": "controls[0].ui; Governance guidance: Before rollout; Governance controls table",
       "type": "admin-path",
-      "claim": "Tenant Sales agent access settings are at Sales agent administrator settings > Tenant > Access settings > Allow access to Sales agent.",
+      "claim": "Sales agent administrator settings > Tenant > Access settings > Allow access to Sales agent leads to the tenant access settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
-      "quote": "1. Open Sales agent administrator settings.\n2. Under Tenant, select Access settings.\n3. Select Allow access to Sales agent.",
-      "severity": null,
-      "fix": null
+      "quote": "Open Sales agent administrator settings. ... Under Tenant, select Access settings. ... Select Allow access to Sales agent. ... In the Sales agent pane, locate the application you want to configure",
+      "severity": "minor",
+      "fix": "Extend the UI path to 'Tenant > Access settings > Allow access to Sales agent > Microsoft 365 Copilot' to identify the application whose toggle is being set. Add to the existing note: 'To configure groups, expand Microsoft 365 Copilot and, under Who can use this feature?, select Set access restrictions, then configure Allow access and Restrict access.' The omitted application target is a permitted target-selection omission, not an invented path. Source: https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps."
     },
     {
-      "n": 46,
-      "where": "controls[0].api; Governance controls",
+      "n": 54,
+      "where": "controls[0].api; Governance controls: final sentence",
       "type": "absence",
-      "claim": "No API, Graph or PowerShell equivalent was found for the tenant Sales agent access control.",
+      "claim": "No documented automation equivalent was found for the tenant Sales agent application-access settings.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Sales agent access settings PowerShell Graph API tenant restrict auto-installed; read access-settings-apps and access-settings search excerpts. Results document UI settings and unrelated APIs, not automation for this tenant control.",
+      "quote": "Searched: Sales agent access settings API Graph tenant; Sales agent access settings site:learn.microsoft.com/graph; Sales agent tenant access Graph API beta PowerShell. Opened access-settings-apps and set-up-sales-chat; results give no API for these tenant settings.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 47,
-      "where": "controls[1].ui; Governance guidance: At rollout; Governance controls table",
+      "n": 55,
+      "where": "controls[1].ui; Governance controls table; Governance guidance: At rollout",
       "type": "admin-path",
-      "claim": "The cited Dynamics 365 path is Change area > App Settings > General settings > Dynamics 365 AI hub > Create and manage agents > agent > Connected skills > Recommended Actions.",
+      "claim": "The documented Dynamics 365 source-agent route is Change area > App Settings > General settings > Dynamics 365 AI hub > Create and manage agents > agent > Connected skills > Recommended Actions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/sales/configure-recommended-actions",
-      "quote": "Go to General settings > Dynamics 365 AI hub > Create and manage agents. Select the agent for which you want to configure recommended actions. From the agent configuration page, select Connected skills from the left pane. Turn on the toggle for Recommended Actions.",
+      "quote": "Go to General settings > Dynamics 365 AI hub > Create and manage agents. ... Select the agent ... select Connected skills from the left pane. ... Turn on the toggle for Recommended Actions.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
-      "where": "controls[1].api; Governance controls",
+      "n": 56,
+      "where": "controls[1].api; Governance controls table and final sentence",
       "type": "absence",
-      "claim": "No API, Graph or PowerShell equivalent was found for the source-agent Recommended Actions toggle.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: recommended actions enable disable Connected skills API Dataverse PowerShell; read configure-recommended-actions and custom-agent-onboarding-recommended-actions-detailed-guide search excerpts. APIs found push or synchronise suggestions, not the integration toggle.",
-      "severity": null,
-      "fix": null
+      "claim": "Microsoft has not documented an API for enabling recommended actions for a Dynamics 365 source agent.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_recommendedactionsourceagentconfig",
+      "quote": "Update ... PATCH /msdyn_recommendedactionsourceagentconfigs(msdyn_recommendedactionsourceagentconfigid) ... msdyn_isrecommendedactionagentenabled ... Indicates whether the recommended actions agent is enabled for this source agent config",
+      "severity": "blocker",
+      "fix": "Set controls[1].api.kind to rest, call to 'PATCH /msdyn_recommendedactionsourceagentconfigs(msdyn_recommendedactionsourceagentconfigid)', and docs to https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_recommendedactionsourceagentconfig. Add to the existing note: 'The request body sets msdyn_isrecommendedactionagentenabled, a Boolean indicating whether the Recommended Actions agent is enabled for this source-agent configuration.' Replace the final blanket no-API sentence with 'No automation equivalent was found for the tenant Sales agent access settings at the time of writing; the Dynamics 365 source-agent configuration has the Dataverse Web API operation shown in the table.' Retain the caveat that applicability to the new Microsoft 365 experience is unconfirmed."
     },
     {
-      "n": 49,
-      "where": "controls notes; What's changing; Governance guidance; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not confirmed that the Dynamics 365 integration toggle governs this Microsoft 365 Copilot experience or that the experiences are identical.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Sales agent recommended actions turn off Microsoft 365 Copilot; read configure-recommended-actions, configure-sales-opportunity-agent-connected-skills, access-settings-apps and use-sales-chat. No passage connects the Dynamics 365 toggle to this roadmap experience.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
+      "n": 57,
       "where": "Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "Microsoft advises clearing Restrict auto-installed users and using Allow access groups when piloting with an allow list.",
+      "claim": "Learn recommends clearing Restrict auto-installed users and using Allow access groups for a pilot.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
       "quote": "When you pilot Sales agent with an allow list, clear Restrict auto-installed users, and then use groups under Allow access to limit the pilot to selected users.",
@@ -573,65 +658,54 @@
       "fix": null
     },
     {
-      "n": 51,
+      "n": 58,
       "where": "Governance guidance: After rollout",
-      "type": "cost",
-      "claim": "The Dynamics 365 billing models require a linked Power Platform environment and provide message-capacity and usage monitoring.",
+      "type": "behaviour",
+      "claim": "The Dynamics 365 billing page says both billing models require linking the Dynamics 365 Sales environment to a Power Platform environment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing",
-      "quote": "Both models require that you link your Dynamics 365 Sales environment to a Power Platform environment. You can view Copilot Studio message capacity and usage for prepaid capacity and pay-as-you-go in the Power Platform admin center.",
+      "quote": "Both models require that you link your Dynamics 365 Sales environment to a Power Platform environment.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 52,
-      "where": "controls[1].governs; Governance controls",
-      "type": "behaviour",
-      "claim": "Disabling the Dynamics 365 integration leaves the source agent running but removes its insights from the recommended-actions interface.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/sales/configure-recommended-actions",
-      "quote": "When disabled, the agent continues to run and generate insights in its own interface but the insights don't appear in the recommended actions interface.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "Governance controls; rationale: risk; Open questions",
+      "n": 59,
+      "where": "controls[0].note; Governance controls; rationale: risk; Open questions",
       "type": "absence",
-      "claim": "No documented control switches off this specific recommended-actions experience while leaving Sales agent on.",
+      "claim": "No documented setting switches off only this new recommended-actions experience while leaving Sales agent enabled.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: recommended actions Sales agent turn off Microsoft 365 Copilot; opened access-settings-apps, set-up-sales-chat, use-sales-chat and configure-recommended-actions. Found whole-agent access controls and a separate Dynamics 365 integration toggle only.",
+      "quote": "Searched: Sales agent recommended actions Microsoft 365 Copilot disable; opened access-settings-apps, set-up-sales-chat, use-sales-chat, configure-recommended-actions. Found Sales agent access controls and Dynamics 365 source toggles, not a confirmed separate switch here.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 54,
+      "n": 60,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Tenant access settings do not install applications.",
+      "claim": "Tenant Sales agent access settings do not install applications.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
-      "quote": "These settings control access only. They don't install apps",
+      "quote": "These settings control access only. They don't install apps, assign licenses, connect to a CRM environment, or grant access to CRM data.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 55,
-      "where": "Governance controls",
-      "type": "licensing",
-      "claim": "Tenant access settings do not assign licences.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
-      "quote": "They don't install apps, assign licenses, connect to a CRM environment, or grant access to CRM data.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
+      "n": 61,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Access setting changes can take up to 15 minutes to take effect.",
+      "claim": "Tenant Sales agent access settings do not assign licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
+      "quote": "These settings control access only. They don't install apps, assign licenses, connect to a CRM environment, or grant access to CRM data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Access-setting changes can take up to 15 minutes to take effect.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
       "quote": "Access setting changes can take up to 15 minutes to take effect.",
@@ -639,10 +713,10 @@
       "fix": null
     },
     {
-      "n": 57,
+      "n": 63,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Microsoft Entra security group membership changes can take up to one hour to appear in access evaluations.",
+      "claim": "Microsoft Entra security-group membership changes can take up to one hour to appear in access evaluations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
       "quote": "Microsoft Entra security group membership changes can take up to one hour to appear in access evaluations.",
@@ -650,21 +724,32 @@
       "fix": null
     },
     {
-      "n": 58,
+      "n": 64,
       "where": "Governance controls",
-      "type": "admin-path",
-      "claim": "The Sales Opportunity Agent-specific page places its toggle under Advanced > Connected skills > Recommended action.",
+      "type": "behaviour",
+      "claim": "Disabling recommended-actions integration does not stop the Dynamics 365 source agent from running and generating insights.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/sales/configure-sales-opportunity-agent-connected-skills",
-      "quote": "Under Advanced, select Connected skills. In the Recommended action section, turn on the toggle.",
+      "source": "https://learn.microsoft.com/dynamics365/sales/configure-recommended-actions",
+      "quote": "When disabled, the agent continues to run and generate insights in its own interface",
       "severity": null,
       "fix": null
     },
     {
-      "n": 59,
-      "where": "Governance controls; front matter: changes",
+      "n": 65,
+      "where": "controls[1].governs; Governance controls",
       "type": "behaviour",
-      "claim": "The Sales Opportunity Agent-specific page marks its recommended-actions integration as preview.",
+      "claim": "Disabling the Dynamics 365 source-agent integration removes its insights from the recommended-actions interface.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/configure-recommended-actions",
+      "quote": "When disabled, the agent continues to run and generate insights in its own interface but the insights don't appear in the recommended actions interface.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The separate Sales Opportunity Agent integration page marks that integration as preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/sales/configure-sales-opportunity-agent-connected-skills",
       "quote": "This is a preview feature. Preview features aren't meant for production use and might have restricted functionality.",
@@ -672,35 +757,46 @@
       "fix": null
     },
     {
-      "n": 60,
-      "where": "front matter: products; title",
-      "type": "record",
-      "claim": "The roadmap associates this item with Microsoft Copilot (Microsoft 365).",
+      "n": 67,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "The Sales Opportunity Agent integration page places its toggle under Advanced > Connected skills > Recommended action within the agent settings.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
+      "source": "https://learn.microsoft.com/dynamics365/sales/configure-sales-opportunity-agent-connected-skills",
+      "quote": "Open the Sales Opportunity Agent settings page. ... Under Advanced, select Connected skills. ... In the Recommended action section, turn on the toggle.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 61,
+      "n": 68,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The Dynamics 365 billing page documents monitoring Copilot Studio message capacity and prepaid and pay-as-you-go usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing",
+      "quote": "You can view Copilot Studio message capacity and usage for prepaid capacity and pay-as-you-go in the Power Platform admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
       "where": "Governance guidance: After rollout; Governance controls table",
       "type": "consistency",
-      "claim": "The checklist's capacity and pay-as-you-go monitoring control has no corresponding controls-table row.",
+      "claim": "The checklist's capacity and pay-as-you-go monitoring instruction has no corresponding controls-table row.",
       "status": "contradicted",
       "source": "page",
-      "quote": "Checklist: 'Review Copilot Studio message capacity and pay-as-you-go usage'. The two table rows cover tenant Sales agent access and source-agent Recommended Actions integration, not capacity monitoring.",
+      "quote": "Review Copilot Studio message capacity and pay-as-you-go usage ... Table controls: Whether Sales agent can be used in Microsoft 365 Copilot; Whether a source agent's actions appear in the recommended actions experience.",
       "severity": "minor",
-      "fix": "Remove the After rollout bullet beginning 'Review Copilot Studio message capacity and pay-as-you-go usage'; it names a control not represented in the existing controls table."
+      "fix": "Remove the After rollout bullet beginning 'Review Copilot Studio message capacity and pay-as-you-go usage'; it instructs readers to check a control not represented in the existing controls table."
     }
   ],
   "precheck": {
-    "at": "2026-11-17T00:01:29.802Z",
+    "at": "2026-11-19T06:20:52.215Z",
     "summary": {
       "links": 11,
-      "unreachable": 0,
+      "unreachable": 9,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 2,
       "apiCalls": 0,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
@@ -713,28 +809,28 @@
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/sales/recommended-actions-overview",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/sales/configure-recommended-actions",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/sales/next-best-actions-to-manage-opportunities",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat",
@@ -743,23 +839,23 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-sales-copilot/introduction",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/copilot/ai-get-started",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/sales/connect-custom-agent-recommended-actions",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/sales/configure-sales-opportunity-agent-connected-skills",
-        "ok": true,
-        "status": 200
+        "ok": false,
+        "status": 429
       }
     ],
     "controlChecks": [
@@ -768,19 +864,22 @@
         "side": "ui",
         "governs": "Whether Sales agent can be used in Microsoft 365 Copilot, and by which groups",
         "docs": "https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Access settings",
           "Allow access to Sales agent"
         ],
-        "missing": []
+        "missing": [
+          "Access settings",
+          "Allow access to Sales agent"
+        ]
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Whether a source agent's actions appear in the recommended actions experience (Dynamics 365 Sales)",
         "docs": "https://learn.microsoft.com/dynamics365/sales/configure-recommended-actions",
-        "reachable": true,
+        "reachable": false,
         "segments": [
           "Change area",
           "App Settings",
@@ -790,7 +889,15 @@
           "Connected skills",
           "Recommended Actions"
         ],
-        "missing": []
+        "missing": [
+          "Change area",
+          "App Settings",
+          "General settings",
+          "Dynamics 365 AI hub",
+          "Create and manage agents",
+          "Connected skills",
+          "Recommended Actions"
+        ]
       }
     ],
     "roadmapDrift": []
@@ -800,6 +907,12 @@
       "date": "2026-11-16",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-17",
+      "status": "verified-with-gaps",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

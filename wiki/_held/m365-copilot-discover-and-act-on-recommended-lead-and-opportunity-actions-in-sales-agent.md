@@ -85,18 +85,20 @@ changes:
     note: "Corrected after the independent check: cost rating changed to low, the unsupported 'without notice' wording replaced, and the Copilot credits wording and Sales Opportunity Agent preview toggle added."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 61 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 69 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-19"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 60
+  claims: 69
+  confirmed: 64
   unconfirmed: 0
-  contradicted: 1
-  attempts: 0
+  contradicted: 5
+  attempts: 1
   hash: "bb378295de954cc33a63ea8520f96082"
 ---
 
@@ -205,8 +207,14 @@ cost: Low. The known cost is administrator preparation and seller communication;
 impact: High. The roadmap item states the feature is on by default, so every seller who can use Sales agent would see a changed experience without an admin action.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: licensing.model and notes; Cost and licensing; rationale: cost / licensing: Licensing is unknown and not yet published for this roadmap item. | Found: To use Sales agent in Microsoft 365 Copilot, you must meet one of the following licensing options: ... Dynamics 365 Sales Enterprise or Premium access, without a Microsoft 365 Copilot license | CRM data only | Fix: Set licensing.model to included. State: 'Sales agent requires either an appropriate Microsoft 365 Copilot license and access to Dynamics 365 Sales or Salesforce, for CRM data and Microsoft 365 Graph grounding, or Dynamics 365 Sales Enterprise or Premium access without a Microsoft 365 Copilot license, for CRM data only. Any additional entitlement or metering specific to these recommended actions is not yet published.' Use https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat. Replace the blanket unpublished-licensing statements in the notes, body and cost rationale with the narrower additional-entitlement caveat; retain cost low for the known preparation work. | Source: https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat
+- [contradicted, blocker] licensing.notes; Cost and licensing: quotation from Set up Sales agent / licensing: The setup page says Sales agent in Microsoft 365 Copilot is available to users who have access to a Microsoft 365 Copilot license. | Found: An appropriate license to access Microsoft 365 Copilot and access to Dynamics 365 Sales or Salesforce | CRM data and Microsoft 365 Graph grounding | Fix: Replace the outdated quotation and corresponding licensing note with: 'The setup page lists two options: an appropriate Microsoft 365 Copilot license plus access to Dynamics 365 Sales or Salesforce for CRM data and Microsoft 365 Graph grounding; or Dynamics 365 Sales Enterprise or Premium access without a Microsoft 365 Copilot license for CRM data only. A Microsoft 365 Copilot license is required for Microsoft 365 Graph-grounded data.' Cite https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat. | Source: https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat
+- [contradicted, blocker] Scope: Prerequisites / absence: Prerequisites for using this feature are not yet documented. | Found: Prerequisites ... The Sales agent is installed in both Outlook and Teams. ... Sales Chat must be turned on in Access settings. ... The Sales agent must be connected to a CRM system. | Fix: Replace 'Prerequisites for this feature are not yet documented' with 'Sales agent prerequisites are documented in Set up Sales agent in Microsoft 365 Copilot; additional prerequisites specific to the recommended-actions experience are not yet documented.' Cite https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat. | Source: https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat
+- [contradicted, blocker] controls[1].api; Governance controls table and final sentence / absence: Microsoft has not documented an API for enabling recommended actions for a Dynamics 365 source agent. | Found: Update ... PATCH /msdyn_recommendedactionsourceagentconfigs(msdyn_recommendedactionsourceagentconfigid) ... msdyn_isrecommendedactionagentenabled ... Indicates whether the recommended actions agent is enabled for this source agent config | Fix: Set controls[1].api.kind to rest, call to 'PATCH /msdyn_recommendedactionsourceagentconfigs(msdyn_recommendedactionsourceagentconfigid)', and docs to https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_recommendedactionsourceagentconfig. Add to the existing note: 'The request body sets msdyn_isrecommendedactionagentenabled, a Boolean indicating whether the Recommended Actions agent is enabled for this source-agent configuration.' Replace the final blanket no-API sentence with 'No automation equivalent was found for the tenant Sales agent access settings at the time of writing; the Dynamics 365 source-agent configuration has the Dataverse Web API operation shown in the table.' Retain the caveat that applicability to the new Microsoft 365 experience is unconfirmed. | Source: https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_recommendedactionsourceagentconfig
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist's capacity and pay-as-you-go monitoring control has no corresponding controls-table row. | Found: Checklist: 'Review Copilot Studio message capacity and pay-as-you-go usage'. The two table rows cover tenant Sales agent access and source-agent Recommended Actions integration, not capacity monitoring. | Fix: Remove the After rollout bullet beginning 'Review Copilot Studio message capacity and pay-as-you-go usage'; it names a control not represented in the existing controls table.
+- [supported, minor] controls[0].ui; Governance guidance: Before rollout; Governance controls table / admin-path: Sales agent administrator settings > Tenant > Access settings > Allow access to Sales agent leads to the tenant access settings. | Found: Open Sales agent administrator settings. ... Under Tenant, select Access settings. ... Select Allow access to Sales agent. ... In the Sales agent pane, locate the application you want to configure | Fix: Extend the UI path to 'Tenant > Access settings > Allow access to Sales agent > Microsoft 365 Copilot' to identify the application whose toggle is being set. Add to the existing note: 'To configure groups, expand Microsoft 365 Copilot and, under Who can use this feature?, select Set access restrictions, then configure Allow access and Restrict access.' The omitted application target is a permitted target-selection omission, not an invented path. Source: https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps. | Source: https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps
+- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist's capacity and pay-as-you-go monitoring instruction has no corresponding controls-table row. | Found: Review Copilot Studio message capacity and pay-as-you-go usage ... Table controls: Whether Sales agent can be used in Microsoft 365 Copilot; Whether a source agent's actions appear in the recommended actions experience. | Fix: Remove the After rollout bullet beginning 'Review Copilot Studio message capacity and pay-as-you-go usage'; it instructs readers to check a control not represented in the existing controls table.
 -->

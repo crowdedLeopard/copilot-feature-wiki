@@ -17,14 +17,17 @@ impact: "low"
 defaultState: "user-opt-in"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for desktop flows. Microsoft Learn's savings pages for cloud flows and agent flows name a security-role requirement and no licence or meter; they do not describe desktop flows."
+  model: "included"
+  notes: "Power Automate Premium includes the full set of cloud and desktop automation capabilities (Types of Power Automate licenses). A savings-specific licence requirement, price or meter is not yet published."
 audiences: ["power-platform-admin","maker","finops"]
 tags: ["power-automate","desktop-flows","automation","analytics","finops","power-platform-admin-center"]
 sources:
   - title: "Microsoft 365 Roadmap 576785"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=576785"
     kind: "roadmap"
+  - title: "Types of Power Automate licenses"
+    url: "https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types"
+    kind: "learn"
   - title: "Savings in Power Automate"
     url: "https://learn.microsoft.com/power-automate/savings"
     kind: "learn"
@@ -50,27 +53,27 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Manage > Environments > environment > Settings > Product > Features"
+      path: "Manage > Environments > environment > Settings > Product > Features > Savings > Disable money-saving rules"
       docs: "https://learn.microsoft.com/power-platform/admin/settings-features"
     api:
       kind: "rest"
-      call: "PATCH <organization-uri>/api/data/v9.2/organizations(<organization-id>) with JSON body {\"ismoneysavingsallowed\":false}, Content-Type: application/json, If-Match: *"
+      call: "PATCH <organization-uri>/api/data/v9.2/organizations(<organization-id>)"
       docs: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/organization"
-    note: "Off by default. Page names cloud flows, agent flows and agents; Microsoft has not confirmed it applies to desktop flows. The API call disables permission to create money-saving rules."
+    note: "Off by default. Page names cloud flows, agent flows and agents; Microsoft has not confirmed it applies to desktop flows. The request body sets ismoneysavingsallowed to false to disable permission to create money-saving rules."
   - governs: "How long savings records are retained"
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Manage > Environments > environment > Settings > Product > Features"
+      path: "Manage > Environments > environment > Settings > Product > Features > Savings > Time to live (in days) of savings events in Flow Aggregation entity"
       docs: "https://learn.microsoft.com/power-platform/admin/settings-features"
     api:
       kind: "rest"
-      call: "PATCH <organization-uri>/api/data/v9.2/organizations(<organization-id>) with JSON body {\"savingeventsttlinminutes\":<minutes>}, Content-Type: application/json, If-Match: *"
+      call: "PATCH <organization-uri>/api/data/v9.2/organizations(<organization-id>)"
       docs: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/organization"
-    note: "Setting: Time to live (in days) of savings events in Flow Aggregation entity. Default 365 days. API value is in minutes and applies to new savings-event records. Not confirmed for desktop flows."
+    note: "Default 365 days. The request body sets savingeventsttlinminutes, in minutes, for new savings-event records. Not confirmed for desktop flows."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-19"
 roadmapModified: "2026-10-16T19:09:03"
 changes:
   - date: "2026-11-17"
@@ -83,19 +86,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 57 statements not yet confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-19"
+    note: "Correction: licensing now states Power Automate Premium includes cloud and desktop automation, with no savings-specific licence yet published; control paths and calls tightened."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 56 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-19"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 59
+  claims: 56
+  confirmed: 56
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "afb0960dd7c2a36546f2b7af0f356a66"
+  contradicted: 0
+  attempts: 0
+  hash: "e85b24ad7d2df8300a553a5304509908"
 ---
 
 ## What's changing
@@ -130,7 +137,7 @@ Microsoft has not stated a tenant-wide default beyond the roadmap's "not enabled
 
 ## Cost and licensing
 
-Microsoft has not published a licence requirement, price or meter for desktop flow savings (Not yet published). The roadmap record names none.
+Power Automate Premium includes the full set of cloud and desktop automation capabilities, per [Types of Power Automate licenses](https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types). A savings-specific licence requirement, price or meter is not yet published. The roadmap record names none.
 
 For comparison only, Learn's savings pages for cloud flows and [agent flows](https://learn.microsoft.com/microsoft-copilot-studio/agent-flow-savings) list a security role with privileges on the Saving Rule and Flow Aggregation tables as what is needed to view and edit rules, and name no licence or meter. Those pages do not cover desktop flows, so this is not a statement about them.
 
@@ -166,8 +173,8 @@ Savings are shown in Power Automate's automation center, whose Savings page trac
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether makers can create money-saving rules in an environment</strong><br><small>Environment</small><br><small class="controls__note">Off by default. Page names cloud flows, agent flows and agents; Microsoft has not confirmed it applies to desktop flows. The API call disables permission to create money-saving rules.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features <a href="https://learn.microsoft.com/power-platform/admin/settings-features" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH &lt;organization-uri&gt;/api/data/v9.2/organizations(&lt;organization-id&gt;) with JSON body {&quot;ismoneysavingsallowed&quot;:false}, Content-Type: application/json, If-Match: *</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/organization" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>How long savings records are retained</strong><br><small>Environment</small><br><small class="controls__note">Setting: Time to live (in days) of savings events in Flow Aggregation entity. Default 365 days. API value is in minutes and applies to new savings-event records. Not confirmed for desktop flows.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features <a href="https://learn.microsoft.com/power-platform/admin/settings-features" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH &lt;organization-uri&gt;/api/data/v9.2/organizations(&lt;organization-id&gt;) with JSON body {&quot;savingeventsttlinminutes&quot;:&lt;minutes&gt;}, Content-Type: application/json, If-Match: *</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/organization" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether makers can create money-saving rules in an environment</strong><br><small>Environment</small><br><small class="controls__note">Off by default. Page names cloud flows, agent flows and agents; Microsoft has not confirmed it applies to desktop flows. The request body sets ismoneysavingsallowed to false to disable permission to create money-saving rules.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Savings › Disable money-saving rules <a href="https://learn.microsoft.com/power-platform/admin/settings-features" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH &lt;organization-uri&gt;/api/data/v9.2/organizations(&lt;organization-id&gt;)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/organization" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>How long savings records are retained</strong><br><small>Environment</small><br><small class="controls__note">Default 365 days. The request body sets savingeventsttlinminutes, in minutes, for new savings-event records. Not confirmed for desktop flows.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Savings › Time to live (in days) of savings events in Flow Aggregation entity <a href="https://learn.microsoft.com/power-platform/admin/settings-features" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH &lt;organization-uri&gt;/api/data/v9.2/organizations(&lt;organization-id&gt;)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/organization" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -182,24 +189,12 @@ Learn's cloud flow page says that to view and edit a saving-rule, a user needs a
 ## Open questions
 
 - Does the **Disable money-saving rules** environment setting stop money-saving rules on desktop flows, and is there a setting for time-saving rules? Watch the Manage feature settings page.
-- Does desktop flow savings need a licence, and does it have prerequisites such as solution-based flows? Watch Microsoft Learn and Message center.
+- Does desktop flow savings need a licence beyond Power Automate Premium, or have a price or meter, and does it have prerequisites such as solution-based flows? Watch Microsoft Learn and Message center.
 - Where are desktop flow savings records stored, and does the retention setting apply to them?
 - Do desktop flow savings appear on the automation center Savings page, and how soon after a run?
 
 <!-- rationale
 risk: Low. The roadmap says the feature is not enabled automatically and works only once a maker enters baselines; it reports savings and does not change what flows do. The figures are maker-entered estimates.
-cost: Low. The only cost the sources show is maker and admin time to set baselines and review the figures. Microsoft has not published a licence or meter for desktop flow savings.
+cost: Low. Power Automate Premium includes the full set of cloud and desktop automation capabilities; a savings-specific licence, price or meter is not yet published. The cost the sources show is maker and admin time to set baselines and review figures.
 impact: Low. Makers and automation owners who opt in notice it, along with the Centre of Excellence staff who report on the results. Other users see no change.
--->
-
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost / licensing: The licensing model is unknown because Microsoft has not published a licence requirement for desktop flow savings. | Found: With a Power Automate Premium user license, users gain the full set of capabilities for cloud and desktop automation including premium connectors, process and task mining, AI Builder, use of managed environments, and Microsoft Dataverse storage. | Fix: Set licensing.model to included. Replace the unqualified unpublished-licensing statements in the notes, body, open question and cost rationale with: 'Power Automate Premium includes the full set of cloud and desktop automation capabilities. A savings-specific licence requirement, price or meter is not yet published.' Cite https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types in sources and beside this statement. Do not claim Premium is the only licensing route or that unattended execution is included in it. | Source: https://learn.microsoft.com/power-platform/admin/power-automate-licensing/types
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls: first table row / admin-path: The environment money-saving control is reached through Manage > Environments > environment > Settings > Product > Features. | Found: In the navigation pane, select Manage. ... select Environments. ... select an environment. ... select Settings. ... Expand Product, and then select Features. ... Savings ... Disable money-saving rules. | Fix: Make the setting's location explicit in the structured and rendered path: 'Manage > Environments > environment > Settings > Product > Features > Savings > Disable money-saving rules'. The cited page gives the printed navigation and places the setting under Savings; the omitted section is not a different navigation choice. | Source: https://learn.microsoft.com/power-platform/admin/settings-features
-- [supported, minor] controls[0].api; Governance controls: first table row and Organization explanation / command: PATCH of the v9.2 Organization row with ismoneysavingsallowed set to false disables makers' permission to create money-saving rules. | Found: Entity set path: [organization URI]/api/data/v9.2/organizations ... Operations supported: GETPATCH ... ismoneysavingsallowed ... Edm.Boolean ... Indicates whether the maker can create Power Automate money based saving rules. | Fix: Set controls[0].api.call and the rendered call to 'PATCH <organization-uri>/api/data/v9.2/organizations(<organization-id>)'. Replace the note's API sentence with 'The request body sets ismoneysavingsallowed to false to disable permission to create money-saving rules.' The documented property and value are correct; the standard requires the body and headers outside the call. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/organization
-- [supported, minor] controls[1].ui; Governance controls: second table row / admin-path: Savings retention is reached through Manage > Environments > environment > Settings > Product > Features. | Found: Expand Product, and then select Features. ... Savings ... Time to live (in days) of savings events in Flow Aggregation entity | Fix: Make the setting's location explicit in the structured and rendered path: 'Manage > Environments > environment > Settings > Product > Features > Savings > Time to live (in days) of savings events in Flow Aggregation entity'. The printed navigation is correct; Savings is the omitted section heading. | Source: https://learn.microsoft.com/power-platform/admin/settings-features
-- [supported, minor] controls[1].api; Governance controls: second table row and Organization explanation / command: PATCH of the v9.2 Organization row can set savingeventsttlinminutes to configure savings-event retention. | Found: Entity set path: [organization URI]/api/data/v9.2/organizations ... Operations supported: GETPATCH ... savingeventsttlinminutes ... Edm.Int32 ... Default time to live in minutes for new Power Automate savings events records in flow aggregation. | Fix: Set controls[1].api.call and the rendered call to 'PATCH <organization-uri>/api/data/v9.2/organizations(<organization-id>)'. Replace the note's API sentence with 'The request body sets savingeventsttlinminutes, in minutes, for new savings-event records.' The documented property is correct; the standard requires the body and headers outside the call. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/organization
-- [supported, minor] controls[0].api; controls[1].api: HTTP headers / command: Dataverse PATCH update requests can use Content-Type: application/json and If-Match: *. | Found: Update operations use the HTTP PATCH verb. ... The If-Match: * header ensures you don't create a new record by accidentally performing an upsert operation. ... Content-Type: application/json | Fix: Remove ', Content-Type: application/json, If-Match: *' from both structured and rendered calls when reducing them to method and path. The headers are valid, but their supporting Basic update reference is not cited: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/update-delete-table-rows. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/update-delete-table-rows
 -->

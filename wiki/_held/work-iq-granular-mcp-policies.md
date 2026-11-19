@@ -62,18 +62,20 @@ changes:
     note: "New briefing: the roadmap plans granular Work IQ MCP policies; Learn documents only a tenant-level policy switch today."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 59 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 67 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 1
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-19"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 59
-  confirmed: 58
+  claims: 67
+  confirmed: 65
   unconfirmed: 0
-  contradicted: 1
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "4596dc52260f7b75fa78c9ce090b886b"
 ---
 
@@ -178,9 +180,11 @@ cost: Low. No charge for the policies themselves is published. Work IQ API usage
 impact: Medium. Administrators configure it, but developers and makers whose agents call Work IQ MCP would see requests denied by policy. End users notice only through agents that stop working.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: licensing.model; licensing.notes; Cost and licensing / licensing: The licensing model is unknown because no licence for granular policies has been published. | Found: Work IQ API is licensed under your agreement governing use of Microsoft Online Services, including the Microsoft Product Terms. You pay for use of the Work IQ API through a usage-based model that uses Copilot Credits. | Fix: Set licensing.model to 'consumption'. Replace 'Not yet published for the granular policies' in licensing.notes and 'No licence or price for the granular policies is published' in Cost and licensing with 'Work IQ API uses consumption-based licensing through Copilot Credits; no separate entitlement or price for the planned granular policies is published.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview. Keep the existing distinction between Work IQ usage charges and any separate charge for the controls. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters / behaviour: Work IQ MCP exposes ten generic tools. | Found: The Work IQ MCP collapses hundreds of operations into just 10 generic tools | Fix: Replace 'through ten generic tools that work on resource paths' with 'through generic tools that work on resource paths'. The cited overview says 10, but https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview lists 12 tool names across its Entity, Copilot and Schema rows. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: Every control the governance checklist asks readers to review has a corresponding controls-table row. | Found: Checklist: 'Review Work IQ usage and cost in the Microsoft 365 admin center'. Table: 'Whether Work IQ MCP policy applies to the tenant' and 'Per-platform, per-workload, per-agent or per-operation MCP restrictions'. Neither row covers cost management. | Fix: Remove the final After rollout bullet, 'Review Work IQ usage and cost in the Microsoft 365 admin center, where Learn says Work IQ cost can be managed.' Keep the supported cost-management statement in Cost and licensing.
+- [supported, minor] Why it matters / behaviour: Work IQ MCP exposes ten generic tools. | Found: The Work IQ MCP collapses hundreds of operations into just 10 generic tools | Fix: Replace 'through ten generic tools that work on resource paths' with 'through generic tools that work on resource paths'. The cited overview says 10, but https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview lists twelve tool names across its tool categories. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: Every control the governance checklist asks readers to review has a corresponding controls-table row. | Found: Checklist: 'Review Work IQ usage and cost in the Microsoft 365 admin center'. Controls rows: 'Whether Work IQ MCP policy applies to the tenant'; 'Per-platform, per-workload, per-agent or per-operation MCP restrictions'. Neither covers cost management. | Fix: Remove the final After rollout bullet, 'Review Work IQ usage and cost in the Microsoft 365 admin center, where Learn says Work IQ cost can be managed.' Retain the supported cost-management statement in Cost and licensing.
 -->

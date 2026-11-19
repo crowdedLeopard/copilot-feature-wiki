@@ -97,18 +97,20 @@ changes:
     note: "Correction: default state set to unknown, cost lowered to low, file-access claim replaced, toolbar control row corrected with its client API, and API-absence statement narrowed."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 48 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 50 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-19"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
+  claims: 50
   confirmed: 46
   unconfirmed: 1
-  contradicted: 1
-  attempts: 0
+  contradicted: 3
+  attempts: 1
   hash: "a54111ca20796518e7e7aafbec609ac5"
 ---
 
@@ -188,10 +190,12 @@ cost: Low. The known cost is review and training effort; any licensing or charge
 impact: Medium. Affects users of model-driven apps with form fill assistance enabled.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Governance controls prose / behaviour: The per-column property is the finest-grained control. | Found: Searched: "form fill assistance" "column" "granular". Opened create-edit-field-portal, form-filling-assistance and copilot-hub; these document column, app and environment controls but do not state the comparative claim. | Fix: Replace the sentence with: 'Makers can also set Allow form fill assistance (preview) per column and disable it for columns that might contain sensitive information.'
+- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: The legacy environment switch remains reachable through Manage > Environments > environment > Settings > Product > Features > AI form fill assistance. | Found: The following settings are removed from the Environment > Settings > Features page. Access them through Manage model-driven app settings in the app designer or Solution Explorer App Settings. | Fix: Remove the legacy environment switch row from both controls and the rendered table. Its cited page now says those settings are removed from the environment Features page; retain the separately documented Copilot Data entry and app toolbar rows. | Source: https://learn.microsoft.com/power-platform/admin/settings-features#ai-form-fill-assistance
+- [contradicted, blocker] controls[2].ui; Governance controls table / admin-path: The maker-side route is App designer > Settings > Features > Form fill assist toolbar. | Found: Select Solutions. ... Choose the solution that contains the model-driven app where editing is required. ... On the left navigation pane select Apps, select a model-driven app, and then on the toolbar select Edit. | Fix: Replace the path in controls[2].ui and the table with 'Solutions > solution > Apps > app > Edit > Settings > Features > Form fill assist toolbar'. Cite https://learn.microsoft.com/power-apps/maker/model-driven-apps/create-edit-app for entering the designer, retaining app-properties for the setting itself. | Source: https://learn.microsoft.com/power-apps/maker/model-driven-apps/create-edit-app#play-your-app
+- [unsupported, major] Governance controls prose / behaviour: The per-column property is the finest-grained control. | Found: Searched: "form fill assistance" "column" "granular". Opened create-edit-field-portal, form-filling-assistance, app-properties and Copilot hub; they document column and broader settings but do not state that no finer-grained control exists. | Fix: Remove 'which is the finest-grained control and the one to use for sensitive fields' and replace it with 'and disable it for columns that might contain sensitive information'.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist directs readers to review column properties, but the controls table has no column-property row. | Found: Review environment form fill settings and column properties. ... Table rows: Form fill assistance (data entry agent) per environment; Legacy environment switch; Form fill assist toolbar for an app; Switch specific to Microsoft 365 files as a source. | Fix: The 'Review environment form fill settings and column properties' checklist step has no row for column properties. Remove 'and column properties' from that step; do not add a control row as part of this correction.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist directs readers to review column properties, but the controls table has no column-property row. | Found: Review environment form fill settings and column properties. ... Table rows cover environment Data entry, the legacy environment switch, the app toolbar and a Microsoft 365 files source switch, but not column properties. | Fix: Remove 'and column properties' from the checklist step, leaving 'Review environment form fill settings.' Do not add a control row.
 -->

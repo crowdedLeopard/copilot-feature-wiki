@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "admin-opt-in"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published: the wizard's Learn page names no licence or role requirement, and the roadmap item does not name one."
+  model: "included"
+  notes: "Teams for Education requires an Education license in the Microsoft 365 tenant. Microsoft lists Teams as part of the free Microsoft 365 A1 for Students SKU. The wizard page states no separate wizard-specific licence requirement."
 audiences: ["m365-admin","service-owner"]
 tags: ["teams","policy","admin-center","education"]
 sources:
@@ -30,6 +30,12 @@ sources:
     kind: "learn"
   - title: "Set-CsTeamsEducationConfiguration"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseducationconfiguration?view=teams-ps"
+    kind: "learn"
+  - title: "Microsoft Teams for Education"
+    url: "https://learn.microsoft.com/microsoft-365/education/guide/2-baseline/applications/baseline-apps-teams-what-is-teams"
+    kind: "learn"
+  - title: "Assign Microsoft Teams licenses for education"
+    url: "https://learn.microsoft.com/microsoftteams/teams-edu-licensing"
     kind: "learn"
 videos: []
 related: ["meeting-policy"]
@@ -63,19 +69,23 @@ changes:
     note: "Corrected how existing policy assignments affect the wizard: students need direct and group assignments removed; for educators and staff, the wizard's group policy takes ranking 1 and conflicting direct assignments are removed."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 48 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-19"
+    note: "Corrected licensing (Teams for Education needs an Education license; Teams is in the free Microsoft 365 A1 for Students SKU), the Apply statement now notes later automatic education defaults, and removed the assignment-removal bullet from At rollout."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 48 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 48
-  confirmed: 45
+  confirmed: 47
   unconfirmed: 0
-  contradicted: 3
-  attempts: 2
-  hash: "da5746dbdd2297939e6d8fdf1aa6bb33"
+  contradicted: 1
+  attempts: 0
+  hash: "77362a674162a8d3ac9e931354ef31d3"
 ---
 
 ## What's changing
@@ -104,7 +114,7 @@ Microsoft's page says the wizard also adds the education default for any new Tea
 - Learn states that the wizard's policies won't take effect for a student who has existing direct or group assignments, so an old assignment can leave a student on a looser policy than the type implies. For educators and staff, Learn says the wizard assigns its group policies at ranking 1, the highest ranking, and moves an existing policy of the same policy area on the selected group to a lower ranking; conflicting direct assignments still override them.
 
 **Autonomy & actions**
-- The wizard acts only when an admin selects Apply. Learn also says the wizard starts automatically if you are new to Teams; the page does not say that starting it applies anything.
+- The initial policy application requires an admin to select Apply; after that, Microsoft says education defaults for new Teams features are added to Global policies automatically. Learn also says the wizard starts automatically if you are new to Teams; the page does not say that starting it applies anything.
 
 **Change & support**
 - Applying takes a few minutes for students. Educator and staff policy assignment can take a few hours, depending on group size, so expect inconsistent behaviour for educators during that window.
@@ -112,7 +122,7 @@ Microsoft's page says the wizard also adds the education default for any new Tea
 
 ## Cost and licensing
 
-Microsoft Learn's page for the wizard names no licence and no meter, and the roadmap item names none either. Licensing for this wizard is not yet published, so this briefing does not state that it is free or included.
+Teams for Education requires an Education license in the Microsoft 365 tenant. Microsoft lists Teams as part of the free Microsoft 365 A1 for Students SKU. The wizard page states no separate wizard-specific licence requirement, and no meter.
 
 The cost the sources show is admin time: choosing the type and groups, and removing the existing assignments that Learn says stop the wizard's policies taking effect (for students, existing direct and group assignments; for educators and staff, conflicting direct assignments).
 
@@ -120,7 +130,7 @@ The cost the sources show is admin time: choosing the type and groups, and remov
 
 The roadmap item lists Worldwide (Standard Multi-Tenant), General Availability, and Desktop, Mac and Web platforms. It does not list other clouds; that is a record fact about the item, not a statement that the wizard is unavailable elsewhere.
 
-The wizard is run from the Microsoft Teams admin center. Students receive the Global (Org-wide default) policy definitions, and the educators and staff groups the admin selects receive custom policies. The Learn page names no admin role or licence for running the wizard.
+The wizard is run from the Microsoft Teams admin center. Students receive the Global (Org-wide default) policy definitions, and the educators and staff groups the admin selects receive custom policies. The Learn page names no admin role or separate wizard-specific licence for running the wizard.
 
 ## Governance guidance
 
@@ -132,7 +142,6 @@ The wizard is run from the Microsoft Teams admin center. Students receive the Gl
 ### At rollout
 - Run the wizard from Home > Easy policy setup for a safe learning environment > Quick setup and select the institution type.
 - Review the summary page before selecting Apply.
-- Remove existing assignments as Learn's after-wizard steps instruct: for students, existing direct and group assignments; for educators and staff, conflicting direct assignments.
 
 ### After rollout
 - Check the educators and staff policies a few hours after applying, as Learn says assignment can take that long.
@@ -157,22 +166,19 @@ The wizard changes the Global (Org-wide default) policies for students, so run i
 
 ## Open questions
 
-- Which licence, if any, does the wizard require? Watch the Learn page for the wizard and the Microsoft 365 Education licensing guidance.
+- Does the wizard have a licence requirement separate from the Education license that Teams for Education requires? Watch the Learn page for the wizard.
 - Does the roadmap's tenant type mean the same thing as the wizard's institution type? Watch the Learn page for the wizard.
 - Which admin role is needed to run the wizard and change the type? Watch the Learn page for the wizard.
 - Is there a PowerShell or Graph way to set or read the institution type? Watch the Teams PowerShell reference.
 
 <!-- rationale
-risk: Low. Policies change only when an admin selects Apply in the wizard; the real exposure is choosing the wrong type, which rewrites the Global (Org-wide default) policies that students receive.
-cost: Low. The only cost the sources show is admin time to run the wizard and clear conflicting policy assignments; the wizard page names no licence, and licensing for it is not yet published.
+risk: Low. Initial policy application requires an admin to select Apply; later education defaults can be added automatically. The real exposure is choosing the wrong type, which rewrites the Global (Org-wide default) policies that students receive.
+cost: Low. The only cost the sources show is admin time to run the wizard and clear conflicting policy assignments; Teams for Education requires an Education license in the tenant, and the wizard page states no separate licence.
 impact: Low. Admins see the new step; students and educators notice only if the chosen type changes their policy settings.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model; Cost and licensing; Open questions; rationale: cost / licensing: Licensing is unknown because Microsoft has not published which licence covers this wizard. | Found: Prerequisites for Microsoft Teams for Education - An Education license in your Microsoft 365 tenant - Enable Microsoft Teams in the Microsoft Admin Center | Fix: Set licensing.model to included and replace the blanket unpublished-licensing statements with: 'Teams for Education requires an Education license in the Microsoft 365 tenant. Microsoft lists Teams as part of the free Microsoft 365 A1 for Students SKU. The wizard page states no separate wizard-specific licence requirement.' Cite https://learn.microsoft.com/microsoft-365/education/guide/2-baseline/applications/baseline-apps-teams-what-is-teams and https://learn.microsoft.com/microsoftteams/teams-edu-licensing. In Open questions, remove the broad licence question or narrow it to a separate wizard-specific requirement. Retain the low cost rating for administration time. | Source: https://learn.microsoft.com/microsoft-365/education/guide/2-baseline/applications/baseline-apps-teams-what-is-teams
-- [contradicted, blocker] Risk assessment: Autonomy & actions; rationale: risk / behaviour: The wizard acts, and policies change, only when an administrator selects Apply. | Found: Also, whenever a new feature is added to Teams, the appropriate EDU relevant default value of the policy for that feature will be automatically added to the Global (Org-wide default) without requiring any admin intervention. | Fix: Replace 'The wizard acts only when an admin selects Apply' with 'The initial policy application requires an admin to select Apply; after that, Microsoft says education defaults for new Teams features are added to Global policies automatically.' In the risk rationale replace 'Policies change only when an admin selects Apply in the wizard' with 'Initial policy application requires an admin to select Apply; later education defaults can be added automatically'. Keep the existing defaultState and low risk rating: the initial configuration remains opt-in. | Source: https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The checklist instructs readers to remove policy assignments, but the controls table contains only institution-type selection rows. | Found: Remove existing assignments as Learn's after-wizard steps instruct: for students, existing direct and group assignments; for educators and staff, conflicting direct assignments. | Institution type chosen on the first run of the wizard | Institution type changed after the wizard has run | Fix: Remove the At rollout bullet beginning 'Remove existing assignments as Learn's after-wizard steps instruct'. Retain the Before rollout instruction to review the documentation's after-run instructions and the accurate explanation in Risk assessment; do not add control rows.
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: Every control the governance checklist asks administrators to check is represented in the controls table. | Found: Check the educators and staff policies a few hours after applying; controls table: Institution type chosen on the first run of the wizard; Institution type changed after the wizard has run. | Fix: Remove the After rollout bullet 'Check the educators and staff policies a few hours after applying, as Learn says assignment can take that long.' It asks for a policy check not represented by either institution-type control row.
 -->

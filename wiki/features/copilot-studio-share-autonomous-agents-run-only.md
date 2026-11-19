@@ -46,8 +46,8 @@ sources:
   - title: "Configure data policies for agents"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
     kind: "learn"
-  - title: "New-DlpPolicy"
-    url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest"
+  - title: "Add-ConnectorsToPolicy"
+    url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest"
     kind: "learn"
   - title: "Control maker-provided credentials for authentication"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication"
@@ -86,8 +86,11 @@ controls:
       surface: "Power Platform admin center"
       path: "Security > Data and privacy > Data policy > New Policy > Add an environment > Available > environment > Add to policy > Assign connectors > Microsoft Copilot Studio > Block"
       docs: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
-    api: null
-    note: "The UI steps block the Microsoft Copilot Studio connector (tenant admin or Environment Admin). New-DlpPolicy only creates a policy; its reference does not describe assigning the Microsoft Copilot Studio connector to Blocked."
+    api:
+      kind: "powershell"
+      call: "Add-ConnectorsToPolicy -PolicyName <PolicyGuid> -Classification Blocked -Connectors <ConnectorObjects>"
+      docs: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest"
+    note: "UI steps need tenant admin or Environment Admin. ConnectorObjects identifies the Microsoft Copilot Studio connector; each object has id, type and name, as the reference requires."
   - governs: "Which credential types makers may use for agent tools"
     scope: "environment"
     ui:
@@ -145,26 +148,30 @@ changes:
     note: "Corrected after verification: the data policy path now ends at Microsoft Copilot Studio > Block and its PowerShell call is removed, the spending policy path adds Resources and Specific environments, and the spending policy roles are stated."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 86 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 6
+  - date: "2026-11-19"
+    note: "Corrected after verification: the share-link step now reads Copy sharing link > Copy link to set up, and the data policy row gains the Add-ConnectorsToPolicy PowerShell call."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 86 statements not yet confirmed"
+version: 7
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 6
+  version: 7
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 86
-  confirmed: 84
+  confirmed: 86
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "9c41d9291b5e6bad158bb8926e6970cd"
+  contradicted: 0
+  attempts: 0
+  hash: "059290d4c282add44240c526833b1c7c"
 ---
 
 ## What's changing
 
 Copilot Studio is adding run-only sharing for autonomous agents: a maker can share a published agent that has triggers with individual users or security groups, who run it under their own credentials. The roadmap description says autonomous agents could previously only be used and managed by makers; run-only sharing lets makers reach end users who have no edit permission or ownership.
 
-Microsoft Learn already documents the behaviour, with the articles marked as prerelease. The maker selects **Share**, gives recipients **Can use**, then copies the **Copy link to set up** link and sends it, because recipients get no notification. Recipients open the agent management page, connect every trigger, tool and workflow that needs their credentials, and can change only the trigger options the maker turned on with **Editable by user**. They cannot change the agent's instructions, tools or other authoring settings, and they cannot specify or modify tool parameters: tool calls are invoked and executed fully with AI, based on the maker's specifications. A workflow used as a tool can accept only end-user credentials.
+Microsoft Learn already documents the behaviour, with the articles marked as prerelease. The maker selects **Share**, gives recipients **Can use**, then selects **Copy sharing link** > **Copy link to set up** and sends the link to the recipients, because recipients get no notification. Recipients open the agent management page, connect every trigger, tool and workflow that needs their credentials, and can change only the trigger options the maker turned on with **Editable by user**. They cannot change the agent's instructions, tools or other authoring settings, and they cannot specify or modify tool parameters: tool calls are invoked and executed fully with AI, based on the maker's specifications. A workflow used as a tool can accept only end-user credentials.
 
 The roadmap item is In development, with preview targeted for August CY2026 and General Availability targeted for January CY2027, for Worldwide (Standard Multi-Tenant) on the web. Both dates are targets; Learn describes the preview behaviour, and limits may change at General Availability.
 
@@ -218,7 +225,7 @@ Cap: a Microsoft 365 admin center resource-based spending policy can cover speci
 
 ### At rollout
 - Confirm in the Power Platform admin center that a data policy covers each hosting environment, and decide whether the **Microsoft Copilot Studio** connector should be blocked to prevent event triggers.
-- Tell makers to publish to Teams + Microsoft 365 with Make agent available in Microsoft Copilot on, and to send recipients the **Copy link to set up** link.
+- Tell makers to publish to Teams + Microsoft 365 with Make agent available in Microsoft Copilot on, and to select **Copy sharing link** > **Copy link to set up** and send the link to recipients.
 - Brief the help desk on the agent management page: connections, the **Enabled** toggle for triggers, update consent and the **Activity** tab.
 
 ### After rollout
@@ -234,7 +241,7 @@ Cap: a Microsoft 365 admin center resource-based spending policy can cover speci
 <tbody>
 <tr><td data-label="Control"><strong>Whether autonomous agents may be shared with Can use (admin switch)</strong><br><small>Tenant</small><br><small class="controls__note">No admin setting for run-only sharing is documented at the time of writing (November 2026). The maker chooses via Share.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Who may share agents and with how many people (Managed Environments)</strong><br><small>Environment</small><br><small class="controls__note">General control for agent Editor and Viewer permissions; not confirmed for Can use. Managed environments only. First set extendedSettings bot-limitSharingMode and bot-maxLimitUserSharing on the retrieved governanceConfiguration.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Edit Managed Environments › Manage sharing <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName &lt;EnvironmentId&gt; -UpdatedGovernanceConfiguration $governanceConfiguration</code> <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether event triggers can be added (Microsoft Copilot Studio connector)</strong><br><small>Environment</small><br><small class="controls__note">The UI steps block the Microsoft Copilot Studio connector (tenant admin or Environment Admin). New-DlpPolicy only creates a policy; its reference does not describe assigning the Microsoft Copilot Studio connector to Blocked.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy › Add an environment › Available › environment › Add to policy › Assign connectors › Microsoft Copilot Studio › Block <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether event triggers can be added (Microsoft Copilot Studio connector)</strong><br><small>Environment</small><br><small class="controls__note">UI steps need tenant admin or Environment Admin. ConnectorObjects identifies the Microsoft Copilot Studio connector; each object has id, type and name, as the reference requires.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy › Add an environment › Available › environment › Add to policy › Assign connectors › Microsoft Copilot Studio › Block <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-ConnectorsToPolicy -PolicyName &lt;PolicyGuid&gt; -Classification Blocked -Connectors &lt;ConnectorObjects&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which credential types makers may use for agent tools</strong><br><small>Environment</small><br><small class="controls__note">Path is for environments not in a group; grouped environments use the group's page (see notes). Blocking maker credentials makes autonomously triggered agents fail for lack of credentials. Validate first.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Copilot Studio agents › Control maker credential options <a href="https://learn.microsoft.com/microsoft-copilot-studio/configure-no-maker-authentication" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Sharing agents with embedded maker credentials</strong><br><small>Environment</small><br><small class="controls__note">Connections configured to use end-user credentials are not subject to this connection-sharing restriction; run-only sharing requires triggers and tools configured for user authentication.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Features › Sharing agents with embedded maker credentials <a href="https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Spending limits for agents and environments (resource-based spending policy)</strong><br><small>Environment</small><br><small class="controls__note">Replaces Power Platform capacity allocations and billing plans for covered resources; excludes AI Builder credits. Select Resources as scope and choose the environments; set the monthly and optional per-agent limit in the policy.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › Add spending policy › Resources › Specific environments › environment <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
@@ -246,7 +253,7 @@ No tenant or environment switch for Can use sharing is documented at the time of
 
 The sharing-limits PowerShell example on Learn retrieves the environment's governanceConfiguration with Get-AdminPowerAppEnvironment, sets the extendedSettings values bot-limitSharingMode and bot-maxLimitUserSharing, then calls Set-AdminPowerAppEnvironmentGovernanceConfiguration. Its agent example covers sharing with security groups and the number of viewers.
 
-The data policy row needs the Environment Admin role or tenant admin. Learn says a policy that blocks the **Microsoft Copilot Studio** connector stops makers adding event triggers and shows an error in the Triggers section; it does not say what happens to a trigger already running. New-DlpPolicy only creates a policy: its reference does not describe assigning the Microsoft Copilot Studio connector to Blocked, so the connector is blocked through the UI steps in the table. The maker credential setting is immediate for all agents in the environment. For an environment that is in a group, Learn says you cannot configure it on the environment's own details page and must use the group's details page (Manage > Environment groups > group > Settings > Product > Features > Copilot Studio agents > Control maker credential options), as a tenant admin with access to the group. Spending policies take precedence over Power Platform admin center spending controls for the resources they cover.
+The data policy row needs the Environment Admin role or tenant admin. Learn says a policy that blocks the **Microsoft Copilot Studio** connector stops makers adding event triggers and shows an error in the Triggers section; it does not say what happens to a trigger already running. Add-ConnectorsToPolicy assigns the selected connector objects to the Blocked group. The maker credential setting is immediate for all agents in the environment. For an environment that is in a group, Learn says you cannot configure it on the environment's own details page and must use the group's details page (Manage > Environment groups > group > Settings > Product > Features > Copilot Studio agents > Control maker credential options), as a tenant admin with access to the group. Spending policies take precedence over Power Platform admin center spending controls for the resources they cover.
 
 The cost-management article recommends the AI Administrator role for managing spending policies. Microsoft's roles page lists Global administrator or Billing administrator for creating spending policies, and says the AI administrator and License administrator roles can edit existing spending policies but can't create them.
 
@@ -264,9 +271,9 @@ cost: Variable. Copilot Credits are the meter: each end user's autonomous agent 
 impact: Medium. Makers and the users they share with notice it; nothing reaches anyone until a maker shares an agent and the recipient activates it.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing: second paragraph; Governance guidance: At rollout / admin-path: After Share and Can use, the maker copies Copy link to set up and sends it. | Found: Select Copy sharing link, then Copy link to set up. Send the link to the end users you shared the autonomous agent with. | Fix: In What's changing and the At rollout link instruction, give the missing menu selection: 'Select Copy sharing link > Copy link to set up, then send the link to the recipients.' | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent
-- [contradicted, blocker] controls[2].api; Governance controls table and data-policy paragraph / absence: Automation for assigning the Microsoft Copilot Studio connector to Blocked is not documented. | Found: Adds the given connectors to the given group of the DLP policy. -Classification: ... Allowed values are 'General', 'Confidential', and 'Blocked' (for Non-business, Business, and Blocked, respectively). | Fix: Replace controls[2].api null with powershell call 'Add-ConnectorsToPolicy -PolicyName <PolicyGuid> -Classification Blocked -Connectors <ConnectorObjects>' and this source URL. State in the note that ConnectorObjects identifies the Microsoft Copilot Studio connector, with each object containing id, type and name as required by the reference. Replace the prose's inference from New-DlpPolicy with 'Add-ConnectorsToPolicy assigns the selected connector objects to the Blocked group.' Add the reference URL to sources and mirror the correction in the rendered table. | Source: https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[2].ui; Governance controls table / admin-path: The printed data-policy path reaches Microsoft Copilot Studio > Block in Assign connectors. | Found: The Assign connectors page appears. Use the search box to find the connector you want. Select the three dots (⋮) next to the connector, and then: To prevent agent makers from using the features associated with the connector, select Block. | Fix: Include the omitted unlabelled menu: Power Platform admin center > Security > Data and privacy > Data policy > New Policy > Add an environment > Available > environment > Add to policy > Assign connectors > Microsoft Copilot Studio > three dots > Block. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
+- [supported, minor] controls[4].ui; Governance controls table / admin-path: The cited page places Sharing agents with embedded maker credentials at Manage > Environments > environment > Settings > Features. | Found: Go to Manage > Environments, and then select the environment that you want to configure. Select Settings, and then select Features. Find Sharing agents with embedded maker credentials. | Fix: Keep the cited path, but add: 'Microsoft also documents this control as preview under Security > Threat detection > Sharing agent with embedded maker credentials > Environments > environment > Set up, with options to let or not let makers share embedded credentials.' Cite https://learn.microsoft.com/power-platform/admin/security/control-sharing-agents-with-embedded-maker-credentials. | Source: https://learn.microsoft.com/microsoft-copilot-studio/configure-sharing-agents-embedded-maker-credentials
 -->

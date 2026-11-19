@@ -17,7 +17,7 @@ impact: "low"
 defaultState: "user-opt-in"
 action: "prepare"
 licensing:
-  model: "per-user"
+  model: "included"
   notes: "The notice says a user with a Microsoft 365 Copilot (Premium) licence must enable Facilitator and other participants need no licence to receive responses. Learn says Facilitator is included with a Microsoft Copilot licence, subject to available capacity. A separate price for this capability is not yet published."
 audiences: ["m365-admin","security","compliance","change-adoption"]
 tags: ["facilitator","teams","m365-copilot","web-search","ai"]
@@ -34,8 +34,20 @@ sources:
   - title: "Overview of Cloud Policy service for Microsoft 365"
     url: "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy"
     kind: "learn"
+  - title: "Create configurationMonitor"
+    url: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
+    kind: "learn"
+  - title: "Supported Copilot resources for Tenant Configuration Management (preview)"
+    url: "https://learn.microsoft.com/graph/utcm-copilot-resources"
+    kind: "learn"
+  - title: "Supported resources for remediation and applyOnce (preview)"
+    url: "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources"
+    kind: "learn"
   - title: "New-RetentionCompliancePolicy"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy"
+    kind: "learn"
+  - title: "New-RetentionComplianceRule"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule"
     kind: "learn"
   - title: "Set-CsTeamsAppPermissionPolicy"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsapppermissionpolicy"
@@ -56,7 +68,7 @@ sources:
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=558341"
     kind: "roadmap"
 videos: []
-related: ["microsoft-teams-enhanced-copilot-and-ai-controls-for-meetings","teams-ai-generated-meeting-memory","m365-copilot-domain-exclusion-web-grounding"]
+related: ["microsoft-teams-enhanced-copilot-and-ai-controls-for-meetings","m365-copilot-domain-exclusion-web-grounding"]
 controls:
   - governs: "Whether Copilot web search, which Facilitator's answers depend on, is allowed"
     scope: "tenant"
@@ -64,8 +76,11 @@ controls:
       surface: "Microsoft 365 Apps admin center"
       path: "Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings"
       docs: "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy"
-    api: null
-    note: "General Copilot control: the notice says Facilitator depends on the Copilot web search setting but does not name this policy. The Allow web search in Copilot policy name and options are from the web search page, not this overview page."
+    api:
+      kind: "graph"
+      call: "POST /beta/admin/configurationManagement/configurationMonitors"
+      docs: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
+    note: "Preview beta API, not for production. Body: mode applyOnce; resource microsoft.copilot.allowwebsearch, properties.value 0, 1 or 2. Tenant-level policies only. The notice does not name this policy."
   - governs: "A separate switch for proactive question detection and answers"
     scope: "tenant"
     ui: null
@@ -79,12 +94,12 @@ controls:
       docs: "https://learn.microsoft.com/purview/ai-teams-facilitator"
     api:
       kind: "powershell"
-      call: "New-RetentionCompliancePolicy -Name <policy name> -TeamsChatLocation <locations>"
-      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy"
-    note: "For Facilitator AI interactions in meetings, Microsoft specifies a retention policy with the Teams chats location."
+      call: "New-RetentionComplianceRule -Policy <policy name> -RetentionDuration <days> -RetentionComplianceAction Keep"
+      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule"
+    note: "Adds a retention rule to an existing policy scoped to Teams chats; specify the rule name as required by the reference."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-19"
 roadmapModified: "2026-11-13T19:41:44"
 changes:
   - date: "2026-11-17"
@@ -97,19 +112,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 76 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-19"
+    note: "Corrected after the independent check: licensing model set to included, added the preview Graph operation for the Copilot web search policy, moved the retention call to New-RetentionComplianceRule, completed the app-availability path and dropped an unmatched checklist step."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 93 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-19"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 76
-  confirmed: 71
+  claims: 93
+  confirmed: 93
   unconfirmed: 0
-  contradicted: 5
-  attempts: 1
-  hash: "a30f87e8bfae036cf250af680f04ed5d"
+  contradicted: 0
+  attempts: 0
+  hash: "0d3515c96999ff3bdba15b911ee1bc71"
 ---
 
 ## What's changing
@@ -169,7 +188,6 @@ No price, meter or credit rate for the proactive question-answering capability i
 ### Before rollout
 
 - Check whether the **Allow web search in Copilot** policy is configured in Cloud Policy and decide the setting you want (first table row). Learn says that if it isn't configured, web search is available to users, unless **Allow the use of additional optional connected experiences in Office** is Disabled.
-- Confirm that Facilitator is allowed or blocked as you intend in the Teams admin center (Teams apps > Manage apps > Facilitator > Allow or Block). Learn says Facilitator is allowed by default.
 - Agree with your compliance team how Facilitator chat interactions are retained, using a retention policy with the **Teams chats** location (third table row), and note that Purview DLP is listed as not supported for Facilitator.
 - Decide whether meetings that discuss sensitive subjects should have Facilitator added at all, because answers are posted in the chat.
 
@@ -191,17 +209,19 @@ No price, meter or credit rate for the proactive question-answering capability i
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Copilot web search, which Facilitator's answers depend on, is allowed</strong><br><small>Tenant</small><br><small class="controls__note">General Copilot control: the notice says Facilitator depends on the Copilot web search setting but does not name this policy. The Allow web search in Copilot policy name and options are from the web search page, not this overview page.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Policy configurations › Create › Start with the basics › Choose the scope › Configure Settings <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether Copilot web search, which Facilitator's answers depend on, is allowed</strong><br><small>Tenant</small><br><small class="controls__note">Preview beta API, not for production. Body: mode applyOnce; resource microsoft.copilot.allowwebsearch, properties.value 0, 1 or 2. Tenant-level policies only. The notice does not name this policy.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Policy configurations › Create › Start with the basics › Choose the scope › Configure Settings <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>A separate switch for proactive question detection and answers</strong><br><small>Tenant</small><br><small class="controls__note">No such setting is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Retention of Facilitator interactions in meetings</strong><br><small>Tenant</small><br><small class="controls__note">For Facilitator AI interactions in meetings, Microsoft specifies a retention policy with the Teams chats location.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Lifecycle Management › Policies › Retention Policies <a href="https://learn.microsoft.com/purview/ai-teams-facilitator" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-RetentionCompliancePolicy -Name &lt;policy name&gt; -TeamsChatLocation &lt;locations&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Retention of Facilitator interactions in meetings</strong><br><small>Tenant</small><br><small class="controls__note">Adds a retention rule to an existing policy scoped to Teams chats; specify the rule name as required by the reference.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Lifecycle Management › Policies › Retention Policies <a href="https://learn.microsoft.com/purview/ai-teams-facilitator" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-RetentionComplianceRule -Policy &lt;policy name&gt; -RetentionDuration &lt;days&gt; -RetentionComplianceAction Keep</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 No setting that governs only the proactive question-detection capability is documented at the time of writing (November 2026). The documented levers are broader: the Copilot web search policy, which the notice says this feature depends on, and the Teams admin center Allow or Block action for Facilitator as a whole, which Learn says needs Teams admin credentials. Blocking Facilitator therefore removes its notes and other skills, not only this one.
 
-Learn says Facilitator is blocked if all apps are blocked for your organisation, and describes using app permission policies and app-centric management to allow it for a group of users. For tenants migrated to app-centric management, Microsoft documents app availability through Users and groups > Availability > Edit availability instead (see https://learn.microsoft.com/microsoftteams/app-centric-management). For app-centric management, Microsoft documents Update-M365TeamsApp to manage app availability; the Set-CsTeamsAppPermissionPolicy warning, that app permission policies must be created and changed in the Teams admin center, concerns the older permission-policy mechanism. Microsoft Learn documents no API for the Cloud Policy web search policy at the time of writing.
+Learn says Facilitator is blocked if all apps are blocked for your organisation, and describes using app permission policies and app-centric management to allow it for a group of users. For tenants migrated to app-centric management, Microsoft documents app availability through Teams admin center > Teams apps > Manage apps > Facilitator > Users and groups > Availability > Edit availability instead (see https://learn.microsoft.com/microsoftteams/app-centric-management). For app-centric management, Microsoft documents Update-M365TeamsApp to manage app availability; the Set-CsTeamsAppPermissionPolicy warning, that app permission policies must be created and changed in the Teams admin center, concerns the older permission-policy mechanism.
 
-The notice says users can stop the behaviour by removing Facilitator from the meeting. Learn's Purview page lists auditing, eDiscovery and Data Lifecycle Management as supported for Facilitator, including questions and answers for meetings. A retention policy also needs a rule, via New-RetentionComplianceRule, per the cmdlet reference.
+Microsoft Learn documents a preview Microsoft Graph beta operation for the Cloud Policy web search policy, `POST /beta/admin/configurationManagement/configurationMonitors`, and says beta APIs are not supported for production use. Set `mode` to `applyOnce` and include a baseline resource of type `microsoft.copilot.allowwebsearch` with `resourceVersion` 1 and a `properties.value` string: `0` enables web search in Microsoft 365 Copilot and Copilot Chat, `1` disables it in both, and `2` disables it in Copilot Work mode only (see https://learn.microsoft.com/graph/utcm-copilot-resources#allowwebsearch-resource-type and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources). Learn says this preview supports tenant-level policies only and the operation fails if the setting is configured in a group-level policy. The TCM service principal needs the delegated `CopilotPolicySettings.ReadWrite` permission, the calling app needs the delegated `ConfigurationMonitoring.ReadWrite.All` permission, and the signed-in user needs the AI Administrator role.
+
+The notice says users can stop the behaviour by removing Facilitator from the meeting. Learn's Purview page lists auditing, eDiscovery and Data Lifecycle Management as supported for Facilitator, including questions and answers for meetings. A retention policy is created with New-RetentionCompliancePolicy and also needs a rule, added with New-RetentionComplianceRule, per the cmdlet references.
 
 ## Open questions
 
@@ -215,15 +235,4 @@ The notice says users can stop the behaviour by removing Facilitator from the me
 risk: Medium. Microsoft's notice MC1409304 says Facilitator monitors meeting conversation in real time and posts web-search answers unprompted, depending on the Copilot web search setting; Microsoft Learn lists data loss prevention as unsupported for Facilitator.
 cost: Low. The notice says a user with a Microsoft 365 Copilot (Premium) licence must enable Facilitator; no separate price or meter for this capability is published, so the known cost is admin and communication time.
 impact: Low. A licensed user has to add Facilitator to a meeting, so only those meetings see the answers, and the notice says responses typically occur less than once per meeting. Everyone in such a meeting sees them.
--->
-
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model / consistency: The feature's licensing model is per-user rather than included in its named prerequisite product licence. | Found: Facilitator is included with a Microsoft Copilot license and subject to available capacity. | Fix: Set licensing.model to "included" under the schema's definition of a capability included in a named product licence. Retain the notes naming the required Copilot licence and the capacity qualification. | Source: https://learn.microsoft.com/microsoftteams/facilitator-teams
-- [contradicted, blocker] controls[0].api; Governance controls table and prose / absence: Microsoft documents no API for the Cloud Policy web search policy. | Found: These resources also support remediation and applyOnce. ... Controls web search availability in Microsoft 365 Copilot and Microsoft 365 Copilot Chat. | Fix: Replace the no-API statement and controls[0].api null with the documented preview Graph operation POST /beta/admin/configurationManagement/configurationMonitors, docs https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta. Note: set mode to applyOnce and include baseline.resources with resourceType microsoft.copilot.allowwebsearch, resourceVersion 1 and properties.value: string 0 enables both experiences, 1 disables both, 2 disables Work mode only. This preview supports tenant-level policies only and fails if the setting is configured in a group-level policy. Cite https://learn.microsoft.com/graph/utcm-copilot-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources; identify the TCM service principal's delegated CopilotPolicySettings.ReadWrite permission, the caller's delegated ConfigurationMonitoring.ReadWrite.All permission and the signed-in user's AI Administrator role. Do not present this beta API as production-supported. | Source: https://learn.microsoft.com/graph/utcm-copilot-resources#allowwebsearch-resource-type
-- [contradicted, blocker] controls[2].api; Governance controls table / command: New-RetentionCompliancePolicy -Name <policy name> -TeamsChatLocation <locations> is the operation that configures retention of the interactions. | Found: Policies are not valid until a rule is added (for retention policies) or a label is added (for retention label policies). | Fix: Replace controls[2].api.call with 'New-RetentionComplianceRule -Policy <policy name> -RetentionDuration <days> -RetentionComplianceAction Keep' and its docs with https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule. State in the row note: 'Adds a retention rule to an existing policy scoped to Teams chats; specify the rule name as required by the reference.' Retain the prose explaining policy creation with New-RetentionCompliancePolicy. The current call creates the policy and selects its location but sets no retention rule. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy
-- [contradicted, blocker] Governance controls: app-centric management / admin-path: For migrated tenants, the Users and groups > Availability > Edit availability sequence is the route to app availability. | Found: Go to the Manage apps page. ... select the app name to open its app details page. ... Select the Users and groups tab. ... select Availability. ... Select Edit availability. | Fix: Replace the fragment with 'Teams admin center > Teams apps > Manage apps > Facilitator > Users and groups > Availability > Edit availability'. Cite the existing Facilitator setup and app-centric management sources. The current route starts at a tab inside an app without giving the way to that tab. | Source: https://learn.microsoft.com/microsoftteams/app-centric-management
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: Every control the governance checklist asks readers to check has a controls-table row. | Found: Checklist: 'Confirm that Facilitator is allowed or blocked as you intend in the Teams admin center'. Table: Copilot web search, a separate proactive-question switch, and retention only. | Fix: Remove the Before rollout bullet beginning 'Confirm that Facilitator is allowed or blocked as you intend'. It has no matching controls-table row; retain the app-availability information in the Governance controls prose.
 -->
