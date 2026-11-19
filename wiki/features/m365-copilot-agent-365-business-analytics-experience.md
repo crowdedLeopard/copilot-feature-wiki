@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "unknown"
 action: "prepare"
 licensing:
-  model: "included"
-  notes: "The Frontier preview requires a tenant with at least 50 assigned Copilot licences; the introduction does not specify a separate app price. Spending policies for usage-based services are also a prerequisite. The app reports both Microsoft and GitHub AI credits separately."
+  model: "unknown"
+  notes: "The Frontier preview requires a tenant with at least 50 assigned Copilot licences; the introduction does not specify a separate app price. Spending policies for usage-based services are also a prerequisite. Microsoft documents the preview's 50-assigned-Copilot-licence prerequisite but does not explicitly state the app's inclusion or separate licensing terms."
 audiences: ["finops","m365-admin","service-owner","change-adoption"]
 tags: ["agent-365","analytics","finops","cost-management","spending-policies","copilot-credits","viva-insights","m365-copilot","viva-feature-access-management","gcc","gcc-high","dod"]
 sources:
@@ -141,19 +141,23 @@ changes:
     note: "Correction after verification: licensing now reflects the 50-Copilot-licence prerequisite, and the Viva access policy path, spending policy API call and value-metrics roles were corrected."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 100 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-19"
+    note: "Correction after verification: licensing model changed to not yet published, with a note that the app's inclusion or separate licensing terms are not explicitly stated."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 98 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 100
-  confirmed: 99
-  unconfirmed: 1
+  claims: 98
+  confirmed: 98
+  unconfirmed: 0
   contradicted: 0
-  attempts: 2
-  hash: "a85d3f59ee04809bd18a1be714234b78"
+  attempts: 0
+  hash: "bb1791c6f26ec061b5861e8ae5844189"
 ---
 
 ## What's changing
@@ -251,8 +255,8 @@ cost: Low. The only cost the sources show is admin time. The Frontier preview re
 impact: Medium. Executives, general managers and managers of larger teams are the audience.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] front matter: licensing.model / licensing: Business Analytics is included in an existing product licence. | Found: Searched: "Business Analytics" "included" "license" "Frontier" and "Business Analytics" "licensing" "Copilot" "included"; read the introduction, Viva Insights environment requirements and Copilot licence options. None explicitly states app inclusion. | Fix: Change licensing.model from "included" to "unknown" and retain the documented prerequisite in licensing.notes. Add to those notes: "Microsoft documents the preview's 50-assigned-Copilot-licence prerequisite but does not explicitly state the app's inclusion or separate licensing terms." Do not change the supported 50-licence prerequisite or infer an add-on charge.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: cost; rationale: cost; Cost and licensing / cost: The low cost rating reflects known indirect administration effort, while no separate app price is specified. | Found: Tenant must have at least 50 Copilot licenses assigned. Spending policies for usage-based services must be set up for users to use these services and get cost insights. Admins can assign access and set up partitions | Fix: Append this sentence to the cost rationale: "The app's inclusion or separate licensing terms are not yet published." This makes the rationale explicitly state the licensing uncertainty, as required by the cost scale; retain the documented 50-assigned-Copilot-licence prerequisite. | Source: https://learn.microsoft.com/a365-business-analytics/introduction
 -->

@@ -2,39 +2,33 @@
   "slug": "microsoft-copilot-studio-dataverse-integration-on-copilot-studio",
   "roadmapId": 568929,
   "title": "Copilot Studio: Dataverse tables as a native knowledge source for agents",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-19",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "cd5b21ff3a5b",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-19",
-    "reasons": [
-      "3 blocking findings (claims 65, 66, 70)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 76,
-    "confirmed": 72,
+    "claims": 81,
+    "confirmed": 81,
     "unconfirmed": 0,
-    "contradicted": 4,
-    "blocker": 3,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 3
+    "minor": 1
   },
-  "summary": "Hold: the availability control stops at a section containing two different search options, and its advertised automation only reads the setting rather than changing it. The caution that agent credit limits are unconfirmed for Dataverse knowledge is also misleading: Microsoft documents those limits for each Copilot Studio agent. The roadmap facts and the principal knowledge-source, authentication and billing statements are supported.",
+  "summary": "The briefing passes: the roadmap facts, Dataverse prerequisites, control paths, inspection API and billing qualifications are supported. One minor clarification should specify that a fresh index and full synchronization follow re-enablement after search has been off for 12 hours.",
   "claims": [
     {
       "n": 1,
-      "where": "What's changing; title; summary",
+      "where": "What's changing",
       "type": "record",
-      "claim": "Microsoft plans native Dataverse knowledge grounding in Copilot Studio using structured enterprise records and business data.",
+      "claim": "Microsoft plans native Dataverse knowledge grounding in structured enterprise records, customer data, operational data and business application content.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "We are enabling Microsoft Dataverse as a native knowledge source in Copilot Studio, expanding the platform’s ability to ground AI agents in structured enterprise data.",
@@ -43,9 +37,20 @@
     },
     {
       "n": 2,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Copilot Studio.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot Studio\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
       "where": "front matter: status; What's changing; Open questions",
       "type": "record",
-      "claim": "The roadmap status is In development.",
+      "claim": "The roadmap status remains In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
@@ -53,7 +58,7 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 4,
       "where": "front matter: targetDate; What's changing; Open questions",
       "type": "record",
       "claim": "The roadmap target is September CY2026.",
@@ -64,7 +69,7 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 5,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview date is August CY2026.",
@@ -75,10 +80,10 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The record lists General Availability, Preview and Targeted Release phases.",
+      "claim": "The record lists General Availability, Preview and Targeted Release.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\", \"Targeted Release\"]",
@@ -86,10 +91,10 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 7,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the record; no US Government cloud is listed.",
+      "claim": "The listed cloud is Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -97,10 +102,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 8,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The record lists Web as the platform.",
+      "claim": "The listed platform is Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -108,7 +113,7 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 9,
       "where": "front matter: roadmapModified; What's changing",
       "type": "record",
       "claim": "The record was last modified on 10 August 2026.",
@@ -119,10 +124,21 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 10,
+      "where": "Scope: Where",
+      "type": "record",
+      "claim": "The record does not list a US Government cloud.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
       "where": "What's changing",
-      "type": "date",
-      "claim": "The September 2026 target had passed by 18 November 2026 while the record still showed In development.",
+      "type": "record",
+      "claim": "The September 2026 target month had passed by 18 November 2026 while the supplied record still showed In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\", \"targetDate\": \"September CY2026\"",
@@ -130,10 +146,10 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "n": 12,
+      "where": "title; summary; What's changing; Risk assessment; rationale: risk",
       "type": "behaviour",
-      "claim": "Learn already documents adding Dataverse tables to ground an agent in their data.",
+      "claim": "Learn already documents grounding an agent in the data contained in Dataverse tables.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-dataverse",
       "quote": "When you integrate Dataverse tables as a knowledge source, you ground your agent in the data contained in your tables.",
@@ -141,21 +157,21 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing; Why it matters; Scope",
-      "type": "behaviour",
-      "claim": "A maker adds the source by selecting Add knowledge, then Dataverse, and selecting tables.",
+      "n": 13,
+      "where": "What's changing; Why it matters; Scope: Who",
+      "type": "admin-path",
+      "claim": "Makers add a source by selecting Add knowledge, Dataverse and the tables to include.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-dataverse",
-      "quote": "Select Add knowledge from either the Overview or Knowledge pages.\n3. Select Dataverse.\n4. Locate one or more of your Dataverse tables to add.",
+      "quote": "Open the agent. Select Add knowledge from either the Overview or Knowledge pages. Select Dataverse. Locate one or more of your Dataverse tables to add.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 12,
-      "where": "What's changing; Risk assessment: Data exposure; Scope",
+      "n": 14,
+      "where": "What's changing; Risk assessment: Data exposure; Scope: Limits and rollout",
       "type": "behaviour",
-      "claim": "Each Dataverse knowledge source can contain up to 15 tables.",
+      "claim": "A knowledge source can contain up to 15 Dataverse tables.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-dataverse",
       "quote": "You can add up to 15 Dataverse tables per knowledge source.",
@@ -163,10 +179,21 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 15,
       "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Learn has separate Dataverse knowledge instructions for standard-harness and Microsoft Copilot-harness agents.",
+      "type": "applicability",
+      "claim": "The first Dataverse knowledge article describes the standard harness.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-dataverse",
+      "quote": "This article describes features used in agents or agent flows powered by the standard harness.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "applicability",
+      "claim": "Learn also has a Dataverse knowledge article for Microsoft Copilot agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-dataverse-tables",
       "quote": "Add Dataverse tables to your agent as a knowledge source (Microsoft Copilot)",
@@ -174,10 +201,10 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "summary; What's changing; Scope; Governance controls; rationale: risk",
+      "n": 17,
+      "where": "summary; What's changing; Scope: Where; Governance controls; rationale: risk and impact",
       "type": "applicability",
-      "claim": "Dataverse knowledge requires Dataverse search in the environment, and disabling it prevents makers from adding tables.",
+      "claim": "Agents require Dataverse search to use Dataverse table knowledge, and an administrator must enable it where it is off.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-dataverse",
       "quote": "To use this knowledge source, Copilot Studio agents must use Dataverse search. If you can't add a Dataverse table to an agent, ask your administrator to turn on Dataverse search in your environment.",
@@ -185,10 +212,10 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "What's changing; Risk assessment: Security & identity; Scope",
+      "n": 18,
+      "where": "What's changing; Risk assessment: Security & identity; Scope: Who",
       "type": "behaviour",
-      "claim": "Dataverse knowledge requires Authenticate with Microsoft.",
+      "claim": "Dataverse table knowledge requires Authenticate with Microsoft.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-dataverse",
       "quote": "Dataverse tables as knowledge sources require you to set your agent's authentication to Authenticate with Microsoft.",
@@ -196,10 +223,10 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 19,
       "where": "What's changing; Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "No authentication is not supported for Dataverse knowledge.",
+      "claim": "No authentication is not supported for Dataverse table knowledge.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-dataverse",
       "quote": "The other two options, No authentication and Authenticate manually aren't supported.",
@@ -207,10 +234,10 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 20,
       "where": "What's changing; Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Authenticate manually is not supported for Dataverse knowledge.",
+      "claim": "Authenticate manually is not supported for Dataverse table knowledge.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-dataverse",
       "quote": "The other two options, No authentication and Authenticate manually aren't supported.",
@@ -218,10 +245,10 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "What's changing; Risk assessment: Data exposure; Scope",
-      "type": "role",
-      "claim": "Makers need appropriate underlying-data permissions to see and select tables.",
+      "n": 21,
+      "where": "What's changing; Risk assessment: Data exposure; Scope: Who",
+      "type": "behaviour",
+      "claim": "Makers need appropriate underlying-data permissions for tables to be visible and selectable.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-dataverse",
       "quote": "To add Dataverse tables as a knowledge source, you must have the appropriate permissions to access the underlying data. Missing or insufficient permissions might prevent tables from being visible or selectable during setup.",
@@ -229,40 +256,29 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 22,
       "where": "What's changing; Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "The preview extends retrieval to Multiline Text columns.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-dataverse-tables",
-      "quote": "The preview extends it to unstructured content held in Multiline Text (MemoType) and File (FileType) columns, so notes, descriptions, and attached documents become answerable.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "What's changing; Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "The preview extends retrieval to File columns.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-dataverse-tables",
-      "quote": "The preview extends it to unstructured content held in Multiline Text (MemoType) and File (FileType) columns, so notes, descriptions, and attached documents become answerable.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The multiline-text and file search documentation is prerelease and subject to change.",
+      "claim": "The prerelease, subject-to-change preview extends retrieval to Multiline Text columns.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-dataverse",
-      "quote": "Enable search support for multiline text and file data types in Dataverse tables (preview)\n\n[This section is prerelease documentation and is subject to change.]",
+      "quote": "Enable search support for multiline text and file data types in Dataverse tables (preview)\n[This section is prerelease documentation and is subject to change.]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 22,
+      "n": 23,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The same preview extends retrieval to File columns.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-dataverse",
+      "quote": "When you add Dataverse as a knowledge source, you can apply unstructured reasoning to get higher-quality responses from Multiline Text (MemoType) and File (FileType) columns.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
       "where": "Why it matters",
       "type": "default",
       "claim": "Dataverse search is enabled by default for production environments.",
@@ -273,7 +289,7 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 25,
       "where": "Why it matters",
       "type": "default",
       "claim": "Dataverse search is an opt-out feature.",
@@ -284,42 +300,42 @@
       "fix": null
     },
     {
-      "n": 24,
-      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
-      "type": "default",
-      "claim": "Use is maker opt-in: a maker chooses to add Dataverse knowledge, with no separately documented switch for this roadmap feature.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-dataverse",
-      "quote": "Select Add knowledge from either the Overview or Knowledge pages. ... Select Dataverse. Searched: Copilot Studio Dataverse knowledge enable switch; opened both feature guides, Dataverse search configuration and knowledge-sources rule.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
+      "n": 26,
       "where": "Why it matters; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not stated whether the roadmap change itself arrives for makers automatically.",
+      "claim": "Microsoft has not stated whether the specific roadmap change arrives automatically for makers.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Dataverse knowledge September 2026 rollout automatic default admin enable; Copilot Studio Dataverse knowledge source admin switch enable default automatic rollout billing rate. Opened both feature guides and the search configuration page; read roadmap record.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "Why it matters",
-      "type": "absence",
-      "claim": "No source says existing agents change automatically because of this roadmap item.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Dataverse knowledge September 2026 rollout automatic default admin enable. Read roadmap record and opened both Dataverse knowledge guides; they document maker addition, not automatic modification of existing agents.",
+      "quote": "Searched: Copilot Studio Dataverse knowledge source admin enable disable switch rollout 568929; \"Dataverse integration\" \"Copilot Studio\" \"rollout\". Read both Dataverse knowledge articles and the search configuration page; no item-specific automatic rollout statement.",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
+      "where": "front matter: defaultState; summary; Why it matters",
+      "type": "default",
+      "claim": "Use of Dataverse tables as knowledge is maker opt-in rather than automatic attachment to agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-dataverse",
+      "quote": "Select Add knowledge from either the Overview or Knowledge pages. Select Dataverse. Locate one or more of your Dataverse tables to add.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "No source found says this roadmap change automatically changes existing agents.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio Dataverse knowledge source admin enable disable switch rollout 568929; \"Dataverse integration\" \"Copilot Studio\" \"rollout\". Read both feature articles and search configuration; no automatic change to existing agents stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
       "where": "Risk assessment: Data exposure; rationale: risk",
-      "type": "applicability",
+      "type": "behaviour",
       "claim": "Dataverse search respects Dataverse security roles and permissions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization",
@@ -328,35 +344,13 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Dataverse knowledge uses the agent user's Microsoft Entra ID authentication.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-      "quote": "Dataverse ... | Agent user's Microsoft Entra ID authentication",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "The agent only surfaces Dataverse knowledge content that the asking user can access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-      "quote": "Agent user authentication for knowledge sources means that when a specific user asks a question of the agent, the agent only surfaces content that the specific user can access.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 30,
-      "where": "Risk assessment: Data exposure; Governance controls",
+      "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Turning off Dataverse search deprovisions and removes the index within 12 hours.",
+      "claim": "Learn lists agent-user Microsoft Entra ID authentication for Dataverse knowledge.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization",
-      "quote": "Turning off Dataverse search deprovisions and removes the index within 12 hours.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
+      "quote": "Generative mode: UnlimitedClassic mode: Two Dataverse knowledge sources (and up to 15 tables per knowledge source) | Agent user's Microsoft Entra ID authentication",
       "severity": null,
       "fix": null
     },
@@ -364,51 +358,84 @@
       "n": 31,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "A fresh search index requires a full sync when search is re-enabled after index removal.",
+      "claim": "An agent surfaces only content that the asking user can access when using authenticated knowledge sources.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization",
-      "quote": "If you turn on Dataverse search after it's been off for 12 hours, it creates a fresh index that needs to go through a full sync.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
+      "quote": "Agent user authentication for knowledge sources means that when a specific user asks a question of the agent, the agent only surfaces content that the specific user can access.",
       "severity": null,
       "fix": null
     },
     {
       "n": 32,
-      "where": "Risk assessment: Security & identity; Governance controls",
-      "type": "applicability",
-      "claim": "Knowledge sources for agents is a preview setting available at environment and environment-group level.",
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "behaviour",
+      "claim": "Turning off Dataverse search deprovisions and removes its index within 12 hours.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule",
-      "quote": "Configure knowledge sources for agents in the Power Platform admin center (preview) ... This setting is available at both the environment and environment group level.",
+      "source": "https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization",
+      "quote": "Turning off Dataverse search deprovisions and removes the index within 12 hours.",
       "severity": null,
       "fix": null
     },
     {
       "n": 33,
-      "where": "Risk assessment: Security & identity; Governance controls",
+      "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The Knowledge sources for agents setting lists SharePoint + OneDrive, Public websites and Documents.",
+      "claim": "A fresh index needs a full synchronization when search is turned back on.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule",
-      "quote": "SharePoint + OneDrive: Configures whether agents can use SharePoint and OneDrive sites as knowledge sources. ... Public websites ... Documents",
-      "severity": null,
-      "fix": null
+      "source": "https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization",
+      "quote": "If you turn on Dataverse search after it's been off for 12 hours, it creates a fresh index that needs to go through a full sync.",
+      "severity": "minor",
+      "fix": "Replace the second clause with: 'If Dataverse search is turned back on after being off for 12 hours, it creates a fresh index that needs a full sync.' This preserves the timing qualification in https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization."
     },
     {
       "n": 34,
-      "where": "Risk assessment: Security & identity; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "The documented source-type options do not include Dataverse or confirm that this setting governs Dataverse knowledge.",
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "behaviour",
+      "claim": "Knowledge sources for agents is a preview admin control.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Dataverse knowledge sources for agents setting Dataverse Security Data privacy supported. Opened knowledge-sources-for-agents-rule, security-faq, admin-data-loss-prevention and both Dataverse knowledge guides; no Dataverse source-type option was documented.",
+      "source": "https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule",
+      "quote": "Configure knowledge sources for agents in the Power Platform admin center (preview)\n[This article is prerelease documentation and is subject to change.]",
       "severity": null,
       "fix": null
     },
     {
       "n": 35,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Knowledge sources for agents is available at environment and environment-group level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule",
+      "quote": "This setting is available at both the environment and environment group level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "behaviour",
+      "claim": "The documented source-type choices are SharePoint + OneDrive, Public websites and Documents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule",
+      "quote": "Select the type of information that you want to manage knowledge sources for: ... SharePoint + OneDrive ... Public websites ... Documents",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Security & identity; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The documented knowledge-source setting has no Dataverse-specific source-type option.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Knowledge sources for agents\" \"Dataverse\"; Copilot Studio Dataverse knowledge source admin enable disable switch rollout 568929. Read knowledge-sources-for-agents-rule and security-faq; listed options are SharePoint + OneDrive, Public websites and Documents, not Dataverse.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
       "where": "Risk assessment: Security & identity; Governance controls",
       "type": "applicability",
-      "claim": "Data policies apply to Copilot Studio agents in environments included in the policy's scope.",
+      "claim": "Data policies apply to Copilot Studio agents in the environments in the policy's scope.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
       "quote": "These data policies apply to Copilot Studio agents in the environments included in the policy's scope.",
@@ -416,57 +443,24 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 39,
       "where": "Risk assessment: Autonomy & actions",
       "type": "absence",
-      "claim": "The Dataverse knowledge guides describe answer grounding, not a write action for the knowledge source.",
+      "claim": "The Dataverse knowledge documentation describes grounding, not a write action for the knowledge source.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Copilot Studio Dataverse knowledge sources add tables authentication search requirements; Dataverse knowledge sources for agents setting Dataverse Security Data privacy supported. Opened both feature guides and knowledge-copilot-studio; no source write action described.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "The search configuration page lists Dataverse tools separately alongside Dataverse knowledge grounding.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization",
-      "quote": "Copilot Studio: Integrating Dataverse tables as your knowledge source allows you to ground your agent in the data contained in your tables. This can also happen using unstructured data as knowledge or Dataverse tools.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "An unsupported environment search-and-index mode produces an admin-action banner in Add knowledge.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-dataverse-tables",
-      "quote": "If the Dataverse search-and-index setting for your environment is set to a mode that doesn't support agent knowledge, the Add knowledge dialog shows an admin-action banner.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "In that mode, makers cannot add new Dataverse, Dynamics 365 or Uploaded files sources.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-dataverse-tables",
-      "quote": "You can't add new Dataverse, Dynamics 365, or Uploaded files sources to agents in the environment.",
+      "quote": "Searched: Copilot Studio Dataverse knowledge source read write actions native knowledge source. Read both Dataverse knowledge articles, knowledge-copilot-studio and search configuration; no source write action described.",
       "severity": null,
       "fix": null
     },
     {
       "n": 40,
-      "where": "Risk assessment: Change & support",
+      "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Previously added sources of those types remain configured after the setting changes.",
+      "claim": "The Dataverse search page lists Dataverse tools separately alongside knowledge-source integration.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-dataverse-tables",
-      "quote": "Sources of these types that you added before the setting changed stay configured on the agent, but the agent might not be able to retrieve from them.",
+      "source": "https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization",
+      "quote": "Integrating Dataverse tables as your knowledge source allows you to ground your agent in the data contained in your tables. This can also happen using unstructured data as knowledge or Dataverse tools.",
       "severity": null,
       "fix": null
     },
@@ -474,7 +468,29 @@
       "n": 41,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "The agent might be unable to retrieve from those previously configured sources.",
+      "claim": "An environment search-and-index mode that does not support agent knowledge produces an admin-action banner.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-dataverse-tables",
+      "quote": "If the Dataverse search-and-index setting for your environment is set to a mode that doesn't support agent knowledge, the Add knowledge dialog shows an admin-action banner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "That mode prevents adding new Dataverse, Dynamics 365 and Uploaded files sources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-dataverse-tables",
+      "quote": "You can't add new Dataverse, Dynamics 365, or Uploaded files sources to agents in the environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Sources added before the setting changed remain configured.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-dataverse-tables",
       "quote": "Sources of these types that you added before the setting changed stay configured on the agent, but the agent might not be able to retrieve from them.",
@@ -482,10 +498,21 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 44,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Retrieval from those existing sources might fail while the unsupported setting is in effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-dataverse-tables",
+      "quote": "Sources of these types that you added before the setting changed stay configured on the agent, but the agent might not be able to retrieve from them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
       "where": "Risk assessment: Change & support",
       "type": "availability",
-      "claim": "Preview feature availability can vary by tenant or rollout group.",
+      "claim": "Learn says preview availability can vary by tenant or rollout group.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-dataverse-tables",
       "quote": "Preview feature availability can vary by tenant or rollout group.",
@@ -493,32 +520,21 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 46,
       "where": "Cost and licensing: Licence",
-      "type": "licensing",
-      "claim": "The feature guides list search, authentication and data-permission prerequisites without naming a licence.",
+      "type": "absence",
+      "claim": "The feature articles' prerequisites name search, authentication and permissions, but no licence.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-dataverse",
-      "quote": "Copilot Studio agents must use Dataverse search. ... authentication to Authenticate with Microsoft. ... you must have the appropriate permissions to access the underlying data.",
+      "source": null,
+      "quote": "Searched: \"Dataverse\" \"knowledge\" \"Copilot\" \"price\" \"rate\". Opened knowledge-add-dataverse and agents-experience/knowledge-add-dataverse-tables; their prerequisite notes name Dataverse search, Authenticate with Microsoft and underlying-data permissions, not a licence.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 44,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The licensing model is mixed, combining Copilot Credit consumption with eligible licensed-user inclusion.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
-      "quote": "Employee-facing usage scenarios (Business to Employee) of Copilot Studio agents and Copilot Studio tools and features that these agents invoke are included in the Microsoft Copilot USL",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "summary; front matter: cost and licensing.notes; Cost and licensing; rationale: cost",
+      "n": 47,
+      "where": "summary; licensing.notes; Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "Copilot Studio usage is measured and metered in Copilot Credits, supporting the variable cost rating.",
+      "claim": "Copilot Studio measures and meters agent usage in Copilot Credits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
       "quote": "Copilot Credits are the unit that measures agent usage. You calculate the total cost based on the sum of the Copilot Credits your organization uses.",
@@ -526,10 +542,10 @@
       "fix": null
     },
     {
-      "n": 46,
+      "n": 48,
       "where": "Cost and licensing: Meter; rationale: cost",
       "type": "cost",
-      "claim": "The standard-harness billing table lists a generative answer at 2 Copilot Credits.",
+      "claim": "The standard-harness generative-answer feature rate is 2 Copilot Credits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
       "quote": "Generative answer | 2 Copilot Credits | No charge",
@@ -537,32 +553,32 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "Cost and licensing: Meter",
-      "type": "cost",
-      "claim": "The billing example gives 12 credits for tenant graph grounding plus a generative answer, comprising 10 and 2 credits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
-      "quote": "an agent grounded in a tenant graph could use 12 Copilot Credits (10 Copilot Credits for tenant graph grounding, and 2 Copilot Credits for generative answers)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "front matter: licensing.notes; Cost and licensing: Meter and Indirect cost; rationale: cost",
-      "type": "absence",
-      "claim": "The billing page lists no Dataverse-knowledge-specific rate, and no separate feature-specific price was published in the sources checked.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Copilot Studio Dataverse knowledge rate credits. Opened requirements-messages-management and agents-experience/billing-credit-overview; read both feature guides and the Dataverse search capacity guidance. No separate Dataverse knowledge rate or price stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 49,
       "where": "Cost and licensing: Meter",
-      "type": "behaviour",
-      "claim": "Dataverse is a supported knowledge source for standard-harness generative answers.",
+      "type": "cost",
+      "claim": "The billing example totals 12 credits from 10 tenant-graph-grounding credits and 2 generative-answer credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "An agent grounded in a tenant graph could use 12 Copilot Credits (10 Copilot Credits for tenant graph grounding, and 2 Copilot Credits for generative answers) to respond to a single complex prompt from a user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "licensing.notes; Cost and licensing: Meter and Indirect cost; rationale: cost",
+      "type": "absence",
+      "claim": "No separate Dataverse-knowledge-specific rate or price was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Dataverse\" \"knowledge\" \"Copilot\" \"price\" \"rate\". Read requirements-messages-management, billing-credit-overview, both Dataverse knowledge articles and search configuration; general feature and capacity charges are documented, not a separate Dataverse-knowledge price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing: Meter",
+      "type": "applicability",
+      "claim": "Dataverse is a supported generative-answers knowledge source for standard-harness agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
       "quote": "Dataverse knowledge sources | 2 sources with up to 15 tables each",
@@ -570,21 +586,21 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 52,
       "where": "Cost and licensing: Meter",
       "type": "cost",
-      "claim": "Other applicable features and reasoning models can add charges beyond the generative-answer feature rate.",
+      "claim": "Applicable additional feature or reasoning-model charges can accompany a generative answer.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
-      "quote": "Each interaction with an agent might use multiple feature types at the same time. ... Total cost = feature rate for the operation + text and generative AI tools (premium) for the reasoning model's token usage.",
+      "quote": "Each interaction with an agent might use multiple feature types at the same time.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 51,
+      "n": 53,
       "where": "Cost and licensing: Meter",
       "type": "cost",
-      "claim": "Microsoft Copilot-harness agents use a different usage-based billing structure.",
+      "claim": "Microsoft Copilot harness agents use a different usage-based billing structure.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
       "quote": "For experiences powered by the Microsoft Copilot harness, Copilot Credits are charged for large language model (LLM) tokens, tools (including knowledge and MCPs), and the harness itself.",
@@ -592,32 +608,32 @@
       "fix": null
     },
     {
-      "n": 52,
-      "where": "front matter: licensing.notes; Cost and licensing: Meter",
-      "type": "licensing",
-      "claim": "Eligible standard-harness employee-facing usage is included in Microsoft Copilot USL when the licensed user interacts under their authenticated identity.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
-      "quote": "included in the Microsoft Copilot USL when the user of the agent is licensed with Microsoft Copilot, and the agent operates using the authenticated Microsoft Copilot USL user's identity.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "Cost and licensing: Meter",
-      "type": "licensing",
-      "claim": "That included employee-facing usage is subject to fair usage limits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
-      "quote": "Usage is limited to fair usage limits.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 54,
-      "where": "front matter: licensing.notes; Cost and licensing: Meter",
+      "where": "licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Usage by Microsoft Copilot-harness agents is not included with the user's Microsoft 365 Copilot licence.",
+      "claim": "Eligible standard-harness employee-facing usage is included in Microsoft Copilot USL when operating as the authenticated licensed user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "are included in the Microsoft Copilot USL when the user of the agent is licensed with Microsoft Copilot, and the agent operates using the authenticated Microsoft Copilot USL user's identity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "That inclusion is subject to fair usage limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "Usage is limited to fair usage limits. Microsoft reserves the right to update the limits as the product evolves, and new usage patterns emerge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft Copilot harness agent usage is not included with a user's Microsoft 365 Copilot licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/guidance/govern-credit-consumption",
       "quote": "Usage by agents powered by the Microsoft Copilot harness isn't included with a user's Microsoft 365 Copilot license.",
@@ -625,10 +641,21 @@
       "fix": null
     },
     {
-      "n": 55,
-      "where": "Cost and licensing: Caps; controls[1].governs; Governance controls",
-      "type": "applicability",
-      "claim": "Administrators can set monthly credit consumption limits per Copilot Studio agent, not per Dataverse table.",
+      "n": 57,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Mixed licensing reflects metered usage and eligible usage included in a licensed user's subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "Generative answer | 2 Copilot Credits | No charge",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[1]; Cost and licensing: Caps; Governance controls",
+      "type": "behaviour",
+      "claim": "Administrators can set a monthly consumption limit for each Copilot Studio agent, not for individual tables.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
       "quote": "Admins can set monthly consumption limits for each Copilot Studio agent, regardless of whether the environment uses prepaid capacity or pay-as-you-go billing.",
@@ -636,10 +663,21 @@
       "fix": null
     },
     {
-      "n": 56,
+      "n": 59,
+      "where": "controls[1].note",
+      "type": "applicability",
+      "claim": "Per-agent monthly limits apply with either prepaid capacity or pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "Admins can set monthly consumption limits for each Copilot Studio agent, regardless of whether the environment uses prepaid capacity or pay-as-you-go billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
       "where": "Cost and licensing: Caps",
       "type": "behaviour",
-      "claim": "Administrators can configure notifications when an agent approaches its monthly limit.",
+      "claim": "Administrators can configure notifications as the agent approaches its limit.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
       "quote": "Notifications: Admins, both at the environment and tenant level, receive alerts when an agent's usage approaches the defined limit.",
@@ -647,19 +685,41 @@
       "fix": null
     },
     {
-      "n": 57,
-      "where": "Cost and licensing: Caps; controls[1].governs",
+      "n": 61,
+      "where": "controls[1]; Cost and licensing: Caps",
       "type": "behaviour",
-      "claim": "The optional hard stop turns an agent off when it reaches the monthly limit.",
+      "claim": "A configurable hard stop automatically turns off the agent when it hits its limit.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
-      "quote": "Hard stop: The agent is automatically turned off once it hits the defined limit. ... An agent's monthly limit doesn't stop the agent flows that the agent calls.",
-      "severity": "minor",
-      "fix": "After the hard-stop sentence in Cost and licensing, add: \"An agent's monthly limit does not stop the agent flows that the agent calls; agent flows are billed and checked for capacity separately.\" This qualification is on the already-cited capacity page."
+      "quote": "After you set limits, you can configure two key guardrails: Notifications ... Hard stop: The agent is automatically turned off once it hits the defined limit.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 58,
-      "where": "Cost and licensing: Caps; controls[1].note",
+      "n": 62,
+      "where": "Cost and licensing: Caps",
+      "type": "behaviour",
+      "claim": "The agent's monthly limit does not stop agent flows it calls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "An agent's monthly limit doesn't stop the agent flows that the agent calls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Cost and licensing: Caps",
+      "type": "cost",
+      "claim": "Agent flows are billed and checked for capacity separately.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "Agent flows are billed and checked for capacity separately, and new agent flow runs are blocked only when the environment has no Copilot Credits available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[1].note; Cost and licensing: Caps",
       "type": "behaviour",
       "claim": "Agent limits are not applied instantly.",
       "status": "supported",
@@ -669,10 +729,10 @@
       "fix": null
     },
     {
-      "n": 59,
-      "where": "front matter: licensing.notes; Cost and licensing: Indirect cost; rationale: cost",
+      "n": 65,
+      "where": "licensing.notes; Cost and licensing: Indirect cost; rationale: cost",
       "type": "cost",
-      "claim": "The feature guide's multiline-text and file preview section warns that creating a search index incurs extra Dataverse capacity costs.",
+      "claim": "The multiline-text and file preview section warns of extra Dataverse capacity costs for creating a search index.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-dataverse",
       "quote": "Creating a search index incurs extra Dataverse capacity costs.",
@@ -680,10 +740,10 @@
       "fix": null
     },
     {
-      "n": 60,
+      "n": 66,
       "where": "Cost and licensing: Indirect cost",
       "type": "cost",
-      "claim": "Dataverse search generally counts towards tenant storage entitlements, beyond the multiline-text and file preview.",
+      "claim": "The general platform rule counts Dataverse search against tenant storage entitlements, independently of the column preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization",
       "quote": "Dataverse search counts towards the different storage entitlements you have in the tenant.",
@@ -691,7 +751,7 @@
       "fix": null
     },
     {
-      "n": 61,
+      "n": 67,
       "where": "Cost and licensing: Indirect cost",
       "type": "cost",
       "claim": "Dataverse search is part of database storage consumption.",
@@ -702,10 +762,10 @@
       "fix": null
     },
     {
-      "n": 62,
+      "n": 68,
       "where": "Cost and licensing: Indirect cost",
       "type": "behaviour",
-      "claim": "Administrators can see which tables are indexed and their capacity consumption.",
+      "claim": "Administrators can inspect indexed tables and their individual capacity consumption.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization",
       "quote": "To export usage granular reports and view exactly which tables are being indexed and how much capacity each one consumes, see view dataverse search storage.",
@@ -713,10 +773,10 @@
       "fix": null
     },
     {
-      "n": 63,
+      "n": 69,
       "where": "Scope: Limits and rollout",
       "type": "behaviour",
-      "claim": "Only virtual tables using the Finance and Operations data provider can be selected.",
+      "claim": "Only virtual tables using the Finance and Operations data provider are selectable.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-dataverse-tables",
       "quote": "Virtual tables | Only virtual tables that use the Finance and Operations data provider can be selected.",
@@ -724,43 +784,43 @@
       "fix": null
     },
     {
-      "n": 64,
+      "n": 70,
       "where": "Scope: Limits and rollout; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not published a rollout window beyond the roadmap targets.",
+      "claim": "No rollout window for the specific roadmap change was found beyond the roadmap targets.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Dataverse knowledge September 2026 rollout automatic default admin enable. Read roadmap record and both Dataverse knowledge guides; no item-specific rollout window found. No Message Center post was supplied.",
+      "quote": "Searched: \"Dataverse integration\" \"Copilot Studio\" \"rollout\"; Copilot Studio Dataverse knowledge source admin enable disable switch rollout 568929. Read both feature articles and the supplied roadmap record; no item-specific rollout window found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 65,
+      "n": 71,
       "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "Manage > Environments > environment > Settings > Product > Features > Dataverse search ends at the control for enabling Dataverse agent knowledge.",
-      "status": "contradicted",
+      "claim": "The printed Power Platform admin center path reaches the Dataverse search option supporting Work IQ in AI and agent experiences.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization",
-      "quote": "Under Dataverse search, select the options you want to turn on: Turn on search indexing to support Dataverse intelligence (Work IQ) in AI and agent experiences",
-      "severity": "blocker",
-      "fix": "Replace controls[0].ui.path and its rendered counterpart with \"Manage > Environments > environment > Settings > Product > Features > Dataverse search > Turn on search indexing to support Dataverse intelligence (Work IQ) in AI and agent experiences\". The cited page now distinguishes that option from \"Show global search bar in all model-driven apps and turn on search indexing to support search-only experiences\"; stopping at the shared heading does not identify which option enables agent knowledge."
+      "quote": "Manage; Environments; select an environment; Settings; Product; Features. Under Dataverse search ... Turn on search indexing to support Dataverse intelligence (Work IQ) in AI and agent experiences",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 66,
-      "where": "controls[0].api; Governance controls table",
+      "n": 72,
+      "where": "controls[0].api; controls[0].note; Governance controls",
       "type": "command",
-      "claim": "GET [Organization URI]/api/data/v9.2/organizations?$select=isexternalsearchindexenabled is the automation equivalent of changing the environment search setting.",
-      "status": "contradicted",
+      "claim": "GET [Organization URI]/api/data/v9.2/organizations?$select=isexternalsearchindexenabled reads the organization search-enabled flag.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/power-apps/developer/data-platform/search/overview",
-      "quote": "This Web API query returns the IsExternalSearchIndexEnabled property value for the organization.",
-      "severity": "blocker",
-      "fix": "Narrow controls[0].governs to \"Inspect whether Dataverse search is enabled in an environment\" in both the structured control and rendered row, retaining the GET and its read-only note as inspection rather than configuration automation. Keep the existing prose explaining that the GET does not change the setting. Do not describe this GET as an operation that enables or disables search."
+      "quote": "This Web API query returns the IsExternalSearchIndexEnabled property value for the organization.\nGET [Organization URI]/api/data/v9.2/organizations?$select=isexternalsearchindexenabled HTTP/1.1",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 67,
+      "n": 73,
       "where": "controls[0].note; Governance controls",
       "type": "role",
-      "claim": "Learn specifies a system administrator sign-in for configuring Dataverse search.",
+      "claim": "The search configuration page instructs signing in as a system administrator.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization",
       "quote": "Sign in to the Power Platform admin center as a system administrator.",
@@ -768,114 +828,103 @@
       "fix": null
     },
     {
-      "n": 68,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Per-agent monthly limits are managed at Power Platform admin center > Licensing > Products > Copilot Studio > Summary > Manage Agents.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
-      "quote": "On the navigation pane, select Licensing. ... under Products, select Copilot Studio. ... On the Summary tab, select Manage Agents. ... You can set a monthly limit for any agent directly from this page.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 69,
-      "where": "controls[1].api; Governance controls",
+      "n": 74,
+      "where": "controls[0].note; Governance controls",
       "type": "absence",
-      "claim": "No documented API operation for setting an individual agent's monthly limit was found as of November 2026.",
+      "claim": "The cited developer overview shows a check of the organization flag, not a call to change that flag.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Copilot Studio agent monthly consumption limit set API Power Platform limit hard stop; rest api power-platform agent consumption limits update agent monthly limit. Opened capacity management, govern-credit-consumption and Entitlement Insight; no limit-setting operation found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 70,
-      "where": "controls[1].note; Governance controls table",
-      "type": "applicability",
-      "claim": "Microsoft has not confirmed that the general agent credit-limit control covers the Dataverse knowledge case.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
-      "quote": "Admins can set monthly consumption limits for each Copilot Studio agent, regardless of whether the environment uses prepaid capacity or pay-as-you-go billing.",
-      "severity": "blocker",
-      "fix": "Replace \"General control: Microsoft has not confirmed anything specific to Dataverse knowledge.\" in controls[1].note and the rendered row with \"Monthly limits apply to each Copilot Studio agent, whether its environment uses prepaid capacity or pay-as-you-go billing.\" Retain \"Limits are not applied instantly.\" The published scope already includes agents using Dataverse knowledge."
-    },
-    {
-      "n": 71,
-      "where": "controls[0].note; Governance controls",
-      "type": "behaviour",
-      "claim": "The cited developer search overview documents reading isexternalsearchindexenabled, not a call to change it.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/search/overview",
-      "quote": "Check Organization table ... This Web API query returns the IsExternalSearchIndexEnabled property value for the organization. ... GET [Organization URI]/api/data/v9.2/organizations?$select=isexternalsearchindexenabled",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 72,
-      "where": "Governance controls: final paragraph",
-      "type": "behaviour",
-      "claim": "The Power Platform API Entitlement Insight reference lists consumption read operations.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/rest/api/power-platform/licensing/entitlement-insight",
-      "quote": "Get Tenant Resource Consumption By User | Get resource consumption by entitlement and user ID (deprecated).",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/rest/api/power-platform/licensing/entitlement-insight to sources and link \"entitlement insight\" in the final Governance controls paragraph to it."
-    },
-    {
-      "n": 73,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Global search and enabled AI experiences in the environment share the same indexing data.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization",
-      "quote": "Both global search and enabled AI experiences share the same indexing data.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 74,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Turning off Dataverse search also affects global search and other enabled AI experiences using its index.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization",
-      "quote": "When Dataverse search is turned Off, generative AI experiences are limited for both makers and end users. ... When turn this option On, a search box appears at the top of every page in model-driven apps in the environment.",
+      "quote": "Searched within the opened Search for Dataverse records overview for IsExternalSearchIndexEnabled, enable and Web API operations. It shows GET of the organization flag; its other updates concern table and column indexing, not changing this organization flag.",
       "severity": null,
       "fix": null
     },
     {
       "n": 75,
-      "where": "Governance controls: Knowledge sources for agents paragraph",
+      "where": "controls[1].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "Knowledge sources for agents is found under Power Platform admin center > Security > Data and privacy.",
+      "claim": "Licensing > Products > Copilot Studio > Summary > Manage Agents reaches the documented per-agent monthly-limit management page.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule",
-      "quote": "On the navigation pane, select Security.\n3. Select the Data and privacy setting.\n4. Select the Knowledge sources for agents setting.",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
+      "quote": "On the navigation pane, select Licensing. In the Licensing pane, under Products, select Copilot Studio. On the Summary tab, select Manage Agents.",
       "severity": null,
       "fix": null
     },
     {
       "n": 76,
-      "where": "Governance guidance: Before rollout",
-      "type": "consistency",
-      "claim": "The checklist's instruction to verify users' record access has no corresponding Dataverse permissions control row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Verify the intended users can access the selected records in the tables makers are likely to add. ... Controls: Whether Dataverse search ... is on in an environment; Monthly Copilot Credit limit and hard stop for an individual agent.",
-      "severity": "minor",
-      "fix": "Remove the Before rollout checklist bullet \"Verify the intended users can access the selected records in the tables makers are likely to add.\" It instructs checking Dataverse record permissions, but neither existing control row covers those permissions; this correction does not require adding a row."
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "No documented API for setting an individual agent's monthly credit limit was found as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Dataverse bot table entity reference monthly consumption credit limit; \"Copilot Studio\" \"monthly\" \"limit\" \"API\" \"bot\". Read capacity, governance, Entitlement Insight and bot table references; no limit-setting operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Governance controls: Knowledge sources for agents",
+      "type": "admin-path",
+      "claim": "The named Knowledge sources for agents setting is under Power Platform admin center > Security > Data and privacy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule",
+      "quote": "On the navigation pane, select Security. Select the Data and privacy setting. Select the Knowledge sources for agents setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Governance controls: Knowledge sources for agents",
+      "type": "absence",
+      "claim": "Microsoft's documentation does not confirm that Knowledge sources for agents governs Dataverse knowledge.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Knowledge sources for agents\" \"Dataverse\". Read knowledge-sources-for-agents-rule, security-faq and both Dataverse knowledge articles; no Dataverse applicability stated for this particular setting. General data-policy scope is separately documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Governance controls: final paragraph",
+      "type": "behaviour",
+      "claim": "The Entitlement Insight reference lists consumption read operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/rest/api/power-platform/licensing/entitlement-insight",
+      "quote": "Get Tenant Resource Consumption By User | Get resource consumption by entitlement and user ID (deprecated).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "Variable cost is consistent with the named Copilot Credit meter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "This article describes the rates for the different features and capabilities used in agents that Copilot Studio bills through the pay-as-you-go meter or Copilot Credit packs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "rationale: risk; front matter: defaultState",
+      "type": "absence",
+      "claim": "No separate administrator switch specific to adding Dataverse table knowledge was found beyond the documented search prerequisite.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio Dataverse knowledge source admin enable disable switch rollout 568929; \"Knowledge sources for agents\" \"Dataverse\". Read both feature pages, search configuration, knowledge-source rule, data policies and security FAQ; no separate Dataverse-knowledge switch found.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-19T03:09:30.360Z",
+    "at": "2026-11-19T04:09:53.645Z",
     "summary": {
-      "links": 13,
-      "unreachable": 9,
+      "links": 14,
+      "unreachable": 0,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 2,
+      "uiPathsWithMissingWords": 1,
       "apiCalls": 1,
-      "apiCallsNotOnPage": 1,
+      "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -886,18 +935,18 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-dataverse",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/knowledge-add-dataverse-tables",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
@@ -906,13 +955,13 @@
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/power-apps/developer/data-platform/search/overview",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
@@ -926,64 +975,65 @@
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/knowledge-sources-for-agents-rule",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/security-faq",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/guidance/govern-credit-consumption",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/rest/api/power-platform/licensing/entitlement-insight",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
       {
         "index": 0,
         "side": "ui",
-        "governs": "Whether Dataverse search (required for Dataverse knowledge) is on in an environment",
+        "governs": "Inspect whether Dataverse search is enabled in an environment",
         "docs": "https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Manage",
           "Environments",
           "Settings",
           "Product",
           "Features",
-          "Dataverse search"
+          "Dataverse search",
+          "Turn on search indexing to support Dataverse intelligence  in AI and agent experiences"
         ],
         "missing": [
-          "Manage",
-          "Environments",
-          "Settings",
-          "Product",
-          "Features",
-          "Dataverse search"
+          "Turn on search indexing to support Dataverse intelligence  in AI and agent experiences"
         ]
       },
       {
         "index": 0,
         "side": "api",
-        "governs": "Whether Dataverse search (required for Dataverse knowledge) is on in an environment",
+        "governs": "Inspect whether Dataverse search is enabled in an environment",
         "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/search/overview",
-        "reachable": false,
+        "reachable": true,
         "token": "GET [Organization",
-        "found": false
+        "found": true
       },
       {
         "index": 1,
         "side": "ui",
         "governs": "Monthly Copilot Credit limit and hard stop for an individual agent",
         "docs": "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Licensing",
           "Products",
@@ -991,13 +1041,7 @@
           "Summary",
           "Manage Agents"
         ],
-        "missing": [
-          "Licensing",
-          "Products",
-          "Copilot Studio",
-          "Summary",
-          "Manage Agents"
-        ]
+        "missing": []
       }
     ],
     "roadmapDrift": []
@@ -1012,6 +1056,12 @@
     {
       "date": "2026-11-18",
       "status": "verified-with-gaps",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-19",
+      "status": "held",
       "version": 2,
       "model": "gpt-6.1-sol"
     }

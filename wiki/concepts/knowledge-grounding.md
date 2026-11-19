@@ -130,14 +130,16 @@ changes:
     note: "Corrected the maker paths for Allow ungrounded responses and tenant graph grounding to Agent > Settings > Generative AI, and limited the Knowledge page navigation to agents on the standard harness."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 99 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 96 statements not yet confirmed"
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-18"
+  date: "2026-11-19"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 99
-  confirmed: 99
+  claims: 96
+  confirmed: 96
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -224,8 +226,8 @@ For monitoring, Copilot Studio documents analytics on a per knowledge source bas
 - Which admin setting turns off web search for agents powered by the Microsoft Copilot harness? Microsoft's page says the toggle is disabled if an admin turned it off but does not name the setting.
 - Does endpoint filtering restrict SharePoint and public website knowledge sources? Microsoft's pages differ.
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].note / applicability: The isexternalsearchindexenabled organization property represents whether Dataverse search is enabled. | Found: The IsExternalSearchIndexEnabled boolean column indicates whether search is enabled for the organization. | Fix: Add https://learn.microsoft.com/power-apps/developer/data-platform/search/overview to sources: it explicitly connects isexternalsearchindexenabled to the Dataverse search setting. Keep the existing command and organization-table reference. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/search/overview#detect-if-search-is-enabled
+- [supported, minor] controls[2].note / applicability: The organization property isexternalsearchindexenabled represents whether Dataverse search is enabled. | Found: The IsExternalSearchIndexEnabled boolean column indicates whether search is enabled for the organization. | Fix: Add https://learn.microsoft.com/power-apps/developer/data-platform/search/overview to sources. It explicitly connects isexternalsearchindexenabled to Dataverse search; retain the existing command and Organization table reference. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/search/overview
 -->

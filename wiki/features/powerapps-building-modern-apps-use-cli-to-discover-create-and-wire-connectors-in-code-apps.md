@@ -18,7 +18,7 @@ defaultState: "user-opt-in"
 action: "review"
 licensing:
   model: "mixed"
-  notes: "No licence or meter is documented for the CLI commands. Code apps overview: end users need a Power Apps Premium licence, pay-as-you-go, an App Pass or auto-claim. Connector licence class is not documented for this feature."
+  notes: "No licence or meter is documented for the CLI commands. Code apps overview: end users need a Power Apps Premium licence, pay-as-you-go, an App Pass, auto-claim or Dynamics licences that include Power Apps use rights. Connector licence class is not documented for this feature."
 audiences: ["power-platform-admin","maker","security"]
 tags: ["power-apps","code-apps","power-apps-cli","connectors","coding-agents","data-policies","governance"]
 sources:
@@ -82,7 +82,7 @@ controls:
     note: "Not confirmed for the CLI commands. The UI path blocks a blockable connector in an existing policy. Classification: Non-business (General), Business (Confidential) or Blocked; each connector object needs id, type, name."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-19"
 roadmapModified: "2026-10-16T19:09:00"
 changes:
   - date: "2026-11-18"
@@ -103,19 +103,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 70 statements confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 71 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-19"
+    note: "Corrected the end-user licence list for code apps to include Dynamics licences that include Power Apps use rights, as the code apps overview now states."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 74 statements confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-19"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 71
-  confirmed: 70
+  claims: 74
+  confirmed: 74
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "0e463ba147e72d2bb621d18ed2a10d73"
+  contradicted: 0
+  attempts: 0
+  hash: "4589a0c0c6886c3d731e24ef454a955a"
 ---
 
 ## What's changing
@@ -152,7 +156,7 @@ If nobody acts, nothing changes for tenants that have not enabled code apps: the
 
 No licence or meter is documented for the CLI commands themselves at the time of writing (November 2026); the roadmap item and the CLI pages name none.
 
-The code apps overview says end users who run code apps need a Power Apps Premium licence, pay-as-you-go enabled, an App Pass, or auto-claim enabled (which assigns a premium licence automatically if one is available in the tenant). That requirement belongs to code apps in general, not to this change.
+The code apps overview says end users who run code apps need a Power Apps Premium licence, pay-as-you-go enabled, an App Pass, auto-claim enabled (which assigns a premium licence automatically if one is available in the tenant), or Dynamics licences that include Power Apps use rights. That requirement belongs to code apps in general, not to this change.
 
 The data policy page classes each connector by whether its use requires a Premium licence or is included in the Built-in/Standard licence for Power Platform. Microsoft has not published a rate or limit specific to this feature. Indirect cost is developer and admin time to review the connections created.
 
@@ -209,10 +213,4 @@ Tenant-level policies require the Power Platform Administrator role. Environment
 risk: Medium. Connections for code apps can now be created from a terminal, or by a coding agent running the CLI, without the maker portal; existing controls (the environment's code apps toggle and data policies) apply but need checking.
 cost: Low. No CLI-specific licence or meter is documented at the time of writing (November 2026); the known incremental cost is developer and admin time. Existing code-app licensing requirements still apply.
 impact: Low. Developers and makers who build code apps notice it; the code apps setting on an environment is documented as off by default, so most users see no change.
--->
-
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.notes; Cost and licensing: second paragraph / licensing: End users running code apps need Power Apps Premium, pay-as-you-go, an App Pass or auto-claim. | Found: End users that run code apps need one of the following: - Power Apps Premium license - Pay-as-you-go enabled - An App Pass - Auto-claim enabled. - Dynamics licenses that include Power Apps use rights. | Fix: In licensing.notes and the second Cost and licensing paragraph, add 'or Dynamics licences that include Power Apps use rights' to the list of qualifying entitlements. The overview now explicitly includes this fifth option: https://learn.microsoft.com/power-apps/developer/code-apps/overview#license-end-users-with-power-apps-premium. | Source: https://learn.microsoft.com/power-apps/developer/code-apps/overview
 -->

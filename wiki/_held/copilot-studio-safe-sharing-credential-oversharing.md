@@ -91,18 +91,20 @@ changes:
     note: "Corrected after verification: publish behaviour now distinguishes unshared and already-shared agents, the sharing-limits PowerShell call is shown as documented, and the scope note no longer excludes already-shared agents."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 57 statements confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 61 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 4
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-19"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 57
-  unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  claims: 61
+  confirmed: 59
+  unconfirmed: 1
+  contradicted: 1
+  attempts: 1
   hash: "75dcb3f99e57f530449bdf30410d0588"
 ---
 
@@ -198,4 +200,12 @@ The two admin centre routes to this setting are documented in different articles
 risk: Medium. The Learn settings reference lists blocking as On by default, but the control does not unshare agents that are already shared, and the Learn pages describe it as preview.
 cost: Low. The only cost the sources show is admin and maker time; no feature-specific licence or Copilot Credit charge is published, and environment groups can only hold Managed Environments.
 impact: Medium. Makers meet blocked Share and Publish actions and must rework connections; end users are not asked to do anything.
+-->
+
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: licensing.model and licensing.notes / licensing: The licensing model is unknown because Microsoft has not published which licence covers the feature. | Found: To use Copilot Studio, you need one of the following configurations: - Copilot Studio user license (free). | Fix: Set licensing.model to "included" and cite https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing. Replace the opening "Not yet published" in licensing.notes with: "Covered by Copilot Studio product access: a Copilot Studio user license with a tenant prepaid Copilot Credit pack subscription, the Copilot Studio authors role for applicable pay-as-you-go scenarios, a Microsoft 365 Copilot license, or a trial license (which cannot publish agents). No feature-specific licence, price or Copilot Credit treatment is published for this setting." Keep the existing Managed Environments qualification. The unpublished feature-specific treatment does not make the documented product entitlement unknown. | Source: https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [unsupported, minor] rationale: impact / behaviour: End users are not asked to do anything. | Found: Searched: "Sharing agents with embedded maker credentials" "end users" "action". Opened configuration and Control how agents are shared. Neither states that end users need do nothing; the latter says users sign in when tools move to end-user credentials. | Fix: Remove "; end users are not asked to do anything" from the impact rationale. Retain "Medium. Makers meet blocked Share and Publish actions and must rework connections."
 -->

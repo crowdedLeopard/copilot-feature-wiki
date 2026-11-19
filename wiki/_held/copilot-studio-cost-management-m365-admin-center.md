@@ -109,18 +109,20 @@ changes:
     note: "Corrected the Power Platform admin center paths for capacity allocation and per-agent limits (Products step added), removed an unsupported claim about previous environment-only governance, and narrowed the per-agent limit API statement."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 85 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 80 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 5
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-19"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 85
-  confirmed: 83
+  claims: 80
+  confirmed: 77
   unconfirmed: 0
-  contradicted: 2
-  attempts: 0
+  contradicted: 3
+  attempts: 1
   hash: "8b92979718f0bd0901d69e838bcf4abd"
 ---
 
@@ -227,9 +229,14 @@ cost: Variable. The governed usage is metered in Copilot Credits, billed through
 impact: Low. Administrators and finance or licensing readers configure and read the policies; nothing reaches end users unless an administrator creates a policy.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[0].ui; Governance controls: first row / admin-path: Copilot > Cost Management > Configuration > Add spending policy is the complete path to the resource-based spending-policy control. | Found: Enter a name for the policy, then select **Resources** as its scope. | Fix: Replace controls[0].ui.path and the corresponding rendered path with "Copilot > Cost Management > Configuration > Add spending policy > Resources > Specific environments". The cited procedure requires choosing Resources before selecting the environment scope; Add spending policy alone does not select a resource-based policy. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist's role-separation and role-assignment checks are represented by a controls-table row. | Found: Checklist: 'Separate policy creators, editors and consumption readers' and 'Agree who holds Global administrator or Billing administrator'. The four controls rows cover spending policies, capacity allocation, agent limits and billing plans, not role assignment. | Fix: Move the Before rollout advice about separating creators, editors and readers, and agreeing who holds Global administrator or Billing administrator, to Scope: Roles; the checklist has no corresponding role-assignment control row.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist's consumption-monitoring check is represented by a controls-table row. | Found: Checklist: 'Review consumption by environment and agent in Cost Management and compare it with the limits set.' The controls table has no consumption-monitoring row. | Fix: Move 'Review consumption by environment and agent in Cost Management and compare it with the limits set' from the After rollout checklist to the explanatory Governance controls prose; the checklist has no corresponding monitoring control row.
+- [supported, minor] controls[2].note; Risk assessment: Autonomy & actions / behaviour: The Power Platform per-agent limit supports notifications and a hard stop that turns the agent off. | Found: **Hard stop**: The agent is automatically turned off once it hits the defined limit. ... An agent's monthly limit doesn't stop the agent flows that the agent calls. Agent flows are billed and checked for capacity separately | Fix: After the hard-stop description, add: "An agent's monthly limit doesn't stop the agent flows it calls; those flows are billed and checked for capacity separately." Keep the existing warning that enforcement is not instantaneous. | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity
+- [supported, minor] controls[1].ui; Governance controls: second row / admin-path: Power Platform admin center > Licensing > Products > Copilot Studio > Summary > Manage Copilot Credits reaches environment capacity allocation. | Found: Under the **Copilot Studio** heading, select **Manage Copilot Credits** or **Manage sessions**. | Fix: For the documented heading-complete path, use "Licensing > Products > Copilot Studio > Summary > Copilot Studio > Manage Copilot Credits" in controls[1].ui.path and the rendered row. The second Copilot Studio is the heading on the Summary page, not another navigation choice. | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity
+- [supported, minor] controls[1].api; Governance controls: second row / command: pac licensing update-allocations-by-environment updates environment allocations and enforcement rules. | Found: (Preview) Update currency allocations and enforcement rules for an environment. | Fix: Make the existing command identify the target and setting: "pac licensing update-allocations-by-environment --environment-id <environment-id> --currency-allocations <JSON array>". The reference documents --currency-allocations as the allocations and enforcement-rule input. | Source: https://learn.microsoft.com/power-platform/developer/cli/reference/licensing
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist's role-assignment checks have corresponding controls-table coverage. | Found: Checklist: 'Separate policy creators, editors and consumption readers' and 'Agree who holds Global administrator or Billing administrator'. The table covers spending policies, capacity allocation, agent limits and billing plans, not role assignment. | Fix: Move the Before rollout advice about separating policy creators, editors and readers, and agreeing who holds Global administrator or Billing administrator, to Scope: Roles. Do not add a control row.
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist's consumption-monitoring check has corresponding controls-table coverage. | Found: Checklist: 'Review consumption by environment and agent in Cost Management and compare it with the limits set.' The controls table has no consumption-monitoring row. | Fix: Move 'Review consumption by environment and agent in Cost Management and compare it with the limits set' from the After rollout checklist to the explanatory Governance controls prose. Do not add a control row.
 -->

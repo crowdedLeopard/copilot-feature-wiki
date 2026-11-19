@@ -139,18 +139,20 @@ changes:
     note: "Corrected after verification: the embedded maker credentials uncertainty is replaced with Learn's statement on end-user credentials, the data policy path adds the Available tab, and the consumption-check step is removed from the After rollout checklist."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 83 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 84 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 5
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-19"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 83
-  confirmed: 83
+  claims: 84
+  confirmed: 81
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 3
+  attempts: 1
   hash: "05ab97d30353b4d9a7528c40e5d0c80f"
 ---
 
@@ -256,8 +258,12 @@ cost: Variable. Copilot Credits are the meter: each end user's autonomous agent 
 impact: Medium. Makers and the users they share with notice it; nothing reaches anyone until a maker shares an agent and the recipient activates it.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[2].ui / admin-path: The printed data-policy path ending at Assign connectors reaches the control that blocks the Microsoft Copilot Studio connector. | Found: Use the search box to find the connector you want. 8. Select the three dots (⋮) next to the connector, and then: - To prevent agent makers from using the features associated with the connector, select Block. | Fix: Replace controls[2].ui.path and the corresponding table path with 'Security > Data and privacy > Data policy > New Policy > Add an environment > Available > environment > Add to policy > Assign connectors > Microsoft Copilot Studio > Block'. The cited page continues beyond Assign connectors to selecting the connector and Block. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
+- [contradicted, blocker] controls[2].api / command: New-DlpPolicy -NewPolicy $NewPolicy is the automation equivalent for blocking event triggers through the Microsoft Copilot Studio connector. | Found: Creates a new DLP policy in the tenant by using the NewPolicy DLPPolicyDefinition object. Creates a new policy with the $NewPolicy object. | Fix: Set controls[2].api to null and remove the corresponding table call. Retain the note that the cited New-DlpPolicy reference documents creating a policy, not assigning the Microsoft Copilot Studio connector to Blocked. A policy-creation call is not a documented equivalent for this row's connector-blocking operation. | Source: https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest
+- [contradicted, blocker] controls[5].ui / admin-path: Copilot > Cost Management > Configuration > Add spending policy is the complete path to configure resource-based environment spending limits. | Found: Enter a name for the policy, then select Resources as its scope. 4. Choose what the policy covers: | Fix: Replace controls[5].ui.path and its table path with 'Copilot > Cost Management > Configuration > Add spending policy > Resources > Specific environments > environment'. Add to its note: 'Select Resources as the policy scope and choose the environments to cover; set the monthly spending limit and optional per-agent limit in that policy.' The Resources choice distinguishes this control from an identity-based policy; names typed and numeric fields are left out of the route. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[5].note; Governance controls table / role: The cited cost-management article recommends the AI Administrator role for managing spending policies. | Found: Power Platform Administrator or Dynamics 365 Administrator | AI Administrator | Manage spending policies. | Fix: Keep the cited recommendation, but add: 'Microsoft's Copilot Managed Runtime licensing FAQ says Global Administrators and Billing Administrators can create spending policies, while AI Administrators and License Administrators can edit existing policies but cannot create them.' Cite https://learn.microsoft.com/microsoft-365/admin/manage/apps/licensing-faq?view=o365-worldwide#managing-costs for this qualification. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs
+- [supported, minor] controls[5].note; Governance controls table / role: The cited cost-management article recommends the AI Administrator role for spending-policy management. | Found: Power Platform Administrator or Dynamics 365 Administrator | AI Administrator | Manage spending policies. | Fix: Keep the cited recommendation but add: 'Microsoft also states that only Global Administrators and Billing Administrators can create spending policies; AI Administrators and License Administrators can edit existing policies but cannot create them.' Cite https://learn.microsoft.com/microsoft-365/admin/manage/apps/roles-responsibilities?view=o365-worldwide#roles-for-licensing-and-copilot-credits, which gives this distinction. The Cost Management API overview independently requires Billing Administrator or Global Administrator at creation. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs
 -->

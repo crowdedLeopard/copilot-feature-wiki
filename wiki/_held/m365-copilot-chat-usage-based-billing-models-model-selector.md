@@ -107,18 +107,20 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 85 statements confirmed"
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 89 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 85 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 4
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-18"
+  status: "held"
+  date: "2026-11-19"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 89
-  confirmed: 89
+  claims: 85
+  confirmed: 84
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "2fc1a36986c8c6e7ec002c3b312fa128"
 ---
 
@@ -218,9 +220,11 @@ cost: Variable. The meter is Copilot Credits, consumed per interaction under usa
 impact: Medium. Licensed users with usage-based billing enabled and credits gain extra model choices. Microsoft says users have no access to these models unless it is enabled; how the selector appears to other users is not established.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[0].api; Governance controls table / command: GET /beta/copilot/costManagement/spendingPolicies is the automation supplied for the row governing usage-based billing, spending policies, limits and alerts. | Found: Get a list of spendingPolicy objects. ... Don't supply a request body for this method. | Fix: The GET exists but cannot be the configuration equivalent, even with its read-only disclaimer. Replace controls[0].api.call with 'PATCH /beta/copilot/costManagement/spendingPolicies/{id}' and its docs with https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update. Replace the row note and the matching Graph paragraph with: 'The request body sets periodLimit and perUserLimit for policy and per-user monthly limits; this call does not configure alerts. Beta APIs can change and are unsupported in production.' Keep the row's broader UI coverage; do not imply this one call configures every setting in that UI. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-list
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Change & support / cost: Dashboard totals are expressed in credits, not currency. | Found: Everything in this view is expressed in Copilot Credits, not currency. | Fix: Replace 'expressed in credits, not currency; finance needs a translation to spend' with 'described as credits-only in the comparison article, but the monitoring article now also documents estimated cost in local currency, including negotiated rates; those estimates might not match the bill'. Cite https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending alongside the comparison article. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views
-- [supported, minor] Risk assessment: Change & support / behaviour: Dashboard totals are point-in-time views. | Found: Dashboard totals and exports might be point-in-time views and can refresh at different intervals. | Fix: Replace 'Dashboard totals are point-in-time' with 'The comparison article says dashboard totals and exports may be point-in-time views, while the monitoring article distinguishes point-in-time exported reports from dashboard views that continue retrieving live data'. Cite https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views
+- [supported, minor] Risk assessment: Change & support / cost: Dashboard totals are expressed in credits rather than currency. | Found: Everything in this view is expressed in Copilot Credits, not currency. | Fix: Replace 'expressed in credits, not currency; finance needs a translation to spend' with 'described as credits-only in the comparison article, while the monitoring article also documents estimated cost in local currency, including negotiated rates; those estimates might not match the bill'. Cite https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending alongside the comparison article. That article states: 'Cost: The estimated cost of your AI usage in local currency, including negotiated rates.' | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views
+- [supported, minor] Risk assessment: Change & support / behaviour: Dashboard totals are point-in-time views. | Found: Dashboard totals and exports might be point-in-time views and can refresh at different intervals. | Fix: Replace 'Dashboard totals are point-in-time' with 'The comparison article says dashboard totals and exports may be point-in-time views; the monitoring article distinguishes point-in-time exports from dashboard views that continue retrieving live data'. Cite https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending, which states: 'Exported reports are generated as a point-in-time snapshot, while dashboard views continue to retrieve live data.' | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views
 -->

@@ -5,7 +5,7 @@ slug: "connectors"
 summary: "A connector is a prebuilt link from Power Apps, Power Automate and Copilot Studio to a service such as SharePoint or SQL Server. Administrators use licence tiers and data policies to decide which connectors are usable and which can be combined."
 created: "2026-11-19"
 updated: "2026-11-19"
-version: 1
+version: 2
 tags: ["connectors","power-platform","data-policies","power-platform-admin-center","licensing","copilot-studio","power-apps","power-automate","governance"]
 covers: []
 sources:
@@ -63,7 +63,13 @@ sources:
   - title: "Use the Copilot connectors API"
     url: "https://learn.microsoft.com/graph/api/resources/connectors-api-overview"
     kind: "learn"
-related: ["data-policies","managed-environments","mcp","agent-identity","copilot-credits","microsoft-copilot-studio-sql-server-support-in-microsoft-copilot-studio","powerapps-building-modern-apps-use-cli-to-discover-create-and-wire-connectors-in-code-apps","m365-copilot-copilot-extensibility-admins-can-govern-and-manage-federated-copilot-connecto"]
+  - title: "Use connectors in Copilot Studio agents"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/advanced-connectors"
+    kind: "learn"
+  - title: "Conversational language understanding integration overview"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/advanced-clu-integration"
+    kind: "learn"
+related: ["data-policies","managed-environments","mcp","agent-identity","copilot-credits","microsoft-copilot-studio-sql-server-support-in-microsoft-copilot-studio","m365-copilot-copilot-extensibility-admins-can-govern-and-manage-federated-copilot-connecto"]
 controls:
   - governs: "Which group (Business, Non-Business or Blocked) each prebuilt connector is in"
     scope: "tenant"
@@ -110,24 +116,28 @@ controls:
       docs: "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-advanced-connector-policies"
     note: "Publish rules after saving. A single environment: Security > Data and privacy > Advanced connector policies. A second POST assigns the policy to a group; certified connectors only."
 confidence: "medium"
-dependents: 12
+dependents: 13
 changes:
   - date: "2026-11-19"
     note: "New concept page: Power Platform connectors, their licence tiers, custom connectors and the controls that govern them."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 96 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-19"
+    note: "Corrected licensing: premium and custom connector licence scoped to Microsoft 365 use rights, Copilot Studio plans noted, Premium end-user clause removed; narrowed the Copilot connectors paragraph and removed three checklist items without table rows."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 107 statements not yet confirmed"
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 96
-  confirmed: 93
+  claims: 107
+  confirmed: 107
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "2c8531e0902f568b412bf709c7cf45db"
+  contradicted: 0
+  attempts: 0
+  hash: "dd385ae4e64c25918ce25a753394c92c"
 ---
 
 ## What it is
@@ -141,8 +151,8 @@ A connector can provide tables of data, actions, or both. Microsoft's connector 
 | Kind | What it is | Licence signal |
 | --- | --- | --- |
 | Standard | Tagged Standard in the connector reference | Standard connectors do not need special licensing |
-| Premium | Tagged Premium in the connector reference | A standalone Power Apps or Power Automate plan licence |
-| Custom | A wrapper around a REST API that a maker or developer defines | A standalone plan licence, as for premium |
+| Premium | Tagged Premium in the connector reference | Power Apps and Power Automate use rights included with Microsoft 365: standalone Power Apps or Power Automate plan |
+| Custom | A wrapper around a REST API that a maker or developer defines | Power Apps and Power Automate use rights included with Microsoft 365: standalone Power Apps or Power Automate plan, as for premium |
 
 Custom connectors created in Power Automate or Power Apps are available in Power Apps, Power Automate cloud flows and Copilot Studio agents and workflows.
 
@@ -152,7 +162,7 @@ Connections authenticate in different ways. The SQL Server connector, for exampl
 
 ### A different use of the word
 
-Microsoft 365 Copilot connectors (formerly Microsoft Graph connectors) are a separate mechanism: a Copilot connector defines a connection to an external data source and syncs content into Microsoft 365. This page does not cover them; see [admins manage federated Copilot connectors](/features/m365-copilot-copilot-extensibility-admins-can-govern-and-manage-federated-copilot-connecto/).
+Microsoft 365 Copilot connectors (formerly Microsoft Graph connectors) are a separate mechanism. Synced Copilot connectors crawl and index content from external sources into Microsoft Graph, and federated Copilot connectors fetch data in real time without indexing it into Microsoft 365. This page does not cover them; see [admins manage federated Copilot connectors](/features/m365-copilot-copilot-extensibility-admins-can-govern-and-manage-federated-copilot-connecto/).
 
 ## Why it matters
 
@@ -162,7 +172,7 @@ A policy only protects the environments in its scope: Microsoft's example notes 
 
 ## Cost and licensing
 
-A connector's tier sets the licence the user needs. Microsoft states that standard connectors don't require special licensing, and that a standalone Power Apps or Power Automate plan licence is required to access all premium, on-premises and custom connectors. An app that uses at least one premium connector, a custom connector or an on-premises gateway is designated Premium, and its end user needs a per app plan or per user plan.
+A connector's tier sets the licence the user needs. For Power Apps and Power Automate use rights included with Microsoft 365, the Power Platform licensing FAQ specifies a standalone Power Apps or Power Automate plan for premium, on-premises and custom connectors. Copilot Studio premium connectors are available in select Copilot Studio plans. An app that uses at least one premium connector, a custom connector or an on-premises gateway is designated Premium.
 
 Microsoft reclassified some connectors as Premium in 2019, including SQL Server, Azure SQL and Dynamics 365. Its Power Platform licensing FAQ says the extended use rights ended on October 1, 2024 and that in-product enforcement begins April 1, 2025; the Power Apps licensing FAQ refers to licensing enforcement beginning February 2027. Check which applies to your apps before relying on either date.
 
@@ -201,13 +211,10 @@ To see what exists, `Get-AdminPowerAppConnection` returns connections from all e
 
 ## What to check
 
-- Review which policies cover each environment, and whether any production environment is outside every data policy's scope.
 - Classify the connectors your makers use most as Business or Non-Business, instead of leaving them all in Non-Business.
 - Check the HTTP connector's group before restricting it, to avoid breaking child flows.
 - Add URL pattern rules for custom connectors in tenant-level policies, and decide what the wildcard pattern should be.
-- List custom connectors and connections with the PowerShell cmdlets above, and remove those nobody owns.
 - Assess whether managed environments should use advanced connector policies, in mixed mode first.
-- Compare the licence designation of important apps with the plans your users hold.
 
 ## Open questions
 
@@ -216,14 +223,8 @@ To see what exists, `Get-AdminPowerAppConnection` returns connections from all e
 - When will individual triggers be configurable in the Power Platform admin center? Microsoft says support is planned; today it is PowerShell only.
 - Which maker portals already enforce advanced connector policies at design time, and when does ACP reach general availability for each?
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Kinds of connector: Premium and Custom; Cost and licensing / licensing: Premium and custom connectors require a standalone Power Apps or Power Automate plan, without distinguishing the Copilot Studio usage this page also covers. | Found: The standalone Copilot Studio subscription allows you to build agents on any supported channel and connect to any data by using premium connectors. | Fix: Scope both table licence signals to 'Power Apps and Power Automate use rights included with Microsoft 365: standalone Power Apps or Power Automate plan'. Replace the body's standalone-plan sentence with: 'For Power Apps and Power Automate use rights included with Microsoft 365, the Power Platform licensing FAQ specifies a standalone Power Apps or Power Automate plan for premium, on-premises and custom connectors. Copilot Studio premium connectors are available in select Copilot Studio plans.' Cite https://learn.microsoft.com/microsoft-copilot-studio/advanced-connectors alongside the existing FAQ. | Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-licensing-subscriptions
-- [contradicted, blocker] Cost and licensing / licensing: Every end user of an app designated Premium needs a per app or per user plan. | Found: End-users with a Microsoft 365 subscription including Dataverse for Teams use rights will be able to run these apps in Microsoft Teams. | Fix: Delete ', and its end user needs a per app plan or per user plan', leaving the verified Premium designation definition. The cited page explicitly qualifies that licence requirement for apps run within Teams; the cited Power Apps licensing FAQ also lists the per app pay-as-you-go meter among qualifying entitlements. | Source: https://learn.microsoft.com/power-apps/maker/canvas-apps/license-designation
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[3].api / command: POST https://api.powerplatform.com/governance/ruleBasedPolicies?api-version=2024-10-01 creates an advanced connector policy with an allowlist. | Found: $apiBaseUrl = "https://api.powerplatform.com" $apiVersion = "2024-10-01" ... $policy = Invoke-RestMethod -Method Post ... -Uri "$apiBaseUrl/governance/ruleBasedPolicies?api-version=$apiVersion" | Fix: Keep the call. Add to its note: 'The request body sets ruleSets with id ConnectorManagement and inputs.AllowedConnectorList; entries use AllowedConnector, AllowedActionsMode and, for SomeAllowed, AllowedActions.' These properties are documented in the cited tutorial. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-advanced-connector-policies
-- [supported, minor] A different use of the word / behaviour: A Microsoft 365 Copilot connector defines an external-data connection and syncs content into Microsoft 365. | Found: A Copilot connector defines a connection to an external data source and syncs content into Microsoft 365. ... Federated connectors: Use a Model Context Protocol (MCP) model to fetch data in real time, without indexing content into Microsoft 365. | Fix: Narrow the description to the synced type: 'Microsoft 365 Copilot connectors (formerly Microsoft Graph connectors) are a separate mechanism. Synced Copilot connectors define a connection to an external data source and sync content into Microsoft 365.' The cited overview separately describes federated connectors that do not index content. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/overview
-- [contradicted, minor] What to check / consistency: Every control the checklist tells readers to review or inventory is represented in the controls table. | Found: Review which policies cover each environment ... List custom connectors and connections with the PowerShell cmdlets above ... Compare the licence designation of important apps with the plans your users hold. | Fix: The checklist's policy-scope review, connection/custom-connector inventory and app licence-designation review have no corresponding control rows. Remove those three control-specific checklist bullets; retain their already documented explanatory prose. This finding does not request additional rows.
-- [supported, minor] What it is; sources / behaviour: The API-wrapper and stored-credentials definitions are supported by Microsoft pages missing from the source list. | Found: Connections are stored authentication credentials for a connector, such as OAuth credentials for the SharePoint connector. | Fix: Add https://learn.microsoft.com/microsoft-copilot-studio/advanced-connectors and https://learn.microsoft.com/microsoft-copilot-studio/advanced-clu-integration to sources. The former explicitly defines connectors as API wrappers across the named products; the latter defines connections as stored authentication credentials. | Source: https://learn.microsoft.com/microsoft-copilot-studio/advanced-clu-integration
+- [supported, minor] controls[3].api / command: POST https://api.powerplatform.com/governance/ruleBasedPolicies?api-version=2024-10-01 creates an advanced connector policy with its allowlist and action settings. | Found: An advanced connector policy is a rule-based policy that contains a rule set with the ID ConnectorManagement. That rule set carries a version and its inputs hold an AllowedConnectorList | Fix: Keep the call unchanged. Add to controls[3].note and the rendered note: 'The request body sets ruleSets[].inputs.AllowedConnectorList in the ConnectorManagement rule set; entries use AllowedConnector, AllowedActionsMode and AllowedActions to select connectors and actions.' | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-advanced-connector-policies
 -->

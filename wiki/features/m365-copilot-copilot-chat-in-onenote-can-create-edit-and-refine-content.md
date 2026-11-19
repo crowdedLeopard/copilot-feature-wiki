@@ -62,7 +62,7 @@ controls:
       path: "Copilot > Settings > View all > Copilot Frontier"
       docs: "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center"
     api: null
-    note: "The documented microsoft.copilot.frontier resource covers Microsoft 365 web apps; coverage of desktop OneNote is unconfirmed. Needs AI Administrator."
+    note: "The documented microsoft.copilot.frontier resource covers Microsoft 365 web apps; coverage of desktop OneNote is unconfirmed. Requires AI Administrator, Security Administrator or Office Apps Administrator."
   - governs: "Tenant-wide switch for Copilot edit mode in OneNote"
     scope: "tenant"
     ui: null
@@ -81,19 +81,23 @@ changes:
     note: "Corrected after the independent check: licensing now states the Frontier entitlement and leaves only general availability open; removed the claim that permissions are undescribed and the Frontier Graph call; added the full release preferences path."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 70 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-19"
+    note: "Corrected the Frontier role requirement in the controls table to the three roles Learn lists, and reworded the note that the notice says only \"eligible users\"."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 83 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-19"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 69
+  claims: 83
+  confirmed: 83
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "7ff0f5f676db31f34f07ae98be717737"
+  contradicted: 0
+  attempts: 0
+  hash: "6be52a546b26e0b31eba14d03db01486"
 ---
 
 ## What's changing
@@ -135,7 +139,7 @@ Microsoft's notice describes general availability as a rollout to eligible users
 
 ## Cost and licensing
 
-Learn's requirements page says users of Microsoft Copilot need a Microsoft Copilot licence and a qualifying prerequisite licence, and that Microsoft Copilot Chat is available to users with an eligible Microsoft 365 subscription ([Microsoft Copilot requirements](https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements)). The roadmap record and Microsoft's notice say only "eligible users". For Copilot-related Frontier features, Learn says users need a Microsoft Copilot license or a license that includes access to Copilot ([Get started with the Microsoft Frontier Program](https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier)). The general-availability entitlement for OneNote edit mode is not yet published.
+Learn's requirements page says users of Microsoft Copilot need a Microsoft Copilot licence and a qualifying prerequisite licence, and that Microsoft Copilot Chat is available to users with an eligible Microsoft 365 subscription ([Microsoft Copilot requirements](https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements)). Microsoft's notice refers to "eligible users" without naming a licence. For Copilot-related Frontier features, Learn says users need a Microsoft Copilot license or a license that includes access to Copilot ([Get started with the Microsoft Frontier Program](https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier)). The general-availability entitlement for OneNote edit mode is not yet published.
 
 For the Frontier phase, Learn says certain Frontier experiences may only be available on a paid basis and points to the Microsoft Copilot Credits Guide for credit consumption requirements ([Get started with the Microsoft Frontier Program](https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier)). A credit rate or separate charge for this feature is not yet published. Indirect cost is admin and communication time, and the support load of new edit behaviour.
 
@@ -177,7 +181,7 @@ For the Frontier phase, Learn says certain Frontier experiences may only be avai
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which users get Frontier preview features, including the Frontier phase of OneNote edit mode</strong><br><small>Tenant</small><br><small class="controls__note">The documented microsoft.copilot.frontier resource covers Microsoft 365 web apps; coverage of desktop OneNote is unconfirmed. Needs AI Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › Copilot Frontier <a href="https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which users get Frontier preview features, including the Frontier phase of OneNote edit mode</strong><br><small>Tenant</small><br><small class="controls__note">The documented microsoft.copilot.frontier resource covers Microsoft 365 web apps; coverage of desktop OneNote is unconfirmed. Requires AI Administrator, Security Administrator or Office Apps Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › Copilot Frontier <a href="https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Tenant-wide switch for Copilot edit mode in OneNote</strong><br><small>Tenant</small><br><small class="controls__note">Learn documents no OneNote-specific setting at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -200,12 +204,4 @@ Microsoft Learn documents no setting specific to OneNote edit mode at the time o
 risk: High. The roadmap describes edit mode as able to delete pages, sections and notebooks and to draw on Work IQ. Microsoft's notice says it reaches eligible users without admin action, and Learn documents no OneNote-specific switch at the time of writing (November 2026).
 cost: Low. The only cost the sources show is admin and communication time. For Copilot-related Frontier features users need a Microsoft Copilot licence or a licence that includes access to Copilot; the general-availability entitlement and any credit rate for edit mode are not yet published, so this rating may move.
 impact: Medium. Eligible OneNote users on Windows and iPad get broader Copilot behaviour that can change their notebooks. Mac, iPhone, Android and web are not in this rollout, per Microsoft's notice.
--->
-
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].note; Governance controls table / role: Frontier enrollment needs the AI Administrator role. | Found: You need an account that includes one of the following roles: AI Administrator Security Administrator Office Apps Administrator | Fix: Replace 'Needs AI Administrator.' in controls[0].note and the rendered table with 'Requires AI Administrator, Security Administrator or Office Apps Administrator.' This matches https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier and the page's Scope section. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing: eligible users attribution / record: The sources provide only an eligible-users description rather than a feature-specific license entitlement. | Found: Eligible users will have broader Copilot capabilities in OneNote on supported app versions on Windows and iPad | Fix: Replace 'The roadmap record and Microsoft's notice say only "eligible users".' with 'Microsoft's notice refers to "eligible users" without naming a licence.' The roadmap description does not use that phrase.
 -->

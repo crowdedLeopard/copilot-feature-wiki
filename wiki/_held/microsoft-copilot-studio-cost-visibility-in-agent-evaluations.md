@@ -96,18 +96,20 @@ changes:
     note: "Corrected after verification: the Scope section now says only that the roadmap record does not state rollout mechanics or prerequisites."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 79 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 80 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-19"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 79
+  claims: 80
   confirmed: 78
   unconfirmed: 0
-  contradicted: 1
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "37b81703df481641e83cdaadf27e471e"
 ---
 
@@ -211,8 +213,11 @@ cost: Variable. The display is not described as a charge, but the evaluation act
 impact: Medium. Makers who run evaluations see the figures; owners of environments and capacity are affected through the credits those evaluations draw.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[0].api; Governance controls: first row / absence: No API or automation is documented for retrieving evaluation credit information. | Found: Use its run ID to view the results and conversation transcripts: ... --run-id '<run-id>' --transcript ... Review the run's status, scores, passed and failed cases, results for each conversation, and reported credit usage. | Fix: Replace controls[0].api and its rendered Not yet documented cell with kind other, call "msagent agent eval show --project <project-path> --agent-name <agent-name> --environment-id <environment-id> --run-id <run-id> --transcript", and docs https://learn.microsoft.com/microsoft-365/copilot-managed-runtime/developer/agents/cli/evaluate?view=o365-worldwide. Add to the existing note: "The preview Copilot Studio CLI reports evaluation credit usage; this documentation does not promise the same per-test-case credit breakdown as the portal." Cite that page in sources. | Source: https://learn.microsoft.com/microsoft-365/copilot-managed-runtime/developer/agents/cli/evaluate?view=o365-worldwide
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout; controls / consistency: The checklist tells readers to review consumption reports and limit status, but the controls table contains no consumption-monitoring row. | Found: Checklist: 'Review environment and agent consumption together'. Table: 'Estimated Copilot Credits shown for an evaluation run and each test case'; 'Credits allocated to an environment, and whether it draws from tenant capacity'; 'Monthly Copilot Credit limit and Stop usage for one agent'. | Fix: The After rollout checklist's consumption-monitoring step has no corresponding table row. Remove its first bullet, 'Review environment and agent consumption together in the Power Platform admin center under Licensing > Copilot Studio, as Learn advises.' Keep the documented monitoring explanation in Governance controls.
+- [supported, minor] controls[1].api; Governance controls: second row / command: The printed PUT allocationsV2 call, version 2024-10-01 and its body allocate MCSMessages and disable TenantPool for an environment. | Found: All programmatic examples in this article use API version 2024-10-01. ... scope = @{ environmentId = $environmentId } ... entitlementId = "MCSMessages" ... @{ ruleType = "TenantPool"; enabled = $false } ... Invoke-RestMethod -Method Put | Fix: Replace controls[1].api.call and the rendered call with "PUT /licensing/allocationsV2?api-version=2024-10-01". Add to its note: "The request body identifies scope.environmentId, sets allocatedEntitlements[].entitlementId to MCSMessages and allocation.quantity to the allocation, and sets enforcementRules[].ruleType to TenantPool with enabled false to disable tenant-capacity draw." The operation, version and printed body keys are supported; the standard requires the body in the reference, not in the call. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist's consumption-monitoring instruction has a corresponding controls-table row. | Found: Checklist: Review environment and agent consumption together. Table rows: estimated evaluation credits; environment credit allocation and tenant draw; agent monthly limit and Stop usage. | Fix: The After rollout checklist's consumption-monitoring step has no corresponding table row. Remove its first bullet, "Review environment and agent consumption together in the Power Platform admin center under Licensing > Copilot Studio, as Learn advises." Keep the documented monitoring explanation in Governance controls; do not add a row.
 -->

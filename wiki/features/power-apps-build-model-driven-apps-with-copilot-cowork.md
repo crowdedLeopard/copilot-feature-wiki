@@ -37,6 +37,9 @@ sources:
   - title: "Get started with Copilot Cowork"
     url: "https://learn.microsoft.com/copilot/cowork/get-started"
     kind: "learn"
+  - title: "Copilot Cowork common questions"
+    url: "https://learn.microsoft.com/copilot/cowork/cowork-faq"
+    kind: "learn"
   - title: "Build and edit model-driven apps with AI code generation tools"
     url: "https://learn.microsoft.com/power-apps/maker/model-driven-apps/model-driven-app-external-tools"
     kind: "learn"
@@ -125,19 +128,23 @@ changes:
     note: "Correction: the Cowork spending-policy path now runs through the wizard steps to the limits, and the Graph row notes the request properties and that group policies are created disabled."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 76 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-19"
+    note: "Correction: the Security & identity bullet, risk rationale and first open question now say Cowork actions are authorized through the user's Microsoft 365 account, and that the skill's Dataverse connection mechanism is not yet documented."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 75 statements confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-19"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 76
+  claims: 75
   confirmed: 75
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "8046d3b9a4cdab5a051616e262e9016f"
+  contradicted: 0
+  attempts: 0
+  hash: "bc376d36b5334f4cb2c956f5c6aba473"
 ---
 
 ## What's changing
@@ -163,7 +170,7 @@ Microsoft has not stated what happens on arrival if nobody acts. Cowork access i
 
 **Security & identity**
 
-- For the code-tools version, Learn requires "permission to create and modify Dataverse and model-driven app artifacts" in the target environment. Microsoft has not said how the Cowork version obtains that access or which account it uses. Confirm this before relying on environment security roles to limit it.
+- For the code-tools version, Learn requires "permission to create and modify Dataverse and model-driven app artifacts" in the target environment. Microsoft says every Cowork action is authorized through your Microsoft 365 account; the model-app-builder skill's specific Dataverse connection mechanism is not yet documented. Confirm that mechanism before relying on environment security roles to limit it.
 
 **Autonomy & actions**
 
@@ -228,19 +235,13 @@ The plugin availability row applies only if the skill ships as a Cowork plugin, 
 
 ## Open questions
 
-- Which Power Platform environment does the Cowork skill build into, and under whose identity and permissions does it write there? Watch the Learn page for Cowork and Power Apps.
+- Which Power Platform environment does the Cowork skill build into, and how does it establish its Dataverse connection? Watch the Learn page for Cowork and Power Apps.
 - Is the skill delivered as a Cowork plugin, so that it can be allowed or blocked under Agents > Tools, or is it built in? Watch the Manage plugins for Cowork page.
 - How many Copilot Credits does a build or an edit consume? Watch the Copilot Credits pages and Message center.
 - Is the skill on or off by default when the preview starts in November CY2026, and is a separate admin switch planned? Watch the roadmap item and Message center.
 
 <!-- rationale
-risk: Medium. The roadmap says the skill creates a model-driven app and Dataverse artifacts after the user reviews a plan; Microsoft Learn does not yet say which environment, identity or roles the Cowork version uses.
+risk: Medium. The roadmap says the skill creates a model-driven app and Dataverse artifacts after the user reviews a plan; Microsoft Learn does not yet say which environment or Dataverse connection mechanism the Cowork version uses.
 cost: Variable. Cowork activity, including skill calls, counts toward usage-based billing in Copilot Credits; what this skill consumes is not yet published.
 impact: Medium. The roadmap lists the feature scope as admins or makers, so makers are the people who will notice it first.
--->
-
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity; rationale: risk; Open questions / absence: Microsoft has not said which account or identity the Cowork version uses. | Found: Every action Cowork takes is authorized through your Microsoft 365 account. Cowork accesses only the services and data you're already permitted to use. | Fix: Replace the Security & identity absence sentence with: 'Microsoft says every Cowork action is authorized through your Microsoft 365 account; the model-app-builder skill's specific Dataverse connection mechanism is not yet documented.' Cite https://learn.microsoft.com/copilot/cowork/cowork-faq#is-cowork-secure. In the risk rationale replace 'which environment, identity or roles the Cowork version uses' with 'which environment or Dataverse connection mechanism the Cowork version uses'. Narrow the first Open question to: 'Which Power Platform environment does the Cowork skill build into, and how does it establish its Dataverse connection?' Do not infer the skill's Dataverse token, service principal or connection implementation from the general account statement. | Source: https://learn.microsoft.com/copilot/cowork/cowork-faq#is-cowork-secure
 -->

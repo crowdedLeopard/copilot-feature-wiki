@@ -91,18 +91,20 @@ changes:
     note: "Correction: softened the claim that the home replaces every seller's opening screen, set licensing to not yet published and cost to low, narrowed the risk rationale, and removed the Dataverse capacity step."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 68 statements confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 64 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-19"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 68
+  claims: 64
+  confirmed: 60
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 4
+  attempts: 1
   hash: "84e6ddfb4532e0a29c963d9103a10fc7"
 ---
 
@@ -205,4 +207,16 @@ Microsoft Learn documents no API or PowerShell cmdlet for the Sales agent access
 risk: Medium. The roadmap plans agent recommendations and customer-meeting preparation in a new landing experience, while its default and dedicated controls are not yet stated.
 cost: Low. Known costs are administrator time, seller communication and possible Dataverse search storage growth. Licensing for this home is not yet published.
 impact: Medium. The planned home is aimed at sellers in Dynamics 365 Sales, rather than the wider workforce; Microsoft has not stated whether it replaces the opening screen for every seller.
+-->
+
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost; Open questions / licensing: The licensing model is unknown because nothing has been published for this new home itself. | Found: To use Sales agent in Microsoft 365 Copilot, you must meet one of the following licensing options: ... Dynamics 365 Sales Enterprise or Premium access, without a Microsoft 365 Copilot license | CRM data only | Fix: Set licensing.model to mixed. Retain the published basic/premium licence requirements and replace the blanket unpublished-entitlement wording with: 'Sales agent supports CRM-only use with Dynamics 365 Sales Enterprise or Premium access; Microsoft 365 Graph grounding requires Microsoft 365 Copilot. No licensing requirement specific to the new home is published.' Cite https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat. Keep the narrower home-specific question, not an unknown product entitlement. | Source: https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat
+- [contradicted, blocker] controls[1].ui / admin-path: The full access-control route starts at Sales agent administrator settings with Tenant > Access settings > Allow access to Sales agent > Dynamics 365. | Found: You can access the administrator settings in the Sales agent in Outlook and Teams. ... On the left navigation pane, select Sales. ... Select the Settings tab. | Fix: The printed final steps are documented, but the path starts inside an unnamed host app and omits the Settings tab. Set controls[1].ui.surface to 'Microsoft Teams' and path to 'Sales > Settings > Tenant > Access settings > Allow access to Sales agent > Dynamics 365'. Keep its current docs URL for the final steps; the already-cited https://learn.microsoft.com/microsoft-sales-copilot/administrator-settings-sales-app documents entry. Make the rendered row agree. | Source: https://learn.microsoft.com/microsoft-sales-copilot/administrator-settings-sales-app
+- [contradicted, blocker] controls[3].ui / admin-path: The full CRM-table configuration route starts at Sales agent administrator settings with Features > Sales Chat > Add. | Found: On the left navigation pane, select Sales. ... Select the Settings tab. ... Features: ... Sales Chat: Set up the Sales agent in Microsoft 365 Copilot | Fix: Set controls[3].ui.surface to 'Microsoft Teams' and path to 'Sales > Settings > Features > Sales Chat > Add'. The existing final steps are supported by https://learn.microsoft.com/microsoft-sales-copilot/set-up-sales-chat; https://learn.microsoft.com/microsoft-sales-copilot/administrator-settings-sales-app supplies the omitted app and Settings tab. Keep the current docs URL and make the rendered row agree. | Source: https://learn.microsoft.com/microsoft-sales-copilot/administrator-settings-sales-app
+- [contradicted, blocker] controls[3].note; Governance guidance: Before rollout; Governance controls / role: A System Administrator or System Customizer role is required for Sales Chat administrator settings in Dynamics 365. | Found: Dynamics 365: You must have the System Administrator or System Customizer role. If you're using a custom security role, you might need more privileges to use the Sales agent. | Fix: Qualify each occurrence: 'Use System Administrator or System Customizer in Dynamics 365; if using a custom security role, additional Sales agent privileges might be needed.' Cite https://learn.microsoft.com/microsoft-sales-copilot/administrator-settings-sales-app. Do not imply that these two built-in roles are the only supported way to administer the settings. | Source: https://learn.microsoft.com/microsoft-sales-copilot/administrator-settings-sales-app
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Cost and licensing / licensing: Dynamics 365 Sales Enterprise or Premium users without Microsoft 365 Copilot can use Sales agent with CRM data only. | Found: Dynamics 365 Sales Enterprise or Premium access, without a Microsoft 365 Copilot license | CRM data only | Fix: Retain the cited licensing table and add: 'Microsoft documentation differs: the Sales agent FAQ says a Microsoft 365 Copilot licence is required to access Sales agent, while the setup and usage pages explicitly permit CRM-only use with Sales Enterprise or Premium access.' Cite https://learn.microsoft.com/microsoft-sales-copilot/sales-m365-copilot-faq#sales-agent-in-microsoft-365-copilot alongside https://learn.microsoft.com/microsoft-sales-copilot/use-sales-chat. | Source: https://learn.microsoft.com/microsoft-sales-copilot/use-sales-chat
+- [supported, minor] Governance guidance: At rollout / admin-path: A Dynamics 365 pilot can use the Allow access security-group list under the existing application-access settings. | Found: If you turn on access, expand the application and, under Who can use this feature?, select ... Set access restrictions ... Allow access: Search for and add security groups whose members can use Sales agent. | Fix: Give the intervening choice explicitly: 'Once Microsoft confirms applicability to the home, expand Dynamics 365, choose Who can use this feature? > Set access restrictions, and add the pilot security group under Allow access.' The existing controls row can remain the row for this control; cite https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps. | Source: https://learn.microsoft.com/microsoft-sales-copilot/access-settings-apps
 -->

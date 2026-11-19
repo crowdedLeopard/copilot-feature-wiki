@@ -106,17 +106,19 @@ changes:
     note: "Corrected after the independent check: the Graph update call is limited to name, limits and billing method; the overlap rule now says how a missing per-user limit is compared; License Administrator role inconsistency noted; auto-apply heading reworded; Consumption bullet removed from the checklist."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 89 statements confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 90 statements contradicted, 0 unconfirmed; taken offline until corrected"
 verification:
-  status: "verified"
-  date: "2026-11-18"
+  status: "held"
+  date: "2026-11-19"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 89
-  confirmed: 89
+  claims: 90
+  confirmed: 87
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 3
+  attempts: 1
   hash: "9bcc8f30011d973b0fedb3a9d408af22"
 ---
 
@@ -205,3 +207,16 @@ Microsoft's setup page is inconsistent about License Administrator: it also list
 - Which credit rate applies to each service a policy covers? The spending policy pages do not state rates.
 - When is excess per-user usage billed, given Microsoft's "sole discretion" wording?
 - How soon does a limit change take effect for identity-based policies? The 12-minute figure is stated only for resource-based policies.
+
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Risks and limits: The API is beta / behaviour: The policy API accepts delegated permissions only. | Found: Application | CopilotCostManagement-Policy.Read.All | CopilotCostManagement-Policy.ReadWrite.All, CopilotCostManagement.Read.All | Fix: Replace 'the policy API accepts delegated permissions only' with 'the policy create and update operations accept delegated permissions only'. The cited create and update references support that narrower statement; policy reads now document application permissions. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-list
+- [contradicted, blocker] controls[1].ui / admin-path: The path to create an identity-based policy ends at Copilot > Cost Management > Configuration > + Add spending policy. | Found: Create and name the policy and then choose Identity as the scope. Use this option when you need to manage usage by users or groups for a supported service. | Fix: Set controls[1].ui.path and its rendered counterpart to 'Copilot > Cost Management > Configuration > + Add spending policy > Identity'. This retains the required policy-type choice rather than ending at the shared wizard entrance. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits
+- [contradicted, blocker] controls[4].ui; controls[4].note / admin-path: The resource-policy creation path ends at Copilot > Cost Management > Configuration > Add spending policy. | Found: Select Configuration, and then select Add spending policy. 3. Enter a name for the policy, then select Resources as its scope. | Fix: Set controls[4].ui.path and its rendered counterpart to 'Copilot > Cost Management > Configuration > Add spending policy > Resources'. The existing note correctly identifies Resources, but this required wizard choice must also be in the path. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[1].api / command: POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies creates a policy with the listed @odata.type, displayName, periodLimit, perUserLimit and serviceSettings properties. | Found: Required properties are displayName, periodLimit, perUserLimit, and serviceSettings. | Fix: Set controls[1].api.call and the rendered call to 'POST https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies'. Move 'The request body sets a concrete @odata.type, displayName, periodLimit, perUserLimit and serviceSettings' into its note. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-create
+- [supported, minor] controls[2].api / command: PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id} updates displayName, periodLimit, perUserLimit or billingMethods and requires If-Match. | Found: The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods. | Fix: Set controls[2].api.call and its rendered call to 'PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id}'. Move the property list and required If-Match ETag header description into the row's note; leave the complete request body to the linked reference. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update
+- [supported, minor] controls[3].ui; controls[3].note / admin-path: Alert thresholds are edited in the policy details fly-out reached through Copilot > Cost Management > Configuration > policy. | Found: The spending policy details fly-out opens, where you can modify its settings. This includes: 1. Scope 2. Agents and services 3. Billing method 4. Spending limits 5. Alerts, and Email alert settings | Fix: Append ' > Alerts, and Email alert settings' to controls[3].ui.path and its rendered counterpart, naming the documented section inside the policy fly-out. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits
+- [supported, minor] controls[3].api / command: PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id}/emailThresholdSettings configures policy alerts. | Found: PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/3f9e2c1a-0000-0000-0000-00000000c21b/emailThresholdSettings | Fix: Add 'The Graph request body sets isEnabled and thresholds' to controls[3].note and the rendered note. Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/costmanagementalertsetting-update to sources; this is the additional reference relied on for those properties. The existing overview link documents the operation correctly. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/costmanagementalertsetting-update
+-->

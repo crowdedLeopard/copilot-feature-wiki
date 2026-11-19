@@ -12,7 +12,7 @@ platforms: ["Android"]
 targetDate: "November CY2026"
 previewDate: null
 risk: "medium"
-cost: "low"
+cost: "medium"
 impact: "medium"
 defaultState: "on"
 action: "act-now"
@@ -64,19 +64,23 @@ changes:
     note: "Correction: removed the claim that Android activity-history storage is unstated and that no further prerequisites are published, and removed a checklist item with no matching control row."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 48 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-19"
+    note: "Correction: cost rating raised from low to medium because the pane needs the Microsoft 365 Copilot (Premium) add-on licence; cost rationale reworded to match."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 46 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-19"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 47
+  claims: 46
+  confirmed: 46
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "92c4369accb1f516f163390e871b8aa9"
+  contradicted: 0
+  attempts: 0
+  hash: "f1aab5f51c85dbd8b4186760cab1f810"
 ---
 
 ## What's changing
@@ -171,12 +175,6 @@ Who sees the pane is also set by the Microsoft 365 Copilot (Premium) licence, as
 
 <!-- rationale
 risk: Medium. Generative AI will read note content on Android phones for licensed users by default, and Microsoft's notice says it alters how existing customer data is processed, though existing Copilot permissions and policies still apply.
-cost: Low. The notice ties the pane to the Microsoft 365 Copilot (Premium) licence and names no separate meter, so the cost the sources show is licence assignment plus admin and helpdesk time.
+cost: Medium. The pane requires the Microsoft 365 Copilot (Premium) add-on licence for Android users who should have access. The notice names no separate meter; licence assignment, helpdesk briefing and communication also take staff time.
 impact: Medium. Only users with a Microsoft 365 Copilot (Premium) licence who use OneNote on Android will see the pane; Microsoft's notice says users without the licence are not impacted.
--->
-
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: The cost is low because the sources show only license assignment and administrator/helpdesk time. | Found: cost: "low"; licensing.model: "add-on". The standard defines low as "indirect cost only: admin time, communications, training" and medium as "add-on licences for a subset of users, or predictable consumption". | Fix: Set cost to "medium" and replace the cost rationale with: "Medium. The pane requires the Microsoft 365 Copilot (Premium) add-on licence for Android users who should have access. The notice names no separate meter; licence assignment, helpdesk briefing and communication also take staff time."
 -->

@@ -1,7 +1,7 @@
 ---
 title: "Copilot Studio: agent node runs an AI agent as a workflow step"
 slug: "microsoft-copilot-studio-invoke-agents-as-workflow-steps-with-the-agent-node"
-roadmapId: 562222
+roadmapId: 566998
 topic: "copilot-studio"
 products: ["Microsoft Copilot (Microsoft 365)","Microsoft Copilot Studio"]
 summary: "Makers can add an agent node to a Copilot Studio workflow so an AI agent decides and acts mid-flow. It uses Copilot Credits and no switch dedicated to the node is documented, so administrators should review credit and tool controls."
@@ -22,8 +22,8 @@ licensing:
 audiences: ["power-platform-admin","finops","maker","service-owner"]
 tags: ["copilot-studio","agents","automation","tools","mcp","knowledge-grounding","work-iq","human-in-the-loop","agent-evaluation","copilot-credits","usage-based-billing","copilot-harness"]
 sources:
-  - title: "Microsoft 365 Roadmap 562222"
-    url: "https://www.microsoft.com/microsoft-365/roadmap?id=562222"
+  - title: "Microsoft 365 Roadmap 566998"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=566998"
     kind: "roadmap"
   - title: "Add an agent node to a workflow (Microsoft Copilot)"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow"
@@ -71,7 +71,7 @@ controls:
       kind: "power-platform-api"
       call: "PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01"
       docs: "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations"
-    note: "The request body sets allocatedEntitlements[].entitlementId to MCSMessages and allocatedEntitlements[].enforcementRules[] to ruleType TenantPool with enabled false."
+    note: "The request body sets allocatedEntitlements[].entitlementId to MCSMessages and enforcementRules[] to ruleType TenantPool with enabled false; allocatedEntitlements[].allocation.quantity sets the credits allocated to the environment."
   - governs: "Credit consumption by workflow and environment"
     scope: "environment"
     ui:
@@ -99,7 +99,7 @@ controls:
 confidence: "medium"
 created: "2026-11-16"
 updated: "2026-11-19"
-roadmapModified: "2026-11-17T00:31:56"
+roadmapModified: "2026-10-26T23:15:50"
 changes:
   - date: "2026-11-16"
     note: "First briefing for this item: documents the agent node, its credit billing and the environment-level cost controls; no agent-node admin switch is documented."
@@ -193,19 +193,23 @@ changes:
     note: "Re-read the Learn pages on 19 November 2026: status, dates, credit billing, controls and default state are unchanged."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 92 statements not yet confirmed"
-version: 26
+  - date: "2026-11-19"
+    note: "Corrected after verification: the credit-allocation row's note now names the request-body property that sets the credits allocated to the environment."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 100 statements confirmed"
+version: 27
 verification:
-  status: "verified-with-gaps"
+  status: "verified"
   date: "2026-11-19"
-  version: 26
+  version: 27
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 92
-  confirmed: 92
+  claims: 100
+  confirmed: 100
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "c22e679cbc1453f6b4bc2860efff7d5f"
+  hash: "425d63d56d9c160b9fd4790d0892e779"
 ---
 
 ## What's changing
@@ -284,7 +288,7 @@ The existing-agent picker lists published agents; alternatively, makers can defi
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Prepaid Copilot Credits per environment and whether it can draw from the tenant pool</strong><br><small>Environment</small><br><small class="controls__note">The request body sets allocatedEntitlements[].entitlementId to MCSMessages and allocatedEntitlements[].enforcementRules[] to ruleType TenantPool with enabled false.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Manage Copilot Credits › environment › Capacity overages › Draw from the available capacity in my tenant <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Prepaid Copilot Credits per environment and whether it can draw from the tenant pool</strong><br><small>Environment</small><br><small class="controls__note">The request body sets allocatedEntitlements[].entitlementId to MCSMessages and enforcementRules[] to ruleType TenantPool with enabled false; allocatedEntitlements[].allocation.quantity sets the credits allocated to the environment.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Manage Copilot Credits › environment › Capacity overages › Draw from the available capacity in my tenant <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Credit consumption by workflow and environment</strong><br><small>Environment</small><br><small class="controls__note">Review the Agent flow actions used by each workflow. The documented API is deprecated and returns environment resource consumption snapshots; the reference does not promise a workflow-level breakdown.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Copilot Studio <a href="https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>GET https://api.powerplatform.com/licensing/entitlements/MCSMessages/environments/&lt;environment ID&gt;/resources?fromDate=&lt;start date&gt;&amp;toDate=&lt;end date&gt;&amp;api-version=2024-10-01</code> <a href="https://learn.microsoft.com/rest/api/power-platform/licensing/entitlement-insight/get-environment-resources" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Escalation to a person when the agent is unsure</strong><br><small>Agent</small><br><small class="controls__note">Per-node maker setting. The agent emails the connection owner and waits for a reply. No central enforcement setting is documented as of November 2026.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Workflows › workflow › Build › Add panel › Agent › Request human assistance when unsure <a href="https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/agent-node-workflow" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Switch dedicated to turning the agent node off</strong><br><small>Tenant</small><br><small class="controls__note">No setting dedicated to the agent node is documented at the time of writing (November 2026). Data policy and Work IQ MCP policy are described below the table.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
@@ -310,10 +314,4 @@ Three platform controls exist outside the table. Data policies govern Power Plat
 risk: Medium. The agent picks at run time which attached tools and connector actions to call, and Microsoft Learn documents no switch dedicated to the node itself.
 cost: Variable. Workflow actions and the agent node's use consume Copilot Credits, billed to the environment, and no rate specific to the agent node is published.
 impact: Medium. Makers who build workflows notice it first; the people who feed or receive the workflow's output see decisions made by an agent instead of a fixed rule.
--->
-
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].api; controls[0].note; Governance controls / command: PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 sets the environment allocation and TenantPool enforcement rule. | Found: allocation       = @{ quantity = 5000 } @{ ruleType = "TenantPool"; enabled = $false } Invoke-RestMethod -Method Put ` -Uri "$apiBaseUrl/licensing/allocationsV2?api-version=$apiVersion" | Fix: Keep the call. Add this sentence to controls[0].note and its rendered counterpart: 'allocatedEntitlements[].allocation.quantity sets the number of credits allocated to the environment.' The property is documented at https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations and already appears in the prose example. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
 -->

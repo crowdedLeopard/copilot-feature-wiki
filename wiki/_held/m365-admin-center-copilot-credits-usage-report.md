@@ -102,18 +102,20 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 73 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-18"
+  status: "held"
+  date: "2026-11-19"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 64
+  claims: 73
+  confirmed: 72
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "66e325c262808fb612acdcb87a72d755"
 ---
 
@@ -203,8 +205,12 @@ cost: Low. The Credits report page states no separate price for the report, so t
 impact: Low. Administrators and finance teams who manage pay-as-you-go for Copilot Chat notice it; end users do not.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[2].note; Governance controls table and final paragraph / applicability: The userUsageRecords API supports delegated work or school permissions only. | Found: | Application | CopilotCostManagement-UserData.Read.All | CopilotCostManagement.Read.All | | Fix: In controls[2].note and the rendered note, replace 'delegated permissions only' with 'delegated work or school and application permissions in the Graph permission model, subject to deployment availability and authorization'. In the final Governance controls paragraph, replace 'supports delegated work or school permissions only' with 'lists delegated work or school and application permissions in the Graph permission model, subject to deployment availability and authorization'. The cited operation's Permissions section and https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview#permission-availability-and-authorization give these qualifications. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/costmanagementuserusagerecord-list
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
 - [supported, minor] What's changing: rollout completion / record: The notice's rollout completes by the end of May 2027, previously the end of January. | Found: and expect to complete by end of May 2027 (previously end of January). | Fix: Replace 'and completes by the end of May 2027 (previously end of January)' with 'and is expected to complete by the end of May 2027 (previously end of January)'.
+- [supported, minor] controls[0].ui; What's changing; Governance controls table / admin-path: The report is at Microsoft 365 admin center > Reports > Usage > Microsoft Copilot > Credits. | Found: In the navigation menu, select Reports. If you don't see Reports, select Show all, and then select Reports. 3. Select Usage. 4. On the Usage page, under Reports, select Microsoft Copilot, and then select Credits. | Fix: Include the nonselectable Reports heading on the Usage page: set controls[0].ui.path to 'Reports > Usage > Reports > Microsoft Copilot > Credits' and use that same path in What's changing and the rendered controls table. | Source: https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits
+- [supported, minor] controls[1].api; controls[1].note; Governance controls table / command: PATCH /beta/admin/reportSettings with displayConcealedNames set to true updates tenant-wide report concealment. | Found: PATCH https://graph.microsoft.com/beta/admin/reportSettings Content-Type: application/json Content-length: 37 { "displayConcealedNames": true } | Fix: Set controls[1].api.call and the rendered call to 'PATCH /beta/admin/reportSettings'. Replace its note with 'Beta API, not supported for production applications. The request body sets displayConcealedNames: true conceals user, group and site names; false shows them.' | Source: https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta
 -->

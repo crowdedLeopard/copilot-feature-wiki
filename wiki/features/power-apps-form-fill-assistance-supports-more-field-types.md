@@ -43,6 +43,12 @@ sources:
   - title: "Create and edit columns in Dataverse using Power Apps"
     url: "https://learn.microsoft.com/power-apps/maker/data-platform/create-edit-field-portal"
     kind: "learn"
+  - title: "Add the rich text editor control to a model-driven app"
+    url: "https://learn.microsoft.com/power-apps/maker/model-driven-apps/rich-text-editor-control"
+    kind: "learn"
+  - title: "Customize the command bar using command designer"
+    url: "https://learn.microsoft.com/power-apps/maker/model-driven-apps/use-command-designer"
+    kind: "learn"
 videos: []
 related: ["power-apps-form-fill-assistance-using-m365-files-in-model-driven-apps","power-apps-form-fill-assistance-using-speech-as-input-in-model-driven-apps","managed-environments"]
 controls:
@@ -58,7 +64,7 @@ controls:
     scope: "app"
     ui:
       surface: "Power Apps (maker)"
-      path: "Settings > Features > Form fill assist toolbar"
+      path: "Solutions > solution > app > Edit > Settings > Features > Form fill assist toolbar"
       docs: "https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties"
     api:
       kind: "other"
@@ -75,7 +81,7 @@ controls:
     note: "Maker-side. The column page marks this property as preview and does not say it covers the new field types."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-19"
 roadmapModified: "2026-11-17T18:36:41"
 changes:
   - date: "2026-11-18"
@@ -84,19 +90,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 65 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-19"
+    note: "Corrected after the independent check: rich text fields are described as allowing formatted text, and the per-app toolbar path now starts at Solutions and opens the app designer."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 72 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
-  confirmed: 63
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 1
-  hash: "3b643af97fe4e6d49ea86210d0cda1d3"
+  claims: 72
+  confirmed: 72
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "7f93cb8a0e590125b5c6527c2317c39c"
 ---
 
 ## What's changing
@@ -109,7 +119,7 @@ The roadmap status is In development, with a target of December CY2026 and relea
 
 ## Why it matters
 
-Wider field coverage means suggestions can reach the fields where a wrong value costs most: lookups point at other tables, and rich text fields hold longer free-form content. Learn says every suggestion needs the user's explicit acceptance, so the practical exposure is accepted-but-wrong data and the review effort that implies, not silent writes.
+Wider field coverage means suggestions can reach the fields where a wrong value costs most: lookups point at other tables, and rich text fields allow formatted text ([rich text editor control](https://learn.microsoft.com/power-apps/maker/model-driven-apps/rich-text-editor-control)). Learn says every suggestion needs the user's explicit acceptance, so the practical exposure is accepted-but-wrong data and the review effort that implies, not silent writes.
 
 Microsoft has not stated what happens on arrival for the new field types. The documented Default setting for Power Apps model-driven apps is off, but Learn does not say whether the new types follow the same setting, so plan on today's settings continuing to apply and check them rather than assuming nothing changes. The licence statement also matters for budgeting, because Learn says users without the required licence do not see the feature.
 
@@ -162,7 +172,7 @@ Rollout: the roadmap item gives the Monthly release channel. Prerequisites on Le
 ### At rollout
 
 - Test one main form and one quick create form in a non-production environment once Microsoft Learn lists the new field types, and note which fields receive suggestions.
-- Check the form fill assist toolbar setting for the apps that need an override, in the app designer under Settings > Features.
+- Check the form fill assist toolbar setting for the apps that need an override, in the app designer (Solutions > solution > app > Edit) under Settings > Features.
 
 ### After rollout
 
@@ -177,7 +187,7 @@ Rollout: the roadmap item gives the Monthly release channel. Prerequisites on Le
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether form fill assistance is available in an environment</strong><br><small>Environment</small><br><small class="controls__note">Learn says this control is moving here and is rolling out gradually. The older Environment &gt; Settings &gt; Product &gt; Features location is described as removed.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Power Apps › Data entry <a href="https://learn.microsoft.com/power-apps/user/form-filling-assistance" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Form fill assist toolbar for one model-driven app</strong><br><small>App</small><br><small class="controls__note">Maker-side, per app. Learn names the settings FormPredictSmartPasteEnabled and FormFileUploadEnabled; the API row is the general client API for setting values.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Settings › Features › Form fill assist toolbar <a href="https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Xrm.Utility.getGlobalContext().saveSettingValue(settingName, value, saveSettingOptions)</code> <a href="https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/get-update-setting-value-using-code" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Form fill assist toolbar for one model-driven app</strong><br><small>App</small><br><small class="controls__note">Maker-side, per app. Learn names the settings FormPredictSmartPasteEnabled and FormFileUploadEnabled; the API row is the general client API for setting values.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Solutions › solution › app › Edit › Settings › Features › Form fill assist toolbar <a href="https://learn.microsoft.com/power-apps/maker/model-driven-apps/app-properties" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Xrm.Utility.getGlobalContext().saveSettingValue(settingName, value, saveSettingOptions)</code> <a href="https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/get-update-setting-value-using-code" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which Dataverse columns can receive suggestions</strong><br><small>Maker</small><br><small class="controls__note">Maker-side. The column page marks this property as preview and does not say it covers the new field types.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>Tables › table › Columns › column › Allow form fill assistance (preview) <a href="https://learn.microsoft.com/power-apps/maker/data-platform/create-edit-field-portal" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -201,9 +211,8 @@ cost: Medium. Learn says Power Apps model-driven app users need a Power Apps pre
 impact: Medium. Users of model-driven apps where form fill assistance is switched on would see suggestions on more kinds of field; Learn says the default for Power Apps users is off.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: Rich text fields hold longer free-form content. | Found: Searched: Power Apps rich text editor formatted text lookup columns related table; rich text It lets you create paste. Read rich-text-editor-control: it describes formatted text, not a comparative content length. | Fix: Replace 'rich text fields hold longer free-form content' with 'rich text fields allow formatted text' and cite https://learn.microsoft.com/power-apps/maker/model-driven-apps/rich-text-editor-control.
-- [contradicted, blocker] controls[1].ui; Governance guidance: At rollout; Governance controls / admin-path: Settings > Features > Form fill assist toolbar is the route from the Power Apps maker portal to the per-app toolbar control. | Found: On the left navigation pane, select Solutions. ... Open the solution containing the existing model-driven app. ... Select the model-driven app, and then select ... > Edit to open the modern app designer. | Fix: Replace controls[1].ui.path and its rendered route with 'Solutions > solution > app > Edit > Settings > Features > Form fill assist toolbar'. Cite https://learn.microsoft.com/power-apps/maker/model-driven-apps/use-command-designer for opening the designer, keeping app-properties as the control's docs link. | Source: https://learn.microsoft.com/power-apps/maker/model-driven-apps/use-command-designer
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[1].ui; Governance guidance / admin-path: The per-app toolbar route is Solutions > solution > app > Edit > Settings > Features > Form fill assist toolbar. | Found: Select the model-driven app, and then select ... > Edit to open the modern app designer. | Fix: Include the omitted more-options step: 'Solutions > solution > app > ... > Edit > Settings > Features > Form fill assist toolbar'. The entry route is in https://learn.microsoft.com/power-apps/maker/model-driven-apps/use-command-designer; Settings > Features and the toolbar option are in the already-cited app-properties page. Apply the same route in Governance guidance. | Source: https://learn.microsoft.com/power-apps/maker/model-driven-apps/use-command-designer
 -->

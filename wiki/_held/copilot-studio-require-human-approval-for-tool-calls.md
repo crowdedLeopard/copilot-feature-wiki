@@ -86,18 +86,20 @@ changes:
     note: "Corrected after verification: default state is now unknown, and the Approve for the session and authentication/input-collection statements are narrowed to what the roadmap says."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 52 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 58 statements contradicted, 1 unconfirmed; taken offline until corrected"
 version: 4
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-19"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 51
+  claims: 58
+  confirmed: 53
   unconfirmed: 1
-  contradicted: 0
-  attempts: 0
+  contradicted: 4
+  attempts: 1
   hash: "b89d9fa679cdda0d6d507ffffda19930"
 ---
 
@@ -199,9 +201,14 @@ cost: Low. The only cost known is maker and admin time to decide which tools to 
 impact: Medium. Makers must adopt it tool by tool, and users of gated agents in Microsoft Teams and Microsoft 365 Copilot will see approval requests.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[1].ui; Governance controls row 2 / admin-path: The existing setting is at Tools > tool > Details > Additional details > Ask the end user before running. | Found: The configuration page has three sections: Details, Inputs, and Completion. ... Details ... Ask the end user before running | Asks the user to confirm before the tool runs. | Fix: Replace the path in front matter and the table with 'Agents > agent > Tools > tool > Details > Ask the end user before running'. The cited page puts the setting directly under Details, not Additional details, and gives Agents > agent as the entry route. | Source: https://learn.microsoft.com/microsoft-copilot-studio/add-tools-custom-agent
+- [contradicted, blocker] front matter: licensing.model and notes; Cost and licensing / Licence / licensing: The licensing model is unknown because no licence has been published for this toggle. | Found: To use Copilot Studio, you need one of the following configurations: ... Copilot Studio user license (free). ... Copilot Studio authors role in Power Platform admin center. ... Microsoft 365 Copilot license ... trial license. | Fix: Set licensing.model to 'mixed'. Replace the wholly unknown entitlement wording with: 'General Copilot Studio entitlement applies: a Copilot Studio user license with a tenant prepaid Copilot Credit pack subscription, the Copilot Studio authors role for applicable pay-as-you-go scenarios, a Microsoft 365 Copilot license, or a trial license (which cannot publish agents). No additional approval-specific requirement was found.' Cite https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing in sources. Keep the narrower uncertainty about approval-specific billing. | Source: https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing
+- [contradicted, blocker] controls[3].ui; Governance controls row 4 / admin-path: Security > Data and privacy > Data policy > New Policy is the route to controlling which connectors can be used. | Found: The Add an environment page appears. ... select the environment in the Available tab, and then select Add to policy. ... The Assign connectors page appears. ... To prevent agent makers from using the features associated with the connector, select Block. | Fix: Replace the UI path with 'Security > Data and privacy > Data policy > New Policy > Add an environment > Available > environment > Add to policy > Assign connectors > connector > Block'. The current path enters policy creation but omits the environment choice and connector-blocking control documented on the cited page. Apply the same replacement in the rendered table. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
+- [contradicted, blocker] controls[3].api; Governance controls row 4 / command: New-DlpPolicy -DisplayName <String> -EnvironmentType <String> automates the connector-blocking control. | Found: The New-DlpPolicy cmdlet creates a new DLP policy for the logged in admin's tenant. | Fix: Replace the call with 'Add-ConnectorsToPolicy -PolicyName <policy-guid> -Classification Blocked -Connectors <connector-objects>' in Microsoft.PowerApps.Administration.PowerShell, and replace docs with https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest. Add to the row note: 'Moves the supplied connectors into the policy's Blocked group; each connector object requires id, type and name.' The reference documents these parameters and permits Classification Blocked. Update the table and sources consistently. | Source: https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/new-dlppolicy?view=pa-ps-latest
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters / behaviour: A prompt instruction asking for confirmation is not a substitute for system-enforced behaviour. | Found: Use agent instructions for summarization and conversational flow, not for system-level behaviors. | Fix: Add https://learn.microsoft.com/microsoft-copilot-studio/guidance/generative-mode-guidance to sources for the instructions-versus-enforcement distinction in Why it matters. | Source: https://learn.microsoft.com/microsoft-copilot-studio/guidance/generative-mode-guidance#agent-instructions-and-behavior
-- [unsupported, minor] rationale: risk / behaviour: The feature adds no new data access. | Found: Searched: Copilot Studio human approval data access. Read the roadmap and both harnesses' tool pages; reviewed Application Card safety and limitations excerpts. None states the new approval feature's data-access implications. | Fix: Remove 'and no new data access' from the risk rationale. The roadmap establishes that this is a guardrail, but does not specify its data-access implications.
+- [supported, minor] Why it matters / behaviour: Prompt instructions asking for confirmation are not a substitute for system-enforced behaviour. | Found: Use agent instructions for summarization and conversational flow, not for system-level behaviors. | Fix: Add https://learn.microsoft.com/microsoft-copilot-studio/guidance/generative-mode-guidance to sources for the instructions-versus-enforcement distinction. | Source: https://learn.microsoft.com/microsoft-copilot-studio/guidance/generative-mode-guidance#agent-instructions-and-behavior
+- [unsupported, minor] rationale: risk / behaviour: The new approval feature adds no new data access. | Found: Searched: "Copilot Studio" "human approval" "data access". Read roadmap, both harnesses' tool pages and Application Card safety and limitations excerpts; none establishes this toggle's data-access implications. | Fix: Remove 'and no new data access' from the risk rationale. The roadmap establishes that the feature adds a guardrail, not that it has no data-access implications.
 -->

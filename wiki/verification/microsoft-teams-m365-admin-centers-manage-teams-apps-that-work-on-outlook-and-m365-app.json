@@ -1,0 +1,786 @@
+{
+  "slug": "microsoft-teams-m365-admin-centers-manage-teams-apps-that-work-on-outlook-and-m365-app",
+  "roadmapId": 393931,
+  "title": "Teams and Microsoft 365 admin centers: unified management of Teams apps and agents across Teams, Outlook and the Microsoft 365 app",
+  "status": "held",
+  "date": "2026-11-19",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-19",
+    "reasons": [
+      "3 blocking findings (claims 17, 49, 51)"
+    ]
+  },
+  "counts": {
+    "claims": 54,
+    "confirmed": 50,
+    "unconfirmed": 0,
+    "contradicted": 4,
+    "blocker": 3,
+    "major": 0,
+    "minor": 6
+  },
+  "summary": "Hold: the default-state field incorrectly presents unification as requiring administrator opt-in for everyone, although unchanged tenants unify automatically. The Microsoft 365 admin center control also stops at the Integrated apps landing page rather than the availability setting and cites instructions for Office add-ins.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "Management of Teams apps that work in Outlook and the Microsoft 365 app is unified across the three clients.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "With this change, management of these apps will be unified across Teams, Outlook and Microsoft 365 App.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing: previous Microsoft 365 admin center behaviour",
+      "type": "record",
+      "claim": "Before this update, Integrated Apps changes affected these apps only in Outlook and the Microsoft 365 app.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Before this update, changes made through the Integrated Apps section in the Microsoft 365 admin center would only affect these apps on Outlook and the Microsoft 365 App",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing: previous Teams admin center behaviour",
+      "type": "record",
+      "claim": "Before this update, changes made in the Teams admin center affected only Teams.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "similarly, changes made in the Teams admin center would exclusively affect Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is July CY2024.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2024\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Desktop.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-11-19T01:58:21.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-19T01:58:21\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Why it matters; Risk assessment; controls notes; rationale: risk",
+      "type": "behaviour",
+      "claim": "After unification, org-wide settings, app status and availability changes synchronize automatically in both directions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/uam-tac-mac",
+      "quote": "After your tenant is unified, all changes to org-wide settings, agent app, status, or availability in TAC are automatically synchronized in MAC and vice versa.",
+      "severity": "minor",
+      "fix": "Add: 'The cross-application app guide still describes separate Teams and Microsoft 365 admin center settings; the unified-management guide describes synchronization after tenant unification.' Cite https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365 alongside the existing unified-management source."
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing; Why it matters; Scope",
+      "type": "default",
+      "claim": "Tenants that never modified org-wide defaults, app availability or block/unblock settings in either center unify automatically.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/uam-tac-mac",
+      "quote": "If your tenant never modified its org-wide defaults, app availability, or app block or unblock settings in either TAC or MAC, then your tenant's app availability policies are automatically unified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; What's changing; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Modified tenants can initiate unification using Move to unified app management on Manage apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/uam-tac-mac",
+      "quote": "Go to Teams apps > Manage apps. Select Move to unified app management. A dialog box appears to ask for your consent to move to the unified agent and app management experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The alignment wizard lets administrators resolve differences using a chosen center's settings, including bulk app resolution.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/uam-tac-mac",
+      "quote": "Bulk app resolution: Select multiple apps at a time and select either Teams admin center or Microsoft 365 admin center from the Apply settings from drop-down list.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment; Scope; Governance guidance; controls[0].note",
+      "type": "role",
+      "claim": "Only a Global admin can give consent and apply the final unification changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/uam-tac-mac",
+      "quote": "Only a Global admin can give consent and apply the final changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance: At rollout",
+      "type": "role",
+      "claim": "Teams or Global admins can prepare updates through Review summary before final consent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/uam-tac-mac",
+      "quote": "Any Teams or Global admin can make updates upto the Review summary page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing: MC796790 update date",
+      "type": "record",
+      "claim": "MC796790 was last updated on 18 November 2026.",
+      "status": "contradicted",
+      "source": "Message Center post MC796790",
+      "quote": "Published 2024-05-29; last updated 2026-11-19; Microsoft's end date 2026-12-31",
+      "severity": "blocker",
+      "fix": "Replace 'last updated 18 November 2026' with 'including a text update dated 18 November 2026'. The supplied notice metadata says last updated 19 November 2026, while the notice body begins 'Updated November 18, 2026'."
+    },
+    {
+      "n": 18,
+      "where": "What's changing: Phase 1",
+      "type": "record",
+      "claim": "Phase 1 rollout for never-modified tenants began in late September 2025.",
+      "status": "supported",
+      "source": "Message Center post MC796790",
+      "quote": "App and agent availability unification (Section A): Rollout began in late September 2025.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing: Phase 2",
+      "type": "record",
+      "claim": "Phase 2 for modified tenants is described as fully rolled out.",
+      "status": "supported",
+      "source": "Message Center post MC796790",
+      "quote": "This phase has been fully rolled out to all tenants. Tenants can choose to align through the wizard experience available in Teams admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "During Phase 2, org-wide and app-level settings do not change without administrator action.",
+      "status": "supported",
+      "source": "Message Center post MC796790",
+      "quote": "In this phase, no changes will be applied to org-wide settings or app-level settings without administrator action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Why it matters; Risk assessment; Scope; rationale: risk",
+      "type": "record",
+      "claim": "Phase 3 will automatically unify availability for tenants that have not acted.",
+      "status": "supported",
+      "source": "Message Center post MC796790",
+      "quote": "Tenants that have not taken action to unify availability through the wizard experience released in Phase 1 and Phase 2 will have their availability automatically unified across MAC and TAC as part of this phase.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Governance guidance: After rollout; Open questions",
+      "type": "record",
+      "claim": "Microsoft promises the Phase 3 timeline and details at least 60 days before it starts.",
+      "status": "supported",
+      "source": "Message Center post MC796790",
+      "quote": "We will inform customers of the timeline and additional details at least 60 days in advance before this phase begins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Why it matters; Scope; Open questions; rationale: risk",
+      "type": "record",
+      "claim": "The supplied notice does not announce a Phase 3 start date.",
+      "status": "supported",
+      "source": "Message Center post MC796790",
+      "quote": "Phase 3 – Automatic Unification (Future)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing: unified installation management",
+      "type": "record",
+      "claim": "Unified app and agent installation management is generally available.",
+      "status": "supported",
+      "source": "Message Center post MC796790",
+      "quote": "Updated November 18, 2026: Unified app and agent installation management is now generally available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Scope: Which tenants",
+      "type": "record",
+      "claim": "Installation unification applies automatically to tenants whose availability has been unified.",
+      "status": "supported",
+      "source": "Message Center post MC796790",
+      "quote": "Tenants that unify their availability later will receive this capability automatically once unified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "record",
+      "claim": "Installations synchronize across the centers within 24 to 48 hours after availability unification.",
+      "status": "supported",
+      "source": "Message Center post MC796790",
+      "quote": "app and agent installations are also unified across the Microsoft 365 admin center (MAC) and Teams admin center (TAC) within 24–48 hours of completing availability unification.",
+      "severity": "minor",
+      "fix": "In both occurrences, qualify installations as 'supported app and agent installations'. The same notice states: 'Existing installation assignments for supported apps and agents will be synchronized across both admin centers.'"
+    },
+    {
+      "n": 27,
+      "where": "What's changing: associated roadmap items",
+      "type": "record",
+      "claim": "MC796790 associates roadmap items 393931, 485712 and 503105.",
+      "status": "supported",
+      "source": "Message Center post MC796790",
+      "quote": "This message is associated with Microsoft 365 Roadmap ID 393931, 485712 and 503105.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters: manual synchronization",
+      "type": "behaviour",
+      "claim": "Microsoft advises keeping settings synchronized manually until the tenant migrates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "Until your tenant is migrated to unified app management, ensure that the settings in both admin centers, such as blocked apps or org-wide app settings, remain synchronized.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "The feature documentation describes availability and installation changes but no new data access.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"unified app management\" \"data\" permissions'; read uam-tac-mac, manage-apps and MC796790. Their unification descriptions cover settings and installation synchronization, not new data permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Microsoft's unification page describes no approval step for each subsequent synchronized change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Move to unified app management\" API' and '\"unified app management\" \"PowerShell\"'; read uam-tac-mac in full. Consent is documented for the move; subsequent settings changes are described as automatically synchronized.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Change & support",
+      "type": "record",
+      "claim": "Microsoft's notice says app installation is no longer managed through Teams app setup policies.",
+      "status": "supported",
+      "source": "Message Center post MC796790",
+      "quote": "Important: App installation is no longer managed through Teams app setup policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Installations previously made through Teams app setup policies are not unified by this change.",
+      "status": "supported",
+      "source": "Message Center post MC796790",
+      "quote": "Installations previously made through those policies are not unified as part of this change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Availability changes take up to 24 hours to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "It takes up to 24 hours for the availability changes to take effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "In rare cases availability changes take up to six days to appear in the client.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "In rare cases, it might take up to six days for the changes to reflect in the client.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A licensing entitlement specifically covering unified app and agent management is not published in the documentation found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: unified agent app management licensing requirements price license meter Teams admin center; '\"Teams admin center\" prerequisites license administrator required'. Read uam-tac-mac, manage-apps, user-access excerpts and licensing-enhance-teams references; no unification entitlement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The researched Microsoft pages state no separate meter for unified management.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: unified agent app management licensing requirements price license meter Teams admin center. Read uam-tac-mac, manage-apps, MC796790 and Teams licensing search results; no unified-management meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing: third-party app fees",
+      "type": "licensing",
+      "claim": "Individual third-party apps can have their own publisher-defined licenses and fees.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/purchase-third-party-apps",
+      "quote": "Some apps may have a Private plan. Private plans are special pricing that your organization can separately negotiate with an app developer.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoftteams/purchase-third-party-apps to sources for the sentence about individual third-party app licenses and fees."
+    },
+    {
+      "n": 38,
+      "where": "Scope: Which apps",
+      "type": "behaviour",
+      "claim": "Developers can enhance Teams apps to work in Outlook and the Microsoft 365 app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/apps-in-teams",
+      "quote": "App developers can enhance their Microsoft Teams apps to work in Outlook and in Microsoft 365 App (formerly known as Office.com).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Administrators can export the app catalog from the Teams admin center for status and availability review.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "As an admin, you can export the entire agent and app catalog for your org from the Teams admin center. It can help you to coordinate with admin and security teams to evaluate agents and apps, verify availability, verify status, and more.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[0].ui; Governance controls table; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The move to unified management is reached through Teams apps > Manage apps > Move to unified app management in TAC.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/uam-tac-mac",
+      "quote": "Go to Teams apps > Manage apps. The Manage apps page appears. Select Move to unified app management. The Align org-wide app settings page appears.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[0].api; Governance controls prose; Open questions",
+      "type": "absence",
+      "claim": "No PowerShell or API operation for initiating tenant unification was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: unified app management move unification PowerShell Microsoft Graph API tenant migration status; '\"Move to unified app management\" API'. Read uam-tac-mac and Teams PowerShell release-note excerpts; found app-management cmdlets, not a move operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "An app can be allowed or blocked through Teams apps > Manage apps > app > Allow or Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "Sign in to the Teams admin center and access Teams apps > Manage apps. Select the app on the Manage apps page and select Allow or Block option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].api; Governance controls table and prose",
+      "type": "command",
+      "claim": "The MicrosoftTeams module documents Update-M365TeamsApp -Id <app ID> -IsBlocked $true for changing app state.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Per-app availability is reached through Teams apps > Manage apps > app > Users and groups > Availability > Edit availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "Select the Users and groups tab. Under Select to manage who this app is installed for or available to in your organization, select Availability. Select Edit availability.",
+      "severity": "minor",
+      "fix": "Include the omitted heading: 'Teams apps > Manage apps > app > Users and groups > Select to manage who this app is installed for or available to in your organization > Availability > Edit availability'."
+    },
+    {
+      "n": 45,
+      "where": "controls[2].api; Governance controls table and prose",
+      "type": "command",
+      "claim": "Update-M365TeamsApp supports -Id, -AppAssignmentType UsersAndGroups, -OperationType Add and -Groups to add group availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "This cmdlet allows administrators to modify app state, availability and installation status by adding or removing users and groups or changing assignment type or installation status.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[2].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "App availability cannot be updated in bulk in TAC but can be updated in bulk through PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+      "quote": "You can't update app availability in bulk in Teams admin center, but you can do so through PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[3].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The org-wide Custom apps setting is under Teams apps > Manage apps > Actions > Org-wide app settings > Custom apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "On Manage apps page, under the Actions menu, select Org-wide app settings. Under Custom apps, turn off or turn on Let users install and use available apps by default option.",
+      "severity": "minor",
+      "fix": "Complete the path with the switch label: 'Teams apps > Manage apps > Actions > Org-wide app settings > Custom apps > Let users install and use available apps by default'."
+    },
+    {
+      "n": 48,
+      "where": "controls[3].api and note; Governance controls table and prose",
+      "type": "command",
+      "claim": "The MicrosoftTeams cmdlet Set-CsTeamsSettingsCustomApp -isSideloadedAppsInteractionEnabled $True enables the org-wide Custom Apps switch.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamssettingscustomapp",
+      "quote": "There is a switch for managing Custom Apps in the Org-wide App Settings page of Teams Admin Center. The command can set the value of this switch. If the isSideloadedAppsInteractionEnabled is set to true, the switch is enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[4].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Settings > Integrated apps is the complete MAC path to the app availability control, documented by the add-in management page.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365",
+      "quote": "Select Settings, then select Integrated Apps. Select the Available Apps list. Next, select the app you want to edit. This launches the app's overview pane. Scroll down and select Edit Users or select the Users tab in the overview pane.",
+      "severity": "blocker",
+      "fix": "Replace the row's UI path with 'Settings > Integrated Apps > Available Apps > app > Users > Specific users/group in the organization can install' and its docs URL with https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365. The existing Office add-in reference does not document Teams cross-application app availability. Retain the existing unification qualification and synchronization source."
+    },
+    {
+      "n": 50,
+      "where": "controls[4].api; Governance controls table",
+      "type": "absence",
+      "claim": "A separate MAC Integrated apps API for cross-application app availability was not found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft 365 Integrated apps unified management availability Microsoft Graph API PowerShell users groups block; '\"Integrated apps\" \"API\" \"availability\"'. Read manage-addins-in-the-admin-center and teams-apps-work-on-outlook-and-m365; found UI instructions, not a separate MAC API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The feature's overall default state is admin-opt-in.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/uam-tac-mac",
+      "quote": "If your tenant never modified its org-wide defaults, app availability, or app block or unblock settings in either TAC or MAC, then your tenant's app availability policies are automatically unified.",
+      "severity": "blocker",
+      "fix": "Set defaultState to 'on', not 'admin-opt-in'. Preserve the body qualification that never-modified tenants unify automatically, while modified tenants currently choose alignment in Phase 2 and are subject to future automatic Phase 3 unification."
+    },
+    {
+      "n": 52,
+      "where": "Governance controls prose: PowerShell calls in MAC",
+      "type": "absence",
+      "claim": "The cited cmdlet reference does not describe how each individual PowerShell call is displayed in MAC.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"unified app management\" \"PowerShell\"'; read Update-M365TeamsApp and Set-CsTeamsSettingsCustomApp references in full and uam-tac-mac. They document operations and general synchronization, not the MAC presentation of individual calls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: licensing.notes; Scope: Roles; Governance controls prose; Open questions",
+      "type": "role",
+      "claim": "The cited TAC management page names Teams Administrator, without supplying a role matrix for the MAC Integrated apps page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-apps",
+      "quote": "To use Teams admin center, you must have a Teams Administrator role. Some admins with a higher privilege role can accomplish agent and app governance tasks but we recommend using the lower privilege role where possible.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance: After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "Every control the governance checklist asks readers to check has a controls-table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Confirm installation assignments match in both centres'. Table rows cover moving to unification, allow/block, availability, Custom apps and MAC availability, but not installation assignments.",
+      "severity": "minor",
+      "fix": "Remove the checklist bullet 'Confirm installation assignments match in both centres, which Microsoft says synchronise within 24 to 48 hours of unified availability.' It has no installation-assignment row; retain the installation timing explanation in What's changing."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-19T04:09:57.918Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 5,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=393931",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC796790",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/uam-tac-mac",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/manage-apps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamssettingscustomapp",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-addins-in-the-admin-center",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/apps-in-teams",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Moving the tenant to unified agent and app management",
+        "docs": "https://learn.microsoft.com/microsoftteams/uam-tac-mac",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Manage apps",
+          "Move to unified app management"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether an individual Teams app or agent is allowed or blocked",
+        "docs": "https://learn.microsoft.com/microsoftteams/manage-apps",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Manage apps",
+          "Allow or Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether an individual Teams app or agent is allowed or blocked",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "reachable": true,
+        "token": "Update-M365TeamsApp",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which users and groups an app or agent is available to",
+        "docs": "https://learn.microsoft.com/microsoftteams/app-centric-management",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Manage apps",
+          "Users and groups",
+          "Availability",
+          "Edit availability"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Which users and groups an app or agent is available to",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "reachable": true,
+        "token": "Update-M365TeamsApp",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Whether custom apps can be uploaded and made available (org-wide Custom apps switch)",
+        "docs": "https://learn.microsoft.com/microsoftteams/manage-apps",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Manage apps",
+          "Actions",
+          "Org-wide app settings",
+          "Custom apps"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Whether custom apps can be uploaded and made available (org-wide Custom apps switch)",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamssettingscustomapp",
+        "reachable": true,
+        "token": "Set-CsTeamsSettingsCustomApp",
+        "found": true
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "App and agent availability from the Microsoft 365 admin center side",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/manage-addins-in-the-admin-center",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Integrated apps"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

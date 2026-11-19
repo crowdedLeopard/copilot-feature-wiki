@@ -112,18 +112,20 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 97 statements not yet confirmed"
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 101 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 107 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 4
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-18"
+  status: "held"
+  date: "2026-11-19"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 101
-  confirmed: 99
+  claims: 107
+  confirmed: 103
   unconfirmed: 0
-  contradicted: 2
-  attempts: 0
+  contradicted: 4
+  attempts: 1
   hash: "947406c10a0bbbbf4defb215beabd8c5"
 ---
 
@@ -233,9 +235,14 @@ cost: Variable. Business Central bills agent capabilities in Copilot Credits (pr
 impact: Low. Learn aims the designer at product owners, domain experts, consultants and developers working in sandboxes; most Business Central users will not see it in day-to-day work.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Governance controls: Create agent wizard permissions path / admin-path: The printed Agent > Create route proceeds directly to Permissions > Manage permissions without a wizard branch choice. | Found: In the Create agent wizard, choose whether to create a blank agent or use a template. ... To create a blank agent, choose Create agent from scratch ... Under Permissions, use Manage permissions | Fix: Replace the wizard-navigation sentence with: 'To configure a blank agent, select Agent > Create > Create agent from scratch. After entering its identity details, use Setup profile under Profile (role), and Manage permissions under Permissions.' This includes the required wizard choice documented at https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-agent-create. | Source: https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-agent-create
+- [contradicted, blocker] Governance controls: Create agent wizard profile path / admin-path: The printed Agent > Create route proceeds directly to Profile (role) > Setup profile without a wizard branch choice. | Found: In the Create agent wizard, choose whether to create a blank agent or use a template. ... To create a blank agent, choose Create agent from scratch ... Under Profile (role), use the Setup profile option | Fix: Use the same replacement for the shared wizard-navigation sentence: 'To configure a blank agent, select Agent > Create > Create agent from scratch. After entering its identity details, use Setup profile under Profile (role), and Manage permissions under Permissions.' Source: https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-agent-create. | Source: https://learn.microsoft.com/dynamics365/business-central/dev-itpro/ai/ai-development-toolkit-agent-create
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: At rollout, custom profiles / consistency: The checklist directs readers to configure agent profiles, but the controls table has no corresponding profile-control row. | Found: Create custom profiles for agents and restrict page actions and insert or delete rights before assigning them in the Create agent wizard. | The table covers capability activation, data movement and credit capacity, not agent profiles. | Fix: Remove the checklist item beginning 'Create custom profiles for agents'. Keep the documented profile behaviour and wizard path elsewhere; do not add a control row.
-- [contradicted, minor] Governance guidance: At rollout, permission sets / consistency: The checklist directs readers to grant agent permission sets, but the controls table has no corresponding agent-permissions row. | Found: Grant agents only the permission sets their task needs, remembering that each task runs with the intersection of the user's and the agent's permissions. | The table covers capability activation, data movement and credit capacity, not agent permission sets. | Fix: Remove the checklist item beginning 'Grant agents only the permission sets'. Keep the verified permissions discussion and wizard path elsewhere; do not add a control row.
+- [supported, minor] controls[2].ui; Governance controls / admin-path: Power Platform admin center > Licensing > Products > Copilot Studio > Summary > Prepaid capacity > Manage Capacity leads to credit allocation. | Found: Select Manage Capacity from the Prepaid capacity card. ... In the allocation panel, select an environment and specify the number of Copilot Credits to allocate in the Copilot Credits textbox. | Fix: Complete the path as 'Licensing > Products > Copilot Studio > Summary > Prepaid capacity > Manage Capacity > environment > Copilot Credits'. The printed navigation is correct; it omits only environment selection and the allocation field. | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity
+- [supported, minor] controls[2].api; Governance controls / command: PUT licensing/allocationsV2 with api-version=2024-10-01 writes an environment allocation using the printed scope and MCSMessages quantity properties. | Found: scope = @{ environmentId = $environmentId } ... entitlementId = "MCSMessages" ... allocation = @{ quantity = 5000 } ... Invoke-RestMethod -Method Put ... "$apiBaseUrl/licensing/allocationsV2?api-version=$apiVersion" | Fix: Replace the call with 'PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01'. Add to the note: 'The request body identifies scope.environmentId and sets allocatedEntitlements[].entitlementId to MCSMessages and allocatedEntitlements[].allocation.quantity to the credit allocation.' The printed body keys are correct, but the standard puts them in the note, not the call. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
+- [contradicted, minor] Governance guidance: At rollout, custom profiles / consistency: The checklist directs readers to configure agent profiles without a corresponding control row. | Found: Create custom profiles for agents and restrict page actions and insert or delete rights before assigning them in the Create agent wizard. | The table covers capability activation, data movement and credit capacity, not profile configuration. | Fix: Remove the checklist item beginning 'Create custom profiles for agents'. Retain the verified profile behavior elsewhere; do not add a control row.
+- [contradicted, minor] Governance guidance: At rollout, permission sets / consistency: The checklist directs readers to grant agent permission sets without a corresponding control row. | Found: Grant agents only the permission sets their task needs, remembering that each task runs with the intersection of the user's and the agent's permissions. | The table covers capability activation, data movement and credit capacity, not agent permission assignment. | Fix: Remove the checklist item beginning 'Grant agents only the permission sets'. Retain the verified permissions discussion elsewhere; do not add a control row.
 -->

@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "unknown"
 action: "prepare"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for this change. The Learn page for /mention lists no licence requirement."
+  model: "included"
+  notes: "Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible subscription plans. No separate licensing requirement for this label enhancement is documented; the Learn page for /mention names no licence."
 audiences: ["power-platform-admin","m365-admin","compliance"]
 tags: ["m365-copilot","copilot-chat","dataverse","dynamics-365","power-apps","power-platform-admin-center"]
 sources:
@@ -30,6 +30,9 @@ sources:
     kind: "learn"
   - title: "Manage feature settings"
     url: "https://learn.microsoft.com/power-platform/admin/settings-features"
+    kind: "learn"
+  - title: "License options for Microsoft Copilot"
+    url: "https://learn.microsoft.com/copilot/plan/copilot-license-options"
     kind: "learn"
 videos: []
 related: ["microsoft-dataverse-enable-semantic-data-understanding-for-agentic-use","work-iq"]
@@ -44,7 +47,7 @@ controls:
     note: "Controls /mention record search generally; no separate switch for the label format is documented."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-19"
 roadmapModified: "2026-10-16T19:09:06"
 changes:
   - date: "2026-11-18"
@@ -57,19 +60,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 45 statements confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 47 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-19"
+    note: "Corrected licensing: Microsoft Copilot is available with Microsoft 365 E7 or as an add-on; no separate requirement for this label enhancement is documented."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 46
+  claims: 58
+  confirmed: 58
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "0e599ad356b252ec240429404693ac3f"
+  contradicted: 0
+  attempts: 0
+  hash: "db56b1baa6da9f7ad3aa26d91b4be693"
 ---
 
 ## What's changing
@@ -108,7 +115,7 @@ The practical view is that this needs communication, not emergency action. Check
 
 ## Cost and licensing
 
-Microsoft has not published licensing for this change. The Learn page for /mention, "Use /mention to link to business records via Microsoft 365 Copilot", lists the Power Platform admin center setting as the step to enable it and names no licence and no meter. The roadmap record names none either.
+Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible subscription plans, per the Learn page "License options for Microsoft Copilot". No separate licensing requirement for this label enhancement is documented. The Learn page for /mention, "Use /mention to link to business records via Microsoft 365 Copilot", lists the Power Platform admin center setting as the step to enable it and names no licence and no meter. The roadmap record names none either.
 
 The cost the sources support is administrator time: reviewing the per-environment setting and telling users about the new labels. No charge for the setting itself is documented, and no separate meter is documented at the time of writing (November 2026).
 
@@ -134,7 +141,7 @@ The setting is configured per environment in the Power Platform admin center. Th
 ### After rollout
 
 - Test /mention with a user who does not have access to a sample record and confirm it is not offered.
-- Watch Message center and the /mention Learn page for a licensing statement or a tenant-level control.
+- Watch Message center and the /mention Learn page for a tenant-level control or a licensing statement specific to this enhancement.
 
 ## Governance controls
 
@@ -155,17 +162,17 @@ The setting is not specific to the new labels: it governs whether /mention offer
 
 - Is the Search for records in Microsoft 365 apps setting on by default for new and existing environments? The Manage feature settings page lists On, while the /mention page tells administrators to turn it on. Watch the Learn pages and Message center.
 - Does the new label include table information, as the roadmap says, or only environment, app and record name, as the Learn page says?
-- Does the feature need a Microsoft 365 Copilot licence, a Dynamics 365 or Power Apps licence, or neither? No licence is named for /mention.
+- Does this label enhancement carry a licensing requirement beyond Microsoft Copilot's own licensing, such as a Dynamics 365 or Power Apps licence? No such requirement is documented, and the /mention page names no licence.
 - Is there a PowerShell, Power Platform API or Dataverse setting that sets this control without the admin centre?
 
 <!-- rationale
 risk: Low. The change is the label text on records that the /mention setting already makes available; the sync of environment, app and record names that sits behind it is documented separately and is set per environment.
-cost: Low. The only cost the sources show is administrator time to review the per-environment setting; the Learn page for /mention names no licence or meter, and licensing for this change is not yet published.
+cost: Low. The only cost the sources show is administrator time to review the per-environment setting; Microsoft Copilot is available with Microsoft 365 E7 or as an add-on, and no licensing requirement specific to this enhancement is documented.
 impact: Medium. Users of Dynamics 365 and model-driven Power Apps who reference business records in Microsoft 365 Copilot will see the new labels; people who never use /mention will not notice.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost / licensing: The licensing model is unknown because Microsoft has not published which licence covers the change. | Found: Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans. | Fix: Set licensing.model to included for this label enhancement within Microsoft Copilot. Replace the broad unpublished-entitlement statements with: 'Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible subscription plans. No separate licensing requirement for this label enhancement is documented.' Cite https://learn.microsoft.com/copilot/plan/copilot-license-options. Keep the narrower statement that the /mention page itself names no licence; narrow the licensing open question and cost rationale to any requirement specific to this enhancement. | Source: https://learn.microsoft.com/copilot/plan/copilot-license-options
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Governance controls: final paragraph / applicability: Users' access to the underlying Dataverse records follows Dataverse security roles. | Found: A combination of access levels and permissions in a security role determines which apps and data users can view and how they can interact with those apps and data. | Fix: Add https://learn.microsoft.com/power-platform/admin/database-security to sources for the general claim about users' Dataverse security roles; the /mention page explicitly names security roles for the email recipient. | Source: https://learn.microsoft.com/power-platform/admin/database-security
 -->

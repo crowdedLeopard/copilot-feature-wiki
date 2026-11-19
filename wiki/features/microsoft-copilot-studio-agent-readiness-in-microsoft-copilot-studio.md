@@ -108,19 +108,23 @@ changes:
     note: "Corrected after verification: licensing model now consumption (Copilot harness usage-based billing, no individual Copilot Studio licence required), and the data policy control now names Set-DlpPolicy instead of the read-only Get-DlpPolicy."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 70 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-19"
+    note: "Corrected after verification: removed the statement that Microsoft Learn names no role for the guidance settings, and the matching role wording in Open questions."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 70 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 70
-  confirmed: 69
+  confirmed: 70
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "577cdce64446c0da7c5f38e776e498b0"
+  contradicted: 0
+  attempts: 0
+  hash: "9ee22629b1384b947f4b31a73d59ce01"
 ---
 
 ## What's changing
@@ -168,7 +172,7 @@ The maker guidelines setting is documented as available only for managed environ
 
 Review is described for agents powered by the Microsoft Copilot harness, shown to the maker in the Copilot Studio build experience. The roadmap record lists Worldwide (Standard Multi-Tenant) and the Web platform; it lists no other clouds, which is a record fact and not a statement that other clouds are excluded.
 
-The Agent status summary on the Overview page is documented for standard harness agents and marked prerelease. The guidance settings are configured in the Power Platform admin center per environment or environment group. Microsoft Learn names no role for these settings at the time of writing.
+The Agent status summary on the Overview page is documented for standard harness agents and marked prerelease. The guidance settings are configured in the Power Platform admin center per environment or environment group.
 
 ## Governance guidance
 
@@ -214,7 +218,7 @@ Learn documents two guidance settings in the Power Platform admin center: **Make
 - Does the Review panel on Microsoft Copilot harness agents and the Agent status summary on standard harness agents come from the same service, and which does the roadmap item cover? Watch the Learn pages and Message center.
 - How do Maker guidelines and Maker guidance interact when both are configured for one environment? Watch the maker guidelines Learn page.
 - Will Microsoft publish a licence or meter specific to Review, or a setting to hide it? Watch the Copilot Studio billing pages.
-- Are the guidance settings moving from preview to general availability, and with which roles and API support? Watch the Learn pages and What's new.
+- Are the guidance settings moving from preview to general availability, and with what API support? Watch the Learn pages and What's new.
 
 <!-- rationale
 risk: Low. Review reports issues to makers; no new data access is documented. Warnings do not stop publishing, so existing data policies remain the enforcement.
@@ -222,8 +226,8 @@ cost: Low. Microsoft Learn names no licence or meter for Review itself; the cost
 impact: Medium. Makers building agents on the Microsoft Copilot harness see the Review icon and disabled items, and their questions about policy blocks will reach admins.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Scope; Open questions: roles / absence: Microsoft Learn names no role for the guidance settings. | Found: After you create the environment group, Power Platform tenant administrators can immediately add managed environments or configure the group's rules. | Fix: Remove 'Microsoft Learn names no role for these settings at the time of writing.' Maker guidelines is explicitly an environment-group rule at https://learn.microsoft.com/power-platform/admin/environment-groups-rules, and https://learn.microsoft.com/power-platform/admin/environment-groups names Power Platform tenant administrators for configuring group rules. In the last Open questions bullet, replace 'with which roles and API support' with 'with what API support'. | Source: https://learn.microsoft.com/power-platform/admin/environment-groups
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Cost and licensing: managed-environments parenthetical / licensing: Managed environments have a licensing condition. | Found: When you activate managed environments in an environment, all active usage requires one of these standalone licenses or pay-as-you-go meters. | Fix: Add https://learn.microsoft.com/power-platform/admin/managed-environment-licensing to sources as 'Licensing requirements for managed environments' to support the existing reference to that tier's licensing condition. | Source: https://learn.microsoft.com/power-platform/admin/managed-environment-licensing
 -->

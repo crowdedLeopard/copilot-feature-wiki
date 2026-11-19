@@ -100,19 +100,23 @@ changes:
     note: "Corrected after the independent check: attribute access and staging paths now follow the documented CSV import example, Glint switch path completed, ingestion timing and manager hierarchy advice updated, notifications bullet removed."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 83 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-19"
+    note: "Corrected after the independent check: removed the advice to limit Global Administrator involvement to role assignment, as Learn says a global admin must provision the API connector the first time."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 92 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-19"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 83
-  confirmed: 82
+  claims: 92
+  confirmed: 92
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "bcc363b1117b022b19a4467640825f4e"
+  contradicted: 0
+  attempts: 0
+  hash: "da322f7d73e682dc89f00695ba45a7df"
 ---
 
 ## What's changing
@@ -167,7 +171,7 @@ Indirect costs are admin time and coordination between the Organizational Data S
 ## Governance guidance
 
 ### Before rollout
-- Assign the Organizational Data Source Administrator role to the named owner of employee data imports, and keep Global Administrator involvement to the assignment (controls table, role row).
+- Assign the Organizational Data Source Administrator role to the named owner of employee data imports (controls table, role row).
 - Decide with the HRIS data owner which attributes Viva Glint needs, and mark each as shared or not before connector setup (controls table, attribute access row). These choices govern application-specific and custom attributes; the service's applications guide says public global attributes are automatically available to Profile and downstream apps.
 - Complete the one-time onboarding in Viva Glint if employee data already exists there, then confirm the **Organizational data imports** setting reads Yes (controls table, Viva Glint setting row).
 - Choose a connector using the get-started page's guidance, and obtain security and data governance approval for any direct Workday or SAP SuccessFactors connection.
@@ -210,10 +214,4 @@ The attribute access and staging paths follow the documented CSV import example 
 risk: Medium. Employee HR data (names, managers, hire dates, locations) moves into Viva Glint, and attributes Microsoft classes as public are shared with Profile; attribute access and data staging are the controls that cover it.
 cost: Low. The only cost the sources show is admin time and the Viva Glint licence the service already requires; the get-started page states no price or meter for the import itself.
 impact: Low. The people who act are the Organizational Data Source Administrator, Viva Glint administrators and the HRIS data owner; the roadmap item describes an admin import path.
--->
-
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance guidance: Before rollout, first bullet / role: Global Administrator involvement can be limited to assigning the Organizational Data Source Administrator role. | Found: The first time the connector is provisioned, a global admin must complete this step. | Fix: Remove ', and keep Global Administrator involvement to the assignment' from the first Before rollout bullet. Microsoft requires a Global Administrator for initial API-connector provisioning, as documented at https://learn.microsoft.com/microsoft-365-apps/org-data-service/import/import-org-data-api-set-up. | Source: https://learn.microsoft.com/microsoft-365-apps/org-data-service/import/import-org-data-api-set-up
 -->
