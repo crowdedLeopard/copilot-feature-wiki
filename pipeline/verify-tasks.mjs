@@ -54,7 +54,8 @@ async function candidates() {
   for (const p of pages) {
     const due = verificationDue(p.data, now, { body: p.body, sourceChangedAt: sourceChanges.get(p.slug) || null });
     const writtenNow = written.has(p.slug);
-    if (ALL || due || ONLY.includes(p.slug)) {
+    // An archived page is never due (verificationDue) and "all" leaves it alone too; VERIFY_ONLY can still name one.
+    if ((ALL && !p.data.archived) || due || ONLY.includes(p.slug)) {
       const reason = due || 'requested';
       // Pages that have never been checked come before re-checks; both come after this run's own pages.
       const rank = writtenNow ? 0 : reason === 'never-checked' ? 1 : reason === 'changed-since-check' || reason === 'source-changed' ? 2 : reason === 'check-expired' ? 3 : 4;
