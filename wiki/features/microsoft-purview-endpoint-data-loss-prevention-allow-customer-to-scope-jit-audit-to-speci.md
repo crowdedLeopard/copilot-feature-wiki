@@ -4,7 +4,7 @@ slug: "microsoft-purview-endpoint-data-loss-prevention-allow-customer-to-scope-j
 roadmapId: 562991
 topic: "governance"
 products: ["Microsoft Purview"]
-summary: "Endpoint DLP just-in-time protection will log activity only for users and groups placed in an audit scope. Purview and DLP admins should review who generates JIT audit events today and add them before the December 2026 rollout."
+summary: "Endpoint DLP just-in-time protection will require explicit audit scope configuration; block-scope users will also continue to have activity recorded. Admins should review who generates JIT audit events today and add them before the December 2026 rollout."
 status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -15,7 +15,7 @@ risk: "medium"
 cost: "low"
 impact: "low"
 defaultState: "unknown"
-action: "prepare"
+action: "act-now"
 licensing:
   model: "included"
   notes: "The Microsoft Purview service description lists Endpoint DLP as Included for Microsoft 365 E5/A5/G5 and the Purview Suite plans it names. No licence or price specific to scoping JIT audit is published at the time of writing (November 2026)."
@@ -68,19 +68,23 @@ changes:
     note: "New briefing: JIT audit scoping in Endpoint DLP, with the notice's rollout window and the gap between the notice and Microsoft Learn."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 52 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-19"
+    note: "Corrected the summary and Why it matters to say block-scope activity is also recorded, and set the action to act-now given the December 2026 rollout."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 50 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
+  claims: 50
   confirmed: 50
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "1ff702690f7f831e190cc475de62d282"
+  contradicted: 0
+  attempts: 0
+  hash: "a97cbb53ea0ef407370683bf6e8278c4"
 ---
 
 ## What's changing
@@ -95,7 +99,7 @@ The roadmap item is In development, with a target of December CY2026 and release
 
 ## Why it matters
 
-This change decides which activity your DLP team can see. JIT audit events show in Activity explorer and, on the notice's description, move from logged automatically to logged only for users and groups you name. If the audit scope is left empty or incomplete, people who generate JIT events today may stop appearing in investigations and compliance reviews.
+This change decides which activity your DLP team can see. JIT audit events show in Activity explorer and, on the notice's description, move from logged automatically to explicitly scoped audit logging, while block-scope activity is also recorded. If the audit scope is left empty or incomplete, people who generate JIT events today may stop appearing in investigations and compliance reviews.
 
 Microsoft has not stated what happens on arrival if nobody acts, so treat the notice's own recommendations as the plan: find who currently generates JIT audit events, add them to the audit scope, and confirm the events still appear after rollout.
 
@@ -176,11 +180,8 @@ cost: Low. The only cost the sources show is admin time and client updates; Endp
 impact: Low. Admins who manage Endpoint DLP and just-in-time protection notice first; users in block scope see JIT blocking as before, and out-of-scope users see no change on their device.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] summary; Why it matters / behaviour: JIT protection will log activity only for users and groups placed in an audit scope. | Found: Users included in block scope will be prevented from completing actions while files are evaluated for sensitive information. Their activities are recorded in Activity explorer. | Fix: Replace the summary's first sentence with 'Endpoint DLP just-in-time protection will require explicit audit scope configuration; block-scope users will also continue to have activity recorded.' In Why it matters, replace 'logged only for users and groups you name' with 'explicitly scoped audit logging, while block-scope activity is also recorded', as stated in MC1387575.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls; Governance guidance: Before rollout / admin-path: Settings > Data Loss Prevention > Just-in-time protection in the Microsoft Purview portal reaches the page holding the JIT audit and block controls. | Found: Sign in to the Microsoft Purview portal. 2. Select Settings > Data Loss Prevention > Just-in-time protection. | Fix: For controls[0].ui, complete the audit-setting route as 'Settings > Data loss prevention > Just-in-time protection > Devices > Audit covered user activities', with the Devices tab and setting attributed to MC1387575 at https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1387575. The current path correctly reaches its containing page but stops before the audit control. | Source: https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit
-- [contradicted, minor] front matter: action / consistency: The prepare action rating fits the briefing's verified rollout timing and medium-risk audit visibility change. | Found: action: "prepare"; risk: "medium"; "rollout to mid-December 2026"; "audit logging must be explicitly configured" | Fix: Set action to 'act-now': on the 19 November 2026 run date, the December rollout is within about 60 days, existing logging behavior changes, and administrators must configure scope to maintain visibility. This meets the schema's act-now definition even without a supplied act-by date.
+- [supported, minor] controls[0].ui; Governance controls; Governance guidance / admin-path: The Microsoft Purview portal route Settings > Data Loss Prevention > Just-in-time protection reaches the page holding the audit and block scoping controls. | Found: Sign in to the Microsoft Purview portal. 2. Select Settings > Data Loss Prevention > Just-in-time protection. | Fix: Extend controls[0].ui.path and the corresponding rendered table path to 'Settings > Data Loss Prevention > Just-in-time protection > Devices > Audit covered user activities'. Retain the note attributing the Devices tab and audit setting to MC1387575, which supplies those final steps. | Source: https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit
 -->

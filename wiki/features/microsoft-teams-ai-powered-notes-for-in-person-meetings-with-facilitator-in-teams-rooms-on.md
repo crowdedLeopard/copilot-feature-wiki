@@ -152,19 +152,23 @@ changes:
     note: "Rewritten for the Android item (roadmap 560700): the existing page described the Windows item, so its content was not carried over; rollout dates follow MC1307888's 24 September 2026 update and Learn's Android availability statements are reported alongside it."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 89 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 16
+  - date: "2026-11-19"
+    note: "Corrected the Facilitator limitations: retention labels are a general limitation, and only the eDiscovery cloud-attachment limit is specific to meetings and not confirmed for in-person notes."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 92 statements confirmed"
+version: 17
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-19"
-  version: 16
+  version: 17
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 89
-  confirmed: 88
+  claims: 92
+  confirmed: 92
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "9279acb80c289f3aa0fcdd4ce6d00479"
+  contradicted: 0
+  attempts: 0
+  hash: "c6ccda1600c5b189df8a77822b026200"
 ---
 
 ## What's changing
@@ -189,7 +193,7 @@ The decisions are about whether you want it: whether the Loop and transcription 
 
 - Meeting audio and transcription data from the room are processed to generate summaries, decisions and action items (MC1307888). Notes are stored in tenant-owned SharePoint Embedded storage; Learn says they are saved as a Loop file there and treated as meeting transcript data.
 - Notes appear on the front-of-room display or touch board during the session (MC1307888), so what is said in the room is shown back to everyone in it.
-- Learn's Facilitator setup page lists limits for Facilitator in meetings: AI-generated notes are not automatically collected as cloud attachments in Microsoft Purview eDiscovery, and retention labels are not supported for cloud attachments in AI-generated notes. Learn does not say whether these cover in-person notes.
+- Learn lists a general Facilitator limitation: retention labels are not supported for cloud attachments in AI-generated notes. For Facilitator in meetings, it also says AI-generated notes are not automatically collected as cloud attachments in Microsoft Purview eDiscovery. Learn does not say whether that meeting-specific collection limitation covers in-person notes.
 
 **Security & identity**
 
@@ -271,17 +275,11 @@ The transcription row is the general meeting policy. Learn's setup step points t
 - Will Microsoft Learn's Android statements (the FAQ's future release and the Not available entries in the device feature comparison) be updated to match the November 2026 rollout in MC1307888? Watch the Learn Facilitator in Teams Rooms page and MC1307888.
 - Which meeting policy and which account (the room resource account or the person who adds their name) does transcription for in-person notes depend on? Watch the Learn Facilitator in Teams Rooms page.
 - Will Learn's preview label and its "licensing model may change" warning change now that the roadmap shows General Availability? Watch the Learn page and MC1307888.
-- Do the Facilitator limits Learn lists for meetings (eDiscovery collection, retention labels for cloud attachments in AI notes) apply to notes taken in person? Watch the Set up Facilitator in Microsoft Teams page.
+- Does the meeting-specific eDiscovery cloud-attachment collection limitation apply to notes taken in person? Watch the Set up Facilitator in Microsoft Teams page.
 - Learn says in-person notes are saved as a Loop file, while the Set up Facilitator page says Loop file generation was discontinued on 31 July 2026 and live notes are unaffected: does that change where in-person notes are stored? Watch both Learn pages.
 
 <!-- rationale
 risk: Medium. Room audio is transcribed and summarised into notes stored in tenant-owned SharePoint Embedded storage, and Microsoft's notice says the feature is available automatically once licensing and prerequisites are met.
 cost: Low. Learn says in-person note-taking is currently included with Teams Rooms Pro, so the known cost is admin time plus a Teams Rooms Pro licence for any room without one; Learn warns the licensing model may change.
 impact: Medium. People in Teams Rooms on Android rooms licensed with Teams Rooms Pro can start notes from the console, and the notes appear on the front-of-room display or touch board.
--->
-
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure; Open questions: Facilitator limits / absence: Learn does not say whether the retention-label limitation for cloud attachments covers in-person Facilitator notes. | Found: Use Facilitator in: - Meetings - Teams Rooms Facilitator limitations Facilitator currently has the following limitations: Retention labels aren't supported for cloud attachments in AI-generated notes. | Fix: Replace the compliance-limits bullet in Risk assessment with: 'Learn lists a general Facilitator limitation: retention labels are not supported for cloud attachments in AI-generated notes. For Facilitator in meetings, it also says AI-generated notes are not automatically collected as cloud attachments in Microsoft Purview eDiscovery. Learn does not say whether that meeting-specific collection limitation covers in-person notes.' Replace the combined limits question in Open questions with: 'Does the meeting-specific eDiscovery cloud-attachment collection limitation apply to notes taken in person? Watch the Set up Facilitator in Microsoft Teams page.' Source: https://learn.microsoft.com/microsoftteams/facilitator-teams#facilitator-limitations. | Source: https://learn.microsoft.com/microsoftteams/facilitator-teams
 -->

@@ -43,6 +43,15 @@ sources:
   - title: "Create and use experience profiles"
     url: "https://learn.microsoft.com/dynamics365/customer-service/administer/create-agent-experience-profile"
     kind: "learn"
+  - title: "msdyn_nextbestactionsconfig table/entity reference"
+    url: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_nextbestactionsconfig"
+    kind: "learn"
+  - title: "App Profile Copilot Configuration (msdyn_appcopilotconfiguration) table/entity reference"
+    url: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_appcopilotconfiguration"
+    kind: "learn"
+  - title: "Set up your tools and infrastructure for using Copilot in your contact center"
+    url: "https://learn.microsoft.com/dynamics365/guidance/resources/cs-contact-center-copilot-setup"
+    kind: "learn"
 videos: []
 related: ["copilot-credits","m365-copilot-service-agent-in-m365-your-dedicated-service-specialist","dynamics-365-customer-service-manage-intraday-operations-with-ai-agent"]
 controls:
@@ -52,16 +61,22 @@ controls:
       surface: "Copilot Service admin center"
       path: "Support experience > Productivity > Intent-based suggestions > Manage > Turn on intent-based suggestions > Actions"
       docs: "https://learn.microsoft.com/dynamics365/contact-center/administer/enable-intent-for-service-reps"
-    api: null
-    note: "The same page has Enable in experience profiles > Select experience profiles. Turning it off does not revert Copilot or other shared settings."
+    api:
+      kind: "rest"
+      call: "PATCH /msdyn_nextbestactionsconfigs(msdyn_nextbestactionsconfigid)"
+      docs: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_nextbestactionsconfig"
+    note: "The request body sets msdyn_isenabled; msdyn_targetentity identifies the target entity, such as incident. Covers next-best-action enablement, not experience-profile assignment."
   - governs: "Which representatives have Copilot features in Copilot Service workspace"
     scope: "group"
     ui:
       surface: "Copilot Service admin center"
       path: "Support experience > Workspaces > Experience profiles > profile > Productivity pane > Copilot"
       docs: "https://learn.microsoft.com/dynamics365/customer-service/administer/create-agent-experience-profile"
-    api: null
-    note: "Covers Copilot features in general, not next best actions alone. Needs the App Profile Manager Administrator and Basic User roles."
+    api:
+      kind: "rest"
+      call: "PATCH /msdyn_appcopilotconfigurations(msdyn_appcopilotconfigurationid)"
+      docs: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_appcopilotconfiguration"
+    note: "For individual profile Copilot features, the request body sets msdyn_enabled; msdyn_copilotfeature identifies the feature and msdyn_appconfigurationid links the app profile. Needs App Profile Manager Administrator and Basic User roles."
 confidence: "medium"
 created: "2026-11-19"
 updated: "2026-11-19"
@@ -71,19 +86,23 @@ changes:
     note: "First briefing for this item: Launched, with admin setup in Copilot Service admin center, the pay-as-you-go prerequisite and the unpublished credit rate."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 50 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-19"
+    note: "Corrected the controls table: both settings now list their Dataverse update operations, replacing the incorrect statement that no API is documented; removed the checklist's row reference for Ask a question."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 55 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 47
+  claims: 55
+  confirmed: 53
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "b3e31bd5bbd13e0306c7fc25b0eb8a06"
+  contradicted: 2
+  attempts: 0
+  hash: "f6322dcf475fb977efb519ea57759e1b"
 ---
 
 ## What's changing
@@ -133,7 +152,7 @@ Prerequisites on the next best actions page: Intent or knowledge management is c
 ## Governance guidance
 
 ### Before rollout
-- Confirm that Intent or knowledge management is configured and that **Ask a question** is enabled in the Copilot help pane (Copilot Service admin center, row 1).
+- Confirm that Intent or knowledge management is configured and that **Ask a question** is enabled in the Copilot help pane.
 - Check with finance whether the pay-as-you-go plan the Customer Intent Agent page lists as a prerequisite is in place, and who monitors Copilot Credits.
 - Check that custom security roles carry the Copilot privileges listed on the Copilot features page.
 - Check the environment's geography against the data movement rules on the Copilot features page.
@@ -155,14 +174,14 @@ Prerequisites on the next best actions page: Intent or knowledge management is c
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether next best actions are turned on, and which experience profiles get them</strong><br><small>Tenant</small><br><small class="controls__note">The same page has Enable in experience profiles &gt; Select experience profiles. Turning it off does not revert Copilot or other shared settings.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Support experience › Productivity › Intent-based suggestions › Manage › Turn on intent-based suggestions › Actions <a href="https://learn.microsoft.com/dynamics365/contact-center/administer/enable-intent-for-service-reps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which representatives have Copilot features in Copilot Service workspace</strong><br><small>Group</small><br><small class="controls__note">Covers Copilot features in general, not next best actions alone. Needs the App Profile Manager Administrator and Basic User roles.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Support experience › Workspaces › Experience profiles › profile › Productivity pane › Copilot <a href="https://learn.microsoft.com/dynamics365/customer-service/administer/create-agent-experience-profile" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether next best actions are turned on, and which experience profiles get them</strong><br><small>Tenant</small><br><small class="controls__note">The request body sets msdyn_isenabled; msdyn_targetentity identifies the target entity, such as incident. Covers next-best-action enablement, not experience-profile assignment.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Support experience › Productivity › Intent-based suggestions › Manage › Turn on intent-based suggestions › Actions <a href="https://learn.microsoft.com/dynamics365/contact-center/administer/enable-intent-for-service-reps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH /msdyn_nextbestactionsconfigs(msdyn_nextbestactionsconfigid)</code> <a href="https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_nextbestactionsconfig" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which representatives have Copilot features in Copilot Service workspace</strong><br><small>Group</small><br><small class="controls__note">For individual profile Copilot features, the request body sets msdyn_enabled; msdyn_copilotfeature identifies the feature and msdyn_appconfigurationid links the app profile. Needs App Profile Manager Administrator and Basic User roles.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Support experience › Workspaces › Experience profiles › profile › Productivity pane › Copilot <a href="https://learn.microsoft.com/dynamics365/customer-service/administer/create-agent-experience-profile" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH /msdyn_appcopilotconfigurations(msdyn_appcopilotconfigurationid)</code> <a href="https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_appcopilotconfiguration" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 Next best actions have an administrator switch (**Actions**) and are assigned through experience profiles. Learn says that turning intent-based suggestions off or removing it from an experience profile does not revert the Copilot or other shared settings.
 
-The experience profile row governs access to Copilot features in Copilot Service workspace in general; Learn says to add next best actions to representatives' experience profiles from the Intent-based suggestions page. Microsoft Learn documents no API for either setting at the time of writing (November 2026). Creating profiles needs the App Profile Manager Administrator and Basic User roles.
+The experience profile row governs access to Copilot features in Copilot Service workspace in general; Learn says to add next best actions to representatives' experience profiles from the Intent-based suggestions page. Dataverse documents updates to next-best-action enablement and profile Copilot configuration. Creating profiles needs the App Profile Manager Administrator and Basic User roles.
 
 ## Open questions
 
@@ -177,11 +196,10 @@ cost: Variable. The Customer Intent Agent page lists a pay-as-you-go plan as a p
 impact: Low. Representatives in the experience profiles an administrator selects see the actions; other users and customers do not.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls / absence: Microsoft Learn documents no API for enabling next best actions. | Found: Update ... PATCH /msdyn_nextbestactionsconfigs(msdyn_nextbestactionsconfigid) ... msdyn_isenabled ... Whether Next Best Actions is enabled for this target entity. | Fix: Replace controls[0].api null with kind 'rest', call 'PATCH /msdyn_nextbestactionsconfigs(msdyn_nextbestactionsconfigid)', and docs 'https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_nextbestactionsconfig'. Add to its note: 'The request body sets msdyn_isenabled; msdyn_targetentity identifies the target entity, such as incident. This operation documents next-best-action enablement, not experience-profile assignment.' Replace the blanket no-API sentence with 'Dataverse documents updates to next-best-action enablement and profile Copilot configuration.' Cite both Dataverse references used for the API corrections. | Source: https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_nextbestactionsconfig
-- [contradicted, blocker] controls[1].api; Governance controls / absence: Microsoft Learn documents no API for experience-profile Copilot access settings. | Found: Update ... PATCH /msdyn_appcopilotconfigurations(msdyn_appcopilotconfigurationid) ... msdyn_appconfigurationid ... App profile ... msdyn_copilotfeature ... Copilot Feature ... msdyn_enabled ... Enabled | Fix: Replace controls[1].api null with kind 'rest', call 'PATCH /msdyn_appcopilotconfigurations(msdyn_appcopilotconfigurationid)', and docs 'https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_appcopilotconfiguration'. Add to the note: 'For individual profile Copilot features, the request body sets msdyn_enabled; msdyn_copilotfeature identifies the feature and msdyn_appconfigurationid links the app profile.' Cite this reference and https://learn.microsoft.com/dynamics365/guidance/resources/cs-contact-center-copilot-setup#copilot-settings-in-agent-profiles, which identifies the underlying table for profile Copilot settings. Remove the blanket no-API claim. | Source: https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_appcopilotconfiguration
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: Every configuration control the governance checklist asks administrators to check is represented in the controls table. | Found: Check with finance whether the pay-as-you-go plan ... is in place ... Check that custom security roles carry the Copilot privileges ... Check the environment's geography against the data movement rules | Fix: The checklist's checks for billing-plan setup, custom security-role privileges, regional data movement, and the Ask a question prerequisite have no corresponding controls-table rows; row 1 is the Actions switch, not these separate controls. Correct the checklist's row-1 implication for Ask a question. This finding does not request additional control rows.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Copilot Service admin center path reaches Actions on the Intent-based suggestions page. | Found: Select Productivity in Support experience. ... Select Manage for Intent-based suggestions. ... In the Turn on intent-based suggestions section ... Actions: Select to enable next best actions for cases | Fix: Keep the switch path. For the same row's experience-profile assignment, add to its note: 'On the Intent-based suggestions page, under Enable in experience profiles, select Select experience profiles and choose one or more profiles.' The cited page documents this additional branch. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/enable-intent-for-service-reps
+- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: Every control the governance checklist asks readers to check or monitor has a corresponding controls-table row. | Found: Confirm that Intent or knowledge management is configured and that Ask a question is enabled ... Check that custom security roles carry the Copilot privileges ... Check the environment's geography ... Watch Copilot Credits consumption | Fix: The prerequisite, billing-plan, custom-role, data-movement and credit-monitoring checks have no corresponding controls-table rows. Move those checks into the existing Scope and Cost and licensing discussion rather than presenting them as covered by the two-row governance checklist; do not add unverified control rows.
+- [contradicted, minor] Governance guidance: At rollout / consistency: Row 2 is the referenced control for selecting the pilot experience profile for next best actions. | Found: Select a pilot experience profile before adding wider groups (row 2). ... The experience profile row governs access to Copilot features ... in general; Learn says to add next best actions ... from the Intent-based suggestions page. | Fix: Change the checklist item to 'On the Intent-based suggestions page, select a pilot experience profile before adding wider groups (row 1).'
 -->

@@ -17,7 +17,7 @@ impact: "medium"
 defaultState: "on"
 action: "prepare"
 licensing:
-  model: "add-on"
+  model: "included"
   notes: "Microsoft Learn says users must have a Teams Phone and a Teams Premium licence to use the Queues app, and MC1556098 says shared call history in the Queues app is included with a Teams Premium licence. No mobile-specific price is published."
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["teams","teams-phone","call-queues","mobile","queues-app","shared-call-history","licensing"]
@@ -34,16 +34,19 @@ sources:
   - title: "Setup - Shared Call History template for Call Queue"
     url: "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-shared-history"
     kind: "learn"
+  - title: "Setup - Call Queue"
+    url: "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue"
+    kind: "learn"
   - title: "Manage Queues app for Microsoft Teams in your organization"
     url: "https://learn.microsoft.com/microsoftteams/manage-queues-app"
     kind: "learn"
   - title: "Reference - Voice applications prerequisites and licensing"
     url: "https://learn.microsoft.com/microsoftteams/aa-cq-reference-prerequisites-licensing"
     kind: "learn"
-  - title: "Which shared call history categories are visible, and to whom (PowerShell)"
+  - title: "New-CsSharedCallHistoryTemplate"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/new-cssharedcallhistorytemplate?view=teams-ps"
     kind: "learn"
-  - title: "Which call queues have shared call history (PowerShell)"
+  - title: "Set-CsCallQueue"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue?view=teams-ps"
     kind: "learn"
 videos: []
@@ -53,7 +56,7 @@ controls:
     scope: "other"
     ui:
       surface: "Teams admin center"
-      path: "Voice > Templates and resources > Templates > Shared call history > Add"
+      path: "Voice > Templates and resources > Templates > Shared call history > Add > Incoming missed calls permission"
       docs: "https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-shared-history"
     api:
       kind: "powershell"
@@ -70,7 +73,7 @@ controls:
       kind: "powershell"
       call: "Set-CsCallQueue -Identity <Guid> -SharedCallQueueHistoryTemplateId <String>"
       docs: "https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue?view=teams-ps"
-    note: "Conference mode must be on. The reference says shared call history is not available when a Teams channel is used for queue membership."
+    note: "Conference mode must be on. The setup steps say General info, but the page's August 17, 2026 change log says template assignment moved to Templates, as the call queue guide has it."
 confidence: "high"
 created: "2026-11-19"
 updated: "2026-11-19"
@@ -80,19 +83,23 @@ changes:
     note: "First briefing for this roadmap item, covering MC1556098 and the Learn pages for shared call history templates and the Queues app."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 50 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-19"
+    note: "Corrected after the independent check: licensing model is now included with Teams Premium; removed two governance steps with no control row; extended two admin paths and added the Templates note."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 52 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-19"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 48
+  claims: 52
+  confirmed: 52
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "d9aefec7f3ec4f86f1aca049eb002f83"
+  contradicted: 0
+  attempts: 0
+  hash: "ebf70092b2a156723b8dd7942a79c15c"
 ---
 
 ## What's changing
@@ -152,8 +159,6 @@ Neither the roadmap record nor MC1556098 names a separate licence or charge for 
 ### Before rollout
 
 - List the call queues that have a Shared call history template, and check each template's two permission levels in the Teams admin center before the mobile screens appear.
-- Confirm that representatives and supervisors hold both Teams Phone and Teams Premium licences, allowing for up to 48 hours before the Queues app appears for a newly licensed user.
-- Check that conference mode is on for each queue that needs shared call history, and that no such queue takes its membership from a Teams channel.
 - Draft guidance for queue staff on the Unresolved, In progress and Resolved statuses, as MC1556098 recommends.
 
 ### At rollout
@@ -175,14 +180,14 @@ Neither the roadmap record nor MC1556098 names a separate licence or charge for 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which shared call history categories are visible, and to whom</strong><br><small class="controls__note">The template form sets the Incoming missed calls permission and Answered and outbound calls permission levels. The reference lists None, AuthorizedUsersOnly and AuthorizedUsersAndAgents.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Templates and resources › Templates › Shared call history › Add <a href="https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-shared-history" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-CsSharedCallHistoryTemplate -Name &lt;String&gt; -Description &lt;String&gt; -IncomingMissedCalls AuthorizedUsersAndAgents -AnsweredAndOutboundCalls AuthorizedUsersOnly</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/new-cssharedcallhistorytemplate?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which call queues have shared call history</strong><br><small class="controls__note">Conference mode must be on. The reference says shared call history is not available when a Teams channel is used for queue membership.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Call queues › call queue › General info › Shared call history template <a href="https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-shared-history" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsCallQueue -Identity &lt;Guid&gt; -SharedCallQueueHistoryTemplateId &lt;String&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which shared call history categories are visible, and to whom</strong><br><small class="controls__note">The template form sets the Incoming missed calls permission and Answered and outbound calls permission levels. The reference lists None, AuthorizedUsersOnly and AuthorizedUsersAndAgents.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Templates and resources › Templates › Shared call history › Add › Incoming missed calls permission <a href="https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-shared-history" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-CsSharedCallHistoryTemplate -Name &lt;String&gt; -Description &lt;String&gt; -IncomingMissedCalls AuthorizedUsersAndAgents -AnsweredAndOutboundCalls AuthorizedUsersOnly</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/new-cssharedcallhistorytemplate?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which call queues have shared call history</strong><br><small class="controls__note">Conference mode must be on. The setup steps say General info, but the page's August 17, 2026 change log says template assignment moved to Templates, as the call queue guide has it.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Call queues › call queue › General info › Shared call history template <a href="https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-shared-history" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsCallQueue -Identity &lt;Guid&gt; -SharedCallQueueHistoryTemplateId &lt;String&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-cscallqueue?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 Shared call history on mobile uses the same administrative settings as the desktop experience (MC1556098), so the two rows above cover it. The template decides which call categories are visible and to whom; assigning it to a queue switches the history on for that queue.
 
-The Queues app itself can be turned off org-wide in the Teams admin center under Teams apps > Manage apps > Actions > Org-wide app settings > Microsoft apps (Learn: Manage Queues app). That page says doing so also turns off other Microsoft apps such as Insights and Tasks, so it is a blunt control for this feature.
+The Queues app itself can be turned off org-wide in the Teams admin center under Teams apps > Manage apps > Actions > Org-wide app settings > Microsoft apps > Off (Learn: Manage Queues app). That page says doing so also turns off other Microsoft apps such as Insights and Tasks, so it is a blunt control for this feature.
 
 The Set-CsCallQueue reference says -ConferenceMode must be $true for the template parameter to apply.
 
@@ -197,15 +202,4 @@ The Set-CsCallQueue reference says -ConferenceMode must be $true for the templat
 risk: Low. Microsoft's notice says mobile uses the same administrative settings as the desktop experience, so it adds a phone surface for call data users can already see, not a new audience.
 cost: Low. Learn requires a Teams Premium licence for every Queues app user, and the roadmap and notice add no new licence for mobile; the new cost is staff communication.
 impact: Medium. Only representatives and supervisors in call queues with shared call history see the change, but they can edit missed-call statuses that every queue member with access then sees.
--->
-
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model / consistency: The mobile shared call history change has an add-on licensing model. | Found: Page: licensing.model: add-on. Notice: shared call history in the Queues app, which is included with a Teams Premium license. | Fix: Set licensing.model to 'included': this mobile extension is part of the Teams Premium entitlement the Queues app already requires. Retain the notes that users need both Teams Phone and Teams Premium; this does not mean Teams Premium itself is free or a base Teams entitlement.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: Templates are created at Teams admin center > Voice > Templates and resources > Templates > Shared call history > Add. | Found: Select Shared call history as the template type. 4. Select Add to create a new Shared Call History template. | Fix: The path reaches the correct form but stops before its settings. Extend controls[0].ui.path to 'Voice > Templates and resources > Templates > Shared call history > Add > Incoming missed calls permission'; retain the note identifying Answered and outbound calls permission on the same form. | Source: https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-shared-history
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: A queue's template is assigned at Teams admin center > Voice > Call queues > call queue > General info > Shared call history template. | Found: On the General info tab, scroll to find the Shared call history template section. | Fix: Retain the cited assignment route, but add to controls[1].note: 'Microsoft's shared history setup instructions still say General info, while the same page's August 17, 2026 change log says template assignment moved to Templates; the call queue creation guide also uses Templates (https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue#steps-to-create-a-call-queue).' Cite that guide. | Source: https://learn.microsoft.com/microsoftteams/aa-cq-setup-call-queue-template-shared-history
-- [supported, minor] Governance controls: Queues app org-wide switch / admin-path: The org-wide Queues app switch is under Teams apps > Manage apps > Actions > Org-wide app settings > Microsoft apps. | Found: Navigate to Teams apps > Manage apps. Select Actions > Org-wide app settings > Microsoft apps. Select Off and Save. | Fix: Extend the prose path to 'Teams admin center > Teams apps > Manage apps > Actions > Org-wide app settings > Microsoft apps > Off'. | Source: https://learn.microsoft.com/microsoftteams/manage-queues-app
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The governance checklist's controls are represented in the controls table as required by the standard. | Found: Confirm that representatives and supervisors hold both Teams Phone and Teams Premium licences. Check that conference mode is on. Table rows: history visibility permissions; queue template assignment. | Fix: The 'Confirm that representatives and supervisors hold both Teams Phone and Teams Premium licences' and 'Check that conference mode is on' checklist steps have no corresponding control rows. Remove those two checklist bullets; retain the verified requirements in Cost and licensing and Scope.
 -->

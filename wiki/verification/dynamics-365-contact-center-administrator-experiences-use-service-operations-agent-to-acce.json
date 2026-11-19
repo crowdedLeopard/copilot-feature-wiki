@@ -1,0 +1,913 @@
+{
+  "slug": "dynamics-365-contact-center-administrator-experiences-use-service-operations-agent-to-acce",
+  "roadmapId": 577808,
+  "title": "Dynamics 365 Contact Center: Service Operations Agent for conversational admin setup",
+  "status": "held",
+  "date": "2026-11-19",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-19",
+    "reasons": [
+      "1 blocking finding (claim 52)"
+    ]
+  },
+  "counts": {
+    "claims": 73,
+    "confirmed": 71,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: the briefing treats prepaid capacity coverage as undocumented even though the Dynamics 365 billing guidance linked from the agent's prerequisites describes prepaid capacity and pay-as-you-go together, with prepaid capacity consumed first. The roadmap facts, agent permissions and capabilities, and billing CLI command are supported; the billing UI route also needs its remaining steps.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is April CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"April CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists General Availability and Preview as release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Worldwide (Standard Multi-Tenant) and does not list US Government clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The record associates the item with Microsoft Copilot (Microsoft 365) and Dynamics 365 Contact Center.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Contact Center\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: defaultState; What's changing; Why it matters",
+      "type": "default",
+      "claim": "The default state is on because the roadmap says the feature is enabled for admins/makers/marketers automatically.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enabled for admins/makers/marketers automatically",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "Service Operations Agent helps Contact Center administrators configure, validate and troubleshoot using natural language.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/implement/service-operations-agent-rai-faq",
+      "quote": "It is designed to help administrators configure, manage, validate, and troubleshoot contact center components using natural language through a conversational interface.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The agent supports conversational setup of Dataverse tables such as queues and workstreams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "Service Operations Agent supports conversational setup of Dataverse tables, such as queues and workstreams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "The agent can help set up channels and workstreams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "Help set up channels and workstreams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The agent can sync phone numbers with Azure Communication Services and Teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "Sync phone numbers with Azure Communication Services and Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "A conversational request can create a queue and set an out-of-the-box assignment method.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "Create a queue with one of the out-of-the-box assignment methods. If you don't specify the assignment method, the system assigns a default method.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The agent can add users to queues.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "AddUser | Add a user as a queue member.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The agent can create skills.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "Create skills and assign them to users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The agent can create operating hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "Create an operating hours schedule with schedule name, time zone code, start date, work start and end times (HH:mm), recurring days (MO-SU), and optional break period (BreakStart and BreakEnd).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The agent can manage capacity profiles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "Create a capacity profile with default max units, reset duration, and block-assignment settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "The agent can create workstreams and route-to-queue rules through natural language.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "Use natural language instructions to create workstreams and route-to-queue rules.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The agent can answer questions about the environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "Ask questions about the environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The agent provides diagnostics for supported channels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "Provide diagnostics for supported channels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Scope; Open questions",
+      "type": "availability",
+      "claim": "Service Operations Agent is available in English only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "Service Operations Agent is available in English only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The agent supports creating rules without conditions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "You can create multiple rules, but without conditions only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Conditions, classification rulesets, assignment rules, overflow rules and percentage-based or multi-queue distribution must be configured manually rather than through these tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "Classification rulesets, assignment rules, overflow rules (and other ruleset types), percentage-based/multi-queue distribution, and adding or editing conditions in rules aren't supported through the tools and must be configured manually in Copilot Service admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The workstream and queue must be for the same channel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "Make sure that the workstream and queue are for the same channel.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Why it matters; Scope; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Access starts with Launch in the Conversational Setup tile in Copilot Service admin center, followed by Allow once for the Dataverse connection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "In Copilot Service admin center, select Launch in the Conversational Setup tile. The Service Operations Agent page appears with a prompt to connect to Dataverse via the MCP server.\n2. Select Allow once.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "The required Dataverse connection through the MCP server enables the agent to access and manage the environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "Service Operations Agent requires a Dataverse connection through the MCP server. This connection enables the agent to access and manage your environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters; Risk assessment; Scope; controls[1].note; rationale: impact",
+      "type": "role",
+      "claim": "The Omnichannel administrator role is required to access Service Operations Agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "The Omnichannel administrator role to access Service Operations Agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters; Risk assessment; Scope; Governance controls",
+      "type": "role",
+      "claim": "The System Administrator role is required to manage Power Apps and MCP connections.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "The System Administrator role to manage Power Apps connections and Model Context Protocol (MCP) connections.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.model, licensing.notes, cost; summary; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The agent has consumption-based billing through a required Power Platform pay-as-you-go plan that charges an Azure subscription when it runs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "The Power Platform Pay-as-you-go plan requires the use of an Azure subscription that the system charges when the agent runs. Make sure that you set up consumption-based billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing; Scope; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Application Insights must be configured for the agent to troubleshoot issues during setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "For Service Operations Agent to troubleshoot issues during setup:\nApplication Insights is configured.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing; Scope; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Application Insights must be connected with Dynamics 365 Contact Center for troubleshooting during setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "For Service Operations Agent to troubleshoot issues during setup:\nApplication Insights is connected with Dynamics 365 Contact Center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "The Use Service Operations Agent prerequisites name no licence.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Service Operations Agent pricing rate messages prepaid Copilot Credits billing; read Use Service Operations Agent prerequisites in full: roles, pay-as-you-go and Application Insights, with no named licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The agent can present draft actions for administrator review and confirmation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/implement/service-operations-agent-rai-faq",
+      "quote": "Depending on the scenario, it may also retrieve relevant configuration information, guide users through multi-step tasks, or present draft actions for administrator review and confirmation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The agent is not designed to replace administrator judgment or operate autonomously.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/implement/service-operations-agent-rai-faq",
+      "quote": "It supports administrators within the product experience and isn't designed to replace administrator judgment or operate as an autonomous system.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Multistep setup and troubleshooting scenarios showed more variability in testing and might require clarification or confirmation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/implement/service-operations-agent-rai-faq",
+      "quote": "Results indicated stronger performance on information retrieval and grounded knowledge tasks, while multistep setup and troubleshooting scenarios showed more variability and might require additional clarification or confirmation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Ambiguous prompts can produce incomplete or incorrect results.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/implement/service-operations-agent-rai-faq",
+      "quote": "Service Operations Agent might provide incomplete guidance, request clarification, or return incorrect or partial results when prompts are ambiguous",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "Microsoft describes the conversational setup experience as keeping a human in the loop.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "Use natural language to set up your contact center and watch Service Operations Agent run the steps while keeping a human in the loop.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The ListUsers queue tool returns queue members' names and email addresses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "ListUsers | List all queue members with their name and email.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "summary; Why it matters; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The agent's Manage users tools can update user details.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "Update | Modify user details (first/last name, email, title, phone, capacity).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Why it matters; Risk assessment: Security & identity; rationale: risk",
+      "type": "behaviour",
+      "claim": "The agent's Manage users tools can deactivate a user account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "Disable | Deactivate a user account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "summary; Why it matters; Risk assessment: Security & identity; rationale: risk",
+      "type": "behaviour",
+      "claim": "The agent's Manage users tools can grant a security role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "AssignRole | Grant a security role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "summary; Why it matters; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The agent's Manage users tools can remove a security role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "UnassignRole | Remove a security role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn does not identify the location of this agent's prompt and configuration-context processing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Service Operations Agent data processing; Dynamics 365 Contact Center Service Operations Agent processing storage geographical data residency. Read Use, RAI FAQ and Dynamics 365 data-residency guidance; the latter covers storage, not this agent's processing location.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "The cited agent pages do not identify the account under which the MCP connection makes changes.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Service Operations Agent MCP identity; Service Operations Agent MCP connection identity audit logs data processing storage region. Read Use Service Operations Agent and its RAI FAQ; both describe access but neither identifies a run-as account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "The cited agent pages do not describe how changes made by chat are recorded.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Service Operations Agent audit; Service Operations Agent MCP connection identity audit logs data processing storage region. Read Use Service Operations Agent and its RAI FAQ; neither specifies an audit trail for these changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Why it matters; Governance guidance: After rollout",
+      "type": "cost",
+      "claim": "The billing plan's Power Platform account resource receives the Azure meter charges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-set-up",
+      "quote": "When a billing plan is created, a corresponding Power Platform account resource is created in the Azure subscription that's specified by the billing plan. All Azure meters for Power Platform products are billed to this resource.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing; Scope; controls[0].governs",
+      "type": "behaviour",
+      "claim": "Pay-as-you-go setup links an active Azure subscription to the Power Platform environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
+      "quote": "To set up pay-as-you-go billing, you first need an active Azure subscription. Then, you link the subscription to your Power Platform environment using the Power Platform admin center or within Power Apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Microsoft directs pay-as-you-go administrators to Microsoft Cost Management in the Azure portal for usage and budgets.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
+      "quote": "For pay-as-you-go, use Microsoft Cost Management in the Azure portal to view detailed usage and adjust spending limits (budgets) to free up more capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing; Governance guidance: At rollout",
+      "type": "availability",
+      "claim": "Pay-as-you-go is available for production and sandbox environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-set-up",
+      "quote": "Pay-as-you-go is available for production and sandbox environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing: indirect costs",
+      "type": "cost",
+      "claim": "The Application Insights resources used for diagnostics can introduce Azure charges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/azure-monitor/logs/cost-logs",
+      "quote": "Because workspace-based Application Insights resources store their data in a Log Analytics workspace, the billing for data ingestion and retention is done by the workspace where the Application Insights data is located.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/azure/azure-monitor/logs/cost-logs#application-insights-billing for the Application Insights charges statement."
+    },
+    {
+      "n": 51,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No rate or message count specific to Service Operations Agent was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Service Operations Agent pricing rate messages prepaid Copilot Credits billing; Service Operations Agent price rate per message credits. Read Use, consumption-billing guidance and Copilot Studio billing-rate excerpts; none specifies a rate or count for this agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing: prepaid capacity; Open questions",
+      "type": "absence",
+      "claim": "Whether prepaid capacity can cover the agent as well as pay-as-you-go is undocumented.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
+      "quote": "Dynamics 365 supports two billing models: prepaid capacity and pay-as-you-go. ... Both billing models can be used on the Dynamics 365 environment. Prepaid capacity is consumed first.",
+      "severity": "blocker",
+      "fix": "Replace the prepaid-capacity uncertainty in Cost and licensing with: 'The Dynamics 365 consumption-billing guidance linked from the agent prerequisites supports prepaid capacity and pay-as-you-go on the same environment, with prepaid capacity consumed first.' Cite https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go. Remove 'and it is unclear whether prepaid Copilot Credits capacity can cover it as well as pay-as-you-go' from Open questions; retain the narrower question about this agent's specific rate or message count."
+    },
+    {
+      "n": 53,
+      "where": "Scope: Rollout",
+      "type": "absence",
+      "claim": "The Use Service Operations Agent page does not mark the feature as preview.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Service Operations Agent preview generally available documentation. Read Use Service Operations Agent in full: no preview designation on this feature; its RAI FAQ separately describes feedback routes for preview and generally available experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Scope: Who and where",
+      "type": "availability",
+      "claim": "The cited feature documentation applies to Dynamics 365 Contact Center only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "Applies to: Dynamics 365 Contact Center only",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Scope: Rollout",
+      "type": "admin-path",
+      "claim": "The Contact Center Agents page in Copilot Service admin center lists Service Operations Agent alongside Customer Assist Agent and Quality Assurance Agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/overview-contact-center-agents",
+      "quote": "In the site map of Copilot Service admin center, select Contact Center Agents. ... Customer Assist Agent ... Quality Assurance Agent ... Service Operations Agent",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[0].ui; Governance controls: billing row",
+      "type": "admin-path",
+      "claim": "The billing route is Power Platform admin center > Licensing > Pay-as-you-go plans > New billing plan > Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-set-up",
+      "quote": "In the navigation pane, select Licensing. ... select Pay-as-you-go plans. ... Select New billing plan. ... Select Azure subscription. ... In the Select environments pane ... Select the environment you want to add to the billing plan.",
+      "severity": "minor",
+      "fix": "Extend controls[0].ui.path and the rendered billing row to 'Licensing > Pay-as-you-go plans > New billing plan > Azure subscription > Select environments > environment'. The printed route is correct but stops early in the billing wizard; the cited page also requires filling the billing details, selecting the Power Platform product and region, and choosing the environment."
+    },
+    {
+      "n": 57,
+      "where": "controls[0].api; Governance controls: billing row",
+      "type": "command",
+      "claim": "pac licensing add-billing-policy-environment --billing-policy-id <billing policy ID> --environment-ids <JSON array of environment IDs> links an existing billing policy to environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/developer/cli/reference/licensing",
+      "quote": "pac licensing add-billing-policy-environment\n(Preview) Link billing policy ID with environments.\n--billing-policy-id\nThe billing policy ID.\n--environment-ids\nProvide the value as a JSON array.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[0].note; Governance controls: billing row",
+      "type": "admin-path",
+      "claim": "The environment is chosen in the Select environments pane of the billing wizard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-set-up",
+      "quote": "In the Select environments pane, in the Region list, select your region. Then the list of environments in that region is displayed.\n11. Select the environment you want to add to the billing plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[0].note; Governance controls",
+      "type": "availability",
+      "claim": "The CLI billing-policy linking command is labelled Preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/developer/cli/reference/licensing",
+      "quote": "pac licensing add-billing-policy-environment | (Preview) Link billing policy ID with environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[1].ui and controls[1].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No documented tenant or environment switch to turn Service Operations Agent off was found on either UI or API surfaces.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Service Operations Agent disable turn off setting tenant environment API table; Dynamics 365 Contact Center Service Operations Agent disable configuration table entity reference Power Platform API. Read Use and msdyn_agentconfiguration reference; no switch tied to this agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance controls: MCP connection; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "The documented MCP refresh procedure deletes D365 Contact Center MCP Connection under Power Apps Connections and recreates the connection through a new Admin Copilot conversation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+      "quote": "Select Connections in the left pane.\n4. Locate D365 Contact Center MCP Connection, and then delete it.\n5. In Copilot Service admin center, open Admin Copilot, and then start a new conversation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls: removing the environment from a billing plan",
+      "type": "cost",
+      "claim": "Removing an environment from its billing policy stops further pay-as-you-go charges for that environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-set-up",
+      "quote": "Remove the environment from a billing policy ... the environment ceases to be pay-as-you-go and goes back to functioning as a regular environment. Any usage that was already incurred up to this point is billed to your Azure subscription, but no further usage is charged.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance controls: billing removal and agent behaviour",
+      "type": "absence",
+      "claim": "The cited consumption-billing page does not specify what removing a billing plan does to Service Operations Agent.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Service Operations Agent disable turn off setting tenant environment API table. Read Manage consumption-based billing and capacity in full and Set up pay-as-you-go: no Service Operations Agent-specific behaviour on unlinking is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance controls: billing roles",
+      "type": "role",
+      "claim": "Environment admins can create billing policies, with editing and environment-linking limited as the role table describes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-set-up",
+      "quote": "Environment admin | Yes | Yes, for billing policies the admin created. | Yes, for billing policies the admin created and for environments in which they're admins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance controls: billing roles",
+      "type": "role",
+      "claim": "Power Platform admins can create billing policies and manage their environment links tenant-wide.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-set-up",
+      "quote": "Power Platform admin | Yes | Yes, for all billing policies in the tenant. | Yes, for all environments in the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance controls: billing roles",
+      "type": "role",
+      "claim": "Global admins can create billing policies and manage their environment links tenant-wide.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-set-up",
+      "quote": "Global admin | Yes | Yes, for all billing policies in the tenant. | Yes, for all environments in the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance controls: billing roles",
+      "type": "role",
+      "claim": "Dynamics 365 admins can create billing policies and manage their environment links tenant-wide.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-set-up",
+      "quote": "Dynamics 365 admin | Yes | Yes, for all billing policies in the tenant. | Yes, for all environments in the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance controls: Dataverse security role rules",
+      "type": "applicability",
+      "claim": "Dataverse security role assignment is the applicable general mechanism for controlling these role assignments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/security-roles-privileges",
+      "quote": "To control who can access restricted or sensitive data and resources and what they can do with them, assign users to security roles.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/power-platform/admin/security-roles-privileges to sources and cite it for the general Dataverse role-assignment statement; the internal concept link is not Microsoft evidence."
+    },
+    {
+      "n": 69,
+      "where": "Open questions: Quality Assurance Agent and Customer Assist Agent",
+      "type": "absence",
+      "claim": "The Service Operations Agent page does not say whether Quality Assurance Agent or Customer Assist Agent shares this meter or these prerequisites.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Service Operations Agent Customer Assist Quality Assurance billing prerequisites. Read Use Service Operations Agent and the contact-center-agents overview; the Service Operations Agent page makes no statement sharing its meter or prerequisites with either agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Microsoft recommends verifying configuration outcomes in the admin experience, especially for production changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/implement/service-operations-agent-rai-faq",
+      "quote": "verify configuration outcomes in the admin experience. ... Organizations should maintain review and verification steps for setup and configuration changes, particularly in production environments",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance guidance: At rollout; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Microsoft advises clear, specific prompts naming relevant channels and configuration objects.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/implement/service-operations-agent-rai-faq",
+      "quote": "administrators should provide clear and specific prompts, include relevant context such as queue names or channel types, review responses before applying changes, and verify configuration outcomes in the admin experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance guidance versus Governance controls",
+      "type": "consistency",
+      "claim": "The governance checklist names role review, Application Insights configuration, Cost Management budgets and MCP connection review without corresponding controls-table rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Identify who holds' the roles; 'Connect Application Insights'; 'Review usage and budgets'; 'Recheck ... the connection'. Table rows: pay-as-you-go plan linkage and an undocumented agent off switch.",
+      "severity": "minor",
+      "fix": "The Before rollout role-review and Application Insights steps, and the After rollout usage/budget and connection-review steps, have no corresponding rows in Governance controls."
+    },
+    {
+      "n": 73,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-10-22T23:45:32.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-22T23:45:32\"",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-19T20:00:35.907Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=577808",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/contact-center/implement/service-operations-agent-rai-faq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/contact-center/administer/overview-contact-center-agents",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-set-up",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/developer/cli/reference/licensing",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether the environment is on a pay-as-you-go plan that the agent's usage is billed to",
+        "docs": "https://learn.microsoft.com/power-platform/admin/pay-as-you-go-set-up",
+        "reachable": true,
+        "segments": [
+          "Licensing",
+          "Pay-as-you-go plans",
+          "New billing plan",
+          "Azure subscription"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether the environment is on a pay-as-you-go plan that the agent's usage is billed to",
+        "docs": "https://learn.microsoft.com/power-platform/developer/cli/reference/licensing",
+        "reachable": true,
+        "token": "pac licensing add-billing-policy-environment",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

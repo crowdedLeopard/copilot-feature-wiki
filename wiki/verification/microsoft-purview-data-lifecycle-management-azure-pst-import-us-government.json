@@ -1,0 +1,901 @@
+{
+  "slug": "microsoft-purview-data-lifecycle-management-azure-pst-import-us-government",
+  "roadmapId": 565865,
+  "title": "Microsoft Purview: Azure PST Import to Exchange Online mailboxes (GCC, GCC High and DoD)",
+  "status": "verified",
+  "date": "2026-11-19",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 71,
+    "confirmed": 71,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 0
+  },
+  "summary": "The briefing accurately separates the government-cloud roadmap target from the Global rollout described in Microsoft's notice. Its prerequisites, licensing context and Azure role-assignment controls are supported; searches found no feature-specific Learn guidance or additional published licensing or charges.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; front matter: products",
+      "type": "record",
+      "claim": "Roadmap item 565865 concerns Microsoft Purview Azure PST Import.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 565865; \"title\": \"Microsoft Purview: Data Lifecycle Management - Azure PST Import\"; \"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "title; summary; front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "summary; front matter: targetDate; What's changing; Why it matters",
+      "type": "record",
+      "claim": "April CY2027 is the roadmap target, rather than a committed availability date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"April CY2027\"; \"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 17 November 2026 at 18:34:37.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-17T18:34:37\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; What's changing; rationale: risk",
+      "type": "record",
+      "claim": "Azure PST Import is planned to import PST files directly from Azure Blob Storage into Exchange Online mailboxes.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Azure PST Import is a migration method that enables PST files stored in Azure Blob Storage to be imported directly into Exchange Online mailboxes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes a two-step Exchange Migration Service pattern of analysis followed by migration.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "It follows the standard two-step Exchange Migration Service pattern: an initial analysis phase to validate and assess PST data, followed by execution of the actual migration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Administrators first create a migration endpoint.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The process also involves creating a migration endpoint",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "Administrators run an analysis-only migration batch before importing.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "Prepare your batch input files (XML and/or CSV) and run the migration batch in Analyze mode first so the service can validate readiness before importing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "Administrators review analysis results and use them to configure the final import batch.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "using the analysis results to configure the final batch",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "Administrators create and start the import batch to import the files into the specified mailboxes.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "Once the analysis results are reviewed, they use those results to create and start the import batch, which begins importing the PST files into the specified mailboxes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "summary; What's changing; Risk assessment",
+      "type": "record",
+      "claim": "Administrators complete Azure PST Import using PowerShell cmdlets only.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "Administrators complete the Azure PST Import process using PowerShell cmdlets only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment",
+      "type": "record",
+      "claim": "Azure PST Import has no graphical user interface.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "This experience is not available through a graphical user interface (GUI).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Cost and licensing; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft includes post-import cleanup in the workflow.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "The workflow includes: ... Performing post-import cleanup",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "summary; Why it matters; Scope; rationale: impact",
+      "type": "record",
+      "claim": "Microsoft describes no direct user impact.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "There is no direct user impact; the feature is admin-driven.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The feature is admin-opt-in: imports require an administrator to configure and run the workflow.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "There is no direct user impact; the feature is admin-driven. ... Administrators complete the Azure PST Import process using PowerShell cmdlets only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Why it matters; Governance controls",
+      "type": "record",
+      "claim": "Administrator access to PowerShell cmdlets and Azure role assignments controls the feature.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "The feature is controlled through administrator access to PowerShell cmdlets and Azure role assignments, including permissions on the Azure storage account used for PST import.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Open questions; front matter: changes",
+      "type": "record",
+      "claim": "Microsoft revised the notice's timeline on 17 November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "Updated November 17, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Scope; Open questions; front matter: changes",
+      "type": "record",
+      "claim": "The notice describes a Global rollout beginning early April 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "Global: We will begin rolling out early April 2027",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice previously gave early December 2026 as the rollout start.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "early April 2027 (previously early December 2026)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The notice expects the Global rollout to complete by late April 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "expect to complete by late April 2027",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice previously gave late December 2026 as the rollout completion.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "late April 2027 (previously late December 2026)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "No Microsoft Learn page specifically documenting Azure PST Import was found at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Azure PST Import\"' and '\"Azure PST Import\" documentation Analyze mode New-MigrationBatch default permissions roles'; read Learn PST import overview and New-MigrationEndpoint/New-MigrationBatch references. Results describe existing import or generic migrations, not this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "Learn documents an existing PST Import service in the Microsoft Purview portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/pst-import-overview",
+      "quote": "Use the Import service in the Microsoft Purview portal to quickly bulk-import PST files to Exchange Online mailboxes in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The existing PST Import service supports network upload.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/pst-import-overview",
+      "quote": "Network upload: Upload the PST files over the network to a temporary Azure Storage location in the Microsoft cloud.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The existing PST Import service supports drive shipping.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/pst-import-overview",
+      "quote": "Drive shipping: Copy the PST files to a BitLocker-encrypted hard drive and then physically ship the drive to Microsoft.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The existing service uses an import job created in the Microsoft Purview portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/pst-import-overview",
+      "quote": "Create a PST import job on the Import PST files page in the Microsoft Purview portal and submit the PST import mapping file you created in the previous step.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "A separate Azure PST Import roadmap item, 557559, lists Worldwide.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Record 557559: \"title\": \"Microsoft Purview: Data Lifecycle Management- Azure PST Import\"; \"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "The workflow validates PST files and target-mailbox readiness before importing mailbox content.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "Existing mailbox prerequisites and quotas are validated before importing begins. ... Analysis verifies that all specified PST files exist",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Why it matters; What's changing; Governance guidance",
+      "type": "record",
+      "claim": "The workflow provides reports throughout the process.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "validating readiness before importing and by providing reports throughout the process",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "Imported PST content is stored in Exchange Online mailboxes inside the customer's Microsoft 365 tenant.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "PST file contents are imported into Exchange Online mailboxes within the customer's Microsoft 365 tenant",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Imported contents follow the tenant's data residency and storage configuration.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "are stored according to the tenant's data residency and storage configuration",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "Imported mailbox data becomes subject to retention policies already configured for the target mailboxes.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "Once imported, mailbox data becomes subject to any existing Microsoft Purview retention policies, retention labels, holds, and deletion workflows already configured for the target mailboxes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Imported mailbox data becomes subject to existing retention labels.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "Once imported, mailbox data becomes subject to any existing Microsoft Purview retention policies, retention labels, holds, and deletion workflows already configured for the target mailboxes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "Imported mailbox data becomes subject to existing holds on the target mailboxes.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "Once imported, mailbox data becomes subject to any existing Microsoft Purview retention policies, retention labels, holds, and deletion workflows already configured for the target mailboxes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "Imported mailbox data becomes subject to existing deletion workflows on the target mailboxes.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "Once imported, mailbox data becomes subject to any existing Microsoft Purview retention policies, retention labels, holds, and deletion workflows already configured for the target mailboxes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft requires Storage Blob Data Reader for the Office 365 Import Service app on the target storage account.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "Grant the Storage Blob Data Reader role to the Office 365 Import Service app on the target storage account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "Creating the Azure PST Import endpoint fails without that storage permission.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "Without this permission, creating the Azure PST Import endpoint will fail.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The endpoint creation cmdlet validates the storage account and container during setup.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "the endpoint creation cmdlet validates both during setup",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Change & support; Cost and licensing; Scope",
+      "type": "record",
+      "claim": "The notice requires an appropriate licence assigned to each target mailbox without naming the licence.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "Confirm analysis prerequisites for target mailboxes: ... Appropriate license assigned",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Change & support; Scope",
+      "type": "record",
+      "claim": "The analysis prerequisites exclude inactive target mailboxes.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "Mailbox is not inactive or soft-deleted",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Change & support; Scope",
+      "type": "record",
+      "claim": "The analysis prerequisites exclude soft-deleted target mailboxes.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "Mailbox is not inactive or soft-deleted",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Change & support; Scope",
+      "type": "record",
+      "claim": "The target recipient type must be UserMailbox.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "Recipient type is UserMailbox",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Change & support; Scope",
+      "type": "record",
+      "claim": "An archive must be enabled when importing to the archive.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "Archive is enabled if importing to archive",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Change & support; Scope; Governance guidance",
+      "type": "record",
+      "claim": "Analysis validates ArchiveQuota.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "Quota validations (ArchiveQuota / RecoverableItemsQuota) occur during analysis",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Change & support; Scope; Governance guidance",
+      "type": "record",
+      "claim": "Analysis validates RecoverableItemsQuota.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "Quota validations (ArchiveQuota / RecoverableItemsQuota) occur during analysis",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "record",
+      "claim": "Analysis checks that every specified PST file exists.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "Analysis verifies that all specified PST files exist",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Change & support",
+      "type": "record",
+      "claim": "Analysis validates PST file size.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "PST file size is validated during analysis",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Change & support; Cost and licensing; Governance guidance",
+      "type": "record",
+      "claim": "The notice asks administrators to prepare XML and/or CSV batch input files.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "Prepare your batch input files (XML and/or CSV)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Change & support",
+      "type": "record",
+      "claim": "Administrative PST import actions are logged through existing Exchange Online and Microsoft Purview audit mechanisms.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "Administrative actions related to PST import and the resulting mailbox changes are logged using existing Exchange Online and Microsoft Purview audit logging mechanisms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Change & support",
+      "type": "record",
+      "claim": "Resulting mailbox changes are logged through existing Exchange Online and Microsoft Purview audit mechanisms.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "Administrative actions related to PST import and the resulting mailbox changes are logged using existing Exchange Online and Microsoft Purview audit logging mechanisms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "front matter: licensing.model; licensing.notes",
+      "type": "licensing",
+      "claim": "Included is an appropriate entitlement model based on the published bulk-PST-import user rights, with feature-specific licensing left open.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "To bulk-import PST files to Exchange Online mailboxes, the following licenses provide user rights: ... Exchange Online P2 ... Microsoft 365 E5/A5/G5/E3/A3/G3",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing; front matter: licensing.notes",
+      "type": "licensing",
+      "claim": "The service description lists the six licence families printed in the briefing as providing bulk-PST-import user rights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Exchange Online P2; Microsoft 365 E5/A5/G5/E3/A3/G3; Microsoft Purview Suite/EDU/GOV/FLW; Microsoft Defender + Purview Suite FLW; Microsoft 365 E5/A5/F5/G5 Information Protection and Governance; Office 365 E5/A5/G5/E3/A3/G3",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "No licence requirement specific to Azure PST Import is published beyond the documented bulk-PST-import rights.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Azure PST Import\" licensing price charge'; read Purview service description, PST import overview and MC1455013. The service description lists bulk-PST-import rights; neither it nor the search results names separate Azure PST Import licensing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No additional charge specific to Azure PST Import is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Azure PST Import\" licensing price charge'; read Purview service description, PST import overview and Azure Blob Storage cost guidance. Results describe existing network upload/drive shipping and storage meters, not an Azure PST Import-specific charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Cost and licensing; Scope; Governance guidance",
+      "type": "record",
+      "claim": "The notice requires an existing, reachable Azure storage account and container.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "Ensure your Azure storage account and container exist and are reachable",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Cost and licensing; front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "Azure Blob Storage meters data storage per GB per month, supporting the variable cost rating for the PST storage account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/storage/common/storage-plan-manage-costs",
+      "quote": "When you create or use Blob Storage resources, you're charged for the following meters: ... Data storage | Per GB / per month",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Azure Blob Storage meters operations per transaction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/storage/common/storage-plan-manage-costs",
+      "quote": "When you create or use Blob Storage resources, you're charged for the following meters: ... Operations | Per transaction",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The notice's audience comprises Exchange Online administrators, Purview Data Lifecycle Management administrators and organisations importing into user or archive mailboxes.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "Microsoft 365 administrators managing Exchange Online ... Administrators using Microsoft Purview Data Lifecycle Management ... Organizations that import PST files into user or archive mailboxes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The supplied notice does not name an Exchange or Purview administrator role required to execute the cmdlets.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "The feature is controlled through administrator access to PowerShell cmdlets and Azure role assignments, including permissions on the Azure storage account used for PST import.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The printed Azure portal path selects Storage Blob Data Reader and the Office 365 Import Service principal at storage-account scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/role-based-access-control/role-assignments-portal",
+      "quote": "Click Access control (IAM). ... Click the Role assignments tab ... Click Add > Add role assignment. ... Job function roles ... On the Members tab, select User, group, or service principal ... Click Select members.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "The printed az role assignment create command assigns Storage Blob Data Reader using an assignee object ID, principal type and storage-account scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/storage/blobs/assign-azure-role-data-access",
+      "quote": "az role assignment create \\\n    --role \"Storage Blob Data Reader\" \\\n    --assignee-object-id \"aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb\" \\\n    --assignee-principal-type \"User\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[0].note; Governance controls table; Governance guidance",
+      "type": "role",
+      "claim": "Assigning the Azure role requires Microsoft.Authorization/roleAssignments/write at the corresponding scope or higher.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/storage/blobs/assign-azure-role-data-access",
+      "quote": "To run the command, you must have a role that includes Microsoft.Authorization/roleAssignments/write permissions assigned to you at the corresponding scope or higher.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn does not document a cmdlet or parameter specifically for the Azure PST Import workflow at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Azure PST Import\" PowerShell cmdlets Analyze migration endpoint licensing default roles'; read New-MigrationEndpoint and New-MigrationBatch. PSTImport is on-premises-only; Analyze describes mailbox analysis without identifying Azure PST Import. No feature-specific call found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Azure role-assignment changes at this scope can take up to 10 minutes to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/storage/blobs/assign-azure-role-data-access",
+      "quote": "When you assign roles or remove role assignments, it can take up to 10 minutes for changes to take effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Open questions",
+      "type": "record",
+      "claim": "The supplied notice labels its rollout Global without explaining how that label maps to the roadmap's government clouds.",
+      "status": "supported",
+      "source": "Message Center post MC1455013",
+      "quote": "This message is associated with Microsoft 365 Roadmap ID 565865 ... Global: We will begin rolling out early April 2027",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "Microsoft has not stated an additional default beyond the administrator-driven import workflow.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Azure PST Import\" documentation Analyze mode New-MigrationBatch default permissions roles'; read MC1455013, PST import overview and migration references. No additional feature-specific default found; the notice explicitly says admin-driven and PowerShell-only.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-19T20:00:33.774Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=565865",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1455013",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/pst-import-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/azure/storage/common/storage-plan-manage-costs",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/azure/role-based-access-control/role-assignments-portal",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/azure/storage/blobs/assign-azure-role-data-access",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-migrationendpoint?view=exchange-ps",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Access of the Office 365 Import Service app to the Azure storage account holding the PST files",
+        "docs": "https://learn.microsoft.com/azure/role-based-access-control/role-assignments-portal",
+        "reachable": true,
+        "segments": [
+          "storage account",
+          "Access control",
+          "Role assignments",
+          "Add",
+          "Add role assignment",
+          "Role",
+          "Job function roles",
+          "Storage Blob Data Reader",
+          "Members",
+          "User, group, or service principal",
+          "Select members",
+          "Office 365 Import Service"
+        ],
+        "missing": [
+          "storage account",
+          "Office 365 Import Service"
+        ]
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Access of the Office 365 Import Service app to the Azure storage account holding the PST files",
+        "docs": "https://learn.microsoft.com/azure/storage/blobs/assign-azure-role-data-access",
+        "reachable": true,
+        "token": "az role assignment",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

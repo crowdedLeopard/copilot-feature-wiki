@@ -2,39 +2,33 @@
   "slug": "dynamics-365-business-central-copilot-and-agents-run-multiple-sales-order-agents-per-compa",
   "roadmapId": 578065,
   "title": "Dynamics 365 Business Central: multiple Sales Order Agents per company, with relevance filtering and larger PDF limits",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-19",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-19",
-    "reasons": [
-      "1 blocking finding (claim 97)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 111,
-    "confirmed": 108,
+    "claims": 121,
+    "confirmed": 121,
     "unconfirmed": 0,
-    "contradicted": 3,
-    "blocker": 1,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 5
+    "minor": 0
   },
-  "summary": "The briefing's roadmap facts, credit rates and Business Central controls are supported. Hold for the blanket claim that permission-set assignment has no API: Microsoft documents a user-permission automation API, and Sales Order Agent has a Business Central user account. Some monitoring instructions and the action rating also need small corrections.",
+  "summary": "Pass. The roadmap facts, documented controls and Copilot Credit rates support the briefing. It correctly distinguishes automatic capability availability from instance activation and reports the conflicting mailbox-folder guidance rather than choosing one source.",
   "claims": [
     {
       "n": 1,
       "where": "front matter: products; Scope",
       "type": "record",
-      "claim": "The record lists Microsoft Copilot (Microsoft 365) and Dynamics 365 Business Central.",
+      "claim": "The roadmap lists Microsoft Copilot (Microsoft 365) and Dynamics 365 Business Central.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Business Central\"]",
@@ -48,7 +42,7 @@
       "claim": "The roadmap status is Launched.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "quote": "\"status\": \"Launched\"",
       "severity": null,
       "fix": null
     },
@@ -65,31 +59,9 @@
     },
     {
       "n": 4,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The record supplies no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: releasePhase; What's changing",
-      "type": "record",
-      "claim": "The release phase is General Availability.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The record lists Worldwide (Standard Multi-Tenant).",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -97,10 +69,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 5,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The record lists the Web platform.",
+      "claim": "The roadmap platform is Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -108,18 +80,18 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "front matter: defaultState; Why it matters; Scope; rationale: impact",
-      "type": "default",
-      "claim": "This update is on arrival for its intended users, with the record saying enabled for end users automatically.",
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Enabled for:\n\nEnabled for end users automatically",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 9,
+      "n": 7,
       "where": "title; summary; What's changing",
       "type": "behaviour",
       "claim": "Several Sales Order Agent instances can run in one company.",
@@ -130,7 +102,7 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 8,
       "where": "What's changing",
       "type": "record",
       "claim": "Each instance has its own mailbox.",
@@ -141,10 +113,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 9,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Each instance can monitor its own folder.",
+      "claim": "Each instance has its own monitored folder configuration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
       "quote": "You can create multiple Sales Order Agent instances in the same company, each monitoring a different mailbox or folder and using different processing rules.",
@@ -152,7 +124,7 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 10,
       "where": "What's changing",
       "type": "record",
       "claim": "Each instance has its own email signature.",
@@ -163,10 +135,10 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 11,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Each instance has independent processing rules.",
+      "claim": "Each instance has its own processing rules.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
       "quote": "You can set up multiple Sales Order Agent instances per company, each with its own email monitoring and processing rules.",
@@ -174,7 +146,7 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 12,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Each instance has its own display name.",
@@ -185,10 +157,10 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 13,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Each instance tracks performance metrics independently.",
+      "claim": "Each instance tracks its own performance metrics.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
       "quote": "Each instance tracks its own performance metrics independently.",
@@ -196,7 +168,7 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 14,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Archived configurations are read-only.",
@@ -207,7 +179,7 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 15,
       "where": "What's changing",
       "type": "behaviour",
       "claim": "Archived configurations do not count toward active instances.",
@@ -218,10 +190,10 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 16,
       "where": "What's changing; Open questions",
       "type": "record",
-      "claim": "The roadmap describes an upgrade path migrating existing single-instance setups.",
+      "claim": "The roadmap says an upgrade path migrates existing single-instance setups.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "The setup page is restructured to support per-instance configuration, and an upgrade path migrates existing single-instance setups to the new architecture.",
@@ -229,7 +201,7 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 17,
       "where": "What's changing: item matching",
       "type": "behaviour",
       "claim": "Item matching first uses exact item number, vendor item number, GTIN or cross-reference identifiers.",
@@ -240,10 +212,10 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 18,
       "where": "What's changing: item matching",
       "type": "behaviour",
-      "claim": "The next matching layer uses attributes such as colour, material and size with AI relevance ranking.",
+      "claim": "The second matching layer uses attributes such as colour, material and size with AI relevance ranking.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent",
       "quote": "Semantic attribute matching uses item attributes from the customer's message (such as color, material, or size) and AI to rank candidates by relevance.",
@@ -251,10 +223,10 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 19,
       "where": "What's changing: item matching",
       "type": "behaviour",
-      "claim": "Broader fuzzy search across all items follows when direct and attribute searches find no results.",
+      "claim": "A broader search across all items follows unsuccessful direct and attribute-based searches.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent",
       "quote": "Broader fuzzy search falls back to a global search across all items when the direct and attribute-based searches don't produce results.",
@@ -262,35 +234,57 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "summary; What's changing: relevance filtering",
+      "n": 20,
+      "where": "summary; What's changing: relevance",
       "type": "behaviour",
-      "claim": "A relevance model filters out-of-scope messages including offers to sell, discount requests and attempts to access internal data.",
+      "claim": "The agent checks incoming messages against a relevance model before processing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent",
-      "quote": "The relevance model filters out messages that are outside the agent's scope. For example, it filters out offers to sell, discount requests, or attempts to access internal data.",
+      "quote": "The agent validates incoming messages and attachments against a relevance model before it processes them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing: relevance",
+      "type": "behaviour",
+      "claim": "Offers to sell, discount requests and attempts to access internal data are filtered out.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent",
+      "quote": "For example, it filters out offers to sell, discount requests, or attempts to access internal data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing: relevance",
+      "type": "behaviour",
+      "claim": "Attachments receive a separate relevance check.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent",
+      "quote": "A separate check runs on attachments to ensure non-sales-related documents don't trigger unnecessary processing.",
       "severity": null,
       "fix": null
     },
     {
       "n": 23,
-      "where": "What's changing: relevance filtering",
+      "where": "What's changing: relevance",
       "type": "behaviour",
-      "claim": "A separate relevance check ignores non-sales attachments such as terms and conditions.",
+      "claim": "Non-sales attachments such as terms and conditions are ignored.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent",
-      "quote": "if a customer attaches terms and conditions or a privacy policy alongside a purchase order, the agent processes only the purchase order and ignores the non-sales attachments.",
+      "quote": "For example, if a customer attaches terms and conditions or a privacy policy alongside a purchase order, the agent processes only the purchase order and ignores the non-sales attachments.",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
-      "where": "summary; What's changing; Risk assessment; Cost and licensing; Governance guidance",
+      "where": "title; summary; What's changing; Risk assessment; Cost and licensing",
       "type": "behaviour",
-      "claim": "PDF attachments can contain up to 50 pages.",
+      "claim": "The PDF page limit increased from 10 to 50 pages per attachment.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
-      "quote": "PDF attachments can be up to 50 pages.",
+      "source": "roadmap record",
+      "quote": "The maximum number of pages per PDF attachment has been raised from 10 to 50",
       "severity": null,
       "fix": null
     },
@@ -298,7 +292,7 @@
       "n": 25,
       "where": "What's changing: attachment limits",
       "type": "behaviour",
-      "claim": "An approximately 150,000-character cumulative content limit covers all attachments in one email.",
+      "claim": "A cumulative limit of approximately 150,000 characters applies across attachments in one email.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
       "quote": "A cumulative content limit of approximately 150,000 characters applies across all attachments in a single email.",
@@ -307,9 +301,9 @@
     },
     {
       "n": 26,
-      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "The Attachments page explains why a file was skipped.",
+      "claim": "The Attachments page records reasons that files were skipped.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
       "quote": "The Attachments page explains why the agent skipped a file. For example, a file might exceed the page count, cumulative content, or attachment count limit, or use an unsupported format.",
@@ -318,9 +312,9 @@
     },
     {
       "n": 27,
-      "where": "What's changing; Governance guidance: Try it out",
+      "where": "What's changing: Try it out; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Try it out creates a task from sender, message text and attachments without receiving an email.",
+      "claim": "Try it out on the configuration page starts a task without sending an email.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
       "quote": "You can start a Sales Order Agent task manually from the Tasks pane or the Try it out section on the configuration page. You don't need to connect a mailbox or turn on email monitoring.",
@@ -329,20 +323,31 @@
     },
     {
       "n": 28,
-      "where": "What's changing; Governance guidance: sample messages",
+      "where": "What's changing: Try it out",
       "type": "behaviour",
-      "claim": "Two sample messages are available for testing.",
+      "claim": "The task creation flow accepts a sender, message text and attachments.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
-      "quote": "The link fills in the page with one of two sample messages:\n- A text-only message that references items from your item catalog.\n- A message with a sample purchase order attachment generated as a PDF using your actual item data.",
+      "quote": "In Sender's email, select a sender or enter a valid email address.\n4. Enter the request in the Message text field.\n5. To attach supporting files, under Attachments, choose Add.",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
+      "where": "What's changing: Try it out; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Two sample messages are supplied.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
+      "quote": "To get started quickly, choose the Use sample message link. The link fills in the page with one of two sample messages:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
       "where": "What's changing: unregistered senders",
       "type": "behaviour",
-      "claim": "A reviewer can register an unknown sender as a new contact.",
+      "claim": "The reviewer can register an unknown sender as a new contact.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent",
       "quote": "Create a new contact: Register the sender as a new contact in your system permanently.",
@@ -350,10 +355,10 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 31,
       "where": "What's changing; Risk assessment: Security & identity; Governance guidance",
       "type": "behaviour",
-      "claim": "Use another contact once links an existing contact to the specific task without changing master data.",
+      "claim": "Use another contact once links an existing contact to the specific task.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent",
       "quote": "Use another contact once: Pick an existing contact from your contact list and link them to this specific task only, without modifying any master data.",
@@ -361,10 +366,21 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 32,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Use another contact once does not modify master data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent",
+      "quote": "link them to this specific task only, without modifying any master data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
       "where": "What's changing: unregistered senders",
       "type": "behaviour",
-      "claim": "The reviewer can permanently update an existing contact's email to the sender's address.",
+      "claim": "The reviewer can update an existing contact's email to the sender's address.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent",
       "quote": "Update an existing contact's email: Select an existing contact and update their email address to the sender's address permanently.",
@@ -372,10 +388,10 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "What's changing: more controls",
+      "n": 34,
+      "where": "What's changing: email controls",
       "type": "record",
-      "claim": "The roadmap describes Mark email as read as a new toggle.",
+      "claim": "The roadmap introduces a Mark email as read option.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Mark email as read: a new toggle to mark processed emails as read in the mailbox.",
@@ -383,10 +399,10 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "What's changing; Governance guidance; Open questions: Folder",
+      "n": 35,
+      "where": "What's changing; Governance guidance: Before rollout; Open questions",
       "type": "record",
-      "claim": "The roadmap requires a selected mailbox folder before activation.",
+      "claim": "The roadmap says a mailbox folder must be selected before activation.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Mandatory folder selection: the agent now requires you to select a specific mailbox folder before activation.",
@@ -394,32 +410,10 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "What's changing; Governance guidance; Open questions: Folder",
-      "type": "default",
-      "claim": "Learn says the agent monitors Inbox if no folder is selected, unlike the roadmap's activation requirement.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
-      "quote": "If you don't select a folder, the agent monitors the Inbox.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "What's changing: comparison of sources",
-      "type": "default",
-      "claim": "Learn lists Mark email as read as on by default.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
-      "quote": "| Mark email as read | Specifies whether the agent marks processed emails as read in the mailbox. When enabled, team members can quickly identify the messages the agent handled. | On |",
-      "severity": "minor",
-      "fix": "A new setting can also default to On, so do not present these as conflicting facts. Replace the last sentence of What's changing with: 'The roadmap item says folder selection is mandatory before activation, while the Learn setup page says that without a selected folder the agent monitors the Inbox. Learn also lists Mark email as read as on by default.'"
-    },
-    {
       "n": 36,
-      "where": "What's changing: embedded prompts",
+      "where": "What's changing: prompts",
       "type": "record",
-      "claim": "The roadmap says AI prompts now ship as embedded resources in the extension package.",
+      "claim": "The roadmap says the agent's prompts ship as embedded resources.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "The agent's AI prompts (instructions, item search logic, mail template checks, irrelevance validation) are now shipped as embedded resource files within the app extension package.",
@@ -428,9 +422,42 @@
     },
     {
       "n": 37,
+      "where": "What's changing; Governance guidance: Before rollout; Open questions",
+      "type": "default",
+      "claim": "Learn says the Inbox is monitored if no folder is selected, in contrast to the roadmap's mandatory selection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
+      "quote": "If you don't select a folder, the agent monitors the Inbox.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing: defaults",
+      "type": "default",
+      "claim": "Mark email as read is on by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
+      "quote": "| Mark email as read | Specifies whether the agent marks processed emails as read in the mailbox. When enabled, team members can quickly identify the messages the agent handled. | On |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: defaultState; Why it matters; Scope; rationale: impact",
+      "type": "default",
+      "claim": "This update is enabled for end users automatically, supporting defaultState on for the change.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enabled for:\n\nEnabled for end users automatically",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
       "where": "Why it matters; controls[0].note",
       "type": "default",
-      "claim": "Copilot and agent capabilities are active by default when generally available.",
+      "claim": "Learn says generally available Copilot and agent capabilities are active by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/enable-ai",
       "quote": "Copilot and agent capabilities are active by default when they're available in preview or generally available.",
@@ -438,10 +465,10 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Why it matters: tenants without an agent",
+      "n": 41,
+      "where": "Why it matters",
       "type": "behaviour",
-      "claim": "An agent must be configured and activated before processing email.",
+      "claim": "An instance still needs configuration and activation before it processes email.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
       "quote": "When Sales Order Agent is active and email monitoring is turned on, a scheduled task periodically monitors the configured mailbox folder.",
@@ -449,18 +476,7 @@
       "fix": null
     },
     {
-      "n": 39,
-      "where": "Why it matters; rationale: cost",
-      "type": "cost",
-      "claim": "Each attachment is billed in Copilot Credits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
-      "quote": "Process email attachment, no sales data detected (per attachment*) | Generative answer | 2\nProcess email attachment, sales data detected (per attachment*) | Agent action | 5\n* Only attachments in supported formats are processed (for example, PDF, PNG, JPG).",
-      "severity": "minor",
-      "fix": "Narrow 'each attachment is billed in Copilot Credits' to 'each processed attachment is billed in Copilot Credits'; the published attachment rates apply to processed supported formats, not every file attached to an email."
-    },
-    {
-      "n": 40,
+      "n": 42,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "The agent processes all emails arriving in its monitored folder.",
@@ -471,10 +487,10 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "Risk assessment: Data exposure; controls[2].note",
+      "n": 43,
+      "where": "Risk assessment: Data exposure; controls[2]",
       "type": "behaviour",
-      "claim": "Analyze attachments determines whether attachments are analysed for request information.",
+      "claim": "Analyze attachments controls whether incoming attachments are analysed for request information.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
       "quote": "Analyze attachments | Specifies whether the agent analyzes attachments on incoming emails for request information.",
@@ -482,10 +498,10 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 44,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Automatic contact identification exclusively matches the sender's address to the contact card's E-Mail field.",
+      "claim": "Automatic contact identification exclusively matches the sender's address to the contact card E-Mail field.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent",
       "quote": "For security, the agent identifies contacts exclusively by matching the sender's email address to the E-Mail field on contact cards.",
@@ -493,8 +509,19 @@
       "fix": null
     },
     {
-      "n": 43,
-      "where": "Risk assessment: Security & identity; controls[4].note; Governance guidance",
+      "n": 45,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "behaviour",
+      "claim": "Sales Order Agent has its own Business Central user account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
+      "quote": "The Sales Order Agent has a user account in Business Central, similar to other users, which defines the permissions the agent has on objects and data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Security & identity; controls[4].note; Governance guidance: At rollout",
       "type": "default",
       "claim": "The agent account has SOA - EDIT by default.",
       "status": "supported",
@@ -504,21 +531,21 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 47,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Additional instances have separate Business Central agent accounts.",
+      "claim": "Additional instances have additional agent accounts.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
-      "quote": "The first account created for a company is named SALES ORDER AGENT - [COMPANY]. Additional accounts are named SALES ORDER AGENT - [COMPANY] 2, SALES ORDER AGENT - [COMPANY] 3, and so on.",
+      "quote": "Additional accounts are named SALES ORDER AGENT - [COMPANY] 2, SALES ORDER AGENT - [COMPANY] 3, and so on.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 45,
-      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "n": 48,
+      "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Depending on configuration the agent sends sales quotes for customer confirmation.",
+      "claim": "Depending on configuration the agent sends quotes for customer confirmation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
       "quote": "Send quotes for confirmation | When on, the agent sends the sales quote to the customer as a PDF attachment and waits for the customer to confirm or request changes before proceeding.",
@@ -526,10 +553,10 @@
       "fix": null
     },
     {
-      "n": 46,
+      "n": 49,
       "where": "Risk assessment: Autonomy & actions; rationale: risk",
       "type": "behaviour",
-      "claim": "Depending on configuration the agent converts sales quotes into orders.",
+      "claim": "Depending on configuration the agent converts quotes into sales orders.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
       "quote": "Make orders from quotes | When on, the agent converts sales quotes into orders.",
@@ -537,10 +564,10 @@
       "fix": null
     },
     {
-      "n": 47,
+      "n": 50,
       "where": "Risk assessment: Autonomy & actions; rationale: risk",
       "type": "behaviour",
-      "claim": "Business Central users review and approve outgoing messages before sending.",
+      "claim": "Designated Business Central users review outgoing messages before they are sent.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent",
       "quote": "The agent always involves designated Business Central users to review and approve all outgoing messages before it sends them to customers.",
@@ -548,101 +575,68 @@
       "fix": null
     },
     {
-      "n": 48,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "default",
-      "claim": "Review quotes when created and updated defaults to Off.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
-      "quote": "Review quotes when created and updated ... The user must review and confirm the email before the agent sends it to the customer. | Off |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "default",
-      "claim": "Review orders when created and updated defaults to Off.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
-      "quote": "Review orders when created and updated ... The user must review and confirm the order before the agent sends it to the customer. | Off |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Depleted Copilot Credits stop retrieval and processing of new emails.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
-      "quote": "When your organization's Copilot Credit quota is depleted, the agent stops retrieving and processing new emails from the monitored mailbox.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 51,
       "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "The agent stays active while credits are unavailable.",
+      "type": "default",
+      "claim": "Review quotes when created and updated is off by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
-      "quote": "However, the agent remains active and continues to run its scheduled task and sends any pending reply emails that were already prepared.",
+      "quote": "When off, the agent creates or modifies sales quotes as requested and then automatically proceeds with creating an outgoing email with the quote as an attachment. The user must review and confirm the email before the agent sends it to the customer. | Off |",
       "severity": null,
       "fix": null
     },
     {
       "n": 52,
-      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "When credits return the agent automatically resumes and processes accumulated unprocessed email.",
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "default",
+      "claim": "Review orders when created and updated is off by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
-      "quote": "When credits become available again ... the agent automatically resumes processing. It picks up unprocessed emails that accumulated in the mailbox while credits were unavailable.",
+      "quote": "When off, the agent creates the sales order as requested and then automatically proceeds with creating an outgoing email with the order as an attachment. The user must review and confirm the order before the agent sends it to the customer. | Off |",
       "severity": null,
       "fix": null
     },
     {
       "n": 53,
-      "where": "front matter: licensing.model; summary; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Sales Order Agent uses consumption-based Copilot Credits for AI interactions.",
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The agent stops processing new emails when Copilot Credits run out.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent",
-      "quote": "Sales Order Agent uses Copilot Credits for AI interactions, which incur charges based on interaction complexity.",
+      "quote": "When the agent runs out of Copilot Credits, it stops processing new emails but stays active and scheduled.",
       "severity": null,
       "fix": null
     },
     {
       "n": 54,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Prepaid capacity is supplied through Copilot Credit packs.",
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The agent remains active when credits run out.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
-      "quote": "The prepaid capacity model uses Copilot Credit pack subscriptions, which are a licensing option for Microsoft Copilot Studio that you purchase in advance.",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent",
+      "quote": "When the agent runs out of Copilot Credits, it stops processing new emails but stays active and scheduled.",
       "severity": null,
       "fix": null
     },
     {
       "n": 55,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Business Central also supports pay-as-you-go.",
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "When credits return, processing resumes automatically and includes the accumulated backlog.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
-      "quote": "Business Central supports two billing models: prepaid capacity and pay-as-you-go.",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent",
+      "quote": "When credits become available again, the agent automatically resumes and processes all unprocessed emails that accumulated during the outage.",
       "severity": null,
       "fix": null
     },
     {
       "n": 56,
-      "where": "Cost and licensing",
-      "type": "cost",
-      "claim": "Prepaid capacity is consumed first when available.",
+      "where": "front matter: licensing.model; summary; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Sales Order Agent is consumption-billed using Copilot Credits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
-      "quote": "Both billing models can be used in the Business Central environment. When available, prepaid capacity is consumed first.",
+      "quote": "Selected agent capabilities in Business Central use consumption-based billing, charging per use. These capabilities use Copilot Credits for AI interactions and tasks",
       "severity": null,
       "fix": null
     },
@@ -650,16 +644,27 @@
       "n": 57,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Tenant credit capacity is shared with other Microsoft services.",
+      "claim": "Learn says charges for AI interactions depend on interaction complexity.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
-      "quote": "Copilot Credit capacity on the tenant is consumed by Business Central environments and other Microsoft services on the tenant.",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent",
+      "quote": "Sales Order Agent uses Copilot Credits for AI interactions, which incur charges based on interaction complexity.",
       "severity": null,
       "fix": null
     },
     {
       "n": 58,
-      "where": "Cost and licensing: published rates",
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The variable cost rating reflects metered email, attachment and agent-action consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
+      "quote": "| Analyze incoming email | Generative answer | 2 |\n| Process email attachment, no sales data detected (per attachment\\*) | Generative answer | 2 |\n| Process email attachment, sales data detected (per attachment\\*) | Agent action | 5 |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing: rates",
       "type": "cost",
       "claim": "Analysing an incoming email costs 2 Copilot Credits.",
       "status": "supported",
@@ -669,30 +674,30 @@
       "fix": null
     },
     {
-      "n": 59,
-      "where": "Cost and licensing: published rates",
+      "n": 60,
+      "where": "Cost and licensing: rates; Why it matters",
       "type": "cost",
       "claim": "Processing an attachment with no sales data detected costs 2 Copilot Credits per attachment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
-      "quote": "| Process email attachment, no sales data detected (per attachment*) | Generative answer | 2 |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "Cost and licensing: published rates",
-      "type": "cost",
-      "claim": "Processing an attachment with sales data detected costs 5 Copilot Credits per attachment.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
-      "quote": "| Process email attachment, sales data detected (per attachment*) | Agent action | 5 |",
+      "quote": "| Process email attachment, no sales data detected (per attachment\\*) | Generative answer | 2 |",
       "severity": null,
       "fix": null
     },
     {
       "n": 61,
-      "where": "Cost and licensing: published rates",
+      "where": "Cost and licensing: rates; Why it matters",
+      "type": "cost",
+      "claim": "Processing an attachment with sales data detected costs 5 Copilot Credits per attachment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
+      "quote": "| Process email attachment, sales data detected (per attachment\\*) | Agent action | 5 |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Cost and licensing: rates",
       "type": "cost",
       "claim": "Checking item availability costs 5 Copilot Credits.",
       "status": "supported",
@@ -702,8 +707,8 @@
       "fix": null
     },
     {
-      "n": 62,
-      "where": "Cost and licensing: published rates",
+      "n": 63,
+      "where": "Cost and licensing: rates",
       "type": "cost",
       "claim": "Creating or updating a sales quote costs 5 Copilot Credits.",
       "status": "supported",
@@ -713,8 +718,8 @@
       "fix": null
     },
     {
-      "n": 63,
-      "where": "Cost and licensing: published rates",
+      "n": 64,
+      "where": "Cost and licensing: rates",
       "type": "cost",
       "claim": "Creating or updating a sales order costs 5 Copilot Credits.",
       "status": "supported",
@@ -724,8 +729,8 @@
       "fix": null
     },
     {
-      "n": 64,
-      "where": "Cost and licensing: published rates",
+      "n": 65,
+      "where": "Cost and licensing: rates",
       "type": "cost",
       "claim": "Generating a response email costs 2 Copilot Credits.",
       "status": "supported",
@@ -735,21 +740,65 @@
       "fix": null
     },
     {
-      "n": 65,
-      "where": "Cost and licensing: worked example",
+      "n": 66,
+      "where": "Cost and licensing: example",
       "type": "cost",
-      "claim": "Learn's example of 100 monthly requests with a usable attachment in half gives 1,650 Copilot Credits per month.",
+      "claim": "Learn's example of 100 monthly requests with half including a usable attachment totals 1,650 Copilot Credits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
-      "quote": "The estimated monthly cost is calculated as: [2 + 5 + 5 + 2 + (5 × 0.5)] x 100 = 1,650 Copilot Credits/month",
+      "quote": "Average usage is 100 requests per month.\n\nThe estimated monthly cost is calculated as: [2 + 5 + 5 + 2 + (5 × 0.5)] x 100 = 1,650 Copilot Credits/month",
       "severity": null,
       "fix": null
     },
     {
-      "n": 66,
-      "where": "Cost and licensing; controls[2].note; Governance guidance",
+      "n": 67,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Business Central supports prepaid capacity using Copilot Credit packs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
+      "quote": "The prepaid capacity model uses Copilot Credit pack subscriptions, which are a licensing option for Microsoft Copilot Studio that you purchase in advance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Business Central supports pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
+      "quote": "Business Central supports two billing models: prepaid capacity and pay-as-you-go.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Available prepaid capacity is consumed first.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
+      "quote": "Both billing models can be used in the Business Central environment. When available, prepaid capacity is consumed first.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Tenant Copilot Credit capacity is shared with other Microsoft services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
+      "quote": "Copilot Credit capacity on the tenant is consumed by Business Central environments and other Microsoft services on the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Cost and licensing; Governance guidance: At rollout; controls[2]",
       "type": "behaviour",
-      "claim": "Daily email limit controls the number of incoming emails the agent handles each day.",
+      "claim": "Daily email limit sets how many incoming emails the agent handles per day.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
       "quote": "Daily email limit | Specifies how many incoming emails per day the agent can handle.",
@@ -757,8 +806,8 @@
       "fix": null
     },
     {
-      "n": 67,
-      "where": "Cost and licensing: Daily email limit",
+      "n": 72,
+      "where": "Cost and licensing",
       "type": "default",
       "claim": "Daily email limit defaults to 100.",
       "status": "supported",
@@ -768,8 +817,8 @@
       "fix": null
     },
     {
-      "n": 68,
-      "where": "Cost and licensing: Daily email limit",
+      "n": 73,
+      "where": "Cost and licensing",
       "type": "behaviour",
       "claim": "Emails over the daily limit are processed the next day.",
       "status": "supported",
@@ -779,32 +828,32 @@
       "fix": null
     },
     {
-      "n": 69,
-      "where": "Cost and licensing; Open questions: per-page charge",
+      "n": 74,
+      "where": "Cost and licensing; Open questions",
       "type": "absence",
-      "claim": "The billing page specifies per-attachment rates but no per-page rate or page-count effect.",
+      "claim": "The billing page gives attachment rates but states no per-page rate or charging change for the increase to 50 pages.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Business Central Sales Order Agent attachment credit per page multiple instance update pricing migration'. Read Manage consumption-based billing, especially Sales Order Agent billing: attachment rows are per attachment; no per-page rate or page-count adjustment is stated.",
+      "quote": "Searched: \"Sales Order Agent\" \"billing\" \"page\" \"50\" credits rate. Read the complete cited Business Central consumption-billing page, especially Sales Order Agent billing: rates are per attachment, with no per-page or 10-to-50-page adjustment.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 70,
+      "n": 75,
       "where": "front matter: licensing.notes",
       "type": "absence",
-      "claim": "No separate credit rate specific to this update is published.",
+      "claim": "No Copilot Credit rate specific to this update is published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Business Central Sales Order Agent attachment credit per page multiple instance update pricing migration'. Read the Sales Order Agent billing table and setup and overview pages; the published rates cover agent steps, with no separate multi-instance update rate.",
+      "quote": "Searched: \"Sales Order Agent\" \"billing\" \"page\" \"50\" credits rate. Read the cited Business Central consumption-billing, setup and overview pages; existing per-step rates are published, with no rate specific to this update.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 71,
-      "where": "Scope; Governance guidance: Before rollout",
+      "n": 76,
+      "where": "Scope; Governance guidance: Before rollout; Governance controls",
       "type": "role",
-      "claim": "Creating an instance requires Configure All Agents, system permission ID 9665.",
+      "claim": "Creating an instance requires Configure All Agents system permission, ID 9665.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
       "quote": "To create a Sales Order Agent instance, you need the Configure All Agents system permission (ID 9665).",
@@ -812,10 +861,10 @@
       "fix": null
     },
     {
-      "n": 72,
+      "n": 77,
       "where": "Scope",
       "type": "role",
-      "claim": "Working with tasks requires Manage Agent Tasks, system permission ID 9670.",
+      "claim": "Working with agent tasks requires Manage Agent Tasks system permission, ID 9670.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
       "quote": "To work with an agent's tasks in the Copilot pane, a user needs the Manage Agent Tasks system permission (ID 9670) and must be listed in that agent's user access list.",
@@ -823,10 +872,10 @@
       "fix": null
     },
     {
-      "n": 73,
+      "n": 78,
       "where": "Scope",
       "type": "role",
-      "claim": "Working with an agent's tasks also requires a place on that instance's user access list.",
+      "claim": "Working with an agent's tasks also requires membership in its user access list.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
       "quote": "To work with an agent's tasks in the Copilot pane, a user needs the Manage Agent Tasks system permission (ID 9670) and must be listed in that agent's user access list.",
@@ -834,10 +883,10 @@
       "fix": null
     },
     {
-      "n": 74,
+      "n": 79,
       "where": "Scope",
       "type": "licensing",
-      "claim": "Essential and Premium licence entitlements include Manage Agent Tasks.",
+      "claim": "Essential licence entitlements include Manage Agent Tasks.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
       "quote": "Essential and Premium license entitlements include the Manage Agent Tasks permission.",
@@ -845,10 +894,21 @@
       "fix": null
     },
     {
-      "n": 75,
+      "n": 80,
+      "where": "Scope",
+      "type": "licensing",
+      "claim": "Premium licence entitlements include Manage Agent Tasks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
+      "quote": "Essential and Premium license entitlements include the Manage Agent Tasks permission.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
       "where": "Scope: prerequisites",
       "type": "behaviour",
-      "claim": "A Microsoft 365 mailbox is needed for monitored email but not for manually started tasks.",
+      "claim": "Automatic email processing requires Microsoft 365 mailbox setup, whereas manual tasks do not require a mailbox.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
       "quote": "To process customer requests automatically from email, set up a Microsoft 365 user and a shared mailbox. You don't need to connect a mailbox if you only start tasks manually.",
@@ -856,8 +916,8 @@
       "fix": null
     },
     {
-      "n": 76,
-      "where": "Scope; Governance guidance: billing prerequisite",
+      "n": 82,
+      "where": "Scope: prerequisites",
       "type": "licensing",
       "claim": "Billing for agent capabilities must be configured for the Business Central environment.",
       "status": "supported",
@@ -867,10 +927,10 @@
       "fix": null
     },
     {
-      "n": 77,
-      "where": "Scope: sandbox prerequisite",
+      "n": 83,
+      "where": "Scope: prerequisites",
       "type": "behaviour",
-      "claim": "Sandboxes require Allow HttpClient Requests on the Sales Order Agent extension.",
+      "claim": "Sandbox environments require Allow HttpClient Requests on the Sales Order Agent extension.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
       "quote": "(Sandbox environments only) The Allow HttpClient Requests toggle in the Sales Order Agent extension settings is turned on.",
@@ -878,10 +938,10 @@
       "fix": null
     },
     {
-      "n": 78,
-      "where": "Scope: mailbox delegation; controls[2].note",
+      "n": 84,
+      "where": "Scope: mailbox permissions",
       "type": "role",
-      "claim": "Configuring email monitoring requires Read and manage (Full Access), except on the user's personal mailbox.",
+      "claim": "Configuring email monitoring requires Read and manage (Full Access) on the mailbox.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
       "quote": "To configure email monitoring, you need Read and manage (Full Access) and Send as permission on the mailbox, unless it's your personal mailbox.",
@@ -889,10 +949,10 @@
       "fix": null
     },
     {
-      "n": 79,
-      "where": "Scope: mailbox delegation",
+      "n": 85,
+      "where": "Scope: mailbox permissions",
       "type": "role",
-      "claim": "Configuring email monitoring requires Send as, except on the user's personal mailbox.",
+      "claim": "Configuring email monitoring requires Send as permission on the mailbox.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
       "quote": "To configure email monitoring, you need Read and manage (Full Access) and Send as permission on the mailbox, unless it's your personal mailbox.",
@@ -900,32 +960,54 @@
       "fix": null
     },
     {
-      "n": 80,
+      "n": 86,
+      "where": "Scope: mailbox permissions",
+      "type": "role",
+      "claim": "The delegated mailbox permission requirement has a personal-mailbox exception.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
+      "quote": "To configure email monitoring, you need Read and manage (Full Access) and Send as permission on the mailbox, unless it's your personal mailbox.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
       "where": "Scope: languages",
       "type": "availability",
       "claim": "Supported languages include Danish, English variants, French, German, Italian, Portuguese (Brazil) and Spanish.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
-      "quote": "Danish, English, English (Canada), English (New Zealand), English (Australia), English (United Kingdom), English (United States), French, French (Canada), German, Italian, Portuguese (Brazil), and Spanish.",
+      "quote": "The agent is validated and supported in the following languages: Danish, English, English (Canada), English (New Zealand), English (Australia), English (United Kingdom), English (United States), French, French (Canada), German, Italian, Portuguese (Brazil), and Spanish.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 81,
-      "where": "Governance controls: configuration permissions; Governance guidance",
-      "type": "role",
-      "claim": "Configuring an existing instance requires Configure All Agents or Can Configure in that instance's access list.",
+      "n": 88,
+      "where": "controls[0].ui; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Business Central > Search > Copilot & agent capabilities > Sales Order Agent > Deactivate disables the capability.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
-      "quote": "To manage an existing agent, you need the Configure All Agents system permission or be listed in the agent's user access list with Can Configure selected.",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/enable-ai",
+      "quote": "enter Copilot & agent capabilities, and then choose the related link.\n2. The page lists all available Copilot and AI-related features and their status\nTo turn off a feature, select it in the list, and then select Deactivate.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 82,
-      "where": "controls[0].note; Governance controls: administrator requirement",
+      "n": 89,
+      "where": "controls[0].api",
+      "type": "absence",
+      "claim": "No automation equivalent is documented for the Sales Order Agent capability toggle.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Business Central\" \"Copilot Capability\" \"Set\"; site:learn.microsoft.com dynamics365 business-central Copilot capability deactivate API PowerShell Sales Order Agent. Read enable-ai and featureManagement reference; no equivalent capability-toggle call found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 90,
+      "where": "controls[0].note; Governance controls",
       "type": "role",
-      "claim": "Configuring capabilities requires SUPER or one of the administrator licences listed by Learn.",
+      "claim": "Configuring Copilot capabilities requires SUPER permission or one of the administrator licences Learn lists.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/enable-ai",
       "quote": "You need SUPER permission in your Business Central user account or one of the following Business Central licenses:",
@@ -933,10 +1015,10 @@
       "fix": null
     },
     {
-      "n": 83,
+      "n": 91,
       "where": "controls[0].note",
       "type": "behaviour",
-      "claim": "Some capability changes require users to sign out and sign back in.",
+      "claim": "Some capability changes require users to sign out and sign in again.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/enable-ai",
       "quote": "Some AI features take effect immediately, while others require users to sign out and sign in again.",
@@ -944,10 +1026,32 @@
       "fix": null
     },
     {
-      "n": 84,
+      "n": 92,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Sales Order Agent > Configure Sales Order Agent > Manage user access reaches instance access management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
+      "quote": "Open the Configure Sales Order Agent page by selecting Sales Order Agent > Configure.\n2. Turn off the Active toggle.\n3. Select Manage user access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 93,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "No applicable automation call is documented for the Sales Order Agent instance user access list.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Business Central\" \"Agent\" \"SetUserAccess\"; \"Sales Order Agent\" \"API\" \"user access\"; Business Central Sales Order Agent API table entity reference. Read setup and SDK configuration: cross-app configuration is blocked; no Sales Order Agent access-list API found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 94,
       "where": "controls[1].note; Governance controls",
       "type": "behaviour",
-      "claim": "Turn off Active before modifying user access through Manage user access.",
+      "claim": "The agent must be deactivated before changing user access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
       "quote": "Turn off the Active toggle.\n3. Select Manage user access.",
@@ -955,172 +1059,73 @@
       "fix": null
     },
     {
-      "n": 85,
-      "where": "controls[1].note",
-      "type": "role",
-      "claim": "Can Configure permits configuration changes and management of the agent's access list.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
-      "quote": "select Can Configure to also let them change the agent's configuration and manage its access list.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 86,
-      "where": "controls[4].note; Governance controls",
-      "type": "behaviour",
-      "claim": "The agent must be disabled before adding or deleting its permission-set assignments.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
-      "quote": "Before you can add or delete permission sets applied to the agent, change the State to disabled.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 87,
-      "where": "controls[4].note",
-      "type": "behaviour",
-      "claim": "SOA - EDIT is a system permission set that must be copied to customise it.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
-      "quote": "You can't modify the SOA - EDIT permission set directly, because it's a system permission set. However, you can create a copy of the SOA - EDIT permission set, modify the copy to suit your needs",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 88,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Business Central > Search > Copilot & agent capabilities > Sales Order Agent > Deactivate disables the capability environment-wide.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/business-central/enable-ai",
-      "quote": "Use the Copilot & agent capabilities page to turn individual features off or on for all users ... enter Copilot & agent capabilities ... To turn off a feature, select it in the list, and then select Deactivate.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 89,
-      "where": "controls[0].api; Governance controls: API absence",
-      "type": "absence",
-      "claim": "No automation operation is documented for the Sales Order Agent environment capability toggle.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Business Central Copilot capabilities API deactivate'. Read enable-ai and Introduction to automation APIs. The latter's feature activation API is for Feature Management, not the Copilot & agent capabilities control; no operation for this capability toggle was identified.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 90,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Sales Order Agent > Configure Sales Order Agent > Manage user access opens instance access management in Business Central.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
-      "quote": "choose the Configure Sales Order Agent action to reopen the configuration page ... Select Manage user access to specify the users who can work with the agent and whether they can also configure it.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 91,
-      "where": "controls[1].api; Governance controls: API absence",
-      "type": "absence",
-      "claim": "No accessible API for changing a Sales Order Agent instance's user access list is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Business Central automation API reference agents agent tasks user permissions'. Read setup, Agent permissions, and Configure agents programmatically. SDK UpdateAgentAccessControl exists, but configuration changes to agents defined in another application are explicitly blocked.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 92,
-      "where": "controls[2].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Sales Order Agent > Configure Sales Order Agent > Manage mailbox reaches the instance's mailbox settings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
-      "quote": "choose the Configure Sales Order Agent action to reopen the configuration page ... Manage mailbox ... Account ... Folder ... Mark email as read ... Analyze attachments ... Daily email limit",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 93,
-      "where": "controls[2].api; Governance controls: API absence",
-      "type": "absence",
-      "claim": "No API operation for the instance's mailbox configuration is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Business Central Sales Order Agent API mailbox review settings Copilot capability activate deactivate'; 'Sales Order Agent table API'. Read setup, overview, Introduction to automation APIs and SDK configuration; no Sales Order Agent mailbox-setting operation was identified.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 94,
-      "where": "controls[3].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Sales Order Agent > Configure Sales Order Agent > Respond to inquiries > Messages from unregistered senders reaches its review setting.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
-      "quote": "Configure Sales Order Agent ... Respond to inquiries ... Messages from unregistered senders | Specifies the type of review required for incoming messages from unregistered senders. | All |",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 95,
-      "where": "controls[3].api; Governance controls: API absence",
-      "type": "absence",
-      "claim": "No API for changing Sales Order Agent's unregistered-sender review setting is documented.",
+      "where": "controls[1].note; Governance controls; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "Existing agents can be configured through Configure All Agents or their Can Configure access-list permission.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Business Central Sales Order Agent API configure capability activation user access mailbox unregistered senders agent permission sets tasks API reference'. Read setup and SDK configuration/tasks. No API for this setting was identified; custom-agent message APIs do not establish it.",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
+      "quote": "To configure an existing agent, a user needs the Configure All Agents permission or must be listed in that agent's user access list with Can Configure selected.",
       "severity": null,
       "fix": null
     },
     {
       "n": 96,
-      "where": "controls[4].ui; Governance controls table",
+      "where": "controls[2].ui; Governance guidance: At rollout",
       "type": "admin-path",
-      "claim": "Agents > Sales Order Agent account > Agent Permission Sets > Edit agent permissions manages the instance's permission sets.",
+      "claim": "Sales Order Agent > Configure Sales Order Agent > Manage mailbox reaches the Account, Folder, Mark email as read, Analyze attachments and Daily email limit options.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
-      "quote": "search for and open the Agents page, and then select the Sales Order Agent account you want to manage ... The Agent Permission Sets section lists the permission sets ... To add or remove permission sets, select Edit agent permissions.",
+      "quote": "Set the Daily email limit on the Manage mailbox configuration card to cap how many emails the agent processes per day.",
       "severity": null,
       "fix": null
     },
     {
       "n": 97,
-      "where": "controls[4].api; Governance controls table; Governance controls: blanket API absence",
+      "where": "controls[2].api",
       "type": "absence",
-      "claim": "Microsoft documents no API to assign permission sets to the Sales Order Agent's Business Central user account.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/api/dynamics_userpermission_create",
-      "quote": "Creates an user permission in Dynamics 365 Business Central.\nPOST /microsoft/automation/v2.0/companies({companyId})/users({userSecurityId})/userPermissions",
-      "severity": "blocker",
-      "fix": "Replace controls[4].api null with kind 'rest', call 'POST /microsoft/automation/v2.0/companies({companyId})/users({userSecurityId})/userPermissions', and docs 'https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/api/dynamics_userpermission_create'. Add to its note: 'The request body uses roleId to select the permission set; company, scope and appId identify the assignment where needed.' The setup page identifies the agent as a Business Central user account; the automation userPermission resource documents permission-set assignment to users, with no agent exclusion. Add the reference to sources and remove the blanket sentence 'Microsoft Learn documents no API for them'. Preserve the existing requirement to disable the agent before changing its assignments."
+      "claim": "No applicable automation call is documented for the instance mailbox settings.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Business Central\" \"Sales Order Agent\" \"API\" \"mailbox\"; Business Central Sales Order Agent API SDK configure user access mailbox folder daily email limit unregistered senders tasks Copilot capability disable. Read setup and SDK configuration; no mailbox-setting call found.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 98,
-      "where": "controls[5].ui; Governance controls table; Governance guidance: View tasks",
-      "type": "admin-path",
-      "claim": "Agents > Sales Order Agent account > View tasks provides access to task, step and log inspection.",
+      "where": "controls[2].note",
+      "type": "role",
+      "claim": "Setting the mailbox folder requires Read and manage (Full Access).",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
-      "quote": "Select the Sales Order Agent account you want to inspect, and then choose View tasks ... Drill into Steps Done to inspect the execution steps ... Choose View log entries to open the Agent Task Log page.",
-      "severity": "minor",
-      "fix": "Keep the existing route to View tasks, which reaches the correct page. Add to controls[5].note: 'On Agent Tasks, open Task ID for an active task, drill into Steps Done for execution steps, or choose View log entries > entry > View details for log details.'"
+      "quote": "You need Read and manage (Full Access) permission on the mailbox to set this option.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 99,
-      "where": "controls[5].api; Governance controls: API absence",
-      "type": "absence",
-      "claim": "No documented automation equivalent covers Sales Order Agent task, step and log inspection.",
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Sales Order Agent > Configure Sales Order Agent > Respond to inquiries > Messages from unregistered senders controls review requirements.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Business Central Agent Task API GetTasks GetTaskLogEntries codeunit Agent task steps'. Read Managing agent tasks programmatically and Integrate with the Tasks AL API. These describe own/custom-agent tasks; no equivalent inspection operation for Sales Order Agent was identified.",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
+      "quote": "Respond to inquiries\nThese options specify how the agent engages in conversations related to price and availability of products and services.\nMessages from unregistered senders | Specifies the type of review required for incoming messages from unregistered senders. | All",
       "severity": null,
       "fix": null
     },
     {
       "n": 100,
+      "where": "controls[3].api",
+      "type": "absence",
+      "claim": "No applicable automation call is documented for the unregistered-sender review setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Business Central Sales Order Agent API SDK configure user access mailbox folder daily email limit unregistered senders tasks Copilot capability disable. Read setup, SDK configuration and SDK tasks; no call sets the Sales Order Agent unregistered-sender review option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 101,
       "where": "controls[3].note",
       "type": "default",
       "claim": "Messages from unregistered senders defaults to All.",
@@ -1131,21 +1136,98 @@
       "fix": null
     },
     {
-      "n": 101,
-      "where": "Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Learn advises monitoring Copilot Credit capacity and usage in the Power Platform admin center.",
+      "n": 102,
+      "where": "controls[4].ui; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Agents > Sales Order Agent account > Agent Permission Sets > Edit agent permissions reaches permission assignment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
-      "quote": "Monitor your credit usage. Check your Copilot Credit capacity and usage in the Power Platform admin center and stay ahead of quota limits.",
+      "quote": "search for and open the Agents page, and then select the Sales Order Agent account you want to manage.\nThe Agent Permission Sets section lists the permission sets currently assigned to the agent.\nTo add or remove permission sets, select Edit agent permissions.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 102,
-      "where": "controls[5].note",
+      "n": 103,
+      "where": "controls[4].api",
+      "type": "command",
+      "claim": "POST /microsoft/automation/v2.0/companies({companyId})/users({userSecurityId})/userPermissions assigns a user permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/api/dynamics_userpermission_create",
+      "quote": "Creates an user permission in Dynamics 365 Business Central.\nPOST /microsoft/automation/v2.0/companies({companyId})/users({userSecurityId})/userPermissions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 104,
+      "where": "controls[4].note; Governance controls",
       "type": "behaviour",
-      "claim": "The listed View tasks route is inspection rather than a change to agent behaviour.",
+      "claim": "The agent's State must be disabled before its permission sets are changed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
+      "quote": "Before you can add or delete permission sets applied to the agent, change the State to disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 105,
+      "where": "controls[4].note",
+      "type": "behaviour",
+      "claim": "SOA - EDIT is a system permission set that must be copied to customise it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
+      "quote": "You can't modify the SOA - EDIT permission set directly, because it's a system permission set. However, you can create a copy of the SOA - EDIT permission set, modify the copy to suit your needs",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 106,
+      "where": "controls[4].note",
+      "type": "command",
+      "claim": "The userPermission request body uses roleId to identify the permission set.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/api/dynamics_userpermission_create",
+      "quote": "{ \n    \"roleId\": \"SECURITY\", \n    \"company\" : \"CRONUS\"\n}",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 107,
+      "where": "controls[4].note",
+      "type": "command",
+      "claim": "The userPermission request body includes company as shown in the Learn example.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/api/dynamics_userpermission_create",
+      "quote": "{ \n    \"roleId\": \"SECURITY\", \n    \"company\" : \"CRONUS\"\n}",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 108,
+      "where": "controls[5].ui; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Agents > Sales Order Agent account > View tasks opens inspection of the instance's tasks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
+      "quote": "Search for and open the Agents page.\n2. Select the Sales Order Agent account you want to inspect, and then choose View tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 109,
+      "where": "controls[5].api",
+      "type": "absence",
+      "claim": "No applicable automation equivalent is documented for inspecting this instance's tasks, steps and log entries.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Business Central\" \"Agent Task\" \"Get\" \"codeunit\"; site:learn.microsoft.com dynamics365 business-central agent tasks API list log entries automation API. Read setup diagnostics, Tasks AL API, SDK tasks and cross-agent restrictions; no equivalent diagnostic call found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 110,
+      "where": "controls[5].governs; controls[5].note",
+      "type": "behaviour",
+      "claim": "The documented task, step and log inspection is read-only inspection rather than an agent behaviour setting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
       "quote": "Administrators can use the Agents page to inspect Sales Order Agent tasks, completed steps, messages, and detailed log entries.",
@@ -1153,54 +1235,76 @@
       "fix": null
     },
     {
-      "n": 103,
-      "where": "Governance controls: multi-instance count",
-      "type": "absence",
-      "claim": "No setting limiting the new multi-instance count is documented.",
+      "n": 111,
+      "where": "controls[0].scope; Governance controls",
+      "type": "applicability",
+      "claim": "The capability activation control applies environment-wide.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Business Central Sales Order Agent maximum instances'; 'Business Central Sales Order Agent maximum number instances'. Read setup and overview, including multiple-instance and archived-configuration sections; no configurable instance-count ceiling was identified.",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/enable-ai",
+      "quote": "Use the Copilot & agent capabilities page to turn individual features off or on for all users:",
       "severity": null,
       "fix": null
     },
     {
-      "n": 104,
-      "where": "Governance controls: relevance filter",
-      "type": "absence",
-      "claim": "No setting for changing the relevance filter is documented.",
+      "n": 112,
+      "where": "controls[1..5].scope; Governance controls",
+      "type": "applicability",
+      "claim": "The access, mailbox, review, permission and diagnostic controls concern the selected agent instance.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Sales Order Agent relevance setting'; 'Business Central Sales Order Agent relevance configure 50'. Read overview and setup; FAQ search excerpt says partners can't extend this capability and can inspect prompts. No relevance-filter setting was identified.",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
+      "quote": "After setup, you can control who works with each agent instance and who can change its configuration. You can also change the agent's language and region settings and manage the permission sets assigned to its account.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 105,
-      "where": "Governance controls: PDF page ceiling",
+      "n": 113,
+      "where": "Governance controls: undocumented settings",
       "type": "absence",
-      "claim": "No setting for changing the 50-page PDF ceiling is documented.",
+      "claim": "No setting limiting the multi-instance count is documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Sales Order Agent PDF page limit configure'; 'Business Central Sales Order Agent relevance configure 50'. Read setup's Manage mailbox options and overview. Analyze attachments is configurable, but no setting for the PDF page ceiling was identified.",
+      "quote": "Searched: \"Sales Order Agent\" \"maximum\" \"instances\"; site:learn.microsoft.com dynamics365 business-central Sales Order Agent maximum instances relevance filter configure 50 pages limit per page credits. Opened setup and overview; no instance-count setting documented.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 106,
+      "n": 114,
+      "where": "Governance controls: undocumented settings",
+      "type": "absence",
+      "claim": "No relevance-filter configuration setting is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com dynamics365 business-central Sales Order Agent maximum instances relevance filter configure 50 pages limit per page credits. Read setup and overview, plus FAQ extensibility excerpt; relevance filtering is described as behaviour, not a configurable option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 115,
+      "where": "Governance controls: undocumented settings",
+      "type": "absence",
+      "claim": "No setting changing the 50-page PDF limit is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Business Central Sales Order Agent multiple instances maximum relevance filter PDF 50 pages limit configuration attachment page billing per page. Read setup Analyze attachments and FAQ limitations excerpt; 50 pages is a limit, with no page-limit configuration documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 116,
       "where": "Open questions: migration",
       "type": "absence",
-      "claim": "The Learn setup page does not describe migration of the existing single-instance configuration.",
+      "claim": "The Learn setup page does not describe migration of existing instance folders, signatures and user access lists.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Business Central Sales Order Agent migration single instance'. Read the complete Set up Sales Order Agent page: it describes multiple instances, configuration, archiving, permissions and diagnostics, but no migration procedure or treatment of prior settings.",
+      "quote": "Searched the complete sales-order-agent-setup text for migration and upgrade details while reading its configuration, access and account sections. The page describes current configuration and additional accounts, not the existing-instance migration procedure.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 107,
-      "where": "Open questions: mailbox identity",
+      "n": 117,
+      "where": "Open questions: identity",
       "type": "behaviour",
-      "claim": "For mailbox processing Learn describes the background task as running in the activating user's context.",
+      "claim": "Learn says the email background task runs in the context of the user who activates the agent.",
       "status": "supported",
       "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
       "quote": "When a user activates the agent, it runs as a background task in the context of that user and needs access to the shared mailbox to process emails.",
@@ -1208,8 +1312,8 @@
       "fix": null
     },
     {
-      "n": 108,
-      "where": "Open questions: mailbox identity; Risk assessment: Security & identity",
+      "n": 118,
+      "where": "Open questions: identity",
       "type": "behaviour",
       "claim": "Learn also says Sales Order Agent runs under its own account without inheriting the reviewer's permissions.",
       "status": "supported",
@@ -1219,47 +1323,47 @@
       "fix": null
     },
     {
-      "n": 109,
-      "where": "Governance guidance; Governance controls",
-      "type": "consistency",
-      "claim": "The governance checklist's controls are represented in the six-row controls table.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Confirm billing for agent capabilities is set up for the environment ... Monitor credit capacity and usage in the Power Platform admin center ... Deactivate instances you do not need.",
-      "severity": "minor",
-      "fix": "The checklist's billing setup, Power Platform credit monitoring and per-instance deactivation steps have no matching controls rows; row 0 instead deactivates the environment capability. To retain the current six-row table, remove those three checklist bullets. This finding does not request additional rows."
+      "n": 119,
+      "where": "controls[1].note",
+      "type": "role",
+      "claim": "Can Configure also allows managing the agent's user access list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
+      "quote": "For each user, you can allow them to work with the agent's tasks only, or select Can Configure to also let them change the agent's configuration and manage its access list.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 110,
-      "where": "front matter: action",
-      "type": "consistency",
-      "claim": "The prepare action rating fits the verified rollout and cost facts.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "status: \"launched\"; defaultState: \"on\"; risk: \"medium\"; cost: \"variable\"; action: \"prepare\". The roadmap item says the change is enabled for end users automatically.",
-      "severity": "minor",
-      "fix": "Set action to 'act-now': the update is launched, reaches existing agent users automatically, has medium risk and metered cost, and has mailbox, review and permission decisions to take. This meets the schema's act-now definition."
-    },
-    {
-      "n": 111,
-      "where": "Cost and licensing; Open questions: 10-to-50-page increase",
+      "n": 120,
+      "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The PDF page ceiling increased from 10 to 50 pages.",
+      "claim": "The roadmap supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "The maximum number of pages per PDF attachment has been raised from 10 to 50",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 121,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Installed extensions can require additional permission sets for the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup",
+      "quote": "Installed extensions can add logic or UI elements to standard pages that the agent uses, so the agent account might need permission sets provided by those extensions.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-19T14:01:39.435Z",
+    "at": "2026-11-19T20:00:32.709Z",
     "summary": {
-      "links": 5,
+      "links": 6,
       "unreachable": 0,
       "uiPaths": 6,
       "uiPathsWithMissingWords": 0,
-      "apiCalls": 0,
+      "apiCalls": 1,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
@@ -1286,6 +1390,11 @@
       },
       {
         "url": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/api/dynamics_userpermission_create",
         "ok": true,
         "status": 200
       }
@@ -1360,6 +1469,15 @@
         "missing": []
       },
       {
+        "index": 4,
+        "side": "api",
+        "governs": "Permission sets assigned to each Sales Order Agent account",
+        "docs": "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/api/dynamics_userpermission_create",
+        "reachable": true,
+        "token": "POST /microsoft/automation/v2.0/companies({companyId})/users({userSecurityId})/userPermissions",
+        "found": true
+      },
+      {
         "index": 5,
         "side": "ui",
         "governs": "Inspecting an instance's tasks, steps and log entries",
@@ -1375,5 +1493,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-19",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

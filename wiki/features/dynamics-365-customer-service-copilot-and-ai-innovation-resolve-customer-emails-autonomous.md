@@ -46,6 +46,9 @@ sources:
   - title: "Representative Copilot Setting (msdyn_agentcopilotsetting) table/entity reference"
     url: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_agentcopilotsetting"
     kind: "learn"
+  - title: "Line of Business (msdyn_intentfamily) table/entity reference"
+    url: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_intentfamily"
+    kind: "learn"
 videos: []
 related: ["copilot-credits","dynamics-365-customer-service-manage-intraday-operations-with-ai-agent"]
 controls:
@@ -55,8 +58,11 @@ controls:
       surface: "Copilot Service admin center"
       path: "Email settings > Email resolution (preview) > Turn on email resolution"
       docs: "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution"
-    api: null
-    note: "Preview page. The application user is chosen in the same page, under Select the application user for email management."
+    api:
+      kind: "rest"
+      call: "PATCH /msdyn_agentcopilotsettings(msdyn_agentcopilotsettingid)"
+      docs: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_agentcopilotsetting"
+    note: "Preview page; application user is chosen on the same page. Body sets Boolean msdyn_emailresolutionagentenabled (Is Email Management Agent Enabled); the reference does not map it to the toggle."
   - governs: "Which lines of business email resolution is deployed for"
     scope: "other"
     ui:
@@ -71,8 +77,11 @@ controls:
       surface: "Copilot Service admin center"
       path: "Customer support > Case settings > Case Management Agent > Case resolution > Level of automation per line of business"
       docs: "https://learn.microsoft.com/dynamics365/customer-service/administer/set-up-case-resolution-agent"
-    api: null
-    note: "Documented on the case resolution page; the roadmap item describes this level for email resolution. Shadow mode is a preview feature."
+    api:
+      kind: "rest"
+      call: "PATCH /msdyn_intentfamilies(msdyn_intentfamilyid)"
+      docs: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_intentfamily"
+    note: "Case resolution page; the roadmap describes this level for email resolution. Body sets msdyn_CPAAutomationLevel: 0 Disabled, 1 Require agent confirmation, 2 Full automation, 3 Shadow."
 confidence: "medium"
 created: "2026-11-19"
 updated: "2026-11-19"
@@ -82,19 +91,23 @@ changes:
     note: "New briefing: Case Management Agent email resolution, with its Copilot Service admin center controls, Copilot Credits billing prerequisite and open preview-versus-launched status."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 78 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-19"
+    note: "Corrected after the independent check: added the two documented Dataverse update operations, removed the instruction to set email resolution through the case-resolution automation level, and trimmed unmatched checklist items."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 78 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 78
-  confirmed: 74
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "b2f2ca27b8d2c0c7430f3fc07d76c538"
+  confirmed: 77
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "52e814311421eb2a0540b4e5540ba37c"
 ---
 
 ## What's changing
@@ -154,13 +167,12 @@ A credit rate specific to email resolution is not yet published. Copilot Studio'
 
 - Complete the Customer Intent Agent setup and the guided setup for Case Management Agent, then confirm the line of business and email rules you want covered; email resolution runs only for emails that match those rules.
 - Create the application user with the **Customer Service Representative** role and the shared mailbox, then review what that role can access.
-- Set up pay-as-you-go billing against an Azure subscription, and agree an Azure Cost Management budget and alert owner with finance.
-- Decide the single reply language and whether to use the Copilot-recommended email template, which needs email template recommendations enabled.
+- Set up pay-as-you-go billing against an Azure subscription.
 
 ### At rollout
 
 - Turn on email resolution in Copilot Service admin center and select the application user (see the first control row).
-- Enable one line of business first through its deployment status (second row) and set its level of automation to a reviewed level (third row).
+- Enable one line of business first through its deployment status (second row).
 - Tell service representatives that cases can arrive with an email the agent has already answered.
 
 ### After rollout
@@ -176,22 +188,22 @@ A credit rate specific to email resolution is not yet published. Copilot Studio'
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether email resolution is turned on, and which application user replies</strong><br><small class="controls__note">Preview page. The application user is chosen in the same page, under Select the application user for email management.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Email settings › Email resolution (preview) › Turn on email resolution <a href="https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether email resolution is turned on, and which application user replies</strong><br><small class="controls__note">Preview page; application user is chosen on the same page. Body sets Boolean msdyn_emailresolutionagentenabled (Is Email Management Agent Enabled); the reference does not map it to the toggle.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Email settings › Email resolution (preview) › Turn on email resolution <a href="https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH /msdyn_agentcopilotsettings(msdyn_agentcopilotsettingid)</code> <a href="https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_agentcopilotsetting" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which lines of business email resolution is deployed for</strong><br><small class="controls__note">The pane edits LOB (lines of business) and Deployment status. Lines of business come from Customer Intent Agent.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Email settings › Email resolution (preview) › LOB (lines of business) deployment settings <a href="https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Level of automation per line of business: autonomous reply, draft for review, shadow mode or disabled</strong><br><small class="controls__note">Documented on the case resolution page; the roadmap item describes this level for email resolution. Shadow mode is a preview feature.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Customer support › Case settings › Case Management Agent › Case resolution › Level of automation per line of business <a href="https://learn.microsoft.com/dynamics365/customer-service/administer/set-up-case-resolution-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Level of automation per line of business: autonomous reply, draft for review, shadow mode or disabled</strong><br><small class="controls__note">Case resolution page; the roadmap describes this level for email resolution. Body sets msdyn_CPAAutomationLevel: 0 Disabled, 1 Require agent confirmation, 2 Full automation, 3 Shadow.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Customer support › Case settings › Case Management Agent › Case resolution › Level of automation per line of business <a href="https://learn.microsoft.com/dynamics365/customer-service/administer/set-up-case-resolution-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH /msdyn_intentfamilies(msdyn_intentfamilyid)</code> <a href="https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_intentfamily" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 The first two rows are on the Email resolution page; the third is the case resolution page's per-line-of-business automation setting. The roadmap item describes an automation level for each line of business, but the Email resolution page itself lists only the **Deployment status** per line of business, so confirm how the two interact before relying on the third row for email resolution.
 
-At the time of writing (November 2026) Microsoft Learn documents no API operation for these three settings. The Representative Copilot Setting table reference lists a column msdyn_emailresolutionagentenabled (display name "Is Email Management Agent Enabled"), but no page says it backs the **Turn on email resolution** toggle, so confirm that before scripting against it. Azure budgets for the pay-as-you-go plan are the spend control and sit outside this table.
+Dataverse documents PATCH /msdyn_agentcopilotsettings(msdyn_agentcopilotsettingid), with the writable Boolean msdyn_emailresolutionagentenabled (Is Email Management Agent Enabled). The reference does not explicitly map it to the **Turn on email resolution** toggle or document application-user selection. Dataverse also documents PATCH /msdyn_intentfamilies(msdyn_intentfamilyid) with msdyn_CPAAutomationLevel (0 Disabled, 1 Require agent confirmation, 2 Full automation, 3 Shadow); that reference does not say it applies to email resolution. At the time of writing (November 2026) the Line of Business table reference describes no column as the email resolution deployment status, so the second row has no API operation listed. Azure budgets for the pay-as-you-go plan are the spend control and sit outside this table.
 
 ## Open questions
 
 - What Copilot Credit rate does an email resolution run consume, and is an email that ends in a case billed differently? Watch the Copilot Studio billing rates page and the Dynamics 365 billing page.
 - Which parts are generally available? The roadmap says Launched with General Availability and Preview phases, while the Learn page is headed preview.
 - Does the **Level of automation per line of business** setting on the case resolution page govern email resolution, or only the **Deployment status** on the Email resolution page?
-- Is there a supported API for the **Turn on email resolution** toggle, and does the msdyn_emailresolutionagentenabled column back it?
+- Does the msdyn_emailresolutionagentenabled column back the **Turn on email resolution** toggle, and where is the application user stored? Watch the Learn page and the table reference.
 - Where are autonomously sent replies recorded for audit, and where does the data movement prerequisite send email content? Watch the Learn page and Message center.
 
 <!-- rationale
@@ -200,14 +212,10 @@ cost: Variable. The Learn page lists a Power Platform pay-as-you-go plan with an
 impact: Medium. Customers who email an enabled line of business get automated replies, and service representatives receive a case, with the email attached, when the agent cannot resolve the issue.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls: no API operation; Open questions / absence: Microsoft documents no API operation for enabling email resolution. | Found: Update: PATCH /msdyn_agentcopilotsettings(msdyn_agentcopilotsettingid) Writable columns/attributes: msdyn_emailresolutionagentenabled DisplayName: Is Email Management Agent Enabled Type: Boolean | Fix: Replace the blanket API absence with: 'Dataverse documents PATCH /msdyn_agentcopilotsettings(msdyn_agentcopilotsettingid), with the writable Boolean msdyn_emailresolutionagentenabled (Is Email Management Agent Enabled). The reference does not explicitly map it to the UI toggle or document application-user selection.' Use that call and reference for controls[0].api, name the Boolean in its note, and retain only the narrower UI-mapping question. | Source: https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_agentcopilotsetting
-- [contradicted, blocker] controls[2].api; Governance controls: no API operation / absence: Microsoft documents no API operation for the case-resolution automation level per line of business. | Found: Update: PATCH /msdyn_intentfamilies(msdyn_intentfamilyid) msdyn_CPAAutomationLevel: CPA Automation Level for the Line of Business 0 Disabled; 1 Require agent confirmation; 2 Full automation; 3 Shadow | Fix: Set controls[2].api to kind 'rest', call 'PATCH /msdyn_intentfamilies(msdyn_intentfamilyid)', docs 'https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_intentfamily'. State in the note: 'The request body sets msdyn_CPAAutomationLevel: 0 Disabled, 1 Require agent confirmation, 2 Full automation, 3 Shadow.' Add that reference to sources. Remove this setting from the blanket API-absence sentence; do not claim that this proves applicability to email resolution. | Source: https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_intentfamily
-- [unsupported, blocker] Governance guidance: At rollout, second bullet / applicability: Setting the third row's case-resolution automation level to a reviewed level controls autonomous email resolution. | Found: Searched: 'Case Management Agent email resolution Level of automation per line'. Read configure-email-resolution, set-up-case-resolution-agent and case-management-global-settings: no passage explicitly connects this case-resolution setting to the new email-resolution workflow. | Fix: Replace the rollout bullet with 'Enable one line of business first through its deployment status (second row).' Remove the instruction to set email resolution through the third row. Retain the roadmap's statement that automation levels are planned and the existing question about how the two settings interact.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; controls[1].note; Governance controls table / admin-path: The LOB deployment settings are on Copilot Service admin center > Email settings > Email resolution (preview) > LOB (lines of business) deployment settings. | Found: In the LOB (lines of business) deployment settings section, select the checkbox next to a category for which you want to edit the deployment settings. The Configure LOB (lines of business) deployment settings pane appears | Fix: The pre-check's missing words are present; the path is real but stops at the section. Extend it to 'Email settings > Email resolution (preview) > LOB (lines of business) deployment settings > category > Configure LOB (lines of business) deployment settings > Deployment status'. The cited page documents LOB (lines of business) and Deployment status in that pane. | Source: https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution
-- [supported, minor] controls[2].ui; Governance controls table / admin-path: Customer support > Case settings > Case Management Agent > Case resolution > Level of automation per line of business reaches the case-resolution automation settings. | Found: Select Manage for Case Management Agent in Case settings. Select Manage for Case resolution. In Level of automation per line of business, the lines of business you configured for Customer Intent Agent appear. Select the required line of business and then select Edit. | Fix: Customer support is confirmed by the already-cited https://learn.microsoft.com/dynamics365/customer-service/administer/case-management-global-settings ('Select Case settings in Customer support'). Complete the existing route as 'Customer support > Case settings > Case Management Agent > Case resolution > Level of automation per line of business > line of business > Edit > Settings > Level of automation'. Keep its description limited to case resolution. | Source: https://learn.microsoft.com/dynamics365/customer-service/administer/set-up-case-resolution-agent
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The governance checklist names controls that are not represented in the controls table. | Found: Checklist: 'Decide the single reply language and whether to use the Copilot-recommended email template'; 'agree an Azure Cost Management budget and alert owner'. Table: email enablement/application user, LOB deployment, case-resolution automation. | Fix: The checklist's language setting, Copilot-recommended-template setting and Azure budget/alert controls have no table rows. Remove those configuration instructions from the checklist, leaving their existing explanatory coverage in Risk assessment and Cost and licensing; no additional rows are requested.
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: LOB deployment settings are at Copilot Service admin center > Email settings > Email resolution (preview) > LOB (lines of business) deployment settings. | Found: In the LOB (lines of business) deployment settings section, select the checkbox next to a category for which you want to edit the deployment settings. The Configure LOB (lines of business) deployment settings pane appears | Fix: The printed route reaches the correct page but stops before the editable status. Extend it to 'Email settings > Email resolution (preview) > LOB (lines of business) deployment settings > category > Configure LOB (lines of business) deployment settings > Deployment status', following https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution. | Source: https://learn.microsoft.com/dynamics365/customer-service/administer/configure-email-resolution
+- [supported, minor] controls[2].ui; Governance controls table / admin-path: Case-resolution automation levels are at Copilot Service admin center > Customer support > Case settings > Case Management Agent > Case resolution > Level of automation per line of business. | Found: Select Manage for Case Management Agent in Case settings. Select Manage for Case resolution. In Level of automation per line of business ... Select the required line of business and then select Edit. | Fix: Extend the route to 'Customer support > Case settings > Case Management Agent > Case resolution > Level of automation per line of business > line of business > Edit > Settings > Level of automation'. The cited page supplies the remaining steps; the already-cited case-management-global-settings page confirms Customer support > Case settings. Keep the existing caveat about email-resolution applicability. | Source: https://learn.microsoft.com/dynamics365/customer-service/administer/set-up-case-resolution-agent
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The rollout checklist names configuration controls that have no corresponding controls-table row. | Found: Checklist: 'Complete the Customer Intent Agent setup'; 'Create the application user with the Customer Service Representative role and the shared mailbox'; 'Set up pay-as-you-go billing'. Table: email-resolution enablement, LOB deployment and case-resolution automation only. | Fix: Remove the three Before rollout checklist bullets, retaining their verified prerequisite information in Scope and Cost and licensing. This resolves the checklist/table mismatch without adding unverified control rows.
 -->

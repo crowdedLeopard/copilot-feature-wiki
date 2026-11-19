@@ -15,7 +15,7 @@ risk: "medium"
 cost: "variable"
 impact: "medium"
 defaultState: "on"
-action: "prepare"
+action: "act-now"
 licensing:
   model: "consumption"
   notes: "Sales Order Agent uses Copilot Credits, billed through prepaid Copilot Credit packs or pay-as-you-go. Learn's billing page publishes per-step credit rates; no rate specific to this update is published."
@@ -36,6 +36,9 @@ sources:
     kind: "learn"
   - title: "Manage consumption-based billing for agent capabilities"
     url: "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing"
+    kind: "learn"
+  - title: "(automation API) Create userPermission"
+    url: "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/api/dynamics_userpermission_create"
     kind: "learn"
 videos: []
 related: ["copilot-credits","dynamics-365-business-central-copilot-and-agents-envision-and-design-ai-agents-in-business"]
@@ -78,8 +81,11 @@ controls:
       surface: "Business Central"
       path: "Agents > Sales Order Agent account > Agent Permission Sets > Edit agent permissions"
       docs: "https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup"
-    api: null
-    note: "Set State to disabled before editing. SOA - EDIT is a system set; copy it to change it."
+    api:
+      kind: "rest"
+      call: "POST /microsoft/automation/v2.0/companies({companyId})/users({userSecurityId})/userPermissions"
+      docs: "https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/api/dynamics_userpermission_create"
+    note: "Set State to disabled before editing. SOA - EDIT is a system set; copy it to change it. The request body sets roleId, the permission set, and company, as the Learn example shows."
   - governs: "Inspecting an instance's tasks, steps and log entries"
     scope: "agent"
     ui:
@@ -97,19 +103,23 @@ changes:
     note: "New briefing: multiple Sales Order Agent instances, relevance filtering, 50-page PDFs, Try it out, unknown-sender options, and the Copilot Credit rates that apply."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 111 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-19"
+    note: "Correction: added the Business Central automation API call for assigning permission sets, removed the blanket no-API sentence and three checklist steps without control rows, and set action to act-now."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 121 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-19"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 111
-  confirmed: 108
+  claims: 121
+  confirmed: 121
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "8e4ce38868eb0f12bd0f76fe2cd99a6a"
+  contradicted: 0
+  attempts: 0
+  hash: "365843558220f5bb3b22c7794ed95576"
 ---
 
 ## What's changing
@@ -120,13 +130,13 @@ The same roadmap item bundles several behaviour changes. Item matching now works
 
 There are also new controls and test paths. A **Try it out** section lets an administrator create a task from a sender, message text and attachments without sending an email, with two sample messages. For an unregistered sender, the reviewer can create a contact, use another contact for that one task, or update an existing contact's email address. The roadmap item also describes a **Mark email as read** option and a required mailbox folder, and says the agent's prompts now ship as embedded resource files.
 
-The roadmap record gives the status as Launched, with a target of July CY2026 and release phase General Availability, for the Worldwide (Standard Multi-Tenant) cloud on the web. Two details differ between sources: the roadmap item says folder selection is mandatory before activation, while the Learn setup page says that without a selected folder the agent monitors the Inbox; and the roadmap item calls **Mark email as read** new, while Learn lists it as on by default.
+The roadmap record gives the status as Launched, with a target of July CY2026 and release phase General Availability, for the Worldwide (Standard Multi-Tenant) cloud on the web. The roadmap item says folder selection is mandatory before activation, while the Learn setup page says that without a selected folder the agent monitors the Inbox. Learn also lists **Mark email as read** as on by default.
 
 ## Why it matters
 
 This changes what an existing Sales Order Agent does with customer email and how much it can consume. The roadmap item says the change is enabled for end users automatically, and Learn says Copilot and agent capabilities are active by default when they are generally available. A Sales Order Agent still has to be configured and activated before it processes email, so tenants that have not set one up are not affected until they do.
 
-For tenants already running the agent, plan for a larger intake: longer PDFs are now read, and each attachment is billed in Copilot Credits. Several instances also multiply the mailboxes, folders and reviewer lists you have to keep consistent. The relevance filter should reduce wasted processing, but how it behaves is something to test with your own mail using **Try it out**, not assume.
+For tenants already running the agent, plan for a larger intake: longer PDFs are now read, and each processed attachment is billed in Copilot Credits. Several instances also multiply the mailboxes, folders and reviewer lists you have to keep consistent. The relevance filter should reduce wasted processing, but how it behaves is something to test with your own mail using **Try it out**, not assume.
 
 ## Risk assessment
 
@@ -169,7 +179,6 @@ Learn lists the prerequisites as Microsoft 365 mailbox access if mail is monitor
 ### Before rollout
 
 - Inventory existing Sales Order Agent instances and the mailbox and folder each one monitors, and confirm each has a folder you intend (the roadmap says selection is mandatory; Learn says the Inbox is used if none is chosen).
-- Confirm billing for agent capabilities is set up for the environment and review the credit rates, then estimate attachment volume now that PDFs up to 50 pages are read.
 - Decide which sales teams or customer groups get their own instance, and who holds **Configure All Agents** and **Can Configure** on each.
 - Agree who reviews messages from unregistered senders, and when to use **Use another contact once** instead of creating or updating a contact.
 
@@ -182,10 +191,8 @@ Learn lists the prerequisites as Microsoft 365 mailbox access if mail is monitor
 
 ### After rollout
 
-- Monitor credit capacity and usage in the Power Platform admin center, as Learn advises.
 - Read the **Attachments** page for skipped files and the stated reasons, and adjust limits, formats or the **Analyze attachments** setting accordingly.
 - Use the **Agents** page, **View tasks** to inspect tasks and steps when a result looks wrong.
-- Deactivate instances you do not need, since Learn says a stalled agent resumes and processes the accumulated backlog when credits return.
 
 ## Governance controls
 
@@ -198,12 +205,12 @@ Learn lists the prerequisites as Microsoft 365 mailbox access if mail is monitor
 <tr><td data-label="Control"><strong>Who can work with each Sales Order Agent instance and who can configure it</strong><br><small>Agent</small><br><small class="controls__note">Turn off the Active toggle first. Can Configure also allows changing the agent's configuration and its access list.</small></td><td data-label="Admin UI"><strong>Business Central</strong><br>Sales Order Agent › Configure Sales Order Agent › Manage user access <a href="https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Mailbox, folder, mark-as-read, attachment analysis and daily email limit for an instance</strong><br><small>Agent</small><br><small class="controls__note">The card holds Account, Folder, Mark email as read, Analyze attachments and Daily email limit. Needs Full Access on the mailbox to set the folder.</small></td><td data-label="Admin UI"><strong>Business Central</strong><br>Sales Order Agent › Configure Sales Order Agent › Manage mailbox <a href="https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>What review is required for messages from unregistered senders</strong><br><small>Agent</small><br><small class="controls__note">Learn lists the default as All.</small></td><td data-label="Admin UI"><strong>Business Central</strong><br>Sales Order Agent › Configure Sales Order Agent › Respond to inquiries › Messages from unregistered senders <a href="https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Permission sets assigned to each Sales Order Agent account</strong><br><small>Agent</small><br><small class="controls__note">Set State to disabled before editing. SOA - EDIT is a system set; copy it to change it.</small></td><td data-label="Admin UI"><strong>Business Central</strong><br>Agents › Sales Order Agent account › Agent Permission Sets › Edit agent permissions <a href="https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Permission sets assigned to each Sales Order Agent account</strong><br><small>Agent</small><br><small class="controls__note">Set State to disabled before editing. SOA - EDIT is a system set; copy it to change it. The request body sets roleId, the permission set, and company, as the Learn example shows.</small></td><td data-label="Admin UI"><strong>Business Central</strong><br>Agents › Sales Order Agent account › Agent Permission Sets › Edit agent permissions <a href="https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST /microsoft/automation/v2.0/companies({companyId})/users({userSecurityId})/userPermissions</code> <a href="https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/api/dynamics_userpermission_create" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Inspecting an instance's tasks, steps and log entries</strong><br><small>Agent</small><br><small class="controls__note">Read-only inspection; it does not change agent behaviour.</small></td><td data-label="Admin UI"><strong>Business Central</strong><br>Agents › Sales Order Agent account › View tasks <a href="https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-All six settings are Business Central pages; Microsoft Learn documents no API for them at the time of writing (November 2026). Changing the Copilot & agent capabilities page needs an administrator with **SUPER** permission or one of the licences Learn lists. Configuring an instance needs **Configure All Agents** or **Can Configure** on that agent. Turn off the **Active** toggle before changing user access or permission sets.
+Changing the Copilot & agent capabilities page needs an administrator with **SUPER** permission or one of the licences Learn lists. Configuring an instance needs **Configure All Agents** or **Can Configure** on that agent. Turn off the **Active** toggle before changing user access or permission sets.
 
 The Copilot & agent capabilities toggle governs the Sales Order Agent as a whole; the other rows apply per instance. No setting is documented that limits the new multi-instance count, and no setting is documented for the relevance filter or the 50-page limit, which Learn describes as fixed behaviour.
 
@@ -218,16 +225,4 @@ The Copilot & agent capabilities toggle governs the Sales Order Agent as a whole
 risk: Medium. The agent reads customer email and attachments and drafts quotes and orders; Learn says Business Central users review outgoing messages, but mailbox, folder and credit settings need checking.
 cost: Variable. Sales Order Agent is billed in Copilot Credits per email, attachment and agent action; Learn's billing page publishes the credit rates for each step.
 impact: Medium. Business Central administrators and the sales teams who review agent tasks notice it; the roadmap item says it is enabled for end users automatically.
--->
-
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[4].api; Governance controls table; Governance controls: blanket API absence / absence: Microsoft documents no API to assign permission sets to the Sales Order Agent's Business Central user account. | Found: Creates an user permission in Dynamics 365 Business Central. POST /microsoft/automation/v2.0/companies({companyId})/users({userSecurityId})/userPermissions | Fix: Replace controls[4].api null with kind 'rest', call 'POST /microsoft/automation/v2.0/companies({companyId})/users({userSecurityId})/userPermissions', and docs 'https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/api/dynamics_userpermission_create'. Add to its note: 'The request body uses roleId to select the permission set; company, scope and appId identify the assignment where needed.' The setup page identifies the agent as a Business Central user account; the automation userPermission resource documents permission-set assignment to users, with no agent exclusion. Add the reference to sources and remove the blanket sentence 'Microsoft Learn documents no API for them'. Preserve the existing requirement to disable the agent before changing its assignments. | Source: https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/api/dynamics_userpermission_create
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: comparison of sources / default: Learn lists Mark email as read as on by default. | Found: | Mark email as read | Specifies whether the agent marks processed emails as read in the mailbox. When enabled, team members can quickly identify the messages the agent handled. | On | | Fix: A new setting can also default to On, so do not present these as conflicting facts. Replace the last sentence of What's changing with: 'The roadmap item says folder selection is mandatory before activation, while the Learn setup page says that without a selected folder the agent monitors the Inbox. Learn also lists Mark email as read as on by default.' | Source: https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup
-- [supported, minor] Why it matters; rationale: cost / cost: Each attachment is billed in Copilot Credits. | Found: Process email attachment, no sales data detected (per attachment*) | Generative answer | 2 Process email attachment, sales data detected (per attachment*) | Agent action | 5 * Only attachments in supported formats are processed (for example, PDF, PNG, JPG). | Fix: Narrow 'each attachment is billed in Copilot Credits' to 'each processed attachment is billed in Copilot Credits'; the published attachment rates apply to processed supported formats, not every file attached to an email. | Source: https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/tenant-admin-center-manage-consumption-billing
-- [supported, minor] controls[5].ui; Governance controls table; Governance guidance: View tasks / admin-path: Agents > Sales Order Agent account > View tasks provides access to task, step and log inspection. | Found: Select the Sales Order Agent account you want to inspect, and then choose View tasks ... Drill into Steps Done to inspect the execution steps ... Choose View log entries to open the Agent Task Log page. | Fix: Keep the existing route to View tasks, which reaches the correct page. Add to controls[5].note: 'On Agent Tasks, open Task ID for an active task, drill into Steps Done for execution steps, or choose View log entries > entry > View details for log details.' | Source: https://learn.microsoft.com/dynamics365/business-central/sales-order-agent-setup
-- [contradicted, minor] Governance guidance; Governance controls / consistency: The governance checklist's controls are represented in the six-row controls table. | Found: Confirm billing for agent capabilities is set up for the environment ... Monitor credit capacity and usage in the Power Platform admin center ... Deactivate instances you do not need. | Fix: The checklist's billing setup, Power Platform credit monitoring and per-instance deactivation steps have no matching controls rows; row 0 instead deactivates the environment capability. To retain the current six-row table, remove those three checklist bullets. This finding does not request additional rows.
-- [contradicted, minor] front matter: action / consistency: The prepare action rating fits the verified rollout and cost facts. | Found: status: "launched"; defaultState: "on"; risk: "medium"; cost: "variable"; action: "prepare". The roadmap item says the change is enabled for end users automatically. | Fix: Set action to 'act-now': the update is launched, reaches existing agent users automatically, has medium risk and metered cost, and has mailbox, review and permission decisions to take. This meets the schema's act-now definition.
 -->

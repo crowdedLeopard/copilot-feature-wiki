@@ -1,0 +1,712 @@
+{
+  "slug": "planner-my-tasks-redesign",
+  "roadmapId": 561204,
+  "title": "Planner: redesigned My Tasks experience on the web",
+  "status": "verified",
+  "date": "2026-11-19",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 57,
+    "confirmed": 57,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 0
+  },
+  "summary": "The briefing is supported by Microsoft's notice, the roadmap and the cited Planner documentation. The automatic rollout, December window, licensing and organisation-wide PowerShell control are accurately reported; no redesign-specific opt-out was found.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans a redesigned Planner My Tasks experience bringing tasks together to help users capture and prioritise work.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "A redesigned My Tasks experience that brings your tasks into one place, making it easier to capture work, prioritize what matters, and stay focused.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is December CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; title; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap cloud is Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-11-04T00:02:09.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-04T00:02:09\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Governance guidance",
+      "type": "record",
+      "claim": "The notice describes clearer My Tasks navigation.",
+      "status": "supported",
+      "source": "Message Center post MC1488844",
+      "quote": "Navigation within My Tasks will be simplified and easier to understand.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice describes updated task organisation and prioritisation.",
+      "status": "supported",
+      "source": "Message Center post MC1488844",
+      "quote": "Task organization and prioritization experiences will be updated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Why it matters; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Users will be able to create tasks through streamlined workflows without leaving their current context.",
+      "status": "supported",
+      "source": "Message Center post MC1488844",
+      "quote": "Users will be able to create tasks through streamlined workflows without leaving their current context.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "Existing tasks and task data remain available.",
+      "status": "supported",
+      "source": "Message Center post MC1488844",
+      "quote": "Existing tasks and task data will remain available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "No migration is required.",
+      "status": "supported",
+      "source": "Message Center post MC1488844",
+      "quote": "No migration or user data movement is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "No user data movement is required.",
+      "status": "supported",
+      "source": "Message Center post MC1488844",
+      "quote": "No migration or user data movement is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; controls[1].note; rationale: impact",
+      "type": "default",
+      "claim": "The redesign is enabled automatically as part of the service rollout, supporting defaultState on.",
+      "status": "supported",
+      "source": "Message Center post MC1488844",
+      "quote": "The feature will be enabled automatically as part of the service rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Security & identity; Governance controls; rationale: risk",
+      "type": "record",
+      "claim": "No changes to existing admin policies or configurations are required.",
+      "status": "supported",
+      "source": "Message Center post MC1488844",
+      "quote": "No changes to existing admin policies or configurations are required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "summary; What's changing; controls[1].note",
+      "type": "record",
+      "claim": "Microsoft says no admin action is required.",
+      "status": "supported",
+      "source": "Message Center post MC1488844",
+      "quote": "[Action Required/Recommendations:]\n\nNo action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft suggests informing helpdesk and support teams.",
+      "status": "supported",
+      "source": "Message Center post MC1488844",
+      "quote": "Inform helpdesk and support teams of the upcoming user interface changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft suggests communicating the updated experience to regular My Tasks users.",
+      "status": "supported",
+      "source": "Message Center post MC1488844",
+      "quote": "Communicate the updated Planner experience to end users who regularly use My Tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft suggests reviewing and updating training materials and screenshots as needed.",
+      "status": "supported",
+      "source": "Message Center post MC1488844",
+      "quote": "Review any internal training materials or screenshots that reference the current experience and update them as needed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft suggests monitoring user feedback during rollout and adoption.",
+      "status": "supported",
+      "source": "Message Center post MC1488844",
+      "quote": "Monitor user feedback during rollout and adoption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1488844 was updated on 3 November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1488844",
+      "quote": "Updated November 3, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "summary; What's changing; Risk assessment: Change & support; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The notice schedules Worldwide General Availability rollout from early through late December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1488844",
+      "quote": "General Availability (Worldwide): Rollout will occur from early through late December 2026 (previously November).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Why it matters; Governance guidance; Open questions",
+      "type": "record",
+      "claim": "The rollout window moved from November to December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1488844",
+      "quote": "Rollout will occur from early through late December 2026 (previously November).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1488844",
+      "quote": "Act by: none; [Action Required/Recommendations:] No action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "Microsoft identifies no compliance considerations in the notice.",
+      "status": "supported",
+      "source": "Message Center post MC1488844",
+      "quote": "No compliance considerations identified. Review as appropriate for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Scope: Users; rationale: impact",
+      "type": "record",
+      "claim": "The notice says all users who access Planner and use My Tasks are affected.",
+      "status": "supported",
+      "source": "Message Center post MC1488844",
+      "quote": "Who is affected:\n\n- All users who access Microsoft Planner and use the My Tasks experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Scope: Platforms",
+      "type": "record",
+      "claim": "The notice names Planner on the web.",
+      "status": "supported",
+      "source": "Message Center post MC1488844",
+      "quote": "Platforms/Services:\n\n- Microsoft Planner- Planner on the web- Planner task management experiences",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Scope: Prerequisites",
+      "type": "record",
+      "claim": "The notice lists no administrator prerequisites.",
+      "status": "supported",
+      "source": "Message Center post MC1488844",
+      "quote": "No changes to existing admin policies or configurations are required.[Action Required/Recommendations:]\n\nNo action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap and notice describe an interface change without describing new data access.",
+      "status": "supported",
+      "source": "Message Center post MC1488844",
+      "quote": "Users will see an updated My Tasks interface in Planner. ... Existing tasks and task data will remain available. ... No changes to existing admin policies or configurations are required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The current My Tasks view in Planner in Teams includes Private Tasks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "My Tasks: This view includes: ... Private Tasks: A dedicated place for the user to quickly create tasks in a default place.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Assigned to me brings together tasks assigned from several sources in the current Teams My Tasks view.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "Assigned to me: Shows all tasks that are assigned to the user from Teams meeting notes, Microsoft Loop, Planner, and Planner premium.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The current Teams My Tasks view includes flagged Outlook emails as tasks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "Flagged emails: Emails the user flagged in Outlook show up as tasks here.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Private tasks are stored in Exchange.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "Private tasks and their attachments\n\nThese are stored in Microsoft Exchange.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.model and notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "My Tasks is included among the capabilities available with a qualifying Microsoft 365 licence, supporting the included licensing model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-for-admins",
+      "quote": "Users with a qualifying Microsoft 365 license have access to a rich set of capabilities for individual and team work management. ... My Day, My Tasks, and more.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Teams Planner article says users with a Microsoft 365 licence are entitled to the Planner app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "Users with a Microsoft 365 license are entitled to the Planner app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Planner for admins lists task creation and editing, My Day and My Tasks among qualifying Microsoft 365 users' capabilities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/planner-for-admins",
+      "quote": "task creation and editing capabilities, various plan views - including Grid, Board, Schedule, and Charts - My Day, My Tasks, and more.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "No licence requirement specific to this My Tasks redesign is published at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner My Tasks redesign 561204 disable opt out admin setting licensing storage Teams; \"Planner\" \"My Tasks\" \"redesign\" licensing price storage Teams. Opened Planner for admins, manage-planner-app and Microsoft Planner service description; none specifies a redesign licence, price or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Why it matters; Cost and licensing; rationale: cost",
+      "type": "record",
+      "claim": "The notice names no additional licence, charge or spending change for the redesign.",
+      "status": "supported",
+      "source": "Message Center post MC1488844",
+      "quote": "The updated experience provides clearer navigation, improved task organization, and streamlined task creation workflows, enabling users to create and manage tasks more efficiently without leaving their current context.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing; Governance guidance",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe this specific My Tasks redesign.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Planner\" \"My Tasks\" \"redesign\" licensing price storage Teams; \"Planner\" \"My Tasks\" \"redesigned\" disable opt out PowerShell Graph configuration. Opened Planner for admins and manage-planner-app; their My Tasks descriptions do not identify this redesign.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope: Platforms; Open questions",
+      "type": "absence",
+      "claim": "Whether this specific redesign also reaches Planner in Teams is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner My Tasks redesign 561204 disable opt out admin setting licensing storage Teams; \"Planner\" \"My Tasks\" \"redesign\" licensing price storage Teams. Read roadmap, MC1488844, Planner for admins and manage-planner-app; no explicit Teams rollout for this redesign.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not specified whether the redesign changes which My Tasks sources appear.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Planner\" \"My Tasks\" \"redesign\" licensing price storage Teams. Read MC1488844, manage-planner-app, Planner for admins and Planner admin FAQ; existing source/storage descriptions do not specify the new workflow's destination or source changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].api; Governance controls; rendered controls table",
+      "type": "command",
+      "claim": "Set-PlannerConfiguration -IsPlannerAllowed $false is the documented organisation-wide Planner off command, not a redesign-only switch.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/disable-planner",
+      "quote": "If you're a global admin and you want to turn off Microsoft Planner for your organization, you can use Windows PowerShell. ... Set-PlannerConfiguration -IsPlannerAllowed $false",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].note; Governance controls; rendered controls table",
+      "type": "role",
+      "claim": "The documented role for the organisation-wide Planner PowerShell control is global admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/disable-planner",
+      "quote": "If you're a global admin and you want to turn off Microsoft Planner for your organization, you can use Windows PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].note; rendered controls table",
+      "type": "command",
+      "claim": "Setting IsPlannerAllowed to $true turns Planner back on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/disable-planner",
+      "quote": "To turn on Planner back:\n\nSet-PlannerConfiguration -IsPlannerAllowed $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].note; Governance controls; rendered controls table",
+      "type": "applicability",
+      "claim": "The off-control documentation applies to basic plans in Planner in Teams and on the web.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/disable-planner",
+      "quote": "This article applies to:\n- Basic plans in the Planner app in Teams and Web\n- All plans in other Planner endpoints (including Planner mobile, and Planner connectors).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].ui; rendered controls table",
+      "type": "absence",
+      "claim": "No admin UI equivalent is documented for the organisation-wide Planner service switch shown in this row.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner web turn off organization admin center IsPlannerAllowed UI setting. Opened disable-planner and Planner admin FAQ; read manage-planner-app. They give PowerShell for the service switch; the Teams app Block control is not an equivalent web-service switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1]; Governance controls; Open questions; rendered controls table",
+      "type": "absence",
+      "claim": "No UI or API switch is documented to defer or opt out of this My Tasks redesign separately from disabling Planner.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Planner\" \"My Tasks\" \"redesigned\" disable opt out PowerShell Graph configuration; Planner web turn off organization admin center IsPlannerAllowed UI setting. Read disable-planner, Planner admin FAQ, Planner for admins and manage-planner-app; no redesign-specific switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls: final paragraph",
+      "type": "behaviour",
+      "claim": "For Planner in Teams, removing a user's Exchange Online licence hides My Tasks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "To hide My Tasks, remove the user's Exchange Online license. It's important to know that after you remove an Exchange Online license, the user no longer has access to their mailbox.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls: final paragraph",
+      "type": "absence",
+      "claim": "The Teams article does not confirm that removing Exchange Online licensing hides the redesigned web experience.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Planner My Tasks redesign 561204 disable opt out admin setting licensing storage Teams; \"Planner\" \"My Tasks\" \"redesigned\" disable opt out PowerShell Graph configuration. Opened manage-planner-app; its Exchange licence guidance is for Teams, not this web redesign.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Why it matters; Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap and notice describe no identity change.",
+      "status": "supported",
+      "source": "Message Center post MC1488844",
+      "quote": "No changes to existing admin policies or configurations are required. ... No compliance considerations identified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "Neither the roadmap nor the notice describes autonomous action by the redesign.",
+      "status": "supported",
+      "source": "Message Center post MC1488844",
+      "quote": "Users will be able to create tasks through streamlined workflows without leaving their current context.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "No price specific to the redesigned My Tasks is published at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Planner\" \"My Tasks\" \"redesign\" licensing price storage Teams. Opened Microsoft Planner service description, Planner for admins and manage-planner-app; no redesign-specific price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No meter specific to the redesigned My Tasks is published at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Planner\" \"My Tasks\" \"redesign\" licensing price storage Teams. Opened Microsoft Planner service description, Planner for admins and manage-planner-app; no redesign-specific meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not specified the storage destination of tasks created through the redesigned workflow.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Planner\" \"My Tasks\" \"redesign\" licensing price storage Teams. Read MC1488844, manage-planner-app, Planner for admins and Planner admin FAQ; existing storage descriptions do not identify the new workflow's destination.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The Planner off-control page applies to all plans in other Planner endpoints.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/planner/disable-planner",
+      "quote": "All plans in other Planner endpoints (including Planner mobile, and Planner connectors).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls: final paragraph",
+      "type": "licensing",
+      "claim": "Removing a user's Exchange Online licence removes access to the user's mailbox.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+      "quote": "after you remove an Exchange Online license, the user no longer has access to their mailbox.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-19T20:00:39.929Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 0,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=561204",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1488844",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/planner/planner-for-admins",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/manage-planner-app",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/planner/disable-planner",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether Planner is turned on for the organisation",
+        "docs": "https://learn.microsoft.com/planner/disable-planner",
+        "reachable": true,
+        "token": "Set-PlannerConfiguration",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -61,6 +61,9 @@ sources:
   - title: "Track, manage, and scale Copilot adoption in the Power Platform"
     url: "https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub"
     kind: "learn"
+  - title: "SalesAgentProfile (msdyn_salesagentprofile) table/entity reference"
+    url: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_salesagentprofile"
+    kind: "learn"
 videos: []
 related: ["dynamics-365-sales-an-agentic-home-for-all-sales-ai","m365-copilot-sales-development-agent-is-now-available","data-policies"]
 controls:
@@ -78,8 +81,11 @@ controls:
       surface: "Sales Hub app"
       path: "Change area > App Settings > General settings > Dynamics 365 AI hub > Agent manager > Create and manage agent > agent > Stop agent"
       docs: "https://learn.microsoft.com/dynamics365/sales/manage-sales-qualification-agent"
-    api: null
-    note: "Stopping keeps the configuration. Learn says a started agent cannot be deleted without Microsoft Support."
+    api:
+      kind: "rest"
+      call: "PATCH /msdyn_salesagentprofiles(<msdyn_salesagentprofileid>)"
+      docs: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_salesagentprofile"
+    note: "Stopping keeps the configuration. The request body sets statecode to 0 (Inactive) and statuscode to 3 (Off). Learn says a started agent cannot be deleted without Microsoft Support."
   - governs: "Supervisor view of leads handled, disqualified and handed over by the agent"
     scope: "environment"
     ui:
@@ -101,19 +107,23 @@ changes:
     note: "Correction: removed an unsupported claim about one agent per lead, fixed the routing sentence to match the selection criteria and assignment rules pages, added the stop-agent conflict and completed the admin path."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 89 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-19"
+    note: "Correction: added the Dataverse Web API call that sets an agent to Off, and removed three checklist steps that had no controls-table row."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 91 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 89
-  confirmed: 87
+  claims: 91
+  confirmed: 91
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "5ba09f02cd371fff6cdfd133cbb40eaa"
+  contradicted: 0
+  attempts: 0
+  hash: "c4ff4d1d9de023a87bd98f1ffee3dfdc"
 ---
 
 ## What's changing
@@ -181,8 +191,6 @@ Sellers receive leads handed over by an agent, and supervisors monitor them. The
 
 - Check the AI Agents setting in the Power Platform admin center for each environment or environment group that will host agents (controls table, row 1). Learn says AI capabilities are turned on by default in all environments.
 - Confirm that the person creating agents holds the Power Platform administrator role and admin permissions in Dynamics 365 Sales that the prerequisites pages require.
-- Draw up with sales leadership the segments (product, region, team) and the selection criteria for each, so that none overlaps the segments used for seller work assignment.
-- Ask your Microsoft licensing contact for message rates from the Power Platform Licensing Guide that the billing page links to, and agree whether prepaid capacity or pay-as-you-go pays for the agents.
 
 ### At rollout
 
@@ -194,7 +202,6 @@ Sellers receive leads handed over by an agent, and supervisors monitor them. The
 
 - Review the supervisor dashboard (controls table, row 3) and the leads disqualified by an agent, and reassign any worth pursuing.
 - Stop an agent (controls table, row 2) if its outreach goes wrong, and remember Learn says a started agent cannot be deleted without Microsoft Support.
-- Watch the capacity notifications and consumption in the Power Platform admin center, as quota depletion makes the AI capability unavailable.
 
 ## Governance controls
 
@@ -204,7 +211,7 @@ Sellers receive leads handed over by an agent, and supervisors monitor them. The
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether AI agents can be configured and used in Dynamics 365 Sales environments</strong><br><small>Environment</small><br><small class="controls__note">Tenant admin setting by environment or environment group. Covers the out-of-the-box Sales agents; the page does not mention multi-agent.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Copilot › Settings › Dynamics 365 Sales › AI Agents › environment or environment group › Edit setting › On <a href="https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Stopping an agent so it no longer processes new leads</strong><br><small>Agent</small><br><small class="controls__note">Stopping keeps the configuration. Learn says a started agent cannot be deleted without Microsoft Support.</small></td><td data-label="Admin UI"><strong>Sales Hub app</strong><br>Change area › App Settings › General settings › Dynamics 365 AI hub › Agent manager › Create and manage agent › agent › Stop agent <a href="https://learn.microsoft.com/dynamics365/sales/manage-sales-qualification-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Stopping an agent so it no longer processes new leads</strong><br><small>Agent</small><br><small class="controls__note">Stopping keeps the configuration. The request body sets statecode to 0 (Inactive) and statuscode to 3 (Off). Learn says a started agent cannot be deleted without Microsoft Support.</small></td><td data-label="Admin UI"><strong>Sales Hub app</strong><br>Change area › App Settings › General settings › Dynamics 365 AI hub › Agent manager › Create and manage agent › agent › Stop agent <a href="https://learn.microsoft.com/dynamics365/sales/manage-sales-qualification-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH /msdyn_salesagentprofiles(&lt;msdyn_salesagentprofileid&gt;)</code> <a href="https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_salesagentprofile" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Supervisor view of leads handled, disqualified and handed over by the agent</strong><br><small>Environment</small><br><small class="controls__note">Page describes the dashboard for the Sales Qualification Agent; it does not describe a cross-agent view.</small></td><td data-label="Admin UI"><strong>Sales Hub app</strong><br>App settings › General settings › Dynamics 365 AI hub › AI optimization hub › See insights › Sales Qualification Agent <a href="https://learn.microsoft.com/dynamics365/sales/monitor-leads-by-sales-qualification-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -229,10 +236,8 @@ cost: Variable. The agent uses Copilot Studio message capacity, prepaid or pay-a
 impact: Medium. Sales teams, sellers and supervisors using the agents see leads routed, handed over and reassigned; users outside sales qualification do not.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].api / absence: Automation for switching an agent off is not yet documented. | Found: `SetState`Event: True | `PATCH` /msdyn_salesagentprofiles(msdyn_salesagentprofileid) Update the `statecode` and `statuscode` properties. | 3 | Label: **Off**State:0TransitionData: None | | Fix: Replace controls[1].api null with kind rest, call 'PATCH /msdyn_salesagentprofiles(<msdyn_salesagentprofileid>)', and docs 'https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_salesagentprofile'. Add to its note: 'The request body sets statecode to 0 (Inactive) and statuscode to 3 (Off).' Cite that reference in sources. This documents the Off state, not a guarantee of immediately halting in-flight outreach; retain the existing stop-behaviour conflict warning. | Source: https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_salesagentprofile
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance; Governance controls / consistency: Every control the governance checklist asks readers to configure or check is represented in the controls table. | Found: the selection criteria for each; agree whether prepaid capacity or pay-as-you-go pays; Watch the capacity notifications and consumption. Table rows cover only AI Agents, Stop agent and the supervisor view. | Fix: The checklist's selection-criteria, billing-model and capacity-monitoring steps have no corresponding control rows. Remove those three checklist bullets; retain the documented explanations in the body. Do not add control rows as part of this correction.
+- [supported, minor] summary; Cost and licensing: Meter; rationale: cost / cost: The Sales billing page describes Microsoft Copilot Studio messages as the billing unit. | Found: These capabilities use Microsoft Copilot Studio messages for AI interactions and tasks, like retrieving information and responding to prompts. Messages are the billing units that measure usage. | Fix: After the Meter paragraph add: "The Sales billing page still uses messages terminology; Copilot Studio licensing says the common currency changed from messages to Copilot Credits on September 1, 2025, with no change in the quantity per prepaid pack or pay-as-you-go rate." Cite https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing in sources. Keep the existing attribution to the Sales billing page. | Source: https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing
 -->

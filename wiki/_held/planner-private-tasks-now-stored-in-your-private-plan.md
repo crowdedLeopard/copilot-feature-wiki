@@ -22,7 +22,7 @@ licensing:
 audiences: ["m365-admin","compliance","service-owner","change-adoption"]
 tags: ["planner","ediscovery","retention","exchange","data-lifecycle-management","user-experience","microsoft-to-do"]
 sources:
-  - title: "Planner: Private tasks now stored in your private plan"
+  - title: "Microsoft 365 Roadmap 569426"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=569426"
     kind: "roadmap"
   - title: "MC1488845: (Updated) Private tasks now stored in your private plan in Planner"
@@ -57,11 +57,8 @@ controls:
       surface: "Teams admin center"
       path: "Teams apps > Manage apps > Planner > Block"
       docs: "https://learn.microsoft.com/microsoftteams/manage-planner-app"
-    api:
-      kind: "powershell"
-      call: "Update-M365TeamsApp -Id <Teams app ID> -IsBlocked $true"
-      docs: "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp"
-    note: "Existing control for the Planner app in Teams only. Not a way to keep private tasks in Microsoft To Do."
+    api: null
+    note: "Existing control for the Planner app in Teams only. Not a way to keep private tasks in Microsoft To Do. The PowerShell reference labels its -IsBlocked $true example as unblocking an app, so the blocking call is not verified."
 confidence: "medium"
 created: "2026-11-19"
 updated: "2026-11-19"
@@ -71,19 +68,23 @@ changes:
     note: "New briefing: private tasks move to the private Planner plan from December 2026; enabled automatically, no admin switch documented."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 52 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-19"
+    note: "Corrected after verification: removed the claim that eDiscovery treatment of private plans is undocumented, and removed the unverified Update-M365TeamsApp blocking call."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 55 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-19"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 50
+  claims: 55
+  confirmed: 53
   unconfirmed: 0
   contradicted: 2
-  attempts: 1
-  hash: "cd8672cffed6692dd16c73db284a3da8"
+  attempts: 2
+  hash: "8c98506780a25635b613a338cd3deb63"
 ---
 
 ## What's changing
@@ -92,7 +93,7 @@ Microsoft plans to store private tasks created in Planner and Planner-powered ex
 
 Microsoft's notice says new private tasks will be stored in a private Planner plan, that users keep seeing existing private tasks in Planner My Tasks, and that new private tasks created in Planner will no longer appear in Microsoft To Do. It also says private tasks remain visible only to the task owner, cannot be shared or assigned to others, and that existing tasks continue to work and appear alongside them. The notice says the feature is enabled automatically and that no administrator action is required for deployment.
 
-For comparison, Microsoft Learn currently describes private tasks and their attachments as stored in Microsoft Exchange, and tasks in basic plans as stored in Azure and managed by the Planner service. Learn does not yet describe the private plan storage, so what the change does to storage, discovery and retention is known only from the roadmap item and the notice.
+For comparison, Microsoft Learn currently describes private tasks and their attachments as stored in Microsoft Exchange, and tasks in basic plans as stored in Azure and managed by the Planner service. Learn does not yet identify the precise storage backend for the new private plan.
 
 The roadmap item is In development with a target of December CY2026, for General Availability, on the Web platform, in Worldwide (Standard Multi-Tenant). MC1488845, updated 3 November 2026, gives the rollout as beginning in early December 2026 (previously November), with completion expected in late December 2026 (previously November). It sets no act-by date.
 
@@ -106,7 +107,7 @@ Expect two practical effects: users who look for new private tasks in the To Do 
 
 **Data exposure**
 - Microsoft's notice says new private tasks are stored in the user's private Planner plan and remain visible only to the task owner. Learn describes private tasks today as stored in Exchange and basic-plan tasks as stored in Azure, so the storage location of new private tasks moves under the Planner service. Where exactly the private plan is stored is not yet documented.
-- Microsoft Learn's Planner security page says Purview eDiscovery and history are supported for basic plans contained by groups, and that premium plans and non-group plans aren't currently supported. It does not say how a private plan is treated, which is the point to confirm for eDiscovery of new private tasks.
+- Microsoft Learn's Planner security page says Purview eDiscovery and history are supported for basic plans contained by groups, and that premium plans and non-group plans aren't currently supported. Microsoft documents no current Purview eDiscovery and history support for non-group plans.
 
 **Security & identity**
 - No change documented to who can see a private task: the notice says tasks cannot be shared or assigned to others. The notice says existing compliance and security protections continue to apply.
@@ -146,7 +147,7 @@ Rollout: early to late December 2026 according to MC1488845, enabled automatical
 - Tell users that existing private tasks stay visible in Planner My Tasks and new ones are kept in the private Planner plan.
 
 ### After rollout
-- Check whether a test eDiscovery search finds a new private task, because Learn's Planner security page does not say how private plans are treated.
+- Check whether a test eDiscovery search finds a new private task.
 - Decide whether any user group should not have the Planner app in Teams; the controls table shows what that setting covers.
 
 ## Governance controls
@@ -157,7 +158,7 @@ Rollout: early to late December 2026 according to MC1488845, enabled automatical
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether new private tasks are stored in the private Planner plan or in Microsoft To Do</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft's notice says the feature is enabled automatically and no administrator action is required for deployment.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether the Planner app is available in Microsoft Teams</strong><br><small>Tenant</small><br><small class="controls__note">Existing control for the Planner app in Teams only. Not a way to keep private tasks in Microsoft To Do.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Planner › Block <a href="https://learn.microsoft.com/microsoftteams/manage-planner-app" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;Teams app ID&gt; -IsBlocked $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether the Planner app is available in Microsoft Teams</strong><br><small>Tenant</small><br><small class="controls__note">Existing control for the Planner app in Teams only. Not a way to keep private tasks in Microsoft To Do. The PowerShell reference labels its -IsBlocked $true example as unblocking an app, so the blocking call is not verified.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Planner › Block <a href="https://learn.microsoft.com/microsoftteams/manage-planner-app" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -167,7 +168,7 @@ The Teams admin centre row is an existing control for the Planner app in Teams, 
 
 ## Open questions
 
-- Are eDiscovery, content search and Purview audit applied to new private tasks in the private plan as they are to private tasks in Exchange today? Watch the Planner security page and MC1488845.
+- Is Purview audit applied to new private tasks in the private plan as it is to private tasks in Exchange today? Watch the Planner security page and MC1488845.
 - Is there any setting to keep new private tasks in Microsoft To Do, or is the change unconditional? Watch Message center and the Planner for admins page.
 - Which Power Automate connector and Microsoft Graph APIs reach tasks in a private plan? Watch the Planner Learn pages.
 - How will the Planner app in Teams show the change, given that the roadmap item lists only the Web platform?
@@ -181,6 +182,8 @@ impact: High. It changes default behaviour for users who create private tasks: n
 <!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing; Risk assessment: Data exposure; Governance guidance: After rollout; Open questions / absence: Microsoft has not said how a user's private, non-shared Planner plan is treated for eDiscovery. | Found: Purview eDiscovery and history are supported for basic plans contained by groups. Premium plans and non-group plans aren't currently supported. | Fix: Replace 'It does not say how a private plan is treated, which is the point to confirm for eDiscovery of new private tasks.' with 'Microsoft documents no current Purview eDiscovery and history support for non-group plans.' In What's changing, replace 'Learn does not yet describe the private plan storage, so what the change does to storage, discovery and retention is known only from the roadmap item and the notice.' with 'Learn does not yet identify the precise storage backend for the new private plan.' In After rollout, remove the reason 'because Learn's Planner security page does not say how private plans are treated'. Remove eDiscovery and content search from the first Open questions bullet rather than presenting their support for a non-group plan as undocumented. Keep the existing source https://learn.microsoft.com/planner/planner-security-privacy-compliance. | Source: https://learn.microsoft.com/planner/planner-security-privacy-compliance
-- [contradicted, blocker] controls[1].api; Governance controls / command: Update-M365TeamsApp -Id <Teams app ID> -IsBlocked $true is documented as blocking the Planner app in Teams. | Found: Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true Unblocks Bookings app (App ID 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b). | Fix: Remove the printed PowerShell call and set controls[1].api to null; retain the verified UI Block path. Add to the row note: 'The PowerShell reference labels its -IsBlocked $true example as unblocking an app, so the blocking call is not verified.' Do not reverse the Boolean by inference: the same reference also labels its $false example as unblocking. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp
+- [contradicted, blocker] controls[1].api; Governance controls table / absence: Automation for changing whether the Planner app is available in Microsoft Teams is not yet documented. | Found: This cmdlet updates app state and app available values for the Microsoft Teams app. -IsBlocked The state of the app in the tenant. | Fix: Set controls[1].api to kind 'powershell', call 'Update-M365TeamsApp -Id <app-id> -IsBlocked <Boolean>', and docs 'https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp'. Retain the warning that the examples inconsistently describe the Boolean values; do not prescribe $true as a verified blocking value. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp
+- [contradicted, blocker] Open questions: first bullet / absence: Whether Purview audit applies to new private tasks in a private plan remains undocumented. | Found: Purview's integrated audit logs are supported across plan types and containers. Retention policy isn't currently supported. Purview integration depends on an appropriate license for Purview (like the E5 license). | Fix: Remove the first Open questions bullet beginning 'Is Purview audit applied to new private tasks'. The cited Planner security page already states that integrated audit logs are supported across plan types and containers. | Source: https://learn.microsoft.com/planner/planner-security-privacy-compliance
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Open questions: first bullet, 'as it is to private tasks in Exchange today' / applicability: Existing To Do private-task activities can be audited in Purview. | Found: To audit events for Microsoft To Do activities, you need a paid Project Plan 1 license (or higher) in addition to the relevant Microsoft 365 license that includes entitlements to Audit (Standard). | Fix: Remove the clause 'as it is to private tasks in Exchange today' with the first Open questions bullet. This comparison relies on an uncited audit reference and omits that reference's additional licensing qualification. | Source: https://learn.microsoft.com/purview/audit-log-activities#microsoft-to-do-activities
 -->

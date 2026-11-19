@@ -2,50 +2,33 @@
   "slug": "microsoft-purview-endpoint-data-loss-prevention-allow-customer-to-scope-jit-audit-to-speci",
   "roadmapId": 562991,
   "title": "Microsoft Purview Endpoint DLP: scope just-in-time audit to users and groups",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-19",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-19",
-    "reasons": [
-      "1 blocking finding (claim 1)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 52,
+    "claims": 50,
     "confirmed": 50,
     "unconfirmed": 0,
-    "contradicted": 2,
-    "blocker": 1,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 2
+    "minor": 1
   },
-  "summary": "Hold: the summary incorrectly says that only audit-scope users have activity logged, although Microsoft's notice also records activity for block-scope users. The detailed explanation, rollout window and licensing are supported; the controls table needs a fuller audit-setting path.",
+  "summary": "The briefing accurately reports Microsoft's planned audit-scoping change, including continued logging for block-scope users and the December rollout recommendations. The first control's path stops on the correct settings page; extending it to the audit setting described in the notice would make it easier to follow.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; Why it matters",
-      "type": "behaviour",
-      "claim": "JIT protection will log activity only for users and groups placed in an audit scope.",
-      "status": "contradicted",
-      "source": "Message Center post MC1387575",
-      "quote": "Users included in block scope will be prevented from completing actions while files are evaluated for sensitive information. Their activities are recorded in Activity explorer.",
-      "severity": "blocker",
-      "fix": "Replace the summary's first sentence with 'Endpoint DLP just-in-time protection will require explicit audit scope configuration; block-scope users will also continue to have activity recorded.' In Why it matters, replace 'logged only for users and groups you name' with 'explicitly scoped audit logging, while block-scope activity is also recorded', as stated in MC1387575."
-    },
-    {
-      "n": 2,
-      "where": "title; What's changing; Governance controls; Open questions",
+      "where": "What's changing; title; Governance controls",
       "type": "record",
-      "claim": "The roadmap plans inclusion or exclusion of users and groups so that JIT audits are generated for selected users or groups.",
+      "claim": "The roadmap plans user and group inclusion or exclusion for Endpoint DLP JIT Audit.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Enable customers to include or exclude users/user groups from Just‑In‑Time (JIT) Audit, ensuring audits are generated only for the selected users or groups.",
@@ -53,7 +36,7 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 2,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -64,8 +47,8 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "front matter: targetDate; What's changing; Scope",
+      "n": 3,
+      "where": "front matter: targetDate; summary; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap target is December CY2026.",
       "status": "supported",
@@ -75,7 +58,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 4,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
       "claim": "The roadmap release phase is General Availability.",
@@ -86,7 +69,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 5,
       "where": "front matter: clouds; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
@@ -97,10 +80,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 6,
       "where": "front matter: platforms; Scope",
       "type": "record",
-      "claim": "The roadmap lists Web as the platform.",
+      "claim": "The roadmap platform is Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -108,7 +91,7 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 7,
       "where": "front matter: previewDate",
       "type": "record",
       "claim": "The roadmap supplies no preview date.",
@@ -119,7 +102,7 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 8,
       "where": "front matter: roadmapModified",
       "type": "record",
       "claim": "The roadmap modification timestamp is 2026-09-14T23:03:47.",
@@ -130,175 +113,10 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "What's changing; Why it matters",
-      "type": "record",
-      "claim": "The notice says JIT previously logged activity automatically for users not targeted by policies.",
-      "status": "supported",
-      "source": "Message Center post MC1387575",
-      "quote": "Previously, when Just-in-time protection was turned on, user activities were logged automatically for users who were not targeted by policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
+      "n": 9,
       "where": "What's changing",
       "type": "record",
-      "claim": "The notice requires explicit configuration of audit logging for audit-scope users or groups.",
-      "status": "supported",
-      "source": "Message Center post MC1387575",
-      "quote": "With this update, audit logging must be explicitly configured so that only users or groups included in the audit scope have their activities logged.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "What's changing; Governance guidance: At rollout; controls[0].note",
-      "type": "record",
-      "claim": "The notice locates Audit covered user activities on the Devices tab under Settings > Data loss prevention > Just-in-time protection and says to turn it on.",
-      "status": "supported",
-      "source": "Message Center post MC1387575",
-      "quote": "Just-in-time audit behavior is now managed through the Audit covered user activities setting under Settings > Data loss prevention > Just-in-time protection. Under the Devices tab, turn on Audit covered user activities.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The notice says users included in audit scope will not see enforcement actions.",
-      "status": "supported",
-      "source": "Message Center post MC1387575",
-      "quote": "Users included in audit scope will not see enforcement actions, and their activities will be recorded in Activity explorer.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What's changing; Why it matters; Risk assessment",
-      "type": "record",
-      "claim": "The notice says audit-scope activities are recorded in Activity explorer.",
-      "status": "supported",
-      "source": "Message Center post MC1387575",
-      "quote": "Users included in audit scope will not see enforcement actions, and their activities will be recorded in Activity explorer.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: impact",
-      "type": "record",
-      "claim": "The notice says block-scope users are prevented from completing actions while files are evaluated for sensitive information.",
-      "status": "supported",
-      "source": "Message Center post MC1387575",
-      "quote": "Users included in block scope will be prevented from completing actions while files are evaluated for sensitive information.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The notice says block-scope activities are also recorded in Activity explorer.",
-      "status": "supported",
-      "source": "Message Center post MC1387575",
-      "quote": "Users included in block scope will be prevented from completing actions while files are evaluated for sensitive information. Their activities are recorded in Activity explorer.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
-      "type": "record",
-      "claim": "Users outside both audit and block scope will have no JIT-covered activities recorded.",
-      "status": "supported",
-      "source": "Message Center post MC1387575",
-      "quote": "Users not included in audit or block scope will not have activities covered by Just-in-time protection recorded.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What's changing: audited activities",
-      "type": "record",
-      "claim": "The notice lists printing as an audited activity.",
-      "status": "supported",
-      "source": "Message Center post MC1387575",
-      "quote": "Audited activities include printing",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing: audited activities",
-      "type": "record",
-      "claim": "The notice lists transfers to removable media as audited activities.",
-      "status": "supported",
-      "source": "Message Center post MC1387575",
-      "quote": "transfers to removable media or network shares",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "What's changing: audited activities",
-      "type": "record",
-      "claim": "The notice lists transfers to network shares as audited activities.",
-      "status": "supported",
-      "source": "Message Center post MC1387575",
-      "quote": "transfers to removable media or network shares",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing: audited activities",
-      "type": "record",
-      "claim": "The notice lists copying or moving files using Remote Desktop Protocol as audited activities.",
-      "status": "supported",
-      "source": "Message Center post MC1387575",
-      "quote": "copying or moving files using Remote Desktop Protocol or an unapproved Bluetooth app",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "What's changing: audited activities",
-      "type": "record",
-      "claim": "The notice lists copying or moving files using an unapproved Bluetooth app as audited activities.",
-      "status": "supported",
-      "source": "Message Center post MC1387575",
-      "quote": "copying or moving files using Remote Desktop Protocol or an unapproved Bluetooth app",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "What's changing: audited activities",
-      "type": "record",
-      "claim": "The notice lists uploading files to a restricted cloud service domain as an audited activity.",
-      "status": "supported",
-      "source": "Message Center post MC1387575",
-      "quote": "uploading files to a restricted cloud service domain.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "summary; What's changing; Scope; front matter: changes",
-      "type": "record",
-      "claim": "The notice targets global rollout from mid-December through end of December 2026, replacing the September window.",
-      "status": "supported",
-      "source": "Message Center post MC1387575",
-      "quote": "Global: We will begin rolling out in mid-December 2026 (previously mid-September) and expect to complete by end of December 2026 (previously end of September).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The notice was updated on 14 September 2026.",
+      "claim": "Microsoft updated the notice on 14 September 2026.",
       "status": "supported",
       "source": "Message Center post MC1387575",
       "quote": "Updated September 14, 2026: We have updated the timeline.",
@@ -306,21 +124,230 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "Scope; rationale: impact",
+      "n": 10,
+      "where": "What's changing; Scope",
       "type": "record",
-      "claim": "The notice identifies Endpoint DLP and JIT administrators as affected.",
+      "claim": "The notice schedules rollout to begin in mid-December 2026.",
       "status": "supported",
       "source": "Message Center post MC1387575",
-      "quote": "Who is affected: Admins managing Microsoft Purview Endpoint Data Loss Prevention and Just-in-time protection settings.\n\nPlatforms/Services: \n\n- Microsoft Purview- Endpoint Data Loss Prevention- Activity explorer.",
+      "quote": "Global: We will begin rolling out in mid-December 2026 (previously mid-September)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice expects rollout completion by the end of December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1387575",
+      "quote": "expect to complete by end of December 2026 (previously end of September).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice's previous rollout start was mid-September.",
+      "status": "supported",
+      "source": "Message Center post MC1387575",
+      "quote": "mid-December 2026 (previously mid-September)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "Previously, enabling JIT automatically logged activity for users not targeted by policies.",
+      "status": "supported",
+      "source": "Message Center post MC1387575",
+      "quote": "Previously, when Just-in-time protection was turned on, user activities were logged automatically for users who were not targeted by policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; What's changing; Why it matters; Risk assessment",
+      "type": "record",
+      "claim": "The notice says audit logging must be explicitly configured using the selected audit scope.",
+      "status": "supported",
+      "source": "Message Center post MC1387575",
+      "quote": "With this update, audit logging must be explicitly configured so that only users or groups included in the audit scope have their activities logged.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[0].ui; Governance controls; Governance guidance",
+      "type": "admin-path",
+      "claim": "The Microsoft Purview portal route Settings > Data Loss Prevention > Just-in-time protection reaches the page holding the audit and block scoping controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit",
+      "quote": "Sign in to the Microsoft Purview portal.\n2. Select Settings > Data Loss Prevention > Just-in-time protection.",
+      "severity": "minor",
+      "fix": "Extend controls[0].ui.path and the corresponding rendered table path to 'Settings > Data Loss Prevention > Just-in-time protection > Devices > Audit covered user activities'. Retain the note attributing the Devices tab and audit setting to MC1387575, which supplies those final steps."
+    },
+    {
+      "n": 16,
+      "where": "What's changing; controls[0].note; Governance controls; Governance guidance",
+      "type": "record",
+      "claim": "The notice places Audit covered user activities on the Devices tab of the Just-in-time protection settings page and instructs admins to turn it on.",
+      "status": "supported",
+      "source": "Message Center post MC1387575",
+      "quote": "Just-in-time audit behavior is now managed through the Audit covered user activities setting under Settings > Data loss prevention > Just-in-time protection. Under the Devices tab, turn on Audit covered user activities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Users included in audit scope see no JIT enforcement actions.",
+      "status": "supported",
+      "source": "Message Center post MC1387575",
+      "quote": "Users included in audit scope will not see enforcement actions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "Audit-scope users have their activities recorded in Activity explorer.",
+      "status": "supported",
+      "source": "Message Center post MC1387575",
+      "quote": "Users included in audit scope will not see enforcement actions, and their activities will be recorded in Activity explorer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment; rationale: impact",
+      "type": "record",
+      "claim": "Block-scope users are prevented from completing actions while files are evaluated for sensitive information.",
+      "status": "supported",
+      "source": "Message Center post MC1387575",
+      "quote": "Users included in block scope will be prevented from completing actions while files are evaluated for sensitive information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Block-scope users also have their activities recorded in Activity explorer.",
+      "status": "supported",
+      "source": "Message Center post MC1387575",
+      "quote": "Users included in block scope will be prevented from completing actions while files are evaluated for sensitive information. Their activities are recorded in Activity explorer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "Users outside both audit and block scope have no JIT-covered activities recorded.",
+      "status": "supported",
+      "source": "Message Center post MC1387575",
+      "quote": "Users not included in audit or block scope will not have activities covered by Just-in-time protection recorded.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice lists printing among audited activities.",
+      "status": "supported",
+      "source": "Message Center post MC1387575",
+      "quote": "Audited activities include printing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice lists transfers to removable media among audited activities.",
+      "status": "supported",
+      "source": "Message Center post MC1387575",
+      "quote": "transfers to removable media or network shares",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice lists transfers to network shares among audited activities.",
+      "status": "supported",
+      "source": "Message Center post MC1387575",
+      "quote": "transfers to removable media or network shares",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice lists copying or moving files using Remote Desktop Protocol among audited activities.",
+      "status": "supported",
+      "source": "Message Center post MC1387575",
+      "quote": "copying or moving files using Remote Desktop Protocol or an unapproved Bluetooth app",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice lists copying or moving files using an unapproved Bluetooth app among audited activities.",
+      "status": "supported",
+      "source": "Message Center post MC1387575",
+      "quote": "copying or moving files using Remote Desktop Protocol or an unapproved Bluetooth app",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
-      "where": "Risk assessment: Change & support; Scope; Governance guidance; Open questions",
+      "where": "What's changing",
       "type": "record",
-      "claim": "The notice asks administrators to deploy anti-malware client 4.18.26060 or later before enabling this feature.",
+      "claim": "The notice lists uploads to a restricted cloud service domain among audited activities.",
+      "status": "supported",
+      "source": "Message Center post MC1387575",
+      "quote": "uploading files to a restricted cloud service domain.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Scope; rationale: impact",
+      "type": "record",
+      "claim": "The affected administrators manage Microsoft Purview Endpoint DLP and JIT protection settings.",
+      "status": "supported",
+      "source": "Message Center post MC1387575",
+      "quote": "Who is affected: Admins managing Microsoft Purview Endpoint Data Loss Prevention and Just-in-time protection settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Scope; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The notice identifies Microsoft Purview, Endpoint DLP and Activity explorer as the affected services.",
+      "status": "supported",
+      "source": "Message Center post MC1387575",
+      "quote": "Platforms/Services: \n\n- Microsoft Purview- Endpoint Data Loss Prevention- Activity explorer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment; Scope; Governance guidance; Open questions",
+      "type": "record",
+      "claim": "The notice asks administrators to deploy anti-malware client 4.18.26060 or later before enabling the feature.",
       "status": "supported",
       "source": "Message Center post MC1387575",
       "quote": "Deploy anti-malware client version 4.18.26060 or later before enabling this feature.",
@@ -328,10 +355,197 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "summary; Why it matters; Governance guidance: Before rollout",
+      "n": 31,
+      "where": "Risk assessment; Scope; Open questions",
+      "type": "behaviour",
+      "claim": "Learn gives antimalware client 4.18.23080 or later as the prerequisite for JIT protection generally.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit",
+      "quote": "Before you can deploy just-in-time protection, you must first deploy antimalware Client version 4.18.23080 or later.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Learn says to allow at least an hour for JIT setting updates to reach clients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit",
+      "quote": "Allow at least an hour for JIT setting updates, including disabling JIT, to be pushed to client devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope: Devices",
+      "type": "availability",
+      "claim": "Learn lists Windows 10 as supported for JIT protection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit",
+      "quote": "JIT protection for Endpoint DLP supports these devices:\n\n- Windows 10",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope: Devices",
+      "type": "availability",
+      "claim": "Learn lists Windows 11 as supported for JIT protection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit",
+      "quote": "JIT protection for Endpoint DLP supports these devices:\n\n- Windows 10\n- Windows 11",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope: Devices",
+      "type": "availability",
+      "claim": "Learn lists the three most recent macOS versions as supported for JIT protection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit",
+      "quote": "macOS (the three most recent versions)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The included licensing model rests on the service description listing Endpoint DLP as Included in the named Microsoft 365 and Purview plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance |\n| --- | --- |\n| Endpoint Data Loss Prevention (DLP) | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Endpoint DLP getting-started page directs readers to Microsoft 365 licensing pages for subscription details.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-getting-started",
+      "quote": "SKU/subscriptions licensing\n\nFor information on licensing, see\n\n- Microsoft 365 Enterprise Plans\n- Microsoft 365 Service Descriptions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "No separate licence specific to JIT audit scoping is published in the checked Microsoft material.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Endpoint DLP\" \"JIT\" \"licensing\" \"audit\"; opened the Purview service description, endpoint-dlp-getting-started, endpoint-dlp-get-started-jit and endpoint-dlp-learn-about-jit; read MC1387575. No scoping-specific licence found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter or price specific to JIT audit scoping is documented in the checked Microsoft material.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Purview\" \"just-in-time\" \"audit\" \"price\" licensing; opened the Purview service description and both JIT Learn pages; read MC1387575. No JIT audit-scoping meter or price found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "default",
+      "claim": "The audit-scoping control's arrival state and migration behavior without administrator action are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Endpoint DLP\" \"JIT audit\" \"default\" \"scope\"; \"just-in-time protection\" \"default\" \"audit\". Opened both JIT Learn pages; read the roadmap and MC1387575. Explicit configuration is required, but no initial switch value or scope migration is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What's changing; controls[0].note; Governance controls",
+      "type": "absence",
+      "claim": "The JIT Learn pages do not yet describe Audit covered user activities or its exact inclusion and exclusion options.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Audit covered user activities\"; opened https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit and https://learn.microsoft.com/purview/endpoint-dlp-learn-about-jit. Neither describes that setting or its inclusion/exclusion options.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope: Roles; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Learn's JIT pages name no role required to change this setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"just-in-time protection\" \"role\"; opened https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit and https://learn.microsoft.com/purview/endpoint-dlp-learn-about-jit. Neither names a role for editing the setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No PowerShell, Graph or other API operation for configuring JIT audit and block scope was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"just-in-time protection\" \"PowerShell\"; \"Purview\" \"just-in-time protection\" \"Graph\" API settings; \"Audit covered user activities\". Opened both JIT Learn pages and read returned API excerpts; none documents a JIT scope-setting operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "No PowerShell, Graph or other API operation for changing the JIT Devices monitoring location was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview \"just-in-time protection\" \"PowerShell\" \"Graph\" settings Devices audit scope role; \"Purview\" \"just-in-time protection\" \"Graph\" API settings. Opened both JIT Learn pages; no operation setting the Devices monitoring location was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[1].ui; controls[1].note; Governance controls",
+      "type": "admin-path",
+      "claim": "In the Microsoft Purview portal, Settings > Data Loss Prevention > Just-in-time protection > Choose which locations to monitor > Devices selects the monitored location, not the audit-user scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit",
+      "quote": "Sign in to the Microsoft Purview portal.\n2. Select Settings > Data Loss Prevention > Just-in-time protection.\n3. Under Choose which locations to monitor, select the checkbox next to Devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Learn supplies an Advanced hunting query that reports antimalware client versions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit",
+      "quote": "To find out which devices have the necessary antimalware client, go to Security portal > Investigation & response > Advanced hunting, and run this query.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Learn describes checking a device's JIT prerequisite through the Diagnostics page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit",
+      "quote": "You can also go to Data Loss Prevention > Diagnostics page, and select Endpoint DLP not working card to check whether a specific device meets JIT prerequisite.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Why it matters; Governance guidance: Before rollout",
       "type": "record",
-      "claim": "Microsoft recommends reviewing the existing JIT configuration to identify users currently generating audit events.",
+      "claim": "Microsoft recommends reviewing the existing JIT configuration to identify users generating audit events.",
       "status": "supported",
       "source": "Message Center post MC1387575",
       "quote": "Review your existing Just-in-time configuration to identify users currently generating audit events.",
@@ -339,7 +553,7 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 49,
       "where": "summary; Why it matters; Governance guidance: At rollout",
       "type": "record",
       "claim": "Microsoft recommends explicitly adding all users or groups that should continue generating JIT audit events to audit scope.",
@@ -350,7 +564,7 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 50,
       "where": "Why it matters; Governance guidance: After rollout",
       "type": "record",
       "claim": "Microsoft recommends validating that expected activities appear in Activity explorer.",
@@ -359,252 +573,10 @@
       "quote": "Validate your configuration to ensure expected activities appear in Activity explorer.",
       "severity": null,
       "fix": null
-    },
-    {
-      "n": 31,
-      "where": "Risk assessment: Security & identity",
-      "type": "record",
-      "claim": "The notice says the change affects JIT audit collection and review for compliance and investigation workflows.",
-      "status": "supported",
-      "source": "Message Center post MC1387575",
-      "quote": "The change alters how Just-in-time audit data is collected and reviewed for compliance and investigation workflows.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Learn says to allow at least an hour for JIT setting updates to reach client devices.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit",
-      "quote": "Allow at least an hour for JIT setting updates, including disabling JIT, to be pushed to client devices.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Risk assessment: Change & support; Scope; Open questions",
-      "type": "behaviour",
-      "claim": "Learn gives antimalware client 4.18.23080 or later as the prerequisite for JIT generally.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit",
-      "quote": "Before you can deploy just-in-time protection, you must first deploy antimalware Client version 4.18.23080 or later.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Scope: Devices",
-      "type": "availability",
-      "claim": "Learn lists JIT support for Windows 10, Windows 11 and the three most recent macOS versions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit",
-      "quote": "JIT protection for Endpoint DLP supports these devices:\n\n- Windows 10\n- Windows 11\n- macOS (the three most recent versions)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "controls[0].ui; Governance controls; Governance guidance: Before rollout",
-      "type": "admin-path",
-      "claim": "Settings > Data Loss Prevention > Just-in-time protection in the Microsoft Purview portal reaches the page holding the JIT audit and block controls.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit",
-      "quote": "Sign in to the Microsoft Purview portal.\n2. Select Settings > Data Loss Prevention > Just-in-time protection.",
-      "severity": "minor",
-      "fix": "For controls[0].ui, complete the audit-setting route as 'Settings > Data loss prevention > Just-in-time protection > Devices > Audit covered user activities', with the Devices tab and setting attributed to MC1387575 at https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1387575. The current path correctly reaches its containing page but stops before the audit control."
-    },
-    {
-      "n": 36,
-      "where": "controls[1].ui; controls[1].note; Governance controls",
-      "type": "admin-path",
-      "claim": "Settings > Data Loss Prevention > Just-in-time protection > Choose which locations to monitor > Devices selects the monitored Devices location rather than the user audit scope.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit",
-      "quote": "Select Settings > Data Loss Prevention > Just-in-time protection.\n3. Under Choose which locations to monitor, select the checkbox next to Devices.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
-      "where": "controls[0].api; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "No PowerShell, Graph or other API for configuring JIT user and group audit or block scope is documented at the time of writing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Endpoint DLP just-in-time settings PowerShell Set-DlpComplianceSettings Graph API audit scope; \"just-in-time\" \"Set-Dlp\". Read both JIT pages and searched Set-DlpCompliancePolicy reference for JIT/just-in-time/AuditCovered; no matching automation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "controls[1].api; Governance controls",
-      "type": "absence",
-      "claim": "No API for selecting the Devices location monitored by JIT is documented at the time of writing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Endpoint DLP just-in-time settings PowerShell Set-DlpComplianceSettings Graph API audit scope; \"just-in-time\" \"Set-Dlp\". Read JIT deployment steps; searched Set-DlpCompliancePolicy for JIT/just-in-time/locations to monitor. No matching operation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "front matter: defaultState; Why it matters; Open questions",
-      "type": "default",
-      "claim": "The initial state and migration behavior of Audit covered user activities on arrival are not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Endpoint DLP \"Audit covered\" default enabled rollout; \"Audit covered user activities\". Read MC1387575 and both JIT pages. Explicit configuration is required, but no initial toggle state or automatic migration of existing users is specified.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The licensing model is included as an option inside licensed Endpoint DLP.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "| Endpoint Data Loss Prevention (DLP) | Included |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "The service description lists Endpoint DLP as Included for the Microsoft 365 and Purview Suite plans named in the briefing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "| Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance |\n| --- | --- |\n| Endpoint Data Loss Prevention (DLP) | Included |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The Endpoint DLP getting-started page directs readers to Microsoft 365 licensing pages for SKU information.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/endpoint-dlp-getting-started",
-      "quote": "### SKU/subscriptions licensing\n\nFor information on licensing, see\n\n- Microsoft 365 Enterprise Plans\n- Microsoft 365 Service Descriptions",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No separate licence, meter or price specific to JIT audit scoping is published in the sources or found by search.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Endpoint DLP JIT audit scoping separate license price meter billing. Read MC1387575, both JIT pages and the service-description Endpoint DLP table; no separate JIT-scoping licence, meter or price found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Scope: Roles; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Learn's JIT pages name no role required to change this setting.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview just in time protection settings permissions role configure DLP settings. Read both JIT pages in full; neither names a configuring role. Search returned general portal permissions, not a role for this JIT setting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "What's changing; controls[0].note; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Learn's JIT pages do not describe Audit covered user activities or its exact inclusion and exclusion options.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Audit covered user activities\"; Purview Endpoint DLP just-in-time \"Audit covered user activities\" default roles licensing pricing. Read both JIT pages in full: they describe JIT Scope, locations and exclusions, but not this setting.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "Learn provides a Diagnostics route for checking a device's JIT prerequisite.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit",
-      "quote": "You can also go to Data Loss Prevention > Diagnostics page, and select Endpoint DLP not working card to check whether a specific device meets JIT prerequisite.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Risk assessment: Data exposure",
-      "type": "record",
-      "claim": "The notice describes audit collection changes rather than new data access.",
-      "status": "supported",
-      "source": "Message Center post MC1387575",
-      "quote": "This change gives organizations greater control over audit signal collection and helps reduce unnecessary audit noise.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
-      "type": "record",
-      "claim": "Audit coverage can be configured through selection of users or groups.",
-      "status": "supported",
-      "source": "Message Center post MC1387575",
-      "quote": "The feature introduces additional admin configuration controls for scoping audit behavior, which may be applied using user or group selection.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "rationale: impact",
-      "type": "behaviour",
-      "claim": "Users outside JIT enforcement scope see no device enforcement change from the audit-scoping change.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about-jit",
-      "quote": "DLP confirms that the user is in scope for JIT. If yes, evaluation continues. If not, the process ends at step 5.\n5. JIT doesn't block the activity. No notification is shown, and a JIT audit event is logged.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "front matter: action",
-      "type": "consistency",
-      "claim": "The prepare action rating fits the briefing's verified rollout timing and medium-risk audit visibility change.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "action: \"prepare\"; risk: \"medium\"; \"rollout to mid-December 2026\"; \"audit logging must be explicitly configured\"",
-      "severity": "minor",
-      "fix": "Set action to 'act-now': on the 19 November 2026 run date, the December rollout is within about 60 days, existing logging behavior changes, and administrators must configure scope to maintain visibility. This meets the schema's act-now definition even without a supplied act-by date."
-    },
-    {
-      "n": 51,
-      "where": "Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "Learn provides an Advanced hunting query exposing the antimalware client version for comparison with the notice's prerequisite.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit",
-      "quote": "To find out which devices have the necessary antimalware client, go to Security portal > Investigation & response > Advanced hunting, and run this query.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "Scope",
-      "type": "record",
-      "claim": "The notice identifies Endpoint DLP and Activity explorer as affected services.",
-      "status": "supported",
-      "source": "Message Center post MC1387575",
-      "quote": "Platforms/Services: \n\n- Microsoft Purview- Endpoint Data Loss Prevention- Activity explorer.",
-      "severity": null,
-      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-19T14:01:44.184Z",
+    "at": "2026-11-19T20:00:38.886Z",
     "summary": {
       "links": 6,
       "unreachable": 0,
@@ -678,5 +650,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-19",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }
