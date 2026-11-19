@@ -62,7 +62,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Reports > Usage > Microsoft Copilot > Credits"
+      path: "Reports > Usage > Reports > Microsoft Copilot > Credits"
       docs: "https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits"
     api: null
   - governs: "Whether user, group and site names are concealed in reports"
@@ -73,9 +73,9 @@ controls:
       docs: "https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports#show-user-group-or-site-details-in-usage-reports"
     api:
       kind: "graph"
-      call: "PATCH /beta/admin/reportSettings { \"displayConcealedNames\": true }"
+      call: "PATCH /beta/admin/reportSettings"
       docs: "https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta"
-    note: "Beta API, not supported for production applications. true conceals user, group and site names; false shows them."
+    note: "Beta API, not supported for production applications. The request body sets displayConcealedNames: true conceals user, group and site names; false shows them."
   - governs: "Consumption by policy, user, group, agent and service"
     scope: "tenant"
     ui:
@@ -86,10 +86,10 @@ controls:
       kind: "graph"
       call: "GET /beta/copilot/costManagement/usageReports/userUsageRecords?startDate={startDate}&endDate={endDate}"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/costmanagementuserusagerecord-list"
-    note: "API is beta, delegated permissions only, one completed UTC day per call; not an equivalent for every UI breakdown or the dedicated Credits report."
+    note: "Beta; one completed UTC day per call. Lists delegated work or school and application permissions in the Graph permission model, subject to deployment availability and authorization. Not an equivalent of the Credits report."
 confidence: "high"
 created: "2026-11-13"
-updated: "2026-11-17"
+updated: "2026-11-19"
 roadmapModified: "2026-10-28T23:04:31"
 changes:
   - date: "2026-11-13"
@@ -104,26 +104,30 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 73 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-19"
+    note: "Correction: Cost Management API permissions now say delegated work or school and application; Credits report path includes the Reports heading; Graph concealment call shown without its body; rollout completion marked as expected."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 77 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-19"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 73
-  confirmed: 72
+  claims: 77
+  confirmed: 77
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "66e325c262808fb612acdcb87a72d755"
+  contradicted: 0
+  attempts: 0
+  hash: "4fff36982a130ca4c6004566f9a74271"
 ---
 
 ## What's changing
 
-The **Microsoft Copilot Credits report** in the Microsoft 365 admin center (**Reports** > **Usage** > **Microsoft Copilot** > **Credits**) shows credits consumed by metered agent interactions in Copilot Chat: total credits used, cumulative and daily series, and breakdowns per user, per agent, per billing policy and per agent-user pair. Usage appears within about an hour of the interaction. The report flags users who exceed 2,000 credits so administrators can act before a bill surprises them.
+The **Microsoft Copilot Credits report** in the Microsoft 365 admin center (**Reports** > **Usage** > **Reports** > **Microsoft Copilot** > **Credits**) shows credits consumed by metered agent interactions in Copilot Chat: total credits used, cumulative and daily series, and breakdowns per user, per agent, per billing policy and per agent-user pair. Usage appears within about an hour of the interaction. The report flags users who exceed 2,000 credits so administrators can act before a bill surprises them.
 
-The report has been in preview since May 2025 and is limited to 30 days of history during preview, with no data before 3 May 2025. The roadmap item targets General Availability for April CY2027. Microsoft's notice MC1069563, updated October 28, 2026, gives a more specific window: Worldwide rollout begins at the end of April 2027 (previously early January) and completes by the end of May 2027 (previously end of January). The notice says the report will be on by default and rolls out automatically with no admin action required beforehand. It names the path as Reporting > Usage > Microsoft 365 Copilot > Message consumption, whereas Learn now gives the report as Credits under Microsoft Copilot.
+The report has been in preview since May 2025 and is limited to 30 days of history during preview, with no data before 3 May 2025. The roadmap item targets General Availability for April CY2027. Microsoft's notice MC1069563, updated October 28, 2026, gives a more specific window: Worldwide rollout begins at the end of April 2027 (previously early January) and is expected to complete by the end of May 2027 (previously end of January). The notice says the report will be on by default and rolls out automatically with no admin action required beforehand. It names the path as Reporting > Usage > Microsoft 365 Copilot > Message consumption, whereas Learn now gives the report as Credits under Microsoft Copilot.
 
 Separately, the **Cost Management** dashboard under **Copilot** in the admin center has a **Consumption** tab that reports credit usage by spending policy, user, group, agent and service for supported services governed through spending policies. Learn does not present it as a replacement for the Copilot Chat Credits report.
 
@@ -182,9 +186,9 @@ Its limitations matter too: 30 days of history during preview means you need to 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Access to the Copilot Credits report</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Reports › Usage › Microsoft Copilot › Credits <a href="https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether user, group and site names are concealed in reports</strong><br><small>Tenant</small><br><small class="controls__note">Beta API, not supported for production applications. true conceals user, group and site names; false shows them.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Org settings › Services › Reports › Conceal user, group, and site names in all reports <a href="https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports#show-user-group-or-site-details-in-usage-reports" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/admin/reportSettings { &quot;displayConcealedNames&quot;: true }</code> <a href="https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Consumption by policy, user, group, agent and service</strong><br><small>Tenant</small><br><small class="controls__note">API is beta, delegated permissions only, one completed UTC day per call; not an equivalent for every UI breakdown or the dedicated Credits report.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Consumption <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET /beta/copilot/costManagement/usageReports/userUsageRecords?startDate={startDate}&amp;endDate={endDate}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/costmanagementuserusagerecord-list" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Access to the Copilot Credits report</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Reports › Usage › Reports › Microsoft Copilot › Credits <a href="https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether user, group and site names are concealed in reports</strong><br><small>Tenant</small><br><small class="controls__note">Beta API, not supported for production applications. The request body sets displayConcealedNames: true conceals user, group and site names; false shows them.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Org settings › Services › Reports › Conceal user, group, and site names in all reports <a href="https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports#show-user-group-or-site-details-in-usage-reports" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/admin/reportSettings</code> <a href="https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Consumption by policy, user, group, agent and service</strong><br><small>Tenant</small><br><small class="controls__note">Beta; one completed UTC day per call. Lists delegated work or school and application permissions in the Graph permission model, subject to deployment availability and authorization. Not an equivalent of the Credits report.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Consumption <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET /beta/copilot/costManagement/usageReports/userUsageRecords?startDate={startDate}&amp;endDate={endDate}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/costmanagementuserusagerecord-list" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -192,7 +196,7 @@ Microsoft documents report access roles and the tenant-wide concealment setting;
 
 The concealment setting also applies to the Billing Policy ID in this report. In the Graph call, `true` conceals user, group and site names and `false` shows them; the endpoint is beta, which Microsoft says is not supported for production applications.
 
-Microsoft Learn documents no API for the Credits report itself at the time of writing (November 2026). The Cost Management API call in the table returns per-user consumption for exactly one completed UTC day, supports delegated work or school permissions only, and is beta; it is not an equivalent of every Consumption tab breakdown or of the Credits report.
+Microsoft Learn documents no API for the Credits report itself at the time of writing (November 2026). The Cost Management API call in the table returns per-user consumption for exactly one completed UTC day, lists delegated work or school and application permissions in the Graph permission model, subject to deployment availability and authorization, and is beta; it is not an equivalent of every Consumption tab breakdown or of the Credits report.
 
 ## Open questions
 
@@ -203,14 +207,4 @@ Microsoft Learn documents no API for the Credits report itself at the time of wr
 risk: Low. The report presents consumption data, and usernames and display names are hidden by default, so personal-data exposure arises only if an administrator reveals them.
 cost: Low. The Credits report page states no separate price for the report, so the cost shown for it is admin time for exports. The consumption it reports is metered in Copilot Credits under pay-as-you-go.
 impact: Low. Administrators and finance teams who manage pay-as-you-go for Copilot Chat notice it; end users do not.
--->
-
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[2].note; Governance controls table and final paragraph / applicability: The userUsageRecords API supports delegated work or school permissions only. | Found: | Application | CopilotCostManagement-UserData.Read.All | CopilotCostManagement.Read.All | | Fix: In controls[2].note and the rendered note, replace 'delegated permissions only' with 'delegated work or school and application permissions in the Graph permission model, subject to deployment availability and authorization'. In the final Governance controls paragraph, replace 'supports delegated work or school permissions only' with 'lists delegated work or school and application permissions in the Graph permission model, subject to deployment availability and authorization'. The cited operation's Permissions section and https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview#permission-availability-and-authorization give these qualifications. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/costmanagementuserusagerecord-list
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: rollout completion / record: The notice's rollout completes by the end of May 2027, previously the end of January. | Found: and expect to complete by end of May 2027 (previously end of January). | Fix: Replace 'and completes by the end of May 2027 (previously end of January)' with 'and is expected to complete by the end of May 2027 (previously end of January)'.
-- [supported, minor] controls[0].ui; What's changing; Governance controls table / admin-path: The report is at Microsoft 365 admin center > Reports > Usage > Microsoft Copilot > Credits. | Found: In the navigation menu, select Reports. If you don't see Reports, select Show all, and then select Reports. 3. Select Usage. 4. On the Usage page, under Reports, select Microsoft Copilot, and then select Credits. | Fix: Include the nonselectable Reports heading on the Usage page: set controls[0].ui.path to 'Reports > Usage > Reports > Microsoft Copilot > Credits' and use that same path in What's changing and the rendered controls table. | Source: https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-credits
-- [supported, minor] controls[1].api; controls[1].note; Governance controls table / command: PATCH /beta/admin/reportSettings with displayConcealedNames set to true updates tenant-wide report concealment. | Found: PATCH https://graph.microsoft.com/beta/admin/reportSettings Content-Type: application/json Content-length: 37 { "displayConcealedNames": true } | Fix: Set controls[1].api.call and the rendered call to 'PATCH /beta/admin/reportSettings'. Replace its note with 'Beta API, not supported for production applications. The request body sets displayConcealedNames: true conceals user, group and site names; false shows them.' | Source: https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta
 -->

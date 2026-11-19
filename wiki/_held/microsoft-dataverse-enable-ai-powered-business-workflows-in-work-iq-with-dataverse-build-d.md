@@ -130,18 +130,20 @@ changes:
     note: "Correction: fixed the Work IQ environment path in the controls table and removed the claim that the Work IQ MCP server control governs directly authenticated plugin tools."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 78 statements confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 79 statements contradicted, 2 unconfirmed; taken offline until corrected"
 version: 4
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-19"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 78
-  confirmed: 78
-  unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  claims: 79
+  confirmed: 75
+  unconfirmed: 2
+  contradicted: 2
+  attempts: 1
   hash: "fc30a24fa4f4b700642f260aa489df06"
 ---
 
@@ -240,4 +242,15 @@ Business skills are shared by general access, Dataverse security role or direct 
 risk: High. Autonomous agents can create schema, load data and change security in a live environment, acting with the developer's permissions.
 cost: Variable. Copilot Credits meter Dataverse MCP tool calls and direct Work IQ API use, and the coding agent's own subscription or consumption charges are separate; no plugin-specific price is published.
 impact: Medium. It affects developers and makers building Dataverse solutions, and the environments they use.
+-->
+
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [unsupported, blocker] Scope: Work IQ defaults / date: Default enablement for new public production environments began on September 30, 2026. | Found: Searched: "Work IQ" "September 30, 2026". Opened Business Applications in Work IQ default settings and Business Applications in Work IQ; neither states that start date. | Fix: Remove 'from September 30, 2026'. Say 'Business Applications in Work IQ is on by default for new public production environments, subject to the listed exceptions', citing https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings.
+- [contradicted, blocker] Scope: Work IQ defaults / date: Microsoft turns on Business Applications in Work IQ for existing environments from November 2026. | Found: The plan to turn on Business Applications in Work IQ for existing environments that aren't listed as exceptionshas been deferred from the previously documented November 2026 schedule. Check this article for updates. | Fix: Replace 'and for existing ones from November 2026' with 'Microsoft has deferred the previously documented November 2026 default-enablement schedule for existing environments; a replacement date is not stated', citing https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings
+- [contradicted, blocker] controls[2].ui; Governance controls: Dataverse MCP row / admin-path: Manage > Environments > environment > Settings > Product > Features > Dataverse Model Context Protocol reaches the server and allowed-client controls. | Found: Select Advanced Settings. The list of available clients is shown. Open the client record you want. On the MCP client record, set Is Enabled to Yes. | Fix: Narrow controls[2].governs to 'Allowed Dataverse MCP clients' and replace its UI path with 'Manage > Environments > environment > Settings > Product > Features > Dataverse Model Context Protocol > Advanced Settings > client > Is Enabled', in front matter and the table. The cited page requires selecting Advanced Settings and opening a client record; the current path ends at the server section. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-mcp-disable
+- [unsupported, major] What's changing: business skills / behaviour: Business skills generally are still a preview feature. | Found: Searched: "business skills" "preview" "Dataverse". Opened business-skills, business-skill-overview and business-applications-work-iq. These no longer mark business skills generally as preview; preview search results describe particular Sales agent integrations. | Fix: Remove '(preview)' after 'business skills' in What's changing. The currently cited business skills overview and create-and-use pages do not establish that general preview status.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[2].api; Governance controls: Dataverse MCP row / command: PATCH of an allowedmcpclients record can set isenabled to false or true to disable or enable that client. | Found: Entity set path: [organization URI]/api/data/v9.2/allowedmcpclients; Primary key: allowedmcpclientid; Operations supported: POSTGETPATCHDELETE; isenabled | Edm.Boolean | Display name: Is Enabled | Fix: Set controls[2].api.call to 'PATCH [organization URI]/api/data/v9.2/allowedmcpclients(<allowedmcpclientid>)' in front matter and the table. Put 'The request body sets isenabled to false to disable the client or true to enable it' in the row note. The reference confirms the operation and property; the deterministic substring warning is not an invalid-endpoint finding. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient
 -->

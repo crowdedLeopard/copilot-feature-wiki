@@ -119,18 +119,20 @@ changes:
     note: "Corrected after the check: the MCP server Block control now lists the preview Microsoft Graph package block call, and the data policy path includes the environment-selection step."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 80 statements confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 91 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-19"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 80
-  confirmed: 80
+  claims: 91
+  confirmed: 90
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "3264fc927ff9a1df2e9eea7237895eb5"
 ---
 
@@ -230,4 +232,12 @@ Tool-level control is described as rolling out and as supporting only specific t
 risk: Medium. An MCP server supplies HTML that the host renders in the conversation, and the app can call that server's tools. Microsoft documents sandboxing and server-level controls, but none specific to MCP apps.
 cost: Variable. Microsoft Copilot harness experiences consume Copilot Credits for LLM tokens, MCP tools and the harness; a separate MCP app-rendering rate is not documented.
 impact: Low. Makers who connect a UI-enabled MCP server and the users of those agents notice it; nothing in the sources says existing agents change.
+-->
+
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[3].api; Governance controls row 4 / command: Get-DlpPolicy is the automation counterpart of the connector-blocking control. | Found: Retrieves a list of DLP policy objects. | Fix: Replace controls[3].api.call and the rendered call with Add-ConnectorsToPolicy -PolicyName <policy-guid> -Classification Blocked -Connectors <connector-objects>. Use https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest as api.docs and add it to sources. Replace the row's Get-DlpPolicy note and its closing prose with: 'Add-ConnectorsToPolicy moves the specified connectors into the Blocked group. Each connector object must contain id, type, and name.' The reference explicitly accepts Blocked and documents these three required properties. | Source: https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/get-dlppolicy?view=pa-ps-latest
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[3].ui; Governance controls row 4 / admin-path: Connector Block is reached through Security > Data and privacy > Data policy > New Policy > Next > Available > environment > Add to policy > Next > connector > three dots (⋮) > Block. | Found: Select Next. The Add an environment page appears. Select Next. The Assign connectors page appears. | Fix: Use the full path: Security > Data and privacy > Data policy > New Policy > Next > Add an environment > Available > environment > Add to policy > Next > Assign connectors > connector > three dots (⋮) > Block. Apply this to controls[3].ui.path and the rendered table. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
 -->

@@ -62,7 +62,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Entra admin center"
-      path: "Global Secure Access > Secure > Content policies > + Create Policy > Rules > rule > Action > Scan with Purview"
+      path: "Global Secure Access > Secure > Content policies > + Create Policy > Basics > Rules > rule > Action > Scan with Purview"
       docs: "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering"
     api: null
     note: "Requires the Global Secure Access Administrator role. Needs a matching Purview DLP policy. Learn documents no Graph operation for content policy rules at the time of writing (November 2026)."
@@ -70,10 +70,10 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Data loss prevention > Policies > + Create policy > Inline web traffic > Choose where to enforce the policy > Create or customize advanced DLP rules > + Create rule > Actions > + Add an action > Restrict browser and network activities"
+      path: "Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > Choose where to enforce the policy > Network and non-Microsoft secure browsers > Create or customize advanced DLP rules"
       docs: "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering"
     api: null
-    note: "The New-DlpCompliancePolicy reference accepts Network for EnforcementPlanes, but that parameter selects the enforcement layer and does not configure the audit or block rule action. Rule action: Restrict browser and network activities."
+    note: "New-DlpCompliancePolicy accepts Network for EnforcementPlanes, but that parameter selects the enforcement layer, not the audit or block action. In the rule: Actions > + Add an action > Restrict browser and network activities."
   - governs: "Which users the Global Secure Access security profile applies to (Conditional Access)"
     scope: "user"
     ui:
@@ -102,19 +102,23 @@ changes:
     note: "Corrected the Purview policy path to include the enforcement-location and advanced-rules steps, and removed two After rollout checklist bullets that had no controls-table row."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 90 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-19"
+    note: "Corrected the Purview policy path to include the Custom and Custom policy choices and the enforcement location, and added the Basics step to the Entra content policy path."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 92 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 4
 verification:
   status: "held"
   date: "2026-11-19"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 90
-  confirmed: 89
+  claims: 92
+  confirmed: 91
   unconfirmed: 0
   contradicted: 1
-  attempts: 3
-  hash: "5e23a99828e4669c4102e9400b072cfb"
+  attempts: 4
+  hash: "9cad30f37bc139d6e193228ed63a1539"
 ---
 
 ## What's changing
@@ -193,8 +197,8 @@ If nobody acts, the notice says activation needs configuration, so expect no new
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which traffic is sent to Purview for inspection (content policy rule with Scan with Purview)</strong><br><small>Tenant</small><br><small class="controls__note">Requires the Global Secure Access Administrator role. Needs a matching Purview DLP policy. Learn documents no Graph operation for content policy rules at the time of writing (November 2026).</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Global Secure Access › Secure › Content policies › + Create Policy › Rules › rule › Action › Scan with Purview <a href="https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether sensitive files and text sent to unmanaged cloud apps are audited or blocked (Inline web traffic DLP policy)</strong><br><small>Tenant</small><br><small class="controls__note">The New-DlpCompliancePolicy reference accepts Network for EnforcementPlanes, but that parameter selects the enforcement layer and does not configure the audit or block rule action. Rule action: Restrict browser and network activities.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Inline web traffic › Choose where to enforce the policy › Create or customize advanced DLP rules › + Create rule › Actions › + Add an action › Restrict browser and network activities <a href="https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which traffic is sent to Purview for inspection (content policy rule with Scan with Purview)</strong><br><small>Tenant</small><br><small class="controls__note">Requires the Global Secure Access Administrator role. Needs a matching Purview DLP policy. Learn documents no Graph operation for content policy rules at the time of writing (November 2026).</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Global Secure Access › Secure › Content policies › + Create Policy › Basics › Rules › rule › Action › Scan with Purview <a href="https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether sensitive files and text sent to unmanaged cloud apps are audited or blocked (Inline web traffic DLP policy)</strong><br><small>Tenant</small><br><small class="controls__note">New-DlpCompliancePolicy accepts Network for EnforcementPlanes, but that parameter selects the enforcement layer, not the audit or block action. In the rule: Actions &gt; + Add an action &gt; Restrict browser and network activities.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Inline web traffic › Custom › Custom policy › Choose where to enforce the policy › Network and non-Microsoft secure browsers › Create or customize advanced DLP rules <a href="https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which users the Global Secure Access security profile applies to (Conditional Access)</strong><br><small>User</small><br><small class="controls__note">Conditional Access Administrator role. Preview API; production use is not supported. The request body sets sessionControls.globalSecureAccessFilteringProfile.profileId and isEnabled; conditions.users scopes the users.</small></td><td data-label="Admin UI"><strong>Microsoft Entra admin center</strong><br>Identity › Protection › Conditional Access › + Create new policy › Session › Use Global Secure Access Security Profile <a href="https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/identity/conditionalAccess/policies</code> <a href="https://learn.microsoft.com/graph/api/conditionalaccessroot-post-policies?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -220,7 +224,5 @@ impact: Medium. Only users routed through Internet Access and covered by a Condi
 <!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; Governance controls: second row / admin-path: The printed Purview path reaches the rule action directly from Inline web traffic through Choose where to enforce the policy, without choosing Custom and Custom policy. | Found: Select Inline web traffic. ... Select Custom from the Categories list and then select Custom policy from the Regulations list. | Fix: Replace the path in controls[1].ui and its rendered table row with: Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > Choose where to enforce the policy > Network and non-Microsoft secure browsers > Create or customize advanced DLP rules > + Create rule > Actions > + Add an action > Restrict browser and network activities. The cited content-policy guide requires the Custom and Custom policy choices and enabling Network and non-Microsoft secure browsers. | Source: https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls: first row / admin-path: The Entra path to Scan with Purview is Global Secure Access > Secure > Content policies > + Create Policy > Rules > rule > Action > Scan with Purview. | Found: On the Basics tab: ... Select Next. ... On the Rules tab: ... Add a new rule. ... Select the appropriate option for the Action menu: ... To use data policies configured in Microsoft Purview, select Scan with Purview. | Fix: Include the intervening Basics wizard page in both copies of the path: Global Secure Access > Secure > Content policies > + Create Policy > Basics > Rules > rule > Action > Scan with Purview. The cited content-policy page supplies these steps. | Source: https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering
+- [contradicted, blocker] controls[1].ui; controls[1].note; Governance controls: second row / admin-path: The printed Purview route reaches the audit or block control, with its remaining action steps supplied by the row note. | Found: Select Create or customize advanced DLP rules and select Next. Select + Create rule and configure the rule: ... Under Actions, select + Add an action > Restrict browser and network activities. | Fix: Replace controls[1].ui.path with 'Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > Choose where to enforce the policy > Network and non-Microsoft secure browsers > Create or customize advanced DLP rules > + Create rule > Actions > + Add an action > Restrict browser and network activities'. Keep the note explaining that the relevant activities are set to Audit or Block there. The cited page documents the missing + Create rule step between the printed path and the note's action steps. | Source: https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering
 -->

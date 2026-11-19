@@ -95,18 +95,20 @@ changes:
     note: "Corrected after the independent check: shortened the Cloud Policy path, removed the Teams availability row and its false no-API claim (Update-M365TeamsApp is documented), and removed the retention uncertainty."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 76 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-19"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 77
-  confirmed: 76
+  claims: 76
+  confirmed: 71
   unconfirmed: 0
-  contradicted: 1
-  attempts: 0
+  contradicted: 5
+  attempts: 1
   hash: "a30f87e8bfae036cf250af680f04ed5d"
 ---
 
@@ -215,8 +217,13 @@ cost: Low. The notice says a user with a Microsoft 365 Copilot (Premium) licence
 impact: Low. A licensed user has to add Facilitator to a meeting, so only those meetings see the answers, and the notice says responses typically occur less than once per meeting. Everyone in such a meeting sees them.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: licensing.model / consistency: The feature's licensing model is per-user rather than included in its named prerequisite product licence. | Found: Facilitator is included with a Microsoft Copilot license and subject to available capacity. | Fix: Set licensing.model to "included" under the schema's definition of a capability included in a named product licence. Retain the notes naming the required Copilot licence and the capacity qualification. | Source: https://learn.microsoft.com/microsoftteams/facilitator-teams
+- [contradicted, blocker] controls[0].api; Governance controls table and prose / absence: Microsoft documents no API for the Cloud Policy web search policy. | Found: These resources also support remediation and applyOnce. ... Controls web search availability in Microsoft 365 Copilot and Microsoft 365 Copilot Chat. | Fix: Replace the no-API statement and controls[0].api null with the documented preview Graph operation POST /beta/admin/configurationManagement/configurationMonitors, docs https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta. Note: set mode to applyOnce and include baseline.resources with resourceType microsoft.copilot.allowwebsearch, resourceVersion 1 and properties.value: string 0 enables both experiences, 1 disables both, 2 disables Work mode only. This preview supports tenant-level policies only and fails if the setting is configured in a group-level policy. Cite https://learn.microsoft.com/graph/utcm-copilot-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources; identify the TCM service principal's delegated CopilotPolicySettings.ReadWrite permission, the caller's delegated ConfigurationMonitoring.ReadWrite.All permission and the signed-in user's AI Administrator role. Do not present this beta API as production-supported. | Source: https://learn.microsoft.com/graph/utcm-copilot-resources#allowwebsearch-resource-type
+- [contradicted, blocker] controls[2].api; Governance controls table / command: New-RetentionCompliancePolicy -Name <policy name> -TeamsChatLocation <locations> is the operation that configures retention of the interactions. | Found: Policies are not valid until a rule is added (for retention policies) or a label is added (for retention label policies). | Fix: Replace controls[2].api.call with 'New-RetentionComplianceRule -Policy <policy name> -RetentionDuration <days> -RetentionComplianceAction Keep' and its docs with https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule. State in the row note: 'Adds a retention rule to an existing policy scoped to Teams chats; specify the rule name as required by the reference.' Retain the prose explaining policy creation with New-RetentionCompliancePolicy. The current call creates the policy and selects its location but sets no retention rule. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy
+- [contradicted, blocker] Governance controls: app-centric management / admin-path: For migrated tenants, the Users and groups > Availability > Edit availability sequence is the route to app availability. | Found: Go to the Manage apps page. ... select the app name to open its app details page. ... Select the Users and groups tab. ... select Availability. ... Select Edit availability. | Fix: Replace the fragment with 'Teams admin center > Teams apps > Manage apps > Facilitator > Users and groups > Availability > Edit availability'. Cite the existing Facilitator setup and app-centric management sources. The current route starts at a tab inside an app without giving the way to that tab. | Source: https://learn.microsoft.com/microsoftteams/app-centric-management
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: Every control the governance checklist asks administrators to check is represented in the controls table. | Found: Checklist: 'Confirm that Facilitator is allowed or blocked as you intend in the Teams admin center'. Table: Copilot web search, a separate proactive-question switch, and retention only. | Fix: Remove the Before rollout bullet beginning 'Confirm that Facilitator is allowed or blocked as you intend'. It has no matching controls-table row; keep the already documented app-availability information in the Governance controls prose.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: Every control the governance checklist asks readers to check has a controls-table row. | Found: Checklist: 'Confirm that Facilitator is allowed or blocked as you intend in the Teams admin center'. Table: Copilot web search, a separate proactive-question switch, and retention only. | Fix: Remove the Before rollout bullet beginning 'Confirm that Facilitator is allowed or blocked as you intend'. It has no matching controls-table row; retain the app-availability information in the Governance controls prose.
 -->

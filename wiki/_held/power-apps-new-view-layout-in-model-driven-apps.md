@@ -80,18 +80,20 @@ changes:
     note: "Correction: default state set to user-opt-in, licensing to unknown and cost to low; behaviour claims narrowed to the roadmap; API side added to the first control row."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 28 statements confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 32 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-19"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 28
-  confirmed: 28
+  claims: 32
+  confirmed: 31
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "4c63c2ae16686205665499242ee4c21a"
 ---
 
@@ -168,4 +170,10 @@ No separate tenant or environment switch for the new layouts was found in Micros
 risk: Low. The roadmap describes a presentation choice that makers configure; detailed behaviour is not yet documented, so we expect limited change to data boundaries.
 cost: Low. The only cost the sources show is app review, accessibility checking and communication effort; licensing for the new layouts is not yet published.
 impact: Low. Affects makers and the users of apps where makers choose the layouts.
+-->
+
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: licensing.model and notes; Cost and licensing; rationale: cost / licensing: Licensing is unknown because neither the roadmap nor Microsoft Learn states a licence for the new layouts. | Found: Model-driven apps use Dataverse and are premium apps by default. Every user who runs a model-driven app needs a license that provides Power Apps premium use rights. | Fix: Set licensing.model to "included". Replace the licensing notes and the opening "Not yet published" in Cost and licensing with: "Model-driven apps require a licence providing Power Apps premium use rights. Microsoft lists Power Apps Premium, Power Apps per app plans and the Power Apps per app pay-as-you-go meter as general entitlement options; qualifying Dynamics 365 rights depend on context. Requirements specific to the new layouts are not yet published." Cite https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq. In the cost rationale, replace "licensing for the new layouts is not yet published" with "requirements specific to the new layouts are not yet published". Keep cost low: the briefing rates the change, not the existing app entitlement. | Source: https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq#model-driven-apps
 -->

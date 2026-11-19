@@ -71,18 +71,20 @@ changes:
     note: "Corrected five unsupported statements: removed the claim that workflows are agent flows, the second-agent-definition and identical-error claims, the only-lever wording and the no-administrator-asked claim."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 54 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 53 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-19"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 54
+  claims: 53
+  confirmed: 52
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "0c183e94f21cddbccd8d06cf5e90129b"
 ---
 
@@ -184,8 +186,10 @@ cost: Low. The only cost the sources show is maker and admin time; the roadmap s
 impact: Medium. Makers see the recommendations and publish the refined copies; end users notice only if a refined agent behaves differently from the original.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: licensing.model and notes; Cost and licensing; Scope; Open questions; rationale: cost / licensing: Licensing entitlement for this Copilot Studio maker capability is unknown because feature-specific licensing is unpublished. | Found: To use Copilot Studio, you need one of the following configurations: | Fix: Set licensing.model to included. Replace the blanket licensing gap with: 'Existing Copilot Studio access entitlements apply. Microsoft lists a Copilot Studio user license with a tenant prepaid pack, the Copilot Studio authors configuration for applicable pay-as-you-go scenarios, a Microsoft 365 Copilot license, or a trial license; trial licenses cannot publish agents. Feature-specific entitlement restrictions and analysis charges are not yet published.' Cite https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing. Narrow the licensing gaps in Scope, Open questions and the cost rationale to feature-specific restrictions or charges; do not describe the product's access entitlement as unpublished. | Source: https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing / cost: The cited billing page states a reasoning-model premium rate of 10 Copilot Credits per 1,000 tokens. | Found: It's billed as Text and generative AI tools (premium) per 1000 tokens, at 10 Copilot Credits. | Fix: Replace the reasoning-model rate sentence with: 'For billable standard-harness reasoning-model usage, the page lists an additional 10 Copilot Credits per 1,000 billed tokens; eligible authenticated Microsoft 365 Copilot employee-facing usage is included in that licence, subject to fair usage limits and exclusions.' This is background pricing, not a verified rate for self-learning. Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management. | Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management
+- [supported, minor] Cost and licensing / cost: The billing page lists an additional reasoning-model premium of 10 Copilot Credits per 1,000 tokens. | Found: Copilot Credits are calculated from the exact number of billed tokens, at 10 Copilot Credits per 1,000 tokens. | Fix: Replace the reasoning-model rate sentence with: 'For billable standard-harness reasoning-model usage, the page lists an additional 10 Copilot Credits per 1,000 billed tokens, excluding tokens read from the prompt cache; eligible authenticated Microsoft 365 Copilot employee-facing usage is included in that licence, subject to fair usage limits and exclusions.' This remains background pricing, not a verified rate for self-learning. | Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management
 -->

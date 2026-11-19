@@ -5,10 +5,10 @@
   "title": "Dataverse security roles: who can read or change which data?",
   "status": "held",
   "date": "2026-11-19",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "cd5b21ff3a5b",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -17,168 +17,36 @@
     "reason": "failed",
     "since": "2026-11-19",
     "reasons": [
-      "9 blocking findings (claims 2, 10, 12, 32, 48, 69, 70, 71, 74)"
+      "1 blocking finding (claim 61)"
     ]
   },
   "counts": {
-    "claims": 75,
-    "confirmed": 64,
-    "unconfirmed": 5,
-    "contradicted": 6,
-    "blocker": 9,
-    "major": 2,
-    "minor": 6
+    "claims": 81,
+    "confirmed": 79,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 5
   },
-  "summary": "Hold: the privileges automation creates a role but does not grant its privileges, and Microsoft documents automation for two controls described as undocumented. The page also overstates the Environment Maker requirement for agent authors and gives unconditional advice to copy roles that Microsoft says cannot always be copied.",
+  "summary": "The page is held because the automation entry for cross-business-unit ownership names a tool and setting rather than a documented executable command. The permission model, licensing qualifications and other control operations are supported; a few navigation and checklist details also need tightening.",
   "claims": [
     {
       "n": 1,
-      "where": "controls[0].ui",
-      "type": "admin-path",
-      "claim": "The environment's security-role privileges are reached through Manage > Environments > environment > Settings > Users + Permissions > Security roles.",
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "Dataverse security roles group privileges controlling access to tables and records in an environment.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/security-roles-privileges",
-      "quote": "Select Manage in the navigation pane. ... Select Users + Permissions > Security roles.",
-      "severity": "minor",
-      "fix": "Append '> security role' to the path to identify the role being configured. The editing procedure at https://learn.microsoft.com/power-platform/admin/create-edit-security-role says to choose the security role and then specify its privileges."
+      "source": "https://learn.microsoft.com/power-platform/admin/database-security",
+      "quote": "Microsoft Dataverse uses a role-based security model to control access to a database and its resources in an environment.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 2,
-      "where": "controls[0].api",
-      "type": "command",
-      "claim": "POST [Organization Uri]/api/data/v9.2/roles sets which privileges and access levels a role grants.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/web-api-functions-actions-sample",
-      "quote": "1. Create a security role. You must associate the role with a business unit. ... 6. Pass the list as the AddPrivilegesRole.Privileges parameter.",
-      "severity": "blocker",
-      "fix": "Replace the call with 'POST [Organization Uri]/api/data/v9.2/roles(<role-id>)/Microsoft.Dynamics.CRM.AddPrivilegesRole', keeping the existing sample URL as docs. Replace the creation-body sentence in the note with 'The Privileges request-body array supplies RolePrivilege entries, including PrivilegeId and Depth.' This is the sample's operation that adds privileges."
-    },
-    {
-      "n": 3,
-      "where": "controls[1].ui",
-      "type": "admin-path",
-      "claim": "User role assignments are managed at Manage > Environments > environment > Settings > Users + permissions > Users > user > Manage security roles.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
-      "quote": "Select Users + permissions, and then select Users. ... On the Users page select a user, and then select Manage security roles.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "controls[1].api",
-      "type": "command",
-      "claim": "The printed v9.0 systemuserroles_association POST assigns a role to a user, with the role reference in @odata.id.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team",
-      "quote": "POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "controls[2].ui",
-      "type": "admin-path",
-      "claim": "Application-user role configuration is reached through Manage > Environments > environment > Settings > Users + permissions > Application users > + New app user.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-application-users",
-      "quote": "Select + New app user to open the Create a new app user pane. ... Select the edit icon to select security roles for the new application user.",
-      "severity": "minor",
-      "fix": "The printed steps are correct but stop before the unlabelled role-edit icon. Append this to the note: 'In Create a new app user, choose the application and business unit, then select the edit icon to select security roles.'"
-    },
-    {
-      "n": 6,
-      "where": "controls[2].api",
-      "type": "command",
-      "claim": "pac admin assign-user accepts the printed environment, application ID, role and application-user switch to assign an application user's role.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/developer/cli/reference/admin",
-      "quote": "Assign a user to a target Dataverse environment with specified security role. ... Application ID if assigning an Application User. ... Specifies whether the input user is an application user.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "controls[3].ui",
-      "type": "admin-path",
-      "claim": "License-to-role mapping can be viewed at Environments > environment > Settings > Users + Permissions > License To Role mapping.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
-      "quote": "Go to Environments > [select an environment] > Settings > Users + Permissions > License To Role mapping.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "controls[3].api; Open questions",
-      "type": "absence",
-      "claim": "An API or command for License To Role mapping was not found.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Dataverse License To Role mapping API licensetypemapping table PowerShell' and '\"License To Role mapping\" \"API\"'; read assign-security-roles and pac admin. Results documented the UI, not a mapping operation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "controls[4].ui",
-      "type": "admin-path",
-      "claim": "Record ownership across business units is at Manage > Environments > environment > Settings > Product > Features.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/wp-security-cds",
-      "quote": "Select Settings > Product > Features. ... Turn on Record ownership across business units.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "controls[4].api; Open questions",
-      "type": "absence",
-      "claim": "No API or command is documented for Record ownership across business units.",
-      "status": "contradicted",
-      "source": "https://support.microsoft.com/help/2691237/orgdborgsettings-tool-for-microsoft-dynamics-crm",
-      "quote": "To update Microsoft.Crm.SE.OrgDBOrgSettingsTool.exe Update [/u] <OrgName> <SettingName> <Value>",
-      "severity": "blocker",
-      "fix": "Set this API side to kind 'other', call 'Microsoft.Crm.SE.OrgDBOrgSettingsTool.exe Update /u <organization-unique-name> EnableOwnershipAcrossBusinessUnits true', and docs to the source URL. The already-cited ownership-security page explicitly identifies this setting and this tool. Remove Record ownership across business units from the Open questions claim that neither command was found."
-    },
-    {
-      "n": 11,
-      "where": "controls[5].ui",
-      "type": "admin-path",
-      "claim": "The printed audit-settings path reaches Security Role > General > Auditing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/audit-security-roles",
-      "quote": "In the left side panel, under Entities, select Security Role. ... On the General tab, under Data Services, select Auditing.",
-      "severity": "minor",
-      "fix": "Use 'Environments > environment > Settings > Audit and logs > Entity and field audit settings > Entities > Security Role > General > Data Services > Auditing'. Entities and Data Services are omitted headings, not missing selectable choices."
-    },
-    {
-      "n": 12,
-      "where": "controls[5].api",
-      "type": "absence",
-      "claim": "Microsoft has not documented automation for enabling the security-role audit trail.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure",
-      "quote": "To change which tables and columns support auditing, update their IsAuditEnabled.Value property.",
-      "severity": "blocker",
-      "fix": "Replace the null side with kind 'rest', call \"PUT [Organization URI]/api/data/v9.2/EntityDefinitions(LogicalName='role')\", docs 'https://learn.microsoft.com/power-apps/developer/data-platform/webapi/create-update-entity-definitions-using-web-api'. Add to the note: 'Set IsAuditEnabled.Value in the retrieved table definition, preserving the other definition properties; publish the table customizations for the change to take effect.' Cite the configure-auditing source as well."
-    },
-    {
-      "n": 13,
-      "where": "summary; What it is",
-      "type": "behaviour",
-      "claim": "Dataverse security roles group the privileges governing users', teams' and application users' access to tables and records in an environment.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/wp-security-cds",
-      "quote": "Dataverse uses security roles to group privileges. Assign security roles directly to users or to Dataverse teams. Team members receive the privileges assigned to the team.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
       "where": "What it is",
       "type": "applicability",
-      "claim": "The Dataverse security model applies to environments with a Dataverse database.",
+      "claim": "The Dataverse security model applies only to environments with a Dataverse database.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/wp-security-cds",
       "quote": "The model applies only to environments that have a Dataverse database.",
@@ -186,18 +54,18 @@
       "fix": null
     },
     {
-      "n": 15,
+      "n": 3,
       "where": "What it is: How a role is built",
       "type": "behaviour",
-      "claim": "Roles contain table, miscellaneous task and privacy-related privileges.",
+      "claim": "A role contains table privileges, miscellaneous task privileges and privacy-related privileges.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/security-roles-privileges",
-      "quote": "A security role consists of record-level privileges and task-based privileges of the following three types: ... Tables ... Miscellaneous privileges ... Privacy-related privileges",
+      "quote": "A security role consists of record-level privileges and task-based privileges of the following three types:",
       "severity": null,
       "fix": null
     },
     {
-      "n": 16,
+      "n": 4,
       "where": "What it is: How a role is built",
       "type": "behaviour",
       "claim": "Table privileges include Create, Read, Write, Delete, Append, Append To, Assign and Share.",
@@ -208,7 +76,7 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 5,
       "where": "What it is: How a role is built",
       "type": "behaviour",
       "claim": "Privacy-related privileges include exporting data to Excel.",
@@ -219,10 +87,10 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 6,
       "where": "What it is: How a role is built",
       "type": "behaviour",
-      "claim": "Privilege access levels determine business-unit reach and are Organization, Parent: Child Business Unit, Business Unit, User or None.",
+      "claim": "Access levels determine a privilege's reach through the business unit hierarchy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/security-roles-privileges",
       "quote": "Access levels determine how deep in the business unit hierarchy the user can perform the privilege.",
@@ -230,29 +98,51 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 7,
+      "where": "What it is: How a role is built",
+      "type": "behaviour",
+      "claim": "The access levels are Organization, Parent: Child Business Unit, Business Unit, User and None.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/security-roles-privileges",
+      "quote": "For organization-owned tables, miscellaneous privileges and privacy-related privileges only have access levels of Organization or None.",
+      "severity": "minor",
+      "fix": "After the list, add: 'For organization-owned tables, miscellaneous privileges and privacy-related privileges, the available levels are only Organization or None.'"
+    },
+    {
+      "n": 8,
+      "where": "What it is: How a role reaches a person",
+      "type": "role",
+      "claim": "Roles can be assigned directly to users or to Dataverse teams.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/wp-security-cds",
+      "quote": "Assign security roles directly to users or to Dataverse teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
       "where": "What it is: How a role reaches a person",
       "type": "behaviour",
-      "claim": "Users receive privileges from roles assigned directly or through Dataverse teams.",
+      "claim": "Team members receive the team's privileges.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/wp-security-cds",
-      "quote": "A user's effective access combines directly assigned security roles with roles assigned through teams. Dataverse always grants the broadest permission from those roles.",
+      "quote": "Team members receive the privileges assigned to the team.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What it is: How a role reaches a person; Why it matters; Risks and limits",
+      "n": 10,
+      "where": "What it is; Why it matters; Risks and limits: Cumulative access",
       "type": "behaviour",
-      "claim": "Multiple roles are cumulative, and a narrower role cannot remove access another role or team grants.",
+      "claim": "Users can have several roles and effective privileges are cumulative across roles and team memberships.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/wp-security-cds",
-      "quote": "Security privileges are cumulative. A user receives the broadest access granted by all their roles and team memberships. ... another role can't hide a specific contact from the user.",
+      "quote": "Security privileges are cumulative. A user receives the broadest access granted by all their roles and team memberships.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 21,
+      "n": 11,
       "where": "What it is: How a role reaches a person",
       "type": "behaviour",
       "claim": "Business units define security boundaries.",
@@ -263,10 +153,21 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 12,
+      "where": "What it is; Governance controls: How the controls interact",
+      "type": "behaviour",
+      "claim": "Roles are associated with business units.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
+      "quote": "Security roles are associated with business units.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
       "where": "What it is: How a role reaches a person",
       "type": "behaviour",
-      "claim": "Every user belongs to a business unit.",
+      "claim": "Every user in an environment belongs to a business unit.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/wp-security-cds",
       "quote": "Every user in an environment belongs to a business unit.",
@@ -274,43 +175,32 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What it is; Governance controls: How the controls interact",
-      "type": "behaviour",
-      "claim": "Roles belong to business units, and enabling record ownership across business units permits assignments from other business units.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
-      "quote": "When the allow record ownership across business units is enabled, you can assign security roles from different business units to your users irrespective of which business unit the users belong to.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
+      "n": 14,
       "where": "What it is: Roles that are not Dataverse roles",
       "type": "role",
-      "claim": "Tenant-level roles such as Power Platform administrator are assigned in the Microsoft 365 admin center.",
+      "claim": "Tenant admin roles such as Power Platform administrator are assigned in the Microsoft 365 admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/database-security",
-      "quote": "Tenant-level admin roles such as Power Platform administrator and Dynamics 365 administrator are assigned in the Microsoft 365 admin center and grant administrative access across environments.",
+      "quote": "Tenant-level admin roles such as Power Platform administrator and Dynamics 365 administrator are assigned in the Microsoft 365 admin center",
       "severity": null,
       "fix": null
     },
     {
-      "n": 25,
-      "where": "What it is: Roles that are not Dataverse roles; Risks and limits",
+      "n": 15,
+      "where": "What it is; Risks and limits: Tenant admin is not data access",
       "type": "role",
-      "claim": "A tenant admin's role alone does not grant Dataverse data access; Microsoft specifies System Administrator in that environment.",
+      "claim": "Tenant admin roles do not automatically grant Dataverse data access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/database-security",
-      "quote": "To work with data in a Dataverse environment, a tenant admin must also be assigned the System Administrator Dataverse security role in that specific environment.",
+      "quote": "However, these roles don't automatically grant Dataverse data access.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 26,
+      "n": 16,
       "where": "What it is: Roles that are not Dataverse roles",
       "type": "role",
-      "claim": "Environments without a Dataverse database use Environment Admin and Environment Maker as their predefined environment roles.",
+      "claim": "Environments without Dataverse use Environment Admin and Environment Maker as their predefined environment roles.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/database-security",
       "quote": "Environment Maker and Environment Admin are the only predefined roles for environments that have no Dataverse database.",
@@ -318,10 +208,10 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 17,
       "where": "What it is; Risks and limits: Sharing is the exception",
       "type": "behaviour",
-      "claim": "Microsoft advises record sharing for exceptions because it is less efficient and harder to troubleshoot.",
+      "claim": "Microsoft advises record sharing only for exceptions because it is less efficient and harder to troubleshoot.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/wp-security-cds",
       "quote": "Use sharing only for exceptions because it performs less efficiently and can be harder to troubleshoot than role-based access.",
@@ -329,41 +219,41 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 18,
       "where": "What it is; Risks and limits: Roles do not unlock columns",
       "type": "behaviour",
-      "claim": "Column-level security is configured separately and requires record access before a column security profile grants secured-column access.",
+      "claim": "Column-level security is configured separately and needs existing record access plus a column security profile.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/wp-security-cds",
-      "quote": "Enable column-level security separately for each column. ... A user must already have record access before a column security profile can grant access to secured columns.",
+      "quote": "Column-level security doesn't grant access to a record. A user must already have record access before a column security profile can grant access to secured columns.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 29,
-      "where": "What it is; Risks and limits: Filtered record ownership",
+      "n": 19,
+      "where": "What it is",
       "type": "behaviour",
-      "claim": "Filtered record ownership is preview and grants record access through column-value filters.",
+      "claim": "Filtered record ownership grants access using column-value filters.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/wp-security-cds",
-      "quote": "Filtered table record ownership (preview) ... Filtered record ownership lets admins control access to Dataverse records with column-value filters.",
+      "quote": "Filtered record ownership lets admins control access to Dataverse records with column-value filters.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
-      "where": "Risks and limits: Filtered record ownership",
+      "n": 20,
+      "where": "What it is; Risks and limits: Filtered record ownership is preview",
       "type": "availability",
-      "claim": "Microsoft says preview features are not meant for production use.",
+      "claim": "Filtered record ownership is a preview feature.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/wp-security-cds",
-      "quote": "Preview features aren't meant for production use and may have restricted functionality.",
+      "quote": "Filtered table record ownership (preview)",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
-      "where": "Why it matters; What to check",
+      "n": 21,
+      "where": "Why it matters",
       "type": "default",
       "claim": "Basic User and Environment Maker are automatically assigned to all users added to Dataverse in the Default environment type.",
       "status": "supported",
@@ -373,32 +263,32 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 22,
       "where": "Why it matters",
       "type": "role",
-      "claim": "Copilot Studio authoring depends on Environment Maker.",
-      "status": "contradicted",
+      "claim": "Microsoft recommends Environment Maker for Copilot Studio authors or another predefined or custom role for different permissions.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/guidance/sec-gov-phase3",
       "quote": "Assign the Environment Maker role to users who need to author agents. If the user needs a different set of permissions, assign another predefined role or a custom role.",
-      "severity": "blocker",
-      "fix": "Replace 'Copilot Studio authoring depends on Environment Maker' with 'Microsoft recommends Environment Maker for Copilot Studio authors, or another predefined or custom role with the needed permissions'. The same page lists System Administrator and System Customizer as other authoring roles."
-    },
-    {
-      "n": 33,
-      "where": "Why it matters",
-      "type": "default",
-      "claim": "Tenant administrators are no longer automatically assigned Dataverse System Administrator.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/control-user-access",
-      "quote": "Power Platform, Dynamics 365, and Global Administrators are no longer automatically assigned the Dataverse System Administrator role.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
+      "n": 23,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "Tenant admins no longer receive Dataverse System Administrator automatically.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
+      "quote": "Previously, Microsoft Entra ID admins, including Power Platform admins and Dynamics 365 service admins, were automatically assigned the System Administrator role in Dataverse. This is no longer the case.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
       "where": "Why it matters; Risks and limits: Tenant admin is not data access",
-      "type": "behaviour",
-      "claim": "Removing a tenant admin role does not automatically remove an earlier Dataverse System Administrator assignment.",
+      "type": "role",
+      "claim": "Removing an admin's tenant service-admin role does not automatically remove an existing Dataverse System Administrator assignment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
       "quote": "removing them from the Power Platform admin and Dynamics 365 service admin roles will not automatically remove their System Administrator role in Dataverse.",
@@ -406,32 +296,21 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "Neither automatic assignment state is visible without examining assignments in each environment.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Dataverse security roles privileges assign application users ownership based security audit security roles; read security-roles-privileges, assign-security-roles and audit-security-roles. They document inspection routes, not an exclusive visibility limitation.",
-      "severity": "major",
-      "fix": "Replace 'Neither state is visible without looking at the role assignments in each environment' with the advice 'Review the role assignments in each environment'."
-    },
-    {
-      "n": 36,
+      "n": 25,
       "where": "Cost and licensing",
       "type": "absence",
-      "claim": "Microsoft's role documentation does not publish a separate role-specific price, licence or meter.",
+      "claim": "The security-role documentation publishes no separate role-specific price, licence or meter.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Dataverse security roles separate price license meter'; read security-roles-privileges, database-security, wp-security-cds and pricing-billing-skus. These discuss product access licensing, not a separate charge for security roles.",
+      "quote": "Searched: Dataverse security roles separate price license meter security roles pricing PowerShell assign role; read database-security, security-roles-privileges, assign-security-roles, wp-security-cds and pricing-billing-skus on Microsoft Learn; no role-specific charge stated.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
+      "n": 26,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Presence in an environment does not grant Dataverse data access; an appropriate role and any required product licence are still needed.",
+      "claim": "Presence in an environment does not grant data access; users still need an appropriate security role and required product licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/pricing-billing-skus",
       "quote": "A user's presence in an environment doesn't grant access to Dataverse data. The user must still have an appropriate security role and any required product license.",
@@ -439,32 +318,43 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Dataverse tracks access per database and requires an appropriate Dataverse licence.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/wp-security-cds",
-      "quote": "Dataverse tracks access separately for each database, and the user must have an appropriate Dataverse license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Cost and licensing",
-      "type": "default",
-      "claim": "Where licence-to-role mappings exist, valid licences result in automatic assignment of mapped roles.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
-      "quote": "Users, with a valid license, get corresponding mapped roles assigned to them automatically.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
+      "n": 27,
       "where": "Cost and licensing",
       "type": "behaviour",
-      "claim": "Removing the corresponding licence automatically removes the mapped role.",
+      "claim": "Dataverse tracks access separately for each database.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/wp-security-cds",
+      "quote": "Dataverse tracks access separately for each database",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Users need an appropriate Dataverse licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/wp-security-cds",
+      "quote": "the user must have an appropriate Dataverse license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing; Governance controls: How the controls interact",
+      "type": "behaviour",
+      "claim": "Where licence-to-role mappings are defined, valid licensed users automatically receive mapped roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
+      "quote": "If defined in your environment, certain roles are automatically assigned to users when users are added to Dataverse based on the license the users are assigned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Removing the corresponding licence automatically removes its mapped role.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
       "quote": "Removal of the respective license results in automatic role removal.",
@@ -472,7 +362,7 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 31,
       "where": "Cost and licensing; controls[3].note",
       "type": "applicability",
       "claim": "Licence-based default role management does not apply to Dataverse for Teams, Trial or Developer environments.",
@@ -483,7 +373,7 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 32,
       "where": "Cost and licensing",
       "type": "licensing",
       "claim": "An application user can be created without a licence.",
@@ -494,7 +384,18 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 33,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Dataverse auditing can record changes to security roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing",
+      "quote": "Changes to security roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
       "where": "Cost and licensing",
       "type": "cost",
       "claim": "Dataverse audit logs consume log storage capacity.",
@@ -505,10 +406,32 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 35,
+      "where": "Risks and limits: Cumulative access",
+      "type": "behaviour",
+      "claim": "A second role cannot hide a record exposed by another role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/wp-security-cds",
+      "quote": "if one role grants organization-level read access to all contact records, another role can't hide a specific contact from the user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risks and limits: Tenant admin is not data access",
+      "type": "role",
+      "claim": "A tenant admin needs the System Administrator Dataverse role in the particular environment to work with its data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/database-security",
+      "quote": "To work with data in a Dataverse environment, a tenant admin must also be assigned the System Administrator Dataverse security role in that specific environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
       "where": "Risks and limits: Everyone needs a role",
       "type": "role",
-      "claim": "Users need at least one security role, directly or through a group team, for service access.",
+      "claim": "Every user needs at least one role, directly or through a group team, for service access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
       "quote": "You must assign at least one security role to every user either directly or indirectly as a member of a group team. The service doesn't allow access to users who don't have at least one security role.",
@@ -516,10 +439,10 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 38,
       "where": "Risks and limits: Elevation guard",
       "type": "role",
-      "claim": "A role assigner cannot assign another person a role with more privileges than the assigner holds.",
+      "claim": "An assigner cannot assign a security role with more privileges than the assigner holds.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
       "quote": "the person who is assigning the security role can't assign someone else to a security role that has more privileges than the assigner.",
@@ -527,10 +450,10 @@
       "fix": null
     },
     {
-      "n": 46,
+      "n": 39,
       "where": "Risks and limits: Elevation guard",
       "type": "role",
-      "claim": "Delegating role assignment to non-System Administrators uses a custom Dataverse role with the required privileges.",
+      "claim": "Delegating role assignment to a non-System Administrator requires a suitably privileged custom role.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/control-user-access",
       "quote": "Assign Dataverse security roles | System Administrator security role, or a custom Dataverse role with at least Read and Assign privileges on the Security Role table",
@@ -538,32 +461,43 @@
       "fix": null
     },
     {
-      "n": 47,
+      "n": 40,
       "where": "Risks and limits: Predefined roles cannot be edited; controls[0].note",
       "type": "behaviour",
-      "claim": "Predefined security roles cannot be edited.",
+      "claim": "The predefined-role reference says its listed Dataverse predefined roles cannot be edited.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/database-security",
       "quote": "The following list provides the predefined security roles in an environment that has a Dataverse database. You can't edit these roles.",
-      "severity": "minor",
-      "fix": "Attribute the restriction to the predefined-role reference and acknowledge that https://learn.microsoft.com/power-platform/admin/create-edit-security-role documents editing role privileges while specifically excluding System Administrator. Replace the blanket wording with 'The predefined-role reference says its listed roles cannot be edited; Microsoft's editing guide separately documents editing role privileges, except System Administrator.'"
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 48,
+      "n": 41,
+      "where": "Risks and limits: Predefined roles cannot be edited; controls[0].note",
+      "type": "behaviour",
+      "claim": "The editing guide documents editing privileges but excludes System Administrator and advises copying it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-edit-security-role",
+      "quote": "You can't edit the System Administrator security role. Instead, copy the System Administrator security role and make changes to the new role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
       "where": "Risks and limits: Predefined roles cannot be edited",
       "type": "behaviour",
-      "claim": "Copy a predefined role whenever it needs changing.",
-      "status": "contradicted",
+      "claim": "Some predefined roles cannot be copied; Microsoft suggests creating a custom role instead.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/database-security",
       "quote": "Some predefined roles can't be copied. Try creating a custom security role instead.",
-      "severity": "blocker",
-      "fix": "Replace 'Copy a role to change it' with 'Where copying is supported, copy the role and change the copy; some predefined roles cannot be copied, so create a custom role instead'."
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 49,
+      "n": 43,
       "where": "Risks and limits: Predefined roles cannot be edited",
       "type": "applicability",
-      "claim": "Custom security roles are not supported for canvas apps.",
+      "claim": "The assignment guide states that custom security roles are not supported for canvas apps.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
       "quote": "It's important to note that custom security roles are not supported for canvas apps.",
@@ -571,10 +505,10 @@
       "fix": null
     },
     {
-      "n": 50,
-      "where": "Risks and limits: Organization-level access; What to check",
+      "n": 44,
+      "where": "Risks and limits: Organization-level access",
       "type": "behaviour",
-      "claim": "Organization-level access reaches records across all business units.",
+      "claim": "Organization access reaches records across all business units.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/security-roles-privileges",
       "quote": "Users can access all records in the organization, regardless of the business unit hierarchical level they or the environment belong to.",
@@ -582,10 +516,10 @@
       "fix": null
     },
     {
-      "n": 51,
+      "n": 45,
       "where": "Risks and limits: Moving between environments",
       "type": "behaviour",
-      "claim": "Dataverse solutions can move security roles between environments.",
+      "claim": "Solutions can move security roles between environments.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/wp-security-cds",
       "quote": "Use Dataverse solutions to move security roles and column security profiles between environments.",
@@ -593,10 +527,10 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 46,
       "where": "Risks and limits: Moving between environments",
       "type": "behaviour",
-      "claim": "Business units, teams and user security assignments are managed separately in each environment.",
+      "claim": "Business units, teams and user assignments must be managed separately in each environment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/wp-security-cds",
       "quote": "Create and manage business units and teams separately in each environment. You must also assign users to the appropriate security components in each environment.",
@@ -604,10 +538,21 @@
       "fix": null
     },
     {
-      "n": 53,
+      "n": 47,
+      "where": "Risks and limits: Filtered record ownership is preview",
+      "type": "behaviour",
+      "claim": "Microsoft says preview features are not intended for production.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/wp-security-cds",
+      "quote": "Preview features aren't meant for production use and may have restricted functionality.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
       "where": "Risks and limits: PowerShell gap; Open questions",
       "type": "command",
-      "claim": "Set-AdminPowerAppEnvironmentRoleAssignment applies to environments without Dataverse and returns 403 for environments with a Dataverse database.",
+      "claim": "Set-AdminPowerAppEnvironmentRoleAssignment applies to environments without Dataverse and returns 403 for one with a Dataverse database.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-adminpowerappenvironmentroleassignment",
       "quote": "Sets permissions to an environment without a Dataverse database. If you make this call to an environment with a Dataverse database instance, you receive a 403 Forbidden error.",
@@ -615,19 +560,228 @@
       "fix": null
     },
     {
-      "n": 54,
+      "n": 49,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Role privileges can be edited through Manage > Environments > environment > Settings > Users + Permissions > Security roles > security role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/create-edit-security-role",
+      "quote": "Expand Users + permissions and select Security roles.\n6. Choose the security role you want to edit.\n7. Specify privileges for the security role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "POST to the v9.2 role-bound Microsoft.Dynamics.CRM.AddPrivilegesRole action adds role privileges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/web-api-functions-actions-sample",
+      "quote": "POST [Organization Uri]/api/data/v9.2/roles(44ee44ee-ff55-aa66-bb77-88cc88cc88cc)/Microsoft.Dynamics.CRM.AddPrivilegesRole HTTP/1.1",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "User role assignments are managed through Manage > Environments > environment > Settings > Users + permissions > Users > user > Manage security roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
+      "quote": "Select Users + permissions, and then select Users.\n6. On the Users page select a user, and then select Manage security roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "POST to the v9.0 systemuserroles_association/$ref endpoint assigns a role to the identified user with the role's @odata.id.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team",
+      "quote": "POST [Organization URI]/api/data/v9.0/systemusers(azureactivedirectoryobjectid=<user object ID>)/systemuserroles_association/$ref",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
       "where": "controls[1].note; Governance controls: Who can change roles",
       "type": "role",
-      "claim": "Assigning roles requires System Administrator or a custom role with at least Read and Assign on the Security Role table.",
+      "claim": "Assigning roles requires System Administrator or a custom role with at least Read and Assign on Security Role.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/control-user-access",
-      "quote": "Assign Dataverse security roles | System Administrator security role, or a custom Dataverse role with at least Read and Assign privileges on the Security Role table",
-      "severity": "minor",
-      "fix": "Keep the precise prerequisite, but add: 'The general role overview's troubleshooting table instead says only System Administrator or a tenant-level admin can manage assignments; the task-specific assignment and access-control documentation explicitly permits the qualified custom role.' The differing page is https://learn.microsoft.com/power-platform/admin/database-security#common-issues."
+      "quote": "System Administrator security role, or a custom Dataverse role with at least Read and Assign privileges on the Security Role table",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[1].note",
+      "type": "role",
+      "claim": "The role overview's troubleshooting table instead lists System Administrator or a tenant-level admin role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/database-security",
+      "quote": "Only users with the System Administrator role or a tenant-level admin role can manage security role assignments.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 55,
-      "where": "Governance controls: Who can change roles; What to check",
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "The path through Manage > Environments > environment > Settings > Users + permissions > Application users > + New app user opens application-user role selection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-application-users",
+      "quote": "Select + New app user to open the Create a new app user pane.",
+      "severity": "minor",
+      "fix": "Extend the UI path to 'Manage > Environments > environment > Settings > Users + permissions > Application users > + New app user > Create a new app user > edit icon (security roles)'. The existing note already explains choosing the target application and business unit; the omitted final icon is the role-selection control."
+    },
+    {
+      "n": 56,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "pac admin assign-user supports --environment, an application ID in --user, --role and the --application-user switch.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/developer/cli/reference/admin",
+      "quote": "Object ID or user principal name (UPN) of Microsoft Entra ID user to be assigned to the environment or Application ID if assigning an Application User.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "An environment permits one application user per Entra application registration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-application-users",
+      "quote": "In an environment, you can only have one application user for each Microsoft Entra–registered application.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Licence mappings can be viewed through Environments > environment > Settings > Users + Permissions > License To Role mapping.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
+      "quote": "Go to Environments > [select an environment] > Settings > Users + Permissions > License To Role mapping.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[3].api; Open questions",
+      "type": "absence",
+      "claim": "No API or command for License To Role mapping was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"License To Role mapping\" API PowerShell Dataverse; Dataverse \"license\" \"mapping\" \"table\" API; \"LicenseToRoleMapping\" Dataverse API; \"License To Role mapping\" \"API\". Read assign-security-roles and pac admin; no mapping operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "Record ownership across business units is under Manage > Environments > environment > Settings > Product > Features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/wp-security-cds",
+      "quote": "Select Settings > Product > Features.\n5. Turn on Record ownership across business units.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[4].api",
+      "type": "command",
+      "claim": "'OrgDBOrgSettings tool: change the EnableOwnershipAcrossBusinessUnits setting' is an automation call for the control.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: OrgDBOrgSettingsTool.exe Update EnableOwnershipAcrossBusinessUnits command syntax. Read wp-security-cds and support.microsoft.com/help/2691237: they document the setting and executable Update syntax, not the printed prose as a call.",
+      "severity": "blocker",
+      "fix": "Replace the call with 'Microsoft.Crm.SE.OrgDBOrgSettingsTool.exe Update /u <organization-unique-name> EnableOwnershipAcrossBusinessUnits <value>' and set its docs URL to https://support.microsoft.com/help/2691237/orgdborgsettings-tool-for-microsoft-dynamics-crm. Add to the note: 'EnableOwnershipAcrossBusinessUnits stores the feature state, as documented at https://learn.microsoft.com/power-platform/admin/wp-security-cds.' The support page gives 'Update [/u] <OrgName> <SettingName> <Value>'; retain a value placeholder rather than inventing a value format."
+    },
+    {
+      "n": 62,
+      "where": "controls[4].note",
+      "type": "role",
+      "claim": "The documented UI procedure requires a Dynamics 365 admin or Power Platform admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/wp-security-cds",
+      "quote": "Sign in to the Power Platform admin center as a Dynamics 365 admin or Microsoft Power Platform admin.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[4].note",
+      "type": "behaviour",
+      "claim": "EnableOwnershipAcrossBusinessUnits stores the feature state and can be changed with OrgDBOrgSettings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/wp-security-cds",
+      "quote": "The EnableOwnershipAcrossBusinessUnits setting stores the state of this feature. You can also change the setting with the OrgDBOrgSettings tool for Microsoft Dynamics CRM.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[5].ui",
+      "type": "admin-path",
+      "claim": "Security Role auditing is under Environments > environment > Settings > Audit and logs > Entity and field audit settings > Entities > Security Role > General > Data Services > Auditing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/audit-security-roles",
+      "quote": "In the left side panel, under Entities, select Security Role.\n4. On the General tab, under Data Services, select Auditing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[5].api; controls[5].note",
+      "type": "command",
+      "claim": "PUT to v9.2 EntityDefinitions(LogicalName='role') updates the Security Role table definition.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/create-update-entity-definitions-using-web-api",
+      "quote": "PUT [Organization URI]/api/data/v9.2/EntityDefinitions(LogicalName='new_bankaccount') HTTP/1.1",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/role to sources: its Properties table identifies Security Role's LogicalName as 'role', substantiating the target used with the cited generic table-definition update operation."
+    },
+    {
+      "n": 66,
+      "where": "Governance controls: How the controls interact",
+      "type": "admin-path",
+      "claim": "The security-role Audit report is under Settings > Users + permissions > Security roles > Audit report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/audit-security-roles",
+      "quote": "Select Environments > [select an environment] > Settings > Users + permissions > Security roles.\n3. Select Audit report in the command bar.",
+      "severity": "minor",
+      "fix": "Replace the prose path with 'Power Platform admin center > Environments > environment > Settings > Users + permissions > Security roles > Audit report' so the route includes the environment-selection context."
+    },
+    {
+      "n": 67,
+      "where": "What to check",
+      "type": "consistency",
+      "claim": "The checklist asks readers to review the Audit report and confirm self-elevation, but neither operation has its own control row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Turn on auditing for the Security Role table and read the Audit report for recent role changes. / Confirm which admins have self-elevated, and who may assign roles.",
+      "severity": "minor",
+      "fix": "In What to check, narrow the audit bullet to 'Turn on auditing for the Security Role table.' Narrow the final bullet to 'Confirm who may assign roles.' The existing table covers enabling table auditing and assigning roles, not opening the report or reviewing self-elevation."
+    },
+    {
+      "n": 68,
+      "where": "Governance controls: How the controls interact",
+      "type": "behaviour",
+      "claim": "Role assignment and removal are audit events 53, 54, 55 and 56 for teams and users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/auditing/retrieve-audit-data",
+      "quote": "53 | Assign Role To Team | Associate\n54 | Remove Role From Team | Disassociate\n55 | Assign Role To User | Associate\n56 | Remove Role From User | Disassociate",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance controls: Who can change roles",
       "type": "role",
       "claim": "Power Platform, Dynamics 365 and Global Administrators must self-elevate before assigning Dataverse roles.",
       "status": "supported",
@@ -637,7 +791,7 @@
       "fix": null
     },
     {
-      "n": 56,
+      "n": 70,
       "where": "Governance controls: Who can change roles",
       "type": "role",
       "claim": "A Dynamics 365 Administrator must belong to the environment's security group.",
@@ -648,224 +802,136 @@
       "fix": null
     },
     {
-      "n": 57,
-      "where": "controls[4].note",
-      "type": "role",
-      "claim": "The documented UI procedure for record ownership across business units requires a Dynamics 365 admin or Power Platform admin.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/wp-security-cds",
-      "quote": "Sign in to the Power Platform admin center as a Dynamics 365 admin or Microsoft Power Platform admin.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "controls[4].note",
-      "type": "behaviour",
-      "claim": "Microsoft names OrgDBOrgSettings as a tool for changing the underlying cross-business-unit ownership setting.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/wp-security-cds",
-      "quote": "The EnableOwnershipAcrossBusinessUnits setting stores the state of this feature. You can also change the setting with the OrgDBOrgSettings tool for Microsoft Dynamics CRM.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "controls[0].note",
-      "type": "command",
-      "claim": "The role-creation request body sets name and businessunitid@odata.bind.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/web-api-functions-actions-sample",
-      "quote": "\"businessunitid@odata.bind\": \"businessunits(cca3985e-c618-ea11-a811-000d3a33f066)\",\n\"name\": \"Test Role\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "controls[0].note",
-      "type": "command",
-      "claim": "AddPrivilegesRole adds privileges to an existing role.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/addprivilegesrole",
-      "quote": "Adds a set of existing privileges to an existing role.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
-      "where": "controls[2].note",
-      "type": "behaviour",
-      "claim": "An environment can have only one application user per Microsoft Entra app registration.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/manage-application-users",
-      "quote": "In an environment, you can only have one application user for each Microsoft Entra–registered application.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 62,
-      "where": "controls[5].note; Governance controls: How the controls interact",
-      "type": "behaviour",
-      "claim": "Security-role auditing requires auditing to be enabled in the environment first.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/audit-security-roles",
-      "quote": "Prerequisites ... Turn on auditing in your environment.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 63,
-      "where": "controls[5].note; What to check",
-      "type": "admin-path",
-      "claim": "The security-role audit report is reached from the environment's Settings > Users + permissions > Security roles > Audit report.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/audit-security-roles",
-      "quote": "Select Environments > [select an environment] > Settings > Users + permissions > Security roles. ... Select Audit report in the command bar.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 64,
-      "where": "Governance controls: How the controls interact",
-      "type": "behaviour",
-      "claim": "Audit event 53 records assigning a role to a team.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/auditing/retrieve-audit-data",
-      "quote": "53 | Assign Role To Team | Associate | A security role is assigned to a team.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 65,
-      "where": "Governance controls: How the controls interact",
-      "type": "behaviour",
-      "claim": "Audit event 54 records removing a role from a team.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/auditing/retrieve-audit-data",
-      "quote": "54 | Remove Role From Team | Disassociate | A security role is removed from a team.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 66,
-      "where": "Governance controls: How the controls interact",
-      "type": "behaviour",
-      "claim": "Audit event 55 records assigning a role to a user.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/auditing/retrieve-audit-data",
-      "quote": "55 | Assign Role To User | Associate | A security role is assigned to a user.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 67,
-      "where": "Governance controls: How the controls interact",
-      "type": "behaviour",
-      "claim": "Audit event 56 records removing a role from a user.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/auditing/retrieve-audit-data",
-      "quote": "56 | Remove Role From User | Disassociate | A security role is removed from a user.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 68,
-      "where": "Governance controls: How the controls interact",
-      "type": "behaviour",
-      "claim": "Licence-to-role mapping adds roles on top of manual assignments.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: '\"license\" \"manually assigned\" \"roles\" Dataverse' and '\"security role\" \"assignments\" \"license\" \"manual\" Dataverse'; read assign-security-roles. It documents automatic assignment/removal, not preservation or interaction with manual assignments.",
-      "severity": "major",
-      "fix": "Replace the sentence with 'Where licence-to-role mapping is defined, roles are assigned automatically according to the user's licence'."
-    },
-    {
-      "n": 69,
-      "where": "Governance controls: What the controls do not enforce",
-      "type": "applicability",
-      "claim": "Security roles do not govern which connectors a flow uses.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: '\"security roles\" \"connectors\" \"data policies\" \"flows\"' and 'Dataverse \"security roles\" \"don't\" \"connectors\"'; read role documentation and Data policies excerpts. Data policies govern connectors, but no passage establishes the blanket exclusion.",
-      "severity": "blocker",
-      "fix": "Replace this clause with 'Data policies let administrators control connector access (see Data policies)' and cite https://learn.microsoft.com/power-platform/admin/wp-data-loss-prevention. Do not claim that roles cannot affect connector use."
-    },
-    {
-      "n": 70,
-      "where": "Governance controls: What the controls do not enforce",
-      "type": "applicability",
-      "claim": "Security roles do not set environment-level limits.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: '\"Managed Environments\" \"limits\" \"security roles\"'; read managed-environment-overview and database-security. They describe separate capabilities but do not state that no security-role privilege governs any environment-level limit.",
-      "severity": "blocker",
-      "fix": "Remove 'do not set environment-level limits'. The Managed Environments cross-link may remain as a cross-link without this universal exclusion."
-    },
-    {
       "n": 71,
-      "where": "Governance controls: What the controls do not enforce",
+      "where": "controls[4].governs; Governance controls: How the controls interact",
       "type": "applicability",
-      "claim": "Security roles do not decide whose identity an agent runs as.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: 'Copilot Studio agent identity Dataverse security roles agent application user runtime' and 'Dataverse security roles \"authentication\" \"authorization\"'; read govern-agents-identities-overview. Automatic identity provisioning does not establish this universal runtime claim.",
-      "severity": "blocker",
-      "fix": "Remove 'do not decide whose identity an agent runs as'. Retain the Agent identity cross-link without the unsupported exclusion."
+      "claim": "Enabling Record ownership across business units permits assigning roles from different business units regardless of the user's business unit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/assign-security-roles",
+      "quote": "When the allow record ownership across business units is enabled, you can assign security roles from different business units to your users irrespective of which business unit the users belong to.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 72,
-      "where": "Open questions: PowerShell",
-      "type": "absence",
-      "claim": "A Power Platform administration PowerShell cmdlet for assigning Dataverse security roles was not found.",
+      "where": "controls[5].note; Governance controls: How the controls interact",
+      "type": "behaviour",
+      "claim": "Environment auditing must be enabled before auditing security roles.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Dataverse assign security role PowerShell Microsoft.PowerApps.Administration Add role'; read Set-AdminPowerAppEnvironmentRoleAssignment and assignment documentation. The administration cmdlet found explicitly excludes Dataverse databases.",
+      "source": "https://learn.microsoft.com/power-platform/admin/audit-security-roles",
+      "quote": "Prerequisites\nTurn on auditing in your environment.",
       "severity": null,
       "fix": null
     },
     {
       "n": 73,
-      "where": "Open questions: filtered record ownership",
-      "type": "absence",
-      "claim": "A general-availability date or a feature-specific licence or add-on for filtered record ownership was not found.",
+      "where": "controls[5].note",
+      "type": "command",
+      "claim": "The table definition's IsAuditEnabled.Value property controls whether the table supports auditing.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Dataverse filtered record ownership preview licensing general availability'; read filtered-view-record-ownership, wp-security-cds and pricing-billing-skus. Preview is stated, but no GA date or filter-specific licence/add-on is given.",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure",
+      "quote": "To change which tables and columns support auditing, update their IsAuditEnabled.Value property.",
       "severity": null,
       "fix": null
     },
     {
       "n": 74,
-      "where": "Open questions: agents themselves",
-      "type": "absence",
-      "claim": "How role-based privileges apply to agents themselves, rather than their makers, is not documented.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/agents-plugin/security-governance",
-      "quote": "Dataverse enforces table privileges, field-level security, ownership and sharing, and administrator permissions on every request. An agent can't exceed the permissions of the signed-in identity.",
-      "severity": "blocker",
-      "fix": "Remove this open question. The absence is too broad: Microsoft documents runtime enforcement for the Dataverse plugin for AI agents in preview. The qualification 'on the pages read' does not establish a general documentation gap."
+      "where": "controls[5].note",
+      "type": "behaviour",
+      "claim": "Audit configuration metadata changes require publishing table customizations to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure",
+      "quote": "Changes don't take effect until you publish the table customizations.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 75,
-      "where": "sources",
-      "type": "behaviour",
-      "claim": "The role-editing route is supported by a Microsoft page not listed in sources.",
+      "where": "controls[5].note",
+      "type": "command",
+      "claim": "Updating a table definition requires preserving existing properties rather than sending only a changed property.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/power-platform/admin/create-edit-security-role",
-      "quote": "Choose the security role you want to edit. ... Specify privileges for the security role.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/power-platform/admin/create-edit-security-role to sources. For the corrections above, also cite https://learn.microsoft.com/power-platform/admin/wp-data-loss-prevention, https://support.microsoft.com/help/2691237/orgdborgsettings-tool-for-microsoft-dynamics-crm, https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure and https://learn.microsoft.com/power-apps/developer/data-platform/webapi/create-update-entity-definitions-using-web-api where their facts are retained."
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/create-update-entity-definitions-using-web-api",
+      "quote": "you must use the PUT method when updating data model entities and be careful to include all the existing properties that you don't intend to change. You can't update individual properties.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Governance controls: What the controls do not enforce",
+      "type": "applicability",
+      "claim": "Power Platform data policies let administrators control connector access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/wp-data-loss-prevention",
+      "quote": "Power Platform admin center data policies allow administrators to control access to these connectors in various ways to help reduce risk in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Open questions: Power Platform admin PowerShell",
+      "type": "absence",
+      "claim": "A dedicated Power Platform admin PowerShell cmdlet for assigning Dataverse security roles remains undocumented in the research.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Dataverse\" \"PowerShell\" \"assign\" \"security role\" cmdlet. Read Set-AdminPowerAppEnvironmentRoleAssignment and pac admin references; found the non-Dataverse PowerShell command and a Dataverse CLI command, not a Power Platform admin PowerShell equivalent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "controls[2].note",
+      "type": "admin-path",
+      "claim": "During application-user creation, the administrator chooses an application and business unit, then uses the edit icon to select security roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-application-users",
+      "quote": "Under Business Unit, select a business unit from the dropdown list.\nSelect the edit icon to select security roles for the new application user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "AddPrivilegesRole accepts a Privileges array containing RolePrivilege entries with PrivilegeId and Depth.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/web-api-functions-actions-sample",
+      "quote": "\"Privileges\": [\n       {\n          \"Depth\": \"Basic\",\n          \"PrivilegeId\": \"886b280c-6396-4d56-a0a3-2c1b0a50ceb0\",",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "The user-role association request body identifies the role with @odata.id.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team",
+      "quote": "\"@odata.id\":\"[Organization URI]/api/data/v9.0/roles(<role ID>)\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "What it is; summary",
+      "type": "applicability",
+      "claim": "Application users can hold security roles governing their environment data access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/manage-application-users",
+      "quote": "You can select or deselect roles, and then select Save. All selected roles become the current assigned roles for the application user. Any unselected roles aren't assigned.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-19T04:09:56.107Z",
+    "at": "2026-11-19T05:19:14.155Z",
     "summary": {
-      "links": 16,
+      "links": 19,
       "unreachable": 0,
       "uiPaths": 6,
       "uiPathsWithMissingWords": 0,
-      "apiCalls": 3,
-      "apiCallsNotOnPage": 0,
+      "apiCalls": 5,
+      "apiCallsNotOnPage": 1,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -890,6 +956,11 @@
         "status": 200
       },
       {
+        "url": "https://learn.microsoft.com/power-platform/admin/create-edit-security-role",
+        "ok": true,
+        "status": 200
+      },
+      {
         "url": "https://learn.microsoft.com/power-platform/admin/manage-application-users",
         "ok": true,
         "status": 200
@@ -905,11 +976,6 @@
         "status": 200
       },
       {
-        "url": "https://learn.microsoft.com/power-platform/admin/pricing-billing-skus",
-        "ok": true,
-        "status": 200
-      },
-      {
         "url": "https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing",
         "ok": true,
         "status": 200
@@ -920,17 +986,22 @@
         "status": 200
       },
       {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/create-update-entity-definitions-using-web-api",
+        "ok": true,
+        "status": 200
+      },
+      {
         "url": "https://learn.microsoft.com/power-apps/developer/data-platform/aad-group-team",
         "ok": true,
         "status": 200
       },
       {
         "url": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/web-api-functions-actions-sample",
-        "ok": true,
-        "status": 200
-      },
-      {
-        "url": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/addprivilegesrole",
         "ok": true,
         "status": 200
       },
@@ -948,6 +1019,16 @@
         "url": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/set-adminpowerappenvironmentroleassignment",
         "ok": true,
         "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/wp-data-loss-prevention",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/pricing-billing-skus",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -962,7 +1043,8 @@
           "Environments",
           "Settings",
           "Users + Permissions",
-          "Security roles"
+          "Security roles",
+          "security role"
         ],
         "missing": []
       },
@@ -1056,6 +1138,15 @@
         "missing": []
       },
       {
+        "index": 4,
+        "side": "api",
+        "governs": "Whether a user can hold roles from business units other than their own",
+        "docs": "https://learn.microsoft.com/power-platform/admin/wp-security-cds",
+        "reachable": true,
+        "token": "OrgDBOrgSettings tool:",
+        "found": false
+      },
+      {
         "index": 5,
         "side": "ui",
         "governs": "Audit trail of security role changes",
@@ -1066,14 +1157,32 @@
           "Settings",
           "Audit and logs",
           "Entity and field audit settings",
+          "Entities",
           "Security Role",
           "General",
+          "Data Services",
           "Auditing"
         ],
         "missing": []
+      },
+      {
+        "index": 5,
+        "side": "api",
+        "governs": "Audit trail of security role changes",
+        "docs": "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/create-update-entity-definitions-using-web-api",
+        "reachable": true,
+        "token": "PUT [Organization",
+        "found": true
       }
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-19",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

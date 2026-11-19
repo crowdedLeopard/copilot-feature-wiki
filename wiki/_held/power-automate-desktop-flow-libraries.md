@@ -58,18 +58,20 @@ changes:
     note: "Corrected after verification: removed the unsupported maker-access control claim, reworded the unattended-flows sentence and the summary's admin-action clause, and added the Introduction to desktop flows source."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 50 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 50 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-19"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 50
-  confirmed: 50
+  confirmed: 49
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "85400180491a19a7e3977a5141ebf389"
 ---
 
@@ -165,10 +167,12 @@ cost: Low. The only cost the sources show is admin and maker time to agree reuse
 impact: Medium. Makers who build desktop flows would notice it; the roadmap item names no end-user or admin-facing change.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: licensing.model and notes; summary; Cost and licensing; Scope; rationale: cost / licensing: The licensing model is unknown because Microsoft has not published which licence covers desktop flow libraries. | Found: With a Power Automate Premium user license, users gain the full set of capabilities for cloud and desktop automation including premium connectors, process and task mining, AI Builder, use of managed environments, and Microsoft Dataverse storage. | Fix: Set licensing.model to included. Replace the blanket unpublished-licensing statements in the notes, summary, Cost and licensing, Scope and cost rationale with: 'Microsoft lists Power Automate Premium as providing the full set of desktop authoring capabilities. Library-specific licensing terms are not yet published.' Cite https://learn.microsoft.com/power-platform/admin/power-automate-licensing/overview. Do not claim Premium is the only entitlement or that libraries are free. | Source: https://learn.microsoft.com/power-platform/admin/power-automate-licensing/overview
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure / behaviour: Desktop automation actions may use connectors. | Found: In desktop flows, you can utilize not only the standard set of actions available in the action library but also some of the most popular connectors. | Fix: Add https://learn.microsoft.com/power-automate/desktop-flows/how-to/use-connector-actions to sources for the general connector-action premise; retain the explicit uncertainty about library credentials. | Source: https://learn.microsoft.com/power-automate/desktop-flows/how-to/use-connector-actions
-- [supported, minor] Governance guidance: At rollout / behaviour: Flow checker rules exist for desktop flows generally, without asserting library applicability. | Found: Administrators can now configure static analysis rules for desktop flows from the Power Automate portal, including overriding rule severity, enabling or disabling individual rules | Fix: Add https://learn.microsoft.com/power-platform/released-versions/power-automate-desktop/2607 to sources for the existing Flow checker rules premise; retain the request to confirm library applicability. | Source: https://learn.microsoft.com/power-platform/released-versions/power-automate-desktop/2607#installer-version-27018426183---microsoft-store-version-1126071840-updates
-- [supported, minor] Governance guidance: At rollout / applicability: Data policies exist for desktop flows generally, without asserting library applicability. | Found: The following PowerShell script adds two specific desktop flow modules to the default data group of a DLP policy. | Fix: Add https://learn.microsoft.com/power-automate/prevent-data-loss to sources for the existing desktop-flow data-policy premise; retain the request to confirm library applicability. | Source: https://learn.microsoft.com/power-automate/prevent-data-loss#data-loss-prevention-for-desktop-flows
+- [supported, minor] Risk assessment: Data exposure / behaviour: Desktop automation actions may use connectors. | Found: In desktop flows, you can utilize not only the standard set of actions available in the action library but also some of the most popular connectors. | Fix: Add https://learn.microsoft.com/power-automate/desktop-flows/how-to/use-connector-actions to sources for the general connector-action premise; retain the uncertainty about library credentials. | Source: https://learn.microsoft.com/power-automate/desktop-flows/how-to/use-connector-actions
+- [supported, minor] Governance guidance: At rollout / behaviour: Flow checker rules exist for desktop flows generally; the checklist asks to test library applicability. | Found: Flow checker configuration applies at the environment level and affects all desktop flows within the selected environment. | Fix: Add https://learn.microsoft.com/power-automate/desktop-flows/static-analysis to sources for the existing Flow checker rules premise; retain the request to confirm how the new library content is evaluated. | Source: https://learn.microsoft.com/power-automate/desktop-flows/static-analysis#rule-management
+- [supported, minor] Governance guidance: At rollout / behaviour: Data policies exist for desktop flows generally; the checklist asks to test library applicability. | Found: Power Automate allows you to create and enforce DLP policies that classify desktop flow modules and individual module actions as Business, Non-business, or Blocked. | Fix: Add https://learn.microsoft.com/power-automate/prevent-data-loss to sources for the existing desktop-flow data-policy premise; retain the request to confirm how the new library content is evaluated. | Source: https://learn.microsoft.com/power-automate/prevent-data-loss
 -->

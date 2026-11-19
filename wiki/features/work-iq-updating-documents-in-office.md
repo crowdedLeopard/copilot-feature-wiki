@@ -14,7 +14,7 @@ previewDate: "November CY2026"
 risk: "medium"
 cost: "variable"
 impact: "low"
-defaultState: "unknown"
+defaultState: "admin-opt-in"
 action: "review"
 licensing:
   model: "consumption"
@@ -87,19 +87,23 @@ changes:
     note: "Correction: Learn now documents Office Document Tools in Work IQ (preview), so the page states its file types, do_action calls and prerequisites, sets licensing to consumption, and no longer says the tenant policy is unconfirmed for this feature."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 75 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-19"
+    note: "Correction: set the default to admin opt-in because Learn says Work IQ MCP blocks mutation operations by default, scoped the Copilot Studio write statement to that experience, and removed the unsupported Tools block sentence."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 73
+  claims: 64
+  confirmed: 63
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "a5ac255aaff1a75d0fc88a84598f58b6"
+  contradicted: 1
+  attempts: 0
+  hash: "61c6a5c6cd748461f90dfd11e64681fd"
 ---
 
 ## What's changing
@@ -114,9 +118,9 @@ The surrounding Work IQ MCP server has a tool reference that lists create_entity
 
 ## Why it matters
 
-Creating and editing files is a write action, and Work IQ requests run as a signed-in user. The wiki's view is that the first question is whether your tenant already lets Work IQ agents write, because the sources point both ways: the Work IQ MCP pages say mutation operations are blocked by default, while the Copilot Studio page says write operations are on by default.
+Creating and editing files is a write action, and Work IQ requests run as a signed-in user. The wiki's view is that the first question is whether your tenant policy already lets Work IQ agents write. The Work IQ MCP pages say mutation operations are blocked by default. The Copilot Studio page separately says write operations are on by default in that experience, subject to your permissions and policies.
 
-Microsoft has not stated what happens on arrival, so plan on no source saying existing behaviour changes. Use the preview to learn what documents an agent can touch, what it costs in Copilot Credits and whether your tenant policy already allows it, before General Availability.
+For the documented Work IQ MCP preview, document mutation requests are blocked by default; an administrator must enable supported write scenarios through tenant policy. Use the preview to learn what documents an agent can touch, what it costs in Copilot Credits and whether your tenant policy already allows it, before General Availability.
 
 ## Risk assessment
 
@@ -128,7 +132,7 @@ Microsoft has not stated what happens on arrival, so plan on no source saying ex
 - Learn says Work IQ MCP policy cannot grant access beyond what the signed-in user is already allowed to access, so the policy narrows the user's reach and never widens it.
 
 **Autonomy & actions**
-- The roadmap describes agents editing documents, which is a change to existing files. The policy page says mutation operations, including create, update, delete and action requests, are not allowed by default and can be enabled through tenant policy. The Copilot Studio page says write operations are on by default, subject to your permissions and policies. Confirm which applies to your tenant before trusting either.
+- The roadmap describes agents editing documents, which is a change to existing files. The policy page says mutation operations, including create, update, delete and action requests, are not allowed by default and can be enabled through tenant policy. The Copilot Studio page says write operations are on by default in that experience, subject to your permissions and policies.
 - Whether a person approves an edit before it is saved is not described.
 
 **Change & support**
@@ -179,24 +183,23 @@ Learn describes the Work IQ MCP policy as tenant-wide in the initial release: pe
 
 The workload Sources setting in Copilot Studio is limited to whole workloads: you cannot select individual sites or mailboxes, and selecting a workload does not override your organisation's permissions or policies. Microsoft Learn documents no API for it at the time of writing.
 
-The Tools page in the Microsoft 365 admin center also lists a Block action that prevents the selected tool from being used by agents or workflows. Microsoft has not said whether blocking Work IQ MCP there stops the document operations in this feature.
+The Tools page in the Microsoft 365 admin center also lists a Block action that prevents the selected tool from being used by agents or workflows.
 
 ## Open questions
 
-- Is the default for document edits blocked, as the Work IQ MCP policy page says, or on, as the Copilot Studio page says?
+- Does our tenant policy currently allow the preview document mutation requests?
 - Is document creation or editing billed at its own Copilot Credits rate? Watch the Work IQ overview and the Copilot Credits billing pages.
 - Does a person approve an edit before it is saved, and which audit records and version history show that an agent changed a file?
 - Is this feature related to Word, Excel, and PowerPoint Agents in Microsoft Copilot, which depend on Anthropic models being enabled?
 
 <!-- rationale
-risk: Medium. The roadmap says agents will edit documents, which is a write action; Learn says Work IQ MCP blocks mutation operations by default but also says Copilot Studio write operations are on by default, and the documented preview uses Work IQ MCP do_action requests.
+risk: Medium. The roadmap says agents will edit documents, which is a write action; Learn says Work IQ MCP blocks mutation operations by default, and the documented preview uses Work IQ MCP do_action requests.
 cost: Variable. Learn says Work IQ usage is billed through usage-based billing and consumes Copilot Credits; no rate for document creation or editing is yet published.
 impact: Low. The roadmap lists the Developer platform, so builders of agents and the admins who govern Work IQ notice first; no user-facing rollout is stated.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: final paragraph / absence: Microsoft has not said whether blocking Work IQ MCP in Tools stops this feature's document operations. | Found: Blocking an MCP server disables all the tools it exposes. This action targets the server component, rather than a whole plugin package. | Fix: Remove the sentence 'Microsoft has not said whether blocking Work IQ MCP there stops the document operations in this feature.' The Office Document Tools page explicitly places these actions on Work IQ MCP, and https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers#block-or-allow-an-mcp-server says blocking a server disables all its exposed tools; this does not assert effects across other products or components. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers
-- [contradicted, blocker] front matter: defaultState; Why it matters; Open questions / default: The document feature's default state is unknown because Microsoft has not stated what happens on arrival. | Found: A separate tenant policy layer evaluates each tool request and blocks mutation operations by default. Administrators can enable supported create, update, delete, and action requests through tenant policy. | Fix: Set defaultState to 'admin-opt-in'. Replace 'Microsoft has not stated what happens on arrival' with 'For the documented Work IQ MCP preview, document mutation requests are blocked by default; an administrator must enable supported write scenarios through tenant policy.' Replace the first Open questions bullet with 'Does our tenant policy currently allow the preview document mutation requests?' Keep the Copilot Studio quotation explicitly scoped to that experience and its qualification that organisational policies still apply; it does not establish an exception to the documented MCP policy layer. Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/tool-reference and the already cited Office Document Tools page. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/tool-reference
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: The checklist asks the reader to review SharePoint and OneDrive access permissions, but that control has no corresponding table row. | Found: Review who can reach sensitive SharePoint and OneDrive content; controls table: Whether Work IQ MCP tools may create, update or delete data; Which Microsoft 365 workloads a Copilot Studio agent's Work IQ tool can use. | Fix: Remove the first Before rollout checklist bullet, beginning 'Review who can reach sensitive SharePoint and OneDrive content'. This removes the unmatched control-review instruction without adding an unverified controls row.
 -->

@@ -25,6 +25,9 @@ sources:
   - title: "Microsoft 365 Roadmap 571195"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=571195"
     kind: "roadmap"
+  - title: "Evaluate agent behavior (preview)"
+    url: "https://learn.microsoft.com/microsoft-365/copilot-managed-runtime/developer/agents/cli/evaluate?view=o365-worldwide"
+    kind: "learn"
   - title: "Understand estimated credit usage"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-understand-display"
     kind: "learn"
@@ -58,8 +61,11 @@ controls:
       surface: "Copilot Studio (maker)"
       path: "agent > Evaluate > recent results > evaluation"
       docs: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-view"
-    api: null
-    note: "Maker-side display of estimates, not a control. Preview page for Microsoft Copilot harness agents; not confirmed as the roadmap item."
+    api:
+      kind: "other"
+      call: "msagent agent eval show --project <project-path> --agent-name <agent-name> --environment-id <environment-id> --run-id <run-id> --transcript"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot-managed-runtime/developer/agents/cli/evaluate?view=o365-worldwide"
+    note: "Maker-side display, not a control. Preview page; not confirmed as the roadmap item. The preview Copilot Studio CLI reports evaluation credit usage; its page does not promise the portal's per-test-case breakdown."
   - governs: "Credits allocated to an environment, and whether it draws from tenant capacity"
     scope: "environment"
     ui:
@@ -68,7 +74,7 @@ controls:
       docs: "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness"
     api:
       kind: "power-platform-api"
-      call: "PUT /licensing/allocationsV2?api-version=2024-10-01 {\"scope\":{\"environmentId\":\"<id>\"},\"allocatedEntitlements\":[{\"entitlementId\":\"MCSMessages\",\"allocation\":{\"quantity\":<n>},\"enforcementRules\":[{\"ruleType\":\"TenantPool\",\"enabled\":false}]}]}"
+      call: "PUT /licensing/allocationsV2?api-version=2024-10-01"
       docs: "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations"
     note: "Needs Power Platform Administrator, Global Administrator or an equivalent role. A published environment-group rule makes the setting read-only; API updates are rejected with TenantPoolLockedByPolicy. Base URL https://api.powerplatform.com."
   - governs: "Monthly Copilot Credit limit and Stop usage for one agent"
@@ -81,7 +87,7 @@ controls:
     note: "Limits are not applied instantly, so an agent can keep responding for some time after reaching one."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-19"
 roadmapModified: "2026-09-15T23:00:36"
 changes:
   - date: "2026-11-17"
@@ -98,19 +104,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 79 statements not yet confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 80 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-19"
+    note: "Corrected after verification: the first control now lists the preview CLI command that reports evaluation credit usage, the allocation call is shortened to the operation, and the consumption-review checklist step is removed."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 80 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 80
-  confirmed: 78
+  confirmed: 80
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "37b81703df481641e83cdaadf27e471e"
+  contradicted: 0
+  attempts: 0
+  hash: "3484a9d832460970a997c10643ba7fce"
 ---
 
 ## What's changing
@@ -177,7 +187,6 @@ The Learn preview describes evaluations for agents created and saved with the Mi
 
 ### After rollout
 
-- Review environment and agent consumption together in the Power Platform admin center under **Licensing** > **Copilot Studio**, as Learn advises.
 - Check the status of environments and agents against their limits, and raise a limit through your own request process where evaluation volume is justified.
 
 ## Governance controls
@@ -187,8 +196,8 @@ The Learn preview describes evaluations for agents created and saved with the Mi
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Estimated Copilot Credits shown for an evaluation run and each test case</strong><br><small>Agent</small><br><small class="controls__note">Maker-side display of estimates, not a control. Preview page for Microsoft Copilot harness agents; not confirmed as the roadmap item.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>agent › Evaluate › recent results › evaluation <a href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-view" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Credits allocated to an environment, and whether it draws from tenant capacity</strong><br><small>Environment</small><br><small class="controls__note">Needs Power Platform Administrator, Global Administrator or an equivalent role. A published environment-group rule makes the setting read-only; API updates are rejected with TenantPoolLockedByPolicy. Base URL https://api.powerplatform.com.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Manage Copilot Credits › environment › Capacity overages › Draw from the available capacity in my tenant <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT /licensing/allocationsV2?api-version=2024-10-01 {&quot;scope&quot;:{&quot;environmentId&quot;:&quot;&lt;id&gt;&quot;},&quot;allocatedEntitlements&quot;:[{&quot;entitlementId&quot;:&quot;MCSMessages&quot;,&quot;allocation&quot;:{&quot;quantity&quot;:&lt;n&gt;},&quot;enforcementRules&quot;:[{&quot;ruleType&quot;:&quot;TenantPool&quot;,&quot;enabled&quot;:false}]}]}</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Estimated Copilot Credits shown for an evaluation run and each test case</strong><br><small>Agent</small><br><small class="controls__note">Maker-side display, not a control. Preview page; not confirmed as the roadmap item. The preview Copilot Studio CLI reports evaluation credit usage; its page does not promise the portal's per-test-case breakdown.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>agent › Evaluate › recent results › evaluation <a href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-view" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>msagent agent eval show --project &lt;project-path&gt; --agent-name &lt;agent-name&gt; --environment-id &lt;environment-id&gt; --run-id &lt;run-id&gt; --transcript</code> <a href="https://learn.microsoft.com/microsoft-365/copilot-managed-runtime/developer/agents/cli/evaluate?view=o365-worldwide" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Credits allocated to an environment, and whether it draws from tenant capacity</strong><br><small>Environment</small><br><small class="controls__note">Needs Power Platform Administrator, Global Administrator or an equivalent role. A published environment-group rule makes the setting read-only; API updates are rejected with TenantPoolLockedByPolicy. Base URL https://api.powerplatform.com.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Manage Copilot Credits › environment › Capacity overages › Draw from the available capacity in my tenant <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT /licensing/allocationsV2?api-version=2024-10-01</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Monthly Copilot Credit limit and Stop usage for one agent</strong><br><small>Agent</small><br><small class="controls__note">Limits are not applied instantly, so an agent can keep responding for some time after reaching one.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Copilot Studio › Manage Agents › agent › Set limit <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -213,11 +222,8 @@ cost: Variable. The display is not described as a charge, but the evaluation act
 impact: Medium. Makers who run evaluations see the figures; owners of environments and capacity are affected through the credits those evaluations draw.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls: first row / absence: No API or automation is documented for retrieving evaluation credit information. | Found: Use its run ID to view the results and conversation transcripts: ... --run-id '<run-id>' --transcript ... Review the run's status, scores, passed and failed cases, results for each conversation, and reported credit usage. | Fix: Replace controls[0].api and its rendered Not yet documented cell with kind other, call "msagent agent eval show --project <project-path> --agent-name <agent-name> --environment-id <environment-id> --run-id <run-id> --transcript", and docs https://learn.microsoft.com/microsoft-365/copilot-managed-runtime/developer/agents/cli/evaluate?view=o365-worldwide. Add to the existing note: "The preview Copilot Studio CLI reports evaluation credit usage; this documentation does not promise the same per-test-case credit breakdown as the portal." Cite that page in sources. | Source: https://learn.microsoft.com/microsoft-365/copilot-managed-runtime/developer/agents/cli/evaluate?view=o365-worldwide
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].api; Governance controls: second row / command: The printed PUT allocationsV2 call, version 2024-10-01 and its body allocate MCSMessages and disable TenantPool for an environment. | Found: All programmatic examples in this article use API version 2024-10-01. ... scope = @{ environmentId = $environmentId } ... entitlementId = "MCSMessages" ... @{ ruleType = "TenantPool"; enabled = $false } ... Invoke-RestMethod -Method Put | Fix: Replace controls[1].api.call and the rendered call with "PUT /licensing/allocationsV2?api-version=2024-10-01". Add to its note: "The request body identifies scope.environmentId, sets allocatedEntitlements[].entitlementId to MCSMessages and allocation.quantity to the allocation, and sets enforcementRules[].ruleType to TenantPool with enabled false to disable tenant-capacity draw." The operation, version and printed body keys are supported; the standard requires the body in the reference, not in the call. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist's consumption-monitoring instruction has a corresponding controls-table row. | Found: Checklist: Review environment and agent consumption together. Table rows: estimated evaluation credits; environment credit allocation and tenant draw; agent monthly limit and Stop usage. | Fix: The After rollout checklist's consumption-monitoring step has no corresponding table row. Remove its first bullet, "Review environment and agent consumption together in the Power Platform admin center under Licensing > Copilot Studio, as Learn advises." Keep the documented monitoring explanation in Governance controls; do not add a row.
+- [supported, minor] controls[1].api; controls[1].note; Governance controls: second row / command: PUT /licensing/allocationsV2?api-version=2024-10-01 writes the environment allocation and tenant-pool draw configuration. | Found: $apiVersion    = "2024-10-01" Invoke-RestMethod -Method Put ` -Uri "$apiBaseUrl/licensing/allocationsV2?api-version=$apiVersion" | Fix: Keep the call unchanged. Add to controls[1].note and the rendered row: 'The request body targets scope.environmentId; allocatedEntitlements uses entitlementId MCSMessages, allocation.quantity and enforcementRules with ruleType TenantPool and enabled false to disable tenant-capacity draw.' The cited allocation tutorial documents these properties. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
 -->

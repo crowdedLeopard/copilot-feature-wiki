@@ -113,18 +113,20 @@ changes:
     note: "Corrected after the independent check: data policy path now includes the three-dots menu, the allocation call shows its full request, the per-agent limit has its documented threshold API, and the environment-group lock is noted."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 84 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 92 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-19"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 84
-  confirmed: 83
+  claims: 92
+  confirmed: 90
   unconfirmed: 0
-  contradicted: 1
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "7e4c7dc4251652d6f13c34279770d628"
 ---
 
@@ -239,8 +241,12 @@ cost: Variable. Microsoft documents that evaluating Copilot harness agents can c
 impact: Low. Makers who build and test agents notice the change; end users and most administrators do not.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] What's changing: third paragraph / behaviour: General quality is the only test method offered for Microsoft Copilot harness evaluations. | Found: Each new evaluation starts with **General quality**, and you can add up to five test methods to an evaluation. The test methods available to you can vary by environment. | Fix: Replace 'offer General quality as the only test method' with 'start each evaluation with General quality and allow up to five test methods, with availability varying by environment'. The cited page also lists Content safety, Compare meaning, Capability use, Keyword match, Text similarity, Exact match and Classification. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/analytics-agent-evaluation-intro
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The consumption-monitoring checklist step has no corresponding controls-table row. | Found: Review credit consumption by agent in Power Platform admin center > Licensing > Copilot Studio ... Table rows cover authenticated evaluation access, environment allocation/tenant draw and an agent monthly limit, not consumption reporting. | Fix: Remove the After rollout bullet beginning 'Review credit consumption by agent in Power Platform admin center' so the checklist no longer directs readers to a control absent from the table.
+- [supported, minor] controls[1].api; Governance controls table / command: PUT licensing/allocationsV2 using version 2024-10-01 sets the environment's MCSMessages allocation quantity and TenantPool enforcement rule through the printed request properties. | Found: Invoke-RestMethod -Method Put ... -Uri "$apiBaseUrl/licensing/allocationsV2?api-version=$apiVersion" ... scope = @{ environmentId = $environmentId } ... entitlementId = "MCSMessages" ... allocation = @{ quantity = 5000 } ... @{ ruleType = "TenantPool"; enabled = $false } | Fix: Set controls[1].api.call and the rendered call to 'PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01'. Add to its note: 'The request body sets scope.environmentId and allocatedEntitlements, including entitlementId=MCSMessages, allocation.quantity and enforcementRules with ruleType=TenantPool and enabled=false.' The cited tutorial confirms the operation; the pre-check missed its interpolated URL. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
+- [supported, minor] controls[2].api; Governance controls table / command: The versioned resource-threshold PUT operation accepts limit and stopIfOverCapacity to configure an environment resource's consumption threshold. | Found: PUT https://api.powerplatform.com/licensing/environments/{environmentId}/entitlements/{entitlementId}/resources/{resourceId}/threshold?api-version=2024-10-01 ... limit ... stopIfOverCapacity | Fix: Set controls[2].api.call and the rendered call to 'PUT https://api.powerplatform.com/licensing/environments/<environment-id>/entitlements/<entitlement-id>/resources/<resource-id>/threshold?api-version=2024-10-01'. Add to the note: 'The request body sets limit and stopIfOverCapacity=true.' Keep the existing general-resource and ID-mapping caveat. The pre-check's literal-placeholder miss is not an endpoint defect. | Source: https://learn.microsoft.com/rest/api/power-platform/licensing/resource-threshold/upsert-resource-threshold
+- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The consumption-monitoring checklist step has no corresponding controls-table row. | Found: 'Review credit consumption by agent in Power Platform admin center > Licensing > Copilot Studio' has no row: the table covers authenticated evaluation access, environment allocation/tenant draw and an agent monthly limit. | Fix: Remove the After rollout bullet beginning 'Review credit consumption by agent in Power Platform admin center' so the checklist no longer directs readers to a control absent from the table.
 -->

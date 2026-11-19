@@ -59,19 +59,23 @@ changes:
     note: "First briefing for roadmap item 402185: institution type selection in the Teams for Education Policy Wizard."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 40 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-19"
+    note: "Corrected how existing policy assignments affect the wizard: students need direct and group assignments removed; for educators and staff, the wizard's group policy takes ranking 1 and conflicting direct assignments are removed."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 48 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-19"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 40
-  confirmed: 38
+  claims: 48
+  confirmed: 45
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "edc0845190f531a2f37549208813c17a"
+  contradicted: 3
+  attempts: 2
+  hash: "da5746dbdd2297939e6d8fdf1aa6bb33"
 ---
 
 ## What's changing
@@ -97,7 +101,7 @@ Microsoft's page says the wizard also adds the education default for any new Tea
 
 **Security & identity**
 - The wrong type applies the wrong student settings to the Global (Org-wide default) policies. Learn says student policies are the more restrictive set; check the policy tables on the wizard page before choosing.
-- Learn states that the wizard's policies do not take effect for a user who has existing direct or group assignments in that policy area, so an old assignment can leave a student on a looser policy than the type implies.
+- Learn states that the wizard's policies won't take effect for a student who has existing direct or group assignments, so an old assignment can leave a student on a looser policy than the type implies. For educators and staff, Learn says the wizard assigns its group policies at ranking 1, the highest ranking, and moves an existing policy of the same policy area on the selected group to a lower ranking; conflicting direct assignments still override them.
 
 **Autonomy & actions**
 - The wizard acts only when an admin selects Apply. Learn also says the wizard starts automatically if you are new to Teams; the page does not say that starting it applies anything.
@@ -110,7 +114,7 @@ Microsoft's page says the wizard also adds the education default for any new Tea
 
 Microsoft Learn's page for the wizard names no licence and no meter, and the roadmap item names none either. Licensing for this wizard is not yet published, so this briefing does not state that it is free or included.
 
-The cost the sources show is admin time: choosing the type and groups, and removing existing direct or group policy assignments that would stop the wizard's policies taking effect.
+The cost the sources show is admin time: choosing the type and groups, and removing the existing assignments that Learn says stop the wizard's policies taking effect (for students, existing direct and group assignments; for educators and staff, conflicting direct assignments).
 
 ## Scope
 
@@ -123,12 +127,12 @@ The wizard is run from the Microsoft Teams admin center. Students receive the Gl
 ### Before rollout
 - Decide whether each institution counts as Primary or Secondary, or Higher education, and record the decision with the person who owns student safety.
 - Create the groups of educators and staff first; the wizard takes up to three, and Learn says to create a group and rerun the wizard if none exist.
-- List existing direct and group policy assignments for students, educators and staff in each policy area, because they override the wizard's policies.
+- Review the wizard documentation's after-run instructions for conflicting policy assignments.
 
 ### At rollout
 - Run the wizard from Home > Easy policy setup for a safe learning environment > Quick setup and select the institution type.
 - Review the summary page before selecting Apply.
-- Remove conflicting policy assignments, as Learn's after-wizard steps instruct, so the wizard's policies take effect.
+- Remove existing assignments as Learn's after-wizard steps instruct: for students, existing direct and group assignments; for educators and staff, conflicting direct assignments.
 
 ### After rollout
 - Check the educators and staff policies a few hours after applying, as Learn says assignment can take that long.
@@ -167,7 +171,8 @@ impact: Low. Admins see the new step; students and educators notice only if the 
 <!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity; Cost and licensing; Governance guidance: Before rollout / behaviour: Existing direct or group assignments for students, educators and staff override the wizard's policies. | Found: If your educators and staff group has an existing policy of the same policy area assigned to it, that existing policy is moved to a lower ranking and the policy assigned by the wizard takes effect. | Fix: Qualify the assignment statements in Risk assessment, Cost and licensing and Before rollout: 'For students, remove existing direct and group assignments so the Global policies take effect. For educators and staff, remove conflicting direct assignments; the wizard assigns its group policies at ranking 1, the highest ranking, and moves an existing policy on the selected group to a lower ranking.' Source: https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu#what-to-do-after-running-the-wizard. | Source: https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu
+- [contradicted, blocker] front matter: licensing.model; Cost and licensing; Open questions; rationale: cost / licensing: Licensing is unknown because Microsoft has not published which licence covers this wizard. | Found: Prerequisites for Microsoft Teams for Education - An Education license in your Microsoft 365 tenant - Enable Microsoft Teams in the Microsoft Admin Center | Fix: Set licensing.model to included and replace the blanket unpublished-licensing statements with: 'Teams for Education requires an Education license in the Microsoft 365 tenant. Microsoft lists Teams as part of the free Microsoft 365 A1 for Students SKU. The wizard page states no separate wizard-specific licence requirement.' Cite https://learn.microsoft.com/microsoft-365/education/guide/2-baseline/applications/baseline-apps-teams-what-is-teams and https://learn.microsoft.com/microsoftteams/teams-edu-licensing. In Open questions, remove the broad licence question or narrow it to a separate wizard-specific requirement. Retain the low cost rating for administration time. | Source: https://learn.microsoft.com/microsoft-365/education/guide/2-baseline/applications/baseline-apps-teams-what-is-teams
+- [contradicted, blocker] Risk assessment: Autonomy & actions; rationale: risk / behaviour: The wizard acts, and policies change, only when an administrator selects Apply. | Found: Also, whenever a new feature is added to Teams, the appropriate EDU relevant default value of the policy for that feature will be automatically added to the Global (Org-wide default) without requiring any admin intervention. | Fix: Replace 'The wizard acts only when an admin selects Apply' with 'The initial policy application requires an admin to select Apply; after that, Microsoft says education defaults for new Teams features are added to Global policies automatically.' In the risk rationale replace 'Policies change only when an admin selects Apply in the wizard' with 'Initial policy application requires an admin to select Apply; later education defaults can be added automatically'. Keep the existing defaultState and low risk rating: the initial configuration remains opt-in. | Source: https://learn.microsoft.com/microsoftteams/easy-policy-setup-edu
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout and At rollout; Governance controls / consistency: The checklist tells administrators to inventory and remove existing policy assignments, but the controls table covers only institution-type selection. | Found: List existing direct and group policy assignments for students, educators and staff in each policy area, because they override the wizard's policies. / Institution type chosen on the first run of the wizard / Institution type changed after the wizard has run | Fix: The checklist's policy-assignment inventory and removal steps have no corresponding controls row. Narrow those checklist bullets to: 'Review the wizard documentation's after-run instructions for conflicting policy assignments.' Do not add a control row as part of this correction.
+- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The checklist instructs readers to remove policy assignments, but the controls table contains only institution-type selection rows. | Found: Remove existing assignments as Learn's after-wizard steps instruct: for students, existing direct and group assignments; for educators and staff, conflicting direct assignments. | Institution type chosen on the first run of the wizard | Institution type changed after the wizard has run | Fix: Remove the At rollout bullet beginning 'Remove existing assignments as Learn's after-wizard steps instruct'. Retain the Before rollout instruction to review the documentation's after-run instructions and the accurate explanation in Risk assessment; do not add control rows.
 -->

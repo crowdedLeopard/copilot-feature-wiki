@@ -1,0 +1,575 @@
+{
+  "slug": "microsoft-teams-latest-meeting-experiences-with-performance-improvements-on-web-for-safari",
+  "roadmapId": 329253,
+  "title": "Microsoft Teams: latest meeting experience for anonymous join on Safari and Firefox web",
+  "status": "held",
+  "date": "2026-11-19",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "cd5b21ff3a5b",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-19",
+    "reasons": [
+      "2 blocking findings (claims 14, 15)"
+    ]
+  },
+  "counts": {
+    "claims": 42,
+    "confirmed": 37,
+    "unconfirmed": 2,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 2,
+    "minor": 2
+  },
+  "summary": "Hold: the briefing incorrectly excludes all signed-in users, although Microsoft says users signed in to an organisation without mutual trust can be anonymous participants. It also presents Unverified as the label for all anonymous users, overlooking Email Verified, and makes unsupported claims about browser-documentation scope and unchanged admission rules.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "This change concerns anonymous meeting join in Safari and Firefox on the web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Teams: Latest meeting experiences with performance improvements on web for Safari and Firefox (for anonymous join only)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Why it matters; rationale: risk",
+      "type": "record",
+      "claim": "The latest meeting experience includes performance improvements.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "including performance improvements",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Change & support; Governance guidance",
+      "type": "record",
+      "claim": "The change includes a refreshed pre-join screen.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "refreshed pre-join",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Change & support",
+      "type": "record",
+      "claim": "The change includes an updated meeting stage.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "updated meeting stage",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; Change & support",
+      "type": "record",
+      "claim": "The change includes an updated meeting toolbar.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "the updated meeting toolbar",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: status; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target date is September CY2024.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2024\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Security & identity; rationale: impact",
+      "type": "behaviour",
+      "claim": "Anonymous participants are people whose identities have not been verified.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings",
+      "quote": "In meetings and events hosted by your organization, anonymous users are users whose identities aren't verified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Someone not signed in to Teams with a work or school account can be an anonymous participant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings",
+      "quote": "These users can include:\n- Users who aren't signed in to Teams with a work or school account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Teams marks anonymous participants as Unverified in a meeting.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings",
+      "quote": "When anonymous users join a meeting unverified, Unverified appears next to their name. If anonymous users join a meeting verified through a one-time passcode, Email Verified appears next to their name.",
+      "severity": "blocker",
+      "fix": "Replace the label sentence with: \"When anonymous users join a meeting unverified, Teams displays Unverified next to their name.\""
+    },
+    {
+      "n": 15,
+      "where": "What's changing; rationale: impact",
+      "type": "behaviour",
+      "claim": "The anonymous-join scope excludes signed-in users.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/plan-meetings-external-participants",
+      "quote": "Anonymous - People whose identity can't be verified. They may be logged in to an organization without a mutual trust relationship or they may not have an account.",
+      "severity": "blocker",
+      "fix": "Replace \"The roadmap wording means the change applies to these participants and not to signed-in users.\" with \"The roadmap limits this change to anonymous join.\" Replace the impact rationale with \"Low. People who notice are anonymous participants joining from Safari or Firefox.\""
+    },
+    {
+      "n": 16,
+      "where": "What's changing; changes; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "No Microsoft Learn page was found describing this specific refreshed anonymous-join experience.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Safari\" \"Firefox\" \"refreshed\" \"pre-join\"' and '\"Teams\" \"Safari\" \"Firefox\" \"anonymous\" \"experience\" policy'. Opened Teams for Web and Manage anonymous participant access; neither describes this specific refresh.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "The arrival default for this specific experience is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Teams web Safari Firefox anonymous join refreshed pre-join default license latest meeting experiences 329253'. Read the roadmap, Teams for Web and Manage anonymous participant access; no default for this refresh was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: licensing; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A licensing model specific to this meeting-experience refresh is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Teams\" \"Safari\" \"Firefox\" \"licensing\" \"meeting\"' and '\"Teams\" \"anonymous\" \"meeting experience\" license default'. Opened Teams for Web and Manage anonymous participant access; neither specifies licensing for this refresh.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "summary; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No admin setting selecting this specific Safari and Firefox meeting experience is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Teams\" \"Safari\" \"Firefox\" \"anonymous\" \"experience\" policy' and '\"Teams\" \"meeting experiences\" \"Safari\" default policy licensing'. Opened Teams for Web and Manage anonymous participant access; no selector for this refresh was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Tenant-wide anonymous join is controlled in Teams admin center at Meetings > Meeting settings > Participants > Anonymous users can join a meeting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings",
+      "quote": "In the left navigation of the Teams admin center, go to Meetings > Meeting settings.\nUnder Participants, turn the Anonymous users can join a meeting toggle On or Off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0].api; controls[0].note; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingConfiguration -Identity <policy name> -DisableAnonymousJoin $true prevents anonymous meeting join organisation-wide.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings",
+      "quote": "To prevent anonymous participants from joining meetings in your organization, use this script:\nSet-CsTeamsMeetingConfiguration -Identity <policy name> -DisableAnonymousJoin $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Per-organiser anonymous join is controlled in Teams admin center at Meetings > Meeting policies > policy > Meeting join & lobby > Anonymous users can join a meeting unverified.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings",
+      "quote": "go to Meetings > Meeting policies.\n2. Select an existing policy or create a new one.\n3. Under Meeting join & lobby, turn the Anonymous users can join a meeting unverified toggle Off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowAnonymousUsersToJoinMeeting $false prevents anonymous join to meetings organised by users or groups with that policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings",
+      "quote": "To prevent anonymous participants from joining meetings organized by users or groups with this policy, use this script:\nSet-CsTeamsMeetingPolicy -Identity <policy name> -AllowAnonymousUsersToJoinMeeting $false",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Microsoft says the organisation-wide Anonymous users can join a meeting setting is going away.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings",
+      "quote": "The Anonymous users can join a meeting organization-wide setting is going away.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].note; controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Microsoft recommends leaving the organisation-wide setting On and managing anonymous join through the per-organiser policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings",
+      "quote": "We recommend leaving this setting On and using the Anonymous users can join a meeting unverified per-organizer meeting policy to manage anonymous meeting join instead.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Meeting-policy changes might take up to 24 hours to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings",
+      "quote": "Changes to meeting policies might take up to 24 hours to take effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters; Security & identity; Governance guidance",
+      "type": "applicability",
+      "claim": "Lobby policies affect how anonymous participants join meetings when anonymous meeting join is enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings",
+      "quote": "When anonymous meeting join is turned on, lobby policies affect how anonymous participants join meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Data exposure",
+      "type": "behaviour",
+      "claim": "Anonymous participants do not have meeting-chat access before and after the meeting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings",
+      "quote": "Don't have access to meeting chat before and after the meeting",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Data exposure",
+      "type": "behaviour",
+      "claim": "Anonymous participants do not have access to profile cards.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings",
+      "quote": "Don't have access to profile cards",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Data exposure",
+      "type": "behaviour",
+      "claim": "Anonymous participants do not have access to collaborative meeting notes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings",
+      "quote": "Don't have access to collaborative meeting notes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Some features described on the anonymous-access page require Teams Premium.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings",
+      "quote": "Some features described in this article require Teams Premium.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Requiring anonymous users to verify through an email code requires the organiser to have Teams Premium.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings",
+      "quote": "Anonymous users can join a meeting after verifying with an email code (Teams Premium)\nNote\nThis feature requires organizers to have a Teams Premium license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope: Related browser documentation",
+      "type": "availability",
+      "claim": "The Teams for Web documentation lists Edge, Chrome, Firefox and Safari.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-client-web",
+      "quote": "Teams on the Teams for Web client is available on Microsoft Edge, Chrome, Firefox, and Safari browsers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope: Related browser documentation; Open questions",
+      "type": "behaviour",
+      "claim": "The Teams for Web page and its supported browser versions apply only to signed-in use.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"Teams for Web\" \"signed-in\" \"anonymous\" browsers'. Opened Teams for Web - Overview and prerequisites; its browser prerequisites do not state a signed-in-only restriction.",
+      "severity": "major",
+      "fix": "Replace the Scope sentence with \"That page does not describe this specific anonymous-join refresh.\" Replace \"Learn's Teams for Web page lists versions for signed-in use only.\" with \"Learn's Teams for Web page does not identify browser-version requirements specific to this refresh.\""
+    },
+    {
+      "n": 35,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "This refresh does not change who can be invited or who can join.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Teams Safari Firefox anonymous join latest meeting experience 329253 admin policy default license'. Read the roadmap and Manage anonymous participant access; neither explicitly confirms unchanged invitation or admission rules for this refresh.",
+      "severity": "major",
+      "fix": "Replace \"It does not change who can be invited or who can join: those decisions stay with the anonymous-join settings, the lobby and the organiser's meeting options.\" with \"Microsoft Learn documents anonymous-join settings, lobby policies and organiser meeting options that govern anonymous meeting access.\""
+    },
+    {
+      "n": 36,
+      "where": "Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes interface and performance changes and names no new data access.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "including performance improvements, refreshed pre-join, updated meeting stage, and the updated meeting toolbar. (for anonymous join only)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes no automated or agent behaviour.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "including performance improvements, refreshed pre-join, updated meeting stage, and the updated meeting toolbar. (for anonymous join only)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "record",
+      "claim": "The roadmap names no licence, add-on or meter for this experience.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The latest Teams meeting experiences will be available for Teams on the web in Safari and Firefox browsers - including performance improvements, refreshed pre-join, updated meeting stage, and the updated meeting toolbar. (for anonymous join only)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "Anonymous meeting participants are described as external users outside the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/platform/apps-in-teams-meetings/build-apps-for-anonymous-user",
+      "quote": "These anonymous participants are external users, but their identity isn't shown in the meeting.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoftteams/platform/apps-in-teams-meetings/build-apps-for-anonymous-user to sources for the description of anonymous participants as outside the organisation."
+    },
+    {
+      "n": 40,
+      "where": "Governance guidance: At rollout; Security & identity; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist directs readers to check lobby policy, but the controls table contains no lobby-policy row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm the lobby policy for anonymous participants suits your organisation | controls: Whether anonymous users can join meetings, organisation-wide; Which organisers can host meetings that allow anonymous participants",
+      "severity": "minor",
+      "fix": "Remove the At rollout bullet beginning \"Confirm the lobby policy\" and remove \"(see the controls table)\" from Security & identity: the existing table documents anonymous-join permissions, not lobby policy."
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No price specific to this experience is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Teams\" \"Safari\" \"Firefox\" \"licensing\" \"meeting\"' and '\"Teams\" \"anonymous\" \"meeting experience\" license default'. Opened Teams for Web and Manage anonymous participant access; neither gives a price for this refresh.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The anonymous-access page names no licence specifically for joining a meeting as an anonymous participant.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Teams\" \"anonymous\" \"meeting experience\" license default'. Read Manage anonymous participant access in full; its Teams Premium requirements concern organiser-controlled verification, not a licence for anonymous attendees to join.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-19T05:19:20.200Z",
+    "summary": {
+      "links": 3,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/teams-client-web",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=329253",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether anonymous users can join meetings, organisation-wide",
+        "docs": "https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting settings",
+          "Participants",
+          "Anonymous users can join a meeting"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether anonymous users can join meetings, organisation-wide",
+        "docs": "https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingConfiguration",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which organisers can host meetings that allow anonymous participants",
+        "docs": "https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting policies",
+          "Meeting join & lobby",
+          "Anonymous users can join a meeting unverified"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which organisers can host meetings that allow anonymous participants",
+        "docs": "https://learn.microsoft.com/microsoftteams/anonymous-users-in-meetings",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

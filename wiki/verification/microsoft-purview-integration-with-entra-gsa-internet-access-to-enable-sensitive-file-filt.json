@@ -4,45 +4,34 @@
   "title": "Microsoft Purview: DLP for network traffic through Entra Global Secure Access Internet Access",
   "status": "held",
   "date": "2026-11-19",
-  "version": 3,
+  "version": 4,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 3,
+  "attempts": 4,
   "standard": "cd5b21ff3a5b",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
   "notes": [],
   "hold": {
-    "reason": "failed",
+    "reason": "parked",
     "since": "2026-11-18",
     "reasons": [
       "1 blocking finding (claim 81)"
     ]
   },
   "counts": {
-    "claims": 90,
-    "confirmed": 89,
+    "claims": 92,
+    "confirmed": 91,
     "unconfirmed": 0,
     "contradicted": 1,
     "blocker": 1,
     "major": 0,
-    "minor": 1
+    "minor": 0
   },
-  "summary": "Hold: the Purview configuration path skips the required Custom and Custom policy choices in the policy wizard. The licensing differences, default state, rollout dates and documented inspection limitations are accurately attributed to their sources.",
+  "summary": "The Purview control path stops at the advanced-rules option rather than reaching the audit or block control. It needs the documented Create rule and action-selection steps; the roadmap facts, activation requirement and reported licensing differences are supported.",
   "claims": [
     {
       "n": 1,
-      "where": "summary; What's changing; Why it matters",
-      "type": "behaviour",
-      "claim": "Purview DLP integrates with Entra Global Secure Access Internet Access to inspect sensitive files and text sent to unmanaged cloud and AI apps across browsers and applications.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
-      "quote": "These controls apply to content shared from managed endpoints through browsers, applications, add-ins, APIs, and more. ... It inspects files and text for sensitive information and helps prevent data loss by blocking its sharing based on your Purview DLP policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is Launched.",
@@ -53,7 +42,7 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 2,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is September CY2026.",
@@ -64,7 +53,7 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 3,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview date is November CY2025.",
@@ -75,10 +64,10 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 4,
       "where": "front matter: releasePhase; What's changing",
       "type": "record",
-      "claim": "The roadmap lists General Availability and Preview as release phases.",
+      "claim": "The roadmap release phases are General Availability and Preview.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -86,7 +75,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 5,
       "where": "front matter: clouds; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
@@ -97,7 +86,7 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 6,
       "where": "front matter: platforms; Scope",
       "type": "record",
       "claim": "The roadmap lists the Web platform.",
@@ -108,260 +97,7 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
-      "type": "default",
-      "claim": "The control is admin-opt-in: it is available by default but requires configuration to activate, so an untouched tenant gets no new blocking.",
-      "status": "supported",
-      "source": "Message Center post MC1181769",
-      "quote": "The feature will be available by default but requires configuration to activate.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "front matter: licensing.model; summary; rationale: cost",
-      "type": "licensing",
-      "claim": "The integration requires licensed entitlements beyond a basic tenant, classified as add-on licensing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
-      "quote": "Network data security with Microsoft Entra Global Secure Access requires one of the following license combinations: Microsoft 365 E7 per-seat licenses; Purview E5 (or equivalent) per-seat licenses and Entra Internet Access (or equivalent) licenses",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "licensing",
-      "claim": "Learn lists Microsoft 365 E7 per-seat licences as one qualifying option.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
-      "quote": "Microsoft 365 E7 per-seat licenses",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "licensing",
-      "claim": "Learn's other qualifying combination is Purview E5 or equivalent per-seat licences and Entra Internet Access or equivalent licences.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
-      "quote": "Purview E5 (or equivalent) per-seat licenses and Entra Internet Access (or equivalent) licenses",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "front matter: licensing.notes; Cost and licensing; Scope; Open questions",
-      "type": "record",
-      "claim": "Microsoft's notice names Microsoft 365 tenants with E3 or E5 licences as affected.",
-      "status": "supported",
-      "source": "Message Center post MC1181769",
-      "quote": "Who is affected: Microsoft 365 tenants with E3 or E5 licenses; Admins managing Microsoft Purview DLP and Entra Global Secure Access.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "Cost and licensing: Pay-as-you-go; Governance guidance; Open questions",
-      "type": "record",
-      "claim": "The notice says a global admin must activate Purview pay-as-you-go.",
-      "status": "supported",
-      "source": "Message Center post MC1181769",
-      "quote": "Your global admin must activate Purview pay-as-you-go to enable this capability.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "Cost and licensing: Pay-as-you-go",
-      "type": "record",
-      "claim": "The notice says no charges apply during public preview.",
-      "status": "supported",
-      "source": "Message Center post MC1181769",
-      "quote": "No charges will apply during public preview.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
-      "type": "licensing",
-      "claim": "Learn says pay-as-you-go setup is not required for the Global Secure Access integration.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
-      "quote": "Pay-as-you-go is not required to be set up for integration with Microsoft Entra Global Secure Access.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "Cost and licensing: Pay-as-you-go",
-      "type": "cost",
-      "claim": "Learn ties request-based pay-as-you-go billing to non-Microsoft SASE and secure browser integrations.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
-      "quote": "Network data security uses the request as unit of measure for pay-as-you-go billing purposes when using non-Microsoft SASE and secure browser integrations.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing; Governance guidance; controls[0]",
-      "type": "behaviour",
-      "claim": "The Scan with Purview content-rule action sends matching traffic to Purview for inspection.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
-      "quote": "Global Secure Access forwards matching upload traffic to Microsoft Purview for content inspection.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What's changing; Governance controls",
-      "type": "behaviour",
-      "claim": "Purview evaluates content against the DLP policy and returns a rule-based decision.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
-      "quote": "Purview evaluates the content against your DLP policy and returns a decision based on your DLP rule action.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing; Governance controls",
-      "type": "behaviour",
-      "claim": "Global Secure Access enforces the decision returned by Purview.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
-      "quote": "Global Secure Access then enforces the result.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "What's changing; controls[1]; Governance controls",
-      "type": "behaviour",
-      "claim": "Network data security supports Audit only and Block actions, including with Global Secure Access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
-      "quote": "Network data security supports Audit only and Block actions. ... Microsoft Entra Global Secure Access supports all supported activities and actions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing; Scope; Governance guidance",
-      "type": "record",
-      "claim": "The integration adds an Inline web traffic scenario to Purview DLP policy creation.",
-      "status": "supported",
-      "source": "Message Center post MC1181769",
-      "quote": "A new “Inline Web Traffic” scenario will be available in Purview DLP policy creation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "What's changing",
-      "type": "availability",
-      "claim": "The documented unmanaged cloud app destinations come from the Defender for Cloud Apps catalogue of over 35,000 discoverable apps.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
-      "quote": "Unmanaged cloud apps - Network data security collection policies support all the sources that are in the Microsoft Defender for Cloud Apps Cloud app catalog which includes over 35,000 discoverable cloud apps.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "What's changing",
-      "type": "availability",
-      "claim": "Adaptive app scopes include generative AI, cloud storage, collaboration, social network and webmail categories.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
-      "quote": "Adaptive app scopes - all apps in multiple categories including generative AI, cloud storage, collaboration, social network, and webmail.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Supported activities include text sent to or shared with cloud or AI apps.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
-      "quote": "Text sent to or shared with cloud or AI app.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Supported activities include files uploaded to or shared with cloud or AI apps.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
-      "quote": "File uploaded to or shared with cloud or AI app.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Supported activities include text received from cloud or AI apps.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
-      "quote": "Text received from cloud or AI app.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Supported activities include files downloaded from cloud or AI apps.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
-      "quote": "File downloaded from cloud or AI app.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "What's changing; Governance controls",
-      "type": "behaviour",
-      "claim": "DLP policy matches appear in DLP alerts when alerts have been configured.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
-      "quote": "If a data loss prevention policy is matched, and you have configured alerts, they will be available in DLP alerts.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "What's changing; Governance controls",
-      "type": "behaviour",
-      "claim": "Network data security classification data is available in activity explorer.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
-      "quote": "After the data is classified, it's available in activity explorer",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Activity explorer can filter these events by enforcement plane set to network.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
-      "quote": "In activity explorer, you can filter events with enforcement plane set to network.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
+      "n": 7,
       "where": "What's changing",
       "type": "record",
       "claim": "MC1181769 was updated on 11 September 2026.",
@@ -372,7 +108,7 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 8,
       "where": "What's changing",
       "type": "record",
       "claim": "The notice says general availability rollout begins at the end of September 2026.",
@@ -383,10 +119,10 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 9,
       "where": "What's changing",
       "type": "record",
-      "claim": "The notice moves general availability rollout completion from the end of September to the end of October 2026.",
+      "claim": "The notice says general availability rollout completes by the end of October 2026.",
       "status": "supported",
       "source": "Message Center post MC1181769",
       "quote": "General availability: Rollout begins end of September and completes by end of October 2026 (previously end of September).",
@@ -394,7 +130,18 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice previously gave the end of September as the general availability completion window.",
+      "status": "supported",
+      "source": "Message Center post MC1181769",
+      "quote": "completes by end of October 2026 (previously end of September).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
       "where": "What's changing",
       "type": "record",
       "claim": "The supplied notice sets no act-by date.",
@@ -405,32 +152,54 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "What's changing; Open questions",
-      "type": "availability",
-      "claim": "The cited DLP scenario page still marks some features used in the scenario as preview.",
+      "n": 12,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The feature is available by default but requires administrator configuration to activate, supporting admin-opt-in and no new blocking in an untouched tenant.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security",
-      "quote": "Some features used in this scenario are in preview.",
+      "source": "Message Center post MC1181769",
+      "quote": "The feature will be available by default but requires configuration to activate.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Why it matters; Scope; controls[0].note; Governance controls",
-      "type": "applicability",
-      "claim": "Scan with Purview requires a matching Purview DLP policy targeting inline web traffic to inspect content or enforce audit or block decisions.",
+      "n": 13,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; Open questions",
+      "type": "record",
+      "claim": "The notice names Microsoft 365 tenants with E3 or E5 licences and administrators managing Purview DLP and Entra Global Secure Access.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
-      "quote": "Without a matching Purview DLP policy, the content policy can't inspect selected file or text content or enforce audit or block decisions.",
+      "source": "Message Center post MC1181769",
+      "quote": "Who is affected: Microsoft 365 tenants with E3 or E5 licenses; Admins managing Microsoft Purview DLP and Entra Global Secure Access.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
+      "n": 14,
+      "where": "Cost and licensing; front matter: licensing.notes; Open questions",
+      "type": "record",
+      "claim": "The notice says a global admin must activate Purview pay-as-you-go to enable the capability.",
+      "status": "supported",
+      "source": "Message Center post MC1181769",
+      "quote": "Your global admin must activate Purview pay-as-you-go to enable this capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The notice says no charges apply during public preview.",
+      "status": "supported",
+      "source": "Message Center post MC1181769",
+      "quote": "No charges will apply during public preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
       "where": "Risk assessment: Data exposure",
       "type": "record",
-      "claim": "The notice lists the integration as altering how existing customer data is processed.",
+      "claim": "The notice describes the integration as altering how existing customer data is processed.",
       "status": "supported",
       "source": "Message Center post MC1181769",
       "quote": "Alters how existing customer data is processed\nSensitive file traffic is inspected at the network layer before reaching unmanaged cloud apps.",
@@ -438,18 +207,205 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Risk assessment: Data exposure",
+      "n": 17,
+      "where": "title; summary; What's changing; Why it matters",
       "type": "behaviour",
-      "claim": "The documented maximum inspected file size is 3 MB.",
+      "claim": "Purview DLP integrates with Entra Global Secure Access Internet Access to inspect sensitive files and text in transit to unmanaged cloud and AI apps across browsers and applications.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
-      "quote": "Inline evaluation size limits: Microsoft Purview evaluates up to 4 MB of content for uploadText and downloadText, and files up to 3 MB for uploadFile and downloadFile.",
+      "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
+      "quote": "These controls apply to content shared from managed endpoints through browsers, applications, add-ins, APIs, and more.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
+      "n": 18,
+      "where": "What's changing; Risk assessment: Data exposure; Governance controls",
+      "type": "behaviour",
+      "claim": "The Scan with Purview content-rule action sends matching traffic to Purview for content inspection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
+      "quote": "Global Secure Access forwards matching upload traffic to Microsoft Purview for content inspection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "Purview evaluates the content against the DLP policy and returns a rule-action decision.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
+      "quote": "Purview evaluates the content against your DLP policy and returns a decision based on your DLP rule action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: impact",
+      "type": "behaviour",
+      "claim": "Global Secure Access enforces the Purview result, including blocking matching uploads or text.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
+      "quote": "Global Secure Access then enforces the result.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; controls[1].governs; Governance controls",
+      "type": "behaviour",
+      "claim": "The supported Purview network DLP actions are Audit only and Block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
+      "quote": "Actions - Network data security supports Audit only and Block actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Governance guidance; controls[1]",
+      "type": "behaviour",
+      "claim": "Purview policy creation provides an Inline web traffic scenario.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
+      "quote": "Select Inline web traffic.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Unmanaged cloud-app destinations include the Defender for Cloud Apps catalogue with over 35,000 discoverable apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
+      "quote": "Unmanaged cloud apps - Network data security collection policies support all the sources that are in the Microsoft Defender for Cloud Apps Cloud app catalog which includes over 35,000 discoverable cloud apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Adaptive app scopes include generative AI, cloud storage, collaboration, social network and webmail categories.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
+      "quote": "Adaptive app scopes - all apps in multiple categories including generative AI, cloud storage, collaboration, social network, and webmail.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Network DLP supports text sent to or shared with cloud or AI apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
+      "quote": "Text sent to or shared with cloud or AI app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Network DLP supports files uploaded to or shared with cloud or AI apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
+      "quote": "File uploaded to or shared with cloud or AI app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Network DLP supports text received from cloud or AI apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
+      "quote": "Text received from cloud or AI app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Network DLP supports files downloaded from cloud or AI apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
+      "quote": "File downloaded from cloud or AI app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "DLP matches appear in DLP alerts when alerts are configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
+      "quote": "If a data loss prevention policy is matched, and you have configured alerts, they will be available in DLP alerts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "Classified network data is available in activity explorer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
+      "quote": "After the data is classified, it's available in activity explorer",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Activity explorer can filter network data security events by enforcement plane network.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
+      "quote": "In activity explorer, you can filter events with enforcement plane set to network.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Open questions",
+      "type": "availability",
+      "claim": "The Learn DLP scenario page still marks some scenario features as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-ai-network-data-security",
+      "quote": "Some features used in this scenario are in preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Why it matters; Scope; controls[0].note",
+      "type": "applicability",
+      "claim": "Scan with Purview requires a matching Purview DLP policy targeting inline web traffic to inspect content or enforce audit or block.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
+      "quote": "Without a matching Purview DLP policy, the content policy can't inspect selected file or text content or enforce audit or block decisions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The documented maximum file size for Scan with Purview is 3 MB.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
+      "quote": "The maximum supported content size for Scan with Purview is 3 MB for both file and text content types.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "OCR is not yet supported for traffic sent to Purview.",
@@ -460,10 +416,10 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 36,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Files encoded within JSON may escape inspection.",
+      "claim": "Encoding a file within JSON may prevent inspection.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
       "quote": "Certain file transfer methods may prevent inspection, such as if an application encodes a file within a JSON, or the file is broken up into multiple encrypted requests.",
@@ -471,10 +427,10 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 37,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Files split across multiple encrypted requests may escape inspection.",
+      "claim": "Splitting a file across multiple encrypted requests may prevent inspection.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
       "quote": "Certain file transfer methods may prevent inspection, such as if an application encodes a file within a JSON, or the file is broken up into multiple encrypted requests.",
@@ -482,10 +438,10 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 38,
       "where": "Risk assessment: Data exposure; Open questions",
       "type": "behaviour",
-      "claim": "The content policy page states a 3 MB maximum for text, in contrast with the other cited page.",
+      "claim": "The content policy page gives a 3 MB text inspection limit.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
       "quote": "The maximum supported content size for Scan with Purview is 3 MB for both file and text content types.",
@@ -493,18 +449,18 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 39,
       "where": "Risk assessment: Data exposure; Open questions",
       "type": "behaviour",
-      "claim": "The network data security page states a 4 MB inline text evaluation limit.",
+      "claim": "The network data security page instead gives a 4 MB inline text evaluation limit.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
-      "quote": "Microsoft Purview evaluates up to 4 MB of content for uploadText and downloadText",
+      "quote": "Inline evaluation size limits: Microsoft Purview evaluates up to 4 MB of content for uploadText and downloadText, and files up to 3 MB for uploadFile and downloadFile.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 44,
+      "n": 40,
       "where": "Risk assessment: Data exposure; rationale: risk",
       "type": "behaviour",
       "claim": "Traffic is allowed fail-open when Purview inspection cannot complete, including oversized payloads or internal errors.",
@@ -515,7 +471,7 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 41,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "The PurviewStatus field in traffic logs identifies transactions that skipped inspection.",
@@ -526,7 +482,7 @@
       "fix": null
     },
     {
-      "n": 46,
+      "n": 42,
       "where": "Risk assessment: Security & identity",
       "type": "applicability",
       "claim": "Scan with Purview applies only to traffic associated with an Entra user identity.",
@@ -537,7 +493,18 @@
       "fix": null
     },
     {
-      "n": 47,
+      "n": 43,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Traffic that cannot be mapped to an Entra user identity is not sent to Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
+      "quote": "Traffic that cannot be mapped to an Entra user identity is not sent to Purview for inspection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
       "where": "Risk assessment: Security & identity",
       "type": "applicability",
       "claim": "Purview network data security policies do not apply to B2B guest users.",
@@ -548,21 +515,10 @@
       "fix": null
     },
     {
-      "n": 48,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "Traffic that cannot be mapped to an Entra user identity is not sent to Purview for inspection.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
-      "quote": "Traffic that cannot be mapped to an Entra user identity is not sent to Purview for inspection.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "Risk assessment: Security & identity; Scope; Governance controls",
+      "n": 45,
+      "where": "Risk assessment: Security & identity; Cost and licensing; Scope; Governance controls",
       "type": "applicability",
-      "claim": "TLS inspection policy configuration is a prerequisite.",
+      "claim": "TLS inspection configuration is a prerequisite.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
       "quote": "Configure the Transport Layer Security (TLS) inspection policy.",
@@ -570,10 +526,10 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 46,
       "where": "Risk assessment: Security & identity; Scope; Governance guidance",
-      "type": "availability",
-      "claim": "Learn requires installing and configuring the Global Secure Access client on Windows or macOS.",
+      "type": "applicability",
+      "claim": "The setup requires the Global Secure Access client on Windows or macOS.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
       "quote": "Install and configure the Global Secure Access client:\n1. Install the Global Secure Access client on Windows or macOS.",
@@ -581,10 +537,10 @@
       "fix": null
     },
     {
-      "n": 51,
+      "n": 47,
       "where": "Risk assessment: Security & identity; Governance guidance",
       "type": "applicability",
-      "claim": "The Global Secure Access client requires a device that is Entra ID joined or hybrid joined.",
+      "claim": "The client device must be Microsoft Entra ID joined or hybrid joined.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
       "quote": "The Global Secure Access client requires a device (or virtual machine) that is either Microsoft Entra ID joined or Microsoft Entra ID Hybrid joined.",
@@ -592,10 +548,10 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 48,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "UDP traffic, including QUIC, is not supported.",
+      "claim": "QUIC over UDP is not supported.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
       "quote": "User Datagram Protocol (UDP) traffic (that is, QUIC) isn't supported.",
@@ -603,7 +559,7 @@
       "fix": null
     },
     {
-      "n": 53,
+      "n": 49,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
       "claim": "Sites that support fallback can use TCP when QUIC cannot be established.",
@@ -614,21 +570,10 @@
       "fix": null
     },
     {
-      "n": 54,
-      "where": "Risk assessment: Autonomy & actions; rationale: impact",
-      "type": "behaviour",
-      "claim": "The Block action can stop matched text submissions or file uploads.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
-      "quote": "Test the configuration by attempting to upload or download files, or send text content, that matches the content policy conditions. Verify that the policy settings audit or block the actions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
+      "n": 50,
       "where": "Risk assessment: Autonomy & actions; Governance guidance",
       "type": "behaviour",
-      "claim": "The DLP policy can run in simulation mode before being turned on.",
+      "claim": "The DLP policy can run in simulation mode before activation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
       "quote": "On the Policy mode page, choose Turn the policy on immediately or run in simulation mode first to test.",
@@ -636,10 +581,10 @@
       "fix": null
     },
     {
-      "n": 56,
+      "n": 51,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Learn's ChatGPT test shows an error when Global Secure Access blocks a file upload.",
+      "claim": "The Learn example shows a blocked ChatGPT upload producing an error message.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
       "quote": "Verify that the upload is blocked. ChatGPT displays an error message because Global Secure Access prevented the file transfer.",
@@ -647,10 +592,10 @@
       "fix": null
     },
     {
-      "n": 57,
+      "n": 52,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Blocking HTML or JSON text types in basic content rules can unintentionally block normal web and API traffic.",
+      "claim": "Blocking HTML or JSON text in basic content rules can block normal web and API traffic.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
       "quote": "Web requests and responses commonly use HTML or JSON payloads, so blocking these text types can unintentionally block normal web and API traffic, including GET, POST, and PUT operations.",
@@ -658,10 +603,10 @@
       "fix": null
     },
     {
-      "n": 58,
+      "n": 53,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Requests are subject to API rate limiting.",
+      "claim": "Requests are subject to API rate limiting based on usage.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
       "quote": "Requests are subject to API rate limiting based on usage.",
@@ -669,10 +614,10 @@
       "fix": null
     },
     {
-      "n": 59,
+      "n": 54,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Traffic is blocked fail-closed when rate limits are exceeded.",
+      "claim": "Exceeding rate limits blocks traffic fail-closed.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
       "quote": "When limits are exceeded, traffic is automatically blocked (fail-closed).",
@@ -680,10 +625,10 @@
       "fix": null
     },
     {
-      "n": 60,
+      "n": 55,
       "where": "Risk assessment: Change & support; Governance guidance",
       "type": "applicability",
-      "claim": "The Purview rule actions should match the content policy's activities and content types.",
+      "claim": "Purview DLP rule actions should match the content types and activities configured in the Global Secure Access content policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
       "quote": "The actions you select in the Purview DLP rule should match the content types and activities you selected in the Global Secure Access content policy.",
@@ -691,10 +636,10 @@
       "fix": null
     },
     {
-      "n": 61,
+      "n": 56,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Policy distribution to the network solution can take up to 24 hours after integration is configured.",
+      "claim": "After integration configuration, policy distribution to the network solution can take up to 24 hours.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
       "quote": "After you configure the integration between Microsoft Purview and your network security solution, allow up to 24 hours for your policies to be distributed to the network security solution and for the first data to show up.",
@@ -702,10 +647,10 @@
       "fix": null
     },
     {
-      "n": 62,
+      "n": 57,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Data about a request can take up to 30 minutes to appear in the audit log and activity explorer after communication is established.",
+      "claim": "Once the services fully communicate, request data can take up to 30 minutes to appear in the audit log and activity explorer.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
       "quote": "Once the two services fully communicate with each other, it can take up to 30 minutes for data about a request from a client to a website or cloud app to appear in the audit log and activity explorer.",
@@ -713,10 +658,32 @@
       "fix": null
     },
     {
-      "n": 63,
-      "where": "Cost and licensing: Licence",
+      "n": 58,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
       "type": "licensing",
-      "claim": "Entra Internet Access is included in Microsoft Entra Suite and is also sold standalone.",
+      "claim": "The network data security page lists Microsoft 365 E7 per-seat licences as one licence combination for the Global Secure Access integration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
+      "quote": "Network data security with Microsoft Entra Global Secure Access requires one of the following license combinations:\n- Microsoft 365 E7 per-seat licenses",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "The alternative licence combination is Purview E5 or equivalent per-seat licences plus Entra Internet Access or equivalent licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
+      "quote": "Purview E5 (or equivalent) per-seat licenses and Entra Internet Access (or equivalent) licenses",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Entra Internet Access capabilities are included in Microsoft Entra Suite.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/global-secure-access/overview-what-is-global-secure-access",
       "quote": "Microsoft Entra Internet Access capabilities are included in the Microsoft Entra Suite license and standalone.",
@@ -724,8 +691,19 @@
       "fix": null
     },
     {
-      "n": 64,
-      "where": "Cost and licensing: Licence",
+      "n": 61,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Entra Internet Access is also sold standalone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/global-secure-access/overview-what-is-global-secure-access",
+      "quote": "Microsoft Entra Internet Access capabilities are included in the Microsoft Entra Suite license and standalone.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Cost and licensing",
       "type": "licensing",
       "claim": "Users need Microsoft Entra ID P1 or P2 to use Entra Internet Access.",
       "status": "supported",
@@ -735,8 +713,8 @@
       "fix": null
     },
     {
-      "n": 65,
-      "where": "Cost and licensing: Licence",
+      "n": 63,
+      "where": "Cost and licensing",
       "type": "licensing",
       "claim": "Most Global Secure Access services use a per-user licence model.",
       "status": "supported",
@@ -746,10 +724,10 @@
       "fix": null
     },
     {
-      "n": 66,
-      "where": "Cost and licensing: Licence",
+      "n": 64,
+      "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The content policy page lists a valid Entra Internet Access licence as a prerequisite.",
+      "claim": "The content policy page requires a valid Entra Internet Access licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
       "quote": "A valid Microsoft Entra Internet Access license.",
@@ -757,10 +735,10 @@
       "fix": null
     },
     {
-      "n": 67,
-      "where": "Cost and licensing: Licence",
+      "n": 65,
+      "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The content policy page lists a valid Purview licence for Scan with Purview inspection.",
+      "claim": "The content policy page requires a valid Purview licence for Scan with Purview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
       "quote": "A valid Microsoft Purview license, required for Scan with Purview inspection.",
@@ -768,8 +746,8 @@
       "fix": null
     },
     {
-      "n": 68,
-      "where": "Cost and licensing: Licence",
+      "n": 66,
+      "where": "Cost and licensing",
       "type": "licensing",
       "claim": "Basic content filtering can be used without a Purview licence.",
       "status": "supported",
@@ -779,10 +757,10 @@
       "fix": null
     },
     {
-      "n": 69,
-      "where": "Cost and licensing: Differences between sources; Open questions",
+      "n": 67,
+      "where": "Cost and licensing; Open questions",
       "type": "licensing",
-      "claim": "The content policy page's DLP note mentions a Microsoft 365 E5/A5 subscription or a Purview DLP add-on.",
+      "claim": "The DLP note on the content policy page mentions a Microsoft 365 E5/A5 subscription.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
       "quote": "You need a role such as DLP Compliance Management or Information Protection Admin, and a Microsoft 365 E5/A5 subscription or a Microsoft Purview DLP add-on.",
@@ -790,10 +768,43 @@
       "fix": null
     },
     {
+      "n": 68,
+      "where": "Cost and licensing; Open questions",
+      "type": "licensing",
+      "claim": "That DLP note alternatively mentions a Microsoft Purview DLP add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
+      "quote": "a Microsoft 365 E5/A5 subscription or a Microsoft Purview DLP add-on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "licensing",
+      "claim": "Learn says pay-as-you-go setup is not required for the Entra Global Secure Access integration, in contrast to the notice.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
+      "quote": "Pay-as-you-go is not required to be set up for integration with Microsoft Entra Global Secure Access.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 70,
-      "where": "Cost and licensing: Indirect costs",
+      "where": "Cost and licensing",
       "type": "cost",
-      "claim": "The Global Secure Access overview points to Microsoft Entra Plans & Pricing for licence costs.",
+      "claim": "Learn ties request-based network data security pay-as-you-go billing to non-Microsoft SASE and secure browser integrations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
+      "quote": "Network data security uses the request as unit of measure for pay-as-you-go billing purposes when using non-Microsoft SASE and secure browser integrations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The Global Secure Access overview points to Microsoft Entra Plans & Pricing for licensing costs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/global-secure-access/overview-what-is-global-secure-access",
       "quote": "For more information about licensing costs and the Microsoft Entra Suite, see Microsoft Entra Plans & Pricing.",
@@ -801,10 +812,43 @@
       "fix": null
     },
     {
-      "n": 71,
-      "where": "Scope: Who is affected; Scope: Prerequisites; Governance controls; rationale: impact",
+      "n": 72,
+      "where": "Scope; Governance guidance; controls[0].note",
+      "type": "role",
+      "claim": "The Global Secure Access Administrator role configures Global Secure Access settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
+      "quote": "A user with the Global Secure Access Administrator role in Microsoft Entra ID to configure Global Secure Access settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Scope; Governance guidance; controls[2].note",
+      "type": "role",
+      "claim": "The Conditional Access Administrator role configures Conditional Access policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
+      "quote": "A Conditional Access Administrator role to configure Conditional Access policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Scope; Governance guidance",
+      "type": "role",
+      "claim": "The Purview setup note names roles such as DLP Compliance Management or Information Protection Admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
+      "quote": "You need a role such as DLP Compliance Management or Information Protection Admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Scope; rationale: impact; Governance controls",
       "type": "applicability",
-      "claim": "The configuration requires enabling the Internet Access traffic forwarding profile with the appropriate user assignments.",
+      "claim": "Internet Access traffic forwarding must be enabled with the correct user assignments.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
       "quote": "Enable the Internet Access traffic forwarding profile and ensure correct user assignments.",
@@ -812,19 +856,19 @@
       "fix": null
     },
     {
-      "n": 72,
-      "where": "Scope: Who is affected; Governance controls; rationale: impact",
+      "n": 76,
+      "where": "Scope; rationale: impact; controls[2].governs; Governance controls; Governance guidance",
       "type": "applicability",
-      "claim": "Conditional Access applies the security profile to selected users and groups.",
+      "claim": "Conditional Access applies the Global Secure Access security profile to selected users and groups.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
-      "quote": "Select the users and groups to apply the policy to. ... Under Session, select Use Global Secure Access Security Profile and select the security profile you created.",
+      "quote": "Select the users and groups to apply the policy to.\nSet the Target resources to All internet resources with Global Secure Access.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 73,
-      "where": "Scope: Who is affected",
+      "n": 77,
+      "where": "Scope",
       "type": "applicability",
       "claim": "Network content filtering is supported only with the Internet access profile.",
       "status": "supported",
@@ -834,43 +878,10 @@
       "fix": null
     },
     {
-      "n": 74,
-      "where": "Scope: Roles; Governance guidance; controls[0].note",
-      "type": "role",
-      "claim": "Learn names Global Secure Access Administrator for configuring Global Secure Access settings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
-      "quote": "A user with the Global Secure Access Administrator role in Microsoft Entra ID to configure Global Secure Access settings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 75,
-      "where": "Scope: Roles; Governance guidance; controls[2].note",
-      "type": "role",
-      "claim": "Learn names Conditional Access Administrator for configuring Conditional Access policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
-      "quote": "A Conditional Access Administrator role to configure Conditional Access policies.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 76,
-      "where": "Scope: Roles; Governance guidance",
-      "type": "role",
-      "claim": "Learn names a role such as DLP Compliance Management or Information Protection Admin for Purview DLP.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
-      "quote": "You need a role such as DLP Compliance Management or Information Protection Admin",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 77,
-      "where": "Scope: Prerequisites; Governance controls",
+      "n": 78,
+      "where": "Scope; Governance controls",
       "type": "applicability",
-      "claim": "The content policy must be linked to a security profile and enforced through Conditional Access.",
+      "claim": "Configuration requires a content policy linked to a security profile and a Conditional Access policy enforcing that profile.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
       "quote": "To configure a content policy in Global Secure Access, complete the following steps:\n1. Create a content policy.\n2. Link the content policy to a security profile.\n3. Configure a Conditional Access policy.",
@@ -878,57 +889,46 @@
       "fix": null
     },
     {
-      "n": 78,
-      "where": "Governance guidance: Before rollout; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Application-specific destination coverage can depend on the exact upload URLs and related FQDNs.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
-      "quote": "For application-specific control, you can add the exact URLs and related FQDNs that the app uses. Use browser developer tools or network traffic analysis to identify the endpoints used during file upload, text submission, or other protected traffic.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 79,
       "where": "controls[0].ui; Governance controls: first row",
       "type": "admin-path",
-      "claim": "The Entra path to Scan with Purview is Global Secure Access > Secure > Content policies > + Create Policy > Rules > rule > Action > Scan with Purview.",
+      "claim": "The Entra path to Scan with Purview is Global Secure Access > Secure > Content policies > + Create Policy > Basics > Rules > rule > Action > Scan with Purview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
-      "quote": "On the Basics tab: ... Select Next. ... On the Rules tab: ... Add a new rule. ... Select the appropriate option for the Action menu: ... To use data policies configured in Microsoft Purview, select Scan with Purview.",
-      "severity": "minor",
-      "fix": "Include the intervening Basics wizard page in both copies of the path: Global Secure Access > Secure > Content policies > + Create Policy > Basics > Rules > rule > Action > Scan with Purview. The cited content-policy page supplies these steps."
+      "quote": "Browse to Global Secure Access > Secure > Content policies. ... Select + Create Policy. ... On the Basics tab: ... On the Rules tab: ... Add a new rule. ... Action menu: ... select Scan with Purview.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 80,
       "where": "controls[0].api; controls[0].note; Open questions",
       "type": "absence",
-      "claim": "No Microsoft Graph operation is documented for setting Scan with Purview in content policy rules at the time of writing.",
+      "claim": "A Microsoft Graph operation setting a content policy rule to Scan with Purview is not yet documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Global Secure Access content policy rules Scan with Purview Microsoft Graph API contentFilteringRule; \"Microsoft Graph\" \"content policies\" \"Purview\". Read content-policy guide, Graph Internet Access tutorial and beta filteringRule reference; no matching operation.",
+      "quote": "Searched: Global Secure Access content policy rules Microsoft Graph Scan with Purview contentFilteringRule API; graph contentPolicy Purview; networkaccess Scan with Purview. Opened content filtering, Graph Internet Access tutorial, filteringRule and network access API overview; no such operation.",
       "severity": null,
       "fix": null
     },
     {
       "n": 81,
-      "where": "controls[1].ui; Governance controls: second row",
+      "where": "controls[1].ui; controls[1].note; Governance controls: second row",
       "type": "admin-path",
-      "claim": "The printed Purview path reaches the rule action directly from Inline web traffic through Choose where to enforce the policy, without choosing Custom and Custom policy.",
+      "claim": "The printed Purview route reaches the audit or block control, with its remaining action steps supplied by the row note.",
       "status": "contradicted",
       "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
-      "quote": "Select Inline web traffic. ... Select Custom from the Categories list and then select Custom policy from the Regulations list.",
+      "quote": "Select Create or customize advanced DLP rules and select Next.\nSelect + Create rule and configure the rule: ... Under Actions, select + Add an action > Restrict browser and network activities.",
       "severity": "blocker",
-      "fix": "Replace the path in controls[1].ui and its rendered table row with: Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > Choose where to enforce the policy > Network and non-Microsoft secure browsers > Create or customize advanced DLP rules > + Create rule > Actions > + Add an action > Restrict browser and network activities. The cited content-policy guide requires the Custom and Custom policy choices and enabling Network and non-Microsoft secure browsers."
+      "fix": "Replace controls[1].ui.path with 'Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > Choose where to enforce the policy > Network and non-Microsoft secure browsers > Create or customize advanced DLP rules > + Create rule > Actions > + Add an action > Restrict browser and network activities'. Keep the note explaining that the relevant activities are set to Audit or Block there. The cited page documents the missing + Create rule step between the printed path and the note's action steps."
     },
     {
       "n": 82,
       "where": "controls[1].api; Governance controls: second row",
       "type": "absence",
-      "claim": "An automation operation that configures the inline network DLP rule's audit or block action is not yet documented.",
+      "claim": "No documented automation is provided for setting the inline network DLP rule's audit or block action.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Restrict browser and network activities\" \"PowerShell\"; \"network\" \"DLP\" \"AdvancedRule\" \"uploadText\". Read New-DlpComplianceRule and New-DlpCompliancePolicy references and network policy guides; no documented network audit/block operation.",
+      "quote": "Searched: New-DlpComplianceRule RestrictBrowserNetworkActivities Block network Inline web traffic; Set-DlpComplianceRule network browser. Read New-DlpComplianceRule reference and Set syntax; RestrictAccess example is for Application, not Network; no documented network action mapping.",
       "severity": null,
       "fix": null
     },
@@ -936,7 +936,7 @@
       "n": 83,
       "where": "controls[1].note; Governance controls: second row",
       "type": "command",
-      "claim": "New-DlpCompliancePolicy accepts Network for EnforcementPlanes, which selects an enforcement layer rather than a rule's audit or block action.",
+      "claim": "New-DlpCompliancePolicy accepts Network for EnforcementPlanes, which selects the policy enforcement layer rather than its audit or block rule action.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps",
       "quote": "The EnforcementPlanes parameter defines the layer where policy actions are run. ... Valid values are: ... Network",
@@ -945,9 +945,9 @@
     },
     {
       "n": 84,
-      "where": "controls[2].ui; Governance controls: third row; Governance guidance",
+      "where": "controls[2].ui; Governance controls: third row",
       "type": "admin-path",
-      "claim": "The Entra path is Identity > Protection > Conditional Access > + Create new policy > Session > Use Global Secure Access Security Profile.",
+      "claim": "The Entra route to the security-profile session control is Identity > Protection > Conditional Access > + Create new policy > Session > Use Global Secure Access Security Profile.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
       "quote": "Browse to Identity > Protection > Conditional Access. ... Select + Create new policy. ... Under Session, select Use Global Secure Access Security Profile and select the security profile you created.",
@@ -958,10 +958,10 @@
       "n": 85,
       "where": "controls[2].api; Governance controls: third row",
       "type": "command",
-      "claim": "POST /beta/identity/conditionalAccess/policies creates a Conditional Access policy that can apply a Global Secure Access security profile to users.",
+      "claim": "POST /beta/identity/conditionalAccess/policies creates a Conditional Access policy that can apply a Global Secure Access filtering profile.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-policies?view=graph-rest-beta",
-      "quote": "POST https://graph.microsoft.com/beta/identity/conditionalAccess/policies ... In the request body, supply a JSON representation of a conditionalAccessPolicy object.",
+      "quote": "POST https://graph.microsoft.com/beta/identity/conditionalAccess/policies",
       "severity": null,
       "fix": null
     },
@@ -980,10 +980,10 @@
       "n": 87,
       "where": "controls[2].note; Governance controls: third row",
       "type": "command",
-      "claim": "The request body selects and enables the profile through sessionControls.globalSecureAccessFilteringProfile.profileId and isEnabled.",
+      "claim": "The request body's sessionControls.globalSecureAccessFilteringProfile.profileId identifies the security profile.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/tutorial-entra-internet-access",
-      "quote": "\"sessionControls\": {\n        \"globalSecureAccessFilteringProfile\": {\n            \"profileId\": \"dddddddd-9999-0000-1111-eeeeeeeeeeee\",\n            \"isEnabled\": true\n        }\n    }",
+      "quote": "\"sessionControls\": {\n        \"globalSecureAccessFilteringProfile\": {\n            \"profileId\": \"dddddddd-9999-0000-1111-eeeeeeeeeeee\",\n            \"isEnabled\": true",
       "severity": null,
       "fix": null
     },
@@ -991,38 +991,60 @@
       "n": 88,
       "where": "controls[2].note; Governance controls: third row",
       "type": "command",
-      "claim": "conditions.users scopes the Conditional Access policy's users.",
+      "claim": "The request body's sessionControls.globalSecureAccessFilteringProfile.isEnabled enables the session control.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/tutorial-entra-internet-access",
-      "quote": "\"conditions\": { ... \"users\": {\n            \"includeUsers\": [\n                \"00aa00aa-bb11-cc22-dd33-44ee44ee44ee\"\n            ]\n        }\n    }",
+      "quote": "\"sessionControls\": {\n        \"globalSecureAccessFilteringProfile\": {\n            \"profileId\": \"dddddddd-9999-0000-1111-eeeeeeeeeeee\",\n            \"isEnabled\": true",
       "severity": null,
       "fix": null
     },
     {
       "n": 89,
-      "where": "Governance controls: prose following table",
-      "type": "applicability",
-      "claim": "The Purview DLP policy uses Network and non-Microsoft secure browsers as its enforcement location and Restrict browser and network activities as its rule action.",
+      "where": "controls[2].note; Governance controls: third row",
+      "type": "command",
+      "claim": "The Conditional Access request body's conditions.users scopes the users.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
-      "quote": "On the Choose where to enforce the policy page, ensure Network and non-Microsoft secure browsers is enabled ... Under Actions, select + Add an action > Restrict browser and network activities.",
+      "source": "https://learn.microsoft.com/graph/api/conditionalaccessroot-post-policies?view=graph-rest-beta",
+      "quote": "\"conditions\": { ... \"users\": {\n            \"includeGroups\": [\"ba8e7ded-8b0f-4836-ba06-8ff1ecc5c8ba\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 90,
-      "where": "Governance controls: troubleshooting and review",
+      "where": "front matter: licensing.model; summary",
+      "type": "licensing",
+      "claim": "The briefing classifies the feature as add-on licensing rather than an unconditionally included entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
+      "quote": "Network data security with Microsoft Entra Global Secure Access requires one of the following license combinations: ... Purview E5 (or equivalent) per-seat licenses and Entra Internet Access (or equivalent) licenses",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 91,
+      "where": "front matter: cost; rationale: cost; Cost and licensing",
+      "type": "cost",
+      "claim": "The medium cost rating reflects licence requirements for scoped users plus the administrator work described, rather than a documented consumption meter for this integration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-network-data-security-learn",
+      "quote": "Purview E5 (or equivalent) per-seat licenses and Entra Internet Access (or equivalent) licenses ... Pay-as-you-go is not required to be set up for integration with Microsoft Entra Global Secure Access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 92,
+      "where": "Governance guidance: Before rollout; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Global Secure Access traffic logs provide investigation data for network filtering.",
+      "claim": "Application-specific content policy coverage depends on the upload URLs and FQDNs configured as destinations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/entra/global-secure-access/how-to-network-content-filtering",
-      "quote": "To confirm the block, check the traffic logs in the Microsoft Entra admin center under Global Secure Access > Monitor > Traffic logs.",
+      "quote": "For application-specific control, you can add the exact URLs and related FQDNs that the app uses. Use browser developer tools or network traffic analysis to identify the endpoints used during file upload, text submission, or other protected traffic.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-19T04:09:54.634Z",
+    "at": "2026-11-19T05:19:21.165Z",
     "summary": {
       "links": 11,
       "unreachable": 0,
@@ -1101,6 +1123,7 @@
           "Secure",
           "Content policies",
           "+ Create Policy",
+          "Basics",
           "Rules",
           "Action",
           "Scan with Purview"
@@ -1118,12 +1141,11 @@
           "Policies",
           "+ Create policy",
           "Inline web traffic",
+          "Custom",
+          "Custom policy",
           "Choose where to enforce the policy",
-          "Create or customize advanced DLP rules",
-          "+ Create rule",
-          "Actions",
-          "+ Add an action",
-          "Restrict browser and network activities"
+          "Network and non-Microsoft secure browsers",
+          "Create or customize advanced DLP rules"
         ],
         "missing": []
       },
@@ -1166,6 +1188,12 @@
       "date": "2026-11-19",
       "status": "held",
       "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-19",
+      "status": "held",
+      "version": 3,
       "model": "gpt-6.1-sol"
     }
   ]

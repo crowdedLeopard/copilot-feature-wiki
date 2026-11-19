@@ -65,15 +65,17 @@ changes:
     note: "Corrected after the independent check: the automation cell now cites Update-M365TeamsApp instead of saying no automation is documented, and keeps the caution that its -IsBlocked examples both describe unblocking."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 52 statements confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 48 statements confirmed"
 version: 3
 verification:
   status: "verified"
-  date: "2026-11-17"
+  date: "2026-11-19"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 52
+  claims: 48
+  confirmed: 48
   unconfirmed: 0
   contradicted: 0
   attempts: 0

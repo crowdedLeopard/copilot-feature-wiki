@@ -97,15 +97,17 @@ changes:
     note: "Corrected after the check: cost is now variable and licensing mixed, because row summaries run on AI Builder, which consumes AI Builder credits or Copilot Credits."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 57 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
 version: 4
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-19"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 57
+  claims: 60
+  confirmed: 60
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -198,9 +200,9 @@ cost: Variable. Row summaries rely on AI Builder to execute prompts; AI Builder 
 impact: Medium. Users of enabled model-driven apps in government environments see summaries on forms and views.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: targetDate; summary; What's changing / record: General availability is listed for November CY2026. | Found: "targetDate": "November CY2026"; "status": "In development" | Fix: Replace the summary with: "Microsoft plans AI-generated row summaries for model-driven apps in GCC and GCC High, targeting November CY2026 in the weekly release channel from version 2611.1." Change "The roadmap lists general availability for November CY2026" to "The roadmap targets general availability for November CY2026".
-- [supported, minor] controls[1].note; Governance controls table; Governance controls prose / behaviour: The maker configuration applies to all main forms and views for the table. | Found: When you configure the row summary, it applies to all views and main forms for the table. | Fix: Add after the table-wide scope statement: "The configuration guide describes table-wide scope; the row-summary FAQ instead describes configuring and hiding summaries on specific forms (https://learn.microsoft.com/power-apps/maker/common/faq-record-summaries)." | Source: https://learn.microsoft.com/power-apps/maker/data-platform/configure-form-row-summary
+- [supported, minor] front matter: targetDate; summary; What's changing / record: General availability is listed for November CY2026. | Found: "status": "In development", "targetDate": "November CY2026" | Fix: Replace the summary with: "Microsoft plans AI-generated row summaries for model-driven apps in GCC and GCC High, targeting November CY2026 in the weekly release channel from version 2611.1." Replace "The roadmap lists general availability for November CY2026" with "The roadmap targets general availability for November CY2026".
+- [supported, minor] controls[1].note; Governance controls table and prose / behaviour: The maker configuration applies to all main forms and views for the table. | Found: When you configure the row summary, it applies to all views and main forms for the table. | Fix: After the table-wide scope statement, add: "The configuration guide describes table-wide scope; the row-summary FAQ instead describes configuring and hiding summaries on specific forms (https://learn.microsoft.com/power-apps/maker/common/faq-record-summaries)." | Source: https://learn.microsoft.com/power-apps/maker/data-platform/configure-form-row-summary
 -->

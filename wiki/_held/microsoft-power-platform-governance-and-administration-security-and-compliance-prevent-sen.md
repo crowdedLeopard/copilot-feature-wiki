@@ -84,18 +84,20 @@ changes:
     note: "Corrected after verification: the Audit Summary row now names the model-driven app as its surface, the Enable SAS Logging in Purview path is complete, and the action is now act-now."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 50 statements confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 48 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-19"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 50
+  claims: 48
+  confirmed: 46
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "683f0a0607bf71a92f35c7b810b3cf82"
 ---
 
@@ -183,4 +185,11 @@ Changing audit settings needs the System Administrator or System Customizer role
 risk: Medium. Less sensitive data reaches Purview, but monitoring or compliance rules that compare old and new values in Purview stop working, according to Microsoft's notice.
 cost: Low. The sources state no licence or meter for this change; the known cost is admin time to rework Purview-based monitoring. Licensing is not yet published.
 impact: Medium. Security, compliance and Power Platform admins who search Purview or run pipelines on Dataverse audit events notice; the sources do not describe makers or end users as affected.
+-->
+
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: The path for controlling whether environment auditing is on ends at Manage > Environments > environment > Settings > Audit and logs > Audit settings. | Found: Select Global Audit Settings to open the Microsoft Dynamics 365 system settings. From there, turn on Start Auditing and select the entities you want to audit. | Fix: Narrow row 1's governs text to 'Whether Dataverse auditing is on for an environment'. Replace its UI path with 'Manage > Environments > environment > Settings > Audit and logs > Audit settings > Global Audit Settings > Start Auditing', keeping the existing docs URL. Apply this to front matter and the rendered table. In Governance guidance, remove 'and Read logs' from the instruction that refers to row 1, since the corrected row covers environment auditing. | Source: https://learn.microsoft.com/power-platform/admin/manage-dataverse-auditing
+- [contradicted, blocker] controls[0].api; Governance controls table / command: The organizations GET query is the automation counterpart for turning environment auditing and Read logs on or off. | Found: Retrieve organization settings Use the following queries to retrieve your organization settings. Change organization settings Change the column values in the organization table to change how auditing works for the environment. | Fix: For the row narrowed to environment auditing in the UI finding, replace the call with 'PATCH [Organization URI]/api/data/v9.2/organizations([Organization ID])'. Replace 'The call reads the organization settings' with 'The request body sets isauditenabled to enable or disable environment auditing.' Keep https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure as docs, and update the rendered table too. Do not describe this operation as setting Read logs. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/auditing/configure
 -->

@@ -82,18 +82,20 @@ changes:
     note: "Corrected after the independent check: removed unsupported claims about transcript storage, speech processing, microphone permissions and shutdown behaviour; fixed the app-level control path and API."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 46 statements not yet confirmed"
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 47 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-19"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 46
+  claims: 47
   confirmed: 46
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "ad7e5c4792c83c5c4860ea9e6b3696cf"
 ---
 
@@ -177,8 +179,10 @@ cost: Low. Learn says form fill assistance needs a Power Apps premium or Dynamic
 impact: High. The roadmap lists users as enabled by default, so many users of enabled apps may see the microphone.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[1].governs; Governance controls: second row / applicability: The displayed toolbar UI setting and FormFileUploadEnabled API govern both Smart paste and the form fill toolbar. | Found: Smart paste (FormPredictSmartPasteEnabled) and form fill assist toolbar (FormFileUploadEnabled) app settings | Fix: Change controls[1].governs and the corresponding rendered row heading to 'Form fill assist toolbar for an app'. Keep the existing UI path and API, which configure the toolbar, and the note identifying the separate Smart paste setting. Do not present this call as changing Smart paste. | Source: https://learn.microsoft.com/power-apps/user/form-filling-assistance
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] summary; title; What's changing; Scope / record: Power Apps form fill assistance in model-driven apps accepts speech as an input source. | Found: We’re expanding form fill assistance in Power Apps to use speech as a source, providing users a more natural way to fill forms. | Fix: Replace the summary's first sentence with: 'Microsoft plans to let users in model-driven apps record speech with a microphone icon and use the transcript as a source for form fields.' The roadmap status remains In development.
+- [supported, minor] summary; title; What's changing; Scope / record: Power Apps form fill assistance in model-driven apps accepts speech as an input source. | Found: We’re expanding form fill assistance in Power Apps to use speech as a source, providing users a more natural way to fill forms. | Fix: Replace the summary's first sentence with 'Microsoft plans to let users in model-driven apps record speech with a microphone icon and use the transcript as a source for form fields.' The roadmap status is still In development.
 -->

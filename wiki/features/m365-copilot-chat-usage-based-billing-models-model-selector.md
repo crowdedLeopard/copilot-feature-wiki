@@ -52,8 +52,8 @@ sources:
   - title: "Claude models from Anthropic in Microsoft Online Services"
     url: "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor"
     kind: "learn"
-  - title: "List spendingPolicies"
-    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-list"
+  - title: "Update spendingPolicy"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update"
     kind: "learn"
   - title: "Which users may use Anthropic (Claude) models (Microsoft 365 admin center)"
     url: "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#opt-in-to-use-claude-models"
@@ -69,9 +69,9 @@ controls:
       docs: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits"
     api:
       kind: "graph"
-      call: "GET /beta/copilot/costManagement/spendingPolicies"
-      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-list"
-    note: "The Graph call lists policies; it does not set limits or alerts. Beta APIs can change and are unsupported in production."
+      call: "PATCH /beta/copilot/costManagement/spendingPolicies/{id}"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update"
+    note: "The request body sets periodLimit and perUserLimit for policy and per-user monthly limits; this call does not configure alerts. Beta APIs can change and are unsupported in production."
   - governs: "Who can request access to usage-based billing experiences"
     scope: "tenant"
     ui:
@@ -90,7 +90,7 @@ controls:
     note: "Needs the AI Administrator or Global Administrator role. Applies to Anthropic models, not to GPT-6 Astra."
 confidence: "medium"
 created: "2026-11-13"
-updated: "2026-11-17"
+updated: "2026-11-19"
 roadmapModified: "2026-11-04T23:59:50"
 changes:
   - date: "2026-11-13"
@@ -109,19 +109,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 89 statements not yet confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 85 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-19"
+    note: "Corrected after verification: the spending-policy API row now points to the PATCH update call (policy and per-user limits, not alerts), and the dashboard note reports credits and local-currency cost estimates as the Learn pages state them."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 98 statements not yet confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 85
-  confirmed: 84
+  claims: 98
+  confirmed: 98
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "2fc1a36986c8c6e7ec002c3b312fa128"
+  contradicted: 0
+  attempts: 0
+  hash: "2a444d0257af283b6aed8a003b054e60"
 ---
 
 ## What's changing
@@ -154,7 +158,7 @@ Service owners should treat this as a budget feature first: decide who gets UBB 
 **Change & support**
 - In-product credit requests are planned for after the initial rollout (MC1519122), so users who hit a limit need an interim route. Microsoft Learn describes requests that do not match a custom request policy as continuing through the Microsoft credit request service, where they can be resolved in the Microsoft 365 admin center.
 - Users without UBB enabled and credits cannot use these models, and how the selector presents them is not established. Expect help desk contacts during preview.
-- Dashboard totals are point-in-time and expressed in credits, not currency; finance needs a translation to spend.
+- The comparison article says dashboard totals and exports may be point-in-time views and describes the admin center view as credits-only, while the monitoring article documents estimated cost in local currency, including negotiated rates; those estimates might not match the bill. The monitoring article distinguishes point-in-time exports from dashboard views that continue retrieving live data.
 
 ## Cost and licensing
 
@@ -193,7 +197,7 @@ Service owners should treat this as a budget feature first: decide who gets UBB 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Usage-based billing, spending policies, limits and alerts</strong><br><small>Tenant</small><br><small class="controls__note">The Graph call lists policies; it does not set limits or alerts. Beta APIs can change and are unsupported in production.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET /beta/copilot/costManagement/spendingPolicies</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-list" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Usage-based billing, spending policies, limits and alerts</strong><br><small>Tenant</small><br><small class="controls__note">The request body sets periodLimit and perUserLimit for policy and per-user monthly limits; this call does not configure alerts. Beta APIs can change and are unsupported in production.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Who can request access to usage-based billing experiences</strong><br><small>Tenant</small><br><small class="controls__note">Needs the Global administrator role. Changes can take up to 24 hours to apply. It does not complete usage-based billing setup by itself.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › All Settings › Access to usage-based billing experiences <a href="https://learn.microsoft.com/copilot/implement/request-access-usage-based-billing-experiences" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which users may use Anthropic (Claude) models</strong><br><small>User</small><br><small class="controls__note">Needs the AI Administrator or Global Administrator role. Applies to Anthropic models, not to GPT-6 Astra.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › AI providers operating as Microsoft subprocessors › Available subprocessors for your organization › Anthropic › Choose who can access Anthropic models for Copilot and generative AI experiences <a href="https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor#opt-in-to-use-claude-models" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
@@ -201,7 +205,7 @@ Service owners should treat this as a budget feature first: decide who gets UBB 
 
 Spending policies set access and limits; they don't allocate credits, which come from the billing method. Microsoft documents a separate discovery setting, **AI experiences enabled by usage-based billing**, as deprecated: it controlled visibility, while Cost Management controls access and spending. The access-request setting in the second row controls who can request a spending policy and does not complete UBB setup by itself, so choosing **No users** is not a way to hide or block the models.
 
-The Graph call in the first row lists spending policies only; it does not configure limits or alerts. The `/beta` APIs are subject to change and are unsupported in production. The Anthropic opt-in applies to Claude models and is also covered in [Copilot and Anthropic apps](https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps#manage-the-setting-in-the-microsoft-365-admin-center).
+The request body of the Graph call in the first row sets periodLimit and perUserLimit for policy and per-user monthly limits; this call does not configure alerts. Beta APIs can change and are unsupported in production. The Anthropic opt-in applies to Claude models and is also covered in [Copilot and Anthropic apps](https://learn.microsoft.com/copilot/implement/copilot-anthropic-apps#manage-the-setting-in-the-microsoft-365-admin-center).
 
 Administrators work through credit requests under Microsoft 365 admin center > Copilot > Cost Management > Overview > Top Actions > View requests, which opens the Credit requests page, described in [Monitor Copilot Credit spending](https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending#viewing-and-managing-credit-requests). MC1519122 says in-product requests are planned for after the initial rollout.
 
@@ -220,11 +224,10 @@ cost: Variable. The meter is Copilot Credits, consumed per interaction under usa
 impact: Medium. Licensed users with usage-based billing enabled and credits gain extra model choices. Microsoft says users have no access to these models unless it is enabled; how the selector appears to other users is not established.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls table / command: GET /beta/copilot/costManagement/spendingPolicies is the automation supplied for the row governing usage-based billing, spending policies, limits and alerts. | Found: Get a list of spendingPolicy objects. ... Don't supply a request body for this method. | Fix: The GET exists but cannot be the configuration equivalent, even with its read-only disclaimer. Replace controls[0].api.call with 'PATCH /beta/copilot/costManagement/spendingPolicies/{id}' and its docs with https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update. Replace the row note and the matching Graph paragraph with: 'The request body sets periodLimit and perUserLimit for policy and per-user monthly limits; this call does not configure alerts. Beta APIs can change and are unsupported in production.' Keep the row's broader UI coverage; do not imply this one call configures every setting in that UI. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-list
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Change & support / cost: Dashboard totals are expressed in credits rather than currency. | Found: Everything in this view is expressed in Copilot Credits, not currency. | Fix: Replace 'expressed in credits, not currency; finance needs a translation to spend' with 'described as credits-only in the comparison article, while the monitoring article also documents estimated cost in local currency, including negotiated rates; those estimates might not match the bill'. Cite https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending alongside the comparison article. That article states: 'Cost: The estimated cost of your AI usage in local currency, including negotiated rates.' | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views
-- [supported, minor] Risk assessment: Change & support / behaviour: Dashboard totals are point-in-time views. | Found: Dashboard totals and exports might be point-in-time views and can refresh at different intervals. | Fix: Replace 'Dashboard totals are point-in-time' with 'The comparison article says dashboard totals and exports may be point-in-time views; the monitoring article distinguishes point-in-time exports from dashboard views that continue retrieving live data'. Cite https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending, which states: 'Exported reports are generated as a point-in-time snapshot, while dashboard views continue to retrieve live data.' | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-compare-dashboard-views
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Spending policies, limits and alerts are managed at Microsoft 365 admin center > Copilot > Cost Management > Configuration. | Found: In the Microsoft 365 admin center, go to Copilot > Cost Management. ... Select the Configuration tab. ... Select the spending policy you want to edit. ... The spending policy details fly-out opens, where you can modify its settings. | Fix: Extend controls[0].ui.path and the matching table path to 'Copilot > Cost Management > Configuration > policy'. The cited page says to select the spending policy before modifying its settings. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Request eligibility is configured at Copilot > Settings > All Settings > Access to usage-based billing experiences. | Found: Go to Copilot > Settings > All Settings. ... Select Access to usage-based billing experiences. ... In the fly-out pane, under Choose who can request a spending policy | Fix: Extend controls[1].ui.path and the matching table path to 'Copilot > Settings > All Settings > Access to usage-based billing experiences > Choose who can request a spending policy', adding the omitted setting heading. | Source: https://learn.microsoft.com/copilot/implement/request-access-usage-based-billing-experiences
+- [supported, minor] What's changing; Governance controls: spending-policy applicability / applicability: Cost Management spending policies govern UBB models in Copilot Chat and Office. | Found: Services managed by usage-based billing in the Microsoft admin center now include: ... Models with usage-based billing in Copilot Chat and Office | Fix: Add https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits to sources; its services table explicitly lists 'Models with usage-based billing in Copilot Chat and Office'. | Source: https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits
 -->
