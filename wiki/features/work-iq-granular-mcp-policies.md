@@ -28,6 +28,9 @@ sources:
   - title: "Policy governance for Work IQ MCP"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp"
     kind: "learn"
+  - title: "Work IQ in Copilot Studio (Microsoft Copilot)"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq"
+    kind: "learn"
   - title: "Work IQ overview"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/"
     kind: "learn"
@@ -71,19 +74,23 @@ changes:
     note: "Corrected licensing to consumption through Copilot Credits (Work IQ API page), removed the unsupported tool count and dropped the After rollout cost-review step."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 63 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-19"
+    note: "Corrected the workload-restriction statement to refer to the planned tenant-level granular policy controls, and attributed the mutation default to the MCP policy page alongside the Copilot Studio page."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 67 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-19"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 62
+  claims: 67
+  confirmed: 67
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "4350fa70d1cc9a7b357cb1e5873c1e25"
+  contradicted: 0
+  attempts: 0
+  hash: "ef5d426d4c546f4e6bc697f1c7f80173"
 ---
 
 ## What's changing
@@ -92,7 +99,7 @@ The roadmap item describes granular policies that restrict MCP access to trusted
 
 Microsoft Learn has no page for the granular policies yet, so what they will contain is the roadmap's description only. Learn does document the policy layer for Work IQ MCP as it stands: a Rego-based layer (Rego is the policy language of Open Policy Agent) that evaluates each MCP tool request and can allow or deny it. The page says that in the initial release this control is tenant-level, that tenant administrators can turn the policy on or off in the Microsoft 365 admin center, and that more granular controls and policy templates might be added later.
 
-The same page says per-user, per-app, per-agent and scenario-specific policy templates are not part of the initial policy control surface, and that by default mutation operations (create, update, delete and actions such as sending email) are not allowed. Microsoft has not said whether this roadmap item delivers those later controls, or what "trusted platforms" means.
+The same page says per-user, per-app, per-agent and scenario-specific policy templates are not part of the initial policy control surface, and that by default mutation operations (create, update, delete and actions such as sending email) are not allowed. The Copilot Studio Work IQ page describes write operations as on by default, subject to organisational permissions and policies; verify the effective behaviour in your client and tenant. Microsoft has not said whether this roadmap item delivers those later controls, or what "trusted platforms" means.
 
 ## Why it matters
 
@@ -105,7 +112,7 @@ Microsoft has not stated what happens on arrival, so plan on today's behaviour c
 **Data exposure**
 
 - Work IQ MCP tools reach Microsoft 365 data such as mail, calendar, files, people, chat and sites. Learn says policy can't grant access beyond what the signed-in user is already allowed to access, so the policy narrows access and does not widen it.
-- Learn lists data access scope and data retrieval limits (bounded collection reads) among the default guardrails. Controls that restrict by platform or workload are not documented yet, so today's boundary is the tenant policy plus each user's own permissions.
+- Learn lists data access scope and data retrieval limits (bounded collection reads) among the default guardrails. The planned tenant-level granular policy controls that restrict by platform or workload are not yet documented.
 
 **Security & identity**
 
@@ -114,7 +121,7 @@ Microsoft has not stated what happens on arrival, so plan on today's behaviour c
 
 **Autonomy & actions**
 
-- Mutation operations are not allowed by default, and administrators can enable supported mutation scenarios through tenant policy. Because the documented control is tenant-level, confirm whether enabling a write scenario can be limited to particular agents or clients once granular policies are documented.
+- The Work IQ MCP policy page says mutation operations are not allowed by default, and administrators can enable supported mutation scenarios through tenant policy. Because the documented control is tenant-level, confirm whether enabling a write scenario can be limited to particular agents or clients once granular policies are documented.
 - The roadmap's "supported operations" wording suggests per-operation limits. Their form is not documented.
 
 **Change & support**
@@ -184,12 +191,4 @@ Learn's migration guidance also refers to blocking Work IQ MCP tenant-wide, whic
 risk: Medium. Work IQ MCP tools reach mail, calendar, files, people, chat and sites, and the only documented policy control is a tenant-wide on/off switch. Microsoft has not stated the default for the planned granular policies.
 cost: Low. No charge for the policies themselves is published. Work IQ API usage is billed by usage and draws on Copilot Credits, so the known cost is admin time plus the existing Work IQ meter.
 impact: Medium. Administrators configure it, but developers and makers whose agents call Work IQ MCP would see requests denied by policy. End users notice only through agents that stop working.
--->
-
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure, second bullet / absence: Controls that restrict by platform or workload are not documented yet, leaving tenant policy and user permissions as today's boundary. | Found: You can remove workloads your agent doesn't need from its Work IQ configuration. ... The agent no longer uses the workloads you remove through Work IQ. | Fix: Replace the sentence beginning 'Controls that restrict by platform or workload' with 'The planned tenant-level granular policy controls that restrict by platform or workload are not yet documented.' The existing Copilot Studio maker workload selection is a different control, so do not describe workload restrictions generally as undocumented. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Autonomy & actions; Governance guidance: At rollout / default: Mutation operations are blocked by default. | Found: By default, mutation operations aren't allowed for safety. | Fix: Attribute the default explicitly to the MCP policy page and add: 'The Copilot Studio Work IQ page describes write operations as on by default, subject to organizational permissions and policies; verify the effective behavior in your client and tenant.' Cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/add-work-iq, which states 'Write operations are on by default. Your organization's permissions and policies still apply.' | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp
 -->

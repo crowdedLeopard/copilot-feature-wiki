@@ -31,6 +31,9 @@ sources:
   - title: "License options for Microsoft Copilot"
     url: "https://learn.microsoft.com/microsoft-365/copilot/microsoft-365-copilot-licensing"
     kind: "learn"
+  - title: "Microsoft Copilot overview"
+    url: "https://learn.microsoft.com/copilot/plan/copilot-overview"
+    kind: "learn"
   - title: "Understand Microsoft U.S. government cloud environments for Microsoft 365 and Microsoft Copilot"
     url: "https://learn.microsoft.com/copilot/plan/gov-overview"
     kind: "learn"
@@ -62,7 +65,7 @@ controls:
       kind: "powershell"
       call: "Set-MgUserLicense -UserId <user> -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()"
       docs: "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell"
-    note: "Requires at least License Administrator or User Administrator. Governs Copilot access as a whole, not this capability separately."
+    note: "Requires at least License Administrator or User Administrator. Governs access to the licensed Microsoft 365 Copilot (Premium) features, not this capability separately; removing the add-on does not remove all Basic Copilot access."
 confidence: "medium"
 created: "2026-11-19"
 updated: "2026-11-19"
@@ -72,19 +75,23 @@ changes:
     note: "New briefing: the roadmap lists the capability as launched for DoD, while the service description still shows it as not available there."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 56 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-19"
+    note: "Corrected: Copilot licence assignment now described as governing the licensed Premium features, not all Copilot access; licence assign and remove steps fixed; brand-group checklist item removed."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 53
+  claims: 65
+  confirmed: 65
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "2bbb5af024891845feea1ef0eb7b9431"
+  contradicted: 0
+  attempts: 0
+  hash: "c6d67a5490105669ca89bd76925a7af9"
 ---
 
 ## What's changing
@@ -108,7 +115,7 @@ The main practical risk is a mismatch of expectations: the roadmap says Launched
 - The brand kit governance page lists an organisation assets library as a prerequisite for brand kits. Whether brand kits work in DoD is an open question.
 
 **Security & identity**
-- Access follows the Microsoft 365 Copilot licence, which the service description says is required for this feature. Licence assignment is the control to use, and it governs Copilot access as a whole, not this capability on its own.
+- Access follows the Microsoft 365 Copilot licence, which the service description says is required for this feature. Licence assignment is the control to use, and it governs access to the licensed Microsoft 365 Copilot (Premium) features, not this capability on its own; removing the add-on does not remove all Basic Copilot access ([Microsoft Copilot overview](https://learn.microsoft.com/copilot/plan/copilot-overview)).
 - The roadmap item describes no change to sign-in or permissions.
 
 **Autonomy & actions**
@@ -136,11 +143,10 @@ The licence options page lists eligible plans and no price, and neither it nor t
 
 ### Before rollout
 - Check the Microsoft Copilot service description and Message center for the DoD status of Edit with Copilot, since it conflicts with the roadmap's Launched status.
-- List which DoD users hold the Microsoft 365 Copilot add-on licence in the Microsoft 365 admin center (Billing > Licenses).
-- Decide whether brand kits are in scope and who would hold the brand manager and personal brand kit security groups, once availability in DoD is confirmed.
+- Review assignments in the Microsoft 365 admin center under Billing > Licenses, then select the Microsoft 365 Copilot product. For group-based assignments, inspect the group's members under Teams & groups > Active teams & groups to identify the users.
 
 ### At rollout
-- Assign or remove the Microsoft 365 Copilot licence for pilot users with the Assign licenses panel or Set-MgUserLicense; a License Administrator or User Administrator can do this.
+- Assign the Microsoft 365 Copilot licence for pilot users through Billing > Licenses > product > Assign licenses. To remove it, go to Billing > Licenses, select the product and the users or groups, then select Unassign licenses. Set-MgUserLicense can also assign or remove licences; a License Administrator or User Administrator can manage the assignments.
 - Tell the pilot group to review every Copilot-generated or Copilot-edited slide before a deck is shared.
 
 ### After rollout
@@ -154,11 +160,11 @@ The licence options page lists eligible plans and no price, and neither it nor t
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which users hold the Microsoft 365 Copilot licence this capability requires</strong><br><small>User</small><br><small class="controls__note">Requires at least License Administrator or User Administrator. Governs Copilot access as a whole, not this capability separately.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Licenses › product › Assign licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgUserLicense -UserId &lt;user&gt; -AddLicenses @{SkuId = &quot;&lt;SkuId&gt;&quot;} -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users hold the Microsoft 365 Copilot licence this capability requires</strong><br><small>User</small><br><small class="controls__note">Requires at least License Administrator or User Administrator. Governs access to the licensed Microsoft 365 Copilot (Premium) features, not this capability separately; removing the add-on does not remove all Basic Copilot access.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Licenses › product › Assign licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgUserLicense -UserId &lt;user&gt; -AddLicenses @{SkuId = &quot;&lt;SkuId&gt;&quot;} -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-Licence assignment is the control read for this capability. The service description requires a Microsoft 365 Copilot licence for it, so unlicensed users cannot be given it by other means. It governs Copilot access as a whole, not editing in PowerPoint on its own.
+Licence assignment is the control read for this capability. The service description requires a Microsoft 365 Copilot licence for it. It governs access to the licensed Microsoft 365 Copilot (Premium) features, not editing in PowerPoint on its own; removing the add-on does not remove all Basic Copilot access ([Microsoft Copilot overview](https://learn.microsoft.com/copilot/plan/copilot-overview)).
 
 The brand kit governance page describes two independent policies: the Enterprise Brand Manager policy, which controls who can publish, edit and manage official brand kits, and the Restrict brand kit creation policy, which controls who can create and edit personal brand kits. To publish a personal brand kit as an official one, a user must satisfy both. Whether they apply in DoD is an open question.
 
@@ -176,13 +182,8 @@ cost: Medium. Microsoft documents Microsoft Copilot as an add-on licence in DoD 
 impact: Medium. Licensed Copilot users in DoD tenants who build or revise decks will notice it; users without the add-on licence will not.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].note; Risk assessment: Security & identity; Governance controls / applicability: Assigning or removing the Microsoft 365 Copilot licence governs Copilot access as a whole. | Found: Microsoft 365 Copilot (Basic) refers to users without the Copilot add-on license, but who have access to Copilot capabilities inside apps (for example, Word or Excel). | Fix: Replace 'Governs Copilot access as a whole, not this capability separately' and equivalent prose with 'Governs access to the licensed Microsoft 365 Copilot (Premium) features, not this capability separately; removing the add-on does not remove all Basic Copilot access.' Cite https://learn.microsoft.com/copilot/plan/copilot-overview alongside the service description. | Source: https://learn.microsoft.com/copilot/plan/copilot-overview#copilot-features-in-microsoft-365-apps
-- [contradicted, blocker] Governance guidance: At rollout / admin-path: The Assign licenses panel can be used to assign or remove the Microsoft 365 Copilot licence. | Found: Unassign licenses by using the Licenses page ... Select a product. ... Select the check boxes of the users or groups for whom you want to unassign licenses. ... Select Unassign licenses. | Fix: Replace the rollout bullet with 'Assign the Microsoft 365 Copilot licence for pilot users through Billing > Licenses > product > Assign licenses. To remove it, go to Billing > Licenses, select the product and the users or groups, then select Unassign licenses. Set-MgUserLicense can also assign or remove licences; a License Administrator or User Administrator can manage the assignments.' The cited assignment article documents these UI routes; the cited PowerShell article shows both operations. | Source: https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Autonomy & actions / behaviour: A prompt can make presentation-wide design changes and edit content across multiple slides. | Found: Ask it to reformat your presentation to match the branded template style, applying consistent colors, fonts, and layouts throughout ... "Update slides 4-6 for a UK audience." | Fix: Cite https://support.microsoft.com/topic/008f17aa-8e5f-4cda-ba6c-0588000bdad7 for the multi-slide editing statement, and phrase it as general PowerPoint behaviour rather than confirmed DoD availability: 'The PowerPoint support page describes presentation-wide restyling and edits across several slides; confirm this behaviour in the DoD pilot.' | Source: https://support.microsoft.com/topic/008f17aa-8e5f-4cda-ba6c-0588000bdad7
-- [supported, minor] Governance guidance: Before rollout / admin-path: Billing > Licenses is where administrators can list the users holding the Copilot add-on. | Found: Group-based assignments If a license is assigned to a group, the group name appears in the list instead of individual users. To see which users are receiving the license through that group, go to the Teams & groups > Active teams & groups page to view its members. | Fix: Replace the inventory bullet with 'Review assignments in the Microsoft 365 admin center under Billing > Licenses, then select the Microsoft 365 Copilot product. For group-based assignments, inspect the group's members under Teams & groups > Active teams & groups to identify the users.' | Source: https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: Every control the governance checklist asks readers to take stock of is represented in the controls table. | Found: Decide whether brand kits are in scope and who would hold the brand manager and personal brand kit security groups, once availability in DoD is confirmed. ... The controls table has only the Copilot licence assignment row. | Fix: Remove the Before rollout bullet asking readers to decide membership of the brand manager and personal brand kit security groups. The table contains no corresponding control; keep the existing DoD brand kit availability question without adding rows.
+- [supported, minor] Risk assessment: Autonomy & actions / behaviour: A single prompt can make presentation-wide or multi-slide changes to content, layouts and template styling. | Found: Complex reasoning and audience adaptation: "Update slides 4-6 for a UK audience." Ask it to reformat your presentation to match the branded template style, applying consistent colors, fonts, and layouts throughout | Fix: Cite https://support.microsoft.com/topic/008f17aa-8e5f-4cda-ba6c-0588000bdad7 after the sentence about a single prompt changing multiple slides, and add that page to sources. Keep the existing caveat that DoD availability needs confirmation. | Source: https://support.microsoft.com/topic/008f17aa-8e5f-4cda-ba6c-0588000bdad7
 -->

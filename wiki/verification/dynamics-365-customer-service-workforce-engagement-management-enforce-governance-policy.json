@@ -1,0 +1,844 @@
+{
+  "slug": "dynamics-365-customer-service-workforce-engagement-management-enforce-governance-policy",
+  "roadmapId": 578067,
+  "title": "Dynamics 365 Customer Service: governance policies check outgoing emails before they are sent",
+  "status": "held",
+  "date": "2026-11-19",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-19",
+    "reasons": [
+      "1 blocking finding (claim 21)"
+    ]
+  },
+  "counts": {
+    "claims": 64,
+    "confirmed": 62,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: the policy automation row presents a record-creation endpoint as the way to configure content checks and enforcement strictness, which its reference does not document. The roadmap facts, prerequisites and main product behaviour are supported; the page also correctly highlights Microsoft's conflicting descriptions of whether a sender can override a block.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap item is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview as release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The record associates the item with Microsoft Copilot (Microsoft 365) and Dynamics 365 Customer Service.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Customer Service\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-23T22:46:02.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-23T22:46:02\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap says admins, makers or marketers enable the feature for end users.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enabled by admins/makers/marketers for end users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap describes consistent application across email engagement channels.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Governance policies are applied consistently across email engagement channels and seamlessly embedded within agent workflows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Why it matters; Scope; rationale: risk and impact",
+      "type": "behaviour",
+      "claim": "Governance checks outgoing emails drafted by representatives or AI agents against active policies before sending.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-governance-policies",
+      "quote": "The system checks each email drafted by a service representative or an AI agent against active policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Flag noncompliant content records policy violations without warning the sender.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies",
+      "quote": "Flag noncompliant content: Silently records policy violations for auditing purposes. No warning is displayed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Warn noncompliant content lets the sender proceed despite a policy violation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies",
+      "quote": "Warn noncompliant content: Displays a warning when policy violations are detected, but allows the email to be sent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; What's changing; Risk assessment: Autonomy & actions; Open questions",
+      "type": "behaviour",
+      "claim": "The use page says Block prevents sending until violations are resolved, subject to the source discrepancy explicitly reported in Open questions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies",
+      "quote": "Block noncompliant content: Prevents the email from being sent until the policy violations are resolved.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Governance is a capability within Quality management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies",
+      "quote": "Governance is a capability within Quality management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Quality Evaluation Agent powers governance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/use/overview-quality-management",
+      "quote": "Quality Evaluation Agent powers the quality evaluation, governance, and coaching and development capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "Governance applies only to Dynamics 365 Customer Service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/use/overview-quality-management",
+      "quote": "Governance, which helps enforce compliance policies for outgoing customer communications. ... This feature applies only to Dynamics 365 Customer Service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The governance toggle is in Copilot Service admin center at Customer Support > Quality management > Governance > Manage > Governance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-governance-policies",
+      "quote": "in Customer Support > select Quality management. ... select Manage for Governance. ... On the Governance page, turn on the toggle for governance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0].api; controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "PATCH /msdyn_governanceagent_statuses(msdyn_governanceagent_statusid) can update the writable msdyn_isenabled governance-enabled property.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_governanceagent_status",
+      "quote": "PATCH /msdyn_governanceagent_statuses(msdyn_governanceagent_statusid) ... msdyn_isenabled ... column indicating whether governance agent is enabled or not",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[1].ui; What's changing; Governance controls",
+      "type": "admin-path",
+      "claim": "Policy enforcement is configured in Copilot Service workspace at Service > Governance > New policy > Content to check > How strictly to enforce.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies",
+      "quote": "If you select New policy, then on the Add a policy dialog, configure the following settings: ... In the Content to check section ... How strictly to enforce",
+      "severity": "minor",
+      "fix": "Include the intervening dialog heading in the structured and rendered path: Service > Governance > New policy > Add a policy > Content to check > How strictly to enforce."
+    },
+    {
+      "n": 21,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "POST /msdyn_guardrail_rules configures which policies exist, what they check and how strictly they enforce.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_guardrail_rule",
+      "quote": "Create ... POST /msdyn_guardrail_rules ... msdyn_active_versionid: Look up fetching specific version of guardrail rule",
+      "severity": "blocker",
+      "fix": "Narrow controls[1].governs and its rendered label to 'Creation of governance policy records'. Replace its note with 'The request body sets msdyn_name to name the new policy record. This Create operation does not document configuring content checks or enforcement strictness; use the documented UI for those settings.' Keep POST /msdyn_guardrail_rules and its existing reference URL. Do not present creation of the policy record as automation for its content checks and enforcement."
+    },
+    {
+      "n": 22,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Administrators need the CSR Manager security role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-governance-policies",
+      "quote": "Administrators need the CSR Manager security role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Representatives need the Customer Service Representative security role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-governance-policies",
+      "quote": "Service representatives need the Customer Service Representative security role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Security & identity; Governance guidance",
+      "type": "role",
+      "claim": "Custom administrator roles require Read, Create, Write, Delete, Append, Appendto and Assign at Global level on the six listed governance tables.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-governance-policies",
+      "quote": "For custom roles assigned to administrators, grant the Read, Create, Write, Delete, Append, Appendto, and Assign permissions at Global access level for the following tables:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Security & identity; Governance guidance",
+      "type": "role",
+      "claim": "Custom representative roles require Global Read on msdyn_governanceagent_status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-governance-policies",
+      "quote": "For custom roles assigned to service representatives, grant the Read privilege at Global access level for the msdyn_governanceagent_status table.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "summary; licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Setting up Microsoft Copilot credits is a governance prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-governance-policies",
+      "quote": "Set up Microsoft Copilot credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure; Scope; Governance guidance; rationale: risk",
+      "type": "applicability",
+      "claim": "The governance prerequisites include consent for potential cross-region data movement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-governance-policies",
+      "quote": "Provide consent for potential data movement across regions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Scope; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "AI agents must be enabled for the Dynamics 365 environment in Power Platform admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-governance-policies",
+      "quote": "Enable AI agents for your Dynamics 365 environment in Power Platform admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Governance is admin-opt-in and does not start enforcing without administrator enablement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/configure-governance-email-send",
+      "quote": "Prerequisites ... Your administrator enabled guardrail validation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is consumption, based on the documented Copilot credit consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies",
+      "quote": "Each prompt generation consumes Microsoft Copilot credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "Variable cost is supported by the Copilot Credits meter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies",
+      "quote": "Each prompt generation consumes Microsoft Copilot credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The governance pages name no separate governance licence.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"governance\" \"Customer Service\" license governance policies; \"Customer Service\" \"governance policies\" licensing guide. Opened Configure governance policies, Use governance policies and Manage consumption-based billing and capacity; no separate governance licence stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No specific credit rate for evaluating an email at send time was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"governance\" \"email\" \"Copilot Credits\" rate Dynamics; \"Quality Evaluation Agent\" \"governance\" \"credits\" billing. Opened both governance guides, Manage consumption-based billing and capacity, and Copilot Studio Billing rates and management; no governance email-check rate found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Written by can target Customer service representatives or Autonomous AI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies",
+      "quote": "Written by: Select Customer service representatives or Autonomous AI.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Attachment evaluation supports .docx, .pdf and .txt text content and ignores images.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies",
+      "quote": "The system evaluates only text-based content; it ignores image content in attachments. Supported file formats are .docx, .pdf, and .txt.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Evaluating attachments in addition to the email body is optional.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies",
+      "quote": "Attached files: Select the checkbox if you want to evaluate file attachments in addition to the email body.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Policy strictness offers Low, Medium, High and Very High.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies",
+      "quote": "In the Policy strictness section, select from the following options: ... Low ... Medium ... High ... Very High",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing",
+      "type": "default",
+      "claim": "Medium is the default policy strictness.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies",
+      "quote": "Medium: Default setting. Applies a balanced level of enforcement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Very High strictness includes minor deviations from policy definitions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies",
+      "quote": "Very High: Applies the most aggressive enforcement, including minor deviations from policy definitions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Default system policies include Email Template Adherence, Groundedness and Profanity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies",
+      "quote": "Select New policy or select any of the default system policies, such as Email Template Adherence, Groundedness, or Profanity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "A simulation using organization records can select up to 30 email records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies",
+      "quote": "If you select Organization Records, add the conditions to select the email records to test. You can select up to 30 email records.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A simulation can use an Excel upload.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies",
+      "quote": "Data source: Select Excel Upload or Organization Records.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "What's changing; Why it matters; Governance guidance",
+      "type": "admin-path",
+      "claim": "Detection logs can be reviewed on the Policy flags/blocks log tab of the Governance page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies",
+      "quote": "View logs on the Policy flags/blocks log tab on the Governance page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Violation reasoning and logs remain in English even when the policy name is configured in another language.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies",
+      "quote": "When the policy logs a violation, the policy name appears in the configured language. The violation reasoning and violation logs continue to appear in English.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Conditions can restrict a policy to a subset of emails.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies",
+      "quote": "Conditions for content: Add conditions to select a subset of emails that meet the conditions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Without conditions, the system evaluates all emails in the check.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies",
+      "quote": "If you don’t select any conditions, the system evaluates all emails in the check.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Microsoft says the feature should not be used to make employment decisions about employees.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-governance-policies",
+      "quote": "It isn't intended to be used, and shouldn't be used, to make decisions that affect the employment of an employee or group of employees",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Customers must notify users that their communications with representatives might be monitored, recorded or stored.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-governance-policies",
+      "quote": "customers must adequately notify users that their communications with customer service representatives (service representatives or representatives) might be monitored, recorded, or stored.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Customers must obtain user consent before using the feature where applicable law requires it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-governance-policies",
+      "quote": "As required by applicable laws, customers must also obtain consent from users before they use this feature with them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "licensing.notes; Cost and licensing; Governance guidance; rationale: cost",
+      "type": "cost",
+      "claim": "Each prompt generation consumes Microsoft Copilot credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies",
+      "quote": "Each prompt generation consumes Microsoft Copilot credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Policy authors review generated prompts and refine policy behaviour by updating instructions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies",
+      "quote": "You must review the generated prompt. To refine the policy behavior, update the prompt instructions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Selected Dynamics 365 Copilot and agent capabilities use consumption-based billing with Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
+      "quote": "Selected Copilot and agent capabilities in Dynamics 365 use consumption-based billing, charging per use. These capabilities use Copilot Credits for AI interactions and tasks",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing; Governance guidance",
+      "type": "cost",
+      "claim": "Prepaid capacity and pay-as-you-go can coexist on the Dynamics 365 environment, with prepaid capacity consumed first.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
+      "quote": "Both billing models can be used on the Dynamics 365 environment. Prepaid capacity is consumed first.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "Replacing the default Send button with a custom command stops built-in governance validation from running automatically.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/configure-governance-email-send",
+      "quote": "If you replace the default Send button with a custom command, the built-in governance validation doesn't run automatically before an email is sent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Change & support; Governance guidance; Governance controls",
+      "type": "command",
+      "claim": "Custom Send code must call validateForSend before sending to integrate governance validation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/configure-governance-email-send",
+      "quote": "Always call validateForSend from your custom command before sending the email.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "A customized Customer Service workspace app may need its Governance site-map entry manually added using Power Apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies",
+      "quote": "When you're using a customized Customer Service workspace app, the Governance option might not appear in the site map. You need to manually add the Governance entry to the site map by using the Power Apps designer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "The Governance site-map entry instructions grant Write on msdyn_guardrail_rule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies",
+      "quote": "After you create the page, open the right-side panel and add the following table privileges: ... Table: msdyn_guardrail_rule ... Permission: Write",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[0].note; Governance controls",
+      "type": "absence",
+      "claim": "The configuration guide does not explicitly say that its UI toggle writes msdyn_isenabled.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"msdyn_isenabled\" \"governance\" toggle. Opened Configure governance policies and the msdyn_governanceagent_status reference: the guide gives the toggle and the reference describes the enabled property, but neither explicitly maps the UI write.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[1].note; Governance controls",
+      "type": "absence",
+      "claim": "The cited rule reference does not map a column to the UI enforcement or Policy strictness settings.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"msdyn_guardrail_rule_version\" enforcement strictness. Read writable columns in msdyn_guardrail_rule and msdyn_guardrail_rule_version: the latter documents an LLM decision threshold, but neither maps the named UI settings to columns.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The policy evaluation underlying strictness uses AI judgement rather than only a deterministic rule match.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_guardrail_rule_version",
+      "quote": "Score threshold for violation determination. LLM score less than threshold equals violated, score greater than or equal to threshold equals pass.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_guardrail_rule_version to sources as support for the AI-judgement statement."
+    },
+    {
+      "n": 61,
+      "where": "Open questions",
+      "type": "behaviour",
+      "claim": "The custom Send documentation says a user can override a block and send the email.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/configure-governance-email-send",
+      "quote": "Block the email and display a dialog that explains which policies are violated. The user can override the restriction and send the email, or cancel.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Open questions",
+      "type": "behaviour",
+      "claim": "The custom Send documentation says a block override is recorded.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/develop/configure-governance-email-send",
+      "quote": "The override is recorded.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance guidance: Before rollout, notification bullet",
+      "type": "behaviour",
+      "claim": "The checklist attributes notification of both representatives and customers to Microsoft's requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-governance-policies",
+      "quote": "customers must adequately notify users ... In addition, customers are encouraged to have a mechanism in place to inform their service representatives",
+      "severity": "minor",
+      "fix": "Replace the bullet with 'Agree with legal and HR how users are notified that communications may be monitored, as Microsoft requires; Microsoft also encourages informing service representatives.' Microsoft requires user notification but only encourages representative notification."
+    },
+    {
+      "n": 64,
+      "where": "Governance guidance; Governance controls",
+      "type": "consistency",
+      "claim": "All controls the governance checklist tells readers to configure or check are represented in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm the CSR Manager role holders ... Set up Microsoft Copilot credits ... provide consent ... enable AI agents ... Check every custom Send command ... The table contains only governance enablement and policy authoring.",
+      "severity": "minor",
+      "fix": "The Before rollout steps for security roles/table privileges, Copilot credits setup, cross-region consent and AI-agent enablement, and the At rollout custom Send validation step have no corresponding control rows. Keep these as prerequisite or developer notes rather than table-backed configuration checklist steps; do not add rows as part of this correction."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-19T09:20:10.688Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=578067",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-governance-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/customer-service/develop/configure-governance-email-send",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/contact-center/use/overview-quality-management",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_governanceagent_status",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_guardrail_rule",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether governance is turned on for the environment",
+        "docs": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-governance-policies",
+        "reachable": true,
+        "segments": [
+          "Customer Support",
+          "Quality management",
+          "Governance",
+          "Manage",
+          "Governance"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether governance is turned on for the environment",
+        "docs": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_governanceagent_status",
+        "reachable": true,
+        "token": "PATCH /msdyn_governanceagent_statuses(msdyn_governanceagent_statusid)",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which governance policies exist, what they check and how strictly they enforce",
+        "docs": "https://learn.microsoft.com/dynamics365/customer-service/use/use-governance-policies",
+        "reachable": true,
+        "segments": [
+          "Service",
+          "Governance",
+          "New policy",
+          "Content to check",
+          "How strictly to enforce"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which governance policies exist, what they check and how strictly they enforce",
+        "docs": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_guardrail_rule",
+        "reachable": true,
+        "token": "POST /msdyn_guardrail_rules",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

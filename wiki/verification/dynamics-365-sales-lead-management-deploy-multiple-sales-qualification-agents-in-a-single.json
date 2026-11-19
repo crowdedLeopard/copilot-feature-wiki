@@ -1,0 +1,1101 @@
+{
+  "slug": "dynamics-365-sales-lead-management-deploy-multiple-sales-qualification-agents-in-a-single",
+  "roadmapId": 578076,
+  "title": "Dynamics 365 Sales: run multiple Sales Qualification Agents in one environment",
+  "status": "held",
+  "date": "2026-11-19",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-19",
+    "reasons": [
+      "1 blocking finding (claim 83)"
+    ]
+  },
+  "counts": {
+    "claims": 85,
+    "confirmed": 82,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 1,
+    "minor": 3
+  },
+  "summary": "Hold: the briefing presents seller assignment rules as a way to configure routing between agents, but Microsoft documents those rules as handing leads to sellers or teams. The stop guidance also needs to disclose conflicting Microsoft instructions about leads already in progress.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap describes multiple Sales Qualification Agents in one environment aligned to products, regions or teams.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Multi-agent configuration in Sales Qualification Agents enables sales organizations to deploy agents aligned to distinct product lines, regions, or sales teams",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Previously one agent served every lead.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"Sales Qualification Agent\" \"one agent\" \"environment\"'; opened configure-sales-qualification-agent and sales-qualification-agent-selection-criteria. They describe selected leads, not a historical requirement for one agent to serve every lead.",
+      "severity": "major",
+      "fix": "Remove 'instead of one agent for every lead'. The roadmap describes multiple agents but does not state that historical restriction."
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "The agent researches leads.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-qualification-agent",
+      "quote": "Research-only mode: Automates the research aspect of lead qualification.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Research and engage mode autonomously sends outreach emails.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/monitor-leads-by-sales-qualification-agent",
+      "quote": "In this mode, the agent autonomously sends outreach emails to leads and engages with them based on their responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "Risk assessment",
+      "type": "behaviour",
+      "claim": "Research and engage mode sends follow-up emails.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-qualification-agent",
+      "quote": "Send follow-up emails and clarify questions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "Risk assessment",
+      "type": "behaviour",
+      "claim": "Research and engage mode evaluates lead fit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-qualification-agent",
+      "quote": "the agent autonomously engages with each lead, follows up, and evaluates fit based on your seller hand-off rules.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; Scope; rationale: impact",
+      "type": "behaviour",
+      "claim": "Promising leads are handed over to sellers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-qualification-agent",
+      "quote": "Leads that demonstrate purchase intent and meet most of your criteria are handed over to sellers for qualification",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "Risk assessment",
+      "type": "behaviour",
+      "claim": "The agent can disqualify leads.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-qualification-agent",
+      "quote": "while those that don’t are disqualified",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "No Learn page describing running several Sales Qualification Agents was found as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Sales Qualification Agent multiple agents single environment priority fallback routing'; opened setup, overview, selection criteria, import/export and monitoring pages. Results describe individual agents or different agent types, not multi-SQA operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Risk assessment",
+      "type": "record",
+      "claim": "Each agent has its own ideal customer profile, knowledge sources, templates and consent settings.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Each agent operates with its own ideal customer profile, knowledge sources, templates, and consent settings",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Incoming leads are evaluated against selection criteria and assigned by configured priority.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The system evaluates incoming leads against agent selection criteria and assigns ownership based on configured priority",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "A fallback agent handles leads matching no specialised criteria.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "A fallback agent handles leads that don't match any specialized criteria",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Only one agent engages a lead at a time.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Only one agent engages a lead at any time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The system hands a lead to another agent with context when its product or segment interest changes.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When a lead's interest shifts to another product or segment, the system hands off with full context to the appropriate agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Agents can share company-level knowledge while retaining specialised sources.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Agents can leverage common company-level knowledge while maintaining their own specialized sources",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "A centralised dashboard enables supervisors to monitor activity across agents.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "A centralized dashboard enables supervisors to monitor agent activity",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap dashboard enables lead reassignment.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "reassign leads",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap dashboard tracks the qualification journey across agents.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "track the full qualification journey across all agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The audience is Enabled by admins/makers/marketers for end users.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enabled by admins/makers/marketers for end users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The agent segment priority is always low and one above the default segment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-qualification-agent-selection-criteria",
+      "quote": "The priority of the segment created for the agent is always low and one above the default segment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Why it matters; Governance guidance",
+      "type": "behaviour",
+      "claim": "Leads overlapping seller work-assignment segments go to sellers rather than the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-qualification-agent-selection-criteria",
+      "quote": "ensure that the segment you're creating for the agent doesn't overlap with the segments used for work assignment to sellers. If there's an overlap, leads are assigned to sellers instead of the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The import page refers to agent profiles and recommends one solution per profile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/import-export-agent-solutions",
+      "quote": "Create one solution per agent profile to ensure each profile can be packaged and deployed independently.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Neither the selection criteria page nor the import page describes routing between several agents.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Dynamics 365 Sales Qualification Agent assignment rules route leads between agents'; read sales-qualification-agent-selection-criteria and import-export-agent-solutions in full. Neither describes inter-agent routing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: status; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The preview date is August CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"August CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The target date is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: releasePhase; What's changing; Open questions",
+      "type": "record",
+      "claim": "General Availability and Preview are both listed without a behaviour-by-phase breakdown.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\", \"Preview\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed cloud is Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Web\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The record gives no GCC, GCC High or DoD availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The record does not say whether additional agents roll out gradually.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Multi-agent configuration in Sales Qualification Agents enables sales organizations to deploy agents aligned to distinct product lines, regions, or sales teams",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: defaultState; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The capability requires an administrator to configure and start agents before use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/configure-sales-qualification-agent",
+      "quote": "As an admin, you need to set up the Sales Qualification Agent before your sellers can use it",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "No source says existing single-agent setups change without action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Sales Qualification Agent multiple agents single environment priority fallback routing'; read roadmap, setup, overview and import/export. None states automatic conversion or changes to existing single-agent setups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "summary; Why it matters; Cost and licensing; licensing.notes",
+      "type": "cost",
+      "claim": "The Sales Qualification Agent uses tenant capacity to process leads and generate insights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-qualification-agent",
+      "quote": "The Sales Qualification Agent uses the capacity assigned to your tenant to process leads and generate insights.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure",
+      "type": "admin-path",
+      "claim": "Common prerequisites require accepting data movement under Generative AI features > Move data across regions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/prerequisites-for-all-agents",
+      "quote": "Select Accept terms to open the Power Platform admin center and allow data movement under Generative AI features > Move data across regions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Common Sales-agent prerequisites are a one-time setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/prerequisites-for-all-agents",
+      "quote": "This is a one-time setup.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "A SharePoint or OneDrive knowledge-source connector is required when using internal documents there for enrichment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/configure-sales-qualification-agent",
+      "quote": "Knowledge source with SharePoint or OneDrive | Required only if the agent is configured to use internal documents on SharePoint or OneDrive for enrichment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Agent setup requires an Azure application for app-based authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/configure-requirements-for-sqa-agent",
+      "quote": "You need an Azure AD application to securely authenticate the agent’s Dataverse Application User, so it can act independently through app-based access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "A Dataverse application user lets the agent act independently, send emails and own records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/configure-requirements-for-sqa-agent",
+      "quote": "Create a Dataverse app user so the agent can act independently, like send emails, own records, and more.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The application user is assigned the AISalesPerson role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/configure-requirements-for-sqa-agent",
+      "quote": "Create an app user in Dataverse and assign AISalesPerson role",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "A new lead's owner must not be the application user used to create the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/sales-qualification-agent-selection-criteria",
+      "quote": "When new leads are created, ensure that the lead owner is not the app user used to create the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Stopping an agent retains its configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/manage-sales-qualification-agent",
+      "quote": "Stopping the agent doesn’t delete it and retains the configuration settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The manage page says new and in-process leads are not processed after stopping.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/manage-sales-qualification-agent",
+      "quote": "However, new leads and leads that are in process will not be processed.",
+      "severity": "minor",
+      "fix": "Append: 'Microsoft documentation conflicts here: the setup page says existing leads already in orchestration continue until seller handover or supervisor review, so do not assume Stop agent immediately halts in-flight outreach.' Cite https://learn.microsoft.com/dynamics365/sales/configure-sales-qualification-agent#considerations."
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Previously processed leads remain available after stopping.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/manage-sales-qualification-agent",
+      "quote": "Leads that are already processed will continue to be available in the application.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[1].note; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Deleting a configured and started agent requires Microsoft Support.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/manage-sales-qualification-agent",
+      "quote": "Once you configure and start an agent, it can’t be deleted. If you want to delete the agent, contact Microsoft Support.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "New leads are processed under updated agent settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/manage-sales-qualification-agent",
+      "quote": "The updated agent is active, and new leads are processed based on the updated settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Leads already processed under previous configurations are not reprocessed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/manage-sales-qualification-agent",
+      "quote": "leads that are already processed based on the previous agent configurations will not be reprocessed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Change & support",
+      "type": "cost",
+      "claim": "Message capacity is shared with Dynamics 365 Sales environments and other tenant services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing",
+      "quote": "Message capacity on the Power Platform environment is consumed by Dynamics 365 Sales environments and other Microsoft services on the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The setup prerequisites require a Copilot Studio license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/configure-sales-qualification-agent",
+      "quote": "You have a Copilot Studio license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "front matter: licensing.model; cost; rationale: cost",
+      "type": "licensing",
+      "claim": "Consumption is the licensing model and variable is the cost classification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing",
+      "quote": "Selected Copilot and agent capabilities in Dynamics 365 Sales use consumption-based billing, charging per use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "summary; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The cited Dynamics 365 Sales billing page uses Microsoft Copilot Studio messages as the billing unit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing",
+      "quote": "These capabilities use Microsoft Copilot Studio messages for AI interactions and tasks, like retrieving information and responding to prompts. Messages are the billing units that measure usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Prepaid capacity uses Copilot Studio message packs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing",
+      "quote": "The prepaid capacity model uses Copilot Studio message pack subscriptions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Pay-as-you-go is another supported billing model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing",
+      "quote": "Copilot and agent capabilities in Dynamics 365 Sales support two billing models: prepaid capacity and pay-as-you-go.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Both billing models require linking the Sales environment to a Power Platform environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing",
+      "quote": "Both models require that you link your Dynamics 365 Sales environment to a Power Platform environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Prepaid capacity is consumed first.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing",
+      "quote": "Prepaid capacity is consumed first.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing; Governance guidance",
+      "type": "cost",
+      "claim": "The billing page points to the Power Platform Licensing Guide for billing and rates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing",
+      "quote": "Learn more about billing and rates in Power Platform Licensing Guide.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing; Governance guidance",
+      "type": "cost",
+      "claim": "The billing page says depleted quota makes the AI capability unavailable until capacity is added.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing",
+      "quote": "When the quota is depleted, the AI capability is unavailable until more capacity is added.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Low or depleted quota produces in-app notifications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing",
+      "quote": "If your organization's quota is low or depleted, users receive in-app notifications about the status and necessary actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The billing page directs pay-as-you-go users to Microsoft Cost Management in Azure for usage and budgets.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing",
+      "quote": "For pay-as-you-go, use Microsoft Cost Management in the Azure portal to view detailed usage and adjust spending limits (budgets) to free up more capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Cost and licensing: Indirect costs",
+      "type": "behaviour",
+      "claim": "Research and engage requires a shared mailbox.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/configure-requirements-for-sqa-agent",
+      "quote": "Create a shared mailbox | Research and engage | The agent mailbox that you use to send emails and follow-ups in compliance with your org’s policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Cost and licensing; Scope",
+      "type": "behaviour",
+      "claim": "Research and engage requires server-side synchronisation between Dynamics 365 Sales and Exchange.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/configure-sales-qualification-agent",
+      "quote": "If server-side synchronization isn't set up, the agent doesn't generate outreach emails or engage with leads.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate message rate or license for multiple Sales Qualification Agents was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Sales Qualification Agent multiple agents licensing message rate additional agents' and '\"Sales Qualification Agent\" \"multiple\" \"license\" \"billing\"'; opened overview, setup and consumption-based billing. No multi-agent-specific license or rate found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Scope; Governance guidance",
+      "type": "role",
+      "claim": "Common Sales-agent setup requires the Power Platform administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/prerequisites-for-all-agents",
+      "quote": "Ensure that you have the Power Platform administrator role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Scope; Governance guidance",
+      "type": "role",
+      "claim": "The setup page requires admin permissions in Dynamics 365 Sales.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/configure-sales-qualification-agent",
+      "quote": "You have admin permissions in Dynamics 365 Sales.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Creating the Dataverse application user requires the System Administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/configure-requirements-for-sqa-agent",
+      "quote": "Ensure that you have the System Administrator role for your Dynamics 365 organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Modern UI for Sales Hub is a prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/configure-sales-qualification-agent",
+      "quote": "You turned on the modern UI for the Sales Hub app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Scope",
+      "type": "applicability",
+      "claim": "Data policies must allow the connectors listed on the setup page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/configure-sales-qualification-agent",
+      "quote": "You modified Data policies to allow the following connectors:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "In-app notifications must be enabled for seller and supervisor handover notifications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/configure-sales-qualification-agent",
+      "quote": "You enabled in-app notifications to notify sellers and supervisors about lead handovers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance guidance: Before rollout",
+      "type": "default",
+      "claim": "The general Sales AI capabilities setting is on by default in all environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub",
+      "quote": "By default, the AI capabilities are turned on in all environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Agents are created through Agent manager in the AI hub, with Research and optional Engage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/open-sales-qualification-agent-settings",
+      "quote": "Research is selected by default and is non-editable. You can add engage capabilities to the agent by selecting Engage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft recommends small-scale testing before production testing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/configure-sales-qualification-agent",
+      "quote": "We recommend that you test the agent's functionality on a smaller scale before testing it for your production scenario.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Power Platform admin center > Copilot > Settings > Dynamics 365 Sales > AI Agents reaches the availability setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub",
+      "quote": "On the Settings page, under Dynamics 365 Sales, select one of the following AI capabilities that you want to turn on",
+      "severity": "minor",
+      "fix": "Complete the path in front matter and the rendered row as 'Copilot > Settings > Dynamics 365 Sales > AI Agents > environment or environment group > Edit setting > On'. The current path reaches the setting panel but omits editing and the switch."
+    },
+    {
+      "n": 73,
+      "where": "controls[0].api",
+      "type": "absence",
+      "claim": "No automation operation was found for the Dynamics 365 Sales AI Agents availability setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Power Platform API PowerShell Dynamics 365 Sales AI Agents setting environment enable disable'; opened copilot-hub and prerequisites-for-all-agents. Results document this UI setting, not an API or PowerShell property that sets it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The printed Sales Hub route through App Settings, AI hub and Agent manager reaches Stop agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/manage-sales-qualification-agent",
+      "quote": "Go to the agent settings page. On the agent settings page, select Stop agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "No documented automation operation equivalent to Stop agent was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Sales Qualification Agent stop API msdyn_salesagentprofile msdyn_salesagentconfigurationv2 statecode'; read manage page and Dataverse profile/configuration reference excerpts. Generic SetState is documented but no passage maps it to stopping lead orchestration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "The printed Sales Hub route through AI optimization hub > See insights > Sales Qualification Agent opens the supervisor dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/monitor-leads-by-sales-qualification-agent",
+      "quote": "In the AI optimization hub card, select See insights. ... Select Sales Qualification Agent from the list of agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "controls[2].api",
+      "type": "absence",
+      "claim": "No API equivalent to the supervisor dashboard was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Sales Qualification Agent supervisor dashboard API Dataverse leads disqualified insights'; opened monitoring page and read architecture Monitoring search excerpt. Dataverse runs support activity review; no equivalent dashboard API was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "The AI Agents switch is a tenant administrator setting configurable by environment or environment group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub",
+      "quote": "As a tenant administrator, you can turn on or off AI capabilities such as Copilot and AI agents in Dynamics 365 Sales, across environments, and environment groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "controls[0].governs; Governance controls",
+      "type": "applicability",
+      "claim": "The availability switch covers out-of-the-box Sales agents and turning it off turns off the corresponding Sales features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub",
+      "quote": "AI Agents: Lets you turn on out-of-the-box Sales AI agents such as Sales Qualification Agent and Sales Close Agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Supervisor views are available to sellers unless EnableRoleBasedSystemViews is true.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/monitor-leads-by-sales-qualification-agent",
+      "quote": "Though these views are meant for supervisors, they are also available to sellers unless your admin has set the EnableRoleBasedSystemViews setting to true.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Sellers only see leads permitted by their security roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/monitor-leads-by-sales-qualification-agent",
+      "quote": "sellers can only view leads that they have access to, based on their security roles and permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "No setting specific to inter-agent priority or fallback selection was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Sales Qualification Agent multiple agents single environment priority fallback routing'; opened selection criteria, assignment rules, setup and import/export; inspected SalesAgentProfile and configuration reference search results. No priority/fallback control identified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Governance controls: final sentence",
+      "type": "applicability",
+      "claim": "Until multi-agent settings are documented, inter-agent routing is set through each agent's selection criteria and assignment rules.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/sales/configure-sqa-assignment-rules",
+      "quote": "Once the leads are qualified based on the handover criteria, the agent hands them over to sellers or teams based on your selection.",
+      "severity": "blocker",
+      "fix": "Replace the final sentence with: 'Learn documents selection criteria for assigning leads to an agent and assignment rules for handing processed leads to sellers or teams; these pages do not document configuring priority or fallback between agents.' Cite https://learn.microsoft.com/dynamics365/sales/sales-qualification-agent-selection-criteria and https://learn.microsoft.com/dynamics365/sales/configure-sqa-assignment-rules."
+    },
+    {
+      "n": 84,
+      "where": "controls[2].note; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The documented supervisor dashboard exposes handled, disqualified and handed-over leads and lets supervisors reassign disqualified leads.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/sales/monitor-leads-by-sales-qualification-agent",
+      "quote": "If you think the lead is worth pursuing, select Reassign to assign the lead to a seller for follow-up and qualification.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "Governance guidance; controls",
+      "type": "consistency",
+      "claim": "The checklist directs readers to configure selection criteria and monitor capacity, but neither control appears in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Draw up ... the selection criteria for each ... Watch the capacity notifications and consumption in the Power Platform admin center",
+      "severity": "minor",
+      "fix": "The selection-criteria checklist step and capacity-monitoring checklist step have no corresponding controls-table rows. Keep this as a recorded coverage gap; do not add unverified rows as part of this correction."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-19T09:20:12.825Z",
+    "summary": {
+      "links": 12,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=578076",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/sales/sales-qualification-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/sales/configure-sales-qualification-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/sales/configure-requirements-for-sqa-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/sales/sales-qualification-agent-selection-criteria",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/sales/prerequisites-for-all-agents",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/sales/open-sales-qualification-agent-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/sales/manage-sales-qualification-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/sales/monitor-leads-by-sales-qualification-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/sales/copilot-consumption-based-billing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/sales/import-export-agent-solutions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether AI agents can be configured and used in Dynamics 365 Sales environments",
+        "docs": "https://learn.microsoft.com/power-platform/admin/copilot/copilot-hub",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Settings",
+          "Dynamics 365 Sales",
+          "AI Agents"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Stopping an agent so it no longer processes new leads",
+        "docs": "https://learn.microsoft.com/dynamics365/sales/manage-sales-qualification-agent",
+        "reachable": true,
+        "segments": [
+          "Change area",
+          "App Settings",
+          "General settings",
+          "Dynamics 365 AI hub",
+          "Agent manager",
+          "Create and manage agent",
+          "Stop agent"
+        ],
+        "missing": [
+          "Change area",
+          "App Settings",
+          "General settings",
+          "Dynamics 365 AI hub",
+          "Agent manager",
+          "Create and manage agent"
+        ]
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Supervisor view of leads handled, disqualified and handed over by the agent",
+        "docs": "https://learn.microsoft.com/dynamics365/sales/monitor-leads-by-sales-qualification-agent",
+        "reachable": true,
+        "segments": [
+          "App settings",
+          "General settings",
+          "Dynamics 365 AI hub",
+          "AI optimization hub",
+          "See insights",
+          "Sales Qualification Agent"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

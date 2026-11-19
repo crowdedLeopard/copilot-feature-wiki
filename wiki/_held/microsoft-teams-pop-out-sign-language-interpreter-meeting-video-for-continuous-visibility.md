@@ -25,6 +25,9 @@ sources:
   - title: "Accessibility guide for Microsoft Teams Admins"
     url: "https://learn.microsoft.com/microsoftteams/accessibility-guide-admin"
     kind: "learn"
+  - title: "Meeting policy settings for audio & video"
+    url: "https://learn.microsoft.com/microsoftteams/meeting-policies-audio-and-video"
+    kind: "learn"
   - title: "Microsoft Teams service description"
     url: "https://learn.microsoft.com/office365/servicedescriptions/teams-service-description"
     kind: "learn"
@@ -62,19 +65,23 @@ changes:
     note: "First briefing for this roadmap item: planned sign language interpreter pop-out in Teams meetings, with no documented admin control yet."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 42 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-19"
+    note: "Corrected: IP video is no longer called the only documented interpreter video setting (Mode for IP video added), and the guest-access checklist bullet was removed."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 43 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-19"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 42
-  confirmed: 40
+  claims: 43
+  confirmed: 42
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "afc73b03f5e7f3088e3d2c4cb84f962a"
+  contradicted: 1
+  attempts: 2
+  hash: "c7154f14469c4c67d9b289aa74b67370"
 ---
 
 ## What's changing
@@ -108,7 +115,7 @@ Microsoft has not stated what happens on arrival or whether an administrator can
 **Change & support**
 
 - Expect help-desk questions from users who rely on interpreters if the pop-out is absent on a platform: the roadmap lists Desktop and Mac only, and Learn documents nothing about other clients.
-- The only meeting policy setting documented for interpreter video is **IP video**, which the accessibility guide says gives interpreters the ability to share an IP video feed. Whether the pop-out depends on that setting is not documented, so check it is on for the policies that interpreters' hosts use.
+- The accessibility guide documents **IP video** as a meeting policy setting for interpreter video, which it says gives interpreters the ability to share an IP video feed. Microsoft also documents **Mode for IP video**, which controls both outgoing and incoming video for meetings and group calls that a user organizes or attends. Whether the pop-out depends on either setting is not documented, so check they are on for the policies that interpreters' hosts use.
 
 ## Cost and licensing
 
@@ -128,7 +135,6 @@ Which users, roles or licences get the pop-out is not documented. The roadmap de
 
 - Identify which meeting organisers and Deaf or Hard of Hearing users in your tenant work with sign language interpreters, so you know who to brief.
 - Check the **IP video** setting in the meeting policies those users hold (Teams admin center > Meetings > Meeting policies), because Microsoft's accessibility guide ties it to interpreters sharing video.
-- Confirm that guest access is set up for external interpreters, as the accessibility guide describes.
 
 ### At rollout
 
@@ -154,6 +160,8 @@ Which users, roles or licences get the pop-out is not documented. The roadmap de
 
 Microsoft Learn documents no setting that governs the sign language pop-out itself at the time of writing (November 2026), so the first row records that gap. The second row is an existing meeting policy setting that the accessibility guide ties to interpreters sharing video. It is the closest documented control, and Microsoft has not said that it governs the pop-out.
 
+The accessibility guide calls the setting IP video; the audio and video policy reference instead lists Mode for IP video and Video conferencing.
+
 Meeting policies are assigned to users, so the setting applies to the people who hold the policy. The accessibility guide describes the steps in the Teams admin center and does not name a role requirement.
 
 ## Open questions
@@ -173,8 +181,7 @@ impact: Low. The roadmap aims the change at Deaf and Hard of Hearing users and t
 <!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Change & support / absence: IP video is the only documented meeting policy setting for interpreter video. | Found: This setting controls both outgoing and incoming video for meetings and group calls that a user organizes or attends. | Fix: Replace 'The only meeting policy setting documented for interpreter video is IP video' with 'The accessibility guide documents IP video as a meeting policy setting for interpreter video'. Microsoft also documents Mode for IP video as controlling incoming and outgoing meeting video at https://learn.microsoft.com/microsoftteams/meeting-policies-audio-and-video; do not claim IP video is the only policy. | Source: https://learn.microsoft.com/microsoftteams/meeting-policies-audio-and-video
+- [contradicted, blocker] Risk assessment: Change & support / applicability: Mode for IP video controls outgoing and incoming meeting/group-call video and should be checked for hosts across the briefing's scope. | Found: This setting isn't available for Microsoft 365 Government Community Cloud (GCC), GCC High, or Department of Defense (DoD) environments. | Fix: After the sentence describing Mode for IP video, add: 'Mode for IP video is not available in GCC, GCC High or DoD environments.' Replace the final clause beginning 'so check they are on' with 'so check IP video for the policies that interpreters' hosts use; where Mode for IP video is available, check that it is set to Outgoing and incoming video enabled.' Source: https://learn.microsoft.com/microsoftteams/meeting-policies-audio-and-video. | Source: https://learn.microsoft.com/microsoftteams/meeting-policies-audio-and-video
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: The accessibility guide gives Teams admin center > Meetings > Meeting policies > policy > Audio & video > IP video. | Found: In the Teams admin center, go to Meetings, and then select Meeting policies. Select the policy you want to modify. Go to the Audio & video section. Check that IP video is turned On, then select Save. | Fix: Keep the cited path, but add: 'The accessibility guide calls the setting IP video; the audio and video policy reference instead lists Mode for IP video and Video conferencing.' Cite https://learn.microsoft.com/microsoftteams/meeting-policies-audio-and-video, which uses those labels. | Source: https://learn.microsoft.com/microsoftteams/accessibility-guide-admin
-- [contradicted, minor] Governance guidance: Before rollout, guest-access bullet / consistency: Every control the governance checklist tells readers to check has a controls-table row. | Found: Confirm that guest access is set up for external interpreters ... Controls rows: Whether the sign language interpreter pop-out is available to users; Whether interpreters can share an IP video feed in meetings. | Fix: Remove the Before rollout bullet 'Confirm that guest access is set up for external interpreters, as the accessibility guide describes.' It directs readers to check guest access, which has no controls-table row.
+- [supported, minor] controls[1].ui; Governance controls table; Governance guidance: Before rollout / admin-path: IP video is reached in Teams admin center through Meetings > Meeting policies > policy > Audio & video > IP video. | Found: In the Teams admin center, go to Meetings, and then select Meeting policies. Select the policy you want to modify. Go to the Audio & video section. Check that IP video is turned On, then select Save. | Fix: In Governance guidance, expand the abbreviated parenthetical path to 'Teams admin center > Meetings > Meeting policies > policy > Audio & video > IP video', matching controls[1].ui. The table path itself needs no change. | Source: https://learn.microsoft.com/microsoftteams/accessibility-guide-admin
 -->

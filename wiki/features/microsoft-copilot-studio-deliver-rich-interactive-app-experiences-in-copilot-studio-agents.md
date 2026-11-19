@@ -96,7 +96,7 @@ controls:
       kind: "graph"
       call: "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{packageId}/reject"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-reject"
-    note: "Needs AI Administrator or Global Administrator. Entra consent is a separate step after approval. API rejects a pending title submission; it does not approve a registration or grant consent. Beta, not for production."
+    note: "Needs AI Administrator or Global Administrator. Entra consent is a separate step after approval. API rejects a pending title submission; it does not approve or grant consent. Supply the matching staged version in the version body property."
   - governs: "Which connectors, and so MCP server tools, makers can use in Copilot Studio"
     scope: "environment"
     ui:
@@ -133,19 +133,23 @@ changes:
     note: "Corrected after the check: the approval-of-MCP-servers row now lists the beta Microsoft Graph package reject call, with its limits, in place of 'Not yet documented'."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 86 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 5
+  - date: "2026-11-19"
+    note: "Corrected after the check: the governance notes now state that data policies apply to Copilot Studio agents in the policy's scope and that blocking connectors also blocks tools in connected MCP servers; the approval row notes the version body property."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 88 statements confirmed"
+version: 6
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-19"
-  version: 5
+  version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 86
-  confirmed: 85
+  claims: 88
+  confirmed: 88
   unconfirmed: 0
-  contradicted: 1
-  attempts: 3
-  hash: "252c206d0159136241703772ba0debd9"
+  contradicted: 0
+  attempts: 0
+  hash: "ed844141b890ec54e75cda79da095326"
 ---
 
 ## What's changing
@@ -223,14 +227,14 @@ Makers need an agent with an MCP server added as a tool. The related Learn how-t
 <tbody>
 <tr><td data-label="Control"><strong>Whether an MCP server is available to agents across the organisation</strong><br><small>Tenant</small><br><small class="controls__note">Blocking a server disables all its tools. Not stated to apply to MCP apps. API: preview, not for production; needs a Microsoft Agent 365 licence and delegated CopilotPackages.ReadWrite.All; no request body.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Registry › MCP server › Block <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which individual tools on a supported MCP server are enabled</strong><br><small>Tenant</small><br><small class="controls__note">Rolling out; supports only specific MCP server types registered on Agent 365. General control: not stated to apply to MCP apps.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Registry › MCP server › Tools › Enabled or Disabled toggle › Save <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Approval of MCP servers that developers register</strong><br><small>Tenant</small><br><small class="controls__note">Needs AI Administrator or Global Administrator. Entra consent is a separate step after approval. API rejects a pending title submission; it does not approve a registration or grant consent. Beta, not for production.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Requests (preview) › request › Approve or Reject <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{packageId}/reject</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-reject" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Approval of MCP servers that developers register</strong><br><small>Tenant</small><br><small class="controls__note">Needs AI Administrator or Global Administrator. Entra consent is a separate step after approval. API rejects a pending title submission; it does not approve or grant consent. Supply the matching staged version in the version body property.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Requests (preview) › request › Approve or Reject <a href="https://learn.microsoft.com/microsoft-agent-365/admin/manage-plugins-skills-mcp-servers" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{packageId}/reject</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-reject" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which connectors, and so MCP server tools, makers can use in Copilot Studio</strong><br><small>Environment</small><br><small class="controls__note">General control: the page does not mention MCP apps. Add-ConnectorsToPolicy moves the specified connectors into the Blocked group. Each connector object must contain id, type, and name.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy › Next › Add an environment › Available › environment › Add to policy › Next › Assign connectors › connector › three dots (⋮) › Block <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-ConnectorsToPolicy -PolicyName &lt;policy-guid&gt; -Classification Blocked -Connectors &lt;connector-objects&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 No setting specific to MCP apps is documented at the time of writing (November 2026), so the rows below govern the MCP server and its tools, not the rendered interface. Microsoft 365 admin center controls cover plugins, skills and MCP servers; Learn says Power Platform data policies still control which tools makers can add in Copilot Studio, and that Agent 365 and Copilot Studio can have separate controls, so a block in one place is not shown to apply in the other.
 
-Tool-level control is described as rolling out and as supporting only specific types of MCP server registered on Agent 365. The Power Platform data policy page covers Power Platform connectors used as tools and does not mention MCP apps, so confirm that a server added through the new Copilot Studio experience is covered. To apply a data policy after choosing Block, select Next, define scope if prompted and select Next, then review and select Create policy. Add-ConnectorsToPolicy moves the specified connectors into the Blocked group. Each connector object must contain id, type, and name.
+Tool-level control is described as rolling out and as supporting only specific types of MCP server registered on Agent 365. Power Platform data policies apply to Copilot Studio agents in the environments included in the policy scope; blocking Power Platform connectors also blocks access to tools in connected MCP servers. To apply a data policy after choosing Block, select Next, define scope if prompted and select Next, then review and select Create policy. Add-ConnectorsToPolicy moves the specified connectors into the Blocked group. Each connector object must contain id, type, and name.
 
 The package reject call rejects a pending package title submission; it does not approve a registration or grant consent. Use the title ID confirmed for submission review and supply the matching staged version in the version body property, not an individual request identifier. It is beta, not for production, and requires Microsoft Agent 365 and CopilotPackages.ReadWrite.All.
 
@@ -246,12 +250,4 @@ The package reject call rejects a pending package title submission; it does not 
 risk: Medium. An MCP server supplies HTML that the host renders in the conversation, and the app can call that server's tools. Microsoft documents sandboxing and server-level controls, but none specific to MCP apps.
 cost: Variable. Microsoft Copilot harness experiences consume Copilot Credits for LLM tokens, MCP tools and the harness; a separate MCP app-rendering rate is not documented.
 impact: Low. Makers who connect a UI-enabled MCP server and the users of those agents notice it; nothing in the sources says existing agents change.
--->
-
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: paragraph beginning Tool-level control / applicability: Because the data-policy page does not mention MCP apps, coverage of a server added through the new Copilot Studio experience remains unconfirmed. | Found: These data policies apply to Copilot Studio agents in the environments included in the policy's scope. | Fix: Replace 'The Power Platform data policy page covers Power Platform connectors used as tools and does not mention MCP apps, so confirm that a server added through the new Copilot Studio experience is covered.' with 'Power Platform data policies apply to Copilot Studio agents in the environments included in the policy scope; blocking Power Platform connectors also blocks access to tools in connected MCP servers.' The cited page states both facts; do not extend the uncertainty about Agent 365 gateway enforcement to Power Platform data-policy coverage. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].api; controls[2].note; Governance controls table and prose / command: POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{packageId}/reject rejects a pending title submission, not a registration approval or consent grant. | Found: Reject a pending Copilot package title submission. This action reviews a package title and its submitted version; it doesn't reject an individual user's request. | Fix: Append to controls[2].note: 'Supply the matching staged submission version in the version request-body property.' Keep the existing method and path unchanged; the Governance controls prose already documents this requirement. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-reject
 -->

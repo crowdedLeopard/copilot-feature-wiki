@@ -70,19 +70,23 @@ changes:
     note: "Rewritten for the GCC, GCC High and DoD roadmap item (In development, target November CY2026, notice MC1521615); removed the monitoring checklist bullet that had no control row."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 73 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-19"
+    note: "Corrected: removed the licence-assignment checklist bullet that had no control row and the shared-mailbox open question that Learn answers."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 71 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-19"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 73
+  claims: 71
   confirmed: 71
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "8b371eb3c72e03cd6c20a0cf41a42af2"
+  contradicted: 0
+  attempts: 0
+  hash: "bd90d45a09f29c3ba5f4edc09a705d11"
 ---
 
 ## What's changing
@@ -129,7 +133,6 @@ The change applies to Exchange Online archive mailboxes that have auto-expanding
 ## Governance guidance
 
 ### Before rollout
-- Identify users with large archive mailboxes and check which licence each holds against the eligible list in Cost and licensing; Microsoft's notice recommends this review.
 - Decide whether auto-expanding archiving should be on for the whole organisation or only for specific users, using the two controls in the table below, and note that both are irreversible once applied. The per-user command requires both the primary and archive mailboxes to be cloud-based; for an on-premises primary mailbox with a cloud-based archive, Learn says to use the organisation-wide command.
 
 ### At rollout
@@ -157,7 +160,6 @@ Neither control selects the 1.5 TB or 3 TB ceiling: Microsoft's notice ties the 
 
 ## Open questions
 
-- Do shared mailboxes, which Learn says auto-expanding archiving supports, qualify for 3 TB, and which licence decides it? Watch the Learn page "Enable auto-expanding archiving".
 - The Learn banner gives a rollout of mid-October to late October 2026 without naming clouds, while Microsoft's notice gives mid-November to early December 2026 for GCC, GCC High and DoD. Which dates apply to government tenants? Watch Message center and the roadmap item.
 - What happens to an archive that has grown past 1.5 TB if the user's eligible licence is later removed? Microsoft has not stated it on the pages for this change.
 - When will the "Learn about auto-expanding archiving" body text, which still says 1.5 TB, be updated to the 3 TB limit?
@@ -166,12 +168,4 @@ Neither control selects the 1.5 TB or 3 TB ceiling: Microsoft's notice ties the 
 risk: Low. Microsoft's notice says existing archive content, retention policies and holds are unchanged and no new admin workflow or user interface is introduced; the change raises a storage ceiling.
 cost: Low. Microsoft's notice says no per-GB consumption charge is introduced; the cost is admin time and a licence check, because mailboxes without an eligible licence stay at 1.5 TB.
 impact: Low. Administrators and the users with the largest archives notice it; no change to what users see is described, and mailboxes without an eligible licence are unaffected.
--->
-
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Open questions: shared mailboxes / absence: Whether shared mailboxes qualify for 3 TB and which assigned licence decides their eligibility remain undocumented. | Found: The increase applies to mailboxes assigned the following eligible licenses: ... Auto-expanding archiving also supports shared mailboxes. | Fix: Remove the first Open questions bullet. The cited page includes shared mailboxes in auto-expanding archiving and applies the increased ceiling to mailboxes assigned the listed eligible licences; it does not exclude shared mailboxes from that rule. | Source: https://learn.microsoft.com/purview/enable-autoexpanding-archiving
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: The checklist tells administrators to check assigned licences, but the controls table contains no licence-assignment control. | Found: check which licence each holds against the eligible list in Cost and licensing; controls: Auto-expanding archiving for the whole organisation; Auto-expanding archiving for specific users | Fix: Remove the first Before rollout checklist bullet, which tells readers to check licence assignments without a corresponding control row. Keep the existing licensing explanation and Microsoft's recommendation in Why it matters.
 -->

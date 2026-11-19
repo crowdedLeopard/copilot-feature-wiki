@@ -17,7 +17,7 @@ impact: "medium"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "mixed"
+  model: "unknown"
   notes: "Learn says Microsoft Copilot Chat is available to users with an eligible Microsoft 365 subscription and that a Microsoft Copilot licence is required for licensed Copilot capabilities. Which applies to this feature is not yet published."
 audiences: ["m365-admin","security","end-user"]
 tags: ["microsoft-edge","edge-for-business","copilot-chat","m365-copilot","policy"]
@@ -71,19 +71,23 @@ changes:
     note: "New briefing: the roadmap plans an Edge context-menu option to ask Copilot about an image, with two named Edge policies and no Learn page for the feature yet."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 55 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-19"
+    note: "Corrected after verification: licensing model set to unknown, and the roadmap's statement that the two named policies control availability is now reported as stated, with the image-specific interaction listed as an open question."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 66 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-19"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 53
+  claims: 66
+  confirmed: 66
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "6bc55cbad18ea434094c7bde2f82a5ef"
+  contradicted: 0
+  attempts: 0
+  hash: "9dfc911ad567052080a923f0ac2c8fee"
 ---
 
 ## What's changing
@@ -165,7 +169,7 @@ The EdgeEntraCopilotPageContext page says it applies to users signed in to Edge 
 </tbody>
 </table>
 
-Both rows are Edge policies that the roadmap item names as the availability controls for this feature. Their Learn pages describe the Copilot side pane and say nothing about images or the context menu, so whether each policy switches the image option off is not yet confirmed by Microsoft.
+Both rows are Edge policies that the roadmap item names as the availability controls for this feature. The roadmap states that admins can control this feature's availability using these policies; their Learn pages do not yet describe the image-specific interaction.
 
 Microsoft Learn's Edge management service page for Copilot features lists dropdowns for Access to browser context and Copilot icon in the toolbar. It does not name the policies behind them, so treat those dropdowns as a separate page to check, not as a documented route to either row.
 
@@ -173,7 +177,7 @@ EdgeEntraCopilotPageContext is mandatory-only, and the page says it cannot be se
 
 ## Open questions
 
-- Does EdgeEntraCopilotPageContext, or any other policy, switch the context-menu image option off? Watch the two policy pages and the roadmap item.
+- How do the two named policies interact for the image context-menu option? Watch the two policy pages and the roadmap item.
 - Is the option on by default when it arrives, and does the EU default for page access apply to it? Watch Message center.
 - Which licence covers it: Copilot Chat for eligible subscriptions or a Microsoft Copilot licence? Watch the Copilot requirements page.
 - Do DLP policies that protect a page also stop an image on that page being sent to Copilot?
@@ -183,11 +187,4 @@ EdgeEntraCopilotPageContext is mandatory-only, and the page says it cannot be se
 risk: Medium. Images from web pages go to Copilot, and Learn does not say whether the page-content policy or its data loss prevention exclusion covers images, so the existing controls only mostly cover it.
 cost: Low. The only cost the sources show is admin time to review two Edge policies; a licence or meter specific to this feature is not yet published.
 impact: Medium. Users signed in to Edge with a work account who right-click images would notice it; Microsoft has not stated whether it arrives on by default.
--->
-
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model / consistency: The feature's licensing model is mixed, although its notes and body say which entitlement covers it is not published. | Found: model: "mixed"; "Which applies to this feature is not yet published."; "the licence for this feature is not yet published." | Fix: Change licensing.model from "mixed" to "unknown" to match the stated uncertainty about this feature's entitlement; retain the documented general Copilot requirements in the notes. No source checked establishes that this image option uses a mixed entitlement model.
-- [contradicted, blocker] Governance controls; Open questions / absence: Microsoft has not confirmed whether the named policies switch off availability of the image option. | Found: Admins can control availability to this feature using the EdgeEntraCopilotPageContext and Microsoft365CopilotChatIconEnabled policies. | Fix: Replace the final sentence of the first paragraph after the controls table with: "The roadmap states that admins can control this feature's availability using these policies; their Learn pages do not yet describe the image-specific interaction." Replace the first Open questions bullet with: "How do the two named policies interact for the image context-menu option? Watch the two policy pages and the roadmap item."
 -->

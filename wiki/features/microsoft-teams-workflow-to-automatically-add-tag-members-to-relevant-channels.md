@@ -22,7 +22,7 @@ licensing:
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["teams","channels","power-automate","automation","data-policies"]
 sources:
-  - title: "Microsoft 365 Roadmap item 577174"
+  - title: "Microsoft 365 Roadmap 577174"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=577174"
     kind: "roadmap"
   - title: "MC1540351: (Updated) Microsoft Teams: Automatically add tag members to channels with Workflows"
@@ -49,8 +49,14 @@ sources:
   - title: "Share a cloud flow"
     url: "https://learn.microsoft.com/power-automate/create-team-flows"
     kind: "learn"
-  - title: "Which connectors flows in the default environment may use (PowerShell)"
+  - title: "Add-ConnectorToBusinessDataGroup"
     url: "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectortobusinessdatagroup?view=pa-ps-latest"
+    kind: "learn"
+  - title: "Update-M365TeamsApp"
+    url: "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp?view=teams-ps"
+    kind: "learn"
+  - title: "Set-CsTeamsTargetingPolicy"
+    url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamstargetingpolicy?view=teams-ps"
     kind: "learn"
 videos: []
 related: []
@@ -61,7 +67,10 @@ controls:
       surface: "Teams admin center"
       path: "Teams apps > Manage apps > app > Allow or Block"
       docs: "https://learn.microsoft.com/microsoftteams/manage-apps"
-    api: null
+    api:
+      kind: "powershell"
+      call: "Update-M365TeamsApp -Id <application ID> -IsBlocked <Boolean>"
+      docs: "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp?view=teams-ps"
     note: "Learn says flows created from the Workflows app need the app enabled here. Blocking it blocks all Workflows templates, not only this one. Needs the Teams Administrator role."
   - governs: "Which connectors flows in the default environment may use"
     scope: "environment"
@@ -80,8 +89,11 @@ controls:
       surface: "Teams admin center"
       path: "Teams > Teams settings > Tagging > Who can manage tags"
       docs: "https://learn.microsoft.com/microsoftteams/manage-tags"
-    api: null
-    note: "Learn says PowerShell cannot manage tags. Not stated whether this setting also governs who can configure the workflow. If Team owners can change who can manage tags is on, this is the per-team default; if off, it cannot change per team."
+    api:
+      kind: "powershell"
+      call: "Set-CsTeamsTargetingPolicy -Identity <policy name> -ManageTagsPermissionMode <mode>"
+      docs: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamstargetingpolicy?view=teams-ps"
+    note: "The Manage tags article says PowerShell cannot manage tags; the Set-CsTeamsTargetingPolicy reference documents -ManageTagsPermissionMode for tag permissions. Not stated whether it also governs who can configure the workflow."
   - governs: "Tenant switch for the Join member to channel template alone"
     scope: "tenant"
     ui: null
@@ -100,19 +112,23 @@ changes:
     note: "Correction: updated the data policy path and note, added the Teams for Education and per-team tag setting qualifications, narrowed the flow account statement, and removed two unsupported statements."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-19"
+    note: "Correction: added the Update-M365TeamsApp and Set-CsTeamsTargetingPolicy PowerShell calls to two controls, and reworded the flow-ownership and Microsoft default tag statements to match Microsoft Learn."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 60
-  confirmed: 57
+  confirmed: 60
   unconfirmed: 0
-  contradicted: 3
-  attempts: 2
-  hash: "97566f26e29a7614e95a5d055108f0ab"
+  contradicted: 0
+  attempts: 0
+  hash: "adc8d8feb6556ca6a318f6c95290b4f1"
 ---
 
 ## What's changing
@@ -136,8 +152,8 @@ The notice says nothing changes by default, so no source says existing behaviour
 - Flows made in the Workflows app are stored in the organisation's default environment, so a Power Platform data policy that covers the default environment applies to them. Which connectors the template uses is not yet published.
 
 **Security & identity**
-- Microsoft has not documented which account this template uses for its connections. Confirm this, because it decides who can edit or stop the membership automation when the owner leaves ([Share a cloud flow](https://learn.microsoft.com/power-automate/create-team-flows)).
-- Tags can be created and assigned by team owners and, with the Microsoft default, team members. In Teams for Education, non-owner students cannot manage tags when **Who can manage tags** is set to Team owners or Microsoft default. Anyone who can add a person to a tag can therefore trigger the workflow once it is configured. The **Who can manage tags** setting is the tenant control over that. If **Team owners can change who can manage tags** is enabled, **Who can manage tags** is the default for each team and team owners can change it; when that setting is off, it cannot be changed per team.
+- Microsoft has not documented which account this template uses for its connections. Review flow ownership separately: any cloud-flow owner can edit or stop it, and when an owner whose credentials a connection uses is removed, the credentials for that connection need updating so the flow keeps running properly ([Share a cloud flow](https://learn.microsoft.com/power-automate/create-team-flows)).
+- Tags can be created and assigned by team owners and permitted team members. The Manage tags article says Microsoft default includes owners and members, whereas the Set-CsTeamsTargetingPolicy reference equates MicrosoftDefault with EnabledTeamOwner ([Manage tags in Microsoft Teams](https://learn.microsoft.com/microsoftteams/manage-tags); [Set-CsTeamsTargetingPolicy](https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamstargetingpolicy?view=teams-ps)). In Teams for Education, non-owner students cannot manage tags when **Who can manage tags** is set to Team owners or Microsoft default. Anyone who can add a person to a tag can therefore trigger the workflow once it is configured. The **Who can manage tags** setting is the tenant control over that. If **Team owners can change who can manage tags** is enabled, **Who can manage tags** is the default for each team and team owners can change it; when that setting is off, it cannot be changed per team.
 
 **Autonomy & actions**
 - Once configured, the workflow adds users to channels without a person approving each addition. Adding someone to the tag by mistake can trigger an unintended channel addition.
@@ -183,9 +199,9 @@ Learn's Power Automate licensing page says users with seeded licences from Micro
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether the Workflows app is allowed in the organisation</strong><br><small>Tenant</small><br><small class="controls__note">Learn says flows created from the Workflows app need the app enabled here. Blocking it blocks all Workflows templates, not only this one. Needs the Teams Administrator role.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › app › Allow or Block <a href="https://learn.microsoft.com/microsoftteams/manage-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether the Workflows app is allowed in the organisation</strong><br><small>Tenant</small><br><small class="controls__note">Learn says flows created from the Workflows app need the app enabled here. Blocking it blocks all Workflows templates, not only this one. Needs the Teams Administrator role.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › app › Allow or Block <a href="https://learn.microsoft.com/microsoftteams/manage-apps" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;application ID&gt; -IsBlocked &lt;Boolean&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which connectors flows in the default environment may use</strong><br><small>Environment</small><br><small class="controls__note">Applies to flows in environments in the policy's scope. This route classifies a selected connector as Business, like the PowerShell example. The connectors this template uses are not yet published.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Settings › Data and privacy › Data policy › policy › Edit Policy › Prebuilt connectors › connector › Move to Business <a href="https://learn.microsoft.com/power-platform/admin/prevent-data-loss" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-ConnectorToBusinessDataGroup -PolicyName &lt;policy name&gt; -ConnectorName &lt;connector name&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectortobusinessdatagroup?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Who can manage tags, whose membership triggers the workflow</strong><br><small>Tenant</small><br><small class="controls__note">Learn says PowerShell cannot manage tags. Not stated whether this setting also governs who can configure the workflow. If Team owners can change who can manage tags is on, this is the per-team default; if off, it cannot change per team.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams › Teams settings › Tagging › Who can manage tags <a href="https://learn.microsoft.com/microsoftteams/manage-tags" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Who can manage tags, whose membership triggers the workflow</strong><br><small>Tenant</small><br><small class="controls__note">The Manage tags article says PowerShell cannot manage tags; the Set-CsTeamsTargetingPolicy reference documents -ManageTagsPermissionMode for tag permissions. Not stated whether it also governs who can configure the workflow.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams › Teams settings › Tagging › Who can manage tags <a href="https://learn.microsoft.com/microsoftteams/manage-tags" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsTargetingPolicy -Identity &lt;policy name&gt; -ManageTagsPermissionMode &lt;mode&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamstargetingpolicy?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Tenant switch for the Join member to channel template alone</strong><br><small>Tenant</small><br><small class="controls__note">No template-specific setting is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -207,13 +223,8 @@ cost: Low. The only cost the sources show is admin and team-owner time; the lice
 impact: Low. Team owners who set the template up and members added to the tag notice it; nothing changes for anyone else by default, according to MC1540351.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls / absence: Automation for allowing or blocking the Workflows app across the organisation is not yet documented. | Found: This cmdlet updates app state and app available values for the Microsoft Teams app. -Id: Application ID of Microsoft Teams app. -IsBlocked: The state of the app in the tenant. | Fix: Replace controls[0].api null with kind powershell, call 'Update-M365TeamsApp -Id <application ID> -IsBlocked <Boolean>', and docs https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp?view=teams-ps. Use placeholders rather than copying the reference's inconsistently labelled Boolean examples. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp?view=teams-ps
-- [contradicted, blocker] controls[2].api; Governance controls / absence: Automation for controlling who can manage tags is not yet documented. | Found: -ManageTagsPermissionMode Determine whether team users can manage tag settings in Teams. Set this to EnabledTeamOwner to only allow Teams owners to manage tag settings in current Teams. | Fix: Replace controls[2].api null with kind powershell, call 'Set-CsTeamsTargetingPolicy -Identity <policy name> -ManageTagsPermissionMode <mode>', and docs https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamstargetingpolicy?view=teams-ps. State that this reference documents tag-management permissions despite the manage-tags article's contrary PowerShell statement. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamstargetingpolicy?view=teams-ps
-- [contradicted, blocker] Risk assessment: Security & identity / behaviour: The account used for the template's connections decides who can edit or stop its automation when the owner leaves. | Found: Any owner of a cloud flow can perform these actions: Manage the properties of the flow (for example, start or stop the flow, add owners, or update credentials for a connection). Edit the definition of the flow | Fix: Replace the sentence beginning 'Confirm this, because' with 'Review flow ownership separately: any cloud-flow owner can edit or stop it, while actions using connections belonging to a departing user might fail.' Keep the existing Share a cloud flow citation. | Source: https://learn.microsoft.com/power-automate/create-team-flows
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].note; Governance controls / behaviour: The cited Manage tags article says PowerShell cannot manage tags. | Found: As an admin, you can control how tags are used across your organization in the Microsoft Teams admin center. You can’t use PowerShell to manage tags. | Fix: Replace 'Learn says PowerShell cannot manage tags' with 'The Manage tags article says PowerShell cannot manage tags, but the Set-CsTeamsTargetingPolicy reference documents -ManageTagsPermissionMode for tag-management permissions.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamstargetingpolicy?view=teams-ps. | Source: https://learn.microsoft.com/microsoftteams/manage-tags
-- [supported, minor] Risk assessment: Security & identity / default: The Microsoft default for Who can manage tags permits both team owners and members. | Found: Microsoft default is set to both team owners and members. | Fix: Replace the first sentence with 'Tags can be created and assigned by team owners and permitted team members. The Manage tags article says Microsoft default includes owners and members, whereas the Set-CsTeamsTargetingPolicy reference equates MicrosoftDefault with EnabledTeamOwner.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamstargetingpolicy?view=teams-ps alongside the existing source. | Source: https://learn.microsoft.com/microsoftteams/manage-tags
+- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost / licensing: Licensing is classified as unknown because no template-specific entitlement is published and its connectors are unknown. | Found: Users gain limited rights to use Power Automate if they inherited seeded plans from licenses tied to other Microsoft products: ... Microsoft 365 ... Those licenses entitle the user to create and run cloud flows with standard connectors. | Fix: Set licensing.model to included to acknowledge the published product-level entitlement. Replace licensing.notes with: 'Microsoft 365 seeded licences include cloud flows with standard connectors. No template-specific licence statement or connector list is published, so whether this entitlement is sufficient for the template remains unconfirmed.' Keep the template-specific uncertainty in the body and cost rationale. | Source: https://learn.microsoft.com/power-platform/admin/power-automate-licensing/deep-dive-on-specific-license
 -->

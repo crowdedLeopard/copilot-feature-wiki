@@ -2,37 +2,31 @@
   "slug": "work-iq-federated-connectors",
   "roadmapId": 570670,
   "title": "Work IQ: federated connectors for governed access to more data sources",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-19",
-  "version": 5,
+  "version": 6,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 2,
-  "standard": "cd5b21ff3a5b",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-19",
-    "reasons": [
-      "3 blocking findings (claims 40, 42, 45)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 55,
-    "confirmed": 51,
+    "claims": 56,
+    "confirmed": 55,
     "unconfirmed": 0,
-    "contradicted": 4,
-    "blocker": 3,
+    "contradicted": 1,
+    "blocker": 0,
     "major": 0,
     "minor": 1
   },
-  "summary": "Hold: Microsoft documents automation for publisher-type access and User access, which the briefing reports as undocumented. Its caveat about Work IQ MCP policy also overlooks documentation that places connector operations within the policy-governed tool surface.",
+  "summary": "The briefing passes: its roadmap facts, licensing distinction and documented governance controls are supported. One checklist instruction asks administrators to review write tools without a corresponding controls-table row.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing",
+      "where": "title; summary; What's changing; Scope",
       "type": "record",
       "claim": "Microsoft plans federated connectors for governed Work IQ access to additional enterprise data sources.",
       "status": "supported",
@@ -43,17 +37,28 @@
     },
     {
       "n": 2,
-      "where": "front matter: status; What's changing",
+      "where": "front matter: products; What's changing",
       "type": "record",
-      "claim": "The roadmap status is In development.",
+      "claim": "The roadmap lists Microsoft Graph and Work IQ as products.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"In development\"",
+      "quote": "\"products\": [\"Microsoft Graph\", \"Work IQ\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status remains In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is November CY2026.",
@@ -64,10 +69,10 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 5,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap preview target is October CY2026.",
+      "claim": "The roadmap preview date is October CY2026.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": \"October CY2026\"",
@@ -75,40 +80,7 @@
       "fix": null
     },
     {
-      "n": 5,
-      "where": "front matter: products; What's changing",
-      "type": "record",
-      "claim": "The roadmap products are Microsoft Graph and Work IQ.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Graph\", \"Work IQ\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 6,
-      "where": "front matter: clouds; Scope",
-      "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "front matter: platforms; Scope",
-      "type": "record",
-      "claim": "The roadmap lists the Developer platform.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Developer\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
       "where": "front matter: releasePhase",
       "type": "record",
       "claim": "The roadmap release phases are General Availability and Preview.",
@@ -119,19 +91,41 @@
       "fix": null
     },
     {
+      "n": 7,
+      "where": "front matter: clouds; Scope; Open questions",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the cloud listed in the roadmap.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "Developer is the platform listed in the roadmap.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Developer\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 9,
       "where": "front matter: defaultState; What's changing",
-      "type": "absence",
+      "type": "default",
       "claim": "Microsoft has not stated the arrival default for this Work IQ federated-connectors capability.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Work IQ federated connectors default enable participation APIs admin control. Read roadmap, Work IQ overview, federated connectors overview and manage-federated-connectors; existing connector defaults are documented, but no arrival default for this roadmap change is stated.",
+      "quote": "Searched: Work IQ federated connectors default enable participation admin control MCP policy API policy settings; Work IQ federated connectors enable default. Read roadmap, Work IQ overview and federated connector overviews; connector defaults do not state this capability's arrival default.",
       "severity": null,
       "fix": null
     },
     {
       "n": 10,
-      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "where": "What's changing; rationale: risk",
       "type": "behaviour",
       "claim": "Federated connectors use Model Context Protocol to fetch external data in real time.",
       "status": "supported",
@@ -144,7 +138,7 @@
       "n": 11,
       "where": "What's changing; Risk assessment: Security & identity; rationale: risk",
       "type": "behaviour",
-      "claim": "Federated connectors access data using the user's identity and permissions.",
+      "claim": "Federated connector access uses the user's identity and permissions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
       "quote": "Access data using the user's identity and permissions.",
@@ -177,7 +171,7 @@
       "n": 14,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Learn describes connected enterprise sources as participating in Work IQ Copilot, entity and schema tools.",
+      "claim": "Connected enterprise sources participate in Work IQ Copilot, entity and schema tools.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
       "quote": "Connected enterprise sources participate in Work IQ Copilot, entity, and schema tools. Connected enterprise sources refer to data sources connected in Copilot Chat.",
@@ -221,7 +215,7 @@
       "n": 18,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "External connector data is retrieved into conversational responses.",
+      "claim": "Live external data is retrieved into Copilot responses.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
       "quote": "Copilot selects relevant connector tools at runtime and uses the live results returned by the source to respond in the conversation.",
@@ -265,7 +259,7 @@
       "n": 22,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "The general connectors overview still describes federated connectors as read-only, unlike the feature overview's write-action documentation.",
+      "claim": "The general connectors overview still describes federated connectors as read-only, unlike the specific overview's write-action documentation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/overview",
       "quote": "Write actions will be available starting early October 2026.\n\n- Federated connectors are read-only; they can search and fetch content but can't write data back.",
@@ -276,7 +270,7 @@
       "n": 23,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "An MCP server firewall may need Microsoft 365 Copilot static egress IP addresses allow-listed.",
+      "claim": "MCP server firewalls may need static egress IP allow-listing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
       "quote": "If your MCP server restricts incoming traffic by source IP address, configure its firewall to allow the static egress IP addresses used by Microsoft 365 Copilot.",
@@ -285,12 +279,12 @@
     },
     {
       "n": 24,
-      "where": "front matter: licensing.model; Cost and licensing",
+      "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Work IQ API access uses a consumption licensing model.",
+      "claim": "Users querying federated Copilot sources need a Microsoft 365 Copilot add-on licence or Microsoft 365 E7.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
-      "quote": "You pay for use of the Work IQ API through a usage-based model that uses Copilot Credits.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
+      "quote": "Federated Copilot connectors are available only to tenants and users with a Microsoft 365 Copilot add-on license (or Microsoft 365 E7).",
       "severity": null,
       "fix": null
     },
@@ -307,9 +301,20 @@
     },
     {
       "n": 26,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "where": "front matter: licensing.model, cost; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Work IQ API uses consumption billing through Copilot Credits, supporting the consumption licensing model and variable cost rating.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "You pay for use of the Work IQ API through a usage-based model that uses Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Work IQ API usage consumes Copilot Credits shared with other eligible services.",
+      "claim": "Work IQ API consumes Copilot Credits shared with other eligible services.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
       "quote": "Work IQ API usage consumes Copilot Credits shared with other eligible services.",
@@ -317,54 +322,21 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Federated Copilot connector users need a Microsoft 365 Copilot add-on licence or Microsoft 365 E7.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/prerequisites",
-      "quote": "Federated Copilot connectors are available only to tenants and users with a Microsoft 365 Copilot add-on license (or Microsoft 365 E7).",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 28,
-      "where": "Cost and licensing",
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "Work IQ API access through A2A, REST or MCP uses Copilot Credits rather than connector licensing.",
+      "claim": "The Foundry page distinguishes usage-billed A2A, REST and MCP Work IQ API access from connector-backed tools' connector-specific licensing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/tools/work-iq",
-      "quote": "Work IQ API through A2A, REST, or MCP | Usage-based billing | Enable billing with Copilot Credits. This path doesn't use connector licensing.",
+      "quote": "Work IQ API through A2A, REST, or MCP | Usage-based billing ... This path doesn't use connector licensing.\nConnector-backed Microsoft 365 tools | Connector licensing | Confirm the selected connector's prerequisites.",
       "severity": null,
       "fix": null
     },
     {
       "n": 29,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Connector-backed Microsoft 365 tools have connector-specific licensing requirements.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/azure/foundry/agents/how-to/tools/work-iq",
-      "quote": "Connector-backed Microsoft 365 tools | Connector licensing | Confirm the selected connector's prerequisites. A connector can require a Microsoft 365 Copilot license for each calling user.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "front matter: cost; rationale: cost",
-      "type": "cost",
-      "claim": "Work IQ API cost is variable with usage.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
-      "quote": "Work IQ cost is variable based on usage and can be managed in the Microsoft 365 admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "controls[0].ui; Governance controls table",
+      "where": "controls[0].ui",
       "type": "admin-path",
-      "claim": "Connector availability and staging are managed at Microsoft 365 admin center > Copilot > Connectors > Your connections > connector > Enable / Disable / Staged rollout.",
+      "claim": "Connector enable, disable and staging controls are reached in Microsoft 365 admin center through Copilot > Connectors > Your connections > connector.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors",
       "quote": "Enable / Disable | Copilot > Connectors > Your connections | Turns an individual connector on or pauses it without removing configuration.\nStaged rollout | Copilot > Connectors > Your connections > Staged rollout",
@@ -372,8 +344,8 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "controls[0].api; Governance controls table and prose",
+      "n": 30,
+      "where": "controls[0].api; Governance controls",
       "type": "command",
       "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package.",
       "status": "supported",
@@ -383,21 +355,10 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Governance controls: Package Management API",
-      "type": "command",
-      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/unblock unblocks a Copilot package.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-unblock",
-      "quote": "Unblock a Copilot package to allow its usage.\nPOST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/unblock",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
+      "n": 31,
       "where": "controls[0].note; Governance controls",
       "type": "licensing",
-      "claim": "Package Management block and unblock calls require a Microsoft Agent 365 licence.",
+      "claim": "The block and unblock Package Management APIs require a Microsoft Agent 365 licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview",
       "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
@@ -405,32 +366,54 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 32,
       "where": "controls[0].note; Governance controls",
       "type": "command",
-      "claim": "Both block and unblock require delegated CopilotPackages.ReadWrite.All permission.",
+      "claim": "Block and unblock require delegated CopilotPackages.ReadWrite.All.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "Delegated (work or school account) | CopilotPackages.ReadWrite.All | Not available.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-unblock",
+      "quote": "Delegated (work or school account) | CopilotPackages.ReadWrite.All | Not available.\nApplication | Not available. | Not available.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
-      "where": "controls[0].note; Governance controls",
+      "n": 33,
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "The listed Package Management calls are beta APIs unsupported in production.",
+      "claim": "Microsoft does not support these beta APIs in production applications.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-unblock",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
       "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 37,
-      "where": "Governance controls: custom federated connector reference",
+      "n": 34,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "The block and unblock operations do not configure staged rollout.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage.\nRequest body\nDon't supply a request body for this method.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "No automation for federated connector staged rollout is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: federated connector staged rollout Microsoft Graph API automation. Read custom federated connector setup, manage federated connectors and Package Management API overview; results document connector staging in the admin center, not an automation operation for that setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Blocking a federated connector has the same effect as disabling it.",
+      "claim": "The custom federated connector documentation says Block has the same effect as Disable.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/set-up-custom-federated-connectors",
       "quote": "Block (Agents > Tools) | Same as Disable.",
@@ -438,65 +421,21 @@
       "fix": null
     },
     {
+      "n": 37,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/unblock allows use of a blocked package.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-unblock",
+      "quote": "Unblock a Copilot package to allow its usage.\nPOST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/unblock",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 38,
-      "where": "controls[0].note; Governance controls",
-      "type": "behaviour",
-      "claim": "The block and unblock operations do not configure staged rollout.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "Block a Copilot package to prevent its usage.\n\nRequest body\nDon't supply a request body for this method.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Publisher-type connector access is controlled at Microsoft 365 admin center > Agents > Settings > Agent and plugin access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview#admin-experience-and-controls",
-      "quote": "Agent and plugin access | Agents > Settings > Agent and plugin access | Allows or blocks connectors in bulk by publisher type, including future connectors.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "controls[1].api; Governance controls: no automation for publisher-type access",
-      "type": "absence",
-      "claim": "Microsoft documents no automation for publisher-type connector access.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/graph/utcm-agent-resources#allowedagenttypes-resource-type",
-      "quote": "These resources also support remediation and applyOnce.\nareISVAppsAllowed | Write | Boolean\nareMicrosoftAppsAllowed | Write | Boolean\nareTenantScopedAppsAllowed | Write | Boolean",
-      "severity": "blocker",
-      "fix": "Replace controls[1].api=null with graph call 'POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors', docs https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta. Note: 'Preview TCM applyOnce: set mode to applyOnce; baseline.resources uses resourceType microsoft.agent.allowedagenttypes, resourceVersion 1 and properties.valueObject.areMicrosoftAppsAllowed, areTenantScopedAppsAllowed and areISVAppsAllowed for the publisher choices. Requires delegated ConfigurationMonitoring.ReadWrite.All for the caller, delegated CopilotPolicySettings.ReadWrite for the TCM service principal, and AI Administrator for the signed-in user.' Cite https://learn.microsoft.com/graph/utcm-agent-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources. Remove publisher-type access from the sentence claiming no automation is documented, and update the rendered table accordingly."
-    },
-    {
-      "n": 41,
-      "where": "controls[2].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Which users may use connectors is controlled at Microsoft 365 admin center > Agents > Settings > User access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-      "quote": "Select Agents > Settings > User access to manage your organization's agents and plugins.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "controls[2].api; Governance controls: no automation for User access",
-      "type": "absence",
-      "claim": "Microsoft documents no automation for User access.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/graph/utcm-agent-resources#useraccess-resource-type",
-      "quote": "These resources also support remediation and applyOnce.\nuserAssignmentCategory | Write | String | Specifies whether all users or no users can access agents and plugins. | everyone, noOne",
-      "severity": "blocker",
-      "fix": "Replace controls[2].api=null with graph call 'POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors', docs https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta. Note: 'Preview TCM applyOnce: set mode to applyOnce; baseline.resources uses resourceType microsoft.agent.useraccess, resourceVersion 1 and properties.valueObject.userAssignmentCategory set to everyone or noOne. This schema documents all-user/no-user choices, not specific-group assignment. Requires delegated ConfigurationMonitoring.ReadWrite.All for the caller, delegated CopilotPolicySettings.ReadWrite for the TCM service principal, and AI Administrator for the signed-in user.' Cite https://learn.microsoft.com/graph/utcm-agent-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources. Remove User access from the sentence claiming no automation is documented, and update the rendered table accordingly."
-    },
-    {
-      "n": 43,
-      "where": "controls[0..2].note; Governance guidance: At rollout; Governance controls",
+      "where": "controls[0].note; Governance guidance: At rollout; Governance controls",
       "type": "applicability",
-      "claim": "Existing Microsoft 365 admin-center allow/block controls for Copilot Connectors also apply through Work IQ APIs.",
+      "claim": "Existing Microsoft 365 admin-center allow and block controls for Copilot Connectors also apply through Work IQ APIs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
       "quote": "Existing administrator controls in the Microsoft 365 admin center to allow or block Copilot Connectors also apply when Connectors are accessed through Work IQ APIs.",
@@ -504,10 +443,120 @@
       "fix": null
     },
     {
-      "n": 44,
-      "where": "controls[3].ui; Governance controls table",
+      "n": 39,
+      "where": "controls[1].ui",
       "type": "admin-path",
-      "claim": "Tenant Work IQ MCP policy is managed at Microsoft 365 admin center > Agents > Tools > Work IQ MCP > Policy.",
+      "claim": "Microsoft 365 admin center > Agents > Settings > Agent and plugin access controls connector availability by publisher type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview#admin-experience-and-controls",
+      "quote": "Turn off connectors in bulk by publisher type in Agents > Settings > Agent and plugin access, then turn on specific connectors from Your connections.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[1].api; controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors with mode applyOnce can set publisher-type access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors\nmode | monitorMode | The monitor mode. The possible values are: monitorOnly, applyOnce, unknownFutureValue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "Publisher access uses resourceType microsoft.agent.allowedagenttypes with valueObject properties areMicrosoftAppsAllowed, areTenantScopedAppsAllowed and areISVAppsAllowed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "\"resourceType\": \"microsoft.agent.allowedagenttypes\",\n\"resourceVersion\": 1,\n\"properties\": {\n  \"valueObject\": {\n    \"areMicrosoftAppsAllowed\": true,\n    \"areTenantScopedAppsAllowed\": true,\n    \"areISVAppsAllowed\": false,",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Agents > Settings > User access controls which users may use connectors.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "Plugins include tools, MCP servers, connectors, skills, and other AI artifacts.\nSelect Agents > Settings > User access to manage your organization's agents and plugins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[2].api; controls[2].note; Governance controls",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors with mode applyOnce can set User access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "Create a new configurationMonitor object that runs periodically in the background at a scheduled frequency to detect configuration drift in monitorOnly mode, or applies a desired-state baseline once in applyOnce mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[2].note; Governance controls",
+      "type": "command",
+      "claim": "microsoft.agent.useraccess sets valueObject.userAssignmentCategory to everyone or noOne, without specific-group assignment in the documented schema.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "userAssignmentCategory | Write | String | Specifies whether all users or no users can access agents and plugins. | everyone, noOne",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Creating an applyOnce monitor requires the calling app's delegated ConfigurationMonitoring.ReadWrite.All permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "Creating an applyOnce monitor supports delegated permissions only. In addition to the calling app's delegated ConfigurationMonitoring.ReadWrite.All permission, the TCM service principal needs delegated permissions for the target workloads",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Agent-resource applyOnce needs delegated CopilotPolicySettings.ReadWrite on the TCM service principal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "For remediation and applyOnce, grant it the CopilotPolicySettings.ReadWrite delegated permission.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[1].note; controls[2].note; Governance controls",
+      "type": "role",
+      "claim": "The signed-in user needs the AI Administrator role for these Agent-resource applyOnce operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
+      "quote": "microsoft.agent.allowedagenttypes | CopilotPolicySettings.ReadWrite | AI Administrator\nmicrosoft.agent.useraccess | CopilotPolicySettings.ReadWrite | AI Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].note; controls[2].note; Governance controls",
+      "type": "availability",
+      "claim": "Tenant Configuration Management remediation and applyOnce for these resources are preview capabilities through Graph beta.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
+      "quote": "Tenant Configuration Management (TCM) drift remediation and applyOnce monitors change workload configuration on behalf of the signed-in administrator. These capabilities are available in preview through Microsoft Graph beta.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Work IQ MCP tenant policy is reached through Microsoft 365 admin center > Agents > Tools > Work IQ MCP > Policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp#open-policy-settings-in-the-microsoft-365-admin-center",
       "quote": "In the left navigation, select Agents > Tools.\nIn the tools registry, select Work IQ MCP.\nOn the Work IQ MCP details pane, select the Policy tab when it's available.",
@@ -515,30 +564,19 @@
       "fix": null
     },
     {
-      "n": 45,
-      "where": "controls[3].note; Governance controls: MCP policy applicability",
-      "type": "absence",
-      "claim": "Microsoft has not confirmed that Work IQ MCP policy applies to federated connector operations.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/tool-reference",
-      "quote": "A separate tenant policy layer evaluates each tool request and blocks mutation operations by default.\nFor connected data sources, connector paths use call_function for reads and do_action for writes, rather than fetch, create_entity, update_entity, or delete_entity.",
-      "severity": "blocker",
-      "fix": "Remove 'Microsoft has not confirmed it applies to federated connectors' from controls[3].note and its rendered note, and remove 'Microsoft has not confirmed that the Work IQ MCP policy applies to federated connector operations.' from the prose. The existing description 'General Work IQ MCP control' can remain. The tool reference https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/tool-reference explicitly includes connector operations and says each tool request is policy-evaluated; this does not assert that every other Copilot connector experience uses that policy."
-    },
-    {
-      "n": 46,
-      "where": "controls[3].note; Governance controls table",
-      "type": "availability",
-      "claim": "The Work IQ MCP Policy tab is shown when available.",
+      "n": 50,
+      "where": "controls[3].governs; controls[3].note",
+      "type": "applicability",
+      "claim": "The Policy tab, when available, lets an administrator turn general Work IQ MCP policy on or off tenant-wide.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "On the Work IQ MCP details pane, select the Policy tab when it's available.",
+      "quote": "On the Work IQ MCP details pane, select the Policy tab when it's available.\nReview the current policy state, then turn policy on or off for the tenant as needed.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 47,
-      "where": "controls[3].note; Governance controls table",
+      "n": 51,
+      "where": "controls[3].note",
       "type": "behaviour",
       "claim": "Work IQ MCP policy changes can take up to 24 hours to apply.",
       "status": "supported",
@@ -548,43 +586,32 @@
       "fix": null
     },
     {
-      "n": 48,
-      "where": "controls[3].api; Governance controls table",
+      "n": 52,
+      "where": "controls[3].api",
       "type": "absence",
-      "claim": "An automation operation for the tenant Work IQ MCP policy toggle is not documented.",
+      "claim": "No API operation for the Work IQ MCP tenant policy on/off setting is documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Work IQ policy PATCH; Work IQ MCP policy API settings update. Opened policy-governance-mcp, MCP overview and tool reference; searched Graph references. Found UI steps and generic setting semantics, but no operation for this toggle.",
+      "quote": "Searched: Work IQ MCP policy API settings tenant; Work IQ MCP policy PATCH. Read policy-governance-mcp, Package Management API overview and returned MCP reference excerpts; policy behavior and UI are documented, but no operation for this policy toggle was returned.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 49,
-      "where": "controls[4].ui; controls[4].api; Governance controls table",
+      "n": 53,
+      "where": "controls[4].ui; controls[4].api",
       "type": "absence",
-      "claim": "No separate tenant control specific to federated connectors in Work IQ is documented.",
+      "claim": "A separate Work IQ-specific administrator control for federated connectors is not documented on either surface.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Work IQ federated connectors default enable participation APIs admin control. Read Work IQ overview, manage-federated-connectors, policy-governance-mcp and MCP overview; they document inherited connector controls and general MCP policy, not a separate connector-specific Work IQ tenant switch.",
+      "quote": "Searched: Work IQ federated participation control Graph; Work IQ federated connectors default enable participation admin control. Read Work IQ overview and manage-federated-connectors; existing connector controls apply, but no separate Work IQ-specific connector admin switch or operation is given.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 50,
-      "where": "Governance controls: no automation for staged rollout",
-      "type": "absence",
-      "claim": "Microsoft Learn documents no automation for federated connector staged rollout as of November 2026.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: federated connectors staged rollout automation Microsoft Graph API; \"federated connectors\" \"staged rollout\" \"API\". Opened manage-federated-connectors, set-up-custom-federated-connectors and Package Management overview; found UI staging, not its automation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "Governance controls: user write-tool approval",
+      "n": 54,
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "In Copilot Chat, Always allow and Allow for conversation apply to individual write tools, not the whole connector.",
+      "claim": "Users approve individual write tools in Copilot Chat, and Always allow and Allow for conversation apply per tool rather than per connector.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
       "quote": "Always allow and Allow for conversation apply to the individual tool, not to the whole connector. Users can decide which tools to allow.",
@@ -592,10 +619,10 @@
       "fix": null
     },
     {
-      "n": 52,
-      "where": "Governance controls: audit",
+      "n": 55,
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Microsoft Purview supports auditing federated connector actions.",
+      "claim": "Connector actions can be audited in Microsoft Purview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview",
       "quote": "Can read data and, where a connector provides the tools, create, update, or delete data with the user's approval. Admins can audit activity in Microsoft Purview.",
@@ -603,47 +630,25 @@
       "fix": null
     },
     {
-      "n": 53,
-      "where": "Open questions: launch connectors",
-      "type": "absence",
-      "claim": "A definitive list of connectors available to Work IQ at this feature's launch is not published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Work IQ federated connectors default enable participation APIs admin control. Read Work IQ overview and federated-connectors-overview; the gallery list covers Copilot connectors generally, while Work IQ participation requires developer enablement and has no launch-specific list.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "Open questions: additional clouds",
-      "type": "absence",
-      "claim": "Availability for this Work IQ federated-connectors feature beyond the roadmap's Worldwide cloud remains open.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"federated connectors\" availability GCC cloud. Read roadmap, Work IQ overview and custom connector FAQ. Results about Business Applications in Work IQ concern a different capability; no additional-cloud commitment for this feature was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "Governance guidance: After rollout",
+      "n": 56,
+      "where": "Governance guidance: Before rollout",
       "type": "consistency",
-      "claim": "The checklist asks readers to review connector permissions, but no controls-table row describes a connector permission control.",
+      "claim": "The instruction to review each connector's write tools has a corresponding controls-table row.",
       "status": "contradicted",
       "source": "page",
-      "quote": "Review connector permissions after publisher changes. | The table covers connector availability, publisher-type access, User access, general Work IQ MCP policy and a missing Work IQ-specific switch, not connector tool permissions.",
+      "quote": "Checklist: Review each connector's write tools. Table: connector availability; publisher-type access; User access; Work IQ MCP policy; missing Work IQ-specific connector control. No row covers reviewing connector tools.",
       "severity": "minor",
-      "fix": "Remove the checklist bullet 'Review connector permissions after publisher changes.' It asks the reader to review a permission control that has no controls-table row; do not add a new row as part of this correction."
+      "fix": "Remove the Before rollout bullet 'Review each connector's write tools.' It names a control review with no corresponding table row."
     }
   ],
   "precheck": {
-    "at": "2026-11-19T07:24:48.015Z",
+    "at": "2026-11-19T09:20:15.325Z",
     "summary": {
-      "links": 19,
+      "links": 22,
       "unreachable": 0,
       "uiPaths": 4,
       "uiPathsWithMissingWords": 1,
-      "apiCalls": 1,
+      "apiCalls": 3,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
@@ -719,6 +724,21 @@
         "status": 200
       },
       {
+        "url": "https://learn.microsoft.com/graph/utcm-agent-resources",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview#admin-experience-and-controls",
         "ok": true,
         "status": 200
@@ -784,6 +804,15 @@
         "missing": []
       },
       {
+        "index": 1,
+        "side": "api",
+        "governs": "Allowing or blocking connectors by publisher type",
+        "docs": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+        "reachable": true,
+        "token": "/beta/admin/configurationManagement",
+        "found": true
+      },
+      {
         "index": 2,
         "side": "ui",
         "governs": "Which users may use connectors",
@@ -795,6 +824,15 @@
           "User access"
         ],
         "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Which users may use connectors",
+        "docs": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+        "reachable": true,
+        "token": "/beta/admin/configurationManagement",
+        "found": true
       },
       {
         "index": 3,
@@ -835,6 +873,12 @@
       "date": "2026-11-19",
       "status": "held",
       "version": 4,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-19",
+      "status": "held",
+      "version": 5,
       "model": "gpt-6.1-sol"
     }
   ]

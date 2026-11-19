@@ -43,6 +43,9 @@ sources:
   - title: "Create and manage Insider Risk Management policies"
     url: "https://learn.microsoft.com/purview/insider-risk-management-policies"
     kind: "learn"
+  - title: "Add-RoleGroupMember"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember?view=exchange-ps"
+    kind: "learn"
 videos: []
 related: []
 controls:
@@ -63,10 +66,13 @@ controls:
     scope: "group"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Settings > Roles and groups > Roles groups > Insider Risk Management"
+      path: "Settings > Roles and groups > Roles groups > Insider Risk Management > Edit > Choose users"
       docs: "https://learn.microsoft.com/purview/insider-risk-management-permissions"
-    api: null
-    note: "Which role groups see the panel is not documented. Role groups Insider Risk Management and Insider Risk Management Admins can configure policies and settings."
+    api:
+      kind: "powershell"
+      call: "Add-RoleGroupMember -Identity \"Insider Risk Management\" -Member <user-UPN>"
+      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember?view=exchange-ps"
+    note: "Which role groups see the panel is not documented. Role groups Insider Risk Management and Insider Risk Management Admins can configure policies and settings. API: Security & Compliance PowerShell."
 confidence: "medium"
 created: "2026-11-19"
 updated: "2026-11-19"
@@ -76,19 +82,23 @@ changes:
     note: "First briefing for roadmap item 560600: Policy Recommendation panel in Insider Risk Management, with the notice's updated January and February CY2027 timeline."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 64 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-19"
+    note: "Corrected the role group control: the admin path now ends at Edit > Choose users, and the Add-RoleGroupMember cmdlet is given as its PowerShell equivalent."
+  - date: "2026-11-19"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 64 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-19"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 64
   confirmed: 62
-  unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "a49a6fbade110c69f631abf90a091cf8"
+  unconfirmed: 1
+  contradicted: 1
+  attempts: 0
+  hash: "dae66537f11fd742af272b15db166beb"
 ---
 
 ## What's changing
@@ -164,7 +174,7 @@ The notice names IRM administrators and organisations using IRM policies as the 
 <tbody>
 <tr><td data-label="Control"><strong>Whether the Policy Recommendation panel is shown</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft's notice MC1387681 says the panel is enabled by default. Learn documents no switch for it at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Insider risk analytics scanning, the documented source of policy recommendations today</strong><br><small>Tenant</small><br><small class="controls__note">Existing capability. Whether the new panel relies on this setting is not stated. Requires Insider Risk Management, Insider Risk Management Admins or Microsoft 365 Global admin role group membership.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Insider Risk Management › Insider risk settings › Analytics <a href="https://learn.microsoft.com/purview/insider-risk-management-settings-analytics" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Who can configure Insider Risk Management policies and settings, through role group membership</strong><br><small>Group</small><br><small class="controls__note">Which role groups see the panel is not documented. Role groups Insider Risk Management and Insider Risk Management Admins can configure policies and settings.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and groups › Roles groups › Insider Risk Management <a href="https://learn.microsoft.com/purview/insider-risk-management-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Who can configure Insider Risk Management policies and settings, through role group membership</strong><br><small>Group</small><br><small class="controls__note">Which role groups see the panel is not documented. Role groups Insider Risk Management and Insider Risk Management Admins can configure policies and settings. API: Security &amp; Compliance PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Roles and groups › Roles groups › Insider Risk Management › Edit › Choose users <a href="https://learn.microsoft.com/purview/insider-risk-management-permissions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-RoleGroupMember -Identity &quot;Insider Risk Management&quot; -Member &lt;user-UPN&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -187,9 +197,12 @@ cost: Low. No charge specific to the panel is published; the known cost is admin
 impact: Low. Insider Risk Management administrators see the panel; Microsoft's notice says there is no impact to user workflows and existing policies stay unchanged.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[2].ui; Governance controls table / admin-path: Settings > Roles and groups > Roles groups > Insider Risk Management is the complete path to the membership control. | Found: Select the Insider Risk Management role group, then select Edit. Select Choose users, then select the checkboxes for all the users you want to add to the role group. | Fix: Extend controls[2].ui.path and the rendered table path to 'Settings > Roles and groups > Roles groups > Insider Risk Management > Edit > Choose users', as documented at https://learn.microsoft.com/purview/insider-risk-management-permissions. The current path stops before membership can be changed. | Source: https://learn.microsoft.com/purview/insider-risk-management-permissions
-- [contradicted, blocker] controls[2].api; Governance controls table / absence: Microsoft has not documented automation for managing Insider Risk Management role group membership. | Found: Use the Add-RoleGroupMember cmdlet to add members to a management role group. ... The Identity parameter specifies the role group to add a member to. ... The Member parameter specifies who you want to add to the role group. | Fix: Replace controls[2].api null with kind 'powershell', call 'Add-RoleGroupMember -Identity "Insider Risk Management" -Member <user-UPN>', and docs 'https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember?view=exchange-ps'. Name Security & Compliance PowerShell in the note; the reference lists Security & Compliance applicability for Identity and Member. Update the rendered automation cell and cite the reference. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember?view=exchange-ps
+- [unsupported, major] Why it matters / behaviour: The change is not a new detection. | Found: Searched: Insider Risk policy recommendation panel settings roles licensing signals; read the roadmap, MC1387681 and the policies and analytics pages. They describe recommendations and additional signal processing, but do not state that no new detection is involved. | Fix: Replace the first sentence with: "Microsoft's notice describes a new recommendation view over existing insider risk policies."
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Cost and licensing: final paragraph / cost: If a suggested policy uses pay-as-you-go indicators, Microsoft ties billing to that policy's indicator processing rather than describing panel billing. | Found: Insider Risk Management processes user activities corresponding to the non-Microsoft 365 indicators selected in data theft and data leak policies to generate insights, alerts, and cases. | Fix: Add https://learn.microsoft.com/purview/purview-billing-models to sources for the conditional statement about billing when a suggested policy uses pay-as-you-go indicators. | Source: https://learn.microsoft.com/purview/purview-billing-models
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: The analytics control is reached in Microsoft Purview through Settings > Insider Risk Management > Insider risk settings > Analytics. | Found: Select Settings in the upper-right corner of the page. 3. Select Insider Risk Management to go to the Insider Risk Management settings. 4. Under Insider risk settings, select Analytics, and then turn off the setting. | Fix: The path reaches the correct settings page but stops before its switch. Set controls[1].ui.path and the rendered path to "Settings > Insider Risk Management > Insider risk settings > Analytics > Scan your tenant's user activity to identify potential insider risks". The final label is documented at https://learn.microsoft.com/purview/insider-risk-management-configure#step-3-optional-enable-and-view-insider-risk-analytics-insights, already cited by the briefing. | Source: https://learn.microsoft.com/purview/insider-risk-management-settings-analytics
+- [contradicted, minor] front matter: action / consistency: The prepare action rating fits the briefing's medium-risk, automatically arriving January preview. | Found: action: "prepare"; risk: "medium"; previewDate: "January CY2027"; "Agree in advance who may act on a recommendation". | Fix: Set action to "act-now". On 19 November 2026 the January month-only preview target is within 60 days when counted from 1 January as the standard requires; the feature arrives automatically, risk is medium, and the briefing identifies an approval decision to take before arrival.
 -->

@@ -1,0 +1,663 @@
+{
+  "slug": "outlook-share-word-excel-and-powerpoint-local-files-via-the-new-outlook-for-windows",
+  "roadmapId": 557675,
+  "title": "Outlook: send local Word, Excel and PowerPoint files by email from the new Outlook for Windows",
+  "status": "held",
+  "date": "2026-11-19",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-19",
+    "reasons": [
+      "2 blocking findings (claims 42, 50)"
+    ]
+  },
+  "counts": {
+    "claims": 52,
+    "confirmed": 50,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 2,
+    "major": 0,
+    "minor": 0
+  },
+  "summary": "Hold: the governance checklist mistakes a mailbox access setting for evidence that someone uses new Outlook. The claim that release-ring ordering is undocumented also overlooks Microsoft's published Targeted Release sequence; the roadmap facts, Message Center rollout windows and disabling commands are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Risk assessment; Scope",
+      "type": "record",
+      "claim": "Microsoft plans to let users email a copy of an open, locally stored Word, Excel or PowerPoint file through new Outlook for Windows.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When working in an open Word, Excel, or PowerPoint file, users will now be able to send a copy of the locally stored file by email through the new Outlook for Windows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap gives a single target of January CY2027 rather than the notice's later GCC window.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Desktop.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 5 November 2026 at 00:00:11.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-05T00:00:11\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; Risk assessment; rationale: impact",
+      "type": "default",
+      "claim": "The feature is on by default and arrives without an administrator enabling it.",
+      "status": "supported",
+      "source": "Message Center post MC1245222",
+      "quote": "This feature is ON by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Why it matters; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft says no admin action is required.",
+      "status": "supported",
+      "source": "Message Center post MC1245222",
+      "quote": "No admin action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice identifies organizations adopting or transitioning to new Outlook for Windows as affected.",
+      "status": "supported",
+      "source": "Message Center post MC1245222",
+      "quote": "Organizations adopting or transitioning to the new Outlook for Windows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice's scope is locally stored Office files, not files stored in OneDrive.",
+      "status": "supported",
+      "source": "Message Center post MC1245222",
+      "quote": "Users working with locally stored Word, Excel, or PowerPoint files (not stored in OneDrive).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Why it matters; controls[1].note; Governance controls; rationale: risk",
+      "type": "record",
+      "claim": "Microsoft says the feature makes no change to existing admin controls or policies.",
+      "status": "supported",
+      "source": "Message Center post MC1245222",
+      "quote": "There is no change to existing admin controls or policies, and all existing Outlook/Exchange policies continue to apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "applicability",
+      "claim": "Existing Outlook and Exchange policies continue to apply to email sent through this feature.",
+      "status": "supported",
+      "source": "Message Center post MC1245222",
+      "quote": "There is no change to existing admin controls or policies, and all existing Outlook/Exchange policies continue to apply.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not describe this specific feature at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: new Outlook share Word Excel PowerPoint locally stored files 557675 policy disable license prerequisites release ring. Opened Learn's new Outlook overview and policy-management pages; no description of this specific integration found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "type": "record",
+      "claim": "The notice was updated on 4 November 2026 and changed the rollout timeline.",
+      "status": "supported",
+      "source": "Message Center post MC1245222",
+      "quote": "Updated November 4, 2026: We have updated the timeline. Thank you for your patience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "summary; What's changing; Scope; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "The notice says Worldwide rollout begins in mid-January 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1245222",
+      "quote": "General Availability (Worldwide): We will begin rolling out in mid-January 2027 (previously early November 2026)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "The notice expects Worldwide rollout to complete by mid-February 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1245222",
+      "quote": "expect to complete by mid-February 2027 (previously early December 2026).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The previous Worldwide start was early November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1245222",
+      "quote": "mid-January 2027 (previously early November 2026)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The previous Worldwide completion was early December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1245222",
+      "quote": "mid-February 2027 (previously early December 2026)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Scope; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "The notice says GCC rollout begins in late February 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1245222",
+      "quote": "General Availability (GCC): We will begin rolling out in late February 2027 (previously mid-January)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Scope; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "The notice expects GCC rollout to complete by late March 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1245222",
+      "quote": "expect to complete by late March 2027 (previously mid-February).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice describes the previous GCC start as mid-January.",
+      "status": "supported",
+      "source": "Message Center post MC1245222",
+      "quote": "late February 2027 (previously mid-January)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice describes the previous GCC completion as mid-February.",
+      "status": "supported",
+      "source": "Message Center post MC1245222",
+      "quote": "late March 2027 (previously mid-February)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters; Cost and licensing; Governance guidance; rationale: cost",
+      "type": "record",
+      "claim": "Microsoft suggests informing help desk staff to reduce support inquiries.",
+      "status": "supported",
+      "source": "Message Center post MC1245222",
+      "quote": "Inform help desk staff about this update to reduce support inquiries.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters; Cost and licensing; Governance guidance; rationale: cost",
+      "type": "record",
+      "claim": "Microsoft suggests updating internal documentation if it references classic Outlook workflows.",
+      "status": "supported",
+      "source": "Message Center post MC1245222",
+      "quote": "Update your internal documentation if it references classic Outlook workflows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Change & support",
+      "type": "record",
+      "claim": "Microsoft links the change to feature parity between classic and new Outlook for Windows.",
+      "status": "supported",
+      "source": "Message Center post MC1245222",
+      "quote": "This update streamlines the sharing experience and aligns with ongoing efforts to bring feature parity between classic Outlook for Windows and the new Outlook.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Microsoft's notice identifies no compliance considerations.",
+      "status": "supported",
+      "source": "Message Center post MC1245222",
+      "quote": "No compliance considerations identified. Review as appropriate for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "absence",
+      "claim": "No new data access is described in the supplied notice.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: read supplied MC1245222 in full for new data access; it describes sending existing local files as attachments and continuing Outlook/Exchange policies, without identifying additional data access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Neither the roadmap record nor the supplied notice describes identity or sign-in changes.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: read roadmap 557675 and supplied MC1245222 in full for identity and sign-in changes; neither describes one.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The supplied sources describe user-initiated sending, not autonomous behavior.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: read roadmap 557675 and supplied MC1245222 in full for autonomous actions; they describe users sending a copy of an open local file and no autonomous behavior.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Change & support; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft's licensing page says Microsoft 365 accounts with a Frontline license cannot be added to new Outlook.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
+      "quote": "Can Microsoft 365 accounts with a Frontline license be added to new Outlook? No.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope: Prerequisites",
+      "type": "licensing",
+      "claim": "Using Outlook for Windows with a Microsoft 365 organizational address requires a plan that includes desktop Microsoft 365 apps.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
+      "quote": "To use the Outlook for Windows desktop app (either the classic or new version) with a Microsoft 365 organizational email address, you need to purchase a plan that includes the desktop versions of the Microsoft 365 apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is included under the existing new Outlook desktop-app entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
+      "quote": "For example, a Business Standard or Business Premium plan provides access to a Microsoft 365 email address and the desktop versions of Outlook and other Microsoft 365 apps.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No license specific to this feature is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"new Outlook\" \"local files\" \"license\" price meter. Opened licensing-options and new Outlook overview; read roadmap and MC1245222. Found product entitlement, not a feature-specific license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter specific to this feature is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"new Outlook\" \"local files\" \"license\" price meter. Opened licensing-options and new Outlook overview; read roadmap and MC1245222. No feature-specific meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No price specific to this feature is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"new Outlook\" \"local files\" \"license\" price meter. Opened licensing-options and new Outlook overview; read roadmap and MC1245222. No feature-specific price found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope: Prerequisites",
+      "type": "record",
+      "claim": "The feature requires use of new Outlook for Windows.",
+      "status": "supported",
+      "source": "Message Center post MC1245222",
+      "quote": "Users can now share local Office files as email attachments directly through the new Outlook for Windows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope: Prerequisites; Open questions",
+      "type": "absence",
+      "claim": "No additional prerequisites specific to this feature are published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"new Outlook\" \"local files\" \"Targeted\" prerequisites. Read roadmap, MC1245222, overview and licensing-options; found no feature-specific prerequisites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope: Rollout",
+      "type": "behaviour",
+      "claim": "New Outlook features are flighted to release rings and some tenants or users can enroll in Targeted Release.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/overview-new-outlook-windows",
+      "quote": "New functionality is flighted to different release rings, as is the case for Microsoft 365 for the web. Some tenants or individual users in organizations could opt to get early access to features by enrolling in the Targeted release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope: Rollout; Open questions: release ring",
+      "type": "absence",
+      "claim": "Which release ring this feature uses, including whether Targeted Release comes first, is not stated.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-updates-new-outlook-windows",
+      "quote": "In new Outlook, new features become available first in Targeted Release for 30 days and then are rolled out to Standard Release (General Availability).",
+      "severity": "blocker",
+      "fix": "Replace 'Which ring this feature uses is not stated' with 'Microsoft documents the general new Outlook sequence as Targeted Release for 30 days, then Standard Release (General Availability); MC1245222 gives General Availability windows but no feature-specific Targeted Release dates.' Replace the release-ring Open question with 'What are the feature-specific Targeted Release dates? MC1245222 does not give them.' Cite https://learn.microsoft.com/microsoft-365-apps/outlook/manage/manage-updates-new-outlook-windows."
+    },
+    {
+      "n": 43,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "absence",
+      "claim": "An admin UI for the specific per-mailbox OneWinNativeOutlookEnabled control is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneWinNativeOutlookEnabled Exchange admin center user interface enable disable mailbox new Outlook. Opened enable-disable-employee-access-new-outlook and control-install; found PowerShell for this setting, not an admin UI.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Exchange Online PowerShell supports Set-CASMailbox -Identity <MailboxIdentity> -OneWinNativeOutlookEnabled $false to disable that mailbox's access in new Outlook.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-on-the-web/enable-disable-employee-access-new-outlook",
+      "quote": "This example disables Outlook for Windows for the specified user.\nSet-CASMailbox -Identity colin@contoso.onmicrosoft.com -OneWinNativeOutlookEnabled $false",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].governs and note; Governance controls",
+      "type": "applicability",
+      "claim": "The mailbox-access control blocks new Outlook for that account, removing access to this feature there rather than disabling this feature alone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-on-the-web/enable-disable-employee-access-new-outlook",
+      "quote": "their account is disabled in Outlook for Windows and they can no longer use Outlook for Windows with that account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "Set-OwaMailboxPolicy -Identity <PolicyIdentity> -OneWinNativeOutlookEnabled $false sets the equivalent access restriction per policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-on-the-web/enable-disable-employee-access-new-outlook",
+      "quote": "To enable or disable access to mailboxes in Outlook for Windows in Outlook on the web mailbox policies, use the following syntax:\nSet-OwaMailboxPolicy -Identity <PolicyIdentity> -OneWinNativeOutlookEnabled <$true | $false | $null>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The policy setting affects all current and future mailboxes with that policy applied.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-on-the-web/enable-disable-employee-access-new-outlook",
+      "quote": "The value you specify in the Outlook on the web mailbox policy affects all current and future mailboxes that have the policy applied to them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "The access-control procedure points administrators to the Outlook on the web mailbox policies permissions entry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-on-the-web/enable-disable-employee-access-new-outlook",
+      "quote": "To see what permissions you need, see the \"Outlook on the web mailbox policies\" entry in the Feature permissions in Exchange Online article.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The OneWinNativeOutlookEnabled cmdlet parameter does not affect the Try the new Outlook toggle in classic Outlook.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-on-the-web/enable-disable-employee-access-new-outlook",
+      "quote": "The OneWinNativeOutlookEnabled parameter on the Set-CASMailbox or Set-OwaMailboxPolicy cmdlets doesn't affect the availability of the Try the new Outlook toggle in classic Outlook.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance guidance: Before rollout, first bullet",
+      "type": "applicability",
+      "claim": "Checking OneWinNativeOutlookEnabled identifies who uses new Outlook for Windows.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-on-the-web/enable-disable-employee-access-new-outlook",
+      "quote": "The default value for the OneWinNativeOutlookEnabled parameter on both cmdlets is blank ($null), which is equivalent to the value $true (users aren't restricted from accessing their work or school mailboxes using Outlook for Windows).",
+      "severity": "blocker",
+      "fix": "Replace the first Before rollout bullet with 'Review the OneWinNativeOutlookEnabled mailbox access setting (see the first controls row); Microsoft documents True or blank as access enabled. This setting describes access permission, not actual usage.' The source is https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-on-the-web/enable-disable-employee-access-new-outlook."
+    },
+    {
+      "n": 51,
+      "where": "Governance guidance: Before rollout, first bullet",
+      "type": "behaviour",
+      "claim": "Microsoft documents True or blank for OneWinNativeOutlookEnabled as access enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-on-the-web/enable-disable-employee-access-new-outlook",
+      "quote": "The value True or blank for the OneWinNativeOutlookEnabled property means access is enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[1].ui and api; Risk assessment; Governance guidance; Governance controls",
+      "type": "absence",
+      "claim": "No documented UI or automation switch disables only sending local Office files through this new integration.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"new Outlook\" \"local\" \"Word\" \"sharing\" \"policy\"; \"Set-OwaMailboxPolicy\" \"local\" \"Office\" \"send\". Read policy-management, control-install and searched Set-OwaMailboxPolicy reference; no integration-only switch found.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-19T09:20:17.843Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 0,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=557675",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1245222",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/licensing-options",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-on-the-web/enable-disable-employee-access-new-outlook",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/outlook/overview-new-outlook-windows",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/outlook/get-started/control-install",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether a mailbox can use the new Outlook for Windows at all (existing control, not specific to this feature)",
+        "docs": "https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/outlook-on-the-web/enable-disable-employee-access-new-outlook",
+        "reachable": true,
+        "token": "Set-CASMailbox",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

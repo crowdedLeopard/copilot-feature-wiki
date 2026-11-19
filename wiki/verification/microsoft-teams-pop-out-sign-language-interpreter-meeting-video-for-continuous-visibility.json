@@ -4,11 +4,11 @@
   "title": "Microsoft Teams: pop out the sign language interpreter video in meetings",
   "status": "held",
   "date": "2026-11-19",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
-  "standard": "cd5b21ff3a5b",
+  "attempts": 2,
+  "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
   "notes": [],
@@ -16,36 +16,47 @@
     "reason": "failed",
     "since": "2026-11-19",
     "reasons": [
-      "1 blocking finding (claim 29)"
+      "1 blocking finding (claim 36)"
     ]
   },
   "counts": {
-    "claims": 42,
-    "confirmed": 40,
+    "claims": 43,
+    "confirmed": 42,
     "unconfirmed": 0,
-    "contradicted": 2,
+    "contradicted": 1,
     "blocker": 1,
     "major": 0,
-    "minor": 2
+    "minor": 1
   },
-  "summary": "The roadmap description, dates and cited controls are supported. However, the assertion that IP video is the only documented meeting policy for interpreter video overlooks the broader video policies Microsoft documents; narrow that assertion before publishing.",
+  "summary": "Hold: the advice to check Mode for IP video omits Microsoft's explicit exclusion of GCC, GCC High and DoD, all of which this briefing covers. The roadmap facts, interpreter-video control path and PowerShell command are supported; feature-specific controls and licensing details remain unpublished.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: status; What's changing",
+      "where": "front matter: products; Cost and licensing; Scope",
       "type": "record",
-      "claim": "The roadmap status is In development.",
+      "claim": "Microsoft Teams is the only product listed for this change.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "quote": "\"products\": [\"Microsoft Teams\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development despite its description saying 'You can now pop out'.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\"; \"You can now pop out a sign language interpreter into a separate, resizable window\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
       "where": "front matter: targetDate; summary; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap target is January CY2027.",
+      "claim": "January CY2027 is the roadmap target, not a committed availability date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"January CY2027\"",
@@ -53,7 +64,7 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 4,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The record gives no preview date.",
@@ -64,10 +75,10 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 5,
       "where": "front matter: platforms; What's changing; Risk assessment; Scope; rationale: impact",
       "type": "record",
-      "claim": "The roadmap lists Desktop and Mac as the platforms.",
+      "claim": "Desktop and Mac are the only platforms listed in the roadmap record.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Desktop\", \"Mac\"]",
@@ -75,10 +86,10 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The release phases are General Availability and Targeted Release.",
+      "claim": "The listed release phases are General Availability and Targeted Release.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
@@ -86,24 +97,13 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 7,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The listed clouds are Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "claim": "The record lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "front matter: products; Cost and licensing; Scope",
-      "type": "record",
-      "claim": "Microsoft Teams is the only product in the roadmap record.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Teams\"]",
       "severity": null,
       "fix": null
     },
@@ -120,12 +120,12 @@
     },
     {
       "n": 9,
-      "where": "title; summary; What's changing; Risk assessment",
+      "where": "title; summary; What's changing; Risk assessment; rationale: risk",
       "type": "record",
-      "claim": "Microsoft plans a separate window for a sign language interpreter's meeting video.",
+      "claim": "Microsoft plans a separate window displaying the sign language interpreter's meeting video.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "You can now pop out a sign language interpreter into a separate, resizable window that stays visible across monitors and apps.",
+      "quote": "You can now pop out a sign language interpreter into a separate, resizable window",
       "severity": null,
       "fix": null
     },
@@ -133,7 +133,7 @@
       "n": 10,
       "where": "summary; What's changing",
       "type": "record",
-      "claim": "The planned window is resizable.",
+      "claim": "The planned interpreter window is resizable.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "a separate, resizable window",
@@ -144,21 +144,21 @@
       "n": 11,
       "where": "summary; What's changing; Governance guidance",
       "type": "record",
-      "claim": "The roadmap says the window stays visible across monitors and apps.",
+      "claim": "The planned window stays visible across monitors.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "a separate, resizable window that stays visible across monitors and apps",
+      "quote": "stays visible across monitors and apps",
       "severity": null,
       "fix": null
     },
     {
       "n": 12,
-      "where": "What's changing; Why it matters",
+      "where": "summary; What's changing; Governance guidance",
       "type": "record",
-      "claim": "The planned interpreter video persists while viewers multitask.",
+      "claim": "The planned window stays visible across apps.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "the sign language interpreter's popout video will persist while viewers are multitasking",
+      "quote": "stays visible across monitors and apps",
       "severity": null,
       "fix": null
     },
@@ -166,18 +166,18 @@
       "n": 13,
       "where": "What's changing; Why it matters",
       "type": "record",
-      "claim": "The planned interpreter video persists while viewers share content.",
+      "claim": "The roadmap says the interpreter video persists while viewers multitask.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "will persist while viewers are multitasking, sharing content, or changing meeting layouts",
+      "quote": "the sign language interpreter's popout video will persist while viewers are multitasking",
       "severity": null,
       "fix": null
     },
     {
       "n": 14,
-      "where": "What's changing",
+      "where": "What's changing; Why it matters",
       "type": "record",
-      "claim": "The planned interpreter video persists while viewers change meeting layouts.",
+      "claim": "The roadmap says the interpreter video persists while viewers share content.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "will persist while viewers are multitasking, sharing content, or changing meeting layouts",
@@ -186,6 +186,17 @@
     },
     {
       "n": 15,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says the interpreter video persists while viewers change meeting layouts.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "will persist while viewers are multitasking, sharing content, or changing meeting layouts",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
       "where": "What's changing; Scope; rationale: impact",
       "type": "record",
       "claim": "The roadmap describes the feature as designed to support Deaf and Hard of Hearing users.",
@@ -196,10 +207,10 @@
       "fix": null
     },
     {
-      "n": 16,
+      "n": 17,
       "where": "What's changing",
       "type": "record",
-      "claim": "The record does not describe the steps a viewer takes to open the pop-out.",
+      "claim": "The record does not describe the steps a viewer uses to open the pop-out.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "You can now pop out a sign language interpreter into a separate, resizable window that stays visible across monitors and apps.",
@@ -207,10 +218,10 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 18,
       "where": "What's changing",
       "type": "record",
-      "claim": "The record does not describe how a participant is marked as an interpreter.",
+      "claim": "The record does not describe how a participant is designated as the sign language interpreter.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Designed to support Deaf and Hard of Hearing users, the sign language interpreter's popout video will persist while viewers are multitasking, sharing content, or changing meeting layouts.",
@@ -218,7 +229,7 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 19,
       "where": "What's changing",
       "type": "record",
       "claim": "The roadmap record does not state whether the pop-out is on by default.",
@@ -229,7 +240,7 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 20,
       "where": "Risk assessment: Data exposure; rationale: risk",
       "type": "record",
       "claim": "The roadmap mentions no new data collection, storage or access.",
@@ -240,62 +251,106 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 21,
       "where": "Risk assessment: Autonomy & actions",
       "type": "record",
       "claim": "The roadmap describes a viewing option and reports no automated action.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "You can now pop out a sign language interpreter into a separate, resizable window that stays visible across monitors and apps.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "Microsoft Learn does not yet describe the interpreter-video pop-out feature.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: '\"sign language\" \"pop-out\" Teams' and '\"sign language\" \"pop\" Teams policy'; opened Accessibility guide for Microsoft Teams Admins and meeting-policies-audio-and-video. No feature-specific description found.",
+      "quote": "You can now pop out a sign language interpreter into a separate, resizable window",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
-      "where": "front matter: defaultState; Why it matters; Open questions",
-      "type": "default",
-      "claim": "The feature's default state and what happens on arrival are not stated.",
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe this specific sign language interpreter pop-out feature.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Teams sign language interpreter pop out window desktop web mobile default user roles license pricing'; read roadmap record, accessibility-guide-admin and meeting-policies-audio-and-video. No pop-out default or arrival behaviour stated.",
+      "quote": "Searched: Teams sign language interpreter pop out window meeting admin policy default licensing PowerShell; opened accessibility-guide-admin, meeting-policies-audio-and-video and Set-CsTeamsMeetingPolicy. No feature-specific description found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 23,
-      "where": "controls[0].ui and controls[0].api; summary; Why it matters; Governance controls",
+      "where": "controls[0]; summary; Why it matters; Governance controls",
       "type": "absence",
-      "claim": "No admin UI or automation control for enabling or disabling the interpreter pop-out is documented.",
+      "claim": "No admin UI setting or automation specifically controlling interpreter pop-out availability is documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: '\"sign language\" \"pop\" Teams policy' and 'Teams sign language interpreter pop out Set-CsTeamsMeetingPolicy parameter signlanguage'; opened accessibility-guide-admin and Set-CsTeamsMeetingPolicy; searched reference for sign language and pop-out. No matching control.",
+      "quote": "Searched: Teams sign language interpreter pop out window meeting admin policy default licensing PowerShell; \"sign language\" \"pop\" \"Set-CsTeamsMeetingPolicy\". Opened accessibility-guide-admin and meeting-policy references; no pop-out switch found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 24,
-      "where": "Risk assessment: Data exposure",
-      "type": "absence",
-      "claim": "Microsoft has not documented the pop-out window's placement options.",
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "The pop-out's arrival/default state is not stated, and no source found says it changes existing behaviour.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: '\"sign language\" \"pop-out\" Teams' and 'Teams sign language interpreter pop out window desktop web mobile default user roles license pricing'; opened accessibility-guide-admin. No placement instructions found beyond the roadmap's across-monitors-and-apps description.",
+      "quote": "Searched: \"sign language\" \"pop\" \"default\" Teams; Teams sign language interpreter pop out window meeting admin policy default licensing PowerShell. Read roadmap, accessibility-guide-admin and meeting-policies-audio-and-video; no default found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 25,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Teams can be licensed through qualifying Microsoft 365 offerings or a standalone SKU.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/teams-service-description",
+      "quote": "Microsoft Teams can be licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is included under the existing Teams product licence, with feature-specific terms unpublished.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/teams-service-description",
+      "quote": "Microsoft Teams can be licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "absence",
+      "claim": "No feature-specific licence requirement has been published for this pop-out.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"sign language\" \"pop-out\" Teams licensing. Opened Teams service description and accessibility guide; read Teams Premium licensing search excerpts. No licence requirement for interpreter video pop-out found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "No feature-specific price has been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"sign language\" \"pop-out\" Teams licensing; Teams sign language interpreter pop out window meeting admin policy default licensing PowerShell. Opened Teams service description and accessibility guide; no pop-out price found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No feature-specific billing meter has been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"sign language\" \"pop-out\" Teams licensing; Teams sign language interpreter pop out window meeting admin policy default licensing PowerShell. Opened Teams service description; no sign language video pop-out meter found. AI spoken interpretation is distinct.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
       "claim": "Sign language interpreters often work outside the organisation.",
@@ -306,54 +361,54 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "Risk assessment: Security & identity; Scope; Governance guidance",
+      "n": 31,
+      "where": "Risk assessment: Security & identity; Cost and licensing; Scope",
       "type": "behaviour",
-      "claim": "The accessibility guide documents inviting external interpreters through guest access.",
+      "claim": "Interpreters can be invited to Teams meetings through guest access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/accessibility-guide-admin",
-      "quote": "Sign language interpreters and CART captioners likely don't work for your organization, but you can invite them to Microsoft Teams meetings by by giving them guest access.",
+      "quote": "you can invite them to Microsoft Teams meetings by by giving them guest access",
       "severity": null,
       "fix": null
     },
     {
-      "n": 27,
+      "n": 32,
       "where": "Risk assessment: Security & identity",
       "type": "absence",
-      "claim": "Microsoft has not documented an identity change for the pop-out.",
+      "claim": "Microsoft has not documented an identity change for this pop-out feature.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Teams \"sign language\" pop-out license pricing default identity clients'; read accessibility-guide-admin and roadmap record. Search results concern guest access and the unrelated spoken-language Interpreter agent, not a pop-out identity change.",
+      "quote": "Searched: Teams sign language interpreter popout window placement identity web mobile eligibility. Read roadmap and accessibility guide; results describe human interpreters or the distinct spoken-language Interpreter agent, not a pop-out identity change.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 28,
-      "where": "Risk assessment: Change & support; Open questions",
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
       "type": "absence",
-      "claim": "Learn does not document the pop-out on other clients such as web and mobile.",
+      "claim": "Detailed window-placement behaviour is not documented beyond the roadmap's across-monitors statement.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Teams sign language interpreter pop out window desktop web mobile default user roles license pricing' and '\"sign language\" \"pop-out\" Teams'; opened accessibility-guide-admin. No pop-out client availability beyond the roadmap found.",
+      "quote": "Searched: Teams sign language interpreter popout window placement identity web mobile eligibility. Read accessibility guide and roadmap; roadmap promises visibility across monitors and apps but supplies no placement instructions or restrictions.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 29,
+      "n": 34,
       "where": "Risk assessment: Change & support",
       "type": "absence",
-      "claim": "IP video is the only documented meeting policy setting for interpreter video.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-audio-and-video",
-      "quote": "This setting controls both outgoing and incoming video for meetings and group calls that a user organizes or attends.",
-      "severity": "blocker",
-      "fix": "Replace 'The only meeting policy setting documented for interpreter video is IP video' with 'The accessibility guide documents IP video as a meeting policy setting for interpreter video'. Microsoft also documents Mode for IP video as controlling incoming and outgoing meeting video at https://learn.microsoft.com/microsoftteams/meeting-policies-audio-and-video; do not claim IP video is the only policy."
+      "claim": "Learn does not document this specific pop-out on other clients.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams sign language interpreter popout window placement identity web mobile eligibility. Opened accessibility guide; no client coverage for sign language video pop-out found. Interpreter agent platform results concern spoken translation.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 30,
-      "where": "controls[1].note; Risk assessment; Governance guidance; Governance controls",
+      "n": 35,
+      "where": "Risk assessment: Change & support; controls[1]; Governance guidance; Governance controls",
       "type": "applicability",
-      "claim": "The accessibility guide ties the IP video setting to interpreters sharing their video feed.",
+      "claim": "The accessibility guide ties the IP video meeting-policy setting to interpreters sharing a video feed.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/accessibility-guide-admin",
       "quote": "Give sign language interpreters the ability to share IP video feed during Microsoft Teams meetings so they can communicate with users who are deaf or hard of hearing.",
@@ -361,109 +416,65 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The accessibility guide gives Teams admin center > Meetings > Meeting policies > policy > Audio & video > IP video.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/accessibility-guide-admin",
-      "quote": "In the Teams admin center, go to Meetings, and then select Meeting policies. Select the policy you want to modify. Go to the Audio & video section. Check that IP video is turned On, then select Save.",
-      "severity": "minor",
-      "fix": "Keep the cited path, but add: 'The accessibility guide calls the setting IP video; the audio and video policy reference instead lists Mode for IP video and Video conferencing.' Cite https://learn.microsoft.com/microsoftteams/meeting-policies-audio-and-video, which uses those labels."
-    },
-    {
-      "n": 32,
-      "where": "controls[1].api; Governance controls table",
-      "type": "command",
-      "claim": "MicrosoftTeams PowerShell supports Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowIPVideo $true to allow video sharing.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
-      "quote": "[-AllowIPVideo <Boolean>] ... Determines whether video is enabled in a user's meetings or calls. Set this to TRUE to allow the user to share their video.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "controls[1].note; Risk assessment; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Whether the pop-out depends on the IP video policy is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Teams sign language interpreter pop out Set-CsTeamsMeetingPolicy parameter signlanguage' and '\"sign language\" \"pop\" Teams policy'; opened accessibility-guide-admin, meeting-policies-audio-and-video and Set-CsTeamsMeetingPolicy. No pop-out dependency stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Teams can be licensed through qualifying Microsoft 365 offerings or a standalone SKU.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/teams-service-description",
-      "quote": "Microsoft Teams can be licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The licensing model is included under the existing Teams product entitlement.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/teams-service-description",
-      "quote": "Microsoft Teams can be licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 36,
-      "where": "licensing.notes; Cost and licensing; Scope; rationale: cost",
-      "type": "absence",
-      "claim": "Microsoft has not published a licence requirement specific to the pop-out.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Teams \"sign language\" pop-out license pricing default identity clients'; opened Teams service description and Microsoft Teams add-on licenses. Neither lists a pop-out-specific entitlement; the general Teams entitlement is documented.",
-      "severity": null,
-      "fix": null
+      "where": "Risk assessment: Change & support",
+      "type": "applicability",
+      "claim": "Mode for IP video controls outgoing and incoming meeting/group-call video and should be checked for hosts across the briefing's scope.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-audio-and-video",
+      "quote": "This setting isn't available for Microsoft 365 Government Community Cloud (GCC), GCC High, or Department of Defense (DoD) environments.",
+      "severity": "blocker",
+      "fix": "After the sentence describing Mode for IP video, add: 'Mode for IP video is not available in GCC, GCC High or DoD environments.' Replace the final clause beginning 'so check they are on' with 'so check IP video for the policies that interpreters' hosts use; where Mode for IP video is available, check that it is set to Outgoing and incoming video enabled.' Source: https://learn.microsoft.com/microsoftteams/meeting-policies-audio-and-video."
     },
     {
       "n": 37,
-      "where": "licensing.notes; Cost and licensing",
+      "where": "Risk assessment: Change & support; controls[1].note; Governance controls",
       "type": "absence",
-      "claim": "Microsoft has not published a price or charge specific to the pop-out.",
+      "claim": "Microsoft has not documented whether the pop-out specifically depends on IP video or Mode for IP video.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Teams \"sign language\" pop-out license pricing default identity clients'; opened Teams service description and Microsoft Teams add-on licenses. No pop-out-specific price found.",
+      "quote": "Searched: Teams sign language interpreter pop out window meeting admin policy default licensing PowerShell; \"sign language\" \"pop\" \"Set-CsTeamsMeetingPolicy\". Read accessibility and audio/video policy guides; neither discusses the pop-out's specific dependency.",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
-      "where": "licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "Microsoft has not published a meter specific to this feature.",
+      "where": "controls[1].ui; Governance controls table; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "IP video is reached in Teams admin center through Meetings > Meeting policies > policy > Audio & video > IP video.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Teams sign language interpreter pop out window default admin policy PowerShell licensing price meter'; opened Teams service description and Microsoft Teams add-on licenses. Results for Interpreter agent concern spoken-language AI, not this video feature.",
-      "severity": null,
-      "fix": null
+      "source": "https://learn.microsoft.com/microsoftteams/accessibility-guide-admin",
+      "quote": "In the Teams admin center, go to Meetings, and then select Meeting policies. Select the policy you want to modify. Go to the Audio & video section. Check that IP video is turned On, then select Save.",
+      "severity": "minor",
+      "fix": "In Governance guidance, expand the abbreviated parenthetical path to 'Teams admin center > Meetings > Meeting policies > policy > Audio & video > IP video', matching controls[1].ui. The table path itself needs no change."
     },
     {
       "n": 39,
-      "where": "Scope",
-      "type": "absence",
-      "claim": "The specific users and roles that get the pop-out are not documented.",
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowIPVideo $true enables video sharing under that meeting policy.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Teams sign language interpreter pop out window desktop web mobile default user roles license pricing'; opened accessibility-guide-admin and read roadmap record. Intended Deaf and Hard of Hearing audience is stated, but detailed user/role eligibility is not.",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
+      "quote": "Set-CsTeamsMeetingPolicy; [[-Identity] <XdsIdentity>]; [-AllowIPVideo <Boolean>]. Determines whether video is enabled in a user's meetings or calls. Set this to TRUE to allow the user to share their video.",
       "severity": null,
       "fix": null
     },
     {
       "n": 40,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The accessibility guide labels the setting IP video, while the audio/video reference lists Mode for IP video and Video conferencing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-policies-audio-and-video",
+      "quote": "Go to the Audio & video section and select the values (described in the following sections) you want for Mode for IP audio, Mode for IP video, Video conferencing, Media rate (Kbps), and Participants can use video effects.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
       "where": "controls[1].scope; Governance controls",
       "type": "applicability",
-      "claim": "Meeting policies can be assigned to users and control those users' meeting features.",
+      "claim": "Meeting policies can be assigned to users and control meeting features for the users holding the policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps",
       "quote": "The Set-CsTeamsMeetingPolicy cmdlet allows administrators to update existing meeting policies that can be assigned to particular users to control Teams features related to meetings.",
@@ -471,32 +482,32 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 42,
       "where": "Governance controls",
       "type": "absence",
-      "claim": "The accessibility guide does not name a specific administrator role requirement for these steps.",
+      "claim": "The accessibility guide itself does not name an administrator role requirement for these steps.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Teams \"sign language\" \"pop\" policy'; opened and read accessibility-guide-admin in full. It addresses the Microsoft Teams administrator and gives admin-center steps, but names no specific role requirement for IP video.",
+      "quote": "Searched: read accessibility-guide-admin in full for role requirements. It addresses the Microsoft Teams administrator and gives meeting-policy steps but names no specific role requirement.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 42,
-      "where": "Governance guidance: Before rollout, guest-access bullet",
-      "type": "consistency",
-      "claim": "Every control the governance checklist tells readers to check has a controls-table row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Confirm that guest access is set up for external interpreters ... Controls rows: Whether the sign language interpreter pop-out is available to users; Whether interpreters can share an IP video feed in meetings.",
-      "severity": "minor",
-      "fix": "Remove the Before rollout bullet 'Confirm that guest access is set up for external interpreters, as the accessibility guide describes.' It directs readers to check guest access, which has no controls-table row."
+      "n": 43,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Feature-specific user and role eligibility has not been documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams sign language interpreter popout window placement identity web mobile eligibility; \"sign language\" \"pop-out\" Teams licensing. Read accessibility guide, service description and roadmap; no pop-out user or role eligibility found.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-19T07:24:48.577Z",
+    "at": "2026-11-19T09:20:11.198Z",
     "summary": {
-      "links": 4,
+      "links": 5,
       "unreachable": 0,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 0,
@@ -507,6 +518,11 @@
     "linkChecks": [
       {
         "url": "https://learn.microsoft.com/microsoftteams/accessibility-guide-admin",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/meeting-policies-audio-and-video",
         "ok": true,
         "status": 200
       },
@@ -553,5 +569,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-19",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }
