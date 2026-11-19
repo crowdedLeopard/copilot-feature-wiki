@@ -78,8 +78,10 @@ daily by GitHub Actions.
   `pipeline/lib/sources.mjs`, change = Microsoft's `ms.date` moved) or whose check is older than `recheckDays` (7). Each
   check writes a line into the page's `changes` log (`checkNote`). `VERIFY_LIMIT` (24) is the number of such pages a run
   checks on top of everything it wrote. The verify log line and `data/last-verify.json` (`heldOnRecheck`) count the live
-  pages a run held on such a re-check: the number to watch after the writing standard changes, since a stricter check can
-  take pages offline for wording an earlier standard asked for. The site's `/accuracy/` page shows every page's state and next check.
+  pages a run held on such a re-check, with why each was due and its blockers by type: the number to watch after the
+  writing standard changes, since a stricter check can take pages offline for wording an earlier standard asked for
+  (19 Nov 2026: Ignite-week changes to 40 cited Learn pages made 71 briefings due and 59 were held, a third for wording
+  the amended check now lets through). The site's `/accuracy/` page shows every page's state and next check.
 - Each compile run is shared equally across the topics by `selectQueue` in `pipeline/lib/briefing.mjs` (refreshes first,
   then one item per topic in turn). `priorityFor` in `pipeline/ingest.mjs` orders items within a topic by admin relevance,
   recency and lead time. It must not weight topics against each other: that is how Modern Work went unbriefed until

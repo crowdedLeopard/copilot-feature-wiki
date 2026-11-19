@@ -52,7 +52,7 @@ const line = `- ${today()} source watch: ${result.fetched} of ${result.cited} Mi
   `, ${result.changed.length} changed${result.affected.length ? ` (${result.affected.length} briefing${result.affected.length === 1 ? '' : 's'} queued for a re-check)` : ''}` +
   `${result.unreachable.length ? `, ${result.unreachable.length} unreachable${result.rateLimited ? ` (${result.rateLimited} rate limited by Learn)` : ''}` : ''}` +
   `${result.stopped ? `, stopped after ${result.rateLimited} rate-limit answers with ${result.left} left for the next run` : ''}${result.skipped ? `, ${result.skipped} not reached (SOURCE_WATCH_LIMIT)` : ''}`;
-await appendLog(line.slice(2));
+await appendLog(line);
 await summary(line.slice(2));
 for (const url of result.changed) console.log(`  changed: ${url} (now ${store.sources[url].msDate || 'no ms.date'}, was ${store.sources[url].previous?.msDate || 'no ms.date'}) → ${store.sources[url].pages.join(', ')}`);
 if (result.unreachable.length) console.log(`  unreachable: ${result.unreachable.slice(0, 20).join(', ')}${result.unreachable.length > 20 ? ', …' : ''}`);

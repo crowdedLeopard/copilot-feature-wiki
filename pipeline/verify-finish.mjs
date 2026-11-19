@@ -10,7 +10,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { DATA_DIR, readJson, writeJson, appendLog, today } from './lib/util.mjs';
-import { VERIFY_TASK_DIR, VERIFY_RESULTS, holdUnverified, writeHeldIndex } from './lib/verify.mjs';
+import { VERIFY_TASK_DIR, VERIFY_RESULTS, holdUnverified, writeHeldIndex, readReport } from './lib/verify.mjs';
 
 const tasks = (await readJson(path.join(DATA_DIR, 'verify-tasks.json'), { tasks: [] })).tasks;
 const results = (await readJson(VERIFY_RESULTS, { results: [] })).results;
@@ -40,12 +40,21 @@ const gaps = results.filter((r) => r.ok && r.status === 'verified-with-gaps').le
 const heldFailed = results.filter((r) => r.ok && r.status === 'held').length;
 // Live pages the run did not write that failed a routine re-check (text changed, a cited Microsoft page changed, the
 // check expired, or asked for): the number to watch when the writing standard changes, since a stricter check can take
-// pages offline for wording an earlier standard asked for.
+// pages offline for wording an earlier standard asked for. Each carries why it was due and its blockers by type, so a
+// wave of holds can be read from the log (on 19 Nov 2026, 59 holds in five runs took a dig through the commits).
 const RECHECK = ['changed-since-check', 'source-changed', 'check-expired', 'requested'];
-const heldOnRecheck = tasks.filter((t) => outcome.get(t.slug)?.status === 'held' && !t.writtenNow && t.where !== 'held' && RECHECK.includes(t.reason)).map((t) => ({ slug: t.slug, reason: t.reason, reasons: outcome.get(t.slug).reasons || [] }));
+const heldOnRecheck = [];
+for (const t of tasks.filter((t) => outcome.get(t.slug)?.status === 'held' && !t.writtenNow && t.where !== 'held' && RECHECK.includes(t.reason))) {
+  const blockers = {};
+  for (const c of (await readReport(t.slug))?.claims || []) if (c.severity === 'blocker') blockers[c.type || 'other'] = (blockers[c.type || 'other'] || 0) + 1;
+  heldOnRecheck.push({ slug: t.slug, reason: t.reason, reasons: outcome.get(t.slug).reasons || [], blockers });
+}
+const tally = (counts) => Object.entries(counts).sort((a, b) => b[1] - a[1]).map(([k, n]) => `${k} ${n}`).join(', ');
+const sum = (list, pick) => list.reduce((m, h) => { for (const [k, n] of Object.entries(pick(h))) m[k] = (m[k] || 0) + n; return m; }, {});
+const recheckWhy = heldOnRecheck.length ? ` (${tally(sum(heldOnRecheck, (h) => ({ [h.reason]: 1 })))}; blockers: ${tally(sum(heldOnRecheck, (h) => h.blockers)) || 'none, majors only'})` : '';
 const unreached = tasks.length - outcome.size;
 const models = [...new Set(run.tasks?.filter((t) => t.ok).map((t) => t.model) || [])].join(', ') || 'none';
-const line = `- ${today()} verify: ${tasks.length} checked (${verified} verified, ${gaps} verified with gaps, ${heldFailed} held, ${unreached} not reached${heldNow.length ? `, ${heldNow.length} held as unverified` : ''}${keptLive.length ? `, ${keptLive.length} rewritten page(s) kept live unchecked` : ''}${heldOnRecheck.length ? `, ${heldOnRecheck.length} live page(s) held on re-check` : ''}) on ${run.engine || 'none'} ${models}${run.stoppedBecause ? `; stopped early: ${run.stoppedBecause}` : ''}; ${held.length} page(s) held in total`;
+const line = `- ${today()} verify: ${tasks.length} checked (${verified} verified, ${gaps} verified with gaps, ${heldFailed} held, ${unreached} not reached${heldNow.length ? `, ${heldNow.length} held as unverified` : ''}${keptLive.length ? `, ${keptLive.length} rewritten page(s) kept live unchecked` : ''}${heldOnRecheck.length ? `, ${heldOnRecheck.length} live page(s) held on re-check${recheckWhy}` : ''}) on ${run.engine || 'none'} ${models}${run.stoppedBecause ? `; stopped early: ${run.stoppedBecause}` : ''}; ${held.length} page(s) held in total`;
 if (tasks.length || ran) await appendLog(line);
 console.log(line.slice(2));
 
@@ -59,7 +68,7 @@ if (process.env.GITHUB_STEP_SUMMARY) {
   }
   if (heldOnRecheck.length) {
     out.push('', `Live pages held on re-check (${heldOnRecheck.length}):`);
-    for (const h of heldOnRecheck) out.push(`- ${h.slug} (${h.reason}): ${h.reasons.join('; ')}`);
+    for (const h of heldOnRecheck) out.push(`- ${h.slug} (${h.reason}; ${tally(h.blockers) || 'majors only'}): ${h.reasons.join('; ')}`);
   }
   if (held.length) {
     out.push('', `Held, not published (${held.length}):`);
@@ -70,7 +79,7 @@ if (process.env.GITHUB_STEP_SUMMARY) {
 
 await writeJson(path.join(DATA_DIR, 'last-verify.json'), {
   date: today(), engine: run.engine || 'none', models, attempted: tasks.length, verified, verifiedWithGaps: gaps, held: heldFailed, unreached, heldUnverified: heldNow.length, keptLive: keptLive.length, stoppedBecause: run.stoppedBecause || null,
-  heldTotal: held.length, heldOnRecheck: heldOnRecheck.map((h) => h.slug), cost: run.tasks?.reduce((s, t) => s + (t.cost || 0), 0) ?? 0,
+  heldTotal: held.length, heldOnRecheck: heldOnRecheck.map((h) => ({ slug: h.slug, reason: h.reason, blockers: h.blockers })), cost: run.tasks?.reduce((s, t) => s + (t.cost || 0), 0) ?? 0,
 });
 await fs.rm(VERIFY_TASK_DIR, { recursive: true, force: true });
 await fs.rm(path.join(DATA_DIR, 'verify-tasks.json'), { force: true });
