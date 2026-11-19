@@ -21,7 +21,7 @@ import Anthropic from '@anthropic-ai/sdk';
 import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod';
 import { briefingOutput } from './lib/schema.mjs';
 import { WIKI_DIR, DATA_DIR, readJson, writeJson, appendLog, today } from './lib/util.mjs';
-import { loadIndexSlugs, selectQueue, topicSplit, loadRawItem, loadExisting, researchBrief, writeBriefingPage, pageSlugs, slugForItem, siblingIndex, siblingsFor } from './lib/briefing.mjs';
+import { loadIndexSlugs, selectQueue, topicSplit, loadRawItem, loadExisting, researchBrief, writeBriefingPage, pageSlugs, slugForItem, siblingIndex, siblingsFor, coveredBy } from './lib/briefing.mjs';
 import { loadGlossary } from './lib/tags.mjs';
 import { postsForBrief } from './lib/message-center.mjs';
 import { loadConfirmedControls } from './lib/confirmed-controls.mjs';
@@ -100,13 +100,18 @@ async function main() {
   const pages = await pageSlugs();
   const twins = await siblingIndex();
   const taken = new Set();
+  const inRun = new Set();
   let written = 0, failed = 0, inTok = 0, outTok = 0;
   for (const q of items) {
     const item = await loadRawItem(q.id);
     if (!item) { console.warn(`no raw record for ${q.id}`); continue; }
+    const siblings = await siblingsFor(item, { index: twins, pages });
+    // Microsoft listing one feature twice with the same record: the first entry's page covers the second (coveredBy).
+    const twin = coveredBy(item, siblings, { also: inRun, ownPage: [...pages.values()].includes(Number(item.id)) });
+    if (twin) { console.log(`skip ${q.id}: the same record as ${twin.id}, which its page covers`); continue; }
+    inRun.add(Number(item.id));
     const slug = await slugForItem(item, { queued: q.slug, taken, pages });
     taken.add(slug);
-    const siblings = await siblingsFor(item, { index: twins, pages });
     const { existing, existingFm } = await loadExisting(slug);
     try {
       console.log(`compiling ${q.id} ${item.title} (${q.reason})`);

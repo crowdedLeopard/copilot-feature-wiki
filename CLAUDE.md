@@ -36,7 +36,9 @@ daily by GitHub Actions.
   groups on 19 Nov 2026, and three pages were rewritten every run as the two items overwrote each other).
   `slugForItem` in `pipeline/lib/briefing.mjs` gives the second item its own slug (the cloud as suffix for a
   government release, otherwise the roadmap id), `siblingsFor` puts the twin items' records in the brief, and
-  `titleForPage` adds the clouds to a government twin's title when the writer left them out.
+  `titleForPage` adds the clouds to a government twin's title when the writer left them out. A twin whose record is
+  the same in clouds, platforms, phases, dates and products is Microsoft listing the feature again, not a variant:
+  `coveredBy` keeps it out of the queue and the run, and the covering page lists its roadmap id among its sources.
 - `pipeline/` holds the daily jobs: `ingest` (roadmap), `compile` (LLM writes briefings), `lint`, `index`, `digest`, `pdf`.
   Curation runs chain: `chain-next.mjs` records the run's AI credits in `data/spend.json` and, while the day stays under
   `COMPILE_DAILY_CREDITS` (15,000) and the run wrote something, the workflow starts the next run at once (`COMPILE_CHAIN=off`

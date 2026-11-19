@@ -19,7 +19,8 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { TOPIC_IDS, topicForProducts, statusFromRoadmap } from '../config/taxonomy.mjs';
-import { RAW_DIR, DATA_DIR, FEATURES_DIR, readJson, writeJson, appendLog, today, stripHtml } from './lib/util.mjs';
+import { RAW_DIR, DATA_DIR, FEATURES_DIR, readJson, writeJson, appendLog, today, stripHtml, slugify } from './lib/util.mjs';
+import { coveredBy } from './lib/briefing.mjs';
 import { archiveBriefing, isReviewDue, daysBetween, REMOVED_GRACE_DAYS } from './lib/lifecycle.mjs';
 import { loadMessageIndex, messagesForRoadmap } from './lib/message-center.mjs';
 
@@ -112,7 +113,12 @@ async function main() {
   const briefings = await existingBriefings();
   const messages = await loadMessageIndex();
   const queue = [];
-  let added = 0, changed = 0, reviewDue = 0, withPosts = 0, postRefresh = 0;
+  let added = 0, changed = 0, reviewDue = 0, withPosts = 0, postRefresh = 0, coveredCount = 0;
+  // Items that share a title (Microsoft lists a feature twice: per cloud, per platform, or simply again). An unbriefed
+  // item whose record matches a briefed twin's is covered by that page and not queued (coveredBy in lib/briefing.mjs).
+  const byTitle = new Map();
+  for (const i of inScope) { const key = slugify(i.title); if (!byTitle.has(key)) byTitle.set(key, []); byTitle.get(key).push(i); }
+  const twinsOf = (item) => (byTitle.get(slugify(item.title)) || []).filter((s) => s.id !== item.id).map((s) => ({ ...s, briefing: briefings.get(s.id)?.slug || null }));
 
   // Briefings whose roadmap item was cancelled, or has gone from the feed, are archived in place. A
   // missing item gets a grace period first, because a feed hiccup should not archive anything.
@@ -164,7 +170,7 @@ async function main() {
     const posts = messagesForRoadmap(messages, item.id);
     if (posts.length) withPosts++;
     let reason = null;
-    if (!brief) reason = 'no-briefing';
+    if (!brief) { if (coveredBy(item, twinsOf(item))) coveredCount++; else reason = 'no-briefing'; }
     else if (brief.archived) reason = 'restored'; // the item is back on the roadmap: the rewrite replaces the archived page
     else if (brief.roadmapModified && brief.roadmapModified !== item.modified) reason = 'roadmap-updated';
     else if (brief.status && brief.status !== item.statusKey) reason = 'status-changed';
@@ -190,7 +196,7 @@ async function main() {
   const byTopic = Object.fromEntries(TOPIC_IDS.map((id) => [id, queue.filter((q) => q.topic === id).length]));
 
   const catalog = inScope
-    .map(({ descriptionHtml, ...rest }) => ({ ...rest, description: rest.description.slice(0, 600), briefing: briefings.get(rest.id)?.slug || null, messageCenter: messagesForRoadmap(messages, rest.id).map((m) => m.id) }))
+    .map(({ descriptionHtml, ...rest }) => ({ ...rest, description: rest.description.slice(0, 600), briefing: briefings.get(rest.id)?.slug || coveredBy(rest, twinsOf(rest))?.briefing || null, messageCenter: messagesForRoadmap(messages, rest.id).map((m) => m.id) }))
     .sort((a, b) => b.modified.localeCompare(a.modified));
 
   await writeJson(path.join(DATA_DIR, 'catalog.json'), { generated: new Date().toISOString(), count: catalog.length, items: catalog });
@@ -198,7 +204,7 @@ async function main() {
 
   const depth = Object.entries(byTopic).map(([id, n]) => `${id} ${n}`).join(', ');
   const missing = Object.keys(lifecycle.missing).length;
-  const summary = `- ${today()} ingest: ${all.length} roadmap items fetched, ${inScope.length} in scope, ${added} new, ${changed} changed, ${queue.length} queued for compile (${depth}; ${reviewDue} review due; ${postRefresh} refresh after a Message Center post), ${withPosts} with Message Center posts, ${archivedNow.length} archived, ${missing} briefed item(s) missing from the feed (${Math.round((Date.now() - started) / 1000)}s)`;
+  const summary = `- ${today()} ingest: ${all.length} roadmap items fetched, ${inScope.length} in scope, ${added} new, ${changed} changed, ${queue.length} queued for compile (${depth}; ${reviewDue} review due; ${postRefresh} refresh after a Message Center post), ${withPosts} with Message Center posts, ${coveredCount} duplicate listing(s) covered by another item's page, ${archivedNow.length} archived, ${missing} briefed item(s) missing from the feed (${Math.round((Date.now() - started) / 1000)}s)`;
   await appendLog(summary);
   for (const a of archivedNow) await appendLog(`- ${today()} archive: ${a}`);
   console.log(summary);

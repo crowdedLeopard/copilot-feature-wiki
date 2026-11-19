@@ -19,7 +19,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { DATA_DIR, readJson, writeJson, today } from './lib/util.mjs';
-import { loadIndexSlugs, selectQueue, topicSplit, loadRawItem, loadExisting, researchBrief, pageSlugs, slugForItem, siblingIndex, siblingsFor } from './lib/briefing.mjs';
+import { loadIndexSlugs, selectQueue, topicSplit, loadRawItem, loadExisting, researchBrief, pageSlugs, slugForItem, siblingIndex, siblingsFor, coveredBy } from './lib/briefing.mjs';
 import { loadGlossary } from './lib/tags.mjs';
 import { CONCEPTS } from '../config/taxonomy.mjs';
 import { CONCEPT_STATE, selectConceptTasks, conceptBrief, conceptTaskId, liveBriefings, allConceptPages, loadExistingConcept } from './lib/concepts.mjs';
@@ -51,12 +51,19 @@ const tasks = [];
 const pages = items.length ? await pageSlugs() : new Map();
 const twins = items.length ? await siblingIndex() : new Map();
 const taken = new Set();
+const inRun = new Set();
+const covered = [];
 for (const q of items) {
   const item = await loadRawItem(q.id);
   if (!item) { console.warn(`no raw record for ${q.id}`); continue; }
+  const siblings = await siblingsFor(item, { index: twins, pages });
+  // Microsoft listing one feature twice with the same record: the first entry's page covers the second (coveredBy),
+  // which is neither queued by ingest nor written here. A stale queue entry can still name it.
+  const twin = coveredBy(item, siblings, { also: inRun, ownPage: [...pages.values()].includes(Number(item.id)) });
+  if (twin) { covered.push({ id: q.id, by: twin.id, page: twin.briefing || null }); console.log(`skip ${q.id}: the same record as ${twin.id}, which its page covers`); continue; }
+  inRun.add(Number(item.id));
   const slug = await slugForItem(item, { queued: q.slug, taken, pages });
   taken.add(slug);
-  const siblings = await siblingsFor(item, { index: twins, pages });
   // A page parked after its corrections failed can be queued once more as a fresh draft (reason 'fresh-draft',
   // set by requeue-held.mjs): the writer gets the roadmap record and Microsoft's pages, not the held text, while
   // write-briefing.mjs keeps the slug, created date, version and change log and removes the held copy.
@@ -85,11 +92,12 @@ if (conceptPicks.length) {
     });
   }
 }
-await writeJson(path.join(DATA_DIR, 'compile-tasks.json'), { generated: new Date().toISOString(), date: today(), limit: LIMIT, topic: TOPIC || null, tasks });
+await writeJson(path.join(DATA_DIR, 'compile-tasks.json'), { generated: new Date().toISOString(), date: today(), limit: LIMIT, topic: TOPIC || null, tasks, covered });
 const briefingTasks = tasks.filter((t) => t.kind !== 'concept');
 const conceptTasks = tasks.filter((t) => t.kind === 'concept');
 const conceptNote = conceptTasks.length ? `, and ${conceptTasks.length} concept page${conceptTasks.length > 1 ? 's' : ''} (${conceptTasks.map((t) => `${t.slug}: ${t.reason}`).join(', ')})` : '';
-const line = `compile-tasks: ${tasks.length} task(s) prepared for the agent (${briefingTasks.filter((t) => t.exists).length} refresh, ${briefingTasks.filter((t) => !t.exists).length} new; ${topicSplit(briefingTasks)}${conceptNote})`;
+const coveredNote = covered.length ? `; ${covered.length} duplicate listing${covered.length > 1 ? 's' : ''} covered by another item's page (${covered.map((c) => `${c.id} by ${c.by}`).join(', ')})` : '';
+const line = `compile-tasks: ${tasks.length} task(s) prepared for the agent (${briefingTasks.filter((t) => t.exists).length} refresh, ${briefingTasks.filter((t) => !t.exists).length} new; ${topicSplit(briefingTasks)}${conceptNote}${coveredNote})`;
 console.log(line);
 if (process.env.GITHUB_STEP_SUMMARY) await fs.appendFile(process.env.GITHUB_STEP_SUMMARY, line + '\n');
 // The agent gets a turn budget that grows with the task list: about 40 tool calls per briefing, never fewer than 400.
