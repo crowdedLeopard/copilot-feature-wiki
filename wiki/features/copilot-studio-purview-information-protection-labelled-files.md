@@ -52,8 +52,14 @@ sources:
   - title: "Restrict access to content by using sensitivity labels to apply encryption"
     url: "https://learn.microsoft.com/purview/encryption-sensitivity-labels"
     kind: "learn"
+  - title: "Create and configure sensitivity labels and their policies"
+    url: "https://learn.microsoft.com/purview/create-sensitivity-labels"
+    kind: "learn"
   - title: "Set-Label"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label?view=exchange-ps"
+    kind: "learn"
+  - title: "Export-ActivityExplorerData"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/export-activityexplorerdata?view=exchange-ps"
     kind: "learn"
   - title: "Enable sensitivity labels for files in SharePoint and OneDrive"
     url: "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files"
@@ -98,13 +104,13 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "create or edit a sensitivity label > Choose protection settings for the types of items you selected > Control access > Access control > Configure access control settings > Assign permissions now"
+      path: "Solutions > Information Protection > Sensitivity labels > label > Edit label > Define the scope for this label > Files & other data assets > Choose protection settings for the types of items you selected > Control access > Access control"
       docs: "https://learn.microsoft.com/purview/encryption-sensitivity-labels"
     api:
       kind: "powershell"
       call: "Set-Label -Identity <label> -EncryptionEnabled $true -EncryptionProtectionType Template -EncryptionRightsDefinitions <rights>"
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label?view=exchange-ps"
-    note: "Existing control. EXTRACT shows as Copy and extract content(EXTRACT); the person who applied the encryption always keeps it. The call sets template-based encryption with admin-defined rights, not user-defined permissions."
+    note: "On Access control, select Configure access control settings, then Assign permissions now. EXTRACT shows as Copy and extract content(EXTRACT); the applier of the encryption keeps it. The call sets template-based encryption."
   - governs: "Sensitivity labels for SharePoint and OneDrive files (prerequisite for labelled content there)"
     scope: "tenant"
     ui:
@@ -116,17 +122,17 @@ controls:
       call: "Set-SPOTenant -EnableAIPIntegration $true"
       docs: "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files"
     note: "Portal route needs a global administrator; Multi-Geo tenants must use PowerShell. Applies to files stored in SharePoint and OneDrive, not confirmed for uploads."
-  - governs: "Monitoring of Copilot Studio agent interactions involving sensitive content"
+  - governs: "Copilot experiences & agents summary report in DSPM for AI (classic)"
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
       path: "Solutions > DSPM for AI (classic) > Reports > Copilot experiences & agents"
       docs: "https://learn.microsoft.com/purview/ai-copilot-studio"
     api: null
-    note: "Reporting only, not enforcement. Results appear at least a day after the policy is created."
+    note: "Portal summary reporting only; underlying activity events can be exported with Export-ActivityExplorerData. Wait at least a day for policy data."
 confidence: "medium"
 created: "2026-11-13"
-updated: "2026-11-17"
+updated: "2026-11-20"
 roadmapModified: "2026-10-19T23:15:15"
 changes:
   - date: "2026-11-13"
@@ -145,26 +151,30 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 69 statements not yet confirmed"
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 67 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 5
+  - date: "2026-11-20"
+    note: "Corrected after verification: label encryption path now starts at the Purview portal and includes the label scope step; the DSPM report row is narrowed to the summary report and names Export-ActivityExplorerData for activity events."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
+version: 6
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 5
+  version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 67
-  confirmed: 65
+  confirmed: 67
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "f32455be12e349712b0af05a64ea29d9"
+  contradicted: 0
+  attempts: 0
+  hash: "efd9ef84d6470257d0ac5aa7e7c4c9a9"
 ---
 
 ## What's changing
 
 The roadmap item states that Microsoft plans to let users upload files protected by Microsoft Purview Information Protection (MPIP) sensitivity labels to Copilot Studio agents deployed on the Microsoft 365 channel. It says agents can process content "based on the user's/agents account permissions, with label protections enforced end-to-end". Microsoft Learn has no page for this feature at the time of writing (November 2026), so everything about how it behaves, beyond the roadmap text, is not yet documented.
 
-Today's documented behaviour is the opposite. The Copilot Studio file-input page says "Files with encryption, such as sensitivity labels or password protection, aren't supported", and that the agent tells the user the file is encrypted or returns a generic error. That page describes agents on the standard harness (a Copilot Studio agent runtime) and points users to Microsoft Copilot Chat for labelled files. The Microsoft 365 and Microsoft Teams channels are how an agent reaches users in Teams and Microsoft Copilot.
+Today's documented behaviour is the opposite. The Copilot Studio file-input page says "Files with encryption, such as sensitivity labels or password protection, aren't supported", and that the agent tells the user the file is encrypted or returns a generic error. That page describes agents on the standard harness and points users to Microsoft Copilot Chat for labelled files. The Microsoft 365 and Microsoft Teams channels are how an agent reaches users in Teams and Microsoft Copilot.
 
 Related Purview behaviour for Microsoft 365 Copilot and agents is documented, but Microsoft has not said it carries over to uploads. When a label applies encryption, users need the EXTRACT usage right as well as VIEW for the AI apps to return the data. Two Microsoft pages differ on Copilot Studio knowledge sources: the Purview page says encryption is supported "only for the SharePoint knowledge source", while the SharePoint knowledge-source troubleshooting page says the agent "can't extract or ground on content whose protection encrypts the file".
 
@@ -235,9 +245,9 @@ Label review and agent retesting also take time: compliance time to review label
 <tr><td data-label="Control"><strong>Separate tenant or agent switch for labelled-file uploads</strong><br><small>Agent</small><br><small class="controls__note">Microsoft Learn documents no such switch at the time of writing (November 2026). Existing file input is the File uploads setting below.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether users can upload files to an agent (existing file-input setting)</strong><br><small>Agent</small><br><small class="controls__note">Maker-side; documented for file input today. Microsoft has not said how labelled-file support interacts with it.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>Settings › Generative AI › File processing capabilities › File uploads <a href="https://learn.microsoft.com/microsoft-copilot-studio/image-input-analysis" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which labelled content Copilot and agents may process (label-based DLP)</strong><br><small>Tenant</small><br><small class="controls__note">General control: documented for agents only with a SharePoint knowledge source; coverage of uploads not confirmed. Define $loc and $advrule first, as in the Learn Copilot example. Rule condition: Content contains &gt; Sensitivity labels.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Loss Prevention › Policies › + Create policy › Custom › Custom policy › Locations › Microsoft Copilot, Copilot Chat, and Copilot Cowork <a href="https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DLPCompliancePolicy -Name &lt;name&gt; -Locations $loc -EnforcementPlanes @('CopilotExperiences'); New-DLPComplianceRule -Name &lt;rule&gt; -Policy &lt;name&gt; -AdvancedRule $advrule -RestrictAccess @(@{setting='ExcludeContentProcessing';value='Block'})</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Encryption permissions, including EXTRACT, that each sensitivity label grants</strong><br><small>Tenant</small><br><small class="controls__note">Existing control. EXTRACT shows as Copy and extract content(EXTRACT); the person who applied the encryption always keeps it. The call sets template-based encryption with admin-defined rights, not user-defined permissions.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>create or edit a sensitivity label › Choose protection settings for the types of items you selected › Control access › Access control › Configure access control settings › Assign permissions now <a href="https://learn.microsoft.com/purview/encryption-sensitivity-labels" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-Label -Identity &lt;label&gt; -EncryptionEnabled $true -EncryptionProtectionType Template -EncryptionRightsDefinitions &lt;rights&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-label?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Encryption permissions, including EXTRACT, that each sensitivity label grants</strong><br><small>Tenant</small><br><small class="controls__note">On Access control, select Configure access control settings, then Assign permissions now. EXTRACT shows as Copy and extract content(EXTRACT); the applier of the encryption keeps it. The call sets template-based encryption.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Sensitivity labels › label › Edit label › Define the scope for this label › Files &amp; other data assets › Choose protection settings for the types of items you selected › Control access › Access control <a href="https://learn.microsoft.com/purview/encryption-sensitivity-labels" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-Label -Identity &lt;label&gt; -EncryptionEnabled $true -EncryptionProtectionType Template -EncryptionRightsDefinitions &lt;rights&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-label?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Sensitivity labels for SharePoint and OneDrive files (prerequisite for labelled content there)</strong><br><small>Tenant</small><br><small class="controls__note">Portal route needs a global administrator; Multi-Geo tenants must use PowerShell. Applies to files stored in SharePoint and OneDrive, not confirmed for uploads.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Sensitivity labels › Turn on now <a href="https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -EnableAIPIntegration $true</code> <a href="https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Monitoring of Copilot Studio agent interactions involving sensitive content</strong><br><small>Tenant</small><br><small class="controls__note">Reporting only, not enforcement. Results appear at least a day after the policy is created.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › DSPM for AI (classic) › Reports › Copilot experiences &amp; agents <a href="https://learn.microsoft.com/purview/ai-copilot-studio" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Copilot experiences &amp; agents summary report in DSPM for AI (classic)</strong><br><small>Tenant</small><br><small class="controls__note">Portal summary reporting only; underlying activity events can be exported with Export-ActivityExplorerData. Wait at least a day for policy data.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › DSPM for AI (classic) › Reports › Copilot experiences &amp; agents <a href="https://learn.microsoft.com/purview/ai-copilot-studio" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -258,12 +268,9 @@ cost: Variable. Existing agent usage is measured in Copilot Credits; qualifying 
 impact: Medium. Makers of agents on the Microsoft 365 channel, their users and the compliance team that owns the label taxonomy would notice; users without agents on that channel would not.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[3].ui; Governance controls table / admin-path: The printed label-encryption route gives the complete choices needed to reach Assign permissions now. | Found: Follow the general instructions to create or edit a sensitivity label and make sure the Files & other data assets option is selected for the label's scope | Fix: Replace the path with 'Solutions > Information Protection > Sensitivity labels > label > Edit label > Define the scope for this label > Files & other data assets > Choose protection settings for the types of items you selected > Control access > Access control > Configure access control settings > Assign permissions now'. Add https://learn.microsoft.com/purview/create-sensitivity-labels to sources for the portal navigation and edit steps; retain encryption-sensitivity-labels as docs. The current route omits portal navigation and the scope choice that enables these settings. | Source: https://learn.microsoft.com/purview/encryption-sensitivity-labels
-- [contradicted, blocker] controls[5].api; Governance controls table / absence: Automation for monitoring Copilot Studio interactions involving sensitive content is not documented. | Found: Use the Export-ActivityExplorerData cmdlet to export activities from Data classification > Activity Explorer ... This cmdlet supports following filters: ... CopilotType ... SensitivityLabel ... Valid activity filters ... AIAppInteraction ... CopilotInteraction | Fix: Narrow controls[5].governs to 'Copilot experiences & agents summary report in DSPM for AI (classic)' and its note to 'Portal summary reporting only; underlying activity events can be exported with Export-ActivityExplorerData. Wait at least a day for policy data.' Keep api null only for that particular summary report, not for monitoring interactions generally. Add https://learn.microsoft.com/powershell/module/exchangepowershell/export-activityexplorerdata?view=exchange-ps to sources. The cited ai-copilot-studio article explicitly connects these report graphs to their underlying activity-explorer events. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/export-activityexplorerdata?view=exchange-ps
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: standard harness parenthesis / behaviour: The standard harness is a Copilot Studio agent runtime. | Found: The standard harness and the Microsoft Copilot harness are two authoring and runtime options in Copilot Studio. | Fix: Add https://learn.microsoft.com/microsoft-copilot-studio/guidance/choose-harness to sources, or remove the parenthesis '(a Copilot Studio agent runtime)'. | Source: https://learn.microsoft.com/microsoft-copilot-studio/guidance/choose-harness
-- [supported, minor] controls[2].ui; Governance controls table / admin-path: The stated Purview DLP path reaches the Microsoft Copilot, Copilot Chat, and Copilot Cowork policy location through the Custom policy template. | Found: Go to Data Loss Prevention > Policies and select + Create policy. ... Select the Custom template, then Custom policy. ... On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on. | Fix: The path reaches the correct policy page but stops before its label-based control. Append '> rule > Content contains > Sensitivity labels > Prevent Copilot and Cowork from processing content', using the condition and action documented on the same page. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
+- [supported, minor] controls[2].ui / admin-path: The printed Purview DLP path reaches the Copilot policy location in the custom policy wizard. | Found: Go to Data Loss Prevention > Policies and select + Create policy. 3. Select the Custom template, then Custom policy. 4. On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on. | Fix: The path reaches the correct wizard page but stops before the label-processing control. Keep the existing path and extend the row's note to say: 'Add a rule with Content contains > Sensitivity labels and the Prevent Copilot and Cowork from processing content action.' The cited page's Supported conditions and actions table gives this condition/action pair. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
+- [supported, minor] controls[3].ui / admin-path: The label-encryption path starts at the Purview portal and reaches Access control through the label scope and Control access selection. | Found: Then, on the Choose protection settings for the types of items you selected page, make sure you select Control access. | Fix: The path is supported by this page together with the already-cited https://learn.microsoft.com/purview/create-sensitivity-labels, but ends on the right page before the permission settings. Append ' > Configure access control settings > Assign permissions now' to the current path, and append to the existing note: 'To set individual rights, select Assign permissions, add the intended recipients, then select Choose permissions.' Both steps are documented on the encryption page. | Source: https://learn.microsoft.com/purview/encryption-sensitivity-labels
 -->

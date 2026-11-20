@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "on"
 action: "prepare"
 licensing:
-  model: "unknown"
-  notes: "Not yet published. The Learn page on personal options names no licence requirement, and no licence or charge specific to this feature is published."
+  model: "included"
+  notes: "Personal settings is an option inside model-driven apps. Every user who runs a model-driven app needs a license providing Power Apps premium use rights; Power Apps Premium and Power Apps per app plans generally satisfy that requirement, with use rights depending on context. No licence or charge specific to this redesign is published."
 audiences: ["power-platform-admin","service-owner","end-user","change-adoption"]
 tags: ["power-apps","model-driven-apps","personal-settings","user-experience","gcc","gcc-high","dod"]
 sources:
@@ -33,6 +33,9 @@ sources:
     kind: "learn"
   - title: "Manage privacy and security settings"
     url: "https://learn.microsoft.com/power-platform/admin/settings-privacy-security"
+    kind: "learn"
+  - title: "Power Apps licensing FAQs"
+    url: "https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq"
     kind: "learn"
   - title: "Organization table/entity reference (Microsoft Dataverse)"
     url: "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/organization"
@@ -64,19 +67,23 @@ changes:
     note: "Roadmap version corrected to 2612.1; added the roadmap-versus-Learn difference, Email and Privacy tab detail and the organisation-wide privacy preference; licensing stays not yet published."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 42 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-20"
+    note: "Correction: privacy-preference path given in full from Manage onwards; removed an unsupported 'unchanged in kind' claim; licensing now states the model-driven app premium use-rights requirement."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 45 statements confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-20"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 42
-  confirmed: 40
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 1
-  hash: "94cfcf3932bca420c2ff1c2a8d2983c9"
+  claims: 45
+  confirmed: 45
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "4df373ce19bdbd279f2b6f74a5a8684b"
 ---
 
 ## What's changing
@@ -98,7 +105,7 @@ Because the roadmap lists the feature as enabled by default and Learn marks the 
 ## Risk assessment
 
 **Data exposure**
-- No new data access is described. The options in Personal settings, such as time zone, currency, email tracking and synchronisation filters, are documented on the Learn personal options page and are unchanged in kind by a redesign.
+- No new data access is described. The options in Personal settings, such as time zone, currency, email tracking and synchronisation filters, are documented on the Learn personal options page.
 
 **Security & identity**
 - The Email tab holds the option that lets other users send email on your behalf; Learn cautions that if it is selected, other users can send email on your behalf with or without your consent. Check that users can still find and understand it in the new layout.
@@ -113,7 +120,9 @@ Because the roadmap lists the feature as enabled by default and Learn marks the 
 
 ## Cost and licensing
 
-The roadmap item and the Learn page on personal options name no licence, meter or charge for this feature, and the Learn page lists no licence among its content. Licensing specific to this feature is not yet published.
+Personal settings is an option inside model-driven apps. The Power Apps licensing FAQs state that every user who runs a model-driven app needs a licence that provides Power Apps premium use rights, and that Power Apps Premium and Power Apps per app plans generally satisfy that requirement, with use rights differing by licence and by the context the app runs in.
+
+The roadmap item and the Learn page on personal options name no licence, meter or charge specific to this redesign, and the Learn page lists no licence among its content. A licence or charge specific to this redesign is not yet published.
 
 The cost the sources show is indirect: communications, updating internal guides and screenshots, and help desk time.
 
@@ -152,7 +161,7 @@ The Appearance tab needs the header and navigation refresh (wave 2) on the app a
 
 Microsoft Learn documents no admin setting that turns the modern panel on or off, or hides Switch to classic, at the time of writing (November 2026), so the table states that gap.
 
-One related control exists but governs only the Privacy tab: Microsoft's privacy and security settings page documents an organisation-wide error-reporting preference for an environment (Power Platform admin center, environment Settings, Product, Privacy + Security), and the personal options page says the Privacy tab is not available when an administrator selects the privacy preference for the entire organisation. Its API surface was not read, so it is not given a row. System Administrator or equivalent permissions are needed on the privacy and security settings page.
+One related control exists but governs only the Privacy tab: Microsoft's privacy and security settings page documents an organisation-wide error-reporting preference for an environment (Power Platform admin center > Manage > Environments > environment > Settings > Product > Privacy + Security > Privacy preferences > Default action to take when an error occurs), and the personal options page says the Privacy tab is not available when an administrator selects the privacy preference for the entire organisation. Its API surface was not read, so it is not given a row. System Administrator or equivalent permissions are needed on the privacy and security settings page.
 
 ## Open questions
 
@@ -164,13 +173,4 @@ One related control exists but governs only the Privacy tab: Microsoft's privacy
 risk: Low. A layout and navigation change to per-user preferences, with no new data access described and a documented Switch to classic route back; no admin setting for the panel is documented.
 cost: Low. The only cost the sources show is indirect: user communication, help desk briefing and updating guides. Licensing specific to this feature is not yet published.
 impact: Medium. The roadmap lists the feature scope as users, enabled by default, so people who change their own time zone, email or other preferences will see a different layout.
--->
-
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: parenthetical privacy-control path / admin-path: The privacy-control route is Power Platform admin center, environment Settings, Product, Privacy + Security. | Found: In the navigation pane, select Manage. ... select Environments. ... select an environment. ... select Settings. ... Expand Product, and then select Privacy + Security. | Fix: Replace the parenthetical route with 'Power Platform admin center > Manage > Environments > environment > Settings > Product > Privacy + Security > Privacy preferences > Default action to take when an error occurs', as documented at https://learn.microsoft.com/power-platform/admin/settings-privacy-security. The current route starts inside an environment and omits the navigation needed to reach it. | Source: https://learn.microsoft.com/power-platform/admin/settings-privacy-security
-- [unsupported, major] Risk assessment: Data exposure / behaviour: The Personal settings options are unchanged in kind by the redesign. | Found: Searched: "modern" "personal settings" "unchanged". Read roadmap and personal-options page: the former describes a modernised design and the latter lists current options; neither states that their kinds are unchanged by this redesign. | Fix: Remove 'and are unchanged in kind by a redesign'. Keep the supported statement that the named options are documented on the personal-options page.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model and licensing.notes; Cost and licensing; rationale: cost / licensing: The licensing model is unknown because no licensing specific to modern Personal settings is published. | Found: Every user who runs a model-driven app needs a license that provides Power Apps premium use rights. | Fix: Set licensing.model to 'included'. Replace the notes with 'Personal settings is an option inside model-driven apps. Every user who runs a model-driven app needs a license providing Power Apps premium use rights; Power Apps Premium and Power Apps per app plans generally satisfy that requirement, with use rights depending on context. No licence or charge specific to this redesign is published.' Cite https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq. Preserve the narrower feature-specific absence in the body and cost rationale, rather than describing the product entitlement as unknown. | Source: https://learn.microsoft.com/power-platform/admin/powerapps-licensing-faq
 -->

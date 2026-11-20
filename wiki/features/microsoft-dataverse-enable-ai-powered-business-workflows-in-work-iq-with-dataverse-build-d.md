@@ -136,15 +136,17 @@ changes:
     note: "Corrected Work IQ default enablement (existing-environment schedule deferred), the allowed MCP clients path and call, and removed the preview label from business skills."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 75 statements not yet confirmed"
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
 version: 5
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-20"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 74
+  claims: 77
+  confirmed: 76
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -248,8 +250,8 @@ cost: Variable. Copilot Credits meter Dataverse MCP tool calls and direct Work I
 impact: Medium. It affects developers and makers building Dataverse solutions, and the environments they use.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] front matter: sources titles / consistency: The reference list still labels the business-skills and general Work IQ administration articles as preview after the body removes that designation. | Found: sources: "Create and use business skills (preview)" and "Business skills overview (preview)"; changes: "removed the preview label from business skills". The fetched articles are titled "Create and use business skills" and "Business skills overview". | Fix: Remove the trailing ' (preview)' from the sources titles for Create and use business skills, Business skills overview, Business Applications in Work IQ default settings, Manage AI experience access to Business Applications in Work IQ, Manage participation in Business Applications in Work IQ, and Understand costs for Business Applications in Work IQ. Retain the preview designation on the Dataverse coding-plugin sources.
+- [contradicted, minor] front matter: sources titles / consistency: The reference titles label the business-skills and general Work IQ administration articles as preview. | Found: The sources say "Create and use business skills (preview)" and "Business skills overview (preview)"; the opened articles are titled "Create and use business skills" and "Business skills overview". The four general Work IQ administration titles likewise omit "(preview)". | Fix: Remove the trailing ' (preview)' from these six source titles: Create and use business skills; Business skills overview; Business Applications in Work IQ default settings; Manage AI experience access to Business Applications in Work IQ; Manage participation in Business Applications in Work IQ; Understand costs for Business Applications in Work IQ. Keep the preview designation on the Dataverse plugin sources.
 -->

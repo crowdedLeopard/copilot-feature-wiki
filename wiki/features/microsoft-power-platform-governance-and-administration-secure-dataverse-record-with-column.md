@@ -103,15 +103,17 @@ changes:
     note: "Corrected control paths and APIs for security-role filter privileges and filter creation, added a tenant-switch gap row, and narrowed the cloud and default-availability statements."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 45 statements not yet confirmed"
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 46 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-20"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 45
-  confirmed: 45
+  claims: 46
+  confirmed: 46
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -195,8 +197,13 @@ cost: Low. No licence change is published; the cost is design and testing effort
 impact: Low. Affects security admins and makers who design Dataverse tables and roles.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls / behaviour: These solution components can travel with solutions through application lifecycle management deployments. | Found: Solutions are the mechanism for implementing application lifecycle management (ALM) in Power Apps and Power Automate. ... The purpose of having components is ... so that it can be exported, imported | Fix: Add https://learn.microsoft.com/power-platform/alm/solution-concepts-alm to sources for the statement that solution components can be exported, imported and deployed through ALM. | Source: https://learn.microsoft.com/power-platform/alm/solution-concepts-alm
+- [supported, minor] front matter: licensing.model / licensing: Licensing is unknown, with no feature-specific licence published. | Found: Users can create custom tables with Dynamics 365, Power Apps, or Power Automate license | Fix: Set licensing.model to included and replace licensing.notes with 'Existing Dataverse table licensing applies: users can create custom tables with a Dynamics 365, Power Apps, or Power Automate license. No licence specific to filter-based security is published as of November 2026.' The cited table-licensing page gives the product-level requirement, not a separate feature entitlement. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-entity-licenses
+- [supported, minor] controls[0].api / command: POST [Organization URI]/api/data/v9.2/recordfilters creates a Record Filter, not a table. | Found: Create a recordfilter row. ... POST [Organization URI]/api/data/v9.2/recordfilters HTTP/1.1 ... "fetchxml": "<fetch><entity name=\"new_store\"><filter type=\"and\"> | Fix: Remove ', each with a request body' from controls[0].api.call and the rendered call. Add to the row note: 'The recordfilters request body sets fetchxml.' Keep the documented POST endpoint unchanged. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/filtered-record-ownership#create-a-record-filter
+- [supported, minor] controls[0].api / command: POST [Organization URI]/api/data/v9.2/entityrecordfilters associates a Record Filter with a table rather than creating a table. | Found: Use the RecordFilterId single-valued navigation property to associate the record filter. ... POST [Organization URI]/api/data/v9.2/entityrecordfilters HTTP/1.1 ... "objecttypecode": "new_store", "RecordFilterId@odata.bind": "/recordfilters( | Fix: Keep the documented entityrecordfilters POST endpoint and add to controls[0].note: 'The entityrecordfilters request body sets objecttypecode to the table logical name and RecordFilterId@odata.bind to the Record Filter.' | Source: https://learn.microsoft.com/power-apps/developer/data-platform/filtered-record-ownership#associate-the-filter-with-a-table
+- [supported, minor] controls[1].ui / admin-path: Power Platform admin center > Manage > Environments > environment > Settings > Users + permissions > Security roles > role reaches the role whose filter privileges are configured. | Found: Select Manage on the navigation pane. ... select Environments and then select an environment. ... select Settings. ... Expand Users + permissions and select Security roles. ... Choose the security role you want to edit. | Fix: Complete the path in front matter and the rendered table as 'Manage > Environments > environment > Settings > Users + permissions > Security roles > role > target table > filter privilege'. The last two selections are documented at the already-cited https://learn.microsoft.com/power-platform/admin/filter-based-security#grant-filter-privileges-in-security-roles; the current path stops early on the correct role page. | Source: https://learn.microsoft.com/power-platform/admin/create-edit-security-role#edit-privileges-of-a-security-role
+- [supported, minor] controls[1].api / command: POST [Organization URI]/api/data/v9.2/roles(<roleid>)/Microsoft.Dynamics.CRM.AddPrivilegesRole adds existing privileges using a Privileges collection of RolePrivilege values. | Found: Pass the list as the AddPrivilegesRole.Privileges parameter. ... POST [Organization Uri]/api/data/v9.2/roles(44ee44ee-ff55-aa66-bb77-88cc88cc88cc)/Microsoft.Dynamics.CRM.AddPrivilegesRole HTTP/1.1 | Fix: Add https://learn.microsoft.com/power-apps/developer/data-platform/webapi/web-api-functions-actions-sample#section-8-bound-action-addprivilegesrole to sources for the full versioned invocation. Set controls[1].api.call and the rendered call to 'POST [Organization URI]/api/data/v9.2/roles(<roleid>)/Microsoft.Dynamics.CRM.AddPrivilegesRole' and move 'The request body supplies a Privileges collection of RolePrivilege values' to the note. The cited AddPrivilegesRole reference confirms the bound action and parameter; the pre-check's missing literal POST text is not an invalid endpoint. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/web-api-functions-actions-sample#section-8-bound-action-addprivilegesrole
+- [supported, minor] Governance controls / behaviour: These solution components can travel with solutions through application lifecycle management deployments. | Found: Solutions are the mechanism for implementing application lifecycle management (ALM) in Power Apps and Power Automate. ... The purpose of having components is ... so that it can be exported, imported | Fix: Add https://learn.microsoft.com/power-platform/alm/solution-concepts-alm to sources for the existing statement that solution components can travel with solutions through ALM deployments. | Source: https://learn.microsoft.com/power-platform/alm/solution-concepts-alm
 -->

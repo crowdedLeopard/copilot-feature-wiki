@@ -84,18 +84,21 @@ changes:
     note: "First briefing for this item, based on Microsoft's notice MC1478003 and the Set-CsTeamsMeetingPolicy reference page."
   - date: "2026-11-16"
     note: "Added the Teams Administrator and Teams Communications Administrator roles that can manage meeting policies, removed unsupported statements about identity and permissions, and aligned the pre-rollout advice with what MC1478003 recommends."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 48 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-16"
+  date: "2026-11-20"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 45
-  confirmed: 43
+  claims: 48
+  confirmed: 46
   unconfirmed: 0
   contradicted: 2
   attempts: 0
+  hash: "59a5f0f672f679926cc13c7303173042"
 ---
 
 ## What's changing
@@ -193,8 +196,10 @@ cost: Low. The only cost the sources show is admin and communication time; Micro
 impact: Low. Nothing changes for users while the default holds; only people in meetings run by organisers whose policy turns filtering off would see unmasked words.
 -->
 
-<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
-The independent check found these statements unsupported or contradicted. Fix every one in the next rewrite:
-- [contradicted, minor] Governance guidance: Before rollout, At rollout; Governance controls / consistency: The controls table includes the meeting-policy assignment control that the governance checklist tells administrators to inventory and configure. | Found: List the meeting policies in use ... and identify which organisers each is assigned to. / Assign that policy only to named users or groups ... / The table has filtering, transcription, caption preference and override rows, but no assignment row. | Fix: Add a meeting-policy assignment row citing https://learn.microsoft.com/microsoftteams/meeting-transcription-captions. Give Meetings > Meeting policies > policy > Manage users > Assign users for users, and Meetings > Meeting policies > Group policy assignment > Add for groups. The same source documents Grant-CsTeamsMeetingPolicy -Identity <user> -PolicyName <policy> and -Group <group ID> -PolicyName <policy>.
-- [contradicted, minor] Governance controls / consistency: The controls table represents the separate tenant-wide master switch reported as undocumented in the prose. | Found: Microsoft documents no tenant-wide master switch for it ... / The controls table has no tenant-wide master-switch row. | Fix: Add a row governing a separate tenant-wide transcript profanity-filter master switch, with scope tenant and both ui and api null. Explain that no separate master switch is documented and that the Global meeting policy is the default for users without another assignment.
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost / licensing: Licensing is unknown because no licence specific to this setting is published. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Set licensing.model to included. Replace the licensing notes and opening licensing paragraph with: 'Teams requires a Teams licence for each user in the organisation, except for joining meetings anonymously. Microsoft has not published a licence requirement specific to this filtering setting.' Cite https://learn.microsoft.com/microsoftteams/user-access in sources and retain only the feature-specific licensing gap in the cost rationale and Open questions. | Source: https://learn.microsoft.com/microsoftteams/user-access
+- [contradicted, minor] Governance guidance: Before rollout, At rollout, After rollout; controls / consistency: The checklist's directions to inventory and configure meeting-policy assignments are represented by a controls-table row. | Found: identify which organisers each is assigned to / Assign that policy only to named users or groups / Review membership of any filtering-off policy / The table has filtering, transcription, caption preference and override rows, but no assignment row. | Fix: The assignment inventory, user/group assignment and assignment-membership review steps have no controls row. Remove 'and identify which organisers each is assigned to', remove the 'Assign that policy only to named users or groups' bullet, and remove the 'Review membership of any filtering-off policy' bullet; do not add a control row in this correction.
+- [contradicted, minor] Governance controls: tenant-wide master-switch statement; controls / consistency: The separate tenant-wide master switch reported as undocumented in the prose is represented by a null-sided control row. | Found: Microsoft documents no tenant-wide master switch for it / The controls table has no tenant-wide master-switch row. | Fix: Remove 'Microsoft documents no tenant-wide master switch for it and' from the Governance controls paragraph, leaving 'Microsoft documents no organiser-level or per-meeting override; the Global policy is the nearest tenant default.' Do not add a control row.
 -->

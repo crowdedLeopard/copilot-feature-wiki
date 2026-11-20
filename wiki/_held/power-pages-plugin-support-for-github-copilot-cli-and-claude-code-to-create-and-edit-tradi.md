@@ -83,18 +83,20 @@ changes:
     note: "Corrected after a failed check: cloud wording now follows the roadmap, the pac pages download and upload call lists its documented arguments, and an unsupported claim about traditional sites was replaced."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 40 statements not yet confirmed"
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 35 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 4
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-16"
+  status: "held"
+  date: "2026-11-20"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 40
-  confirmed: 39
+  claims: 35
+  confirmed: 33
   unconfirmed: 0
-  contradicted: 1
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "c84661717540a301e20fcd3025ac068c"
 ---
 
@@ -174,8 +176,10 @@ cost: Low. No charge for the plugin is published; coding-agent costs depend on t
 impact: Low. It affects developers and makers who adopt the plugin.
 -->
 
-<!-- verifier-findings (2026-11-16, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: cost; Cost and licensing; rationale: cost / consistency: The low cost rating represents indirect review time only despite the briefing's documented Claude Code billing option. | Found: Page: cost: "low"; "Developer time for review is the main known cost." Learn: "Claude models use Global Standard deployments with pay-per-token billing, so idle deployments don't incur charges." | Fix: Set cost to variable. Replace the final Cost and licensing sentence with 'Review time is an additional indirect cost; Claude Code configured with Microsoft Foundry uses pay-per-token billing.' Replace the cost rationale with 'Variable. Coding-agent charges depend on the provider and plan; Claude Code configured with Microsoft Foundry uses pay-per-token billing. No plugin-specific price is published.' Keep the existing Foundry source. | Source: https://learn.microsoft.com/azure/foundry/foundry-models/how-to/configure-claude-code
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: Every control the governance checklist tells readers to check has a controls-table row. | Found: Run table permission audits after agent changes. Review who has installed the plugin and which environments they target. The table contains only downloading/uploading content and the missing tenant admin switch. | Fix: The 'After rollout' steps for table permission audits and reviewing plugin installations and target environments have no corresponding controls-table rows. Do not add rows as part of this correction.
+- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: Every control the governance checklist tells readers to check has a controls-table row. | Found: Run table permission audits after agent changes. Review who has installed the plugin and which environments they target. The table contains only downloading/uploading content and the missing tenant admin switch. | Fix: Remove the two After rollout bullets: table permission audits and reviewing plugin installations and target environments have no corresponding controls-table rows. Do not add rows as part of this correction.
 -->

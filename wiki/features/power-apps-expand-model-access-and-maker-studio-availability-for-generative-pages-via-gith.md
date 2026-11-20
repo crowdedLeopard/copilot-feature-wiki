@@ -28,6 +28,9 @@ sources:
   - title: "Generate a page using natural language"
     url: "https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages"
     kind: "learn"
+  - title: "FAQ about generative pages in model-driven apps"
+    url: "https://learn.microsoft.com/power-apps/maker/common/faq-generative-pages-model-driven"
+    kind: "learn"
   - title: "Build canvas apps with the authoring agent in Power Apps canvas studio (preview)"
     url: "https://learn.microsoft.com/power-apps/maker/canvas-apps/canvas-authoring-agent"
     kind: "learn"
@@ -78,19 +81,23 @@ changes:
     note: "Roadmap dates moved to a December CY2026 preview and a March CY2027 target; default state is now Not stated; dropped the Copilot preview tenant-setting row; added Learn's current model and region limits for in-browser authoring."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 48 statements contradicted, 4 unconfirmed; taken offline until corrected"
-version: 5
+  - date: "2026-11-20"
+    note: "Corrected unsupported statements on a historical first, model changes, where GitHub charges appear and where spending limits sit; added the FAQ's US-environments limitation."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 50 statements confirmed"
+version: 6
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-20"
-  version: 5
+  version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 44
-  unconfirmed: 4
+  claims: 50
+  confirmed: 50
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "80fbb9fd308ff2a67807a41d38931ad0"
+  attempts: 0
+  hash: "329c19aa2ab68ba9f13a8f3fc738b026"
 ---
 
 ## What's changing
@@ -99,15 +106,15 @@ Microsoft plans to let makers connect a GitHub account to reach additional model
 
 The roadmap item also says the integration brings Maker Studio generative page authoring to regions without dedicated Power Apps GPU capacity. It states that model availability through GitHub may evolve and that requests made through the connection consume the maker's GitHub credits.
 
-Microsoft Learn does not yet describe the GitHub connection for generative pages (November 2026). Its generative pages article describes in-browser authoring as available in the United States, Great Britain, Australia and Singapore, and says GPT-4.1 is currently the only model available in that experience. The same article recommends AI code generation tools such as GitHub Copilot CLI, which it describes as available worldwide on public clouds. What follows about the GitHub connection is therefore the roadmap's description.
+Microsoft Learn does not yet describe the GitHub connection for generative pages (November 2026). Its generative pages article describes in-browser authoring as available in the United States, Great Britain, Australia and Singapore, and says GPT-4.1 is currently the only model available in that experience. Microsoft's separate responsible-AI FAQ still says generative pages are only available in US environments. The same article recommends AI code generation tools such as GitHub Copilot CLI, which it describes as available worldwide on public clouds. What follows about the GitHub connection is therefore the roadmap's description.
 
 The roadmap record gives status In development, a preview target of December CY2026 and a target of March CY2027, with release phases General Availability and Preview. Worldwide (Standard Multi-Tenant) is the only cloud listed. Microsoft has not stated what happens on arrival, including whether an administrator or each maker turns the connection on.
 
 ## Why it matters
 
-This would be the first documented route in which a generative page prompt is handled under a maker's own GitHub account rather than only the built-in model. For canvas studio's separate authoring agent, Learn states that prompts and application context are sent to GitHub and processed and stored under the GitHub terms of the maker's account. Learn does not say the same of this feature, so treat that as the thing to confirm, not as established behaviour.
+The roadmap plans a GitHub-account connection inside the generative page designer. For canvas studio's separate authoring agent, Learn states that prompts and application context are sent to GitHub and processed and stored under the GitHub terms of the maker's account. Learn does not say the same of this feature, so treat that as the thing to confirm, not as established behaviour.
 
-Spend moves out of the Power Platform estate. Learn says the current maker experience for generative pages needs no additional AI or message credits, but the roadmap says the GitHub path consumes GitHub credits. Because Microsoft has not stated the default, plan on the assumption that nothing changes for existing makers until the feature is announced as available, and decide beforehand who may connect an account and who pays.
+The planned connection introduces GitHub credit consumption. Learn says the current maker experience for generative pages needs no additional AI or message credits, but the roadmap says the GitHub path consumes GitHub credits. Because Microsoft has not stated the default, plan on the assumption that nothing changes for existing makers until the feature is announced as available, and decide beforehand who may connect an account and who pays.
 
 ## Risk assessment
 
@@ -122,16 +129,16 @@ Spend moves out of the Power Platform estate. Learn says the current maker exper
 - The agent generates React code that runs inside model-driven apps. Learn says the maker is ultimately responsible for validating the generated code, whichever model produced it.
 
 **Change & support**
-- The roadmap says model availability through GitHub may evolve, so output quality and supported models can change without an administrator action. Support teams should expect makers to ask which model produced a page.
+- The roadmap says model availability through GitHub may evolve, so plan to reassess output quality when available models change. Support teams should expect makers to ask which model produced a page.
 - The planned extension to regions without GPU capacity would change where makers can author. Learn currently limits in-browser authoring to four regions.
 
 ## Cost and licensing
 
-**Meter.** The roadmap item states that requests made through the GitHub connection consume the maker's GitHub credits. That is GitHub's billing, so the charge would appear on the GitHub account the maker connects, not in the Power Platform admin center. A credit rate for this feature is not yet published.
+**Meter.** The roadmap item states that requests made through the GitHub connection consume the maker's GitHub credits. A credit rate for this feature is not yet published.
 
 **Existing experience.** Learn's generative pages FAQ says the maker experience for generative pages does not require any additional AI or message credits. The page lists no Power Apps licence among its prerequisites; its prerequisites are an environment in a supported region and, for preview extras, connections, custom APIs or Application Insights export. The two statements describe the current in-browser experience and the roadmap's planned GitHub path, so report both and do not combine them.
 
-**Caps.** Microsoft Learn documents no spending limit on the GitHub connection for generative pages at the time of writing (November 2026). Any limit would sit on the GitHub account.
+**Caps.** Microsoft Learn documents no spending limit on the GitHub connection for generative pages at the time of writing (November 2026).
 
 **Indirect cost.** Admin time to decide who may connect GitHub accounts, and finance time to track GitHub plan use by makers.
 
@@ -188,15 +195,4 @@ Microsoft Learn lists no property for that setting in the tenant settings API re
 risk: Medium. The roadmap describes requests running through a maker's GitHub account, and Microsoft has not published what data that path sends or where it is processed; no generative-page-specific admin switch is documented.
 cost: Variable. The roadmap item states that requests consume the maker's GitHub credits, which is a GitHub meter, not a Power Platform one; a credit rate for this feature is not yet published.
 impact: Low. Makers building generative pages in model-driven apps are the people who would notice; end users of published pages and most admins see no change.
--->
-
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: This would be the first documented route handling a generative-page prompt under a maker's own GitHub account rather than only the built-in model. | Found: Searched: "generative pages" "GitHub" "first". Read generative-pages and generative-page-external-tools. Neither establishes this historical first; both already describe external authoring using tools such as GitHub Copilot CLI. | Fix: Replace the first sentence of Why it matters with: 'The roadmap plans a GitHub-account connection inside the generative page designer.'
-- [unsupported, major] Risk assessment: Change & support / behaviour: The supported models can change without administrator action. | Found: Searched: "generative pages" "GitHub" "connection"; "generative pages" "disable" "GitHub". Read roadmap, generative-pages and Tenant settings. Model availability may evolve, but the update or approval mechanism is not stated. | Fix: Replace 'so output quality and supported models can change without an administrator action' with 'so plan to reassess output quality when available models change'.
-- [unsupported, blocker] Cost and licensing: Meter; Why it matters / cost: Charges will appear on the connected GitHub account rather than in the Power Platform admin center. | Found: Searched: Power Apps generative pages GitHub credits pricing rate spending cap billed account; "generative pages" "GitHub" "spending" "billing". Read roadmap, generative-pages and canvas-authoring-agent; billing-account text covers canvas, not this feature. | Fix: Remove 'That is GitHub's billing, so the charge would appear on the GitHub account the maker connects, not in the Power Platform admin center.' Replace 'Spend moves out of the Power Platform estate.' with 'The planned connection introduces GitHub credit consumption.' Retain the roadmap's statement that requests consume the maker's GitHub credits.
-- [unsupported, blocker] Cost and licensing: Caps / cost: Any spending limit would sit on the GitHub account. | Found: Searched: "generative pages" "GitHub" "limit"; "generative pages" "GitHub" "spending" "billing". Read roadmap, generative-pages, Tenant settings and canvas-authoring-agent; none establishes where this feature's spending limits would be configured. | Fix: Remove the sentence 'Any limit would sit on the GitHub account.' Keep the preceding, narrower statement that Learn documents no spending limit for the connection.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Risk assessment: Change & support; Scope: Where / availability: The cited generative-pages article lists United States, Great Britain, Australia and Singapore for in-browser authoring. | Found: It's available in the United States, Great Britain, Australia, and Singapore. | Fix: After the four-region statement, add: 'Microsoft's separate responsible-AI FAQ still says generative pages are only available in US environments.' Cite https://learn.microsoft.com/power-apps/maker/common/faq-generative-pages-model-driven#what-are-the-limitations-of-generative-pages--how-can-users-minimize-the-impact-of-generative-page-limitations-when-using-the-system. | Source: https://learn.microsoft.com/power-apps/maker/model-driven-apps/generative-pages
 -->

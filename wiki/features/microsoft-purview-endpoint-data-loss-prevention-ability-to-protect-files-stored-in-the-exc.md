@@ -72,17 +72,19 @@ changes:
     note: "Corrected after verification: licensing model set to included with the billing-models source; first control row scope changed to other; two policy-mode checklist bullets removed."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 50 statements not yet confirmed"
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 49 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-20"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 50
+  claims: 49
+  confirmed: 47
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 2
   attempts: 0
   hash: "eb0e3c8095f13f124ff699428b18e123"
 ---
@@ -176,8 +178,10 @@ cost: Low. The only costs the sources show are admin time, device updates and us
 impact: Medium. Users on Windows devices covered by Endpoint DLP policies notice it only if an admin extends enforcement to excluded folders; the affected group is that policy scope, not every user.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters / behaviour: Applications write data in application-data and temporary folders. | Found: The folders where your app can store data. These folders (local, roaming and temporary) are created when your app is installed. | Fix: Add https://learn.microsoft.com/windows/apps/develop/files/file-access-permissions to sources to support the application-storage premise in 'Users and applications write to AppData and temporary folders'. | Source: https://learn.microsoft.com/windows/apps/develop/files/file-access-permissions
+- [supported, minor] Why it matters / behaviour: Applications store data in application-data and temporary folders. | Found: The folders where your app can store data. These folders (local, roaming and temporary) are created when your app is installed. | Fix: Add https://learn.microsoft.com/windows/apps/develop/files/file-access-permissions to sources for the application-storage premise in 'Users and applications write to AppData and temporary folders'. | Source: https://learn.microsoft.com/windows/apps/develop/files/file-access-permissions
+- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The controls table covers the policy-action and device-scope configuration requested by the audit-mode pilot checklist step. | Found: Start with an audit-mode pilot on a small device group ... before any block-mode enforcement. Controls: Protection of files in excluded Windows folders; Which Windows folders Endpoint DLP excludes today. | Fix: The checklist step 'Start with an audit-mode pilot on a small device group, as the notice recommends, before any block-mode enforcement' names policy-action and device-scope controls with no corresponding table row. Remove this checklist bullet; retain the sourced pilot recommendation in Risk assessment.
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The controls table covers the audit-event review requested by the after-rollout checklist. | Found: Review audit-mode events for files in the newly covered paths ... Controls: Protection of files in excluded Windows folders; Which Windows folders Endpoint DLP excludes today. | Fix: The after-rollout step 'Review audit-mode events for files in the newly covered paths and check for noise from applications that write to those folders' has no monitoring control row. Remove this checklist bullet rather than adding an unverified control.
 -->

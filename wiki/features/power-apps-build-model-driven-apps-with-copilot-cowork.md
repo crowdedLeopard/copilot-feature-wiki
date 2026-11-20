@@ -132,15 +132,17 @@ changes:
     note: "Correction: the Security & identity bullet, risk rationale and first open question now say Cowork actions are authorized through the user's Microsoft 365 account, and that the skill's Dataverse connection mechanism is not yet documented."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 75 statements confirmed"
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 80 statements confirmed"
 version: 5
 verification:
   status: "verified"
-  date: "2026-11-19"
+  date: "2026-11-20"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 75
+  claims: 80
+  confirmed: 80
   unconfirmed: 0
   contradicted: 0
   attempts: 0

@@ -102,17 +102,19 @@ changes:
     note: "Corrected after verification: the note under the controls table now says the feature page documents the tenant setting via Graph PowerShell; risk set to low; removed a checklist step with no control row."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 75 statements not yet confirmed"
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 70 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-20"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 75
+  claims: 70
+  confirmed: 69
   unconfirmed: 0
-  contradicted: 0
+  contradicted: 1
   attempts: 0
   hash: "dfca106620be155615c2671e90199dec"
 ---
@@ -222,8 +224,12 @@ cost: Low. Learn names an active Microsoft Entra ID P1 or P2 licence (or Microso
 impact: Low. Administrators and group owners who create or label security groups notice it; users are affected only where a label blocks guest members.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model / licensing: The licensing model is included in eligible existing subscriptions rather than a separately named feature add-on. | Found: Feature | Microsoft 365 E5/A5/G5/E3/A3/G3/F1/F3/Business Premium Manual Sensitivity Labeling | Included | Fix: Add https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling to sources for the explicit inclusion statement; retain the feature page's specific prerequisites. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling
+- [supported, minor] front matter: licensing.model; Cost and licensing / licensing: Licensing is included in eligible existing subscriptions. | Found: Sensitivity labeling, including automatic or policy-based labeling, requires a Microsoft 365 E5 license or Microsoft 365 Information Protection and Governance (IPG). | Manual Sensitivity Labeling | Included | Included | Included | Included | Included | | Fix: Retain included and the feature page's prerequisites. Add this service-description URL to sources and add: 'The service description lists manual sensitivity labelling as included in Microsoft 365 E3/E5, but also contains a broader statement that sensitivity labelling requires Microsoft 365 E5 or Microsoft 365 Information Protection and Governance (IPG); the feature page specifically lists Entra ID P1/P2 or Microsoft 365 E3/E5.' | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description#microsoft-purview-information-protection-sensitivity-labeling
+- [supported, minor] controls[1].api / command: PATCH /v1.0/groups/{id} sets assignedLabels to assign the group's label. | Found: The list of sensitivity label pairs (label ID, label name) associated with a Microsoft 365 group or a cloud security group. Requires a Microsoft Entra ID P1 license. This property can be specified during group creation or update. However, for cloud security groups, it's immutable once set. | Fix: Set controls[1].api.call to 'PATCH /v1.0/groups/{id}' and add to its note: 'The request body sets the assignedLabels collection with the label ID.' Make the same presentation change in the rendered table. | Source: https://learn.microsoft.com/graph/api/group-update
+- [supported, minor] controls[3].ui / admin-path: The label-management route is Purview portal > Solutions > Information Protection > Sensitivity labels. | Found: Sign in to the Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels | Fix: For the existing-label editing route, extend controls[3].ui.path to 'Solutions > Information Protection > Sensitivity labels > label > Edit label'. Its note may continue to explain selecting the Groups & Sites scope. Update the rendered table to match. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
+- [supported, minor] controls[3].note; Governance controls / applicability: The general Purview Set-Label control is presented as not confirmed for cloud security groups. | Found: You can now use Security & Compliance PowerShell to create and configure all the settings you see in your labeling admin center. | Fix: Replace the uncertainty in controls[3].note and the final Governance controls paragraph with: 'General Purview control: Set-Label modifies the published label; SiteAndGroupProtectionEnabled enables or disables its Site and Group Protection action. Cloud security groups use the same labels configured for groups and sites.' | Source: https://learn.microsoft.com/purview/create-sensitivity-labels#use-powershell-for-sensitivity-labels-and-their-policies
+- [contradicted, minor] Governance guidance: Before rollout; After rollout / consistency: The checklist asks readers to inventory group membership and remove existing guests, but the table has no membership-management control. | Found: Inventory security groups that contain guests, nested groups, dynamic membership or on-premises sync ... Check labelled groups for guests ... and remove them where the policy requires. | Fix: The inventory step and the existing-guest removal step have no matching membership-management row. Remove those two checklist bullets rather than adding an unverified control row.
 -->

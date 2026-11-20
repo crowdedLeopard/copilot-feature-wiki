@@ -2,33 +2,27 @@
   "slug": "microsoft-clipchamp-copilot-video-creation-updates",
   "roadmapId": 570963,
   "title": "Microsoft Clipchamp: Copilot video creation in Video Hub, billed in Copilot Credits",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-20",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-20",
-    "reasons": [
-      "4 blocking findings (claims 34, 38, 55, 68)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 72,
-    "confirmed": 67,
+    "claims": 76,
+    "confirmed": 76,
     "unconfirmed": 0,
-    "contradicted": 5,
-    "blocker": 4,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 2
+    "minor": 3
   },
-  "summary": "Hold: the spending-policy route omits the required Identity scope choice, and the page overstates the need for fresh administrator enablement despite automatic coverage of new services. Its claims that the watermark policy and Anthropic data-boundary exclusion have unconfirmed applicability also disregard the documented reach of those rules.",
+  "summary": "The briefing's rollout, billing, prerequisites and preview limits are supported by Microsoft's notice and documentation. The control paths stop early, and the licensing administrator role needs a caveat because Microsoft's setup page gives conflicting permissions.",
   "claims": [
     {
       "n": 1,
@@ -43,7 +37,7 @@
     },
     {
       "n": 2,
-      "where": "What's changing: first paragraph",
+      "where": "What's changing",
       "type": "record",
       "claim": "Users can describe the topic, audience, tone and length in a prompt.",
       "status": "supported",
@@ -54,9 +48,9 @@
     },
     {
       "n": 3,
-      "where": "What's changing; summary; Risk assessment; rationale: risk",
+      "where": "What's changing; summary; Risk assessment",
       "type": "record",
-      "claim": "Video sources include Word, PowerPoint, images, video or PDF from OneDrive and relevant work context through Work IQ.",
+      "claim": "Users can base videos on Word, PowerPoint, images, video or PDF from OneDrive.",
       "status": "supported",
       "source": "Message Center post MC1560920",
       "quote": "Add a Word document, PowerPoint presentation, images, video or PDF from OneDrive, or draw on relevant work context through Work IQ.",
@@ -65,31 +59,42 @@
     },
     {
       "n": 4,
-      "where": "What's changing; Risk assessment: Data exposure",
+      "where": "What's changing; summary; Why it matters; rationale: risk",
       "type": "record",
-      "claim": "Users can preview and play each video version in chat.",
+      "claim": "Videos can draw on work context through Work IQ.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "Preview and playback video directly in chat, then continue iterating towards a finished video.",
+      "source": "Message Center post MC1560920",
+      "quote": "or draw on relevant work context through Work IQ.",
       "severity": null,
       "fix": null
     },
     {
       "n": 5,
-      "where": "What's changing; summary",
+      "where": "What's changing; Risk assessment",
       "type": "record",
-      "claim": "Users can refine videos conversationally, including changing tone, shortening them or localising them.",
+      "claim": "Users preview and play generated versions in chat.",
       "status": "supported",
       "source": "Message Center post MC1560920",
-      "quote": "Refine through conversation. Ask for changes like \"Use a more formal tone\", \"Make it shorter\", \"Localize this into Japanese\" or \"Update the title.\"",
+      "quote": "Preview in chat. Watch each version without leaving the experience.",
       "severity": null,
       "fix": null
     },
     {
       "n": 6,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "where": "What's changing; summary; Risk assessment",
       "type": "record",
-      "claim": "Users can export the finished video as an MP4.",
+      "claim": "Users refine videos conversationally, including changes to tone, length or language.",
+      "status": "supported",
+      "source": "Message Center post MC1560920",
+      "quote": "Ask for changes like \"Use a more formal tone\", \"Make it shorter\", \"Localize this into Japanese\" or \"Update the title.\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "Users export the finished video as an MP4.",
       "status": "supported",
       "source": "Message Center post MC1560920",
       "quote": "Export and share. Save the finished video as an MP4.",
@@ -97,21 +102,10 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "front matter: licensing.model; title; summary; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Video creation has a consumption licensing model, using Copilot Credits billed through usage-based billing in the Microsoft 365 admin center.",
-      "status": "supported",
-      "source": "Message Center post MC1560920",
-      "quote": "This is a usage-based billing (UBB) feature. Each video and subsequent refinements use Copilot Credits, billed through Copilot Credits usage-based billing in the Microsoft 365 admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 8,
-      "where": "What's changing; Why it matters; Cost and licensing; rationale: cost",
+      "where": "What's changing; summary; Why it matters; Cost and licensing; rationale: cost",
       "type": "record",
-      "claim": "Subsequent refinements also use Copilot Credits.",
+      "claim": "Each created video consumes Copilot Credits.",
       "status": "supported",
       "source": "Message Center post MC1560920",
       "quote": "Each video and subsequent refinements use Copilot Credits",
@@ -120,7 +114,40 @@
     },
     {
       "n": 9,
-      "where": "What's changing; summary; Scope; controls[1].governs",
+      "where": "What's changing; Why it matters; Risk assessment; Cost and licensing; rationale: cost",
+      "type": "record",
+      "claim": "Refinements also consume Copilot Credits.",
+      "status": "supported",
+      "source": "Message Center post MC1560920",
+      "quote": "Each video and subsequent refinements use Copilot Credits",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: licensing.model; title; front matter: cost; rationale: cost",
+      "type": "licensing",
+      "claim": "Video creation has consumption-based licensing, with variable cost measured in Copilot Credits.",
+      "status": "supported",
+      "source": "Message Center post MC1560920",
+      "quote": "This is a usage-based billing (UBB) feature. Each video and subsequent refinements use Copilot Credits",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: licensing.notes; What's changing; Cost and licensing",
+      "type": "record",
+      "claim": "Billing is through Copilot Credits usage-based billing in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "Message Center post MC1560920",
+      "quote": "billed through Copilot Credits usage-based billing in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; summary; Risk assessment; Scope; Governance controls; rationale: risk",
       "type": "record",
       "claim": "Anthropic models must be enabled for video creation to be available.",
       "status": "supported",
@@ -130,10 +157,10 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "What's changing; Scope; Governance controls; rationale: impact",
+      "n": 13,
+      "where": "What's changing; summary; Scope; Governance controls; controls[0]; rationale: impact",
       "type": "record",
-      "claim": "Access requires a spending policy that includes Copilot video creation and the intended users.",
+      "claim": "Intended users need a spending policy that includes Copilot video creation.",
       "status": "supported",
       "source": "Message Center post MC1560920",
       "quote": "Admins first turn on Copilot video creation in a spending policy that includes the right users, in Copilot > Cost management in the Microsoft 365 admin center.",
@@ -141,21 +168,21 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing: second paragraph",
-      "type": "admin-path",
-      "claim": "The notice directs administrators to Copilot > Cost management in the Microsoft 365 admin center for the spending policy.",
+      "n": 14,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice directs administrators to Copilot > Cost management in the Microsoft 365 admin center.",
       "status": "supported",
       "source": "Message Center post MC1560920",
-      "quote": "Admins first turn on Copilot video creation in a spending policy that includes the right users, in Copilot > Cost management in the Microsoft 365 admin center.",
+      "quote": "in Copilot > Cost management in the Microsoft 365 admin center.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 12,
-      "where": "What's changing: second paragraph; Scope",
+      "n": 15,
+      "where": "What's changing; Scope",
       "type": "record",
-      "claim": "Users open Clipchamp Video Hub, select Create video in the left menu, describe and refine the video, then select Export.",
+      "claim": "Users open Clipchamp Video Hub, choose Create video in the left menu and select Export after previewing and refining.",
       "status": "supported",
       "source": "Message Center post MC1560920",
       "quote": "Go to Create video in the left menu- Describe the video, and add files if needed.- Preview the video, refine it.- Select Export to save it as an MP4.",
@@ -163,10 +190,10 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "What's changing; Risk assessment; Governance guidance: At rollout",
+      "n": 16,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
       "type": "record",
-      "claim": "At preview, videos made from documents labelled above General can be viewed but not downloaded.",
+      "claim": "At preview, videos created from documents labelled above General can be viewed but not downloaded.",
       "status": "supported",
       "source": "Message Center post MC1560920",
       "quote": "Sensitivity labels: Videos created from documents with a sensitivity label above General can't be downloaded yet but can be viewed.",
@@ -174,10 +201,10 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing; Risk assessment; Governance guidance: At rollout",
+      "n": 17,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
       "type": "record",
-      "claim": "Editing individual scenes or elements in Clipchamp is not supported at preview.",
+      "claim": "Editing individual scenes or elements in Clipchamp is not supported in this preview.",
       "status": "supported",
       "source": "Message Center post MC1560920",
       "quote": "Editing individual scenes or elements in Clipchamp isn't supported yet.",
@@ -185,8 +212,8 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "What's changing: third paragraph",
+      "n": 18,
+      "where": "What's changing",
       "type": "record",
       "claim": "Web search is also a supported source.",
       "status": "supported",
@@ -196,10 +223,10 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What's changing: third paragraph",
+      "n": 19,
+      "where": "What's changing",
       "type": "record",
-      "claim": "The preview supports up to three images per prompt.",
+      "claim": "Images are limited to three per prompt in preview.",
       "status": "supported",
       "source": "Message Center post MC1560920",
       "quote": "images (up to 3 per prompt)",
@@ -207,8 +234,8 @@
       "fix": null
     },
     {
-      "n": 17,
-      "where": "What's changing: third paragraph",
+      "n": 20,
+      "where": "What's changing",
       "type": "record",
       "claim": "Supported source videos must be under 50 MB.",
       "status": "supported",
@@ -218,7 +245,7 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 21,
       "where": "What's changing; Why it matters; Risk assessment",
       "type": "record",
       "claim": "Creating and changing videos can take time.",
@@ -229,10 +256,10 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "What's changing; Risk assessment; Governance guidance: At rollout",
+      "n": 22,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
       "type": "record",
-      "claim": "Generation requests may fail or time out.",
+      "claim": "Preview generation requests can fail or time out.",
       "status": "supported",
       "source": "Message Center post MC1560920",
       "quote": "Requests may sometimes fail or time out, and preview or playback may not work as expected.",
@@ -240,10 +267,10 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What's changing; Governance guidance: At rollout",
+      "n": 23,
+      "where": "What's changing; Governance guidance",
       "type": "record",
-      "claim": "The browser tab must stay open while a video is being created.",
+      "claim": "The browser tab must remain open during creation.",
       "status": "supported",
       "source": "Message Center post MC1560920",
       "quote": "Keep the browser tab open while a video is being created.",
@@ -251,8 +278,8 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What's changing; Risk assessment; Governance guidance: At rollout",
+      "n": 24,
+      "where": "What's changing; Risk assessment; Governance guidance",
       "type": "record",
       "claim": "Only one session at a time is supported.",
       "status": "supported",
@@ -262,7 +289,7 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 25,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -273,8 +300,8 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "front matter: previewDate; What's changing; Scope; Open questions",
+      "n": 26,
+      "where": "front matter: previewDate; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap preview target is December CY2026.",
       "status": "supported",
@@ -284,7 +311,7 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 27,
       "where": "front matter: targetDate; What's changing; Scope; Open questions",
       "type": "record",
       "claim": "The roadmap general availability target is January CY2027.",
@@ -295,7 +322,7 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 28,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
@@ -306,10 +333,10 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 29,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Web as the platform.",
+      "claim": "The roadmap platform is Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
@@ -317,10 +344,10 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 30,
       "where": "front matter: releasePhase",
       "type": "record",
-      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "claim": "The roadmap release phases are General Availability and Preview.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -328,8 +355,8 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "What's changing: fourth paragraph",
+      "n": 31,
+      "where": "What's changing",
       "type": "record",
       "claim": "MC1560920 was published on 2026-11-20.",
       "status": "supported",
@@ -339,7 +366,7 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 32,
       "where": "What's changing; Scope",
       "type": "record",
       "claim": "The notice says Frontier public preview has been available since November 17, 2026.",
@@ -350,10 +377,10 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 33,
       "where": "What's changing; Scope; Open questions",
       "type": "record",
-      "claim": "The notice expects Worldwide general availability in February, subject to final confirmation, differing from the roadmap month.",
+      "claim": "The notice expects Worldwide general availability in February, subject to final confirmation.",
       "status": "supported",
       "source": "Message Center post MC1560920",
       "quote": "General Availability (Worldwide): Expected February (timing subject to final confirmation).",
@@ -361,32 +388,43 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 34,
       "where": "What's changing; Cost and licensing",
       "type": "licensing",
-      "claim": "Learn lists Clipchamp: Copilot video creation among services managed by usage-based billing.",
+      "claim": "The usage-based billing overview lists Clipchamp: Copilot video creation as a managed service.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits",
-      "quote": "Services managed by usage-based billing in the Microsoft admin center now include: ... Clipchamp: Copilot video creation",
+      "quote": "| Clipchamp: Copilot video creation | How to create a video with Copilot |",
       "severity": null,
       "fix": null
     },
     {
-      "n": 32,
-      "where": "What's changing: fourth paragraph",
+      "n": 35,
+      "where": "What's changing",
       "type": "absence",
-      "claim": "The cited Clipchamp features page does not describe this Copilot video creation feature.",
+      "claim": "The cited Clipchamp features page does not describe this video creation feature.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Clipchamp Copilot video creation Copilot Credits rate per video refinement pricing license'; opened and read https://learn.microsoft.com/clipchamp/features-clipchamp in full; no description of this feature.",
+      "quote": "Searched: read learn.microsoft.com/clipchamp/features-clipchamp in full; searched 'Clipchamp Video Hub' 'default' Copilot and Clipchamp Copilot video creation. The features page describes recording and playback, not this agentic preview.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Why it matters; Risk assessment: Data exposure",
+      "n": 36,
+      "where": "front matter: defaultState",
+      "type": "absence",
+      "claim": "A single default state for this feature on arrival is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Clipchamp Video Hub' 'default' Copilot; Clipchamp Copilot video creation default automatically enabled spending policies. Read roadmap, MC1560920, billing setup/management and Anthropic pages: prerequisites and conditional automatic coverage, not a feature-wide default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Why it matters; Risk assessment",
       "type": "record",
-      "claim": "Videos only draw on work content the user already has access to.",
+      "claim": "Videos only draw on work content the user already has permission to access.",
       "status": "supported",
       "source": "Message Center post MC1560920",
       "quote": "Videos only draw on work content the user already has access to.",
@@ -394,32 +432,65 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "front matter: defaultState; Why it matters; rationales: risk, impact; Open questions",
-      "type": "default",
-      "claim": "Admin-opt-in means doing nothing prevents access until an administrator specifically enables this feature in a spending policy.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits",
-      "quote": "Spending policies can automatically apply to future supported Microsoft Copilot services and agents. ... No action is required when you want future supported services and agents to inherit the policy.",
-      "severity": "blocker",
-      "fix": "Set defaultState to unknown and replace the unconditional no-action claims with: 'The notice requires Anthropic access and a spending policy covering the feature. Learn says Auto-apply new services can automatically cover newly supported services, and Anthropic is already on by default for most commercial tenants outside EU/EFTA and UK; do not assume fresh enablement is required.' Retain the notice's prerequisites, but replace the Auto-apply open question with the documented automatic-coverage rule. Apply this qualification to the risk and impact rationales too. Sources: https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits and https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor."
-    },
-    {
-      "n": 35,
-      "where": "Why it matters",
-      "type": "record",
-      "claim": "Microsoft recommends confirming Anthropic access, updating spending policies and reviewing internal readiness guidance before broader enablement.",
+      "n": 38,
+      "where": "Why it matters; Open questions; rationale: risk; rationale: impact",
+      "type": "behaviour",
+      "claim": "Auto-apply new services automatically adds newly supported services to a spending policy when enabled.",
       "status": "supported",
-      "source": "Message Center post MC1560920",
-      "quote": "If you plan to enable this capability, confirm Anthropic models are enabled and update Copilot Credits spending policies ... Review internal readiness guidance for admins and support teams before broader enablement.",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "When the setting is on, newly supported Microsoft Copilot services and agents are automatically added to the policy.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
+      "n": 39,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "Claude models are on by default for most commercial-cloud customers outside EU/EFTA and UK.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
+      "quote": "Microsoft enables Claude models on by default for most customers in commercial cloud (excluding EU/EFTA and UK).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "Microsoft recommends confirming Anthropic access and updating spending policies before enabling the capability.",
+      "status": "supported",
+      "source": "Message Center post MC1560920",
+      "quote": "If you plan to enable this capability, confirm Anthropic models are enabled and update Copilot Credits spending policies to include Copilot video creation with Clipchamp for intended users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "Microsoft recommends reviewing internal readiness guidance for administrators and support teams before broader enablement.",
+      "status": "supported",
+      "source": "Message Center post MC1560920",
+      "quote": "Review internal readiness guidance for admins and support teams before broader enablement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
       "where": "Risk assessment: Data exposure",
-      "type": "availability",
-      "claim": "Learn says Claude models deployed in Microsoft offerings are currently excluded from the EU Data Boundary.",
+      "type": "absence",
+      "claim": "The supplied notice does not explain how other sensitivity-label settings apply.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: read MC1560920 in full for sensitivity labels, label settings and governance. Its label statement addresses viewing and downloading videos from documents labelled above General, not other label settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Claude models deployed in Microsoft offerings such as Microsoft Copilot are currently excluded from the EU Data Boundary.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
       "quote": "Claude models deployed in Microsoft offerings such as Microsoft Copilot, Researcher, Copilot Studio, Power Platform, and Copilot in Microsoft 365 apps are currently excluded from the EU Data Boundary",
@@ -427,10 +498,10 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 44,
       "where": "Risk assessment: Data exposure",
       "type": "default",
-      "claim": "Customers within the EU Data Boundary and customers in the UK have Claude models disabled by default.",
+      "claim": "Customers within the EU Data Boundary and in the UK have Claude models disabled by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
       "quote": "Customers within the EU Data Boundary and customers in the UK have Claude models disabled by default.",
@@ -438,21 +509,10 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Risk assessment: Data exposure; Open questions: EU Data Boundary",
-      "type": "applicability",
-      "claim": "It is not stated whether the Claude EU Data Boundary exclusion covers video creation.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
-      "quote": "Claude models deployed in Microsoft offerings such as Microsoft Copilot, Researcher, Copilot Studio, Power Platform, and Copilot in Microsoft 365 apps are currently excluded from the EU Data Boundary",
-      "severity": "blocker",
-      "fix": "Remove 'Whether that page's statement covers video creation is not stated' and the corresponding EU Data Boundary applicability question. Replace the caveat with: 'The exclusion is stated for Claude models deployed in Microsoft offerings; the notice requires Anthropic models for this feature.' The list introduced by 'such as' is not an exhaustive feature list. Keep the separately open question about regional availability at general availability."
-    },
-    {
-      "n": 39,
+      "n": 45,
       "where": "controls[1].note; Risk assessment; Scope; Governance guidance",
       "type": "role",
-      "claim": "The Anthropic opt-in setting requires AI Administrator or Global Administrator.",
+      "claim": "AI Administrator or Global Administrator can configure the Anthropic subprocessor setting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
       "quote": "You must be a member of the AI Administrator or Global Administrator role to perform this task.",
@@ -460,10 +520,10 @@
       "fix": null
     },
     {
-      "n": 40,
-      "where": "Risk assessment: Security & identity",
+      "n": 46,
+      "where": "Risk assessment: Security & identity; controls[1].scope",
       "type": "applicability",
-      "claim": "Both the provider access setting and spending policies support scoping access by users or groups.",
+      "claim": "Anthropic provider access can be restricted to individual users or Microsoft Entra security groups.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
       "quote": "You can restrict user access to AI provider subprocessors by assigning permissions to specific users or Microsoft Entra ID security groups in the Microsoft 365 admin center.",
@@ -471,10 +531,21 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 47,
+      "where": "Risk assessment: Security & identity; controls[0].scope; Governance guidance",
+      "type": "applicability",
+      "claim": "Identity-based spending policies can scope service access to users or groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "Use this option when you need to manage usage by users or groups for a supported service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
       "where": "Risk assessment: Security & identity; Scope",
       "type": "role",
-      "claim": "Global administrator and Billing administrator can add, select and change billing methods and set them in policies.",
+      "claim": "Global administrator and Billing administrator can add, select and change billing methods.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
       "quote": "Global administrator and Billing administrator roles can add, select, and change billing methods, and set billing methods in policies.",
@@ -482,10 +553,10 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 49,
       "where": "controls[0].note; Risk assessment: Security & identity",
       "type": "role",
-      "claim": "AI administrator and License administrator can edit spending policies but cannot create them.",
+      "claim": "AI administrator can edit spending policies but cannot create them.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
       "quote": "AI administrator and License administrator roles can edit spending policies, manage limits and alerts, and billing methods. However, they can't create spending policies.",
@@ -493,52 +564,74 @@
       "fix": null
     },
     {
-      "n": 43,
-      "where": "controls[0].note; Scope",
+      "n": 50,
+      "where": "controls[0].note; Risk assessment: Security & identity",
       "type": "role",
-      "claim": "Global administrator or Billing administrator can perform spending-policy setup and creation.",
+      "claim": "License administrator can edit spending policies but cannot create them.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
-      "quote": "This section covers the initial setup steps ... creating the first spending policy. ... Sign in ... with one of the following administrator roles: Global administrator; Billing administrator",
-      "severity": null,
-      "fix": null
+      "quote": "AI administrator and License administrator roles can edit spending policies ... However, they can't create spending policies. / AI Reader, Global Reader, License Administrator, and other supported reader-based roles ... provide read-only access",
+      "severity": "minor",
+      "fix": "Remove License administrator from the controls[0] note and the Security & identity sentence about editing policies. The cited setup page both permits License administrator edits and lists License Administrator among read-only roles, so it does not give consistent guidance for that role."
     },
     {
-      "n": 44,
+      "n": 51,
       "where": "Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "The notice describes a user-driven prompt, preview, refine and export loop rather than an unattended action.",
+      "type": "absence",
+      "claim": "The notice describes no action that runs without the user.",
       "status": "supported",
-      "source": "Message Center post MC1560920",
-      "quote": "Users start with a prompt, a document from OneDrive, or relevant work context, then preview the video in chat and refine it through conversation until they're happy with it.",
+      "source": null,
+      "quote": "Searched: read MC1560920 in full for autonomous actions and background execution. It describes user prompts, conversational refinements, previews and an explicit Export selection, with no autonomous workflow.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 45,
-      "where": "Cost and licensing: first paragraph",
+      "n": 52,
+      "where": "Risk assessment: Change & support; Cost and licensing; Governance guidance",
+      "type": "cost",
+      "claim": "A monthly per-user credit limit can prevent an individual from spending all available credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "Use the toggle to select this option and to set a monthly limit for users to prevent a single person from spending all available credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The overview's Clipchamp row has no seat-licence note, unlike some other rows, and the supplied notice names no seat licence.",
+      "claim": "The overview's Clipchamp row has no seat-licence note, unlike some other rows.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits",
-      "quote": "Cowork (Copilot license required) ... Advanced work in SharePoint (Copilot license required) ... Clipchamp: Copilot video creation",
+      "quote": "Cowork (Copilot license required) / Advanced work in SharePoint (Copilot license required) / Clipchamp: Copilot video creation",
       "severity": null,
       "fix": null
     },
     {
-      "n": 46,
-      "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "n": 54,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Neither the cited services table nor MC1560920 names a seat licence for this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: read MC1560920 and the usage-based billing overview services table for licence, license, plan and Clipchamp. Both name usage-based Copilot Credits; neither names a seat licence for this Video Hub preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
       "type": "absence",
       "claim": "A feature-specific credit rate for video creation or refinement is not yet published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Clipchamp Copilot video creation Copilot Credits rate per video refinement pricing license'; '\"Clipchamp\" \"video creation\" \"credits\" \"rate\"'. Read billing overview/setup, Clipchamp service-description excerpts and support.microsoft.com/clipchamp/how-to-create-video-with-copilot; no rate.",
+      "quote": "Searched: Clipchamp Copilot video creation credits per video refinement rate pricing license; 'Clipchamp' 'credits' 'rate' video creation. Read MC1560920, billing overview/setup/management, Clipchamp service-description excerpts and linked support article; no feature rate found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 47,
-      "where": "Cost and licensing: second paragraph",
+      "n": 56,
+      "where": "Cost and licensing",
       "type": "record",
       "claim": "Video creation and refinement consumption appears in Copilot cost management reporting.",
       "status": "supported",
@@ -548,10 +641,10 @@
       "fix": null
     },
     {
-      "n": 48,
-      "where": "Cost and licensing; Governance guidance: After rollout",
+      "n": 57,
+      "where": "Cost and licensing",
       "type": "behaviour",
-      "claim": "The Consumption tab breaks usage down by spending policy, user, group, agent or service.",
+      "claim": "The Consumption tab supports analysis by spending policy, user, group, agent or service.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits",
       "quote": "The Consumption tab enables detailed analysis by spending policy, user, group, agent, or service.",
@@ -559,10 +652,10 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "Cost and licensing; controls[0].governs; Governance guidance",
+      "n": 58,
+      "where": "Cost and licensing; controls[0]; Governance guidance",
       "type": "cost",
-      "claim": "A limited monthly budget limits the credits the policy can spend each month.",
+      "claim": "A limited monthly policy budget limits the credits that policy can spend each month.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
       "quote": "Limited monthly budget: When you select a limited monthly budget, you limit the number of credits that this policy can spend each month.",
@@ -570,10 +663,10 @@
       "fix": null
     },
     {
-      "n": 50,
-      "where": "Cost and licensing; Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "Users who hit the limit lose access for the rest of the month until credits reset on the first.",
+      "n": 59,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "When users hit the spending limit, they lose access for the rest of the month until credits reset on the first.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
       "quote": "When users hit the limit, they lose access to agents and services for the rest of the month until credits reset on the first of the month.",
@@ -581,19 +674,19 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "Cost and licensing: third paragraph",
+      "n": 60,
+      "where": "Cost and licensing; Governance guidance",
       "type": "cost",
-      "claim": "Learn says usage automatically continues on pay-as-you-go when credits for the selected subscription run out.",
+      "claim": "When credits for the selected subscription run out, usage automatically continues on a pay-as-you-go basis.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
-      "quote": "Copilot credits are billed to the subscription that you select in the billing method. New policies use it by default. When credits run out for that subscription, usage automatically continues on a pay-as-you-go basis.",
+      "quote": "When credits run out for that subscription, usage automatically continues on a pay-as-you-go basis.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 52,
-      "where": "Cost and licensing; Governance guidance: Before rollout; Open questions",
+      "n": 61,
+      "where": "Cost and licensing; Open questions; Governance guidance",
       "type": "default",
       "claim": "Auto-apply new services is selected by default for spending policies.",
       "status": "supported",
@@ -603,19 +696,8 @@
       "fix": null
     },
     {
-      "n": 53,
-      "where": "Governance guidance: Before rollout; Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "Specific users are supported in spending policies through security groups.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
-      "quote": "At this time, you can only support specific users and resource accounts through security groups.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "Scope: Clouds and platforms",
+      "n": 62,
+      "where": "Scope",
       "type": "availability",
       "claim": "Claude models are unavailable to federal GCC customers and all GCC High and DoD customers.",
       "status": "supported",
@@ -625,76 +707,65 @@
       "fix": null
     },
     {
-      "n": 55,
-      "where": "controls[0].ui; Governance controls: first table row",
-      "type": "admin-path",
-      "claim": "The identity-based spending-policy path is Copilot > Cost Management > Configuration > + Add spending policy > Select agents and services.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
-      "quote": "Create and name the policy and then choose Identity as the scope. Use this option when you need to manage usage by users or groups for a supported service.",
-      "severity": "blocker",
-      "fix": "Replace the path in front matter and the rendered table with 'Copilot > Cost Management > Configuration > + Add spending policy > Define the policy scope > Identity > Select agents and services'. The Identity scope is a required workflow choice, not merely an omitted heading; names, group selection and Next can remain omitted under the verification standard. Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits."
-    },
-    {
-      "n": 56,
-      "where": "controls[0].api; Governance controls: first table row",
-      "type": "command",
-      "claim": "PATCH /beta/copilot/costManagement/spendingPolicies/{id} updates spending-policy limits using periodLimit and perUserLimit.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
-      "quote": "PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/3f9e2c1a-0000-0000-0000-00000000c21b ... The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "Governance controls: second paragraph",
-      "type": "command",
-      "claim": "The update operation documents displayName, periodLimit, perUserLimit and billingMethods as updatable, not selection of services.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
-      "quote": "The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "controls[0].note; Governance controls: second paragraph",
+      "n": 63,
+      "where": "Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "The Graph operation is beta and subject to change.",
+      "claim": "Specific users must be represented through security groups in spending policies.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
-      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "At this time, you can only support specific users and resource accounts through security groups.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 59,
-      "where": "controls[1].ui; Governance controls: second table row",
+      "n": 64,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The spending-policy path is Copilot > Cost Management > Configuration > + Add spending policy > Define the policy scope > Identity > Select agents and services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "Select the Configuration tab and then select + Add spending policy. / Define the policy scope / choose Identity as the scope. / Select agents and services / Set limits and alerts",
+      "severity": "minor",
+      "fix": "Extend controls[0].ui.path and the rendered table path to 'Copilot > Cost Management > Configuration > + Add spending policy > Define the policy scope > Identity > Select agents and services > Set limits and alerts'. The printed route reaches service selection but stops before the row's credit limits."
+    },
+    {
+      "n": 65,
+      "where": "controls[0].api; controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "PATCH /beta/copilot/costManagement/spendingPolicies/{id} updates spending limits through periodLimit and perUserLimit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "PATCH /copilot/costManagement/spendingPolicies/{id} / The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods. / PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[1].ui; Governance controls table",
       "type": "admin-path",
       "claim": "The Anthropic access path is Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Anthropic.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
-      "quote": "under Available subprocessors for your organization, select Anthropic, and Save. ... Under Choose who can access Anthropic models for Copilot and generative AI experiences, select your users or groups and Save.",
+      "quote": "under Available subprocessors for your organization, select Anthropic, and Save. / Under Choose who can access Anthropic models for Copilot and generative AI experiences, select your users or groups and Save.",
       "severity": "minor",
-      "fix": "Expand the front matter and rendered path to 'Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic > Choose who can access Anthropic models for Copilot and generative AI experiences > users or groups'. The existing route reaches the correct control page but omits a heading and the access-selection section. Source: https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor."
+      "fix": "Set controls[1].ui.path and the rendered path to 'Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic > Choose who can access Anthropic models for Copilot and generative AI experiences'. The source gives the omitted heading and the user/group access section."
     },
     {
-      "n": 60,
-      "where": "controls[1].api; Governance controls: second table row",
+      "n": 67,
+      "where": "controls[1].api; Governance controls table",
       "type": "absence",
-      "claim": "No API or automation for the Anthropic subprocessor access setting is documented.",
+      "claim": "An API or automation operation for the Anthropic provider-access setting is not documented.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Microsoft Graph PowerShell Anthropic AI providers operating as Microsoft subprocessors settings update user group access API'; '\"Anthropic\" \"subprocessor\" \"graph\" API settings'. Read learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor; results documented UI, not an API.",
+      "quote": "Searched: Microsoft Graph Anthropic AI providers operating as Microsoft subprocessors access users groups API settings; site:learn.microsoft.com/graph 'Anthropic' settings. Opened connect-to-ai-subprocessor and copilot-ai-provider-user-sec-group-access; only portal configuration found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 61,
-      "where": "controls[1].note; Governance controls",
+      "n": 68,
+      "where": "controls[1].note; Risk assessment: Security & identity",
       "type": "applicability",
-      "claim": "The Anthropic access control operates at provider level across Copilot experiences rather than just video creation.",
+      "claim": "Anthropic assignments operate at provider level across Copilot experiences, rather than only for video creation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/connect-to-ai-subprocessor",
       "quote": "These assignments are applied at the provider level and enforced across Microsoft Copilot and Copilot Studio experiences.",
@@ -702,21 +773,21 @@
       "fix": null
     },
     {
-      "n": 62,
-      "where": "Governance controls: first paragraph",
-      "type": "record",
-      "claim": "A user needs both Anthropic availability and eligible spending-policy coverage; turning off Anthropic makes video creation unavailable.",
+      "n": 69,
+      "where": "controls[0].note; Scope",
+      "type": "role",
+      "claim": "Global administrator or Billing administrator can create spending policies.",
       "status": "supported",
-      "source": "Message Center post MC1560920",
-      "quote": "Users included in eligible spending policies can create and refine videos ... Anthropic models must be enabled for your organization. If they're turned off, video creation isn't available.",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-setup",
+      "quote": "This section covers the initial setup steps ... creating the first spending policy. / Sign in ... with one of the following administrator roles: Global administrator; Billing administrator",
       "severity": null,
       "fix": null
     },
     {
-      "n": 63,
-      "where": "Governance controls: second paragraph",
+      "n": 70,
+      "where": "Governance controls",
       "type": "cost",
-      "claim": "Spending policies are limit-based controls, not reservations or allocations of credits.",
+      "claim": "Spending policies are limit-based controls, not reservations or allocations of Copilot Credits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
       "quote": "Spending policies are limit-based controls and don't reserve or allocate Copilot Credits to users or groups.",
@@ -724,10 +795,32 @@
       "fix": null
     },
     {
-      "n": 64,
-      "where": "Governance controls: Watermark; Open questions",
+      "n": 71,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "The cited update call covers limits and billing, not service selection; its listed updatable properties are displayName, periodLimit, perUserLimit and billingMethods.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "In the request body, supply only the values for the properties to update. The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The Graph operation is a beta API subject to change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance controls; Open questions",
       "type": "record",
-      "claim": "The notice says exported videos carry a Made with AI watermark that admins can turn off.",
+      "claim": "The notice says exported videos carry a Made with AI watermark that administrators can turn off.",
       "status": "supported",
       "source": "Message Center post MC1560920",
       "quote": "Exported videos carry a \"Made with AI\" watermark, which admins can turn off.",
@@ -735,32 +828,21 @@
       "fix": null
     },
     {
-      "n": 65,
-      "where": "Governance controls: Watermark",
-      "type": "behaviour",
-      "claim": "Learn gives a video generated with Clipchamp as an example of a visual watermark.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/watermarks",
-      "quote": "A visual watermark is added to a video generated with Clipchamp.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 66,
-      "where": "Governance controls: Watermark",
-      "type": "default",
-      "claim": "Learn says its watermark policy must be Enabled for a visual or audio watermark to be added.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/watermarks",
-      "quote": "If you want to add a watermark to video and audio content, you need to set this policy to Enabled. If you set this policy to Disabled or Not configured, a visual or audio watermark isn't added.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 67,
-      "where": "Governance controls: Watermark",
+      "n": 74,
+      "where": "Governance controls",
       "type": "applicability",
-      "claim": "The watermark policy is available only in Cloud Policy service for Microsoft 365.",
+      "claim": "Learn documents a visual watermark policy for AI-generated video in Microsoft 365 and explicitly includes Clipchamp-generated video.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/watermarks",
+      "quote": "A policy setting controls your organization's ability to add a visual or audio watermark to video and audio content that your users generate or alter by using AI in Microsoft 365. / A visual watermark is added to a video generated with Clipchamp.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Governance controls; Open questions",
+      "type": "admin-path",
+      "claim": "The Include a watermark when content from Microsoft 365 is generated or altered by AI policy is available only in Cloud Policy service for Microsoft 365.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/watermarks",
       "quote": "This policy is available only in Cloud Policy service for Microsoft 365.",
@@ -768,63 +850,19 @@
       "fix": null
     },
     {
-      "n": 68,
-      "where": "Governance controls: Watermark; Open questions: watermark setting",
-      "type": "applicability",
-      "claim": "Learn does not state that its Cloud Policy watermark control governs the video creation experience in the notice.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/copilot/manage/watermarks",
-      "quote": "A policy setting controls your organization's ability to add a visual or audio watermark to video and audio content that your users generate or alter by using AI in Microsoft 365. ... A visual watermark is added to a video generated with Clipchamp.",
-      "severity": "blocker",
-      "fix": "Replace the sentence denying documented applicability with: 'Learn documents the Include a watermark when content from Microsoft 365 is generated or altered by AI policy for AI-generated video and audio in Microsoft 365, explicitly including Clipchamp video. The notice describes a Made with AI watermark, while Learn says its policy must be Enabled; confirm the differing default descriptions in your tenant.' Replace the open question about whether the policy applies with a question about the differing default descriptions. Do not add a control row as part of this correction. Source: https://learn.microsoft.com/copilot/manage/watermarks."
-    },
-    {
-      "n": 69,
-      "where": "Governance controls: Watermark",
-      "type": "behaviour",
-      "claim": "The notice and Learn give different descriptions of whether a video watermark is present without enabling a policy.",
+      "n": 76,
+      "where": "Governance controls; Open questions",
+      "type": "default",
+      "claim": "Learn says the watermark policy must be Enabled for a visual or audio watermark to be added.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/watermarks",
-      "quote": "You need to enable a policy setting for watermarks to be added to video and audio content.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 70,
-      "where": "Governance guidance: After rollout, first bullet",
-      "type": "consistency",
-      "claim": "The checklist directs administrators to review the Consumption tab, but the controls table has no reporting control row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Review the Consumption tab in Copilot > Cost management by policy and user weekly during preview ... Table rows: Spending policy ...; Which users can use Anthropic models",
-      "severity": "minor",
-      "fix": "Remove the checklist's instruction to review the Consumption tab, retaining 'Adjust policy and per-user limits based on pilot usage.' The reporting step has no corresponding control row; do not add a row in this correction."
-    },
-    {
-      "n": 71,
-      "where": "Risk assessment: Change & support; Governance guidance: Before rollout; controls[0]",
-      "type": "cost",
-      "claim": "Spending policies support a monthly per-user credit limit to prevent one user consuming all available credits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
-      "quote": "Select monthly budget limits for users (optional). Use the toggle to select this option and to set a monthly limit for users to prevent a single person from spending all available credits.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 72,
-      "where": "Risk assessment: Data exposure, second bullet",
-      "type": "absence",
-      "claim": "The notice does not explain how other sensitivity-label settings apply beyond its preview download restriction.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: '\"Clipchamp\" \"sensitivity\" \"Copilot\" labels download'. Read MC1560920 in full: its sensitivity-label statement only describes viewing and download above General; no explanation of other label settings.",
+      "quote": "If you want to add a watermark to video and audio content, you need to set this policy to Enabled. If you set this policy to Disabled or Not configured, a visual or audio watermark isn't added.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-20T09:04:57.605Z",
+    "at": "2026-11-20T10:12:54.483Z",
     "summary": {
       "links": 9,
       "unreachable": 0,
@@ -893,6 +931,8 @@
           "Cost Management",
           "Configuration",
           "+ Add spending policy",
+          "Define the policy scope",
+          "Identity",
           "Select agents and services"
         ],
         "missing": []
@@ -924,5 +964,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-20",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

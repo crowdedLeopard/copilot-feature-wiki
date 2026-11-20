@@ -4,10 +4,10 @@
   "title": "Microsoft Teams Rooms on Android: call quality feedback surveys after meetings",
   "status": "held",
   "date": "2026-11-20",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,25 +16,25 @@
     "reason": "failed",
     "since": "2026-11-20",
     "reasons": [
-      "3 blocking findings (claims 29, 47, 54)"
+      "2 blocking findings (claims 40, 48)"
     ]
   },
   "counts": {
-    "claims": 57,
-    "confirmed": 54,
-    "unconfirmed": 0,
-    "contradicted": 3,
-    "blocker": 3,
+    "claims": 58,
+    "confirmed": 56,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 2,
     "major": 0,
-    "minor": 3
+    "minor": 0
   },
-  "summary": "Hold: Microsoft now identifies the Android app update introducing these surveys and explicitly links their control to feedback policies, so the briefing's corresponding documentation gaps are out of date. It also presents the Message Center post's end date as a rollout end date that the notice does not give.",
+  "summary": "Hold: the control's Learn link documents the generic Cloud Policy wizard, but not the survey setting readers are being told to configure. The licensing requirement also omits Microsoft's explicit allowance for valid legacy Teams Rooms licences.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing",
+      "where": "title; What's changing",
       "type": "record",
-      "claim": "Microsoft is introducing call quality feedback surveys for Teams Rooms on Android.",
+      "claim": "Microsoft Teams is adding call quality feedback surveys for Teams Rooms on Android.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Microsoft Teams: Call quality feedback surveys for Teams Rooms on Android",
@@ -43,9 +43,9 @@
     },
     {
       "n": 2,
-      "where": "front matter: status; What's changing",
+      "where": "front matter: status; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap record lists the feature as In development.",
+      "claim": "The roadmap status is In development.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"status\": \"In development\"",
@@ -56,7 +56,7 @@
       "n": 3,
       "where": "front matter: targetDate; What's changing; Risk assessment",
       "type": "record",
-      "claim": "The roadmap target is November CY2026, rather than a committed availability date.",
+      "claim": "The roadmap target is November CY2026, presented as a target rather than a commitment.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"targetDate\": \"November CY2026\"",
@@ -65,12 +65,12 @@
     },
     {
       "n": 4,
-      "where": "front matter: previewDate",
+      "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap gives no preview date.",
+      "claim": "The release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"previewDate\": null",
+      "quote": "\"releasePhase\": [\n    \"General Availability\"\n  ]",
       "severity": null,
       "fix": null
     },
@@ -78,7 +78,7 @@
       "n": 5,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record; no US Government cloud is listed.",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and no US Government cloud.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\n    \"Worldwide (Standard Multi-Tenant)\"\n  ]",
@@ -109,23 +109,23 @@
     },
     {
       "n": 8,
-      "where": "front matter: releasePhase; What's changing; Scope",
+      "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The release phase is General Availability.",
+      "claim": "The roadmap provides no preview date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"releasePhase\": [\n    \"General Availability\"\n  ]",
+      "quote": "\"previewDate\": null",
       "severity": null,
       "fix": null
     },
     {
       "n": 9,
-      "where": "front matter: products",
+      "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "Microsoft Teams is the product named in the record.",
+      "claim": "The roadmap modification timestamp is 2026-09-09T22:36:54.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [\n    \"Microsoft Teams\"\n  ]",
+      "quote": "\"modified\": \"2026-09-09T22:36:54\"",
       "severity": null,
       "fix": null
     },
@@ -133,70 +133,37 @@
       "n": 10,
       "where": "What's changing",
       "type": "record",
-      "claim": "MC1490912 was published on 7 October 2026.",
+      "claim": "The roadmap describes the purpose as helping organizations ensure consistent, high-quality experiences.",
       "status": "supported",
-      "source": "Message Center post MC1490912",
-      "quote": "Published 2026-10-07; last updated 2026-10-07",
+      "source": "roadmap record",
+      "quote": "to help organizations ensure consistent, high-quality experiences.",
       "severity": null,
       "fix": null
     },
     {
       "n": 11,
-      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
-      "type": "default",
-      "claim": "The surveys are enabled by default once the feature becomes available.",
+      "where": "summary; What's changing; rationale: impact",
+      "type": "record",
+      "claim": "Users will periodically see a call quality feedback survey after meetings end on Teams Rooms on Android devices.",
       "status": "supported",
       "source": "Message Center post MC1490912",
-      "quote": "The feature is enabled by default once available.",
+      "quote": "Users will periodically see a call quality feedback survey after meetings end on Teams Rooms on Android devices.",
       "severity": null,
       "fix": null
     },
     {
       "n": 12,
-      "where": "What's changing; rationale: impact",
+      "where": "What's changing; Risk assessment; Governance guidance; rationale: risk",
       "type": "record",
-      "claim": "Users are shown the survey periodically, rather than necessarily after every meeting.",
+      "claim": "Users can rate calls and meetings and provide feedback on call quality.",
       "status": "supported",
       "source": "Message Center post MC1490912",
-      "quote": "Users will periodically see a call quality feedback survey after meetings end on Teams Rooms on Android devices.",
+      "quote": "These surveys allow users to rate the quality of calls and meetings and provide feedback about audio, video, and screen-sharing experiences.",
       "severity": null,
       "fix": null
     },
     {
       "n": 13,
-      "where": "title; summary; What's changing; Governance guidance",
-      "type": "record",
-      "claim": "The survey appears after meetings end.",
-      "status": "supported",
-      "source": "Message Center post MC1490912",
-      "quote": "Users will periodically see a call quality feedback survey after meetings end on Teams Rooms on Android devices.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What's changing; Risk assessment: Autonomy & actions",
-      "type": "record",
-      "claim": "Users can rate the quality of calls and meetings.",
-      "status": "supported",
-      "source": "Message Center post MC1490912",
-      "quote": "These surveys allow users to rate the quality of calls and meetings",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing; Governance guidance; rationale: risk",
-      "type": "record",
-      "claim": "Users can provide feedback on call quality.",
-      "status": "supported",
-      "source": "Message Center post MC1490912",
-      "quote": "Users can provide feedback on call quality, video quality, audio quality, and screen-sharing experiences.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
       "where": "What's changing; Governance guidance; rationale: risk",
       "type": "record",
       "claim": "Users can provide feedback on video quality.",
@@ -207,7 +174,7 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 14,
       "where": "What's changing; Governance guidance; rationale: risk",
       "type": "record",
       "claim": "Users can provide feedback on audio quality.",
@@ -218,7 +185,7 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 15,
       "where": "What's changing; Governance guidance; rationale: risk",
       "type": "record",
       "claim": "Users can provide feedback on screen-sharing experiences.",
@@ -229,21 +196,21 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 16,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap describes the purpose as helping organisations ensure consistent, high-quality experiences.",
+      "claim": "MC1490912 was published on 7 October 2026.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "to help organizations ensure consistent, high-quality experiences.",
+      "source": "Message Center post MC1490912",
+      "quote": "Published 2026-10-07; last updated 2026-10-07",
       "severity": null,
       "fix": null
     },
     {
-      "n": 20,
+      "n": 17,
       "where": "What's changing; Why it matters; Risk assessment; Scope",
       "type": "record",
-      "claim": "Availability depends on eligible devices being updated to the required app version.",
+      "claim": "The feature becomes available after eligible Teams Rooms on Android devices are updated to the required app version.",
       "status": "supported",
       "source": "Message Center post MC1490912",
       "quote": "The feature becomes available after eligible Teams Rooms on Android devices are updated to the required app version.",
@@ -251,10 +218,21 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 18,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "default",
+      "claim": "The feature is enabled by default once available.",
+      "status": "supported",
+      "source": "Message Center post MC1490912",
+      "quote": "The feature is enabled by default once available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
       "where": "summary; What's changing",
       "type": "record",
-      "claim": "Microsoft's notice requires no admin action before rollout.",
+      "claim": "Microsoft says no admin action is required before rollout.",
       "status": "supported",
       "source": "Message Center post MC1490912",
       "quote": "No admin action is required before rollout.",
@@ -262,7 +240,7 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 20,
       "where": "What's changing; Cost and licensing",
       "type": "record",
       "claim": "Microsoft recommends updating devices to the latest supported application version through the Teams admin center.",
@@ -273,10 +251,10 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What's changing; Risk assessment; Cost and licensing",
+      "n": 21,
+      "where": "What's changing; Cost and licensing; Governance guidance",
       "type": "record",
-      "claim": "Microsoft recommends informing users that they may be prompted for call quality feedback.",
+      "claim": "Microsoft recommends informing users that they may be prompted for call quality feedback after meetings.",
       "status": "supported",
       "source": "Message Center post MC1490912",
       "quote": "Inform users that they may be prompted to provide call quality feedback after meetings.",
@@ -284,10 +262,10 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 22,
       "where": "What's changing; Cost and licensing",
       "type": "record",
-      "claim": "Microsoft recommends updating internal training and support documentation as appropriate.",
+      "claim": "Microsoft recommends updating internal training materials and support documentation as appropriate.",
       "status": "supported",
       "source": "Message Center post MC1490912",
       "quote": "Update internal training materials and support documentation as appropriate.",
@@ -295,10 +273,10 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 23,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "record",
-      "claim": "Feedback is provided to Microsoft and used to improve Teams products and services.",
+      "claim": "Survey feedback is provided to Microsoft to improve Teams products and services.",
       "status": "supported",
       "source": "Message Center post MC1490912",
       "quote": "Feedback will be used by Microsoft to improve Teams products and services.",
@@ -306,10 +284,10 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 24,
       "where": "What's changing",
       "type": "record",
-      "claim": "Microsoft says the experience aligns with existing call quality surveys in Teams Rooms on Windows and other Teams clients.",
+      "claim": "The notice says the experience aligns with surveys already available in Teams Rooms on Windows and other Teams clients.",
       "status": "supported",
       "source": "Message Center post MC1490912",
       "quote": "The experience aligns with existing call quality surveys already available in Teams Rooms on Windows and other Teams clients.",
@@ -317,10 +295,10 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 25,
       "where": "What's changing",
       "type": "record",
-      "claim": "The notice itself does not identify the required app version.",
+      "claim": "The notice does not name the required app version.",
       "status": "supported",
       "source": "Message Center post MC1490912",
       "quote": "The feature becomes available after eligible Teams Rooms on Android devices are updated to the required app version.",
@@ -328,7 +306,7 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 26,
       "where": "What's changing; Scope",
       "type": "record",
       "claim": "The notice says Worldwide General Availability rollout begins in November 2026.",
@@ -339,21 +317,32 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "What's changing: final sentence",
-      "type": "date",
-      "claim": "The notice gives the rollout an end date of 30 December 2026.",
-      "status": "contradicted",
+      "n": 27,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice does not state a rollout completion date.",
+      "status": "supported",
       "source": "Message Center post MC1490912",
-      "quote": "Microsoft's end date 2026-12-30; [Rollout schedule] - General Availability (Worldwide): Beginning in November 2026",
-      "severity": "blocker",
-      "fix": "Replace the final sentence with 'The notice says Worldwide General Availability rollout begins in November 2026; it does not state a rollout completion date.' The supplied 30 December date is the post's end-date metadata, not a completion date in its rollout schedule."
+      "quote": "[Rollout schedule]\n\n- General Availability (Worldwide): Beginning in November 2026",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 30,
-      "where": "Why it matters; Risk assessment: Data exposure; Governance guidance; rationale: risk",
+      "n": 28,
+      "where": "Scope; rationale: impact",
       "type": "record",
-      "claim": "Microsoft's notice describes the survey responses as new customer data being stored.",
+      "claim": "Affected users are people participating in meetings on Teams Rooms on Android devices.",
+      "status": "supported",
+      "source": "Message Center post MC1490912",
+      "quote": "Users who participate in meetings on Teams Rooms on Android devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters; Risk assessment; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "The notice says the change stores new customer data through post-meeting survey responses.",
       "status": "supported",
       "source": "Message Center post MC1490912",
       "quote": "Does the change store new customer data?Yes. Users can submit call quality feedback through post-meeting surveys.",
@@ -361,8 +350,8 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "Why it matters; Risk assessment: Data exposure; Open questions",
+      "n": 30,
+      "where": "Why it matters; Risk assessment; Open questions",
       "type": "record",
       "claim": "The notice does not specify survey data storage location.",
       "status": "supported",
@@ -372,8 +361,8 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "Why it matters; Risk assessment: Data exposure; Open questions",
+      "n": 31,
+      "where": "Why it matters; Risk assessment; Open questions",
       "type": "record",
       "claim": "The notice does not specify survey data retention or storage duration.",
       "status": "supported",
@@ -383,13 +372,24 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Why it matters; Risk assessment: Data exposure; Governance guidance",
+      "n": 32,
+      "where": "Why it matters; Risk assessment; Governance guidance",
       "type": "absence",
-      "claim": "Microsoft has not published the new Android survey responses' specific storage location or retention duration.",
+      "claim": "A storage location for these Android call quality survey responses is not yet published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Teams Rooms\" \"feedback\" \"retention\"; \"Teams Rooms\" \"call quality feedback\" \"retention\" storage. Opened rooms release notes and privacy/microsoft-365/feedback/feedback-overview and feedback-manage; no survey-specific location or retention duration found.",
+      "quote": "Searched: Teams Rooms Android call quality feedback surveys data storage retention; Microsoft feedback retention stored. Read rooms-release-note, feedback-manage and feedback-overview on Learn; none specifies a storage location for these responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Why it matters; Risk assessment; Governance guidance",
+      "type": "absence",
+      "claim": "A retention period for these Android call quality survey responses is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Android call quality feedback surveys retention data location stored feedback data; Microsoft feedback retention stored. Read rooms-release-note, feedback-manage and feedback-overview on Learn; none gives a retention period for these surveys.",
       "severity": null,
       "fix": null
     },
@@ -397,7 +397,7 @@
       "n": 34,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The feedback policy page says Microsoft acts as a data processor for the tenant's feedback.",
+      "claim": "Microsoft's feedback policy page says Microsoft acts as a data processor for tenant feedback.",
       "status": "supported",
       "source": "https://learn.microsoft.com/privacy/microsoft-365/feedback/feedback-manage",
       "quote": "Microsoft acts as a data processor for your tenant's feedback.",
@@ -408,7 +408,7 @@
       "n": 35,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The feedback policy page says the feedback collected from users is available in the Microsoft 365 admin center.",
+      "claim": "The feedback policy page says feedback collected from users is available in the Microsoft 365 admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/privacy/microsoft-365/feedback/feedback-manage",
       "quote": "The feedback we collect from your users is available in the Microsoft 365 admin center.",
@@ -419,7 +419,7 @@
       "n": 36,
       "where": "Risk assessment: Data exposure",
       "type": "applicability",
-      "claim": "The feedback policy page lists Teams Rooms as connected to in-product surveys without a separate Android entry.",
+      "claim": "The feedback policy page lists Teams Rooms as connected to in-product survey policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/privacy/microsoft-365/feedback/feedback-manage",
       "quote": "| Teams Rooms | Yes | Yes | Yes | No |",
@@ -428,20 +428,31 @@
     },
     {
       "n": 37,
-      "where": "Risk assessment: Security & identity",
+      "where": "Risk assessment: Data exposure",
       "type": "absence",
-      "claim": "No new identity, permission or sign-in requirement is documented for the surveys.",
+      "claim": "The feedback policy page does not specifically identify Android for its Teams Rooms entry.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Teams Rooms on Android\" \"survey\" permissions license pricing. Opened rooms release notes, rooms-plan, rooms-licensing, manage-feedback-policies-in-teams and feedback-manage; none states a new survey-specific identity, permission or sign-in requirement.",
+      "quote": "Searched: Android and Teams Rooms in the full fetched feedback-manage page. The Teams Rooms row has no platform qualifier; the separate Intune Company Portal row is labelled Android.",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
       "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Microsoft has not documented a new identity, permission or sign-in requirement for these surveys.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams Rooms Android call quality feedback surveys identity permissions; Teams Rooms surveys permissions; managing surveys signed-in room accounts. Read release notes, feedback-manage and rooms-manage search excerpts; no new survey-specific requirement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Learn documents survey prompts to signed-in room accounts.",
+      "claim": "The managing Teams Rooms documentation says surveys can appear to signed-in room accounts.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-manage#management-options-in-teams-admin-center",
       "quote": "Teams Rooms devices may display in-product surveys, including call quality feedback prompts, to signed-in room accounts.",
@@ -449,35 +460,24 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 40,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "Teams Rooms devices require a Teams Rooms licence.",
-      "status": "supported",
+      "claim": "Teams Rooms devices require Microsoft Teams Rooms Basic or Microsoft Teams Rooms Pro.",
+      "status": "contradicted",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-plan",
-      "quote": "Each meeting room needs a Teams Rooms license, such as a Teams Rooms console, Surface Hub, or Teams panel.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The licensing model is unknown because no survey-specific requirement is published.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-plan",
-      "quote": "Each meeting room needs a Teams Rooms license, such as a Teams Rooms console, Surface Hub, or Teams panel. Teams provides two licenses for Teams Rooms: Microsoft Teams Rooms Pro and Microsoft Teams Rooms Basic.",
-      "severity": "minor",
-      "fix": "Set licensing.model to 'included'. Replace the notes with 'Teams Rooms devices require Microsoft Teams Rooms Basic or Microsoft Teams Rooms Pro. Microsoft has not published an additional licence requirement specific to these surveys.' The schema assigns included to a new option inside a product with a published general licence requirement."
+      "quote": "Teams Rooms devices should only be assigned Teams Rooms Basic or Teams Rooms Pro licenses (Teams Rooms legacy licenses are also valid).",
+      "severity": "blocker",
+      "fix": "Replace the requirement in licensing.notes and Cost and licensing with: 'Teams Rooms devices require a Teams Rooms licence: Microsoft Teams Rooms Basic or Microsoft Teams Rooms Pro; valid Teams Rooms legacy licences are also accepted.' Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-plan."
     },
     {
       "n": 41,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No additional survey-specific licence requirement is published.",
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is included in the Teams Rooms product licence already required.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Teams Rooms on Android\" \"survey\" permissions license pricing; \"Teams Rooms on Android\" \"call quality\" survey version license retention storage. Opened rooms-plan, rooms-licensing and rooms release notes; no additional survey-specific licence requirement found.",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-plan",
+      "quote": "Each meeting room needs a Teams Rooms license, such as a Teams Rooms console, Surface Hub, or Teams panel. Teams provides two licenses for Teams Rooms: Microsoft Teams Rooms Pro and Microsoft Teams Rooms Basic.",
       "severity": null,
       "fix": null
     },
@@ -485,51 +485,95 @@
       "n": 42,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "No survey-specific consumption meter is documented.",
+      "claim": "Microsoft has not published an additional licence requirement specific to these surveys.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Teams Rooms on Android\" \"survey\" permissions license pricing. Opened rooms-plan, rooms-licensing, rooms release notes and feedback-manage; the supplied notice and roadmap were also read. No survey-specific meter found.",
+      "quote": "Searched: Teams Rooms call quality surveys license; Teams Rooms Android call quality feedback surveys licensing price. Read rooms-plan, rooms-release-note and rooms-licensing search excerpts. No additional survey-specific licence requirement found.",
       "severity": null,
       "fix": null
     },
     {
       "n": 43,
-      "where": "front matter: licensing.notes; Cost and licensing",
+      "where": "Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "Microsoft has not published a price or charge specific to these surveys.",
+      "claim": "No survey-specific meter has been published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Teams Rooms on Android\" \"survey\" permissions license pricing. Opened rooms-plan, rooms-licensing and rooms release notes; read MC1490912 and roadmap record. No survey-specific price or charge found.",
+      "quote": "Searched: Teams Rooms Android call quality feedback surveys data storage retention licensing price identity permissions. Read rooms-plan, rooms-release-note, feedback-manage and rooms-licensing search excerpts; none names a survey meter.",
       "severity": null,
       "fix": null
     },
     {
       "n": 44,
-      "where": "controls[0].ui; Governance controls: table",
-      "type": "admin-path",
-      "claim": "The Cloud Policy route is Microsoft 365 Apps admin center > Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings.",
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No survey-specific price has been published.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
-      "quote": "Under Customization, select Policy Management. On the Policy configurations page, select Create. On the Start with the basics page, enter a name ... On the Choose the scope page ... On the Configure Settings page, select the policies",
-      "severity": "minor",
-      "fix": "The printed route correctly reaches the settings page but stops before its named control. Append ' > Allow users to receive and respond to in-product surveys from Microsoft' to controls[0].ui.path; feedback-manage documents searching for 'feedback' or 'survey' there and gives this policy name."
+      "source": null,
+      "quote": "Searched: Teams Rooms Android call quality feedback surveys licensing price; Teams Rooms call quality surveys license. Read rooms-plan, rooms-release-note and rooms-licensing search excerpts; no survey-specific price found.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 45,
-      "where": "controls[0].api; Governance controls: final sentence",
-      "type": "absence",
-      "claim": "Microsoft Learn documents no configuration PowerShell, Graph or other API for this Cloud Policy survey setting.",
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "The Android release notes introduce Call Quality Feedback surveys in app version 1449/1.0.96.2026344105, November 2026.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Cloud Policy\" PowerShell Graph API create policy configuration; \"Cloud Policy service for Microsoft 365\" \"API\"; \"Cloud Policy\" \"PowerShell\" \"survey\". Opened overview-cloud-policy and feedback-manage; found no configuration call, only audit API references.",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note#teams-rooms-on-android-feature-introduction-and-issue-resolution",
+      "quote": "1449/1.0.96.2026344105 (November 2026) [...] Call Quality Feedback surveys: Users can now rate the quality of their calls and meetings and provide additional feedback on calling, video, and screen-sharing experiences",
       "severity": null,
       "fix": null
     },
     {
       "n": 46,
-      "where": "controls[0].governs; Governance controls; rationale: risk",
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Microsoft says feature availability can vary by device make and model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note#teams-rooms-on-android-feature-introduction-and-issue-resolution",
+      "quote": "There can be a delay between when features are released by Microsoft and when they become available on a device make and model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Managing devices through the Teams admin center requires the Teams Administrator or Teams Devices Administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-manage",
+      "quote": "To manage devices using the Teams admin center, you need to be assigned Teams Administrator or Teams Devices Administrator roles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The linked Cloud Policy overview documents the route through Configure Settings to Allow users to receive and respond to in-product surveys from Microsoft.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: full Cloud Policy overview for the survey setting. It gives Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings, but not the named control; feedback-manage supplies that last step.",
+      "severity": "blocker",
+      "fix": "Keep the path unchanged, but set controls[0].ui.docs and the rendered row's Learn link to https://learn.microsoft.com/privacy/microsoft-365/feedback/feedback-manage, which names the survey control and links to the Cloud Policy wizard. Retain the Cloud Policy overview in sources for the preceding route."
+    },
+    {
+      "n": 49,
+      "where": "controls[0].scope; Governance controls table",
       "type": "applicability",
-      "claim": "Cloud Policy is a documented way to disable Teams Rooms in-product surveys including call quality feedback prompts.",
+      "claim": "The Cloud Policy control has user scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "Policies only apply to user objects.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[0].governs; Governance controls; Governance guidance; rationale: risk",
+      "type": "applicability",
+      "claim": "Cloud Policy feedback settings can disable Teams Rooms in-product surveys, including call quality feedback prompts.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-manage#management-options-in-teams-admin-center",
       "quote": "Teams Rooms devices may display in-product surveys, including call quality feedback prompts, to signed-in room accounts. To disable these surveys, use the Cloud Policy service for Microsoft 365.",
@@ -537,32 +581,21 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "Governance controls: first paragraph after table; Open questions: final question",
+      "n": 51,
+      "where": "controls[0].note; Governance controls",
       "type": "applicability",
-      "claim": "Microsoft has not confirmed that feedback policies control the new call quality survey on Android specifically.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note#teams-rooms-on-android-feature-introduction-and-issue-resolution",
-      "quote": "Call Quality Feedback surveys: Users can now rate the quality of their calls and meetings ... These results are visible in the Call Quality Dashboard and can be controlled using feedback policies.",
-      "severity": "blocker",
-      "fix": "Replace the Android uncertainty in the paragraph after the table with 'The Teams Rooms on Android release notes explicitly say Call Quality Feedback surveys can be controlled using feedback policies.' Remove the final Open questions bullet asking whether those policies apply to Android. Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note#teams-rooms-on-android-feature-introduction-and-issue-resolution."
-    },
-    {
-      "n": 48,
-      "where": "controls[0].note; Governance controls: table note",
-      "type": "applicability",
-      "claim": "The row qualifies the documented survey policy by saying Learn names Teams Rooms generally, not Android.",
+      "claim": "The Android release notes explicitly say Call Quality Feedback surveys can be controlled using feedback policies.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/privacy/microsoft-365/feedback/feedback-manage",
-      "quote": "| Teams Rooms | Yes | Yes | Yes | No |",
-      "severity": "minor",
-      "fix": "Replace 'Learn names Teams Rooms generally, not Android.' with 'The Teams Rooms on Android release notes confirm that Call Quality Feedback surveys can be controlled using feedback policies.' Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note#teams-rooms-on-android-feature-introduction-and-issue-resolution."
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note#teams-rooms-on-android-feature-introduction-and-issue-resolution",
+      "quote": "These results are visible in the Call Quality Dashboard and can be controlled using feedback policies.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 49,
+      "n": 52,
       "where": "controls[0].note; Governance controls",
       "type": "default",
-      "claim": "Not Configured has the same effect as Enabled for the feedback policies.",
+      "claim": "For the listed feedback policies, Not Configured has the same effect as Enabled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/privacy/microsoft-365/feedback/feedback-manage",
       "quote": "When the following policies are set to Not Configured, it has the same effect as if you set the policies to Enabled.",
@@ -570,10 +603,10 @@
       "fix": null
     },
     {
-      "n": 50,
-      "where": "controls[0].note; Governance guidance; Governance controls",
+      "n": 53,
+      "where": "controls[0].note; Governance controls",
       "type": "behaviour",
-      "claim": "The Allow users to receive and respond to in-product surveys from Microsoft policy controls whether surveys appear and can be disabled to suppress them.",
+      "claim": "Allow users to receive and respond to in-product surveys from Microsoft controls whether surveys appear, and disabling it suppresses them.",
       "status": "supported",
       "source": "https://learn.microsoft.com/privacy/microsoft-365/feedback/feedback-manage",
       "quote": "| Allow users to receive and respond to in-product surveys from Microsoft | Controls whether surveys appear within product. |",
@@ -581,21 +614,10 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "Governance controls",
-      "type": "admin-path",
-      "claim": "Cloud Policy management is performed in the Microsoft 365 Apps admin center.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
-      "quote": "To create or edit policy configurations you must sign into the Microsoft 365 Apps admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
+      "n": 54,
       "where": "Governance controls",
       "type": "role",
-      "claim": "Microsoft recommends Office Apps Administrator for Cloud Policy.",
+      "claim": "Office Apps Administrator is the recommended role for managing Cloud Policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
       "quote": "Office Apps Administrator (Recommended)",
@@ -603,7 +625,7 @@
       "fix": null
     },
     {
-      "n": 53,
+      "n": 55,
       "where": "Governance guidance: After rollout",
       "type": "behaviour",
       "claim": "Feedback policy changes can take a few hours to reach clients.",
@@ -614,57 +636,46 @@
       "fix": null
     },
     {
-      "n": 54,
-      "where": "Scope: Rollout; Open questions: first question",
-      "type": "absence",
-      "claim": "The app version introducing Android call quality feedback surveys has not been published.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note#teams-rooms-on-android-feature-introduction-and-issue-resolution",
-      "quote": "1449/1.0.96.2026344105 (November 2026)\nIntroduced in this update:\n... Call Quality Feedback surveys",
-      "severity": "blocker",
-      "fix": "Replace 'Which version that is has not been published.' with 'The Teams Rooms on Android release notes list Call Quality Feedback surveys as introduced in app version 1449/1.0.96.2026344105 (November 2026), while the roadmap record still says In development. Microsoft notes that availability can vary by device make and model.' Remove the first Open questions bullet's question about which app version is required. Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note#teams-rooms-on-android-feature-introduction-and-issue-resolution."
-    },
-    {
-      "n": 55,
-      "where": "Scope: roles",
-      "type": "role",
-      "claim": "Learn says Teams Administrator or Teams Devices Administrator is required to manage devices using the Teams admin center.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-manage",
-      "quote": "To manage devices using the Teams admin center, you need to be assigned Teams Administrator or Teams Devices Administrator roles.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 56,
-      "where": "Scope: Users; rationale: impact",
-      "type": "record",
-      "claim": "The notice identifies people participating in meetings on Teams Rooms on Android devices as affected users.",
+      "where": "controls[0].api; Governance controls table; Governance controls",
+      "type": "absence",
+      "claim": "No PowerShell, Graph or other API operation is documented for configuring this Cloud Policy survey setting.",
       "status": "supported",
-      "source": "Message Center post MC1490912",
-      "quote": "Users who participate in meetings on Teams Rooms on Android devices.",
+      "source": null,
+      "quote": "Searched: Cloud Policy service Microsoft 365 API PowerShell Microsoft Graph create policy configurations; Cloud Policy API survey; Teams feedback Set-CsTeamsFeedbackPolicy Survey. Read overview, feedback-manage, Teams feedback guidance and cmdlet reference; none maps an API to this Cloud Policy setting.",
       "severity": null,
       "fix": null
     },
     {
       "n": 57,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "Administrators can use the Teams admin center to review device status and software version information.",
+      "where": "controls[0].ui.surface; Governance controls",
+      "type": "admin-path",
+      "claim": "Cloud Policy configurations are managed in the Microsoft 365 Apps admin center.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/rooms-manage#management-options-in-teams-admin-center",
-      "quote": "From Teams admin center, you can view the overall status of all devices in your organization and view details of each device individually. ... Health Shows detailed information about ... software version information.",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy",
+      "quote": "To create or edit policy configurations you must sign into the Microsoft 365 Apps admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Open questions",
+      "type": "record",
+      "claim": "The notice does not specify who in the tenant can see individual survey responses.",
+      "status": "supported",
+      "source": "Message Center post MC1490912",
+      "quote": "Feedback will be used by Microsoft to improve Teams products and services.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-20T09:05:03.952Z",
+    "at": "2026-11-20T10:12:52.185Z",
     "summary": {
-      "links": 7,
+      "links": 8,
       "unreachable": 0,
       "uiPaths": 1,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 1,
       "apiCalls": 0,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
@@ -677,6 +688,11 @@
       },
       {
         "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1490912",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note#teams-rooms-on-android-feature-introduction-and-issue-resolution",
         "ok": true,
         "status": 200
       },
@@ -720,9 +736,12 @@
           "Create",
           "Start with the basics",
           "Choose the scope",
-          "Configure Settings"
+          "Configure Settings",
+          "Allow users to receive and respond to in-product surveys from Microsoft"
         ],
-        "missing": []
+        "missing": [
+          "Allow users to receive and respond to in-product surveys from Microsoft"
+        ]
       }
     ],
     "roadmapDrift": []
@@ -737,6 +756,12 @@
     {
       "date": "2026-11-18",
       "status": "verified",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-20",
+      "status": "held",
       "version": 2,
       "model": "gpt-6.1-sol"
     }

@@ -81,18 +81,21 @@ changes:
     note: "Default state now Not stated; removed the claim that nothing changes until an admin assigns the role; added that Learn already lists the role in several role groups, and the Purview licence statement."
   - date: "2026-11-16"
     note: "Corrected the role-group cmdlet note: New-RoleGroup applies to Security & Compliance PowerShell. Added Global Reader to the role groups that already list View-Only Device Management."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 57 statements not yet confirmed"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-16"
+  status: "verified-with-gaps"
+  date: "2026-11-20"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 53
-  confirmed: 53
+  claims: 57
+  confirmed: 57
   unconfirmed: 0
   contradicted: 0
   attempts: 0
+  hash: "38317bd66ab14b797fb944d49162b4d7"
 ---
 
 ## What's changing
@@ -186,4 +189,11 @@ No Purview, Graph or PowerShell interface for the Devices page itself is documen
 risk: Low. The role is described as read-only and existing roles keep full access, so today's exposure continues. The unknown is whether role groups that already list View-Only Device Management gain Devices page access.
 cost: Low. The only cost the sources show is admin time. No licence for this access is published; Microsoft's Purview service description says users with a Purview role assigned for the portal need a licence.
 impact: Low. Only administrators, auditors and security analysts who use the Devices page notice it; end users and onboarded devices are unaffected.
+-->
+
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance controls table; Governance guidance: Before rollout / admin-path: Microsoft Purview portal > Settings > Roles and scopes > Role groups leads to role-group membership management. | Found: Select **Role groups**. 3. On **Role groups for Microsoft Purview solutions**, select a Microsoft Purview role group you want to add users to. Select **Edit** on the control bar. 4. On **Edit members of the role group**, select **Choose users** or **Choose groups**. | Fix: The path correctly reaches the list but stops before the membership control. Extend controls[0].ui.path and its rendered table entry to 'Settings > Roles and scopes > Role groups > role group > Edit > Edit members of the role group > Choose users', as documented at https://learn.microsoft.com/purview/purview-permissions#manage-role-groups. | Source: https://learn.microsoft.com/purview/purview-permissions
+- [supported, minor] front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost / licensing: A licence specific to the planned access is not published, so the briefing labels its licensing model unknown. | Found: | Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance | | --- | --- | | Endpoint Data Loss Prevention (DLP) | Included | | Fix: The role-specific gap is valid, but unknown understates published product-level licensing. Set licensing.model to 'included' and licensing.notes to 'Endpoint DLP is included in Microsoft 365 E5/A5/G5 and other plans listed in the Microsoft Purview service description. Users assigned a Purview role for the portal require a licence; a licence specific to this planned read-only access is not yet published.' Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
 -->

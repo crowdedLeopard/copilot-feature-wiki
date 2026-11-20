@@ -25,7 +25,7 @@ sources:
   - title: "Microsoft 365 Roadmap item 181825"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=181825"
     kind: "roadmap"
-  - title: "MC920304"
+  - title: "MC920304: (Updated) Microsoft Purview | Communication Compliance: Policy alerts improvements"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC920304"
     kind: "message-center"
   - title: "Create and manage Communication Compliance policies"
@@ -33,6 +33,9 @@ sources:
     kind: "learn"
   - title: "Get started with Communication Compliance"
     url: "https://learn.microsoft.com/purview/communication-compliance-configure"
+    kind: "learn"
+  - title: "Assign permissions in Communication Compliance"
+    url: "https://learn.microsoft.com/purview/communication-compliance-permissions"
     kind: "learn"
   - title: "Microsoft Purview service description"
     url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
@@ -55,7 +58,7 @@ controls:
     note: "MC920304 says the feature is available by default and describes no switch."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-18"
+updated: "2026-11-20"
 roadmapModified: "2026-10-22T22:58:40"
 changes:
   - date: "2026-11-17"
@@ -68,19 +71,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 48 statements not yet confirmed"
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 50 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-20"
+    note: "Corrected the roles statement: Learn lists the Communication Compliance and Communication Compliance Admins role groups as able to configure policies and settings."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 53 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 48
+  claims: 53
+  confirmed: 51
   unconfirmed: 0
   contradicted: 2
-  attempts: 1
-  hash: "c50950130a62bcc34f9d032631aa15a3"
+  attempts: 0
+  hash: "1e65184688a4b0b5f04ff1aee0587b3c"
 ---
 
 ## What's changing
@@ -105,7 +112,7 @@ MC920304 says the new feature is available by default, but neither it nor the ro
 
 **Security & identity**
 
-- Policy set-up belongs to the Communication Compliance Admins role. Learn documents that role as the one that can set up policies; confirm who holds it before the alerts page arrives, because the post does not say whether any other role can change alert settings.
+- Learn lists the Communication Compliance and Communication Compliance Admins role groups as able to configure policies and settings; confirm who holds them before the alerts page arrives, because MC920304 names no separate role for the new page.
 
 **Autonomy & actions**
 
@@ -128,7 +135,7 @@ Indirect cost is reviewer and admin time: changing alert frequency changes how m
 
 **Who and where.** Communication Compliance in the Microsoft Purview portal, Worldwide (Standard Multi-Tenant) on the roadmap record, on the web.
 
-**Roles.** Learn says users assigned the Communication Compliance Admins role can set up policies. The roles that will be able to change the new alert settings are not stated.
+**Roles.** Learn lists the Communication Compliance and Communication Compliance Admins role groups as able to configure policies and settings; MC920304 names no separate role for the new page.
 
 **Rollout.** MC920304 gives a public preview rollout beginning October 2026 and expected to complete by the end of October 2026, with General Availability for Worldwide to be announced. The roadmap item remains In development with a January CY2027 target. The post says the feature is available by default.
 
@@ -139,7 +146,7 @@ Indirect cost is reviewer and admin time: changing alert frequency changes how m
 ### Before rollout
 
 - Record the alert behaviour of each current Communication Compliance policy: who receives alert emails and how often, using today's single email every 24 hours as the baseline.
-- Confirm who is in the Communication Compliance Admins role group, since that role sets up policies.
+- Confirm who is in the Communication Compliance and Communication Compliance Admins role groups, since Learn lists both as able to configure policies and settings.
 - Tell reviewers that alert email frequency and recipients may change, and name the person who will own those choices per policy.
 - Pick one pilot policy to test the new alerts page on first.
 
@@ -167,13 +174,13 @@ Indirect cost is reviewer and admin time: changing alert frequency changes how m
 </tbody>
 </table>
 
-The row for alert policy triggers is an existing control that applies today; it is not the new alerts page, and Learn does not say that the page replaces it. Learn documents a minimum threshold of 3 activities for Communication Compliance policies. Microsoft Learn documents no PowerShell for creating and managing Communication Compliance policies, and it documents no API for the alert settings at the time of writing (November 2026). Role needed to set up policies: Communication Compliance Admins.
+The row for alert policy triggers is an existing control that applies today; it is not the new alerts page, and Learn does not say that the page replaces it. Learn documents a minimum threshold of 3 activities for Communication Compliance policies. Microsoft Learn documents no PowerShell for creating and managing Communication Compliance policies, and it documents no API for the alert settings at the time of writing (November 2026). Roles that configure policies and settings: the Communication Compliance and Communication Compliance Admins role groups.
 
 ## Open questions
 
 - Do existing policies keep today's single email every 24 hours when the new alerts page arrives, or does the default change? Watch MC920304 and the Learn page for Communication Compliance policies.
 - When will General Availability for Worldwide be announced, and does the roadmap's January CY2027 target still hold?
-- Which roles can change alert frequency and email recipients, and can recipients be people outside the Communication Compliance role groups?
+- Can alert email recipients be people outside the Communication Compliance role groups?
 - Does the new alerts page change the existing alert policy triggers (activities, window, users) or sit alongside them?
 - Is any licence or meter specific to the alert improvements, beyond the Communication Compliance subscription requirements?
 
@@ -183,10 +190,9 @@ cost: Low. The only cost the sources show is admin and reviewer time; Communicat
 impact: Low. The people who notice are Communication Compliance admins and the reviewers who receive alert emails.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Scope: Roles; Open questions / absence: The roles able to change the new per-policy alert settings are not stated. | Found: | Actions | Communication Compliance | Communication Compliance Admins | Communication Compliance Analysts | Communication Compliance Investigators | Communication Compliance Viewers | | Configure policies and settings | Yes | Yes | No | No | No | | Fix: Replace 'The roles that will be able to change the new alert settings are not stated' with 'Learn lists the Communication Compliance and Communication Compliance Admins role groups as able to configure policies and settings; MC920304 names no separate role for the new page.' Cite https://learn.microsoft.com/purview/communication-compliance-permissions. Remove 'Which roles can change alert frequency and email recipients, and' from the Open questions bullet, retaining the recipient-eligibility question. | Source: https://learn.microsoft.com/purview/communication-compliance-permissions
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance; Governance controls / consistency: The governance checklist names controls that are not represented in the controls table. | Found: Checklist: 'Confirm who is in the Communication Compliance Admins role group' and 'Set frequency and recipients per policy'. Table: existing alert policy triggers and a tenant-wide switch only. | Fix: The Before rollout role-group membership check and At rollout per-policy frequency/recipient configuration step have no corresponding controls-table rows; neither is represented by the existing-trigger or tenant-switch row.
+- [contradicted, minor] front matter: action; summary / consistency: The review action rating treats this automatically arriving change as an optional capability. | Found: action: "review"; "MC920304 says the new feature is available by default"; "Tell reviewers that alert email frequency and recipients may change" | Fix: Set action to prepare: this is an automatically arriving change with low risk and cost that needs reviewer communication, not a feature that remains unavailable until an administrator chooses it. The summary can retain the advice to review it once it reaches the tenant.
+- [contradicted, minor] Governance guidance: Before rollout and At rollout; controls / consistency: The governance checklist asks readers to review role-group membership and set new per-policy alert settings that have no corresponding controls-table rows. | Found: "Confirm who is in the Communication Compliance and Communication Compliance Admins role groups"; "Set frequency and recipients per policy"; the table contains only existing alert triggers and a tenant-wide switch gap. | Fix: Without adding rows, remove the Before rollout bullet beginning 'Confirm who is in' and the At rollout bullet beginning 'Set frequency and recipients per policy'. Retain the verified role information in Scope and the existing pilot-review advice.
 -->

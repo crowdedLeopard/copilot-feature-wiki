@@ -118,15 +118,17 @@ changes:
     note: "Corrected the Cloud Policy admin path to end at Configure Settings, removed two After rollout steps with no control row, and added the documented Cowork and domain-exclusion limits."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 60 statements confirmed"
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
 version: 4
 verification:
-  status: "verified"
-  date: "2026-11-16"
+  status: "verified-with-gaps"
+  date: "2026-11-20"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 60
+  claims: 58
+  confirmed: 58
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -215,4 +217,13 @@ DLP policies can be created in Security & Compliance PowerShell as well as the p
 risk: Low. A restrictive control that reduces data leaving the tenant; opt-in.
 cost: Low. The only cost the sources show is admin time to design, test and tune the policy; licensing for this web-search action is Not yet published.
 impact: Medium. Affects which prompts get web-grounded answers for users in scope.
+-->
+
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Risk assessment: Change & support / behaviour: The feature article states that DLP notifications are supported. | Found: DLP alerts and DLP notifications are supported. | Fix: After this statement add: 'The general DLP policy reference still lists user notifications and policy tips as not supported for Microsoft 365 Copilot (preview), so these Microsoft pages disagree.' Cite https://learn.microsoft.com/purview/dlp-policy-reference#user-notifications-and-policy-tips. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
+- [supported, minor] controls[0].ui; Governance controls: first row / admin-path: The Purview route through Data Loss Prevention > Policies > + Create policy > Custom > Custom policy > Locations > Microsoft Copilot, Copilot Chat, and Copilot Cowork reaches the policy location. | Found: Go to **Data Loss Prevention** > **Policies** and select **+ Create policy**. 3. Select the **Custom** template, then **Custom policy**. | Fix: Extend controls[0].ui.path and the rendered row to 'Data Loss Prevention > Policies > + Create policy > Custom > Custom policy > Locations > Microsoft Copilot, Copilot Chat, and Copilot Cowork > rule > Prevent Copilot from processing content > Performing Web Searches'. The current route reaches the correct policy page but stops before its web-search action. The cited article supplies the rule and action steps. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
+- [supported, minor] controls[1].ui; Governance controls: second row / admin-path: The Apps admin center route through Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings reaches the policy selection page. | Found: On the **Configure Settings** page, select the policies that you want to include in the policy configuration. You can search for the policy by name | Fix: Extend controls[1].ui.path and the rendered row to 'Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings > Allow web search in Copilot'. The existing route ends on the right page; https://learn.microsoft.com/copilot/plan/manage-public-web-access supplies the setting name. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
+- [supported, minor] controls[1].api; Governance controls: second row / command: PATCH https://graph.microsoft.com/beta/copilot/admin/policySettings/microsoft.copilot.allowwebsearch updates web-search policy using a string value property. | Found: PATCH https://graph.microsoft.com/beta/copilot/admin/policySettings/{id} `value` | String | The new value to set for the setting. | Fix: Set controls[1].api.call and the rendered call to 'PATCH https://graph.microsoft.com/beta/copilot/admin/policySettings/microsoft.copilot.allowwebsearch', removing the inline body. Add 'The request body sets value (String).' to the row note. The resource reference confirms microsoft.copilot.allowwebsearch as a supported setting. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/copilotpolicysetting-update
 -->

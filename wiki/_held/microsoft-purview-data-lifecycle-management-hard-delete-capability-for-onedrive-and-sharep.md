@@ -94,18 +94,20 @@ changes:
     note: "Correction: removed the unsupported New-ComplianceTag call from the policy-creation row, added -Operations and -FreeText to the audit search call, and corrected two attributions."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 86 statements not yet confirmed"
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 90 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-20"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 86
-  confirmed: 85
+  claims: 90
+  confirmed: 87
   unconfirmed: 0
-  contradicted: 1
-  attempts: 0
+  contradicted: 3
+  attempts: 1
   hash: "dd68b4c45a4ff4ec7792d35632932a4e"
 ---
 
@@ -205,10 +207,15 @@ cost: Medium. Learn lists licences that give user rights to the Priority cleanup
 impact: Low. Microsoft's notice says user workflows do not change unless an admin configures and applies a priority cleanup policy, so the people who notice are Purview administrators and approvers.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[0].ui; Governance controls: first table row / admin-path: The policy-creation path goes directly from + Create a priority cleanup to Choose what to do with the content without the scope-type and workload-policy choices. | Found: For Choose the type of priority cleanup, select Adaptive or Static then select Next. ... For Static scope, select Policy for SharePoint/OneDrive | Fix: Give a complete static-policy route in controls[0].ui.path and the first table row: 'Solutions > Data Lifecycle Management > Priority cleanup > + Create a priority cleanup > Choose the type of priority cleanup > Static > Policy for SharePoint/OneDrive > Choose what to do with the content > Delete data permanently'. The scope-type and workload choices are documented at https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint; the permanent-deletion page documents the final option. Keep the existing docs URL for that final option. | Source: https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Open questions: PriorityCleanup parameter / command: Set-RetentionCompliancePolicy has a PriorityCleanup parameter. | Found: ### -PriorityCleanup ... Type: SwitchParameter ... Parameter sets (All) | Fix: Add https://learn.microsoft.com/powershell/module/exchangepowershell/set-retentioncompliancepolicy to sources for this parameter mention. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/set-retentioncompliancepolicy
-- [supported, minor] Open questions: PriorityCleanup parameter / command: New-RetentionComplianceRule has a PriorityCleanup parameter. | Found: ### -PriorityCleanup ... Type: SwitchParameter ... Parameter sets (All) | Fix: Add https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule to sources for this parameter mention. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: Every control the governance checklist asks administrators to check or set has a corresponding controls-table row. | Found: Checklist: 'Check who holds the Priority Cleanup Admin role' and 'Enable auditing at least one day before the first policy is created.' Table: policy creation, tenant switch, approvals and monitoring; no role-assignment or auditing-enablement row. | Fix: The Before rollout instructions to review/remove role assignments, assign approver roles and enable auditing have no corresponding control rows. Remove those checklist instructions; retain the documented role and auditing prerequisites elsewhere rather than adding unverified control paths.
+- [supported, minor] controls[1].ui; Governance controls: second table row / admin-path: The tenant switch is on Solutions > Data Lifecycle Management > Priority cleanup settings > Configuration in the Microsoft Purview portal. | Found: Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management. ... select Priority cleanup settings. ... From the Configuration page, turn off the control for priority cleanup, and select Save. | Fix: The path reaches the correct page but stops before its control. In controls[1].ui.path and the second table row, use 'Solutions > Data Lifecycle Management > Priority cleanup settings > Configuration > control for priority cleanup', using the control description given at https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint#turn-off-priority-cleanup-for-the-tenant. | Source: https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint
+- [supported, minor] controls[2].ui; What's changing; Governance controls: third table row / admin-path: Approvers use Data Lifecycle Management > Priority cleanup > Pending cleanups in the Microsoft Purview portal. | Found: go to Data Lifecycle Management > Priority cleanup > Pending cleanups. ... Select the cleanup ... Select the items to delete, and then select Approve disposal. | Fix: The path reaches the correct list but stops before the approval control. Set controls[2].ui.path and the third table row to 'Data Lifecycle Management > Priority cleanup > Pending cleanups > cleanup > Approve disposal', as documented at https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion#review-and-approve-permanent-deletion. | Source: https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion
+- [supported, minor] Open questions: PriorityCleanup parameter / command: Set-RetentionCompliancePolicy has a PriorityCleanup parameter. | Found: The PriorityCleanup switch specifies whether to update a Priority cleanup policy. You don't need to specify a value with this switch. | Fix: Add https://learn.microsoft.com/powershell/module/exchangepowershell/set-retentioncompliancepolicy to sources for the parameter mention. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/set-retentioncompliancepolicy
+- [supported, minor] Open questions: PriorityCleanup parameter / command: New-RetentionComplianceRule has a PriorityCleanup parameter. | Found: The PriorityCleanup switch specifies whether to create a rule associated with a Priority cleanup policy. You don't need to specify a value with this switch. | Fix: Add https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule to sources for the parameter mention. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule
+- [contradicted, minor] front matter: risk; rationale: risk / consistency: The medium risk rating describes the exposure when no administrator has opted in. | Found: risk: "medium"; rationale: "Nothing changes until an admin creates a policy and a second admin turns it on". The assessment scale defines low as "nothing happens until an admin opts in". | Fix: Set risk to 'low' and replace the risk rationale with 'Low. Nothing changes until an admin creates a policy and a second admin turns it on; configured policies can permanently delete files despite retention settings and eDiscovery holds.' Keep the substantive configuration risks in the body.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: Every control the governance checklist asks administrators to check or set has a controls-table row. | Found: The checklist says 'Check who holds the Priority Cleanup Admin role', 'give eDiscovery admins their required roles' and 'Enable auditing'. The table covers policy creation, the tenant switch, approvals and monitoring, not role assignment or audit enablement. | Fix: Remove the Before rollout bullet asking readers to check/remove Priority Cleanup Admin role assignments, remove 'and give eDiscovery admins their required roles before creating a policy' from the individual-approver bullet, and remove the auditing-enablement bullet. These checklist controls have no table rows. Retain the verified role and auditing prerequisites elsewhere; do not add unverified control rows.
 -->

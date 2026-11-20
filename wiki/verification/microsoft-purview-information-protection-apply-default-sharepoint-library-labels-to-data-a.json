@@ -1,0 +1,709 @@
+{
+  "slug": "microsoft-purview-information-protection-apply-default-sharepoint-library-labels-to-data-a",
+  "roadmapId": 575283,
+  "title": "Microsoft Purview: apply default SharePoint library labels to existing files (GCC, GCC High, DoD)",
+  "status": "held",
+  "date": "2026-11-20",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-20",
+    "reasons": [
+      "7 blocking findings (claims 11, 12, 27, 31, 37, 49, 50)"
+    ]
+  },
+  "counts": {
+    "claims": 53,
+    "confirmed": 45,
+    "unconfirmed": 0,
+    "contradicted": 8,
+    "blocker": 7,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "Hold: Microsoft Learn now documents an administrator-created auto-labeling policy for applying library defaults to existing files, contrary to the briefing's statements that the mechanism, default and control are undocumented. Published licensing guidance also covers this service-side labeling scenario.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; rationale: risk and impact",
+      "type": "record",
+      "claim": "Microsoft plans automatic labeling of existing SharePoint files using their document library's default sensitivity label without manual user labeling.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enables auto‑labeling of existing SharePoint files to match the default sensitivity label configured on their document library.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; summary; What's changing; Scope; Governance guidance",
+      "type": "record",
+      "claim": "The roadmap target is December CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "title; front matter: clouds; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "This roadmap item covers GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "This record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The same feature's separate roadmap item 559105 is marked Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 559105; \"title\": \"Microsoft Purview: Information Protection - Apply default SharePoint library labels to data at rest\"; \"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Roadmap item 559105 has an October CY2026 target.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 559105; \"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Scope; front matter: changes",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is covered by the separate item 559105 rather than this item.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 559105; \"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk; Open questions",
+      "type": "default",
+      "claim": "The default is unknown because Microsoft has not said whether labeling existing files requires administrator action.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "To extend your default library label deployment to existing files, create an auto-labeling policy that applies the default sensitivity label from each selected SharePoint document library to eligible existing files at rest.",
+      "severity": "blocker",
+      "fix": "Set defaultState to admin-opt-in. Replace the repeated default-state gap with: 'Learn documents an administrator-created auto-labeling policy to extend library defaults to eligible existing files; review simulation results before turning on the policy. The roadmap still targets GCC, GCC High and DoD for December CY2026.' Cite https://learn.microsoft.com/purview/apply-sensitivity-label-automatically."
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe applying default library sensitivity labels to existing files.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "### Apply default sensitivity labels from SharePoint document libraries to existing files",
+      "severity": "blocker",
+      "fix": "Replace 'Microsoft Learn does not yet describe this change' with: 'Learn describes applying library defaults to existing files through an auto-labeling policy, while the separate library-default page still lists existing files at rest as a limitation of that library setting.' Add https://learn.microsoft.com/purview/apply-sensitivity-label-automatically to sources; retain the government-cloud roadmap status and target."
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The existing library-default feature labels new uploads and edited existing files when they are unlabeled or carry a lower-priority label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label",
+      "quote": "any new files uploaded to that library, or existing files edited in the library will have that label applied if they don't already have a sensitivity label, or they have a sensitivity label but with lower priority.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "behaviour",
+      "claim": "For the documented library-default setting, a lower-priority label is overridden unless it was applied manually.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label",
+      "quote": "Default sensitivity label for a document library: Location-based labeling, applicable only for SharePoint. Overrides a lower-priority label unless manually applied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The cited library-default page lists existing files at rest as a limitation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label",
+      "quote": "Doesn't apply to existing files at rest in SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Sensitivity-label encryption can change who can open a file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/encryption-sensitivity-labels",
+      "quote": "When a document, email, or meeting invite is encrypted, access to the content is restricted, so that it: Can be decrypted only by users authorized by the label's encryption settings.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/purview/encryption-sensitivity-labels to sources for the statement about encryption restricting who can open files."
+    },
+    {
+      "n": 17,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The documented library-default feature does not support user-defined permissions that prompt users to specify permissions in Word, PowerPoint and Excel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label",
+      "quote": "Let users assign permissions when they apply the label and the checkbox In Word, PowerPoint, and Excel, prompt users to specify permissions is selected. This setting is sometimes referred to as \"user-defined permissions\".",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "A library default does not support a label whose user access expiry is other than Never.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label",
+      "quote": "User access to content expires is set to a value other than Never.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "A library default does not support a label configured with Double Key Encryption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label",
+      "quote": "some label configurations that apply encryption aren't suitable for SharePoint, and so don't support a default sensitivity label for a SharePoint document library: ... Double Key Encryption is selected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Security & identity; Scope; controls[0].note; Governance controls",
+      "type": "role",
+      "claim": "Applying or changing a document library default label requires site admin permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label",
+      "quote": "Site admin permissions are needed to apply and change the sensitivity label in SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "applicability",
+      "claim": "An IRM-enabled library cannot be configured with a default sensitivity label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label",
+      "quote": "If a library is enabled for IRM, you won't be able to select a default sensitivity label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Autonomy & actions; controls[2].note; Governance controls; Governance guidance",
+      "type": "behaviour",
+      "claim": "The Applied sensitivity label file audit event identifies application of a library-default label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label",
+      "quote": "use the audit log search tool and the Applied sensitivity label file auditing event from the Sensitivity label activities group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Autonomy & actions; controls[2].note; Governance controls; Governance guidance",
+      "type": "behaviour",
+      "claim": "ActionScourceDetails value 6 identifies labeling by the documented library-default feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label",
+      "quote": "identify the value for ActionScourceDetails. ... A value of 6 is used for when the label was applied because of the default sensitivity label for the document library.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Microsoft does not document whether the existing-files policy uses the same audit detail value.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint library default labels existing files at rest auto labeling policy override manually applied labels ActionScourceDetails audit; opened sensitivity-labels-sharepoint-default-label and apply-sensitivity-label-automatically; no existing-files-specific value found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The tooltip for files labeled by the existing library-default feature reads 'This file has been automatically labeled'.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label",
+      "quote": "the tooltip for the label name displays This file has been automatically labeled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "That tooltip is also used for auto-labeling policies and users' policy default labels, so it does not uniquely identify library-default labeling.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label",
+      "quote": "this tooltip isn't exclusive to the default sensitivity label for a document library. It also displays when sensitivity labels are applied by using auto-labeling policies or as a result of a user's default label from sensitivity label policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated how or when existing-file labeling runs.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "For this policy type, simulation identifies files in document libraries that have a default sensitivity label configured. Review the simulation results before you turn on the policy",
+      "severity": "blocker",
+      "fix": "Replace the broad absence with: 'Learn documents an auto-labeling policy and simulation review before it is turned on; it does not give a government-cloud rollout window beyond this roadmap's December CY2026 target.' Cite https://learn.microsoft.com/purview/apply-sensitivity-label-automatically. Remove the open question asking whether any administrator action is needed."
+    },
+    {
+      "n": 28,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Sensitivity labels use per-user subscriptions and user licensing requirements depend on the features used.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+      "quote": "A number of different per-user subscriptions support sensitivity labels for Microsoft 365 apps and services, and the licensing requirements for users depend on the features you use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Administrators also need a license to manage sensitivity labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+      "quote": "Admins also need a license to manage sensitivity labels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The getting-started page directs readers to the Purview service description for feature-level licensing requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+      "quote": "For sensitivity labels, see the Microsoft Purview Information Protection sensitivity labeling section and related PDF download for feature-level licensing requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "summary; front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published which license covers applying library defaults to existing files.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Sensitivity labeling, including automatic or policy‑based labeling, requires a Microsoft 365 E5 license or Microsoft 365 Information Protection and Governance (IPG).",
+      "severity": "blocker",
+      "fix": "Replace the licensing gap with: 'Learn documents the existing-files capability as service-side auto-labeling. The Purview service description lists Microsoft 365 E5/A5/G5 and Office 365 E5/A5/G5 among the qualifying licenses for client and service-side automatic sensitivity labeling.' Add https://learn.microsoft.com/purview/apply-sensitivity-label-automatically and the cited service-description URL to sources. Keep the per-user model and remove the broad claim that licensing is unpublished."
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "A meter specific to applying library defaults to existing files is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint document library default sensitivity label existing files at rest default rollout licensing 575283; opened apply-sensitivity-label-automatically, get-started-with-sensitivity-labels and Microsoft Purview service description; per-user entitlements, no scenario-specific meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Requirements section of the library-default page does not itself list a license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label",
+      "quote": "You've created and published sensitivity labels ... You've enabled sensitivity labels for Office files in SharePoint and OneDrive. ... Site admin permissions are needed ... Files must contain content to be labeled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Library-default labels must be published with the Files & other data assets scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label",
+      "quote": "You've created and published sensitivity labels that include the label scope of Files & other data assets and these labels are published to the users who will select a default sensitivity label for a SharePoint document library.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Sensitivity labels must be enabled for Office files in SharePoint and OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label",
+      "quote": "You've enabled sensitivity labels for Office files in SharePoint and OneDrive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Scope; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Labeling PDFs requires PDF support to be enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label",
+      "quote": "To support sensitivity labels for PDFs, you've added support for PDFs in SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Whether prerequisites change for labeling existing files is undocumented.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "You have permissions to create and manage auto-labeling policies. ... You have permission to read the SharePoint site and document library metadata required to identify libraries with default sensitivity labels.",
+      "severity": "blocker",
+      "fix": "Replace the sentence with: 'For the existing-files policy, Learn additionally requires permission to create and manage auto-labeling policies and to read the SharePoint site and library metadata used to identify libraries with default labels.' Cite https://learn.microsoft.com/purview/apply-sensitivity-label-automatically."
+    },
+    {
+      "n": 38,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The library default is reached in SharePoint through document library > Settings > Library settings > Default sensitivity labels.",
+      "status": "supported",
+      "source": "https://support.microsoft.com/office/54b1602b-db0a-4bcb-b9ac-5e20cbc28089",
+      "quote": "In SharePoint, navigate to the document library > Settings > Library settings. ... select Default sensitivity labels, and then select a label from the drop-down box.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "Microsoft documents no API or cmdlet for setting the document library's default sensitivity label.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint document library default sensitivity label PowerShell Graph API DefaultSensitivityLabelForLibrary; SharePoint library DefaultSensitivityLabelForLibrary CSOM List DefaultSensitivityLabel Microsoft. Opened library-default and support configuration pages; no setting operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "absence",
+      "claim": "Microsoft documents no admin UI for the tenant-level DisableDocumentLibraryDefaultLabeling switch.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: DisableDocumentLibraryDefaultLabeling SharePoint admin center UI tenant setting. Opened sensitivity-labels-sharepoint-default-label; Set-SPOTenant reference excerpt documents a Boolean parameter, and no UI route was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[1].api; Governance controls table and notes",
+      "type": "command",
+      "claim": "Set-SPOTenant -DisableDocumentLibraryDefaultLabeling $true disables the documented tenant-wide library-default feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label",
+      "quote": "This is a tenant-level setting that requires you to use the Set-SPOTenant cmdlet with the DisableDocumentLibraryDefaultLabeling parameter set to True ... Set-SpoTenant -DisableDocumentLibraryDefaultLabeling $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "The tenant-level switch takes about 15 minutes to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label",
+      "quote": "As with all tenant-level configuration changes for SharePoint, it takes about 15 minutes for the change to take effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Disabling the existing feature retains a library's label selection but deactivates it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label",
+      "quote": "The label selection for the document library remains but is deactivated so new files won't have the selected sensitivity label applied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The tenant-level switch does not remove labels already applied as defaults.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label",
+      "quote": "Sensitivity labels that were applied as a default label aren't removed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[1].note; Governance controls; Governance guidance: At rollout; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not explicitly confirmed that DisableDocumentLibraryDefaultLabeling stops the existing-files auto-labeling policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: DisableDocumentLibraryDefaultLabeling auto-labeling policy existing files at rest. Opened sensitivity-labels-sharepoint-default-label and apply-sensitivity-label-automatically; no explicit statement connecting the switch to execution of this policy found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Audit searches are reached through Microsoft Purview portal > Audit > Search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "Sign in to the Microsoft Purview portal. ... Select the Audit solution card. ... On the Search page, configure the following search criteria as applicable",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "Search-UnifiedAuditLog -StartDate <date> -EndDate <date> -RecordType <ID> is a read-only audit search command.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/sentinel/datalake/auditing-lake-activities",
+      "quote": "runs Search-UnifiedAuditLog to search for audit log entries within a specified date range and record type. ... Search-UnifiedAuditLog -StartDate 2023/03/12 -EndDate 2023/03/20 -RecordType <ID>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Changes to the library-default configuration are audited through the Updated list event.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label",
+      "quote": "To audit the configuration setting for this feature, use the Updated list auditing event from the SharePoint list activities group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls; Governance guidance: At rollout; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented a separate administrator control for labeling existing files.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "When you create the policy, select the option to apply default sensitivity labels from SharePoint document libraries to existing files. Select specific SharePoint sites rather than All.",
+      "severity": "blocker",
+      "fix": "Replace the absence with: 'Microsoft documents an auto-labeling policy option to apply default sensitivity labels from SharePoint document libraries to existing files. Select specific SharePoint sites and review simulation results before turning on the policy.' Cite https://learn.microsoft.com/purview/apply-sensitivity-label-automatically. Remove the question asking whether a separate control will be published; do not infer availability in government clouds before the roadmap target."
+    },
+    {
+      "n": 50,
+      "where": "rationale: cost",
+      "type": "cost",
+      "claim": "The only cost the sources establish is administrator and site-owner time, with nothing specific to this feature published.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically",
+      "quote": "You have E3 or Business Premium. Auto-labeling of files and emails isn't included at this SKU. Sensitivity labels and manual labeling are — auto-labeling requires an E5 / P2-tier add-on.",
+      "severity": "blocker",
+      "fix": "Replace the cost rationale with: 'Medium. Learn documents this as service-side auto-labeling, which requires qualifying licensing; tenants with E3 or Business Premium need an E5 / P2-tier add-on. Reviewing library defaults and simulation results also takes administrator time.' Set cost to medium and cite https://learn.microsoft.com/purview/apply-sensitivity-label-automatically."
+    },
+    {
+      "n": 51,
+      "where": "Governance guidance: Before rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist asks readers to check Office-file and PDF labeling enablement and label configuration, but these controls have no table rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm ... sensitivity labels are enabled for Office files ... PDF support is enabled ... Compare each default label's priority ... [Table rows cover library default selection, the tenant disable switch and audit search.]",
+      "severity": "minor",
+      "fix": "The first and third Before rollout bullets name controls absent from the table. Remove those two checklist bullets rather than adding control rows; retain the verified prerequisite and label-limitation prose."
+    },
+    {
+      "n": 52,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "The library-default page's override table does not establish whether precisely the same rules apply to the existing-files policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint library default labels existing files at rest auto labeling policy override manually applied labels ActionScourceDetails audit. Opened library-default override table and apply-sensitivity-label-automatically existing-files section; no explicit equivalence of override rules found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[0].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "Extend protection on download, copy, or move supports a different scenario and should not be selected when configuring the ordinary library default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label",
+      "quote": "don't select the checkbox Extend protection on download, copy, or move. This setting is currently in preview and supports a different labeling scenario.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-20T10:12:53.137Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://support.microsoft.com/office/54b1602b-db0a-4bcb-b9ac-5e20cbc28089",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-search",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/azure/sentinel/datalake/auditing-lake-activities",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=575283",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Default sensitivity label for a SharePoint document library",
+        "docs": "https://support.microsoft.com/office/54b1602b-db0a-4bcb-b9ac-5e20cbc28089",
+        "reachable": true,
+        "segments": [
+          "document library",
+          "Settings",
+          "Library settings",
+          "Default sensitivity labels"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Tenant-level switch for library default labels",
+        "docs": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label",
+        "reachable": true,
+        "token": "Set-SPOTenant",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which files were labelled by a library default",
+        "docs": "https://learn.microsoft.com/purview/audit-search",
+        "reachable": true,
+        "segments": [
+          "Audit",
+          "Search"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Which files were labelled by a library default",
+        "docs": "https://learn.microsoft.com/azure/sentinel/datalake/auditing-lake-activities",
+        "reachable": true,
+        "token": "Search-UnifiedAuditLog",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -101,10 +101,12 @@ changes:
     note: "Corrected after the check: default state is now not stated, the retention policy cmdlet shows its mandatory parameters, and an unmatched permissions checklist bullet is removed."
   - date: "2026-11-16"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 80 statements confirmed"
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 80 statements not yet confirmed"
 version: 4
 verification:
-  status: "verified"
-  date: "2026-11-16"
+  status: "verified-with-gaps"
+  date: "2026-11-20"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
@@ -210,4 +212,10 @@ The archive policy is a different product and archives rather than deletes. Duri
 risk: Medium. A deletion policy keyed to last access could remove files people still use if Purview's access signal lags or misses some access; Microsoft has not yet published how that signal behaves.
 cost: Low. The only cost the sources show is administrator and records-management time; feature-specific licensing for last-accessed retention is not yet published.
 impact: Medium. Site owners and users whose Office files are deleted would notice; compliance teams gain a new retention rule.
+-->
+
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model and licensing.notes / licensing: The licensing model is unknown because feature-specific licensing is unpublished despite documented general retention entitlements. | Found: For organization-wide, location-wide, or include/exclude retention policies, the following licenses provide user rights: Microsoft 365 E5/A5/G5/E3/A3/G3, Business Premium | Fix: Set licensing.model to included. Replace licensing.notes with: 'General retention policies are included with Microsoft 365 E5/A5/G5/E3/A3/G3 and Business Premium, among other listed plans in the Microsoft Purview service description. Requirements specific to the last-accessed option are not yet published.' This is the standard's product-level licensing understatement, not confirmation of a feature-specific entitlement. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
 -->

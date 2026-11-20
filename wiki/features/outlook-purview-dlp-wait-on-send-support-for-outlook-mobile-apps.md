@@ -83,15 +83,17 @@ changes:
     note: "Corrected the new Outlook timeout behaviour (1 to 9998 seconds allows override, 9999 blocks send until evaluation completes) and added the Purview service description licences."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 60 statements confirmed"
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 57 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "verified-with-gaps"
+  date: "2026-11-20"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 60
+  claims: 57
+  confirmed: 57
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -190,4 +192,12 @@ The Microsoft 365 Apps admin center policy governs whether DLP policy tips show 
 risk: Medium. Learn says Outlook for Android and iOS does not yet support DLP wait-on-send, so mobile sends are not held for evaluation today; the default for the new support is not stated.
 cost: Low. The only cost the sources show is admin time to configure and communicate the wait; Microsoft has not published a licence or meter for the mobile feature.
 impact: Medium. Users who send mail from Outlook for iOS and Android under a DLP policy would notice a wait or override prompt if the feature is enabled; Microsoft has not said whether it starts enabled.
+-->
+
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Microsoft 365 Apps admin center > Customization > Policy Management is the route to the mobile DLP policy-tip control. | Found: You can access this policy under **Customization** and **Policy Management**. | Fix: The path correctly reaches the policy-configuration list but stops early. Extend it to 'Customization > Policy Management > Create > Start with the basics > Choose the scope > Configure Settings > Enable Purview Data Loss Prevention (DLP) policy tips in Outlook > Enabled'. Cite https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy for the configuration wizard as well as the existing mobile reference for the setting. | Source: https://learn.microsoft.com/purview/dlp-outlook-mobile-policy-tip-ref
+- [supported, minor] controls[2].ui; Governance controls table / admin-path: Microsoft Purview portal > Data loss prevention > Policies leads to the DLP rule and dialog-before-send control. | Found: Sign in to the [Microsoft Purview portal](https://purview.microsoft.com) > **Data loss prevention** > **Policies** | Fix: The path reaches the correct policy list but not the rule setting. Extend it to 'Data loss prevention > Policies > + Create policy > Custom (Categories) > Custom (Regulations) > Full directory (Admin units) > Exchange email > Define policy settings > Create or customize advanced DLP rules > Create rule > User notifications > On > Policy tips > Show the policy tip as a dialog for the end user before send (available for Exchange workload only)'. The cited setup page supplies this route; configure the rule conditions and actions for the intended policy. | Source: https://learn.microsoft.com/purview/dlp-osp-get-started
+- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost / licensing: Licensing is unknown because no licence specific to mobile wait-on-send is published. | Found: Which licenses provide the rights for a user to benefit from the service? - Microsoft 365 E5/A5/G5/E3/A3/G3, Microsoft 365 Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2), Exchange Online Plan 2 | Fix: Feature-specific licensing remains unpublished, but the standard calls for the known product-level entitlement rather than model unknown. Set licensing.model to 'included' and add: 'Microsoft Purview DLP for Exchange Online requires a qualifying licence, such as Microsoft 365 E3 or E5. Licensing specific to mobile wait-on-send is not yet published.' Retain the separate, qualified advanced desktop policy-tip guidance. The already cited Purview service description supplies the baseline requirement. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
 -->

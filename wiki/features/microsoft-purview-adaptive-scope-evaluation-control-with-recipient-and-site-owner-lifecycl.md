@@ -83,10 +83,12 @@ changes:
     note: "Corrected licensing: retention policies using adaptive scopes need the Microsoft Purview service description licences; only any extra licence for the new controls is not yet published. Also corrected the create-scope path and separated Microsoft's recommendation from the wiki's step."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 67 statements confirmed"
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "verified-with-gaps"
+  date: "2026-11-20"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
@@ -197,4 +199,11 @@ The advanced query filter on IsInactiveMailbox is documented for inactive mailbo
 risk: Medium. Microsoft's notice MC1450128 says newly created scopes will evaluate only active recipients and site owners by default, so a policy targeted through a new scope may not reach inactive or soft-deleted ones unless an administrator opts in.
 cost: Low. The only cost the sources show is administrator time to review scope definitions and creation processes; additional licensing for the new controls is not yet published.
 impact: Low. Microsoft's notice names Purview administrators who create or manage adaptive scopes, and organisations that use them for policy targeting; it describes no end-user change.
+-->
+
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model / licensing: The licensing model is unknown even though the notes state the existing adaptive-scope licensing requirement. | Found: If the retention policy uses an adaptive policy scope, then one of the following licenses is required to provide user rights: | Fix: Set licensing.model to included. Keep the existing notes naming the documented licences for retention policies using adaptive scopes and distinguishing any unpublished additional requirement specific to the planned lifecycle controls. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
+- [supported, minor] controls[2].ui; Governance controls / admin-path: The membership review route is Settings > Roles and scopes > Adaptive scopes > scope > Scope details. | Found: Select an existing adaptive scope from the list. 4. From the Details flyout pane, select Scope details. | Fix: In controls[2].ui.path and the rendered table, use Settings > Roles and scopes > Adaptive scopes > scope > Details > Scope details. Details is the flyout heading, not an additional selection. | Source: https://learn.microsoft.com/purview/purview-adaptive-scopes
 -->

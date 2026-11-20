@@ -14,8 +14,8 @@ previewDate: "June CY2026"
 risk: "medium"
 cost: "variable"
 impact: "medium"
-defaultState: "admin-opt-in"
-action: "review"
+defaultState: "on"
+action: "prepare"
 licensing:
   model: "consumption"
   notes: "Learn says the agent uses Copilot Studio credits under consumption-based billing, through prepaid capacity or pay-as-you-go. Its prerequisites name no user licence, and a credit rate for this feature is not yet published."
@@ -49,23 +49,17 @@ sources:
   - title: "Plans in the Scheduling Operations Agent (preview)"
     url: "https://learn.microsoft.com/dynamics365/field-service/soa-plans"
     kind: "learn"
-  - title: "Booking Status (BookingStatus) table/entity reference (Microsoft Dynamics 365 Field Service)"
-    url: "https://learn.microsoft.com/dynamics365/field-service/developer/reference/entities/bookingstatus"
-    kind: "docs"
-  - title: "Booking Status (BookingStatus) table/entity reference (Microsoft Dynamics 365)"
-    url: "https://learn.microsoft.com/dynamics365/developer/reference/entities/bookingstatus"
-    kind: "docs"
-  - title: "Optimization Plan (msdyn_schedulingoptimizationplan) table/entity reference (Microsoft Dynamics 365 Field Service)"
-    url: "https://learn.microsoft.com/dynamics365/field-service/developer/reference/entities/msdyn_schedulingoptimizationplan"
-    kind: "docs"
-  - title: "pac admin"
-    url: "https://learn.microsoft.com/power-platform/developer/cli/reference/admin"
-    kind: "docs"
   - title: "Govern Copilot Credit consumption for agents powered by the Microsoft Copilot harness"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/guidance/govern-credit-consumption"
     kind: "learn"
   - title: "Who can run optimisations and who can create scopes, goals and plans (Power Platform CLI)"
     url: "https://learn.microsoft.com/power-platform/developer/cli/reference/admin#pac-admin-assign-user"
+    kind: "learn"
+  - title: "Which bookings the agent may move, delete or ignore, by booking status (REST API)"
+    url: "https://learn.microsoft.com/dynamics365/developer/reference/entities/bookingstatus"
+    kind: "learn"
+  - title: "Whether a batch plan applies its results automatically or holds them for review (REST API)"
+    url: "https://learn.microsoft.com/dynamics365/field-service/developer/reference/entities/msdyn_schedulingoptimizationplan"
     kind: "learn"
 videos: []
 related: ["dynamics-365-field-service-optimize-resource-scheduling-optimize-schedules-with-scheduling","copilot-credits","security-roles"]
@@ -124,26 +118,30 @@ changes:
     note: "Correction: booking status control now gives the documented PATCH /bookingstatuses call; role path extended; Azure budget wording qualified; team role assignment denial and one open question removed."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 87 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-20"
+    note: "Correction: default state set to on for existing agent organisations and action to prepare; interactive capacity-point qualification added; three checklist steps without control rows removed or narrowed."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 87 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 87
-  confirmed: 84
+  confirmed: 87
   unconfirmed: 0
-  contradicted: 3
-  attempts: 2
-  hash: "d76c89e5f003221615c3abc9b4cf16e6"
+  contradicted: 0
+  attempts: 0
+  hash: "cc70e59f759f901cca28240603fa6386"
 ---
 
 ## What's changing
 
 The roadmap item says the Scheduling Operations Agent in Dynamics 365 Field Service will optimise the schedules of several technicians in one request. It lists four capabilities: optimising up to 5 resources from the schedule board, up to 30 resources using an optimization plan, custom goals with weighted objectives, and custom optimization scopes for use in plans. Dispatchers review and compare the proposed schedule with the current one before applying it. The roadmap says the capabilities build on the existing public preview and "will be automatically enabled for all organizations that have the agent enabled".
 
-Learn already documents both modes as preview. Interactive optimisations take up to five resources, up to 120 jobs and a window of up to 72 hours. Batch optimisations run asynchronously from a plan that combines a scope (which resources, requirements and bookings are in play), a goal and a time range. A plan runs on demand or on a recurrence with a 30-minute minimum interval, and either holds results for review or applies them automatically. In a custom goal, each included objective gets a weight from 1 to 10.
+Learn already documents both modes as preview. Interactive optimisations take up to five resources, up to 120 jobs and a window of up to 72 hours. A resource with capacity greater than 1 counts once per capacity point. Batch optimisations run asynchronously from a plan that combines a scope (which resources, requirements and bookings are in play), a goal and a time range. A plan runs on demand or on a recurrence with a 30-minute minimum interval, and either holds results for review or applies them automatically. In a custom goal, each included objective gets a weight from 1 to 10.
 
 The two sources differ on the batch limit: the roadmap says up to 30 resources, while Learn's limits table lists up to 50 resources, 4,000 jobs and a 14-day range for batch optimisations, and says the limits might change as the feature evolves. Both figures are reported here as published.
 
@@ -153,7 +151,7 @@ The roadmap status is In development, with a preview date of June CY2026 and a t
 
 For a service owner this is mainly a spend and bookings question. Learn says an optimisation request consumes credits based on the number of resources it includes, so optimising more technicians per request uses more capacity, and a recurring plan repeats that on a schedule. The agent can also move or delete scheduled bookings, so a plan that applies results automatically changes dispatchers' schedules without a person looking first.
 
-The agent starts off: Learn says an administrator must set it up and turn on the Scheduling Operations Agent (Preview) toggle, and that this one toggle enables both interactive and batch optimisations. Tenants that have not turned it on see no change from this item. Tenants that have it on should expect the multi-resource, goal, scope and plan capabilities to arrive with the roadmap's automatic enablement, with no separate switch documented for them.
+The agent itself starts off: Learn says an administrator must set it up and turn on the Scheduling Operations Agent (Preview) toggle, and that this one toggle enables both interactive and batch optimisations. Tenants that have not turned it on see no change from this item. Tenants that have it on should expect the multi-resource, goal, scope and plan capabilities to arrive with the roadmap's automatic enablement, with no separate switch documented for them.
 
 ## Risk assessment
 
@@ -198,19 +196,17 @@ The agent starts off: Learn says an administrator must set it up and turn on the
 
 ### Before rollout
 - Check each environment against the setup prerequisites (Field Service and Universal Resource Scheduling versions, location and map settings) before deciding whether to turn the agent on.
-- Confirm a billing model is in place: prepaid capacity assigned to the Power Platform environment, or a pay-as-you-go Azure subscription linked to it.
 - Set the Optimization Method on every booking status (Optimize, Do Not Move or Ignore), leaving statuses for work in progress or committed to customers as Do Not Move.
 - Assign the Scheduling Operations Agent User and Administrator roles to the right people, alongside a dispatcher role.
 
 ### At rollout
 - Turn on Scheduling Operations Agent (Preview) only in environments where roles, billing and booking statuses are ready; the one toggle enables interactive and batch optimisations together.
 - Start new plans on Review before apply and move to Apply automatically only after reviewing several results.
-- Give the Scheduling Operations Agent Team the roles it needs for any custom tables your scopes use, and add it to field security profiles that cover referenced columns.
-- Tell dispatchers the limits you are working to: five resources per interactive run, and Learn's current batch limit of 50 resources, which differs from the roadmap's 30.
+- Tell dispatchers the limits you are working to: five resources per interactive run (a resource with capacity greater than 1 counts once per capacity point), and Learn's current batch limit of 50 resources, which differs from the roadmap's 30.
 
 ### After rollout
 - Review credit consumption in the Power Platform admin center, and Azure Cost Management for pay-as-you-go, after the first week of multi-resource runs.
-- Audit recurring plans for their Apply method and recurrence interval, and switch any that should not apply unattended back to Review before apply.
+- Check recurring plans' Apply method, and switch any that should not apply unattended back to Review before apply.
 - Re-read the Learn limits pages when the roadmap status changes from In development, as the figures may change.
 
 ## Governance controls
@@ -243,12 +239,8 @@ cost: Variable. Learn says the agent bills in Copilot Studio credits (prepaid ca
 impact: Medium. Dispatchers and the admins who build goals, scopes and plans notice it. It does not change anything for tenants that have not turned the agent on.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: defaultState / default: The default state of this multi-resource expansion is admin-opt-in. | Found: These capabilities build on the existing public preview of the Scheduling Operations Agent and will be automatically enabled for all organizations that have the agent enabled. | Fix: Set defaultState to 'on' for this expansion. Retain the existing qualification that automatic enablement applies to organizations that already have the agent enabled, and that initial agent setup still requires an administrator.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Governance guidance: At rollout / behaviour: Interactive optimization supports up to five resources. | Found: Up to 5. A resource with a capacity greater than 1 counts as one resource for each capacity point. | Fix: After the interactive five-resource limit, add: 'A resource with capacity greater than 1 counts once per capacity point.' Apply the same qualification to the governance reminder; the limits page states this qualification. | Source: https://learn.microsoft.com/dynamics365/field-service/soa-limits
-- [contradicted, minor] front matter: action / consistency: The action rating is review although the expansion arrives automatically for existing agent organizations. | Found: action: "review" The roadmap says the new capabilities are enabled automatically for organisations that have the agent enabled. | Fix: Set action to 'prepare': the expansion arrives automatically for existing agent organizations, has metered usage and scheduling controls to review, and its March CY2027 target is more than 60 days after the run date.
-- [contradicted, minor] Governance guidance; Governance controls / consistency: Every control the governance checklist asks readers to configure or review has a controls-table row. | Found: Confirm a billing model is in place Give the Scheduling Operations Agent Team the roles it needs add it to field security profiles Audit recurring plans for their Apply method and recurrence interval | Fix: The checklist steps to configure billing capacity, grant agent-team security roles, add the team to field security profiles and audit recurrence intervals have no corresponding controls-table rows. Keep these as background rather than checklist instructions; no new rows are requested.
+- [supported, minor] controls[2].note; Governance controls prose and table / command: The writable msdyn_optimizationmethod property accepts 192350000 for Optimize, 192350001 for Do Not Move and 192350002 for Ignore. | Found: Writable columns/attributes ... msdyn_OptimizationMethod ... LogicalName | msdyn_optimizationmethod ... 192350000 | Optimize ... 192350001 | Do Not Move ... 192350002 | Ignore | Fix: Add https://learn.microsoft.com/dynamics365/field-service/developer/reference/entities/bookingstatus to sources; it documents the writable msdyn_optimizationmethod property and its three option values. | Source: https://learn.microsoft.com/dynamics365/field-service/developer/reference/entities/bookingstatus
 -->

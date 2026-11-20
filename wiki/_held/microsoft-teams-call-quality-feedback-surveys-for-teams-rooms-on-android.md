@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "on"
 action: "prepare"
 licensing:
-  model: "unknown"
-  notes: "Teams Rooms devices require a Teams Rooms licence; any additional survey-specific requirement is Not yet published. Neither Microsoft's notice MC1490912 nor the Learn pages read name a survey-specific licence, meter or charge."
+  model: "included"
+  notes: "Teams Rooms devices require Microsoft Teams Rooms Basic or Microsoft Teams Rooms Pro. Microsoft has not published an additional licence requirement specific to these surveys."
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["teams","teams-rooms","user-experience","privacy","cloud-policy"]
 sources:
@@ -28,6 +28,9 @@ sources:
   - title: "MC1490912: Microsoft Teams: Call quality feedback surveys for Teams Rooms on Android"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1490912"
     kind: "message-center"
+  - title: "Release notes for Microsoft Teams Rooms"
+    url: "https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note#teams-rooms-on-android-feature-introduction-and-issue-resolution"
+    kind: "learn"
   - title: "Managing Microsoft Teams Rooms"
     url: "https://learn.microsoft.com/microsoftteams/rooms/rooms-manage"
     kind: "learn"
@@ -50,13 +53,13 @@ controls:
     scope: "user"
     ui:
       surface: "Microsoft 365 Apps admin center"
-      path: "Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings"
+      path: "Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings > Allow users to receive and respond to in-product surveys from Microsoft"
       docs: "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy"
     api: null
-    note: "Policy: Allow users to receive and respond to in-product surveys from Microsoft. Learn names Teams Rooms generally, not Android. Not Configured equals Enabled."
+    note: "Policy: Allow users to receive and respond to in-product surveys from Microsoft. The Teams Rooms on Android release notes confirm that Call Quality Feedback surveys can be controlled using feedback policies. Not Configured equals Enabled."
 confidence: "medium"
 created: "2026-11-18"
-updated: "2026-11-18"
+updated: "2026-11-20"
 roadmapModified: "2026-09-09T22:36:54"
 changes:
   - date: "2026-11-18"
@@ -69,19 +72,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 60 statements confirmed"
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 57 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-20"
+    note: "Corrected after verification: rollout end date removed, release-note app version and feedback-policy control for Android added, licence model set to included, Cloud Policy path completed."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 58 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-20"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 54
-  unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "95de077cc8760d3cff16523f837b138d"
+  claims: 58
+  confirmed: 56
+  unconfirmed: 1
+  contradicted: 1
+  attempts: 2
+  hash: "8661b8f87e942131385bc2b7263f7e13"
 ---
 
 ## What's changing
@@ -90,7 +97,7 @@ Microsoft Teams is adding call quality feedback (CQF) surveys to Microsoft Teams
 
 Microsoft's notice MC1490912 (published 7 October 2026) says the feature becomes available once eligible Teams Rooms on Android devices are updated to the required app version, and that it is enabled by default once available. The notice says no admin action is required before rollout. It recommends updating devices to the latest supported app version through the Teams admin center, telling users they may be prompted, and updating training and support material. It also says feedback is used by Microsoft to improve Teams products and services, and that the experience aligns with call quality surveys already available in Teams Rooms on Windows and other Teams clients. The notice does not name the required app version.
 
-The roadmap record lists the item as In development, with a General Availability target of November CY2026 for Worldwide (Standard Multi-Tenant) on Android and Teams and Surface Devices. Dates are Microsoft's targets. The notice gives the rollout as beginning in November 2026, with an end date of 30 December 2026.
+The roadmap record lists the item as In development, with a General Availability target of November CY2026 for Worldwide (Standard Multi-Tenant) on Android and Teams and Surface Devices. Dates are Microsoft's targets. The notice says Worldwide General Availability rollout begins in November 2026; it does not state a rollout completion date.
 
 ## Why it matters
 
@@ -122,13 +129,13 @@ The notice says the change stores new customer data (survey responses) and does 
 
 Microsoft has not published a survey-specific licence requirement, meter or price for the Teams Rooms on Android call quality surveys. Neither MC1490912, the roadmap record nor the Learn pages read for this briefing name one, so survey-specific licensing is Not yet published.
 
-The cost the sources show is indirect: admin time to update Teams Rooms on Android devices to the required app version, plus user communication, training and support updates, which are the recommended actions in the notice. Teams Rooms devices require a Teams Rooms licence; any additional survey-specific requirement is Not yet published.
+The cost the sources show is indirect: admin time to update Teams Rooms on Android devices to the required app version, plus user communication, training and support updates, which are the recommended actions in the notice. Teams Rooms devices require Microsoft Teams Rooms Basic or Microsoft Teams Rooms Pro. Microsoft has not published an additional licence requirement specific to these surveys.
 
 ## Scope
 
 Users: people who take part in meetings on Teams Rooms on Android devices, per MC1490912. Clouds: Worldwide (Standard Multi-Tenant) only on the roadmap record; the record lists no US Government cloud. Platforms: Android, and Teams and Surface Devices. Release phase: General Availability.
 
-Rollout: the notice says it begins in November 2026 and the feature becomes available once eligible devices run the required app version. Which version that is has not been published. Roles: the Learn page on managing Teams Rooms says a Teams Administrator or Teams Devices Administrator role is needed to manage devices in the Teams admin center.
+Rollout: the notice says it begins in November 2026 and the feature becomes available once eligible devices run the required app version. The Teams Rooms on Android release notes list Call Quality Feedback surveys as introduced in app version 1449/1.0.96.2026344105 (November 2026), while the roadmap record still says In development. Microsoft notes that availability can vary by device make and model. Roles: the Learn page on managing Teams Rooms says a Teams Administrator or Teams Devices Administrator role is needed to manage devices in the Teams admin center.
 
 ## Governance guidance
 
@@ -154,19 +161,17 @@ Rollout: the notice says it begins in November 2026 and the feature becomes avai
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Teams Rooms devices show in-product surveys, including call quality feedback prompts</strong><br><small>User</small><br><small class="controls__note">Policy: Allow users to receive and respond to in-product surveys from Microsoft. Learn names Teams Rooms generally, not Android. Not Configured equals Enabled.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Policy configurations › Create › Start with the basics › Choose the scope › Configure Settings <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether Teams Rooms devices show in-product surveys, including call quality feedback prompts</strong><br><small>User</small><br><small class="controls__note">Policy: Allow users to receive and respond to in-product surveys from Microsoft. The Teams Rooms on Android release notes confirm that Call Quality Feedback surveys can be controlled using feedback policies. Not Configured equals Enabled.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Policy configurations › Create › Start with the basics › Choose the scope › Configure Settings › Allow users to receive and respond to in-product surveys from Microsoft <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The documented switch is not specific to this feature: Learn says Teams Rooms devices may display in-product surveys, including call quality feedback prompts, and points administrators to Cloud Policy service for Microsoft 365 to disable them. The page does not name Teams Rooms on Android, so confirm on a pilot device that the policy suppresses the new survey before relying on it.
+The documented switch is not specific to this feature: Learn says Teams Rooms devices may display in-product surveys, including call quality feedback prompts, and points administrators to Cloud Policy service for Microsoft 365 to disable them. The Teams Rooms on Android release notes explicitly say Call Quality Feedback surveys can be controlled using feedback policies.
 
 The feedback policies page says policies set to Not Configured have the same effect as Enabled, so surveys are not suppressed until an administrator sets the policy to Disabled. Cloud Policy management is done in the Microsoft 365 Apps admin center; Microsoft recommends the Office Apps Administrator role for it. Microsoft Learn documents no PowerShell, Graph or other API for Cloud Policy at the time of writing (November 2026).
 
 ## Open questions
 
-- Which Teams Rooms on Android app version is required, and does the Teams admin center show which devices have it? Watch MC1490912 and the Teams Rooms Learn pages.
 - Where is call quality survey data stored, for how long is it kept, and who in the tenant can see individual responses? The notice does not say.
-- Does the Cloud Policy survey setting (Allow users to receive and respond to in-product surveys from Microsoft) suppress this survey on Teams Rooms on Android specifically? Microsoft Learn refers to Teams Rooms devices in general.
 
 <!-- rationale
 risk: Low. The survey collects user ratings on call, video, audio and screen-sharing quality; Microsoft's notice says it is on by default and stores new customer data, but a Cloud Policy survey setting is documented for Teams Rooms.
@@ -177,11 +182,6 @@ impact: Medium. People who attend meetings on Teams Rooms on Android devices wil
 <!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing: final sentence / date: The notice gives the rollout an end date of 30 December 2026. | Found: Microsoft's end date 2026-12-30; [Rollout schedule] - General Availability (Worldwide): Beginning in November 2026 | Fix: Replace the final sentence with 'The notice says Worldwide General Availability rollout begins in November 2026; it does not state a rollout completion date.' The supplied 30 December date is the post's end-date metadata, not a completion date in its rollout schedule.
-- [contradicted, blocker] Governance controls: first paragraph after table; Open questions: final question / applicability: Microsoft has not confirmed that feedback policies control the new call quality survey on Android specifically. | Found: Call Quality Feedback surveys: Users can now rate the quality of their calls and meetings ... These results are visible in the Call Quality Dashboard and can be controlled using feedback policies. | Fix: Replace the Android uncertainty in the paragraph after the table with 'The Teams Rooms on Android release notes explicitly say Call Quality Feedback surveys can be controlled using feedback policies.' Remove the final Open questions bullet asking whether those policies apply to Android. Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note#teams-rooms-on-android-feature-introduction-and-issue-resolution. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note#teams-rooms-on-android-feature-introduction-and-issue-resolution
-- [contradicted, blocker] Scope: Rollout; Open questions: first question / absence: The app version introducing Android call quality feedback surveys has not been published. | Found: 1449/1.0.96.2026344105 (November 2026) Introduced in this update: ... Call Quality Feedback surveys | Fix: Replace 'Which version that is has not been published.' with 'The Teams Rooms on Android release notes list Call Quality Feedback surveys as introduced in app version 1449/1.0.96.2026344105 (November 2026), while the roadmap record still says In development. Microsoft notes that availability can vary by device make and model.' Remove the first Open questions bullet's question about which app version is required. Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note#teams-rooms-on-android-feature-introduction-and-issue-resolution. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note#teams-rooms-on-android-feature-introduction-and-issue-resolution
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model / licensing: The licensing model is unknown because no survey-specific requirement is published. | Found: Each meeting room needs a Teams Rooms license, such as a Teams Rooms console, Surface Hub, or Teams panel. Teams provides two licenses for Teams Rooms: Microsoft Teams Rooms Pro and Microsoft Teams Rooms Basic. | Fix: Set licensing.model to 'included'. Replace the notes with 'Teams Rooms devices require Microsoft Teams Rooms Basic or Microsoft Teams Rooms Pro. Microsoft has not published an additional licence requirement specific to these surveys.' The schema assigns included to a new option inside a product with a published general licence requirement. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-plan
-- [supported, minor] controls[0].ui; Governance controls: table / admin-path: The Cloud Policy route is Microsoft 365 Apps admin center > Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings. | Found: Under Customization, select Policy Management. On the Policy configurations page, select Create. On the Start with the basics page, enter a name ... On the Choose the scope page ... On the Configure Settings page, select the policies | Fix: The printed route correctly reaches the settings page but stops before its named control. Append ' > Allow users to receive and respond to in-product surveys from Microsoft' to controls[0].ui.path; feedback-manage documents searching for 'feedback' or 'survey' there and gives this policy name. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
-- [supported, minor] controls[0].note; Governance controls: table note / applicability: The row qualifies the documented survey policy by saying Learn names Teams Rooms generally, not Android. | Found: | Teams Rooms | Yes | Yes | Yes | No | | Fix: Replace 'Learn names Teams Rooms generally, not Android.' with 'The Teams Rooms on Android release notes confirm that Call Quality Feedback surveys can be controlled using feedback policies.' Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note#teams-rooms-on-android-feature-introduction-and-issue-resolution. | Source: https://learn.microsoft.com/privacy/microsoft-365/feedback/feedback-manage
+- [contradicted, blocker] front matter: licensing.notes; Cost and licensing / licensing: Teams Rooms devices require Microsoft Teams Rooms Basic or Microsoft Teams Rooms Pro. | Found: Teams Rooms devices should only be assigned Teams Rooms Basic or Teams Rooms Pro licenses (Teams Rooms legacy licenses are also valid). | Fix: Replace the requirement in licensing.notes and Cost and licensing with: 'Teams Rooms devices require a Teams Rooms licence: Microsoft Teams Rooms Basic or Microsoft Teams Rooms Pro; valid Teams Rooms legacy licences are also accepted.' Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-plan. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-plan
+- [unsupported, blocker] controls[0].ui; Governance controls table / admin-path: The linked Cloud Policy overview documents the route through Configure Settings to Allow users to receive and respond to in-product surveys from Microsoft. | Found: Searched: full Cloud Policy overview for the survey setting. It gives Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings, but not the named control; feedback-manage supplies that last step. | Fix: Keep the path unchanged, but set controls[0].ui.docs and the rendered row's Learn link to https://learn.microsoft.com/privacy/microsoft-365/feedback/feedback-manage, which names the survey control and links to the Cloud Policy wizard. Retain the Cloud Policy overview in sources for the preceding route.
 -->

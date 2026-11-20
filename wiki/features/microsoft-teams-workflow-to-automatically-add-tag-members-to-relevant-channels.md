@@ -116,15 +116,17 @@ changes:
     note: "Correction: added the Update-M365TeamsApp and Set-CsTeamsTargetingPolicy PowerShell calls to two controls, and reworded the flow-ownership and Microsoft default tag statements to match Microsoft Learn."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-20"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 60
+  claims: 64
+  confirmed: 64
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -223,8 +225,8 @@ cost: Low. The only cost the sources show is admin and team-owner time; the lice
 impact: Low. Team owners who set the template up and members added to the tag notice it; nothing changes for anyone else by default, according to MC1540351.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost / licensing: Licensing is classified as unknown because no template-specific entitlement is published and its connectors are unknown. | Found: Users gain limited rights to use Power Automate if they inherited seeded plans from licenses tied to other Microsoft products: ... Microsoft 365 ... Those licenses entitle the user to create and run cloud flows with standard connectors. | Fix: Set licensing.model to included to acknowledge the published product-level entitlement. Replace licensing.notes with: 'Microsoft 365 seeded licences include cloud flows with standard connectors. No template-specific licence statement or connector list is published, so whether this entitlement is sufficient for the template remains unconfirmed.' Keep the template-specific uncertainty in the body and cost rationale. | Source: https://learn.microsoft.com/power-platform/admin/power-automate-licensing/deep-dive-on-specific-license
+- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost / licensing: Licensing is classified as unknown because this template's entitlement and connectors are not yet published. | Found: Users gain limited rights to use Power Automate if they inherited seeded plans from licenses tied to other Microsoft products: - Microsoft 365 (formerly Office 365) / Dynamics 365 Enterprise / Dynamics 365 Professional / Dynamics 365 Team Member | Fix: Set licensing.model to included to acknowledge the published product-level entitlement. Replace licensing.notes with: 'Microsoft 365 seeded licences include cloud flows with standard connectors. No template-specific licence statement or connector list is published, so whether this entitlement is sufficient for the template remains unconfirmed.' Retain the template-specific uncertainty in the body and cost rationale. Source: https://learn.microsoft.com/power-platform/admin/power-automate-licensing/deep-dive-on-specific-license. | Source: https://learn.microsoft.com/power-platform/admin/power-automate-licensing/deep-dive-on-specific-license
 -->

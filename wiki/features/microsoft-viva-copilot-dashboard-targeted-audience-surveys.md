@@ -87,15 +87,17 @@ changes:
     note: "Corrected licensing to included (Copilot licence gives full Viva Pulse functionality per Learn) and removed the unverified claim that Pulse reports show surveys sent per leader."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 69 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-20"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
-  confirmed: 63
+  claims: 69
+  confirmed: 67
   unconfirmed: 0
   contradicted: 2
   attempts: 0
@@ -199,10 +201,11 @@ cost: Low. The only cost the sources show is admin and communication time; Micro
 impact: Medium. Leaders with the CxO or CxO-delegate role in the dashboard gain the option; employees in the Copilot licensed or active populations may start receiving Pulse surveys they did not receive before.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: Microsoft documents full Viva Pulse functionality for users with a Microsoft Copilot licence. | Found: Users with a Microsoft Copilot license have access to the full functionality of Viva Pulse to gather real-time feedback from their teams. | Fix: After this sentence, add: 'Microsoft documentation is inconsistent: the general Viva Pulse licensing requirements page lists Viva Suite, Viva Workplace Analytics and Employee Feedback, Viva Glint and the admin-led trial for the full premium experience, but does not list Microsoft Copilot.' Cite https://learn.microsoft.com/viva/pulse/get-started/licensing-requirements. | Source: https://learn.microsoft.com/viva/pulse/setup-admin-access/granular-access-controls
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist instructs readers to review and remove CxO or CxO-delegate assignments, but the controls table has no corresponding row. | Found: Checklist: 'Review who holds the CxO or CxO-delegate role ... and remove anyone who should not survey the whole Copilot population.' Table rows cover only pre-built audience availability and minimum recipient count. | Fix: Append to the role-review checklist item: 'Role-assignment management is not covered by the controls table.' Do not add a control row.
-- [contradicted, minor] Governance guidance: Before rollout and After rollout; Governance controls table / consistency: The checklist instructs readers to check the Viva Insights exclusion list, but the controls table has no corresponding row. | Found: Checklist: 'Check that the Viva Insights exclusion list is current'. Governance controls: 'The Viva Insights exclusion list ... is not a row here because no feature-specific path was read'. | Fix: Append to the exclusion-list checklist item: 'Exclusion-list management is not covered by the controls table.' Do not add a control row.
+- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: Microsoft documents full Viva Pulse functionality for users with a Microsoft Copilot licence. | Found: Users with a Microsoft Copilot license have access to the full functionality of Viva Pulse to gather real-time feedback from their teams. | Fix: After this sentence, add: 'Microsoft documentation differs: the general Viva Pulse licensing requirements page lists Viva Suite, Viva Workplace Analytics and Employee Feedback, Viva Glint and the Viva Pulse Admin-led Trial for the full premium experience, but does not list Microsoft Copilot.' Cite https://learn.microsoft.com/viva/pulse/get-started/licensing-requirements. | Source: https://learn.microsoft.com/viva/pulse/setup-admin-access/granular-access-controls
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The policy-creation route is Microsoft 365 admin center > Viva > Settings > Manage feature access > Create a policy. | Found: Select the Settings tab and select Manage feature access. Select Create a policy. Name the policy and select the app and feature for which you'd like to set the policy. Select the Access setting option and choose On or Off | Fix: The path stops at policy creation. Extend it to 'Viva > Settings > Manage feature access > Create a policy > Viva Pulse > Targeted Audience Surveys > Access setting > Off'. In the note, specify selecting the Viva Pulse app and Targeted Audience Surveys feature during policy creation, and applying access settings to Everyone, following https://learn.microsoft.com/viva/control-access-admin-center. | Source: https://learn.microsoft.com/viva/control-access-admin-center
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The role-assignment review and removal instructed by the checklist has no corresponding controls-table row. | Found: Review who holds the CxO or CxO-delegate role ... and remove anyone who should not survey the whole Copilot population. ... Table rows: Whether leaders can use pre-built Copilot audiences; Minimum recipient count. | Fix: Append to the role-review checklist item: 'Role-assignment management is not covered by the controls table.' Do not add a control row.
+- [contradicted, minor] Governance guidance: Before rollout and After rollout; Governance controls table / consistency: The exclusion-list checks instructed by the checklist have no corresponding controls-table row. | Found: Check that the Viva Insights exclusion list is current ... The Viva Insights exclusion list is managed by the AI Administrator and is not a row here because no feature-specific path was read | Fix: Append to the exclusion-list checklist item: 'Exclusion-list management is not covered by the controls table.' Do not add a control row.
 -->

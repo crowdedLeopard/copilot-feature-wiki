@@ -88,10 +88,12 @@ changes:
     note: "Corrected: policy precedence now states that user or group policies outrank a tenant-wide policy; licensing is now included per Microsoft's Copilot Dashboard licensing table; roles note added."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 90 statements confirmed"
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 90 statements not yet confirmed"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "verified-with-gaps"
+  date: "2026-11-20"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
@@ -199,4 +201,11 @@ Other settings documented on the same Learn page, with no row because only part 
 risk: Medium. Microsoft Learn says the Agent Dashboard is on by default as part of the Viva Insights web app and reports agent activity by agent and by group, so leaders see usage data unless an admin sets a policy.
 cost: Low. The Learn page lists at least 50 Microsoft Copilot licences as the requirement and states no price for the dashboard itself; the known cost is admin and communication time. The dashboard reports Copilot Credit usage but is not itself described as a meter.
 impact: Medium. Leaders, delegates, analysts and Global administrators are the audience, and people with agent activity are counted in the group and agent figures they see.
+-->
+
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance controls: first row / admin-path: Agent Dashboard policies are reached in Microsoft 365 admin center through Settings > Microsoft Viva > Viva Insights > Set up and management > Access Management > Turn Advanced Insights on or off > Agent Dashboard > Add policy. | Found: Under Access Management, select Turn Advanced Insights on or off. 3. On the Feature access management page, select Agent Dashboard and Add policy. | Fix: Include the page heading: Settings > Microsoft Viva > Viva Insights > Set up and management > Access Management > Turn Advanced Insights on or off > Feature access management > Agent Dashboard > Add policy. The missing heading does not require an intervening selection. | Source: https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard
+- [supported, minor] controls[1].ui; controls[1].note; Governance controls: second row / admin-path: Individual and group web-app access assignments are managed under Settings > Microsoft Viva > Viva Insights > Set up and management > Microsoft Copilot Dashboard > Manage access settings for Microsoft Copilot Dashboard. | Found: Under Microsoft Copilot Dashboard, select Manage access settings for Microsoft Copilot Dashboard. | Fix: Retain the existing path and complete it with '> Users or Groups > user or group > Add' for new access; for removal use '> Users or Groups > existing user or group > Remove selected users or Remove selected groups'. The existing route stops on the correct access-management page. | Source: https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard
 -->

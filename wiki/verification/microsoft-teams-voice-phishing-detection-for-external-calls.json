@@ -1,0 +1,542 @@
+{
+  "slug": "microsoft-teams-voice-phishing-detection-for-external-calls",
+  "roadmapId": 580443,
+  "title": "Microsoft Teams: voice phishing detection for external calls",
+  "status": "held",
+  "date": "2026-11-20",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-20",
+    "reasons": [
+      "2 blocking findings (claims 21, 31)"
+    ]
+  },
+  "counts": {
+    "claims": 41,
+    "confirmed": 38,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 2,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "Hold: the briefing treats a PowerShell parameter's default as confirmation that alerts will automatically reach users at release, which Microsoft has not stated. Its call-reporting advice also omits the documented licensing and reporting-setting prerequisites.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "Microsoft plans voice phishing detection for one-to-one Teams calls with people outside the user's organisation.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Voice phishing detection helps protect Microsoft Teams users from potential scams during one-to-one calls with people outside their organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "The planned feature uses AI to analyse conversations for signs of social engineering.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Using AI, Teams analyzes conversations for signs of social engineering",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Why it matters; rationale: impact",
+      "type": "record",
+      "claim": "Recipients are alerted when suspicious activity is detected.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "alerts recipients when suspicious activity is detected",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes helping the recipient decide how to proceed, rather than an autonomous response.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "helping them recognize potential threats and decide how to proceed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: targetDate; summary; What's changing; Cost and licensing; Scope; changes",
+      "type": "record",
+      "claim": "December CY2026 is the roadmap target, not a commitment.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2026\", \"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The listed release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in this roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists Android, Desktop, iOS, Mac and Mobile.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Mobile\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "The VoicePhishingDetection reference describes AI-based detection during live inbound Teams calls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy",
+      "quote": "The Voice Phishing Detection policy enables AI-based detection of voice phishing (vishing) attempts during live inbound Microsoft Teams calls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[0].note; What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "BannerAndAudio produces both visual and voice alerts when a voice phishing attempt is detected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy",
+      "quote": "BannerAndAudio: Both visual and voice alerts when a voice phishing attempt is detected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[0].note; What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Banner is an allowed value giving a visual alert only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy",
+      "quote": "Banner: Visual alert only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[0].note; What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Audio is an allowed value giving a voice alert only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy",
+      "quote": "Audio: Voice alert only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[0].note; What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "None is an allowed value specifying no alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy",
+      "quote": "None: No alerts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[0].note; What's changing; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The reference lists BannerAndAudio as the parameter's default value.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy",
+      "quote": "| Default value: | BannerAndAudio |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "summary; controls[0].note; What's changing; Why it matters; Scope; Governance controls; changes",
+      "type": "behaviour",
+      "claim": "Microsoft says the feature has not been fully released and the setting currently has no effect, including when set to None.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy",
+      "quote": "This feature has not been fully released yet, so the setting will have no effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "MicrosoftTeams PowerShell documents Set-CsTeamsCallingPolicy -Identity <policy name> -VoicePhishingDetection None to select the no-alert mode, subject to the unreleased-feature caveat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy",
+      "quote": "Use this cmdlet to update values in existing Teams Calling Policies.\n[-Identity] <string>\n[-VoicePhishingDetection <String>]\nNone: No alerts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0].note; Scope",
+      "type": "command",
+      "claim": "New-CsTeamsCallingPolicy also has the VoicePhishingDetection parameter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/new-csteamscallingpolicy",
+      "quote": "### -VoicePhishingDetection\n\nThe Voice Phishing Detection policy enables AI-based detection of voice phishing (vishing) attempts during live inbound Microsoft Teams calls.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/powershell/module/microsoftteams/new-csteamscallingpolicy to sources for the statement that New-CsTeamsCallingPolicy has this parameter."
+    },
+    {
+      "n": 20,
+      "where": "controls[0].ui; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No Teams admin center setting or label for the voice phishing alert modes is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"VoicePhishingDetection\" \"Teams admin center\"; opened Calling policies in Teams and Teams settings and policies reference, searched the latter for phishing/Scam, and read Set-CsTeamsCallingPolicy. No UI setting found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "The feature is on by default and users should expect warnings automatically at release unless their calling policy says otherwise.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"voice phishing\" \"default\" Teams; \"VoicePhishingDetection\" tenant switch group assignment default. Read Set-/New-CsTeamsCallingPolicy: BannerAndAudio is a parameter default, but the setting has no effect yet; automatic release activation is not stated.",
+      "severity": "blocker",
+      "fix": "Set defaultState to unknown. Replace the first paragraph of Why it matters with: 'Microsoft lists BannerAndAudio as the parameter default, but says the setting currently has no effect. Microsoft has not stated whether alerts will automatically reach users when the feature is released.'"
+    },
+    {
+      "n": 22,
+      "where": "front matter: licensing.model and licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Licensing is unknown because no feature-specific entitlement has been published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/user-access",
+      "quote": "Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
+      "severity": "minor",
+      "fix": "Set licensing.model to included under the standard's product-level licensing rule. Replace the licensing notes and first sentence of Cost and licensing with: 'Users need a Microsoft Teams license to use Teams. Microsoft has not published an additional licence requirement specific to voice phishing detection.' Cite https://learn.microsoft.com/microsoftteams/user-access."
+    },
+    {
+      "n": 23,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No licence requirement specific to voice phishing detection is published in the checked Microsoft material.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams voice phishing detection external calls license Teams Premium meter. Read Set-CsTeamsCallingPolicy, Teams calling overview, Manage Teams licenses and licensing search excerpts. No feature-specific licence requirement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not published a price for voice phishing detection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams VoicePhishingDetection voice phishing detection admin center default licensing price retention processing; Teams voice phishing detection external calls license Teams Premium meter. Read the parameter reference and licensing excerpts; no feature price found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published a meter for voice phishing detection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams voice phishing detection external calls license Teams Premium meter. Read Set-CsTeamsCallingPolicy, Teams calling overview and Teams licensing search excerpts; no meter for this feature found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "No dedicated Learn feature page provides further detection mechanics or alert appearance beyond the documented parameter options.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams VoicePhishingDetection voice phishing detection admin center default licensing price retention processing; \"VoicePhishingDetection\" \"Teams admin center\". Read Set-/New-CsTeamsCallingPolicy and reporting documentation; no dedicated detection article found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters; Risk assessment: Data exposure; Governance guidance; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft has not published where or how automatic voice phishing analysis processes call content.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"voice phishing\" \"data\" \"retention\". Read Set-/New-CsTeamsCallingPolicy and privacy search excerpts. Security-report privacy describes submitted reports, not the location or processing mechanism of automatic voice phishing detection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters; Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not published what automatic voice phishing analysis retains.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"voice phishing\" \"data\" \"retention\". Read parameter references and excerpts on security-report privacy and Teams retention; none specifies retained data from automatic voice phishing analysis.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not published whether automatic voice phishing detection results are logged or exposed to administrators.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams VoicePhishingDetection voice phishing detection admin center default licensing price retention processing; \"Teams\" \"voice phishing\" \"data\" \"retention\". Read parameter references, calling overview and reporting page; no automatic-detection logging documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "The feature is described as warning the recipient, rather than blocking or ending the call.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "alerts recipients when suspicious activity is detected, helping them recognize potential threats and decide how to proceed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "Users can report suspicious calls as a security concern without any stated entitlement or reporting-setting qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-teams-calling",
+      "quote": "In organizations with Microsoft Defender for Office 365 Plan 2 or Microsoft Defender XDR, admins can decide whether users can report malicious or suspicious calls in Microsoft Teams.",
+      "severity": "blocker",
+      "fix": "Qualify the reporting statement with: 'In organisations with Microsoft Defender for Office 365 Plan 2 or Microsoft Defender XDR, users can report suspicious calls when Report call is enabled in the Teams calling policy. Reporting must also be enabled in the Defender portal for reported calls to show up correctly.' Change the At rollout reminder to begin 'Where call reporting is enabled,'."
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The reporting documentation describes reporting a call marked Scam Suspected as not a security concern.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-teams-calling",
+      "quote": "In the Teams call history, locate the call that incorrectly flagged as \"Scam Suspected\".\nHover over the call without selecting it.\nSelect **...** > **Report as not a security concern**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity; sources",
+      "type": "availability",
+      "claim": "The end user reporting page is marked Preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/end-user-reporting-teams-calling",
+      "quote": "# End user reporting for Teams Calling (Preview)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Microsoft has not explicitly linked the Scam Suspected call-history flag to voice phishing detection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"voice phishing\" \"Scam Suspected\" Teams. Read End user reporting for Teams Calling and Set-/New-CsTeamsCallingPolicy; the reporting article does not identify voice phishing detection as the flag's source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope: Policy; Governance controls",
+      "type": "applicability",
+      "claim": "VoicePhishingDetection is configured per calling policy, and calling policies determine users' calling and forwarding features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy",
+      "quote": "The Teams Calling Policy controls which calling and call forwarding features are available to users in Microsoft Teams. This cmdlet allows admins to set values in a given Calling Policy instance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Learn describes calling policies as applicable at global, group and user levels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/cloud-voice-landing-page",
+      "quote": "Policies can be applied at a global, group, and user level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The parameter's reference does not explain an interaction specific to group-level assignment.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"VoicePhishingDetection\" tenant switch group assignment default. Read the VoicePhishingDetection section of Set-CsTeamsCallingPolicy and Calling policies in Teams; no parameter-specific group-assignment interaction is given.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "No separate tenant-wide voice phishing switch is documented apart from the calling policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"VoicePhishingDetection\" tenant switch group assignment default; \"VoicePhishingDetection\" \"Teams admin center\". Read Set-/New-CsTeamsCallingPolicy, Calling policies in Teams and settings-reference search matches; no separate switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope: Users; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not reconciled the roadmap's external-call description with the reference's inbound-call description or explicitly confirmed outbound coverage.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"voice phishing\" \"outbound\" Teams. Read the roadmap record and Set-/New-CsTeamsCallingPolicy; results do not clarify outbound coverage or reconcile the two scope descriptions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Voice > Calling policies in the Teams admin center opens the calling policies page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-calling-policy",
+      "quote": "In the left navigation of the Microsoft Teams admin center, select **Voice** > **Calling policies**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist asks administrators to take stock of existing calling policies and assignments, but the controls table contains only the alert-mode parameter.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review which calling policies exist and which users hold them (Voice > Calling policies in the Teams admin center)\n[The sole control row governs] Which alert mode users get for suspected voice phishing on calls",
+      "severity": "minor",
+      "fix": "Remove the first Before rollout checklist bullet about taking stock of calling policies and user assignments; that inventory step has no corresponding control row."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-20T10:12:54.791Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 0,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=580443",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/end-user-reporting-teams-calling",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/teams-calling-policy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/cloud-voice-landing-page",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/settings-policies-reference",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which alert mode users get for suspected voice phishing on calls",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy",
+        "reachable": true,
+        "token": "Set-CsTeamsCallingPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

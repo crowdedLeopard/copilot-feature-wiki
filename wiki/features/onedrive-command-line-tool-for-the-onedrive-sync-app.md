@@ -51,15 +51,17 @@ changes:
     note: "First briefing: odcli is known only from the roadmap item; no Learn page, control, default or odcli-specific licence is published yet."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 44 statements confirmed"
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 53 statements confirmed"
 version: 1
 verification:
   status: "verified"
-  date: "2026-11-18"
+  date: "2026-11-20"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 44
-  confirmed: 44
+  claims: 53
+  confirmed: 53
   unconfirmed: 0
   contradicted: 0
   attempts: 0
