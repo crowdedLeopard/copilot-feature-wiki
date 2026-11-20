@@ -43,6 +43,9 @@ sources:
   - title: "Microsoft Purview service description"
     url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
     kind: "learn"
+  - title: "Local AI agent discovery with Microsoft Defender for Endpoint"
+    url: "https://learn.microsoft.com/defender-endpoint/local-agent-discovery-overview"
+    kind: "learn"
 videos: []
 related: ["microsoft-purview-endpoint-data-loss-prevention-policy-sync-and-device-health-ai-powered-i","microsoft-purview-endpoint-data-loss-prevention-view-only-access-to-device-onboarding-with","microsoft-purview-data-loss-prevention-for-microsoft-cowork","purview-dlp-block-sensitive-data-in-copilot-web-search","microsoft-purview-purview-sdk-embedded-in-agent-framework-sdk"]
 controls:
@@ -61,7 +64,7 @@ controls:
     scope: "other"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Settings > Device onboarding > Devices"
+      path: "Settings > Device onboarding > Devices > device"
       docs: "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync"
     api:
       kind: "other"
@@ -82,19 +85,23 @@ changes:
     note: "New briefing: roadmap item 577862, Endpoint DLP controls for local AI agents, targeted for Preview in January CY2027."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 43 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Correction: replaced the claim that devices not showing Updated receive no policies, with what Learn says about onboarding and sync status; added the device path step and a source for local agents."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 47 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 43
-  confirmed: 42
+  claims: 47
+  confirmed: 47
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "92fcc772a2269c2cf87e8f61e156052f"
+  contradicted: 0
+  attempts: 0
+  hash: "2c59180d1fe061fc23d9476dac3eacf8"
 ---
 
 ## What's changing
@@ -115,7 +122,7 @@ Microsoft has not stated what happens on arrival, so no source says existing DLP
 
 **Data exposure**
 - The roadmap item says policies would apply to prompts, files and tool interactions, but only "at supported interaction points". Agent activity outside those points is not covered, and Microsoft has not published the list.
-- Devices that are not onboarded to Endpoint DLP, or whose policy sync status is not Updated, would not receive policies, so check device health before relying on any agent control.
+- Devices must be onboarded to use Endpoint DLP. A policy sync status of Updated confirms receipt of the latest policy version; other statuses require investigation and do not by themselves establish that no policy is enforced.
 
 **Security & identity**
 - Microsoft has not stated which account or component evaluates agent interactions, so confirm this with Microsoft before designing exceptions or monitoring around it.
@@ -143,7 +150,7 @@ Rollout: the roadmap item gives a Preview target of January CY2027 and a target 
 ## Governance guidance
 
 ### Before rollout
-- Check which devices are onboarded and whether their policy sync status reads Updated, in Microsoft Purview portal > Settings > Device onboarding > Devices.
+- Check which devices are onboarded and whether their policy sync status reads Updated, in Microsoft Purview portal > Settings > Device onboarding > Devices > device.
 - Identify which people run local AI agents on those devices, so that a pilot group can be chosen when the feature appears.
 - Confirm who in your organisation belongs to the role groups that can create and deploy DLP policies.
 
@@ -163,7 +170,7 @@ Rollout: the roadmap item gives a Preview target of January CY2027 and a target 
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Where an Endpoint DLP policy applies (the Devices location)</strong><br><small>Tenant</small><br><small class="controls__note">Today's route for Endpoint DLP policies. Learn does not yet say agent protection is set here. Creating a policy needs a role group such as Compliance administrator.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › Create policy › Enterprise applications &amp; devices › Custom › Custom policy › Devices <a href="https://learn.microsoft.com/purview/endpoint-dlp-create-policy-device-scoping" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpCompliancePolicy -Name &lt;String&gt; -EndpointDlpLocation &lt;MultiValuedProperty&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Per-device Endpoint DLP policy sync status</strong><br><small class="controls__note">Read-only. The API side is an Advanced hunting query in the Microsoft Defender portal, not a call that changes policy.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Device onboarding › Devices <a href="https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>DeviceInfo | where DlpInfo != &quot;&quot;</code> <a href="https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Per-device Endpoint DLP policy sync status</strong><br><small class="controls__note">Read-only. The API side is an Advanced hunting query in the Microsoft Defender portal, not a call that changes policy.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Device onboarding › Devices › device <a href="https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>DeviceInfo | where DlpInfo != &quot;&quot;</code> <a href="https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which local AI agents and interaction points an Endpoint DLP policy covers</strong><br><small>Agent</small><br><small class="controls__note">No agent-specific Endpoint DLP setting is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -174,7 +181,7 @@ The device sync row shows whether a device has the latest policy version; it is 
 
 ## Open questions
 
-- Which local AI agents and which interaction points will be supported when Preview starts in January CY2027? Watch the Learn Endpoint DLP pages and Message center.
+- Which local AI agents and which interaction points will be supported for the Preview targeted for January CY2027? Watch the Learn Endpoint DLP pages and Message center.
 - Is the feature on or off by default, and does it need any new setting beyond existing Endpoint DLP policies and device onboarding?
 - Will the agent controls need a licence beyond the plans the Purview service description lists for Endpoint DLP?
 - Which operating systems does the feature cover, given the roadmap lists the platform as Web and Learn describes Endpoint DLP for Windows and macOS?
@@ -186,12 +193,8 @@ cost: Low. Learn lists Endpoint DLP as included in Microsoft 365 E5 and other na
 impact: Medium. People who run supported local AI agents on Endpoint DLP devices would notice blocked prompts, files or tool calls. Admins who manage DLP policies configure it.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure, second bullet / behaviour: Devices whose policy sync status is not Updated would not receive policies. | Found: However, the outdated policy that exists on the offline device will still be enforced. | Fix: Replace the bullet with: 'Devices must be onboarded to use Endpoint DLP. A policy sync status of Updated confirms receipt of the latest policy version; other statuses require investigation and do not by themselves establish that no policy is enforced.' The sync reference also says Not available can mean device properties are unavailable: https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync. | Source: https://learn.microsoft.com/purview/endpoint-dlp-learn-about
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: previewDate; summary; What's changing; Scope; Open questions; changes / record: The roadmap Preview target is January CY2027. | Found: "previewDate": "January CY2027" | Fix: In the first Open questions bullet, replace 'when Preview starts in January CY2027' with 'for the Preview targeted for January CY2027'.
-- [supported, minor] Why it matters; rationale: risk / behaviour: Local AI agents run on users' devices. | Found: Defender discovers local AI agents on Windows and macOS endpoints. This includes agents that run from the command line, desktop apps, agentic IDEs, VS Code extensions, and Claw-based local agent implementations. | Fix: Add https://learn.microsoft.com/defender-endpoint/local-agent-discovery-overview to sources for the statement that local agents run on endpoint devices; do not imply its discovery coverage establishes DLP coverage. | Source: https://learn.microsoft.com/defender-endpoint/local-agent-discovery-overview#supported-local-ai-agents-and-mcp-server-configurations
-- [supported, minor] controls[1].ui; Governance guidance: Before rollout / admin-path: Per-device policy sync status is reached through Microsoft Purview portal > Settings > Device onboarding > Devices. | Found: Sign in to the Microsoft Purview portal > Settings (gear icon in the upper right corner) > Device onboarding > Devices. ... Select a device to open the details pane for more information on the policy sync status. | Fix: Extend controls[1].ui.path and the repeated guidance path to 'Settings > Device onboarding > Devices > device'. The source continues by selecting a device to open its policy sync status details. | Source: https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync
+- [supported, minor] controls[0].ui / admin-path: The printed Purview policy-creation route reaches the Devices location. | Found: Select the Custom from the Categories then Custom policy template from Regulations. Select Next. 5. Give your new policy a Name and Description. 6. Accept the default Full directory under Admin units. 7. Scope the location to only the Devices location. | Fix: Add the omitted category and regulation headings to controls[0].ui.path and its rendered table path: 'Data loss prevention > Policies > Create policy > Enterprise applications & devices > Categories > Custom > Regulations > Custom policy > Devices'. | Source: https://learn.microsoft.com/purview/endpoint-dlp-create-policy-device-scoping
 -->

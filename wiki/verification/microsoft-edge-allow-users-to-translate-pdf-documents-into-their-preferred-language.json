@@ -1,0 +1,643 @@
+{
+  "slug": "microsoft-edge-allow-users-to-translate-pdf-documents-into-their-preferred-language",
+  "roadmapId": 577180,
+  "title": "Microsoft Edge: translate whole PDF documents in the built-in PDF viewer",
+  "status": "verified-with-gaps",
+  "date": "2026-11-20",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 50,
+    "confirmed": 49,
+    "unconfirmed": 1,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 1,
+    "minor": 2
+  },
+  "summary": "The roadmap facts and the TranslateEnabled control are supported, including the registry settings flagged by the pre-check. The sources do not explicitly confirm that the original PDF stays open, and Microsoft publishes conflicting mobile policy version numbers; neither finding changes the documented administrative control.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; rationale: risk",
+      "type": "record",
+      "claim": "Microsoft plans whole-document PDF translation in Edge's native PDF viewer.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users will be able to translate full PDF documents directly within the native PDF viewer in Microsoft Edge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The planned PDF translation lets users access the document in their preferred language.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The translated document opens in a new tab, making it easier to access content in their preferred language.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing; Risk assessment; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "The roadmap says the translated document opens in a new tab.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The translated document opens in a new tab, making it easier to access content in their preferred language.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing; controls[0].governs; Governance controls; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap identifies TranslateEnabled as the administrative control for whole-PDF translation availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Admins can control availability to this feature using the TranslateEnabled policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: targetDate; summary; What's changing; changes",
+      "type": "record",
+      "claim": "January CY2027 is the roadmap target, not a committed delivery date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The listed release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists platform Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Edge.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Edge\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap record does not list a US Government cloud.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-10-27T23:05:02.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-27T23:05:02\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Group Policy setting is Administrative Templates > Microsoft Edge > Enable Translate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/translateenabled",
+      "quote": "GP name: Enable Translate\n- GP path (Mandatory): Administrative Templates/Microsoft Edge",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "TranslateEnabled is a REG_DWORD value at SOFTWARE\\Policies\\Microsoft\\Edge and the macOS preference key is TranslateEnabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/translateenabled",
+      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge\n- Path (Recommended): SOFTWARE\\Policies\\Microsoft\\Edge\\Recommended\n- Value name: TranslateEnabled\n- Value type: REG\\_DWORD\n\nPreference Key name: TranslateEnabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[0].scope; controls[0].note; Governance controls table",
+      "type": "applicability",
+      "claim": "TranslateEnabled applies per profile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/translateenabled",
+      "quote": "Per Profile: Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0].note; Risk assessment: Security & identity; Governance controls",
+      "type": "applicability",
+      "claim": "TranslateEnabled does not apply to a profile signed in with a Microsoft account, including such profiles on managed devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/translateenabled",
+      "quote": "Applies to a profile that is signed in with a Microsoft account: No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[0].note; Why it matters; Governance guidance: At rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Disabling TranslateEnabled turns off all built-in translate features rather than just PDF translation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/translateenabled",
+      "quote": "You can disable this policy to disable all built-in translate features.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn already documents translating selected PDF text through the PDF toolbar and right-click context menu.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/translateenabled",
+      "quote": "Users can also translate selected text on a webpage via the right-click context menu, or on a PDF via the PDF toolbar and the right-click context menu.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "TranslateEnabled can be mandatory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/translateenabled",
+      "quote": "Can be mandatory: Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "TranslateEnabled can be recommended.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/translateenabled",
+      "quote": "Can be recommended: Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Users can override the recommended policy value.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/translateenabled",
+      "quote": "GP path (Recommended): Administrative Templates/Microsoft Edge - Default Settings (users can override)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Governance guidance: Before rollout; Cost and licensing",
+      "type": "default",
+      "claim": "The existing TranslateEnabled policy is enabled by default when not configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/translateenabled",
+      "quote": "If you don't configure this policy, the policy is enabled by default. Users can choose whether to use the translation functionality or not.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: defaultState; What's changing; Why it matters; Open questions; rationale: impact",
+      "type": "absence",
+      "claim": "Microsoft has not stated the whole-document feature's arrival default or that existing behaviour will automatically change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge whole PDF translation default enabled version channel release January 2027. Read roadmap, TranslateEnabled, PDF reader and Edge release-note excerpts; the existing policy default is stated, but the whole-document rollout default is not.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: licensing.model and notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "No licence requirement or entitlement for this whole-PDF translation feature is published in the searched Microsoft sources.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge full PDF document translation license pricing meter subscription requirements; Microsoft Edge for Business licensing requirements free browser translation PDF. Read roadmap, PDF reader, TranslateEnabled and business licensing excerpts; none names translation entitlement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "A price for Edge whole-PDF translation is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge full PDF document translation license pricing meter subscription requirements. Read PDF reader and TranslateEnabled; pricing excerpts concern SharePoint/OneDrive document processing, not Edge's native PDF translation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "A meter for Edge whole-PDF translation is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge full PDF document translation license pricing meter subscription requirements. Read PDF reader, TranslateEnabled and document-processing billing excerpts; no passage connects those meters to Edge PDF translation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Scope",
+      "type": "absence",
+      "claim": "Learn does not yet describe the planned whole-document PDF translation feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge whole PDF document translation full document TranslateEnabled licensing price file size limits default rollout protected PDF. Opened TranslateEnabled and PDF reader; only selected-text PDF translation is described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters; Risk assessment: Data exposure; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "How the whole PDF is processed or sent during translation is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge PDF translation privacy processing protected encrypted MIP IRM file size limits. Read PDF reader, TranslateEnabled and privacy Translate section; searched privacy text for PDF. Webpage processing is documented, not whole-PDF processing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Whether whole-PDF translation is offered for MIP- or IRM-protected files is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge PDF translation privacy processing protected encrypted MIP IRM file size limits. Read PDF reader Protected PDFs and TranslateEnabled; neither describes translation of protected files. OneDrive encryption limits concern a different feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The Edge PDF reader supports opening Microsoft Purview Information Protection protected PDFs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-pdf",
+      "quote": "These files can be opened directly in the browser, without the need to download any other software, or install any add-in.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Edge can open PDFs in IRM-protected SharePoint libraries natively.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-pdf",
+      "quote": "In addition to MIP protected files, PDF files in Information Rights Management (IRM) protected SharePoint libraries can also be opened natively in the browser.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The built-in Edge PDF reader works across Windows and macOS desktop platforms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-pdf",
+      "quote": "The Microsoft Edge PDF reader is a secure and reliable application that works across the Windows and macOS desktop platforms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The TranslateEnabled reference lists Windows version 77 or later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/translateenabled",
+      "quote": "Windows: ≥ 77",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The TranslateEnabled reference lists macOS version 77 or later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/translateenabled",
+      "quote": "macOS: ≥ 77",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The TranslateEnabled reference lists Android version 30 or later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/translateenabled",
+      "quote": "Android: ≥ 30",
+      "severity": "minor",
+      "fix": "After the policy-version sentence add: 'The separate mobile policy reference lists TranslateEnabled support on Android since version 109, rather than 30 (https://learn.microsoft.com/deployedge/microsoft-edge-mobile-policies#additional-policies).' Alternatively remove the Android version clause."
+    },
+    {
+      "n": 37,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The TranslateEnabled reference lists iOS version 84 or later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/translateenabled",
+      "quote": "iOS: ≥ 84",
+      "severity": "minor",
+      "fix": "After the policy-version sentence add: 'The separate mobile policy reference lists TranslateEnabled support on iOS and iPadOS since version 109, rather than 84 (https://learn.microsoft.com/deployedge/microsoft-edge-mobile-policies#additional-policies).' Alternatively remove the iOS version clause."
+    },
+    {
+      "n": 38,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "The Edge version that will carry whole-PDF translation is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge whole PDF translation default enabled version channel release January 2027. Read PDF reader version table, TranslateEnabled and Edge release-note excerpts; none gives a version for whole-PDF translation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "The release channel for whole-PDF translation is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge whole PDF translation default enabled version channel release January 2027. Read roadmap, PDF reader, TranslateEnabled and release-note excerpts; no whole-PDF translation channel is specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Rollout mechanics beyond the roadmap target are not published for whole-PDF translation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge whole PDF translation default enabled version channel release January 2027. Read roadmap, PDF reader, TranslateEnabled and release-note excerpts; no whole-PDF rollout procedure or window is given.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Feature-specific prerequisites for whole-PDF translation are not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge whole PDF document translation full document TranslateEnabled licensing price file size limits default rollout protected PDF. Read PDF reader prerequisites and TranslateEnabled; neither lists prerequisites for whole-document translation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Webpage translation sends the webpage text to Microsoft Translator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/legal/microsoft-edge/privacy",
+      "quote": "If you do decide to translate a webpage, Microsoft Edge sends the following data to Microsoft Translator, over a secure HTTPS connection:\n\n- The text of the webpage that you want to translate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The webpage translation data includes the to and from language.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/legal/microsoft-edge/privacy",
+      "quote": "The *to* and *from* language.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The webpage translation data includes a service token.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/legal/microsoft-edge/privacy",
+      "quote": "A service token, which doesn't contain any user identifiable information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The documented translation service requires network reachability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-edge/experience/edge-translate-not-working",
+      "quote": "Microsoft Edge shows the automatic translate panel only when all of the following conditions are true:\n\nEdge can reach the Microsoft translation service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The Learn troubleshooting page says a managed policy or blocked network path can disable webpage translation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-edge/experience/edge-translate-not-working",
+      "quote": "A third-party extension, a managed policy, or a blocked network path can disable translation for every site.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance guidance: Before rollout; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Administrators can inspect TranslateEnabled at edge://policy, and its absence there means it is not configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-edge/experience/edge-translate-not-working",
+      "quote": "Go to `edge://policy`, and check the TranslateEnabled policy:\n\n- If the policy isn't listed, it isn't configured, and the translate features are enabled by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "The edge://policy page offers Reload policies to refresh policy changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/troubleshoot/microsoft-edge/experience/edge-translate-not-working",
+      "quote": "Select **Reload policies** on the `edge://policy` page, and then restart Microsoft Edge so that any policy change takes effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The roadmap explicitly describes the original document staying in its own tab after translation.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Microsoft Edge translate full PDF new tab original document remains open. Read roadmap description, PDF reader and TranslateEnabled; the roadmap specifies a new tab for the translated document but does not state what happens to the original tab.",
+      "severity": "major",
+      "fix": "Replace the bullet with: 'Brief users that the translated PDF opens in a new tab, as the roadmap item describes.'"
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes users translating documents, without describing a new autonomous action.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users will be able to translate full PDF documents directly within the native PDF viewer in Microsoft Edge. The translated document opens in a new tab, making it easier to access content in their preferred language.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-20T12:01:45.934Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=577180",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/translateenabled",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-pdf",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/legal/microsoft-edge/privacy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/troubleshoot/microsoft-edge/experience/edge-translate-not-working",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether Edge offers its built-in translate features, which the roadmap names as the control for PDF translation",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/translateenabled",
+        "reachable": true,
+        "segments": [
+          "Administrative Templates",
+          "Microsoft Edge",
+          "Enable Translate"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether Edge offers its built-in translate features, which the roadmap names as the control for PDF translation",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/translateenabled",
+        "reachable": true,
+        "token": "Registry: SOFTWARE\\Policies\\Microsoft\\Edge,",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

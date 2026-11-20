@@ -1,0 +1,671 @@
+{
+  "slug": "microsoft-teams-decline-a-call-with-a-message-on-mobile",
+  "roadmapId": 577176,
+  "title": "Microsoft Teams: decline an incoming mobile call with a message",
+  "status": "held",
+  "date": "2026-11-20",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-20",
+    "reasons": [
+      "1 blocking finding (claim 15)"
+    ]
+  },
+  "counts": {
+    "claims": 52,
+    "confirmed": 51,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 0
+  },
+  "summary": "Hold: the calling-policy admin path omits the required Edit step after selecting a policy. The rollout, automatic availability, licensing context and feature behaviour are otherwise supported by Microsoft's supplied notice, roadmap record and calling documentation.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; title",
+      "type": "record",
+      "claim": "Microsoft Teams mobile users can decline an incoming call and send a predefined message at the same time.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users can quickly decline an incoming Teams call and send a predefined message to the caller at the same time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: platforms; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Android and iOS.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"iOS\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is December CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-29T23:01:00.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-29T23:01:00\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; Why it matters",
+      "type": "record",
+      "claim": "Microsoft says no admin action is required before rollout.",
+      "status": "supported",
+      "source": "Message Center post MC1540349",
+      "quote": "No admin action is required before rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: defaultState; Why it matters; Scope; rationale: impact",
+      "type": "default",
+      "claim": "The default state is on because the feature becomes available automatically to eligible users.",
+      "status": "supported",
+      "source": "Message Center post MC1540349",
+      "quote": "The feature will become available automatically as it rolls out to eligible users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "All users licensed for Teams can make calls to other Teams users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/cloud-voice-landing-page",
+      "quote": "All users licensed for Teams can make calls to other Teams users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: licensing.model; Cost and licensing",
+      "type": "licensing",
+      "claim": "The licensing model is included under the existing Teams entitlement for Teams-to-Teams calling.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/cloud-voice-landing-page",
+      "quote": "All users licensed for Teams can make calls to other Teams users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "No licence or charge specific to decline with a message is published at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams mobile decline call Message Custom predefined responses admin policy disable licensing charge minimum version; \"Teams\" \"decline\" \"message\" \"licensing\". Read Teams calling overview and returned Teams Phone/Premium licensing excerpts; none states a feature-specific entitlement or charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Native calls between Teams clients include unlimited calling.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/cloud-voice-landing-page",
+      "quote": "Native calls between Teams clients are processed by Microsoft 365 Teams cloud services and include unlimited calling.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Teams admin center route to the setting is Voice > Calling policies > policy > Make private calls.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-calling-policy",
+      "quote": "In the left navigation of the Microsoft Teams admin center, select Voice > Calling policies. Select the policy or policies that you want to modify, and then select Edit.",
+      "severity": "blocker",
+      "fix": "Replace the path in controls[0].ui and the rendered table with 'Voice > Calling policies > policy > Edit > Make private calls'. The cited page requires selecting Edit after selecting the policy."
+    },
+    {
+      "n": 16,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsCallingPolicy -Identity <policy name> -AllowPrivateCalling $false disables calling through the selected policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy",
+      "quote": "Set-CsTeamsCallingPolicy\n    [-Identity] <string>\n    [-AllowPrivateCalling <boolean>]\nControls all calling capabilities in Teams. Turning this off will turn off all calling functionality in Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0].scope; controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "The calling control is per calling policy and can cover assigned users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-calling-policy",
+      "quote": "You can assign a policy directly to users, either individually or at scale through a batch assignment (if supported for the policy type), or to a group that the users are members of (if supported for the policy type).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[0].governs; controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Make private calls controls all Teams calling rather than just the new Message option.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-calling-policy",
+      "quote": "Make private calls - This setting controls all calling capabilities in Teams. Turn this setting off to turn off all calling functionality in Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0].note; Governance guidance: After rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Users whose calling policy has Make private calls off cannot receive incoming calls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/cloud-voice-landing-page",
+      "quote": "If the Make private calls setting is turned off in the calling policy, users with that policy can't see the Calls app in their Teams client, can't escalate Chat conversations to audio calls, and can't receive incoming calls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Users whose calling policy has Make private calls off cannot see the Calls app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/cloud-voice-landing-page",
+      "quote": "If the Make private calls setting is turned off in the calling policy, users with that policy can't see the Calls app in their Teams client",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Users whose calling policy has Make private calls off cannot escalate chat conversations to audio calls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/cloud-voice-landing-page",
+      "quote": "users with that policy can't see the Calls app in their Teams client, can't escalate Chat conversations to audio calls, and can't receive incoming calls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "Disabling all incoming calls removes the incoming-call opportunity to use Message.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/cloud-voice-landing-page",
+      "quote": "If the Make private calls setting is turned off in the calling policy, users with that policy can't see the Calls app in their Teams client, can't escalate Chat conversations to audio calls, and can't receive incoming calls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[1]; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no dedicated admin UI or API switch for the mobile decline-with-message option.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"decline\" \"message\" \"calling policy\"; \"Teams\" \"decline\" \"message\" \"PowerShell\". Read Calling policies in Teams and Set-CsTeamsCallingPolicy syntax; no dedicated decline-message setting or parameter appears.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Risk assessment: Change & support; rationale: impact",
+      "type": "record",
+      "claim": "A new Message option appears on the incoming call screen.",
+      "status": "supported",
+      "source": "Message Center post MC1540349",
+      "quote": "Users will see a new Message option on the incoming call screen.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "Microsoft gives the example responses 'Can I call you later?', 'I'm on my way.' and 'Sorry, I can't talk right now.'.",
+      "status": "supported",
+      "source": "Message Center post MC1540349",
+      "quote": "Users can choose a predefined response, such as “Can I call you later?”, “I’m on my way.”, or “Sorry, I can’t talk right now.”",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Selecting a predefined response declines the call.",
+      "status": "supported",
+      "source": "Message Center post MC1540349",
+      "quote": "Selecting a predefined response will decline the call and immediately send the selected message to the caller in Teams chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Risk assessment: Data exposure and Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "Selecting a predefined response immediately sends that response to the caller in Teams chat.",
+      "status": "supported",
+      "source": "Message Center post MC1540349",
+      "quote": "Selecting a predefined response will decline the call and immediately send the selected message to the caller in Teams chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Selecting Custom declines the call.",
+      "status": "supported",
+      "source": "Message Center post MC1540349",
+      "quote": "Users can select Custom to decline the call and open the relevant Teams chat to compose a personalized response.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Selecting Custom opens the relevant Teams chat so the user can compose a personalized response.",
+      "status": "supported",
+      "source": "Message Center post MC1540349",
+      "quote": "Users can select Custom to decline the call and open the relevant Teams chat to compose a personalized response.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The existing accept and decline options do not change.",
+      "status": "supported",
+      "source": "Message Center post MC1540349",
+      "quote": "Existing options to accept or decline an incoming call will not change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing; Scope; Risk assessment: Change & support; Governance guidance",
+      "type": "record",
+      "claim": "The feature applies to eligible Teams-to-Teams calls.",
+      "status": "supported",
+      "source": "Message Center post MC1540349",
+      "quote": "Microsoft Teams mobile users who receive eligible Teams-to-Teams calls and have an associated Teams chat available for the response",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Scope: Prerequisites; Risk assessment: Change & support; Governance guidance",
+      "type": "record",
+      "claim": "An associated Teams chat must be available for the response.",
+      "status": "supported",
+      "source": "Message Center post MC1540349",
+      "quote": "Microsoft Teams mobile users who receive eligible Teams-to-Teams calls and have an associated Teams chat available for the response",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; Scope: Out of scope; Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "PSTN, anonymous and interoperability calls without a corresponding Teams chat are outside the feature.",
+      "status": "supported",
+      "source": "Message Center post MC1540349",
+      "quote": "This capability will not apply to PSTN, anonymous, or interoperability calls where there is no corresponding Teams chat to receive the message.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The response appears in Teams chat so the conversation can continue after declining.",
+      "status": "supported",
+      "source": "Message Center post MC1540349",
+      "quote": "The response will appear in Teams chat so users can continue the conversation after the call is declined.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1540349 was published on 2026-11-05.",
+      "status": "supported",
+      "source": "Message Center post MC1540349",
+      "quote": "Published 2026-11-05; last updated 2026-11-05; Microsoft's end date 2027-01-11",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing; Scope: Rollout; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft's notice says rollout begins in early December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1540349",
+      "quote": "We will begin rolling out in early December 2026 and expect to complete by mid-December 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Scope: Rollout; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft expects rollout to complete by mid-December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1540349",
+      "quote": "We will begin rolling out in early December 2026 and expect to complete by mid-December 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing; Scope: Clouds",
+      "type": "record",
+      "claim": "The Message Center rollout window covers Worldwide, GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "Message Center post MC1540349",
+      "quote": "General Availability (Worldwide, GCC, GCC High, DoD): We will begin rolling out in early December 2026 and expect to complete by mid-December 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn has no feature-specific page for decline with a message at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"decline a call with a message\"; Teams mobile decline call Message Custom predefined responses admin policy disable licensing charge minimum version. Results concern unrelated APIs, licensing and phone mobility; read calling-policy and calling-overview pages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout; Cost and licensing",
+      "type": "record",
+      "claim": "Microsoft recommends informing the help desk and users, particularly frequent mobile Teams callers.",
+      "status": "supported",
+      "source": "Message Center post MC1540349",
+      "quote": "We recommend informing your help desk and users about the new Message option, particularly users who frequently handle Teams calls from their mobile devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Why it matters; Governance guidance: Before rollout; Open questions",
+      "type": "record",
+      "claim": "The notice describes a new way to communicate and asks organisations to review the change as appropriate.",
+      "status": "supported",
+      "source": "Message Center post MC1540349",
+      "quote": "This change provides a new way for users to communicate by allowing a user declining an eligible Teams call to send a predefined or custom message to the caller through Teams chat. Review this change as appropriate for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Autonomy & actions and Security & identity; rationale: risk",
+      "type": "record",
+      "claim": "The user declining the call initiates the response by selecting a predefined message or Custom.",
+      "status": "supported",
+      "source": "Message Center post MC1540349",
+      "quote": "From the incoming call screen, users can select Message and choose a predefined response or select Custom to compose a personalized response in the relevant Teams chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The supplied notice does not describe any new identity or permission.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: identity and permission in supplied MC1540349; read the full notice, including Impact on your organization and Compliance considerations. Neither a new identity nor a new permission is described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The supplied notice does not describe automatic or agent-driven replies.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: automatic and agent in supplied MC1540349; read the full notice. Automatic availability is described, but replies are described only following the user's selection of a predefined response or Custom.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "The notice does not say whether these messages are treated differently by chat retention, eDiscovery or other compliance controls.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: retention and eDiscovery in supplied MC1540349; read the full notice and its Compliance considerations. It asks organisations to review the change but provides no retention, eDiscovery or communication-compliance handling details.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope: Prerequisites",
+      "type": "absence",
+      "claim": "Beyond its stated mobile Teams-to-Teams scope and associated-chat condition, the notice supplies no further prerequisite.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: prerequisite and version in supplied MC1540349; read the full notice. Who is affected names Teams mobile users receiving eligible Teams-to-Teams calls with an associated Teams chat; no further prerequisite is listed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope: Prerequisites",
+      "type": "absence",
+      "claim": "The notice names no admin role for this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: admin role in supplied MC1540349; read the full notice, including Action required and recommendations. No administrator role is named, and the notice says no admin action is required before rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Neither the roadmap record nor MC1540349 names a licence or meter for this option.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: licence, license and meter in roadmap record 577176 and supplied MC1540349; read both in full. Neither specifies a licence or consumption meter for decline with a message.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "The notice does not say whether administrators can edit the predefined responses.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: predefined and Custom in supplied MC1540349; read the full notice. It describes selecting predefined responses and composing a personal Custom reply, not administrator editing of the predefined responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "The notice does not say whether its three predefined-response examples are the complete list.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: predefined in supplied MC1540349; read the full notice. Its response list is introduced with 'such as', and no passage declares that list exhaustive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "The notice does not specify whether the predefined-response list is localised.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: locali in supplied MC1540349; read the full notice. It gives English response examples without describing localisation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "The supplied sources do not specify a minimum Teams mobile app version for this option.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: version in supplied MC1540349 and roadmap record; Teams mobile decline call Message Custom predefined responses admin policy disable licensing charge minimum version. Read both records and returned excerpts; no feature-specific minimum version was stated.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-20T12:01:51.458Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=577176",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1540349",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/teams-calling-policy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/cloud-voice-landing-page",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether users can make and receive Teams calls at all (nearest control; not specific to decline with a message)",
+        "docs": "https://learn.microsoft.com/microsoftteams/teams-calling-policy",
+        "reachable": true,
+        "segments": [
+          "Voice",
+          "Calling policies",
+          "Make private calls"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether users can make and receive Teams calls at all (nearest control; not specific to decline with a message)",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy",
+        "reachable": true,
+        "token": "Set-CsTeamsCallingPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

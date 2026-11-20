@@ -43,6 +43,15 @@ sources:
   - title: "Audit log for Microsoft Sentinel data lake and graph in Microsoft Purview portal"
     url: "https://learn.microsoft.com/azure/sentinel/datalake/auditing-lake-activities"
     kind: "learn"
+  - title: "Working with lists and list items with REST"
+    url: "https://learn.microsoft.com/sharepoint/dev/sp-add-ins/working-with-lists-and-list-items-with-rest"
+    kind: "learn"
+  - title: "Step 3: Expand to your entire Microsoft 365 data estate"
+    url: "https://learn.microsoft.com/purview/deploymentmodels/depmod-secure-by-default-step3"
+    kind: "learn"
+  - title: "Restrict access to content by using sensitivity labels to apply encryption"
+    url: "https://learn.microsoft.com/purview/encryption-sensitivity-labels"
+    kind: "learn"
   - title: "Microsoft 365 Roadmap item 575283"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=575283"
     kind: "roadmap"
@@ -55,8 +64,11 @@ controls:
       surface: "SharePoint (document library)"
       path: "document library > Settings > Library settings > Default sensitivity labels"
       docs: "https://support.microsoft.com/office/54b1602b-db0a-4bcb-b9ac-5e20cbc28089"
-    api: null
-    note: "Set by a site admin. Do not select Extend protection on download, copy, or move, which supports a different scenario."
+    api:
+      kind: "rest"
+      call: "POST https://<site-url>/_api/web/lists(guid'<library-guid>')"
+      docs: "https://learn.microsoft.com/sharepoint/dev/sp-add-ins/working-with-lists-and-list-items-with-rest"
+    note: "Set by a site admin. Do not select Extend protection on download, copy, or move, which supports a different scenario. Updates the library using X-HTTP-Method: MERGE; the request body sets DefaultSensitivityLabelForLibrary."
   - governs: "Tenant-level switch for library default labels"
     scope: "tenant"
     ui: null
@@ -89,19 +101,23 @@ changes:
     note: "Corrected after verification: Learn documents an admin-created auto-labeling policy for existing files, so default is admin-opt-in and cost is medium; licensing, scope and open questions updated."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 62 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-20"
+    note: "Corrected after verification: the library default label control now lists its REST automation (DefaultSensitivityLabelForLibrary) instead of saying none is documented."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 66 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 62
-  confirmed: 60
+  claims: 66
+  confirmed: 64
   unconfirmed: 0
   contradicted: 2
-  attempts: 2
-  hash: "f7ac92cc940bc0dda8d8d37dba1e2317"
+  attempts: 0
+  hash: "ea6af32d47660fc9eeeec5f463e1ff88"
 ---
 
 ## What's changing
@@ -172,7 +188,7 @@ The Learn page for library default labels sets these prerequisites: labels publi
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Default sensitivity label for a SharePoint document library</strong><br><small>Site</small><br><small class="controls__note">Set by a site admin. Do not select Extend protection on download, copy, or move, which supports a different scenario.</small></td><td data-label="Admin UI"><strong>SharePoint (document library)</strong><br>document library › Settings › Library settings › Default sensitivity labels <a href="https://support.microsoft.com/office/54b1602b-db0a-4bcb-b9ac-5e20cbc28089" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Default sensitivity label for a SharePoint document library</strong><br><small>Site</small><br><small class="controls__note">Set by a site admin. Do not select Extend protection on download, copy, or move, which supports a different scenario. Updates the library using X-HTTP-Method: MERGE; the request body sets DefaultSensitivityLabelForLibrary.</small></td><td data-label="Admin UI"><strong>SharePoint (document library)</strong><br>document library › Settings › Library settings › Default sensitivity labels <a href="https://support.microsoft.com/office/54b1602b-db0a-4bcb-b9ac-5e20cbc28089" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST https://&lt;site-url&gt;/_api/web/lists(guid'&lt;library-guid&gt;')</code> <a href="https://learn.microsoft.com/sharepoint/dev/sp-add-ins/working-with-lists-and-list-items-with-rest" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Tenant-level switch for library default labels</strong><br><small>Tenant</small><br><small class="controls__note">Documented for the existing library default feature. Takes about 15 minutes to take effect. Not confirmed to cover labelling of existing files.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -DisableDocumentLibraryDefaultLabeling $true</code> <a href="https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which files were labelled by a library default</strong><br><small>Tenant</small><br><small class="controls__note">Read-only. Look for the Applied sensitivity label file event; the Learn page for library defaults says ActionScourceDetails 6 marks a library default.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Search <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Search-UnifiedAuditLog -StartDate &lt;date&gt; -EndDate &lt;date&gt; -RecordType &lt;ID&gt;</code> <a href="https://learn.microsoft.com/azure/sentinel/datalake/auditing-lake-activities" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -194,11 +210,9 @@ cost: Medium. Learn documents this as service-side auto-labeling, which requires
 impact: Medium. Site admins who set library defaults and people who work in those libraries could see existing files take a label, with any protection that label carries.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls table / absence: Microsoft has not documented automation for setting a document library's default sensitivity label. | Found: For the default library label, set the DefaultSensitivityLabelForLibrary parameter by using REST API on a library. | Fix: Replace the absence with a REST API side: kind 'rest', call "POST https://<site-url>/_api/web/lists(guid'<library-guid>')", docs https://learn.microsoft.com/sharepoint/dev/sp-add-ins/working-with-lists-and-list-items-with-rest. Add to the row note: 'Updates the library using X-HTTP-Method: MERGE; the request body sets DefaultSensitivityLabelForLibrary.' Cite https://learn.microsoft.com/purview/deploymentmodels/depmod-secure-by-default-step3 for that property and add both pages to sources. The REST reference documents this list-update operation; the deployment guide documents using that library property for its default label. | Source: https://learn.microsoft.com/purview/deploymentmodels/depmod-secure-by-default-step3
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure; Why it matters; rationale: impact / behaviour: Sensitivity-label encryption can change who can open a file. | Found: When a document, email, or meeting invite is encrypted, access to the content is restricted ... Can be decrypted only by users authorized by the label's encryption settings. | Fix: Add https://learn.microsoft.com/purview/encryption-sensitivity-labels to sources to support the statement about encryption restricting who can open a file. | Source: https://learn.microsoft.com/purview/encryption-sensitivity-labels
-- [contradicted, minor] Governance guidance: At rollout; controls / consistency: The governance checklist names an auto-labeling policy control that has no row in the controls table. | Found: Select specific SharePoint sites and review simulation results before turning on the auto-labeling policy for existing files. / Table rows: library default sensitivity label; tenant-level switch; which files were labelled. | Fix: The checklist's step to select sites, review simulation and turn on the existing-files auto-labeling policy has no corresponding control row. This is the missing-table-coverage finding; no additional row is required by this correction.
+- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The governance checklist's instruction to configure and review the existing-files auto-labeling policy has no corresponding controls-table row. | Found: Checklist: Select specific SharePoint sites and review simulation results before turning on the auto-labeling policy. Table rows: library default label; tenant-level library-default switch; audit search. | Fix: The checklist step 'Select specific SharePoint sites and review simulation results before turning on the auto-labeling policy for existing files' has no corresponding row in the controls table. This is a coverage finding, not a request to add a row during correction.
+- [contradicted, minor] front matter: risk; rationale: risk / consistency: The medium risk rating does not match the scale's low category for a change that does nothing until an administrator opts in. | Found: risk: medium; defaultState: admin-opt-in. Rationale: Learn documents an administrator-created auto-labeling policy, reviewed in simulation before it is turned on. | Fix: Set risk to low and replace its rationale with: 'Low. Existing files are labelled only after an administrator creates and turns on an auto-labeling policy; review simulation results before enabling it.'
 -->

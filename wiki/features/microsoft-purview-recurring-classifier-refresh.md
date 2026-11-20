@@ -37,6 +37,9 @@ sources:
   - title: "FAQ and reference for endpoint scans"
     url: "https://learn.microsoft.com/purview/endpoints-faq-reference"
     kind: "learn"
+  - title: "Best practices for on-demand classification on endpoints and billing"
+    url: "https://learn.microsoft.com/purview/endpoints-best-practices"
+    kind: "learn"
   - title: "New-SensitiveInformationScan"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-sensitiveinformationscan"
     kind: "learn"
@@ -90,19 +93,23 @@ changes:
     note: "First briefing: roadmap plan for recurring refreshes, with today's on-demand classification scan, billing and controls as background."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 63 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected after verification: Content Explorer timing limited to SharePoint and OneDrive, endpoint no-rebilling conditions added, scan cmdlet wording fixed, and the pilot-scope step now says to confirm support."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 73 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 58
-  unconfirmed: 2
-  contradicted: 3
-  attempts: 1
-  hash: "e88945ec5ce97531b4645fd2a42437fe"
+  claims: 73
+  confirmed: 72
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "2ef22853fdb3ac48527bc31cdddbb6e3"
 ---
 
 ## What's changing
@@ -122,7 +129,7 @@ Microsoft has not stated what happens on arrival, and no source says existing on
 ## Risk assessment
 
 **Data exposure**
-- Today's scans read the content of files in scope (SharePoint, OneDrive and Windows endpoints) to classify it. Results appear in Content Explorer within seven days, and viewing them needs the Content Explorer Content Viewer or Content Explorer List Viewer role group. How a refresh would be scoped is not described.
+- Today's scans read the content of files in scope (SharePoint, OneDrive and Windows endpoints) to classify it. For SharePoint and OneDrive scans, Content Explorer updates within seven days of scanning, and viewing results needs the Content Explorer Content Viewer or Content Explorer List Viewer role group. How a refresh would be scoped is not described.
 
 **Security & identity**
 - Running a scan today requires membership of the Compliance Administrator role group. Which role would create or change a recurring refresh is not yet documented. For SharePoint scans, Learn describes adaptive scopes and administrative units as ways to bound scan scope and delegate it.
@@ -131,7 +138,7 @@ Microsoft has not stated what happens on arrival, and no source says existing on
 - Each scanned file is evaluated against Data Loss Prevention, Information Protection, Data Lifecycle Management and Insider Risk Management policies, and matching policies take their actions. Today an admin reviews the estimate and selects **Start classification**; whether a recurring refresh keeps a review step is not described.
 
 **Change & support**
-- Choosing specific classifiers updates results only for those classifiers, so other classifiers' policies may not trigger. A location in scope of several active scans is processed by only one. Each SharePoint or OneDrive scan can process up to 150,000 locations and 100 million files.
+- Choosing specific classifiers updates results only for those classifiers, so other classifiers' policies may not trigger. For SharePoint and OneDrive, a location in scope of several active scans is processed by only one and marked skipped for the others. Each SharePoint or OneDrive scan can process up to 150,000 locations and 100 million files.
 - Tenants using Exact Data Match (EDM) classifiers should expect scans to rescan previously classified files, which Learn says can increase cost.
 
 ## Cost and licensing
@@ -140,7 +147,7 @@ Microsoft has not stated what happens on arrival, and no source says existing on
 
 **Meter.** The [Purview billing models](https://learn.microsoft.com/purview/purview-billing-models) page lists on-demand classification as pay-as-you-go, with the unit "Asset, based on the number classified per scan" for data in SharePoint and OneDrive. Billing is Azure-based, so the Microsoft 365 tenant must be associated with an active Azure subscription. Usage appears in the Usage center in the Microsoft Purview portal; the page says the billed amount can be lower than the estimate when items or locations are skipped.
 
-**Control.** The Usage center lists On-Demand Classification as pausable ([Manage pay-as-you-go and per-user licensing usage](https://learn.microsoft.com/purview/purview-billing-usage)); that page does not say what a paused feature does to scans already running. For endpoint scans, Learn says estimation is not billed and unchanged files with the same classifiers are not rescanned or billed ([FAQ and reference for endpoint scans](https://learn.microsoft.com/purview/endpoints-faq-reference)).
+**Control.** The Usage center lists On-Demand Classification as pausable ([Manage pay-as-you-go and per-user licensing usage](https://learn.microsoft.com/purview/purview-billing-usage)); that page does not say what a paused feature does to scans already running. For endpoint scans, Learn says estimation is not billed ([FAQ and reference for endpoint scans](https://learn.microsoft.com/purview/endpoints-faq-reference)). On endpoints, unchanged files with unchanged classifiers are not rescanned or billed when the earlier classification used advanced classification and the device has the latest Windows cumulative updates. Recognition is not retroactive: the first scan after the required update establishes the baseline ([Best practices for on-demand classification on endpoints and billing](https://learn.microsoft.com/purview/endpoints-best-practices)).
 
 **Not yet published.** A billing rule or rate specific to recurring refreshes, including whether unchanged content is billed again on each run.
 
@@ -159,7 +166,7 @@ Today's on-demand classification covers SharePoint, OneDrive and Windows 10/11 e
 - Watch Message center and the roadmap item for a Learn page that describes the refresh.
 
 ### At rollout
-- Start any first refresh with a bounded scope, using specific sites or adaptive scopes for SharePoint, and a short list of classifiers.
+- Confirm whether recurring refresh supports specific SharePoint sites, adaptive scopes and classifier selection before choosing a pilot scope.
 - Keep policies you are still testing in simulation, because Learn says other active policies can still act on the scanned files.
 - Record which role group members can create scans so changes to recurring runs have a named owner.
 
@@ -184,7 +191,7 @@ Today's on-demand classification covers SharePoint, OneDrive and Windows 10/11 e
 
 These rows describe today's on-demand classification; none is documented as a control of the recurring refresh. Creating a scan needs the Compliance Administrator role group; the Usage center pages need Global Reader, Security Reader or Global Admin. The Usage center is in preview.
 
-The scan wizard and cmdlet document scope, classifiers, date range and file extensions, but neither documents a schedule. Pausing On-Demand Classification in the Usage center is a billing control, and Learn does not say whether it stops scans already running.
+The scan wizard documents scope, classifiers, date range and file extensions. Neither the wizard nor New-SensitiveInformationScan documents a schedule. Pausing On-Demand Classification in the Usage center is a billing control, and Learn does not say whether it stops scans already running.
 
 ## Open questions
 
@@ -199,14 +206,10 @@ cost: Variable. Today's on-demand classification is metered under pay-as-you-go 
 impact: Low. The people who set it up are compliance administrators; users notice only if policies act on reclassified files, and Microsoft has not described a user-facing change.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Risk assessment: Data exposure / date: Results from the scans just described, including endpoint scans, appear in Content Explorer within seven days. | Found: Searched: '"on-demand classification" "Content Explorer" "seven" endpoints'; opened on-demand-classification and on-demand-classification-endpoints. The seven-day statement is under SharePoint and OneDrive; no endpoint timetable was found. | Fix: Replace 'Results appear in Content Explorer within seven days' with 'For SharePoint and OneDrive scans, Content Explorer updates within seven days of scanning', retaining the existing role requirement. Source: https://learn.microsoft.com/purview/on-demand-classification#additional-considerations.
-- [contradicted, blocker] Cost and licensing: Control / cost: Unchanged endpoint files with the same classifiers are not rescanned or billed, without further qualifications. | Found: Reuse of previously classified verdicts requires that the earlier scan used advanced classification. ... The device has the latest Windows cumulative updates installed. ... Scans completed before this update aren't eligible. | Fix: Replace the endpoint no-rebilling clause with: 'On endpoints, unchanged files with unchanged classifiers are not rescanned or billed when the earlier classification used advanced classification and the device has the latest Windows cumulative updates. Recognition is not retroactive: the first scan after the required update establishes the baseline.' Cite https://learn.microsoft.com/purview/endpoints-best-practices alongside the FAQ. | Source: https://learn.microsoft.com/purview/endpoints-best-practices
-- [contradicted, blocker] Governance controls: final paragraph / command: The scan-creation cmdlet, like the wizard, documents classifier selection, date range and file-extension settings. | Found: New-SensitiveInformationScan "SharePoint scan" -SharePointLocation All New-SensitiveInformationScanRule "SharePoint scan rule" -ContentExtensionMatchesWords "pdf", "docx" -Policy "SharePoint scan" -Workload SharePoint | Fix: Replace 'The scan wizard and cmdlet document scope, classifiers, date range and file extensions, but neither documents a schedule' with 'The scan wizard documents scope, classifiers, date range and file extensions. Neither the wizard nor New-SensitiveInformationScan documents a schedule.' The creation cmdlet's syntax lacks the rule-setting parameters; its example uses a separate New-SensitiveInformationScanRule operation. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-sensitiveinformationscan
-- [unsupported, blocker] Governance guidance: At rollout, first bullet / applicability: A first recurring refresh can be scoped using specific SharePoint sites or adaptive scopes and a selected classifier list. | Found: Searched: 'Purview recurring classifier refresh licensing billing rate roles scope default' and '"recurring classifier refresh" "Purview"'; opened on-demand-classification. Specific sites, classifiers and adaptive scopes are documented for today's scans, not confirmed for recurring refreshes. | Fix: Replace the first At rollout bullet with 'Confirm whether recurring refresh supports specific SharePoint sites, adaptive scopes and classifier selection before choosing a pilot scope.' This keeps the advice without asserting an undocumented control applies.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Change & support / behaviour: A location in scope of several active scans is processed by only one. | Found: Applies to SharePoint and OneDrive ... If a location is in scope of multiple active scans, only one scan processes it successfully and marks it skipped for others. | Fix: Replace the sentence with 'For SharePoint and OneDrive, a location in scope of several active scans is processed by only one and marked skipped for the others.' This preserves the documented workload qualification. | Source: https://learn.microsoft.com/purview/on-demand-classification
-- [contradicted, minor] Governance guidance; Governance controls / consistency: Several checklist controls lack corresponding controls-table rows. | Found: List the active DLP, auto-labeling, retention and Insider Risk Management policies ... Keep policies you are still testing in simulation ... Record which role group members can create scans ... Review the Items for review tab and Content Explorer | Fix: The Before rollout policy-inventory and Azure-subscription-association steps, At rollout simulation-mode and role-group-inventory steps, and After rollout Content Explorer review step have no corresponding control rows. The existing rows cover scan creation, recurrence, usage pausing and scan cancellation only.
+- [supported, minor] Risk assessment: Autonomy & actions; rationale: risk / applicability: Scanned files are evaluated against DLP, Information Protection, Data Lifecycle Management and Insider Risk Management policies. | Found: Files are evaluated against DLP, Microsoft Information Protection (MIP), data lifecycle management (DLM), and insider risk management (IRM) policies simultaneously. | Fix: Add https://learn.microsoft.com/purview/on-demand-classification-endpoints to sources and cite it for endpoint policy evaluation; the already-cited on-demand-classification page gives this statement under SharePoint and OneDrive. | Source: https://learn.microsoft.com/purview/on-demand-classification-endpoints
+- [supported, minor] Risk assessment: Change & support / behaviour: Selecting specific classifiers updates only their results, so other classifiers' policies might not trigger. | Found: Applies to SharePoint and OneDrive ... If you select specific classifiers during a scan, only those classifiers have their classification results updated for the scanned files. | Fix: Replace the sentence with: 'For SharePoint and OneDrive, choosing specific classifiers updates results only for those classifiers, so other classifiers' policies may not trigger.' | Source: https://learn.microsoft.com/purview/on-demand-classification
+- [contradicted, minor] Governance guidance: Before rollout; At rollout; Governance controls / consistency: Every control the governance checklist asks readers to review or keep configured appears in the controls table. | Found: List the active DLP, auto-labeling, retention and Insider Risk Management policies ... Keep policies you are still testing in simulation ... Record which role group members can create scans | Fix: Remove the checklist bullets beginning 'List the active DLP', 'Keep policies you are still testing in simulation', and 'Record which role group members'. The controls table has no policy-mode or role-membership review control; retain the documented policy and role facts in the explanatory prose.
 -->

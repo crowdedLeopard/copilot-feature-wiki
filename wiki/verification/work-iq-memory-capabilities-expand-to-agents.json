@@ -2,39 +2,33 @@
   "slug": "work-iq-memory-capabilities-expand-to-agents",
   "roadmapId": 578869,
   "title": "Work IQ: memory profile path in Work IQ MCP for agents",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-20",
-  "version": 4,
+  "version": 5,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-20",
-    "reasons": [
-      "2 blocking findings (claims 37, 40)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 53,
-    "confirmed": 51,
+    "claims": 58,
+    "confirmed": 58,
     "unconfirmed": 0,
-    "contradicted": 2,
-    "blocker": 2,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 4
+    "minor": 0
   },
-  "summary": "Hold: the agent-memory control links to an overview that no longer documents its configuration, and the retention description uses the wrong inactivity trigger. Current documentation measures the 28 days from the last use of a user's memories, not their last interaction with the agent. Historical directions in the briefing's verifier comment were treated as content, not instructions.",
+  "summary": "The briefing passes: its roadmap facts, billing statements and documented control paths are supported. It distinguishes existing memory controls from the planned memory-profile path and appropriately leaves that path's default, specific permissions and governance details open.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing",
+      "where": "title; summary; What's changing; Scope; rationale: risk",
       "type": "record",
-      "claim": "Work IQ introduces the MCP path /memory/me/coreMemories.",
+      "claim": "The planned Work IQ MCP path /memory/me/coreMemories gives authorised agents access to a user's memory profile.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "A new Work IQ MCP path, /memory/me/coreMemories, gives authorized agents access to a user’s memory profile.",
@@ -43,20 +37,9 @@
     },
     {
       "n": 2,
-      "where": "summary; What's changing; Scope; rationale: risk",
+      "where": "What's changing",
       "type": "record",
-      "claim": "Authorized agents can access a user's memory profile.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "gives authorized agents access to a user’s memory profile.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "summary; What's changing",
-      "type": "record",
-      "claim": "The profile enables more personalized and relevant agent assistance.",
+      "claim": "The profile enables more personalised and relevant agent assistance.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "This profile enables agents to provide more personalized and relevant assistance.",
@@ -64,7 +47,7 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 3,
       "where": "summary; What's changing",
       "type": "record",
       "claim": "The launch profile includes Custom Instructions.",
@@ -75,7 +58,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 4,
       "where": "summary; What's changing",
       "type": "record",
       "claim": "The launch profile includes Saved Memories.",
@@ -86,8 +69,8 @@
       "fix": null
     },
     {
-      "n": 6,
-      "where": "What's changing; rationale: risk",
+      "n": 5,
+      "where": "What's changing; Risk assessment; rationale: risk",
       "type": "record",
       "claim": "The launch profile includes relevant work account data.",
       "status": "supported",
@@ -97,8 +80,8 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "summary; What's changing; Why it matters; rationale: risk",
+      "n": 6,
+      "where": "summary; What's changing; Why it matters; Risk assessment; rationale: risk",
       "type": "record",
       "claim": "The launch profile includes memories derived from chat history.",
       "status": "supported",
@@ -108,13 +91,24 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "What's changing; Risk assessment / Change & support",
+      "n": 7,
+      "where": "What's changing; Risk assessment; Governance guidance",
       "type": "record",
-      "claim": "Microsoft plans for the memory profile to evolve.",
+      "claim": "Microsoft plans for the memory profile to evolve over time.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "The memory profile will continue to evolve and improve over time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
       "severity": null,
       "fix": null
     },
@@ -136,18 +130,18 @@
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"clouds\": [\n    \"Worldwide (Standard Multi-Tenant)\"\n  ]",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 11,
-      "where": "front matter: status; What's changing",
+      "where": "front matter: platforms",
       "type": "record",
-      "claim": "The roadmap status is In development.",
+      "claim": "The roadmap platform is Web.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"In development\",\n  \"statusKey\": \"in-development\"",
+      "quote": "\"platforms\": [\"Web\"]",
       "severity": null,
       "fix": null
     },
@@ -158,18 +152,18 @@
       "claim": "The roadmap release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"releasePhase\": [\n    \"General Availability\"\n  ]",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 13,
-      "where": "front matter: platforms",
+      "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap platform is Web.",
+      "claim": "The roadmap supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"platforms\": [\n    \"Web\"\n  ]",
+      "quote": "\"previewDate\": null",
       "severity": null,
       "fix": null
     },
@@ -180,18 +174,18 @@
       "claim": "The roadmap product is Work IQ.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [\n    \"Work IQ\"\n  ]",
+      "quote": "\"products\": [\"Work IQ\"]",
       "severity": null,
       "fix": null
     },
     {
       "n": 15,
-      "where": "front matter: previewDate",
+      "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap states no preview date.",
+      "claim": "The roadmap modification timestamp is 2026-11-05T23:59:28.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"previewDate\": null",
+      "quote": "\"modified\": \"2026-11-05T23:59:28\"",
       "severity": null,
       "fix": null
     },
@@ -199,73 +193,18 @@
       "n": 16,
       "where": "front matter: defaultState; controls[0].note",
       "type": "absence",
-      "claim": "The default state of the new memory-profile path is not stated.",
+      "claim": "The new memory-profile path's default state is not stated.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ\" \"memory\" \"default\" \"coreMemories\"; read roadmap, api-overview, policy-governance-mcp, permissions, and add-work-iq search excerpts. Product and other memory defaults do not state this path's default.",
+      "quote": "Searched: \"Work IQ\" \"coreMemories\" memory permissions default; \"Work IQ\" \"memory\" \"default\" \"access\". Read roadmap, Work IQ API overview, permissions reference and MCP policy governance; none states the memory-profile path's default.",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "No Learn page covering /memory/me/coreMemories was found.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"coreMemories\"; \"Work IQ MCP\" \"/memory/me/coreMemories\" memory permissions default billing. Read api-overview, permissions, policy-governance-mcp and search excerpts for MCP overview; no path-specific article found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "Memory profiles can contain personal preferences.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/graph/control-enhanced-personalization-privacy",
-      "quote": "Copilot learns how you work and understands your needs and preferences through your chats, job profile, custom instructions, and more.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/graph/control-enhanced-personalization-privacy to sources."
-    },
-    {
-      "n": 19,
-      "where": "Why it matters; Risk assessment / Data exposure",
-      "type": "behaviour",
-      "claim": "Copilot memory includes information inferred from chat history.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
-      "quote": "Memories, which include saved memories, details inferred from chat history and custom instructions, are stored in the user's Exchange mailbox in a hidden folder.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "Risk assessment / Security & identity",
-      "type": "behaviour",
-      "claim": "Work IQ requires delegated Microsoft Entra authentication.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
-      "quote": "Work IQ uses Microsoft Entra ID delegated authentication.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "Risk assessment / Security & identity; Governance guidance / At rollout; Open questions",
-      "type": "absence",
-      "claim": "The consent scopes granting this memory path are not published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"/memory/me/coreMemories\" consent default retention eDiscovery; \"Work IQ\" \"memory\" \"enhanced personalization\" retention eDiscovery consent. Read permissions and api-overview; broad WorkIQ permissions are documented but no memory-path mapping was found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
       "where": "front matter: licensing.model, licensing.notes, cost; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "Work IQ API uses consumption billing measured in Copilot Credits, supporting the variable cost rating.",
+      "claim": "Work IQ API uses consumption billing measured in Copilot Credits, supporting the consumption licensing model and variable cost rating.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
       "quote": "You pay for use of the Work IQ API through a usage-based model that uses Copilot Credits.",
@@ -273,32 +212,32 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 18,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "A rate specific to the memory path has not been published.",
+      "claim": "A billing rate specific to the memory path is not yet published.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ\" \"memory\" \"Copilot Credits\" rate; \"Work IQ MCP\" \"/memory/me/coreMemories\" memory permissions default billing. Read api-overview, retrieve and pricing search excerpts; no rate specific to this path found.",
+      "quote": "Searched: \"Work IQ\" memory Copilot Credits rate billing; \"/memory/me/coreMemories\". Opened Work IQ API overview and usage-based billing overview; read Work IQ access/pricing search excerpts. No memory-path-specific rate found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 24,
+      "n": 19,
       "where": "Cost and licensing",
-      "type": "behaviour",
+      "type": "availability",
       "claim": "The Work IQ MCP retrieve tool is in public preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
-      "quote": "The retrieve tool is available in public preview.",
+      "quote": "The `retrieve` tool is available in public preview.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 25,
+      "n": 20,
       "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The retrieve tool lists usage-based Copilot Credits billing as a prerequisite.",
+      "type": "cost",
+      "claim": "The retrieve tool's prerequisites include setting up usage-based billing for Copilot Credits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
       "quote": "Set up usage-based billing for Copilot Credits and assign the calling users to a spending policy that includes Work IQ API.",
@@ -306,13 +245,68 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 21,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The retrieve tool requires calling users to be assigned to a spending policy including Work IQ API.",
+      "claim": "The retrieve tool's prerequisites include assigning calling users to a spending policy that includes Work IQ API.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
-      "quote": "assign the calling users to a spending policy that includes Work IQ API.",
+      "quote": "Set up usage-based billing for Copilot Credits and assign the calling users to a spending policy that includes Work IQ API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "behaviour",
+      "claim": "Work IQ uses delegated Microsoft Entra authentication in the signed-in user's context.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "Work IQ uses Microsoft Entra ID delegated authentication.\n- Requests run in the context of the signed-in user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Security & identity; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "The consent scope that specifically grants access to the new memory path is unpublished.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"coreMemories\" memory permissions default; Work IQ MCP memory profile access enhanced personalization retention eDiscovery audit consent scopes. Read Work IQ permissions reference: broad scopes are listed, but no memory-path mapping.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Copilot personalisation can learn a user's needs and preferences from chats and profile information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/control-enhanced-personalization-privacy",
+      "quote": "Copilot learns how you work and understands your needs and preferences through your chats, job profile, custom instructions, and more.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Copilot memory and personalisation actions do not generate Purview audit entries.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
+      "quote": "Memory and personalization actions don't generate audit log entries in Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].ui; Governance controls",
+      "type": "absence",
+      "claim": "No admin-centre UI for the tenant Enhanced personalization control is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"enhanced personalization\" admin center turn off memory; \"enhancedpersonalization\" \"admin center\". Read Manage Copilot personalization and memory, Enhanced personalization control overview and Graph update reference; no tenant UI path found.",
       "severity": null,
       "fix": null
     },
@@ -320,21 +314,21 @@
       "n": 27,
       "where": "controls[0].api; Governance controls table",
       "type": "command",
-      "claim": "PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization with isEnabledInOrganization false disables enhanced personalization.",
+      "claim": "PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization updates the Enhanced personalization setting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta",
-      "quote": "PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization\nisEnabledInOrganization | Boolean | If true, enables the enhanced personalization control",
-      "severity": "minor",
-      "fix": "In controls[0].api.call and the table, print only 'PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization'. Add to the row note: 'The request body sets isEnabledInOrganization to false to disable enhanced personalization.'"
+      "quote": "Update the properties of an enhancedPersonalizationSetting object.\nPATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 28,
-      "where": "controls[0].ui; Governance controls table and following prose",
-      "type": "absence",
-      "claim": "No administrator UI for enhanced personalization is documented.",
+      "where": "controls[0].governs, controls[0].scope; Governance controls",
+      "type": "applicability",
+      "claim": "Enhanced personalization controls Copilot memory for the tenant.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Copilot\" \"enhanced personalization\" \"admin center\". Read personalization-memory, Graph update, enhanced-personalization-privacy and configure-copilot-admin-center search excerpts; no administrator UI for this control found.",
+      "source": "https://learn.microsoft.com/graph/control-enhanced-personalization-privacy",
+      "quote": "The option to disable all linked features for the tenant or a group of users through this scenario control is available anytime",
       "severity": null,
       "fix": null
     },
@@ -352,8 +346,8 @@
     {
       "n": 30,
       "where": "controls[0].note; Governance controls table",
-      "type": "behaviour",
-      "claim": "Copilot personalization and memory are in preview and subject to change.",
+      "type": "availability",
+      "claim": "Copilot personalisation and memory are in preview and subject to change.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
       "quote": "Copilot personalization and memory are in preview and subject to change.",
@@ -363,11 +357,11 @@
     {
       "n": 31,
       "where": "controls[0].note; Governance controls table",
-      "type": "behaviour",
-      "claim": "The Graph enhanced-personalization API is beta and subject to change.",
+      "type": "availability",
+      "claim": "The documented Graph operation uses the beta API.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta",
-      "quote": "APIs under the /beta version in Microsoft Graph are subject to change. Use of these APIs in production applications is not supported.",
+      "quote": "APIs under the `/beta` version in Microsoft Graph are subject to change. Use of these APIs in production applications is not supported.",
       "severity": null,
       "fix": null
     },
@@ -375,10 +369,10 @@
       "n": 32,
       "where": "controls[0].note; Governance controls table",
       "type": "role",
-      "claim": "Updating enhanced personalization requires PeopleSettings.ReadWrite.All.",
+      "claim": "The Graph update operation requires PeopleSettings.ReadWrite.All.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta",
-      "quote": "Delegated (work or school account) | PeopleSettings.ReadWrite.All | Not available.\nApplication | PeopleSettings.ReadWrite.All | Not available.",
+      "quote": "Delegated (work or school account) | PeopleSettings.ReadWrite.All\nApplication | PeopleSettings.ReadWrite.All",
       "severity": null,
       "fix": null
     },
@@ -386,7 +380,7 @@
       "n": 33,
       "where": "controls[0].note; Governance controls table",
       "type": "role",
-      "claim": "Delegated updates require the People Administrator role.",
+      "claim": "People Administrator is the supported least-privileged role for delegated use of this operation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta",
       "quote": "For delegated access using work or school accounts, the admin must be assigned a supported Microsoft Entra role. People Administrator is the least privileged role supported for this operation.",
@@ -396,66 +390,66 @@
     {
       "n": 34,
       "where": "controls[0].note; Governance controls table",
-      "type": "behaviour",
-      "claim": "Turning enhanced personalization off disables saved memories.",
+      "type": "command",
+      "claim": "The request-body property isEnabledInOrganization controls enablement and can be set to false to disable it.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
-      "quote": "End-users that have the Enhanced personalization control turned off see the user-level controls for Custom instructions, Saved memories, and Chat history in Settings > Personalization as turned off. They can't turn on these settings.",
+      "source": "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta",
+      "quote": "isEnabledInOrganization | Boolean | If true, enables the enhanced personalization control and therefore related features as defined in control enhanced personalization privacy Required.",
       "severity": null,
       "fix": null
     },
     {
       "n": 35,
-      "where": "controls[0].note; Governance controls table",
-      "type": "behaviour",
-      "claim": "Turning enhanced personalization off disables chat-history personalization.",
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The agent Memory toggle is reached in Copilot Studio through agent > Build > components panel > Memory toggle.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
-      "quote": "End-users that have the Enhanced personalization control turned off see the user-level controls for Custom instructions, Saved memories, and Chat history in Settings > Personalization as turned off. They can't turn on these settings.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-manage-privacy",
+      "quote": "1. Create or open the agent in Copilot Studio.\n2. Select the Build tab.\n3. In the components panel, use the Memory toggle to turn the feature on or off.",
       "severity": null,
       "fix": null
     },
     {
       "n": 36,
-      "where": "controls[0].note; Governance controls table",
-      "type": "behaviour",
-      "claim": "Turning enhanced personalization off disables custom instructions.",
+      "where": "controls[1].governs; Governance controls table; sources",
+      "type": "availability",
+      "claim": "Agent Memory is rolling out for general availability and might remain in preview in some regions.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
-      "quote": "End-users that have the Enhanced personalization control turned off see the user-level controls for Custom instructions, Saved memories, and Chat history in Settings > Personalization as turned off. They can't turn on these settings.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-overview",
+      "quote": "Memory is rolling out for general availability. Memory might still be in preview in some regions.",
       "severity": null,
       "fix": null
     },
     {
       "n": 37,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The linked memory-overview page documents Copilot Studio (maker) > agent > Build > components panel > Memory toggle.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-overview",
-      "quote": "Related information\n- Memory management and privacy\n- How agents determine what to remember\n- Guide memory with agent instructions",
-      "severity": "blocker",
-      "fix": "Keep the path, which https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-manage-privacy documents as opening an agent, selecting Build, and using the Memory toggle in the components panel. Set controls[1].ui.docs and its table Learn link to that URL and add it to sources. The freshly fetched overview no longer contains the control steps, despite an older search excerpt still returning them."
+      "where": "controls[1].api; Governance controls table",
+      "type": "absence",
+      "claim": "No API operation for the Microsoft Copilot harness agent Memory toggle is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio harness agent Memory toggle API disable memory; \"Copilot harness\" \"memory\" \"API\" configuration. Opened Memory overview and Memory management and privacy; results document maker toggles, not an API setting this control.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 38,
-      "where": "controls[1].governs; Governance controls table; sources",
-      "type": "behaviour",
-      "claim": "Memory for agents using the Microsoft Copilot harness is a preview capability.",
+      "where": "controls[1].governs, controls[1].scope; Governance controls",
+      "type": "applicability",
+      "claim": "Makers control whether an individual agent uses Memory.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-overview",
-      "quote": "Memory is rolling out for general availability. Memory might still be in preview in some regions.",
-      "severity": "minor",
-      "fix": "Replace the unqualified '(preview)' in the agent-memory control label and source title with '(rolling out for general availability; preview in some regions)'. The search excerpt still describes the older preview, but the freshly fetched overview now qualifies the rollout."
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-manage-privacy",
+      "quote": "Makers control whether an agent uses Memory.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 39,
-      "where": "controls[1].note; Governance controls table and following prose",
+      "where": "controls[1].note; Governance controls table",
       "type": "behaviour",
-      "claim": "The maker controls whether an agent uses Memory.",
+      "claim": "Agent memories are deleted after 28 days of inactivity.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-overview",
-      "quote": "As the maker, you turn Memory on or off for each agent.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-manage-privacy",
+      "quote": "Memories are deleted after 28 days of inactivity.",
       "severity": null,
       "fix": null
     },
@@ -463,32 +457,32 @@
       "n": 40,
       "where": "controls[1].note; Governance controls table",
       "type": "behaviour",
-      "claim": "A user's memories are deleted after 28 days without interacting with the agent.",
-      "status": "contradicted",
+      "claim": "The 28-day inactivity period starts from the last time the agent used a user's memories.",
+      "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-manage-privacy",
-      "quote": "Memories are deleted after 28 days of inactivity. The period starts from the last time the agent used a user's memories. Viewing memories in the portal doesn't reset the period.",
-      "severity": "blocker",
-      "fix": "Replace the retention sentence in controls[1].note and the table with: 'Memories are deleted after 28 days of inactivity, measured from the last time the agent used a user's memories; viewing them in the portal does not reset the period.' Cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-manage-privacy."
+      "quote": "The period starts from the last time the agent used a user's memories.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 41,
       "where": "controls[1].note; Governance controls table",
       "type": "behaviour",
-      "claim": "Turning agent Memory off does not itself delete stored memories.",
+      "claim": "Viewing memories in the portal does not reset the retention period.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-manage-privacy",
-      "quote": "Turning Memory off stops the agent from saving or using memories. It doesn't delete stored memories right away.",
-      "severity": "minor",
-      "fix": "Use the current wording in controls[1].note and the table: 'Turning Memory off stops the agent from saving or using memories; it does not delete stored memories right away.' Add https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-manage-privacy to sources."
+      "quote": "Viewing memories in the portal doesn't reset the period.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 42,
-      "where": "controls[1].api; Governance controls table",
-      "type": "absence",
-      "claim": "No automation operation for the Microsoft Copilot harness agent Memory toggle is documented.",
+      "where": "controls[1].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "Turning agent Memory off does not immediately delete stored memories.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Copilot harness\" memory disable API toggle. Read memory-overview, memory-manage-privacy and harness search excerpts; found the maker toggle but no API operation for setting it.",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-manage-privacy",
+      "quote": "Turning Memory off stops the agent from saving or using memories. It doesn't delete stored memories right away.",
       "severity": null,
       "fix": null
     },
@@ -496,7 +490,7 @@
       "n": 43,
       "where": "controls[2].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "Tenant Work IQ MCP policy is managed in Microsoft 365 admin center > Agents > Tools > Work IQ MCP > Policy.",
+      "claim": "The Work IQ MCP policy page is reached in the Microsoft 365 admin center through Agents > Tools > Work IQ MCP > Policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp#open-policy-settings-in-the-microsoft-365-admin-center",
       "quote": "In the left navigation, select Agents > Tools.\nIn the tools registry, select Work IQ MCP.\nOn the Work IQ MCP details pane, select the Policy tab when it's available.",
@@ -505,19 +499,41 @@
     },
     {
       "n": 44,
-      "where": "controls[2].api; Governance controls table",
-      "type": "absence",
-      "claim": "No API operation for turning tenant Work IQ MCP policy on or off is documented.",
+      "where": "controls[2].governs, controls[2].scope; Governance controls table",
+      "type": "applicability",
+      "claim": "Work IQ MCP policy can be turned on or off at tenant scope.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ MCP\" \"policy\" API settings update. Read policy-governance-mcp and search excerpts for MCP overview and tool reference; descriptions of editable policy values provide no versioned setter endpoint.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "In the Microsoft 365 admin center, tenant administrators can turn Work IQ MCP policy on or off for the tenant.",
       "severity": null,
       "fix": null
     },
     {
       "n": 45,
-      "where": "Governance controls / following prose",
-      "type": "behaviour",
+      "where": "controls[2].api; Governance controls table",
+      "type": "absence",
+      "claim": "No specific API operation that sets the Work IQ MCP tenant policy switch is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ MCP tenant policy settings API update Allowed Disallowed; \"Work IQ\" \"policy\" \"PATCH\". Opened MCP policy governance and read MCP reference search excerpts; policy concepts are described, but no operation for setting this switch was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "No Microsoft Learn page documenting /memory/me/coreMemories was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"/memory/me/coreMemories\"; \"Work IQ\" \"coreMemories\" memory permissions default. Opened Work IQ API overview and permissions reference; read MCP overview and tool reference excerpts. No page documenting the named path was returned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance controls",
+      "type": "applicability",
       "claim": "Purview retention policies do not apply to Copilot memory.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
@@ -526,10 +542,10 @@
       "fix": null
     },
     {
-      "n": 46,
-      "where": "Governance controls / following prose",
+      "n": 48,
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Admins cannot restrict the types of information added to Copilot memory.",
+      "claim": "Administrators cannot restrict what type of information is added to Copilot memory.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
       "quote": "No, admins can't restrict what type of information is added to Copilot memory.",
@@ -537,8 +553,8 @@
       "fix": null
     },
     {
-      "n": 47,
-      "where": "Governance controls / following prose",
+      "n": 49,
+      "where": "Governance controls",
       "type": "behaviour",
       "claim": "Saved memories are discoverable using eDiscovery and Microsoft Graph Explorer.",
       "status": "supported",
@@ -548,8 +564,8 @@
       "fix": null
     },
     {
-      "n": 48,
-      "where": "Governance controls / following prose",
+      "n": 50,
+      "where": "Governance controls",
       "type": "behaviour",
       "claim": "Inferred chat-history memories are discoverable using eDiscovery and Microsoft Graph Explorer.",
       "status": "supported",
@@ -559,10 +575,10 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "Governance controls / following prose",
+      "n": 51,
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Custom instructions are not discoverable through those administrator tools.",
+      "claim": "Custom instructions are not discoverable through those administrator discovery tools.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
       "quote": "Custom instructions aren't accessible, but can manually be exported by the user through Settings > Personalization.",
@@ -570,10 +586,10 @@
       "fix": null
     },
     {
-      "n": 50,
-      "where": "Governance controls / following prose",
+      "n": 52,
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Admins can delete memory data through Microsoft Graph Explorer in combination with Purview.",
+      "claim": "Administrators can delete Copilot memory data through Microsoft Graph Explorer in combination with Purview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
       "quote": "An admin can also delete memory data through Microsoft Graph Explorer in combination with Purview.",
@@ -581,46 +597,79 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "Governance controls / following prose; Open questions; rationale: risk",
-      "type": "absence",
-      "claim": "How the new memory profile path interacts with the Copilot memory and agent-memory controls, including a memory-specific access switch, is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"coreMemories\"; \"Work IQ\" \"memory\" \"enhanced personalization\" retention eDiscovery consent. Read personalization-memory, enhanced-personalization-privacy, policy-governance-mcp and memory-management pages; none maps these controls to the new path.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "Governance controls / following prose; Open questions",
-      "type": "absence",
-      "claim": "Retention and eDiscovery treatment specific to the new memory path remain unconfirmed.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"/memory/me/coreMemories\" consent default retention eDiscovery; \"Work IQ\" \"memory\" \"enhanced personalization\" retention eDiscovery consent. Read personalization-memory and agent memory-management pages; no path-specific retention or eDiscovery treatment found.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 53,
-      "where": "Governance guidance / After rollout",
-      "type": "behaviour",
-      "claim": "Copilot memory and personalization actions do not generate Purview audit entries.",
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "How Enhanced personalization interacts with access through the new memory-profile path is not documented.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory",
-      "quote": "Memory and personalization actions don't generate audit log entries in Purview.",
+      "source": null,
+      "quote": "Searched: Work IQ MCP memory profile access enhanced personalization retention eDiscovery audit consent scopes; \"/memory/me/coreMemories\". Read Enhanced personalization overview and Manage Copilot personalization and memory; neither describes the new path.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "How the maker's agent Memory control interacts with the new memory-profile path is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"/memory/me/coreMemories\"; Copilot Studio harness agent Memory toggle API disable memory. Read Memory overview and Memory management and privacy; these describe agent-owned memories, not access to the new user-profile path.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The retention treatment specifically associated with the new memory-profile path is not confirmed.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ MCP memory profile access enhanced personalization retention eDiscovery audit consent scopes; \"/memory/me/coreMemories\". Read Manage Copilot personalization and memory and Memory management and privacy; no new-path retention treatment found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The eDiscovery and administrator-deletion treatment specifically associated with the new memory-profile path is not confirmed.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ MCP memory profile access enhanced personalization retention eDiscovery audit consent scopes; \"/memory/me/coreMemories\". Read Manage Copilot personalization and memory; its discovery and deletion guidance does not mention this path.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance guidance: After rollout",
+      "type": "absence",
+      "claim": "Administrator-accessible audit records specifically for memory-path access remain to be confirmed.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ MCP memory profile access enhanced personalization retention eDiscovery audit consent scopes. Read Copilot memory audit guidance and Work IQ overview search excerpt: general invocation logging is stated, but no administrator audit surface for this path.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "rationale: risk; Open questions",
+      "type": "absence",
+      "claim": "No switch specific to disabling agent access to the new memory-profile path is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"coreMemories\" memory permissions default; \"Work IQ\" \"memory\" \"default\" \"access\"; \"/memory/me/coreMemories\". Read MCP policy governance and memory-control pages; generic controls exist, but no switch specific to this path was found.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-20T11:17:34.988Z",
+    "at": "2026-11-20T12:01:47.473Z",
     "summary": {
-      "links": 8,
+      "links": 10,
       "unreachable": 0,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 1,
+      "uiPathsWithMissingWords": 0,
       "apiCalls": 1,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
@@ -643,6 +692,16 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-manage-privacy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/control-enhanced-personalization-privacy",
         "ok": true,
         "status": 200
       },
@@ -680,18 +739,15 @@
       {
         "index": 1,
         "side": "ui",
-        "governs": "Memory on or off for a Copilot Studio agent using the Microsoft Copilot harness (preview)",
-        "docs": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-overview",
+        "governs": "Memory on or off for a Microsoft Copilot harness agent (rolling out for general availability; preview in some regions)",
+        "docs": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-manage-privacy",
         "reachable": true,
         "segments": [
           "Build",
           "components panel",
           "Memory toggle"
         ],
-        "missing": [
-          "components panel",
-          "Memory toggle"
-        ]
+        "missing": []
       },
       {
         "index": 2,
@@ -731,6 +787,12 @@
     {
       "date": "2026-11-19",
       "status": "verified-with-gaps",
+      "version": 4,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-20",
+      "status": "held",
       "version": 4,
       "model": "gpt-6.1-sol"
     }

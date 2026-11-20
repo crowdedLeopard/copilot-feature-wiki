@@ -31,8 +31,14 @@ sources:
   - title: "Update enhancedPersonalizationSetting (Microsoft Graph beta)"
     url: "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta"
     kind: "learn"
-  - title: "Memory (Microsoft Copilot) (preview)"
+  - title: "Memory (Microsoft Copilot) (rolling out for general availability; preview in some regions)"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-overview"
+    kind: "learn"
+  - title: "Memory management and privacy"
+    url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-manage-privacy"
+    kind: "learn"
+  - title: "Enhanced personalization control overview"
+    url: "https://learn.microsoft.com/graph/control-enhanced-personalization-privacy"
     kind: "learn"
   - title: "Manage Copilot personalization and memory"
     url: "https://learn.microsoft.com/copilot/manage/copilot-personalization-memory"
@@ -54,17 +60,17 @@ controls:
     ui: null
     api:
       kind: "graph"
-      call: "PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization with body {\"isEnabledInOrganization\": false}"
+      call: "PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization"
       docs: "https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta"
-    note: "On by default; preview, subject to change; not the default of the new path. Beta API; PeopleSettings.ReadWrite.All; delegated use needs the People Administrator role. Off disables saved memories, chat history, custom instructions."
-  - governs: "Memory on or off for a Copilot Studio agent using the Microsoft Copilot harness (preview)"
+    note: "On by default; preview, subject to change; not the default of the new path. Beta API; PeopleSettings.ReadWrite.All; delegated use needs the People Administrator role. The request body sets isEnabledInOrganization to false to disable it."
+  - governs: "Memory on or off for a Microsoft Copilot harness agent (rolling out for general availability; preview in some regions)"
     scope: "agent"
     ui:
       surface: "Copilot Studio (maker)"
       path: "agent > Build > components panel > Memory toggle"
-      docs: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-overview"
+      docs: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-manage-privacy"
     api: null
-    note: "Maker-side. If a user does not interact with that agent for 28 days, their memories from that agent are deleted; turning memory off does not delete them."
+    note: "Memories are deleted after 28 days of inactivity, measured from the last time the agent used a user's memories; viewing them in the portal does not reset the period. Turning Memory off does not delete stored memories right away."
   - governs: "Work IQ MCP policy on or off for the tenant"
     scope: "tenant"
     ui:
@@ -74,7 +80,7 @@ controls:
     api: null
 confidence: "low"
 created: "2026-11-14"
-updated: "2026-11-16"
+updated: "2026-11-20"
 roadmapModified: "2026-11-05T23:59:28"
 changes:
   - date: "2026-11-14"
@@ -95,19 +101,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 55 statements not yet confirmed"
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 53 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-20"
+    note: "Correction: agent Memory path and retention now cite the memory management and privacy page, rollout wording updated, and the Graph call printed without its body."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 58 statements confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-20"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 53
-  confirmed: 51
+  claims: 58
+  confirmed: 58
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "bdb508f29da0c4e54a1a9bacd61d13f1"
+  contradicted: 0
+  attempts: 0
+  hash: "de88c2c186e9e6321ca54f870681ef65"
 ---
 
 ## What's changing
@@ -165,8 +175,8 @@ Authorised agents acting for a user, Worldwide (Standard Multi-Tenant) per the r
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Enhanced personalization (Copilot memory) for the tenant</strong><br><small>Tenant</small><br><small class="controls__note">On by default; preview, subject to change; not the default of the new path. Beta API; PeopleSettings.ReadWrite.All; delegated use needs the People Administrator role. Off disables saved memories, chat history, custom instructions.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization with body {&quot;isEnabledInOrganization&quot;: false}</code> <a href="https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Memory on or off for a Copilot Studio agent using the Microsoft Copilot harness (preview)</strong><br><small>Agent</small><br><small class="controls__note">Maker-side. If a user does not interact with that agent for 28 days, their memories from that agent are deleted; turning memory off does not delete them.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>agent › Build › components panel › Memory toggle <a href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Enhanced personalization (Copilot memory) for the tenant</strong><br><small>Tenant</small><br><small class="controls__note">On by default; preview, subject to change; not the default of the new path. Beta API; PeopleSettings.ReadWrite.All; delegated use needs the People Administrator role. The request body sets isEnabledInOrganization to false to disable it.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization</code> <a href="https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Memory on or off for a Microsoft Copilot harness agent (rolling out for general availability; preview in some regions)</strong><br><small>Agent</small><br><small class="controls__note">Memories are deleted after 28 days of inactivity, measured from the last time the agent used a user's memories; viewing them in the portal does not reset the period. Turning Memory off does not delete stored memories right away.</small></td><td data-label="Admin UI"><strong>Copilot Studio (maker)</strong><br>agent › Build › components panel › Memory toggle <a href="https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-manage-privacy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Work IQ MCP policy on or off for the tenant</strong><br><small>Tenant</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Policy <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp#open-policy-settings-in-the-microsoft-365-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -183,16 +193,4 @@ The Copilot memory control is a Graph setting with no admin centre page document
 risk: High. Exposes personal memory derived from chat history and work account data to agents, with no memory-specific switch documented.
 cost: Variable. Work IQ API uses Copilot Credits consumption billing; a rate specific to the memory path is not yet published.
 impact: Medium. Affects users whose memory is read by agents and admins who authorise agents.
--->
-
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: The linked memory-overview page documents Copilot Studio (maker) > agent > Build > components panel > Memory toggle. | Found: Related information - Memory management and privacy - How agents determine what to remember - Guide memory with agent instructions | Fix: Keep the path, which https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-manage-privacy documents as opening an agent, selecting Build, and using the Memory toggle in the components panel. Set controls[1].ui.docs and its table Learn link to that URL and add it to sources. The freshly fetched overview no longer contains the control steps, despite an older search excerpt still returning them. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-overview
-- [contradicted, blocker] controls[1].note; Governance controls table / behaviour: A user's memories are deleted after 28 days without interacting with the agent. | Found: Memories are deleted after 28 days of inactivity. The period starts from the last time the agent used a user's memories. Viewing memories in the portal doesn't reset the period. | Fix: Replace the retention sentence in controls[1].note and the table with: 'Memories are deleted after 28 days of inactivity, measured from the last time the agent used a user's memories; viewing them in the portal does not reset the period.' Cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-manage-privacy. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-manage-privacy
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters / behaviour: Memory profiles can contain personal preferences. | Found: Copilot learns how you work and understands your needs and preferences through your chats, job profile, custom instructions, and more. | Fix: Add https://learn.microsoft.com/graph/control-enhanced-personalization-privacy to sources. | Source: https://learn.microsoft.com/graph/control-enhanced-personalization-privacy
-- [supported, minor] controls[0].api; Governance controls table / command: PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization with isEnabledInOrganization false disables enhanced personalization. | Found: PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization isEnabledInOrganization | Boolean | If true, enables the enhanced personalization control | Fix: In controls[0].api.call and the table, print only 'PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization'. Add to the row note: 'The request body sets isEnabledInOrganization to false to disable enhanced personalization.' | Source: https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta
-- [supported, minor] controls[1].governs; Governance controls table; sources / behaviour: Memory for agents using the Microsoft Copilot harness is a preview capability. | Found: Memory is rolling out for general availability. Memory might still be in preview in some regions. | Fix: Replace the unqualified '(preview)' in the agent-memory control label and source title with '(rolling out for general availability; preview in some regions)'. The search excerpt still describes the older preview, but the freshly fetched overview now qualifies the rollout. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-overview
-- [supported, minor] controls[1].note; Governance controls table / behaviour: Turning agent Memory off does not itself delete stored memories. | Found: Turning Memory off stops the agent from saving or using memories. It doesn't delete stored memories right away. | Fix: Use the current wording in controls[1].note and the table: 'Turning Memory off stops the agent from saving or using memories; it does not delete stored memories right away.' Add https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-manage-privacy to sources. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-manage-privacy
 -->

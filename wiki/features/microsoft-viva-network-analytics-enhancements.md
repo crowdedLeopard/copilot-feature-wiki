@@ -18,7 +18,7 @@ defaultState: "unknown"
 action: "prepare"
 licensing:
   model: "per-user"
-  notes: "Microsoft Learn says Viva Engage Premium, needed for all analytics features, is bundled with the Viva Suite and Employee Communications and Communities licences. A licence or price specific to these enhancements is not yet published."
+  notes: "Microsoft Learn says Viva Engage Premium, needed for all analytics features, is bundled with the Viva Suite and Employee Communications and Communities licences."
 audiences: ["service-owner","m365-admin","change-adoption"]
 tags: ["viva-engage","analytics","privacy","admin-center"]
 sources:
@@ -30,6 +30,9 @@ sources:
     kind: "learn"
   - title: "View and manage analytics in Viva Engage"
     url: "https://learn.microsoft.com/viva/engage/analytics"
+    kind: "learn"
+  - title: "Employee retention in Viva Engage"
+    url: "https://learn.microsoft.com/viva/engage/employee-retention-metric"
     kind: "learn"
   - title: "Use the Microsoft Graph API to work with Viva Engage"
     url: "https://learn.microsoft.com/graph/api/resources/engagement-api-overview?view=graph-rest-1.0"
@@ -59,19 +62,23 @@ changes:
     note: "First briefing for the Viva Engage network analytics enhancements; Learn documents today's filters but not the new manager filters."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 51 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Removed the claim that no licence is published for these enhancements and the two Before rollout checks with no controls row; corrected the dashboard licence-share bullet."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 54 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 51
-  confirmed: 49
+  claims: 54
+  confirmed: 54
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "471f3802891a77f99b53715a053e98ce"
+  contradicted: 0
+  attempts: 0
+  hash: "43695dfe7bf7a074bac8c46fe303fbab"
 ---
 
 ## What's changing
@@ -104,13 +111,13 @@ Microsoft has not stated what happens on arrival, including whether these change
 
 **Change & support**
 - The redesigned dashboard and metric tables will change what analytics users see. Expect questions from communications teams about layout, the new date range control and why numbers differ from earlier views after the faster refresh.
-- Learn documents that Network Analytics is unavailable if fewer than 50% of the network's users are licensed for Viva Suite or Employee Communications and Communities.
+- Learn requires at least 50% of network users to hold Viva Suite, Employee Communications and Communities or Viva Engage premium licences for dashboard visibility; the filtering page lists only the first two.
 
 ## Cost and licensing
 
-Learn's analytics page says that to use all analytics features, users must have Viva Engage Premium, which is bundled with the Viva Suite and Employee Communications and Communities licences. It also says the **Network analytics** dashboard is visible only when at least 50% of the network's users are licensed for Viva Suite, Employee Communications and Communities, or the Viva Engage premium license.
+Learn's analytics page says that to use all analytics features, users must have Viva Engage Premium, which is bundled with the *Viva Suite* and *Employee Communications and Communities* licences. It also says the **Network analytics** dashboard is visible only when at least 50% of the network's users are licensed for Viva Suite, Employee Communications and Communities, or the Viva Engage premium license.
 
-The filtering page calls Organizational Data Filters a Viva Engage premium feature. A price, licence or meter specific to the custom date ranges, faster refresh or people-manager filters is not yet published, and no meter is documented for them at the time of writing (November 2026).
+The filtering page calls Organizational Data Filters a Viva Engage premium feature.
 
 Indirect costs are admin time to check organisational data in Entra ID or prepare a CSV upload, and communications time to brief the people who use the dashboard.
 
@@ -125,8 +132,6 @@ Prerequisites documented today: Viva Engage Premium licensing as above, and orga
 ## Governance guidance
 
 ### Before rollout
-- Check the Viva Engage Premium licence share: confirm at least 50% of your network's users hold Viva Suite, Employee Communications and Communities or the premium licence, or the dashboard is unavailable.
-- Review the country, department and job title fields in Entra ID, or the CSV you upload, since Viva Engage does no data cleaning.
 - Tell network admins and corporate communicators that the dashboard is being redesigned, with a target of December CY2026.
 
 ### At rollout
@@ -164,14 +169,4 @@ The Learn page names no separate switch for the new features and documents no AP
 risk: Low. The roadmap describes new views and filters over analytics that network admins and corporate communicators can already open; it names no new data source or autonomous action.
 cost: Low. Network analytics already depends on Viva Engage Premium licensing (Viva Suite or Employee Communications and Communities); no separate price or meter for these enhancements is published, so the known cost is admin time.
 impact: Medium. The dashboard and metric tables are redesigned for the roles that use network analytics: network admins and corporate communicators. Other users do not see it.
--->
-
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.notes; Cost and licensing / absence: Microsoft has not published a licence requirement specific to the enhancements, including custom date ranges. | Found: A Custom date range feature allows you to specify any date range, beginning with any calendar day and extending by any number of days. This feature is available only with Viva Engage Premium. | Fix: Replace the licence-absence statement in licensing.notes and Cost and licensing with: 'Microsoft Support documents custom date ranges as available only with Viva Engage Premium; licensing specific to the new people-manager filters and faster refresh is not yet published.' Cite https://support.microsoft.com/topic/0d9f6fd5-6b0c-45a2-a0aa-0576ae1f6895. | Source: https://support.microsoft.com/topic/0d9f6fd5-6b0c-45a2-a0aa-0576ae1f6895
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Change & support / licensing: The filtering page says the dashboard is unavailable below 50% licensing for Viva Suite or Employee Communications and Communities. | Found: If less than 50% of your network’s users are licensed for Viva Suite or Employee Communications and Communities, the Network Analytics dashboard is unavailable. | Fix: Replace this bullet with: 'Learn requires at least 50% of network users to hold Viva Suite, Employee Communications and Communities or Viva Engage premium licences for dashboard visibility; the filtering page lists only the first two.' The broader list is at https://learn.microsoft.com/viva/engage/analytics. | Source: https://learn.microsoft.com/viva/engage/analytics-organizational-data-filtering
-- [supported, minor] rationale: impact / role: Network analytics is restricted to network admins and corporate communicators rather than general users. | Found: Only Engage network admins and corporate communicators have access to the Network Analytics dashboard. | Fix: Add https://learn.microsoft.com/viva/engage/employee-retention-metric to sources for the exclusive-access statement in the impact rationale. | Source: https://learn.microsoft.com/viva/engage/employee-retention-metric
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist requests checks of licence coverage and source organisational data that have no corresponding controls-table rows. | Found: Check the Viva Engage Premium licence share; Review the country, department and job title fields in Entra ID, or the CSV you upload. The table contains only Organizational Data Filters and a separate-switch documentation gap. | Fix: Remove the two Before rollout checklist bullets beginning 'Check the Viva Engage Premium licence share' and 'Review the country, department and job title fields'. Their factual background is already retained in Cost and licensing, Scope and Risk assessment; do not add control rows.
 -->

@@ -4,7 +4,7 @@ slug: "sharepoint-admin-center-data-access-governance-permission-report-for-a-gi
 roadmapId: 561039
 topic: "modern-work"
 products: ["SharePoint"]
-summary: "SharePoint administrators will get a Data access governance report listing every site a given group can access and how far that access goes. Microsoft's notice sets no act-by date; the report is optional to run."
+summary: "SharePoint administrators will get a report of site access for Microsoft 365 and Microsoft Entra security groups, excluding access inherited through nested groups. Microsoft's notice sets no act-by date; running it is optional."
 status: "rolling-out"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)","GCC","GCC High","DoD"]
@@ -12,7 +12,7 @@ platforms: ["Web"]
 targetDate: "November CY2026"
 previewDate: null
 risk: "low"
-cost: "low"
+cost: "medium"
 impact: "low"
 defaultState: "unknown"
 action: "review"
@@ -97,32 +97,36 @@ changes:
     note: "Corrected after verification: Learn now documents the group report, so its admin path, PowerShell call, CSV/ZIP download, limits, role and licensing (SharePoint Advanced Management snapshot report) are stated, and the arrival-default wording now agrees with the unknown default."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 65 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-20"
+    note: "Corrected after verification: the report's reach is now qualified (Microsoft 365 and Entra security groups only, no nested-group access) and cost is rated medium to match the documented add-on routes."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 65 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 65
-  confirmed: 63
-  unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "2d28fa7cd802c60803780f7d47877ea5"
+  confirmed: 64
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 0
+  hash: "d918a68c6785edbe21e798bb4a4c205a"
 ---
 
 ## What's changing
 
-Microsoft is adding a report to Data access governance in the SharePoint admin center that identifies every site a given group can access and the extent of that access. The roadmap item gives the reason: a single group with broad membership, or a special group for vendors, can expose sensitive content to unintended recipients.
+Microsoft is adding a report to Data access governance in the SharePoint admin center that, in the roadmap item's words, shows every site a group can access and the extent of that access. The roadmap item gives the reason: a single group with broad membership, or a special group for vendors, can expose sensitive content to unintended recipients.
 
-Microsoft Learn now documents the Site permissions for users or groups snapshot report, with separate user and group reports. The Data access governance overview describes it as listing all sites a specified user or group can access and the extent of that access, and says each report contains either users or groups, not both.
+Microsoft Learn now documents the Site permissions for users or groups snapshot report, with separate user and group reports. The Data access governance overview describes it as listing all sites a specified user or group can access and the extent of that access, and says each report contains either users or groups, not both. SharePoint groups and distribution lists are not supported inputs, and group reports exclude access inherited through nested-group membership.
 
 The roadmap item is Rolling out, with a target date of November CY2026, General Availability, for Worldwide, GCC, GCC High and DoD, on the web. Microsoft's notice MC1540348 (published 2026-11-05) says rollout will begin in late November 2026 and is expected to complete by early December 2026, which is later than "Rolling out" suggests; expect the report to be absent from some tenants until then. The notice sets no act-by date and gives 2027-01-08 as its end date.
 
 ## Why it matters
 
-Broad-membership groups can expose sensitive content to unintended recipients, as the roadmap item and MC1540348 both say. A review that goes site by site does not naturally show that one group holds access to many sites; a report keyed on the group lets a SharePoint administrator ask "what can this group reach?" in one place.
+Broad-membership groups can expose sensitive content to unintended recipients, as the roadmap item and MC1540348 both say. A review that goes site by site does not naturally show that one group holds access to many sites; a report keyed on the group lets a SharePoint administrator ask "what can this group reach?" in one place, for Microsoft 365 groups and Microsoft Entra security groups, without access inherited through nested groups.
 
 Microsoft's notice says administrators can use the report to investigate potential exposure and to review group permissions before assigning Copilot licences. No source says existing site permissions change on arrival, but vendor and other broad-membership groups stay as unexamined as they are today until someone runs the report.
 
@@ -130,7 +134,7 @@ Microsoft's notice says administrators can use the report to investigate potenti
 
 **Data exposure**
 
-- The report is meant to name the sites a group can reach, so its output is itself sensitive. Microsoft Learn says the group report supports CSV download for a selected group and ZIP download containing CSV files for all included groups.
+- The report is meant to name the sites a group can access, so its output is itself sensitive. Microsoft Learn says the group report supports CSV download for a selected group and ZIP download containing CSV files for all included groups.
 - Microsoft Learn lists a known issue for Data access governance reports: they might not work if the organisation shows real rather than concealed user, group and site names. Changing the setting needs a Global Administrator.
 
 **Security & identity**
@@ -178,7 +182,7 @@ The roadmap item lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD,
 
 ### After rollout
 
-- Run the report for each vendor and all-staff style group and record which sites each can reach.
+- Run the report for each vendor and all-staff style group that is a Microsoft 365 group or Microsoft Entra security group, and record which sites each can reach.
 - Review the findings against the sensitivity of the content, and assign each remedial step to a site owner or administrator.
 - Review group permissions with the report before assigning Copilot licences, which Microsoft's notice names as a use.
 
@@ -211,16 +215,12 @@ The Reports setting in the Microsoft 365 admin center (clear "Display concealed 
 
 <!-- rationale
 risk: Low. This is a reporting control, and Microsoft's notice describes a report, not a change to site permissions. Rate on existing site permissions continuing, because Microsoft has not stated the arrival default.
-cost: Low. The only cost the sources show is admin time. The group report is a SharePoint Advanced Management snapshot report, so it depends on the SharePoint Advanced Management entitlement the prerequisites page describes.
+cost: Medium. Tenants without an existing qualifying entitlement may need a Microsoft Copilot licence or the SharePoint Advanced Management Plan 1 add-on; tenants already entitled mainly incur administrator time.
 impact: Low. Microsoft's notice names SharePoint administrators as the people affected; site owners and group members see no change.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] summary; What's changing; Why it matters / behaviour: The group report lists every site a given group can access, without qualifying the group types or nested-group access. | Found: Group reports don't expand nested-group permissions. If a security group is a member of another group, access granted to the parent group isn't included in the nested group's report. | Fix: Replace the summary's first sentence with 'SharePoint administrators will get a report of site access for Microsoft 365 and Microsoft Entra security groups, excluding access inherited through nested groups.' Add to the Learn description in What's changing: 'SharePoint groups and distribution lists are not supported inputs, and group reports exclude access inherited through nested-group membership.' These qualifications are stated at https://learn.microsoft.com/sharepoint/data-access-governance-site-permissions-users-report. Qualify the other unqualified descriptions of the report's reach the same way. | Source: https://learn.microsoft.com/sharepoint/data-access-governance-site-permissions-users-report
-- [contradicted, blocker] front matter: cost; rationale: cost; Cost and licensing / consistency: Cost is low because administrator time is the only cost the sources show, despite the page's documented paid entitlement routes. | Found: cost: Low. The only cost the sources show is admin time. / Cost and licensing: ... a SharePoint K, P1 or P2 subscription combined with the SharePoint Advanced Management Plan 1 add-on ... | Fix: Set cost to 'medium' under the standard's add-on licensing category. Replace the cost rationale with 'Medium. Tenants without an existing qualifying entitlement may need a Microsoft Copilot licence or the SharePoint Advanced Management Plan 1 add-on; tenants already entitled mainly incur administrator time.' The entitlement routes are documented at https://learn.microsoft.com/sharepoint/sharepoint-advanced-management-prerequisites. Keep the existing licensing paragraph.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui / admin-path: The group report is reached through SharePoint admin center > Reports > Data access governance > Site permissions for users or groups > View reports > Create report > Create report for > Groups. | Found: From the Data access governance landing page, select View reports under Site permissions for users or groups. ... Select Create report ... Under Create report for, select Users or Groups, then select Next. | Fix: The printed labels are in the documented order, and the navigation prefix is documented at the cited overview. To finish the route to running a report, use 'Reports > Data access governance > Site permissions for users or groups > View reports > Create report > Create report for > Groups > Create and run'. In the row note add 'Before Create and run, choose the groups, specify Scope and provide Report name.' The intermediate selections and final button are documented at https://learn.microsoft.com/sharepoint/data-access-governance-site-permissions-users-report. | Source: https://learn.microsoft.com/sharepoint/data-access-governance-site-permissions-users-report
-- [supported, minor] controls[2].ui / admin-path: The user report is reached through SharePoint admin center > Reports > Data access governance > Site permissions for users or groups > View reports > Create report > Create report for > Users. | Found: From the Data access governance landing page, select View reports under Site permissions for users or groups. ... Select Create report ... Under Create report for, select Users or Groups, then select Next. | Fix: To finish the route to running the report, use 'Reports > Data access governance > Site permissions for users or groups > View reports > Create report > Create report for > Users > Create and run'. In the row note add 'Before Create and run, choose the users, specify Scope and provide Report name.' These steps are documented at https://learn.microsoft.com/sharepoint/data-access-governance-site-permissions-users-report. | Source: https://learn.microsoft.com/sharepoint/data-access-governance-site-permissions-users-report
+- [unsupported, minor] rationale: impact / default: Site owners and group members see no change. | Found: Searched: SharePoint group permissions report default automatic permissions changes Data access governance snapshot report; "data access governance" "group" "no impact" "users". Read MC1540348, roadmap, report page and overview; none explicitly promises no change for these people. | Fix: Replace the impact rationale with: "Low. Microsoft's notice names SharePoint administrators as the people affected; no source says existing site permissions change on arrival." This preserves the documented audience without asserting an arrival default.
 -->

@@ -53,7 +53,7 @@ controls:
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Licensing > Products > Copilot Studio > Summary > Copilot Studio > Manage Copilot Credits"
+      path: "Licensing > Products > Copilot Studio > Summary > Copilot Studio > Manage Copilot Credits > environment > Copilot Credits"
       docs: "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity"
     api:
       kind: "power-platform-api"
@@ -74,19 +74,23 @@ changes:
     note: "New briefing: roadmap item for a Python Code node in Copilot Studio workflows; Learn has no Code node page yet, so cost and controls rest on the workflows capacity pages."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 58 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected after verification: the billing gap now says Microsoft states that natural-language building and LLM use under the Copilot harness consume credits; added the full allocation path and Agent flow actions route."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 62 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 58
-  confirmed: 56
+  claims: 62
+  confirmed: 61
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "996092f0b19d94d1b79ebc16c979c255"
+  contradicted: 1
+  attempts: 0
+  hash: "bf934ce2bafc0eb79ad49f4e52ff13b3"
 ---
 
 ## What's changing
@@ -132,7 +136,7 @@ Microsoft has not stated what happens on arrival, and no source says existing wo
 
 **Limits.** Learn says that once an environment's prepaid Copilot Studio capacity is fully consumed, new workflow runs are blocked until capacity is available, and running workflows complete normally. Pay-as-you-go billing is Learn's suggested way to avoid interruption. The environment allocation and overage settings are the first row in the controls table.
 
-**Not yet published.** A Copilot Credit rate for a Code node step, and whether generating code with AI consumes credits, are not yet published.
+**Not yet published.** A Copilot Credit rate specific to a Code-node step or its AI code generation is not yet published. Microsoft states that building experiences with natural language and using LLMs under the Microsoft Copilot harness consume credits.
 
 ## Scope
 
@@ -153,7 +157,7 @@ Capacity is managed per environment. Learn says allocating credits through the P
 ### At rollout
 
 - Tell makers that the Code node is a roadmap item and that Microsoft has not yet published its rate, data handling or admin controls.
-- Review the **Agent flow actions** used by each workflow in the Power Platform admin center under **Licensing** > **Copilot Studio**.
+- In the Power Platform admin center, go to **Licensing** > **Products** > **Copilot Studio** > **Environments**, select the environment, and on the **Copilot Credits capacity** tab review **Agent flow actions** in the **Copilot credit consumption details** grid.
 
 ### After rollout
 
@@ -167,7 +171,7 @@ Capacity is managed per environment. Learn says allocating credits through the P
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Copilot Credit allocation and overage source for an environment's workflow capacity</strong><br><small>Environment</small><br><small class="controls__note">Not specific to the Code node. The request body sets enforcementRules with ruleType TenantPool. Role: Power Platform Administrator or Global Administrator, or equivalent.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Summary › Copilot Studio › Manage Copilot Credits <a href="https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Copilot Credit allocation and overage source for an environment's workflow capacity</strong><br><small>Environment</small><br><small class="controls__note">Not specific to the Code node. The request body sets enforcementRules with ruleType TenantPool. Role: Power Platform Administrator or Global Administrator, or equivalent.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Summary › Copilot Studio › Manage Copilot Credits › environment › Copilot Credits <a href="https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Switch to turn the Code node off for an environment or tenant</strong><br><small>Environment</small><br><small class="controls__note">Microsoft Learn documents no such setting at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -181,7 +185,7 @@ Data policies are the general control over connectors in Copilot Studio. Learn's
 ## Open questions
 
 - Will Microsoft provide an admin setting to turn the Code node off for an environment or the tenant? Watch the Power Platform admin center documentation and Message center.
-- What credit rate applies to a Code node step, and does generating code with AI consume credits? Watch the Learn billing rates and usage-based billing pages.
+- What credit rate applies to a Code node step, and what rate applies to generating code with AI? Watch the Learn billing rates and usage-based billing pages.
 - Where does the Python run, which identity does it use, and can it make outbound calls? Watch the Learn workflows pages.
 - Do data policies restrict what the Code node can do? Watch Learn's data policies page for agents.
 - Is the node on by default for all workflows when it reaches General Availability, or does each maker add it? The roadmap does not say.
@@ -192,12 +196,9 @@ cost: Variable. Workflows consume Copilot Studio capacity (Copilot Credits) for 
 impact: Medium. Makers who build workflows notice it first; admins notice through credit consumption and any data-handling questions.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: Not yet published; Open questions / absence: Whether generating code with AI consumes credits is not yet published. | Found: Copilot Credits are charged for large language model (LLM) tokens, tools (including knowledge and MCPs), and the harness itself. Any experience that uses one of these consumes credits. | Fix: Replace the billing gap with: 'A Copilot Credit rate specific to a Code-node step or its AI code generation is not yet published. Microsoft states that building experiences with natural language and using LLMs under the Microsoft Copilot harness consume credits.' In Open questions, ask for the code-generation rate rather than whether generation consumes credits. Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The capacity control is reached through Power Platform admin center > Licensing > Products > Copilot Studio > Summary > Copilot Studio > Manage Copilot Credits. | Found: Under the Copilot Studio heading, select Manage Copilot Credits or Manage sessions. In the allocation panel, select an environment and specify the number of Copilot Credits to allocate in the Copilot Credits textbox. | Fix: The printed route is correct but ends at the panel before its controls. Keep the existing route and append ' > environment > Copilot Credits' for allocation. In the note, give the overage route in full: 'Licensing > Products > Copilot Studio > Summary > Copilot Studio > Manage Copilot Credits > environment > Capacity overages > Draw from the available capacity in my tenant or Bill to my pay-as-you-go billing plan'. Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity. | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity
-- [contradicted, minor] Governance guidance: At rollout and After rollout; Governance controls table / consistency: The checklist directs readers to review Agent flow actions and workflow credit-usage monitoring, but neither monitoring surface has a controls-table row. | Found: Review the Agent flow actions used by each workflow ... Compare each workflow's Credit usage (last 30 days) column ... Controls: credit allocation and overage source; switch to turn the Code node off. | Fix: The 'At rollout' Agent flow actions review and 'After rollout' Credit usage (last 30 days) comparison have no corresponding controls-table row.
-- [supported, minor] Governance guidance: At rollout / admin-path: Workflow Agent flow actions usage can be reviewed in the Power Platform admin center under Licensing > Copilot Studio. | Found: To monitor credit consumption for agent flows, look for the Agent flow actions feature in the Copilot credit consumption details grid. | Fix: Expand the instruction to: 'In the Power Platform admin center, go to Licensing > Products > Copilot Studio > Environments, select the environment, and on the Copilot Credits capacity tab review Agent flow actions in the Copilot credit consumption details grid.' Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity. | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Power Platform admin center route reaches environment credit allocation on the Copilot Credits textbox. | Found: Under the Copilot Studio heading, select Manage Copilot Credits or Manage sessions. In the allocation panel, select an environment and specify the number of Copilot Credits to allocate in the Copilot Credits textbox. | Fix: Keep the allocation path. To complete the same row's overage guidance, add to its note: 'For overages, follow Licensing > Products > Copilot Studio > Summary > Copilot Studio > Manage Copilot Credits > environment > Capacity overages, then select Draw from the available capacity in my tenant or Bill to my pay-as-you-go billing plan.' Both options are documented at https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity. | Source: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity
+- [contradicted, minor] Governance guidance: At rollout and After rollout; controls / consistency: The checklist directs readers to monitoring surfaces that have no corresponding controls-table row. | Found: Checklist: review Agent flow actions in the Copilot credit consumption details grid; compare Credit usage (last 30 days). Table: only Copilot Credit allocation and overage source, and Switch to turn the Code node off. | Fix: The At rollout step to review Agent flow actions and the After rollout step to compare Credit usage (last 30 days) have no controls-table row. Remove those two checklist bullets; retain the supported monitoring information in Risk assessment. Do not add rows in this correction.
 -->

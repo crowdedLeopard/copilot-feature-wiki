@@ -80,19 +80,23 @@ changes:
     note: "Corrected after verification: Teams Rooms licence wording now matches the Plan Teams Rooms page, and the survey control's docs link now points to the feedback policies page."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 63 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-20"
+    note: "Corrected after verification: broad statements that survey retention is unpublished now say only that MC1490912 does not specify retention or storage duration, and the release notes' Call Quality Dashboard visibility is added."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 59 statements confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-20"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 62
+  claims: 59
+  confirmed: 59
   unconfirmed: 0
-  contradicted: 1
-  attempts: 3
-  hash: "85f47ceea59878e533344d55c4c9c3ed"
+  contradicted: 0
+  attempts: 0
+  hash: "74112b7b431dd7ec53b2b873ece73bc9"
 ---
 
 ## What's changing
@@ -107,13 +111,13 @@ The roadmap record lists the item as In development, with a General Availability
 
 For service owners, this is a change to what meeting-room users see, arriving on Microsoft's schedule and by default once devices run the required app version. Plan for a few extra prompts in shared rooms, questions to the service desk about who the survey is from, and a decision on whether to leave the surveys on.
 
-The notice says the change stores new customer data (survey responses) and does not state where it is stored, how long it is kept or for how long. If your privacy or records teams need those answers, they are not yet published, so raise the question before rollout rather than after.
+The notice says the change stores new customer data (survey responses). MC1490912 does not specify survey-response retention or storage duration. If your privacy or records teams need those answers, raise the question before rollout rather than after.
 
 ## Risk assessment
 
 **Data exposure**
 
-- Users can submit ratings and feedback through post-meeting surveys, which Microsoft's notice describes as new customer data. The notice does not specify storage location, retention or storage duration, so a retention or residency review cannot be completed from published information.
+- Users can submit ratings and feedback through post-meeting surveys, which Microsoft's notice describes as new customer data. MC1490912 does not specify storage location, retention or storage duration. The Teams Rooms on Android release notes say the survey results are visible in the Call Quality Dashboard.
 - Microsoft's feedback policy page says Microsoft acts as a data processor for your tenant's feedback and that the feedback it collects from your users is available in the Microsoft 365 admin center. That page lists Teams Rooms among the apps connected to in-product surveys but does not mention Android specifically.
 
 **Security & identity**
@@ -146,7 +150,7 @@ Rollout: the notice says it begins in November 2026 and the feature becomes avai
 ### Before rollout
 
 - Decide whether to leave the Cloud Policy survey setting at its default or disable in-product surveys for the Teams Rooms accounts, and who approves that decision.
-- Ask your privacy team to review the notice's statement that new customer data is stored, given that location and retention are not yet published.
+- Ask your privacy team to review the notice's statement that new customer data is stored, given that MC1490912 does not specify storage location, retention or storage duration.
 
 ### At rollout
 
@@ -181,10 +185,4 @@ The feedback policies page says policies set to Not Configured have the same eff
 risk: Low. The survey collects user ratings on call, video, audio and screen-sharing quality; Microsoft's notice says it is on by default and stores new customer data, but a Cloud Policy survey setting is documented for Teams Rooms.
 cost: Low. The only cost the sources show is admin time for communication and device updates; Microsoft has not published a survey-specific licence or meter for the surveys.
 impact: Medium. People who attend meetings on Teams Rooms on Android devices will periodically be prompted after a meeting ends; admins and other users do not otherwise notice it.
--->
-
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters; Risk assessment: Data exposure; Governance guidance: Before rollout / absence: Microsoft has not published how long survey data is kept, so no retention review can be completed from published information. | Found: For compliance reasons, EUII data (also known as personally-identifiable information or PII) is only kept for 28 days. As CQD's data crosses the 28-day mark, fields that contain EUII are cleared, resulting in EUII-free data. | Fix: Replace the broad retention-absence statements in Why it matters, Risk assessment and Before rollout with: 'MC1490912 does not specify survey-response retention or storage duration.' Remove 'a retention or residency review cannot be completed from published information'. Do not imply that no retention information exists: https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note says these survey results are visible in CQD; https://learn.microsoft.com/microsoftteams/cqd-data-and-reports documents 12-month CQD call-record retention and clearing EUII, explicitly including Feedback Text, after 28 days. This does not establish retention of every copy of a raw survey response. | Source: https://learn.microsoft.com/microsoftteams/cqd-data-and-reports
 -->

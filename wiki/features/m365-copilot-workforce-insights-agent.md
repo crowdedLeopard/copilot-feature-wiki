@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "mixed"
-  notes: "Learn says Workforce Insights is available to users with paid Microsoft Copilot licences, delegates need one too, and People Skills data needs its own licensing. No price or credit meter is given on the pages read."
+  model: "included"
+  notes: "Learn says Workforce Insights is available to users with paid Microsoft Copilot licences, and delegates need one too. People Skills comes with Microsoft Copilot or Viva licences and does not need a separate licence. No price or credit meter is given on the pages read."
 audiences: ["m365-admin","security","compliance","change-adoption"]
 tags: ["m365-copilot","agents","organizational-data-service","delegation","frontier-program","privacy","m365-admin-center"]
 sources:
@@ -46,6 +46,18 @@ sources:
   - title: "Add-WorkforceInsightsDelegationAccess"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/add-workforceinsightsdelegationaccess?view=exchange-ps"
     kind: "learn"
+  - title: "Overview of People Skills"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/people-skills-overview"
+    kind: "learn"
+  - title: "Agent 365 Package Management API overview"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview"
+    kind: "learn"
+  - title: "Which users and groups the agent is installed for, including a pilot group (Microsoft Graph)"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update"
+    kind: "learn"
+  - title: "Whether the agent is blocked for the whole organisation (Microsoft Graph)"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
+    kind: "learn"
 videos: []
 related: []
 controls:
@@ -55,16 +67,22 @@ controls:
       surface: "Microsoft 365 admin center"
       path: "Agents > All agents > Workforce Insights (Frontier) > Install"
       docs: "https://learn.microsoft.com/copilot/manage/configure-workforce-insights-agent"
-    api: null
-    note: "Install lets you pick just me, all users or specific users or groups. Learn describes the Frontier agent."
+    api:
+      kind: "graph"
+      call: "PATCH /beta/copilot/admin/catalog/packages/{id}"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update"
+    note: "Deployment scope uses deployedTo and acquireUsersAndGroups; availability uses availableTo and allowedUsersAndGroups. Beta API: needs a Microsoft Agent 365 licence and delegated CopilotPackages.ReadWrite.All; not for production."
   - governs: "Whether the agent is blocked for the whole organisation"
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
       path: "Agents > All agents > Workforce Insights (Frontier) > Block > Block agent"
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions"
-    api: null
-    note: "Learn's Workforce Insights page says admins can block the agent for all users or remove a deployed agent from the inventory."
+    api:
+      kind: "graph"
+      call: "POST /beta/copilot/admin/catalog/packages/{id}/block"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
+    note: "Learn's Workforce Insights page says admins can block the agent for all users. The beta Package Management API needs a Microsoft Agent 365 licence and delegated CopilotPackages.ReadWrite.All; not for production."
   - governs: "Which employee groups can see each organisational data attribute"
     scope: "tenant"
     ui:
@@ -90,19 +108,23 @@ changes:
     note: "First briefing for the Workforce Insights agent: roadmap target November CY2026, Frontier-era Learn documentation, licence requirements and four admin controls."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 81 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected after verification: People Skills needs no separate licence (licensing now included), access policies are no longer listed as chat-configurable, and the install and block controls now show their beta Graph package APIs."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 84 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 81
-  confirmed: 75
-  unconfirmed: 1
-  contradicted: 5
-  attempts: 1
-  hash: "298d730dfa90aaeec7107155f602e862"
+  claims: 84
+  confirmed: 83
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "3cc578f3f0371539ceb1b040f24b98e6"
 ---
 
 ## What's changing
@@ -111,7 +133,7 @@ The roadmap item describes the Workforce Insights (WFI) agent in Microsoft 365 C
 
 Microsoft Learn already documents an agent with this name, and marks it as part of the Microsoft Frontier program and "subject to change". Learn says the agent helps leaders and their delegates understand organisation composition, summarise workforce-planning guidance based on skills, identify skills and find team members by attributes such as level, location and title. It draws on Organizational Data, custom attributes sent to Workforce Insights and People Skills data, and responses depend on the user's role and the policies the admin sets. Learn describes the Frontier release, so treat it as the best guide to the general availability release, not a confirmed description of it.
 
-Admins can configure attribute descriptions, access policies, organisation context, organisation-specific prompts (up to six, tenant-wide) and a custom AI disclaimer, either on the agent's home page or by chatting with the agent, which saves a change only after the admin confirms it. Admins can also override how managers are identified with a custom SupervisorIndicator attribute. Microsoft has not stated whether the agent is on or off for tenants when it reaches general availability.
+Admins can configure attribute descriptions, organisation context, organisation-specific prompts (up to six, tenant-wide) and a custom AI disclaimer, either on the agent's home page or by chatting with the agent, which saves a change only after the admin confirms it. Admins can also override how managers are identified with a custom SupervisorIndicator attribute. Microsoft has not stated whether the agent is on or off for tenants when it reaches general availability.
 
 ## Why it matters
 
@@ -138,9 +160,9 @@ Because Microsoft has not stated the default on arrival, plan on the roadmap tar
 
 ## Cost and licensing
 
-Learn says Workforce Insights is available to users with paid Microsoft Copilot licences, and that delegates also need a paid Microsoft Copilot licence (Workforce Insights agent page). The configuration page says the Frontier release requires a paid Microsoft 365 Copilot licence and that the tenant enrols in the Microsoft Frontier program. Skills queries also need People Skills enabled and its licensing met.
+Learn says Workforce Insights is available to users with paid Microsoft Copilot licences, and that delegates also need a paid Microsoft Copilot licence (Workforce Insights agent page). The configuration page says the Frontier release requires a paid Microsoft 365 Copilot licence and that the tenant enrols in the Microsoft Frontier program. People Skills comes with Microsoft Copilot or Viva licences and does not need a separate licence; skills queries require People Skills to be enabled and its licensing requirements met (People Skills overview).
 
-The pages read give no separate price, add-on SKU or Copilot Credits rate for the agent at the time of writing (November 2026). The practical costs are admin time, HR data preparation and, where skills are used, the People Skills licence. Whether the general availability release changes the Frontier enrolment requirement is not yet published.
+The pages read give no separate price, add-on SKU or Copilot Credits rate for the agent at the time of writing (November 2026). The practical costs are admin time and HR data preparation. Whether the general availability release changes the Frontier enrolment requirement is not yet published.
 
 ## Scope
 
@@ -150,12 +172,12 @@ The pages read give no separate price, add-on SKU or Copilot Credits rate for th
 
 **Cloud and platforms.** The roadmap lists Worldwide (Standard Multi-Tenant) only, on Android, Desktop, iOS, Mac, Teams and Surface Devices and Web. The record lists no US Government cloud.
 
-**Prerequisites.** Organisational data uploaded to Microsoft 365 Profile; People Skills set up and licensed for skills queries; Frontier enrolment for the release Learn documents.
+**Prerequisites.** Organisational data uploaded to Microsoft 365 Profile; People Skills set up and enabled, with its licensing requirements met, for skills queries; Frontier enrolment for the release Learn documents.
 
 ## Governance guidance
 
 ### Before rollout
-- Confirm which leaders, managers and delegates hold a paid Microsoft 365 Copilot licence, and decide whether to set up and license People Skills for skills questions.
+- Confirm which leaders, managers and delegates hold a paid Microsoft 365 Copilot licence, and decide whether to set up People Skills for skills questions.
 - Review the organisation-wide access policies for every custom attribute you share with Workforce Insights, and decide who the manager-level policies and delegate access should reach.
 - Assign AI Administrator and Organizational Data Source Administrator for routine work and keep Global Administrator for rare tasks, as Learn advises.
 - Check whether your tenant used SupervisorIndicator or WeeklyBadgeDays as reserved fields, and copy them to renamed custom fields.
@@ -180,8 +202,8 @@ The pages read give no separate price, add-on SKU or Copilot Credits rate for th
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which users and groups the agent is installed for, including a pilot group</strong><br><small>User</small><br><small class="controls__note">Install lets you pick just me, all users or specific users or groups. Learn describes the Frontier agent.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › Workforce Insights (Frontier) › Install <a href="https://learn.microsoft.com/copilot/manage/configure-workforce-insights-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether the agent is blocked for the whole organisation</strong><br><small>Tenant</small><br><small class="controls__note">Learn's Workforce Insights page says admins can block the agent for all users or remove a deployed agent from the inventory.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › Workforce Insights (Frontier) › Block › Block agent <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which users and groups the agent is installed for, including a pilot group</strong><br><small>User</small><br><small class="controls__note">Deployment scope uses deployedTo and acquireUsersAndGroups; availability uses availableTo and allowedUsersAndGroups. Beta API: needs a Microsoft Agent 365 licence and delegated CopilotPackages.ReadWrite.All; not for production.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › Workforce Insights (Frontier) › Install <a href="https://learn.microsoft.com/copilot/manage/configure-workforce-insights-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/admin/catalog/packages/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether the agent is blocked for the whole organisation</strong><br><small>Tenant</small><br><small class="controls__note">Learn's Workforce Insights page says admins can block the agent for all users. The beta Package Management API needs a Microsoft Agent 365 licence and delegated CopilotPackages.ReadWrite.All; not for production.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All agents › Workforce Insights (Frontier) › Block › Block agent <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which employee groups can see each organisational data attribute</strong><br><small>Tenant</small><br><small class="controls__note">Global Administrator or Organizational Data Source Administrator. Custom attributes default to the Staging policy, which releases data to no users until configured.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Setup › Migration and Imports › Microsoft 365 Organizational Data Service › Settings › Organization-wide access policy › Edit access policies <a href="https://learn.microsoft.com/viva/set-access-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Admin-assigned delegate access to a leader's insights</strong><br><small>User</small><br><small class="controls__note">Exchange Online PowerShell 3.9.2-Preview1 or later; Global Administrator or AI Administrator. Get- and Remove- variants list and remove access.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-WorkforceInsightsDelegationAccess -Delegate &lt;Guid&gt; -Delegator &lt;Guid&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/add-workforceinsightsdelegationaccess?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -198,23 +220,17 @@ Learn says admins can stop users assigning delegates by using Microsoft 365 cont
 - Will the agent be on, off or available for admins to install when it reaches general availability? Watch the Learn pages and Message center for a default.
 - Does general availability keep the Frontier enrolment requirement and the "paid Microsoft 365 Copilot licence" rule that the Frontier pages state?
 - Which audit events and usage reports record Workforce Insights questions and admin changes? Watch the Learn pages for the agent's Activity view in the admin centre.
-- Will Microsoft document a Graph or other API for installing, pilot-limiting or blocking this agent, beyond the admin centre steps?
+- Does general availability change these beta package-management APIs?
 
 <!-- rationale
 risk: Medium. The agent answers from organisational attributes, including manager-only custom fields that delegates can query; existing access policies and install controls cover this, but custom attributes need configuring first.
-cost: Low. Learn requires a paid Microsoft 365 Copilot licence for users and delegates, and separate People Skills licensing for skills data, so the new cost is admin time to configure data, policies and rollout.
+cost: Low. Learn requires a paid Microsoft 365 Copilot licence for users and delegates; People Skills comes with Microsoft Copilot or Viva licences and needs no separate licence, so the new cost is admin time to configure data, policies and rollout.
 impact: Medium. Leaders, managers and their delegates notice it, and anyone whose attributes feed it is affected by what the access policies reveal; most staff will not use it directly.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] What's changing: third paragraph / admin-path: Access policies are among the settings administrators can configure on the agent's home page or by chatting with it. | Found: Searched: "Workforce Insights" "chat" "access policies". Opened configure-workforce-insights-agent, overview-wfi-agent and viva/set-access-policies; chat supports descriptions, context, prompts, disclaimers and manager identification, not a documented access-policy editing route. | Fix: Remove 'access policies' from the list governed by 'either on the agent's home page or by chatting with the agent'. Keep access-policy configuration described through the Microsoft 365 Organizational Data Service route already in controls[2].
-- [contradicted, blocker] rationale: cost; Cost and licensing; licensing.notes / licensing: People Skills needs separate licensing and its licence is an additional practical cost for skills data. | Found: People Skills comes with your Microsoft Copilot or Viva licenses and doesn't need a separate license. | Fix: Replace the separate-licence wording in the licensing notes, cost paragraph and rationale with 'People Skills comes with Microsoft Copilot or Viva licences and does not need a separate licence; skills queries require People Skills to be enabled and its licensing requirements met.' Remove 'and, where skills are used, the People Skills licence' from practical costs. Cite https://learn.microsoft.com/microsoft-365/copilot/people-skills-overview. | Source: https://learn.microsoft.com/microsoft-365/copilot/people-skills-overview
-- [contradicted, blocker] front matter: licensing.model / consistency: The documented licensing model is mixed. | Found: People Skills comes with your Microsoft Copilot or Viva licenses and doesn't need a separate license. | Fix: Set licensing.model to 'included'. Keep the paid Microsoft 365 Copilot prerequisite and Frontier qualification; state that People Skills does not require a separate licence, citing https://learn.microsoft.com/microsoft-365/copilot/people-skills-overview. No second entitlement model or meter is documented for this agent. | Source: https://learn.microsoft.com/microsoft-365/copilot/people-skills-overview
-- [contradicted, blocker] controls[0].api; rendered controls table; Open questions / absence: Automation for choosing the agent's deployment audience is not yet documented. | Found: acquireUsersAndGroups | packageAccessEntity collection | Users/groups for whom the package is deployed. deployedTo | packageAcquireStatus | Enum value indicating the deployment scope of the package. Required if updating acquireUsersAndGroups. | Fix: Set controls[0].api to kind 'graph', call 'PATCH /beta/copilot/admin/catalog/packages/{id}', docs 'https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update'. Add to its note: 'Package deployment scope uses deployedTo and acquireUsersAndGroups; availability uses availableTo and allowedUsersAndGroups. This beta API requires a Microsoft Agent 365 licence and delegated CopilotPackages.ReadWrite.All permission; production use is not supported.' Replace the open question about absent pilot-limiting APIs with 'Does general availability change these beta package-management APIs?' Cite the package overview, which defines packages as agents or tools in the organisation catalog. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackagedetail-update
-- [contradicted, blocker] controls[1].api; rendered controls table; Open questions / absence: An API for organisation-wide blocking is not yet documented. | Found: Block a Copilot package to prevent its usage. POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block | Fix: Set controls[1].api to kind 'graph', call 'POST /beta/copilot/admin/catalog/packages/{id}/block', docs 'https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block'. Add to its note: 'The beta Package Management API requires a Microsoft Agent 365 licence and delegated CopilotPackages.ReadWrite.All permission; production use is not supported.' Remove blocking from the open question asserting that such an API is unpublished. The package overview defines a package as an agent or tool in the organisation catalog. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui; rendered controls table / admin-path: The stated Settings > Setup > Migration and Imports > Microsoft 365 Organizational Data Service > Settings > Organization-wide access policy > Edit access policies route reaches access-policy configuration. | Found: On the Microsoft 365 Organizational Data Service page, select Settings. Under the Organization-wide access policy section, select Edit access policies. | Fix: For editing a policy's audience, expand the path to 'Settings > Setup > Migration and Imports > tools to migrate or import data > Microsoft 365 Organizational Data Service > Settings > Organization-wide access policy > Edit access policies > Configure policies > policy > Edit access policy > Users'. The current route reaches the correct configuration page but omits the table heading and stops before the audience control; see https://learn.microsoft.com/viva/set-access-policies. | Source: https://learn.microsoft.com/viva/set-access-policies
-- [contradicted, minor] Governance guidance: Before rollout, At rollout and After rollout / consistency: The checklist names controls that have no corresponding controls-table rows. | Found: Checklist: 'Assign AI Administrator and Organizational Data Source Administrator'; 'Confirm an attribute description'; 'Publish organisation context, any organisation-specific prompts and the custom AI disclaimer'. Table: install, block, attribute access policies and administrator delegation only. | Fix: The role-assignment/review, attribute-description, organisation-context, organisation-specific-prompt and AI-disclaimer checklist instructions have no matching control rows. Remove these control-setting/checking instructions from the checklist; their documented descriptions can remain in the body. Do not add rows as part of this correction.
+- [supported, minor] controls[2].ui / admin-path: The printed Microsoft 365 admin-center route reaches the organizational-data access-policy configuration page. | Found: Under the Organization-wide access policy section, select Edit access policies. | Fix: Extend the route to 'Settings > Setup > Migration and Imports > Microsoft 365 Organizational Data Service > Settings > Organization-wide access policy > Edit access policies > policy > Edit access policy'. The note can say 'Configure Users and Population group on this page', as documented at https://learn.microsoft.com/viva/set-access-policies. | Source: https://learn.microsoft.com/viva/set-access-policies
+- [contradicted, minor] Governance guidance: Before rollout and At rollout; Governance controls table / consistency: Every configuration control the checklist tells administrators to set or check is represented in the controls table. | Found: Confirm an attribute description for each custom column; Publish organisation context, any organisation-specific prompts and the custom AI disclaimer. The table contains only installation, blocking, access policies and delegation. | Fix: The checklist's role-assignment, reserved-field migration, attribute-description and context/prompt/disclaimer configuration steps have no corresponding controls-table rows. Remove those four configuration bullets from the checklist, retaining their already documented explanations in the body; do not add unverified rows.
 -->

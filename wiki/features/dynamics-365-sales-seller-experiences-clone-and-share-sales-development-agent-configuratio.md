@@ -12,7 +12,7 @@ platforms: ["Web"]
 targetDate: "April CY2027"
 previewDate: "August CY2026"
 risk: "medium"
-cost: "low"
+cost: "variable"
 impact: "low"
 defaultState: "unknown"
 action: "review"
@@ -36,6 +36,15 @@ sources:
     kind: "learn"
   - title: "copilotPackage: activate"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate"
+    kind: "learn"
+  - title: "Audit log activities"
+    url: "https://learn.microsoft.com/purview/audit-log-activities"
+    kind: "learn"
+  - title: "Sales Development agent architecture"
+    url: "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/architecture"
+    kind: "learn"
+  - title: "Microsoft 365 Resources for Agents"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-resources-for-agents"
     kind: "learn"
 videos: []
 related: ["m365-copilot-sales-development-agent-is-now-available","m365-copilot-sales-development-agent-meeting-scheduling","knowledge-grounding"]
@@ -69,19 +78,23 @@ changes:
     note: "Corrected after verification: added the Graph activation call for the instance-creation control, noted that shared knowledge content can reach people without access to it, and removed an 'only control' claim."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 61 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-20"
+    note: "Corrected after verification: cost is now variable, with the published Copilot Credits consumption billing for Sales Development agents, and the audit statement now notes general Agent 365 auditing."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 66 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 59
+  claims: 66
+  confirmed: 66
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "2531443c7dc18de467a34f69fac67269"
+  contradicted: 0
+  attempts: 0
+  hash: "c493e7b4b9c7f19c9d7e9168d90b8678"
 ---
 
 ## What's changing
@@ -101,7 +114,7 @@ Microsoft has not stated what happens on arrival, so base your plan on the fact 
 ## Risk assessment
 
 **Data exposure**
-- The export is a downloaded file holding playbook, guidelines and settings. Learn says it can contain business-specific details and advises storing and sharing it according to your organisation's data policies, limiting access to authorised users and deleting local and cloud copies, such as OneDrive, when the transfer is complete. Microsoft Learn documents no admin setting that stops or logs the export, so these steps rest on the managers.
+- The export is a downloaded file holding playbook, guidelines and settings. Learn says it can contain business-specific details and advises storing and sharing it according to your organisation's data policies, limiting access to authorised users and deleting local and cloud copies, such as OneDrive, when the transfer is complete. No export-specific tenant switch is documented. General Agent 365 auditing records agent invocations and tool calls; a configuration-export-specific audit event is not yet documented.
 - Knowledge sources are not exported, so uploaded documents, FAQs and URLs do not travel in the file. Each has to be added to the target agent separately, but Microsoft warns that shared content may appear in responses to people who lacked access to the original content, regardless of its sensitivity labels or permissions.
 
 **Security & identity**
@@ -117,6 +130,8 @@ Microsoft has not stated what happens on arrival, so base your plan on the fact 
 ## Cost and licensing
 
 Microsoft Learn's copy-configuration page names no licence and no meter for the copy. The activation page for the Sales Development agent (preview) says to have "the required subscriptions and licenses for Microsoft 365, Microsoft 365 Copilot, and Microsoft Teams", and its enablement steps have an administrator purchase the $0 Agent 365 SKU, which includes a license for 25 agent instances. Those are the requirements for the agent the copy runs inside, and the wiki reads them as covering this feature too; Microsoft has not published anything more specific.
+
+The Microsoft 365 Resources for Agents service description lists Sales Development Agent public preview availability as December 1, 2026, when consumption billing begins. It publishes 100 Copilot Credits per agent per month for the agent account and persistent resource access, and says all agent activity, including model, context, tools and runtime usage, is billed consumptively. The activation page still describes the $0 preview SKU; that SKU price does not establish that agent activity is unmetered.
 
 A credit rate or price specific to exporting or importing a configuration is not yet published. The indirect cost is manager time to export, import and validate each target agent, and to re-add knowledge sources by hand.
 
@@ -163,22 +178,18 @@ No tenant-wide switch for exporting or importing a configuration is documented, 
 ## Open questions
 
 - Is the configuration copy on, off or opt-in on arrival, and will an admin setting be added to turn export or import off? Watch the Learn page and Message center.
-- Which licence, if any, is specific to exporting or importing a configuration, and does it use Copilot Credits?
-- Which guardrail and settings content is in the export file, and is the export recorded in an audit log an administrator can search?
+- Which Copilot Credits rate, if any, is specific to exporting or importing a configuration? Watch the Microsoft 365 Resources for Agents service description and the Learn page.
+- Which guardrail and settings content is in the export file, and which audit event, if any, identifies a configuration export?
 - Will the final design at general availability keep the Teams chat steps documented for the preview?
 
 <!-- rationale
 risk: Medium. The export is a downloadable file of business-specific playbook and guideline content, and Microsoft Learn documents no admin control over exporting or importing it.
-cost: Low. The only cost the sources show is manager time and the licences the Sales Development agent already needs; Microsoft Learn publishes no charge or meter specific to the configuration copy.
+cost: Variable. Microsoft publishes consumption billing via Copilot Credits for Sales Development agents from December 1, 2026; no export/import-specific rate is published.
 impact: Low. Per the Learn page, those who manage both agents carry out the copy; sellers notice only that a new agent starts with the same playbook and settings.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure; Open questions: export audit / absence: No administrator logging control is documented for the export, leaving oversight to managers. | Found: The following table lists Agent 365 activities that are logged when an agent is invoked or performs any actions or tool calls. | Fix: Replace 'Microsoft Learn documents no admin setting that stops or logs the export, so these steps rest on the managers.' with 'No export-specific tenant switch is documented. General Agent 365 auditing records agent invocations and tool calls; a configuration-export-specific audit event is not yet documented.' Cite https://learn.microsoft.com/purview/audit-log-activities and https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/architecture, which places this agent on Agent 365. Narrow the audit open question to identifying a configuration-export-specific event rather than whether administrators have any audit trail. | Source: https://learn.microsoft.com/purview/audit-log-activities
-- [contradicted, blocker] front matter: cost; Cost and licensing; rationale: cost / consistency: Cost is low because the published costs consist only of manager time and existing agent licenses. | Found: Public Preview availability | November 24, 2026 | December 1, 2026 | December 1, 2026 | Consumption billing begins when each product becomes available. All agent activity is billed consumptively. | Fix: Set cost to 'variable'. Replace the cost rationale with 'Variable. Microsoft publishes consumption billing via Copilot Credits for Sales Development agents from December 1, 2026; no export/import-specific rate is published.' Add to Cost and licensing: 'The Microsoft 365 Resources for Agents service description lists Sales Development Agent public preview availability as December 1, 2026, when consumption billing begins. It publishes 100 Copilot Credits per agent per month for the agent account and persistent resource access, and says all agent activity, including model, context, tools and runtime usage, is billed consumptively. The activation page still describes the $0 preview SKU; that SKU price does not establish that agent activity is unmetered.' Cite https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-resources-for-agents. Keep the narrower statement that no configuration-export/import-specific rate is published. | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-resources-for-agents
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance guidance: Before rollout; Governance controls / admin-path: Microsoft 365 admin center > Agents > All Agents > Sales Development (Frontier) > Activate reaches instance-creation access configuration. | Found: In the Microsoft 365 admin center, go to **Agents** > **All Agents**. 2. Search for **Sales Development (Frontier)**, and then select **Activate**. 3. Choose the users or groups that can create Sales Development agent instances. | Fix: The path correctly reaches the activation procedure but stops before its access choice. Keep the path and add to the row note: 'After selecting Activate, choose the users or groups that can create Sales Development agent instances, then apply a policy template that allows agent instance creation.' | Source: https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent
-- [supported, minor] controls[1].api / command: POST /beta/copilot/admin/catalog/packages/{id}/activate activates an agent template for permitted instance creators. | Found: POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/activate | Fix: Retain the call and add this qualification to the note: 'This is a reviewed beta contract; availability depends on the matching schema and backend release, not API-review approval.' The reference expressly distinguishes its reviewed contract from deployed availability. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate
+- [supported, minor] controls[1].api; controls[1].note / command: POST /beta/copilot/admin/catalog/packages/{id}/activate is the documented beta action for activating a template for users or groups allowed to create instances. | Found: POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/activate This reference describes the reviewed beta contract. Availability depends on the matching schema and backend release; API-review approval isn't evidence of deployed availability. | Fix: Append to controls[1].note and the rendered row note: 'This is a reviewed beta contract; availability depends on the matching schema and backend release, not API-review approval.' The existing API reference states this qualification. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate
 -->

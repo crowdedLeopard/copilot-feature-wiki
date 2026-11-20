@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "unknown"
 action: "prepare"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for the improvement. The sensitive information types page says an E5 licence is required for credential scanning SITs; its Licensing section names no licence for other built-in SITs."
+  model: "included"
+  notes: "For Microsoft 365 and Windows/macOS endpoint assets, Purview uses the Microsoft 365 E3/E5/A5/F5/G5 per-user licensing model. No licensing specific to this improvement is published. An E5 licence is required for credential scanning SITs."
 audiences: ["compliance","security","m365-admin"]
 tags: ["purview","sensitive-information-types","information-protection","dlp","classifiers","auto-labeling"]
 sources:
@@ -39,6 +39,9 @@ sources:
     kind: "learn"
   - title: "What's new in Microsoft Purview"
     url: "https://learn.microsoft.com/purview/whats-new"
+    kind: "learn"
+  - title: "Learn about Microsoft Purview billing models"
+    url: "https://learn.microsoft.com/purview/purview-billing-models"
     kind: "learn"
 videos: []
 related: ["microsoft-purview-unified-classification-management-experience","sensitivity-labels","microsoft-purview-information-protection-auto-labeling-for-legacy-office-files","microsoft-purview-data-loss-prevention-new-guided-experience-to-diagnose-and-resolve-dlp-i"]
@@ -79,19 +82,23 @@ changes:
     note: "New briefing: roadmap plans improved built-in sensitive information types; Learn gives no detail yet, so the page covers how SITs work today and what to retest."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 49 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected after verification: removed the claim that the SIT list shows which SITs policies use, aligned the checklist with the controls table, and set licensing to the published Microsoft 365 per-user model."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 52 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 49
-  confirmed: 47
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 1
-  hash: "61825aaa41688702bfe1c8b3fa87a4af"
+  claims: 52
+  confirmed: 52
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "9b54e50f8274d3e4ae87bc3d3c3fa287"
 ---
 
 ## What's changing
@@ -113,7 +120,7 @@ Microsoft has not stated what happens on arrival, or whether existing policies p
 ## Risk assessment
 
 **Data exposure**
-- Built-in SITs are referenced by DLP, labelling, retention, insider risk and communication compliance policies. If the improved definitions match differently, items those policies act on can change, and the roadmap does not say whether matches increase or decrease. The first row of the controls table is where you list the SITs in use.
+- Built-in SITs are referenced by DLP, labelling, retention, insider risk and communication compliance policies. If the improved definitions match differently, items those policies act on can change, and the roadmap does not say whether matches increase or decrease.
 - Learn says a high confidence level returns the fewest false positives but might return more false negatives, so a policy pinned to high confidence could behave differently from one at low confidence if matching shifts.
 
 **Security & identity**
@@ -128,7 +135,7 @@ Microsoft has not stated what happens on arrival, or whether existing policies p
 
 ## Cost and licensing
 
-No licence or meter for the improvement is published. The sensitive information types page says an E5 licence is required to use credential scanning SITs, and its Licensing section names no licence for other built-in SITs. The page for creating custom SITs points to Microsoft 365 licensing guidance without naming a licence for SITs.
+For Microsoft 365 and Windows/macOS endpoint assets, Microsoft Purview uses the Microsoft 365 E3/E5/A5/F5/G5 per-user licensing model, according to the [Microsoft Purview billing models page](https://learn.microsoft.com/purview/purview-billing-models). No licence or meter specific to the improvement is published. The sensitive information types page says an E5 licence is required to use credential scanning SITs, and its Licensing section names no licence for other built-in SITs. The page for creating custom SITs points to Microsoft 365 licensing guidance without naming a licence for SITs.
 
 Microsoft Learn documents no separate meter or charge for the improvement at the time of writing (November 2026). The indirect cost is admin time to retest. Learn also says that testing any SIT needs at least one Exchange Online licence in the tenant, otherwise the Test option is greyed out.
 
@@ -141,17 +148,13 @@ Which SITs are in scope, which roles manage them for this change and whether it 
 ## Governance guidance
 
 ### Before rollout
-- List the built-in SITs your DLP, labelling, retention, insider risk and communication compliance policies depend on, using the Sensitive info types page or Get-DlpSensitiveInformationType (first row of the controls table).
-- Record the current match count for each SIT in Sensitive info types and Content explorer as a baseline.
-- Prepare sample files for each SIT in use and test them with the Test option, which reports matches per confidence level.
+- Inventory available built-in SITs using the Sensitive info types page or Get-DlpSensitiveInformationType (first row of the controls table).
 - Tell DLP, labelling and records owners that match counts may change from the preview window.
 
 ### At rollout
 - Watch Message center and the What's new in Microsoft Purview page for a notice that names the affected SITs and any admin action.
-- Retest the sample files and compare the matches at each confidence level with the baseline.
 
 ### After rollout
-- Compare match counts in Sensitive info types and Content explorer with the baseline, and use Match or Not a Match feedback on items that look wrong.
 - Retest in each workload where the SIT is used, since results can differ between mail, SharePoint and OneDrive, and endpoint.
 - Review any custom copies of built-in SITs (second row of the controls table) and decide whether each is still needed.
 
@@ -177,19 +180,10 @@ Microsoft Learn documents no setting to opt in to, opt out of or delay the impro
 - Which built-in SITs are being improved, and what changes in their detection (patterns, keywords, validators, confidence)? Watch the Learn page on sensitive information type entity definitions and Message center.
 - Do the improved definitions replace the current ones in existing DLP and labelling policies, or are they added alongside them?
 - Do later Microsoft changes to a built-in SIT reach custom copies made from it?
-- Is there a licence requirement or a tenant control for the improvement? Watch the sensitive information types page and Microsoft 365 licensing guidance.
+- Is there a licence requirement specific to the improvement, or a tenant control for it? Watch the sensitive information types page and Microsoft 365 licensing guidance.
 
 <!-- rationale
 risk: Medium. Built-in sensitive information types feed DLP, labelling and other policies, so a change in what they match can change which items those policies act on; Microsoft has not said how the improvement reaches existing policies.
-cost: Low. The only cost the sources show is admin time to retest policies; a licence or meter for the improvement is not yet published.
+cost: Low. The only cost the sources show is admin time to retest policies; a licence or meter specific to the improvement is not yet published.
 impact: Low. Compliance and security admins would notice match counts shift; the roadmap item describes no end-user screen or setting.
--->
-
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Risk assessment: Data exposure; Governance guidance: Before rollout, first bullet / command: The first control row's SIT list or Get-DlpSensitiveInformationType identifies the SITs in use by the tenant's policies. | Found: Searched: Get-DlpSensitiveInformationType find sensitive information types used in policies references. Read the Get reference and custom-SIT creation page; they describe defined or all SITs, not a policy-dependency inventory. | Fix: Remove 'The first row of the controls table is where you list the SITs in use.' Replace the first Before rollout bullet with 'Inventory available built-in SITs using the Sensitive info types page or Get-DlpSensitiveInformationType (first row of the controls table).' The reference at https://learn.microsoft.com/powershell/module/exchangepowershell/get-dlpsensitiveinformationtype?view=exchange-ps documents available definitions, not policy dependencies.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing; Open questions / licensing: No licensing specific to the improvement is published, represented by licensing.model unknown. | Found: The per-user licensing model is the familiar Microsoft 365 E3/E5/A5/F5/G5 model. It remains unchanged. This licensing model enables you to apply Microsoft Purview controls and protections to Microsoft 365 and Windows/macOS endpoint-based assets. | Fix: Set licensing.model to included and cite https://learn.microsoft.com/purview/purview-billing-models. Begin the notes: 'For Microsoft 365 and Windows/macOS endpoint assets, Purview uses the Microsoft 365 E3/E5/A5/F5/G5 per-user licensing model. No licensing specific to this improvement is published.' Retain the credential-scanning qualification. The existing unknown value understates the published product-level model; the searched SIT and service-description pages do not name an improvement-specific entitlement. | Source: https://learn.microsoft.com/purview/purview-billing-models
-- [contradicted, minor] Governance guidance; Governance controls / consistency: Every control the governance checklist tells readers to use is represented in the controls table. | Found: Checklist: 'test them with the Test option', 'Content explorer', and 'use Match or Not a Match feedback'. Table: SIT inventory, custom copies, and opting in to, opting out of or delaying improved SITs. | Fix: The Before rollout sample-file testing step, the Before/After rollout Content explorer baseline steps, and the After rollout Match/Not a Match feedback step name controls without their own controls-table rows.
 -->
