@@ -11,7 +11,7 @@ clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Web"]
 targetDate: "November CY2026"
 previewDate: "August CY2026"
-risk: "medium"
+risk: "low"
 cost: "medium"
 impact: "low"
 defaultState: "admin-opt-in"
@@ -37,6 +37,12 @@ sources:
   - title: "New-ComplianceTag"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-compliancetag"
     kind: "learn"
+  - title: "Set-RetentionCompliancePolicy"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-retentioncompliancepolicy"
+    kind: "learn"
+  - title: "New-RetentionComplianceRule"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule"
+    kind: "learn"
   - title: "Search-UnifiedAuditLog"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog"
     kind: "learn"
@@ -50,7 +56,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Solutions > Data Lifecycle Management > Priority cleanup > + Create a priority cleanup > Choose what to do with the content > Delete data permanently"
+      path: "Solutions > Data Lifecycle Management > Priority cleanup > + Create a priority cleanup > Choose the type of priority cleanup > Static > Policy for SharePoint/OneDrive > Choose what to do with the content > Delete data permanently"
       docs: "https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion"
     api: null
     note: "Needs the Priority Cleanup Admin role. The cmdlet reference lists the PriorityCleanup parameter set but does not say it creates a permanent-deletion policy."
@@ -58,7 +64,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Solutions > Data Lifecycle Management > Priority cleanup settings > Configuration"
+      path: "Solutions > Data Lifecycle Management > Priority cleanup settings > Configuration > control for priority cleanup"
       docs: "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint"
     api: null
     note: "Turning the control off also applies to Exchange. Existing policies keep running and cannot be modified. Microsoft Learn documents no PowerShell or API for this switch at the time of writing (November 2026)."
@@ -66,7 +72,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Data Lifecycle Management > Priority cleanup > Pending cleanups"
+      path: "Data Lifecycle Management > Priority cleanup > Pending cleanups > cleanup > Approve disposal"
       docs: "https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion"
     api: null
     note: "Each approver sees only items assigned to them. Microsoft Learn documents no PowerShell or API for approving items at the time of writing (November 2026)."
@@ -83,7 +89,7 @@ controls:
     note: "Copy the cleanup ID from the policy details, search the audit log with it, and check for the PriorityCleanupFileDeleted operation. Auditing must be enabled at least one day beforehand."
 confidence: "medium"
 created: "2026-11-17"
-updated: "2026-11-17"
+updated: "2026-11-20"
 roadmapModified: "2026-10-26T23:15:50"
 changes:
   - date: "2026-11-17"
@@ -96,19 +102,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 86 statements not yet confirmed"
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 90 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-20"
+    note: "Corrected the policy-creation, tenant-switch and approval admin paths, lowered the risk rating to low, and removed three checklist items that have no controls-table row."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 90 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 90
-  confirmed: 87
+  confirmed: 90
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "dd68b4c45a4ff4ec7792d35632932a4e"
+  contradicted: 0
+  attempts: 0
+  hash: "10a1de6cc053eb563744209f3ac52ac0"
 ---
 
 ## What's changing
@@ -161,9 +171,7 @@ The roadmap record lists Worldwide (Standard Multi-Tenant) and the Web platform;
 
 ### Before rollout
 - Decide whether to leave Priority cleanup available or turn it off on the Priority cleanup settings page; the switch also covers Exchange.
-- Check who holds the Priority Cleanup Admin role, including everyone in the Organization Management role group, and remove it where it is not needed.
-- Name individual approvers and give eDiscovery admins their required roles before creating a policy.
-- Enable auditing at least one day before the first policy is created.
+- Name individual approvers before creating a policy.
 
 ### At rollout
 - Confirm in the Purview portal that the Delete data permanently option appears in your tenant before planning around it.
@@ -182,9 +190,9 @@ The roadmap record lists Worldwide (Standard Multi-Tenant) and the Web platform;
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Creating a Priority cleanup policy with the permanent deletion option</strong><br><small>Tenant</small><br><small class="controls__note">Needs the Priority Cleanup Admin role. The cmdlet reference lists the PriorityCleanup parameter set but does not say it creates a permanent-deletion policy.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Priority cleanup › + Create a priority cleanup › Choose what to do with the content › Delete data permanently <a href="https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether Priority cleanup policies can be created in the tenant</strong><br><small>Tenant</small><br><small class="controls__note">Turning the control off also applies to Exchange. Existing policies keep running and cannot be modified. Microsoft Learn documents no PowerShell or API for this switch at the time of writing (November 2026).</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Priority cleanup settings › Configuration <a href="https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Approval of items before permanent deletion</strong><br><small>Tenant</small><br><small class="controls__note">Each approver sees only items assigned to them. Microsoft Learn documents no PowerShell or API for approving items at the time of writing (November 2026).</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Lifecycle Management › Priority cleanup › Pending cleanups <a href="https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Creating a Priority cleanup policy with the permanent deletion option</strong><br><small>Tenant</small><br><small class="controls__note">Needs the Priority Cleanup Admin role. The cmdlet reference lists the PriorityCleanup parameter set but does not say it creates a permanent-deletion policy.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Priority cleanup › + Create a priority cleanup › Choose the type of priority cleanup › Static › Policy for SharePoint/OneDrive › Choose what to do with the content › Delete data permanently <a href="https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether Priority cleanup policies can be created in the tenant</strong><br><small>Tenant</small><br><small class="controls__note">Turning the control off also applies to Exchange. Existing policies keep running and cannot be modified. Microsoft Learn documents no PowerShell or API for this switch at the time of writing (November 2026).</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Priority cleanup settings › Configuration › control for priority cleanup <a href="https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Approval of items before permanent deletion</strong><br><small>Tenant</small><br><small class="controls__note">Each approver sees only items assigned to them. Microsoft Learn documents no PowerShell or API for approving items at the time of writing (November 2026).</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Lifecycle Management › Priority cleanup › Pending cleanups › cleanup › Approve disposal <a href="https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Monitoring permanent deletions by cleanup ID</strong><br><small>Tenant</small><br><small class="controls__note">Copy the cleanup ID from the policy details, search the audit log with it, and check for the PriorityCleanupFileDeleted operation. Auditing must be enabled at least one day beforehand.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data Lifecycle Management › Priority cleanup › policy details <a href="https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Search-UnifiedAuditLog -StartDate &lt;start&gt; -EndDate &lt;end&gt; -Operations PriorityCleanupFileDeleted -FreeText &lt;cleanup ID&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -202,20 +210,13 @@ Learn documents no separate tenant switch for the permanent deletion option itse
 - Does Microsoft document any recovery route for files after Priority cleanup permanently deletes them?
 
 <!-- rationale
-risk: Medium. Nothing changes until an admin creates a policy and a second admin turns it on, but a turned-on policy can permanently delete files despite retention settings and eDiscovery holds.
+risk: Low. Nothing changes until an admin creates a policy and a second admin turns it on; configured policies can permanently delete files despite retention settings and eDiscovery holds.
 cost: Medium. Learn lists licences that give user rights to the Priority cleanup policy, such as Microsoft 365 E5/A5/G5 and Microsoft Purview Suite; no separate price or meter is documented for the permanent deletion option.
 impact: Low. Microsoft's notice says user workflows do not change unless an admin configures and applies a priority cleanup policy, so the people who notice are Purview administrators and approvers.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls: first table row / admin-path: The policy-creation path goes directly from + Create a priority cleanup to Choose what to do with the content without the scope-type and workload-policy choices. | Found: For Choose the type of priority cleanup, select Adaptive or Static then select Next. ... For Static scope, select Policy for SharePoint/OneDrive | Fix: Give a complete static-policy route in controls[0].ui.path and the first table row: 'Solutions > Data Lifecycle Management > Priority cleanup > + Create a priority cleanup > Choose the type of priority cleanup > Static > Policy for SharePoint/OneDrive > Choose what to do with the content > Delete data permanently'. The scope-type and workload choices are documented at https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint; the permanent-deletion page documents the final option. Keep the existing docs URL for that final option. | Source: https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls: second table row / admin-path: The tenant switch is on Solutions > Data Lifecycle Management > Priority cleanup settings > Configuration in the Microsoft Purview portal. | Found: Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management. ... select Priority cleanup settings. ... From the Configuration page, turn off the control for priority cleanup, and select Save. | Fix: The path reaches the correct page but stops before its control. In controls[1].ui.path and the second table row, use 'Solutions > Data Lifecycle Management > Priority cleanup settings > Configuration > control for priority cleanup', using the control description given at https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint#turn-off-priority-cleanup-for-the-tenant. | Source: https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint
-- [supported, minor] controls[2].ui; What's changing; Governance controls: third table row / admin-path: Approvers use Data Lifecycle Management > Priority cleanup > Pending cleanups in the Microsoft Purview portal. | Found: go to Data Lifecycle Management > Priority cleanup > Pending cleanups. ... Select the cleanup ... Select the items to delete, and then select Approve disposal. | Fix: The path reaches the correct list but stops before the approval control. Set controls[2].ui.path and the third table row to 'Data Lifecycle Management > Priority cleanup > Pending cleanups > cleanup > Approve disposal', as documented at https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion#review-and-approve-permanent-deletion. | Source: https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion
-- [supported, minor] Open questions: PriorityCleanup parameter / command: Set-RetentionCompliancePolicy has a PriorityCleanup parameter. | Found: The PriorityCleanup switch specifies whether to update a Priority cleanup policy. You don't need to specify a value with this switch. | Fix: Add https://learn.microsoft.com/powershell/module/exchangepowershell/set-retentioncompliancepolicy to sources for the parameter mention. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/set-retentioncompliancepolicy
-- [supported, minor] Open questions: PriorityCleanup parameter / command: New-RetentionComplianceRule has a PriorityCleanup parameter. | Found: The PriorityCleanup switch specifies whether to create a rule associated with a Priority cleanup policy. You don't need to specify a value with this switch. | Fix: Add https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule to sources for the parameter mention. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule
-- [contradicted, minor] front matter: risk; rationale: risk / consistency: The medium risk rating describes the exposure when no administrator has opted in. | Found: risk: "medium"; rationale: "Nothing changes until an admin creates a policy and a second admin turns it on". The assessment scale defines low as "nothing happens until an admin opts in". | Fix: Set risk to 'low' and replace the risk rationale with 'Low. Nothing changes until an admin creates a policy and a second admin turns it on; configured policies can permanently delete files despite retention settings and eDiscovery holds.' Keep the substantive configuration risks in the body.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: Every control the governance checklist asks administrators to check or set has a controls-table row. | Found: The checklist says 'Check who holds the Priority Cleanup Admin role', 'give eDiscovery admins their required roles' and 'Enable auditing'. The table covers policy creation, the tenant switch, approvals and monitoring, not role assignment or audit enablement. | Fix: Remove the Before rollout bullet asking readers to check/remove Priority Cleanup Admin role assignments, remove 'and give eDiscovery admins their required roles before creating a policy' from the individual-approver bullet, and remove the auditing-enablement bullet. These checklist controls have no table rows. Retain the verified role and auditing prerequisites elsewhere; do not add unverified control rows.
+- [supported, minor] front matter: licensing.notes / licensing: Information Protection and Governance is available as an add-on plan. | Found: # Security A5 addon plans ## Microsoft 365 A5 - Information Protection and Governance | Fix: Add https://learn.microsoft.com/microsoft-365/education/guide/4-advanced/security/advanced-security-compliance-a5-addons to sources to support the add-on classification; it identifies Microsoft 365 A5 Information Protection and Governance under Security A5 addon plans. | Source: https://learn.microsoft.com/microsoft-365/education/guide/4-advanced/security/advanced-security-compliance-a5-addons
 -->

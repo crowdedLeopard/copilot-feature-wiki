@@ -2,138 +2,44 @@
   "slug": "microsoft-purview-data-lifecycle-management-hard-delete-capability-for-onedrive-and-sharep",
   "roadmapId": 558343,
   "title": "Microsoft Purview: permanently delete OneDrive and SharePoint files with Priority cleanup",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-20",
-  "version": 2,
+  "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-20",
-    "reasons": [
-      "1 blocking finding (claim 29)"
-    ]
-  },
+  "hold": null,
   "counts": {
     "claims": 90,
-    "confirmed": 87,
+    "confirmed": 90,
     "unconfirmed": 0,
-    "contradicted": 3,
-    "blocker": 1,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 6
+    "minor": 1
   },
-  "summary": "Hold: the policy-creation path skips the wizard choices that select the scope type and the SharePoint/OneDrive policy. The licensing list, rollout targets, default state and audit command are supported. Minor corrections are also needed to complete two control paths and align the checklist and risk rating with the standard.",
+  "summary": "The control paths, audit search, rollout dates and admin opt-in behavior are supported. The page passes with one minor citation gap: its description of Information Protection and Governance as an add-on needs the supporting Microsoft reference.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: status; What's changing; Open questions",
-      "type": "record",
-      "claim": "The roadmap status is In development.",
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "Purview Data Lifecycle Management adds a Delete data permanently option to Priority cleanup for SharePoint and OneDrive files.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"In development\"",
+      "source": "https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion",
+      "quote": "Permanent deletion is an additional option for a Priority Cleanup policy.",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "front matter: releasePhase",
-      "type": "record",
-      "claim": "The roadmap lists General Availability and Preview release phases.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), with no US Government clouds listed.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists the Web platform.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: targetDate; What's changing",
-      "type": "record",
-      "claim": "The roadmap target is November CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"November CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: previewDate; What's changing",
-      "type": "record",
-      "claim": "The roadmap preview date is August CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": \"August CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-10-26T23:15:50.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-10-26T23:15:50\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "front matter: products; title",
-      "type": "record",
-      "claim": "This roadmap item belongs to Microsoft Purview.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Purview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "title; summary; What's changing; front matter: changes",
+      "where": "summary; What's changing; Why it matters; Risk assessment",
       "type": "behaviour",
-      "claim": "Priority cleanup has a Delete data permanently option for targeted SharePoint and OneDrive files.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion",
-      "quote": "Use Microsoft Purview Priority Cleanup to permanently delete targeted files from SharePoint and OneDrive after the required review and approval.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "summary; What's changing; Why it matters; Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Permanent deletion bypasses the SharePoint and OneDrive recycle bins.",
+      "claim": "Permanent deletion bypasses the SharePoint and OneDrive recycle bins, removing that recovery stage.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion",
       "quote": "This option bypasses the SharePoint and OneDrive recycle bins.",
@@ -141,8 +47,8 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing; Why it matters; rationale: risk",
+      "n": 3,
+      "where": "summary; What's changing; Why it matters; rationale: risk",
       "type": "behaviour",
       "claim": "Permanent deletion can override retention settings.",
       "status": "supported",
@@ -152,19 +58,19 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "summary; What's changing; Risk assessment: Security & identity; rationale: risk",
+      "n": 4,
+      "where": "summary; What's changing; Why it matters; Risk assessment; rationale: risk",
       "type": "behaviour",
-      "claim": "Permanent deletion can override eDiscovery holds after the required approval.",
+      "claim": "Permanent deletion can override eDiscovery holds after the required approvals.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion",
-      "quote": "Permanent deletion can override retention settings or eDiscovery holds. ... After all required approvals are complete, the selected items bypass the recycle bins and are permanently deleted.",
+      "quote": "Permanent deletion can override retention settings or eDiscovery holds.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 13,
-      "where": "What's changing; Risk assessment: Data exposure",
+      "n": 5,
+      "where": "What's changing; Risk assessment",
       "type": "behaviour",
       "claim": "Permanently deleted content is no longer discoverable in SharePoint search.",
       "status": "supported",
@@ -174,8 +80,8 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing; Risk assessment: Data exposure",
+      "n": 6,
+      "where": "What's changing; Risk assessment",
       "type": "behaviour",
       "claim": "Permanently deleted content is no longer discoverable in Microsoft 365 Copilot.",
       "status": "supported",
@@ -185,8 +91,8 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "What's changing; Risk assessment: Data exposure",
+      "n": 7,
+      "where": "What's changing; Risk assessment",
       "type": "behaviour",
       "claim": "Permanently deleted content is no longer discoverable in eDiscovery.",
       "status": "supported",
@@ -196,21 +102,10 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The standard Priority cleanup workflow moves identified items to the second-stage Recycle Bin despite existing holds.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
-      "quote": "Despite the existing holds, items are moved to the second-stage Recycle Bin",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
+      "n": 8,
       "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
       "type": "default",
-      "claim": "The permanent deletion capability requires explicit administrator configuration and is not enabled by default.",
+      "claim": "The permanent-deletion capability is admin-opt-in rather than enabled by default.",
       "status": "supported",
       "source": "Message Center post MC1261587",
       "quote": "This capability is not enabled by default and requires explicit admin configuration.",
@@ -218,10 +113,10 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "summary; Why it matters; rationale: impact",
+      "n": 9,
+      "where": "Why it matters; rationale: impact",
       "type": "record",
-      "claim": "User workflows do not change unless an administrator configures and applies a Priority cleanup policy.",
+      "claim": "User workflows do not change unless an administrator configures and applies a priority cleanup policy.",
       "status": "supported",
       "source": "Message Center post MC1261587",
       "quote": "There is no change to user workflows unless an admin configures and applies a priority cleanup policy.",
@@ -229,21 +124,21 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "front matter: licensing.model; cost; rationale: cost",
+      "n": 10,
+      "where": "front matter: licensing.model; licensing.notes; rationale: cost",
       "type": "licensing",
-      "claim": "Priority cleanup entitlement has both suite and add-on licensing routes, consistent with mixed licensing and a medium cost rating.",
+      "claim": "Mixed licensing reflects Priority cleanup entitlement through eligible suites or the listed additional Purview and Information Protection and Governance plans.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "To use the Priority cleanup policy to apply labels that bypass existing retention or eDiscovery holds, the following licenses provide user rights:",
+      "quote": "Microsoft 365 E5/A5/G5\n- Microsoft Purview Suite/EDU/GOV/FLW\n- Microsoft Defender + Purview Suite FLW\n- Microsoft 365 E5/A5/F5/G5 Information Protection and Governance\n- Office 365 E5/A5/G5",
       "severity": null,
       "fix": null
     },
     {
-      "n": 20,
+      "n": 11,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "Microsoft 365 E5/A5/G5 provide user rights for the Priority cleanup policy.",
+      "claim": "Microsoft 365 E5/A5/G5 provides user rights to the Priority cleanup policy described in the service description.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
       "quote": "To use the Priority cleanup policy to apply labels that bypass existing retention or eDiscovery holds, the following licenses provide user rights:\n\n- Microsoft 365 E5/A5/G5",
@@ -251,120 +146,131 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 12,
       "where": "Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "Microsoft Purview Suite/EDU/GOV/FLW provide user rights for the Priority cleanup policy.",
+      "claim": "Microsoft Purview Suite/EDU/GOV/FLW is listed among the licenses providing Priority cleanup user rights.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "To use the Priority cleanup policy to apply labels that bypass existing retention or eDiscovery holds, the following licenses provide user rights: ... Microsoft Purview Suite/EDU/GOV/FLW",
+      "quote": "To use the Priority cleanup policy to apply labels that bypass existing retention or eDiscovery holds, the following licenses provide user rights:\n\n- Microsoft 365 E5/A5/G5\n- Microsoft Purview Suite/EDU/GOV/FLW",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft Defender + Purview Suite FLW is listed among the licenses providing Priority cleanup user rights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft Defender + Purview Suite FLW",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The service description lists Microsoft 365 E5/A5/F5/G5 Information Protection and Governance among the eligible Priority cleanup licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/F5/G5 Information Protection and Governance",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Office 365 E5/A5/G5 is listed among the licenses providing Priority cleanup user rights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Office 365 E5/A5/G5",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "A licensing rule specific to the permanent-deletion option is not yet published, distinct from the documented Priority cleanup entitlement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"priority cleanup\" \"permanent deletion\" licensing price meter; read the permanent-deletion prerequisites and the Purview service description's Priority cleanup licensing passage; neither specifies a separate entitlement for this option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published a price specific to the permanent-deletion option as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"priority cleanup\" \"permanent deletion\" licensing price meter; opened the permanent-deletion page and Purview service description, including its Data Lifecycle & Records Management licensing section; no option-specific price was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter or per-deletion charge is documented for this option as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"priority cleanup\" \"permanent deletion\" licensing price meter; read the permanent-deletion page and the service description's Data Lifecycle & Records Management section; no permanent-deletion meter or per-deletion rate was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The permanent-deletion page lists roles, approvers, auditing and simulation prerequisites without naming a license.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"priority cleanup\" \"permanent deletion\" licensing price meter; read the complete permanent-deletion page, including Prerequisites and its link to the service description; its prerequisites name no license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The policy-creation path reaches Delete data permanently through the documented Static and Policy for SharePoint/OneDrive choices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion",
+      "quote": "go to Solutions > Data Lifecycle Management > Priority cleanup.\n2. Select + Create a priority cleanup.\n3. Enter the policy name and description, choose an adaptive or static scope\n4. On the Choose what to do with the content page, select Delete data permanently.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0].ui: intermediate wizard choices",
+      "type": "admin-path",
+      "claim": "The general workflow supplies the intermediate labels Choose the type of priority cleanup > Static > Policy for SharePoint/OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
+      "quote": "For Choose the type of priority cleanup, select Adaptive or Static then select Next.\nFor Static scope, select Policy for SharePoint/OneDrive",
       "severity": null,
       "fix": null
     },
     {
       "n": 22,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Microsoft Defender + Purview Suite FLW provides user rights for the Priority cleanup policy.",
+      "where": "controls[0].api; controls[0].note; Governance controls",
+      "type": "absence",
+      "claim": "Microsoft does not document a PowerShell or API call that creates a policy with the permanent-deletion option.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "To use the Priority cleanup policy to apply labels that bypass existing retention or eDiscovery holds, the following licenses provide user rights: ... Microsoft Defender + Purview Suite FLW",
+      "source": null,
+      "quote": "Searched: \"priority cleanup\" \"permanent deletion\" PowerShell New-ComplianceTag API; read the permanent-deletion workflow and New-ComplianceTag, Set-RetentionCompliancePolicy and New-RetentionComplianceRule references; no call selects this option.",
       "severity": null,
       "fix": null
     },
     {
       "n": 23,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Microsoft 365 E5/A5/F5/G5 Information Protection and Governance provides user rights for the Priority cleanup policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "To use the Priority cleanup policy to apply labels that bypass existing retention or eDiscovery holds, the following licenses provide user rights: ... Microsoft 365 E5/A5/F5/G5 Information Protection and Governance",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Office 365 E5/A5/G5 provide user rights for the Priority cleanup policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "To use the Priority cleanup policy to apply labels that bypass existing retention or eDiscovery holds, the following licenses provide user rights: ... Office 365 E5/A5/G5",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
-      "type": "absence",
-      "claim": "No licence rule specific to the permanent deletion option is published, distinct from the published Priority cleanup entitlement.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"priority cleanup\" \"permanent deletion\" license price meter. Read the permanent-deletion prerequisites and the Purview service description's Priority cleanup licensing list; neither states a separate entitlement for this option.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "The permanent deletion page lists roles, approvers, auditing and simulation prerequisites but names no licence in those prerequisites.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"priority cleanup\" \"permanent deletion\" license price meter. Read all prerequisites at learn.microsoft.com/purview/priority-cleanup-permanent-deletion; they name roles, approvers, auditing, simulation and tenant availability, not a licence.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No meter is documented specifically for this permanent deletion feature.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"priority cleanup\" \"permanent deletion\" license price meter; \"Priority cleanup\" pricing billing per deletion. Read permanent-deletion and OneDrive/SharePoint guidance and the Purview service description; no applicable meter found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost; Open questions",
-      "type": "absence",
-      "claim": "No separate permanent-deletion price or per-deletion charge is published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"priority cleanup\" \"permanent deletion\" license price meter; \"Priority cleanup\" pricing billing per deletion. Read the feature guidance and Purview service description; no separate permanent-deletion price or per-deletion charge found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "controls[0].ui; Governance controls: first table row",
-      "type": "admin-path",
-      "claim": "The policy-creation path goes directly from + Create a priority cleanup to Choose what to do with the content without the scope-type and workload-policy choices.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
-      "quote": "For Choose the type of priority cleanup, select Adaptive or Static then select Next. ... For Static scope, select Policy for SharePoint/OneDrive",
-      "severity": "blocker",
-      "fix": "Give a complete static-policy route in controls[0].ui.path and the first table row: 'Solutions > Data Lifecycle Management > Priority cleanup > + Create a priority cleanup > Choose the type of priority cleanup > Static > Policy for SharePoint/OneDrive > Choose what to do with the content > Delete data permanently'. The scope-type and workload choices are documented at https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint; the permanent-deletion page documents the final option. Keep the existing docs URL for that final option."
-    },
-    {
-      "n": 30,
-      "where": "controls[0].api; Governance controls: first table row; Open questions",
-      "type": "absence",
-      "claim": "Microsoft does not document a PowerShell or API operation that specifically creates a permanent-deletion policy for SharePoint and OneDrive.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"priority cleanup\" \"permanent deletion\" PowerShell API; site:learn.microsoft.com/powershell \"PriorityCleanup\" \"permanent\" SharePoint. Read permanent-deletion, New-ComplianceTag, Set-RetentionCompliancePolicy and New-RetentionComplianceRule; no permanent-deletion selector documented.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "controls[0].note; Scope: Roles; Governance controls; Governance guidance",
+      "where": "controls[0].note; Scope: Roles; Governance controls",
       "type": "role",
-      "claim": "The Priority Cleanup Admin role is required to create and manage the policy.",
+      "claim": "The Priority Cleanup Admin role is required to create and manage these policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion",
       "quote": "Assign the Priority Cleanup Admin role to the administrator who creates and manages the policy.",
@@ -372,54 +278,43 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 24,
       "where": "controls[0].note; Governance controls; Open questions",
       "type": "command",
-      "claim": "New-ComplianceTag has a PriorityCleanup parameter set and switch in Security & Compliance PowerShell.",
+      "claim": "The Security & Compliance PowerShell New-ComplianceTag reference lists a PriorityCleanup parameter set and switch.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-compliancetag",
-      "quote": "This cmdlet is available only in Security & Compliance PowerShell. ... ### PriorityCleanup ... New-ComplianceTag ... [-PriorityCleanup]",
+      "quote": "### PriorityCleanup\nNew-ComplianceTag\n    [-Name] <String>\n    -RetentionAction <String>\n    -RetentionDuration <Unlimited>\n    -RetentionType <String>\n    -MultiStageReviewProperty <String>\n    [-PriorityCleanup]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 33,
-      "where": "controls[0].note; Governance controls",
-      "type": "absence",
-      "claim": "The New-ComplianceTag reference does not describe its PriorityCleanup switch as creating a permanent-deletion policy.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"priority cleanup\" \"permanent deletion\" PowerShell API. Read the complete New-ComplianceTag reference, including its PriorityCleanup syntax and '{{ Fill PriorityCleanup Description }}' placeholder; it gives no permanent-deletion-policy configuration.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "controls[1].ui; Governance controls: second table row",
+      "n": 25,
+      "where": "controls[1].ui; Governance controls table; Governance guidance: Before rollout",
       "type": "admin-path",
-      "claim": "The tenant switch is on Solutions > Data Lifecycle Management > Priority cleanup settings > Configuration in the Microsoft Purview portal.",
+      "claim": "The tenant switch is in Microsoft Purview portal > Solutions > Data Lifecycle Management > Priority cleanup settings > Configuration > control for priority cleanup.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
-      "quote": "Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management. ... select Priority cleanup settings. ... From the Configuration page, turn off the control for priority cleanup, and select Save.",
-      "severity": "minor",
-      "fix": "The path reaches the correct page but stops before its control. In controls[1].ui.path and the second table row, use 'Solutions > Data Lifecycle Management > Priority cleanup settings > Configuration > control for priority cleanup', using the control description given at https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint#turn-off-priority-cleanup-for-the-tenant."
-    },
-    {
-      "n": 35,
-      "where": "controls[1].api; controls[1].note; Governance controls: second table row",
-      "type": "absence",
-      "claim": "No PowerShell or API operation is documented for the tenant-wide Priority cleanup creation switch.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"priority cleanup\" disable tenant configuration PowerShell API; site:learn.microsoft.com/powershell \"PriorityCleanup\" \"tenant\" disable. Read tenant-switch instructions and Set-RetentionCompliancePolicy; found portal instructions and policy-level operations, not a tenant-switch call.",
+      "quote": "Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management.\nFrom the top right, select Priority cleanup settings.\nFrom the Configuration page, turn off the control for priority cleanup, and select Save.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
+      "n": 26,
+      "where": "controls[1].api; controls[1].note",
+      "type": "absence",
+      "claim": "Microsoft does not document a PowerShell or API operation for the tenant Priority cleanup switch as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"priority cleanup\" \"turn off\" PowerShell tenant configuration; read Turn off priority cleanup for the tenant and the retention policy PowerShell reference; results document the portal switch, not a tenant-switch command or API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
       "where": "controls[1].note; Governance guidance: Before rollout; Governance controls",
       "type": "applicability",
-      "claim": "The tenant switch also affects creation of Exchange Priority cleanup policies.",
+      "claim": "Turning off the tenant Priority cleanup control affects Exchange as well as SharePoint and OneDrive.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
       "quote": "When you turn off priority cleanup, you're turning it off for Exchange as well as for SharePoint and OneDrive.",
@@ -427,21 +322,21 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 28,
       "where": "controls[1].note; Risk assessment: Change & support; Governance controls",
       "type": "behaviour",
-      "claim": "Existing Priority cleanup policies continue running after the tenant control is turned off.",
+      "claim": "Existing Priority cleanup policies continue to function when the tenant switch is turned off.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
-      "quote": "If priority cleanup policies are already created when you turn off the control: ... Existing priority cleanup policies continue to function",
+      "quote": "If priority cleanup policies are already created when you turn off the control:\n\n- Existing priority cleanup policies continue to function",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
+      "n": 29,
       "where": "controls[1].note; Risk assessment: Change & support; Governance controls",
       "type": "behaviour",
-      "claim": "Existing Priority cleanup policies cannot be modified while the tenant control is off.",
+      "claim": "Existing Priority cleanup policies cannot be modified while the tenant switch is off.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
       "quote": "Existing priority cleanup policies can't be modified",
@@ -449,43 +344,32 @@
       "fix": null
     },
     {
-      "n": 39,
-      "where": "Why it matters",
-      "type": "default",
-      "claim": "The general Priority cleanup tenant-level control is enabled by default.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
-      "quote": "Because of the built-in safeguards, the feature itself is enabled by default at the tenant level.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "controls[2].ui; What's changing; Governance controls: third table row",
+      "n": 30,
+      "where": "controls[2].ui; What's changing; Governance controls table; Governance guidance: After rollout",
       "type": "admin-path",
-      "claim": "Approvers use Data Lifecycle Management > Priority cleanup > Pending cleanups in the Microsoft Purview portal.",
+      "claim": "Approvers use Microsoft Purview portal > Data Lifecycle Management > Priority cleanup > Pending cleanups > cleanup > Approve disposal.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion",
-      "quote": "go to Data Lifecycle Management > Priority cleanup > Pending cleanups. ... Select the cleanup ... Select the items to delete, and then select Approve disposal.",
-      "severity": "minor",
-      "fix": "The path reaches the correct list but stops before the approval control. Set controls[2].ui.path and the third table row to 'Data Lifecycle Management > Priority cleanup > Pending cleanups > cleanup > Approve disposal', as documented at https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion#review-and-approve-permanent-deletion."
-    },
-    {
-      "n": 41,
-      "where": "controls[2].api; controls[2].note; Governance controls: third table row",
-      "type": "absence",
-      "claim": "No PowerShell or API operation is documented for approving these items for permanent deletion.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"priority cleanup\" \"approve\" PowerShell API; site:learn.microsoft.com/powershell \"priority cleanup\" \"approve\". Read permanent-deletion approval instructions and OneDrive/SharePoint approval guidance; results document Approve disposal in the portal, not an approval call.",
+      "quote": "go to Data Lifecycle Management > Priority cleanup > Pending cleanups.\n2. Select the cleanup and review the identified items, their locations, and their history.\n3. Select the items to delete, and then select Approve disposal.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 42,
-      "where": "controls[2].note; Governance controls: third table row",
+      "n": 31,
+      "where": "controls[2].api; controls[2].note",
+      "type": "absence",
+      "claim": "Microsoft does not document a PowerShell or API call for approving Priority cleanup items as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"priority cleanup\" \"approve\" \"PowerShell\" API; \"priority cleanup\" \"approve disposal\" API Microsoft Graph PowerShell -Exchange -mailboxes. Read permanent-deletion approval steps and Set-ComplianceTag reference excerpts; no item-approval call was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[2].note; Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Each person sees only the Pending cleanups items assigned to them for approval.",
+      "claim": "An approver sees only the items assigned to that person in Pending cleanups.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
       "quote": "each person that accesses the Priority cleanup > Pending cleanups page sees only items that they're assigned to approve.",
@@ -493,10 +377,10 @@
       "fix": null
     },
     {
-      "n": 43,
-      "where": "controls[3].ui; Governance controls: fourth table row",
+      "n": 33,
+      "where": "controls[3].ui; controls[3].note; Governance guidance: After rollout",
       "type": "admin-path",
-      "claim": "The cleanup ID is available in policy details under Data Lifecycle Management > Priority cleanup.",
+      "claim": "The cleanup ID is obtained from the policy details under Data Lifecycle Management > Priority cleanup in the Purview portal.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion",
       "quote": "Go to Data Lifecycle Management > Priority cleanup and open the policy details.\n2. Copy the cleanup ID.",
@@ -504,42 +388,31 @@
       "fix": null
     },
     {
-      "n": 44,
-      "where": "controls[3].api; Governance controls: fourth table row",
+      "n": 34,
+      "where": "controls[3].api; Governance controls table",
       "type": "command",
-      "claim": "Search-UnifiedAuditLog can filter by StartDate, EndDate, operation PriorityCleanupFileDeleted and the cleanup ID as FreeText.",
+      "claim": "Search-UnifiedAuditLog can search a date range with -Operations PriorityCleanupFileDeleted and -FreeText containing the cleanup ID.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog",
-      "quote": "Search-UnifiedAuditLog\n    -EndDate <ExDateTime>\n    -StartDate <ExDateTime> ... [-FreeText <String>] ... [-Operations <String[]>]",
+      "quote": "The FreeText parameter filters the log entries by the specified text string.\nThe Operations parameter filters the log entries by operation.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 45,
-      "where": "controls[3].note; Governance controls: fourth table row; Governance guidance: After rollout",
+      "n": 35,
+      "where": "controls[3].note; controls[3].api; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Administrators can monitor deletion by copying the cleanup ID from policy details and using it as an audit keyword.",
+      "claim": "Searching with the cleanup ID and checking PriorityCleanupFileDeleted monitors permanent deletion.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion",
-      "quote": "Copy the cleanup ID. ... In the auditing solution, use the cleanup ID as the keyword search string.",
+      "quote": "In the auditing solution, use the cleanup ID as the keyword search string.\n4. Check for the PriorityCleanupFileDeleted operation, which indicates that Priority Cleanup permanently deleted an item.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 46,
-      "where": "controls[3].api; controls[3].note; Governance guidance: After rollout",
+      "n": 36,
+      "where": "controls[3].note; Cost and licensing; Scope: Prerequisites",
       "type": "behaviour",
-      "claim": "PriorityCleanupFileDeleted is the operation indicating that Priority Cleanup permanently deleted an item.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion",
-      "quote": "Check for the PriorityCleanupFileDeleted operation, which indicates that Priority Cleanup permanently deleted an item.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "controls[3].note; Cost and licensing; Scope: Prerequisites; Governance guidance: Before rollout",
-      "type": "date",
       "claim": "Auditing must be enabled at least one day before creating and running the first Priority cleanup policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion",
@@ -548,10 +421,21 @@
       "fix": null
     },
     {
-      "n": 48,
+      "n": 37,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "An administrator chooses an adaptive or static policy scope.",
+      "claim": "The standard Priority cleanup workflow moves identified items to the second-stage Recycle Bin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion",
+      "quote": "Use the standard Priority Cleanup workflow when you want identified items to move to the second-stage Recycle Bin.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "An administrator can choose an adaptive or static scope for the permanent-deletion policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion",
       "quote": "Enter the policy name and description, choose an adaptive or static scope, select the SharePoint or OneDrive locations, and define the query for the targeted files.",
@@ -559,10 +443,10 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 39,
       "where": "What's changing; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "The policy uses a query to target files.",
+      "claim": "The policy uses a query to identify targeted files.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion",
       "quote": "select the SharePoint or OneDrive locations, and define the query for the targeted files.",
@@ -570,10 +454,10 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 40,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The administrator can choose deletion as soon as possible or prevent deletion until a set time.",
+      "claim": "The administrator chooses deletion as soon as possible or after a set time.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion",
       "quote": "Choose whether to delete matched items as soon as possible or prevent deletion until a set time.",
@@ -581,10 +465,10 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "What's changing",
+      "n": 41,
+      "where": "What's changing; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "Required approvers are assigned when configuring permanent deletion.",
+      "claim": "Required approvers are assigned before the permanent-deletion policy runs.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion",
       "quote": "Assign the required approvers.",
@@ -592,10 +476,10 @@
       "fix": null
     },
     {
-      "n": 52,
-      "where": "What's changing; Risk assessment: Data exposure; Scope: Prerequisites; Governance guidance: At rollout",
+      "n": 42,
+      "where": "What's changing; Risk assessment: Data exposure; Scope; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "SharePoint and OneDrive Priority cleanup policies must run simulation at least once before being turned on.",
+      "claim": "SharePoint and OneDrive Priority cleanup requires at least one simulation run before activation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
       "quote": "For SharePoint and OneDrive, you must run simulation at least one time, and for any change other than the policy description.",
@@ -603,10 +487,10 @@
       "fix": null
     },
     {
-      "n": 53,
+      "n": 43,
       "where": "What's changing; Governance guidance: At rollout; rationale: risk",
       "type": "role",
-      "claim": "A second Priority Cleanup admin reviews satisfactory simulation results and turns on the policy.",
+      "claim": "A second Priority Cleanup admin reviews satisfactory simulation results and turns on the policy in the documented workflow.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion",
       "quote": "After the simulation results are satisfactory, have a second Priority Cleanup admin review the results and turn on the policy.",
@@ -614,7 +498,7 @@
       "fix": null
     },
     {
-      "n": 54,
+      "n": 44,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "The last person to edit a policy cannot also turn it on.",
@@ -625,32 +509,10 @@
       "fix": null
     },
     {
-      "n": 55,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Each item requires approval from at least one person other than the policy creator.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
-      "quote": "each item subject to priority cleanup always requires at least one other person to approve the deletion in addition to the person who created the priority cleanup policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "role",
-      "claim": "Items under eDiscovery holds also require eDiscovery admin approval.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
-      "quote": "If an item is also subject to one or more eDiscovery holds, eDiscovery admin approval is also required.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
+      "n": 45,
       "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Priority cleanup does not delete copies already in an eDiscovery review set.",
+      "claim": "Priority cleanup does not delete items already copied to an eDiscovery review set.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion",
       "quote": "Items already copied to an eDiscovery review set aren't deleted by Priority Cleanup.",
@@ -658,7 +520,7 @@
       "fix": null
     },
     {
-      "n": 58,
+      "n": 46,
       "where": "What's changing; Governance guidance: At rollout",
       "type": "behaviour",
       "claim": "Items marked as a record cannot be targeted by Priority cleanup.",
@@ -669,7 +531,7 @@
       "fix": null
     },
     {
-      "n": 59,
+      "n": 47,
       "where": "What's changing; Governance guidance: At rollout",
       "type": "behaviour",
       "claim": "Items marked as a regulatory record cannot be targeted by Priority cleanup.",
@@ -680,10 +542,208 @@
       "fix": null
     },
     {
+      "n": 48,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is August CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"August CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is November CY2026, presented as a target rather than a commitment.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-26T23:15:50.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-26T23:15:50\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1261587 was updated on October 26, 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1261587",
+      "quote": "Updated October 26, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1261587 gives mid-August 2026 as the public preview rollout start.",
+      "status": "supported",
+      "source": "Message Center post MC1261587",
+      "quote": "Public Preview: We will begin rolling out mid-August 2026 (previously mid-July)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1261587 gives end of November 2026 as the expected public preview rollout completion.",
+      "status": "supported",
+      "source": "Message Center post MC1261587",
+      "quote": "expect to complete by end of November 2026 (previously mid-September).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "MC1261587 gives end of November 2026 as the Worldwide General Availability rollout start.",
+      "status": "supported",
+      "source": "Message Center post MC1261587",
+      "quote": "General Availability (Worldwide) Rollout begins end of November 2026 (previously mid-October)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1261587 gives early January 2027 as the expected General Availability rollout completion.",
+      "status": "supported",
+      "source": "Message Center post MC1261587",
+      "quote": "is expected to complete by early January 2027 (previously end of November 2026).",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 60,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The permanent-deletion Learn page says public preview rollout begins August 24, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion",
+      "quote": "Public preview rollout begins on August 24, 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied Message Center notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1261587",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "The roadmap description says retention policies and labels keep deleted SharePoint and OneDrive content in recycle bins for 93 days.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "M365 retention labels policies and M365 retention policies do not hard delete content immediately and keeps the data in Recycle Bins for 93 days for ODSP.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "Microsoft positions the option as reducing exposure from growing Copilot-related content, including Teams transcripts.",
+      "status": "supported",
+      "source": "Message Center post MC1261587",
+      "quote": "This capability helps reduce data exposure risk from rapidly growing Copilot-related content\nReview your organization's data risk and retention strategy, especially for Copilot-generated content such as Teams transcripts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "The roadmap identifies managing data spillage as a use case.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Priority Cleanup feature allows users to bypass retention, and eDiscovery holds to help customers comply to changing legal/compliance requirements or manage data spillage scenarios.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "The general tenant-level Priority cleanup control is enabled by default, distinct from configuring permanent deletion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
+      "quote": "Because of the built-in safeguards, the feature itself is enabled by default at the tenant level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Learn says review-set data is automatically deleted when an eDiscovery admin deletes the entire case.",
+      "claim": "The overview says review-set data is automatically deleted when an eDiscovery admin deletes the entire case.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
       "quote": "This data is automatically deleted when the entire eDiscovery case is deleted by an eDiscovery admin.",
@@ -691,10 +751,10 @@
       "fix": null
     },
     {
-      "n": 61,
+      "n": 67,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "The overview says Priority cleanup can override Preservation Lock for delete-only retention settings.",
+      "claim": "Learn's overview describes overriding Preservation Lock for delete-only settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
       "quote": "Because the deletion from priority cleanup can override existing holds and even Preservation Lock when the retention settings are for delete-only, the process requires multiple approvals, specific roles, and is audited.",
@@ -702,10 +762,10 @@
       "fix": null
     },
     {
-      "n": 62,
+      "n": 68,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "The same page's Limitations section says delete-only Preservation Lock items are outside actual cleanup scope, despite appearing in simulation.",
+      "claim": "The same Learn page's Limitations section says delete-only Preservation Lock items are not in scope outside simulation, and the briefing reports that conflict.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
       "quote": "In simulation mode, items under preservation lock where the retention settings are configured for delete-only may show up. These items are not actually in scope for priority cleanup outside simulation mode.",
@@ -713,8 +773,8 @@
       "fix": null
     },
     {
-      "n": 63,
-      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "n": 69,
+      "where": "Risk assessment: Security & identity",
       "type": "role",
       "claim": "Priority Cleanup Admin is automatically added to the Organization Management role group.",
       "status": "supported",
@@ -724,10 +784,32 @@
       "fix": null
     },
     {
-      "n": 64,
+      "n": 70,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Learn recommends leaving a Priority cleanup policy running for continually created Teams meeting recordings and transcripts.",
+      "claim": "Each item requires deletion approval from at least one person other than the policy creator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
+      "quote": "each item subject to priority cleanup always requires at least one other person to approve the deletion in addition to the person who created the priority cleanup policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "role",
+      "claim": "Items subject to eDiscovery holds require eDiscovery admin approval.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
+      "quote": "If an item is also subject to one or more eDiscovery holds, eDiscovery admin approval is also required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Learn recommends leaving the policy running for continually created Teams recordings and transcripts.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
       "quote": "Because these files are continually created, leave the priority cleanup policy running to automatically find and delete the stale files.",
@@ -735,10 +817,10 @@
       "fix": null
     },
     {
-      "n": 65,
-      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
-      "type": "role",
-      "claim": "Policy creation fails if an eDiscovery reviewer lacks the correct roles in advance.",
+      "n": 73,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Policy creation fails if the eDiscovery reviewer lacks the correct roles in advance.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
       "quote": "If the reviewer for eDiscovery admin doesn't have the correct roles assigned in advance, policy creation fails with an error.",
@@ -746,18 +828,18 @@
       "fix": null
     },
     {
-      "n": 66,
-      "where": "Governance controls",
-      "type": "role",
-      "claim": "Priority Cleanup Viewer gives visibility without the ability to change or create policies.",
+      "n": 74,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "One Priority cleanup policy cannot cover Exchange, SharePoint and OneDrive together.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
-      "quote": "the Priority Cleanup Viewer role allows only the visibility of priority cleanup policies and settings without the ability to make changes or create new policies.",
+      "quote": "you can't create a cleanup policy for all three locations in same policy.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 67,
+      "n": 75,
       "where": "Scope: Roles; Governance guidance: Before rollout",
       "type": "role",
       "claim": "Approvers must be individual users.",
@@ -768,9 +850,9 @@
       "fix": null
     },
     {
-      "n": 68,
+      "n": 76,
       "where": "Scope: Roles",
-      "type": "role",
+      "type": "behaviour",
       "claim": "Mail-enabled security groups are not currently supported as approvers.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
@@ -779,10 +861,10 @@
       "fix": null
     },
     {
-      "n": 69,
+      "n": 77,
       "where": "Scope: Roles",
       "type": "role",
-      "claim": "The eDiscovery approver role requirements include Search And Purge.",
+      "claim": "The documented eDiscovery approver roles include Search And Purge.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
       "quote": "eDiscovery admins | - Search And Purge- Hold- Review- Data Classification Content Viewer- Data Classification List Viewer- Disposition Management",
@@ -790,10 +872,10 @@
       "fix": null
     },
     {
-      "n": 70,
+      "n": 78,
       "where": "Scope: Roles",
       "type": "role",
-      "claim": "The eDiscovery approver role requirements include Hold.",
+      "claim": "The documented eDiscovery approver roles include Hold.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
       "quote": "eDiscovery admins | - Search And Purge- Hold- Review- Data Classification Content Viewer- Data Classification List Viewer- Disposition Management",
@@ -801,10 +883,10 @@
       "fix": null
     },
     {
-      "n": 71,
+      "n": 79,
       "where": "Scope: Roles",
       "type": "role",
-      "claim": "The eDiscovery approver role requirements include Review.",
+      "claim": "The documented eDiscovery approver roles include Review.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
       "quote": "eDiscovery admins | - Search And Purge- Hold- Review- Data Classification Content Viewer- Data Classification List Viewer- Disposition Management",
@@ -812,10 +894,10 @@
       "fix": null
     },
     {
-      "n": 72,
+      "n": 80,
       "where": "Scope: Roles",
       "type": "role",
-      "claim": "The eDiscovery approver role requirements include Disposition Management.",
+      "claim": "The documented eDiscovery approver roles include Disposition Management.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
       "quote": "eDiscovery admins | - Search And Purge- Hold- Review- Data Classification Content Viewer- Data Classification List Viewer- Disposition Management",
@@ -823,21 +905,10 @@
       "fix": null
     },
     {
-      "n": 73,
-      "where": "Scope",
-      "type": "behaviour",
-      "claim": "One Priority cleanup policy cannot cover Exchange, SharePoint and OneDrive together.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
-      "quote": "As a result of these differences, you can't create a cleanup policy for all three locations in same policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 74,
+      "n": 81,
       "where": "Scope: Prerequisites; Governance guidance: At rollout",
       "type": "availability",
-      "claim": "Administrators should confirm permanent deletion is available in their tenant before configuring it.",
+      "claim": "The permanent-deletion prerequisites require checking availability in the tenant.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion",
       "quote": "Confirm that the permanent deletion option is available in your tenant.",
@@ -845,120 +916,54 @@
       "fix": null
     },
     {
-      "n": 75,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "MC1261587 was updated on 26 October 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1261587",
-      "quote": "Updated October 26, 2026: We have updated the timeline.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 76,
-      "where": "What's changing; Open questions",
-      "type": "record",
-      "claim": "The Message Center public preview rollout target begins mid-August 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1261587",
-      "quote": "Public Preview: We will begin rolling out mid-August 2026 (previously mid-July)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 77,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The Message Center public preview rollout target completes by the end of November 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1261587",
-      "quote": "expect to complete by end of November 2026 (previously mid-September).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 78,
-      "where": "What's changing; Open questions",
-      "type": "record",
-      "claim": "The Message Center Worldwide General Availability rollout target begins at the end of November 2026.",
-      "status": "supported",
-      "source": "Message Center post MC1261587",
-      "quote": "General Availability (Worldwide) Rollout begins end of November 2026 (previously mid-October)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 79,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The Message Center General Availability rollout target completes by early January 2027.",
-      "status": "supported",
-      "source": "Message Center post MC1261587",
-      "quote": "is expected to complete by early January 2027 (previously end of November 2026).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 80,
-      "where": "What's changing",
-      "type": "date",
-      "claim": "The permanent deletion Learn page says public preview rollout begins on August 24, 2026.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/priority-cleanup-permanent-deletion",
-      "quote": "Public preview rollout begins on August 24, 2026.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 81,
-      "where": "What's changing; front matter: action",
-      "type": "record",
-      "claim": "The supplied notice sets no act-by deadline; configuration is optional.",
-      "status": "supported",
-      "source": "Message Center post MC1261587",
-      "quote": "Act by: none ... plan and configure a priority cleanup policy if permanent deletion is required for specific content types",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 82,
-      "where": "Why it matters",
-      "type": "record",
-      "claim": "The roadmap description says standard retention policies and labels keep deleted SharePoint and OneDrive content in recycle bins for 93 days.",
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Priority Cleanup Viewer provides visibility without creating policies or making changes.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "M365 retention labels policies and M365 retention policies do not hard delete content immediately and keeps the data in Recycle Bins for 93 days for ODSP.",
+      "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
+      "quote": "the Priority Cleanup Viewer role allows only the visibility of priority cleanup policies and settings without the ability to make changes or create new policies.",
       "severity": null,
       "fix": null
     },
     {
       "n": 83,
-      "where": "Why it matters",
-      "type": "record",
-      "claim": "Microsoft's notice positions the feature to reduce exposure from growing Copilot-related content, including Teams transcripts.",
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not document a separate tenant switch for permanent deletion alone as of November 2026.",
       "status": "supported",
-      "source": "Message Center post MC1261587",
-      "quote": "helps reduce data exposure risk from rapidly growing Copilot-related content ... especially for Copilot-generated content such as Teams transcripts.",
+      "source": null,
+      "quote": "Searched: \"priority cleanup\" \"permanent deletion\" \"switch\" disable; read the permanent-deletion configuration and the SharePoint/OneDrive tenant-switch instructions; these document explicit policy selection and the general switch, not a separate tenant switch.",
       "severity": null,
       "fix": null
     },
     {
       "n": 84,
-      "where": "Why it matters",
-      "type": "record",
-      "claim": "The roadmap description identifies data spillage as a Priority cleanup use case.",
+      "where": "Open questions",
+      "type": "command",
+      "claim": "Set-RetentionCompliancePolicy has a PriorityCleanup parameter, without establishing that it creates permanent-deletion policies.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "Priority Cleanup feature allows users to bypass retention, and eDiscovery holds to help customers comply to changing legal/compliance requirements or manage data spillage scenarios.",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-retentioncompliancepolicy",
+      "quote": "Use the Set-RetentionCompliancePolicy cmdlet to modify existing retention policies in the Microsoft Purview compliance portal.\n### -PriorityCleanup\nType: SwitchParameter",
       "severity": null,
       "fix": null
     },
     {
       "n": 85,
+      "where": "Open questions",
+      "type": "command",
+      "claim": "New-RetentionComplianceRule has a PriorityCleanup parameter, without establishing that it creates permanent-deletion policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule",
+      "quote": "New-RetentionComplianceRule\n    -Policy <PolicyIdParameter>\n    -PublishComplianceTag <String>\n    [-Confirm]\n    [-ExpirationDateOption <String>]\n    [-PriorityCleanup]\n    [-RetentionComplianceAction <String>]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
       "where": "Governance guidance: After rollout",
       "type": "record",
-      "claim": "MC1261587 asks administrators to update governance or compliance documentation for the deletion capability.",
+      "claim": "MC1261587 asks administrators to update internal governance or compliance documentation.",
       "status": "supported",
       "source": "Message Center post MC1261587",
       "quote": "Update internal governance or compliance documentation to reflect this new deletion capability.",
@@ -966,68 +971,57 @@
       "fix": null
     },
     {
-      "n": 86,
-      "where": "Governance controls; Open questions",
-      "type": "absence",
-      "claim": "No separate tenant switch is documented for permanent deletion alone.",
+      "n": 87,
+      "where": "controls[1].governs; Governance controls",
+      "type": "behaviour",
+      "claim": "Turning off the tenant control prevents creation of new Priority cleanup policies.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"priority cleanup\" \"permanent deletion\" \"switch\"; \"priority cleanup\" disable tenant configuration PowerShell API. Read permanent-deletion configuration and OneDrive/SharePoint tenant-switch instructions; only the general creation switch and per-policy deletion choice are documented.",
+      "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
+      "quote": "New priority cleanup policies can't be created until you turn on the control and select Save again.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 87,
-      "where": "Open questions: PriorityCleanup parameter",
-      "type": "command",
-      "claim": "Set-RetentionCompliancePolicy has a PriorityCleanup parameter.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-retentioncompliancepolicy",
-      "quote": "The PriorityCleanup switch specifies whether to update a Priority cleanup policy. You don't need to specify a value with this switch.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/powershell/module/exchangepowershell/set-retentioncompliancepolicy to sources for the parameter mention."
-    },
-    {
       "n": 88,
-      "where": "Open questions: PriorityCleanup parameter",
-      "type": "command",
-      "claim": "New-RetentionComplianceRule has a PriorityCleanup parameter.",
+      "where": "Scope",
+      "type": "record",
+      "claim": "The roadmap does not list US Government clouds, without asserting their exclusion.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule",
-      "quote": "The PriorityCleanup switch specifies whether to create a rule associated with a Priority cleanup policy. You don't need to specify a value with this switch.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule to sources for the parameter mention."
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 89,
-      "where": "front matter: risk; rationale: risk",
-      "type": "consistency",
-      "claim": "The medium risk rating describes the exposure when no administrator has opted in.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "risk: \"medium\"; rationale: \"Nothing changes until an admin creates a policy and a second admin turns it on\". The assessment scale defines low as \"nothing happens until an admin opts in\".",
-      "severity": "minor",
-      "fix": "Set risk to 'low' and replace the risk rationale with 'Low. Nothing changes until an admin creates a policy and a second admin turns it on; configured policies can permanently delete files despite retention settings and eDiscovery holds.' Keep the substantive configuration risks in the body."
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Learn describes multiple approvals, specific roles and auditing as safeguards for Priority cleanup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/priority-cleanup-onedrive-sharepoint",
+      "quote": "the process requires multiple approvals, specific roles, and is audited.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 90,
-      "where": "Governance guidance: Before rollout; Governance controls",
-      "type": "consistency",
-      "claim": "Every control the governance checklist asks administrators to check or set has a controls-table row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "The checklist says 'Check who holds the Priority Cleanup Admin role', 'give eDiscovery admins their required roles' and 'Enable auditing'. The table covers policy creation, the tenant switch, approvals and monitoring, not role assignment or audit enablement.",
+      "where": "front matter: licensing.notes",
+      "type": "licensing",
+      "claim": "Information Protection and Governance is available as an add-on plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/education/guide/4-advanced/security/advanced-security-compliance-a5-addons",
+      "quote": "# Security A5 addon plans\n## Microsoft 365 A5 - Information Protection and Governance",
       "severity": "minor",
-      "fix": "Remove the Before rollout bullet asking readers to check/remove Priority Cleanup Admin role assignments, remove 'and give eDiscovery admins their required roles before creating a policy' from the individual-approver bullet, and remove the auditing-enablement bullet. These checklist controls have no table rows. Retain the verified role and auditing prerequisites elsewhere; do not add unverified control rows."
+      "fix": "Add https://learn.microsoft.com/microsoft-365/education/guide/4-advanced/security/advanced-security-compliance-a5-addons to sources to support the add-on classification; it identifies Microsoft 365 A5 Information Protection and Governance under Security A5 addon plans."
     }
   ],
   "precheck": {
-    "at": "2026-11-20T10:12:58.430Z",
+    "at": "2026-11-20T11:17:26.029Z",
     "summary": {
-      "links": 7,
+      "links": 9,
       "unreachable": 0,
       "uiPaths": 4,
-      "uiPathsWithMissingWords": 0,
+      "uiPathsWithMissingWords": 1,
       "apiCalls": 1,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
@@ -1059,6 +1053,16 @@
         "status": 200
       },
       {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-retentioncompliancepolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancerule",
+        "ok": true,
+        "status": 200
+      },
+      {
         "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog",
         "ok": true,
         "status": 200
@@ -1081,10 +1085,16 @@
           "Data Lifecycle Management",
           "Priority cleanup",
           "+ Create a priority cleanup",
+          "Choose the type of priority cleanup",
+          "Static",
+          "Policy for SharePoint/OneDrive",
           "Choose what to do with the content",
           "Delete data permanently"
         ],
-        "missing": []
+        "missing": [
+          "Choose the type of priority cleanup",
+          "Policy for SharePoint/OneDrive"
+        ]
       },
       {
         "index": 1,
@@ -1096,7 +1106,8 @@
           "Solutions",
           "Data Lifecycle Management",
           "Priority cleanup settings",
-          "Configuration"
+          "Configuration",
+          "control for priority cleanup"
         ],
         "missing": []
       },
@@ -1109,7 +1120,9 @@
         "segments": [
           "Data Lifecycle Management",
           "Priority cleanup",
-          "Pending cleanups"
+          "Pending cleanups",
+          "cleanup",
+          "Approve disposal"
         ],
         "missing": []
       },
@@ -1148,6 +1161,12 @@
     {
       "date": "2026-11-17",
       "status": "verified-with-gaps",
+      "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-20",
+      "status": "held",
       "version": 2,
       "model": "gpt-6.1-sol"
     }

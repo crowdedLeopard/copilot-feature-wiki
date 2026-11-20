@@ -25,6 +25,9 @@ sources:
   - title: "Microsoft 365 Roadmap 581739"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=581739"
     kind: "roadmap"
+  - title: "Microsoft 365 Roadmap 558686"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=558686"
+    kind: "roadmap"
   - title: "Use sensitivity labels to protect calendar items, Teams meetings, and chat"
     url: "https://learn.microsoft.com/purview/sensitivity-labels-meetings"
     kind: "learn"
@@ -47,7 +50,7 @@ controls:
     scope: "user"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Solutions > Information Protection > Publishing policies > Publish label"
+      path: "Solutions > Information Protection > Publishing policies > Publish label > Apply meeting label to artifacts"
       docs: "https://learn.microsoft.com/purview/create-sensitivity-labels"
     api: null
     note: "The Apply meeting label to artifacts setting is described on the meetings page; it is in preview there. Edit an existing policy with Edit Policy."
@@ -68,19 +71,23 @@ changes:
     note: "New briefing for the GCC, GCC High and DoD roadmap item; the Worldwide item 558686 is listed separately by Microsoft."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 52 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Correction: removed the unsupported claim about existing protection, added the Assign permissions now qualification for MP4 encryption, reworded the data exposure bullet, extended the Purview path and narrowed one checklist item."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 58 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 48
+  claims: 58
+  confirmed: 56
   unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "8626cc482e78abc143860dcf293de7c9"
+  contradicted: 1
+  attempts: 2
+  hash: "0ab54a38a8d5a7d933324e681577d99d"
 ---
 
 ## What's changing
@@ -93,14 +100,14 @@ This page covers roadmap item 581739: status In development, target December CY2
 
 ## Why it matters
 
-Meeting recordings and transcripts routinely hold the most sensitive things said in an organisation, and today's protection depends on someone labelling the files. A label that follows the meeting puts the same protection on the artifacts, including any encryption the label applies, without relying on the organiser.
+Meeting recordings and transcripts routinely hold the most sensitive things said in an organisation. A label that follows the meeting reduces reliance on manual artifact labelling. For MP4 files, labels that apply encryption must use Assign permissions now rather than user-defined permissions.
 
 Microsoft has not stated what this setting does on arrival, so assume that existing behaviour continues until a label policy is configured, and decide in advance whether your meeting labels should reach artifacts. The side effect to plan for is that a recording or transcript with an encrypting label can't be downloaded, which changes how people share meeting content.
 
 ## Risk assessment
 
 **Data exposure**
-- Recordings, transcripts and Loop notes from meetings are labelled only when a published label policy applies **Apply meeting label to artifacts** and the label is the meeting's label. Artifacts from unlabelled meetings have no label to inherit. Control: the label policy row below.
+- Apply meeting label to artifacts automatically applies the meeting label to recordings, transcripts and Loop notes when they are saved to SharePoint or OneDrive. Artifacts from unlabelled meetings have no label to inherit. Control: the label policy row below.
 - The inherited label is a copy at save time: if the meeting label changes later, the artifact keeps the old label. Check high-sensitivity meetings whose labels are changed after recording.
 
 **Security & identity**
@@ -130,7 +137,7 @@ For a label to protect a meeting, its scope must include **Files & other data as
 
 ### Before rollout
 - Identify which meeting labels should reach recordings, transcripts and Loop notes, and whether any of them apply encryption, since encrypted artifacts can't be downloaded.
-- Check that those labels have the Files & other data assets, Emails and Meetings scopes and are published to organisers (Purview portal, Publishing policies row below).
+- Check that the meeting labels are published to organisers (Purview portal, Publishing policies row below).
 - Enable MP4 sensitivity label support in SharePoint Online if recordings must be labelled (SharePoint row below), running the command in each geo-location for Multi-Geo tenants.
 - Check the roadmap item and Learn for availability in GCC, GCC High and DoD before planning a date.
 
@@ -150,7 +157,7 @@ For a label to protect a meeting, its scope must include **Files & other data as
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether a label policy applies the meeting's label to recordings, transcripts and Loop notes</strong><br><small>User</small><br><small class="controls__note">The Apply meeting label to artifacts setting is described on the meetings page; it is in preview there. Edit an existing policy with Edit Policy.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Publishing policies › Publish label <a href="https://learn.microsoft.com/purview/create-sensitivity-labels" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether a label policy applies the meeting's label to recordings, transcripts and Loop notes</strong><br><small>User</small><br><small class="controls__note">The Apply meeting label to artifacts setting is described on the meetings page; it is in preview there. Edit an existing policy with Edit Policy.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Publishing policies › Publish label › Apply meeting label to artifacts <a href="https://learn.microsoft.com/purview/create-sensitivity-labels" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether .mp4 meeting recordings can carry a sensitivity label</strong><br><small>Tenant</small><br><small class="controls__note">Without it, .mp4 files aren't labelled when Apply meeting label to artifacts is selected. Also controls Clipchamp project labels.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -EnableSensitivityLabelForVideoFiles $true</code> <a href="https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -175,11 +182,6 @@ impact: Medium. Meeting organisers and participants who record or transcribe mee
 <!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Why it matters / behaviour: Today's protection of meeting recordings and transcripts depends on someone labelling the files. | Found: Searched: Teams recordings transcripts Loop notes sensitivity labels manual labeling existing protection automatic inheritance before artifacts. Read sensitivity-labels-meetings and the MP4 support section; neither establishes this blanket account of existing protection in these clouds. | Fix: Remove 'and today's protection depends on someone labelling the files' from the first sentence of Why it matters. The sources establish the new inheritance mechanism, not this history of existing protection.
-- [contradicted, blocker] Why it matters / applicability: Inheritance puts the same protection on artifacts, including any encryption the meeting label applies. | Found: Sensitivity labels that apply encryption must be configured with the Assign permissions now option, rather than user-defined permissions. | Fix: Replace the second sentence of Why it matters with: 'A label that follows the meeting reduces reliance on manual artifact labelling. For MP4 files, labels that apply encryption must use Assign permissions now rather than user-defined permissions.' The existing SharePoint and OneDrive source documents this qualification. | Source: https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files
-- [contradicted, blocker] Risk assessment: Data exposure / behaviour: Meeting recordings, transcripts and Loop notes are labelled only when a published policy applies Apply meeting label to artifacts. | Found: You can, if required, manually relabel these files in SharePoint or OneDrive, by using the file's Details pane. | Fix: Replace the first sentence of the Data exposure bullet with: 'Apply meeting label to artifacts automatically applies the meeting label to recordings, transcripts and Loop notes when they are saved to SharePoint or OneDrive.' This states what this setting does without claiming it is the only way to label a file. | Source: https://learn.microsoft.com/purview/sensitivity-labels-meetings
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; front matter: changes / record: A separate roadmap item, 558686, describes the same feature for Worldwide (Standard Multi-Tenant). | Found: "id": 558686; "title": "Microsoft Purview: Information Protection - Sensitivity label inheritance for Teams meeting artifacts"; "clouds": [ "Worldwide (Standard Multi-Tenant)" ] | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=558686 to sources as 'Microsoft 365 Roadmap 558686', kind roadmap, for the Worldwide status and dates. These facts were verified against its local roadmap record.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The Purview route Solutions > Information Protection > Publishing policies > Publish label starts configuration of the label policy containing the artifact option. | Found: Solutions > Information Protection > Publishing policies. ... select Publish label to start the Create policy configuration. | Fix: Extend the path to 'Solutions > Information Protection > Publishing policies > Publish label > Apply meeting label to artifacts'. The meetings source identifies that setting within the publishing policy; the current path stops at the start of configuration. Keep the existing note about editing a policy with Edit Policy. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
-- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist's instruction to check the label scopes has a corresponding control row. | Found: Check that those labels have the Files & other data assets, Emails and Meetings scopes ... Controls cover the artifact publishing policy and MP4 support, not label scope configuration. | Fix: Narrow that checklist bullet to 'Check that the meeting labels are published to organisers (Purview portal, Publishing policies row below).' Keep the verified scope prerequisites in Scope; do not add a control row.
+- [contradicted, blocker] controls[0].ui; Governance controls: first table row / admin-path: The linked create-sensitivity-labels page documents the route through Publishing policies and Publish label to Apply meeting label to artifacts. | Found: On the Label policies page, select Publish label to start the Create policy configuration. | Fix: Keep the path, which is supported across the two cited pages, but change controls[0].ui.docs and the corresponding rendered table link to https://learn.microsoft.com/purview/sensitivity-labels-meetings#configure-a-corresponding-sensitivity-label-publishing-policy. That page documents Apply meeting label to artifacts; create-sensitivity-labels documents only the route into policy configuration. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
+- [unsupported, major] Governance guidance: Before rollout / behaviour: Encrypted artifacts, including the Loop notes named in this bullet, cannot be downloaded. | Found: Searched: Loop files sensitivity labels encryption download restrictions .loop. Read sensitivity-labels-meetings, sensitivity-labels-sharepoint-onedrive-files and sensitivity-labels-loop; the download prohibition is stated for recordings/transcripts and MP4, not Loop notes. | Fix: Replace 'since encrypted artifacts can't be downloaded' with 'since recordings and transcripts with labels that apply encryption cannot be downloaded', as documented at https://learn.microsoft.com/purview/sensitivity-labels-meetings#configure-a-corresponding-sensitivity-label-publishing-policy.
 -->

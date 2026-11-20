@@ -1,0 +1,556 @@
+{
+  "slug": "microsoft-edge-autolaunch-opt-in-experience-for-managed-devices",
+  "roadmapId": 571307,
+  "title": "Microsoft Edge: opt-in for launching Edge when Windows starts on managed devices",
+  "status": "verified-with-gaps",
+  "date": "2026-11-20",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 43,
+    "confirmed": 43,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "The briefing passes: the roadmap facts, opt-in behaviour, policy controls and release-note dates are supported. Add the Windows policy configuration reference to support the explanation that mandatory policies prevent users from overriding them.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "Microsoft plans an opt-in experience for users on managed devices to choose whether Edge launches when Windows starts.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Edge will introduce an opt-in experience that allows users on managed devices to choose whether Edge launches automatically when Windows starts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap names LaunchEdgeOnWindowsStartupEnabled for administrator management with opt-in, opt-out and user-choice configurations.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Administrators can also manage this behavior through the LaunchEdgeOnWindowsStartupEnabled policy with opt-in, opt-out, and user-choice configurations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing; Governance guidance; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap lists platform Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Web\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The roadmap product is Microsoft Edge.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [ \"Microsoft Edge\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-30T22:08:34.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-30T22:08:34\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Why it matters; Risk assessment; Governance controls",
+      "type": "behaviour",
+      "claim": "Enabling the policy makes Edge launch visibly automatically when Windows starts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/launchedgeonwindowsstartupenabled",
+      "quote": "If you enable this policy, Microsoft Edge will launch visibly automatically when Windows starts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing; Why it matters; Governance controls",
+      "type": "behaviour",
+      "claim": "Disabling the policy prevents Edge from launching visibly automatically when Windows starts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/launchedgeonwindowsstartupenabled",
+      "quote": "If you disable this policy, Microsoft Edge will never launch visibly automatically when Windows starts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Why it matters; rationale: risk; rationale: impact",
+      "type": "default",
+      "claim": "With the policy unconfigured, Edge does not launch automatically at Windows startup by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/launchedgeonwindowsstartupenabled",
+      "quote": "If you don't configure this policy, Microsoft Edge won't launch automatically when Windows starts by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; What's changing; Why it matters; Governance guidance; Governance controls; rationales",
+      "type": "behaviour",
+      "claim": "With the policy unconfigured, users are periodically shown an opt-in banner to turn automatic launch on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/launchedgeonwindowsstartupenabled",
+      "quote": "Users are periodically shown an opt-in banner to turn it on, and can enable or disable automatic launch anytime from settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "With the policy unconfigured, users can enable or disable automatic launch at any time from settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/launchedgeonwindowsstartupenabled",
+      "quote": "Users are periodically shown an opt-in banner to turn it on, and can enable or disable automatic launch anytime from settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: defaultState; controls[0].note; rationale: impact",
+      "type": "default",
+      "claim": "Automatic visible launch is user-opt-in when no administrator configures the policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/launchedgeonwindowsstartupenabled",
+      "quote": "If you don't configure this policy, Microsoft Edge won't launch automatically when Windows starts by default. Users are periodically shown an opt-in banner to turn it on, and can enable or disable automatic launch anytime from settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0].note; What's changing; Risk assessment: Change & support; Scope; Governance guidance",
+      "type": "availability",
+      "claim": "The policy supports Windows from Edge version 153, not earlier Edge versions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/launchedgeonwindowsstartupenabled",
+      "quote": "Windows: ≥ 153",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment: Change & support; Scope; controls[0].note",
+      "type": "availability",
+      "claim": "The policy is not supported on macOS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/launchedgeonwindowsstartupenabled",
+      "quote": "macOS: Not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment: Change & support; Scope; controls[0].note",
+      "type": "availability",
+      "claim": "The policy is not supported on Android.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/launchedgeonwindowsstartupenabled",
+      "quote": "Android: Not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Change & support; Scope; controls[0].note",
+      "type": "availability",
+      "claim": "The policy is not supported on iOS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/launchedgeonwindowsstartupenabled",
+      "quote": "iOS: Not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0].note; Risk assessment: Security & identity; Governance controls",
+      "type": "behaviour",
+      "claim": "The policy can be mandatory.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/launchedgeonwindowsstartupenabled",
+      "quote": "Can be mandatory: Yes",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].note; Risk assessment: Security & identity; Governance controls",
+      "type": "behaviour",
+      "claim": "The policy cannot be recommended.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/launchedgeonwindowsstartupenabled",
+      "quote": "Can be recommended: No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "A mandatory policy value is enforced rather than being a default that users can override.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/configure-microsoft-edge",
+      "quote": "Mandatory policies override user preferences and prevent the user from changing the policy settings. Recommended policies provide a default setting that the user can override.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/deployedge/configure-microsoft-edge to sources for the explanation that mandatory policies override user preferences."
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The policy does not refresh dynamically.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/launchedgeonwindowsstartupenabled",
+      "quote": "Dynamic Policy Refresh: No - Requires browser restart",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].note; Risk assessment: Change & support; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "A policy change requires a browser restart to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/launchedgeonwindowsstartupenabled",
+      "quote": "Dynamic Policy Refresh: No - Requires browser restart",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Scope; Governance controls",
+      "type": "behaviour",
+      "claim": "The policy is not per profile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/launchedgeonwindowsstartupenabled",
+      "quote": "Per Profile: No",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "LaunchEdgeOnWindowsStartupEnabled is a Boolean policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/launchedgeonwindowsstartupenabled",
+      "quote": "Data type\n\n- Boolean",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Group Policy Administrative Templates path is Administrative Templates > Microsoft Edge > Launch Microsoft Edge on Windows startup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/launchedgeonwindowsstartupenabled",
+      "quote": "GP name: Launch Microsoft Edge on Windows startup\nGP path (Mandatory): Administrative Templates/Microsoft Edge",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].api; Governance controls table; Governance guidance",
+      "type": "command",
+      "claim": "The registry configuration is SOFTWARE\\Policies\\Microsoft\\Edge, value LaunchEdgeOnWindowsStartupEnabled, type REG_DWORD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/launchedgeonwindowsstartupenabled",
+      "quote": "Registry settings\nPath (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge\nValue name: LaunchEdgeOnWindowsStartupEnabled\nValue type: REG_DWORD",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The cited Stable release notes date version 156 to 22 October 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
+      "quote": "Version 156.0.4314.42: October 22, 2026 (Stable) - Main Release",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "The version 156 Stable release notes list the autolaunch opt-in experience for managed devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
+      "quote": "Autolaunch opt-in experience for managed devices. Microsoft Edge will introduce an opt-in experience that allows users on managed devices to choose whether Edge launches automatically when Windows starts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The cited Stable release notes date version 158 to 19 November 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
+      "quote": "Version 158.0.4370.33: November 19, 2026 (Stable) - Main Release",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "The version 158 Stable release notes list the autolaunch opt-in experience for managed devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
+      "quote": "Autolaunch opt-in experience for managed devices. Microsoft Edge will introduce an opt-in experience that allows users on managed devices to choose whether Edge launches automatically when Windows starts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Why it matters; Risk assessment: Change & support; Scope",
+      "type": "behaviour",
+      "claim": "Both cited releases mark this feature as a controlled rollout, so seeing the change is not guaranteed by the version alone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
+      "quote": "Note: This is a controlled feature rollout. If you don't see this change, check back as we continue the rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A licensing requirement for this specific feature is not yet published, so the licensing model is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"LaunchEdgeOnWindowsStartupEnabled licensing price meter\"; Edge for Business licensing requirements and additional cost. Read the policy reference, Edge for Business and Edge management service prerequisites; none names this feature's licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No meter for this feature is yet published in the checked sources.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"LaunchEdgeOnWindowsStartupEnabled licensing price meter\"; Edge for Business licensing requirements and additional cost. Read the policy reference, roadmap, Edge for Business and Edge management service; no autolaunch meter was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "A price for this feature is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"LaunchEdgeOnWindowsStartupEnabled licensing price meter\" and Edge for Business licensing and additional cost. Read the policy reference, roadmap record and Edge for Business page; no autolaunch price was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "The roadmap description and policy reference describe a launch setting rather than documenting new data access.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: LaunchEdgeOnWindowsStartupEnabled with Edge autolaunch opt-in, banner frequency and management service. Read the complete roadmap description and policy reference: they describe visible launch, user choice and configuration, without new data access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "For an unconfigured policy, the policy page describes only the opt-in banner and user settings as ways to choose automatic launch.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"LaunchEdgeOnWindowsStartupEnabled opt-in banner frequency admin center policy\". Read the full policy reference; the unconfigured-policy paragraph describes the banner and user settings, without another decision mechanism.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The policy reference documents no separate admin-centre switch for this item.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"LaunchEdgeOnWindowsStartupEnabled opt-in banner frequency admin center policy\"; Edge management service configuration. Read both references; the policy page itself lists Group Policy and registry settings, not a separate admin-centre switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "The policy page says the banner appears periodically without giving a frequency.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"LaunchEdgeOnWindowsStartupEnabled opt-in banner frequency admin center policy\". Read the full policy reference and the Stable feature entries; the policy says \"periodically shown an opt-in banner\" without a numerical frequency.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Why it matters; Scope; Open questions",
+      "type": "absence",
+      "claim": "The checked rollout sources give no fixed date for an individual tenant or for completion of the controlled rollout.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: LaunchEdgeOnWindowsStartupEnabled with Edge autolaunch opt-in and management service. Read the roadmap and Stable entries for versions 156 and 158; these give a month target and controlled-rollout notice, not tenant-specific or completion dates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "LaunchEdgeOnWindowsStartupEnabled is the documented control for this particular opt-in experience.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"LaunchEdgeOnWindowsStartupEnabled opt-in banner frequency admin center policy\" and Edge management service configuration. Read the policy reference and Stable feature entries; they identify this policy, not another feature-specific control.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-20T11:17:27.107Z",
+    "summary": {
+      "links": 3,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=571307",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/launchedgeonwindowsstartupenabled",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether Edge launches automatically when Windows starts",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/launchedgeonwindowsstartupenabled",
+        "reachable": true,
+        "segments": [
+          "Administrative Templates",
+          "Microsoft Edge",
+          "Launch Microsoft Edge on Windows startup"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether Edge launches automatically when Windows starts",
+        "docs": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/launchedgeonwindowsstartupenabled",
+        "reachable": true,
+        "token": "Registry: SOFTWARE\\Policies\\Microsoft\\Edge,",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

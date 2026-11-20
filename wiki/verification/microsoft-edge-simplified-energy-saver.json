@@ -2,41 +2,33 @@
   "slug": "microsoft-edge-simplified-energy-saver",
   "roadmapId": 573291,
   "title": "Microsoft Edge: simplified energy saver with new defaults and one mode",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-20",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
-  "notes": [
-    "claim 44: severity major on a rationale: risk rating lowered to minor; ratings are judgements and cannot hold a page"
-  ],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-20",
-    "reasons": [
-      "4 blocking findings (claims 18, 35, 36, 43)"
-    ]
-  },
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
   "counts": {
-    "claims": 53,
-    "confirmed": 48,
-    "unconfirmed": 2,
-    "contradicted": 3,
-    "blocker": 4,
+    "claims": 56,
+    "confirmed": 56,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 1
+    "minor": 0
   },
-  "summary": "Hold: the existing policy guidance omits version restrictions and gives the wrong minimum Edge version for EfficiencyModeEnabled. The page also asserts that existing policies do not govern the simplified feature, although their future relationship is not documented.",
+  "summary": "The briefing accurately separates Microsoft's planned simplified energy saver from the existing documented policies. The roadmap facts, current controls and defaults are supported, and targeted searches found no documentation resolving the stated gaps.",
   "claims": [
     {
       "n": 1,
-      "where": "title; What's changing",
+      "where": "What's changing; title",
       "type": "record",
-      "claim": "Microsoft plans new defaults and different setting options for energy saver in Microsoft Edge.",
+      "claim": "Microsoft plans to simplify Microsoft Edge energy saver, formerly efficiency mode.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Energy saver, formerly known as efficiency mode, will have new defaults and different setting options.",
@@ -45,20 +37,9 @@
     },
     {
       "n": 2,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "Energy saver was formerly known as efficiency mode.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Energy saver, formerly known as efficiency mode",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
       "where": "summary; What's changing",
       "type": "record",
-      "claim": "The planned simplified energy saver has two enabling conditions: low battery or unplugged.",
+      "claim": "The planned feature has two activation conditions: low battery or unplugged.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "The energy saver feature has been simplified to become enabled under two conditions: on low battery or when unplugged.",
@@ -66,10 +47,10 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "front matter: defaultState; summary; What's changing; Why it matters; Governance guidance; rationale: impact",
-      "type": "default",
-      "claim": "The planned feature is enabled by default on low battery, rather than requiring administrator opt-in.",
+      "n": 3,
+      "where": "summary; What's changing; Why it matters; Risk assessment; Governance guidance; rationale: impact",
+      "type": "record",
+      "claim": "The planned default enables energy saver on low battery.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "The default will be for energy saver to be enabled on low battery.",
@@ -77,7 +58,7 @@
       "fix": null
     },
     {
-      "n": 5,
+      "n": 4,
       "where": "title; What's changing",
       "type": "record",
       "claim": "The simplified energy saver will have one mode.",
@@ -88,7 +69,7 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 5,
       "where": "What's changing; Risk assessment; Governance guidance; rationale: impact",
       "type": "record",
       "claim": "Users set to Balanced savings will be mapped to energy saver enabled on low battery.",
@@ -99,7 +80,7 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 6,
       "where": "What's changing; Risk assessment; Governance guidance; rationale: impact",
       "type": "record",
       "claim": "Users set to Maximum savings will be mapped to energy saver enabled when unplugged.",
@@ -110,10 +91,10 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "summary; What's changing; controls[0].note; Governance controls",
+      "n": 7,
+      "where": "summary; What's changing; controls[0].governs",
       "type": "record",
-      "claim": "Edge plans to support BatterySaverModeAvailability for managing energy saver.",
+      "claim": "Edge will support BatterySaverModeAvailability to manage energy saver.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Edge will now support and recommend users to use the BatterySaverModeAvailability policy to manage the energy saver feature.",
@@ -121,8 +102,8 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "What's changing; Why it matters; controls[0].governs; Governance controls",
+      "n": 8,
+      "where": "What's changing; Why it matters; Governance controls; controls[0].governs",
       "type": "record",
       "claim": "Microsoft plans to recommend BatterySaverModeAvailability for managing energy saver.",
       "status": "supported",
@@ -132,29 +113,29 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 9,
       "where": "front matter: status; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap status is In development.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"status\": \"In development\"",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 11,
+      "n": 10,
       "where": "front matter: targetDate; What's changing; Why it matters; Scope; Governance guidance",
       "type": "record",
       "claim": "The roadmap target is March CY2027, not a committed release date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"targetDate\": \"March CY2027\"",
+      "quote": "\"status\": \"In development\", \"targetDate\": \"March CY2027\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 12,
+      "n": 11,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap release phase is General Availability.",
@@ -165,7 +146,7 @@
       "fix": null
     },
     {
-      "n": 13,
+      "n": 12,
       "where": "front matter: clouds; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
@@ -176,7 +157,7 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 13,
       "where": "front matter: platforms; Scope",
       "type": "record",
       "claim": "The roadmap platform is Web.",
@@ -187,337 +168,7 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap record gives no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing; Why it matters",
-      "type": "default",
-      "claim": "Today's EfficiencyMode documentation gives BalancedSavings as the default.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode",
-      "quote": "By default, energy saver is set to 'BalancedSavings'.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "Why it matters",
-      "type": "default",
-      "claim": "Efficiency mode is currently enabled by default on devices with a battery.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymodeenabled",
-      "quote": "By default, efficiency mode is enabled for devices with a battery and is disabled otherwise.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What's changing; Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "Today's EfficiencyMode policy offers six current values from AlwaysActive to MaximumSavings.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode",
-      "quote": "ActiveWhenUnpluggedBatteryLow (3) = Energy saver is active when the device is unplugged and the battery is low\n    - Windows: 96-109\n    - macOS: 96-109",
-      "severity": "blocker",
-      "fix": "Replace the six-current-values statement with: 'The EfficiencyMode reference lists BalancedSavings and MaximumSavings for Edge 106 or later; its other four values are listed only for Edge 96-109 on Windows and macOS.' Replace 'its current values (such as ActiveWhenUnpluggedBatteryLow)' with 'its existing deployed values'. Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode."
-    },
-    {
-      "n": 19,
-      "where": "Scope",
-      "type": "default",
-      "claim": "On devices without a battery, today's energy saver is disabled by default and does not become active by default.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode",
-      "quote": "On devices with no battery, energy saver is disabled by default and does not become active.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "controls[1].note; Governance controls",
-      "type": "applicability",
-      "claim": "EfficiencyMode has no effect if EfficiencyModeEnabled is disabled.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode",
-      "quote": "This policy has no effect if the EfficiencyModeEnabled policy is disabled.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 21,
-      "where": "controls[2].note",
-      "type": "behaviour",
-      "claim": "Disabling EfficiencyModeEnabled means efficiency mode is never active.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymodeenabled",
-      "quote": "If you disable this policy, efficiency mode is never active.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 22,
-      "where": "controls[1].ui",
-      "type": "admin-path",
-      "claim": "The EfficiencyMode control is under Administrative Templates > Microsoft Edge > Performance > Configure when energy saver (previously named efficiency mode) should become active.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode",
-      "quote": "GP name: Configure when energy saver (previously named efficiency mode) should become active\n- GP path (Mandatory): Administrative Templates/Microsoft Edge/Performance",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "controls[1].api",
-      "type": "command",
-      "claim": "The mandatory EfficiencyMode policy is represented by the EfficiencyMode REG_DWORD value at SOFTWARE\\Policies\\Microsoft\\Edge.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode",
-      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge\n- Path (Recommended): SOFTWARE\\Policies\\Microsoft\\Edge\\Recommended\n- Value name: EfficiencyMode\n- Value type: REG\\_DWORD",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "controls[2].ui",
-      "type": "admin-path",
-      "claim": "The EfficiencyModeEnabled control is under Administrative Templates > Microsoft Edge > Performance > Efficiency mode enabled.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymodeenabled",
-      "quote": "GP name: Efficiency mode enabled\n- GP path (Mandatory): Administrative Templates/Microsoft Edge/Performance",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "controls[2].api",
-      "type": "command",
-      "claim": "The mandatory EfficiencyModeEnabled policy is represented by the EfficiencyModeEnabled REG_DWORD value at SOFTWARE\\Policies\\Microsoft\\Edge.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymodeenabled",
-      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge\n- Path (Recommended): SOFTWARE\\Policies\\Microsoft\\Edge\\Recommended\n- Value name: EfficiencyModeEnabled\n- Value type: REG\\_DWORD",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "controls[0]; What's changing; Why it matters; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "No Learn policy page, Group Policy path or registry/API setting for BatterySaverModeAvailability is documented at the time of writing.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'BatterySaverModeAvailability' and 'BatterySaverModeAvailability Edge simplified energy saver policy registry mapping EfficiencyMode'; read both existing policy pages and policy-index search excerpts. The expected batterysavermodeavailability policy URL returns HTTP 404.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "What's changing",
-      "type": "absence",
-      "claim": "Microsoft Learn does not yet describe the simplified energy saver feature.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Microsoft Edge simplified energy saver EfficiencyMode mapping' and 'BatterySaverModeAvailability'; read EfficiencyMode, EfficiencyModeEnabled, and Edge policy-index excerpts. Results describe existing modes, not the roadmap's simplified feature.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
-      "where": "Risk assessment; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not documented how existing EfficiencyMode and EfficiencyModeEnabled policies map or relate to BatterySaverModeAvailability.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'BatterySaverModeAvailability Edge simplified energy saver policy registry mapping EfficiencyMode' and 'Microsoft Edge simplified energy saver EfficiencyMode mapping'; read EfficiencyMode and EfficiencyModeEnabled. Neither documents a relationship to the new policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 29,
-      "where": "controls[1].note; controls[2].note",
-      "type": "absence",
-      "claim": "The existing policy pages do not confirm whether these policies govern the planned simplified feature.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'BatterySaverModeAvailability' and 'Microsoft Edge simplified energy saver EfficiencyMode mapping'; opened both cited policy references. They describe the existing modes and do not address the planned simplified mode or BatterySaverModeAvailability.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "front matter: licensing.model; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "Licensing for the planned simplified energy saver is not yet published.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Microsoft Edge energy saver licensing requirements Edge for Business license pricing' and 'Microsoft Edge browser licensing free business energy saver license requirements'; opened Microsoft Edge for Business and both policy pages. No simplified-energy-saver entitlement was stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "absence",
-      "claim": "The roadmap and the two cited policy references name no licence requirement or charge for energy saver.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: energy saver licensing requirements and Edge browser licensing; read the supplied roadmap record, EfficiencyMode and EfficiencyModeEnabled in full. Those sources list no licence requirement or charge for energy saver.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "record",
-      "claim": "The roadmap item states no meter or price for this change.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Energy saver, formerly known as efficiency mode, will have new defaults and different setting options.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 33,
-      "where": "Scope",
-      "type": "availability",
-      "claim": "EfficiencyMode is documented for Edge version 96 or later on Windows.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode",
-      "quote": "Supported versions\n- Windows: ≥ 96",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Scope",
-      "type": "availability",
-      "claim": "EfficiencyMode is documented for Edge version 96 or later on macOS.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode",
-      "quote": "macOS: ≥ 96",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Scope",
-      "type": "availability",
-      "claim": "Both current energy saver policy pages list Windows support from version 96.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymodeenabled",
-      "quote": "Supported versions\n- Windows: ≥ 106",
-      "severity": "blocker",
-      "fix": "Replace the platform sentence with: 'EfficiencyMode lists Windows and macOS support from Edge 96; EfficiencyModeEnabled lists support from Edge 106. Both mark Android and iOS as not supported.' Sources: https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode and https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymodeenabled."
-    },
-    {
-      "n": 36,
-      "where": "Scope",
-      "type": "availability",
-      "claim": "Both current energy saver policy pages list macOS support from version 96.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymodeenabled",
-      "quote": "macOS: ≥ 106",
-      "severity": "blocker",
-      "fix": "Use the corrected Scope sentence: 'EfficiencyMode lists Windows and macOS support from Edge 96; EfficiencyModeEnabled lists support from Edge 106. Both mark Android and iOS as not supported.' Sources: https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode and https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymodeenabled."
-    },
-    {
-      "n": 37,
-      "where": "Scope",
-      "type": "availability",
-      "claim": "The current policy references mark Android and iOS as not supported.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymodeenabled",
-      "quote": "Android: Not supported\n- iOS: Not supported",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Risk assessment; Governance guidance",
-      "type": "admin-path",
-      "claim": "Users can see and choose the existing efficiency mode option at edge://settings/system.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymodeenabled",
-      "quote": "Users can choose the efficiency mode option they want in edge://settings/system.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "EfficiencyMode supports mandatory Group Policy configuration.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode",
-      "quote": "Can be mandatory: Yes",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "EfficiencyModeEnabled supports mandatory Group Policy configuration.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymodeenabled",
-      "quote": "Can be mandatory: Yes",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
-      "where": "Risk assessment: Data exposure",
-      "type": "record",
-      "claim": "The roadmap description concerns activation triggers and mentions no new data access.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "The energy saver feature has been simplified to become enabled under two conditions: on low battery or when unplugged. The default will be for energy saver to be enabled on low battery. Energy saver will now have one mode.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "Scope; Open questions",
-      "type": "record",
-      "claim": "The roadmap does not specify whether the simplified feature shares the current desktop policy coverage.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Governance controls: first paragraph",
-      "type": "applicability",
-      "claim": "The two existing policies govern today's energy saver, not the simplified one.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: 'BatterySaverModeAvailability Edge simplified energy saver policy registry mapping EfficiencyMode' and 'Microsoft Edge simplified energy saver EfficiencyMode mapping'; read both existing policy pages. No passage says the existing policies cannot govern the simplified feature.",
-      "severity": "blocker",
-      "fix": "Replace 'Until then, the two existing policies are the documented controls and govern today's energy saver, not the simplified one.' with 'The two existing policies document controls for today's energy saver; Microsoft has not yet documented whether they will govern the simplified feature.'"
-    },
-    {
-      "n": 44,
-      "where": "rationale: risk",
-      "type": "behaviour",
-      "claim": "The change touches no organisational data.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: 'Microsoft Edge simplified energy saver EfficiencyMode mapping' and 'BatterySaverModeAvailability'; read the roadmap and both cited policy pages. The roadmap mentions no new data access, but no source states that the change touches no organisational data.",
-      "severity": "minor",
-      "fix": "Replace 'touches no organisational data' with 'has no new data access described in the roadmap'."
-    },
-    {
-      "n": 45,
+      "n": 14,
       "where": "front matter: products; Scope",
       "type": "record",
       "claim": "The roadmap product is Microsoft Edge.",
@@ -528,18 +179,150 @@
       "fix": null
     },
     {
-      "n": 46,
-      "where": "front matter: roadmapModified",
+      "n": 15,
+      "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap record was modified on 19 November 2026 at 21:32:07.",
+      "claim": "The roadmap gives no preview date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"modified\": \"2026-11-19T21:32:07\"",
+      "quote": "\"previewDate\": null",
       "severity": null,
       "fix": null
     },
     {
-      "n": 47,
+      "n": 16,
+      "where": "front matter: defaultState; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "The change has an on-arrival default rather than requiring an administrator to enable it.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Energy saver, formerly known as efficiency mode, will have new defaults and different setting options. The default will be for energy saver to be enabled on low battery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe the simplified feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"simplified energy saver\" \"EfficiencyMode\"' and 'BatterySaverModeAvailability simplified energy saver EfficiencyMode policy mapping'; opened both cited policy references; results describe existing policies, not the simplified feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[0].ui; controls[0].api; controls[0].note; What's changing; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "BatterySaverModeAvailability has no documented Learn policy page, Group Policy route or registry call yet.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"BatterySaverModeAvailability\"' and 'BatterySaverModeAvailability registry Group Policy Microsoft Edge energy saver license pricing'; read the Edge policy index Performance excerpt and both cited policy pages; no reference for the named new policy appeared.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Why it matters",
+      "type": "default",
+      "claim": "The existing EfficiencyMode policy defaults energy saver to BalancedSavings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode",
+      "quote": "By default, energy saver is set to 'BalancedSavings'.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "BalancedSavings is listed for Edge 106 or later on Windows and macOS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode",
+      "quote": "BalancedSavings (4) = When the device is unplugged, energy saver takes moderate steps to save battery. When the device is unplugged and the battery is low, energy saver takes extra steps to save battery.\n- Windows: ≥ 106\n- macOS: ≥ 106",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "MaximumSavings is listed for Edge 106 or later on Windows and macOS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode",
+      "quote": "MaximumSavings (5) = When the device is unplugged or unplugged and the battery is low, energy saver takes extra steps to save battery.\n- Windows: ≥ 106\n- macOS: ≥ 106",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "AlwaysActive is listed only for Edge 96-109 on Windows and macOS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode",
+      "quote": "AlwaysActive (0) = Energy saver is always active\n- Windows: 96-109\n- macOS: 96-109",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "NeverActive is listed only for Edge 96-109 on Windows and macOS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode",
+      "quote": "NeverActive (1) = Energy saver is never active\n- Windows: 96-109\n- macOS: 96-109",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "ActiveWhenUnplugged is listed only for Edge 96-109 on Windows and macOS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode",
+      "quote": "ActiveWhenUnplugged (2) = Energy saver is active when the device is unplugged\n- Windows: 96-109\n- macOS: 96-109",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "ActiveWhenUnpluggedBatteryLow is listed only for Edge 96-109 on Windows and macOS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode",
+      "quote": "ActiveWhenUnpluggedBatteryLow (3) = Energy saver is active when the device is unplugged and the battery is low\n- Windows: 96-109\n- macOS: 96-109",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "Today's energy saver is enabled by default for devices with a battery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymodeenabled",
+      "quote": "By default, efficiency mode is enabled for devices with a battery and is disabled otherwise.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes a battery-saving change and mentions no new data access.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The energy saver feature has been simplified to become enabled under two conditions: on low battery or when unplugged. The default will be for energy saver to be enabled on low battery. Energy saver will now have one mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
       "where": "Risk assessment: Security & identity",
       "type": "record",
       "claim": "The roadmap description mentions no identity, sign-in or permission change.",
@@ -550,10 +333,21 @@
       "fix": null
     },
     {
-      "n": 48,
+      "n": 29,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Under the planned default, energy saver activates when the low-battery trigger is met.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The default will be for energy saver to be enabled on low battery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
       "where": "Risk assessment: Autonomy & actions; Open questions",
       "type": "record",
-      "claim": "The roadmap does not describe the implementation steps of the single energy saver mode.",
+      "claim": "The roadmap does not describe the steps taken by the single energy saver mode.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Energy saver will now have one mode.",
@@ -561,7 +355,161 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 31,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "admin-path",
+      "claim": "Users can choose the existing efficiency mode option at edge://settings/system.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymodeenabled",
+      "quote": "Users can choose the efficiency mode option they want in edge://settings/system.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not published a mapping from deployed EfficiencyMode policy values to the new options.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'BatterySaverModeAvailability simplified energy saver EfficiencyMode policy mapping' and '\"simplified energy saver\" \"EfficiencyMode\"'; opened EfficiencyMode and EfficiencyModeEnabled; no deployed-policy migration mapping appeared.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "record",
+      "claim": "The roadmap item states no licence, meter or charge for energy saver.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Energy saver, formerly known as efficiency mode, will have new defaults and different setting options.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "The EfficiencyMode and EfficiencyModeEnabled references list no licence requirement or charge.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Edge energy saver licensing license pricing prerequisites'; opened the complete EfficiencyMode and EfficiencyModeEnabled references; neither lists licensing requirements or charges.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.model; Cost and licensing; Open questions; rationale: cost",
+      "type": "licensing",
+      "claim": "Licensing for the simplified energy saver is not yet published, so the model is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Edge energy saver licensing license pricing prerequisites', 'Microsoft Edge for Business free no additional cost license', and '\"Microsoft Edge\" \"license\" \"free\" business browser'; opened both policy references and the enterprise FAQ; no covering requirement found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter or direct charge for the simplified feature was found in the sources.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Edge energy saver licensing license pricing prerequisites' and 'BatterySaverModeAvailability registry Group Policy Microsoft Edge energy saver license pricing'; opened both policy references and the enterprise FAQ; no energy-saver meter or charge found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "EfficiencyMode lists Windows support from Edge 96.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode",
+      "quote": "Supported versions\n- Windows: ≥ 96",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "EfficiencyMode lists macOS support from Edge 96.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode",
+      "quote": "Supported versions\n- Windows: ≥ 96\n- macOS: ≥ 96",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "EfficiencyModeEnabled lists Windows support from Edge 106.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymodeenabled",
+      "quote": "Supported versions\n- Windows: ≥ 106",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "EfficiencyModeEnabled lists macOS support from Edge 106.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymodeenabled",
+      "quote": "Supported versions\n- Windows: ≥ 106\n- macOS: ≥ 106",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "EfficiencyMode marks Android and iOS as unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode",
+      "quote": "Android: Not supported\n- iOS: Not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "EfficiencyModeEnabled marks Android and iOS as unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymodeenabled",
+      "quote": "Android: Not supported\n- iOS: Not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap does not specify whether the simplified feature shares the current policies' operating-system coverage.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope",
+      "type": "default",
+      "claim": "On devices without a battery, today's energy saver is disabled by default and does not become active by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode",
+      "quote": "On devices with no battery, energy saver is disabled by default and does not become active.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
       "where": "Scope; Open questions",
       "type": "record",
       "claim": "The roadmap does not describe how the new default treats devices without a battery.",
@@ -572,52 +520,129 @@
       "fix": null
     },
     {
-      "n": 50,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "EfficiencyMode supports recommended Group Policy configuration.",
+      "n": 46,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "EfficiencyMode is under Administrative Templates > Microsoft Edge > Performance > Configure when energy saver (previously named efficiency mode) should become active in Group Policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode",
-      "quote": "Can be recommended: Yes",
+      "quote": "GP name: Configure when energy saver (previously named efficiency mode) should become active\n- GP path (Mandatory): Administrative Templates/Microsoft Edge/Performance",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[1].api; Governance controls table; Governance guidance",
+      "type": "command",
+      "claim": "The EfficiencyMode registry setting is SOFTWARE\\Policies\\Microsoft\\Edge, value EfficiencyMode, type REG_DWORD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode",
+      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge\n- Value name: EfficiencyMode\n- Value type: REG_DWORD",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "EfficiencyModeEnabled is under Administrative Templates > Microsoft Edge > Performance > Efficiency mode enabled in Group Policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymodeenabled",
+      "quote": "GP name: Efficiency mode enabled\n- GP path (Mandatory): Administrative Templates/Microsoft Edge/Performance",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[2].api; Governance controls table; Governance guidance",
+      "type": "command",
+      "claim": "The EfficiencyModeEnabled registry setting is SOFTWARE\\Policies\\Microsoft\\Edge, value EfficiencyModeEnabled, type REG_DWORD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymodeenabled",
+      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge\n- Value name: EfficiencyModeEnabled\n- Value type: REG_DWORD",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[1].governs; controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "EfficiencyMode configures current energy-saver activation but has no effect when EfficiencyModeEnabled is disabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode",
+      "quote": "This policy setting lets you configure when energy saver becomes active. This policy has no effect if the EfficiencyModeEnabled policy is disabled.",
       "severity": null,
       "fix": null
     },
     {
       "n": 51,
-      "where": "Governance controls",
+      "where": "controls[2].governs; controls[2].note; Governance controls table",
       "type": "behaviour",
-      "claim": "Users can override recommended EfficiencyMode settings.",
+      "claim": "EfficiencyModeEnabled governs existing efficiency-mode availability, and disabling it means efficiency mode is never active.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode",
-      "quote": "GP path (Recommended): Administrative Templates/Microsoft Edge - Default Settings (users can override)/Performance",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymodeenabled",
+      "quote": "Enables efficiency mode which helps extend battery life by saving computer resources. If you disable this policy, efficiency mode is never active.",
       "severity": null,
       "fix": null
     },
     {
       "n": 52,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "EfficiencyModeEnabled supports recommended Group Policy configuration.",
+      "where": "controls[1].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented whether EfficiencyMode governs the planned simplified feature.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymodeenabled",
-      "quote": "Can be recommended: Yes",
+      "source": null,
+      "quote": "Searched: '\"simplified energy saver\" \"EfficiencyMode\"' and 'BatterySaverModeAvailability simplified energy saver EfficiencyMode policy mapping'; opened EfficiencyMode and EfficiencyModeEnabled; their existing-policy descriptions do not address the planned redesign.",
       "severity": null,
       "fix": null
     },
     {
       "n": 53,
+      "where": "controls[2].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented whether EfficiencyModeEnabled governs the planned simplified feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'BatterySaverModeAvailability simplified energy saver EfficiencyMode policy mapping' and '\"simplified energy saver\" \"EfficiencyMode\"'; opened EfficiencyModeEnabled and EfficiencyMode; neither explains applicability to the planned redesign.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Users can override recommended EfficiencyModeEnabled settings.",
+      "claim": "EfficiencyMode supports mandatory and recommended Group Policy settings, with user overrides for recommended values.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode",
+      "quote": "Can be mandatory: Yes\n- Can be recommended: Yes\nGP path (Recommended): Administrative Templates/Microsoft Edge - Default Settings (users can override)/Performance",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "EfficiencyModeEnabled supports mandatory and recommended Group Policy settings, with user overrides for recommended values.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymodeenabled",
-      "quote": "GP path (Recommended): Administrative Templates/Microsoft Edge - Default Settings (users can override)/Performance",
+      "quote": "Can be mandatory: Yes\n- Can be recommended: Yes\nGP path (Recommended): Administrative Templates/Microsoft Edge - Default Settings (users can override)/Performance",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented how the existing policies relate to BatterySaverModeAvailability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'BatterySaverModeAvailability simplified energy saver EfficiencyMode policy mapping', '\"BatterySaverModeAvailability\"', and '\"simplified energy saver\" \"EfficiencyMode\"'; opened both existing policy references and read the policy-index excerpt; no relationship documented.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-20T10:12:47.704Z",
+    "at": "2026-11-20T11:17:30.398Z",
     "summary": {
       "links": 3,
       "unreachable": 0,
@@ -696,5 +721,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-20",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

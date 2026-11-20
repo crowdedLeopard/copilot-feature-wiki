@@ -31,6 +31,12 @@ sources:
   - title: "Activate Sales Development agent (preview)"
     url: "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent"
     kind: "learn"
+  - title: "Onboard the Sales Development agent (preview)"
+    url: "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/onboard-agent"
+    kind: "learn"
+  - title: "copilotPackage: activate"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate"
+    kind: "learn"
 videos: []
 related: ["m365-copilot-sales-development-agent-is-now-available","m365-copilot-sales-development-agent-meeting-scheduling","knowledge-grounding"]
 controls:
@@ -45,8 +51,11 @@ controls:
       surface: "Microsoft 365 admin center"
       path: "Agents > All Agents > Sales Development (Frontier) > Activate"
       docs: "https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent"
-    api: null
-    note: "Requires AI Administrator or Global Administrator. Chooses who can create instances; it does not govern copying a configuration between instances. Preview page."
+    api:
+      kind: "graph"
+      call: "POST /beta/copilot/admin/catalog/packages/{id}/activate"
+      docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate"
+    note: "AI Administrator or Global Administrator. Sets who can create instances, not who can copy a configuration. Beta request sets agentManagerScope, needs policyTemplateId; API needs an Agent 365 licence. Preview."
 confidence: "medium"
 created: "2026-11-20"
 updated: "2026-11-20"
@@ -56,19 +65,23 @@ changes:
     note: "New briefing on copying a Sales Development agent's configuration between agents; Learn documents the preview steps, and no admin switch is documented."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 52 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected after verification: added the Graph activation call for the instance-creation control, noted that shared knowledge content can reach people without access to it, and removed an 'only control' claim."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 61 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 49
+  claims: 61
+  confirmed: 59
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "00d73a7d644f57e31e29b3c088228f7c"
+  contradicted: 2
+  attempts: 2
+  hash: "2531443c7dc18de467a34f69fac67269"
 ---
 
 ## What's changing
@@ -89,7 +102,7 @@ Microsoft has not stated what happens on arrival, so base your plan on the fact 
 
 **Data exposure**
 - The export is a downloaded file holding playbook, guidelines and settings. Learn says it can contain business-specific details and advises storing and sharing it according to your organisation's data policies, limiting access to authorised users and deleting local and cloud copies, such as OneDrive, when the transfer is complete. Microsoft Learn documents no admin setting that stops or logs the export, so these steps rest on the managers.
-- Knowledge sources are not exported, so uploaded documents, FAQs and URLs do not travel in the file. Each has to be added to the target agent separately, and that is where your existing access rules for those sources apply.
+- Knowledge sources are not exported, so uploaded documents, FAQs and URLs do not travel in the file. Each has to be added to the target agent separately, but Microsoft warns that shared content may appear in responses to people who lacked access to the original content, regardless of its sensitivity labels or permissions.
 
 **Security & identity**
 - Learn requires the person copying to be a manager or owner of both agents and to be able to open both in Microsoft Teams. How those roles are granted is covered by the activation steps, where an administrator names the manager of each instance. Confirm that managers of the target agents are the people you intend to receive the playbook.
@@ -141,11 +154,11 @@ The roadmap item lists the Worldwide (Standard Multi-Tenant) cloud and the Web p
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether managers can export or import a Sales Development agent configuration</strong><br><small>Tenant</small><br><small class="controls__note">No tenant setting is documented at the time of writing (November 2026). The Learn page makes being a manager or owner of both agents the condition.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which users or groups can create Sales Development agent instances</strong><br><small>Group</small><br><small class="controls__note">Requires AI Administrator or Global Administrator. Chooses who can create instances; it does not govern copying a configuration between instances. Preview page.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All Agents › Sales Development (Frontier) › Activate <a href="https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which users or groups can create Sales Development agent instances</strong><br><small>Group</small><br><small class="controls__note">AI Administrator or Global Administrator. Sets who can create instances, not who can copy a configuration. Beta request sets agentManagerScope, needs policyTemplateId; API needs an Agent 365 licence. Preview.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › All Agents › Sales Development (Frontier) › Activate <a href="https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/admin/catalog/packages/{id}/activate</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-No tenant-wide switch for exporting or importing a configuration is documented, so the first row is a gap, not a setting. The only documented admin control that touches this feature is activation of the Sales Development agent, which decides which users or groups can create agent instances. It does not govern the export or import itself, and the Learn page names being a manager or owner of both agents as the condition for copying. The activation steps need the AI Administrator or Global Administrator role in the Microsoft 365 admin center.
+No tenant-wide switch for exporting or importing a configuration is documented, so the first row is a gap, not a setting. Activation of the Sales Development agent decides which users or groups can create agent instances. It does not govern the export or import itself, and the Learn page names being a manager or owner of both agents as the condition for copying. The activation steps need the AI Administrator or Global Administrator role in the Microsoft 365 admin center.
 
 ## Open questions
 
@@ -163,9 +176,9 @@ impact: Low. Per the Learn page, those who manage both agents carry out the copy
 <!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].api / absence: Microsoft has not documented automation for choosing the users or groups allowed to create Sales Development agent instances. | Found: POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/activate agentManagerScope | Required. The users or groups allowed to create instances from this template. | Fix: Set controls[1].api to kind 'graph', call 'POST /beta/copilot/admin/catalog/packages/{id}/activate', and docs to https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate. Add to its note: 'The beta request sets agentManagerScope to choose who can create instances and requires policyTemplateId. This is a reviewed beta contract: availability depends on the matching schema and backend release, and API-review approval is not evidence of deployed availability. Package Management API access requires a Microsoft Agent 365 licence.' | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate
-- [contradicted, blocker] Risk assessment: Data exposure, second bullet / applicability: Existing access rules for knowledge sources apply when those sources are added separately to the target agent. | Found: The content you share with an agent, such as files, chat history, or emails, might be summarized or included in the agent's responses to other users, even those individuals who don't originally have access to that content. | Fix: Replace 'and that is where your existing access rules for those sources apply' with 'but Microsoft warns that shared content may appear in responses to people who lacked access to the original content, regardless of its sensitivity labels or permissions'. Cite https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/onboard-agent#provide-product-knowledge. | Source: https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/onboard-agent
-- [contradicted, blocker] Governance controls / applicability: Activation is the only documented administrative control that touches this feature. | Found: Copilot Frontier is enabled in the Microsoft 365 admin center: Copilot > Settings > Copilot Frontier. All users who create agent instances are enabled for Frontier features. As an administrator, you can still control which Frontier agents users can access. | Fix: Replace 'The only documented admin control that touches this feature is activation of the Sales Development agent, which decides which users or groups can create agent instances' with 'Activation of the Sales Development agent decides which users or groups can create agent instances'. Keep the following sentence distinguishing instance creation from configuration export and import. | Source: https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent
+- [contradicted, blocker] Risk assessment: Data exposure; Open questions: export audit / absence: No administrator logging control is documented for the export, leaving oversight to managers. | Found: The following table lists Agent 365 activities that are logged when an agent is invoked or performs any actions or tool calls. | Fix: Replace 'Microsoft Learn documents no admin setting that stops or logs the export, so these steps rest on the managers.' with 'No export-specific tenant switch is documented. General Agent 365 auditing records agent invocations and tool calls; a configuration-export-specific audit event is not yet documented.' Cite https://learn.microsoft.com/purview/audit-log-activities and https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/architecture, which places this agent on Agent 365. Narrow the audit open question to identifying a configuration-export-specific event rather than whether administrators have any audit trail. | Source: https://learn.microsoft.com/purview/audit-log-activities
+- [contradicted, blocker] front matter: cost; Cost and licensing; rationale: cost / consistency: Cost is low because the published costs consist only of manager time and existing agent licenses. | Found: Public Preview availability | November 24, 2026 | December 1, 2026 | December 1, 2026 | Consumption billing begins when each product becomes available. All agent activity is billed consumptively. | Fix: Set cost to 'variable'. Replace the cost rationale with 'Variable. Microsoft publishes consumption billing via Copilot Credits for Sales Development agents from December 1, 2026; no export/import-specific rate is published.' Add to Cost and licensing: 'The Microsoft 365 Resources for Agents service description lists Sales Development Agent public preview availability as December 1, 2026, when consumption billing begins. It publishes 100 Copilot Credits per agent per month for the agent account and persistent resource access, and says all agent activity, including model, context, tools and runtime usage, is billed consumptively. The activation page still describes the $0 preview SKU; that SKU price does not establish that agent activity is unmetered.' Cite https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-resources-for-agents. Keep the narrower statement that no configuration-export/import-specific rate is published. | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-resources-for-agents
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance guidance: Before rollout; Governance controls / admin-path: Microsoft 365 admin center > Agents > All Agents > Sales Development (Frontier) > Activate leads to configuring which users or groups can create instances. | Found: In the Microsoft 365 admin center, go to Agents > All Agents. Search for Sales Development (Frontier), and then select Activate. Choose the users or groups that can create Sales Development agent instances. | Fix: Keep the path, which reaches the activation procedure, and append to controls[1].note: 'After selecting Activate, choose the users or groups that can create instances and apply a policy template that allows agent instance creation.' The cited activation page gives these remaining steps. | Source: https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent
+- [supported, minor] controls[1].ui; Governance guidance: Before rollout; Governance controls / admin-path: Microsoft 365 admin center > Agents > All Agents > Sales Development (Frontier) > Activate reaches instance-creation access configuration. | Found: In the Microsoft 365 admin center, go to **Agents** > **All Agents**. 2. Search for **Sales Development (Frontier)**, and then select **Activate**. 3. Choose the users or groups that can create Sales Development agent instances. | Fix: The path correctly reaches the activation procedure but stops before its access choice. Keep the path and add to the row note: 'After selecting Activate, choose the users or groups that can create Sales Development agent instances, then apply a policy template that allows agent instance creation.' | Source: https://learn.microsoft.com/dynamics365/sales/sales-dev-agent/activate-agent
+- [supported, minor] controls[1].api / command: POST /beta/copilot/admin/catalog/packages/{id}/activate activates an agent template for permitted instance creators. | Found: POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/activate | Fix: Retain the call and add this qualification to the note: 'This is a reviewed beta contract; availability depends on the matching schema and backend release, not API-review approval.' The reference expressly distinguishes its reviewed contract from deployed availability. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackageactivationresult-activate
 -->

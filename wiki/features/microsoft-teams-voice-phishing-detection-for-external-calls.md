@@ -14,11 +14,11 @@ previewDate: null
 risk: "medium"
 cost: "low"
 impact: "medium"
-defaultState: "on"
-action: "act-now"
+defaultState: "unknown"
+action: "prepare"
 licensing:
-  model: "unknown"
-  notes: "Not yet published. The roadmap item and the Set-CsTeamsCallingPolicy reference name no licence, plan or meter for voice phishing detection."
+  model: "included"
+  notes: "Users need a Microsoft Teams license to use Teams. Microsoft has not published an additional licence requirement specific to voice phishing detection."
 audiences: ["m365-admin","security","change-adoption"]
 tags: ["teams","threat-detection","ai","powershell","mobile"]
 sources:
@@ -28,8 +28,14 @@ sources:
   - title: "Set-CsTeamsCallingPolicy"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy"
     kind: "learn"
+  - title: "New-CsTeamsCallingPolicy"
+    url: "https://learn.microsoft.com/powershell/module/microsoftteams/new-csteamscallingpolicy"
+    kind: "learn"
   - title: "End user reporting for Teams Calling (Preview)"
     url: "https://learn.microsoft.com/microsoftteams/end-user-reporting-teams-calling"
+    kind: "learn"
+  - title: "Manage Teams licenses"
+    url: "https://learn.microsoft.com/microsoftteams/user-access"
     kind: "learn"
   - title: "Calling policies in Teams"
     url: "https://learn.microsoft.com/microsoftteams/teams-calling-policy"
@@ -60,19 +66,23 @@ changes:
     note: "First briefing for this item: December CY2026 target, plus the VoicePhishingDetection calling policy parameter, which Learn says has no effect until release."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 41 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected after the independent check: default state is now Not stated, call reporting carries its Defender qualification, licensing cites the Teams licence requirement, and the calling policy inventory step is removed."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 46 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 41
-  confirmed: 38
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "d73b0238a6c7fd036560ae5fc24fef70"
+  claims: 46
+  confirmed: 46
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "a8e7239bad59b4afe2431fec33ef1dd6"
 ---
 
 ## What's changing
@@ -85,7 +95,7 @@ The roadmap item is In development, with a target of December CY2026, release ph
 
 ## Why it matters
 
-This is a protection feature that arrives with an alert mode already chosen. The Learn reference lists BannerAndAudio as the parameter's default, so plan on users hearing and seeing a warning once the feature is released unless a calling policy says otherwise. Microsoft's reference states the setting has no effect today; whether the alerts reach users automatically at release is not otherwise stated by Microsoft.
+Microsoft lists BannerAndAudio as the parameter default, but says the setting currently has no effect. Microsoft has not stated whether alerts will automatically reach users when the feature is released.
 
 For a security team the value is a warning at the moment of the call, aimed at the person being targeted. The cost is a new kind of in-call interruption that helpdesk and staff who regularly take calls from partners and customers should expect, and a processing question that Microsoft has not yet answered: where call conversations are analysed and what is retained.
 
@@ -98,7 +108,7 @@ For a security team the value is a warning at the moment of the call, aimed at t
 **Security & identity**
 
 - This is a detection and alerting feature. The roadmap and the cmdlet reference describe alerts to the recipient, not blocking or ending calls. Detection can still miss an attack or flag a legitimate caller, so it supports, rather than replaces, user training.
-- Learn documents separate user reporting of calls: users can report a call as a security concern and can report a call flagged as "Scam Suspected" as not a security concern (see the end user reporting page, which is marked Preview). Whether voice phishing detection produces that "Scam Suspected" flag is not stated.
+- Learn documents separate user reporting of calls (the end user reporting page is marked Preview). In organisations with Microsoft Defender for Office 365 Plan 2 or Microsoft Defender XDR, users can report suspicious calls when Report call is enabled in the Teams calling policy. Reporting must also be enabled in the Defender portal for reported calls to show up correctly. The same page says users can report a call incorrectly flagged as "Scam Suspected" as not a security concern. Whether voice phishing detection produces that "Scam Suspected" flag is not stated.
 
 **Autonomy & actions**
 
@@ -110,9 +120,9 @@ For a security team the value is a warning at the moment of the call, aimed at t
 
 ## Cost and licensing
 
-Microsoft has not published a licence requirement, price or meter for voice phishing detection. The roadmap item names no licence, and the Set-CsTeamsCallingPolicy reference, which documents the VoicePhishingDetection parameter, states none.
+Users need a Microsoft Teams license to use Teams. Microsoft has not published an additional licence requirement specific to voice phishing detection. The roadmap item names no licence, and the Set-CsTeamsCallingPolicy reference, which documents the VoicePhishingDetection parameter, states none.
 
-The cost the sources show is indirect: admin time to review calling policies, and user communication before the target of December CY2026. A licence or meter for this feature is not yet published.
+The cost the sources show is indirect: admin time to review calling policies, and user communication before the target of December CY2026. A price or meter for this feature is not yet published.
 
 ## Scope
 
@@ -126,7 +136,6 @@ The cost the sources show is indirect: admin time to review calling policies, an
 
 ### Before rollout
 
-- Review which calling policies exist and which users hold them (Voice > Calling policies in the Teams admin center), so you know which policy a change to VoicePhishingDetection would affect.
 - Decide per user group whether BannerAndAudio, Banner, Audio or None is appropriate, and record the reason, for example quiet-office roles that may prefer Banner.
 - Ask your privacy or compliance lead to review the roadmap description (AI analysis of call conversations) and note that Microsoft has not yet published how call content is processed.
 
@@ -134,7 +143,7 @@ The cost the sources show is indirect: admin time to review calling policies, an
 
 - Tell staff who take external calls that Teams may show or play a warning during a call, and that the warning is advice and not a block.
 - Set VoicePhishingDetection explicitly in the calling policies where you want a mode other than the BannerAndAudio default.
-- Remind users how to report suspicious calls and how to report a wrongly flagged call, as described on the end user reporting page.
+- Where call reporting is enabled, remind users how to report suspicious calls and how to report a wrongly flagged call, as described on the end user reporting page.
 
 ### After rollout
 
@@ -170,13 +179,8 @@ cost: Low. The only cost the sources show is admin time and user communication; 
 impact: Medium. Users who take one-to-one calls from outside the organisation would see alerts, but only when Teams detects suspicious activity on a call.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] front matter: defaultState; Why it matters / default: The feature is on by default and users should expect warnings automatically at release unless their calling policy says otherwise. | Found: Searched: "voice phishing" "default" Teams; "VoicePhishingDetection" tenant switch group assignment default. Read Set-/New-CsTeamsCallingPolicy: BannerAndAudio is a parameter default, but the setting has no effect yet; automatic release activation is not stated. | Fix: Set defaultState to unknown. Replace the first paragraph of Why it matters with: 'Microsoft lists BannerAndAudio as the parameter default, but says the setting currently has no effect. Microsoft has not stated whether alerts will automatically reach users when the feature is released.'
-- [contradicted, blocker] Risk assessment: Security & identity; Governance guidance: At rollout / applicability: Users can report suspicious calls as a security concern without any stated entitlement or reporting-setting qualification. | Found: In organizations with Microsoft Defender for Office 365 Plan 2 or Microsoft Defender XDR, admins can decide whether users can report malicious or suspicious calls in Microsoft Teams. | Fix: Qualify the reporting statement with: 'In organisations with Microsoft Defender for Office 365 Plan 2 or Microsoft Defender XDR, users can report suspicious calls when Report call is enabled in the Teams calling policy. Reporting must also be enabled in the Defender portal for reported calls to show up correctly.' Change the At rollout reminder to begin 'Where call reporting is enabled,'. | Source: https://learn.microsoft.com/microsoftteams/end-user-reporting-teams-calling
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].note; Scope / command: New-CsTeamsCallingPolicy also has the VoicePhishingDetection parameter. | Found: ### -VoicePhishingDetection The Voice Phishing Detection policy enables AI-based detection of voice phishing (vishing) attempts during live inbound Microsoft Teams calls. | Fix: Add https://learn.microsoft.com/powershell/module/microsoftteams/new-csteamscallingpolicy to sources for the statement that New-CsTeamsCallingPolicy has this parameter. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/new-csteamscallingpolicy
-- [supported, minor] front matter: licensing.model and licensing.notes; Cost and licensing / licensing: Licensing is unknown because no feature-specific entitlement has been published. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Set licensing.model to included under the standard's product-level licensing rule. Replace the licensing notes and first sentence of Cost and licensing with: 'Users need a Microsoft Teams license to use Teams. Microsoft has not published an additional licence requirement specific to voice phishing detection.' Cite https://learn.microsoft.com/microsoftteams/user-access. | Source: https://learn.microsoft.com/microsoftteams/user-access
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks administrators to take stock of existing calling policies and assignments, but the controls table contains only the alert-mode parameter. | Found: Review which calling policies exist and which users hold them (Voice > Calling policies in the Teams admin center) [The sole control row governs] Which alert mode users get for suspected voice phishing on calls | Fix: Remove the first Before rollout checklist bullet about taking stock of calling policies and user assignments; that inventory step has no corresponding control row.
+- [supported, minor] Risk assessment: Security & identity / licensing: The cited calling-reporting page describes reporting in organisations with Defender for Office 365 Plan 2 or Defender XDR. | Found: In organizations with Microsoft Defender for Office 365 Plan 2 or Microsoft Defender XDR, admins can decide whether users can report malicious or suspicious calls in Microsoft Teams. | Fix: After the reporting licence sentence, add: 'Microsoft's User reported settings in Microsoft Teams page also includes Defender for Office 365 Plan 1 for call reporting.' Cite and add https://learn.microsoft.com/defender-office-365/submissions-teams to sources; that page says 'Plan 1 or Plan 2, or Microsoft Defender XDR'. | Source: https://learn.microsoft.com/microsoftteams/end-user-reporting-teams-calling
 -->

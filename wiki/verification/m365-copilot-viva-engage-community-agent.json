@@ -1,0 +1,1114 @@
+{
+  "slug": "m365-copilot-viva-engage-community-agent",
+  "roadmapId": 499898,
+  "title": "Viva Engage: Community Agent drafts and posts answers in communities",
+  "status": "verified-with-gaps",
+  "date": "2026-11-20",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 88,
+    "confirmed": 87,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "The roadmap facts, preview licensing, admin paths and licence-assignment API are supported. Two minor corrections concern the source for site-owner permissions and a sensitivity-label checklist instruction without a corresponding controls row.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists a preview date of September CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"September CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Web is the only platform listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The record lists no US Government clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-10-09T22:04:35.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-09T22:04:35\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says community admins can require human review or allow automatic posting.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Community admins can choose to require human review before answers are posted or allow automatic posting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "title; summary; What's changing; rationale: impact",
+      "type": "behaviour",
+      "claim": "Community Agent is an AI agent that drafts answers to questions in Viva Engage communities, especially repeated questions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Community Agent is an AI agent for Viva Engage communities. It helps community admins and experts answer questions, especially ones that come up repeatedly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "The agent uses conversations in its community as knowledge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Conversations in this community | Included automatically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment; Scope",
+      "type": "behaviour",
+      "claim": "The community's connected SharePoint library is included automatically.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "The community's connected SharePoint library | Included automatically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; What's changing; Risk assessment; controls[2].note; Scope",
+      "type": "behaviour",
+      "claim": "An admin can add extra SharePoint sites or libraries as knowledge sources using Add SharePoint site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Additional SharePoint sites or libraries | Select Add SharePoint site to add them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; What's changing; Risk assessment; controls[2].note; Scope",
+      "type": "behaviour",
+      "claim": "An admin can add public websites as knowledge sources using Add public website.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Public websites | Select Add public website to add them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "Why it matters; Risk assessment; rationale: impact",
+      "type": "behaviour",
+      "claim": "Posted agent answers appear as replies to the original questions for other community members to read.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Posted answers appear as replies to the original questions, where other community members can find and use them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; front matter: changes",
+      "type": "availability",
+      "claim": "The Learn documentation describes public preview and warns that the design can change before general availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "The Community Agent feature is in public preview. Features in preview may change before general availability release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0].ui; Governance controls; Governance guidance",
+      "type": "admin-path",
+      "claim": "The preview toggle is at Engage admin center > Tenant settings > Community Agent preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Go to the Engage admin center and select Tenant settings. Turn on the Community Agent preview toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[0].note; What's changing; Scope; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "A network admin must enable public preview before community admins can add the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "A network admin must enable the public preview before community admins can add Community Agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0].note; What's changing; Risk assessment; Governance controls; Open questions",
+      "type": "behaviour",
+      "claim": "A new network-wide Community Agent setting will replace the preview toggle at general availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "At general availability, a new network-wide Community Agent setting will replace this preview toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].note; What's changing; Why it matters; Open questions",
+      "type": "date",
+      "claim": "Microsoft promises at least 30 days' notice before replacing the preview toggle.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "We'll provide at least 30 days' notice and make the new setting available at the start of that notice period, so you can set your network's preference before general availability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The replacement setting will be available from the start of the notice period.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "make the new setting available at the start of that notice period",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: defaultState; summary; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "The general availability default is not stated, and no source states that existing behaviour changes if nobody acts.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Community Agent general availability default' and 'Community Agent require review network enforce tenant policy'. Read roadmap, Community Agent and search excerpts: preview opt-in and replacement setting are described, but no GA default or automatic migration behaviour.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Community admins can add one Community Agent per community.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Community admins can add one Community Agent per community.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The setup route is community > Admin actions > Set up community agent > Agent settings > Require review before posting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "On the community page, under Admin actions, select Set up community agent. On the Agent settings page, choose whether to turn on Require review before posting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[1].note; What's changing; Risk assessment; Governance guidance; rationale: risk",
+      "type": "default",
+      "claim": "In public preview, the community agent posts answers automatically by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "By default, the agent posts answers automatically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Community admins can turn on Require review before posting so a community admin or expert must approve answers first.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Turn this setting on to require a community admin or expert to review and approve answers before they are posted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "Low confidence also requires a community admin or expert to approve the answer before posting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "If Require review before posting is on, or the agent has low confidence in its answer, a community admin or expert must approve the answer before it is posted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The agent skips questions that already have a Best or Verified answer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "It skips questions with a Best or Verified answer, or questions older than 14 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The agent skips questions older than 14 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "It skips questions with a Best or Verified answer, or questions older than 14 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The agent does not respond when its sources provide no relevant information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "If it finds no relevant information in its sources, it doesn't respond.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Reviewers can approve, edit or dismiss drafts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Reviewers can approve, edit, or dismiss drafts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[2].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Knowledge sources are managed at community > More items (...) > Settings > Agent settings > Knowledge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "To change the agent's settings, open the More items (...) menu in the community header, select Settings > Agent settings. Manage the sources and settings below in the Knowledge section of Agent settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment; Scope; controls[2].note; Governance guidance",
+      "type": "behaviour",
+      "claim": "Include public community content enables grounding in other public communities in the same Engage network.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Turn on Include public community content to let Community Agent draw on content from other Engage public communities in your Engage network.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Governance guidance: At rollout",
+      "type": "default",
+      "claim": "Include public community content is off by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent#include-public-community-content",
+      "quote": "This setting is off by default. Public websites are added separately.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Governance guidance: At rollout; controls[2].note",
+      "type": "default",
+      "claim": "Only use expert and verified content is an available setting and is off by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent#only-use-expert-and-verified-content",
+      "quote": "Turn on Only use expert and verified content to limit the community conversations the agent uses to best answers, verified answers, and content written or created by community admins and experts. This setting is off by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Agent-written answers are used as knowledge only when a community admin or expert has marked them verified.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Answers written by Community Agent are used only if a community admin or expert has marked them as verified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Any community admin can add a SharePoint site or library.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Any community admin can add a SharePoint site or library.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "An admin with Full Control of a SharePoint site can grant the required access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "An admin with Full Control of the site can grant this access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Adding a SharePoint site can add the community's Microsoft 365 group as a site visitor with Read permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "If prompted, select Grant access. The community's Microsoft 365 group is added as a site visitor with Read permissions only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Site owners can remove the access granted to the community.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/understanding-permission-levels",
+      "quote": "Full Control | Contains all available SharePoint permissions. By default, the Owners group has this permission level.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/sharepoint/understanding-permission-levels to sources for the site-owner permissions claim."
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Files that do not inherit the site's permissions are not used by the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Files that don't inherit the site's permissions aren't used by the agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "applicability",
+      "claim": "Added SharePoint sites must have a sensitivity label at or below the community or backing group's label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "You can add SharePoint sites whose sensitivity label is at or below the label on the community or its backing Microsoft 365 group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "The agent checks sensitivity labels on relevant files and site pages when drafting each answer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Community Agent also checks the sensitivity labels of relevant files and site pages when drafting each answer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "File sensitivity-label support applies to labels without encryption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "For files, this support applies to sensitivity labels without encryption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Data exposure; Governance guidance; Open questions",
+      "type": "applicability",
+      "claim": "Restricted Content Discovery, Information Barriers, Data Loss Prevention, Conditional Access and Information Rights Management are unsupported SharePoint compliance features for the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Examples of unsupported SharePoint compliance features include Restricted Content Discovery, Information Barriers, Data Loss Prevention, Conditional Access, and Information Rights Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "behaviour",
+      "claim": "Support for those SharePoint compliance features is not currently planned for general availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Support for these features isn't currently planned for general availability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The preview supports SharePoint team and communication sites only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "The preview release supports SharePoint team and communication sites only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Public website sources must be accessible without signing in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Use websites that are publicly accessible without signing in.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The agent searches only the public websites added as sources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "The agent searches only the websites you add.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "SharePoint sites and public websites share a total limit of 10 sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "SharePoint sites and public websites share a total limit of 10 sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Approved answers and answers edited before posting are marked verified by the reviewer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Approve | Post the answer as Community Agent. It is marked as verified by the reviewer. Edit | Edit the draft before posting it. The posted answer is marked as verified by the reviewer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "role",
+      "claim": "Community admins can delete posted agent answers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Community admins can delete a posted agent answer.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The Skipped view explains why the agent skipped questions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Skipped | Questions the agent couldn't answer, with an explanation of why it skipped them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Drafting an answer can take a minute or two.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Drafting an answer can take a minute or two.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Automatic posting includes an additional wait.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Automatic posting includes an additional wait, so an answer may take several minutes to appear.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The documented preview entitlement is per-user licensing, with different licences required for different roles and actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Add Community Agent to a community | Community admin | Microsoft 365 Copilot | Review, approve, or edit agent-drafted answers | Community admin or community expert | Microsoft 365 Copilot",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "licensing.notes; controls[3].governs; Cost and licensing; Scope; Governance controls; rationale: cost",
+      "type": "licensing",
+      "claim": "During preview, a community admin adding the agent needs a Microsoft 365 Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "The following requirements apply during public preview: Add Community Agent to a community | Community admin | Microsoft 365 Copilot",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "licensing.notes; controls[3].governs; Cost and licensing; Scope; Governance guidance; rationale: cost",
+      "type": "licensing",
+      "claim": "During preview, community admins or experts reviewing, approving or editing agent drafts need Microsoft 365 Copilot licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Review, approve, or edit agent-drafted answers | Community admin or community expert | Microsoft 365 Copilot",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "licensing.notes; Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "Community members reading posted agent answers need a standard Viva Engage licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Read answers posted by Community Agent | Community member | Standard Viva Engage license",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Community admins viewing community agent analytics need a standard Viva Engage licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "View Community Agent analytics for a community | Community admin | Standard Viva Engage license",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Cost and licensing; Governance guidance: After rollout",
+      "type": "licensing",
+      "claim": "Network admins viewing agent analytics across the network need Viva Engage premium.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "View Community Agent analytics across the network | Network admin | Viva Engage premium",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "General availability licensing for Community Agent is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Viva Engage Community Agent license general availability'. Read Community Agent access requirements, Viva Engage Features service description and Viva service-description search excerpt; the feature-specific requirements are explicitly preview-only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "No Copilot Credits meter is documented for Community Agent, including at general availability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Community Agent licensing Copilot Credits price'. Read Community Agent, Copilot Credits usage-based billing service list, and Copilot Studio billing excerpts; none identifies a Community Agent meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The Community Agent page publishes no price for the agent.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Community Agent licensing Copilot Credits price'. Read the full Community Agent page and billing search results; the feature page gives preview licence names, not an agent price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "General licence assignment is at Microsoft 365 admin center > Billing > Licenses > product > Assign licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "In the admin center, go to the Billing > Licenses page. Select a product. On the product details page, select Assign licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[3].api; controls[3].note; Governance controls",
+      "type": "command",
+      "claim": "POST /v1.0/users/{id | userPrincipalName}/assignLicense is a general Microsoft Graph operation that adds or removes user licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0",
+      "quote": "Add or remove licenses for the user to enable or disable their use of Microsoft cloud offerings that the company has licenses to. POST /users/{id | userPrincipalName}/assignLicense",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[3].note",
+      "type": "command",
+      "claim": "The assignLicense request body uses addLicenses to specify licences to add.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0",
+      "quote": "addLicenses | assignedLicense collection | A collection of assignedLicense objects that specify the licenses to add.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[3].note",
+      "type": "command",
+      "claim": "The assignLicense request body uses removeLicenses to specify licences to remove.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0",
+      "quote": "removeLicenses | Guid collection | A collection of skuIds that identify the licenses to remove. Required. Can be an empty collection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[3].note; Governance controls",
+      "type": "role",
+      "claim": "Licence assignment in the admin center requires at least a License or User Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "You must be at least a License or User Administrator to assign licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "The Graph reference permits additional supported roles for delegated licence assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0",
+      "quote": "The following least privileged roles are supported for this operation: Directory Writers; License Administrator; User Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No API or PowerShell cmdlet is documented for the Community Agent preview toggle.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Community Agent PowerShell preview' and 'Viva Engage Community Agent preview tenant settings API Graph beta PowerShell'. Read Community Agent and Viva Engage Graph overview; no operation sets the toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "controls[1].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No API or PowerShell cmdlet is documented for the per-community Require review before posting setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Community Agent Graph settings API beta require review knowledge' and 'Community Agent PowerShell preview'. Read Community Agent, Viva Engage Graph overview and beta community resource; no documented review-setting write operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "controls[2].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No API or PowerShell cmdlet is documented for Community Agent knowledge-source settings.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Community Agent Graph settings API beta require review knowledge' and 'Community Agent PowerShell preview'. Read Community Agent, Viva Engage Graph overview and beta community resource; no documented agent knowledge-source write operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The preview toggle is the only currently documented tenant-level Community Agent control.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Community Agent require review network enforce tenant policy' and 'Community Agent general availability default'. Read Community Agent and relevant search excerpts; only the preview toggle has a current tenant configuration procedure.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Governance controls; Why it matters",
+      "type": "absence",
+      "claim": "No single network-wide control for enforcing answer review across communities is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Community Agent require review network enforce tenant policy'. Read Community Agent and relevant search results; review is configured per community, and no network-wide review-enforcement setting was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Community Agent audit logs cover setup, settings, knowledge-source additions and removals, SharePoint access grants and answer reviews.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "These logs cover agent setup and settings, knowledge source additions and removals, SharePoint access grants, and answer reviews.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Governance guidance: After rollout",
+      "type": "role",
+      "claim": "Searching Community Agent audit activities in Microsoft Purview requires Audit Logs or View-Only Audit Logs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "To search these activities in Microsoft Purview, you must be assigned the Audit Logs or View-Only Audit Logs role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "AgentSettingsUpdated is an audit operation for Community Agent settings changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities#viva-engage-activities",
+      "quote": "Updated Community Agent settings | AgentSettingsUpdated | A community admin updates Community Agent settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "SuggestedAnswerApproved is an audit operation for approving Community Agent answers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities#viva-engage-activities",
+      "quote": "Approved Community Agent suggested answer | SuggestedAnswerApproved | A community admin or community expert approves an answer suggested by Community Agent without editing it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Network agent analytics lists communities that have an agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "The agent analytics view lists communities with an agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Network analytics shows whether each community's agent is active or paused.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Agent status: Whether the agent is active or paused.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Network analytics shows whether each agent posts automatically or requires community admin or expert review.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Agent mode: Whether the agent posts answers automatically or requires community admin or expert review before posting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "role",
+      "claim": "Viva Engage verified admins can export Community Agent data using Network Data Export.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Viva Engage verified admins can export data for Community Agents across their network for analysis or recordkeeping. For instructions and details about the exported files, see Network Data Export API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Network Data Export includes each agent's configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/rest/api/yammer/network-data-export",
+      "quote": "Contains one row per community agent (a Viva Engage AI community agent), capturing the agent's configuration values.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Network Data Export includes each agent's configured knowledge sources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/rest/api/yammer/network-data-export",
+      "quote": "Contains the grounding sources configured for each community agent. Each row represents a single grounding source (a SharePoint site or a web source) attached to an agent",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Community Agent exports show how drafted answers were reviewed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "The export shows how each agent is configured, which knowledge sources are set up for it, and how its drafted answers were reviewed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "The medium cost rating reflects documented licences for the subset of users adding agents or reviewing drafts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/community-agent",
+      "quote": "Add Community Agent to a community | Community admin | Microsoft 365 Copilot | Review, approve, or edit agent-drafted answers | Community admin or community expert | Microsoft 365 Copilot",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 88,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist asks administrators to check sensitivity labels, but that control has no corresponding row in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "check their sensitivity labels against the label on the community or its Microsoft 365 group. | Controls rows cover the preview toggle, answer review, agent knowledge sources and user licence assignment.",
+      "severity": "minor",
+      "fix": "The Before rollout inventory bullet's sensitivity-label check has no controls row. Remove 'and check their sensitivity labels against the label on the community or its Microsoft 365 group' from that bullet; do not add a control row in this correction."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-20T11:17:31.028Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 1,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=499898",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/engage/community-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-log-activities",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/rest/api/yammer/network-data-export",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/engagement-api-overview?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether community admins can add Community Agent in the network (preview)",
+        "docs": "https://learn.microsoft.com/viva/engage/community-agent",
+        "reachable": true,
+        "segments": [
+          "Tenant settings",
+          "Community Agent preview"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether answers need review before posting in a community",
+        "docs": "https://learn.microsoft.com/viva/engage/community-agent",
+        "reachable": true,
+        "segments": [
+          "community",
+          "Admin actions",
+          "Set up community agent",
+          "Agent settings",
+          "Require review before posting"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which knowledge sources the community's agent draws on",
+        "docs": "https://learn.microsoft.com/viva/engage/community-agent",
+        "reachable": true,
+        "segments": [
+          "community",
+          "More items",
+          "Settings",
+          "Agent settings",
+          "Knowledge"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Which users hold the Microsoft 365 Copilot licence needed to add the agent or review drafts",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "reachable": true,
+        "segments": [
+          "Billing",
+          "Licenses",
+          "product",
+          "Assign licenses"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Which users hold the Microsoft 365 Copilot licence needed to add the agent or review drafts",
+        "docs": "https://learn.microsoft.com/graph/api/user-assignlicense?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/users/{id",
+        "found": false
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

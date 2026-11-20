@@ -40,6 +40,9 @@ sources:
   - title: "Allowed MCP Client (allowedmcpclient) table/entity reference (Microsoft Dataverse)"
     url: "https://learn.microsoft.com/power-apps/developer/data-platform/reference/entities/allowedmcpclient"
     kind: "learn"
+  - title: "Dataverse CLI Reference (preview)"
+    url: "https://learn.microsoft.com/power-apps/developer/data-platform/cli/reference"
+    kind: "learn"
 videos: []
 related: ["mcp","dynamics-365-finance-business-performance-mcp-for-erp-analytics","copilot-credits","security-roles"]
 controls:
@@ -47,10 +50,13 @@ controls:
     scope: "environment"
     ui:
       surface: "Dynamics 365 finance and operations apps client"
-      path: "System administration > Setup > Allowed MCP clients"
+      path: "System administration > Setup > Allowed MCP clients > New > Allowed"
       docs: "https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/mcp/mcp-foundry"
-    api: null
-    note: "Limits client platforms, not the semantic index. The Dataverse allowedmcpclient table reference does not say it backs this form, so no call is given."
+    api:
+      kind: "other"
+      call: "dataverse mcp allow <appId> --erp"
+      docs: "https://learn.microsoft.com/power-apps/developer/data-platform/cli/reference"
+    note: "Dataverse CLI is preview. Allows the app on the linked Finance and Operations instance, using the current profile's environment; appId is the application client ID GUID. Needs Dataverse admin permissions on the target environment."
 confidence: "medium"
 created: "2026-11-20"
 updated: "2026-11-20"
@@ -60,19 +66,23 @@ changes:
     note: "New briefing: roadmap plan for a semantic index and single entry point in the Dynamics 365 ERP MCP server, with today's documented billing and client controls."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 53 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Correction: added the Dataverse CLI command that allows an app on the Finance and Operations client allowlist, and extended the admin path to the New record and Allowed value."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 64 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 53
-  confirmed: 52
+  claims: 64
+  confirmed: 64
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "71c572da39b669604cb605f3bec1bc93"
+  contradicted: 0
+  attempts: 0
+  hash: "c625302455501d5759af512be9efabf5"
 ---
 
 ## What's changing
@@ -148,11 +158,11 @@ Learn's prerequisites for the ERP MCP server are finance and operations version 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which agent clients may connect to the Dynamics 365 ERP MCP server</strong><br><small>Environment</small><br><small class="controls__note">Limits client platforms, not the semantic index. The Dataverse allowedmcpclient table reference does not say it backs this form, so no call is given.</small></td><td data-label="Admin UI"><strong>Dynamics 365 finance and operations apps client</strong><br>System administration › Setup › Allowed MCP clients <a href="https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/mcp/mcp-foundry" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which agent clients may connect to the Dynamics 365 ERP MCP server</strong><br><small>Environment</small><br><small class="controls__note">Dataverse CLI is preview. Allows the app on the linked Finance and Operations instance, using the current profile's environment; appId is the application client ID GUID. Needs Dataverse admin permissions on the target environment.</small></td><td data-label="Admin UI"><strong>Dynamics 365 finance and operations apps client</strong><br>System administration › Setup › Allowed MCP clients › New › Allowed <a href="https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/mcp/mcp-foundry" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>dataverse mcp allow &lt;appId&gt; --erp</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/cli/reference" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-Only the **Allowed MCP clients** row is a documented control, and it limits which agent platforms can connect; it does not switch the semantic index. Learn says authorisation is enforced by finance and operations security, so changing what an agent can reach means changing the same roles, duties and privileges used for other channels.
+Only the **Allowed MCP clients** row is a documented control, and it limits which agent platforms can connect; it does not switch the semantic index. On the **Allowed MCP clients** page, a new record supplies **Name** and **ClientId** and sets **Allowed** to true. Learn says authorisation is enforced by finance and operations security, so changing what an agent can reach means changing the same roles, duties and privileges used for other channels.
 
 Learn's ERP MCP page says the server feature **Dynamics 365 ERP Model Context Protocol server** is enabled by default and can be managed in Feature management. That governs the server as a whole, not this change.
 
@@ -168,12 +178,4 @@ Learn's ERP MCP page says the server feature **Dynamics 365 ERP Model Context Pr
 risk: Low. Learn says the ERP MCP server returns only menu items, entities and actions the user's security role can access, and nothing in the roadmap item widens that; it is a performance change.
 cost: Variable. Tool calls from agents on clients other than Copilot Studio are billed at 0.1 Copilot Credits each, so a change in call counts changes the bill; no rate specific to this feature is published.
 impact: Medium. The roadmap says it is enabled automatically, so makers and anyone running ERP agents may see different tool sequences; end users of finance and operations apps outside agents are not named.
--->
-
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; controls[0].note; Governance controls table / absence: No automation command is documented for the finance and operations ERP MCP client allowlist. | Found: dataverse mcp allow <appId> [options] ... --erp | Allow the application on the linked Finance and Operations instance instead of Dataverse. | Fix: Set controls[0].api to kind 'other', call 'dataverse mcp allow <appId> --erp', and docs 'https://learn.microsoft.com/power-apps/developer/data-platform/cli/reference'. Replace the no-call explanation in the note and rendered table with: 'Dataverse CLI is preview. The command allows the application on the linked Finance and Operations instance, using the current profile environment; appId is the application client ID GUID. The authenticated user needs Dataverse admin permissions on the target environment.' Add that reference URL to sources. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/cli/reference
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The client allowlist is reached in the finance and operations apps client at System administration > Setup > Allowed MCP clients. | Found: Go to System administration > Setup > Allowed MCP clients to open the Allowed MCP clients page. ... Select New on the action ribbon. ... Allowed | true | Fix: Extend controls[0].ui.path and the matching rendered path to 'System administration > Setup > Allowed MCP clients > New > Allowed'. Keep the existing docs URL. In the note, state that the new record supplies Name and ClientId and sets Allowed to true. | Source: https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/copilot/mcp/mcp-foundry
 -->

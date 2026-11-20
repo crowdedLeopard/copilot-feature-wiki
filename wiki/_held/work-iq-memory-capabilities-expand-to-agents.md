@@ -93,18 +93,20 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 55 statements not yet confirmed"
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 53 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 4
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-19"
+  status: "held"
+  date: "2026-11-20"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 55
+  claims: 53
+  confirmed: 51
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "bdb508f29da0c4e54a1a9bacd61d13f1"
 ---
 
@@ -183,9 +185,14 @@ cost: Variable. Work IQ API uses Copilot Credits consumption billing; a rate spe
 impact: Medium. Affects users whose memory is read by agents and admins who authorise agents.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: The linked memory-overview page documents Copilot Studio (maker) > agent > Build > components panel > Memory toggle. | Found: Related information - Memory management and privacy - How agents determine what to remember - Guide memory with agent instructions | Fix: Keep the path, which https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-manage-privacy documents as opening an agent, selecting Build, and using the Memory toggle in the components panel. Set controls[1].ui.docs and its table Learn link to that URL and add it to sources. The freshly fetched overview no longer contains the control steps, despite an older search excerpt still returning them. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-overview
+- [contradicted, blocker] controls[1].note; Governance controls table / behaviour: A user's memories are deleted after 28 days without interacting with the agent. | Found: Memories are deleted after 28 days of inactivity. The period starts from the last time the agent used a user's memories. Viewing memories in the portal doesn't reset the period. | Fix: Replace the retention sentence in controls[1].note and the table with: 'Memories are deleted after 28 days of inactivity, measured from the last time the agent used a user's memories; viewing them in the portal does not reset the period.' Cite https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-manage-privacy. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-manage-privacy
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters / behaviour: Memory profiles can contain personal preferences. | Found: Copilot learns how you work and understands your needs and preferences through your chats, job profile, custom instructions, and more. | Fix: Add https://learn.microsoft.com/graph/control-enhanced-personalization-privacy to sources to support the personal-preferences statement. | Source: https://learn.microsoft.com/graph/control-enhanced-personalization-privacy
-- [supported, minor] controls[0].api; Governance controls table / command: PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization with isEnabledInOrganization false disables enhanced personalization. | Found: PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization isEnabledInOrganization | Boolean | If true, enables the enhanced personalization control | Fix: Replace the call in front matter and the table with 'PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization'. Add to the row note: 'The request body sets isEnabledInOrganization to false to disable enhanced personalization.' | Source: https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta
+- [supported, minor] Why it matters / behaviour: Memory profiles can contain personal preferences. | Found: Copilot learns how you work and understands your needs and preferences through your chats, job profile, custom instructions, and more. | Fix: Add https://learn.microsoft.com/graph/control-enhanced-personalization-privacy to sources. | Source: https://learn.microsoft.com/graph/control-enhanced-personalization-privacy
+- [supported, minor] controls[0].api; Governance controls table / command: PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization with isEnabledInOrganization false disables enhanced personalization. | Found: PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization isEnabledInOrganization | Boolean | If true, enables the enhanced personalization control | Fix: In controls[0].api.call and the table, print only 'PATCH https://graph.microsoft.com/beta/copilot/settings/people/enhancedpersonalization'. Add to the row note: 'The request body sets isEnabledInOrganization to false to disable enhanced personalization.' | Source: https://learn.microsoft.com/graph/api/enhancedpersonalizationsetting-update?view=graph-rest-beta
+- [supported, minor] controls[1].governs; Governance controls table; sources / behaviour: Memory for agents using the Microsoft Copilot harness is a preview capability. | Found: Memory is rolling out for general availability. Memory might still be in preview in some regions. | Fix: Replace the unqualified '(preview)' in the agent-memory control label and source title with '(rolling out for general availability; preview in some regions)'. The search excerpt still describes the older preview, but the freshly fetched overview now qualifies the rollout. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-overview
+- [supported, minor] controls[1].note; Governance controls table / behaviour: Turning agent Memory off does not itself delete stored memories. | Found: Turning Memory off stops the agent from saving or using memories. It doesn't delete stored memories right away. | Fix: Use the current wording in controls[1].note and the table: 'Turning Memory off stops the agent from saving or using memories; it does not delete stored memories right away.' Add https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-manage-privacy to sources. | Source: https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/memory-manage-privacy
 -->

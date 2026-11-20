@@ -40,6 +40,9 @@ sources:
   - title: "Tutorial: Manage Copilot Credits allocations programmatically"
     url: "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations"
     kind: "learn"
+  - title: "Manage Copilot Credits and capacity for Copilot Studio"
+    url: "https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity"
+    kind: "learn"
   - title: "Harnesses in Copilot Studio"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/harnesses-overview"
     kind: "learn"
@@ -59,7 +62,7 @@ controls:
       kind: "power-platform-api"
       call: "PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01"
       docs: "https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations"
-    note: "Applies across Copilot Studio. A pay-as-you-go plan linked to the environment can still be billed. The request body sets the TenantPool enforcement rule."
+    note: "Body sets allocatedEntitlements[].enforcementRules: ruleType TenantPool, enabled false. A published environment-group rule makes it read-only; API updates fail with TenantPoolLockedByPolicy. A linked pay-as-you-go plan can still be billed."
   - governs: "Monthly Copilot Credit limit for an individual agent"
     scope: "agent"
     ui:
@@ -67,7 +70,7 @@ controls:
       path: "Licensing > Copilot Studio > Manage Agents > agent > Set limit"
       docs: "https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness"
     api: null
-    note: "Turn on Stop usage to turn the agent off when it reaches the limit. Notification threshold is set in the same pane."
+    note: "Turn on Stop usage to turn the agent off when it reaches the limit. Limits aren't applied instantly: an agent can keep responding for some time after reaching it, so allow margin. Notification threshold is set in the same pane."
   - governs: "A switch to turn off file output from the Agent node"
     scope: "other"
     ui: null
@@ -82,26 +85,30 @@ changes:
     note: "New briefing: the roadmap plans file outputs from the workflow Agent node; Learn does not yet describe them, and Copilot Credit controls are the documented levers."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 55 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Correction: narrowed the harness and created-files wording, added the environment-group rule on tenant draw and that agent limits are not instant, and removed three checklist steps that had no controls row."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 62 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 52
+  claims: 62
+  confirmed: 61
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "bea14d48bffce58e3bf6c933598986da"
+  contradicted: 1
+  attempts: 0
+  hash: "1d5d3a97de1da2f81258a9fb33c4c7da"
 ---
 
 ## What's changing
 
 The roadmap item says the Agent node in Copilot Studio workflows can now return files that the agent generates, such as PDF, Word, Excel, PowerPoint and CSV, as workflow outputs. It works with both inline agents and existing (published) agents. Generated files appear as an ordered files output (name, content type, content) that is available to downstream steps, which can pass them to connectors to email them, save them to SharePoint or OneDrive, or attach them to records.
 
-Microsoft Learn's page on the agent node covers choosing an existing published agent or building an inline one, and has an **Output** dropdown that controls the shape of what the agent returns. It does not yet describe a files output, so what this briefing says about the behaviour of the files output is the roadmap's description. Separately, Microsoft's harness page says the Microsoft Copilot harness natively creates and edits Word, Excel, PowerPoint and PDF files, and a preview page describes files that agents create in conversations. Those describe conversations, and this briefing does not treat them as the design of workflow file outputs.
+Microsoft Learn's page on the agent node covers choosing an existing published agent or building an inline one, and has an **Output** dropdown that controls the shape of what the agent returns. It does not yet describe a files output, so what this briefing says about the behaviour of the files output is the roadmap's description. Separately, Microsoft's harness page says the Microsoft Copilot harness natively creates and edits Word, Excel, PowerPoint and PDF files, and a preview page describes files that agents create in conversations. The created-files preview page describes conversations; neither page specifies the design of the Agent node files output.
 
 The roadmap record lists the status as In development, with a target of November CY2026, release phase General Availability, cloud Worldwide (Standard Multi-Tenant) and platform Web. The date is a target, not a commitment.
 
@@ -136,7 +143,7 @@ Microsoft has not stated what happens on arrival, so no source says existing wor
 
 **Meter.** Copilot Credits. A credit rate for generating files in the Agent node is not yet published.
 
-**Caps.** An environment allocation is not a boundary if the environment can continue drawing from tenant capacity or pay-as-you-go billing. Clearing **Draw from the available capacity in my tenant** caps prepaid consumption at the allocation, but usage can continue through a linked pay-as-you-go plan. An agent-level monthly limit with **Stop usage** turns the agent off at the limit. Azure budgets and alerts send notifications but do not stop Copilot Studio consumption. See the first two rows of the controls table.
+**Caps.** An environment allocation is not a boundary if the environment can continue drawing from tenant capacity or pay-as-you-go billing. Clearing **Draw from the available capacity in my tenant** caps prepaid consumption at the allocation, but usage can continue through a linked pay-as-you-go plan. If a published environment-group rule governs this setting, the environment control is read-only and API updates are rejected with TenantPoolLockedByPolicy; change and republish the group rule, or remove the environment from the group before managing it independently. An agent-level monthly limit with **Stop usage** turns the agent off at the limit, but limits are not applied instantly: an agent can continue responding for some time after reaching its limit, so allow margin. Azure budgets and alerts send notifications but do not stop Copilot Studio consumption. See the first two rows of the controls table.
 
 ## Scope
 
@@ -148,19 +155,16 @@ Makers add the node from **Workflows** in Copilot Studio and choose an existing 
 
 ### Before rollout
 
-- Identify the environments where makers build Copilot Studio workflows and decide which should hold a prepaid credit allocation with **Draw from the available capacity in my tenant** cleared (controls table, row 1; Power Platform Administrator).
-- Decide whether workflows that will generate documents need an agent-level monthly limit with **Stop usage** (controls table, row 2).
+- Identify the environments where makers build Copilot Studio workflows and decide which should hold a prepaid credit allocation with **Draw from the available capacity in my tenant** cleared (controls table, row 1; Power Platform Administrator). Where a published environment-group rule governs that setting, change the group rule instead.
+- Decide whether workflows that will generate documents need an agent-level monthly limit with **Stop usage**, and allow margin because limits are not applied instantly (controls table, row 2).
 - Ask makers which planned workflows will email or store generated files, and which connectors those steps use.
 
 ### At rollout
 
 - Watch the agent node page on Microsoft Learn and Message center for documentation of the files output, its default and any prerequisites.
-- Ask makers to run the node's **Test** tab on a generated file before publishing a workflow that sends it outward.
-- Advise makers to put an approvals action before any step that emails a generated file outside the organisation.
 
 ### After rollout
 
-- Review **Agent flow actions** for each workflow under Licensing > Copilot Studio in the Power Platform admin center, and the **Credit usage (last 30 days)** column on the **Workflows** page.
 - Sample the documents that workflows send or save, because AI results can vary.
 - Revisit environment allocations and agent limits once credit use from file-generating workflows is visible.
 
@@ -171,8 +175,8 @@ Makers add the node from **Workflows** in Copilot Studio and choose an existing 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Prepaid Copilot Credits allocated to an environment and whether it draws on tenant capacity</strong><br><small>Environment</small><br><small class="controls__note">Applies across Copilot Studio. A pay-as-you-go plan linked to the environment can still be billed. The request body sets the TenantPool enforcement rule.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Manage Copilot Credits › environment › Capacity overages › Draw from the available capacity in my tenant <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Monthly Copilot Credit limit for an individual agent</strong><br><small>Agent</small><br><small class="controls__note">Turn on Stop usage to turn the agent off when it reaches the limit. Notification threshold is set in the same pane.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Copilot Studio › Manage Agents › agent › Set limit <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Prepaid Copilot Credits allocated to an environment and whether it draws on tenant capacity</strong><br><small>Environment</small><br><small class="controls__note">Body sets allocatedEntitlements[].enforcementRules: ruleType TenantPool, enabled false. A published environment-group rule makes it read-only; API updates fail with TenantPoolLockedByPolicy. A linked pay-as-you-go plan can still be billed.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Products › Copilot Studio › Manage Copilot Credits › environment › Capacity overages › Draw from the available capacity in my tenant <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform API</strong><br><code>PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01</code> <a href="https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Monthly Copilot Credit limit for an individual agent</strong><br><small>Agent</small><br><small class="controls__note">Turn on Stop usage to turn the agent off when it reaches the limit. Limits aren't applied instantly: an agent can keep responding for some time after reaching it, so allow margin. Notification threshold is set in the same pane.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Copilot Studio › Manage Agents › agent › Set limit <a href="https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>A switch to turn off file output from the Agent node</strong><br><small class="controls__note">Credit allocations and agent limits govern spend, not file output.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -195,13 +199,9 @@ cost: Variable. Workflows on the Microsoft Copilot harness are billed in Copilot
 impact: Medium. Makers who build workflows notice first; recipients of emailed or saved documents and capacity owners are affected if workflows start producing files at volume.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing: 'Those describe conversations' / behaviour: The harness page and the created-files preview page describe conversations rather than workflows. | Found: The Microsoft Copilot harness powers agents and workflows built for reasoning-heavy, multi-step work. | Fix: Replace 'Those describe conversations, and this briefing does not treat them as the design of workflow file outputs.' with 'The created-files preview page describes conversations; neither page specifies the design of the Agent node files output.' | Source: https://learn.microsoft.com/microsoft-copilot-studio/harnesses-overview
-- [contradicted, blocker] Cost and licensing: Caps; controls[0].note; Governance guidance: Before rollout / applicability: Administrators can clear tenant-capacity draw at the environment level or set it through the allocation API without a policy qualification. | Found: If a published environment group rule governs Draw from the available capacity in my tenant, you can't override the setting for an individual environment. | Fix: Add to controls[0].note and the Caps guidance: 'If a published environment-group rule governs this setting, the environment control is read-only and API updates are rejected with TenantPoolLockedByPolicy; change and republish the group rule, or remove the environment from the group before managing it independently.' The cited allocation tutorial documents this qualification. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].note; Cost and licensing: Caps / cost: Stop usage turns an agent off when it reaches its monthly credit limit. | Found: Turn on Stop usage if the agent should be turned off when it reaches the limit. | Fix: Qualify both occurrences with: 'Limits are not applied instantly; an agent can continue responding for some time after reaching its limit, so allow margin.' Cite https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity#manage-monthly-consumption-limits-for-copilot-studio-agents, which states this qualification. | Source: https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness
-- [supported, minor] controls[0].api; controls[0].note; Governance controls table / command: PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 writes the allocation and tenant-pool enforcement setting. | Found: All programmatic examples in this article use API version 2024-10-01. Invoke-RestMethod -Method Put; -Uri "$apiBaseUrl/licensing/allocationsV2?api-version=$apiVersion"; @{ ruleType = "TenantPool"; enabled = $false } | Fix: Keep the endpoint. Replace 'The request body sets the TenantPool enforcement rule.' with 'The request body sets allocatedEntitlements[].enforcementRules with ruleType TenantPool and enabled false to disable tenant-pool draw.' These are the properties in the cited tutorial. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
-- [contradicted, minor] Governance guidance: At rollout and After rollout; Governance controls / consistency: The checklist tells makers to use the Test tab and approvals actions, and administrators to review workflow usage, but these have no controls rows. | Found: Ask makers to run the node's Test tab; Advise makers to put an approvals action; Review Agent flow actions ... and the Credit usage (last 30 days) column. The table contains only environment credits, agent limits and the absent file-output switch. | Fix: The Test-tab, approvals-action and workflow-usage-review checklist steps have no matching controls rows. For the smallest correction without adding rows, remove these three checklist bullets; retain the independently supported descriptions in Risk assessment.
+- [supported, minor] front matter: licensing.notes; Cost and licensing: Licence / cost: The workflows overview says workflows consume Copilot Studio capacity for each action they execute. | Found: Workflows consume Copilot Studio capacity for each action they execute. | Fix: After this sentence, add: 'The cost-management page separately lists workflows as covered by a Microsoft 365 Copilot license when run inside a standard harness agent by a licensed user, and billed in all other cases.' Cite https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness, whose workflow table gives this qualification to the overview's general statement. | Source: https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview
+- [contradicted, minor] Governance guidance: Before rollout, first bullet / consistency: Every control that the governance checklist instructs the reader to change appears in the controls table. | Found: Where a published environment-group rule governs that setting, change the group rule instead. / The table has environment allocation, agent monthly limit and missing file-output switch rows, but no environment-group rule row. | Fix: Remove the sentence 'Where a published environment-group rule governs that setting, change the group rule instead.' from the Before rollout checklist. Keep the existing group-rule qualification and supported remediation in Cost and licensing; do not add a control row.
 -->

@@ -12,7 +12,7 @@ platforms: ["Developer"]
 targetDate: "November CY2026"
 previewDate: "October CY2026"
 risk: "medium"
-cost: "low"
+cost: "variable"
 impact: "low"
 defaultState: "user-opt-in"
 action: "review"
@@ -22,7 +22,7 @@ licensing:
 audiences: ["maker","power-platform-admin","security","service-owner"]
 tags: ["power-pages","github-copilot-cli","claude-code","coding-agents","power-platform-cli","table-permissions"]
 sources:
-  - title: "Microsoft 365 Roadmap item 577900"
+  - title: "Microsoft 365 Roadmap 577900"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=577900"
     kind: "roadmap"
   - title: "Get started with the Power Pages plugin for GitHub Copilot CLI and Claude Code"
@@ -66,7 +66,7 @@ controls:
     api: null
 confidence: "medium"
 created: "2026-11-14"
-updated: "2026-11-16"
+updated: "2026-11-20"
 roadmapModified: "2026-10-23T21:59:27"
 changes:
   - date: "2026-11-14"
@@ -85,19 +85,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 40 statements not yet confirmed"
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 35 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 4
+  - date: "2026-11-20"
+    note: "Cost rating changed to variable because Claude Code on Microsoft Foundry bills per token; removed two After rollout checks that had no controls-table row."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 39 statements not yet confirmed"
+version: 5
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 4
+  version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 35
-  confirmed: 33
+  claims: 39
+  confirmed: 39
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "c84661717540a301e20fcd3025ac068c"
+  contradicted: 0
+  attempts: 0
+  hash: "6632011292ba426b6aa88b8e7b282631"
 ---
 
 ## What's changing
@@ -130,7 +134,7 @@ It also introduces third-party AI tools into the Power Platform developer workfl
 
 ## Cost and licensing
 
-No Microsoft charge for the plugin is published. Coding-agent costs depend on the organisation's existing plan and billing arrangement. Microsoft Learn documents GitHub usage, including GitHub Copilot, being billed through the Azure subscription linked to a GitHub organisation. For Claude Code, billing depends on the service it is configured with; Learn documents a Microsoft Foundry configuration that requires a paid Azure subscription. Developer time for review is the main known cost.
+No Microsoft charge for the plugin is published. Coding-agent costs depend on the organisation's existing plan and billing arrangement. Microsoft Learn documents GitHub usage, including GitHub Copilot, being billed through the Azure subscription linked to a GitHub organisation. For Claude Code, billing depends on the service it is configured with; Learn documents a Microsoft Foundry configuration that requires a paid Azure subscription. Review time is an additional indirect cost; Claude Code configured with Microsoft Foundry uses pay-per-token billing.
 
 ## Scope
 
@@ -147,8 +151,7 @@ Developers and makers using GitHub Copilot CLI or Claude Code with the Power Pla
 - Ask developers to review every permission and web role change before upload.
 
 ### After rollout
-- Run table permission audits after agent changes.
-- Review who has installed the plugin and which environments they target.
+- Check how developers use the download and upload commands listed in the controls table.
 
 ## Governance controls
 
@@ -172,14 +175,12 @@ The plugin drives the Power Platform CLI, so the governance surface is the CLI's
 
 <!-- rationale
 risk: Medium. An AI coding agent can change site metadata, table permissions and web roles in an environment, so developer authentication and review matter.
-cost: Low. No charge for the plugin is published; coding-agent costs depend on the organisation's existing plan and billing arrangement, and the known cost is developer time.
+cost: Variable. Coding-agent charges depend on the provider and plan; Claude Code configured with Microsoft Foundry uses pay-per-token billing. No plugin-specific price is published.
 impact: Low. It affects developers and makers who adopt the plugin.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: cost; Cost and licensing; rationale: cost / consistency: The low cost rating represents indirect review time only despite the briefing's documented Claude Code billing option. | Found: Page: cost: "low"; "Developer time for review is the main known cost." Learn: "Claude models use Global Standard deployments with pay-per-token billing, so idle deployments don't incur charges." | Fix: Set cost to variable. Replace the final Cost and licensing sentence with 'Review time is an additional indirect cost; Claude Code configured with Microsoft Foundry uses pay-per-token billing.' Replace the cost rationale with 'Variable. Coding-agent charges depend on the provider and plan; Claude Code configured with Microsoft Foundry uses pay-per-token billing. No plugin-specific price is published.' Keep the existing Foundry source. | Source: https://learn.microsoft.com/azure/foundry/foundry-models/how-to/configure-claude-code
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: Every control the governance checklist tells readers to check has a controls-table row. | Found: Run table permission audits after agent changes. Review who has installed the plugin and which environments they target. The table contains only downloading/uploading content and the missing tenant admin switch. | Fix: Remove the two After rollout bullets: table permission audits and reviewing plugin installations and target environments have no corresponding controls-table rows. Do not add rows as part of this correction.
+- [supported, minor] front matter: licensing.model / licensing: Feature-specific licensing is unknown. | Found: As you work on projects and need to establish permanent sites that don't expire, you can apply Power Pages subscriptions and convert websites from trial to production. | Fix: Set licensing.model to included under the standard's product-level licensing rule. Replace the first sentence of licensing.notes with 'Power Pages subscriptions cover permanent production sites; no plugin-specific price is published.' Retain the separate coding-agent billing qualification and cite https://learn.microsoft.com/power-pages/go-live/assign-licensing. | Source: https://learn.microsoft.com/power-pages/go-live/assign-licensing
 -->

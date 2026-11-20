@@ -70,19 +70,23 @@ changes:
     note: "First briefing for the roadmap item: planned simplified energy saver, with today's EfficiencyMode and EfficiencyModeEnabled policies as the documented controls."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 53 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected after verification: EfficiencyMode value availability by Edge version, the platform version sentence in Scope, whether existing policies govern the simplified feature, and the risk rationale wording."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 56 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 53
-  confirmed: 48
-  unconfirmed: 2
-  contradicted: 3
-  attempts: 1
-  hash: "9cff16bb8e3dc23f772f23372a9ab790"
+  claims: 56
+  confirmed: 56
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "77cb27a0b02890c044da12af96ebd309"
 ---
 
 ## What's changing
@@ -91,7 +95,7 @@ Microsoft plans to simplify energy saver in Microsoft Edge (formerly efficiency 
 
 The roadmap item also describes how existing choices carry over: users set to Balanced savings are mapped to energy saver enabled on low battery, and users set to Maximum savings are mapped to energy saver enabled when unplugged. Edge will support and recommend the BatterySaverModeAvailability policy for managing the feature.
 
-Microsoft Learn does not yet describe the simplified feature or the BatterySaverModeAvailability policy, so the behaviour above is the roadmap's description. What Learn documents today is the existing `EfficiencyMode` policy, which sets energy saver to 'BalancedSavings' by default and offers six values from AlwaysActive to MaximumSavings.
+Microsoft Learn does not yet describe the simplified feature or the BatterySaverModeAvailability policy, so the behaviour above is the roadmap's description. What Learn documents today is the existing `EfficiencyMode` policy, which sets energy saver to 'BalancedSavings' by default. The EfficiencyMode reference lists BalancedSavings and MaximumSavings for Edge 106 or later; its other four values are listed only for Edge 96-109 on Windows and macOS.
 
 The roadmap item lists the status as In development, with a target of March CY2027 and General Availability as the release phase. These are Microsoft's targets, not commitments.
 
@@ -118,7 +122,7 @@ If you manage energy saver through the `EfficiencyMode` policy, expect Microsoft
 **Change & support**
 
 - Users who chose Balanced savings or Maximum savings are remapped by the roadmap's rules, so their experience can differ from what they selected. Expect help desk questions about changed battery behaviour in Edge, and tell users where the setting is: edge://settings/system, as the EfficiencyModeEnabled page gives it.
-- Policies already deployed for `EfficiencyMode` may not carry over unchanged. Microsoft has published no mapping from its current values (such as ActiveWhenUnpluggedBatteryLow) to the new options, so test before assuming a deployed value keeps its effect.
+- Policies already deployed for `EfficiencyMode` may not carry over unchanged. Microsoft has published no mapping from its existing deployed values to the new options, so test before assuming a deployed value keeps its effect.
 
 ## Cost and licensing
 
@@ -130,7 +134,7 @@ The cost the sources show is indirect: admin time to review existing energy save
 
 The roadmap item lists Microsoft Edge, the Worldwide (Standard Multi-Tenant) cloud, the Web platform and General Availability as the release phase. Status is In development with a target of March CY2027.
 
-The current policy pages list energy saver policies for Windows (version 96 or later) and macOS (version 96 or later) and mark Android and iOS as not supported. Whether the simplified feature has the same platform coverage is not stated by the roadmap item.
+EfficiencyMode lists Windows and macOS support from Edge 96; EfficiencyModeEnabled lists support from Edge 106. Both mark Android and iOS as not supported. Whether the simplified feature has the same platform coverage is not stated by the roadmap item.
 
 Today, on devices with no battery, energy saver is disabled by default and does not become active, according to the EfficiencyMode page. How the new default treats devices without a battery is not described on the roadmap item.
 
@@ -165,7 +169,7 @@ Today, on devices with no battery, energy saver is disabled by default and does 
 </tbody>
 </table>
 
-BatterySaverModeAvailability is the policy the roadmap says Edge will recommend, but it has no Learn page at the time of writing, so its path and call are not yet documented. Until then, the two existing policies are the documented controls and govern today's energy saver, not the simplified one.
+BatterySaverModeAvailability is the policy the roadmap says Edge will recommend, but it has no Learn page at the time of writing, so its path and call are not yet documented. The two existing policies document controls for today's energy saver; Microsoft has not yet documented whether they will govern the simplified feature.
 
 The EfficiencyMode page states that it has no effect if EfficiencyModeEnabled is disabled. Both pages say the policy can be set as mandatory or recommended in Group Policy; recommended values let users override. Microsoft has not said how these policies relate to BatterySaverModeAvailability.
 
@@ -178,18 +182,7 @@ The EfficiencyMode page states that it has no effect if EfficiencyModeEnabled is
 - Is any licence required for the simplified energy saver? Watch the roadmap item and the Edge policy reference.
 
 <!-- rationale
-risk: Low. The change alters when Edge saves battery on laptops and touches no organisational data; the exposure is a changed default and changed policy options, not data or identity.
+risk: Low. The change alters when Edge saves battery on laptops and has no new data access described in the roadmap; the exposure is a changed default and changed policy options, not data or identity.
 cost: Low. The only cost the sources show is admin time to review existing energy saver policies; the roadmap item names no licence or meter, and no licence is yet published for it.
 impact: High. The roadmap item changes the default, so users with battery devices who never touched the setting get different energy saver behaviour, and users on Balanced or Maximum savings are remapped.
--->
-
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing; Risk assessment: Change & support / behaviour: Today's EfficiencyMode policy offers six current values from AlwaysActive to MaximumSavings. | Found: ActiveWhenUnpluggedBatteryLow (3) = Energy saver is active when the device is unplugged and the battery is low - Windows: 96-109 - macOS: 96-109 | Fix: Replace the six-current-values statement with: 'The EfficiencyMode reference lists BalancedSavings and MaximumSavings for Edge 106 or later; its other four values are listed only for Edge 96-109 on Windows and macOS.' Replace 'its current values (such as ActiveWhenUnpluggedBatteryLow)' with 'its existing deployed values'. Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode
-- [contradicted, blocker] Scope / availability: Both current energy saver policy pages list Windows support from version 96. | Found: Supported versions - Windows: ≥ 106 | Fix: Replace the platform sentence with: 'EfficiencyMode lists Windows and macOS support from Edge 96; EfficiencyModeEnabled lists support from Edge 106. Both mark Android and iOS as not supported.' Sources: https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode and https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymodeenabled. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymodeenabled
-- [contradicted, blocker] Scope / availability: Both current energy saver policy pages list macOS support from version 96. | Found: macOS: ≥ 106 | Fix: Use the corrected Scope sentence: 'EfficiencyMode lists Windows and macOS support from Edge 96; EfficiencyModeEnabled lists support from Edge 106. Both mark Android and iOS as not supported.' Sources: https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymode and https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymodeenabled. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-policies/efficiencymodeenabled
-- [unsupported, blocker] Governance controls: first paragraph / applicability: The two existing policies govern today's energy saver, not the simplified one. | Found: Searched: 'BatterySaverModeAvailability Edge simplified energy saver policy registry mapping EfficiencyMode' and 'Microsoft Edge simplified energy saver EfficiencyMode mapping'; read both existing policy pages. No passage says the existing policies cannot govern the simplified feature. | Fix: Replace 'Until then, the two existing policies are the documented controls and govern today's energy saver, not the simplified one.' with 'The two existing policies document controls for today's energy saver; Microsoft has not yet documented whether they will govern the simplified feature.'
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [unsupported, minor] rationale: risk / behaviour: The change touches no organisational data. | Found: Searched: 'Microsoft Edge simplified energy saver EfficiencyMode mapping' and 'BatterySaverModeAvailability'; read the roadmap and both cited policy pages. The roadmap mentions no new data access, but no source states that the change touches no organisational data. | Fix: Replace 'touches no organisational data' with 'has no new data access described in the roadmap'.
 -->

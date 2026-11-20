@@ -1,0 +1,938 @@
+{
+  "slug": "autonomous-agents",
+  "kind": "concept",
+  "roadmapId": null,
+  "title": "Autonomous agents: what runs an agent when no one is in the conversation?",
+  "status": "held",
+  "date": "2026-11-20",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-20",
+    "reasons": [
+      "4 blocking findings (claims 12, 26, 59, 67)"
+    ]
+  },
+  "counts": {
+    "claims": 71,
+    "confirmed": 66,
+    "unconfirmed": 0,
+    "contradicted": 5,
+    "blocker": 4,
+    "major": 0,
+    "minor": 5
+  },
+  "summary": "The page mixes standard-harness behaviour and billing with the Microsoft Copilot harness preview, which requires activation after publishing and uses different billing. It also incorrectly dismisses controls over published agents and says no administrative sharing setting is documented.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary",
+      "type": "behaviour",
+      "claim": "Autonomous agents act on events or schedules instead of waiting for a user prompt.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-add-event-trigger",
+      "quote": "Autonomous agents run when an event occurs in a connected service. For example, an agent can respond when an item is created in SharePoint, an email arrives, or a scheduled time occurs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Event-driven execution does not mean the agent runs continuously.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/guidance/autonomous-agents",
+      "quote": "Event-driven execution doesn't mean the agent runs continuously.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "A SharePoint item being created can activate an event trigger.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-triggers-about",
+      "quote": "Other examples of event triggers include:\n\n- When an item is created in SharePoint",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "A Planner task being completed can activate an event trigger.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-triggers-about",
+      "quote": "When a task is completed in Planner",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "A Recurrence trigger activates after a set amount of time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-triggers-about",
+      "quote": "A set amount of time passed (a **Recurrence** trigger)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "An event generates a trigger payload that is sent to the agent through a connector.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-triggers-about",
+      "quote": "Event triggers require a chosen event that generates a *trigger payload* and sends it to the agent through a connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "The agent follows the instructions supplied by its author.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-triggers-about",
+      "quote": "When the agent receives the payload, it executes the directions provided by the agent author in the agent's instructions and instructions sent through the trigger payload.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "The agent also follows instructions sent through the trigger payload.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-triggers-about",
+      "quote": "When the agent receives the payload, it executes the directions provided by the agent author in the agent's instructions and instructions sent through the trigger payload.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "The agent selects actions or topics its author has defined rather than creating new ones.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-triggers-about",
+      "quote": "Your agent doesn't create a new action or topic on the spot. As the agent author, you need to define the actions or topics it can select from.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What it is: How it works",
+      "type": "behaviour",
+      "claim": "Event triggers need generative orchestration turned on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-triggers-about",
+      "quote": "This article describes features used in agents or agent flows powered by the standard harness.\nThis feature is only available for agents with generative orchestration turned on.",
+      "severity": "minor",
+      "fix": "Change the sentence to 'For standard-harness agents, event triggers need generative orchestration turned on.' The cited prerequisite is scoped to that harness."
+    },
+    {
+      "n": 11,
+      "where": "What it is: publishing",
+      "type": "behaviour",
+      "claim": "An agent does not react automatically to a new trigger before it is published with that trigger.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-triggers-about",
+      "quote": "Before you publish your agent with a new event trigger, the agent doesn't automatically react to that trigger.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What it is: publishing",
+      "type": "behaviour",
+      "claim": "Publishing starts automatic reactions to each trigger activation, with no further approval or activation.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-add-event-trigger",
+      "quote": "**Activate for me** takes you to **Agent management**, where you turn on the agent. After you turn on the agent, your agent starts running on your behalf.",
+      "severity": "blocker",
+      "fix": "Scope the publishing paragraph and the 'Publishing starts it' risk bullet to standard-harness agents. Replace the risk sentence with 'For standard-harness agents, publishing with a new trigger makes the agent react automatically each time the trigger activates, so test the trigger first.' Do not extend this to the Microsoft Copilot harness preview: its cited activation instructions require turning on the agent in Agent management after publishing."
+    },
+    {
+      "n": 13,
+      "where": "What it is: publishing",
+      "type": "behaviour",
+      "claim": "The Activity page records the agent's triggers and reactions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-triggers-about",
+      "quote": "You can see a step-by-step record of your agent's triggers and reactions in the Activity page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What it is: Two authentication models",
+      "type": "behaviour",
+      "claim": "Standard-harness event triggers can authenticate only with the agent author's credentials.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-triggers-about",
+      "quote": "Currently, event triggers can use only the agent author's credentials for authentication. To run autonomously, the agent must use your credentials for all triggers and actions that require authentication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What it is: Two authentication models",
+      "type": "behaviour",
+      "claim": "In the Microsoft Copilot harness preview, the maker can choose Activate for me after publishing to use maker credentials.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-add-event-trigger",
+      "quote": "**Activate for myself**: Only you, the maker, can use the agent, using your own maker credentials.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What it is: Two authentication models",
+      "type": "behaviour",
+      "claim": "Share with others lets recipients run the preview agent with their own credentials.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-add-event-trigger",
+      "quote": "**Share with others**: Allow other users use the agent, with their own credentials. You also need to share the agent with those users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What it is: Two authentication models",
+      "type": "behaviour",
+      "claim": "Recipients set up required connections on the agent management page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/end-user-manage-shared-agent",
+      "quote": "use the *agent management* page to connect required services with your own credentials, configure the trigger settings that the agent owner allows, and turn triggers on or off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Microsoft recommends explicit permissions, decision boundaries and human oversight for autonomy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/guidance/autonomous-agents",
+      "quote": "Design autonomy around explicit permissions, decision boundaries, and human oversight.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Microsoft advises against relying on instructions alone to prevent unauthorised actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/guidance/autonomous-agents",
+      "quote": "Enforce strict limits on the agent's actions. Don't rely on instructions, such as \"only send an email after checking a knowledge source,\" to prevent unauthorized actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "A Recurrence trigger set to ten minutes sends a payload every ten minutes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-triggers-about",
+      "quote": "a recurrence trigger set to activate every 10 minutes sends a trigger payload to the agent every 10 minutes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Agent makers can add event triggers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "Agent makers in your organization can add event triggers to agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].governs",
+      "type": "applicability",
+      "claim": "Blocking the Microsoft Copilot Studio connector in a data policy prevents makers from adding event triggers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "To prevent agent makers from adding event triggers to their agents or running automated evaluations by using an authenticated account, configure a data policy that blocks the **Microsoft Copilot Studio** connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Event trigger activity consumes Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-triggers-about",
+      "quote": "Event trigger activity counts toward Copilot Credit consumption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Each trigger payload is processed like a user message.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-triggers-about",
+      "quote": "Each trigger payload that an event trigger sends to an agent is processed like a message from a user",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The agent's response to a trigger payload is billed at the Copilot Credits billing rates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-triggers-about",
+      "quote": "the agent's response is billed at the Copilot Credits billing rates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Trigger steps count as agent actions at five Copilot Credits, without distinguishing the two harnesses covered by the page.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview",
+      "quote": "For experiences powered by the Microsoft Copilot harness, Copilot Credits are charged for large language model (LLM) tokens, tools (including knowledge and MCPs), and the harness itself.",
+      "severity": "blocker",
+      "fix": "Prefix the first Cost and licensing paragraph with 'For standard-harness agents,' so the five-credit agent-action rate is not presented as the rate for the Microsoft Copilot harness preview. The cited Billing rates and management page explicitly covers the standard harness; the preview uses the different usage-based structure documented at https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/billing-credit-overview."
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing: Microsoft 365 Copilot licence",
+      "type": "licensing",
+      "claim": "Agent flows called by autonomous agents consume credits and are subject to enforcement even when users hold Microsoft 365 Copilot licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "Agent flow runs called by an autonomous agent consume Copilot Credits and are subject to enforcement, even if the users in your organization have Microsoft 365 Copilot licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing: Enforcement",
+      "type": "applicability",
+      "claim": "Prepaid-capacity enforcement covers autonomously triggered custom-agent usage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "Applies to all tenants operating under the Copilot Studio prepaid capacity model for custom agent usage (conversational and autonomously triggered).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing: Enforcement",
+      "type": "cost",
+      "claim": "The prepaid-capacity enforcement threshold is 125%.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "Enforcement is triggered when a tenant reaches 125% of their prepaid capacity.",
+      "severity": "minor",
+      "fix": "Change 'enforcement starts at 125% of prepaid capacity' to 'enforcement is triggered when the tenant reaches 125% of its prepaid capacity'. This distinguishes the tenant threshold from an environment allocation."
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing: Enforcement",
+      "type": "behaviour",
+      "claim": "When prepaid-capacity enforcement applies, the environment's agents are blocked.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "When enforcement applies, the environment's agents are blocked.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing: Enforcement",
+      "type": "cost",
+      "claim": "Billing overage to a pay-as-you-go plan avoids blocking caused by exhausted prepaid credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "If an environment bills overage to a pay-as-you-go plan, running out of prepaid Copilot Credits doesn't block the agents in that environment",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing: Preview sharing",
+      "type": "cost",
+      "claim": "Each end user's shared autonomous-agent usage is totalled and billed through the hosting environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+      "quote": "Each end user's autonomous agent usage is totaled and billed through the underlying environment where the agent is hosted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing: final paragraph",
+      "type": "absence",
+      "claim": "The cited pages do not state a separate autonomous-agent-specific licence for building or publishing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio autonomous agents build publish license requirements. Opened cited trigger and sharing pages and microsoft-copilot-studio/billing-licensing; general authoring access is documented, but no separate autonomous-agent-specific licence is stated.",
+      "severity": "minor",
+      "fix": "Replace the final sentence with 'The trigger overview states no separate autonomous-agent-specific licence; general authoring access requirements are documented in Licensing for agents powered by the standard harness (https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing).' This avoids leaving readers with the impression that product-level authoring requirements are unknown."
+    },
+    {
+      "n": 34,
+      "where": "Risks and limits: Author credentials reach every user",
+      "type": "behaviour",
+      "claim": "Users of an agent with authenticated standard-harness triggers might access information or initiate actions with its author's credentials.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-triggers-about",
+      "quote": "If you publish an agent with authenticated event triggers, users might access information or prompt the agent to perform actions by using the author's credentials.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risks and limits: Payloads can leak",
+      "type": "behaviour",
+      "claim": "Trigger payloads can contain sensitive information that actions output elsewhere.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-triggers-about",
+      "quote": "Trigger payloads can potentially contain sensitive information that an agent can output in other locations through actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risks and limits: Frequent triggers cost and throttle",
+      "type": "behaviour",
+      "claim": "Shorter intervals between trigger activations use more resources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-triggers-about",
+      "quote": "The smaller the amount of time between activations, the more resources the trigger uses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risks and limits: Frequent triggers cost and throttle",
+      "type": "behaviour",
+      "claim": "Frequent triggers can exceed service load quotas and cause throttling.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-triggers-about",
+      "quote": "Your agent might then exceed service load quota limits, and your service could be throttled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risks and limits: Spoofed triggers",
+      "type": "behaviour",
+      "claim": "Microsoft recommends checking trigger authenticity, including validating email senders.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/guidance/autonomous-agents",
+      "quote": "Ensure that the events or data triggering the agent are authentic and expected. For example, if an agent reacts to incoming emails, use verification checks (like sender validation or specific keywords)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risks and limits: Capacity exhaustion stops agents",
+      "type": "behaviour",
+      "claim": "A blocked agent stops responding even in a conversation already in progress.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "A blocked agent stops responding, including in a conversation that's already in progress.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risks and limits: Capacity exhaustion stops agents",
+      "type": "behaviour",
+      "claim": "New agent flow runs are blocked separately from their calling agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "Agent flow runs are blocked separately from agents. New agent flow runs can be blocked while the agent keeps answering questions that don't need a flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[1].governs",
+      "type": "applicability",
+      "claim": "Adding event triggers requires solution-aware cloud flow sharing to be turned on in the environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-triggers-about",
+      "quote": "You can add event triggers to agents only in environments where solution-aware cloud flow sharing is turned on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0].note",
+      "type": "applicability",
+      "claim": "Blocking the Microsoft Copilot Studio connector also prevents automated evaluations using authenticated accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "To prevent agent makers from adding event triggers to their agents or running automated evaluations by using an authenticated account, configure a data policy that blocks the **Microsoft Copilot Studio** connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risks and limits: Shared-agent limits (preview)",
+      "type": "behaviour",
+      "claim": "Shared autonomous agents do not support workflows that use maker-only credentials.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+      "quote": "If your agent calls a workflow as a tool, that workflow can only accept end user credentials for authentication. Workflows that use any maker-only credentials aren't supported for autonomous agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risks and limits: Shared-agent limits (preview)",
+      "type": "behaviour",
+      "claim": "Recipients of a shared autonomous agent cannot specify or change tool parameters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+      "quote": "Users of a shared autonomous agent can't specify or modify tool parameters.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risks and limits: Shared-agent limits (preview)",
+      "type": "behaviour",
+      "claim": "Recipients receive no notification when a maker shares an agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+      "quote": "Users don't receive a notification when a maker shares an agent with them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The printed Power Platform admin center route reaches the Block control for the Microsoft Copilot Studio connector.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "select **Security**, and then select **Data and privacy**.\nSelect **Data policy**.\nselect **New Policy**\nThe **Add an environment** page appears.\n**Available** tab\nselect **Add to policy**.\nThe **Assign connectors** page appears.\nselect **Block**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "Add-ConnectorsToPolicy -PolicyName <PolicyGuid> -Classification Blocked -Connectors <ConnectorObjects> moves the supplied connectors into the policy's Blocked group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest",
+      "quote": "Add-ConnectorsToPolicy\n    [-PolicyName] <String>\n    [-Classification] <String>\n    [-Connectors] <Object[]>\nAllowed values are 'General', 'Confidential', and 'Blocked' (for Non-business, Business, and Blocked, respectively).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[0].note",
+      "type": "role",
+      "claim": "Configuring the data policy requires a tenant admin or Environment Admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "Be a tenant admin or have the Environment Admin role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls: Roles",
+      "type": "applicability",
+      "claim": "Tenant-scope data policies apply to all agents in all environments across the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "Policies with a tenant scope apply to all agents in all environments across the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls: Roles",
+      "type": "behaviour",
+      "claim": "Copilot Studio enforces data policies in real time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "Copilot Studio supports data policy enforcement in real time. Agent makers and users see error messages for any data policy violation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls: Roles",
+      "type": "behaviour",
+      "claim": "A policy blocking event triggers produces an error in Triggers on the agent Overview page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+      "quote": "If the policy is enforced, a detailed error message appears in the **Triggers** section on the **Overview** page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Manage > Environments > managed environment > Edit Managed Environments > Manage sharing > Let people share solution-aware cloud flows reaches the sharing rule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits",
+      "quote": "select **Manage**.\nselect **Environments**.\nselect a managed environment.\nIn the command bar, **Edit Managed Environments**.\nThe sharing rules are located in the **Manage sharing** section.\nLet people share solution-aware cloud flows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Set-AdminPowerAppEnvironmentGovernanceConfiguration with EnvironmentName and UpdatedGovernanceConfiguration saves the configuration controlling flow sharing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits",
+      "quote": "# Save the updated managed environment settings\nSet-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName <EnvironmentId> -UpdatedGovernanceConfiguration $governanceConfiguration",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "The relevant extended governance-configuration setting is solutionCloudFlows-limitSharingMode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits",
+      "quote": "$governanceConfiguration.settings.extendedSettings | Add-Member -MemberType NoteProperty -Name 'solutionCloudFlows-limitSharingMode' -Value \"disableSharing\" -Force",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "The value disableSharing turns solution-aware cloud flow sharing off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits",
+      "quote": "Here's a PowerShell script that turns off sharing for solution-aware cloud flows.\n-Name 'solutionCloudFlows-limitSharingMode' -Value \"disableSharing\" -Force",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[1].note",
+      "type": "applicability",
+      "claim": "The flow sharing rule is a Managed Environments control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits",
+      "quote": "In managed environments, admins can limit how broadly users can share canvas apps, flows, and agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls: Sharing rule",
+      "type": "behaviour",
+      "claim": "Sharing rules are enforced when users attempt to share.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits",
+      "quote": "Sharing rules are enforced when users try to share an app, flow, or agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls: Sharing rule",
+      "type": "behaviour",
+      "claim": "Sharing rules can take up to an hour to start applying.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits",
+      "quote": "After sharing rules are set in the Power Platform admin center, it may take up to an hour for them to start getting enforced.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls: Sharing rule",
+      "type": "applicability",
+      "claim": "Neither the data policy nor the sharing control governs what a published agent does once running.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-dlp-troubleshooting#symptoms",
+      "quote": "If your published agent is in violation of your data policies, users of the agent see a **DataLossPreventionViolation** error when trying to interact with it.",
+      "severity": "blocker",
+      "fix": "Remove 'Neither control governs what a published agent does once it runs.' The statement wrongly generalises sharing-time enforcement to data policies; the exact effect of blocking event triggers on already-published triggers can remain the narrower question already listed in Open questions."
+    },
+    {
+      "n": 60,
+      "where": "Governance controls: Monitoring",
+      "type": "behaviour",
+      "claim": "The Monitor page shows run outcomes for agents with event triggers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-improve-agent-health",
+      "quote": "**Run outcomes**: Knowing the end result of a session started by a trigger helps you begin to identify where your agent is succeeding and where it needs improvement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance controls: Monitoring",
+      "type": "behaviour",
+      "claim": "The Monitor page shows trigger use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-improve-agent-health",
+      "quote": "The **Trigger use** section shows a chart and metrics that track how often each trigger initiated a session.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls: Monitoring",
+      "type": "behaviour",
+      "claim": "The Monitor page shows tool use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-improve-agent-health",
+      "quote": "The **Tool use** section shows a chart and metrics that track how often your tools start over time, and how often your agent uses those tools successfully.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance controls: Monitoring",
+      "type": "behaviour",
+      "claim": "The Monitor page shows knowledge source use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-improve-agent-health",
+      "quote": "The **Knowledge source use** section provides insight into how your agent uses it knowledge sources and how effectively those sources support your agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance controls: Monitoring",
+      "type": "behaviour",
+      "claim": "Analytics on the Monitor page can cover sessions in the last 360 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-improve-agent-health",
+      "quote": "You can view analytics for sessions that occurred in the last 360 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance controls: Monitoring",
+      "type": "behaviour",
+      "claim": "Administrators can monitor resource usage through Power Platform.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-triggers-about",
+      "quote": "Administrators can monitor resource usage through Power Platform.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance controls: Monitoring",
+      "type": "absence",
+      "claim": "The documentation reviewed does not name a unified audit-log event specifically for trigger-started agent runs.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Studio audit logs autonomous trigger run event. Opened authoring-triggers-about, analytics-improve-agent-health, guidance/autonomous-agents and purview/ai-copilot-studio; read purview/audit-copilot excerpts. No trigger-started-run event was named.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Open questions: administrator sharing switch",
+      "type": "absence",
+      "claim": "No administrator setting is documented for stopping makers from sharing autonomous agents with Can use in the Microsoft Copilot harness preview.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/faqs-copilot-harness#where-are-my-topics,-and-how-do-i-migrate-them-to-the-microsoft-copilot-harness",
+      "quote": "Admins govern it with four kinds of control: who can build agents, how much an agent can spend, what data and connectors it can reach, and who it can be shared with.\nWho agents are shared with: Managed environment sharing controls and environment security groups",
+      "severity": "blocker",
+      "fix": "Replace the final Open questions bullet with 'How do Managed Environment sharing controls map to Can use for shared autonomous agents in the Microsoft Copilot harness preview?' Remove 'No setting is documented': Microsoft's harness FAQ explicitly documents administrative sharing controls, although the passages reviewed do not describe the Can use mapping."
+    },
+    {
+      "n": 68,
+      "where": "What to check: Open the Monitor page",
+      "type": "consistency",
+      "claim": "The checklist asks readers to review the Monitor control, but no monitoring row appears in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Open the Monitor page for each agent with event triggers and read run outcomes and trigger use.' The table contains only connector blocking and solution-aware cloud flow sharing.",
+      "severity": "minor",
+      "fix": "The 'Open the Monitor page' checklist step has no corresponding controls-table row. Remove this checklist bullet; the Monitoring paragraph can retain the documented capability."
+    },
+    {
+      "n": 69,
+      "where": "summary: whose credentials run them",
+      "type": "applicability",
+      "claim": "Administrators can restrict the use of maker-provided credentials rather than leaving credential governance solely to makers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits",
+      "quote": "Administrators can use the **Sharing agents with embedded maker credentials** setting in the Power Platform admin center to prevent agents from being shared when they contain connections configured to use maker credentials that other users aren't permitted to reuse.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-copilot-studio/admin-sharing-controls-limits to sources for the summary's credential-governance claim. This is the supporting Microsoft page missing from the current sources."
+    },
+    {
+      "n": 70,
+      "where": "summary: how much they consume",
+      "type": "applicability",
+      "claim": "Administrators can limit agent consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+      "quote": "Agents that an admin turned off, or that reached a monthly limit set to stop usage, are still blocked.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "controls[1].governs",
+      "type": "behaviour",
+      "claim": "The solution-aware cloud flow sharing rule controls sharing of both solution-aware cloud flows and agent flows.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits",
+      "quote": "**When selected:** Users can share solution-aware cloud flows and agent flows with any number of individuals or security groups. **When not selected:** Users can't share their cloud flows or agent flows with any individual or security group.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-20T11:17:27.314Z",
+    "summary": {
+      "links": 10,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/guidance/autonomous-agents",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/authoring-triggers-about",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/analytics-improve-agent-health",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-share-agent",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/authoring-add-event-trigger",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/end-user-manage-shared-agent",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether makers can add event triggers to agents (Microsoft Copilot Studio connector)",
+        "docs": "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention",
+        "reachable": true,
+        "segments": [
+          "Security",
+          "Data and privacy",
+          "Data policy",
+          "New Policy",
+          "Add an environment",
+          "Available",
+          "Add to policy",
+          "Assign connectors",
+          "Microsoft Copilot Studio",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether makers can add event triggers to agents (Microsoft Copilot Studio connector)",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest",
+        "reachable": true,
+        "token": "Add-ConnectorsToPolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether users can share solution-aware cloud flows and agent flows, which event triggers depend on",
+        "docs": "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Environments",
+          "managed environment",
+          "Edit Managed Environments",
+          "Manage sharing",
+          "Let people share solution-aware cloud flows"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether users can share solution-aware cloud flows and agent flows, which event triggers depend on",
+        "docs": "https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits",
+        "reachable": true,
+        "token": "Set-AdminPowerAppEnvironmentGovernanceConfiguration",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
