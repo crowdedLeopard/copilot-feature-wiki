@@ -53,32 +53,29 @@ controls:
     scope: "other"
     ui:
       surface: "Copilot Service admin center"
-      path: "Customer support > Conversation orchestration > Prompt gallery > Assign to a previous or preferred expert scenario > Assign to a previous or preferred expert"
-      docs: "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent"
-    api:
-      kind: "rest"
-      call: "POST /msdyn_ccuserprompts"
-      docs: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt"
-    note: "System administrator or Omnichannel administrator. Save keeps a draft; Publish activates. The API creates a CC User Prompt row; the reference does not describe publishing."
+      path: "Customer support > Conversation orchestration > Prompt gallery > Assign to a previous or preferred expert scenario > Assign to a previous or preferred expert > Publish"
+      docs: "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration"
+    api: null
+    note: "System administrator or Omnichannel administrator. Save keeps a draft; Publish activates. The table reference documents record operations, but not an operation that publishes a playbook."
   - governs: "Whether returning asynchronous chats keep the same expert, with presence and active conversation limit checks"
     scope: "other"
     ui:
       surface: "Copilot Service admin center"
-      path: "Customer support > Conversation orchestration > Prompt gallery > Assign to a previous or preferred expert scenario > Keep the same expert for async chats"
+      path: "Customer support > Conversation orchestration > Prompt gallery > Assign to a previous or preferred expert scenario > Keep the same expert for async chats > Publish"
       docs: "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent"
     api: null
-    note: "Applies to messaging queues where representative affinity is enabled. Allowed presences, active conversation limit and fallback are set in the playbook."
+    note: "Applies to messaging queues where representative affinity is enabled. Allowed presences and fallback are set in the playbook. The playbook selects the active conversation limit check; the limit itself is a representative-level attribute."
   - governs: "Which preferred representatives are mapped to a contact"
     scope: "other"
     ui:
       surface: "Copilot Service admin center"
-      path: "Routing > Preferred representative routing > Manage > Preferred representatives matrix > Add a contact"
+      path: "Routing > Preferred representative routing > Manage > Preferred representatives matrix > Add a contact > contact > Add user"
       docs: "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent"
     api:
       kind: "rest"
       call: "POST /msdyn_preferredagents"
       docs: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_preferredagent"
-    note: "Omnichannel Administrator (Contact Center) or CSR Manager (Customer Service). Up to three representatives per contact, listed in order."
+    note: "Omnichannel Administrator (Contact Center) or CSR Manager (Customer Service). Enable preferred representative routing first. Body: msdyn_recordid is the contact, msdyn_systemuserid the representative, msdyn_preferencerating the rating."
 confidence: "high"
 created: "2026-11-20"
 updated: "2026-11-20"
@@ -88,19 +85,23 @@ changes:
     note: "New briefing: previous and preferred expert assignment in Contact Center unified routing, its playbook controls and the Copilot credit charge on publish."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 80 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected: the playbook publish row no longer names an API call, the CC User Prompt columns are stated as the reference lists them, and the active conversation limit is described as a representative-level attribute."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 85 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 80
-  confirmed: 76
+  claims: 85
+  confirmed: 85
   unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "cca10ef21d830df535be5500bf4b1e0f"
+  contradicted: 0
+  attempts: 0
+  hash: "379d113f3be7c574391bb62a4cccf0e0"
 ---
 
 ## What's changing
@@ -157,10 +158,9 @@ The roadmap lists Worldwide (Standard Multi-Tenant) only and the web platform. T
 ## Governance guidance
 
 ### Before rollout
-- Confirm the licensing requirements for conversation orchestration in the Dynamics 365 Licensing Guide and set up consumption-based billing (prepaid capacity or pay-as-you-go) before anyone publishes.
+- Confirm the licensing requirements for conversation orchestration in the Dynamics 365 Licensing Guide before anyone publishes.
 - Map preferred representatives to contacts in Copilot Service admin center if you plan to use the preferred-expert option, and check that each mapped representative belongs to the queue that receives the conversation.
 - Decide the order of preferred, previous and fallback per customer segment, and the recency window (Learn supports up to 30 days).
-- Check that representative affinity is enabled on the messaging workstream and review each representative's active conversation limit before using the async playbook.
 
 ### At rollout
 - Create the playbook from the Prompt gallery, select the queues, review validation warnings, save as a draft and test before choosing Publish.
@@ -168,9 +168,7 @@ The roadmap lists Worldwide (Standard Multi-Tenant) only and the web platform. T
 - Choose the async fallback (next best expert, or keep the chat unassigned) deliberately for each queue.
 
 ### After rollout
-- Watch for deviations between the written playbook and runtime behaviour, using the conversation orchestration diagnostics custom query.
-- Check that previous and preferred experts are not overloaded by comparing their active conversations with their limits.
-- Review Copilot credit consumption after each publish of a playbook.
+- Watch for deviations between the written playbook and runtime behaviour.
 
 ## Governance controls
 
@@ -179,15 +177,15 @@ The roadmap lists Worldwide (Standard Multi-Tenant) only and the web platform. T
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether a previous or preferred expert playbook is published for a queue</strong><br><small class="controls__note">System administrator or Omnichannel administrator. Save keeps a draft; Publish activates. The API creates a CC User Prompt row; the reference does not describe publishing.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Customer support › Conversation orchestration › Prompt gallery › Assign to a previous or preferred expert scenario › Assign to a previous or preferred expert <a href="https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST /msdyn_ccuserprompts</code> <a href="https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether returning asynchronous chats keep the same expert, with presence and active conversation limit checks</strong><br><small class="controls__note">Applies to messaging queues where representative affinity is enabled. Allowed presences, active conversation limit and fallback are set in the playbook.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Customer support › Conversation orchestration › Prompt gallery › Assign to a previous or preferred expert scenario › Keep the same expert for async chats <a href="https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which preferred representatives are mapped to a contact</strong><br><small class="controls__note">Omnichannel Administrator (Contact Center) or CSR Manager (Customer Service). Up to three representatives per contact, listed in order.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Routing › Preferred representative routing › Manage › Preferred representatives matrix › Add a contact <a href="https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST /msdyn_preferredagents</code> <a href="https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_preferredagent" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether a previous or preferred expert playbook is published for a queue</strong><br><small class="controls__note">System administrator or Omnichannel administrator. Save keeps a draft; Publish activates. The table reference documents record operations, but not an operation that publishes a playbook.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Customer support › Conversation orchestration › Prompt gallery › Assign to a previous or preferred expert scenario › Assign to a previous or preferred expert › Publish <a href="https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether returning asynchronous chats keep the same expert, with presence and active conversation limit checks</strong><br><small class="controls__note">Applies to messaging queues where representative affinity is enabled. Allowed presences and fallback are set in the playbook. The playbook selects the active conversation limit check; the limit itself is a representative-level attribute.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Customer support › Conversation orchestration › Prompt gallery › Assign to a previous or preferred expert scenario › Keep the same expert for async chats › Publish <a href="https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which preferred representatives are mapped to a contact</strong><br><small class="controls__note">Omnichannel Administrator (Contact Center) or CSR Manager (Customer Service). Enable preferred representative routing first. Body: msdyn_recordid is the contact, msdyn_systemuserid the representative, msdyn_preferencerating the rating.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Routing › Preferred representative routing › Manage › Preferred representatives matrix › Add a contact › contact › Add user <a href="https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST /msdyn_preferredagents</code> <a href="https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_preferredagent" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 The playbook rows are the decisive controls: nothing routes through a playbook until it is published, and deleting an active one stops orchestration for that queue. The playbook editor sets the precedence order, recency window, allowed presences, active conversation limit check and fallback. The Learn page names no separate tenant-wide switch for this scenario, and none is listed in the table.
 
-Roles: System administrator or Omnichannel administrator for conversation orchestration; Omnichannel Administrator (Contact Center) or CSR Manager (Customer Service) for preferred representatives. At the time of writing (November 2026), the CC User Prompt table reference lists create and update operations but does not say which columns hold a playbook's logic or its published state, so treat the API row as a way to create records and migrate playbooks, not a documented way to publish. Learn describes moving playbooks between environments through solution export and import.
+Roles: System administrator or Omnichannel administrator for conversation orchestration; Omnichannel Administrator (Contact Center) or CSR Manager (Customer Service) for preferred representatives. At the time of writing (November 2026), the CC User Prompt table reference lists msdyn_prompt (Prompt), msdyn_promptstage (including Published = 3) and msdyn_promptstatus (Active or Inactive), but does not document a playbook publishing procedure. The table reference documents record operations, but not an operation that publishes a playbook. Learn describes moving playbooks between environments through solution export and import.
 
 ## Open questions
 
@@ -200,18 +198,4 @@ Roles: System administrator or Omnichannel administrator for conversation orches
 risk: Medium. A published playbook changes which representative receives a conversation, and a returning asynchronous chat can be reassigned to the same representative even when the active conversation limit exceeds the capacity profile.
 cost: Variable. Publishing a playbook consumes Copilot credits (the rate for this scenario is not yet published), and Dynamics 365 Contact Center licensing requirements apply on top.
 impact: Medium. Contact centre administrators, supervisors and representatives in queues covered by a playbook notice first, and returning customers are connected to a different person than before.
--->
-
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls table and prose / command: POST /msdyn_ccuserprompts is the automation counterpart of the control deciding whether a queue's playbook is published. | Found: | Create Event: True | POST /msdyn_ccuserprompts See Create | Create records | | Fix: Set controls[0].api to null and remove the matching rendered call: the documented operation creates a record, not the publishing change this row governs. Replace the API qualification in its note and the API creation/migration advice in Governance controls with 'The table reference documents record operations, but not an operation that publishes a playbook.' | Source: https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt
-- [contradicted, blocker] Governance controls / absence: The CC User Prompt reference does not say which columns describe a playbook's published state. | Found: LogicalName | msdyn_promptstage msdyn_promptstage Choices/Options 0 | Authoring 1 | RuleGeneration 2 | Validation 3 | Published LogicalName | msdyn_promptstatus 0 | Active 1 | Inactive | Fix: Replace the claim that logic and published-state columns are undocumented with: 'The CC User Prompt reference lists msdyn_prompt (Prompt), msdyn_promptstage (including Published = 3), and msdyn_promptstatus (Active or Inactive), but does not document a playbook publishing procedure.' Do not infer that updating a stage column performs publishing. | Source: https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt
-- [contradicted, blocker] controls[1].note; Governance controls / behaviour: The active conversation limit itself is set in the playbook. | Found: The active conversation limit is a configurable attribute defined at the representative level. 5. Select the allowed presence statuses in the presence list. 6. Select active conversation limit. | Fix: Replace controls[1].note with 'Applies to messaging queues where representative affinity is enabled. Allowed presences and fallback are set in the playbook. The playbook selects the active conversation limit check; the limit itself is a representative-level attribute.' In Governance controls, retain 'active conversation limit check', not a claim that the editor sets the representative's numeric limit. | Source: https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Copilot Service admin center path opens the previous-or-preferred expert playbook editor. | Found: On the Conversation Orchestration page, select Prompt gallery. 2. In the drop-down field, select a scenario category, and then select a playbook template. 8. Review your configuration for any validation warnings, and then select Publish to activate the playbook. | Fix: The path stops on the editor rather than the publishing control. Use 'Customer support > Conversation orchestration > Prompt gallery > Assign to a previous or preferred expert scenario > Assign to a previous or preferred expert > Publish'. Use https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration as this side's docs URL; keep configure-preferred-agent as a source for the scenario. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: The printed Copilot Service admin center path opens the Keep the same expert for async chats editor. | Found: In Copilot Service admin center, go to Customer support > Conversation orchestration. 2. Select Prompt gallery. In the category dropdown, select Assign to a previous or preferred expert scenario, and then choose the Keep the same expert for async chats template. | Fix: Extend the path to the activation control: 'Customer support > Conversation orchestration > Prompt gallery > Assign to a previous or preferred expert scenario > Keep the same expert for async chats > Publish'. The existing note can describe the presence, limit-check and fallback fields configured in the editor. | Source: https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent
-- [supported, minor] controls[2].ui; Governance controls table / admin-path: Routing > Preferred representative routing > Manage > Preferred representatives matrix > Add a contact reaches the contact-mapping workflow. | Found: Select Add a contact to add a contact. 2. In Select a contact, enter a contact name, and select a value from the dropdown list. 3. Select Add user to map representatives to the contact. | Fix: Complete the route to mapping a representative: 'Routing > Preferred representative routing > Manage > Preferred representatives matrix > Add a contact > contact > Add user'. State in the note that preferred representative routing must be enabled on that page before using it. | Source: https://learn.microsoft.com/dynamics365/customer-service/administer/configure-preferred-agent
-- [supported, minor] controls[2].api; Governance controls table / command: POST /msdyn_preferredagents creates the preferred-representative mapping record. | Found: Preferred Agent Table, table used to store the mapping between the system user and contact/account Create Event: True | POST /msdyn_preferredagents | Fix: Keep the call and add to controls[2].note: 'The request body sets msdyn_recordid to the contact and msdyn_systemuserid to the representative; msdyn_preferencerating stores the preference rating.' The cited reference documents those mapping properties. | Source: https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_preferredagent
-- [contradicted, minor] Governance guidance; Governance controls table / consistency: Several checklist instructions tell readers to configure or review controls that have no corresponding table row. | Found: Checklist: 'set up consumption-based billing'; 'Check that representative affinity is enabled'; 'review each representative's active conversation limit'; 'using ... diagnostics custom query'; 'Review Copilot credit consumption'. Table: two playbook rows and one contact-mapping row. | Fix: The billing setup, workstream-affinity, representative-level active-limit, diagnostics and credit-consumption-review checklist instructions have no corresponding control rows. Remove those control-setting/review instructions from the checklist rather than adding unverified rows.
 -->

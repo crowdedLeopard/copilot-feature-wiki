@@ -43,6 +43,9 @@ sources:
   - title: "Sample queries and dashboards for conversation diagnostics"
     url: "https://learn.microsoft.com/dynamics365/guidance/resources/conversation-diagnostics-sample-queries"
     kind: "learn"
+  - title: "CC User Prompt (msdyn_ccuserprompt) table/entity reference"
+    url: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt"
+    kind: "learn"
 videos: []
 related: ["dynamics-365-contact-center-unified-routing-orchestrate-conversation-distribution-with-nat","dynamics-365-contact-center-administrator-experiences-use-enhanced-customer-first-direct-c","copilot-credits"]
 controls:
@@ -52,16 +55,19 @@ controls:
       surface: "Copilot Service admin center"
       path: "Customer support > Conversation Orchestration > Prompt gallery > Overflow handling > Handle overflow for direct inbound call"
       docs: "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow"
-    api: null
-    note: "Needs System administrator or Omnichannel administrator. Scope: all inbound profiles, a list, or all except some. A playbook has an effect once published; publishing consumes Copilot credits."
+    api:
+      kind: "rest"
+      call: "PATCH /msdyn_ccuserprompts(msdyn_ccuserpromptid)"
+      docs: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt"
+    note: "Needs System administrator or Omnichannel administrator. After opening the template, choose and save the inbound-profile scope; in Build playbook, select the overflow action for each condition."
   - governs: "Which representatives have a direct inward dialing inbound profile"
     scope: "user"
     ui:
       surface: "Copilot Service admin center"
-      path: "Support experience > Productivity > Outbound and inbound profiles"
+      path: "Support experience > Productivity > Outbound and inbound profiles (Manage)"
       docs: "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-outbound-inbound-profiles"
     api: null
-    note: "Prerequisite to the playbook, not an overflow control. Needs a geographic personal number assigned to the representative. Sets no overflow action."
+    note: "Prerequisite to the playbook; sets no overflow action. Needs a geographic personal number assigned to the representative. The route opens the profile list: select New profile and type Inbound, or select a profile and Edit."
 confidence: "high"
 created: "2026-11-20"
 updated: "2026-11-20"
@@ -71,19 +77,23 @@ changes:
     note: "New briefing: overflow actions for direct inward dialed calls, with the Learn setup path, the Copilot credit consumption at publish and the callback discrepancy between Learn pages."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 68 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected after the independent check: the playbook row now gives the Dataverse Update operation, the inbound profiles row no longer implies it assigns direct numbers, and checklist items without a control row were removed."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 87 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 68
-  confirmed: 65
+  claims: 87
+  confirmed: 87
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "269c16e9492270d0b46c13e52e25984b"
+  contradicted: 0
+  attempts: 0
+  hash: "ce3d03187982b02ac73cf141c9f80e37"
 ---
 
 ## What's changing
@@ -96,9 +106,9 @@ Without a playbook, Learn states that by default a call to a representative who 
 
 ## Why it matters
 
-A direct line bypasses the queue, so a missed direct call has no fallback beyond the default voicemail unless someone configures one. This playbook lets a service owner decide whether those callers reach a backup queue, an after-hours external number or a recording, instead of being left to ring out. Because the actions run without a person in the loop, the configuration is a customer-experience decision as much as a technical one.
+A direct line bypasses the queue, so a missed direct call has no fallback beyond voicemail, which Learn says is usually where such a call goes, unless someone configures one. This playbook lets a service owner decide whether those callers reach a backup queue, an after-hours external number or a recording, instead of being left to ring out. Because the actions run without a person in the loop, the configuration is a customer-experience decision as much as a technical one.
 
-If nobody acts, the feature does nothing: a playbook is saved as a draft until it is published, and the default Learn describes is voicemail. The cost of acting is Copilot credits at publish time and the work of testing a playbook that a language model converts into its runtime form.
+If nobody acts, the feature does nothing: a playbook is saved as a draft until it is published, and Learn says unanswered direct calls usually go to voicemail. The cost of acting is Copilot credits at publish time and the work of testing a playbook that a language model converts into its runtime form.
 
 ## Risk assessment
 
@@ -135,9 +145,7 @@ An inbound profile needs a geographic personal number assigned to the representa
 
 ### Before rollout
 - Confirm the Dynamics 365 licence entitlement for conversation orchestration against the Dynamics 365 Licensing Guide that Learn's prerequisites cite.
-- Ask the owner of the Dynamics 365 billing plan to confirm consumption-based billing (prepaid capacity or pay-as-you-go) is set up for the environment, because publishing consumes Copilot credits.
 - List the representatives with inbound profiles and decide whether the playbook covers all of them, a list or all except some.
-- Check that a backup queue exists, that external numbers are set up for any external transfer, and that representatives are in the default individual voicemail queue, which Learn says is required for voicemails to be assigned.
 
 ### At rollout
 - Build the playbook from the **Handle overflow for direct inbound call** template and choose one action for each of the three conditions.
@@ -156,14 +164,16 @@ An inbound profile needs a geographic personal number assigned to the representa
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Overflow action for direct inward dialed calls, and which inbound profiles it covers</strong><br><small class="controls__note">Needs System administrator or Omnichannel administrator. Scope: all inbound profiles, a list, or all except some. A playbook has an effect once published; publishing consumes Copilot credits.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Customer support › Conversation Orchestration › Prompt gallery › Overflow handling › Handle overflow for direct inbound call <a href="https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which representatives have a direct inward dialing inbound profile</strong><br><small>User</small><br><small class="controls__note">Prerequisite to the playbook, not an overflow control. Needs a geographic personal number assigned to the representative. Sets no overflow action.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Support experience › Productivity › Outbound and inbound profiles <a href="https://learn.microsoft.com/dynamics365/customer-service/administer/configure-outbound-inbound-profiles" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Overflow action for direct inward dialed calls, and which inbound profiles it covers</strong><br><small class="controls__note">Needs System administrator or Omnichannel administrator. After opening the template, choose and save the inbound-profile scope; in Build playbook, select the overflow action for each condition.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Customer support › Conversation Orchestration › Prompt gallery › Overflow handling › Handle overflow for direct inbound call <a href="https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH /msdyn_ccuserprompts(msdyn_ccuserpromptid)</code> <a href="https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which representatives have a direct inward dialing inbound profile</strong><br><small>User</small><br><small class="controls__note">Prerequisite to the playbook; sets no overflow action. Needs a geographic personal number assigned to the representative. The route opens the profile list: select New profile and type Inbound, or select a profile and Edit.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Support experience › Productivity › Outbound and inbound profiles (Manage) <a href="https://learn.microsoft.com/dynamics365/customer-service/administer/configure-outbound-inbound-profiles" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The playbook is the control: it decides the action for each of the three conditions and which inbound profiles it covers. The roles required are System administrator or Omnichannel administrator. Learn describes no separate tenant-wide switch for this scenario; the default described is voicemail until a playbook is published.
+The playbook is the control: it decides the action for each of the three conditions and which inbound profiles it covers. The roles required are System administrator or Omnichannel administrator. Learn describes no separate tenant-wide switch for this scenario; without a playbook, Learn says unanswered direct calls usually go to voicemail.
 
-The inbound profiles row is the control that decides which representatives have a direct number at all. It does not set any overflow action. Voicemail routing, queues and credit capacity are configured on other Learn pages linked in the sources; spend is controlled through the billing plan, not through the playbook.
+The API row is the Dataverse Web API Update operation on the CC User Prompt table, which Learn's migration steps name as the playbook component. The request body can update msdyn_prompt, the stored playbook prompt. This reference does not document executing publication or the format of inbound-profile scope lists.
+
+Inbound profiles configure call behaviour for representatives whose personal numbers have already been assigned; they do not assign representatives their direct numbers. That row sets no overflow action. Voicemail routing, queues and credit capacity are configured on other Learn pages linked in the sources; spend is controlled through the billing plan, not through the playbook.
 
 ## Open questions
 
@@ -171,7 +181,7 @@ The inbound profiles row is the control that decides which representatives have 
 - How many Copilot credits does publishing a direct-call playbook consume, and does any exemption apply? Watch the conversation orchestration page.
 - Does the playbook's transfer to external number action depend on the inbound profile's **Call transfer to external phone number** setting, which Learn says must be on to use call forwarding for inbound profiles?
 - Which Dynamics 365 licence does conversation orchestration require? Learn refers readers to the Licensing Guide without naming it.
-- Will Microsoft document an API for playbooks or inbound profiles? Watch the Dataverse table reference and the conversation orchestration page.
+- Will Microsoft document an operation to publish a direct-call playbook through an API? Watch the CC User Prompt table reference and the conversation orchestration page.
 
 <!-- rationale
 risk: Medium. A published playbook can transfer a caller to another queue or an external number, or end the call, and Learn says the language-model conversion of a playbook might not capture the intended logic.
@@ -179,14 +189,10 @@ cost: Variable. Learn says conversation orchestration consumes Copilot credits w
 impact: Low. Administrators who build the playbook, representatives with a direct number and their callers notice it; a draft playbook is not active, so nothing changes until one is published.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls table; Open questions: API / absence: Microsoft has not documented an API for the playbook control. | Found: Update ... PATCH /msdyn_ccuserprompts(msdyn_ccuserpromptid) ... Writable columns/attributes ... msdyn_exclusionlist ... msdyn_inclusionlist ... msdyn_prompt | Fix: Replace the blanket API absence with rest call 'PATCH /msdyn_ccuserprompts(msdyn_ccuserpromptid)' and docs https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt. Note: 'The request body can update msdyn_prompt, the stored playbook prompt. This reference does not document executing publication or the format of inbound-profile scope lists.' The orchestration page explicitly identifies CC User Prompt as the playbook component in its migration instructions. Replace the API open question with 'Will Microsoft document an operation to publish a direct-call playbook through an API?' Do not claim that changing a status column publishes a playbook. | Source: https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt
-- [contradicted, blocker] Governance controls: inbound profiles decide which representatives have a direct number at all / applicability: The inbound profiles row decides which representatives have a direct number at all. | Found: To create inbound profiles, you have configured and enabled a geographic type of personal number and assigned to the representative via the Omnichannel tab in user settings. | Fix: Replace that sentence with: 'Inbound profiles configure call behaviour for representatives whose personal numbers have already been assigned; they do not assign representatives their direct numbers.' Keep the row's narrower description about inbound profiles, not number entitlement. | Source: https://learn.microsoft.com/dynamics365/customer-service/administer/configure-outbound-inbound-profiles
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The direct-call template is reached in Copilot Service admin center through Customer support > Conversation Orchestration > Prompt gallery > Overflow handling > Handle overflow for direct inbound call. | Found: In the site map of Copilot Service admin center, in Customer support, select Conversation Orchestration. Select Prompt gallery, and select Overflow handling > Handle overflow for direct inbound call. | Fix: The route correctly reaches the template but stops before its settings. Keep the route and add to the note: 'After opening the template, choose and save the inbound-profile scope; in Build playbook, select the overflow action for each condition.' | Source: https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: Support experience > Productivity > Outbound and inbound profiles in Copilot Service admin center reaches the profile management page. | Found: In the Copilot Service admin center site map, select Productivity in Support experience. On the Productivity page, select Manage for Outbound and inbound profiles. | Fix: Print 'Support experience > Productivity > Outbound and inbound profiles (Manage)' to retain the documented button label, and clarify in the note: 'This route opens the profile list; select New profile and the Inbound profile type to create an inbound profile, or select an existing profile and Edit.' | Source: https://learn.microsoft.com/dynamics365/customer-service/administer/configure-outbound-inbound-profiles
-- [supported, minor] Why it matters; Governance controls: default voicemail until publication / default: Learn describes voicemail as the existing fallback before a direct-call playbook is configured. | Found: By default, if a representative doesn't answer these calls because they're busy or away, the call usually goes to voicemail. | Fix: Preserve 'usually' in the shorter default descriptions in Why it matters and Governance controls: 'Without a playbook, Learn says unanswered direct calls usually go to voicemail.' The cited voicemail page further says 'and voicemail is configured'; do not imply voicemail is guaranteed without configuration. | Source: https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist asks readers to check billing setup, queues and voicemail-queue membership, but the table contains only playbook and inbound-profile rows. | Found: confirm consumption-based billing ... Check that a backup queue exists ... representatives are in the default individual voicemail queue ... controls: overflow action; inbound profile | Fix: The Before rollout billing-plan check and the backup-queue, external-number and voicemail-membership checks have no corresponding control rows. Remove those checklist bullets; retain their already sourced prerequisites and explanations in Cost and licensing, Scope and Risk assessment. Do not add rows as part of this correction.
+- [supported, minor] controls[0].ui; Governance controls table; What's changing / admin-path: Copilot Service admin center > Customer support > Conversation Orchestration > Prompt gallery > Overflow handling > Handle overflow for direct inbound call reaches the playbook template. | Found: In the site map of Copilot Service admin center, in Customer support, select Conversation Orchestration. Select Prompt gallery, and select Overflow handling > Handle overflow for direct inbound call. | Fix: Extend controls[0].ui.path and the rendered path to 'Customer support > Conversation Orchestration > Prompt gallery > Overflow handling > Handle overflow for direct inbound call > Build playbook > overflow action'. Keep the note explaining that the inbound-profile scope must first be selected and saved. | Source: https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow
+- [supported, minor] controls[0].api; Governance controls table and prose / command: PATCH /msdyn_ccuserprompts(msdyn_ccuserpromptid) is the Dataverse Update operation for changing the stored playbook prompt. | Found: `Update`Event: True | `PATCH` /msdyn_ccuserprompts(*msdyn_ccuserpromptid*)See Update | Fix: Keep the call and add to controls[0].note and its rendered note: 'The request body sets msdyn_prompt, the stored playbook prompt. This reference does not document executing publication or the format of inbound-profile scope lists.' The property is currently named only in the prose below the table. | Source: https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Copilot Service admin center > Support experience > Productivity > Outbound and inbound profiles (Manage) reaches the inbound-profile list. | Found: In the Copilot Service admin center site map, select Productivity in Support experience. On the Productivity page, select Manage for Outbound and inbound profiles. | Fix: Extend controls[1].ui.path and the rendered path to 'Support experience > Productivity > Outbound and inbound profiles (Manage) > New profile > Create new profile > Inbound > Phone number > Number'. Retain the note that the personal number must already be assigned and that existing profiles can instead be selected and edited. | Source: https://learn.microsoft.com/dynamics365/customer-service/administer/configure-outbound-inbound-profiles
 -->

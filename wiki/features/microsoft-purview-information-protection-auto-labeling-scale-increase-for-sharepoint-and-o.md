@@ -15,7 +15,7 @@ risk: "medium"
 cost: "low"
 impact: "low"
 defaultState: "on"
-action: "prepare"
+action: "act-now"
 licensing:
   model: "included"
   notes: "Microsoft Learn lists service-side auto-labeling (SharePoint, OneDrive, Exchange) as included with Microsoft 365 E5, E5 Compliance, E5 Information Protection & Governance and Azure Information Protection Premium P2. No charge specific to the higher ceiling is documented."
@@ -25,8 +25,14 @@ sources:
   - title: "Microsoft 365 Roadmap 567890"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=567890"
     kind: "roadmap"
+  - title: "Microsoft 365 Roadmap 571309"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=571309"
+    kind: "roadmap"
   - title: "Automatically apply a sensitivity label to Microsoft 365 data"
     url: "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically"
+    kind: "learn"
+  - title: "Encryption based on sensitivity labels"
+    url: "https://learn.microsoft.com/purview/encryption-sensitivity-labels"
     kind: "learn"
   - title: "Set-AutoSensitivityLabelPolicy"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-autosensitivitylabelpolicy"
@@ -96,19 +102,23 @@ changes:
     note: "First briefing for the Worldwide item: the auto-labeling ceiling for SharePoint and OneDrive rises to up to 500,000 files per tenant per day, with Learn's caveat that it is not a guaranteed rate."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 83 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Correction: removed a sentence that wrongly said every control acts on individual policies, set action to act-now, and added two source links."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 88 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 83
-  confirmed: 80
+  claims: 88
+  confirmed: 86
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "98350cc60e55adae88a996236a0ebbff"
+  contradicted: 2
+  attempts: 0
+  hash: "45aaa6e1b6bf166cfa940036ce06cad9"
 ---
 
 ## What's changing
@@ -188,7 +198,7 @@ Learn lists these related conditions for SharePoint and OneDrive auto-labeling: 
 </tbody>
 </table>
 
-These controls act on individual policies; the 500,000 figure is described by Learn as a tenant-wide ceiling in aggregate across all auto-labeling policies, so nothing in the table sets the ceiling itself.
+The 500,000 figure is described by Learn as a tenant-wide ceiling in aggregate across all auto-labeling policies, so nothing in the table sets the ceiling itself.
 
 Roles: Learn says turning a policy from Ready to turn on to On needs Compliance Administrator or Compliance Data Administrator, and viewing file contents in simulation source view needs Data Classification Content Viewer. Turning auditing on or off needs the Audit Logs role in Exchange Online. The Activity explorer export runs in Security & Compliance PowerShell and needs permissions assigned there; it reports on up to 30 days of data. The PowerShell mode value TestWithoutNotifications is the test (simulation) mode and Disable switches a policy off.
 
@@ -205,13 +215,9 @@ cost: Low. Auto-labeling policies are listed as included with E5-tier licences, 
 impact: Low. Only tenants with active auto-labeling policies for SharePoint or OneDrive are affected, and Microsoft's notice MC1461154 says no end-user experience changes are expected. Compliance admins will see faster labeling.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: paragraph after table / consistency: All controls in the table act on individual policies. | Found: These controls act on individual policies; ... Whether the unified audit log records activity (required for simulation) ... scope: "tenant" | Fix: Delete 'These controls act on individual policies;' from the paragraph after the table and capitalize the following 'The'. The table already correctly identifies auditing as tenant-scoped.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure / behaviour: Label-applied encryption can make files unreadable to people without the required rights. | Found: When a document, email, or meeting invite is encrypted, access to the content is restricted, so that it: ... Can be decrypted only by users authorized by the label's encryption settings. | Fix: Add https://learn.microsoft.com/purview/encryption-sensitivity-labels to sources for the statement that encryption restricts access to authorized users. | Source: https://learn.microsoft.com/purview/encryption-sensitivity-labels
-- [supported, minor] What's changing; Scope; Open questions / record: Roadmap item 571309 describes the same scale increase for GCC, GCC High and DoD. | Found: 571309: "clouds": [ "GCC", "GCC High", "DoD" ]; "description": "We are increasing the maximum auto-labeling capacity for SharePoint and OneDrive from 100,000 up to 500,000 files per tenant per day. | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=571309 to sources for the government-cloud item's scope, status and target date.
-- [contradicted, minor] front matter: action / consistency: The prepare action rating matches the scale despite a launched automatic change, medium risk and policy decisions to take. | Found: status: "launched"; risk: "medium"; defaultState: "on"; action: "prepare". Governance guidance: decide whether any should stay in simulation until its results are reviewed. | Fix: Set action to 'act-now': the assessment scale assigns it to a launched change that reaches data automatically, has medium-or-higher risk or cost, and has controls or decisions for administrators.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: Every control the governance checklist asks administrators to check is represented in the controls table. | Found: confirm each one's SharePoint and OneDrive locations and conditions ... Check every label ... Assign permissions now ... Never. Table rows cover locations, policy mode, monitoring and auditing. | Fix: The Before rollout checks of policy conditions and label encryption settings have no corresponding controls-table rows; identify these checklist-to-table omissions. Do not add rows as part of this correction.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks administrators to check policy conditions, but the controls table only documents location selection for policy scope. | Found: confirm each one's SharePoint and OneDrive locations and conditions still match your intent. / Which SharePoint and OneDrive locations an auto-labeling policy covers | Fix: The first Before rollout checklist step's instruction to check policy conditions has no corresponding controls-table entry; the existing first row covers locations, not conditions.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist asks administrators to check label-encryption settings, but no controls-table row represents those settings. | Found: Check every label used by a SharePoint or OneDrive policy: those that apply encryption need Assign permissions now and User access to content expires set to Never. | Fix: The third Before rollout checklist step, checking Assign permissions now and User access to content expires on sensitivity labels, has no corresponding controls-table entry.
 -->

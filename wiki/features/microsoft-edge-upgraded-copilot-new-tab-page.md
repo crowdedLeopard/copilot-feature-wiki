@@ -12,7 +12,7 @@ platforms: ["Web"]
 targetDate: "November CY2026"
 previewDate: "September CY2026"
 risk: "medium"
-cost: "low"
+cost: "medium"
 impact: "low"
 defaultState: "off"
 action: "review"
@@ -39,6 +39,9 @@ sources:
     kind: "learn"
   - title: "Configuring Copilot Features"
     url: "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features"
+    kind: "learn"
+  - title: "Microsoft Copilot service description"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot"
     kind: "learn"
 videos: []
 related: ["microsoft-edge-top-sites-in-edge-search-bar","microsoft-edge-ask-copilot-about-an-image","microsoft-edge-rewrite-by-copilot-in-edge-is-being-upgraded-to-include-enterprise-data-pro"]
@@ -74,19 +77,23 @@ changes:
     note: "First briefing: the Copilot new tab page is off by default, controlled by CopilotNewTabPageEnabled, and Microsoft's notice says users need a Microsoft 365 Copilot licence."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 80 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Correction: cost rating raised to medium because users need a Microsoft 365 Copilot add-on licence; removed two checklist steps that had no controls-table row."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 83 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 80
-  confirmed: 78
+  claims: 83
+  confirmed: 83
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "b1164fd5162a987a385d90ee996c25ba"
+  contradicted: 0
+  attempts: 0
+  hash: "512dfd32c01a9f0911ad11db8a7940a4"
 ---
 
 ## What's changing
@@ -127,7 +134,7 @@ If nobody acts and the policy stays unconfigured, the policy page says the page 
 
 Microsoft's notice MC1440972 says that to access this experience users must have a Microsoft 365 Copilot licence, and recommends verifying that affected users have one before enabling. The `CopilotNewTabPageEnabled` policy page words it differently: users without a Microsoft 365 Copilot licence might experience limited relevance in Copilot prompt card content. The two statements are reported as Microsoft gives them; the pages do not reconcile them.
 
-The Learn configure page lists a Microsoft Entra group as its only prerequisite and names no licence there. It publishes no separate price or meter for the new tab page, and a charge for the page is not stated. For tenants already licensed, the main cost is administrator time to choose groups, test and brief users. For tenants without licences for the target users, the cost is the Microsoft 365 Copilot licence Microsoft's notice names; its price is outside these pages.
+The Learn configure page lists a Microsoft Entra group as its only prerequisite and names no licence there. It publishes no separate price or meter for the new tab page, and a charge for the page is not stated. The [Microsoft 365 Copilot service description](https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot) says Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites. For tenants without licences for the target users, enabling the page can therefore require the Microsoft 365 Copilot add-on licence Microsoft's notice names; its price is outside these pages. For tenants already licensed, the cost is administrator time to choose groups, test and brief users.
 
 ## Scope
 
@@ -145,11 +152,9 @@ The Learn configure page lists a Microsoft Entra group as its only prerequisite 
 - Decide which Microsoft Entra security groups should receive the page, and create them in the Microsoft 365 admin center if they do not exist; the Learn page lists the group as the prerequisite.
 - Confirm the target users hold a Microsoft 365 Copilot licence, as MC1440972 asks.
 - Assess whether work cards surfacing files and calendar events fit your AI governance and compliance requirements, as the notice recommends.
-- Check the new tab page policies you already set (quick links, app launcher, background types) against the supported list on the Learn page.
 
 ### At rollout
 - Enable the Copilot new tab page in the Edge management service (Copilot tab) and assign it to the chosen groups, signing in with a Global admin or Edge admin account.
-- Review the other Copilot settings that the same step sets to Enabled, and adjust each one that you do not want.
 - Decide whether the `ConfigureNTPFeedTabVisibility` policy should limit the Discover or Work feed tabs for your users.
 - Notify affected users and update guidance, as MC1440972 recommends.
 
@@ -184,15 +189,12 @@ The Learn FAQ describes work cards and the experience itself as user-level setti
 
 <!-- rationale
 risk: Medium. Once on, work cards can surface files and calendar events on each new tab. It is off by default, but when the policy is not configured users can turn it on themselves.
-cost: Low. Microsoft's notice says users need a Microsoft 365 Copilot licence; no separate price or meter for the page is published, so the known cost is admin time and communications.
+cost: Medium. Microsoft's notice says target users need a Microsoft 365 Copilot licence, so enabling for users who are not already licensed can require add-on licences. For already licensed users, rollout adds administrator time and communications.
 impact: Low. Only users for whom the page is enabled see it; everyone else keeps the existing Edge new tab page, so the people who notice are those in the groups you target.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: cost; Cost and licensing; rationale: cost / consistency: The low cost rating and indirect-cost-only rationale agree with the page's identified licence dependency. | Found: cost: "low"; "the known cost is admin time and communications"; "For tenants without licences for the target users, the cost is the Microsoft 365 Copilot licence Microsoft's notice names" | Fix: Set cost to medium. Replace the cost rationale with: "Medium. Microsoft's notice says target users need a Microsoft 365 Copilot licence, so enabling for users who are not already licensed can require add-on licences. For already licensed users, rollout adds administrator time and communications."
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model / licensing: The licensing model is add-on, referring to the Microsoft 365 Copilot licence named in the notice. | Found: Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites. | Fix: Add https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot to sources to support the add-on classification. | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot
-- [contradicted, minor] Governance guidance: Before rollout and At rollout; Governance controls / consistency: Every control that the governance checklist asks administrators to check or adjust has a controls-table row. | Found: "Check the new tab page policies you already set (quick links, app launcher, background types)"; "Review the other Copilot settings ... and adjust each one"; the table contains only availability and feed visibility. | Fix: The Before rollout step about quick links, app launcher and background types, and the At rollout step about adjusting other recommended Copilot settings, name controls without table rows. Remove these two checklist bullets; retain the existing explanatory prose.
+- [supported, minor] front matter: licensing.model; Cost and licensing; rationale: cost / licensing: The service description calls Microsoft 365 Copilot an add-on plan with licensing prerequisites, supporting the briefing's add-on model. | Found: Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites. | Fix: Keep the cited service-description statement and add: 'Microsoft's separate licensing page also says Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible plans.' Cite https://learn.microsoft.com/copilot/plan/copilot-license-options, which states 'Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans.' | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot
 -->

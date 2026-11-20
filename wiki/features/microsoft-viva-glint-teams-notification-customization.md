@@ -71,19 +71,23 @@ changes:
     note: "First briefing: the roadmap plans editable Teams survey notifications for Viva Glint, but Learn still says edits are not supported."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 51 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected how the Viva Glint app is installed for Teams users (Manage apps or setup policies) and removed three checklist items that had no controls-table row."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 61 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 51
-  confirmed: 49
+  claims: 61
+  confirmed: 60
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "df5993c7b1b1d02002eec8dbc3fdda22"
+  contradicted: 1
+  attempts: 0
+  hash: "d8bbaf23f2dabc8de83fc481e8a0edc5"
 ---
 
 ## What's changing
@@ -110,7 +114,7 @@ Microsoft has not stated what happens on arrival, and no source says existing Te
 
 **Security & identity**
 
-- No change is described. Teams delivery depends on the Viva Glint app being installed for users through a Teams app setup policy, which a Microsoft 365 admin sets in the Teams admin center. Wording that looks like a legitimate survey invitation is something recipients will act on, so route any custom wording through your internal communications review.
+- No change is described. The Viva Glint app must be installed for recipients. For central installation, organisations using app-centric management use Manage apps; other organisations can use Teams app setup policies. Wording that looks like a legitimate survey invitation is something recipients will act on, so route any custom wording through your internal communications review.
 
 **Autonomy & actions**
 
@@ -141,8 +145,6 @@ Which Viva Glint role edits notification content is not stated for this feature.
 ### Before rollout
 
 - Check whether Teams is switched on in Viva Glint General Settings and for which survey programs, using the first two rows of the controls table.
-- Ask a Microsoft 365 admin to confirm the Viva Glint app is installed for your survey audience through a Teams app setup policy, and that the audience has Teams licences.
-- Review each user's survey language in Viva Glint, since Teams text follows it and unsupported languages fall back to English (en-US).
 - Agree who in communications will write and approve the title, message and button label for each survey language you use.
 
 ### At rollout
@@ -154,7 +156,6 @@ Which Viva Glint role edits notification content is not stated for this feature.
 ### After rollout
 
 - Compare a delivered Teams notification with the email for the same survey to check that title, message and button wording match.
-- Review program-level and cycle-level notification settings before each new cycle goes live.
 - Record any wording that Teams does not accept, and feed it back to your communications owner.
 
 ## Governance controls
@@ -171,7 +172,7 @@ Which Viva Glint role edits notification content is not stated for this feature.
 
 Learn documents the Viva Glint app switches for Teams as notification options at two levels: the organisation (General Settings) and each survey program (Communications). Learn describes no switch for the customisation itself, because the page for this feature is not published yet. Whether the new editing sits under the same Communications section is not stated.
 
-Installing the Viva Glint app for Teams users is a Teams admin center action under Teams apps > Setup policies, as the [Teams notifications page](https://learn.microsoft.com/viva/glint/setup/glint-teams) describes. The [setup policies page](https://learn.microsoft.com/microsoftteams/teams-app-setup-policies) says a Teams Administrator or an admin with a higher role can manage these policies.
+For central installation of the Viva Glint app, organisations using app-centric management use the Manage apps page; other organisations can use Teams app setup policies in the Teams admin center (Teams apps > Setup policies), as the [Teams notifications page](https://learn.microsoft.com/viva/glint/setup/glint-teams) and the [setup policies page](https://learn.microsoft.com/microsoftteams/teams-app-setup-policies) describe. The setup policies page says a Teams Administrator or an admin with a higher role can manage these policies.
 
 Microsoft Learn documents no API for these Viva Glint settings at the time of writing (November 2026), so both rows are configured in the Viva Glint app.
 
@@ -188,10 +189,8 @@ cost: Low. Viva Glint needs a Viva Suite or Viva Glint subscription, and Microso
 impact: Medium. Recipients of surveys that have Teams notifications enabled would see the new wording, and the admins who run those survey programs do the editing.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity; Governance guidance; Governance controls / applicability: Teams delivery depends on installing Viva Glint through a Teams app setup policy. | Found: If your organization uses app centric management functionality, then use Manage apps page to install agents and apps for users. Otherwise, continue to preinstall agents and apps using setup policies. | Fix: Replace the mandatory setup-policy wording with 'The Viva Glint app must be installed for recipients. For central installation, organisations using app-centric management use Manage apps; other organisations can use Teams app setup policies.' Apply that qualification to the installation checklist and Governance controls prose. Cite https://learn.microsoft.com/microsoftteams/teams-app-setup-policies. Do not describe a setup policy as a delivery prerequisite: https://learn.microsoft.com/viva/glint/setup/glint-teams also documents individual installation. | Source: https://learn.microsoft.com/microsoftteams/teams-app-setup-policies
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance; Governance controls table / consistency: The checklist asks readers to review app installation, user survey languages and program/cycle notification settings without corresponding controls-table rows. | Found: Checklist: 'confirm the Viva Glint app is installed'; 'Review each user's survey language'; 'Review program-level and cycle-level notification settings'. The table contains only the organisation-level Teams toggle and survey-program Teams channel toggle. | Fix: Remove the checklist bullets asking readers to confirm app installation, review each user's survey language, and review program-level and cycle-level notification settings. These controls have no table rows; retain the existing explanatory prose.
+- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The checklist tells readers to use the notification preview, but neither controls-table row covers that action. | Found: Preview the invite, reminder and results notifications on the Teams tab of the Configure Notifications preview pane. Table rows: Whether Microsoft Teams is a notification option for the organisation; Whether a survey program sends invites and reminders in Teams. | Fix: Remove the At rollout checklist bullet beginning 'Preview the invite, reminder and results notifications'; it has no corresponding controls-table row.
 -->

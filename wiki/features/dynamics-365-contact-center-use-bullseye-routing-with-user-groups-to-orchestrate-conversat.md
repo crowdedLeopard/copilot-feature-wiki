@@ -34,6 +34,15 @@ sources:
   - title: "Responsible AI FAQ for conversation orchestration"
     url: "https://learn.microsoft.com/dynamics365/contact-center/implement/conversation-orchestration-rai-faq"
     kind: "learn"
+  - title: "CC User Prompt (msdyn_ccuserprompt) table/entity reference"
+    url: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt"
+    kind: "learn"
+  - title: "Agent Group (msdyn_agentgroup) table/entity reference"
+    url: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_agentgroup"
+    kind: "learn"
+  - title: "Queue User Group Membership (msdyn_queueusergroupmembership) table/entity reference"
+    url: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_queueusergroupmembership"
+    kind: "learn"
 videos: []
 related: ["dynamics-365-contact-center-unified-routing-orchestrate-conversation-distribution-with-nat","copilot-credits"]
 controls:
@@ -41,26 +50,35 @@ controls:
     scope: "environment"
     ui:
       surface: "Copilot Service admin center"
-      path: "Customer support > Conversation Orchestration > Prompt gallery"
+      path: "Customer support > Conversation Orchestration > Prompt gallery > scenario category > Bullseye routing"
       docs: "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration"
-    api: null
-    note: "Select the Bullseye routing template, set levels and wait times, then publish. Requires System administrator or Omnichannel administrator role; publishing consumes Copilot credits."
+    api:
+      kind: "rest"
+      call: "POST /msdyn_ccuserprompts"
+      docs: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt"
+    note: "Set levels and wait times, then publish (System administrator or Omnichannel administrator role; publishing uses Copilot credits). The API creates the CC User Prompt record; its reference documents no publish operation."
   - governs: "User groups that form the bullseye levels"
     scope: "group"
     ui:
       surface: "Copilot Service admin center"
-      path: "Customer support > User management > User groups > Manage"
+      path: "Customer support > User management > User groups > Manage > New"
       docs: "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing"
-    api: null
-    note: "Select New to create a group with members and queues. Queue membership comes through the user groups."
+    api:
+      kind: "rest"
+      call: "POST /msdyn_agentgroups"
+      docs: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_agentgroup"
+    note: "Select New to create a group with members and queues; queue membership comes through the user groups. The API creates the group record (msdyn_name, msdyn_description), not the complete member-and-queue setup."
   - governs: "Editing or deleting a published playbook"
     scope: "environment"
     ui:
       surface: "Copilot Service admin center"
-      path: "Customer support > Conversation Orchestration > All playbooks"
+      path: "Customer support > Conversation Orchestration > All playbooks > playbook > Edit"
       docs: "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration"
-    api: null
-    note: "Deleting an active playbook stops conversation orchestration for the corresponding queue immediately. Learn's delete steps name the Playbook tab."
+    api:
+      kind: "rest"
+      call: "DELETE /msdyn_ccuserprompts(<msdyn_ccuserpromptid>)"
+      docs: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt"
+    note: "The API deletes the CC User Prompt record. Learn's UI delete steps name the Playbook tab; deleting an active playbook stops conversation orchestration for the corresponding queue immediately."
 confidence: "high"
 created: "2026-11-20"
 updated: "2026-11-20"
@@ -70,19 +88,23 @@ changes:
     note: "First briefing for this item: bullseye routing as a Contact Center playbook template, with its Copilot credit trigger and admin-centre controls."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 66 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected: added the documented Dataverse create and delete calls for playbooks and the create call for user groups, fixed the wait-time rule, and trimmed the risk rationale."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 66
-  confirmed: 60
-  unconfirmed: 1
-  contradicted: 5
-  attempts: 1
-  hash: "b4a8cb473ba09520c51a75c34ccfd2a9"
+  claims: 77
+  confirmed: 76
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "63f1ba2ee80bd91219a42077451065af"
 ---
 
 ## What's changing
@@ -148,7 +170,7 @@ Learn lists these prerequisites for conversation orchestration: the System admin
 
 ### At rollout
 
-- Create the playbook from the **Bullseye routing** template, choose the channel and queues, and set level wait times; remember the 30-second minimum and the 10-second increment between levels.
+- Create the playbook from the **Bullseye routing** template, choose the channel and queues, and set level wait times; the minimum wait time is 30 seconds except that Level 1 also supports 0 seconds, and a later level can use the same wait time as the preceding level or increase it by at least 10 seconds.
 - Save as a draft, review the validation warnings, then publish; budget for the Copilot credits consumed at publish.
 - Check that no other active bullseye routing playbook exists for the same queue.
 
@@ -156,7 +178,7 @@ Learn lists these prerequisites for conversation orchestration: the System admin
 
 - Test the published playbook against real queue behaviour, because the language-model conversion can deviate from the intended logic.
 - Review diagnostics with the custom query Learn references.
-- Edit or delete the playbook from the All playbooks tab when the group structure changes; deleting an active playbook stops orchestration for the queue immediately.
+- Edit from the All playbooks tab when the group structure changes; Learn documents deletion from the Playbook tab using the playbook actions menu > Delete, and deleting an active playbook stops orchestration for the queue immediately.
 
 ## Governance controls
 
@@ -165,13 +187,15 @@ Learn lists these prerequisites for conversation orchestration: the System admin
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Creating and publishing a bullseye routing playbook for chosen queues</strong><br><small>Environment</small><br><small class="controls__note">Select the Bullseye routing template, set levels and wait times, then publish. Requires System administrator or Omnichannel administrator role; publishing consumes Copilot credits.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Customer support › Conversation Orchestration › Prompt gallery <a href="https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>User groups that form the bullseye levels</strong><br><small>Group</small><br><small class="controls__note">Select New to create a group with members and queues. Queue membership comes through the user groups.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Customer support › User management › User groups › Manage <a href="https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Editing or deleting a published playbook</strong><br><small>Environment</small><br><small class="controls__note">Deleting an active playbook stops conversation orchestration for the corresponding queue immediately. Learn's delete steps name the Playbook tab.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Customer support › Conversation Orchestration › All playbooks <a href="https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Creating and publishing a bullseye routing playbook for chosen queues</strong><br><small>Environment</small><br><small class="controls__note">Set levels and wait times, then publish (System administrator or Omnichannel administrator role; publishing uses Copilot credits). The API creates the CC User Prompt record; its reference documents no publish operation.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Customer support › Conversation Orchestration › Prompt gallery › scenario category › Bullseye routing <a href="https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST /msdyn_ccuserprompts</code> <a href="https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>User groups that form the bullseye levels</strong><br><small>Group</small><br><small class="controls__note">Select New to create a group with members and queues; queue membership comes through the user groups. The API creates the group record (msdyn_name, msdyn_description), not the complete member-and-queue setup.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Customer support › User management › User groups › Manage › New <a href="https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>POST /msdyn_agentgroups</code> <a href="https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_agentgroup" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Editing or deleting a published playbook</strong><br><small>Environment</small><br><small class="controls__note">The API deletes the CC User Prompt record. Learn's UI delete steps name the Playbook tab; deleting an active playbook stops conversation orchestration for the corresponding queue immediately.</small></td><td data-label="Admin UI"><strong>Copilot Service admin center</strong><br>Customer support › Conversation Orchestration › All playbooks › playbook › Edit <a href="https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>DELETE /msdyn_ccuserprompts(&lt;msdyn_ccuserpromptid&gt;)</code> <a href="https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-Learn documents playbook creation, editing and deletion in Copilot Service admin center, and user group creation there. Microsoft Learn documents no API for playbooks or for user groups at the time of writing (November 2026), so both are admin-centre actions.
+Learn documents playbook creation, editing and deletion in Copilot Service admin center, and user group creation there. Microsoft also documents `POST /msdyn_ccuserprompts` to create CC User Prompt records, and the conversation orchestration article names CC User Prompt as the table to add to a solution to migrate playbooks. The table reference does not establish a publishing operation at the time of writing (November 2026).
+
+Microsoft documents `POST /msdyn_agentgroups` to create Agent Group records, which the Queue User Group Membership reference identifies as the target of its User Group lookup. That call creates the group record; it is not the complete member-and-queue setup.
 
 User groups feed the playbook: the playbook only lists user groups common to the queues you select, so create or adjust groups before the playbook. The Responsible AI FAQ for conversation orchestration says administrators can delete saved or published playbooks and disable the feature toggle to turn off the feature; Microsoft Learn gives no path to that toggle at the time of writing (November 2026).
 
@@ -179,26 +203,18 @@ User groups feed the playbook: the playbook only lists user groups common to the
 
 - What credit rate applies to publishing a bullseye routing playbook, and where will it appear? Watch the conversation orchestration article and the Dynamics 365 Licensing Guide.
 - Which Dynamics 365 Contact Center licences cover conversation orchestration? Learn points to the Licensing Guide without naming them.
-- Does Microsoft plan an API for creating or changing playbooks and user groups? Watch Microsoft Learn's Dynamics 365 developer reference.
+- Which API operation publishes a playbook, and which operations complete user group member and queue setup beyond creating the group record? Watch Microsoft Learn's Dynamics 365 developer reference.
 - Where is the conversation orchestration feature toggle that the Responsible AI FAQ mentions? Watch the conversation orchestration article.
 
 <!-- rationale
-risk: Low. Bullseye routing is a playbook template that an administrator must create and publish per queue; it changes who receives conversations in those queues and reads no new organisational data.
+risk: Low. Bullseye routing is a playbook template that an administrator must create and publish per queue; it changes who receives conversations in those queues.
 cost: Variable. Learn says conversation orchestration consumes Copilot credits when a playbook is published, requires consumption-based billing and names Dynamics 365 licensing requirements; no credit rate for this scenario is published.
 impact: Low. Administrators configure it for chosen queues; representatives in the user groups and customers waiting in those queues notice the changed assignment order.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].api; Governance controls: API absence; Open questions / absence: Microsoft Learn documents no API for creating conversation orchestration playbooks. | Found: CC User Prompt (msdyn_ccuserprompt) ... Create ... POST /msdyn_ccuserprompts | Fix: Replace the blanket playbook API absence with 'Microsoft documents POST /msdyn_ccuserprompts to create CC User Prompt records; the conversation orchestration migration article identifies CC User Prompt as its playbook component. A publishing operation is not established by that table reference.' Cite https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt and the existing orchestration article. Keep controls[0].api null only for the combined create-and-publish operation, with a note narrowing the gap to publishing; remove the claim that playbooks are admin-centre-only. | Source: https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt
-- [contradicted, blocker] controls[1].api; Governance controls: API absence; Open questions / absence: Microsoft Learn documents no API for user groups. | Found: Agent Group (msdyn_agentgroup) ... Create ... POST /msdyn_agentgroups | Fix: Replace controls[1].api with kind 'rest', call 'POST /msdyn_agentgroups', docs 'https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_agentgroup'. Narrow its note to say this creates the group record, with msdyn_name and msdyn_description; it is not the complete member-and-queue setup. The Queue User Group Membership reference explicitly identifies its msdyn_usergroup lookup as 'User Group (Agent Group)' targeting msdyn_agentgroup. Remove the blanket no-user-group-API assertion and narrow the open question to complete membership setup. | Source: https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_agentgroup
-- [contradicted, blocker] controls[2].api; Governance controls: API absence / absence: Microsoft Learn documents no API for editing or deleting playbooks. | Found: Delete ... DELETE /msdyn_ccuserprompts(msdyn_ccuserpromptid) ... Update ... PATCH /msdyn_ccuserprompts(msdyn_ccuserpromptid) | Fix: Set controls[2].api to kind 'rest', call 'DELETE /msdyn_ccuserprompts(<msdyn_ccuserpromptid>)', docs 'https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt'. Note that this deletes the CC User Prompt record identified by the orchestration article as the playbook component; do not claim that generic record updates publish routing changes. Remove the broad no-playbook-API assertion. | Source: https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt
-- [contradicted, blocker] Governance guidance: At rollout / behaviour: Administrators should apply a 30-second minimum and a 10-second increment between levels. | Found: Sets the minimum wait time to at least 30 seconds. The next level wait time can be the same as the previous level or should increment by at least 10 seconds. Note that Level 1 also supports a 0 second wait time. | Fix: Replace 'remember the 30-second minimum and the 10-second increment between levels' with 'the minimum wait time is 30 seconds except that Level 1 also supports 0 seconds; a later level can use the same wait time as the preceding level or increase it by at least 10 seconds'. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The creation route is Copilot Service admin center > Customer support > Conversation Orchestration > Prompt gallery. | Found: In Copilot Service admin center, go to Customer support > Conversation Orchestration. ... On the Conversation Orchestration page, select Prompt gallery. | Fix: The route correctly reaches the template list but stops early. Extend it to 'Customer support > Conversation Orchestration > Prompt gallery > scenario category > Bullseye routing'; retain the note explaining levels and wait times and that Publish activates the playbook. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: User groups are managed in Copilot Service admin center > Customer support > User management > User groups > Manage. | Found: In the site map of Copilot Service admin center, under Customer support, select User management. ... Under User groups, select Manage. ... Select New. | Fix: For the creation action described by the note, extend the path to 'Customer support > User management > User groups > Manage > New'. Keep the existing note about members and queues. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing
-- [supported, minor] controls[2].ui; Governance guidance: After rollout; Governance controls table / admin-path: All playbooks under Customer support > Conversation Orchestration is the route to manage published playbooks. | Found: Go to the All playbooks tab in Conversation orchestration. ... Select the vertical ellipsis, and then select Edit. ... Delete a playbook: Go to the Playbook tab. | Fix: Extend the editing path to 'Customer support > Conversation Orchestration > All playbooks > playbook > Edit'. Retain the note that Learn's deletion procedure instead names the Playbook tab; change the After rollout sentence to 'Edit from All playbooks; Learn documents deletion from the Playbook tab using the playbook actions menu > Delete.' | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration
-- [unsupported, minor] rationale: risk / behaviour: Bullseye routing reads no new organisational data. | Found: Searched: '"bullseye routing" "data" "source"'. Read configure-bullseye-routing and conversation-orchestration-rai-faq; neither states that bullseye routing reads no new organisational data. | Fix: Remove 'and reads no new organisational data' from the risk rationale. The narrower body statement that the template article describes no new data source can remain.
-- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: The governance checklist names consumption-based billing and diagnostics checks without corresponding controls-table rows. | Found: Confirm the licensing and consumption-based billing prerequisites ... Review diagnostics with the custom query Learn references. ... Controls cover playbook creation, user groups, and playbook editing or deletion. | Fix: The Before rollout consumption-based billing check and After rollout diagnostics check have no corresponding controls-table rows. Do not invent paths or calls for them in this correction.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The creation route is Copilot Service admin center > Customer support > Conversation Orchestration > Prompt gallery > scenario category > Bullseye routing. | Found: On the Conversation Orchestration page, select Prompt gallery ... In the drop-down field, select a scenario category, and then select a playbook template ... Review your configuration for any validation warnings, and then select Publish to activate the playbook. | Fix: The printed route correctly reaches the playbook editor but stops before the row's publishing control. Append ' > Publish' to controls[0].ui.path and the corresponding rendered path; retain the note about setting levels and wait times first. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration
+- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The governance checklist directs readers to review diagnostics, but the controls table has no diagnostics entry. | Found: Review diagnostics with the custom query Learn references. / Controls table: creating and publishing a playbook; user groups; editing or deleting a playbook. | Fix: The After rollout diagnostics-review step has no corresponding controls row. Remove that checklist bullet, retaining the supported diagnostics statement in Risk assessment.
 -->

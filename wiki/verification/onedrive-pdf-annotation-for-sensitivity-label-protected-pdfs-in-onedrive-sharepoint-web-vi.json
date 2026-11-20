@@ -1,0 +1,649 @@
+{
+  "slug": "onedrive-pdf-annotation-for-sensitivity-label-protected-pdfs-in-onedrive-sharepoint-web-vi",
+  "roadmapId": 576276,
+  "title": "OneDrive and SharePoint: annotate sensitivity-label protected PDFs in the web viewer",
+  "status": "held",
+  "date": "2026-11-20",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-20",
+    "reasons": [
+      "1 blocking finding (claim 29)"
+    ]
+  },
+  "counts": {
+    "claims": 46,
+    "confirmed": 45,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "The roadmap facts and existing PowerShell controls are supported. Hold because the governance prose casts doubt on whether label encryption permissions govern the protected content, although Microsoft's documentation explicitly gives them that reach; the narrower question is which rights annotation requires.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Microsoft plans in-place annotation of sensitivity-label protected PDFs in the OneDrive and SharePoint web viewer.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We're enabling PDF annotation for sensitivity-label protected PDFs in OneDrive and SharePoint on the web.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The planned capability is for users with appropriate usage rights.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "users who have the appropriate usage rights can annotate these protected PDFs in place in their browser",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap says the sensitivity label is preserved when annotations are saved.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "while preserving the file's sensitivity label, encryption, and usage rights when changes are saved.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap says encryption is preserved when annotations are saved.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "while preserving the file's sensitivity label, encryption, and usage rights when changes are saved.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap says usage rights are preserved when annotations are saved.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "while preserving the file's sensitivity label, encryption, and usage rights when changes are saved.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: status; What's changing; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: targetDate; summary; What's changing",
+      "type": "record",
+      "claim": "January CY2027 is a roadmap target rather than a committed availability date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed release phases are General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The roadmap lists OneDrive and SharePoint as the products.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"OneDrive\", \"SharePoint\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: defaultState; What's changing; Why it matters; Scope; Open questions",
+      "type": "default",
+      "claim": "The default state of protected-PDF annotation is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive protected PDF annotation default admin; OneDrive SharePoint sensitivity label protected PDF annotation web viewer usage rights default prerequisites EnableSensitivityLabelforPDF. Read roadmap, OneDrive PDF features and SharePoint/OneDrive label support; none states this default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Scope; Open questions",
+      "type": "absence",
+      "claim": "A rollout schedule or feature-specific rollout mechanics beyond the roadmap fields are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: PDF annotation protected OneDrive SharePoint enable default rollout prerequisites usage rights. Read roadmap, OneDrive PDF features and SharePoint/OneDrive label support; no feature-specific rollout schedule was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "absence",
+      "claim": "Learn does not yet describe the planned protected-PDF annotation feature or its save implementation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive protected PDFs annotation usage rights; OneDrive PDF annotation sensitivity admin PowerShell. Read OneDrive PDF features, SharePoint/OneDrive label support and search excerpts; they describe general annotation or labeling, not this planned combination.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn documents annotation and markup tools for PDFs in OneDrive generally.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/onedrive-pdf-features",
+      "quote": "Annotation and markup tools | Easily collaborate and share feedback by using digital ink, highlighting text, drawing shapes, and inserting sticky notes directly onto your PDF files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Learn documents tenant-enabled processing of sensitivity-label encrypted PDFs in SharePoint and OneDrive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "Enabling this feature also results in SharePoint and OneDrive being able to process the contents of Office files and optionally, PDF documents that have been encrypted by using a sensitivity label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The PDF support setting is reached through Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels > Policies > Auto-labeling policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "Solutions > Information Protection > Sensitivity labels > Policies > Auto-labeling policies\nThen, if you see a message Protect PDFs with Auto-labeling, select this banner",
+      "severity": "minor",
+      "fix": "Append ' > Protect PDFs with Auto-labeling' to controls[0].ui.path and the rendered path. Retain the note that the banner is conditional. The cited page documents selecting that banner to turn on PDF protection."
+    },
+    {
+      "n": 19,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-SPOTenant -EnableSensitivityLabelforPDF $true enables the existing tenant PDF sensitivity-label support.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+      "quote": "-EnableSensitivityLabelforPDF\nAllows tenant admins to turn on support for PDFs with sensitivity labels for the following scenarios:\nTrue - Enables support for PDFs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].note; Cost and licensing; Governance controls",
+      "type": "role",
+      "claim": "Running Set-SPOTenant requires a SharePoint Online administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+      "quote": "You must be a SharePoint Online administrator to run the cmdlet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "default",
+      "claim": "The existing EnableSensitivityLabelforPDF setting defaults to False.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+      "quote": "False (default) - Disables support for PDFs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Microsoft 365 Multi-Geo requires connecting to each geo-location and running the PDF support command separately.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "For Microsoft 365 Multi-Geo: Similarly to the instructions to run the PowerShell command to enable support for sensitivity labels, you must connect to each of your geo-locations, and then run the command to enable support for PDFs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[0].note; Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "Learn does not state whether annotation specifically depends on EnableSensitivityLabelforPDF.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive SharePoint sensitivity label protected PDF annotation web viewer usage rights default prerequisites EnableSensitivityLabelforPDF. Read PDF support and Set-SPOTenant reference: their scenario lists do not name annotation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[1].ui; controls[1].note; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Sensitivity labels page in Microsoft Purview is the starting place for editing a label's Access control permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "Solutions > Information Protection > Sensitivity labels\nTo edit an existing label, select it, and then select the Edit label icon.",
+      "severity": "minor",
+      "fix": "The path stops at the correct labels list. Extend it to 'Solutions > Information Protection > Sensitivity labels > label > Edit label > Define the scope for this label > Files & other data assets > Choose protection settings for the types of items you selected > Control access > Access control > Configure access control settings > Assign permissions now'. The last steps are documented at the already-cited https://learn.microsoft.com/purview/encryption-sensitivity-labels; retain that source."
+    },
+    {
+      "n": 25,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-Label with Identity and EncryptionRightsDefinitions modifies the specified label's user rights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label",
+      "quote": "The EncryptionRightsDefinitions parameter specifies the rights users have when accessing protected. This parameter uses the syntax Identity1:Rights1,Rights2;Identity2:Rights3,Rights4.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[1].note; Governance controls table",
+      "type": "command",
+      "claim": "Set-Label runs in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label",
+      "quote": "This cmdlet is available only in Security & Compliance PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters; Risk assessment: Data exposure; controls[1].governs; Governance controls",
+      "type": "applicability",
+      "claim": "A label's assigned encryption permissions determine users' rights to the content that label encrypts, rather than being a setting for one annotated file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/encryption-sensitivity-labels",
+      "quote": "Assign permissions now, so that you determine exactly which users get which permissions to content with that label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[1].note; Governance controls table",
+      "type": "applicability",
+      "claim": "The correctly documented label encryption control is accompanied by the caveat 'Not stated to govern annotation.'",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/encryption-sensitivity-labels",
+      "quote": "When a document, email, or meeting invite is encrypted, access to the content is restricted, so that it:\nCan be decrypted only by users authorized by the label's encryption settings.",
+      "severity": "minor",
+      "fix": "Replace 'Not stated to govern annotation.' with 'The label encryption settings restrict access to the content; the rights required specifically for annotation are not yet documented.' Keep the existing Access control and PowerShell notes."
+    },
+    {
+      "n": 29,
+      "where": "Governance controls: paragraph after table",
+      "type": "applicability",
+      "claim": "Learn does not say that either existing control governs the annotation feature itself, so both should be treated only as preparation.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "When users download or access these files from SharePoint or OneDrive, the sensitivity label and any encryption settings from the label are enforced and remain with the file, wherever it's stored.",
+      "severity": "blocker",
+      "fix": "Replace 'Learn does not say that either governs the annotation feature itself, so treat them as ways to prepare the tenant rather than as a switch for it.' with 'Label encryption settings govern access to the protected content. Which usage rights annotation requires, and whether it depends on the PDF support setting in row 1, are not yet documented.' The cited SharePoint/OneDrive page and https://learn.microsoft.com/purview/encryption-sensitivity-labels establish this general reach without specifying the annotation rights."
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout; Open questions",
+      "type": "behaviour",
+      "claim": "Edit Content, Edit is a usage right distinct from Save.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/rights-management-usage-rights",
+      "quote": "Common name: Edit Content, Edit Encoding in policy: DOCEDIT | Allows the user to modify, rearrange, format, or sort the content inside the application, which includes Office on the web. It doesn't grant the right to save the edited copy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout; Open questions",
+      "type": "behaviour",
+      "claim": "Save is a separately defined usage right.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/rights-management-usage-rights",
+      "quote": "Common name: Save Encoding in policy: EDIT | Allows the user to save the item to the current location. In Office on the web, it also allows the user to edit the content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "The usage rights or combination of rights specifically required by this planned annotation capability are not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive protected PDFs annotation usage rights. Read usage-rights reference, OneDrive PDF features, SharePoint/OneDrive label support and roadmap. COMMENT is defined generally, but no source identifies the rights this planned web annotation capability requires.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "On-premises-key encryption does not gain normal service content processing from enabling label support.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "If encryption has been applied with an on-premises key ... the service behavior for processing the file contents doesn't change. So for these files, coauthoring, eDiscovery, data loss prevention, search, and other collaborative features won't work.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Double Key Encryption does not gain normal service content processing from enabling label support.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "SharePoint and OneDrive can't process encrypted files when the label that applied the encryption has either of the following configurations for encryption:\nUser access to content expires is set to a value other than Never.\nDouble Key Encryption is selected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "record",
+      "claim": "The roadmap does not specify whether annotation covers on-premises-key or Double Key Encryption PDFs.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "users who have the appropriate usage rights can annotate these protected PDFs in place in their browser while preserving the file's sensitivity label, encryption, and usage rights when changes are saved.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The cited SharePoint/OneDrive documentation says sensitivity labels do not support signed PDFs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+      "quote": "Sensitivity labels don't support signed PDFs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The per-user licensing model reflects Learn's documented per-user subscriptions for sensitivity labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+      "quote": "A number of different per-user subscriptions support sensitivity labels for Microsoft 365 apps and services",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Sensitivity-label licensing requirements depend on the features used.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+      "quote": "the licensing requirements for users depend on the features you use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Administrators also need a licence to manage sensitivity labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+      "quote": "Admins also need a license to manage sensitivity labels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Learn lists general OneDrive PDF annotation among free features for work or school accounts, without identifying sensitivity-label protected PDFs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/onedrive-pdf-features",
+      "quote": "The following table lists the PDF-based features in OneDrive that are available free of cost:\nFeature | Description | OneDrive for home | OneDrive for work/school\nAnnotation and markup tools",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A licence or rate specific to this planned protected-PDF annotation capability has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive protected PDF annotation sensitivity labels licensing price meter; PDF annotation sensitivity license meter. Read Get started with sensitivity labels, OneDrive PDF features and Purview service-description search excerpt; none names this planned capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No meter is documented for this feature as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive protected PDF annotation sensitivity labels licensing price meter; PDF annotation sensitivity license meter. Read OneDrive PDF features, sensitivity-label licensing and search excerpts; Syntex annotations are a different feature that leaves original files unmodified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Feature-specific prerequisites beyond the roadmap's appropriate-usage-rights requirement are not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: PDF annotation protected OneDrive SharePoint enable default rollout prerequisites usage rights. Read roadmap, OneDrive PDF features and SharePoint/OneDrive label support; no prerequisite list for this planned annotation capability was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "summary; Open questions",
+      "type": "absence",
+      "claim": "No feature-specific administrator action or annotation switch is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive PDF annotation sensitivity admin PowerShell; OneDrive protected PDF annotation default admin. Read Set-SPOTenant, PDF support and OneDrive PDF features; existing labeling controls are documented, but no separate protected-PDF annotation switch or required admin action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes a user action, not an automated or agent action.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "users who have the appropriate usage rights can annotate these protected PDFs in place in their browser",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The recorded roadmap modification timestamp is 2026-10-15T22:47:30.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-15T22:47:30\"",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-20T20:05:05.897Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=576276",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/onedrive-pdf-features",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/rights-management-usage-rights",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/encryption-sensitivity-labels",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether SharePoint and OneDrive support sensitivity labels on PDFs (existing tenant setting)",
+        "docs": "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Information Protection",
+          "Sensitivity labels",
+          "Policies",
+          "Auto-labeling policies"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether SharePoint and OneDrive support sensitivity labels on PDFs (existing tenant setting)",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant",
+        "reachable": true,
+        "token": "Set-SPOTenant",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which users hold which usage rights on files a label encrypts",
+        "docs": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Information Protection",
+          "Sensitivity labels"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which users hold which usage rights on files a label encrypts",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label",
+        "reachable": true,
+        "token": "Set-Label",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

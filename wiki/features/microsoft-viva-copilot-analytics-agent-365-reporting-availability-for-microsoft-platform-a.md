@@ -14,7 +14,7 @@ previewDate: null
 risk: "medium"
 cost: "low"
 impact: "medium"
-defaultState: "on"
+defaultState: "unknown"
 action: "prepare"
 licensing:
   model: "included"
@@ -41,7 +41,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Settings > Microsoft Viva > Viva Insights > Set up and management > Access Management > Turn Advanced Insights on or off > Agent Dashboard > Add policy"
+      path: "Settings > Microsoft Viva > Viva Insights > Set up and management > Access Management > Turn Advanced Insights on or off > Feature access management > Agent Dashboard > Add policy"
       docs: "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard"
     api:
       kind: "powershell"
@@ -52,13 +52,13 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Settings > Microsoft Viva > Viva Insights > Set up and management > Microsoft Copilot Dashboard > Manage access settings for Microsoft Copilot Dashboard"
+      path: "Settings > Microsoft Viva > Viva Insights > Set up and management > Microsoft Copilot Dashboard > Manage access settings for Microsoft Copilot Dashboard > Users > Add"
       docs: "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard"
     api:
       kind: "powershell"
       call: "Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId \"Viva Insights web app\" -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone"
       docs: "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard"
-    note: "AI Administrator. The UI path adds or removes users and groups (effective in 24 hours); turning the control off disables the whole app, not only the Agent Dashboard."
+    note: "AI Administrator. Use Groups instead of Users for groups; to revoke access, select existing users or groups and choose Remove selected users or Remove selected groups. Changes take effect in 24 hours."
 confidence: "medium"
 created: "2026-11-20"
 updated: "2026-11-20"
@@ -68,19 +68,23 @@ changes:
     note: "New briefing: roadmap plan to show the Agent 365 Dashboard view without an Agent 365 licence, set against Learn's current licensing text and the Agent Dashboard controls."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 78 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Correction: default state is now Not stated for the licence-free Agent 365 view; admin paths completed from Learn; two checklist steps without a controls row removed."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 75 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 78
+  claims: 75
   confirmed: 75
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "eaf67d262f36245d11e07b05fc37658d"
+  contradicted: 0
+  attempts: 0
+  hash: "dbfa7af2e6d6b31eb7b15a10101cce7d"
 ---
 
 ## What's changing
@@ -134,14 +138,12 @@ People who see the dashboard are those who have Agent Dashboard access in the Vi
 
 ### Before rollout
 - Decide which leaders, delegates and analysts should see agent reporting, and compare that with Learn's automatic access rules for the Agent Dashboard.
-- Check the minimum group size on the Copilot Dashboard settings page; Learn sets 10 by default and a floor of five.
 - Confirm the Viva Insights web app and Agent Dashboard feature access policies match your intent (first and second rows of the controls table).
 - Add Global administrators explicitly if your tenant uses PIM and they need access.
 
 ### At rollout
 - Check whether the **All agents** toggle appears for a test leader, and record what you see; Learn currently ties it to Agent 365 licensing.
 - Tell leaders and delegates that agent names and group metrics are hidden below the minimum group size.
-- Review the unified exclusion list if legal or works-council rules apply.
 
 ### After rollout
 - Revisit who holds Viva Insights web app access after the weekly re-evaluation of automatic access.
@@ -154,8 +156,8 @@ People who see the dashboard are those who have Agent Dashboard access in the Vi
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether the Agent Dashboard is available to everyone, groups or users</strong><br><small>Tenant</small><br><small class="controls__note">AI Administrator. Tenant, group or user level. Learn marks the Agent Dashboard as preview.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Microsoft Viva › Viva Insights › Set up and management › Access Management › Turn Advanced Insights on or off › Agent Dashboard › Add policy <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId AgentDashboard -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether the Viva Insights web app that hosts the dashboard is available</strong><br><small>Tenant</small><br><small class="controls__note">AI Administrator. The UI path adds or removes users and groups (effective in 24 hours); turning the control off disables the whole app, not only the Agent Dashboard.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Microsoft Viva › Viva Insights › Set up and management › Microsoft Copilot Dashboard › Manage access settings for Microsoft Copilot Dashboard <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId &quot;Viva Insights web app&quot; -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether the Agent Dashboard is available to everyone, groups or users</strong><br><small>Tenant</small><br><small class="controls__note">AI Administrator. Tenant, group or user level. Learn marks the Agent Dashboard as preview.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Microsoft Viva › Viva Insights › Set up and management › Access Management › Turn Advanced Insights on or off › Feature access management › Agent Dashboard › Add policy <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId AgentDashboard -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether the Viva Insights web app that hosts the dashboard is available</strong><br><small>Tenant</small><br><small class="controls__note">AI Administrator. Use Groups instead of Users for groups; to revoke access, select existing users or groups and choose Remove selected users or Remove selected groups. Changes take effect in 24 hours.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Microsoft Viva › Viva Insights › Set up and management › Microsoft Copilot Dashboard › Manage access settings for Microsoft Copilot Dashboard › Users › Add <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId &quot;Viva Insights web app&quot; -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -171,18 +173,13 @@ Learn also documents a Viva feature access management control (FeatureId Agent36
 - Why has the October CY2026 target passed with the status still In development, and what is the new date?
 
 <!-- rationale
-risk: Medium. The Agent Dashboard is on by default in the Viva Insights web app, and the roadmap would widen the Agent 365 view to tenants without Agent 365 licensing, so agent and creator reporting reaches more leaders before admins have decided who sees it.
+risk: Medium. Existing Agent Dashboard controls cover access, but Microsoft has not stated whether the newly licence-free Agent 365 view appears automatically; plan who should see its agent and creator reporting.
 cost: Low. The roadmap says no Agent 365 licence is needed for the view, so the cost Microsoft's pages show is admin time. Learn's Agent Dashboard page still lists Agent 365 licensing, and no price for the view is published.
 impact: Medium. Leaders, delegates and analysts who have Agent Dashboard access notice it; Learn limits automatic access to a defined set of senior leaders, administrators and delegates rather than all users.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: defaultState; Why it matters; rationale: risk / consistency: The change's defaultState is on, meaning the newly licence-free Agent 365 view reaches eligible viewers without admin action. | Found: defaultState: "on"; "Microsoft has not stated whether the unlicensed Agent 365 view appears for those people automatically on arrival" | Fix: Set defaultState to "unknown". Keep the existing Agent Dashboard's documented default separate from this change. Replace the risk rationale with: "Medium. Existing Agent Dashboard controls cover access, but Microsoft has not stated whether the newly licence-free Agent 365 view appears automatically; plan who should see its agent and creator reporting."
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Microsoft 365 admin center path reaches Agent Dashboard > Add policy. | Found: Under Access Management, select Turn Advanced Insights on or off. On the Feature access management page, select Agent Dashboard and Add policy. | Fix: Insert the documented page name so the path reads: Settings > Microsoft Viva > Viva Insights > Set up and management > Access Management > Turn Advanced Insights on or off > Feature access management > Agent Dashboard > Add policy. Apply the same change to the rendered table. | Source: https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: The printed web-app access path reaches Manage access settings for Microsoft Copilot Dashboard. | Found: Under Microsoft Copilot Dashboard, select Manage access settings for Microsoft Copilot Dashboard. | Fix: The path stops on the right access-management page. For adding access, extend it to: Settings > Microsoft Viva > Viva Insights > Set up and management > Microsoft Copilot Dashboard > Manage access settings for Microsoft Copilot Dashboard > Users > Add. In the note, say: "Use Groups instead of Users for groups; to revoke access, select existing users or groups and choose Remove selected users or Remove selected groups. Changes take effect in 24 hours." Apply the same correction to the rendered table. | Source: https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist tells readers to check minimum group size, but the controls table has no row for it. | Found: "Check the minimum group size on the Copilot Dashboard settings page"; the table contains only Agent Dashboard availability and Viva Insights web-app availability. | Fix: The Before rollout minimum-group-size instruction has no controls-table row. Remove that checklist bullet; retain the documented minimum-group-size facts and source link in the body.
-- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The checklist tells readers to review the unified exclusion list, but the controls table has no row for it. | Found: "Review the unified exclusion list if legal or works-council rules apply"; neither controls-table row covers the exclusion list. | Fix: The At rollout unified-exclusion-list instruction has no controls-table row. Remove that checklist bullet; retain the sourced explanation of the exclusion list in the body.
+- [supported, minor] controls[0].api; controls[1].api / command: The shared Add-VivaModuleFeaturePolicy syntax supports every printed parameter and the $false and Everyone values. | Found: Add-VivaModuleFeaturePolicy -FeatureId <String> -IsFeatureEnabled <Boolean> -ModuleId <String> -Name <String> ... [-Everyone] ... $false: The feature is not enabled by the policy. | Fix: Add https://learn.microsoft.com/en-us/powershell/module/exchange/add-vivamodulefeaturepolicy?view=exchange-ps to sources as the command syntax reference; retain both calls unchanged. | Source: https://learn.microsoft.com/en-us/powershell/module/exchange/add-vivamodulefeaturepolicy?view=exchange-ps
 -->

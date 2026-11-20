@@ -1,0 +1,1007 @@
+{
+  "slug": "microsoft-purview-insider-risk-management-ds-triage-agent-for-irm-available-in-defender",
+  "roadmapId": 567472,
+  "title": "Microsoft Purview: Insider Risk Management triage agent summaries in Microsoft Defender",
+  "status": "verified-with-gaps",
+  "date": "2026-11-20",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 80,
+    "confirmed": 77,
+    "unconfirmed": 2,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 2,
+    "minor": 4
+  },
+  "summary": "The rollout, automatic enablement for qualifying organisations, licensing and portal controls are supported. The page should not assume summaries identify users by name or broadly say Microsoft provides no guidance; the sources leave summary pseudonymisation unresolved and the tenant notice provides readiness guidance.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is December CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview target is August CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"August CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-07-09T23:00:39.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-07-09T23:00:39\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1438568 was published on 2026-07-24.",
+      "status": "supported",
+      "source": "Message Center post MC1438568",
+      "quote": "Published 2026-07-24; last updated 2026-07-24",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "title; summary; What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "Microsoft plans to display IRM triage agent summaries in the Defender alert queue.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "We’re introducing support for Insider Risk Management (IRM) alert agent summaries within Microsoft Defender, enabling investigators to access key triage insights directly in the Defender alert queue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Why it matters; Scope; Governance controls",
+      "type": "record",
+      "claim": "Supported alerts receive summaries when the IRM triage agent is enabled and alerts are shared with Defender.",
+      "status": "supported",
+      "source": "Message Center post MC1438568",
+      "quote": "When the IRM triage agent is enabled and Insider Risk Management alerts are shared with Microsoft Defender, supported alerts will include AI-generated summaries",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The summaries can include alert categorisation.",
+      "status": "supported",
+      "source": "Message Center post MC1438568",
+      "quote": "Summaries may include alert categorization, investigation findings, identified risk patterns, and relevant user context.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The summaries can include investigation findings.",
+      "status": "supported",
+      "source": "Message Center post MC1438568",
+      "quote": "Summaries may include alert categorization, investigation findings, identified risk patterns, and relevant user context.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The summaries can include identified risk patterns.",
+      "status": "supported",
+      "source": "Message Center post MC1438568",
+      "quote": "Summaries may include alert categorization, investigation findings, identified risk patterns, and relevant user context.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "The summaries can include relevant user details or context.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "IRM alerts surfaced in Microsoft Defender will now include the agent summary—such as agent categorization, investigation summary, identified risk patterns, and relevant user details",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Investigators can continue to access the full investigation experience in Purview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "For deeper analysis, investigators can access the full IRM investigation experience within the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice schedules public preview from mid-August 2026, expected to complete in early September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1438568",
+      "quote": "Public Preview: Beginning in mid-August 2026 and expected to complete in early September 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice schedules Worldwide general availability from early December 2026, expected to complete in late December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1438568",
+      "quote": "General Availability (Worldwide): Beginning in early December 2026 and expected to complete in late December 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The feature is on automatically for qualifying organisations without further administrator action.",
+      "status": "supported",
+      "source": "Message Center post MC1438568",
+      "quote": "The feature will be enabled automatically for organizations that meet the prerequisites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft says existing alert-sharing configurations are preserved.",
+      "status": "supported",
+      "source": "Message Center post MC1438568",
+      "quote": "Existing alert-sharing configurations between Insider Risk Management and Microsoft Defender will be preserved.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice says there is no impact on existing configurations or workflows.",
+      "status": "supported",
+      "source": "Message Center post MC1438568",
+      "quote": "There is no impact to existing configurations or workflows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1438568",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Scope; rationale: impact",
+      "type": "record",
+      "claim": "The affected audience includes analysts and investigators reviewing IRM alerts in Defender.",
+      "status": "supported",
+      "source": "Message Center post MC1438568",
+      "quote": "Security analysts and investigators who review Insider Risk Management alerts in Microsoft Defender",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Why it matters; Risk assessment",
+      "type": "record",
+      "claim": "The AI-generated investigation context is derived from IRM alert data and interacts with customer data.",
+      "status": "supported",
+      "source": "Message Center post MC1438568",
+      "quote": "Yes. IRM triage agent summaries are surfaced within Microsoft Defender and provide AI-generated investigation context derived from Insider Risk Management alert data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft asks administrators to confirm that IRM alerts are shared with Defender.",
+      "status": "supported",
+      "source": "Message Center post MC1438568",
+      "quote": "Confirm that Insider Risk Management alerts are being shared with Microsoft Defender.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Change & support",
+      "type": "record",
+      "claim": "Microsoft asks administrators to confirm that the IRM triage agent is deployed and active.",
+      "status": "supported",
+      "source": "Message Center post MC1438568",
+      "quote": "Confirm that the IRM triage agent is deployed and active.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Microsoft recommends informing security operations and investigation teams.",
+      "status": "supported",
+      "source": "Message Center post MC1438568",
+      "quote": "Inform security operations and investigation teams about the new triage experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Microsoft recommends updating internal documentation on IRM alert investigations.",
+      "status": "supported",
+      "source": "Message Center post MC1438568",
+      "quote": "Update any internal documentation that references Insider Risk Management alert investigations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "absence",
+      "claim": "The cited Learn article about investigating IRM alerts in Defender does not describe agent summaries.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Insider Risk Management\" \"agent summaries\" \"Defender\"'; opened learn.microsoft.com/defender-xdr/irm-investigate-alerts-defender in full. It covers alerts, incidents, hunting and Graph, but not triage agent summaries.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The Purview alert investigation experience has an Agent summary.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "Select an alert to display the Agent summary and overview details for the alert.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Agent categorisation uses Needs attention and Less urgent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+      "quote": "Agent categorization: Alerts are categorized as Needs attention or Less urgent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters: first sentence",
+      "type": "behaviour",
+      "claim": "The summaries present context about a named user's activity.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"Insider Risk Management\" \"Defender\" \"summaries\" \"pseudonymized\"'; read the roadmap, MC1438568, and Learn's Defender investigation and Purview activities articles. They establish user context, not whether Defender summaries expose real names.",
+      "severity": "major",
+      "fix": "Replace \"a named user's risky activity\" with \"a user's risky activity\". Keep the existing open question about names versus pseudonyms."
+    },
+    {
+      "n": 32,
+      "where": "controls[0].note; Risk assessment: Data exposure; Governance controls",
+      "type": "applicability",
+      "claim": "The IRM Data sharing setting controls sharing alert severity information with Communication Compliance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-share-data",
+      "quote": "If you don't turn on this setting, the value displayed in the DLP alerts Insider risk severity column is \"User data isn't available\" and is displayed as \"Insider Risk Activity not available\" in Communication Compliance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[0].note; Risk assessment: Data exposure; Governance controls",
+      "type": "applicability",
+      "claim": "The same Data sharing setting controls sharing alert severity information with DLP.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-share-data",
+      "quote": "If you don't turn on this setting, the value displayed in the DLP alerts Insider risk severity column is \"User data isn't available\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "record",
+      "claim": "The roadmap says IRM users are pseudonymised by default.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Built with privacy by design, users are pseudonymized by default",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Learn says agents run in the security context of the last user who saved their configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started",
+      "quote": "Agents run in the security context of the last user that saved the agent configuration.",
+      "severity": "minor",
+      "fix": "Qualify this as the get-started article's description and add: \"The overview also documents a recommended separate Microsoft Entra agent identity and an alternative user identity: https://learn.microsoft.com/purview/copilot-in-purview-agents-overview#agent-identity.\""
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The documented user-context authentication lasts 90 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started",
+      "quote": "This authentication is good for 90 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "After authentication expires, the agent stops until its configuration is manually saved again.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started",
+      "quote": "After 90 days, the agent will stop running until the configuration is manually saved again.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Learn names Security Operator or Security Reader for access to IRM alerts in Defender.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/irm-investigate-alerts-defender",
+      "quote": "The following permissions are essential to access insider risk management alerts in the Microsoft Defender portal:\n- Security Operator\n- Security Reader",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Defender IRM alert access also requires membership in Insider Risk Management, Insider Risk Management Analysts or Insider Risk Management Investigators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/irm-investigate-alerts-defender",
+      "quote": "You must also be a member of one of the following insider risk management role groups to view and manage insider risk management alerts in the Microsoft Defender portal:\n- Insider Risk Management\n- Insider Risk Management Analysts\n- Insider Risk Management Investigators",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not separately specified whether these roles suffice for viewing the new summaries in Defender.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview Insider Risk Management triage agent Defender summaries disable summary roles SCU rate pricing' and '\"Insider Risk Management\" \"agent summaries\" \"Defender\"'; opened Defender investigation and IRM agent get-started articles. Neither specifies Defender summary permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The cited Learn agent pages describe categorisation and summaries rather than actions the agent takes on users or content.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Insider Risk Management\" \"triage agent\" \"API\" \"deactivate\"'; opened IRM agent get-started and Purview agents overview in full, and the activities article's Agent summary section. No user/content enforcement action is described there.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The agent triages alerts within the configured timeframe.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-agents-overview",
+      "quote": "The agent triages alerts generated in the timeframe and using policies you select.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The agent's alert scope depends on the selected policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-agents-overview",
+      "quote": "The agent triages alerts generated in the timeframe and using policies you select.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The agent does not triage every alert, so missing triage is not a low-risk classification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-agents-overview",
+      "quote": "The agent doesn't triage all alerts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "During preview the IRM agent analyses only SharePoint file content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-agents-overview",
+      "quote": "During preview, the insider risk management agent analyzes only SharePoint file content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "During preview an alert containing only email or device activities is not analysed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-agents-overview",
+      "quote": "It doesn't analyze email and device activities with accompanying files. If an alert contains only email or device activities, the agent doesn't analyze it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The agent has mixed licensing requiring both standard per-seat licensing and pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started",
+      "quote": "The Triage Agent in Insider Risk Management requires both the standard per-seat licensing model and the pay-as-you-go billing model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The organisation must be licensed for Microsoft Purview Insider Risk Management to use the IRM triage agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started",
+      "quote": "Your organization must be licensed for:\n- Microsoft Purview Insider Risk Management to use the Insider Risk Management triage agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "front matter: cost and licensing.notes; Why it matters; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The agent consumes security compute units, supporting the variable cost rating.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started",
+      "quote": "Microsoft Purview triage agents consume security compute units (SCUs) as they perform their tasks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing; Governance guidance: Before rollout",
+      "type": "cost",
+      "claim": "SCUs must be provisioned for the triage agents to work.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started",
+      "quote": "You must have SCUs provisioned for the triage agents to work.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "SCU consumption depends on the number and type of alerts processed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started",
+      "quote": "The number of SCUs consumed depends on the number and type of alerts that are processed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[2].note; Cost and licensing",
+      "type": "behaviour",
+      "claim": "SCU consumption can be tracked in Security Copilot usage monitoring.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started",
+      "quote": "You can track your SCU consumption in the Security Copilot usage monitoring tool.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A dedicated feature-specific rate or fixed SCU figure for the IRM triage agent is not published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Insider Risk Management\" \"triage\" \"SCU\" \"rate\"' and '\"Insider Risk Management\" \"triage\" \"SCUs per\"'; opened IRM agent get-started, Purview billing models and Security Copilot manage-usage. They name SCUs but no fixed IRM-agent SCU rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not specified incremental SCU consumption for displaying existing agent summaries in Defender.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview Insider Risk Management triage agent Defender summaries disable summary roles SCU rate pricing'; opened IRM agent get-started, Defender investigation, Purview billing models and Security Copilot manage-usage. No Defender-display consumption is specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Defender investigation page requires a Microsoft 365 subscription supporting IRM access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/irm-investigate-alerts-defender",
+      "quote": "Confirm your Microsoft 365 subscription supports insider risk management access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Defender investigation page also requires access to Microsoft Defender XDR.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/irm-investigate-alerts-defender",
+      "quote": "Confirm your access to Microsoft Defender XDR.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Scope: Prerequisites from Learn",
+      "type": "behaviour",
+      "claim": "The tenant must be onboarded to Security Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started",
+      "quote": "Your tenant must be onboarded to Microsoft Security Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Scope: Prerequisites from Learn",
+      "type": "applicability",
+      "claim": "Microsoft 365 data sharing must be enabled in Security Copilot for the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started",
+      "quote": "You must enable Microsoft 365 data sharing in Security Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Scope: Prerequisites from Learn",
+      "type": "applicability",
+      "claim": "The Microsoft Purview plug-in must be enabled in Security Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started",
+      "quote": "You must enable the Microsoft Purview plug-in in Microsoft Security Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Scope: Prerequisites from Learn",
+      "type": "behaviour",
+      "claim": "There can be only one instance of each agent per tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started",
+      "quote": "There can be only one instance of each agent in a tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The sharing control is under Purview Settings > Insider Risk Management > Data sharing > Sharing data with other Microsoft security solutions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-settings-share-data",
+      "quote": "In Insider Risk Management settings, select the Data sharing setting.\nUnder the Sharing data with other Microsoft security solutions section, turn on the setting.",
+      "severity": "minor",
+      "fix": "The path reaches the correct section but stops before its toggle. Use \"Settings > Insider Risk Management > Data sharing > Sharing data with other Microsoft security solutions > Share user risk details with other security solutions\"; the final label is on the already-cited Defender investigation page."
+    },
+    {
+      "n": 62,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "No automation operation for changing the IRM data-sharing setting is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview Insider Risk Management data sharing setting PowerShell API Set-PolicyConfig', '\"Insider Risk Management\" \"Share user risk details\" \"PowerShell\"', and '\"Insider Risk Management\" \"data sharing\" \"cmdlet\"'; opened settings/share-data. Export APIs do not set sharing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Deactivate agent is reached through Purview Agents > Explore agents > the agent's View agent > ellipsis next to Edit agent > Deactivate agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started",
+      "quote": "Select View agent for the agent you want to deactivate. This opens the agent overview page.\nOn the far right upper right hand corner of the agent overview page, select the ellipses (three dots) that are located next to the Edit agent button.\nSelect Deactivate agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[1].api; Governance controls table",
+      "type": "absence",
+      "claim": "Microsoft has not documented an API or PowerShell operation to deactivate this Purview IRM triage agent.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview Insider Risk Management triage agent deactivate usage monitoring API PowerShell' and '\"Insider Risk Management\" \"triage agent\" \"API\" \"deactivate\"'; opened IRM agent get-started and agents overview. The documented deactivation procedure is portal-only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[2].ui; Cost and licensing; Governance controls table",
+      "type": "admin-path",
+      "claim": "Agent usage monitoring is reached through Purview Agents > Explore agents > View agent > Edit agent > Usage monitoring.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started",
+      "quote": "In the left hand navigation pane, select Agents.\nSelect Explore agents.\nSelect View agent for agent you want to edit. This opens the agent overview page.\nSelect Edit agent. This opens the Edit agent page.\nSelect Usage monitoring.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "controls[2].api; Governance controls table",
+      "type": "absence",
+      "claim": "The agent-specific usage monitoring row has no documented equivalent automation operation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Purview Insider Risk Management triage agent deactivate usage monitoring API PowerShell' and '\"Insider Risk Management\" \"triage agent\" \"usage\" \"API\"'; opened IRM agent get-started and Security Copilot manage-usage. No IRM-agent equivalent operation was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[1].governs and note; Governance controls",
+      "type": "behaviour",
+      "claim": "Deactivating the agent stops alert triage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started",
+      "quote": "Deactivating the agent stops it from triaging alerts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Deactivation does not remove the agent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started",
+      "quote": "It doesn't remove the agent and it doesn't reset the Select alert timeframe reference point in time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Remove agent deletes the agent from Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started",
+      "quote": "Removing the agent deletes it from Microsoft Purview",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Removing the agent resets the alert timeframe reference point.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started",
+      "quote": "Removing the agent deletes it from Microsoft Purview and resets the Select Alert timeframe reference point in time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "Deployment, configuration and deactivation require the Purview agent permissions listed in the get-started article.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started",
+      "quote": "Assign these roles for setting up the agent using a recommended agent identity, actions like configuring or customizing, or deactivating and removing agents:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance controls: final sentence",
+      "type": "role",
+      "claim": "Viewing triaged IRM alerts requires the roles listed in the article's dedicated viewing-permissions section.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started",
+      "quote": "The account that you use to view the Insider Risk Management triage agent alert activity must be assigned the roles (any one from each group):",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "The documented Purview Usage monitoring procedure tracks consumption rather than setting a spending cap.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started",
+      "quote": "Use the following steps to view security compute unit (SCU) usage for an agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "IRM alerts in the Defender alert queue can be filtered using Service source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/irm-investigate-alerts-defender",
+      "quote": "All insider risk management alerts are also visible in the Microsoft Defender portal's alert queue. Filter these alerts by choosing Microsoft Purview Insider Risk Management under Service source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Learn does not document a Defender switch to hide only agent summaries while retaining IRM alerts.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Insider Risk Management\" \"triage agent\" \"Defender\" \"disable\"' and '\"Insider Risk Management\" \"agent summaries\" \"Defender\"'; opened Defender investigation and IRM agent get-started. Neither documents a summary-only Defender switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "applicability",
+      "claim": "IRM data sharing with other security solutions must be enabled for the Defender integration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/irm-investigate-alerts-defender",
+      "quote": "Data sharing with other security solutions must be turned on in the Data sharing settings in Microsoft Purview Insider Risk Management.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "controls[0].note",
+      "type": "admin-path",
+      "claim": "The Defender article labels the sharing toggle Share user risk details with other security solutions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-xdr/irm-investigate-alerts-defender",
+      "quote": "Turning on Share user risk details with other security solutions in the Microsoft Purview portal enables users with the correct permissions to review user risk details in the user entity pages in the Microsoft Defender portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Investigators can compare alerts in Defender with the Purview Triage Agent view.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started",
+      "quote": "Set the toggle to the Triage Agent view. This view shows the alerts that have been triaged by the agent.",
+      "severity": "minor",
+      "fix": "Replace \"the Purview **Triage Agent** view\" with \"the Purview alert investigation experience\". The already-cited https://learn.microsoft.com/purview/insider-risk-management-activities also says the unified Alerts (preview) experience removes the toggle, whereas get-started still describes it."
+    },
+    {
+      "n": 79,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Support teams have no Microsoft guidance to point to for summaries in Defender.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"Insider Risk Management\" \"agent summaries\" \"Defender\"'; read Defender investigation and MC1438568. The absence of agent-summary content in that Learn article does not establish a universal absence of Microsoft guidance; the notice gives readiness recommendations.",
+      "severity": "major",
+      "fix": "Replace \"Learn's Defender page has no agent-summary content yet, so support teams have no Microsoft guidance to point to for it\" with \"Learn's Defender page has no agent-summary content yet; MC1438568 provides Microsoft's rollout and readiness guidance\"."
+    },
+    {
+      "n": 80,
+      "where": "Governance guidance: Before rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The governance checklist's instruction to check Defender and IRM role assignments has a corresponding control row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: \"Check who holds Security Operator, Security Reader and the IRM role groups\". The table covers only data sharing, agent deactivation and usage monitoring.",
+      "severity": "minor",
+      "fix": "The role-assignment check has no corresponding controls-table row. Remove that checklist bullet; the existing roles discussion in Risk assessment and Scope can remain."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-20T20:05:08.143Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=567472",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1438568",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/copilot-in-purview-agents-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-settings-share-data",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/defender-xdr/irm-investigate-alerts-defender",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-activities",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether IRM alerts and user risk details are shared with Microsoft Defender and other security solutions",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-settings-share-data",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Insider Risk Management",
+          "Data sharing",
+          "Sharing data with other Microsoft security solutions"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether the IRM triage agent runs and triages alerts",
+        "docs": "https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Explore agents",
+          "View agent",
+          "ellipsis menu next to Edit agent",
+          "Deactivate agent"
+        ],
+        "missing": [
+          "ellipsis menu next to Edit agent"
+        ]
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Security compute unit (SCU) consumption by the IRM triage agent",
+        "docs": "https://learn.microsoft.com/purview/copilot-in-purview-triage-irm-agent-get-started",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Explore agents",
+          "View agent",
+          "Edit agent",
+          "Usage monitoring"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

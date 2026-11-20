@@ -110,19 +110,23 @@ changes:
     note: "Corrected after the independent check: Learn documents Custom Reporting (preview), off by default and enabled with Set-ScannerConfiguration; removed the claims that no documentation, tables, setting or command existed."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 64 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-20"
+    note: "Corrected after the independent check: the open question on roles now states the db_owner requirement for the configuring account, and the unsupported checklist bullet on restricting database read access was removed."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 73 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-20"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 62
+  claims: 73
+  confirmed: 73
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "cc9ce0118e459e8f30f449293177fa13"
+  contradicted: 0
+  attempts: 0
+  hash: "b5850794611c3c3acf764597ad6a0519"
 ---
 
 ## What's changing
@@ -187,7 +191,6 @@ Custom Reporting is off by default and starts populating reporting data on the n
 ### At rollout
 - Read the Custom Reporting and Scanner feature control pages on Microsoft Learn, and check the client and scanner version, before enabling Custom Reporting with Set-ScannerConfiguration (see the controls table).
 - Test any report on a non-production scanner and SQL Server first, as the feature is in preview.
-- Restrict read access to the scanner cluster database to the named reporting team, using SQL Server database permissions.
 
 ### After rollout
 - Compare the first export-based report with the .csv reports on the scanner computer for the same scan, using Scan now or Start-Scan for a manual scan (see the controls table).
@@ -212,7 +215,7 @@ The Enforce setting of a content scan job decides whether the scanner enforces c
 
 ## Open questions
 
-- Which role is needed to run Set-ScannerConfiguration to enable Custom Reporting? Watch the Scanner feature control page on Microsoft Learn.
+- The scanner prerequisites require the user account that configures the scanner to have the db_owner role for the scanner configuration database ([Get started with the information protection scanner](https://learn.microsoft.com/purview/deploy-scanner-prereqs#deploying-the-scanner-with-alternative-configurations)). Is an additional Microsoft Purview portal role required specifically to enable Custom Reporting? Watch the Scanner feature control page on Microsoft Learn.
 - Will a licence or charge specific to Custom Reporting be published? Watch Message center and the scanner prerequisites page.
 - Which parts are targeted for Preview in December CY2026 and which are targeted for general availability in January CY2027 for Worldwide, GCC and GCC High?
 
@@ -220,12 +223,4 @@ The Enforce setting of a content scan job decides whether the scanner enforces c
 risk: Low. Custom Reporting is off until an administrator enables it; once on, reporting data sits in the scanner cluster SQL database, where SQL Server database permissions govern who can read it.
 cost: Low. Microsoft has published no licence or meter specific to the export; the known costs are admin time and SQL Server capacity, and the scanner already needs an information protection licence for its service account.
 impact: Low. Administrators and reporting teams that run the information protection scanner would notice it; the roadmap item names no effect on end users.
--->
-
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Open questions: role needed to run Set-ScannerConfiguration / absence: The role needed to configure Custom Reporting with Set-ScannerConfiguration is left as unpublished. | Found: However, the user account that configures the scanner still requires the db_owner role for the scanner configuration database. | Fix: Remove the broad role question. State instead: 'The scanner prerequisites require the user account configuring the scanner to have db_owner on the scanner configuration database.' Cite https://learn.microsoft.com/purview/deploy-scanner-prereqs#deploying-the-scanner-with-alternative-configurations. Any remaining question should be limited to whether an additional Purview portal role is required specifically for Custom Reporting. | Source: https://learn.microsoft.com/purview/deploy-scanner-prereqs
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The checklist's instruction to restrict SQL Server database read access has no corresponding control row. | Found: Restrict read access to the scanner cluster database to the named reporting team, using SQL Server database permissions. | Controls: policy enforcement; scan execution; Custom Reporting enablement. | Fix: Remove the checklist bullet 'Restrict read access to the scanner cluster database to the named reporting team, using SQL Server database permissions.' The database-permission discussion can remain in Risk assessment; the checklist currently has no row for that control.
 -->

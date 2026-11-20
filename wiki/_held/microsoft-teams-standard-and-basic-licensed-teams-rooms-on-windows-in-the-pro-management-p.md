@@ -4,7 +4,7 @@ slug: "microsoft-teams-standard-and-basic-licensed-teams-rooms-on-windows-in-the
 roadmapId: 482539
 topic: "modern-work"
 products: ["Microsoft Teams"]
-summary: "The Teams Rooms Pro Management portal now supports and enforces licences for Teams Rooms on Windows devices with a Standard or Basic licence. Check each room's licence status; Microsoft has not stated a default or any consequence for unlicensed devices."
+summary: "The Teams Rooms Pro Management portal now supports and enforces licences for Teams Rooms on Windows devices with a Standard or Basic licence. Check each room's licence status; Microsoft has not stated a default for this change."
 status: "launched"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)","GCC","GCC High"]
@@ -43,6 +43,9 @@ sources:
   - title: "Manage devices in Teams"
     url: "https://learn.microsoft.com/microsoftteams/devices/device-management"
     kind: "learn"
+  - title: "Manage Microsoft Teams device tags"
+    url: "https://learn.microsoft.com/microsoftteams/devices/manage-device-tags"
+    kind: "learn"
 videos: []
 related: ["microsoft-teams-one-stop-admin-portal-for-teams-devices-with-teams-rooms-pro-management","microsoft-teams-analytics-for-desk-utilization-on-teams-pro-management-portal","microsoft-teams-building-level-insights-on-the-pro-management-portal-recommended-actions-p"]
 controls:
@@ -50,7 +53,7 @@ controls:
     scope: "user"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Users > Active users > room account > Licenses and apps"
+      path: "Users > Active users > room account > Licenses and apps > Microsoft Teams Rooms Pro or Microsoft Teams Rooms Basic"
       docs: "https://learn.microsoft.com/microsoftteams/rooms/create-resource-account"
     api:
       kind: "graph"
@@ -74,19 +77,23 @@ changes:
     note: "First briefing for this item: licence status, the licence-assignment control and the open questions on enforcement and Basic and Standard functionality."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 61 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Correction after the independent check: the summary no longer says Microsoft has stated no consequence for unlicensed devices, the data-sources line is narrowed, and the licence path now ends at the licence checkbox."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 68 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 59
-  unconfirmed: 1
+  claims: 68
+  confirmed: 67
+  unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "0408f7f31f02d66dc616d0a0453fbff6"
+  attempts: 2
+  hash: "16957329c57c7f54da24c5fa0a23884c"
 ---
 
 ## What's changing
@@ -106,7 +113,7 @@ The pages also disagree in places. Microsoft's licensing page lists remote confi
 ## Risk assessment
 
 **Data exposure**
-- The roadmap item adds no new data source. Learn says the Pro Management service monitors devices, collects device data and allows Microsoft to remotely access and manage room devices, and that it does not access the live content of a meeting. Learn does not separately describe this for Standard and Basic devices.
+- The roadmap item does not describe data sources. Learn says the Pro Management service monitors devices, collects device data and allows Microsoft to remotely access and manage room devices, and that it does not access the live content of a meeting. Learn does not separately describe this for Standard and Basic devices.
 
 **Security & identity**
 - Licence checks tie a device's status to the licence on its resource account. Learn warns that changing the account on a device needs a valid licence on the new account, and that the 30-day grace period does not apply when an expired account enrols a new device or replaces the account on an existing one.
@@ -159,14 +166,14 @@ Learn's licence comparison lists the Pro Management service plan under Pro only,
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which Teams Rooms licence a room's resource account holds</strong><br><small>User</small><br><small class="controls__note">The request body carries addLicenses and removeLicenses. On the page, the Microsoft Teams Rooms Pro or Basic box is ticked in Licenses and apps.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Users › Active users › room account › Licenses and apps <a href="https://learn.microsoft.com/microsoftteams/rooms/create-resource-account" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/users/{id | userPrincipalName}/assignLicense</code> <a href="https://learn.microsoft.com/graph/api/user-assignlicense" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which Teams Rooms licence a room's resource account holds</strong><br><small>User</small><br><small class="controls__note">The request body carries addLicenses and removeLicenses. On the page, the Microsoft Teams Rooms Pro or Basic box is ticked in Licenses and apps.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Users › Active users › room account › Licenses and apps › Microsoft Teams Rooms Pro or Microsoft Teams Rooms Basic <a href="https://learn.microsoft.com/microsoftteams/rooms/create-resource-account" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/users/{id | userPrincipalName}/assignLicense</code> <a href="https://learn.microsoft.com/graph/api/user-assignlicense" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Licence status of each device in the Pro Management portal</strong><br><small>Tenant</small><br><small class="controls__note">Read-only view: the License Type column shows Pro, Premium, Basic, Standard, Syncing or Unlicensed. It does not assign a licence.</small></td><td data-label="Admin UI"><strong>Teams Rooms Pro Management portal</strong><br>Planning › Inventory <a href="https://learn.microsoft.com/microsoftteams/rooms/inventory" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 Licence assignment and the portal's licence view are on different surfaces: the portal's **License Type** column shows the status, and the Microsoft 365 admin center or the Microsoft Graph call assigns the licence. Learn lists the Licensing role as Global admin or Billing admin for resource accounts; the Graph reference lists Directory Writers, License Administrator and User Administrator among the supported roles for assignLicense.
 
-Devices can also be managed in the Teams admin center under Teams Devices > Teams Rooms on Windows. Learn's device management page says monitoring, managing and updating Teams devices is moving to the Pro Management Portal. Neither of these is shown as a control over licence enforcement.
+Devices can also be managed in the Teams admin center under Teams Devices > Teams Rooms on Windows. A notice on Learn's Teams device tags page says monitoring, managing and updating Teams devices is moving to the Pro Management Portal. Neither of these is shown as a control over licence enforcement.
 
 ## Open questions
 
@@ -184,9 +191,9 @@ impact: Low. Room administrators see licence status in the portal; people using 
 <!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] summary / absence: Microsoft has not stated any consequence for unlicensed devices. | Found: Starting October 2, 2023 all devices without Pro or Premium licenses assigned to them will lose access to the pro management capabilities until valid licenses are assigned to them. | Fix: Replace the summary's second sentence with: "Check each room's licence status; Microsoft has not stated a default for this change." The body's existing description of the published access-loss warning and its disagreement with the roadmap can remain. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-licensing
-- [unsupported, major] Risk assessment: Data exposure / behaviour: The change adds no new data source. | Found: Searched: "Teams Rooms" "Basic" "Standard" "data collection". Read roadmap, rooms-pro-management Data collection and rooms-licensing. They do not establish that this change adds no new data source; the roadmap simply does not describe data sources. | Fix: Replace "The roadmap item adds no new data source" with "The roadmap item does not describe data sources".
+- [contradicted, blocker] Why it matters: first paragraph / absence: Microsoft has not stated what happens on arrival or if nobody acts. | Found: For Teams Rooms on Windows devices, the Teams Rooms Pro Management agent is automatically downloaded and installed at device setup. ... Devices once signed into Teams automatically enrolls and appears in the Teams Rooms Pro Management Portal. | Fix: Replace 'Microsoft has not stated what happens on arrival or if nobody acts, and no source here says that existing behaviour changes' with 'Microsoft documents automatic portal enrollment and appearance once devices are signed into Teams, but has not stated the default of this particular licence-enforcement change'. Cite https://learn.microsoft.com/microsoftteams/rooms/enroll-a-device. Keep the uncertainty confined to enforcement, not portal enrollment. | Source: https://learn.microsoft.com/microsoftteams/rooms/enroll-a-device
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance guidance: Before rollout; Governance controls / admin-path: A room's licence is assigned in Microsoft 365 admin center under Users > Active users > room account > Licenses and apps. | Found: Go to Users > Active users, and select the room you created to open the properties panel. In the panel, select Licenses and apps. Check the box next to Microsoft Teams Rooms Pro or Microsoft Teams Rooms Basic | Fix: Complete the control path as "Users > Active users > room account > Licenses and apps > Microsoft Teams Rooms Pro or Microsoft Teams Rooms Basic". The existing path reaches the correct page but stops before the licence checkbox; "room account" is a valid selection placeholder, not an invented label. | Source: https://learn.microsoft.com/microsoftteams/rooms/create-resource-account
-- [supported, minor] Governance controls / behaviour: Microsoft says monitoring, managing and updating Teams devices is moving to the Pro Management Portal. | Found: Monitoring, managing, and updating Teams devices is moving to the Pro Management Portal. | Fix: Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-manage for this sentence and add it to sources. The cited device-management URL now redirects to the inventory article; the management article's search excerpt explicitly states the transition. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-manage
+- [supported, minor] front matter: licensing.model / licensing: Portal access is included in existing Teams Rooms licensing. | Found: The current access to PMP is included with Teams Rooms and Teams shared device licensing. | Fix: Add https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1 to sources to support the included licensing model; retain the existing licence-comparison qualifications. | Source: https://learn.microsoft.com/microsoftteams/rooms/aboutunifieddevicemanagement-pmp1
+- [supported, minor] Governance guidance: Before rollout, resource-account licence check / admin-path: The short licence-check path is Users > Active users > Licenses and apps. | Found: Go to Users > Active users, and select the room you created to open the properties panel. In the panel, select Licenses and apps. | Fix: Replace the parenthetical path with 'Users > Active users > room account > Licenses and apps' to include selecting the target room account, as already shown in controls[0].ui. | Source: https://learn.microsoft.com/microsoftteams/rooms/create-resource-account
+- [supported, minor] Governance controls: Teams admin center path / admin-path: Teams Rooms on Windows can be managed under Teams admin center > Teams Devices > Teams Rooms on Windows. | Found: To manage Teams Rooms devices, open the Microsoft Teams admin center and go to Teams Devices > Teams Rooms on Windows. | Fix: Cite https://learn.microsoft.com/surface-hub/surface-hub-3-get-started#teams-management-portals for this path. The existing devices/device-management source redirects to rooms/inventory and no longer supplies it. | Source: https://learn.microsoft.com/surface-hub/surface-hub-3-get-started#teams-management-portals
 -->

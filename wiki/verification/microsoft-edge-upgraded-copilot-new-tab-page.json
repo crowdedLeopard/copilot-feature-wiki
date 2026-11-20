@@ -2,33 +2,27 @@
   "slug": "microsoft-edge-upgraded-copilot-new-tab-page",
   "roadmapId": 566703,
   "title": "Microsoft Edge: upgraded Copilot new tab page, off by default",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-20",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-20",
-    "reasons": [
-      "1 blocking finding (claim 75)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 80,
-    "confirmed": 78,
+    "claims": 83,
+    "confirmed": 83,
     "unconfirmed": 0,
-    "contradicted": 2,
-    "blocker": 1,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 2
+    "minor": 1
   },
-  "summary": "Hold: the cost rating says indirect costs only, but the briefing also identifies an add-on licence cost for users who are not already licensed. The documented controls and rollout details are supported; the cost rating and rationale need to reflect that licensing dependency.",
+  "summary": "The controls, default state and rollout details are supported, and the briefing accurately reports Microsoft's differing statements about unlicensed users. One minor licensing qualification is needed: Microsoft's separate licensing page also lists Microsoft 365 E7 as including Copilot.",
   "claims": [
     {
       "n": 1,
@@ -70,7 +64,7 @@
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
       "severity": null,
       "fix": null
     },
@@ -81,7 +75,7 @@
       "claim": "The roadmap lists the Web platform.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
+      "quote": "\"platforms\": [ \"Web\" ]",
       "severity": null,
       "fix": null
     },
@@ -92,15 +86,26 @@
       "claim": "The roadmap lists General Availability and Preview release phases.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "quote": "\"releasePhase\": [ \"General Availability\", \"Preview\" ]",
       "severity": null,
       "fix": null
     },
     {
       "n": 7,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap products are Microsoft Edge and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [ \"Microsoft Edge\", \"Microsoft Copilot (Microsoft 365)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-11-11T00:52:46.",
+      "claim": "The roadmap record was modified on 2026-11-11T00:52:46.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-11-11T00:52:46\"",
@@ -108,10 +113,10 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 9,
       "where": "summary; What's changing; Why it matters",
       "type": "behaviour",
-      "claim": "One new tab page search box supports website navigation, web search and queries to Microsoft 365 Copilot.",
+      "claim": "One new-tab search box supports website navigation, web search and queries to Microsoft 365 Copilot.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
       "quote": "Users will also see an updated search box that allows them to quickly navigate to sites, search the web, or send a query directly to Microsoft 365 Copilot.",
@@ -119,24 +124,13 @@
       "fix": null
     },
     {
-      "n": 9,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "Microsoft's notice lists enhanced Copilot chat capabilities.",
-      "status": "supported",
-      "source": "Message Center post MC1440972",
-      "quote": "Enhanced Copilot chat and compose capabilities.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 10,
       "where": "What's changing",
       "type": "record",
-      "claim": "Microsoft's notice lists compose capabilities.",
+      "claim": "The notice lists enhanced Copilot chat integration.",
       "status": "supported",
       "source": "Message Center post MC1440972",
-      "quote": "Enhanced Copilot chat and compose capabilities.",
+      "quote": "The updated experience includes enhanced Copilot chat integration, compose capabilities, suggested actions, curated work content, and a refreshed design",
       "severity": null,
       "fix": null
     },
@@ -144,7 +138,18 @@
       "n": 11,
       "where": "What's changing",
       "type": "record",
-      "claim": "Microsoft's notice lists suggested actions.",
+      "claim": "The notice lists compose capabilities.",
+      "status": "supported",
+      "source": "Message Center post MC1440972",
+      "quote": "Enhanced Copilot chat and compose capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice lists suggested actions.",
       "status": "supported",
       "source": "Message Center post MC1440972",
       "quote": "Suggested actions and work content to help users begin and complete tasks.",
@@ -152,35 +157,24 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
-      "type": "behaviour",
-      "claim": "Work cards and suggested prompts can surface organisational files.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
-      "quote": "Through proactive work cards and suggested prompts, the new tab page surfaces important organizational content, such as files and calendar events",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 13,
       "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
-      "type": "behaviour",
-      "claim": "Work cards and suggested prompts can surface calendar events.",
+      "type": "record",
+      "claim": "Work cards may surface organisational files.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
-      "quote": "Through proactive work cards and suggested prompts, the new tab page surfaces important organizational content, such as files and calendar events",
+      "source": "Message Center post MC1440972",
+      "quote": "Work cards that may surface organizational content such as files and calendar events.",
       "severity": null,
       "fix": null
     },
     {
       "n": 14,
-      "where": "What's changing",
+      "where": "What's changing; Why it matters; Risk assessment; rationale: risk",
       "type": "record",
-      "claim": "Microsoft's notice lists an app launcher.",
+      "claim": "Work cards may surface calendar events.",
       "status": "supported",
       "source": "Message Center post MC1440972",
-      "quote": "A refreshed design, app launcher, pinned quick links, and updated theme settings.",
+      "quote": "Work cards that may surface organizational content such as files and calendar events.",
       "severity": null,
       "fix": null
     },
@@ -188,7 +182,7 @@
       "n": 15,
       "where": "What's changing",
       "type": "record",
-      "claim": "Microsoft's notice lists pinned quick links.",
+      "claim": "The notice lists an app launcher.",
       "status": "supported",
       "source": "Message Center post MC1440972",
       "quote": "A refreshed design, app launcher, pinned quick links, and updated theme settings.",
@@ -199,7 +193,7 @@
       "n": 16,
       "where": "What's changing",
       "type": "record",
-      "claim": "Microsoft's notice lists updated theme settings.",
+      "claim": "The notice lists pinned quick links.",
       "status": "supported",
       "source": "Message Center post MC1440972",
       "quote": "A refreshed design, app launcher, pinned quick links, and updated theme settings.",
@@ -208,6 +202,17 @@
     },
     {
       "n": 17,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice lists updated theme settings.",
+      "status": "supported",
+      "source": "Message Center post MC1440972",
+      "quote": "A refreshed design, app launcher, pinned quick links, and updated theme settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "The Copilot side rail provides access to chat.",
@@ -218,7 +223,7 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 19,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "The Copilot side rail provides access to agents and skills.",
@@ -229,7 +234,7 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 20,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "The Copilot side rail provides access to tasks.",
@@ -240,7 +245,7 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 21,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "The Copilot side rail provides access to Cowork.",
@@ -251,7 +256,7 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 22,
       "where": "front matter: defaultState; title; summary; What's changing; rationale: risk",
       "type": "default",
       "claim": "The Copilot new tab page is off by default.",
@@ -262,10 +267,10 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 23,
       "where": "summary; What's changing",
       "type": "record",
-      "claim": "Microsoft's notice says no action is required before rollout and the upgrade applies to organisations that enabled the policy.",
+      "claim": "The notice says no admin action is required before rollout because the upgrade applies to organisations already enabling the policy.",
       "status": "supported",
       "source": "Message Center post MC1440972",
       "quote": "No admin action required before rollout as this change applies only to organizations that enabled the Copilot new tab page via CopilotNewTabPageEnabled.",
@@ -273,7 +278,29 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 24,
+      "where": "What's changing; Scope; rationale: impact",
+      "type": "behaviour",
+      "claim": "Users without the Copilot new tab page enabled keep the existing new tab page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
+      "quote": "For users without Copilot new tab page enabled, the existing new tab page behavior and related policies remain unchanged.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Why it matters; Governance guidance; rationale: risk",
+      "type": "default",
+      "claim": "When CopilotNewTabPageEnabled is not configured, users can turn the page on through user settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/copilotnewtabpageenabled",
+      "quote": "When the policy is not configured, users can turn it on via user settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
       "where": "What's changing; controls[0].note",
       "type": "default",
       "claim": "Enabling CopilotNewTabPageEnabled turns the page on.",
@@ -284,46 +311,13 @@
       "fix": null
     },
     {
-      "n": 24,
-      "where": "What's changing; Why it matters; Governance guidance; rationale: risk",
+      "n": 27,
+      "where": "controls[0].note; Why it matters; Governance guidance",
       "type": "default",
-      "claim": "When the policy is unconfigured the page starts off, but users can turn it on through user settings.",
+      "claim": "Disabling or not configuring the policy leaves the page off, subject to the separately stated user opt-in when unconfigured.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/copilotnewtabpageenabled",
       "quote": "If you disable or don't configure this policy, the Copilot new tab page is turned off. When the policy is not configured, users can turn it on via user settings.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "controls[0].note; Governance controls table",
-      "type": "default",
-      "claim": "Disabling the policy turns the page off.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/copilotnewtabpageenabled",
-      "quote": "If you disable or don't configure this policy, the Copilot new tab page is turned off.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "What's changing; Scope: Users; rationale: impact",
-      "type": "behaviour",
-      "claim": "Users without the Copilot new tab page enabled retain the existing new tab page.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
-      "quote": "For users without Copilot new tab page enabled, the existing new tab page behavior and related policies remain unchanged.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "Scope: Users",
-      "type": "applicability",
-      "claim": "Existing new tab page policies remain unchanged for users without the new experience enabled.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
-      "quote": "For users without Copilot new tab page enabled, the existing new tab page behavior and related policies remain unchanged.",
       "severity": null,
       "fix": null
     },
@@ -342,10 +336,10 @@
       "n": 29,
       "where": "What's changing; Scope: Rollout",
       "type": "record",
-      "claim": "The notice gives public preview beginning in late September 2026 and expected to complete by mid-October 2026.",
+      "claim": "The notice gives a public preview beginning in late September 2026 and expected to complete by mid-October 2026.",
       "status": "supported",
       "source": "Message Center post MC1440972",
-      "quote": "Public Preview: Beginning in late September 2026 (previously early September) and expected to complete by mid-October 2026 (previously mid-September)",
+      "quote": "Public Preview: Beginning in late September 2026 (previously early September) and expected to complete by mid-October 2026",
       "severity": null,
       "fix": null
     },
@@ -353,7 +347,7 @@
       "n": 30,
       "where": "What's changing; Scope: Rollout",
       "type": "record",
-      "claim": "The notice gives Worldwide general availability beginning in early November 2026.",
+      "claim": "The notice gives general availability beginning in early November 2026 for Worldwide.",
       "status": "supported",
       "source": "Message Center post MC1440972",
       "quote": "General Availability (Worldwide): Beginning in early November 2026 (previously mid-October)",
@@ -396,8 +390,8 @@
     {
       "n": 34,
       "where": "What's changing; Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "In Edge 148 some users outside supported language markets may not see the Work feed, Discover feed or feed toggle.",
+      "type": "availability",
+      "claim": "In Edge 148 some users outside supported tenant or user-locale language markets may not see Work, Discover or the feed toggle.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
       "quote": "In Microsoft Edge version 148, some users may not see the Work feed, Discover feed, or feed toggle on the Copilot new tab page if their tenant or user locale is outside supported language markets.",
@@ -406,45 +400,45 @@
     },
     {
       "n": 35,
-      "where": "controls[0].note; Scope: Roles; Governance guidance; Governance controls",
-      "type": "role",
-      "claim": "The documented management service configuration requires Global admin or Edge admin privileges.",
+      "where": "controls[0].ui; Governance controls table; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The management-service control is at Edge management service > Copilot > Copilot new tab page.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
-      "quote": "Navigate to the Edge management service inside the Microsoft 365 Admin Center at https://admin.cloud.microsoft/?#/Edge and sign in with an account that has Global admin or Edge admin privileges.",
+      "quote": "Navigate to the Edge management service inside the Microsoft 365 Admin Center ... switch to the Copilot tab. ... Click the dropdown beside Copilot new tab page and select Enabled.",
       "severity": null,
       "fix": null
     },
     {
       "n": 36,
-      "where": "controls[0].governs; Risk assessment; Scope: Users; Governance guidance",
-      "type": "applicability",
-      "claim": "The management service configuration can be assigned to all users or selected Microsoft Entra security groups.",
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "CopilotNewTabPageEnabled = Enabled uses REG_DWORD 0x00000001 under SOFTWARE\\Policies\\Microsoft\\Edge.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
-      "quote": "Choose whether to assign the new policy to All users or to One or more groups. If you selected One or more groups, select the appropriate security groups using the picker.",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/copilotnewtabpageenabled",
+      "quote": "GP unique name: CopilotNewTabPageEnabled; Example value: Enabled; Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge; Value name: CopilotNewTabPageEnabled; Value type: REG_DWORD; Example registry value: 0x00000001",
       "severity": null,
       "fix": null
     },
     {
       "n": 37,
-      "where": "controls[0].ui; Governance controls table; Governance guidance",
-      "type": "admin-path",
-      "claim": "The availability setting is at Edge management service > Copilot > Copilot new tab page in the Microsoft 365 admin center.",
+      "where": "controls[0].note; Scope: Roles; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "A Global admin account can configure the page in the Edge management service.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
-      "quote": "From the top navigation bar, switch to the Copilot tab. Click the dropdown beside Copilot new tab page and select Enabled.",
+      "quote": "sign in with an account that has Global admin or Edge admin privileges.",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "CopilotNewTabPageEnabled is enabled by setting its REG_DWORD value to 0x00000001 under SOFTWARE\\Policies\\Microsoft\\Edge.",
+      "where": "controls[0].note; Scope: Roles; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "An Edge admin account can configure the page in the Edge management service.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/copilotnewtabpageenabled",
-      "quote": "Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge; Value name: CopilotNewTabPageEnabled; Value type: REG_DWORD; Example registry value: 0x00000001",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
+      "quote": "sign in with an account that has Global admin or Edge admin privileges.",
       "severity": null,
       "fix": null
     },
@@ -472,9 +466,97 @@
     },
     {
       "n": 41,
+      "where": "controls[0].governs; Risk assessment: Security & identity; Scope: Users; Governance guidance",
+      "type": "applicability",
+      "claim": "The management service can assign the configuration to all users or selected Microsoft Entra groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
+      "quote": "Choose whether to assign the new policy to All users or to One or more groups. ... If you selected One or more groups, select the appropriate security groups using the picker.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The feed control is under Administrative Templates > Microsoft Edge > Startup, home page and new tab page > Configure whether the Discover or Work feed tabs are shown on the Copilot new tab page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/configurentpfeedtabvisibility",
+      "quote": "GP name: Configure whether the Discover or Work feed tabs are shown on the Copilot new tab page. GP path (Mandatory): Administrative Templates/Microsoft Edge/Startup, home page and new tab page",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "ConfigureNTPFeedTabVisibility uses REG_DWORD under SOFTWARE\\Policies\\Microsoft\\Edge, with 1 for EnableOnlyWork or 2 for EnableOnlyDiscover.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/configurentpfeedtabvisibility",
+      "quote": "EnableOnlyWork (1) = Enable only Work tab; EnableOnlyDiscover (2) = Enable only Discover tab; Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge; Value name: ConfigureNTPFeedTabVisibility; Value type: REG_DWORD",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].note; Governance controls table",
+      "type": "availability",
+      "claim": "ConfigureNTPFeedTabVisibility supports Windows version 148 or later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/configurentpfeedtabvisibility",
+      "quote": "Windows: ≥ 148",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[1].note; Governance controls table",
+      "type": "availability",
+      "claim": "ConfigureNTPFeedTabVisibility supports macOS version 148 or later.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/configurentpfeedtabvisibility",
+      "quote": "macOS: ≥ 148",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[1].note; Governance controls table",
+      "type": "availability",
+      "claim": "ConfigureNTPFeedTabVisibility does not support Android.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/configurentpfeedtabvisibility",
+      "quote": "Android: Not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[1].note; Governance controls table",
+      "type": "availability",
+      "claim": "ConfigureNTPFeedTabVisibility does not support iOS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/configurentpfeedtabvisibility",
+      "quote": "iOS: Not supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "The feed visibility policy requires a browser restart.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/configurentpfeedtabvisibility",
+      "quote": "Dynamic Policy Refresh: No - Requires browser restart",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
       "where": "Scope: Versions",
       "type": "availability",
-      "claim": "CopilotNewTabPageEnabled supports Windows from version 148.",
+      "claim": "CopilotNewTabPageEnabled lists Windows version 148 or later.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/copilotnewtabpageenabled",
       "quote": "Windows: ≥ 148",
@@ -482,10 +564,10 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 50,
       "where": "Scope: Versions",
       "type": "availability",
-      "claim": "CopilotNewTabPageEnabled supports macOS from version 148.",
+      "claim": "CopilotNewTabPageEnabled lists macOS version 148 or later.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/copilotnewtabpageenabled",
       "quote": "macOS: ≥ 148",
@@ -493,10 +575,10 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 51,
       "where": "Scope: Versions",
       "type": "availability",
-      "claim": "CopilotNewTabPageEnabled supports Android from version 148.",
+      "claim": "CopilotNewTabPageEnabled lists Android version 148 or later.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/copilotnewtabpageenabled",
       "quote": "Android: ≥ 148",
@@ -504,10 +586,10 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 52,
       "where": "Scope: Versions",
       "type": "availability",
-      "claim": "CopilotNewTabPageEnabled supports iOS from version 148.",
+      "claim": "CopilotNewTabPageEnabled lists iOS version 148 or later.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/copilotnewtabpageenabled",
       "quote": "iOS: ≥ 148",
@@ -515,10 +597,10 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 53,
       "where": "Cost and licensing; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "The configure page's prerequisite is a Microsoft Entra group containing target users, set up in the Microsoft 365 admin center.",
+      "claim": "The configure page's prerequisite is a Microsoft Entra group set up in the Microsoft 365 admin center containing target users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
       "quote": "Before setting up the configuration policy, ensure you have a Microsoft Entra group set up in the Microsoft 365 Admin Center that includes the target users.",
@@ -526,31 +608,20 @@
       "fix": null
     },
     {
-      "n": 46,
-      "where": "Risk assessment: Data exposure; Governance controls; Open questions",
-      "type": "admin-path",
-      "claim": "The Learn FAQ describes a user control to turn off Cards in new tab page Settings.",
+      "n": 54,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The configure page's prerequisites section names no licence.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
-      "quote": "Yes. Users can turn off Cards in the new tab page Settings (sliders icon).",
+      "quote": "Before setting up the configuration policy, ensure you have a Microsoft Entra group set up in the Microsoft 365 Admin Center that includes the target users. ... You can enable Copilot new tab page for one or more group.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 47,
-      "where": "Governance controls",
+      "n": 55,
+      "where": "Risk assessment: Change & support; Governance controls",
       "type": "behaviour",
-      "claim": "Users may be able to turn off the whole experience depending on organisational settings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
-      "quote": "Depending on your organization’s settings, you may be able to turn off this experience.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "Risk assessment: Change & support; Governance guidance; Governance controls",
-      "type": "default",
       "claim": "Enabling the page in the management service also enables other recommended Copilot settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
@@ -559,10 +630,10 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "Risk assessment: Change & support; Governance guidance; Governance controls",
+      "n": 56,
+      "where": "Risk assessment: Change & support; Governance controls",
       "type": "behaviour",
-      "claim": "The other recommended settings can be adjusted individually.",
+      "claim": "Administrators can adjust the other recommended Copilot settings individually.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
       "quote": "You can choose to adjust these individually.",
@@ -570,10 +641,10 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 57,
       "where": "Risk assessment: Change & support; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Configuration updates may take up to 90 minutes to download to targeted devices.",
+      "claim": "Configuration-profile updates may take up to 90 minutes to download to targeted devices.",
       "status": "supported",
       "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
       "quote": "Updates may take up to 90 minutes to be downloaded to devices targeted by the configuration profile.",
@@ -581,152 +652,31 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "Governance guidance: After rollout",
-      "type": "admin-path",
-      "claim": "Verification uses edge://policy, Reload Policies, a TRUE CopilotNewTabPageEnabled value, browser restart and a new tab.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
-      "quote": "navigate to edge://policy on a targeted device and click Reload Policies to fetch changes. Verify that the CopilotNewTabPageEnabled policy values show as TRUE, then restart the browser.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "Scope: Existing policies",
-      "type": "applicability",
-      "claim": "Most policies that customise the new tab page are supported on the Copilot new tab page.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/copilotnewtabpageenabled",
-      "quote": "Most policies that customize the New Tab Page are supported on the Copilot new tab page.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "Scope: Existing policies; Governance guidance: Before rollout",
-      "type": "applicability",
-      "claim": "NewTabPageAppLauncherEnabled is supported on the Copilot new tab page.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
-      "quote": "Supported new tab page policies: App Launcher | Edge policy: NewTabPageAppLauncherEnabled",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "Scope: Existing policies; Governance guidance: Before rollout",
-      "type": "applicability",
-      "claim": "NewTabPageManagedQuickLinks is supported on the Copilot new tab page.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
-      "quote": "Supported new tab page policies: Quick Links | Edge policy: NewTabPageManagedQuickLinks",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "Governance guidance: Before rollout",
-      "type": "applicability",
-      "claim": "Background-type policy is included in the documented supported-policy list.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
-      "quote": "Supported new tab page policies: Background Image | Edge policy: NewTabPageAllowedBackgroundTypes",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "Scope: Existing policies",
-      "type": "applicability",
-      "claim": "NewTabPageBingChatEnabled is listed as unsupported on the Copilot new tab page.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
-      "quote": "Unsupported new tab page policies: Copilot Chat Button on other new tab pages | NewTabPageBingChatEnabled",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "controls[1].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The feed setting is under Administrative Templates > Microsoft Edge > Startup, home page and new tab page with the printed Configure whether label.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/configurentpfeedtabvisibility",
-      "quote": "GP name: Configure whether the Discover or Work feed tabs are shown on the Copilot new tab page. GP path (Mandatory): Administrative Templates/Microsoft Edge/Startup, home page and new tab page",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 58,
-      "where": "controls[1].api; Governance controls table; Governance guidance: At rollout",
-      "type": "command",
-      "claim": "ConfigureNTPFeedTabVisibility uses REG_DWORD under SOFTWARE\\Policies\\Microsoft\\Edge, with 1 for Work only or 2 for Discover only.",
+      "where": "Risk assessment: Data exposure; Governance controls; Open questions",
+      "type": "admin-path",
+      "claim": "The FAQ documents a user setting to turn Cards off in new tab page Settings.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/configurentpfeedtabvisibility",
-      "quote": "EnableOnlyWork (1) = Enable only Work tab; EnableOnlyDiscover (2) = Enable only Discover tab; Path (Mandatory): SOFTWARE\\Policies\\Microsoft\\Edge; Value name: ConfigureNTPFeedTabVisibility; Value type: REG_DWORD",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
+      "quote": "Can users turn off Work cards? Yes. Users can turn off Cards in the new tab page Settings (sliders icon).",
       "severity": null,
       "fix": null
     },
     {
       "n": 59,
-      "where": "controls[1].note; Governance controls table",
-      "type": "availability",
-      "claim": "ConfigureNTPFeedTabVisibility supports Windows from version 148.",
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Users may be able to turn off the whole experience, depending on organisational settings.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/configurentpfeedtabvisibility",
-      "quote": "Windows: ≥ 148",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
+      "quote": "Depending on your organization’s settings, you may be able to turn off this experience.",
       "severity": null,
       "fix": null
     },
     {
       "n": 60,
-      "where": "controls[1].note; Governance controls table",
-      "type": "availability",
-      "claim": "ConfigureNTPFeedTabVisibility supports macOS from version 148.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/configurentpfeedtabvisibility",
-      "quote": "macOS: ≥ 148",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
-      "where": "controls[1].note; Governance controls table",
-      "type": "availability",
-      "claim": "ConfigureNTPFeedTabVisibility is not supported on Android.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/configurentpfeedtabvisibility",
-      "quote": "Android: Not supported",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 62,
-      "where": "controls[1].note; Governance controls table",
-      "type": "availability",
-      "claim": "ConfigureNTPFeedTabVisibility is not supported on iOS.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/configurentpfeedtabvisibility",
-      "quote": "iOS: Not supported",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 63,
-      "where": "controls[1].note; Governance controls table",
-      "type": "behaviour",
-      "claim": "ConfigureNTPFeedTabVisibility requires a browser restart.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/configurentpfeedtabvisibility",
-      "quote": "Dynamic Policy Refresh: No - Requires browser restart",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 64,
-      "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "licensing",
+      "where": "front matter: licensing; Cost and licensing; Open questions; rationale: cost",
+      "type": "record",
       "claim": "MC1440972 says users must have a Microsoft 365 Copilot licence to access the experience.",
       "status": "supported",
       "source": "Message Center post MC1440972",
@@ -735,139 +685,7 @@
       "fix": null
     },
     {
-      "n": 65,
-      "where": "licensing.notes; Cost and licensing; Open questions",
-      "type": "licensing",
-      "claim": "The policy reference says users without a Microsoft 365 Copilot licence might see limited relevance in prompt-card content.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/copilotnewtabpageenabled",
-      "quote": "Users who do not have a Microsoft 365 Copilot license might experience limited relevance in Copilot prompt card content.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 66,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The licensing model is add-on, referring to the Microsoft 365 Copilot licence named in the notice.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
-      "quote": "Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot to sources to support the add-on classification."
-    },
-    {
-      "n": 67,
-      "where": "licensing.notes; Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No separate price or meter for the new tab page itself is published in the researched Microsoft documentation.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Copilot new tab page\" \"price\" \"meter\". Read the configure page, both policy references, Copilot service description and https://learn.microsoft.com/copilot/plan/pay-as-you-go-meters; none names a separate new-tab-page price or meter.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 68,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The configure page's prerequisites name no licence.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
-      "quote": "Prerequisites: Before setting up the configuration policy, ensure you have a Microsoft Entra group set up in the Microsoft 365 Admin Center that includes the target users.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 69,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Access to browser context is a separate setting in the management service's Copilot tab.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features",
-      "quote": "In the Microsoft Edge management service, select the Copilot tab, then use each dropdown to select Enabled or Disabled ... Access to browser context: Allows Microsoft 365 Copilot Chat to use a user’s browser context",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 70,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Copilot icon in the toolbar is a separate management service Copilot setting.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features",
-      "quote": "Copilot icon in the toolbar: Shows the Copilot icon in the Microsoft Edge for Business toolbar.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 71,
-      "where": "Governance controls; Open questions",
-      "type": "behaviour",
-      "claim": "Copilot search box is separately listed as a management service Copilot setting.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features",
-      "quote": "Copilot search box: Shows a search box on the new tab page where users can chat with Copilot and search with Bing Autosuggest.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 72,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "AI-generated text and editing is a separate management service Copilot setting.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features",
-      "quote": "AI-generated text and editing: Provides AI-generated text creation and editing for eligible text fields.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 73,
-      "where": "Open questions: search box interaction",
-      "type": "absence",
-      "claim": "The interaction between the separate Copilot search box and Copilot new tab page settings is not described in the cited Learn pages.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Copilot search box\" \"Copilot new tab page\" settings interaction. Read Configuring Copilot Features, Configure the Copilot new tab page and CopilotNewTabPageEnabled; they list the settings but do not explain their interaction.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 74,
-      "where": "Governance controls; Open questions: work cards",
-      "type": "absence",
-      "claim": "The researched documentation describes Cards off as a user setting, not a separately documented admin work-card switch.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Copilot new tab page\" \"cards\" \"policy\" disable. Read the configure FAQ, supported-policy list, CopilotNewTabPageEnabled and ConfigureNTPFeedTabVisibility; the FAQ documents user Cards settings, not a separate admin Cards switch.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 75,
-      "where": "front matter: cost; Cost and licensing; rationale: cost",
-      "type": "consistency",
-      "claim": "The low cost rating and indirect-cost-only rationale agree with the page's identified licence dependency.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "cost: \"low\"; \"the known cost is admin time and communications\"; \"For tenants without licences for the target users, the cost is the Microsoft 365 Copilot licence Microsoft's notice names\"",
-      "severity": "blocker",
-      "fix": "Set cost to medium. Replace the cost rationale with: \"Medium. Microsoft's notice says target users need a Microsoft 365 Copilot licence, so enabling for users who are not already licensed can require add-on licences. For already licensed users, rollout adds administrator time and communications.\""
-    },
-    {
-      "n": 76,
-      "where": "Governance guidance: Before rollout and At rollout; Governance controls",
-      "type": "consistency",
-      "claim": "Every control that the governance checklist asks administrators to check or adjust has a controls-table row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "\"Check the new tab page policies you already set (quick links, app launcher, background types)\"; \"Review the other Copilot settings ... and adjust each one\"; the table contains only availability and feed visibility.",
-      "severity": "minor",
-      "fix": "The Before rollout step about quick links, app launcher and background types, and the At rollout step about adjusting other recommended Copilot settings, name controls without table rows. Remove these two checklist bullets; retain the existing explanatory prose."
-    },
-    {
-      "n": 77,
+      "n": 61,
       "where": "Cost and licensing; Governance guidance: Before rollout",
       "type": "record",
       "claim": "Microsoft recommends verifying that affected users have a Microsoft 365 Copilot licence before enabling.",
@@ -878,18 +696,117 @@
       "fix": null
     },
     {
-      "n": 78,
-      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
-      "type": "record",
-      "claim": "Microsoft recommends evaluating work-card exposure of files and calendar events and reviewing applicable AI governance and compliance requirements.",
+      "n": 62,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "licensing",
+      "claim": "The policy page says users without a Microsoft 365 Copilot licence might see limited relevance in Copilot prompt card content.",
       "status": "supported",
-      "source": "Message Center post MC1440972",
-      "quote": "Evaluate the effect of surfacing organizational files and calendar events through work cards. Review applicable AI governance and compliance requirements before enabling the experience.",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/copilotnewtabpageenabled",
+      "quote": "Users who do not have a Microsoft 365 Copilot license might experience limited relevance in Copilot prompt card content.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 79,
+      "n": 63,
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The service description calls Microsoft 365 Copilot an add-on plan with licensing prerequisites, supporting the briefing's add-on model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
+      "quote": "Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites.",
+      "severity": "minor",
+      "fix": "Keep the cited service-description statement and add: 'Microsoft's separate licensing page also says Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible plans.' Cite https://learn.microsoft.com/copilot/plan/copilot-license-options, which states 'Microsoft Copilot is available with Microsoft 365 E7 or as an add-on for eligible commercial, US Government, and education subscription plans.'"
+    },
+    {
+      "n": 64,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "No separate new-tab-page price or meter is published in the feature and licensing material checked.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot new tab page separate price meter licensing cost Edge'. Read configure page, CopilotNewTabPageEnabled, Copilot service description, copilot-license-options and pay-as-you-go meters excerpt. No separate new-tab-page price or meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The cited configure, policy and service-description pages do not state a Copilot add-on price.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot new tab page separate price meter licensing cost Edge'. Read the configure page, CopilotNewTabPageEnabled and Microsoft Copilot service description in full; none states a Copilot add-on price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Scope: Existing policies",
+      "type": "applicability",
+      "claim": "Most policies that customise the new tab page are supported on the Copilot new tab page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/copilotnewtabpageenabled",
+      "quote": "Most policies that customize the New Tab Page are supported on the Copilot new tab page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Scope: Existing policies",
+      "type": "applicability",
+      "claim": "NewTabPageAppLauncherEnabled is listed as supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
+      "quote": "Supported new tab page policies ... App Launcher | Edge policy: NewTabPageAppLauncherEnabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Scope: Existing policies",
+      "type": "applicability",
+      "claim": "NewTabPageManagedQuickLinks is listed as supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
+      "quote": "Supported new tab page policies ... Quick Links | Edge policy: NewTabPageManagedQuickLinks",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Scope: Existing policies",
+      "type": "applicability",
+      "claim": "NewTabPageBingChatEnabled is listed as unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
+      "quote": "Unsupported new tab page policies ... Copilot Chat Button on other new tab pages | NewTabPageBingChatEnabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft recommends evaluating the effect of surfacing organisational files and calendar events through work cards.",
+      "status": "supported",
+      "source": "Message Center post MC1440972",
+      "quote": "Evaluate the effect of surfacing organizational files and calendar events through work cards.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft recommends reviewing applicable AI governance and compliance requirements before enabling.",
+      "status": "supported",
+      "source": "Message Center post MC1440972",
+      "quote": "Review applicable AI governance and compliance requirements before enabling the experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
       "where": "Governance guidance: At rollout",
       "type": "record",
       "claim": "Microsoft recommends notifying affected users.",
@@ -900,21 +817,131 @@
       "fix": null
     },
     {
-      "n": 80,
+      "n": 73,
       "where": "Governance guidance: At rollout",
       "type": "record",
-      "claim": "Microsoft recommends updating user guidance, training and support documentation.",
+      "claim": "Microsoft recommends updating user guidance.",
       "status": "supported",
       "source": "Message Center post MC1440972",
       "quote": "Update relevant user guidance, training, and support documentation.",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Verification uses edge://policy > Reload Policies to check that CopilotNewTabPageEnabled shows TRUE, followed by a browser restart and new-tab check.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
+      "quote": "navigate to edge://policy on a targeted device and click Reload Policies to fetch changes. Verify that the CopilotNewTabPageEnabled policy values show as TRUE, then restart the browser. ... Open a new tab and verify that the new tab page is showing the updated Copilot experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "The management-service route and CopilotNewTabPageEnabled configure the same new-tab-page availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
+      "quote": "The availability of the Copilot New Tab Page can be configured through the CopilotNewTabPageEnabled policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Access to browser context is a separately configurable Copilot setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features",
+      "quote": "use each dropdown to select Enabled or Disabled ... Access to browser context: Allows Microsoft 365 Copilot Chat to use a user’s browser context, such as page content, to provide contextual responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Copilot icon in the toolbar is a separately configurable setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features",
+      "quote": "use each dropdown to select Enabled or Disabled ... Copilot icon in the toolbar: Shows the Copilot icon in the Microsoft Edge for Business toolbar.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Governance controls; Open questions",
+      "type": "behaviour",
+      "claim": "The Copilot search box is a separately configurable setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features",
+      "quote": "use each dropdown to select Enabled or Disabled ... Copilot search box: Shows a search box on the new tab page where users can chat with Copilot and search with Bing Autosuggest.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "AI-generated text and editing is a separately configurable setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features",
+      "quote": "use each dropdown to select Enabled or Disabled ... AI-generated text and editing: Provides AI-generated text creation and editing for eligible text fields.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "Open questions: Copilot search box",
+      "type": "absence",
+      "claim": "The Learn pages do not explain how the separate Copilot search box setting interacts with the Copilot new tab page setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Edge management Copilot search box Copilot new tab page interaction settings'. Opened Configure the Copilot new tab page and Configuring Copilot Features; both describe settings, but neither explains their interaction.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Risk assessment: Data exposure; Scope: Users; Governance controls; Open questions",
+      "type": "behaviour",
+      "claim": "Suggested prompts can surface organisational content including files and calendar events.",
+      "status": "supported",
+      "source": "Message Center post MC1440972",
+      "quote": "The upgraded Copilot new tab page integrates Microsoft 365 Copilot chat and can surface organizational content, including files and calendar events, through work cards and suggested prompts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "Scope: Users",
+      "type": "applicability",
+      "claim": "Existing new tab page policies remain unchanged for users without the Copilot new tab page enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-management-configure-the-copilot-new-tab-page",
+      "quote": "For users without Copilot new tab page enabled, the existing new tab page behavior and related policies remain unchanged.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "controls[1].scope; Governance controls table",
+      "type": "applicability",
+      "claim": "The feed visibility policy is scoped per user profile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/deployedge/microsoft-edge-policies/configurentpfeedtabvisibility",
+      "quote": "Per Profile: Yes",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-20T14:40:58.139Z",
+    "at": "2026-11-20T20:05:08.642Z",
     "summary": {
-      "links": 6,
+      "links": 7,
       "unreachable": 0,
       "uiPaths": 2,
       "uiPathsWithMissingWords": 0,
@@ -950,6 +977,11 @@
       },
       {
         "url": "https://learn.microsoft.com/deployedge/microsoft-edge-management-service-copilot-features",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot",
         "ok": true,
         "status": 200
       }
@@ -1003,5 +1035,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-20",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

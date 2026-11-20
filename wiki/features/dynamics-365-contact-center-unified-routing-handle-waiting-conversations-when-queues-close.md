@@ -34,8 +34,14 @@ sources:
   - title: "CC User Prompt (msdyn_ccuserprompt) table/entity reference"
     url: "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt"
     kind: "learn"
+  - title: "Configure voicemail to manage inbound calls in Dynamics 365 Contact Center"
+    url: "https://learn.microsoft.com/dynamics365/customer-service/administer/voice-channel-voicemail"
+    kind: "learn"
+  - title: "Configure customer-first direct callback in Dynamics 365 Contact Center"
+    url: "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback"
+    kind: "learn"
 videos: []
-related: ["dynamics-365-contact-center-unified-routing-orchestrate-conversation-distribution-with-nat","dynamics-365-contact-center-unified-routing-use-overflow-actions-to-protect-customer-exper","dynamics-365-contact-center-administrator-experiences-use-enhanced-customer-first-direct-c","copilot-credits"]
+related: ["dynamics-365-contact-center-unified-routing-orchestrate-conversation-distribution-with-nat","dynamics-365-contact-center-administrator-experiences-use-enhanced-customer-first-direct-c","copilot-credits"]
 controls:
   - governs: "Overflow actions for a queue that is closed or has no representatives signed in, and the queues covered"
     scope: "other"
@@ -57,19 +63,23 @@ changes:
     note: "New briefing: playbook overflow when a queue goes out of operating hours or all representatives sign out, with the Learn setup path, Copilot credit consumption at publish and the open licence and rate questions."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 63 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected the comparison with the queue's overflow rules to the out-of-operating-hours condition Learn describes, and narrowed the voicemail and callback data statements to what Learn says."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 74 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 61
+  claims: 74
+  confirmed: 72
   unconfirmed: 0
   contradicted: 2
-  attempts: 1
-  hash: "7dd09fd27788568700e0d51cfb53995b"
+  attempts: 0
+  hash: "9f420bb37f2931b3e6339431b1d363ee"
 ---
 
 ## What's changing
@@ -78,7 +88,7 @@ Dynamics 365 Contact Center can now run an administrator-defined fallback action
 
 Learn describes two conditions in the playbook: **Queue is out of operating hours**, which also covers a queue that transitions out of operating hours while conversations are waiting, and **All representatives are signed out**, which also covers that state arising while conversations are already waiting. Learn adds that the signed-out condition triggers when representatives sign out, close their browser session, or there's a network outage. The action can be transferring to another queue or to an external number, offering callback or voicemail, keeping the conversation unassigned, or ending the conversation. Learn marks callback and voicemail as voice channel only, and says conversation orchestration is available for voice and messaging channels only.
 
-Learn contrasts this with the queue's existing overflow rules: those are evaluated once, before the work item is added to the queue, whereas the playbook condition is evaluated continuously, including after transfers. For representative availability, Learn says the playbook triggers immediately instead of waiting for time or volume-based conditions. The roadmap item shows the status as Launched, with a target of October CY2026 and a preview from June CY2026, for Worldwide (Standard Multi-Tenant) on the Web platform.
+Learn says the queue's out-of-operating-hours overflow condition is evaluated once before queue entry, whereas the playbook condition is evaluated continuously, including after transfers. For representative availability, Learn says the playbook triggers immediately instead of waiting for time or volume-based conditions. The roadmap item shows the status as Launched, with a target of October CY2026 and a preview from June CY2026, for Worldwide (Standard Multi-Tenant) on the Web platform.
 
 ## Why it matters
 
@@ -90,7 +100,7 @@ If nobody acts, the roadmap description and Learn show no change to existing que
 
 **Data exposure**
 - Transfer to an external number hands a live customer to a number outside the organisation; check each number before publishing, because the playbook runs the transfer without a representative.
-- Voicemail and callback offers capture customer contact details and messages. Learn documents these actions as voice channel only.
+- Voicemail captures customer messages; callback can collect an alternative phone number when the customer chooses to provide one. Learn documents these actions as voice channel only.
 
 **Security & identity**
 - Learn lists the System administrator or Omnichannel administrator role as a prerequisite to configure conversation orchestration, so anyone holding it can change where waiting customers go. Keep those assignments to the people who own routing.
@@ -153,7 +163,7 @@ The playbook is the control. It sets the fallback action for each condition and 
 
 The playbook table is the same one Learn tells you to add to a solution to move a playbook between environments, so a script that writes it changes the playbook record. Learn does not say that such a write publishes the playbook or converts it into the runtime format, so confirm that before relying on it.
 
-The queue's own overflow rules on the **Queue** page remain an alternative for work items arriving out of operating hours. Learn says they are evaluated once, before the work item is added to the queue, so they do not cover conversations that are already waiting.
+The queue's own overflow rules on the **Queue** page remain an alternative for work items arriving out of operating hours. The queue's out-of-operating-hours condition is evaluated once before queue entry, so it does not respond when the queue closes while conversations are already waiting.
 
 ## Open questions
 
@@ -168,14 +178,11 @@ cost: Variable. Learn says conversation orchestration consumes Copilot credits w
 impact: Low. Contact centre administrators build the playbook and only customers in the queues it covers see a different outcome; a draft playbook is not active, so nothing changes until one is published.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing: existing overflow rules; Governance controls: final paragraph / behaviour: The queue's existing overflow rules are evaluated once before queue entry and do not cover conversations already waiting. | Found: A queue's overflow handling options can trigger actions either before or after a work item is queued. | Fix: In What's changing replace the comparison with: "Learn says the queue's out-of-operating-hours overflow condition is evaluated once before queue entry, whereas the playbook condition is evaluated continuously, including after transfers." In Governance controls replace the final sentence with: "The queue's out-of-operating-hours condition is evaluated once before queue entry, so it does not respond when the queue closes while conversations are already waiting." This narrows both statements to the condition discussed in https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow#use-natural-language-playbooks-to-configure-overflow-actions-for-work-items-in-queue, without denying the documented legacy wait-time overflow rules. | Source: https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure / behaviour: Voicemail captures customer messages. | Found: Voicemails help your customers record messages for service representatives when they come across long wait times or their direct calls to representatives are unanswered. | Fix: Cite https://learn.microsoft.com/dynamics365/customer-service/administer/voice-channel-voicemail for the voicemail message-capture statement. | Source: https://learn.microsoft.com/dynamics365/customer-service/administer/voice-channel-voicemail
-- [supported, minor] Risk assessment: Data exposure / behaviour: Callback offers capture customer contact details. | Found: If customer opts for providing an alternative number to be called at, the AI agent takes the number. | Fix: Replace "Voicemail and callback offers capture customer contact details and messages" with "Voicemail captures customer messages; callback can collect an alternative phone number when the customer chooses to provide one." Cite https://learn.microsoft.com/dynamics365/customer-service/administer/voice-channel-voicemail and https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/configure-customer-first-callback
-- [supported, minor] controls[0].api; Governance controls: playbook table / command: PATCH /msdyn_ccuserprompts(msdyn_ccuserpromptid) updates the stored playbook record, without claiming that the operation publishes it. | Found: `Update`Event: True | `PATCH` /msdyn\_ccuserprompts(*msdyn\_ccuserpromptid*). Writable columns/attributes: msdyn_channel, msdyn_exclusionlist, msdyn_inclusionlist, msdyn_prompt. | Fix: Keep the PATCH call and publication caveat, but append to controls[0].note: "The request body can update msdyn_prompt; msdyn_channel, msdyn_inclusionlist and msdyn_exclusionlist are also writable columns." These names are listed at https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt. | Source: https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt
-- [supported, minor] controls[0].ui; Governance guidance: At rollout; Governance controls / admin-path: Copilot Service admin center > Customer support > Conversation Orchestration > Prompt gallery > Overflow handling > Manage overflow of incoming conversations using advanced conditions reaches the playbook editor. | Found: In Copilot Service admin center, go to **Customer support** > **Conversation Orchestration**. ... select **Prompt gallery**. ... select a scenario category, and then select a playbook template. | Fix: Keep the path, which correctly reaches the editor. Append to controls[0].note: "In the editor, use Queues > Edit to select Channel and Apply to, and configure the template's conditions and actions before saving and publishing." The remaining steps are documented at https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration#create-a-playbook. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist asks the reader to check consumption-based billing setup, but the controls table contains only the overflow playbook control. | Found: Confirm consumption-based billing is set up for the environment ... | Controls table: Overflow actions for a queue that is closed or has no representatives signed in, and the queues covered. | Fix: The Before rollout step "Confirm consumption-based billing is set up for the environment" has no corresponding control row. Do not add a row as part of this correction.
+- [supported, minor] controls[0].ui; Governance controls table; Governance guidance: At rollout / admin-path: The Copilot Service admin center path through Customer support, Conversation Orchestration, Prompt gallery, Overflow handling and the advanced-conditions template reaches the playbook editor. | Found: In Copilot Service admin center, go to Customer support > Conversation Orchestration. On the Conversation Orchestration page, select Prompt gallery. Overflow handling | Manage overflow of incoming conversations using advanced conditions | Fix: Keep the documented path and add to the row note: 'The path opens the playbook editor. Select Queues > Edit, choose Channel and Apply to, and save the queue selection; configure conditions and actions in the editor.' These remaining steps are documented at https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration
+- [supported, minor] controls[0].api; Governance controls table and prose / command: PATCH /msdyn_ccuserprompts(msdyn_ccuserpromptid) updates the CC User Prompt playbook record. | Found: Update | PATCH /msdyn_ccuserprompts(msdyn_ccuserpromptid). Writable columns/attributes: msdyn_channel, msdyn_exclusionlist, msdyn_inclusionlist, msdyn_prompt. | Fix: Keep the call and add to the row note: 'The request body sets msdyn_prompt for the prompt, msdyn_channel for the channel, and msdyn_inclusionlist or msdyn_exclusionlist for queue selection. This updates the record; publishing through this call is not documented.' The properties are listed at https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt. | Source: https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt
+- [contradicted, minor] front matter: risk; rationale: risk / consistency: The medium risk rationale rates the actions of a published playbook rather than exposure with the opt-in control left at its default. | Found: defaultState: admin-opt-in. Medium. A published playbook can transfer, end or redirect live customer conversations on its own. Schema: low includes 'nothing happens until an admin opts in'; a new control is rated at its default. | Fix: Set risk to 'low' and replace its rationale with 'Low. No new fallback action runs until an administrator configures and publishes a playbook.' Keep the supported warnings about published playbook actions in Risk assessment.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist tells administrators to confirm consumption-based billing, but the controls table contains only the overflow playbook control. | Found: Before rollout: 'Confirm consumption-based billing is set up for the environment, and an Azure subscription if you use pay-as-you-go'. Sole control row: 'Overflow actions for a queue that is closed or has no representatives signed in, and the queues covered'. | Fix: The Before rollout instruction to confirm consumption-based billing and the pay-as-you-go subscription has no corresponding controls-table row. Do not add an unverified control row as part of this correction.
 -->
