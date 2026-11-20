@@ -1,0 +1,898 @@
+{
+  "slug": "sharepoint-html-pages",
+  "roadmapId": 569208,
+  "title": "SharePoint: create, upload and publish HTML pages, with Copilot drafting",
+  "status": "held",
+  "date": "2026-11-20",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-20",
+    "reasons": [
+      "1 blocking finding (claim 46)"
+    ]
+  },
+  "counts": {
+    "claims": 70,
+    "confirmed": 68,
+    "unconfirmed": 1,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "Hold: the briefing says Copilot licensing does not govern HTML uploads, but the sources do not establish that exemption. The rollout, default state and four control paths and commands are supported; narrow the upload statement to the documented licensing gap.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\", \"Targeted Release\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Web\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap was modified on 11 November 2026 at 00:52:46.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-11T00:52:46\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap products are SharePoint and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [ \"SharePoint\", \"Microsoft Copilot (Microsoft 365)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "title; summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Authors can create HTML pages with Copilot in SharePoint.",
+      "status": "supported",
+      "source": "Message Center post MC1479517",
+      "quote": "Users will be able to create HTML pages with Copilot in SharePoint or upload HTML from another source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Users can upload their own HTML, including an existing .html file.",
+      "status": "supported",
+      "source": "Message Center post MC1479517",
+      "quote": "Users can upload an existing .html file from the HTML page creation screen.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Scope",
+      "type": "record",
+      "claim": "Created or uploaded HTML pages are stored in the site's Site Pages library.",
+      "status": "supported",
+      "source": "Message Center post MC1479517",
+      "quote": "HTML pages created or uploaded by users are stored in the SharePoint Site Pages library according to existing SharePoint storage and retention behavior.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Stored HTML can be rendered as a page in SharePoint.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Once stored in the pages library, you can render HTML as a page in SharePoint, make additional edits, and share with your audience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Users can make additional edits to HTML pages.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Once stored in the pages library, you can render HTML as a page in SharePoint, make additional edits, and share with your audience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "title; summary; What's changing; rationale: risk",
+      "type": "record",
+      "claim": "Users can publish HTML pages.",
+      "status": "supported",
+      "source": "Message Center post MC1479517",
+      "quote": "After an HTML page is stored in the Site Pages library, users can render it as a page in SharePoint, make additional edits, publish it, and share it with their audience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Users can share HTML pages with their audience.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Once stored in the pages library, you can render HTML as a page in SharePoint, make additional edits, and share with your audience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "HTML pages provide another presentation option alongside existing ASPX pages.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "HTML gives you new ways to present your content beautifully alongside our existing ASPX pages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment; Governance guidance; rationale: impact",
+      "type": "record",
+      "claim": "Users can select + New > HTML page on a SharePoint site.",
+      "status": "supported",
+      "source": "Message Center post MC1479517",
+      "quote": "Users can create HTML pages in SharePoint by selecting + New on a SharePoint site and then selecting HTML page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment; rationale: impact",
+      "type": "record",
+      "claim": "The floating Copilot button provides an HTML page creation entry point.",
+      "status": "supported",
+      "source": "Message Center post MC1479517",
+      "quote": "Users can create an HTML page with Copilot from the floating Copilot button on a SharePoint site.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment",
+      "type": "record",
+      "claim": "The Publish landing page offers + Create > HTML page.",
+      "status": "supported",
+      "source": "Message Center post MC1479517",
+      "quote": "Users can create an HTML page from the Publish landing page by selecting + Create and then HTML page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment",
+      "type": "record",
+      "claim": "Users can upload HTML pages or folders from the Site Pages library.",
+      "status": "supported",
+      "source": "Message Center post MC1479517",
+      "quote": "Users can upload HTML pages or folders from the Site Pages library.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "Users describe the desired page in a prompt.",
+      "status": "supported",
+      "source": "Message Center post MC1479517",
+      "quote": "Users can describe the page they want in the prompt box and attach relevant files for additional context.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Why it matters; Governance guidance",
+      "type": "record",
+      "claim": "Users can attach files to provide context for page generation.",
+      "status": "supported",
+      "source": "Message Center post MC1479517",
+      "quote": "Users can describe the page they want in the prompt box and attach relevant files for additional context.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment",
+      "type": "record",
+      "claim": "Copilot creates a draft HTML page and opens it in edit mode.",
+      "status": "supported",
+      "source": "Message Center post MC1479517",
+      "quote": "Copilot can create a draft HTML page and open it in edit mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Users can edit text directly on the page.",
+      "status": "supported",
+      "source": "Message Center post MC1479517",
+      "quote": "Users can edit text directly on the page or use the Copilot chat pane for broader content and design changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Users can use the Copilot chat pane for content and design edits.",
+      "status": "supported",
+      "source": "Message Center post MC1479517",
+      "quote": "Users can edit text directly on the page or use the Copilot chat pane for broader content and design changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "The site-scoped Agent creation entry point is removed from + New on site pages.",
+      "status": "supported",
+      "source": "Message Center post MC1479517",
+      "quote": "The site-scoped Agent creation entry point will be removed from the + New menu on site pages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Risk assessment",
+      "type": "record",
+      "claim": "Agent creation remains in a library or list command bar and the context menu of selected library files.",
+      "status": "supported",
+      "source": "Message Center post MC1479517",
+      "quote": "New agent creation remains available from the command bar of a document library or list and from the context menu of selected files in a document library.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice schedules public preview from early October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1479517",
+      "quote": "Public Preview: Rollout will begin in early October 2026 and is expected to complete in early October 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The notice schedules Worldwide general availability from mid-November to late December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1479517",
+      "quote": "General Availability (Worldwide): Rollout will begin in mid-November 2026 and is expected to complete by late December 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1479517 was published on 25 September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1479517",
+      "quote": "Published 2026-09-25; last updated 2026-09-25",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The supplied notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1479517",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "summary; Why it matters; rationale: risk",
+      "type": "record",
+      "claim": "Microsoft says no admin action is required before rollout.",
+      "status": "supported",
+      "source": "Message Center post MC1479517",
+      "quote": "No admin action is required before rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Why it matters; Risk assessment; Governance guidance; rationale: impact",
+      "type": "record",
+      "claim": "Published pages are visible to existing permitted viewers and publishing grants no new permissions.",
+      "status": "supported",
+      "source": "Message Center post MC1479517",
+      "quote": "Published pages are visible to users who already have permission to view the page; publishing does not grant new permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment",
+      "type": "record",
+      "claim": "Copilot generates or edits page content using prompts and attached files the user provides or is authorized to access.",
+      "status": "supported",
+      "source": "Message Center post MC1479517",
+      "quote": "Copilot in SharePoint can generate or edit HTML page content based on user prompts and attached files that the user provides or is authorized to access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment; Cost and licensing",
+      "type": "record",
+      "claim": "Existing SharePoint storage and retention behavior applies to created or uploaded HTML pages.",
+      "status": "supported",
+      "source": "Message Center post MC1479517",
+      "quote": "HTML pages created or uploaded by users are stored in the SharePoint Site Pages library according to existing SharePoint storage and retention behavior.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "summary; Risk assessment; Cost and licensing; controls[0].governs",
+      "type": "record",
+      "claim": "Copilot-assisted HTML creation depends on existing Copilot licensing, SharePoint permissions and organizational Copilot controls.",
+      "status": "supported",
+      "source": "Message Center post MC1479517",
+      "quote": "Access to Copilot-assisted HTML page creation depends on existing Copilot licensing, SharePoint permissions, and organizational controls for Copilot experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "The change is on on arrival without an administrator enabling it.",
+      "status": "supported",
+      "source": "Message Center post MC1479517",
+      "quote": "No admin action is required before rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.model and notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Everyday Copilot-assisted creation is included in an active Microsoft 365 Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "Users must have an active Microsoft 365 Copilot license. Everyday Copilot in SharePoint capabilities are included with this license at no extra cost, and no opt-in step is required.",
+      "severity": "minor",
+      "fix": "Add before the Learn-derived licensing explanation: 'The cited Learn page still labels Copilot in SharePoint as public preview while describing its transition to general availability.'"
+    },
+    {
+      "n": 39,
+      "where": "Why it matters; Cost and licensing",
+      "type": "licensing",
+      "claim": "The included-capabilities list covers creating HTML files and creating and editing pages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "Create HTML, Word, Excel, or PowerPoint files; Create and edit pages, libraries, or lists",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "Everyday Copilot in SharePoint requires no opt-in step for licensed users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "Everyday Copilot in SharePoint capabilities are included with this license at no extra cost, and no opt-in step is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "cost",
+      "claim": "Advanced work uses usage-based billing and consumes Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "Advanced work requires usage-based billing and consumes Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Advanced work is enabled through a Microsoft 365 admin center spending policy selecting Advanced work in SharePoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "In the Microsoft 365 admin center, go to Copilot > Cost management. Select Add spending policy and give the policy a name. Under Agents and services, select Advanced work in SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Credit consumption varies with task type, complexity and content volume.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "Copilot Credit consumption varies based on the type and complexity of the task and nature and volume of the content involved.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No credit rate specific to HTML page creation is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint HTML page creation Copilot Credits rate upload HTML license; \"SharePoint\" \"HTML\" \"Copilot Credits\" \"rate\". Opened Copilot in SharePoint get-started; results give variable task consumption, not an HTML-page rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "No licensing statement specific to uploading HTML without Copilot was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"SharePoint\" \"HTML pages\" \"upload\" \"license\"; SharePoint HTML page creation Copilot Credits rate upload HTML license. Read MC1479517 and Copilot in SharePoint get-started; neither specifies an upload-only Copilot licence requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].note; Governance controls table and prose",
+      "type": "licensing",
+      "claim": "The Microsoft 365 Copilot licence does not govern uploading an .html file.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"SharePoint\" \"HTML pages\" \"upload\" \"license\"; SharePoint HTML page creation Copilot Credits rate upload HTML license. Read MC1479517 and Copilot in SharePoint get-started; neither states that uploads are exempt from Copilot licensing.",
+      "severity": "blocker",
+      "fix": "Replace 'Does not govern uploading an .html file.' in controls[0].note and the rendered table with 'No licence statement specific to uploading HTML without Copilot is published.' Replace the first prose sentence under the table with 'The Copilot licence controls who can use Copilot-assisted creation; no licence statement specific to uploading HTML without Copilot is published.'"
+    },
+    {
+      "n": 47,
+      "where": "What's changing; Open questions",
+      "type": "date",
+      "claim": "Learn gives 30 September 2026 as the start of general availability rollout for Copilot in SharePoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "General availability begins rolling out on September 30, 2026. Capabilities might appear in your tenant after that date as the rollout progresses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Copilot in SharePoint is not currently supported in the named government, air-gapped and 21Vianet environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "Microsoft 365 Government—GCC, GCC High, DoD, Office 365 air-gapped cloud environments, and Microsoft 365 operated by 21Vianet don't currently support Copilot in SharePoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Site owners can use Site AI settings to hide the Copilot button on site pages for visitors only.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "The Site AI settings panel lets site owners manage how users interact with AI on their site, including Copilot in SharePoint. Owners can: Hide the Copilot button on site pages for site visitors only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "The Site AI panel is at Settings > Site AI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "To open the panel, go to Settings > Site AI.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls",
+      "type": "date",
+      "claim": "Preview KnowledgeAgent controls retire, with availability managed through Site AI and Restricted Content Discovery after 1 November 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "Existing PowerShell settings remain in effect until November 1, 2026. After November 1, 2026, manage availability by using Site AI settings and Restricted Content Discovery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[1].governs; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "Restricted Content Discovery is a site-level control over organization-wide discovery and Microsoft Copilot discovery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Restricted Content Discovery is a site-level setting. When you turn on the setting, Microsoft 365 search systems propagate it so that content from the site doesn't appear in organization-wide discovery experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[1].note; Risk assessment; Governance controls",
+      "type": "applicability",
+      "claim": "Restricted Content Discovery removes the Copilot button, AI actions menus and Create pages with AI entry points.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Users don't see entry points such as the Copilot button, AI actions menus (including creating agents), or Create pages with AI.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "When Restricted Content Discovery is enabled, Copilot in SharePoint and AI actions do not appear on the site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "If it's enabled on a site, Copilot in SharePoint and AI actions don't appear on that site. This rule applies regardless of your other availability settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Restricted Content Discovery is designed as a temporary governance control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Restricted Content Discovery is designed as a temporary governance control that gives organizations time to review and right-size access while continuing their Copilot deployment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[1].note; Governance controls",
+      "type": "licensing",
+      "claim": "Restricted Content Discovery requires organizational Copilot licensing and SharePoint Advanced Management availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "You can configure Restricted Content Discovery if your organization is licensed for Copilot and has SharePoint Advanced Management available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[0].ui; Governance controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "Licence assignment is at Microsoft 365 admin center > Billing > Licenses > product > Assign licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "In the admin center, go to the Billing > Licenses page. Select a product. On the product details page, select Assign licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-MgUserLicense with UserId, AddLicenses containing SkuId, and empty RemoveLicenses assigns a user licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+      "quote": "To assign a license to a user, use the following command in PowerShell. Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[0].note; Governance controls table and prose",
+      "type": "role",
+      "claim": "License Administrator or User Administrator is the minimum role for assigning licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+      "quote": "You must be at least a License or User Administrator to assign licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Restricted Content Discovery is at SharePoint admin center > Sites > Active sites > site > Settings > Restrict content from Microsoft Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "In the SharePoint admin center, expand Sites and select Active sites. Select the site you want to configure. Open the Settings tab, and then turn Restrict content from Microsoft Copilot on.",
+      "severity": "minor",
+      "fix": "Keep the cited path. Add: 'Microsoft's readiness guidance uses the alternative label Restrict content discovery > On for this setting.' Cite https://learn.microsoft.com/microsoft-365/copilot/get-ready-copilot-sharepoint-advanced-management#step-3-prevent-accidental-oversharing, which says 'Under Restrict content discovery, select On.'"
+    },
+    {
+      "n": 61,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-SPOSite -Identity <site-url> -RestrictContentOrgWideSearch $true enables Restricted Content Discovery for a site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+      "quote": "Enable Restricted Content Discovery for a site ... Set-SPOSite -Identity <site-url> -RestrictContentOrgWideSearch $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[1].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Learn does not specifically identify whether Restricted Content Discovery removes + New > HTML page or the HTML upload path.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint Restricted Content Discovery \"HTML\" upload Site AI HTML page. Read restricted-content-discovery and copilot-in-sharepoint-get-started: general AI entry points are removed, but the HTML menu label and manual upload path are not identified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The cited Copilot in SharePoint page and notice describe no setting specific to HTML pages.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint \"Create, upload, edit, and publish HTML pages\" licensing upload scripts admin controls; \"SharePoint\" \"HTML pages\" \"scripts\" \"controls\". Read MC1479517, copilot-in-sharepoint-get-started and restricted-content-discovery; no HTML-specific switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Risk assessment; Open questions",
+      "type": "absence",
+      "claim": "The notice and Copilot in SharePoint page do not explain active-content handling in uploaded or generated HTML pages.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"SharePoint\" \"HTML pages\" \"scripts\" \"controls\". Read MC1479517, copilot-in-sharepoint-get-started and allow-or-prevent-custom-script; no handling mechanism for the new HTML page type is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Risk assessment",
+      "type": "absence",
+      "claim": "The notice does not describe autonomous publication by Copilot.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: MC1479517 for Copilot publishing and autonomous actions; read the supplied notice in full. It describes Copilot drafting in edit mode and users publishing, not Copilot publishing independently.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "The notice names Create, upload, edit, and publish HTML pages in SharePoint, but a Learn search did not return that article.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint \"Create, upload, edit, and publish HTML pages\" licensing upload scripts admin controls. Read MC1479517's recommendation naming the article. Search returned classic publishing and Design Manager material, not the named article.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance guidance: After rollout",
+      "type": "consistency",
+      "claim": "The checklist asks administrators to review spending policies, but the controls table has no spending-policy row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review spending policies if authors report Copilot asking to spend credits during HTML page work. The controls table lists only Copilot licence assignment and Restricted Content Discovery.",
+      "severity": "minor",
+      "fix": "Remove the 'Review spending policies if authors report Copilot asking to spend credits during HTML page work' checklist bullet; the spending-policy advice has no corresponding controls-table row."
+    },
+    {
+      "n": 68,
+      "where": "front matter: cost; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The low cost rating covers indirect administration and communication for everyday creation under existing Copilot licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+      "quote": "Everyday Copilot in SharePoint capabilities are included with this license at no extra cost, and no opt-in step is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Scope; rationale: impact",
+      "type": "record",
+      "claim": "Affected users include SharePoint page authors and users with access to Copilot-assisted HTML creation.",
+      "status": "supported",
+      "source": "Message Center post MC1479517",
+      "quote": "SharePoint authors who create, upload, edit, publish, or share pages. Users with access to Copilot in SharePoint for HTML page creation and editing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The cited Learn licensing table names HTML files and pages generally rather than the specific HTML pages feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint HTML page creation Copilot Credits rate upload HTML license. Read copilot-in-sharepoint-get-started: its included list says 'Create HTML, Word, Excel, or PowerPoint files' and 'Create and edit pages, libraries, or lists', not the specific HTML pages feature.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-20T13:42:28.794Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=569208",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1479517",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which users hold the Microsoft 365 Copilot licence needed for Copilot-assisted HTML page creation",
+        "docs": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
+        "reachable": true,
+        "segments": [
+          "Billing",
+          "Licenses",
+          "product",
+          "Assign licenses"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which users hold the Microsoft 365 Copilot licence needed for Copilot-assisted HTML page creation",
+        "docs": "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell",
+        "reachable": true,
+        "token": "Set-MgUserLicense",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether a site shows Copilot entry points and takes part in Copilot discovery",
+        "docs": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+        "reachable": true,
+        "segments": [
+          "Sites",
+          "Active sites",
+          "Settings",
+          "Restrict content from Microsoft Copilot"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether a site shows Copilot entry points and takes part in Copilot discovery",
+        "docs": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
+        "reachable": true,
+        "token": "Set-SPOSite",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -1,0 +1,813 @@
+{
+  "slug": "microsoft-teams-speaker-attribution-now-on-by-default-in-byod-rooms-with-enhanced-admin-co",
+  "roadmapId": 488301,
+  "title": "Microsoft Teams: speaker attribution in BYOD rooms is on by default, with a PowerShell setting to turn it off",
+  "status": "held",
+  "date": "2026-11-20",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-20",
+    "reasons": [
+      "1 blocking finding (claim 60)"
+    ]
+  },
+  "counts": {
+    "claims": 62,
+    "confirmed": 61,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "Hold: the cost rating says indirect costs only, although the briefing correctly identifies an add-on licence requirement for room hosts. The default, roadmap details and control instructions are supported; the briefing also appropriately flags conflicting Microsoft documentation.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target date is July CY2025.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2025\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap record gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phases are General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) and GCC.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Desktop and Mac.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on October 23, 2026 at 21:59:27.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-23T21:59:27\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; summary; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes a new Teams AI policy setting for BYOD speaker attribution.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "New PowerShell setting (SpeakerAttributionBYOD in csTeamsAIPolicy), enabled by default, gives IT admins more control over speaker attribution in BYOD (bring your own device) meeting rooms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says users enrol profiles through Teams Settings to be recognised.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users just enroll profiles via Teams Settings to be recognized.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: defaultState; title; summary; What's changing; Why it matters; Scope; rationale: risk",
+      "type": "default",
+      "claim": "SpeakerAttributionBYOD is enabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy?view=teams-ps",
+      "quote": "This setting can be set to Enabled or Disabled, and will be enabled by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "controls[0].api; Governance controls; Governance guidance",
+      "type": "command",
+      "claim": "Set-CsTeamsAIPolicy -Identity Global -SpeakerAttributionBYOD Disabled turns off BYOD speaker attribution in the Global policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy?view=teams-ps",
+      "quote": "Set-CsTeamsAIPolicy -Identity Global -SpeakerAttributionBYOD Disabled\nSet Teams AI policy \"SpeakerAttributionBYOD\" value to \"Disabled\" for global as default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[0].note; What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "SpeakerAttributionBYOD accepts Enabled to turn attribution on and Disabled to turn it off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy?view=teams-ps",
+      "quote": "Setting to \"Enabled\" turns on speaker attribution in BYOD scenarios while \"Disabled\" will turn off the function.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[0].note; Governance guidance; Risk assessment: Data exposure",
+      "type": "command",
+      "claim": "The Identity parameter can target a custom Teams AI policy instead of Global.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy?view=teams-ps",
+      "quote": "Set-CsTeamsAIPolicy -Identity Test -SpeakerAttributionBYOD Disabled\nSet Teams AI policy \"SpeakerAttributionBYOD\" value to \"Disabled\" for identity \"Test\".",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[1].api; Governance guidance; Governance controls",
+      "type": "command",
+      "claim": "Grant-CsTeamsAIPolicy -PolicyName <policy name> -Identity <user> assigns a Teams AI policy to a user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/grant-csteamsaipolicy?view=teams-ps",
+      "quote": "Grant-CsTeamsAIPolicy -PolicyName Test -Identity testuser@test.onmicrosoft.com\nAssigns a given policy to a user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[1].note; Governance guidance; Governance controls",
+      "type": "command",
+      "claim": "Grant-CsTeamsAIPolicy supports group assignment with Group and Rank.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/grant-csteamsaipolicy?view=teams-ps",
+      "quote": "Grant-CsTeamsAIPolicy\n    [[-PolicyName] <String>]\n    [-Group] <String>\n    -Rank <Int32>\n    [<CommonParameters>]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "Grant-CsTeamsAIPolicy supports tenant assignment with Global.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/grant-csteamsaipolicy?view=teams-ps",
+      "quote": "Grant-CsTeamsAIPolicy -Global -PolicyName Test\nAssigns a given policy to the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[2].api; Risk assessment: Data exposure; Governance controls",
+      "type": "command",
+      "claim": "Set-CsTeamsAIPolicy -Identity Global -EnrollVoice Disabled disables access to active voice enrolment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy?view=teams-ps",
+      "quote": "Set-CsTeamsAIPolicy -Identity Global -EnrollVoice Disabled\nEnrollVoice controls user access to active voice enrollment in the Teams app settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[2].note; Risk assessment: Data exposure; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "PassiveVoiceEnrollment independently controls express voice enrolment using in-meeting audio.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy?view=teams-ps",
+      "quote": "This is known as Express voice enrollment. This setting can also be individually set to Enabled or Disabled and operates independently of EnrollVoice.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[2].note; Governance guidance; Governance controls",
+      "type": "command",
+      "claim": "Both EnrollVoice and PassiveVoiceEnrollment must be disabled to turn off voice enrolment completely.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy?view=teams-ps",
+      "quote": "As an organization, you have the option to Enable Active enrollment (via EnrollVoice) and/or Express enrollment (via PassiveVoiceEnrollment) for your users. To turn off voice enrollment completely, make sure to set both parameters to Disable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].ui; Why it matters; Governance controls; rationale: risk; Open questions",
+      "type": "absence",
+      "claim": "A Teams admin center control for SpeakerAttributionBYOD is not documented; the Teams AI policy is PowerShell-only.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"SpeakerAttributionBYOD\" \"admin center\". Opened voice-and-face-recognition, voice-recognition and Set-CsTeamsAIPolicy; enrollment documentation says the policy is accessible only through Microsoft PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[1].ui; Governance controls",
+      "type": "absence",
+      "claim": "An admin UI for assigning custom Teams AI policies is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams AI policy\" \"assign\" \"admin center\". Opened assign-policies-users-and-groups, settings-policies-reference, unified-policies-settings-management-teams-admin-center and voice-and-face-recognition; none gives an AI-policy assignment UI.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[2].ui; Governance controls",
+      "type": "absence",
+      "claim": "An admin UI switch for active voice enrolment is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"EnrollVoice\" \"admin center\". Opened voice-and-face-recognition and Set-CsTeamsAIPolicy; also read the copilot-admin-mtr search excerpt saying there is no Teams admin center setting and PowerShell must be used.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[3].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The transcription setting is at Teams admin center > Meetings > Meeting policies > policy > Transcription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "In the left navigation of the Teams admin center, go to Meetings > Meeting policies.\nSelect the policy that you want to edit or create a new one.\nToggle Transcription On or Off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[3].api; Governance controls",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity <policy name> -AllowTranscription $true allows transcription under that meeting policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "To allow specific users in your organization to transcribe, run the following commands:\nSet-CsTeamsMeetingPolicy -Identity \"Your Policy Name\" -AllowTranscription $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[3].note; Governance guidance",
+      "type": "applicability",
+      "claim": "Transcription is an existing per-organizer and per-user meeting policy setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+      "quote": "Transcription is both a per-organizer and per-user policy setting. For meetings and events to include transcripts, the organizer must have this setting turned on. The user who starts the recording or transcript must also have this setting turned on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; controls[3].governs; Scope; Governance guidance",
+      "type": "applicability",
+      "claim": "Speaker identification requires transcription to be enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-recognition",
+      "quote": "Identification requires transcription to be enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Why it matters; Scope; rationale: impact",
+      "type": "behaviour",
+      "claim": "People must have an enrolled voice profile to be identified in a meeting space.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-recognition",
+      "quote": "End users must have their voice profile enrolled to be identified in a meeting space.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "BYOD rooms require the Teams desktop client on Windows or macOS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-recognition",
+      "quote": "BYOD Rooms:\nTeams Desktop Client on Windows or macOS.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Change & support; Scope",
+      "type": "behaviour",
+      "claim": "BYOD users need an updated Teams client.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-recognition",
+      "quote": "Users need to make sure that their Teams client is updated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Cost and licensing",
+      "type": "behaviour",
+      "claim": "The room host is the person connecting their laptop to the Intelligent Speaker.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-recognition",
+      "quote": "The room host is the person who connects their laptop to the Intelligent Speaker.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.notes; Why it matters; Cost and licensing; Scope; Governance guidance; rationale: cost",
+      "type": "licensing",
+      "claim": "BYOD room hosts need either Microsoft Teams Premium or a Copilot licence for the documented speaker recognition capability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-recognition",
+      "quote": "BYOD Rooms: Intelligent Speakers available in rooms where the room host has either a Microsoft Teams Premium or Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.model; Cost and licensing",
+      "type": "licensing",
+      "claim": "The licensing model is add-on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams",
+      "quote": "Microsoft Teams Premium is a Teams add-on license that allows organizations with Microsoft 365 subscriptions to enhance their Teams experience",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams to sources to substantiate the add-on classification."
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.notes; Open questions",
+      "type": "absence",
+      "claim": "The cited voice recognition page does not state whether licences besides Teams Premium and Copilot qualify BYOD room hosts.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams BYOD speaker recognition licensing price meter Teams Premium Copilot room host. Read voice-recognition and Teams Premium licensing; the voice-recognition BYOD requirements name Teams Premium or Copilot, with no additional qualifying host licence listed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Speaker recognition analyses pitch, tone and speaking style to create a voiceprint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-recognition",
+      "quote": "Teams Rooms and BYOD Rooms use advanced technology called speaker recognition to analyze the distinct vocal characteristics of each speaker, such as pitch, tone, and speaking style, to create a voiceprint for each participant",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Each person has a unique voice signature stored in the organization's tenant in the Microsoft Cloud.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-recognition",
+      "quote": "Each person gets a unique voice signature, stored securely in your organization's tenant in the Microsoft Cloud",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "A voice and face profile unused for one year is removed automatically.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "In addition, a voice and face profile that isn't used for one year is removed automatically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Microsoft does not use voice and face profiles to train models or for purposes other than the Teams recognition feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "Microsoft doesn't use the voice and face profiles of users to train any models or for any other purposes other than providing the voice and face recognition feature in Microsoft Teams.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Why it matters; Risk assessment: Security & identity; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Users must opt in to enrol before using voice and face recognition even when enrollment is available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "Even if the feature is available, users still need to opt in to enroll their voice and face and create their voice and face profile before they can start using voice and face recognition.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity; Governance guidance",
+      "type": "behaviour",
+      "claim": "Users can unenrol after their organization disables enrolment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "If users enroll their voice or face profile, they can always choose to unenroll it later, even if their organization no longer allows enrollment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity; Scope; Open questions",
+      "type": "availability",
+      "claim": "The voice recognition page says identification is supported only with the organizer's mailbox in Exchange Online.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-recognition",
+      "quote": "Identification features are supported only when the meeting organizer's mailbox is in Exchange Online. They aren't supported for on-premises Exchange or third-party calendars (for example, Google Calendar).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What's changing; Risk assessment: Security & identity; Open questions",
+      "type": "availability",
+      "claim": "The voice recognition page's hybrid-deployment note says BYOD scenarios are not supported for identification, despite also documenting BYOD prerequisites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-recognition",
+      "quote": "Hybrid deployments are supported only if Teams can access the organizer's calendar in the cloud. BYOD scenarios aren't supported for identification features.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What's changing; Risk assessment: Change & support; Open questions",
+      "type": "command",
+      "claim": "The voice recognition example uses SpeakerAttributionForBYOD rather than the SpeakerAttributionBYOD name in the cmdlet reference.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-recognition",
+      "quote": "Set-CsTeamsAiPolicy -Identity Global -SpeakerAttributionForBYOD Enabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "The voice recognition page says policy assignment can take up to 48 hours to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-recognition",
+      "quote": "After a policy is assigned, it can take up to 48 hours to take effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Signing accounts out and back in can make policy assignment take effect sooner.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-recognition",
+      "quote": "To get the policy to take effect sooner, accounts must be signed out and signed back in.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing: Meter and price; rationale: cost",
+      "type": "absence",
+      "claim": "The cited cmdlet reference and voice recognition page document no separate meter for SpeakerAttributionBYOD.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams BYOD speaker recognition licensing price meter Teams Premium Copilot room host; \"SpeakerAttributionBYOD\" \"meter\". Read Set-CsTeamsAIPolicy, voice-recognition and Teams Premium licensing; no separate setting meter appears.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing: Meter and price",
+      "type": "absence",
+      "claim": "The cited cmdlet reference and voice recognition page name no separate charge for the setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams BYOD speaker recognition licensing price meter Teams Premium Copilot room host. Read Set-CsTeamsAIPolicy and voice-recognition; the former describes policy parameters and the latter names host licences, with no separate setting charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing: Meter and price",
+      "type": "absence",
+      "claim": "The cited cmdlet reference and voice recognition page do not publish Teams Premium or Copilot prices.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams BYOD speaker recognition licensing price meter Teams Premium Copilot room host. Read Set-CsTeamsAIPolicy and voice-recognition in full; neither page gives a price for Teams Premium or Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing: Indirect costs",
+      "type": "behaviour",
+      "claim": "BYOD users can connect any room speaker microphone to their laptops over USB.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-recognition",
+      "quote": "Users can use any speaker microphone in a room and can connect it through USB to their laptops.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing: Indirect costs",
+      "type": "behaviour",
+      "claim": "A certified Intelligent Speaker can provide higher transcription and attribution quality.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-recognition",
+      "quote": "it's important to note the quality may not match that of an intelligent speaker certified device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope: Who",
+      "type": "behaviour",
+      "claim": "Microsoft recommends a maximum of 10 in-person BYOD attendees for best transcript precision.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-recognition",
+      "quote": "To ensure best precision for the transcript, we suggest limiting the number of in person attendees to a maximum of 10 people.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Scope: Who",
+      "type": "behaviour",
+      "claim": "The documented BYOD limit for invitees with voice profiles is 50.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-recognition",
+      "quote": "The current limitation for people invited with voice profile is currently 50.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope: Roles",
+      "type": "absence",
+      "claim": "The briefing's cited pages do not name a specific administrator role for configuring the Teams AI policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: CsTeamsAIPolicy configuration administrator role Teams administrator permissions. Read the cited AI-policy and enrollment pages and using-admin-roles. The cited pages name no specific role; using-admin-roles separately documents Teams Administrator permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap description does not describe an agent or an automated action.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This enhances the experience for users by enabling clear speaker labels and richer in-meeting and post-meeting insights with Microsoft 365 Copilot. Users just enroll profiles via Teams Settings to be recognized.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls; Governance guidance",
+      "type": "command",
+      "claim": "New-CsTeamsAIPolicy creates a custom Teams AI policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "To disable active voice and face enrollment for specific users, Enterprise administrators can create and assign a custom meeting policy to the users:\nNew-CsTeamsAIPolicy -Identity DisableEnrollment -EnrollVoice Disabled -EnrollFace Disabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Teams admin center lets administrators view end-user voice and face enrolment status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "Enterprise administrators can now use Teams admin center to view end-user voice and face enrollment status and manage enrolled data directly from the admin experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Teams admin center lets administrators delete end-user voice and face profiles and enrolment data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "Enterprise administrators can also delete end-user voice and face profiles and enrollment data directly from the Teams admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Administrators cannot export end-user voice and face enrolment data from Teams admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "Enterprise administrators can't export end-user voice or face enrollment data from the Teams admin center. Export of enrollment data remains under the end user's control and within the user experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Scope: Clouds and platforms",
+      "type": "availability",
+      "claim": "Voice and face enrolment is available only up to GCC, not GCC High or DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "No, voice and face enrollments are currently available only up to GCC and aren't available in GCCH or DOD environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Disabling enrolment and disabling BYOD speaker attribution are distinct policy operations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy?view=teams-ps",
+      "quote": "EnrollVoice controls user access to active voice enrollment in the Teams app settings.\nSetting to \"Enabled\" turns on speaker attribution in BYOD scenarios while \"Disabled\" will turn off the function.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "front matter: cost; rationale: cost",
+      "type": "consistency",
+      "claim": "The Low cost rating is consistent with the documented room-host add-on licensing requirement and the page's cost rationale.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "cost: \"low\"\nmodel: \"add-on\"\nLow. Learn ties BYOD speaker recognition to a room host holding Teams Premium or a Copilot licence; the pages read name no separate meter for this setting, so the known cost is those licences and admin time.",
+      "severity": "blocker",
+      "fix": "Set cost to \"medium\". Replace the cost rationale with: \"Medium. BYOD speaker recognition requires a room host with Teams Premium or a Copilot licence, so hosts without a qualifying licence need an add-on; the cited pages name no separate meter for this setting.\" The assessment scale reserves low for indirect costs only and defines medium to include add-on licences for a subset of users."
+    },
+    {
+      "n": 61,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says the change enables clear speaker labels and richer in-meeting and post-meeting insights with Microsoft 365 Copilot.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This enhances the experience for users by enabling clear speaker labels and richer in-meeting and post-meeting insights with Microsoft 365 Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap item is for Microsoft Teams.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Teams\"]",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-20T13:42:23.565Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 4,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=488301",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy?view=teams-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/grant-csteamsaipolicy?view=teams-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/voice-recognition",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether speaker attribution runs in BYOD rooms",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy?view=teams-ps",
+        "reachable": true,
+        "token": "Set-CsTeamsAIPolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which users or groups get a custom Teams AI policy",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/grant-csteamsaipolicy?view=teams-ps",
+        "reachable": true,
+        "token": "Grant-CsTeamsAIPolicy",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether users can enrol a voice profile through active enrolment",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsaipolicy?view=teams-ps",
+        "reachable": true,
+        "token": "Set-CsTeamsAIPolicy",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Whether users can transcribe meetings, which Learn says identification requires",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "reachable": true,
+        "segments": [
+          "Meetings",
+          "Meeting policies",
+          "Transcription"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Whether users can transcribe meetings, which Learn says identification requires",
+        "docs": "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions",
+        "reachable": true,
+        "token": "Set-CsTeamsMeetingPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

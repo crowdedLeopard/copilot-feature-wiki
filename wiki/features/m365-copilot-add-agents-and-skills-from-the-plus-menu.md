@@ -37,6 +37,18 @@ sources:
   - title: "License options for Microsoft Copilot"
     url: "https://learn.microsoft.com/copilot/plan/copilot-license-options"
     kind: "learn"
+  - title: "Understand Agents in Microsoft Copilot"
+    url: "https://learn.microsoft.com/copilot/manage/copilot-agent-store"
+    kind: "learn"
+  - title: "Supported Agent resources for Tenant Configuration Management (preview)"
+    url: "https://learn.microsoft.com/graph/utcm-agent-resources"
+    kind: "learn"
+  - title: "Supported resources for remediation and applyOnce (preview)"
+    url: "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources"
+    kind: "learn"
+  - title: "Create configurationMonitor"
+    url: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
+    kind: "learn"
   - title: "Microsoft 365 Roadmap item 569213"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=569213"
     kind: "roadmap"
@@ -52,16 +64,22 @@ controls:
       surface: "Microsoft 365 admin center"
       path: "Agents > Settings > User access"
       docs: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access"
-    api: null
-    note: "Options: All users (default), No users, Specific users or groups. Learn says plugins include skills. Not stated for the plus-menu entry."
+    api:
+      kind: "graph"
+      call: "POST /beta/admin/configurationManagement/configurationMonitors"
+      docs: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
+    note: "All users (default), No users or Specific users or groups. Applies to agents and plugins, including skills. Graph: preview, global service only; sets everyone or noOne. Needs AI Administrator."
   - governs: "Which publisher types of agents and plugins are allowed"
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
       path: "Agents > Settings > Agent and plugin access"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors"
-    api: null
-    note: "Learn says users see Microsoft-built agents and plugins even if the setting is disabled, but can't install them."
+    api:
+      kind: "graph"
+      call: "POST /beta/admin/configurationManagement/configurationMonitors"
+      docs: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
+    note: "Users see Microsoft-built agents and plugins even if the setting is disabled, but can't install them. Graph: preview, global service only; areMicrosoftAppsAllowed, areTenantScopedAppsAllowed, areISVAppsAllowed."
   - governs: "Separate switch for the Agents and Skills plus-menu entry"
     scope: "tenant"
     ui: null
@@ -76,32 +94,36 @@ changes:
     note: "First briefing: roadmap plan for adding agents and skills from the plus menu, with the existing admin settings that govern agents and plugins."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 56 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Correction: added the preview Microsoft Graph call for the two agent settings, stated that User access applies to agents and plugins including skills, and removed the claim that the entry adds no new capability."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 80 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 52
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "f25e587fc018f8d3edb23ba0de36a646"
+  claims: 80
+  confirmed: 80
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "7e720cad0fefb084f21f66f1392a9298"
 ---
 
 ## What's changing
 
 Microsoft plans to let users insert agents and skills into a Copilot prompt for specialised tasks. According to the roadmap item, users add them from the Agents and Skills tab after selecting 'Add work content' from the plus (+) menu, and can also reach them by typing / and @ in the prompt.
 
-Microsoft Learn does not describe the plus-menu route yet, so what follows about its behaviour is the roadmap's description. Learn does document skills in Microsoft 365 Copilot Chat as generally available: a skill packages task-specific instructions and optional files or scripts, and users can select an installed skill explicitly or let Copilot select it automatically when it is relevant. Learn gives a different route to add one today: in Copilot Chat, Agents > More agents, then the drop-down beside Add and Upload skill.
+Microsoft Learn does not describe the plus-menu route yet, so what follows about its behaviour is the roadmap's description. Learn does document skills in Microsoft 365 Copilot Chat as generally available: a skill packages task-specific instructions and optional files or scripts, and users can select an installed skill explicitly or let Copilot select it automatically when it is relevant. Learn gives a different route to add one today: in Copilot Chat, Agents > More agents, then the drop-down beside Add and Upload skill. The agent-store documentation instead says the store now appears as Plugins in the left pane; Microsoft documentation currently describes different navigation.
 
 The roadmap lists status In development, target September CY2026, release phase General Availability, platforms Desktop and Web, and the Worldwide (Standard Multi-Tenant) cloud. The target month has passed and the status has not moved, so treat the date as unconfirmed. Microsoft has not stated what happens on arrival, and the roadmap record carries no Message Center post or act-by date.
 
 ## Why it matters
 
-This is a new entry point, not a new capability: it puts agents and skills in front of users at the moment they write a prompt. Expect more people to try them, and expect questions from users who see an agent or skill that an administrator has not approved or does not want used.
+The roadmap describes a new entry point for agents and skills: it puts them in front of users at the moment they write a prompt. Expect more people to try them, and expect questions from users who see an agent or skill that an administrator has not approved or does not want used.
 
 Because Microsoft has not stated whether the entry appears by default, base planning on no source saying existing behaviour changes, and confirm the admin settings for agent and plugin access now so that the new menu shows what you intend when it arrives.
 
@@ -113,7 +135,7 @@ Because Microsoft has not stated whether the entry appears by default, base plan
 
 **Security & identity**
 - Learn says skill scripts can't make authenticated network calls and have no network access at runtime, except during browser use. Microsoft has not described how the plus-menu route differs.
-- Whether the new menu respects the same User access and Agent and plugin access settings is not stated for this feature; both settings are documented to cover agents and plugins in general.
+- User access applies to all agents and plugins, including skills; how the new menu displays items restricted by that setting is not yet documented. Agent and plugin access is documented to cover agents and plugins in general; whether the new menu respects it is not stated for this feature.
 
 **Autonomy & actions**
 - Learn says users can let Copilot select a skill automatically and that users control automatic invocation for each skill, so a skill can run on a prompt the user did not point at it.
@@ -163,20 +185,22 @@ Rollout: status In development, target September CY2026, release phase General A
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which users or groups can access agents and plugins</strong><br><small>Tenant</small><br><small class="controls__note">Options: All users (default), No users, Specific users or groups. Learn says plugins include skills. Not stated for the plus-menu entry.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which publisher types of agents and plugins are allowed</strong><br><small>Tenant</small><br><small class="controls__note">Learn says users see Microsoft-built agents and plugins even if the setting is disabled, but can't install them.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › Agent and plugin access <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which users or groups can access agents and plugins</strong><br><small>Tenant</small><br><small class="controls__note">All users (default), No users or Specific users or groups. Applies to agents and plugins, including skills. Graph: preview, global service only; sets everyone or noOne. Needs AI Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings#user-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which publisher types of agents and plugins are allowed</strong><br><small>Tenant</small><br><small class="controls__note">Users see Microsoft-built agents and plugins even if the setting is disabled, but can't install them. Graph: preview, global service only; areMicrosoftAppsAllowed, areTenantScopedAppsAllowed, areISVAppsAllowed.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › Agent and plugin access <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Separate switch for the Agents and Skills plus-menu entry</strong><br><small>Tenant</small><br><small class="controls__note">No setting for this entry point is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-Both rows are tenant-wide settings for agents and plugins in general. Learn documents them as covering plugins, including skills, but does not say they govern the plus-menu entry, so confirm that in a test tenant. Learn says changes to the connector settings can take up to 10 minutes to take effect.
+Both rows are tenant-wide settings for agents and plugins in general. Learn says User access applies to all agents and plugins, including skills; how the new menu displays items restricted by it is not yet documented, so confirm that in a test tenant. Agent and plugin access is documented as covering plugins, including skills, but Learn does not say it governs the plus-menu entry. Learn says changes to the connector settings can take up to 10 minutes to take effect.
 
 The last row records that no separate switch for this menu entry is documented. User access sets the maximum population, and Learn says a setting on an individual connector takes precedence over the bulk Agent and plugin access setting while User access always applies.
+
+The Graph calls on the first two rows use the Tenant Configuration Management API, which Learn documents as preview and available only in the global service. Set mode to applyOnce and put the resource in baseline.resources: resourceType microsoft.agent.useraccess for the first row and microsoft.agent.allowedagenttypes for the second, each with resourceVersion 1. For useraccess, properties.valueObject.userAssignmentCategory accepts everyone or noOne; the schema does not document specific-group assignment. For allowedagenttypes, areMicrosoftAppsAllowed, areTenantScopedAppsAllowed and areISVAppsAllowed control the corresponding publisher types. The calling app needs delegated ConfigurationMonitoring.ReadWrite.All, the TCM service principal needs delegated CopilotPolicySettings.ReadWrite, and the signed-in user needs the AI Administrator role. See [Supported Agent resources for Tenant Configuration Management (preview)](https://learn.microsoft.com/graph/utcm-agent-resources) and [Supported resources for remediation and applyOnce (preview)](https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources).
 
 ## Open questions
 
 - Is the plus-menu entry on by default when it arrives, and who sees it first? Watch the roadmap item and Message center.
-- Do User access and Agent and plugin access hide agents and skills in the plus menu, / and @ in the same way as in the agent store? Watch the Learn agent settings page.
+- How do the plus menu, / and @ display agents and skills that User access or Agent and plugin access restricts, compared with the agent store? Watch the Learn agent settings page.
 - Which licence does a user need to see the Agents and Skills tab, given Learn limits Copilot Chat skills to Premium users?
 - Does the new route change how skills are billed or counted for pay-as-you-go tenants?
 - Will the September CY2026 target hold, given the status is still In development in November 2026?
@@ -184,17 +208,12 @@ The last row records that no separate switch for this menu entry is documented. 
 <!-- rationale
 risk: Low. The roadmap describes a new way to reach agents and skills users can already be given, so the existing admin settings for who can use them and which publishers are allowed still decide exposure; no default is stated.
 cost: Variable. The roadmap names no licence or meter, but Microsoft Learn says agents that use shared tenant data are pay-as-you-go for Basic licence holders, while skills in Copilot Chat need Microsoft Copilot (Premium).
-impact: Medium. It changes the prompt box in Copilot on desktop and web for users who already have agents or skills, so they will notice it, but it adds no new data source or setting.
+impact: Medium. It changes the prompt box in Copilot on desktop and web for users who already have agents or skills, so they will notice it.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity; Governance controls; Open questions / applicability: Whether User access governs agents and plugins reached through the new menu is not stated for this feature. | Found: User access in Agents > Settings applies to all agents and plugins, including federated connectors delivered as Microsoft 365 app packages. | Fix: Replace the prose's User access applicability caveat with: 'User access applies to all agents and plugins, including skills; how the new menu displays items restricted by that setting is not yet documented.' Keep any open question narrowly about display behavior, not whether User access applies. Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors
-- [contradicted, blocker] controls[0].api; Governance controls: first row API / absence: No API or automation is documented for User access. | Found: These resources also support remediation and applyOnce. ... userAssignmentCategory ... Specifies whether all users or no users can access agents and plugins. ... everyone, noOne | Fix: Replace controls[0].api null with kind 'graph', call 'POST /beta/admin/configurationManagement/configurationMonitors', docs 'https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta'. Add to its note: 'Preview, global service only. Set mode=applyOnce and baseline.resources to resourceType microsoft.agent.useraccess, resourceVersion 1; properties.valueObject.userAssignmentCategory accepts everyone or noOne. This schema does not document specific-group assignment. Requires delegated ConfigurationMonitoring.ReadWrite.All for the caller, delegated CopilotPolicySettings.ReadWrite for the TCM service principal, and AI Administrator for the signed-in user.' Cite https://learn.microsoft.com/graph/utcm-agent-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources; update the rendered API cell consistently. | Source: https://learn.microsoft.com/graph/utcm-agent-resources#useraccess-resource-type
-- [contradicted, blocker] controls[1].api; Governance controls: second row API / absence: No API or automation is documented for Agent and plugin access publisher types. | Found: Controls which types of apps, agents, and plugins users can see in their store and install. ... areISVAppsAllowed ... areMicrosoftAppsAllowed ... areTenantScopedAppsAllowed | Fix: Replace controls[1].api null with kind 'graph', call 'POST /beta/admin/configurationManagement/configurationMonitors', docs 'https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta'. Add to its note: 'Preview, global service only. Set mode=applyOnce and baseline.resources to resourceType microsoft.agent.allowedagenttypes, resourceVersion 1; properties.valueObject.areMicrosoftAppsAllowed, areTenantScopedAppsAllowed and areISVAppsAllowed control the corresponding publisher types. Requires delegated ConfigurationMonitoring.ReadWrite.All for the caller, delegated CopilotPolicySettings.ReadWrite for the TCM service principal, and AI Administrator for the signed-in user.' Cite https://learn.microsoft.com/graph/utcm-agent-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources; update the rendered API cell consistently. | Source: https://learn.microsoft.com/graph/utcm-agent-resources#allowedagenttypes-resource-type
-- [unsupported, major] Why it matters; rationale: impact / behaviour: The new entry point adds no new capability, data source or setting. | Found: Searched: "Copilot" "Add work content"; "Copilot" "Agents and Skills"; "Copilot" "plus menu" "skills". Read roadmap, build-copilot-chat-skills and agent-settings; none explicitly rules out additional capabilities, data sources or settings. | Fix: Replace 'This is a new entry point, not a new capability' with 'The roadmap describes a new entry point for agents and skills'. Remove 'but it adds no new data source or setting' from the impact rationale.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: skill upload route / admin-path: Learn gives the skill-upload route in Copilot Chat as Agents > More agents, the drop-down beside Add, then Upload skill. | Found: In Copilot Chat, select Agents > More agents. Select the drop-down beside Add, and select Upload skill. | Fix: Keep this as the skills-authoring page's documented route, and add: 'The agent-store documentation instead says the store now appears as Plugins in the left pane; Microsoft documentation currently describes different navigation.' Cite https://learn.microsoft.com/copilot/manage/copilot-agent-store. | Source: https://learn.microsoft.com/plugins/build-copilot-chat-skills
-- [supported, minor] controls[0].note; Governance controls: first row note / applicability: The correctly documented User access row adds that its reach is not stated for the plus-menu entry. | Found: Use User access to control how members of your organization access and install agents and plugins. Plugins include tools, MCP servers, connectors, skills, and other AI artifacts. | Fix: Replace 'Not stated for the plus-menu entry.' in controls[0].note and the rendered row with 'Applies to agents and plugins, including skills.' The exact new menu's presentation can remain an open question. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings
+- [supported, minor] licensing.notes; Cost and licensing / licensing: Agent use comes with the Microsoft 365 Copilot (Premium) licence. | Found: The use of agents comes with Microsoft 365 Copilot (Premium) license. | Fix: Qualify this sentence and the matching licensing.notes clause: 'The agent purchasing page says agent use comes with Premium; the standard-harness licensing page specifies that classic answers, generative answers and Microsoft Graph tenant grounding are not charged when the agent runs with the licensed user's authenticated identity.' Cite https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing#get-access-to-copilot-studio alongside the existing source. | Source: https://learn.microsoft.com/copilot/manage/manage-agents-copilot-chat
+- [supported, minor] controls[0].api; controls[0].note; Governance controls table and prose / command: POST /beta/admin/configurationManagement/configurationMonitors can apply the User access resource using applyOnce. | Found: POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors An active applyOnce monitor runs in the background on behalf of the signed-in administrator and then becomes inactive. | Fix: In controls[0].note and the rendered matching note, replace 'sets everyone or noOne' with 'mode applyOnce; baseline.resources uses microsoft.agent.useraccess, resourceVersion 1, with properties.valueObject.userAssignmentCategory set to everyone or noOne'. The existing prose and https://learn.microsoft.com/graph/utcm-agent-resources document that deciding property; retain the call unchanged. | Source: https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta
 -->

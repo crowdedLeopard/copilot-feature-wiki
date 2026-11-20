@@ -1,0 +1,702 @@
+{
+  "slug": "microsoft-purview-compliance-portal-scanner-data-export-for-custom-reporting",
+  "roadmapId": 494839,
+  "title": "Microsoft Purview: information protection scanner data export for custom reporting",
+  "status": "held",
+  "date": "2026-11-20",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-20",
+    "reasons": [
+      "11 blocking findings (claims 9, 22, 23, 24, 25, 26, 28, 29, 30, 31, 49)"
+    ]
+  },
+  "counts": {
+    "claims": 50,
+    "confirmed": 38,
+    "unconfirmed": 0,
+    "contradicted": 12,
+    "blocker": 11,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: Microsoft now documents Custom Reporting in preview, including its SQL schema and PowerShell enablement, contrary to the briefing's central claim that there is nothing to configure. The default, database location, access controls and capacity guidance need correcting; the roadmap dates and existing scanner controls are accurately reported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "Microsoft plans scanner SQL tables of labelling, classification and protection actions as a foundation for custom reports.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Labeling, classification and protection actions on scanned files are stored in SQL tables that form a foundation to feed into custom reports.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; controls[2].note",
+      "type": "record",
+      "claim": "The roadmap record lists the feature as In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing; Scope; Risk assessment; Open questions",
+      "type": "record",
+      "claim": "The roadmap preview date is December CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"December CY2026\"",
+      "severity": "minor",
+      "fix": "Keep the roadmap date, but replace the first sentence of Risk assessment: Change & support with 'The roadmap targets preview for December CY2026; plan to recheck reports built during preview before general availability.' In the final Open questions bullet, replace 'arrive in Preview in December CY2026' with 'are targeted for Preview in December CY2026'."
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap general-availability target is January CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": "minor",
+      "fix": "Keep the target date. In the final Open questions bullet, replace 'at general availability in January CY2027' with 'are targeted for general availability in January CY2027', rather than implying a committed arrival."
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists General Availability and Preview as release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The platform listed on the roadmap is Desktop.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC and GCC High.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "Scope: Record facts",
+      "type": "record",
+      "claim": "DoD is not listed on the roadmap item.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "default",
+      "claim": "Microsoft has not stated what scanner data export does on arrival.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner-feature-control",
+      "quote": "| `CustomReporting` | Off | `$true`, `$false` | Populates the Custom Reporting tables and columns in the scanner cluster database.",
+      "severity": "blocker",
+      "fix": "Set defaultState to admin-opt-in. Replace the unknown-default statements with 'Custom Reporting is off by default and starts populating reporting data on the next scan cycle after an administrator enables it.' Cite https://learn.microsoft.com/purview/deploy-scanner-feature-control and https://learn.microsoft.com/purview/deploy-scanner-custom-reporting. Remove the default-state question from Open questions."
+    },
+    {
+      "n": 10,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Licensing is unknown, although the notes acknowledge the scanner's general information protection licence requirement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner-prereqs",
+      "quote": "| **License for information protection** | Required to provide file classification, labeling, or protection capabilities to the scanner service account.",
+      "severity": "minor",
+      "fix": "Set licensing.model to included under the standard's product-level licensing rule. Retain the notes that the scanner service account requires a licence for information protection and that no separate export-specific licence or charge is published; do not imply that export is free."
+    },
+    {
+      "n": 11,
+      "where": "licensing.notes; Cost and licensing: Licence; rationale: cost",
+      "type": "licensing",
+      "claim": "The scanner prerequisites require a licence for information protection for the scanner service account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner-prereqs",
+      "quote": "| **License for information protection** | Required to provide file classification, labeling, or protection capabilities to the scanner service account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "licensing.notes; Cost and licensing: Licence; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No licence or plan specific to scanner data export is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"scanner\" \"Custom Reporting\" \"licensing\" \"meter\". Opened deploy-scanner-custom-reporting, deploy-scanner-prereqs, Microsoft 365 Security and Azure Information Protection service description; no export-specific entitlement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "licensing.notes; Cost and licensing: Meter; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft documents no export-specific meter, price or charge.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview scanner data export SQL reporting licensing pricing meter; \"scanner\" \"Custom Reporting\" \"licensing\" \"meter\". Opened deploy-scanner-custom-reporting, deploy-scanner-prereqs and licensing guidance; no export-specific meter or rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The enforcement control is in Microsoft Purview portal > Settings > Information Protection > Information protection scanner > Content scan jobs > content scan job > Enforce sensitivity labeling policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner-configure-install",
+      "quote": "Settings** card > **Information Protection** > **Information protection scanner**. From the tabs ... select **Content scan jobs**. ... select a specific content scan job to edit it. ... From the **Enforce sensitivity labeling policy** section: Change the radio button to **On**",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[0].api; Governance controls; Risk assessment; Governance guidance",
+      "type": "command",
+      "claim": "Set-ScannerContentScan -Enforce On enables policy enforcement for a scanner content scan job.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/purviewinformationprotection/set-scannercontentscan?view=azureipps",
+      "quote": "### -Enforce\nDetermines whether the content scan job enforces content scanning and labeling according to your policy.\n| Accepted values: | On, Off |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[0].note; Risk assessment; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Portal configuration of the scanner requires Compliance Administrator, Compliance Data Administrator, Security Administrator or Organization Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner-configure-install",
+      "quote": "To configure your scanner in the Microsoft Purview portal: ... Sign in using one of the following roles: ... Compliance Administrator ... Compliance Data Administrator ... Security Administrator ... Organization Management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "A manual scan is started at Microsoft Purview portal > Settings > Information Protection > Information protection scanner > Content scan jobs > content scan job > Scan now.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner-manage",
+      "quote": "Use the Microsoft Purview portal. On the Information protection scanner - Content scan jobs pane, select your content scan jobs, and then select the Scan now option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[1].api; Governance controls table; Governance guidance",
+      "type": "command",
+      "claim": "Start-Scan in the PurviewInformationProtection module starts a one-time scan cycle.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/purviewinformationprotection/start-scan?view=azureipps",
+      "quote": "Module: ... PurviewInformationProtection Module ... The Start-Scan cmdlet instructs the Microsoft Purview Information Protection scanner to immediately start a one-time scan cycle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[1].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "The Scan now option only appears once a content scan job is selected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner-manage",
+      "quote": "The Scan now option only appears once a content scan job is selected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Governance controls: Start-Scan prerequisites",
+      "type": "command",
+      "claim": "Start-Scan requires the scanner service already started and the schedule configured as manual.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/purviewinformationprotection/start-scan?view=azureipps",
+      "quote": "The scanner service must be started already and the scanner schedule must be configured for a manual schedule.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "Start-Scan is ignored when the scanner schedule is Always.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/purviewinformationprotection/start-scan?view=azureipps",
+      "quote": "If the scanner schedule is set to Always, this cmdlet is ignored.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[2].ui and controls[2].api; summary; Governance controls",
+      "type": "absence",
+      "claim": "No setting or command is documented for scanner data export, so there is nothing to configure.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/purviewinformationprotection/set-scannerconfiguration?view=azureipps",
+      "quote": "Set-ScannerConfiguration -FeatureSettings @{CustomReporting=$true}\n... This command enables the Custom Reporting feature for the entire scanner cluster. All nodes pick up the change on their next scan cycle. No service restart is required.",
+      "severity": "blocker",
+      "fix": "Keep controls[2].ui null, but set controls[2].api to powershell, call 'Set-ScannerConfiguration -FeatureSettings @{CustomReporting=$true}', docs 'https://learn.microsoft.com/powershell/module/purviewinformationprotection/set-scannerconfiguration?view=azureipps'. Replace its note with 'Preview; off by default. Enables reporting for the cluster on the next scan cycle. Set CustomReporting to $false to stop new writes; existing reporting data is retained.' Remove 'nothing to configure' from the summary and the no-command statements from the prose. Cite https://learn.microsoft.com/purview/deploy-scanner-feature-control and https://learn.microsoft.com/purview/deploy-scanner-custom-reporting."
+    },
+    {
+      "n": 23,
+      "where": "summary; What's changing; changes[0].note",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe scanner data export and its behaviour is known only from the roadmap.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner-custom-reporting",
+      "quote": "This article describes the Microsoft Purview Information Protection scanner Custom Reporting feature (preview). Custom Reporting gives scanner administrators the data they need in the scanner cluster database to build their own reports against scan results",
+      "severity": "blocker",
+      "fix": "Replace the roadmap-only and no-Learn-documentation statements with 'Microsoft Learn documents Custom Reporting in preview for client and scanner version 3.2.89.0 or later, while the roadmap still lists In development with preview targeted for December CY2026 and general availability targeted for January CY2027.' Cite https://learn.microsoft.com/purview/deploy-scanner-custom-reporting. Replace the summary with 'Custom Reporting (preview) stores scanner results in the cluster SQL database. It is off until an administrator enables it with PowerShell; review database access and capacity before opting in.'"
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Why it matters; Risk assessment; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not documented the export's SQL table names or columns.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner-custom-reporting",
+      "quote": "### Additions to `dbo.ScannerFiles`\n... ### New table: `dbo.MatchedClassificationAction`\n... ### New table: `dbo.ScannedFilesArchive`",
+      "severity": "blocker",
+      "fix": "Replace the schema-absence statements with 'The preview documents additions to dbo.ScannerFiles and the new dbo.MatchedClassificationAction and dbo.ScannedFilesArchive tables, with column definitions on the Custom Reporting page.' Cite https://learn.microsoft.com/purview/deploy-scanner-custom-reporting. Remove the question asking which tables and columns will hold the data."
+    },
+    {
+      "n": 25,
+      "where": "Why it matters; Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not said whether export data lives in the scanner database or elsewhere.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner-custom-reporting",
+      "quote": "Custom Reporting moves file-state and SIT-match data into the scanner cluster database",
+      "severity": "blocker",
+      "fix": "Replace the unknown-location statements with 'Custom Reporting stores its reporting data in the scanner cluster database.' Cite https://learn.microsoft.com/purview/deploy-scanner-custom-reporting and remove the database-location question."
+    },
+    {
+      "n": 26,
+      "where": "Why it matters; Risk assessment: Data exposure; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft has not documented permissions governing access to the SQL reporting tables.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver17",
+      "quote": "Database-level roles are database-wide in their permissions scope. ... Members of the db_datareader fixed database role can read all data from all user tables and views.",
+      "severity": "blocker",
+      "fix": "Replace the blanket absence claim with 'Reporting data is stored in the scanner cluster SQL database, where SQL Server database permissions govern access.' Cite https://learn.microsoft.com/purview/deploy-scanner-custom-reporting and https://learn.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver17. Remove the assertion that no access control can be identified; do not recommend granting broad database roles."
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "Microsoft does not state that the four listed portal roles also govern the export.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"scanner\" \"Custom Reporting\" \"roles\"; \"scanner\" \"CustomReporting\" \"permissions\" \"read\". Opened deploy-scanner-custom-reporting, deploy-scanner-feature-control and configure-install; no mapping of those four portal roles to PowerShell feature control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Scope: Not stated",
+      "type": "absence",
+      "claim": "Microsoft has not documented prerequisites applying to the export.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner-custom-reporting",
+      "quote": "Custom Reporting is available with Microsoft Purview Information Protection client and scanner version 3.2.89.0 or later. Custom Reporting is enabled by an administrator through Scanner feature control.",
+      "severity": "blocker",
+      "fix": "Replace the blanket prerequisite gap with 'Custom Reporting requires Microsoft Purview Information Protection client and scanner version 3.2.89.0 or later and administrator enablement through Scanner feature control.' Cite https://learn.microsoft.com/purview/deploy-scanner-custom-reporting."
+    },
+    {
+      "n": 29,
+      "where": "Scope: Not stated",
+      "type": "absence",
+      "claim": "Microsoft has not documented the scanner-cluster scope of export availability.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner-feature-control",
+      "quote": "Scanner features are configured once per scanner cluster. ... An administrator runs a configuration cmdlet once from any node in the cluster, and all nodes pick up the change on the next scan cycle.",
+      "severity": "blocker",
+      "fix": "Replace 'whether it is available to every scanner cluster, is not documented' with 'On a supported client and scanner version, feature configuration is per scanner cluster and applies to all its nodes on the next scan cycle.' Cite https://learn.microsoft.com/purview/deploy-scanner-feature-control. Do not extrapolate cloud availability beyond the roadmap list."
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not said how Custom Reporting affects scanner database upgrades.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner-custom-reporting",
+      "quote": "Whether you're installing the scanner fresh or upgrading from any earlier version, the scanner deploys the full database schema (including the Custom Reporting tables and columns) on install or upgrade.",
+      "severity": "blocker",
+      "fix": "Replace the upgrade uncertainty with 'Installation or upgrade deploys the full Custom Reporting database schema; the reporting tables and columns remain unpopulated until Custom Reporting is enabled.' Cite https://learn.microsoft.com/purview/deploy-scanner-custom-reporting. Remove the question asking whether the export changes the database upgrade step."
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not said whether export tables add to the scanner database's capacity needs.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner-custom-reporting",
+      "quote": "When you turn on Custom Reporting, the scanner cluster database stores significantly more data: ... Building reports against the scanner cluster database also adds a read workload that runs alongside the scanner's operational reads and writes.",
+      "severity": "blocker",
+      "fix": "Replace the capacity gap with 'Enabling Custom Reporting significantly increases scanner cluster database storage and adds reporting reads alongside scanner operations.' Cite https://learn.microsoft.com/purview/deploy-scanner-custom-reporting. Remove the question asking whether database size is affected; retain tenant-specific sizing as an administrator planning task."
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Scope; Cost and licensing",
+      "type": "behaviour",
+      "claim": "The scanner runs as a service on a Windows Server computer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner",
+      "quote": "This scanner runs as a service on Windows Server",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The scanner uses sensitivity labels configured in the Microsoft Purview portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner",
+      "quote": "To classify and protect your files, the scanner uses sensitivity labels configured in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Completed-scan reports are stored on the scanner computer in %localappdata%\\Microsoft\\MSIP\\Scanner\\Reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner-manage",
+      "quote": "When the scan is complete, review the reports stored in the %localappdata%\\Microsoft\\MSIP\\Scanner\\Reports directory.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The scanner produces .txt summary reports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner-manage",
+      "quote": "The .txt summary files include the time taken to scan, the number of scanned files, and how many files had a match for the information types.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance",
+      "type": "behaviour",
+      "claim": "The scanner's .csv reports contain more detail for each file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner-manage",
+      "quote": "The .csv files have more details for each file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The portal shows the last scan only; earlier scan results are in reports on the scanner computer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner-manage",
+      "quote": "The admin portal displays information about the last scan only. If you need to see the results of previous scans, return to the reports that are stored on the scanner computer",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The report folder location or name cannot be changed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner-manage",
+      "quote": "The report folder location or name can't be changed. If you want to store reports in a different location, consider using a directory junction for the folder.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The documented installation grants db_owner on the scanner database to the scanner service account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner-prereqs",
+      "quote": "The Sysadmin role enables the installation process to automatically create the scanner configuration database and grant the required db_owner role to the service account that runs the scanner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Change & support; Governance guidance; Open questions",
+      "type": "command",
+      "claim": "The documented scanner upgrade procedure includes running Update-ScannerDatabase on one scanner node.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/upgrade-scanner-migrate",
+      "quote": "Update the scanner database: On one scanner node, run the following command:\nUpdate-ScannerDatabase",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope; Cost and licensing; Governance guidance",
+      "type": "behaviour",
+      "claim": "The scanner uses an SQL Server instance for its configuration data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner-prereqs",
+      "quote": "To store the scanner configuration data, use an SQL server with the following requirements: ... A local or remote instance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing: Indirect costs",
+      "type": "behaviour",
+      "claim": "SQL Server 2016 is the minimum version for the scanner's listed SQL Server editions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner-prereqs",
+      "quote": "SQL Server 2016 is the minimum version for the following editions: ... SQL Server Enterprise ... SQL Server Standard ... SQL Server Express",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing: Indirect costs",
+      "type": "behaviour",
+      "claim": "SQL Server Express is recommended only for test environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner-prereqs",
+      "quote": "SQL Server Express (recommended for test environments only)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Learn publishes a disk-sizing equation for the scanner configuration database.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner-prereqs",
+      "quote": "The disk size for the scanner configuration database will vary for each deployment. Use the following equation as guidance:\n100 KB + <file count> *(1000 + 4* <average file name length>)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing: Indirect costs",
+      "type": "cost",
+      "claim": "The configuration-database sizing example allocates 2 GB for one million files averaging 250 bytes in file-name length.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner-prereqs",
+      "quote": "For example, to scan 1 million files that have an average file name length of 250 bytes, allocate 2-GB disk space.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope: Prerequisites documented for the scanner",
+      "type": "behaviour",
+      "claim": "The scanner discovers, classifies and protects files in UNC network-share paths using SMB or NFS, with NFS marked Preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner",
+      "quote": "lets you discover, classify, and protect files on the following data stores: ... UNC paths for network shares that use the SMB or NFS (Preview) protocols.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope: Prerequisites documented for the scanner",
+      "type": "behaviour",
+      "claim": "The scanner supports SharePoint Server document libraries.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner",
+      "quote": "SharePoint document libraries and folder for SharePoint Server (versions currently in extended support).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance controls: Enforce setting",
+      "type": "default",
+      "claim": "The scanner installation guide's initial content-scan-job configuration selects Off for Enforce sensitivity labeling policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/deploy-scanner-configure-install",
+      "quote": "For this initial configuration, configure the following settings ... Enforce sensitivity labeling policy: Select Off",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing: Indirect costs",
+      "type": "cost",
+      "claim": "Any tool used to build reports on the SQL tables carries its own licence and cost.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/sql/tools/overview-sql-tools?view=sql-server-ver17",
+      "quote": "Microsoft provides the following free tools and extensions to work with our SQL Server Database Engine products, based on your business role and function. ... The data analyst runs queries and generates reports.",
+      "severity": "blocker",
+      "fix": "Remove the universal sentence 'Any tool you use to build reports on the SQL tables carries its own licence and cost, which this item does not cover.' It incorrectly rules out free reporting/query tools and tools already licensed."
+    },
+    {
+      "n": 50,
+      "where": "Governance guidance: Before rollout and At rollout",
+      "type": "consistency",
+      "claim": "Every control the governance checklist asks administrators to review or restrict appears in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Confirm which administrators hold' the four roles; 'check its free capacity'; 'Restrict read access to any export tables'. Table: Enforce, Scan now, and the export's absent-control row.",
+      "severity": "minor",
+      "fix": "The role-membership review, SQL free-capacity check and reporting-table read-access restriction have no corresponding controls rows. Record this checklist/table mismatch; do not add rows as part of this correction."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-20T13:42:24.950Z",
+    "summary": {
+      "links": 10,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=494839",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/deploy-scanner",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/deploy-scanner-manage",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/deploy-scanner-prereqs",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/deploy-scanner-configure-install",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/upgrade-scanner-migrate",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/purviewinformationprotection/set-scannercontentscan?view=azureipps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/purviewinformationprotection/start-scan?view=azureipps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/purviewinformationprotection/",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-365-security-compliance-licensing-guidance",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a content scan job enforces labelling policy on scanned files",
+        "docs": "https://learn.microsoft.com/purview/deploy-scanner-configure-install",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Information Protection",
+          "Information protection scanner",
+          "Content scan jobs",
+          "content scan job",
+          "Enforce sensitivity labeling policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether a content scan job enforces labelling policy on scanned files",
+        "docs": "https://learn.microsoft.com/powershell/module/purviewinformationprotection/set-scannercontentscan?view=azureipps",
+        "reachable": true,
+        "token": "Set-ScannerContentScan",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "When a content scan job runs, so results reach reports",
+        "docs": "https://learn.microsoft.com/purview/deploy-scanner-manage",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Information Protection",
+          "Information protection scanner",
+          "Content scan jobs",
+          "content scan job",
+          "Scan now"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "When a content scan job runs, so results reach reports",
+        "docs": "https://learn.microsoft.com/powershell/module/purviewinformationprotection/start-scan?view=azureipps",
+        "reachable": true,
+        "token": "Start-Scan",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

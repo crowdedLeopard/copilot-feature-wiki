@@ -43,11 +43,11 @@ sources:
   - title: "Configure Microsoft Copilot settings in the Microsoft 365 admin center"
     url: "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center"
     kind: "learn"
+  - title: "Managing AI experiences enabled by usage-based billing"
+    url: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits"
+    kind: "learn"
   - title: "Which users and groups can use Cowork, and so be offered it (Microsoft Graph)"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-update"
-    kind: "learn"
-  - title: "Monthly credit limits on a spending policy that selects Cowork (Microsoft 365 admin center)"
-    url: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits"
     kind: "learn"
   - title: "Monthly credit limits on a spending policy that selects Cowork (Microsoft Graph)"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update"
@@ -70,7 +70,7 @@ controls:
     scope: "group"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Copilot > Cost Management > Configuration > + Add spending policy > Select agents and services > Cowork"
+      path: "Copilot > Cost Management > Configuration > + Add spending policy > Identity > Scope user and group > Specific groups > group > Select agents and services > Cowork"
       docs: "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance"
     api:
       kind: "graph"
@@ -108,19 +108,23 @@ changes:
     note: "First briefing for this roadmap item, covering the Chat mode suggestion, the Cowork access and billing controls behind it, and the November and December 2026 rollout windows."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 62 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected the admin path for the Cowork spending policy to include the Identity policy type and group scope steps, and removed the billing method from the pre-rollout checklist."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 59 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 62
-  confirmed: 60
+  claims: 59
+  confirmed: 59
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "07495f7ae7281e58e21547d372ac66c2"
+  contradicted: 0
+  attempts: 0
+  hash: "387bab85849670ef95419bdc058a7077"
 ---
 
 ## What's changing
@@ -169,7 +173,7 @@ Cowork access requires membership of a spending policy that selects Cowork, and 
 
 ### Before rollout
 - Review every spending policy that selects Cowork in Copilot > Cost Management > Configuration, and confirm that the users and groups in scope are the people you want to be offered Cowork.
-- Check the billing method and any monthly or per-user limits on those policies, remembering that a limit does not remove access.
+- Check any monthly or per-user limits on those policies, remembering that a limit does not remove access.
 - Tell the help desk and Copilot champions that Chat may suggest another mode after a prompt, and that accepting it carries the conversation across.
 
 ### At rollout
@@ -189,7 +193,7 @@ Cowork access requires membership of a spending policy that selects Cowork, and 
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Switch that turns the Chat mode suggestion off</strong><br><small>Tenant</small><br><small class="controls__note">No tenant, group or user setting for the suggestion card is documented at the time of writing (November 2026). Spending policy scope below controls who can be offered Cowork.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which users and groups can use Cowork, and so be offered it</strong><br><small>Group</small><br><small class="controls__note">The request body sets state; Learn's example uses serviceId cowork with state disabled. Scope of users comes from the policy's groups. Beta API.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › + Add spending policy › Select agents and services › Cowork <a href="https://learn.microsoft.com/copilot/cowork/cowork-admin-governance" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}/serviceSettings/{serviceId}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users and groups can use Cowork, and so be offered it</strong><br><small>Group</small><br><small class="controls__note">The request body sets state; Learn's example uses serviceId cowork with state disabled. Scope of users comes from the policy's groups. Beta API.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › + Add spending policy › Identity › Scope user and group › Specific groups › group › Select agents and services › Cowork <a href="https://learn.microsoft.com/copilot/cowork/cowork-admin-governance" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}/serviceSettings/{serviceId}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Monthly credit limits on a spending policy that selects Cowork</strong><br><small>Group</small><br><small class="controls__note">The request body can set periodLimit and perUserLimit. A low limit does not block access to Cowork; remove users from the policy scope to do that.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › policy › Spending limits <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Credit consumption by service, including Cowork</strong><br><small>Tenant</small><br><small class="controls__note">This operation splits one user's consumption by governed service for a time window. Learn lists further usage reports by group, service and funding class.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Consumption <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>GET /beta/copilot/costManagement/usageReports/userUsageDetails/{userId}/services</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/costmanagementuserusageservicedetail-list" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -212,12 +216,9 @@ cost: Variable. Switching leads into Cowork, which needs a Copilot licence and w
 impact: Medium. Users who already have Cowork (or another supported mode) will see the card in Chat; users without access should not, so the audience is a subset of users, not everyone.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; rendered Governance controls table / admin-path: The route to a group-scoped Cowork policy is Copilot > Cost Management > Configuration > + Add spending policy > Select agents and services > Cowork. | Found: Create and name the policy and then choose Identity as the scope. Use this option when you need to manage usage by users or groups for a supported service. | Fix: Replace the path in controls[1].ui and its rendered row with 'Copilot > Cost Management > Configuration > + Add spending policy > Identity > Scope user and group > Specific groups > group > Select agents and services > Cowork'. The existing management source documents the required Identity policy-type choice; https://learn.microsoft.com/copilot/cowork/cowork-admin-governance documents Scope user and group, Specific groups and Cowork. Selecting the target group is an allowed omission, but choosing Identity rather than a resource-based policy is not. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.notes; Cost and licensing; Scope; rationale: cost / licensing: Microsoft's usage-based billing page lists Cowork as requiring a Copilot licence. | Found: Cowork (Copilot license required) | Fix: Keep the attribution to the billing page, but add: 'Microsoft's Copilot overview specifies a Microsoft 365 Copilot (Premium) licence for usage-based billing capabilities, including Cowork.' Cite https://learn.microsoft.com/copilot/plan/copilot-overview, which states 'To use usage-based billing capabilities, you must have a Microsoft 365 Copilot (Premium) license.' | Source: https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits
-- [supported, minor] controls[3].note / behaviour: Learn documents further usage reports by group, service and funding class. | Found: Use the Cost Management API usage reports to analyze consumption of Copilot Credits by user, security group, governed service, or funding class. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/usage-reports-overview to sources, titled 'Microsoft 365 Copilot usage reports overview', or remove the final sentence of controls[3].note and its rendered counterpart. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/usage-reports-overview
-- [contradicted, minor] Governance guidance: Before rollout, second bullet / consistency: Every control the governance checklist asks administrators to check is represented in the controls table. | Found: Checklist: 'Check the billing method and any monthly or per-user limits on those policies'. Table: 'Monthly credit limits on a spending policy that selects Cowork'; no row governs the billing method. | Fix: Change the checklist bullet to 'Check any monthly or per-user limits on those policies, remembering that a limit does not remove access.' Do not add a control row.
+- [supported, minor] controls[3].ui; Cost and licensing; Governance guidance: After rollout / admin-path: Copilot > Cost Management > Consumption in the Microsoft 365 admin center is the reporting surface for Cowork service consumption. | Found: Select the Consumption tab. ... The Policies view is the default view ... In the Agents and services view, review usage for supported services. For example, Cowork and Work IQ API. | Fix: Complete controls[3].ui.path and the corresponding monitoring instruction as 'Copilot > Cost Management > Consumption > Agents and services'; the printed path stops on the right page, whose default view is Policies. Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending
+- [supported, minor] controls[3].note / behaviour: Learn lists further API usage reports by group, service and funding class. | Found: usage reports that break down consumption by user, security group, governed service, and funding class. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview to sources for the sentence about further reports by group, service and funding class. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/overview
 -->

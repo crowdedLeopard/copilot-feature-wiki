@@ -18,7 +18,7 @@ defaultState: "admin-opt-in"
 action: "review"
 licensing:
   model: "included"
-  notes: "Retention policies are covered by the licences listed in the Microsoft Purview service description, with SharePoint Plan 2 also listed for SharePoint and OneDrive locations. A licence or meter specific to this setting is not yet published."
+  notes: "For retention policies that do not use adaptive policy scopes, the licences listed in the Microsoft Purview service description provide user rights, with SharePoint Plan 2 also listed for SharePoint and OneDrive locations. A licence or meter specific to this setting is not yet published."
 audiences: ["compliance","m365-admin","service-owner"]
 tags: ["purview","data-lifecycle-management","retention","sharepoint","onedrive","governance","powershell","version-history"]
 sources:
@@ -58,7 +58,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "SharePoint admin center"
-      path: "Settings > Version history limits"
+      path: "Settings > Version history limits > Automatically"
       docs: "https://learn.microsoft.com/sharepoint/set-default-org-version-limits"
     api:
       kind: "powershell"
@@ -82,19 +82,23 @@ changes:
     note: "First briefing: planned Purview setting to permit version trimming under retention, with today's version-limit and trim controls."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 56 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Correction: narrowed the retention licence statement to policies without adaptive scopes, removed the audit-log checklist step and extended the version-limits path to Automatically."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 62 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 54
+  claims: 62
+  confirmed: 62
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "a735467a68861d031bc31ad314c96259"
+  contradicted: 0
+  attempts: 0
+  hash: "c6e7ad4dd0781a9451f214ae537c07cf"
 ---
 
 ## What's changing
@@ -128,7 +132,7 @@ The roadmap wording suggests an administrator turns the setting on, so we expect
 
 ## Cost and licensing
 
-**Licence.** The Microsoft Purview service description lists the licences that give user rights for retention policies, including Microsoft 365 E5/A5/G5/E3/A3/G3 and Business Premium, with SharePoint Plan 2 also listed where the location is SharePoint or OneDrive for Business. This setting is described as scoped to a retention policy, so that is the closest published licensing statement. A licence or meter specific to this setting is not yet published.
+**Licence.** For retention policies that do not use adaptive policy scopes, the Microsoft Purview service description lists Microsoft 365 E5/A5/G5/E3/A3/G3 and Business Premium among the licences providing user rights, with SharePoint Plan 2 also listed for SharePoint or OneDrive for Business locations. This setting is described as scoped to a retention policy, so that is the closest published licensing statement. A licence or meter specific to this setting is not yet published.
 
 **Meter.** The roadmap and the pages read name no meter for this setting.
 
@@ -158,7 +162,6 @@ The roadmap wording suggests an administrator turns the setting on, so we expect
 - Limit who holds the Purview role that can enable it.
 
 ### After rollout
-- Check the Microsoft Purview portal audit log for version deletion events on retained sites. Learn lists "Versions deleted when expired or bulk deleted" as an audited activity; whether trims under this setting appear the same way is not yet documented.
 - Compare storage use before and after, and report the saving to the finance owner.
 
 ## Governance controls
@@ -169,7 +172,7 @@ The roadmap wording suggests an administrator turns the setting on, so we expect
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether SharePoint may trim versions of files covered by a retention policy</strong><br><small class="controls__note">Planned per the roadmap as a policy-scoped setting. Learn documents no path or call for it at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Default version history limits for new document libraries and OneDrive accounts</strong><br><small>Tenant</small><br><small class="controls__note">Today's alternative. Applies to new libraries only, does not trim existing versions and is ignored for items under a retention policy. Manual limits use -MajorVersionLimit and -ExpireVersionsAfterDays.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Settings › Version history limits <a href="https://learn.microsoft.com/sharepoint/set-default-org-version-limits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -EnableAutoExpirationVersionTrim $true</code> <a href="https://learn.microsoft.com/sharepoint/set-default-org-version-limits" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Default version history limits for new document libraries and OneDrive accounts</strong><br><small>Tenant</small><br><small class="controls__note">Today's alternative. Applies to new libraries only, does not trim existing versions and is ignored for items under a retention policy. Manual limits use -MajorVersionLimit and -ExpireVersionsAfterDays.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Settings › Version history limits › Automatically <a href="https://learn.microsoft.com/sharepoint/set-default-org-version-limits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -EnableAutoExpirationVersionTrim $true</code> <a href="https://learn.microsoft.com/sharepoint/set-default-org-version-limits" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Trimming existing versions across the tenant (public preview)</strong><br><small>Tenant</small><br><small class="controls__note">Preview. Requires a SharePoint Advanced Management or Copilot licence. Versions under a retention policy or eDiscovery hold get an expiration date instead of being deleted.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-SPOTenantApplyFileVersionPolicyJob -TrimVersions</code> <a href="https://learn.microsoft.com/sharepoint/trim-versions" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -188,15 +191,6 @@ Organisation-level limits apply only to new libraries and new OneDrive accounts,
 
 <!-- rationale
 risk: Low. Left at its default, today's behaviour continues: Microsoft Learn says version limits are ignored for items under a retention policy. The risk sits in enabling it, because trimmed versions are permanently deleted.
-cost: Low. The only costs the sources show are admin time and a possible storage saving. Microsoft has not published a separate licence or meter for this setting; retention policies themselves are covered by the licences in the Purview service description.
+cost: Low. The only costs the sources show are admin time and a possible storage saving. Microsoft has not published a separate licence or meter for this setting; retention policies without adaptive scopes are covered by the licences in the Purview service description.
 impact: Low. Compliance and SharePoint administrators configure it. Users would notice only if an older version they expected to restore had been trimmed.
--->
-
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: Licence / licensing: The paragraph presents Microsoft 365 E5/A5/G5/E3/A3/G3 and Business Premium as retention-policy user-rights licences without qualifying adaptive policy scopes. | Found: If the retention policy uses an adaptive policy scope, then one of the following licenses is required to provide user rights: - Microsoft 365 E5/A5/G5 - Microsoft Purview Suite/EDU/GOV/FLW | Fix: Narrow the first licence sentence to: 'For retention policies that do not use adaptive policy scopes, the Microsoft Purview service description lists Microsoft 365 E5/A5/G5/E3/A3/G3 and Business Premium among the licences providing user rights, with SharePoint Plan 2 also listed for SharePoint or OneDrive for Business locations.' Keep the following sentence that the new setting's licensing is not yet published. Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance guidance: Before rollout / admin-path: SharePoint admin center > Settings > Version history limits reaches the organization default version-limit settings. | Found: Go to Settings in the SharePoint admin center Select Version History limits. Select Automatically. | Fix: For the controls[1].ui route that corresponds to its automatic-setting command, use 'Settings > Version history limits > Automatically'. The shorter route in the checklist remains correct for reviewing current limits. | Source: https://learn.microsoft.com/sharepoint/set-default-org-version-limits
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist tells administrators to check the Purview audit log, but that control has no row in the controls table. | Found: Check the Microsoft Purview portal audit log for version deletion events on retained sites. | The controls table lists only the planned override, organization default version limits, and tenant-level trimming. | Fix: Remove the checklist bullet beginning 'Check the Microsoft Purview portal audit log' because the audit control is not represented in the controls table. Keep the existing audit question in Open questions.
 -->

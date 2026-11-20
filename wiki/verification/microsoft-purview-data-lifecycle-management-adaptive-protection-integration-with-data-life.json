@@ -1,0 +1,807 @@
+{
+  "slug": "microsoft-purview-data-lifecycle-management-adaptive-protection-integration-with-data-life",
+  "roadmapId": 566324,
+  "title": "Microsoft Purview: Adaptive Protection retains content deleted by high-risk users (GCC, GCC High and DoD)",
+  "status": "held",
+  "date": "2026-11-20",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-20",
+    "reasons": [
+      "2 blocking findings (claims 27, 58)"
+    ]
+  },
+  "counts": {
+    "claims": 60,
+    "confirmed": 57,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: the briefing overlooks Microsoft's published warning that retained SharePoint and OneDrive content counts against storage quotas. It also describes first-time enablement without the custom-setup opt-in qualification, which could lead administrators to assume preservation is active when it is not.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What's changing; title; summary",
+      "type": "record",
+      "claim": "The roadmap plans automatic retention labels to preserve deleted emails and files based on insider risk level.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The integration with Data Lifecycle Management will automatically apply retention labels to preserve deleted emails and files based on a user’s insider risk level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Adaptive Protection moves users into and out of policies as their insider risk levels change.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "automatically moving users in and out of policies as their risk levels change over time",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "February CY2027 is the roadmap target, not a committed release date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"targetDate\": \"February CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-22T22:58:40.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-22T22:58:40\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Governance guidance: Before rollout; Open questions",
+      "type": "availability",
+      "claim": "The Adaptive Protection page says Insider Risk Management is available commercially but not for US Government clouds.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection",
+      "quote": "Insider Risk Management is available for commercial clouds but isn't available for US Government cloud programs at this time.",
+      "severity": "minor",
+      "fix": "Keep the attribution, but add: 'Microsoft's GCC High deployment guide separately lists Insider Risk Management capabilities, including General data leaks, as Available.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/plan-for-microsoft-purview-gcc-high-deployments; it does not establish availability of this integration."
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment: Data exposure; Governance controls",
+      "type": "absence",
+      "claim": "Learn does not yet explain the planned government integration or confirm that its locations and behavior match commercial documentation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Adaptive Protection Data Lifecycle Management GCC High availability' and 'Adaptive Protection GCC default data lifecycle'; opened Adaptive Protection, retention, and the GCC High deployment guide. No government-integration implementation or location specification found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: defaultState; Why it matters; Scope; Open questions",
+      "type": "default",
+      "claim": "The default on arrival in GCC, GCC High and DoD is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Adaptive Protection GCC default data lifecycle' and 'Adaptive Protection Data Lifecycle Management GCC High availability'; read the roadmap, Adaptive Protection, retention and GCC High deployment guide. None states this government integration's arrival default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Microsoft has not stated the government integration's rollout mechanics.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Adaptive Protection Data Lifecycle Management GCC High availability'; read the roadmap, Adaptive Protection, retention and GCC High deployment guide. Found the roadmap month, but no government-integration rollout procedure or window.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; What's changing; Risk assessment; Scope; rationale: impact",
+      "type": "applicability",
+      "claim": "The documented commercial preservation trigger is the Elevated insider risk level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection",
+      "quote": "In the case of data lifecycle management, Insider Risk Management detects Elevated risk level users and preserves their deleted data for 120 days by using an automatically created data lifecycle management retention label policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "The retention label applies to previously unlabeled deleted content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "retention labels are automatically applied to unlabeled content if it's deleted by users who have been identified as an elevated risk.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Data exposure; Scope",
+      "type": "applicability",
+      "claim": "The documented commercial locations are SharePoint, OneDrive and Exchange.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "If these users delete content from SharePoint, OneDrive, or Exchange, a retention label is automatically applied to that content to retain it for 120 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "summary; What's changing; Why it matters; Risk assessment; Governance guidance; rationales",
+      "type": "behaviour",
+      "claim": "The commercial integration retains the deleted content for 120 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "If these users delete content from SharePoint, OneDrive, or Exchange, a retention label is automatically applied to that content to retain it for 120 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Retained content remains accessible for search and eDiscovery in the workload's secured locations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "As a result, that content remains accessible for search and eDiscovery from the secured locations used by the workload.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "After 120 days the items become eligible for permanent deletion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "After the 120 days expire, the items then become eligible for permanent deletion.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Open questions",
+      "type": "availability",
+      "claim": "The retention documentation marks the integration as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "In preview, you can use this solution with Insider Risk Management so that retention labels are automatically applied with Adaptive Protection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The retention label and auto-labeling policy are created automatically rather than requiring administrators to create or manage them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "Unlike other labeling scenarios, users don't see the retention label, and you don't need to create or manage the retention label or auto-labeling retention policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "There is a single integration retention label and auto-labeling policy for the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "The single retention label and auto-labeling retention policy for your tenant aren't visible in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; rationale: impact",
+      "type": "behaviour",
+      "claim": "Users do not see the retention label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "Unlike other labeling scenarios, users don't see the retention label",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The integration's retention label and policy are not visible in the Microsoft Purview portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "The single retention label and auto-labeling retention policy for your tenant aren't visible in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "The documented retention period cannot currently be changed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "At this time, you can't change the retention period or assign different policies based on the different risk levels, or for different locations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "Administrators cannot currently assign different integration policies by risk level or location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "At this time, you can't change the retention period or assign different policies based on the different risk levels, or for different locations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "The commercial policy is created when Adaptive Protection is first turned on, without distinguishing setup methods.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection",
+      "quote": "Custom setup ... If you turn on Adaptive Protection for your organization, you need to explicitly opt in to apply the data lifecycle management policy.",
+      "severity": "blocker",
+      "fix": "Replace the commercial enablement sentence with: 'Learn's quick-setup table says the policy is automatically created and applied when Adaptive Protection is first turned on, while its custom-setup note requires an explicit opt-in to apply the Data Lifecycle Management policy. Tenants that enabled Adaptive Protection before the integration released also need to opt in.' Cite https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection and https://learn.microsoft.com/purview/retention."
+    },
+    {
+      "n": 28,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "Tenants that enabled Adaptive Protection before the integration released must explicitly opt in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "If you enabled and configured Adaptive Protection before this integration with data lifecycle management released, you'll need to opt-in to create this auto-labeling policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "applicability",
+      "claim": "Adaptive Protection must be on before the Data Lifecycle Management integration setting can be enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "You won't be able to turn on this setting unless Adaptive Protection is turned on for your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].note; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Turning off the integration setting deletes the Data Lifecycle Management policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection",
+      "quote": "If you turn off this setting, the data lifecycle management policy is deleted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].note; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Turning off the integration removes labels it applied, making items eligible for permanent deletion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "Any retention labels that were applied as a result of Adaptive Protection are removed so that the items can then become eligible for permanent deletion.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Administrators can contact Microsoft support to restore preserved content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection",
+      "quote": "Admins can contact Microsoft support to restore any preserved content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[1].note; controls[2].note; Risk assessment; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Configuring Adaptive Protection and updating its settings requires Insider Risk Management or Insider Risk Management Admins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection",
+      "quote": "| Configure Adaptive Protection and update settings | Insider Risk Management or Insider Risk Management Admins |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Administrator-defined risk criteria and associated Insider Risk Management policies determine which users receive Elevated risk.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection",
+      "quote": "Custom insider risk levels enable you to create insider risk levels that fit your organization's needs. You can customize the criteria for the insider risk level and define conditions for when to assign the insider risk level to users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Custom setup can take up to 36 hours before risk levels and protection actions apply.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection",
+      "quote": "It might take up to 36 hours before you can expect to see Adaptive Protection insider risk levels and data loss prevention, data lifecycle management, and Conditional Access actions applied to applicable user activities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Quick setup can take up to 72 hours for its configuration and protection actions to complete.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection",
+      "quote": "After you start the quick setup process, it can take up to 72 hours before the following items are completed:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Audit events can appear after a delay rather than immediately.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "Microsoft doesn't guarantee a specific time after an event occurs for the corresponding audit record to be returned in the results of an audit log search.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "The Insider Risk Management policy used with Adaptive Protection can target a subset of users for testing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection",
+      "quote": "This group can include all users and groups in your organization or just a subset for specific risk mitigation scenarios or testing purposes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The integration switch is at Purview portal > Solutions > Settings > Solution settings > Data lifecycle management > Adaptive protection > Adaptive protection in Data Lifecycle Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "Sign in to the Microsoft Purview portal > Solutions > Settings > Solution settings> Data lifecycle management > Adaptive protection. ... For Adaptive protection in Data Lifecycle Management, turn the setting off",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No documented automation equivalent was found for the integration-specific on/off switch.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Adaptive protection data lifecycle Set-RetentionCompliancePolicy'; read retention, Adaptive Protection, Set-PolicyConfig, Set-RetentionCompliancePolicy and Set-RetentionComplianceRule. No documented integration-switch operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The parent switch is at Purview portal > Insider Risk Management > Adaptive protection > Adaptive Protection settings > Adaptive Protection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection",
+      "quote": "Go to the Insider Risk Management solution. ... Select Adaptive protection in the left navigation ... To enable Adaptive Protection, select the Adaptive Protection settings tab, and then turn Adaptive Protection to On.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "No documented PowerShell or API equivalent was found for enabling or disabling Adaptive Protection itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Adaptive Protection PowerShell enable insider risk levels settings Graph' and 'site:learn.microsoft.com/powershell/module/exchange AdaptiveProtection'; opened Adaptive Protection and Set-PolicyConfig. No operation documented for the parent switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Purview portal > Insider Risk Management > Adaptive protection > Insider risk levels > Edit reaches the Elevated risk-level editor.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection",
+      "quote": "On the Insider risk levels page, select Edit for the insider risk level you want to customize (Elevated, Moderate, or Minor). ... On the Custom insider risk level pane, select an option in the Insider risk level based on section",
+      "severity": "minor",
+      "fix": "The printed route is correct but stops at the editor. Extend it to 'Insider Risk Management > Adaptive protection > Insider risk levels > Edit > Custom insider risk level > Insider risk level based on'; retain the note to select Edit for Elevated. The section offers 'Alert generated or confirmed for a user' and 'Specific user activity'."
+    },
+    {
+      "n": 44,
+      "where": "controls[2].api; Governance controls",
+      "type": "absence",
+      "claim": "No documented automation operation was found for editing Adaptive Protection insider risk-level definitions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Security & Compliance PowerShell Adaptive Protection risk levels', 'site:learn.microsoft.com/powershell insider risk levels Set', and 'AdaptiveProtection Graph settings insider risk'; read Adaptive Protection and Set-PolicyConfig. Found UI editing, not a definition-writing API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[3].ui",
+      "type": "admin-path",
+      "claim": "Audit search is reached through Purview portal > Audit > Search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "Sign in to the Microsoft Purview portal. ... Select the Audit solution card. ... On the Search page, configure the following search criteria as applicable:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[3].api; Governance controls",
+      "type": "command",
+      "claim": "Search-UnifiedAuditLog -StartDate <date> -EndDate <date> -Operations <operation names> searches audit records using supported Exchange PowerShell parameters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchange/search-unifiedauditlog",
+      "quote": "Search-UnifiedAuditLog -StartDate 5/1/2023 -EndDate 5/8/2023 -RecordType SharePointFileOperation -Operations FileAccessed -SessionId \"WordDocs_SharepointViews\" -SessionCommand ReturnLargeSet",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[3].note",
+      "type": "role",
+      "claim": "Searching audit records requires the Audit Logs or View-Only Audit Logs role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "You must be assigned the Audit Logs or View-Only Audit Logs roles in the Microsoft Purview portal to search the audit log. ... To access audit cmdlets, you must be assigned the Audit Logs or View-Only Audit Logs roles in the Exchange admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[3].note; Governance controls; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "SharePoint and OneDrive preservation generates the Retained file proactively audit event.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "When these items are retained with Adaptive Protection, the following auditing events are generated and identify the user and item: ... For SharePoint and OneDrive: Retained file proactively",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[3].note; Governance controls; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Exchange preservation generates the Retained email item proactively audit event.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "For Exchange: Retained email item proactively",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "Both proactive-retention events are grouped under Retention policy and retention label activities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "For SharePoint and OneDrive, from Retention policy and retention label activities, select Retained file proactively ... For Exchange, from Retention policy and retention label activities, select Retained email item proactively",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].governs; Governance controls",
+      "type": "behaviour",
+      "claim": "Turning off parent Adaptive Protection stops assigning insider risk levels and sharing them with Data Lifecycle Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection",
+      "quote": "If you turn off Adaptive Protection after it's been on and active, the system stops assigning insider risk levels to users and stops sharing them with data loss prevention, data lifecycle management, and Conditional Access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Turning off parent Adaptive Protection does not automatically delete the Data Lifecycle Management policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection",
+      "quote": "The Insider Risk Management, data loss prevention, data lifecycle management, and Conditional Access policies aren't automatically deleted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing model is unknown because no integration-specific entitlement is stated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, and Microsoft 365 E5/A5/F5/G5 Insider Risk Management | ... | Insider Risk Management | Included |",
+      "severity": "minor",
+      "fix": "Set licensing.model to 'included' for the published product-level entitlement, rather than understating it as unknown. Replace the opening notes with: 'Insider Risk Management is included in Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW, Microsoft Defender + Purview Suite FLW, and Microsoft 365 E5/A5/F5/G5 Insider Risk Management. An integration-specific licence requirement for the planned government release is not yet published.' Retain the cited Purview service description and the government availability caveat."
+    },
+    {
+      "n": 54,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The Adaptive Protection page refers licensing questions for DLP, Data Lifecycle Management and Conditional Access to Microsoft's subscription comparison.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection",
+      "quote": "To learn about licensing requirements for using Adaptive Protection with data loss prevention, data lifecycle management, and Conditional Access, see Microsoft 365, Office 365, Enterprise Mobility + Security, and Windows 11 Subscriptions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Purview service description lists Insider Risk Management as included in its named plans but does not name Adaptive Protection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Insider Risk Management | Included |; searched the fetched service description for 'Adaptive' and found no Adaptive Protection entry.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "The reviewed Microsoft documentation does not state a licence specific to the planned government Data Lifecycle Management integration.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Adaptive Protection licensing E5' and 'Adaptive Protection Data Lifecycle Management licensing retention integration license'; read Adaptive Protection and Purview service description. Found product, not government-integration terms.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No separate meter for the Adaptive Protection retention integration was found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Adaptive Protection retention meter' and 'Adaptive Protection Data Lifecycle Management licensing retention integration license'; read retention, Adaptive Protection and Purview service description. No integration-specific consumption meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Any storage effect of retaining deleted items remains unpublished, and admin and compliance time are the only costs the sources show.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/retention",
+      "quote": "Because the Preservation Hold library is included in the site's storage quota, you might need to increase your storage when you use retention settings for SharePoint, OneDrive, and Microsoft 365 groups.",
+      "severity": "blocker",
+      "fix": "Replace 'Treat the licence and any storage effect of retained items as open until Microsoft publishes them' with: 'Microsoft documents that the Preservation Hold library counts against the site storage quota, so retention in SharePoint and OneDrive may require more storage. A separate meter and government-integration-specific licence requirement were not found.' In Open questions, retain only the narrower uncertainty about an integration-specific meter. Replace the cost rationale's 'only cost' sentence with: 'Low. Plan for admin and compliance time, plus possible storage growth: Microsoft says the Preservation Hold library counts against site storage quotas.' Cite https://learn.microsoft.com/purview/retention."
+    },
+    {
+      "n": 59,
+      "where": "Risk assessment: Autonomy & actions; Governance controls",
+      "type": "absence",
+      "claim": "The Data Lifecycle Management setting is the documented integration-specific on/off control, with no separate policy-management surface or automation found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'AdaptiveProtection Graph settings insider risk'; read retention, Adaptive Protection, Set-PolicyConfig, Set-RetentionCompliancePolicy and Set-RetentionComplianceRule. Found the portal switch, not another integration switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance guidance: At rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to scope the Insider Risk Management policy to a test group, but the controls table has no policy-scope control.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Scope the Insider Risk Management policy used by Adaptive Protection to a test group first'; table: integration switch, parent Adaptive Protection switch, risk-level editor, and audit search only.",
+      "severity": "minor",
+      "fix": "Remove the At rollout bullet beginning 'Scope the Insider Risk Management policy used by Adaptive Protection to a test group first'; that policy-scoping instruction has no corresponding controls-table row."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-20T13:42:26.296Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=566324",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/retention",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-search",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchange/search-unifiedauditlog",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether deleted content from Elevated-risk users is retained automatically",
+        "docs": "https://learn.microsoft.com/purview/retention",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Settings",
+          "Solution settings",
+          "Data lifecycle management",
+          "Adaptive protection",
+          "Adaptive protection in Data Lifecycle Management"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether Adaptive Protection assigns insider risk levels and shares them with other policy engines",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection",
+        "reachable": true,
+        "segments": [
+          "Insider Risk Management",
+          "Adaptive protection",
+          "Adaptive Protection settings",
+          "Adaptive Protection"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which activity assigns the Elevated risk level that triggers retention",
+        "docs": "https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection",
+        "reachable": true,
+        "segments": [
+          "Insider Risk Management",
+          "Adaptive protection",
+          "Insider risk levels",
+          "Edit"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Audit records of items retained by Adaptive Protection",
+        "docs": "https://learn.microsoft.com/purview/audit-search",
+        "reachable": true,
+        "segments": [
+          "Audit",
+          "Search"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Audit records of items retained by Adaptive Protection",
+        "docs": "https://learn.microsoft.com/powershell/module/exchange/search-unifiedauditlog",
+        "reachable": true,
+        "token": "Search-UnifiedAuditLog",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

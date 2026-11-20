@@ -28,6 +28,9 @@ sources:
   - title: "MC1422063: (Updated) OneDrive for Business: Improved Windows Desktop sync error messages for max path length"
     url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1422063"
     kind: "message-center"
+  - title: "What are the file path length limits?"
+    url: "https://support.microsoft.com/onedrive/what-are-file-path-length-limits"
+    kind: "docs"
   - title: "SharePoint limits"
     url: "https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-limits"
     kind: "learn"
@@ -68,19 +71,23 @@ changes:
     note: "First briefing for this item: guided rename and move flow for max path sync errors, with the January 2027 rollout window from MC1422063."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected after verification: the 520-character sync limit is now explained from Microsoft Support (400-character local path plus 120-character root folder), and the custom folder name policy is described as an existing path-length control."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 65 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 58
+  claims: 65
+  confirmed: 65
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "53de4557e72e7fbd7963036223815bc1"
+  contradicted: 0
+  attempts: 0
+  hash: "bc9a9562391d900211cd0cd94b22eddf"
 ---
 
 ## What's changing
@@ -95,7 +102,7 @@ The roadmap item is In development with a target of January CY2027, for General 
 
 This is a support-load change. Microsoft's notice calls max path errors one of the most commonly reported OneDrive sync issues and expects the update to reduce max-path-related support tickets. If your helpdesk scripts tell users to shorten paths by hand, they will describe a dialog that no longer matches what users see once the update reaches them.
 
-MC1422063 says the update is available automatically through the sync client and that no admin action is required, which fits a default of on. Expect users to run into the dialogs without warning unless you brief support teams first. Learn's SharePoint limits page states a 400-character limit on the decoded file path for OneDrive and SharePoint in Microsoft 365, while the roadmap and notice cite 520 characters for the sync client; Microsoft has not said how the two relate, so quote the number your support articles use with care.
+MC1422063 says the update is available automatically through the sync client and that no admin action is required, which fits a default of on. Expect users to run into the dialogs without warning unless you brief support teams first. Learn's SharePoint limits page states a 400-character limit on the decoded file path for OneDrive and SharePoint in Microsoft 365, while the roadmap and notice cite 520 characters for the sync client. Microsoft Support describes the 520-character sync path as the combination of the local path (up to 400 characters) and the OneDrive root folder (up to 120 characters).
 
 ## Risk assessment
 
@@ -162,11 +169,10 @@ MC1422063 says the update reaches users automatically through the sync client an
 
 Microsoft Learn documents no policy for this experience at the time of writing (November 2026): its OneDrive policy list has no setting for the max path error or the rename and move dialogs. MC1422063 describes the update as available automatically through the sync client.
 
-The one documented control that relates to path length is the existing custom folder name policy. It does not govern the new experience; it shortens the sync root folder name for new users, and existing users must unlink and relink their account for it to apply. The page notes that the full sync root folder path cannot exceed 120 characters and that the policy applies to Group Policy, not Intune.
+An existing control related to path length is the custom folder name policy. It does not govern the new experience; it shortens the sync root folder name for new users, and existing users must unlink and relink their account for it to apply. The page notes that the full sync root folder path cannot exceed 120 characters and that the policy applies to Group Policy, not Intune.
 
 ## Open questions
 
-- How does the 520-character sync client limit in the roadmap and MC1422063 relate to the 400-character decoded path limit on Learn's SharePoint limits page? Watch the Learn limits page and the support article Microsoft links from the notice.
 - Which sync client build includes the guided rename and move flow? Watch the OneDrive Sync Release Notes page on Learn.
 - Will Microsoft provide an admin setting to turn the guided experience off? Watch the OneDrive policies page on Learn and Message center.
 - What exactly do the warnings for over-limit shared items and shortcuts say, and what can the user do after seeing them? Watch the Microsoft Support article linked from MC1422063.
@@ -175,11 +181,4 @@ The one documented control that relates to path length is the existing custom fo
 risk: Low. This is an error-handling and repair flow inside the sync client, and Microsoft's notice MC1422063 says it does not change how customer data is stored, processed or accessed.
 cost: Low. Neither the roadmap record nor MC1422063 names a licence or charge; the only cost the sources show is helpdesk briefing and documentation time.
 impact: Medium. MC1422063 lists all users of the OneDrive sync client on Windows as affected, but only people whose paths exceed the limit will see the new rename and move dialogs.
--->
-
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters; Open questions: first bullet / absence: Microsoft has not said how the 520-character sync limit relates to the 400-character limit. | Found: OneDrive sync | 520 characters | The total path is the combination of the local path (up to 400 characters) and the OneDrive root folder (up to 120 characters). Paths exceeding 520 characters show a sync error. | Fix: Replace 'Microsoft has not said how the two relate, so quote the number your support articles use with care' with 'Microsoft Support describes the 520-character sync path as the combination of the local path (up to 400 characters) and the OneDrive root folder (up to 120 characters).' Cite https://support.microsoft.com/onedrive/what-are-file-path-length-limits and remove the first Open questions bullet. | Source: https://support.microsoft.com/onedrive/what-are-file-path-length-limits
-- [contradicted, blocker] Governance controls: final paragraph / applicability: The custom folder name policy is the one documented control related to path length. | Found: To further reduce the local path length, customize the default location for the OneDrive folder: Set the default location for the OneDrive folder. | Fix: Replace 'The one documented control that relates to path length is the existing custom folder name policy.' with 'An existing control related to path length is the custom folder name policy.' The cited page also documents the default folder location policy; no additional control row is needed for this correction. | Source: https://learn.microsoft.com/sharepoint/use-group-policy
 -->

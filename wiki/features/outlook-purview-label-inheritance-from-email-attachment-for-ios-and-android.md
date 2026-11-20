@@ -74,19 +74,23 @@ changes:
     note: "New briefing: Outlook for iOS and Android label inheritance from attachments, with the label policy controls and the mismatch between the roadmap and Learn's version table."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 45 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected after the independent check: stated the Purview service description's licence requirement for policy-based labeling, removed the label-priority claim tied to the policy and the checklist step with no controls row."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 47 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 45
-  confirmed: 42
+  claims: 47
+  confirmed: 47
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "faf8d7c51249c7e36b924567243f1b13"
+  contradicted: 0
+  attempts: 0
+  hash: "c673c35567c3b648a17f9c4abab3f47b"
 ---
 
 ## What's changing
@@ -106,7 +110,7 @@ Microsoft has not stated whether tenants that already selected the checkbox will
 ## Risk assessment
 
 **Data exposure**
-- Inheritance picks the highest priority label among the attachments published to the user, so a mobile email can carry a stricter label than the user would have chosen. Label priority order in your label policy decides which label wins.
+- Inheritance picks the highest priority label among the attachments published to the user, so a mobile email can carry a stricter label than the user would have chosen. The highest priority eligible attachment label wins.
 - Learn says the attachment must be a physical file, and a link to a file on SharePoint or OneDrive does not trigger inheritance, so an email that links to a labelled file is not covered by this setting.
 
 **Security & identity**
@@ -123,7 +127,7 @@ Microsoft has not stated whether tenants that already selected the checkbox will
 
 Microsoft's Purview service description states that sensitivity labeling, including automatic or policy-based labeling, requires a Microsoft 365 E5 licence or Microsoft 365 Information Protection and Governance (IPG), and its table lists manual sensitivity labeling as included in Microsoft 365 E3 and several other plans. Learn also says that to use sensitivity labels in Office apps you must use a subscription edition of Office.
 
-The service description has no row for label inheritance from email attachments, so which of those licence tiers this setting needs is not yet published. No meter is documented for this feature at the time of writing (November 2026). The indirect cost is admin time to review label policies and to tell mobile users what to expect.
+The service description states that automatic or policy-based sensitivity labeling requires Microsoft 365 E5 or Microsoft 365 Information Protection and Governance (IPG); it lists no separate row for attachment inheritance. No meter is documented for this feature at the time of writing (November 2026). The indirect cost is admin time to review label policies and to tell mobile users what to expect.
 
 ## Scope
 
@@ -135,7 +139,6 @@ The setting is configured per sensitivity label policy, so it applies to the use
 
 ### Before rollout
 - Check each sensitivity label policy for the **Email inherits highest priority label from attachments** checkbox, and note which policies already have it selected.
-- Review label priority order and which labels apply encryption, because the highest priority label among the attachments is the one selected.
 - Confirm with a test mobile user which Outlook for iOS and Android version shows the behaviour, since Learn's capabilities table and the roadmap record disagree.
 
 ### At rollout
@@ -164,19 +167,9 @@ Both rows are settings in a sensitivity label policy, so they apply to the users
 
 - Which minimum versions of Outlook for iOS and Android support label inheritance from email attachments? Learn's capabilities table shows "Not available"; watch that page and the roadmap item.
 - Do label policies that already select the inheritance checkbox take effect on mobile without further action? Microsoft has not stated this; watch Message center and the Learn page.
-- Which licence tier does label inheritance from email attachments need? The Purview service description lists no row for it.
 
 <!-- rationale
 risk: Low. The behaviour follows a label policy checkbox that an administrator selects, and stays inside existing sensitivity labels; tenants that already selected it should check what mobile users will now see.
 cost: Low. The only cost the sources show is admin time and communication; Microsoft's Purview service description states the licences for sensitivity labeling but lists no separate row or meter for this feature.
 impact: Low. Only users who attach labelled files to email in Outlook for iOS or Android, in tenants whose label policy turns the setting on, would notice a label being applied or recommended.
--->
-
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing; Open questions / licensing: The licence tier required for this policy-based inheritance setting is not yet published because the service description has no dedicated row. | Found: Sensitivity labeling, including automatic or policy‑based labeling, requires a Microsoft 365 E5 license or Microsoft 365 Information Protection and Governance (IPG). | Fix: Replace the sentence beginning 'The service description has no row' with 'The service description states that automatic or policy-based sensitivity labeling requires Microsoft 365 E5 or Microsoft 365 Information Protection and Governance (IPG); it lists no separate row for attachment inheritance.' Remove the licence-tier question from Open questions. The existing cited Purview service description supplies this wording. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
-- [contradicted, blocker] Risk assessment: Data exposure / behaviour: Label priority order in the label policy decides which attachment label wins. | Found: When you create your sensitivity labels in the Microsoft Purview portal, they appear in a list on the Labels page from Information Protection. In this list, the order of the labels is important because it sets their priority. | Fix: Replace 'Label priority order in your label policy decides which label wins.' with 'The highest priority eligible attachment label wins.' This preserves the inheritance behavior already documented by the cited Office apps page without incorrectly locating label priority inside a publishing policy. | Source: https://learn.microsoft.com/purview/sensitivity-labels
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The governance checklist asks readers to review label priority and encryption settings, but neither control appears in the controls table. | Found: Review label priority order and which labels apply encryption, because the highest priority label among the attachments is the one selected. | Controls table: inheritance enablement and recommendation only. | Fix: The Before rollout step reviewing label priority and label encryption has no corresponding row in the controls table; remove that checklist bullet to keep the checklist aligned with the two documented control rows.
 -->

@@ -58,7 +58,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Show all > Reports > Organizational messages > Create a message > Location"
+      path: "Show all > Reports > Organizational messages > Top actions > Create a message > Objective > Location"
       docs: "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365"
     api: null
     note: "Requires the Organizational Messages Writer role. Email offers pre-made templates only."
@@ -66,7 +66,7 @@ controls:
     scope: "group"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Show all > Reports > Organizational messages > Create a message > Recipients"
+      path: "Show all > Reports > Organizational messages > Top actions > Create a message > Objective > Location > Template > Customize > Recipients"
       docs: "https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365"
     api: null
     note: "Learn says available targeting options depend on the message location; the options for email are not stated."
@@ -87,19 +87,23 @@ changes:
     note: "New briefing: organizational messages can be delivered by email using eight pre-made templates; roadmap status Launched."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 55 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected the Create a message wizard paths for the email location and recipients rows, narrowed the claim that the Writer role is the only gate, and removed the unsupported scheduling checklist bullet."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 52 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 51
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "ef2804ce468bb33f9d60353d447b220e"
+  claims: 52
+  confirmed: 52
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "51470dfefd5865f413b40344a89d325c"
 ---
 
 ## What's changing
@@ -112,7 +116,7 @@ The roadmap item is Launched, with a target of May CY2026 and a preview date of 
 
 ## Why it matters
 
-Email gives a change or adoption team a way to reach inboxes through the same admin-centre workflow it already uses for Windows and Teams messages, and Learn says no tenant policies are needed for email. The catch for a service owner is governance: because pre-made messages skip approval, the Organizational Messages Writer role is the only gate on what is sent.
+Email gives a change or adoption team a way to reach inboxes through the same admin-centre workflow it already uses for Windows and Teams messages, and Learn says no tenant policies are needed for email. The catch for a service owner is governance: the Organizational Messages Writer role controls authoring, while pre-made messages do not require approval.
 
 Microsoft has not stated that anything is sent without an author creating and scheduling a message, so expect nothing to arrive until someone with the role does so. Decide now who holds that role and who reviews content before it is scheduled.
 
@@ -159,7 +163,6 @@ The organizational messages page documents no price or meter for the feature at 
 ### At rollout
 - Create a first email in **Create a message**, with **Email** as the location, and send it to a small test group.
 - Check what those recipients receive, including the sender and whether any opt-out is offered, because Learn does not describe either.
-- Set the start date, end date and frequency at the **Schedule** step, and tell the service desk what the email is.
 
 ### After rollout
 - Check **Manage messages** for each message's status (Active, Completed, Failed or Canceled) and cancel any message that should stop.
@@ -174,8 +177,8 @@ The organizational messages page documents no price or meter for the feature at 
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Who can write and schedule organizational messages, including email</strong><br><small>Tenant</small><br><small class="controls__note">Assigns any Entra role; the request body's roleDefinitionId selects Organizational Messages Writer. The Approver role covers custom messages only.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Show all › Users › Active users › user › Roles › Manage roles › Admin center access › Show all by category › Other › Organizational Messages Writer <a href="https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365-faq" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/roleManagement/directory/roleAssignments</code> <a href="https://learn.microsoft.com/entra/identity/role-based-access-control/manage-roles-portal" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether a message is delivered by email, chosen when it is created</strong><br><small>Tenant</small><br><small class="controls__note">Requires the Organizational Messages Writer role. Email offers pre-made templates only.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Show all › Reports › Organizational messages › Create a message › Location <a href="https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which groups receive a message</strong><br><small>Group</small><br><small class="controls__note">Learn says available targeting options depend on the message location; the options for email are not stated.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Show all › Reports › Organizational messages › Create a message › Recipients <a href="https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether a message is delivered by email, chosen when it is created</strong><br><small>Tenant</small><br><small class="controls__note">Requires the Organizational Messages Writer role. Email offers pre-made templates only.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Show all › Reports › Organizational messages › Top actions › Create a message › Objective › Location <a href="https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which groups receive a message</strong><br><small>Group</small><br><small class="controls__note">Learn says available targeting options depend on the message location; the options for email are not stated.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Show all › Reports › Organizational messages › Top actions › Create a message › Objective › Location › Template › Customize › Recipients <a href="https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Stopping or removing a scheduled or active message</strong><br><small>Tenant</small><br><small class="controls__note">Learn lists cancel, delete, approve and copy among the actions in Manage messages.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Show all › Reports › Organizational messages › Manage messages <a href="https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -200,14 +203,8 @@ cost: Low. The only cost the sources show is admin time; Learn names licences on
 impact: Low. Admins and authors notice first; end users see an email only when an author sends one to them.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Why it matters / applicability: The Organizational Messages Writer role is the only gate on what is sent. | Found: Searched: '"organizational messages" "Writer" "only" email'; opened the organizational messages guide and FAQ; read the built-in Writer role search excerpt. These establish authoring permissions and no pre-made approval, not an exhaustive statement of delivery gates. | Fix: Replace 'the Organizational Messages Writer role is the only gate on what is sent' with 'the Organizational Messages Writer role controls authoring, while pre-made messages do not require approval'.
-- [contradicted, blocker] controls[1].ui; Governance controls table / admin-path: Show all > Reports > Organizational messages > Create a message > Location is the complete route to selecting email. | Found: Objective: Select the nature or purpose of your new message. Options include Adoption, onboarding, Sustainability and Tech updates. Location: ... choose where your message is displayed to users. | Fix: Replace the path in front matter and the rendered row with 'Show all > Reports > Organizational messages > Top actions > Create a message > Objective > Location'. Objective is a choice before Location; the guide also warns that pre-made messages are not available for every objective. Source: https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365. | Source: https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365
-- [contradicted, blocker] controls[2].ui; Governance controls table / admin-path: Show all > Reports > Organizational messages > Create a message > Recipients is the complete route to choosing recipients. | Found: Objective: Select the nature or purpose ... Location: ... choose where ... Template: Choose the format of the message. You can either use a pre-made message from Microsoft or create your own. ... Customize: ... Recipients: Set the groups | Fix: Replace the path in front matter and the rendered row with 'Show all > Reports > Organizational messages > Top actions > Create a message > Objective > Location > Template > Customize > Recipients'. This restores the documented wizard sequence and its objective, delivery-location and template choices. Source: https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365. | Source: https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] summary; What's changing; Risk assessment; Open questions; rationale: risk; changes / behaviour: Email is currently limited to eight pre-made templates. | Found: Email functionality is currently limited to the eight provided pre-made templates. | Fix: Keep the feature guide's eight-template statement, but add: 'Microsoft's June 2, 2026 release notes instead describe an initial release of nine pre-made email templates.' Cite https://learn.microsoft.com/microsoft-365/copilot/release-notes#june-2,-2026. | Source: https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365
-- [supported, minor] What's changing / behaviour: Two templates are welcome messages for Welcome to Copilot and Welcome to Copilot Chat. | Found: Two welcome messages for Welcome to Copilot and Welcome to Copilot Chat. | Fix: Add: 'The same release notes list three welcome templates, including Welcome to Copilot Trial, whereas the feature guide lists two.' Cite https://learn.microsoft.com/microsoft-365/copilot/release-notes#june-2,-2026. | Source: https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365
-- [contradicted, minor] Governance guidance: At rollout; controls / consistency: The checklist instructs readers to set scheduling controls that have no corresponding controls-table row. | Found: 'Set the start date, end date and frequency at the Schedule step' versus rows covering role assignment, email location, recipients and stopping/removing messages only. | Fix: Remove the checklist bullet beginning 'Set the start date, end date and frequency at the Schedule step'. The scheduling explanation in Risk assessment can remain; no new control row is requested.
+- [supported, minor] summary; What's changing; Risk assessment; controls notes; Open questions; rationale: risk / behaviour: Email functionality is limited to eight pre-made templates. | Found: Email functionality is currently limited to the eight provided pre-made templates. | Fix: After the template breakdown in What's changing, add: "Microsoft's June 2, 2026 Copilot release notes instead describe nine initial email templates, including a third welcome template, Welcome to Copilot Trial; the organizational messages guide lists eight." The conflicting source is https://learn.microsoft.com/microsoft-365/copilot/release-notes#june-2,-2026. | Source: https://learn.microsoft.com/microsoft-365/admin/misc/organizational-messages-microsoft-365
 -->

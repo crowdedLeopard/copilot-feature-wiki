@@ -80,19 +80,23 @@ changes:
     note: "Corrected after verification: removed blanket eDiscovery access and portal-only claims, named the tenant-wide Adaptive Protection off switch, completed the setting path, added the Microsoft 365 E5 listing, and dropped the risk-level review step."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-20"
+    note: "Corrected after verification: cost now says retained SharePoint and OneDrive content counts against the site's storage quota, so storage might need to be increased."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 60 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-20"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 60
-  confirmed: 59
+  confirmed: 60
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "fffaadd2ef7a668f40ce5a0d549ba320"
+  contradicted: 0
+  attempts: 0
+  hash: "ecde0cf364b0f32b4f11b2527239a21d"
 ---
 
 ## What's changing
@@ -129,7 +133,7 @@ Microsoft has not stated what the general availability release does on arrival, 
 
 Microsoft's comparison of Microsoft 365 E3, E5 and E7 lists Adaptive Protection in the Microsoft 365 E5 column. A licence requirement or price specific to this integration is not yet published on the pages that describe it. The Adaptive Protection article tells readers to see the Microsoft 365, Office 365, Enterprise Mobility + Security, and Windows 11 Subscriptions page for the licensing requirements of Adaptive Protection with data loss prevention, data lifecycle management and Conditional Access, and does not name a licence. Check your entitlement on that page.
 
-The Learn pages read publish no separate meter or per-use charge for the automatic retention label. The cost the pages show is admin time to review the setting, brief records and legal owners, and monitor the audit events.
+The Learn pages read publish no separate meter or per-use charge for the automatic retention label. Plan for admin time to review the setting, brief records and legal owners, and monitor audit events. Retained SharePoint and OneDrive content also counts against the site's storage quota, and Microsoft says storage might need to be increased.
 
 ## Scope
 
@@ -176,18 +180,12 @@ The setting is available only while Adaptive Protection itself is on for the ten
 ## Open questions
 
 - What will the general availability release do on arrival: is the retention policy created and applied automatically when Adaptive Protection is on, or does an admin opt in? Learn's quick setup and retention pages say it is created automatically for tenants that have not yet turned Adaptive Protection on, while the custom setup note says an explicit opt-in is needed. Watch the Adaptive Protection and retention pages on Learn.
-- Is a licence specific to this integration required beyond the Microsoft 365 E5 listing, and is any meter or storage charge planned? Watch the subscriptions page Learn links.
+- Is a licence specific to this integration required beyond the Microsoft 365 E5 listing, and is a separate integration-specific meter planned? Watch the subscriptions page Learn links.
 - Will the 120-day period become configurable, or be set per risk level or location? Learn says it cannot be changed at this time.
 - Will any PowerShell or Graph operation be published for the Adaptive protection in Data Lifecycle Management setting?
 
 <!-- rationale
 risk: Medium. Content deleted by Elevated-risk users is held for 120 days with a fixed period that admins cannot change, so deletion duties and eDiscovery reach need a decision; the default on arrival is not stated.
-cost: Low. The only cost the pages show is admin time; Learn lists Adaptive Protection under Microsoft 365 E5, and a licence or meter specific to this integration is not yet published.
+cost: Low. Plan for admin time and storage headroom for retained SharePoint and OneDrive content; Learn lists Adaptive Protection under Microsoft 365 E5, and a licence or meter specific to this integration is not yet published.
 impact: Low. Compliance and security admins configure it, and only users at the Elevated insider risk level are affected; Learn says users do not see the retention label.
--->
-
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing; rationale: cost; Open questions / cost: The only cost the pages show is administrative time, with storage charges left entirely as a question about future plans. | Found: Because the Preservation Hold library is included in the site's storage quota, you might need to increase your storage when you use retention settings for SharePoint, OneDrive, and Microsoft 365 groups. | Fix: Replace the final sentence of Cost and licensing with: 'Plan for admin time to review the setting, brief records and legal owners, and monitor audit events. Retained SharePoint and OneDrive content also counts against the site's storage quota, and Microsoft says storage might need to be increased.' In the cost rationale, replace 'The only cost the pages show is admin time' with 'Plan for admin time and storage headroom for retained SharePoint and OneDrive content'. In Open questions, change 'any meter or storage charge planned' to 'a separate integration-specific meter planned'. Cite the already-listed https://learn.microsoft.com/purview/retention; do not infer a storage price or mandatory storage purchase. | Source: https://learn.microsoft.com/purview/retention
 -->

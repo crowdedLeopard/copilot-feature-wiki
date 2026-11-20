@@ -1,0 +1,777 @@
+{
+  "slug": "microsoft-purview-compliance-portal-communication-compliance-enhanced-policy-conditions",
+  "roadmapId": 336046,
+  "title": "Microsoft Purview Communication Compliance: external address conditions, OR logic and condition testing",
+  "status": "held",
+  "date": "2026-11-20",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-20",
+    "reasons": [
+      "2 blocking findings (claims 24, 25)"
+    ]
+  },
+  "counts": {
+    "claims": 59,
+    "confirmed": 56,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 2,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: the assurance that administrators need do nothing is not supported by a published government-cloud rollout default. The condition-builder row also presents two role groups as mandatory even though Microsoft documents other administrators with equivalent configuration permissions. The roadmap facts and both control paths are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; summary; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is December CY2026, presented as a plan rather than a committed rollout date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: clouds; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "title; front matter: products",
+      "type": "record",
+      "claim": "This item concerns Microsoft Purview Communication Compliance policy conditions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"title\": \"Microsoft Purview compliance portal: Communication Compliance - Enhanced Policy Conditions\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans conditions detecting messages sent to and received from external email addresses.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "our updated policy conditions enable the detection of messages sent and received both to and from external email addresses",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft plans OR logic for combining multiple conditions within one policy.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "with the new OR condition capability, you can combine multiple conditions within the same policy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap describes sample-message testing before implementing conditions and uses the word introduced.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "we've introduced the ability to test conditions before implementing them. By using sample messages, you can evaluate how your conditions will perform",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The documented condition builder combines conditions using AND, OR and NOT.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "The condition builder supports the OR operator, which enables you to combine multiple conditions in the same policy to create compound conditions with AND, OR, and NOT operators.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope: Which policies",
+      "type": "behaviour",
+      "claim": "Learn recommends using the condition builder for new policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "For new policies, we recommend using the condition builder.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The external received-from condition is named Sender is in the new builder and detects messages coming from outside the organization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "Message is received from any of these external email addresses ... | Sender is | Apply the policy to include or exclude messages received or not received from specific external email addresses",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The external sent-to condition is named Recipient is in the new builder and detects messages sent outside the organization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "Message is sent to any of these external email addresses ... | Recipient is | ... Use this condition to detect only messages that are sent outside the organization (messages that cross the firewall).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; controls[1].note; Open questions",
+      "type": "availability",
+      "claim": "Learn marks condition testing as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "Test conditions (preview) when you create or edit a policy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; controls[1].note; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Testing currently supports only Content matches any of these classifiers and Content contains any of these sensitive info types.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "Currently, you can only test the following conditions: Content matches any of these classifiers; Content contains any of these sensitive info types",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0].note; Scope: Which policies; Governance controls",
+      "type": "default",
+      "claim": "New policies created from templates automatically use the condition builder.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "If you create a new policy by using a template, you don't have to opt in to the condition builder. Communication Compliance automatically uses the condition builder for new policies based on templates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Scope: Which policies; Governance controls; controls[0].note",
+      "type": "default",
+      "claim": "Outside the template exception, Learn documents opting in to the builder within an individual policy's Conditions section.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "To use the condition builder, you must first opt in. To do this, in the Conditions section, above the existing condition builder, turn the Condition builder option on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope: Which policies; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Learn distinguishes existing-policy condition names from the new condition-builder names.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "For existing policies, use the condition names listed in the first column in the following table.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Exceptions in the condition builder are replaced by NOT conditions that must be in nested groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "All exceptions in the condition builder are replaced with a NOT condition. You must include the NOT condition within a nested group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Mixing AND and OR requires a separate group for each operator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "To use multiple operators (both AND and OR) in the same condition, you must create a separate group for each operator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Quick Summary displays a simplified summary of a built condition.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "the condition builder includes a simplified summary view of the condition. To see the summary for a condition you built, turn on the Quick Summary option.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: defaultState; Why it matters; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "The government-cloud arrival default and whether existing policies change on arrival are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Communication Compliance enhanced policy conditions GCC GCC High DoD condition builder default rollout existing policies. Read roadmap, policies, configure and GCC High planning; found no government-cloud arrival default or existing-policy migration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "summary; Why it matters",
+      "type": "default",
+      "claim": "Nothing is required of administrators and nothing is forced on them when the government-cloud change arrives.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"336046\" \"no action\"; Communication Compliance enhanced policy conditions GCC GCC High DoD condition builder default rollout existing policies. Read roadmap, configure, policies and GCC High planning; none states that no administrator action is required on arrival.",
+      "severity": "blocker",
+      "fix": "Replace 'Nothing is required of administrators; policy authors should plan to review.' with 'Microsoft has not stated what happens on arrival; policy authors should plan to review.' In Why it matters, replace 'The sensible view is that nothing is forced on you, but that' with 'No source says existing policies change;'."
+    },
+    {
+      "n": 25,
+      "where": "controls[0].note; Governance controls; Scope: Who configures",
+      "type": "role",
+      "claim": "Membership in Communication Compliance or Communication Compliance Admins is required to configure policies.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-permissions",
+      "quote": "Members of the following roles have the same solution permissions included with the Communication Compliance Admins role group: Microsoft Entra ID Global Administrator",
+      "severity": "blocker",
+      "fix": "In controls[0].note and the matching table note, replace 'Role group membership required: Communication Compliance or Communication Compliance Admins.' with 'The Communication Compliance and Communication Compliance Admins role groups can configure policies.' Keep the test-pane membership requirement separate: its own documentation explicitly requires those groups."
+    },
+    {
+      "n": 26,
+      "where": "controls[1].note; Risk assessment: Security & identity; Scope; Governance controls",
+      "type": "role",
+      "claim": "Using the condition test requires membership in Communication Compliance or Communication Compliance Admins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "Make sure you're a member of the Communication Compliance Admins role group or the Communication Compliance role group. You must be a member of one of these role groups to use this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure",
+      "type": "default",
+      "claim": "Learn says Communication Compliance usernames are pseudonymized by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "Usernames are pseudonymized by default, role-based access controls are built in, investigators are opted in by an admin, and audit logs are in place to help ensure user-level privacy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Reviewers must have mailboxes hosted on Exchange Online.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "Reviewers are individual users and all reviewers must have mailboxes hosted on Exchange Online.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure; Scope: Prerequisites",
+      "type": "applicability",
+      "claim": "Reviewers are assigned to individual policies whose communications they review.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-plan",
+      "quote": "All reviewers must have mailboxes hosted on Exchange Online, be assigned to either the Communication Compliance Analysts or Communication Compliance Investigators role groups, and be assigned in the policy they need to investigate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Authors can type sample messages into the Test policy conditions pane.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "In the Test policy conditions pane ... Select the Enter messages to test option, then enter some messages that you expect the policy to detect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The test pane accepts a .txt file containing a list of sample messages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "If you have a .txt file that includes a list of messages to detect, select the Upload a file to test whether the trainable classifiers detects the matching elements you specified option",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Autonomy & actions; Why it matters",
+      "type": "behaviour",
+      "claim": "Communication Compliance policies identify communications for analysis by internal or external reviewers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "Use Communication Compliance policies to identify user communications for analysis by internal or external reviewers.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The sources describe no automatic remediation introduced by these condition enhancements.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Communication Compliance policy conditions automatic remediation actions. Read policies, configure and search excerpts for communication-compliance and investigate-remediate; found reviewer actions and cross-policy resolution, not new automatic remediation from these enhancements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Email messages can take approximately 24 hours to fully process in a policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "Email messages can take approximately 24 hours to fully process in a policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Teams and Viva Engage communications can take approximately 48 hours to fully process in a policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "Communications in Microsoft Teams, Viva Engage, and third-party platforms can take approximately 48 hours to fully process in a policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The included licensing model refers to an option within Communication Compliance under the product's existing license requirements.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-plan",
+      "quote": "Users covered by Communication Compliance policies must have either a Microsoft Purview Suite (formerly known as Microsoft 365 E5 Compliance) license",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The planning page lists Microsoft Purview Suite, Office 365 Enterprise E3 with Advanced Compliance, or Office 365 Enterprise E5 for covered users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-plan",
+      "quote": "Users covered by Communication Compliance policies must have either a Microsoft Purview Suite (formerly known as Microsoft 365 E5 Compliance) license, an Office 365 Enterprise E3 license with the Advanced Compliance add-on, or be included in an Office 365 Enterprise E5 subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate license or meter specific to the condition builder, external-address conditions or condition testing is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Communication Compliance condition builder test conditions external addresses licensing price meter. Read communication-compliance-plan and configure Subscriptions and billing; searches returned condition documentation and general licensing, not a feature-specific license or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Detecting inappropriate or risky interactions involving non-Microsoft 365 AI data requires enabling pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "to detect inappropriate or risky interactions for non-Microsoft 365 AI data, you need to enable pay-as-you-go billing in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Detecting inappropriate or risky interactions for Microsoft 365 Copilot data has no corresponding pay-as-you-go billing requirement or charge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "There aren't any pay-as-you-go billing requirements or charges for Microsoft 365 detecting inappropriate or risky interaction for Microsoft 365 Copilot data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope: Prerequisites",
+      "type": "applicability",
+      "claim": "Communication Compliance requires audit logs to show alerts and log reviewer remediation actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "Communication Compliance requires audit logs to show alerts and log remediation actions that reviewers take.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What's changing; Scope: Clouds and platform",
+      "type": "absence",
+      "claim": "The cited condition documentation and GCC High planning table do not specify cloud availability for these three enhancements.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Communication Compliance enhanced policy conditions GCC GCC High DoD condition builder default rollout existing policies. Read policies, configure and the GCC High deployment table; its Communication Compliance rows do not name OR, external-address conditions or condition testing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The builder is reached in Microsoft Purview through Communication Compliance > Policies > Create policy > Custom policy > Choose conditions and review percentage > Conditions > Condition builder.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "in the Conditions section, above the existing condition builder, turn the Condition builder option on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The test control is reached in Microsoft Purview through Communication Compliance > Policies > Create policy > Custom policy > Conditions and percentage > Test your conditions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "Select Create policy, then select Custom policy. ... On the Conditions and percentage page, after entering your conditions, select Test your conditions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].api",
+      "type": "absence",
+      "claim": "No documented automation operation selects the new condition-builder mode for a policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Communication Compliance condition builder Test your conditions Microsoft Graph API PowerShell supervisoryReviewRule Condition. Read policies, TCM overview/resources and New-SupervisoryReviewRule; generic Condition syntax does not document selecting the condition-builder mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "No documented automation operation performs the sample-message condition test.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Communication Compliance\" \"test\" \"conditions\" \"API\" Graph; Communication Compliance condition builder Test your conditions Microsoft Graph API PowerShell supervisoryReviewRule Condition. Read configure, TCM references and New-SupervisoryReviewRule; no test operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance controls; Open questions",
+      "type": "command",
+      "claim": "Learn says PowerShell is not supported for creating and managing Communication Compliance policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-policies",
+      "quote": "PowerShell isn't supported for creating and managing Communication Compliance policies. To create and manage these policies, use the policy management controls in the Communication Compliance solution.",
+      "severity": "minor",
+      "fix": "After this statement add: 'The Security & Compliance PowerShell reference nevertheless documents New-SupervisoryReviewRule with a Condition parameter for supervisory-review rules; it does not identify a switch for the new condition-builder mode or an operation for sample-message testing.' Cite https://learn.microsoft.com/powershell/module/exchangepowershell/new-supervisoryreviewrule?view=exchange-ps. Do not infer new-builder support from that reference."
+    },
+    {
+      "n": 48,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "At the time of writing, Learn gives no Microsoft Graph operation that edits Communication Compliance policy conditions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Communication Compliance\" \"condition builder\" \"Graph\" \"conditions\". Read TCM overview/resources; documented methods concern monitoring and snapshots, not condition editing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The TCM Security and Compliance resource reference lists supervisoryReviewRule with a Condition parameter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-securityandcompliance-resources",
+      "quote": "supervisoryReviewRule resource type ... Condition | Write | String | The Condition parameter specifies the conditions and exceptions for the rule.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The TCM API overview describes baselines, snapshots, monitoring and drift detection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/resources/unified-tenant-configuration-management-api-overview",
+      "quote": "Get a baseline and create a snapshot job ... List and get drifts ... Create and manage monitors ... List and get monitoring results ... List, get, and delete snapshot jobs",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The TCM references do not say whether supervisoryReviewRule handles new condition-builder conditions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Communication Compliance condition builder Test your conditions Microsoft Graph API PowerShell supervisoryReviewRule Condition. Read utcm-securityandcompliance-resources supervisoryReviewRule and the TCM API overview; neither specifies new condition-builder compatibility.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "Role group membership is configured under Settings > Roles and groups > Role groups in Microsoft Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-permissions",
+      "quote": "Select Settings ... select Roles and groups, then select Role groups ... Select the Communication Compliance role group, then select Edit. ... Select Choose users",
+      "severity": "minor",
+      "fix": "Complete the membership route as 'Settings > Roles and groups > Role groups > role group > Edit > Choose users'. The existing route is correct but stops at the role-group list rather than the membership control."
+    },
+    {
+      "n": 53,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Role group permissions can take up to 30 minutes to apply.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-permissions",
+      "quote": "After configuring your role groups, it might take up to 30 minutes for the role group permissions to apply to assigned users across your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Policy alerts are viewed at Communication Compliance > Alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "Sign in to Microsoft 365 as a reviewer designated in the Communication Compliance policy. Go to Communication Compliance > Alerts to view the alerts for your policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Learn recommends a pilot tested over several days and is cited as recommending the briefing's small-group pilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "Typically, you need to create a pilot policy and test it for several days before rolling the policy out to the wider organization.",
+      "severity": "minor",
+      "fix": "Replace the bullet with 'Build new policies in the condition builder and start with a pilot policy scoped to a small group. Learn describes testing a pilot for several days before wider rollout.' This keeps the small-group recommendation as the wiki's advice rather than attributing it to Microsoft."
+    },
+    {
+      "n": 56,
+      "where": "Governance guidance; Governance controls table",
+      "type": "consistency",
+      "claim": "The governance checklist asks readers to check role-group membership, turn on Quick Summary and review alerts, but those controls have no table rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm who holds ... role groups; Turn on Quick Summary; Review alerts in Communication Compliance > Alerts. The controls table has only condition-builder selection and condition testing.",
+      "severity": "minor",
+      "fix": "The checklist steps for role-group membership, Quick Summary and Alerts are not represented in the controls table. Remove those three checklist bullets to resolve the mismatch without adding unverified control rows."
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The cited billing text does not attach a new charge specifically to these policy-condition enhancements.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Communication Compliance condition builder test conditions external addresses licensing price meter. Read configure Subscriptions and billing and plan; billing is described for non-Microsoft 365 AI data, not for selecting OR, external-address conditions or testing sample messages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "rationale: impact",
+      "type": "absence",
+      "claim": "The roadmap and cited Learn descriptions do not describe an end-user-facing change introduced by these enhancements.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Communication Compliance enhanced policy conditions GCC GCC High DoD condition builder default rollout existing policies. Read roadmap and policies/configure; enhancements concern policy-authoring and testing, with no stated new scoped-user interface or action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Learn uses Choose conditions and review percentage for custom policy creation and Conditions and percentage for the test instructions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/communication-compliance-configure",
+      "quote": "On the Choose conditions and review percentage page ... On the Conditions and percentage page, after entering your conditions, select Test your conditions.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-20T13:42:22.106Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 1,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=336046",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/communication-compliance-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/communication-compliance-configure",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/communication-compliance-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/communication-compliance-plan",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/utcm-securityandcompliance-resources",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/resources/unified-tenant-configuration-management-api-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/plan-for-microsoft-purview-gcc-high-deployments",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether a policy uses the condition builder (OR logic and external sender or recipient conditions)",
+        "docs": "https://learn.microsoft.com/purview/communication-compliance-policies",
+        "reachable": true,
+        "segments": [
+          "Communication Compliance",
+          "Policies",
+          "Create policy",
+          "Custom policy",
+          "Choose conditions and review percentage",
+          "Conditions",
+          "Condition builder"
+        ],
+        "missing": [
+          "Create policy",
+          "Choose conditions and review percentage"
+        ]
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Testing policy conditions with sample messages before saving a policy",
+        "docs": "https://learn.microsoft.com/purview/communication-compliance-configure",
+        "reachable": true,
+        "segments": [
+          "Communication Compliance",
+          "Policies",
+          "Create policy",
+          "Custom policy",
+          "Conditions and percentage",
+          "Test your conditions"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -50,7 +50,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Teams admin center"
-      path: "Teams apps > Manage apps > Facilitator > Allow or Block"
+      path: "Teams apps > Manage apps > Facilitator > actions menu > Allow or Block"
       docs: "https://learn.microsoft.com/microsoftteams/facilitator-teams"
     api:
       kind: "powershell"
@@ -67,7 +67,7 @@ controls:
       kind: "powershell"
       call: "Update-M365TeamsApp -Id <app id> -AppAssignmentType Everyone"
       docs: "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp"
-    note: "Learn names app centric management for allowing Facilitator to a group of users. Availability changes can take up to 24 hours to take effect."
+    note: "Learn names app centric management for allowing Facilitator to a group of users. Availability changes take up to 24 hours to take effect; in rare cases, they can take up to six days to reflect in the client."
 confidence: "medium"
 created: "2026-11-20"
 updated: "2026-11-20"
@@ -77,19 +77,23 @@ changes:
     note: "New briefing: Facilitator in Teams for GCC, targeted December CY2026; GCC behaviour is not yet documented on Learn."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected the app availability timing note, the Allow or Block admin path, and the sensitivity label qualification; removed two checklist steps that had no controls-table row."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 71 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 58
+  claims: 71
+  confirmed: 71
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "710236556120a5957fe0ca052a32750a"
+  contradicted: 0
+  attempts: 0
+  hash: "44d7067fd255867a520a95bd8fb32979"
 ---
 
 ## What's changing
@@ -114,7 +118,7 @@ The cost question is mainly licensing. A Microsoft 365 Copilot licence is requir
 
 - Learn says Facilitator data in meetings is stored as a `.loop` file in a OneDrive folder titled Meetings of the user who initiated Facilitator, and is treated as meeting transcript data. Decide who may initiate it with that location in mind.
 - Learn says that if a user prompts Facilitator, all users can view that communication, and that unlicensed users can see Facilitator's notes in meetings.
-- Learn lists limits on the notes: they do not inherit the meeting's sensitivity label (a label can be applied to the notes' Loop component in the Loop app or OneDrive), Prevent copy and paste and Watermarks are not applied to Facilitator's responses or notes, retention labels are not supported for cloud attachments in AI-generated notes, and the notes are not automatically collected as cloud attachments in Microsoft Purview eDiscovery. Learn does not say whether these limits are the same in GCC.
+- Learn lists limits on the notes: they do not inherit the meeting's sensitivity label (a label can be applied to the notes' Loop component in the Loop app or OneDrive), Prevent copy and paste and Watermarks are not applied to Facilitator's responses or notes, retention labels are not supported for cloud attachments in AI-generated notes, and the notes are not automatically collected as cloud attachments in Microsoft Purview eDiscovery. If a sensitivity label is applied to the notes outside of Teams, the note's file cannot be accessed in Teams. Learn does not say whether these limits are the same in GCC.
 
 **Security & identity**
 
@@ -147,7 +151,6 @@ Per Learn, users need an eligible Microsoft 365 base licence, an eligible Teams 
 ### Before rollout
 
 - Check which GCC users hold Microsoft 365 Copilot licences, since only licensed users can initiate Facilitator.
-- Confirm that Loop experiences in Teams are turned on or off as intended, because Learn requires them for Facilitator in meetings and controls AI-generated notes through `IsCollabMeetingNotesFluidEnabled`.
 - Decide whether Facilitator should be available to everyone or a group of users, and plan the app availability setting in the Teams admin center.
 - Review the documented limits (sensitivity label inheritance, retention labels, eDiscovery collection) with your compliance team before enabling it for sensitive meetings.
 
@@ -159,7 +162,7 @@ Per Learn, users need an eligible Microsoft 365 base licence, an eligible Teams 
 
 ### After rollout
 
-- Check where Facilitator notes are stored (the Meetings folder in the initiating user's OneDrive) and apply sensitivity labels to the notes' Loop component where needed.
+- Check where Facilitator notes are stored (the Meetings folder in the initiating user's OneDrive). Learn says that if a sensitivity label is applied to the notes outside of Teams, the note's file cannot be accessed in Teams.
 - Watch Message center and the Learn page for GCC-specific limits and for which Facilitator capabilities are available.
 
 ## Governance controls
@@ -169,8 +172,8 @@ Per Learn, users need an eligible Microsoft 365 base licence, an eligible Teams 
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether the Facilitator app is allowed or blocked for the organisation</strong><br><small>Tenant</small><br><small class="controls__note">Learn says Facilitator is allowed by default and is also blocked if all apps are blocked. The page describes Facilitator generally and does not mention GCC.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Facilitator › Allow or Block <a href="https://learn.microsoft.com/microsoftteams/facilitator-teams" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app id&gt; -IsBlocked $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users and groups Facilitator is available to</strong><br><small>Group</small><br><small class="controls__note">Learn names app centric management for allowing Facilitator to a group of users. Availability changes can take up to 24 hours to take effect.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Facilitator › Users and groups › Select to manage who this app is installed for or available to in your organization › Availability › Edit availability › Available to <a href="https://learn.microsoft.com/microsoftteams/app-centric-management" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app id&gt; -AppAssignmentType Everyone</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether the Facilitator app is allowed or blocked for the organisation</strong><br><small>Tenant</small><br><small class="controls__note">Learn says Facilitator is allowed by default and is also blocked if all apps are blocked. The page describes Facilitator generally and does not mention GCC.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Facilitator › actions menu › Allow or Block <a href="https://learn.microsoft.com/microsoftteams/facilitator-teams" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app id&gt; -IsBlocked $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users and groups Facilitator is available to</strong><br><small>Group</small><br><small class="controls__note">Learn names app centric management for allowing Facilitator to a group of users. Availability changes take up to 24 hours to take effect; in rare cases, they can take up to six days to reflect in the client.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Facilitator › Users and groups › Select to manage who this app is installed for or available to in your organization › Availability › Edit availability › Available to <a href="https://learn.microsoft.com/microsoftteams/app-centric-management" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app id&gt; -AppAssignmentType Everyone</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -189,14 +192,4 @@ AI-generated notes are controlled separately through Loop experiences in Teams: 
 risk: Medium. Facilitator writes shared meeting notes to a .loop file in the initiating user's OneDrive, and Learn lists gaps for those notes (no sensitivity label inheritance, no automatic eDiscovery collection); Learn does not yet describe GCC.
 cost: Medium. The roadmap item says a Microsoft 365 Copilot licence is required, and the service description calls Microsoft 365 Copilot an add-on plan; a Facilitator-specific price or meter is not yet published.
 impact: Medium. Licensed users start Facilitator, but Learn says unlicensed users in the same meeting can see its notes and responses, so everyone who attends affected meetings will notice it.
--->
-
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].note / behaviour: Availability changes take up to 24 hours to take effect. | Found: It takes up to 24 hours for the availability changes to take effect. In rare cases, it might take up to six days for the changes to reflect in the client. | Fix: Replace the timing sentence in controls[1].note and the rendered note with: 'Availability changes take up to 24 hours to take effect; in rare cases, they can take up to six days to reflect in the client.' Source: https://learn.microsoft.com/microsoftteams/app-centric-management. | Source: https://learn.microsoft.com/microsoftteams/app-centric-management
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure; Governance guidance: After rollout / behaviour: A sensitivity label can be applied to the notes' Loop component in the Loop app or OneDrive. | Found: a sensitivity label can be applied to the notes' Loop component in the Loop app or OneDrive. If a sensitivity label is applied to the notes outside of Teams, the note's file can't be accessed in Teams. | Fix: Add the qualification to the labelling sentence and the After rollout advice: 'If a sensitivity label is applied to the notes outside of Teams, the note's file cannot be accessed in Teams.' The source is https://learn.microsoft.com/microsoftteams/facilitator-teams. | Source: https://learn.microsoft.com/microsoftteams/facilitator-teams
-- [supported, minor] controls[0].ui; summary; Governance guidance; Governance controls / admin-path: Facilitator can be allowed or blocked at Teams apps > Manage apps > Facilitator > Allow or Block. | Found: In the left rail navigation, select Teams apps > Manage apps. ... Select Facilitator from the app list. ... In the actions menu, select Allow or Block. | Fix: Include the omitted menu heading: set controls[0].ui.path and the rendered route to 'Teams apps > Manage apps > Facilitator > actions menu > Allow or Block', following https://learn.microsoft.com/microsoftteams/facilitator-teams. | Source: https://learn.microsoft.com/microsoftteams/facilitator-teams
-- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: The governance checklist names controls that are absent from the controls table. | Found: Confirm that Loop experiences in Teams are turned on or off as intended ... apply sensitivity labels to the notes' Loop component where needed. The controls table lists only Facilitator app blocking and app availability. | Fix: The Before rollout step about Loop experiences in Teams and the After rollout instruction to apply sensitivity labels have no corresponding control rows. Remove those two imperative instructions from the checklist; keep the existing factual explanations in Risk assessment and Governance controls. Do not add rows as part of this correction.
 -->

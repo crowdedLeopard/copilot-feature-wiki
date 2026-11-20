@@ -17,7 +17,7 @@ impact: "low"
 defaultState: "admin-opt-in"
 action: "review"
 licensing:
-  model: "mixed"
+  model: "included"
   notes: "Learn's export page requires at least 50 Copilot or Viva Insights licences assigned in the tenant. A price or licence specific to identifiable export is not yet published."
 audiences: ["m365-admin","security","compliance","change-adoption"]
 tags: ["viva-insights","viva-feature-access-management","data-export","privacy","analytics","m365-copilot","m365-admin-center","powershell"]
@@ -40,10 +40,10 @@ sources:
   - title: "Export data from the Agent Dashboard"
     url: "https://learn.microsoft.com/viva/insights/org-team-insights/export-agent-data"
     kind: "learn"
-  - title: "Which users can export identifiable (named) Copilot Dashboard data (Microsoft 365 admin center)"
+  - title: "Control who can access features in Microsoft Viva using the Microsoft 365 admin center"
     url: "https://learn.microsoft.com/viva/control-access-admin-center"
     kind: "learn"
-  - title: "Which users can export identifiable (named) Copilot Dashboard data (PowerShell)"
+  - title: "Control access to features in Microsoft 365 using PowerShell"
     url: "https://learn.microsoft.com/viva/manage-access-policies"
     kind: "learn"
 videos: []
@@ -53,7 +53,7 @@ controls:
     scope: "user"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Viva > Settings > Manage feature access > Create a policy"
+      path: "Viva > Settings > Manage feature access > Create a policy > app and feature > Access setting > On"
       docs: "https://learn.microsoft.com/viva/control-access-admin-center"
     api:
       kind: "powershell"
@@ -64,7 +64,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Viva > Settings > Manage feature access > Create a policy"
+      path: "Viva > Settings > Manage feature access > Create a policy > app and feature > Access setting > Off"
       docs: "https://learn.microsoft.com/viva/control-access-admin-center"
     api:
       kind: "powershell"
@@ -80,19 +80,23 @@ changes:
     note: "New briefing on identifiable export of Copilot metrics from the Copilot Dashboard, with the VFAM policy controls and open questions on defaults and licensing."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 62 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Correction: removed an unsupported claim about delegation, set the licensing model to included, completed both admin paths and added the 3.5.1 PowerShell note."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 66 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 62
-  confirmed: 60
-  unconfirmed: 2
-  contradicted: 0
-  attempts: 1
-  hash: "06f2019c23b1702904b2da4e320225da"
+  claims: 66
+  confirmed: 65
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "319abfc59e1fa2d99404904fa7a5bc81"
 ---
 
 ## What's changing
@@ -119,7 +123,7 @@ If nobody acts, the sources point to identifiers staying removed, since the expo
 
 **Security & identity**
 - Identifiable access is governed by a dedicated Viva Feature Access Management (VFAM) policy. Only a Microsoft 365 Global Administrator or an AI Administrator can create and manage identification access policies. Scope the policy to groups or named users rather than the whole tenant while you pilot.
-- Exporters are users with global access to the Copilot Dashboard: automatically identified senior leaders, users assigned global access, delegates of those users, Viva Insights Analysts with global access and Global Administrators. Delegation therefore extends who can see named data; Learn says delegates inherit export access unless the admin policy disables it.
+- Exporters are users with global access to the Copilot Dashboard: automatically identified senior leaders, users assigned global access, delegates of those users, Viva Insights Analysts with global access and Global Administrators. Learn says delegates inherit export access unless the admin policy disables it.
 
 **Autonomy & actions**
 - No change: the export is a download of metrics that a user requests, and the sources describe no automated action.
@@ -149,7 +153,7 @@ Who configures it: Learn says only a Microsoft 365 Global Administrator or an AI
 ### Before rollout
 - Decide with your privacy, HR and works-council contacts whether named Copilot usage may be exported, and who may receive it.
 - List who holds global access to the Copilot Dashboard, including delegates, since they are the people an identifiable policy could reach.
-- Check that someone holds the Global Administrator or AI Administrator role to manage the policy, and that Exchange Online PowerShell 3.2.0 or later is available if you script it.
+- Check that someone holds the Global Administrator or AI Administrator role to manage the policy, and that Exchange Online PowerShell 3.2.0 or later is available if you script it. Use version 3.5.1 or later for non-mail-enabled groups.
 
 ### At rollout
 - Create the identification access policy in Viva feature access management for a pilot group of named users or groups, not the whole tenant.
@@ -168,8 +172,8 @@ Who configures it: Learn says only a Microsoft 365 Global Administrator or an AI
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which users can export identifiable (named) Copilot Dashboard data</strong><br><small>User</small><br><small class="controls__note">Global Administrator or AI Administrator. Copilot Dashboard identifiable feature ID not printed by Learn; replace -Everyone with -GroupIds or -UserIds to scope a pilot.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Viva › Settings › Manage feature access › Create a policy <a href="https://learn.microsoft.com/viva/control-access-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId &lt;featureId&gt; -Name &lt;policyName&gt; -IsFeatureEnabled $true -Everyone</code> <a href="https://learn.microsoft.com/viva/manage-access-policies" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether leaders and managers can export user-level Copilot Dashboard data</strong><br><small>Tenant</small><br><small class="controls__note">Learn lists this as Copilot Metrics Export (Preview), Global admin. Setting is always on for analysts. Existing export control, not specific to identifiable fields.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Viva › Settings › Manage feature access › Create a policy <a href="https://learn.microsoft.com/viva/control-access-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId &lt;featureId&gt; -Name &lt;policyName&gt; -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/viva/manage-access-policies" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users can export identifiable (named) Copilot Dashboard data</strong><br><small>User</small><br><small class="controls__note">Global Administrator or AI Administrator. Copilot Dashboard identifiable feature ID not printed by Learn; replace -Everyone with -GroupIds or -UserIds to scope a pilot.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Viva › Settings › Manage feature access › Create a policy › app and feature › Access setting › On <a href="https://learn.microsoft.com/viva/control-access-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId &lt;featureId&gt; -Name &lt;policyName&gt; -IsFeatureEnabled $true -Everyone</code> <a href="https://learn.microsoft.com/viva/manage-access-policies" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether leaders and managers can export user-level Copilot Dashboard data</strong><br><small>Tenant</small><br><small class="controls__note">Learn lists this as Copilot Metrics Export (Preview), Global admin. Setting is always on for analysts. Existing export control, not specific to identifiable fields.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Viva › Settings › Manage feature access › Create a policy › app and feature › Access setting › Off <a href="https://learn.microsoft.com/viva/control-access-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId &lt;featureId&gt; -Name &lt;policyName&gt; -IsFeatureEnabled $false -Everyone</code> <a href="https://learn.microsoft.com/viva/manage-access-policies" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -192,13 +196,10 @@ cost: Low. The only cost the sources show is admin time; the export page lists a
 impact: Low. Only users with global access to the Copilot Dashboard (leaders, delegates, analysts, global administrators) can export, and the roadmap says nothing changes for them until an admin turns it on.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Risk assessment: Security & identity / applicability: Delegation therefore extends who can see named data. | Found: Searched: '"Copilot Dashboard" delegates "identifiable" access policy'. Read export-copilot-metrics, identification-copilot-analytics and delegate-access. Export inheritance is stated; inheritance of the separate identification permission is not. | Fix: Remove 'Delegation therefore extends who can see named data;' and retain the supported statement that delegates inherit data-export access unless the administrative policy disables it. The export page separately conditions identifiable fields on administrative enablement for the exporter.
-- [unsupported, blocker] front matter: licensing.model / licensing: Identifiable export has a mixed licensing model. | Found: Searched: 'Viva Insights Copilot Dashboard identifiable export license entitlement pricing prerequisites'. Read export-copilot-metrics, copilot-dashboard, feature-access-management and identification-copilot-analytics. No combination of distinct entitlement models is documented. | Fix: Set licensing.model to 'included' under the standard's rule for an option inside an already licensed product. Retain the notes that export requires at least 50 assigned Copilot or Viva Insights licences and that no separate identifiable-export licence or price is published.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance guidance: Before rollout / command: Exchange Online PowerShell 3.2.0 or later is required for scripting VFAM policies. | Found: Access to Exchange Online PowerShell Version 3.2.0 or later. If you need to use non-mail-enabled groups you must have access to Exchange PowerShell version 3.5.1 or later. | Fix: Append 'Use version 3.5.1 or later for non-mail-enabled groups' to the scripting prerequisite, preserving the existing 3.2.0 minimum for other cases, as documented at https://learn.microsoft.com/viva/manage-access-policies. | Source: https://learn.microsoft.com/viva/manage-access-policies
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: Viva > Settings > Manage feature access > Create a policy is the admin-centre route for an identification policy. | Found: Select Create a policy. ... select the app and feature for which you'd like to set the policy. ... Select the Access setting option and choose On or Off to enable or disable the feature. | Fix: Complete the path as 'Viva > Settings > Manage feature access > Create a policy > app and feature > Access setting > On'. The existing prefix is documented but stops in the policy-creation flow before selecting the feature and setting. | Source: https://learn.microsoft.com/viva/control-access-admin-center
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: Viva > Settings > Manage feature access > Create a policy is the admin-centre route for controlling user-level exports. | Found: Select Create a policy. ... select the app and feature for which you'd like to set the policy. ... Select the Access setting option and choose On or Off to enable or disable the feature. | Fix: Complete the path as 'Viva > Settings > Manage feature access > Create a policy > app and feature > Access setting > Off' to match the row's disabling command. The existing prefix stops before the access setting. | Source: https://learn.microsoft.com/viva/control-access-admin-center
+- [supported, minor] controls[0].ui / admin-path: The identification policy can be enabled through Viva > Settings > Manage feature access > Create a policy > app and feature > Access setting > On. | Found: From the Microsoft 365 admin center, select Viva from the settings menu. Select the Settings tab and select Manage feature access. Select Create a policy. | Fix: Include the initial Settings heading: 'Settings > Viva > Settings > Manage feature access > Create a policy > app and feature > Access setting > On'. The cited page gives the remaining selections as 'select the app and feature' and 'Select the Access setting option and choose On or Off'. | Source: https://learn.microsoft.com/viva/control-access-admin-center
+- [supported, minor] controls[1].ui / admin-path: The export policy can be disabled through Viva > Settings > Manage feature access > Create a policy > app and feature > Access setting > Off. | Found: From the Microsoft 365 admin center, select Viva from the settings menu. ... Select the Access setting option and choose On or Off to enable or disable the feature. | Fix: Include the initial Settings heading: 'Settings > Viva > Settings > Manage feature access > Create a policy > app and feature > Access setting > Off', following https://learn.microsoft.com/viva/control-access-admin-center. | Source: https://learn.microsoft.com/viva/control-access-admin-center
+- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: The checklist asks readers to inventory global dashboard access and inspect Purview policy history, but the table has only identification and export-policy rows. | Found: List who holds global access to the Copilot Dashboard, including delegates ... Review VFAM policy history in the Microsoft Purview change logs ... Table: Which users can export identifiable ... Whether leaders and managers can export user-level ... | Fix: Remove the checklist bullets beginning 'List who holds global access to the Copilot Dashboard' and 'Review VFAM policy history in the Microsoft Purview change logs' so the checklist names only controls represented in the existing table.
 -->
