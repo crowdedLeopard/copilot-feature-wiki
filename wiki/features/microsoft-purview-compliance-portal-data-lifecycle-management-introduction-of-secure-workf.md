@@ -40,6 +40,9 @@ sources:
   - title: "Microsoft 365 Roadmap item 392838"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=392838"
     kind: "roadmap"
+  - title: "Microsoft 365 Roadmap item 473493"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=473493"
+    kind: "roadmap"
 videos: []
 related: ["microsoft-purview-data-lifecycle-management-hard-delete-capability-for-onedrive-and-sharep","ediscovery","auditing"]
 controls:
@@ -47,7 +50,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Solutions > Data Lifecycle Management > Priority cleanup settings > Configuration"
+      path: "Solutions > Data Lifecycle Management > Priority cleanup settings > Configuration > control for priority cleanup"
       docs: "https://learn.microsoft.com/purview/priority-cleanup-exchange"
     api: null
     note: "Requires the Priority Cleanup Admin role. Turning it off also affects SharePoint and OneDrive; existing policies keep working."
@@ -82,19 +85,23 @@ changes:
     note: "New briefing: Priority cleanup for Exchange mailboxes under holds, with its roles, approvers, tenant switch, licences and audit operations."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 88 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected the licence statement to say any user benefiting from the service needs a licence, added the control label to the tenant switch path, and moved role, adaptive scope and auditing steps into prerequisites."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 88 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 88
-  confirmed: 85
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "42b5e155a4d2c4544acafe609c17b19b"
+  confirmed: 87
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "7aba76a75c3cd9c6023b77ee04e21b13"
 ---
 
 ## What's changing
@@ -105,7 +112,7 @@ Microsoft Learn already documents the feature, and marks it as rolling out in pr
 
 Learn lists exceptions: items marked as a record or regulatory record cannot be handled by priority cleanup, and data already copied to an eDiscovery review set is not deleted by it. A mailbox must hold at least 10 MB of data to support priority cleanup, and the same feature also covers SharePoint and OneDrive, which have different rules (see the related briefing linked below).
 
-The roadmap record for item 392838 gives the status In development, a target of January CY2027, a preview date of February CY2025, release phases General Availability and Preview, and the Worldwide (Standard Multi-Tenant) cloud on the Web platform. Microsoft lists the feature under a second roadmap item, 473493, whose record covers GCC, GCC High and DoD; this page covers 392838 only.
+The roadmap record for item 392838 gives the status In development, a target of January CY2027, a preview date of February CY2025, release phases General Availability and Preview, and the Worldwide (Standard Multi-Tenant) cloud on the Web platform. Microsoft lists the feature under a second roadmap item, [473493](https://www.microsoft.com/microsoft-365/roadmap?id=473493), whose record covers GCC, GCC High and DoD; this page covers 392838 only.
 
 ## Why it matters
 
@@ -139,7 +146,7 @@ What Learn describes as safeguards (separate role, named approvers, audit events
 
 The Microsoft Purview service description says that, to use the Priority cleanup policy to apply labels that bypass existing retention or eDiscovery holds, these licences provide user rights: Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW, Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection and Governance, and Office 365 E5/A5/G5. Microsoft 365 E3 is not on that list.
 
-The Learn page for the Exchange feature lists permissions and approvers as its prerequisites, and names no licence or meter. The service description does not say which users must hold the licence (for example the admins, the approvers or the users whose mailboxes are in scope). A price for any add-on is not yet published on those pages.
+The Learn page for the Exchange feature lists permissions and approvers as its prerequisites, and names no licence or meter. Any user benefiting from the service requires a licence, including users assigned a Purview role and the users associated with Exchange mailboxes where the feature is used. A price for any add-on is not yet published on those pages.
 
 Indirect costs are admin and approver time: each policy needs approvers with several roles assigned beforehand, and Learn says approvals are reviewed on the Pending cleanups page.
 
@@ -151,14 +158,13 @@ Who can use it: Learn says users must have the Priority Cleanup Admin role to cr
 
 This page covers Exchange mailboxes. Group mailboxes are supported through adaptive scopes only, and a policy cannot cover Exchange and SharePoint/OneDrive locations together. Turning priority cleanup off at tenant level also turns it off for SharePoint and OneDrive. Items marked as a record or regulatory record are out of scope.
 
+Prerequisites: Learn says the Priority Cleanup Admin role is added automatically to the Organization Management role group, so role-group membership decides who can create policies. Approvers are individual users who need the roles Learn lists for each approval stage assigned before the policy is created. If the policy will be adaptive, the adaptive scopes must exist before the policy is created. Auditing must be turned on at least one day before the first policy, as Learn requires; it is described in /concepts/auditing/.
+
 ## Governance guidance
 
 ### Before rollout
 
 - Decide whether to turn off Priority cleanup at tenant level, especially if you use Preservation Lock, using the Priority cleanup settings page (first control row).
-- Identify who holds the Priority Cleanup Admin role, which Learn says is added automatically to the Organization Management role group, and remove it from role groups where it is not wanted.
-- Name individual users for the three approver stages and give them the roles Learn lists for each stage; create adaptive scopes first if the policy will be adaptive.
-- Turn on auditing at least one day before the first policy, as Learn requires, and confirm who can search the audit log.
 
 ### At rollout
 
@@ -179,7 +185,7 @@ This page covers Exchange mailboxes. Group mailboxes are supported through adapt
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether priority cleanup policies can be created in the tenant</strong><br><small>Tenant</small><br><small class="controls__note">Requires the Priority Cleanup Admin role. Turning it off also affects SharePoint and OneDrive; existing policies keep working.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Priority cleanup settings › Configuration <a href="https://learn.microsoft.com/purview/priority-cleanup-exchange" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether priority cleanup policies can be created in the tenant</strong><br><small>Tenant</small><br><small class="controls__note">Requires the Priority Cleanup Admin role. Turning it off also affects SharePoint and OneDrive; existing policies keep working.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Priority cleanup settings › Configuration › control for priority cleanup <a href="https://learn.microsoft.com/purview/priority-cleanup-exchange" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Creating a priority cleanup policy for Exchange mailboxes</strong><br><small>Tenant</small><br><small class="controls__note">Security &amp; Compliance PowerShell. Needs the Priority Cleanup Admin role and approvers with the roles Learn lists.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Priority cleanup › + Create a priority cleanup <a href="https://learn.microsoft.com/purview/priority-cleanup-exchange" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-RetentionCompliancePolicy -PriorityCleanup</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Searching the audit trail for a priority cleanup</strong><br><small>Tenant</small><br><small class="controls__note">Exchange Online PowerShell. Learn names PriorityCleanupTagApplied and PriorityCleanupDelete as the mailbox operations; the portal has no friendly names for them.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Search <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Search-UnifiedAuditLog -StartDate &lt;date&gt; -EndDate &lt;date&gt; -Operations PriorityCleanupDelete</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/search-unifiedauditlog" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -191,9 +197,9 @@ The Priority Cleanup Admin and Priority Cleanup Viewer roles, and the approver r
 
 ## Open questions
 
-- Will the roadmap's recurring-exception wording change how policies behave compared with the one-off, rare use Learn describes for Exchange? Watch the Learn page and roadmap item 392838.
+- Will the roadmap's recurring-exception wording change how policies behave compared with the rare use Learn describes for Exchange? Watch the Learn page and roadmap item 392838.
 - Learn states that three approvals are always required, yet its approval-process section describes the retention and eDiscovery stages as applying only when items have those settings. Which applies?
-- Which users must hold one of the listed licences for Priority cleanup to be covered (admins, approvers or in-scope mailboxes), and is an add-on price published?
+- Is an add-on price published for the licences that provide user rights for Priority cleanup?
 - Is there an automation route for the tenant-level on/off switch? Microsoft Learn documents none at the time of writing (November 2026).
 - When will the feature leave preview, and does the roadmap target of January CY2027 apply to this item's General Availability phase?
 
@@ -203,13 +209,9 @@ cost: Medium. The Microsoft Purview service description lists the licences that 
 impact: Low. Mainly Priority Cleanup Admins and approvers notice it; users of a mailbox only see a Retention message bar in Outlook on items a policy has identified.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: unspecified licensed users; Open questions / absence: The service description does not say which users must hold the Priority cleanup licence. | Found: Any user benefiting from the service requires a license. ... Users with a Purview role assigned for use in the Microsoft Purview portal. ... For user mailboxes, the user must have the required license assigned. | Fix: Replace the sentence with: 'Any user benefiting from the service requires a licence, including users assigned a Purview role and the users associated with Exchange mailboxes where the feature is used.' Remove the question about which users need licences from Open questions, retaining only its add-on-price question. The cited service description states these requirements under Which users need a license. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
-- [unsupported, major] Open questions: one-off Exchange use / behaviour: Learn describes Exchange priority cleanup policies as one-off. | Found: Searched: '"priority cleanup" Exchange "one-off" recurring'; read the Exchange feature page and returned workload-comparison excerpts. They describe typical Exchange policy use as Rare, not one-off or single-use. | Fix: Change 'the one-off, rare use Learn describes for Exchange' to 'the rare use Learn describes for Exchange'.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: second roadmap item / record: A second roadmap item, 473493, covers the same Exchange feature for GCC, GCC High and DoD. | Found: "id": 473493; "clouds": ["GCC", "GCC High", "DoD"]; "description": "The first release of Priority cleanup enables admins to create a recurring exception to delete items under a broader retention policy and/or legal hold on Exchange workload. | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=473493 to sources for the statement about the second roadmap record.
-- [supported, minor] controls[0].ui; Governance controls: first row / admin-path: The tenant switch is on the Purview route Solutions > Data Lifecycle Management > Priority cleanup settings > Configuration. | Found: Sign in to the Microsoft Purview portal > Solutions > Data Lifecycle Management. ... select Priority cleanup settings. ... From the Configuration page, turn off the control for priority cleanup, and select Save. | Fix: The route reaches the correct page but stops before its control. In controls[0].ui.path and the matching table cell, append ' > control for priority cleanup', giving 'Solutions > Data Lifecycle Management > Priority cleanup settings > Configuration > control for priority cleanup'. The source describes the control this way without publishing a more specific label. | Source: https://learn.microsoft.com/purview/priority-cleanup-exchange
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: The checklist instructs readers to manage roles, create adaptive scopes and enable auditing, but the controls table has no corresponding rows. | Found: Checklist: 'remove it from role groups', 'give them the roles', 'create adaptive scopes first', 'Turn on auditing'. Table: tenant cleanup switch, cleanup policy creation, and audit searching only. | Fix: Move the instructions for role-group membership and approver-role assignment, advance creation of adaptive scopes, and enabling auditing from the governance checklist into prerequisite prose. These checklist controls have no corresponding table rows; do not add new control rows as part of this correction.
+- [supported, minor] Risk assessment: Data exposure / behaviour: Review-set data is deleted only when the eDiscovery case is deleted. | Found: You can't delete items from a review set, and you can't delete review sets from a case. To delete a review set and its data, you must delete the eDiscovery case that contains the review set. | Fix: Add https://learn.microsoft.com/purview/edisc-review-set-manage to sources for the statement that review-set data is deleted only by deleting its case. | Source: https://learn.microsoft.com/purview/edisc-review-set-manage
+- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The governance checklist's instruction to use Relabel is represented in the controls table. | Found: Checklist: 'Brief approvers on the Pending cleanups page, on the Relabel option'. Table controls: tenant policy-creation switch; creating a policy; searching the audit trail. No row covers Relabel. | Fix: Replace the At rollout bullet beginning 'Brief approvers' with 'Brief approvers on the Pending cleanups page.' The instruction to use Relabel has no corresponding controls-table row; retain its factual description in Risk assessment.
 -->

@@ -1,0 +1,635 @@
+{
+  "slug": "outlook-purview-label-inheritance-from-email-attachment-for-ios-and-android",
+  "roadmapId": 569021,
+  "title": "Outlook for iOS and Android: Purview label inheritance from email attachments",
+  "status": "held",
+  "date": "2026-11-20",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-20",
+    "reasons": [
+      "2 blocking findings (claims 40, 44)"
+    ]
+  },
+  "counts": {
+    "claims": 45,
+    "confirmed": 42,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 0,
+    "minor": 1
+  },
+  "summary": "Hold: the briefing calls the required licence tier unpublished even though its cited service description states a requirement for automatic or policy-based labeling. It also locates label priority in a publishing policy, whereas Microsoft defines it through the Information Protection Labels list. The portal paths and PowerShell calls are supported, and the briefing correctly reports the disagreement about mobile availability.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap describes Outlook for iOS and Android applying or recommending an email sensitivity label from labeled attachments according to organizational policy.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When users attach files with sensitivity labels, Outlook can automatically apply or recommend an email sensitivity label based on organizational policy settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says inheritance reduces manual labeling effort.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This helps organizations maintain consistent data classification and protection while reducing manual labeling effort.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target date is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\n    \"General Availability\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Android and iOS.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\n    \"Android\",\n    \"iOS\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\n    \"Worldwide (Standard Multi-Tenant)\",\n    \"GCC\",\n    \"GCC High\",\n    \"DoD\"\n  ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-27T23:05:02.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-27T23:05:02\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Inheritance dynamically selects an email label from attachment labels published to the user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "With this configuration, a sensitivity label is dynamically selected for the email message, based on the sensitivity labels that are applied to the attachments and published to the user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance",
+      "type": "behaviour",
+      "claim": "The highest priority eligible attachment label is selected when Outlook supports it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "The highest priority label is dynamically selected when it's supported by Outlook.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Inheritance does not replace a manually applied email label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "When an email message has been manually labeled, that label won't be replaced by label inheritance from email attachments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Inheritance replaces a lower priority label applied automatically or by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "Label inheritance from email attachments will replace a lower priority sensitivity label that is automatically applied or applied as a default label, but won't override a higher priority label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Inheritance does not override an existing higher priority email label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "Label inheritance from email attachments will replace a lower priority sensitivity label that is automatically applied or applied as a default label, but won't override a higher priority label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Inheritance requires a physical attachment rather than a SharePoint or OneDrive file link.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "The attachment must be a physical file, and can't be a link to a file (for example, a link to a file on Microsoft SharePoint or OneDrive).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: defaultState; What's changing; rationale: risk",
+      "type": "default",
+      "claim": "Inheritance is admin-opt-in through a sensitivity label policy checkbox.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "You configure this setting in the sensitivity label policy, on the Default settings for emails page. For the section Inherit label from attachments, select the checkbox Email inherits highest priority label from attachments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The recommendation option becomes available after selecting the inheritance checkbox.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "When you select this checkbox, you can then further select the following option: Recommend users apply the attachments label instead of automatically applying it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[1].note; Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "When inheritance is enabled, the label is automatically applied unless the recommendation option is selected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "Recommend users apply the attachments label instead of automatically applying it. Without this selection, the label is automatically applied",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[1].note; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Users can remove an automatically inherited label or choose another before sending, subject to other policy settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "Without this selection, the label is automatically applied but users can still remove the label or select a different label before sending the email.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Why it matters; Risk assessment: Security & identity; Governance guidance",
+      "type": "behaviour",
+      "claim": "By default, encryption specified by the automatically selected label is also applied to the email.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "By default, if the automatically selected label applies encryption, the same encryption is applied to the email.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Learn describes Double Key Encryption cases where inheritance does not select a label or protection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "When Outlook doesn't support DKE: If the highest priority label applies Double Key Encryption, no label or encryption is selected for the email message in Outlook for Windows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Learn describes no email label or protection being selected when the highest priority attachment label specifies only user-defined permissions for Word, PowerPoint and Excel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "no label or protection is selected for the email message because Outlook doesn't support this label configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Change & support; Scope",
+      "type": "availability",
+      "claim": "Outlook for iOS and Android require an Exchange Online mailbox for sensitivity labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "For Outlook for Windows, Outlook for iOS and Android, Outlook on the web, and new Outlook for Windows, the mailbox must be hosted in Exchange Online.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Change & support; Scope",
+      "type": "availability",
+      "claim": "Sensitivity labels in the mobile Outlook clients are not supported for on-premises mailboxes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "Sensitivity labels aren't supported for mailboxes that are hosted on-premises.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Scope; Risk assessment: Change & support; Open questions",
+      "type": "availability",
+      "claim": "Learn's capabilities table lists attachment label inheritance as Not available for both mobile platforms, disagreeing with the launched roadmap.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-versions",
+      "quote": "Current Channel: 2302+  Monthly Enterprise Channel: 2302+  Semi-Annual Enterprise Channel: 2302+ | Not available | Not available | Not available | Yes | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Scope; Open questions",
+      "type": "absence",
+      "claim": "Minimum mobile app versions for attachment label inheritance are not published in the documentation checked.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"label inheritance\" \"iOS\" \"version\"'; opened sensitivity-labels-versions and sensitivity-labels-office-apps. The inheritance row has Not available for iOS and Android, not minimum versions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Learn's inheritance-setting description does not specifically name iOS or Android.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Outlook\" \"iOS\" \"inheritance\" \"policy\" automatically attachments'; read Configure label inheritance from email attachments in sensitivity-labels-office-apps. It refers to the capabilities table and does not name iOS or Android.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated whether an already-enabled inheritance policy takes effect on mobile without further action.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Outlook iOS Android attachment label inheritance existing policy AttachmentAction automatic rollout licensing meter'; opened Office apps, versions, create-sensitivity-labels and Set-LabelPolicy. No mobile transition instructions for already-enabled policies were found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters",
+      "type": "absence",
+      "claim": "No checked source says rollout changes behavior for tenants that have not selected the inheritance checkbox.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Outlook\" \"iOS\" \"inheritance\" \"policy\" automatically attachments'; read the roadmap record and Office apps inheritance section. They describe policy-based behavior and turning inheritance on, not changing an unselected checkbox during rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The printed Purview portal path reaches Email inherits highest priority label from attachments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "You configure this setting in the sensitivity label policy, on the Default settings for emails page. For the section Inherit label from attachments, select the checkbox Email inherits highest priority label from attachments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "Set-LabelPolicy -Identity Global -AdvancedSettings @{AttachmentAction=\"Automatic\"} configures automatic inheritance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy",
+      "quote": "Example: `Set-LabelPolicy -Identity Global -AdvancedSettings @{AttachmentAction=\"Automatic\"}`.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[1].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The printed Purview portal path reaches Recommend users apply the attachments label instead of automatically applying it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "When you select this checkbox, you can then further select the following option: Recommend users apply the attachments label instead of automatically applying it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "Set-LabelPolicy -Identity Global -AdvancedSettings @{AttachmentAction=\"Recommended\"} configures recommended inheritance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy",
+      "quote": "AttachmentAction: Unlabeled emails inherit the highest priority label from file attachments. Set the value to Automatic (to automatically apply the label) or Recommended (as a recommended prompt to the user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "applicability",
+      "claim": "These are per-policy settings applying to the users and groups selected for policy publication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "As part of the label policy, you select users and groups to have sensitivity labels and label policy settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "Set-LabelPolicy is functional only in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy",
+      "quote": "This cmdlet is functional only in Security & Compliance PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Sensitivity labels in Office apps require a subscription edition of Office.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+      "quote": "To use sensitivity labels in Office apps, you must use a subscription edition of Office.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Purview service description states that sensitivity labeling, including automatic or policy-based labeling, requires Microsoft 365 E5 or Microsoft 365 Information Protection and Governance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Sensitivity labeling, including automatic or policy‑based labeling, requires a Microsoft 365 E5 license or Microsoft 365 Information Protection and Governance (IPG).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The service description also lists manual sensitivity labeling as included in Microsoft 365 E3 and several other plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "| Manual Sensitivity Labeling | Included | Included | Included | Included | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "The Purview service description has no separate feature row for label inheritance from email attachments.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"label inheritance\" \"attachments\" licensing E5'; searched the fetched Purview service description for inherit and attachment and read its sensitivity labeling tables. No separate email-attachment inheritance row appears.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing; Open questions",
+      "type": "licensing",
+      "claim": "The licence tier required for this policy-based inheritance setting is not yet published because the service description has no dedicated row.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Sensitivity labeling, including automatic or policy‑based labeling, requires a Microsoft 365 E5 license or Microsoft 365 Information Protection and Governance (IPG).",
+      "severity": "blocker",
+      "fix": "Replace the sentence beginning 'The service description has no row' with 'The service description states that automatic or policy-based sensitivity labeling requires Microsoft 365 E5 or Microsoft 365 Information Protection and Governance (IPG); it lists no separate row for attachment inheritance.' Remove the licence-tier question from Open questions. The existing cited Purview service description supplies this wording."
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The capability is included within the named qualifying sensitivity-labeling licences rather than a separately documented feature purchase.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Sensitivity labeling, including automatic or policy‑based labeling, requires a Microsoft 365 E5 license or Microsoft 365 Information Protection and Governance (IPG).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No feature-specific consumption meter is documented at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"label inheritance\" attachments pricing meter billing'; opened the Purview service description, Office apps inheritance section and purview-billing-models. No meter for Outlook email attachment inheritance is listed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Learn's setting description does not name a separate inheritance switch for iOS or Android.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Outlook iOS Android disable attachment label inheritance separate mobile switch AttachmentAction Set-LabelPolicy'; read the Office apps inheritance section and Set-LabelPolicy AttachmentAction reference. Neither names a separate mobile inheritance switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Label priority order in the label policy decides which attachment label wins.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "When you create your sensitivity labels in the Microsoft Purview portal, they appear in a list on the Labels page from Information Protection. In this list, the order of the labels is important because it sets their priority.",
+      "severity": "blocker",
+      "fix": "Replace 'Label priority order in your label policy decides which label wins.' with 'The highest priority eligible attachment label wins.' This preserves the inheritance behavior already documented by the cited Office apps page without incorrectly locating label priority inside a publishing policy."
+    },
+    {
+      "n": 45,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The governance checklist asks readers to review label priority and encryption settings, but neither control appears in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review label priority order and which labels apply encryption, because the highest priority label among the attachments is the one selected. | Controls table: inheritance enablement and recommendation only.",
+      "severity": "minor",
+      "fix": "The Before rollout step reviewing label priority and label encryption has no corresponding row in the controls table; remove that checklist bullet to keep the checklist aligned with the two documented control rows."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-20T12:52:43.007Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 2,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=569021",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/sensitivity-labels-versions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether an email inherits the highest priority label from its attachments",
+        "docs": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Information Protection",
+          "Publishing policies",
+          "Edit Policy",
+          "Default settings for emails",
+          "Inherit label from attachments",
+          "Email inherits highest priority label from attachments"
+        ],
+        "missing": [
+          "Publishing policies",
+          "Edit Policy"
+        ]
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether an email inherits the highest priority label from its attachments",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy",
+        "reachable": true,
+        "token": "Set-LabelPolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether the inherited label is recommended instead of applied automatically",
+        "docs": "https://learn.microsoft.com/purview/sensitivity-labels-office-apps",
+        "reachable": true,
+        "segments": [
+          "Solutions",
+          "Information Protection",
+          "Publishing policies",
+          "Edit Policy",
+          "Default settings for emails",
+          "Inherit label from attachments",
+          "Recommend users apply the attachments label instead of automatically applying it"
+        ],
+        "missing": [
+          "Publishing policies",
+          "Edit Policy"
+        ]
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether the inherited label is recommended instead of applied automatically",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-labelpolicy",
+        "reachable": true,
+        "token": "Set-LabelPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

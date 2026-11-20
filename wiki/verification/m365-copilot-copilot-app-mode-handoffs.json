@@ -1,0 +1,864 @@
+{
+  "slug": "m365-copilot-copilot-app-mode-handoffs",
+  "roadmapId": 577841,
+  "title": "Microsoft Copilot app: Chat suggests a better-fit mode such as Cowork",
+  "status": "held",
+  "date": "2026-11-20",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-20",
+    "reasons": [
+      "1 blocking finding (claim 44)"
+    ]
+  },
+  "counts": {
+    "claims": 62,
+    "confirmed": 60,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "Hold: the access-control route skips the Identity policy-type choice required by the spending-policy wizard. The rollout, suggestion behaviour and Cowork billing controls are otherwise supported; the licensing description and reporting citations need small clarifications.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What's changing; title; summary",
+      "type": "record",
+      "claim": "Chat in the Copilot app suggests a better-fit mode after the user sends a prompt, where applicable.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The Chat experience in the Copilot app will suggest a better-fit mode based on the user's prompt, if applicable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; title; summary",
+      "type": "record",
+      "claim": "Cowork is the example destination, with other supported modes suggested as they become available.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "For example, it will suggest Cowork or other supported modes as they become available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; summary; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The suggestion card explains the better-fit mode.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Users will see a suggestion card after they send a prompt in Chat, with an explanation of the better-fit mode and an option for the user to switch to the suggested mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "The banner lets the user choose whether to switch or remain in Chat.",
+      "status": "supported",
+      "source": "Message Center post MC1536065",
+      "quote": "In the banner, the user will see an option to switch to the suggested experience (ie. Cowork) or remain in Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; summary; Risk assessment: Data exposure; Governance guidance",
+      "type": "record",
+      "claim": "Chat conversation context is attached to the prompt in the destination mode.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Their chat conversation will be attached to the prompt in the new mode to maintain context.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Choosing to switch opens the suggested experience with the prompt already sent.",
+      "status": "supported",
+      "source": "Message Center post MC1536065",
+      "quote": "If the user selects the option to switch, they will be brought directly to the suggested experience with the prompt already sent, along with the context from their Chat conversation attached.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; summary; Scope; Risk assessment: Security & identity; rationales: risk, impact",
+      "type": "record",
+      "claim": "Suggestions are shown only for experiences the user can already access, so the card grants no new access.",
+      "status": "supported",
+      "source": "Message Center post MC1536065",
+      "quote": "Users will see suggestions only for experiences they can access. For example, users who do not have access to Cowork will not see a suggestion to use Cowork.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The notice does not specify the mode-selection algorithm or how much conversation context is attached.",
+      "status": "supported",
+      "source": "Message Center post MC1536065",
+      "quote": "if Copilot determines that another Copilot experience available to the user may better fit a request or task, the user may see a banner suggesting that experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 17 November 2026 at 18:36:41.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-17T18:36:41\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1536065 was updated on 13 November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1536065",
+      "quote": "Updated November 13, 2026: We have updated the Rollout schedule to reflect timing for Standard and Deferred audiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Scope; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Standard Worldwide rollout begins in mid-November 2026 and is expected to complete by late November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1536065",
+      "quote": "Standard (Worldwide): Beginning in mid-November 2026 and expected to complete by late November 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Deferred Worldwide rollout begins in mid-December 2026 and is expected to complete by late December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1536065",
+      "quote": "Deferred (Worldwide): Beginning in mid-December 2026 and expected to complete by late December 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "summary; Why it matters",
+      "type": "record",
+      "claim": "Microsoft says no admin action is required to prepare for the change.",
+      "status": "supported",
+      "source": "Message Center post MC1536065",
+      "quote": "No admin action is required to prepare for this change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "The supplied notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1536065",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: defaultState",
+      "type": "default",
+      "claim": "The suggestion experience arrives on for eligible users without an administrator enabling the card.",
+      "status": "supported",
+      "source": "Message Center post MC1536065",
+      "quote": "Only users who have the Copilot mode (example Cowork) enabled will see this experience. No admin action is required to prepare for this change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe this mode-suggestion card at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Copilot\" \"suggestion\" \"Cowork\" \"Chat\" \"mode\"; \"577841\"; \"Copilot\" \"suggestion card\". Opened Microsoft 365 Copilot release notes and searched its text for 577841, handoff, better-fit, suggestion card, mode suggestions and banner; no description of this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[0]; Why it matters; Risk assessment; Governance controls",
+      "type": "absence",
+      "claim": "No tenant, group or user UI setting or API for turning off this suggestion card is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Chat mode handoffs suggestion card turn off admin tenant group user setting Graph API. Opened configure-copilot-admin-center, microsoft-365-copilot-app-admin-settings and copilotAdminSetting reference; none documents a card switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: licensing.notes",
+      "type": "absence",
+      "claim": "No licence specific to the suggestion card is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Chat mode suggestions card license charge meter pricing. Opened usage-based-billing-overview-copilot-credits and copilot-overview; neither lists separate suggestion-card entitlement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate charge or meter for the suggestion card is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Copilot Chat mode suggestions card license charge meter pricing. Opened usage-based-billing-overview-copilot-credits and Cowork admin governance; searched results include pay-as-you-go-meters, with no suggestion-card meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters; Scope; controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "A spending policy whose scope includes a user and selects Cowork grants Cowork access and thus makes Cowork suggestions possible.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "Users in the scope of a spending policy that selects Cowork can use Cowork.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing; controls[2].note; Governance guidance",
+      "type": "behaviour",
+      "claim": "Setting a low credit limit does not remove Cowork access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-access",
+      "quote": "A low credit limit doesn't block access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing; controls[2].note; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Removing a user's Cowork access requires removing them from every spending policy that includes Cowork.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-access",
+      "quote": "To remove access for a user, remove them from every spending policy that includes Cowork.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Scope; Governance controls",
+      "type": "behaviour",
+      "claim": "Configuration on the old Cowork entry under Agents > All Agents no longer controls who can use Cowork.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "The Cowork agent entry is still visible under Agents > All Agents, but any configuration on it has no effect on who can use Cowork.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing; Why it matters; rationale: cost",
+      "type": "cost",
+      "claim": "Cowork model responses count towards organisational consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Cowork tool and skill calls count towards organisational consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Cowork image generation counts towards organisational consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Cowork browser tasks count towards organisational consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "Activities such as model responses, tool and skill calls, image generation, and browser tasks count toward your organization's consumption.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "summary; Cost and licensing; front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "Cowork uses consumption-based billing measured in Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
+      "quote": "Microsoft's usage-based billing model charges customers based on actual usage, measured in Copilot Credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Microsoft's usage-based billing page lists Cowork as requiring a Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
+      "quote": "Cowork (Copilot license required)",
+      "severity": "minor",
+      "fix": "Keep the attribution to the billing page, but add: 'Microsoft's Copilot overview specifies a Microsoft 365 Copilot (Premium) licence for usage-based billing capabilities, including Cowork.' Cite https://learn.microsoft.com/copilot/plan/copilot-overview, which states 'To use usage-based billing capabilities, you must have a Microsoft 365 Copilot (Premium) license.'"
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is mixed because Cowork combines a Copilot licence prerequisite with usage-based billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
+      "quote": "This model complements fixed subscription licensing with a flexible payment option that aligns to actual usage. Cowork (Copilot license required)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Cowork operates within the user's existing permissions and security boundaries.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/responsible-ai/copilot-cowork-application-card",
+      "quote": "It connects to your Outlook, Calendar, Teams, OneDrive, SharePoint, and other Microsoft 365 services, operating within your existing permissions and security boundaries.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Cowork carries out multi-step tasks on the user's behalf.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/responsible-ai/copilot-cowork-application-card",
+      "quote": "Microsoft Copilot Cowork is an AI-powered agentic system that carries out multi-step tasks on your behalf across Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Cowork can send emails.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/responsible-ai/copilot-cowork-application-card",
+      "quote": "sending emails, scheduling meetings, creating documents, posting in Teams, conducting research, and managing files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Cowork can schedule meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/responsible-ai/copilot-cowork-application-card",
+      "quote": "sending emails, scheduling meetings, creating documents, posting in Teams, conducting research, and managing files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Cowork requires explicit user approval for sensitive actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/responsible-ai/copilot-cowork-application-card",
+      "quote": "Each action is visible in the conversation, and sensitive actions require your explicit approval before they're executed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "default",
+      "claim": "Auto-apply new services is selected by default for spending policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "By default, the Auto-apply new services toggle is selected for spending policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Auto-apply new services automatically adds newly supported services unless it is turned off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "When the setting is on, newly supported Microsoft Copilot services and agents are automatically added to the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].ui; rendered Governance controls table",
+      "type": "admin-path",
+      "claim": "The route to a group-scoped Cowork policy is Copilot > Cost Management > Configuration > + Add spending policy > Select agents and services > Cowork.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "Create and name the policy and then choose Identity as the scope. Use this option when you need to manage usage by users or groups for a supported service.",
+      "severity": "blocker",
+      "fix": "Replace the path in controls[1].ui and its rendered row with 'Copilot > Cost Management > Configuration > + Add spending policy > Identity > Scope user and group > Specific groups > group > Select agents and services > Cowork'. The existing management source documents the required Identity policy-type choice; https://learn.microsoft.com/copilot/cowork/cowork-admin-governance documents Scope user and group, Specific groups and Cowork. Selecting the target group is an allowed omission, but choosing Identity rather than a resource-based policy is not."
+    },
+    {
+      "n": 45,
+      "where": "controls[1].api; rendered Governance controls table",
+      "type": "command",
+      "claim": "PATCH /beta/copilot/costManagement/spendingPolicies/{id}/serviceSettings/{serviceId} changes a policy's service access setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-update",
+      "quote": "PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/3f9e2c1a-0000-0000-0000-00000000c21b/serviceSettings/cowork",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "The service-setting request updates state, and the reference example disables serviceId cowork.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-update",
+      "quote": "The state property can be updated. Setting state to disabled is the removal semantic",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[1].note; controls[1].scope",
+      "type": "applicability",
+      "claim": "A policy scoped to specific groups grants access to the users in those groups when it selects Cowork.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+      "quote": "On the Scope user and group step, choose Specific groups and select the security group. On the Select agents and services step, select Cowork.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[2].ui; rendered Governance controls table",
+      "type": "admin-path",
+      "claim": "Monthly policy limits can be edited in Microsoft 365 admin center > Copilot > Cost Management > Configuration > policy > Spending limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "In the Microsoft 365 admin center, go to Copilot > Cost Management. Select the Configuration tab. Select the spending policy you want to edit. The spending policy details fly-out opens",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[2].api; rendered Governance controls table",
+      "type": "command",
+      "claim": "PATCH /beta/copilot/costManagement/spendingPolicies/{id} updates spending-policy limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "PATCH /copilot/costManagement/spendingPolicies/{id}",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[2].note",
+      "type": "command",
+      "claim": "The spending-policy update body can set periodLimit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[2].note",
+      "type": "command",
+      "claim": "The spending-policy update body can set perUserLimit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[3].ui; Cost and licensing; Governance guidance: After rollout",
+      "type": "admin-path",
+      "claim": "Cowork credit consumption is visible at Microsoft 365 admin center > Copilot > Cost Management > Consumption.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending",
+      "quote": "In the Microsoft 365 admin center, go to Copilot > Cost Management. Select the Consumption tab.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[3].api; rendered Governance controls table",
+      "type": "command",
+      "claim": "GET /beta/copilot/costManagement/usageReports/userUsageDetails/{userId}/services retrieves one user's consumption by service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/costmanagementuserusageservicedetail-list",
+      "quote": "GET /copilot/costManagement/usageReports/userUsageDetails/{userId}/services?startDateTime={startDateTime}&endDateTime={endDateTime}",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[3].note",
+      "type": "behaviour",
+      "claim": "This reporting operation splits one user's credit consumption by governed service for a time window.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/costmanagementuserusageservicedetail-list",
+      "quote": "Get a list of costManagementUserUsageServiceDetail objects that split one user's raw consumption of Copilot Credits by governed service for a timestamp window.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[3].note",
+      "type": "behaviour",
+      "claim": "Learn documents further usage reports by group, service and funding class.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/usage-reports-overview",
+      "quote": "Use the Cost Management API usage reports to analyze consumption of Copilot Credits by user, security group, governed service, or funding class.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/usage-reports-overview to sources, titled 'Microsoft 365 Copilot usage reports overview', or remove the final sentence of controls[3].note and its rendered counterpart."
+    },
+    {
+      "n": 56,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Precedence among overlapping Cowork policies decides which limits apply rather than whether access is granted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-access",
+      "quote": "When a user is in multiple policies that select Cowork, the precedence rules only choose which limits apply—they don't decide whether access is granted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "A more restrictive policy does not override a more permissive Cowork access grant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/cowork/cowork-access",
+      "quote": "Access is decided per service by whether any applicable policy selects that service. A more restrictive policy doesn't override a more permissive one.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls; controls[1].note",
+      "type": "availability",
+      "claim": "The cited Microsoft Graph cost-management operations are beta APIs subject to change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Risk assessment: Change & support",
+      "type": "record",
+      "claim": "Microsoft recommends considering communication to users and the help desk about mode suggestions.",
+      "status": "supported",
+      "source": "Message Center post MC1536065",
+      "quote": "Consider informing your users and help desk that Copilot may suggest another Copilot mode when that mode may better fit a request or task.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "Microsoft recommends considering a review of users included in spending policies granting Cowork access.",
+      "status": "supported",
+      "source": "Message Center post MC1536065",
+      "quote": "Consider reviewing which users are included in a spending policy that grants Cowork access, and confirm your intended usage-based billing configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "Microsoft asks administrators to confirm their intended usage-based billing configuration.",
+      "status": "supported",
+      "source": "Message Center post MC1536065",
+      "quote": "Consider reviewing which users are included in a spending policy that grants Cowork access, and confirm your intended usage-based billing configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance guidance: Before rollout, second bullet",
+      "type": "consistency",
+      "claim": "Every control the governance checklist asks administrators to check is represented in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Check the billing method and any monthly or per-user limits on those policies'. Table: 'Monthly credit limits on a spending policy that selects Cowork'; no row governs the billing method.",
+      "severity": "minor",
+      "fix": "Change the checklist bullet to 'Check any monthly or per-user limits on those policies, remembering that a limit does not remove access.' Do not add a control row."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-20T12:52:38.374Z",
+    "summary": {
+      "links": 12,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=577841",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1536065",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/cowork/cowork-access",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/cowork/responsible-ai/copilot-cowork-application-card",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-update",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/costmanagementuserusageservicedetail-list",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which users and groups can use Cowork, and so be offered it",
+        "docs": "https://learn.microsoft.com/copilot/cowork/cowork-admin-governance",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost Management",
+          "Configuration",
+          "+ Add spending policy",
+          "Select agents and services",
+          "Cowork"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Which users and groups can use Cowork, and so be offered it",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-update",
+        "reachable": true,
+        "token": "/beta/copilot/costManagement",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Monthly credit limits on a spending policy that selects Cowork",
+        "docs": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost Management",
+          "Configuration",
+          "Spending limits"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Monthly credit limits on a spending policy that selects Cowork",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+        "reachable": true,
+        "token": "/beta/copilot/costManagement",
+        "found": true
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Credit consumption by service, including Cowork",
+        "docs": "https://learn.microsoft.com/copilot/implement/usage-based-billing-copilot-credits-monitor-spending",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost Management",
+          "Consumption"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Credit consumption by service, including Cowork",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/costmanagementuserusageservicedetail-list",
+        "reachable": true,
+        "token": "/beta/copilot/costManagement",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

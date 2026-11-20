@@ -55,6 +55,18 @@ sources:
   - title: "Data, privacy, and security for web search in Microsoft Copilot and Microsoft Copilot Chat"
     url: "https://learn.microsoft.com/copilot/plan/manage-public-web-access"
     kind: "learn"
+  - title: "Create configurationMonitor"
+    url: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
+    kind: "learn"
+  - title: "Supported Copilot resources for Tenant Configuration Management (preview)"
+    url: "https://learn.microsoft.com/graph/utcm-copilot-resources"
+    kind: "learn"
+  - title: "Supported resources for remediation and applyOnce (preview)"
+    url: "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources"
+    kind: "learn"
+  - title: "Microsoft Graph national cloud deployments"
+    url: "https://learn.microsoft.com/graph/deployments"
+    kind: "learn"
 videos: []
 related: ["m365-copilot-copilot-cowork-access-business-applications-with-work-iq","spending-policies","copilot-credits","m365-copilot-mcp-based-agent-enablement-for-u-s-government-clouds","m365-copilot-m365-accounting-skills"]
 controls:
@@ -62,7 +74,7 @@ controls:
     scope: "group"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Copilot > Cost Management > Configuration > + Add spending policy > Select agents and services > Cowork"
+      path: "Copilot > Cost Management > Configuration > + Add spending policy > Policy scope > Identity > Specific groups > group > Select agents and services > Cowork"
       docs: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits"
     api:
       kind: "graph"
@@ -75,8 +87,11 @@ controls:
       surface: "Microsoft 365 Apps admin center"
       path: "Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings"
       docs: "https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy"
-    api: null
-    note: "Select Allow web search in Copilot on the Configure Settings page. Off by default in government clouds. GCC High admins use config.office365.us."
+    api:
+      kind: "graph"
+      call: "POST /beta/admin/configurationManagement/configurationMonitors"
+      docs: "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta"
+    note: "Preview TCM: mode applyOnce, resource microsoft.copilot.allowwebsearch, value \"0\" enables, \"1\" disables. Tenant-level policies only. Needs AI Administrator. Global service only, not GCC High. See notes below."
   - governs: "Whether Cowork can use Microsoft Edge on users' devices"
     scope: "tenant"
     ui:
@@ -94,19 +109,23 @@ changes:
     note: "New briefing: Cowork for GCC and GCC High, with the GCC page's access, licensing, approval and web search details and the roadmap and Learn differences."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 61 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected the spending-policy path, added the preview Graph automation for the web search policy, and removed three checklist steps that had no controls row."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 73 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 58
+  claims: 73
+  confirmed: 73
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "b731479ec83fb1b79b8971319ceba643"
+  contradicted: 0
+  attempts: 0
+  hash: "724b95530907a8af115619753671b2cb"
 ---
 
 ## What's changing
@@ -166,17 +185,14 @@ The decisions land on three teams: the service owner (who is in the pilot group)
 ### Before rollout
 - Check Message Center and the Learn GCC page for availability in your tenant, and confirm whether your tenant is GCC or GCC High; the Cowork page covers GCC only.
 - Confirm that pilot users hold a Microsoft 365 GCC Copilot licence, and decide with finance whether the billing method is prepaid Copilot Credits or an Azure subscription.
-- Review sharing and data access for the pilot group's mailboxes, Teams and sites, because Cowork honours existing permissions.
 - Ask compliance to accept or reject running Cowork while Purview features are not yet supported in GCC.
 
 ### At rollout
 - Create a spending policy scoped to a pilot security group that selects Cowork (controls table, row 1), and keep users outside it.
 - Leave the Copilot web search policy unconfigured unless you have approved web search (row 2), and leave browser access off unless approved (row 3).
 - Brief the pilot group that every action needs their approval and that Always allow is a user choice.
-- Check, if users see Service configuration required, that the Cowork service principal is enabled and its permissions are consented.
 
 ### After rollout
-- Review credit consumption in the Microsoft 365 admin center and confirm the Cowork usage report is available in your cloud.
 - Re-read the Learn GCC page for changes to models, triggers, App Builder and platforms before widening access.
 
 ## Governance controls
@@ -186,15 +202,17 @@ The decisions land on three teams: the service owner (who is in the pilot group)
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which users can use Cowork (spending policy that selects Cowork)</strong><br><small>Group</small><br><small class="controls__note">Access grant for Cowork. The reference's example uses another serviceId and gives no Cowork value; the body needs serviceId and state. Beta API. The GCC page says worldwide spending-policy steps aren't government setup guidance.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › + Add spending policy › Select agents and services › Cowork <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/costManagement/spendingPolicies/{id}/serviceSettings</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-create" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether Cowork can search the web</strong><br><small>Tenant</small><br><small class="controls__note">Select Allow web search in Copilot on the Configure Settings page. Off by default in government clouds. GCC High admins use config.office365.us.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Policy configurations › Create › Start with the basics › Choose the scope › Configure Settings <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which users can use Cowork (spending policy that selects Cowork)</strong><br><small>Group</small><br><small class="controls__note">Access grant for Cowork. The reference's example uses another serviceId and gives no Cowork value; the body needs serviceId and state. Beta API. The GCC page says worldwide spending-policy steps aren't government setup guidance.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › + Add spending policy › Policy scope › Identity › Specific groups › group › Select agents and services › Cowork <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/copilot/costManagement/spendingPolicies/{id}/serviceSettings</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-create" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Cowork can search the web</strong><br><small>Tenant</small><br><small class="controls__note">Preview TCM: mode applyOnce, resource microsoft.copilot.allowwebsearch, value &quot;0&quot; enables, &quot;1&quot; disables. Tenant-level policies only. Needs AI Administrator. Global service only, not GCC High. See notes below.</small></td><td data-label="Admin UI"><strong>Microsoft 365 Apps admin center</strong><br>Customization › Policy Management › Policy configurations › Create › Start with the basics › Choose the scope › Configure Settings <a href="https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether Cowork can use Microsoft Edge on users' devices</strong><br><small>Tenant</small><br><small class="controls__note">The page says this is disabled by default and applies to worldwide and GCC tenants, but also names a default-off Local Browsing Allowed policy for GCC. See Open questions.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View All › Cowork settings › Allow browser access <a href="https://learn.microsoft.com/copilot/cowork/cowork-local-browser" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 The spending policy is the access control: Microsoft's worldwide access page says any user in the scope of a policy that selects Cowork can use it, even with a low credit limit, and that removing access means removing the user from every such policy. The GCC page says the worldwide procedure is not government setup guidance, so verify in a pilot.
 
-The Graph reference for creating a spending policy states that it requires the Billing Administrator or Global Administrator directory role. The web search policy lives in the Cloud Policy service, not in the Microsoft 365 admin center; GCC High admins reach the Microsoft 365 Apps admin center at config.office365.us.
+The Graph reference for creating a spending policy states that it requires the Billing Administrator or Global Administrator directory role. The web search policy lives in the Cloud Policy service, not in the Microsoft 365 admin center; GCC High admins reach the Microsoft 365 Apps admin center at config.office365.us. In the Apps admin center, select Allow web search in Copilot on the Configure Settings page; the setting is off by default in government clouds.
+
+The web search automation is the preview Tenant Configuration Management (TCM) API in Microsoft Graph beta. A monitor in applyOnce mode with a microsoft.copilot.allowwebsearch resource (resourceVersion 1) sets properties.value to "0" to enable web search or "1" to disable it in Microsoft 365 Copilot and Copilot Chat. Microsoft states that TCM supports these Copilot settings only in tenant-level policies, so the setting must not be configured in a group-level policy. Creating an applyOnce monitor supports delegated permissions only: the signed-in user needs the AI Administrator role and the TCM service principal needs delegated CopilotPolicySettings.ReadWrite. Microsoft states that TCM is available only in the global service, not in national clouds. Its national cloud page says GCC uses the worldwide Graph endpoint and GCC High uses graph.microsoft.us, so this call is not available to GCC High tenants.
 
 The browser-use page gives a path and a policy name for GCC that do not obviously match; see Open questions.
 
@@ -212,13 +230,9 @@ cost: Variable. Cowork needs a Microsoft 365 GCC Copilot licence and is billed o
 impact: Low. Microsoft's GCC page has admins turn Cowork on by adding users to a spending policy, so the people who notice are the groups an admin chooses.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls: row 1 / admin-path: The route from Add spending policy to Select agents and services and Cowork needs no intervening policy-type choice. | Found: Create and name the policy and then choose Identity as the scope. Use this option when you need to manage usage by users or groups for a supported service. | Fix: Replace the row's path, including the rendered table, with 'Copilot > Cost Management > Configuration > + Add spending policy > Policy scope > Identity > Specific groups > group > Select agents and services > Cowork'. Identity selects the policy type; Specific groups and group preserve the stated pilot scope. Retain the government-setup caveat. Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits
-- [contradicted, blocker] controls[1].api; Governance controls: row 2 / absence: No API or automation is documented for the web-search policy. | Found: These resources also support remediation and applyOnce. ... microsoft.copilot.allowwebsearch ... value ... 0 enables it in Microsoft 365 Copilot and Microsoft 365 Copilot Chat. 1 disables it in both. | Fix: Replace controls[1].api and its rendered gap with graph call 'POST /beta/admin/configurationManagement/configurationMonitors', docs 'https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta'. Add note: 'Preview TCM automation: set mode to applyOnce and include baseline.resources with resourceType microsoft.copilot.allowwebsearch, resourceVersion 1 and properties.value "0" to enable or "1" to disable. Only tenant-level policies are supported; the setting must not be configured in a group-level policy. Delegated access is required, with AI Administrator for the signed-in user and CopilotPolicySettings.ReadWrite delegated to TCM. Global service only, not GCC High.' Cite https://learn.microsoft.com/graph/utcm-copilot-resources, https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources and https://learn.microsoft.com/graph/deployments; the last confirms GCC uses the global Graph endpoint. | Source: https://learn.microsoft.com/graph/utcm-copilot-resources#allowwebsearch-resource-type
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls: row 2 / admin-path: The Apps admin center route through Customization, Policy Management, Create, basics and scope reaches Configure Settings for web search. | Found: Under Customization, select Policy Management. ... On the Policy configurations page, select Create. ... On the Configure Settings page, select the policies that you want to include in the policy configuration. | Fix: Complete the path as 'Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings > Allow web search in Copilot'. The existing path stops on the right page; the policy name is already in the note and is supported at https://learn.microsoft.com/copilot/plan/manage-public-web-access. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
-- [supported, minor] controls[2].ui; Governance controls: row 3 / admin-path: The browser page gives Copilot > Settings > View All > Cowork settings > Allow browser access as the route to browser enablement. | Found: From the menu, select Copilot > Settings > View All > Cowork settings. ... Under Allow browser access, select Allow Cowork to use the Microsoft Edge browser to perform tasks on behalf of users. | Fix: Complete the path as 'Copilot > Settings > View All > Cowork settings > Allow browser access > Allow Cowork to use the Microsoft Edge browser to perform tasks on behalf of users'. Retain the existing warning that the same page also describes GCC's Local Browsing Allowed policy and labels the click path worldwide; the briefing already reports that disagreement. | Source: https://learn.microsoft.com/copilot/cowork/cowork-local-browser
-- [contradicted, minor] Governance guidance: Before rollout, At rollout and After rollout / consistency: The checklist names sharing review, service-principal enablement/consent checks and credit-consumption review without corresponding control rows. | Found: Review sharing and data access ... verify that the Cowork service principal is enabled and its permissions are consented ... Review credit consumption ... Table rows cover spending-policy access, web search and browser access only. | Fix: The checklist steps 'Review sharing and data access', 'Check, if users see Service configuration required' and 'Review credit consumption' have no matching controls-table rows. Remove these checklist bullets to resolve the mismatch without adding unverified control rows; retain the factual discussion in Risk assessment.
+- [supported, minor] controls[1].ui; Governance controls / admin-path: The Apps admin center path is Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings. | Found: Under Customization, select Policy Management. ... On the Policy configurations page, select Create. ... On the Start with the basics page ... On the Choose the scope page ... On the Configure Settings page, select the policies | Fix: Extend controls[1].ui.path to 'Customization > Policy Management > Policy configurations > Create > Start with the basics > Choose the scope > Configure Settings > Allow web search in Copilot'. The existing path reaches the correct page; the policy name is documented at https://learn.microsoft.com/copilot/plan/manage-public-web-access. | Source: https://learn.microsoft.com/microsoft-365-apps/admin-center/overview-cloud-policy
+- [supported, minor] controls[2].ui / admin-path: The browser article gives the admin-center path Copilot > Settings > View All > Cowork settings > Allow browser access. | Found: From the menu, select Copilot > Settings > View All > Cowork settings. ... Under Allow browser access, select Allow Cowork to use the Microsoft Edge browser to perform tasks on behalf of users. | Fix: Extend controls[2].ui.path to 'Copilot > Settings > View All > Cowork settings > Allow browser access > Allow Cowork to use the Microsoft Edge browser to perform tasks on behalf of users' as given at https://learn.microsoft.com/copilot/cowork/cowork-local-browser#admin-control. Retain the existing warning about conflicting GCC guidance. | Source: https://learn.microsoft.com/copilot/cowork/cowork-local-browser
 -->

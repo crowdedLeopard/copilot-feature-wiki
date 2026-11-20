@@ -1,0 +1,679 @@
+{
+  "slug": "m365-admin-center-data-quality-report-for-profile-data",
+  "roadmapId": 568937,
+  "title": "Microsoft 365 admin center: data quality report for people profile data",
+  "status": "verified-with-gaps",
+  "date": "2026-11-20",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 54,
+    "confirmed": 51,
+    "unconfirmed": 2,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 2,
+    "minor": 1
+  },
+  "summary": "The roadmap facts, service entry path and licensing background are supported, and searches confirmed the stated documentation gaps. Two descriptions go beyond Microsoft's text: the report is not explicitly documented as read-only, and highly fragmented attributes are described as difficult, not impossible, to use for grouping. The source-precedence checklist also names a control missing from the table.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; rationale: risk",
+      "type": "record",
+      "claim": "Organizational Data Service introduces an administrator report on the coverage and health of Microsoft 365 people profile data.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft 365 Organizational Data Services is introducing a new data quality report that helps administrators assess the coverage and health of people data used across Microsoft 365 experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Risk assessment; rationale: risk and impact",
+      "type": "record",
+      "claim": "The people data supports People Card, Org Explorer, Microsoft 365 Copilot and Microsoft 365 Cowork, so improving it can improve these experiences.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "High-quality people data enables users to more effectively discover and learn about colleagues through experiences such as the People Card, Org Explorer, Microsoft 365 Copilot, and Microsoft 365 Cowork.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Scope; Risk assessment; Governance guidance; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap names Organizational Data Administrators, People Administrators and AI Administrators as the report's audience.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature is available to Organizational Data Administrators, People Administrators, and AI Administrators through Microsoft 365 Organizational Data Services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: status; What's changing; changes",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview as release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Web is the roadmap platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: defaultState; Why it matters; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "The report's default state is not stated, and no source states that its arrival changes existing behaviour.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Organizational Data Service\" \"data quality\" report enable default access roles named individuals; \"data quality report\" \"Organizational\" \"automatically\". Read roadmap, get-started, data-quality-metrics and organizational-data; none states the report's arrival default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: licensing.model and licensing.notes",
+      "type": "licensing",
+      "claim": "The included licensing model refers to Organizational Data Service's existing consuming-app licence requirements rather than a newly published report licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "Licensing requirements vary based on the Microsoft 365 or Viva app that will consume organizational data from Microsoft 365 Organizational Data Service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Organizational Data Service licensing requirements vary by the consuming Microsoft 365 or Viva app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "Licensing requirements vary based on the Microsoft 365 or Viva app that will consume organizational data from Microsoft 365 Organizational Data Service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The getting-started table requires at least one Exchange Online licence in the tenant for Microsoft 365 Profile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "| Microsoft 365 Profile | At least one Exchange Online license in the tenant |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The table lists a Viva Insights licence or a Microsoft 365 licence including Insights for Insights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "| Insights | A Microsoft Viva Insights license, or a Microsoft 365 license that includes Insights |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The table lists a Viva Glint licence or a Microsoft 365 licence including Viva Glint for Viva Glint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "| Viva Glint | A Microsoft Viva Glint license, or a Microsoft 365 license that includes Viva Glint |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The table lists Microsoft 365 Copilot or Viva for People Skills.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "| People Skills | Microsoft 365 Copilot or Viva.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has published no licence requirement specific to the data quality report.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Organizational Data Service\" \"data quality\" report licensing price meter. Read get-started licensing table, organizational-data and data-quality-metrics; no report-specific licence requirement appears.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has published no meter specific to this report as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Organizational Data Service\" \"data quality\" report licensing price meter. Read get-started and data-quality-metrics; returned Purview billing results concern a different service, not this report. No report meter was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft has published no price specific to this report as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Organizational Data Service\" \"data quality\" report licensing price meter. Read get-started, organizational-data and data-quality-metrics; no report price appears. Purview data-quality pricing results do not describe Organizational Data Service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The service entry path is Microsoft 365 admin center > Settings > Viva > Data management > Microsoft 365 Organizational Data Service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "First, sign in to the Microsoft 365 admin center ... On the left, under Settings, select Viva. ... Under Data management, select Microsoft 365 Organizational Data Service.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0].note; Risk assessment; Scope; Governance controls",
+      "type": "role",
+      "claim": "The getting-started page names Microsoft 365 Global Administrator or Organizational Data Source Administrator for signing in to the service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+      "quote": "First, sign in to the Microsoft 365 admin center with an account that has the required administrative permissions (Microsoft 365 Global Administrator or Organizational Data Source Administrator).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "No API equivalent of opening the service entry point is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Organizational Data Service\" \"report\" \"Graph\" API; \"Microsoft Graph\" \"data quality\" \"report\" organizational profile export. Read get-started and Graph reports API overview; neither documents automation for this portal entry point.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[0].note; What's changing; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn does not document the report's navigation path inside Organizational Data Service.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Organizational Data Service\" \"data quality report\" navigation restrict disable; \"data quality report\" \"People\" \"Administrator\" Microsoft 365. Read get-started and data-quality-metrics; the former reaches the service, not the report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment; Scope; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Learn does not reconcile the roadmap's report roles with the getting-started page's service sign-in roles.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"data quality report\" \"People\" \"Administrator\" Microsoft 365; site:learn.microsoft.com/entra/identity/role-based-access-control \"People Administrator\" \"quality\". Read get-started, metrics and People Administrator reference excerpt; no reconciliation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn describes service quality measurements for the manager hierarchy and each user attribute.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/data-quality-metrics",
+      "quote": "Microsoft 365 Organizational Data Service measures the quality of two kinds of data: ... The health of the manager hierarchy ... The health of each user attribute",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Hierarchy completeness is the percentage of employees with a complete, resolved manager chain.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/data-quality-metrics",
+      "quote": "Hierarchy completeness is the percentage of employees with a complete, resolved manager chain, or people who can be traced all the way up through valid manager relationships.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "A missing manager is one of the hierarchy issue categories.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/data-quality-metrics",
+      "quote": "| Missing manager | The person has no manager value at all. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "An unresolved manager is an issue where a manager value does not resolve to a person in Microsoft Entra ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/data-quality-metrics",
+      "quote": "| Unresolved manager | A manager value exists, but it doesn't resolve to a person in Microsoft Entra ID. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "A reporting loop is another hierarchy issue category.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/data-quality-metrics",
+      "quote": "| Reporting loop | Two or more people report to each other in a cycle, so the chain never reaches the top. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Tree count measures the number of separate hierarchy trees.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/data-quality-metrics",
+      "quote": "Tree count — the number of separate hierarchy trees.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The structural measurements include the share of employees in the largest hierarchy tree.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/data-quality-metrics",
+      "quote": "Share of employees in the largest tree — what fraction of your people the main hierarchy contains.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Attribute coverage is the percentage of people with a value, including measurements such as job-title coverage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/data-quality-metrics",
+      "quote": "Coverage is the percentage of people for whom an attribute has a value. A job title attribute with 89 percent coverage means 89 out of every 100 people in the measured population have a job title.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Unique values measures the number of distinct values an attribute holds.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/data-quality-metrics",
+      "quote": "Unique values, sometimes called \"cardinality,\" is the number of distinct values an attribute holds.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "An attribute with one value for everyone is not useful for segmentation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/data-quality-metrics",
+      "quote": "When an attribute has only one distinct value, it's not useful for segmentation, because every person has the same value.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Attributes with too many distinct values cannot be used to group people.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"data quality report\" \"People\" \"Administrator\" Microsoft 365. Read data-quality-metrics, Unique values: it says fragmented attributes become difficult to use for segmentation, not that grouping is impossible.",
+      "severity": "major",
+      "fix": "Replace 'so many values that they cannot be used to group people' with 'so many values that they become difficult to use for segmentation', matching https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/data-quality-metrics."
+    },
+    {
+      "n": 36,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "The metrics article does not explicitly identify itself as documentation of the newly launched admin-centre report.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Organizational Data Service\" \"data quality report\" navigation restrict disable. Read the full data-quality-metrics article: it describes service metrics and a quality report but gives no report navigation or explicit roadmap-item identification.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Risk assessment",
+      "type": "behaviour",
+      "claim": "The quality report tells administrators what is wrong, not where to correct it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/data-quality-metrics",
+      "quote": "A quality report tells you what's wrong, not where to correct it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The quality report does not identify which source supplied a particular value.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/data-quality-metrics",
+      "quote": "A data quality report doesn't identify which source supplied any particular value.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing; Cost and licensing; Governance guidance",
+      "type": "behaviour",
+      "claim": "Corrections generally belong in the authoritative source supplying the attribute, with the people-data pipeline owner involved.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/data-quality-metrics",
+      "quote": "Corrections generally belong in the authoritative source that supplies the attribute. The first step, therefore, is to talk to the team that owns your people-data pipeline rather than making an edit yourself.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Microsoft 365 Copilot uses the manager hierarchy to determine who belongs in responses about my team or my organization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/data-quality-metrics",
+      "quote": "When someone asks Microsoft 365 Copilot about \"my team\" or \"my organization,\" the agent uses the manager hierarchy to determine who to include.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Org Explorer draws the manager hierarchy to show a person's reporting structure.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/data-quality-metrics",
+      "quote": "When Org Explorer shows where a person sits in their reporting structure, it's drawing the manager hierarchy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "A broken manager link near the top can remove a whole branch from the organisational tree.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/data-quality-metrics",
+      "quote": "When a senior leader's manager link is broken, everyone who reports up through that leader falls out of the org-wide tree. A single bad value can create a missing branch representing hundreds or thousands of people.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The report assesses people attributes and relationships used by existing Microsoft 365 people experiences.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "a new data quality report that helps administrators assess the coverage and health of people data used across Microsoft 365 experiences",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Data exposure; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "Learn does not state whether the report lists named individuals.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Organizational Data Service\" \"data quality\" report enable default access roles named individuals; \"Organizational Data Service\" \"data quality\" \"named\" individuals. Read data-quality-metrics and get-started; neither states whether this report lists people.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Learn describes no automatic correction performed by the report.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Organizational Data Service\" \"data quality\" \"read-only\"; \"data quality report\" \"Organizational\" \"automatically\". Read metrics and service introduction; metrics directs corrections to authoritative sources, with no report automatic-fix mechanism.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "summary; Governance controls; rationale: risk",
+      "type": "behaviour",
+      "claim": "The report is read-only, changes nothing and cannot itself change people data.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Organizational Data Service\" \"data quality\" \"read-only\". Read data-quality-metrics and organizational-data. Metrics says corrections generally belong in the authoritative source; it does not explicitly establish a read-only report or rule out every editing action.",
+      "severity": "major",
+      "fix": "Delete 'It is read-only and' from the summary, leaving 'It is aimed at admins; nobody has to act, but gaps it finds affect People Card, Org Explorer and Copilot.' Replace the last Governance controls sentence with 'Corrections generally belong in the authoritative source that supplies the attribute.' Replace 'and, on the page Microsoft documents, changes nothing' in the risk rationale with 'and Learn directs corrections to the authoritative source'. The narrower correction guidance is stated at https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/data-quality-metrics."
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "default",
+      "claim": "Microsoft Entra ID takes precedence over Organizational Data Service by default for overlapping profile properties, so an Organizational Data Service correction may not appear when Entra ID supplies a value.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/how-org-data-service-works",
+      "quote": "By default, Microsoft Entra ID takes precedence over Microsoft 365 Organizational Data Service. ... If Microsoft Entra ID has a value for a property, the Entra ID value is used.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Confirming a fix or changed health label requires a refreshed assessment after corrected data flows through the source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/data-quality-metrics",
+      "quote": "Confirming how many people a specific fix reconnects, or that a health label has changed, takes a refreshed assessment after the corrected data flows through the source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "People-data sources include Microsoft Entra ID, Copilot connectors for people data, Organizational Data Service and SharePoint User Profile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/data-quality-metrics",
+      "quote": "Organizational data reaches Microsoft 365 from several possible sources, including Microsoft Entra ID, Copilot connectors for people data, the Microsoft 365 Organizational Data Service, and SharePoint User Profile.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "A setting to switch the report on or off is not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Organizational Data Service\" \"data quality report\" navigation restrict disable; \"Organizational Data Service\" \"data quality\" report enable default access roles named individuals. Read get-started, metrics and service introduction; no report enable/disable switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "The documentation gives no report-specific setting to limit who sees it beyond the separately reported role information.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Organizational Data Service\" \"data quality report\" navigation restrict disable; \"data quality report\" \"People\" \"Administrator\" Microsoft 365. Read get-started and metrics; no report-specific audience restriction setting is described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "No API for retrieving the report is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Microsoft Graph\" \"data quality\" \"report\" organizational profile export; \"Organizational Data Service\" \"report\" \"Graph\" API; \"Organizational Data Service\" \"data quality report\" \"export\" \"beta\". Read metrics and Graph reports overview; no matching report API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "No export of this data quality report is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Organizational Data Service\" \"data quality report\" \"export\" \"beta\". Read metrics and orgdata-data-usage export excerpt; the latter documents raw uploaded data exports, not quality-report exports. No report export was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance: After rollout",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to check profile source precedence, but the controls table has no corresponding control.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Check profile source precedence if a corrected value does not appear'. The table's sole control is 'Entry point to Microsoft 365 Organizational Data Service in the admin centre'.",
+      "severity": "minor",
+      "fix": "Remove the After rollout checklist bullet beginning 'Check profile source precedence if a corrected value does not appear'. Its factual background can remain in Risk assessment; the checklist control has no table row."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-20T12:52:33.959Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=568937",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/data-quality-metrics",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/organizational-data",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/manage/how-org-data-service-works",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Entry point to Microsoft 365 Organizational Data Service in the admin centre",
+        "docs": "https://learn.microsoft.com/microsoft-365-apps/org-data-service/get-started",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Viva",
+          "Data management",
+          "Microsoft 365 Organizational Data Service"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

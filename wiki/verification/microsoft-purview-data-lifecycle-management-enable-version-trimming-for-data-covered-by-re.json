@@ -1,0 +1,738 @@
+{
+  "slug": "microsoft-purview-data-lifecycle-management-enable-version-trimming-for-data-covered-by-re",
+  "roadmapId": 575284,
+  "title": "Microsoft Purview: allow version trimming for content under retention in SharePoint and OneDrive",
+  "status": "held",
+  "date": "2026-11-20",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-20",
+    "reasons": [
+      "1 blocking finding (claim 27)"
+    ]
+  },
+  "counts": {
+    "claims": 56,
+    "confirmed": 54,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "Hold: the retention-policy licensing paragraph omits the different licence requirements for adaptive policy scopes, which could mislead administrators budgeting with E3 or Business Premium. The roadmap facts and published version-management commands are supported; documentation for the planned retention override remains unpublished.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "Microsoft plans a Purview Data Lifecycle Management setting allowing version trimming on SharePoint and OneDrive content covered by retention policies.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Admins with appropriate Purview RBAC can enable version cleanup for ODB/SPO content even when retention policies are in effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Scope; controls[0].note",
+      "type": "record",
+      "claim": "The planned setting is policy-scoped and overrides the default retention of all versions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This would be a policy scoped setting that essentially overrides the default behavior where all versions are retained.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Risk assessment",
+      "type": "record",
+      "claim": "The planned trimming excludes specific protected cases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When turned on, SharePoint’s version management will be permitted to trim file versions per the defined limits except for specific protected cases.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Risk assessment: Security & identity; Scope",
+      "type": "record",
+      "claim": "Administrators with appropriate Purview RBAC can enable the setting.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Admins with appropriate Purview RBAC can enable version cleanup for ODB/SPO content even when retention policies are in effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The setting is admin-opt-in, with trimming of retained versions permitted when an administrator turns it on.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Admins with appropriate Purview RBAC can enable version cleanup for ODB/SPO content even when retention policies are in effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: targetDate; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "General availability is targeted for January CY2027, not committed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate; What's changing; Scope",
+      "type": "record",
+      "claim": "Preview is targeted for November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The listed release phases are General Availability and Preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Web is the listed platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing; Why it matters",
+      "type": "absence",
+      "claim": "As of November 2026, Learn does not describe the planned override setting or publish its default.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview retention policy enable version trimming retained SharePoint OneDrive protected cases role license; \"version trimming\" \"retention\" \"default\" \"role\". Read retention-policies-sharepoint and document-library-version-history-limits; neither documents this override.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[0].ui; controls[0].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No admin UI path or automation call is documented for permitting version trimming under a retention policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview retention policy enable version trimming retained SharePoint OneDrive protected cases role license; Set-RetentionCompliancePolicy version trimming retained versions parameter. Read retention-policies-sharepoint; searched cmdlet parameters for version/trim.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Governance controls; rationale: risk",
+      "type": "behaviour",
+      "claim": "Library version limits are currently ignored for items under retention policies or eDiscovery holds until retention ends or the hold is released.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/document-library-version-history-limits",
+      "quote": "For items that are subject to a retention policy (or an eDiscovery hold), the versioning limits for the document library are ignored. This exemption continues until the retention period of the document is reached (or the eDiscovery hold is released).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Old versions of content under a retention policy are not automatically purged.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-policies-sharepoint",
+      "quote": "In this scenario, old versions aren't automatically purged and users are prevented from deleting versions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Users are prevented from deleting versions of content under a retention policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-policies-sharepoint",
+      "quote": "In this scenario, old versions aren't automatically purged and users are prevented from deleting versions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Why it matters; rationale: cost",
+      "type": "record",
+      "claim": "Retained file versions consume storage that the proposed setting is intended to reclaim without removing retention.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Let tenants trim file-version bloat created by retention, without breaking compliance promises. SharePoint/compliance admins at large, regulated enterprises must cap and reclaim storage consumed by retained file versions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Risk assessment: Data exposure; Governance guidance; Governance controls; rationale: risk",
+      "type": "behaviour",
+      "claim": "Versions deleted by trimming jobs are permanently deleted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/trim-versions",
+      "quote": "Versions deleted by using trimming jobs are permanently deleted. This deletion workflow bypasses the normal recycle bin retention",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Trimmed versions cannot be recovered unless previously backed up, for example with Microsoft 365 Backup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/trim-versions",
+      "quote": "deleted versions can't be recovered unless the data was previously backed up by using Microsoft 365 Backup or a similar backup solution.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The roadmap describes preserving legal-hold and records promises.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "while keeping legal-hold and records promises intact.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Data exposure; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not enumerated the planned setting's specific protected cases.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview retention policy enable version trimming retained SharePoint OneDrive protected cases role license. Read retention-policies-sharepoint and document-library-version-history-limits; they describe existing protections, not the new setting's exceptions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Security & identity; Scope; Open questions",
+      "type": "absence",
+      "claim": "The specific Purview role for the new override is not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview retention policy enable version trimming retained SharePoint OneDrive protected cases role license; \"version trimming\" \"retention\" \"default\" \"role\". Read retention-policies-sharepoint and the returned version-management guidance; no role for this override was named.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Once enabled, SharePoint version management would trim retained versions according to defined version limits.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "When turned on, SharePoint’s version management will be permitted to trim file versions per the defined limits except for specific protected cases.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Change & support; controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "A current trim job encountering a version under retention or an eDiscovery hold stamps an expiration date instead of deleting it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/document-library-version-history-limits",
+      "quote": "When a trim job encounters a version under a retention policy or an eDiscovery hold, it will stamp an expiration date on the version instead of deleting it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "The new setting's interaction with expiration stamping and versions already in the Preservation Hold library is not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview retention policy enable version trimming retained SharePoint OneDrive protected cases role license; Set-RetentionCompliancePolicy version trimming retained versions parameter. Read retention-policies-sharepoint and version-history guidance; only existing behavior is described.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.model; licensing.notes; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing model is included under published retention-policy licensing, with feature-specific requirements left open.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "For organization-wide, location-wide, or include/exclude retention policies, the following licenses provide user rights:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The paragraph presents Microsoft 365 E5/A5/G5/E3/A3/G3 and Business Premium as retention-policy user-rights licences without qualifying adaptive policy scopes.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "If the retention policy uses an adaptive policy scope, then one of the following licenses is required to provide user rights:\n- Microsoft 365 E5/A5/G5\n- Microsoft Purview Suite/EDU/GOV/FLW",
+      "severity": "blocker",
+      "fix": "Narrow the first licence sentence to: 'For retention policies that do not use adaptive policy scopes, the Microsoft Purview service description lists Microsoft 365 E5/A5/G5/E3/A3/G3 and Business Premium among the licences providing user rights, with SharePoint Plan 2 also listed for SharePoint or OneDrive for Business locations.' Keep the following sentence that the new setting's licensing is not yet published. Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
+    },
+    {
+      "n": 28,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The service description also lists SharePoint Plan 2 for retention-policy locations in SharePoint or OneDrive for Business.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "If the retention policy location is SharePoint or OneDrive for Business, the following licenses also provide user rights:\n- SharePoint Plan 2",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.notes; Cost and licensing: Licence, Meter; rationale: cost",
+      "type": "absence",
+      "claim": "No licence or meter specific to this planned override is published in the sources found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"version trimming\" \"retention\" \"license\" Purview; Purview \"575284\" version trimming storage savings meter. Read Purview service description's retention licensing and trim-versions; neither names a licence or meter for this planned override.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[2].governs; Cost and licensing: Related requirement; Governance controls",
+      "type": "availability",
+      "claim": "Tenant-level trimming of existing versions is currently in public preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/trim-versions",
+      "quote": "Tenant-level version trimming is currently in public preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[2].note; Cost and licensing: Related requirement; Governance guidance",
+      "type": "licensing",
+      "claim": "Tenant-level trimming and its what-if workflow require a SharePoint Advanced Management licence or Copilot licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/trim-versions",
+      "quote": "Requires a SharePoint Advanced Management license or Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing: Related requirement; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not said whether the tenant-level trimming licence requirement also applies to the planned retention override.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"version trimming\" \"retention\" \"license\" Purview. Read trim-versions and the Purview service description: the requirement is stated for tenant-level trimming, not the planned policy-scoped retention override.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing: Indirect costs; Governance guidance",
+      "type": "behaviour",
+      "claim": "Tenant-level what-if analysis returns impact data for SharePoint sites and OneDrive accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/trim-versions",
+      "quote": "The what-if analysis returns impact data for both SharePoint sites and OneDrive accounts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing: Indirect costs",
+      "type": "absence",
+      "claim": "No storage-saving figure is published for the planned retention override.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview \"575284\" version trimming storage savings meter. Read roadmap record and trim-versions; search results describe estimating savings with what-if analysis, not a published savings figure for this setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope: Policy scope; Open questions",
+      "type": "absence",
+      "claim": "Beyond the roadmap's SharePoint and OneDrive scope, the policy types and attachment locations for the new setting are not documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview retention policy enable version trimming retained SharePoint OneDrive protected cases role license. Read retention-policies-sharepoint and create-retention-policies search excerpt; neither documents the planned override's policy-type or placement details.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Governance guidance: Before rollout",
+      "type": "default",
+      "claim": "The documented organization default is Manual, with 500 major versions and no expiration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/set-default-org-version-limits",
+      "quote": "Default Version History limits for your organization is set to Manual version history limits with 500 major version count limit and no expiration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Current documentation blocks version deletion on documents marked as records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/document-library-version-history-limits",
+      "quote": "Version deletion on documents marked as records is blocked.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Microsoft documents version-deletion auditing in the Purview portal, including versions deleted when expired or bulk deleted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/document-library-version-history-limits",
+      "quote": "Audit events are available on the Microsoft Purview portal to help you monitor version history activities.\nVersions deleted when expired or bulk deleted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Governance guidance: After rollout; Open questions",
+      "type": "absence",
+      "claim": "The audit representation of trims under the planned override is not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"version trimming\" \"retention\" \"audit\". Read document-library-version-history-limits and trim-versions; the former lists existing audit activities but neither describes auditing for the planned override.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[1].ui; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "SharePoint admin center > Settings > Version history limits reaches the organization default version-limit settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/set-default-org-version-limits",
+      "quote": "Go to Settings in the SharePoint admin center\nSelect Version History limits.\nSelect Automatically.",
+      "severity": "minor",
+      "fix": "For the controls[1].ui route that corresponds to its automatic-setting command, use 'Settings > Version history limits > Automatically'. The shorter route in the checklist remains correct for reviewing current limits."
+    },
+    {
+      "n": 41,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Set-SPOTenant -EnableAutoExpirationVersionTrim $true sets automatic organization version limits for new libraries.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/set-default-org-version-limits",
+      "quote": "To set Automatic version history limits for all new document libraries created in your organization using PowerShell, run the following command:\nSet-SPOTenant -EnableAutoExpirationVersionTrim $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].governs; controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "Changes to organization-level default limits apply to new SharePoint libraries and new OneDrive accounts rather than updating existing libraries.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/set-default-org-version-limits",
+      "quote": "Changes made to organization-level version history limits apply to new SharePoint libraries and OneDrive user accounts created since the change was made.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Changing organization-level version defaults does not trim existing versions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/set-default-org-version-limits",
+      "quote": "Changes made to the organization-level version history limits will not trim existing version history to the new limits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "Manual organization version limits use Set-SPOTenant's -MajorVersionLimit parameter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/set-default-org-version-limits",
+      "quote": "Set-SPOTenant `\n    -EnableAutoExpirationVersionTrim $false `\n    -MajorVersionLimit <int> `\n    -ExpireVersionsAfterDays <int, 0 for no expiration>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "Manual organization version limits use Set-SPOTenant's -ExpireVersionsAfterDays parameter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/set-default-org-version-limits",
+      "quote": "Set-SPOTenant `\n    -EnableAutoExpirationVersionTrim $false `\n    -MajorVersionLimit <int> `\n    -ExpireVersionsAfterDays <int, 0 for no expiration>",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[2].ui",
+      "type": "absence",
+      "claim": "No admin UI for tenant-level trimming of existing versions is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: tenant-level version trimming SharePoint admin center user interface. Read trim-versions and its tenant-level workflow; it documents PowerShell, not an admin-center route to start the tenant trim.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "New-SPOTenantApplyFileVersionPolicyJob -TrimVersions starts tenant-level trimming using the tenant version policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/trim-versions",
+      "quote": "Trim existing versions using current tenant policy | New-SPOTenantApplyFileVersionPolicyJob -TrimVersions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Changing organization version defaults requires administrator permissions in SharePoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/set-default-org-version-limits",
+      "quote": "This article describes how global and SharePoint admins in Microsoft 365 can change the default version history limits for all new SharePoint document libraries and OneDrive accounts created in the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Set-SPOTenant requires a SharePoint Online administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant?view=sharepoint-ps",
+      "quote": "You must be a SharePoint Online administrator to run the cmdlet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Only one tenant-level trim job is allowed per tenant at a time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/trim-versions",
+      "quote": "Only one job is allowed per tenant at a time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Tenant-level trimming excludes read-only sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/trim-versions",
+      "quote": "The following site types are excluded from processing:\n- Read-only sites",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Tenant-level trimming excludes locked sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/trim-versions",
+      "quote": "The following site types are excluded from processing:\n- Read-only sites\n- Locked sites",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Tenant-level trimming excludes archived sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/trim-versions",
+      "quote": "The following site types are excluded from processing:\n- Read-only sites\n- Locked sites\n- Archived sites",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Tenant-level trimming excludes sites with broken version-policy inheritance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/trim-versions",
+      "quote": "The following site types are excluded from processing:\n- Read-only sites\n- Locked sites\n- Archived sites\n- Sites with version policy broken inheritance",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance guidance: After rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to check the Purview audit log, but that control has no row in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Check the Microsoft Purview portal audit log for version deletion events on retained sites. | The controls table lists only the planned override, organization default version limits, and tenant-level trimming.",
+      "severity": "minor",
+      "fix": "Remove the checklist bullet beginning 'Check the Microsoft Purview portal audit log' because the audit control is not represented in the controls table. Keep the existing audit question in Open questions."
+    },
+    {
+      "n": 56,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-11-05T23:59:28.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-05T23:59:28\"",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-20T12:52:41.091Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=575284",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/document-library-version-history-limits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/trim-versions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/retention-policies-sharepoint",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/set-default-org-version-limits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant?view=sharepoint-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-retentioncompliancepolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Default version history limits for new document libraries and OneDrive accounts",
+        "docs": "https://learn.microsoft.com/sharepoint/set-default-org-version-limits",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Version history limits"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Default version history limits for new document libraries and OneDrive accounts",
+        "docs": "https://learn.microsoft.com/sharepoint/set-default-org-version-limits",
+        "reachable": true,
+        "token": "Set-SPOTenant",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Trimming existing versions across the tenant (public preview)",
+        "docs": "https://learn.microsoft.com/sharepoint/trim-versions",
+        "reachable": true,
+        "token": "New-SPOTenantApplyFileVersionPolicyJob",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

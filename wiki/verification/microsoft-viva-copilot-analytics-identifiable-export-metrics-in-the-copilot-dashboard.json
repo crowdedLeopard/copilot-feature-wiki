@@ -1,0 +1,820 @@
+{
+  "slug": "microsoft-viva-copilot-analytics-identifiable-export-metrics-in-the-copilot-dashboard",
+  "roadmapId": 562648,
+  "title": "Microsoft Viva: identifiable export of Copilot metrics from the Copilot Dashboard",
+  "status": "held",
+  "date": "2026-11-20",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-20",
+    "reasons": [
+      "2 blocking findings (claims 30, 37)"
+    ]
+  },
+  "counts": {
+    "claims": 62,
+    "confirmed": 60,
+    "unconfirmed": 2,
+    "contradicted": 0,
+    "blocker": 2,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "The roadmap facts and most of the documented controls are supported. The mixed licensing classification is not established by the sources, and the briefing overstates what ordinary export delegation establishes about access to identifiable data. Both admin paths also stop before the access setting.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What's changing; summary; title",
+      "type": "record",
+      "claim": "The roadmap plans identifiable row-level Copilot Dashboard exports for reporting and deeper analysis.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This enables users to export Identifiable row-level Copilot metrics from the Copilot Dashboard for reporting and deeper analysis.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; summary; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap says administrators can turn the capability on in a tenant.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This capability can be tuned On by Admins in a tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing; Risk assessment",
+      "type": "record",
+      "claim": "The roadmap target is November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), not US Government clouds, without stating that other clouds are excluded.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-10-26T23:15:50.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-26T23:15:50\", \"products\": [\"Microsoft Viva\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "admin-path",
+      "claim": "Users export from the Copilot Dashboard by selecting Export data, then Export by week or Export by day.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics",
+      "quote": "Eligible tenants and users can export directly from the Copilot Dashboard by selecting Export data. ... Select Export by week ... or select Export by day",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Export by week downloads six months of week-level metrics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics",
+      "quote": "You can download week-level metrics spanning the past six months",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Export by day downloads 28 days of day-level metrics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics",
+      "quote": "or day-level metrics spanning the past 28 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Why it matters; summary",
+      "type": "behaviour",
+      "claim": "Personal identifiers are removed and replaced by anonymised IDs unless an administrator has enabled identifiable export for the user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics",
+      "quote": "Personal identifiers are removed and replaced with anonymized IDs, unless your administrator has enabled identifiable export for you.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The export includes identifiable fields when an administrator enables identifiable export for the user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics",
+      "quote": "If your administrator has enabled identifiable export, the export also includes identifiable fields.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Governance guidance",
+      "type": "availability",
+      "claim": "The export page describes a public preview whose design may change.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics",
+      "quote": "This feature is for public preview customers only. Features in preview might not be complete and could undergo changes before becoming available in the broader release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "The identification overview lists Copilot Dashboard data export as Private Preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/identification-copilot-analytics",
+      "quote": "Copilot Dashboard data export (Private Preview)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Open questions",
+      "type": "absence",
+      "claim": "Learn does not explicitly print a default value for the Copilot Dashboard identifiable-export setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot Dashboard identifiable export default IdentifiableExport feature ID'; '\"Copilot Dashboard\" \"identifiable\" \"default\"'. Read export-copilot-metrics, identification-copilot-analytics and feature-access-management; explicit off default found only for Agent Dashboard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: defaultState; What's changing; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "Identifiable export is admin-opt-in: without administrative enablement the export keeps identifiers removed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics",
+      "quote": "Personal identifiers are removed and replaced with anonymized IDs, unless your administrator has enabled identifiable export for you.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Why it matters; rationale: risk",
+      "type": "behaviour",
+      "claim": "Microsoft calls identification a sensitive capability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/identification-copilot-analytics",
+      "quote": "Because identified outputs reveal named users, identification is a sensitive capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The user-level metrics download becomes a file outside the dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics",
+      "quote": "After you select Export data, the download starts automatically in your browser.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Users cannot customise the exports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics",
+      "quote": "You can't customize the exports.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Security & identity; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "A dedicated VFAM policy governs identification access for Copilot Dashboard data export.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/identification-copilot-analytics",
+      "quote": "Copilot Dashboard data export (Private Preview) ... Access is governed by a dedicated Viva Feature Access Management (VFAM) policy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Security & identity; Scope; controls[0].note; Governance guidance",
+      "type": "role",
+      "claim": "Only a Microsoft 365 Global Administrator or AI Administrator can create and manage identification access policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/identification-copilot-analytics",
+      "quote": "Only a Microsoft 365 Global Administrator or an AI Administrator can create and manage identification access policies. Either role can perform every step, in both the Microsoft 365 admin center and PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Security & identity; Scope; rationale: impact",
+      "type": "role",
+      "claim": "Export requires global Copilot Dashboard access, including automatically identified senior leaders.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics",
+      "quote": "You must have global access to the Copilot Dashboard. This includes: Senior leaders automatically identified through Entra ID data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "Users manually assigned global access by administrators can export.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics",
+      "quote": "Users manually assigned global access by admins",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity; Governance guidance; rationale: impact",
+      "type": "role",
+      "claim": "Delegates assigned by users with global access are among eligible exporters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics",
+      "quote": "Delegates assigned by users with global access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity; rationale: impact",
+      "type": "role",
+      "claim": "Viva Insights Analysts with global access can export.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics",
+      "quote": "Viva Insights Analysts with global access",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity; rationale: impact",
+      "type": "role",
+      "claim": "Microsoft 365 Global Administrators are listed as eligible exporters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics",
+      "quote": "Microsoft 365 Global Administrators",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Delegates inherit ordinary data-export access unless an administrative policy disables it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics",
+      "quote": "Delegates of users with global access automatically inherit data export access, unless your organization's admin policy disables it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Delegation therefore extends who can see named data.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"Copilot Dashboard\" delegates \"identifiable\" access policy'. Read export-copilot-metrics, identification-copilot-analytics and delegate-access. Export inheritance is stated; inheritance of the separate identification permission is not.",
+      "severity": "blocker",
+      "fix": "Remove 'Delegation therefore extends who can see named data;' and retain the supported statement that delegates inherit data-export access unless the administrative policy disables it. The export page separately conditions identifiable fields on administrative enablement for the exporter."
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The documented operation is a user-requested download rather than an automated action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics",
+      "quote": "Eligible tenants and users can export directly from the Copilot Dashboard by selecting Export data. ... After you select Export data, the download starts automatically in your browser.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Policy changes can take up to 24 hours to appear in the web app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics",
+      "quote": "Changes can take up to 24 hours to appear in the web app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "The export page requires at least 50 assigned Copilot or Viva Insights licences in the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics",
+      "quote": "License requirement – Your tenant must have at least 50 Copilot or Viva Insights licenses assigned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "An individual does not need a paid Viva Insights or Microsoft Copilot licence to use the dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+      "quote": "Users don't need a paid Viva Insights license or a Microsoft Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate identifiable-export charge or meter is published in the checked documentation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot Dashboard identifiable export licensing price meter'; '\"Copilot Dashboard\" \"identifiable export\" licensing pricing'. Read export-copilot-metrics, copilot-dashboard, feature-access-management and identification-copilot-analytics; none names a separate charge or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "No licence specific to identifiable export is published beyond the existing prerequisites.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Viva Insights Copilot Dashboard identifiable export license entitlement pricing prerequisites'. Read export-copilot-metrics, identification-copilot-analytics, copilot-dashboard and VFAM requirements; results name existing licences, not a separate identifiable-export licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Identifiable export has a mixed licensing model.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: 'Viva Insights Copilot Dashboard identifiable export license entitlement pricing prerequisites'. Read export-copilot-metrics, copilot-dashboard, feature-access-management and identification-copilot-analytics. No combination of distinct entitlement models is documented.",
+      "severity": "blocker",
+      "fix": "Set licensing.model to 'included' under the standard's rule for an option inside an already licensed product. Retain the notes that export requires at least 50 assigned Copilot or Viva Insights licences and that no separate identifiable-export licence or price is published."
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Creating VFAM policies requires a supported Microsoft 365 version or a Viva Suite licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "Policy creation requires the following elements: A supported version of Microsoft 365 or a Viva Suite license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The documented VFAM access controls are unavailable in GCC High and DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "The access controls described in this document aren't available in GCC-High or DoD.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Users with non-global access, such as managers with team-level views, cannot export.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics",
+      "quote": "Users with non-global access, such as managers with team-level views, can't access this feature to export data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Processing can take up to seven days after licence assignment, except for day-level metrics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics",
+      "quote": "Data processing in Copilot Analytics takes up to seven days following license assignment, unless you're exporting day-level metrics, which provides more recent data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope; controls[1].note",
+      "type": "role",
+      "claim": "The export control documentation identifies Global Administrators as its administrators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "Copilot Metrics Export (Preview) | No | Global admin | Viva Insights",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance guidance: Before rollout",
+      "type": "command",
+      "claim": "Exchange Online PowerShell 3.2.0 or later is required for scripting VFAM policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/manage-access-policies",
+      "quote": "Access to Exchange Online PowerShell Version 3.2.0 or later. If you need to use non-mail-enabled groups you must have access to Exchange PowerShell version 3.5.1 or later.",
+      "severity": "minor",
+      "fix": "Append 'Use version 3.5.1 or later for non-mail-enabled groups' to the scripting prerequisite, preserving the existing 3.2.0 minimum for other cases, as documented at https://learn.microsoft.com/viva/manage-access-policies."
+    },
+    {
+      "n": 44,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Microsoft Purview contains VFAM policy creation, update and deletion history.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/control-access-admin-center",
+      "quote": "For a history of policy creation, updates, and deletions, see the Viva Feature Access Management (VFAM) change logs for your organization in Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Viva > Settings > Manage feature access > Create a policy is the admin-centre route for an identification policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/control-access-admin-center",
+      "quote": "Select Create a policy. ... select the app and feature for which you'd like to set the policy. ... Select the Access setting option and choose On or Off to enable or disable the feature.",
+      "severity": "minor",
+      "fix": "Complete the path as 'Viva > Settings > Manage feature access > Create a policy > app and feature > Access setting > On'. The existing prefix is documented but stops in the policy-creation flow before selecting the feature and setting."
+    },
+    {
+      "n": 46,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Add-VivaModuleFeaturePolicy with VivaInsights, a discovered FeatureId, IsFeatureEnabled $true and Everyone enables identification tenant-wide.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/manage-access-policies",
+      "quote": "Now that you have the featureID, use the Add-VivaModuleFeaturePolicy PowerShell cmdlet to create an access policy for the feature. ... by using the -Everyone parameter, which will function as a global default state for that feature across your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Viva > Settings > Manage feature access > Create a policy is the admin-centre route for controlling user-level exports.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/control-access-admin-center",
+      "quote": "Select Create a policy. ... select the app and feature for which you'd like to set the policy. ... Select the Access setting option and choose On or Off to enable or disable the feature.",
+      "severity": "minor",
+      "fix": "Complete the path as 'Viva > Settings > Manage feature access > Create a policy > app and feature > Access setting > Off' to match the row's disabling command. The existing prefix stops before the access setting."
+    },
+    {
+      "n": 48,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Add-VivaModuleFeaturePolicy with VivaInsights, a discovered FeatureId, IsFeatureEnabled $false and Everyone disables the export feature tenant-wide.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/manage-access-policies",
+      "quote": "Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId Reflection -Name UsersAndGroups -IsFeatureEnabled $false -GroupIds ... -UserIds ... If you want to disable the feature for all users, use the -Everyone parameter instead.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].note; Governance guidance",
+      "type": "command",
+      "claim": "GroupIds or UserIds can replace Everyone to scope a policy to groups or individual users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/manage-access-policies",
+      "quote": "This example adds a policy for the Reflection feature in Viva Insights. The policy disables the feature for the specified users and group members. If you want to disable the feature for all users, use the -Everyone parameter instead.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls; Governance guidance: At rollout; controls[1].note",
+      "type": "applicability",
+      "claim": "Turning off User-level export and insights stops leaders' and managers' user-level exports and insights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics",
+      "quote": "When off, leaders and managers can't export user-level data or view user-level insights on specific cards ... the above-mentioned setting is always on for the analyst role and can't be changed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "One unified VFAM export control covers both week-level and day-level export.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics",
+      "quote": "The VFAM control is a single unified control for both the week-level and day-level export options.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[0].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The checked Learn documentation does not print the identification feature ID specifically for Copilot Dashboard export.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Copilot Dashboard\" \"identifiable\" \"FeatureId\"'; 'Copilot Dashboard identifiable export default IdentifiableExport feature ID'. Read identification-copilot-analytics, feature-access-management, manage-access-policies and export-copilot-metrics; no Copilot-specific ID found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls; Open questions",
+      "type": "behaviour",
+      "claim": "The Agent Dashboard documentation names its identifiability control IdentifiableExport.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-agent-data",
+      "quote": "Identifiable export is controlled with the \"IdentifiableExport\" VFAM setting and is off by default. Exports honor applicable admin exclusion policies. Agents or users excluded from reporting do not appear in the corresponding export output.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Get-VivaModuleFeature -ModuleId VivaInsights returns available Viva Insights features and their IDs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/manage-access-policies",
+      "quote": "Get-VivaModuleFeature -ModuleId VivaInsights ... Find the feature that you'd like to create an access policy for and make note of its featureID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Each feature supports up to ten user/group policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/manage-access-policies",
+      "quote": "You can assign a maximum of 10 policies per feature to users and groups. Each policy can be assigned to a maximum of 20 users or groups. You can assign one additional policy per feature to the entire tenant",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls",
+      "type": "admin-path",
+      "claim": "The identification page supplies a different administrative route from the Manage feature access page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/identification-copilot-analytics",
+      "quote": "On the left, select Settings > Viva > Feature access management. ... Go to Settings > Org settings > Viva feature access, select Viva Insights, choose the identification feature, and add a policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "front matter: products; title",
+      "type": "record",
+      "claim": "The roadmap associates this feature with Microsoft Viva.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Viva\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Identification moves anonymised metrics to known users and surfaces named employees.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/identification-copilot-analytics",
+      "quote": "Identification is the set of capabilities that lets your organization move from anonymized metrics to known users - surfacing named employees (identified outputs) when added precision is needed and permitted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "User-level export and insights is always on for analysts and cannot be changed for that role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics",
+      "quote": "Since analysts already have access to user-level data through advanced analysis experiences, the above-mentioned setting is always on for the analyst role and can't be changed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Open questions",
+      "type": "applicability",
+      "claim": "Agent Dashboard exports honour applicable administrative exclusion policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-agent-data",
+      "quote": "Exports honor applicable admin exclusion policies. Agents or users excluded from reporting do not appear in the corresponding export output.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Each user/group policy can cover up to twenty users or groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/manage-access-policies",
+      "quote": "Each policy can be assigned to a maximum of 20 users or groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "One additional tenant-wide policy can be assigned per feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/manage-access-policies",
+      "quote": "You can assign one additional policy per feature to the entire tenant by using the -Everyone parameter, which will function as a global default state for that feature across your organization.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-20T12:52:39.132Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=562648",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/org-team-insights/export-copilot-metrics",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/identification-copilot-analytics",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/feature-access-management",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/org-team-insights/export-agent-data",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/control-access-admin-center",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/manage-access-policies",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which users can export identifiable (named) Copilot Dashboard data",
+        "docs": "https://learn.microsoft.com/viva/control-access-admin-center",
+        "reachable": true,
+        "segments": [
+          "Viva",
+          "Settings",
+          "Manage feature access",
+          "Create a policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which users can export identifiable (named) Copilot Dashboard data",
+        "docs": "https://learn.microsoft.com/viva/manage-access-policies",
+        "reachable": true,
+        "token": "Add-VivaModuleFeaturePolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether leaders and managers can export user-level Copilot Dashboard data",
+        "docs": "https://learn.microsoft.com/viva/control-access-admin-center",
+        "reachable": true,
+        "segments": [
+          "Viva",
+          "Settings",
+          "Manage feature access",
+          "Create a policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether leaders and managers can export user-level Copilot Dashboard data",
+        "docs": "https://learn.microsoft.com/viva/manage-access-policies",
+        "reachable": true,
+        "token": "Add-VivaModuleFeaturePolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

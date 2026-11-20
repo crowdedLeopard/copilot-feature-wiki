@@ -5,7 +5,7 @@ slug: "autonomous-agents"
 summary: "Autonomous agents in Copilot Studio act on an event trigger or a schedule instead of a user prompt. Administrators decide whether makers may add triggers, whose credentials run them and how much they consume."
 created: "2026-11-20"
 updated: "2026-11-20"
-version: 2
+version: 3
 tags: ["autonomous-agents","copilot-studio","agents","human-in-the-loop","maker-credentials","data-policies","copilot-credits","guardrails","monitoring"]
 covers: []
 sources:
@@ -51,13 +51,19 @@ sources:
   - title: "FAQ for agents powered by the Microsoft Copilot harness"
     url: "https://learn.microsoft.com/microsoft-copilot-studio/agents-experience/faqs-copilot-harness"
     kind: "learn"
+  - title: "Manage Copilot Credits for usage-based billing"
+    url: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits"
+    kind: "learn"
+  - title: "Manage Copilot Studio costs with usage-based billing"
+    url: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs"
+    kind: "learn"
 related: ["agent-identity","copilot-credits","data-policies","managed-environments","spending-policies","copilot-studio-share-autonomous-agents-run-only","copilot-studio-block-maker-provided-credentials","dynamics-365-customer-service-copilot-and-ai-innovation-resolve-customer-emails-autonomous"]
 controls:
   - governs: "Whether makers can add event triggers to agents (Microsoft Copilot Studio connector)"
     scope: "environment"
     ui:
       surface: "Power Platform admin center"
-      path: "Security > Data and privacy > Data policy > New Policy > Add an environment > Available > environment > Add to policy > Assign connectors > Microsoft Copilot Studio > Block"
+      path: "Security > Data and privacy > Data policy > New Policy > Add an environment > Available > environment > Add to policy > Assign connectors > Microsoft Copilot Studio > three dots next to the connector > Block"
       docs: "https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention"
     api:
       kind: "powershell"
@@ -86,18 +92,22 @@ changes:
     note: "Corrected after the independent check: standard-harness and Microsoft Copilot harness preview behaviour and billing are now kept apart, the claim that data policies do not govern running agents is removed, and the sharing question is reworded."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 72 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-20"
+    note: "Corrected after the independent check: the 125% enforcement threshold now notes that an environment with remaining allocated prepaid capacity is not blocked, and the data policy path now includes the three-dots step."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 85 statements confirmed"
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-20"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
-  confirmed: 71
+  claims: 85
+  confirmed: 85
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "92c9bbcfe5b32e23aaeb9db08d31ced1"
+  contradicted: 0
+  attempts: 0
+  hash: "fce1b8b5cad5e6796f270c9d6f062019"
 ---
 
 ## What it is
@@ -128,7 +138,7 @@ In the standard harness the author's credentials run every authenticated trigger
 For standard-harness agents, event trigger activity counts towards Copilot Credit consumption. Each trigger payload is processed like a message from a user, and the agent's response is billed at the Copilot Credits billing rates, in which trigger steps count as agent actions (5 Copilot Credits). In the Microsoft Copilot harness preview, Copilot Credits are charged for large language model (LLM) tokens, tools (including knowledge and MCPs) and the harness itself. Rates and capacity are explained in [Copilot Credits](/concepts/copilot-credits/); caps on who can consume them are in [Spending policies](/concepts/spending-policies/).
 
 - **Microsoft 365 Copilot licence.** The agent-flow "No charge" exemption does not apply when the agent runs autonomously: flow runs called by an autonomous agent consume Copilot Credits and are subject to enforcement even if users hold Microsoft 365 Copilot licences.
-- **Enforcement.** Under the prepaid capacity model, which covers autonomously triggered usage, enforcement is triggered when the tenant reaches 125% of its prepaid capacity, and it blocks the environment's agents. If the environment bills overage to a pay-as-you-go plan, agents are not blocked.
+- **Enforcement.** Under the prepaid capacity model, which covers autonomously triggered usage, enforcement is triggered when the tenant reaches 125% of its prepaid capacity, and it blocks the environment's agents. An environment with remaining allocated prepaid capacity is not blocked by the tenant reaching 125% while that allocation remains available. If the environment bills overage to a pay-as-you-go plan, agents are not blocked.
 - **Preview sharing.** Each end user's autonomous agent usage is totalled and billed through the environment hosting the agent.
 
 The trigger overview states no separate autonomous-agent-specific licence; general authoring access requirements are documented in [Licensing for agents powered by the standard harness](https://learn.microsoft.com/microsoft-copilot-studio/billing-licensing).
@@ -152,7 +162,7 @@ The trigger overview states no separate autonomous-agent-specific licence; gener
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether makers can add event triggers to agents (Microsoft Copilot Studio connector)</strong><br><small>Environment</small><br><small class="controls__note">Tenant admin or Environment Admin. Also blocks automated evaluations that use authenticated accounts.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy › Add an environment › Available › environment › Add to policy › Assign connectors › Microsoft Copilot Studio › Block <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-ConnectorsToPolicy -PolicyName &lt;PolicyGuid&gt; -Classification Blocked -Connectors &lt;ConnectorObjects&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether makers can add event triggers to agents (Microsoft Copilot Studio connector)</strong><br><small>Environment</small><br><small class="controls__note">Tenant admin or Environment Admin. Also blocks automated evaluations that use authenticated accounts.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Security › Data and privacy › Data policy › New Policy › Add an environment › Available › environment › Add to policy › Assign connectors › Microsoft Copilot Studio › three dots next to the connector › Block <a href="https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Add-ConnectorsToPolicy -PolicyName &lt;PolicyGuid&gt; -Classification Blocked -Connectors &lt;ConnectorObjects&gt;</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.powerapps.administration.powershell/add-connectorstopolicy?view=pa-ps-latest" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether users can share solution-aware cloud flows and agent flows, which event triggers depend on</strong><br><small>Environment</small><br><small class="controls__note">Managed environments only. The setting is the extended setting solutionCloudFlows-limitSharingMode on the governance configuration; disableSharing turns sharing off.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › managed environment › Edit Managed Environments › Manage sharing › Let people share solution-aware cloud flows <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-AdminPowerAppEnvironmentGovernanceConfiguration -EnvironmentName &lt;EnvironmentId&gt; -UpdatedGovernanceConfiguration $governanceConfiguration</code> <a href="https://learn.microsoft.com/power-platform/admin/managed-environment-sharing-limits" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -175,12 +185,3 @@ The trigger overview states no separate autonomous-agent-specific licence; gener
 - Does blocking the Microsoft Copilot Studio connector stop agents whose triggers were already published, or only the adding of new triggers? The data policy page describes preventing makers from adding them.
 - Which audit events, if any, record a trigger-started run in the unified audit log?
 - How do Managed Environment sharing controls map to **Can use** for shared autonomous agents in the Microsoft Copilot harness preview?
-
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: Enforcement / cost: Reaching the tenant's 125% prepaid-capacity threshold blocks the environment's agents, with only pay-as-you-go given as an exception. | Found: If the tenant is already at 125% Copilot Credit consumption because of Environment B and Environment C, enforcement isn't placed on the agents in Environment A, as long as Environment A has remaining capacity from its allocation of 10,000 Copilot Credits. | Fix: After the sentence about enforcement blocking the environment's agents, add: 'An environment with remaining allocated prepaid capacity is not blocked by the tenant reaching 125% while that allocation remains available.' This qualification is documented in the Enforcement example at https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management#enforcement-example. | Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui / admin-path: The Power Platform admin center data-policy path leads to blocking the Microsoft Copilot Studio connector. | Found: Select the three dots (**⋮**) next to the connector, and then: - To prevent agent makers from using the features associated with the connector, select **Block**. | Fix: In the front matter and rendered control table, replace the path with 'Security > Data and privacy > Data policy > New Policy > Add an environment > Available > environment > Add to policy > Assign connectors > Microsoft Copilot Studio > three dots next to the connector > Block'. The printed steps are correct; the omitted more-options button is a minor path omission under the verification standard. | Source: https://learn.microsoft.com/microsoft-copilot-studio/admin-data-loss-prevention
-- [supported, minor] Cost and licensing: Spending policies link; summary / cost: Spending policies control access to supported credit-consuming experiences and how much they can consume. | Found: Use spending policies in the Cost Management dashboard to control access and Copilot Credit spending for AI experiences enabled by usage-based billing. | Fix: Add https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits and https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs to sources for the spending-policy reference. The latter documents Copilot Studio resource-based policies and their precedence over identity-based policies and Power Platform capacity controls. | Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits
--->

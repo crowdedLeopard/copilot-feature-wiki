@@ -44,7 +44,7 @@ controls:
     scope: "user"
     ui:
       surface: "Teams admin center"
-      path: "Voice > Calling policies > policy > Make private calls"
+      path: "Voice > Calling policies > policy > Edit > Make private calls"
       docs: "https://learn.microsoft.com/microsoftteams/teams-calling-policy"
     api:
       kind: "powershell"
@@ -65,19 +65,23 @@ changes:
     note: "First briefing for this item, based on Message Center post MC1540349 and Teams calling documentation."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 52 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected the Teams admin center path to the Make private calls setting, which now includes the Edit step."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 54 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 51
+  claims: 54
+  confirmed: 54
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "7b8fcea0ea4a6ed15bca9d0f78bcc118"
+  contradicted: 0
+  attempts: 0
+  hash: "873846c97273863db18cf1b6df303962"
 ---
 
 ## What's changing
@@ -161,7 +165,7 @@ Neither the roadmap item nor MC1540349 names a licence or meter for the decline-
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether users can make and receive Teams calls at all (nearest control; not specific to decline with a message)</strong><br><small>User</small><br><small class="controls__note">Per calling policy. Turning it off removes incoming calls for the users with that policy, so it also removes this option; it cannot turn off only the Message option.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Calling policies › policy › Make private calls <a href="https://learn.microsoft.com/microsoftteams/teams-calling-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsCallingPolicy -Identity &lt;policy name&gt; -AllowPrivateCalling $false</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether users can make and receive Teams calls at all (nearest control; not specific to decline with a message)</strong><br><small>User</small><br><small class="controls__note">Per calling policy. Turning it off removes incoming calls for the users with that policy, so it also removes this option; it cannot turn off only the Message option.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Calling policies › policy › Edit › Make private calls <a href="https://learn.microsoft.com/microsoftteams/teams-calling-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsCallingPolicy -Identity &lt;policy name&gt; -AllowPrivateCalling $false</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamscallingpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Switch for the decline-with-message option on mobile</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft Learn documents no such setting at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -181,10 +185,4 @@ Microsoft Learn's Teams calling overview says that with **Make private calls** t
 risk: Low. Users choose to send the message themselves, and Microsoft's notice says it goes to the caller in Teams chat; the exposure is a mistaken tap or a message the organisation did not expect.
 cost: Low. Microsoft's notice and the roadmap item name no licence or meter for it; the cost is admin time to brief the help desk and users, as the notice recommends.
 impact: Medium. Microsoft says the feature arrives automatically as a new Message option on the incoming call screen for eligible Teams mobile users, so many users may see it, but only on mobile.
--->
-
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; Governance controls table / admin-path: The Teams admin center route to the setting is Voice > Calling policies > policy > Make private calls. | Found: In the left navigation of the Microsoft Teams admin center, select Voice > Calling policies. Select the policy or policies that you want to modify, and then select Edit. | Fix: Replace the path in controls[0].ui and the rendered table with 'Voice > Calling policies > policy > Edit > Make private calls'. The cited page requires selecting Edit after selecting the policy. | Source: https://learn.microsoft.com/microsoftteams/teams-calling-policy
 -->

@@ -28,6 +28,9 @@ sources:
   - title: "Enable business skills in Dataverse for Sales agent (preview)"
     url: "https://learn.microsoft.com/microsoft-sales-copilot/business-skills-dataverse"
     kind: "learn"
+  - title: "Enable business skills for Salesforce in the Sales agent (preview)"
+    url: "https://learn.microsoft.com/microsoft-sales-copilot/business-skills-salesforce"
+    kind: "learn"
   - title: "Create and use business skills"
     url: "https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills"
     kind: "learn"
@@ -73,7 +76,7 @@ controls:
       kind: "rest"
       call: "PATCH [organization URI]/api/data/v9.2/allowedmcpclients(allowedmcpclientid)"
       docs: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient"
-    note: "The request body sets isenabled. Affects Sales agent only."
+    note: "The request body sets isenabled. Blocks Sales agent MCP access."
   - governs: "Whether any MCP client can use the Dataverse MCP server in an environment"
     scope: "environment"
     ui:
@@ -102,19 +105,23 @@ changes:
     note: "First briefing for this item, based on the preview Learn pages for enabling business skills in Dataverse for Sales agent."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 64 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected after verification: a skill must exist, be active and be accessible to the seller; disabling the Enterprise Copilot Platform client blocks Sales agent MCP access; removed the Share step from the checklist."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 64
-  confirmed: 61
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "43de085812b44001fe397f90910538ff"
+  confirmed: 64
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "f3ba5c772850794b82a43334b02f551c"
 ---
 
 ## What's changing
@@ -129,7 +136,7 @@ The roadmap item is In development, with a preview target of September CY2026 an
 
 Business skills let an organisation put its own sales process in front of every seller who uses Sales agent, without changing the agent itself. That is also the risk: the text of a skill decides how the agent answers, and anyone who can author and share a skill can change what sellers are told.
 
-The roadmap says administrators enable the required Dataverse capabilities, and the Learn steps ask for that, so nothing reaches sellers until a skill exists and is shared. Learn also says Work IQ is on by default for new public production environments (with exceptions), so check which environments already have it on before you plan the rollout.
+The roadmap says administrators enable the required Dataverse capabilities, and the Learn steps ask for that, so a skill must exist, be active and be accessible to the seller before Sales agent can use it. Learn also says Work IQ is on by default for new public production environments (with exceptions), so check which environments already have it on before you plan the rollout.
 
 ## Risk assessment
 
@@ -181,7 +188,6 @@ Learn documents a separate page for Sales agent connected to Salesforce; this br
 
 - Turn on Work IQ for the pilot environment, and confirm that **Enterprise Copilot Platform** is enabled in the Allowed MCP Clients list.
 - Create one simple read-only test skill, activate it, and ask Sales agent "What business skills do I have?" with a test seller account that holds at least the Basic User role.
-- Use the Share command on the Business skills page, and use Manage access to review who has access, before widening access beyond the author.
 
 ### After rollout
 
@@ -197,13 +203,13 @@ Learn documents a separate page for Sales agent connected to Salesforce; this br
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether Work IQ, and so business skills, is on in an environment</strong><br><small>Environment</small><br><small class="controls__note">Environment administrator. Learn says turning Work IQ off stops agents using Dataverse business skills in the environment.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › environment › Settings › Product › Features › Work IQ <a href="https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-participation" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether Sales agent can reach the Dataverse MCP server (Enterprise Copilot Platform client)</strong><br><small>Environment</small><br><small class="controls__note">The request body sets isenabled. Affects Sales agent only.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Dataverse Model Context Protocol › Go to Advanced Settings › Active Allowed MCP Clients › Enterprise Copilot Platform › Is Enabled <a href="https://learn.microsoft.com/microsoft-sales-copilot/business-skills-dataverse" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH [organization URI]/api/data/v9.2/allowedmcpclients(allowedmcpclientid)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether Sales agent can reach the Dataverse MCP server (Enterprise Copilot Platform client)</strong><br><small>Environment</small><br><small class="controls__note">The request body sets isenabled. Blocks Sales agent MCP access.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Dataverse Model Context Protocol › Go to Advanced Settings › Active Allowed MCP Clients › Enterprise Copilot Platform › Is Enabled <a href="https://learn.microsoft.com/microsoft-sales-copilot/business-skills-dataverse" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH [organization URI]/api/data/v9.2/allowedmcpclients(allowedmcpclientid)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/allowedmcpclient" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether any MCP client can use the Dataverse MCP server in an environment</strong><br><small>Environment</small><br><small class="controls__note">Learn lists this as the way to block all MCP clients, not only Sales agent.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Manage › Environments › environment › Settings › Product › Features › Dataverse Model Context Protocol › Allow MCP clients to interact with Dataverse MCP server (GA version) <a href="https://learn.microsoft.com/microsoft-sales-copilot/business-skills-dataverse" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether an individual business skill is available to agents</strong><br><small>Environment</small><br><small class="controls__note">The request body sets statecode. Deactivating keeps the skill's content and version history.</small></td><td data-label="Admin UI"><strong>Power Apps (maker)</strong><br>environment › More › Business skills › skill › Deactivate <a href="https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>REST API</strong><br><code>PATCH [organization URI]/api/data/v9.2/skills(skillid)</code> <a href="https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/skill" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The first three rows are the switches Learn names for turning business skills for Sales agent on or off in an environment, from the broadest effect to the narrowest. Turning off Work IQ prevents agents from using Dataverse business skills in the environment; clearing the MCP setting blocks all MCP clients; disabling the Enterprise Copilot Platform client blocks Sales agent only.
+The first three rows are the switches Learn names for turning business skills for Sales agent on or off in an environment, from the broadest effect to the narrowest. Turning off Work IQ prevents agents from using Dataverse business skills in the environment; clearing the MCP setting blocks all MCP clients; disabling the Enterprise Copilot Platform client blocks Sales agent MCP access.
 
 Learn documents no automation for the two Features-page toggles at the time of writing (November 2026). The Enterprise Copilot Platform client is a record in the allowed MCP clients table, so the call in the table changes that record.
 
@@ -222,12 +228,8 @@ cost: Low. The Learn page lists Microsoft 365 Copilot and Dynamics 365 Sales lic
 impact: Medium. Sellers using Sales agent notice changed answers once skills are active; admins, makers and skill authors do the set-up.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters: second paragraph / behaviour: Nothing reaches sellers until a skill exists and is shared. | Found: Basic User | Can create skills that they own.Can use skills they have access to. | Fix: Replace 'so nothing reaches sellers until a skill exists and is shared' with 'so a skill must exist, be active and be accessible to the seller before Sales agent can use it'. Owners can use their own skills; sharing is not a universal prerequisite. See https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skills#test-and-troubleshoot-skill-use. | Source: https://learn.microsoft.com/power-apps/maker/data-platform/data-platform-business-skill-overview
-- [unsupported, blocker] controls[1].note; Governance controls table and first paragraph / applicability: Disabling the Enterprise Copilot Platform client affects Sales agent only. | Found: Searched: Dataverse MCP Enterprise Copilot Platform only; Enterprise Copilot Platform. Read business-skills-dataverse, data-platform-mcp-disable and business-skills-salesforce excerpts. None establishes exclusive use of this client by Sales agent. | Fix: Replace 'Affects Sales agent only' with 'Blocks Sales agent MCP access' in the note and rendered table. Replace 'disabling the Enterprise Copilot Platform client blocks Sales agent only' with 'disabling the Enterprise Copilot Platform client blocks Sales agent MCP access'. The documented scope is at https://learn.microsoft.com/microsoft-sales-copilot/business-skills-dataverse#disable-business-skills-or-mcp-access.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Scope: final paragraph / availability: Learn has a separate business-skills page for Sales agent connected to Salesforce. | Found: Enable business skills for Salesforce in the Sales agent (preview) | Fix: Cite https://learn.microsoft.com/microsoft-sales-copilot/business-skills-salesforce for the statement that a separate Salesforce page exists. | Source: https://learn.microsoft.com/microsoft-sales-copilot/business-skills-salesforce
-- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The checklist's instruction to use Share and Manage access has a corresponding control row. | Found: Use the Share command on the Business skills page, and use Manage access to review who has access ... [The controls rows cover Work IQ, one MCP client, all MCP clients and skill deactivation, not skill sharing.] | Fix: The At rollout step directing readers to Share and Manage access has no corresponding controls-table row. Remove that checklist bullet; keep the existing sharing explanation in Governance controls.
+- [supported, minor] Why it matters / default: Work IQ is on by default for new public production environments, with exceptions. | Found: Business Applications in Work IQ is on by default for new public production environments created for new or existing tenants. The following environments are exceptions: | Fix: After this statement add: 'The general Manage feature settings page still lists the Dataverse intelligence (Work IQ) setting as Off by default; check the actual environment setting.' Both pages are already cited: https://learn.microsoft.com/power-platform/admin/settings-features and https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/default-settings
 -->

@@ -44,7 +44,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > Network and non-Microsoft secure browsers"
+      path: "Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > + Add cloud apps > Network and non-Microsoft secure browsers"
       docs: "https://learn.microsoft.com/azure/firewall/configure-network-dlp"
     api: null
     note: "The rule's Actions > Restrict browser and network activities (Audit or Block) is set in the same wizard. Requires permissions to manage Purview DLP policies."
@@ -73,19 +73,23 @@ changes:
     note: "New briefing: Purview network DLP through Azure Firewall, a preview on Learn with a March CY2027 roadmap target; licensing and Insider Risk Management signals are not yet published."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 70 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected the enforcement step (rule On, policy activated, not left in simulation), the Purview policy path and one open question; removed checklist steps without a controls-table row."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 78 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 67
-  unconfirmed: 1
-  contradicted: 2
-  attempts: 1
-  hash: "dee4e498f811644fa67ae446d35cfab0"
+  claims: 78
+  confirmed: 78
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "0efaa223e8e0f6b367a8ed268941f693"
 ---
 
 ## What's changing
@@ -147,8 +151,7 @@ Learn's network data security page says Purview network data security policies d
 ### Before rollout
 
 - Confirm with the Azure network team which firewalls are Premium, which are in East Asia, UK South or West Central US, and which policies would carry the DLP profile.
-- Check that TLS inspection works and that workloads trust the inspection certificate authority, because Learn makes this part of the inspection path.
-- Decide who owns the source-IP-to-user mapping file, its storage location and the managed identity that reads it, and give that identity Storage Blob Data Contributor as Learn describes.
+- Decide who owns the source-IP-to-user mapping file, its storage location and the managed identity that reads it.
 - Ask Microsoft account contacts for the Purview licence and meter that apply to this integration, and for the add-on price on the Azure Firewall pricing page, before budgeting.
 
 ### At rollout
@@ -159,8 +162,7 @@ Learn's network data security page says Purview network data security policies d
 
 ### After rollout
 
-- Review DLP Alerts and Activity explorer in the Microsoft Purview portal to confirm the evaluation matches the intended user and policy.
-- Move to enforcement only after review: set the Purview rule action to Block and the firewall profile Mode to Alert and deny, then repeat the tests.
+- Move to enforcement only after review: set the Purview rule action to Block, keep the rule On, activate the policy rather than leaving it in simulation or audit, and set the firewall profile Mode to Alert and deny, then repeat the tests.
 - Re-test after any change to network rules, the mapping file or the Purview policy scope.
 
 ## Governance controls
@@ -170,7 +172,7 @@ Learn's network data security page says Purview network data security policies d
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which destinations, activities and actions the Purview network DLP policy applies</strong><br><small>Tenant</small><br><small class="controls__note">The rule's Actions &gt; Restrict browser and network activities (Audit or Block) is set in the same wizard. Requires permissions to manage Purview DLP policies.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Inline web traffic › Custom › Custom policy › Network and non-Microsoft secure browsers <a href="https://learn.microsoft.com/azure/firewall/configure-network-dlp" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which destinations, activities and actions the Purview network DLP policy applies</strong><br><small>Tenant</small><br><small class="controls__note">The rule's Actions &gt; Restrict browser and network activities (Audit or Block) is set in the same wizard. Requires permissions to manage Purview DLP policies.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Policies › + Create policy › Inline web traffic › Custom › Custom policy › + Add cloud apps › Network and non-Microsoft secure browsers <a href="https://learn.microsoft.com/azure/firewall/configure-network-dlp" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether the firewall's DLP profile monitors or blocks (Disabled, Alert only, Alert and deny)</strong><br><small class="controls__note">Preview. Learn says Azure PowerShell, Azure CLI, Terraform and the REST API are not supported for this configuration yet. Alert only does not block even when Purview returns a deny.</small></td><td data-label="Admin UI"><strong>Azure portal</strong><br>firewall policy › Settings › Security Profile Groups (preview) › Create security profile group › Basics › Data loss prevention (preview) › Configure protections › Mode <a href="https://learn.microsoft.com/azure/firewall/configure-network-dlp" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Which firewall traffic is sent for DLP evaluation (application rule with the security profile group)</strong><br><small class="controls__note">Learn's steps use HTTPS:443 with TLS inspection enabled on the rule. Network rules are processed before application rules.</small></td><td data-label="Admin UI"><strong>Azure portal</strong><br>firewall policy › Rules › Application rules › rule › security profile group <a href="https://learn.microsoft.com/azure/firewall/configure-network-dlp" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
@@ -186,9 +188,9 @@ The rows for the firewall list the controls Learn describes; the path begins at 
 
 - What is the default state at general availability, and does any existing firewall or Purview policy start inspecting traffic without an administrator configuring it? Watch the roadmap item and the Azure Firewall AI Security Learn pages.
 - Which Microsoft Purview licence or meter applies to Azure Firewall integration, given that the network data security page covers Global Secure Access and non-Microsoft SASE solutions but does not mention Azure Firewall?
-- How will traffic from background services and automated workloads, which have no signed-in user, be given the Microsoft Entra user context that Learn says is needed for inspection?
+- How will traffic from background services and automated workloads be given the Microsoft Entra user context that Learn says is needed for inspection?
 - Which Insider Risk Management signals will the integration provide, and where will alerts appear in Microsoft Purview and Microsoft Defender? The Learn pages read describe neither.
-- Will the preview limits (three regions, Azure portal only, HTTPS on port 443, 3 MB content size, fail-open) change at general availability in March CY2027?
+- Will the preview limits (three regions, Azure portal only, HTTPS on port 443, 3 MB content size, fail-open) change by the roadmap's March CY2027 General Availability target?
 
 <!-- rationale
 risk: Medium. Learn describes a preview where traffic is inspected only if mapped to a Microsoft Entra user and TLS inspection works, and where inspection that cannot complete lets traffic through (fail-open). No source states what happens by default.
@@ -196,14 +198,10 @@ cost: Medium. Learn lists Azure Firewall Premium with the AI Security add-on plu
 impact: Low. Learn describes configuration by administrators in the Azure portal and Microsoft Purview portal; people notice only if a DLP rule set to Block and a firewall profile set to Alert and deny restrict a transfer.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance guidance: After rollout, enforcement bullet / behaviour: After starting the policy in simulation, the checklist moves to enforcement by setting Block and Alert and deny without requiring policy activation or an On rule. | Found: Configure the relevant Purview rule action as Block, keep the rule On, and activate the policy rather than leaving it in simulation or audit. | Fix: Replace the enforcement bullet with: 'Move to enforcement only after review: set the Purview rule action to Block, keep the rule On, activate the policy rather than leaving it in simulation or audit, and set the firewall profile Mode to Alert and deny, then repeat the tests.' | Source: https://learn.microsoft.com/azure/firewall/configure-network-dlp
-- [unsupported, major] Open questions: background services and automated workloads / behaviour: Background services and automated workloads have no signed-in user. | Found: Searched: '"Azure Firewall" "Purview" "background services" "user"'; read the roadmap, configure-network-dlp and ai-security-concepts. They require a mapped user context but do not state that every background service or automated workload lacks a signed-in user. | Fix: Remove ', which have no signed-in user,' from the question. Keep the question about how those workloads receive the required Microsoft Entra user context.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: targetDate; What's changing; Scope; Open questions / record: The roadmap General Availability target is March CY2027. | Found: "targetDate": "March CY2027", "status": "In development" | Fix: In the last Open questions bullet, replace 'at general availability in March CY2027' with 'by the roadmap's March CY2027 General Availability target'. The other date references correctly describe a target.
-- [supported, minor] Why it matters; Risk assessment: Data exposure; Open questions / behaviour: The Azure Firewall preview guide gives a maximum supported content size of 3 MB for files and text. | Found: The maximum supported content size is 3 MB for both file and text content. | Fix: Retain the Azure Firewall preview's 3 MB limit, but add: 'The general Purview network data security page lists a 4 MB inline text limit and a 3 MB file limit; the Azure Firewall preview guide instead specifies 3 MB for both.' Both pages are already cited. | Source: https://learn.microsoft.com/azure/firewall/configure-network-dlp
-- [supported, minor] controls[0].ui; rendered Governance controls table / admin-path: The printed Microsoft Purview policy path reaches the Network and non-Microsoft secure browsers enforcement location. | Found: Select Inline web traffic > Custom > Custom policy, and enter a name and description. 3. Select + Add cloud apps and scope the destination applications. Use Adaptive app scopes where appropriate. 4. Enable the Network and non-Microsoft secure browsers enforcement location. | Fix: The path omits the destination-scoping step, not a different policy-type choice. Use: 'Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > + Add cloud apps > Network and non-Microsoft secure browsers'. | Source: https://learn.microsoft.com/azure/firewall/configure-network-dlp
-- [contradicted, minor] Governance guidance versus Governance controls / consistency: Every control the checklist tells readers to configure or check has a controls-table row. | Found: Checklist: 'Check that TLS inspection works'; 'give that identity Storage Blob Data Contributor'; 'Review DLP Alerts and Activity explorer'. Table: only the Purview policy, firewall DLP profile Mode and application-rule group selection. | Fix: The Before rollout TLS-inspection check and mapping-file identity-role assignment, and the After rollout DLP Alerts/Activity explorer review, have no matching controls-table rows. Remove those checklist steps; their factual context can remain in the body. Do not add control rows as part of this correction.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: The printed Purview path reaches the Network and non-Microsoft secure browsers location in the policy wizard. | Found: Select + Add cloud apps and scope the destination applications. ... Enable the Network and non-Microsoft secure browsers enforcement location. ... Select Create or customize advanced DLP rules > + Create rule | Fix: The route is correct but stops before the activities and actions named by the row. Extend controls[0].ui.path and its rendered counterpart to 'Data loss prevention > Policies > + Create policy > Inline web traffic > Custom > Custom policy > + Add cloud apps > Network and non-Microsoft secure browsers > Create or customize advanced DLP rules > + Create rule > Actions > Restrict browser and network activities', as documented at https://learn.microsoft.com/azure/firewall/configure-network-dlp. | Source: https://learn.microsoft.com/azure/firewall/configure-network-dlp
+- [supported, minor] controls[1].ui; Governance controls table and closing prose / admin-path: The printed Azure portal path reaches the DLP profile Mode control after opening a firewall policy. | Found: Open the firewall policy in the Azure portal. ... Select Settings > Security Profile Groups (preview) > Create security profile group. ... On the Basics tab ... select Data loss prevention (preview). ... On the Configure protections tab ... For Mode, select Alert only. | Fix: Add the navigation to the policy list: set controls[1].ui.path and its rendered counterpart to 'Network security > Firewall Manager > Azure Firewall Policies > firewall policy > Settings > Security Profile Groups (preview) > Create security profile group > Basics > Data loss prevention (preview) > Configure protections > Mode'. Cite https://learn.microsoft.com/azure/firewall-manager/configure-ddos for the initial navigation alongside the existing source, and update the closing explanation that currently defends starting at the policy. | Source: https://learn.microsoft.com/azure/firewall/configure-network-dlp
+- [supported, minor] controls[2].ui; Governance controls table and closing prose / admin-path: The printed Azure portal path reaches the security profile group selection on a firewall policy application rule. | Found: Select Rules > Application rules and edit the target rule. ... Select the security profile group that contains the DLP profile. | Fix: Add the navigation to the policy list: set controls[2].ui.path and its rendered counterpart to 'Network security > Firewall Manager > Azure Firewall Policies > firewall policy > Rules > Application rules > rule > security profile group'. Cite https://learn.microsoft.com/azure/firewall-manager/configure-ddos for the initial navigation alongside the existing source, and update the closing explanation that currently defends starting at the policy. | Source: https://learn.microsoft.com/azure/firewall/configure-network-dlp
 -->

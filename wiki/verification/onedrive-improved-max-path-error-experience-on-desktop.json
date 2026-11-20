@@ -1,0 +1,766 @@
+{
+  "slug": "onedrive-improved-max-path-error-experience-on-desktop",
+  "roadmapId": 557563,
+  "title": "OneDrive: guided rename and move flow for max path sync errors on Windows",
+  "status": "held",
+  "date": "2026-11-20",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-20",
+    "reasons": [
+      "2 blocking findings (claims 36, 55)"
+    ]
+  },
+  "counts": {
+    "claims": 60,
+    "confirmed": 58,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 2,
+    "major": 0,
+    "minor": 0
+  },
+  "summary": "The rollout, default state, licensing model and listed control are supported. Two statements need correction: Microsoft explains the relationship between the 520-character and 400-character limits, and documents another policy that can shorten local paths.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: products; title",
+      "type": "record",
+      "claim": "This roadmap item concerns OneDrive.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 557563, \"title\": \"OneDrive: Improved max path error experience on desktop\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is January CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Desktop as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "Scope",
+      "type": "record",
+      "claim": "No other cloud is listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap publishes no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-27T23:05:02.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-27T23:05:02\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap and notice describe a supported 520-character sync path limit.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "OneDrive desktop sync users now get clearer, more actionable guidance when file paths exceed the supported 520-character limit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "title; What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The notice identifies all users of the OneDrive sync client on Windows desktop as affected.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "Who is affected\n\n- All users of the OneDrive sync client on Windows desktop",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The updated experience will show exactly how many characters a path exceeds the limit.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The updated experience shows exactly how many characters a path is over the limit",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "title; summary; What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Users will have a guided flow to rename affected items so they can sync.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "offers a guided flow to rename or move the affected items so they can sync.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "title; summary; What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Users will have a guided flow to move affected items so they can sync.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "offers a guided flow to rename or move the affected items so they can sync.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The current error states how far the path exceeds the limit and asks users to shorten it.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "Currently, when a file or folder path exceeds the 520-character sync limit, the error message only states how many characters the path exceeds the limit and asks users to shorten it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "File Explorer limitations may prevent users from renaming paths over 260 characters.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "File Explorer limitations may prevent users from renaming paths over 260 characters",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The current sync client may stop syncing until a max path issue is resolved.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "the sync client may stop syncing until the issue is resolved.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "With the update, the sync client will continue running when users encounter max path errors.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "The sync client will continue running when users encounter max path errors",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The rename experience will highlight which items in the path can be renamed.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "The rename experience will:\n\n- Show the number of over-limit characters- Highlight which items in the path can be renamed",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The rename experience will allow renames even when the path exceeds 260 characters.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "Allow renames even when the path exceeds 260 characters",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The move experience will show over-limit character counts in a guided interface.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "The move experience will:\n\n- Show over-limit character counts in a guided interface",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance",
+      "type": "record",
+      "claim": "The move experience will display warnings for over-limit shared items in OneDrive.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "Display warning dialogs for over-limit shared items in OneDrive",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance",
+      "type": "record",
+      "claim": "The move experience will display warnings for over-limit items in shortcuts.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "Display warning dialogs for over-limit items in shortcuts",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1422063 was updated on 27 October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "Updated October 27, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Risk assessment: Change & support; front matter: changes",
+      "type": "record",
+      "claim": "The notice gives a rollout beginning January 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "General Availability (Worldwide): Beginning January 2027",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice expects rollout completion by end of January 2027.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "expected to complete by end of January 2027",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "type": "record",
+      "claim": "The notice previously gave end of October 2026 as the rollout start.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "Beginning January 2027 (previously end of October 2026)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice previously gave end of November 2026 as the rollout completion.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "expected to complete by end of January 2027 (previously end of November 2026)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe this guided rename and move experience.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive \"max path\" \"guided\"; OneDrive \"max path\" \"rename\" \"move\" policy registry disable. Opened learn.microsoft.com/sharepoint/sync-release-notes and use-group-policy; searched their text. The shortcut root-path fix is not the guided flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "Microsoft calls max path errors one of the most commonly reported OneDrive sync issues.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "Max path errors are one of the most commonly reported issues by OneDrive sync users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Why it matters; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft expects the update to reduce max-path-related support tickets.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "this update should reduce max-path-related support tickets.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "summary; Why it matters; Scope",
+      "type": "record",
+      "claim": "Microsoft says no admin action is required.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "No admin action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: defaultState; Why it matters; Scope; Governance controls",
+      "type": "default",
+      "claim": "The default state is on because the update becomes available automatically through the sync client.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "No admin action is required. This update will be automatically available through the OneDrive sync client.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Why it matters; Open questions",
+      "type": "behaviour",
+      "claim": "Learn states a 400-character limit on the decoded file path for OneDrive and SharePoint in Microsoft 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-limits",
+      "quote": "The entire decoded file path, including the file name, can't contain more than 400 characters for OneDrive, OneDrive for work or school and SharePoint in Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Why it matters; Open questions: first bullet",
+      "type": "absence",
+      "claim": "Microsoft has not said how the 520-character sync limit relates to the 400-character limit.",
+      "status": "contradicted",
+      "source": "https://support.microsoft.com/onedrive/what-are-file-path-length-limits",
+      "quote": "OneDrive sync | 520 characters | The total path is the combination of the local path (up to 400 characters) and the OneDrive root folder (up to 120 characters). Paths exceeding 520 characters show a sync error.",
+      "severity": "blocker",
+      "fix": "Replace 'Microsoft has not said how the two relate, so quote the number your support articles use with care' with 'Microsoft Support describes the 520-character sync path as the combination of the local path (up to 400 characters) and the OneDrive root folder (up to 120 characters).' Cite https://support.microsoft.com/onedrive/what-are-file-path-length-limits and remove the first Open questions bullet."
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The notice states that no compliance considerations were identified.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "No compliance considerations identified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "The notice says the update does not change how customer data is stored, processed or accessed.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "This update does not change how customer data is stored, processed, or accessed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure; Open questions: warning dialogs",
+      "type": "record",
+      "claim": "The supplied notice describes the warning dialogs without giving their wording or options.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "Display warning dialogs for over-limit shared items in OneDrive- Display warning dialogs for over-limit items in shortcutsScreenshot - Example warning dialog for overlimit items in shortcuts",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The notice and roadmap describe no new permissions, sign-in or identity behaviour.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "We are improving the OneDrive sync experience on Windows desktop to provide clearer, more actionable guidance when file and folder paths exceed the supported 520-character limit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The notice describes user-guided repair rather than automatic renaming or moving.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "users will be guided through a custom rename and move experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.model and notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The included licensing model rests on OneDrive being included in Microsoft 365, Office 365 and SharePoint plans or purchased as a standalone plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description",
+      "quote": "OneDrive is included in Microsoft 365 and Office 365 plans, in SharePoint plans, and can also be purchased as a standalone plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The OneDrive service description lists sync features as available across its plan categories.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description",
+      "quote": "| Feature | Stand-alone plans | Small business | Enterprise | Education | Government | Nonprofits |\n| Sync features | Yes | Yes | Yes | Yes | Yes | Yes |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing; Scope; rationale: cost",
+      "type": "record",
+      "claim": "The roadmap record and supplied notice name no licence or charge for this experience.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "No admin action is required. This update will be automatically available through the OneDrive sync client.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "A price, meter or licence specific to the guided max path experience is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive \"guided\" \"path\" sync licensing price. Opened learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description and sharepoint/sync-release-notes; neither names a feature-specific licence, price or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft suggests informing helpdesk and support teams about the improved error messages.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "Inform your helpdesk and support teams about the improved error messages",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft suggests updating internal documentation for resolving OneDrive sync issues if applicable.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "Update internal documentation for resolving OneDrive sync issues if applicable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The notice names OneDrive for Business (Windows desktop sync client) as the service.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "OneDrive for Business (Windows desktop sync client)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The supplied notice names no prerequisite for this change.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "No admin action is required. This update will be automatically available through the OneDrive sync client.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The supplied notice names no role for this change.",
+      "status": "supported",
+      "source": "Message Center post MC1422063",
+      "quote": "No admin action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Scope; Open questions: sync client build",
+      "type": "absence",
+      "claim": "The notice and Learn release notes do not identify a sync client build for the guided rename and move flow.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive \"max path\" \"guided\". Read MC1422063 and searched learn.microsoft.com/sharepoint/sync-release-notes for max path, rename, guided, 520 and move experience. Only a distinct shortcut root-path fix identifies a build.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The custom folder name policy is under Group Policy Management Editor > Computer Configuration > Policies > Administrative Templates > OneDrive > Set a custom name for the OneDrive folder.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "Under Computer Configuration\\Policies\\Administrative Templates\\OneDrive, navigate to Computer Configuration > Policies.\nComputer Configuration policies in the Group Policy Management Editor\nSet a custom name for the OneDrive folder",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "The custom folder name policy sets [HKLM\\SOFTWARE\\Policies\\Microsoft\\OneDrive\\CustomSyncRootFolderName] \"TenantID\"=\"CustomFolderName\".",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "Enabling this policy sets the following registry key to the value shown in the following example:\n[HKLM\\SOFTWARE\\Policies\\Microsoft\\OneDrive\\CustomSyncRootFolderName] \"TenantID\"=\"CustomFolderName\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[0].governs and note; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "The existing custom folder name policy changes the local sync root name for the specified tenant, shortening nested paths rather than controlling the guided repair dialogs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "This setting lets you customize the local OneDrive sync root folder name on users' computers. By default, the folder name is OneDrive - {organization name}. Shortening this name increases the available path length for nested folders and files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls: final paragraph",
+      "type": "applicability",
+      "claim": "The custom folder name policy is the one documented control related to path length.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "To further reduce the local path length, customize the default location for the OneDrive folder: Set the default location for the OneDrive folder.",
+      "severity": "blocker",
+      "fix": "Replace 'The one documented control that relates to path length is the existing custom folder name policy.' with 'An existing control related to path length is the custom folder name policy.' The cited page also documents the default folder location policy; no additional control row is needed for this correction."
+    },
+    {
+      "n": 56,
+      "where": "Governance controls: final paragraph",
+      "type": "behaviour",
+      "claim": "The custom folder name policy applies the configured name when creating the sync root for new users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "If you enable this setting and provide a custom folder name, OneDrive will use that name when creating the sync root folder for new users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance controls: final paragraph",
+      "type": "behaviour",
+      "claim": "Existing syncing users must unlink and relink their account for the custom folder name change to take effect.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "Users who are already syncing will need to unlink and relink their account for the change to take effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls: final paragraph",
+      "type": "behaviour",
+      "claim": "The full OneDrive sync root folder path cannot exceed 120 characters.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "The full OneDrive sync root folder path (for example, C:\\Users\\{alias}\\OneDrive - {organization name}) cannot exceed 120 characters.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[0].note; Governance controls: final paragraph",
+      "type": "applicability",
+      "claim": "The custom folder name policy is documented for Group Policy, not Intune.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/use-group-policy",
+      "quote": "Set a custom name for the OneDrive folder\n\nApplies to: Group Policy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[1].ui and api; Governance controls; Open questions: admin setting",
+      "type": "absence",
+      "claim": "No admin UI switch or policy automation for the guided max path rename and move experience is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: OneDrive \"max path\" \"rename\" \"move\" policy registry disable; OneDrive guided max path error experience CustomSyncRootFolderName policy disable registry sync API. Opened learn.microsoft.com/sharepoint/use-group-policy and searched its policy list and text.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-20T12:52:40.331Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=557563",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1422063",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/sharepoint-online-service-description/sharepoint-online-limits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/onedrive-for-business-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/sync-release-notes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/use-group-policy",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Length of the local OneDrive folder name (existing control; shortens local paths)",
+        "docs": "https://learn.microsoft.com/sharepoint/use-group-policy",
+        "reachable": true,
+        "segments": [
+          "Computer Configuration",
+          "Policies",
+          "Administrative Templates",
+          "OneDrive",
+          "Set a custom name for the OneDrive folder"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Length of the local OneDrive folder name (existing control; shortens local paths)",
+        "docs": "https://learn.microsoft.com/sharepoint/use-group-policy",
+        "reachable": true,
+        "token": "[HKLM\\SOFTWARE\\Policies\\Microsoft\\OneDrive\\CustomSyncRootFolderName] \"TenantID\"=\"CustomFolderName\"",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

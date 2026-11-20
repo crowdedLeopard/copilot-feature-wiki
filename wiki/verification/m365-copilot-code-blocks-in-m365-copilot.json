@@ -1,0 +1,559 @@
+{
+  "slug": "m365-copilot-code-blocks-in-m365-copilot",
+  "roadmapId": 569429,
+  "title": "Microsoft Copilot (Microsoft 365): code blocks preview code, charts and diagrams inline in Chat",
+  "status": "held",
+  "date": "2026-11-20",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-20",
+    "reasons": [
+      "5 blocking findings (claims 11, 15, 19, 32, 43)"
+    ]
+  },
+  "counts": {
+    "claims": 43,
+    "confirmed": 38,
+    "unconfirmed": 1,
+    "contradicted": 4,
+    "blocker": 5,
+    "major": 0,
+    "minor": 0
+  },
+  "summary": "The briefing overlooks Microsoft's documented Cloud Policy for disabling code previews in Copilot Chat and incorrectly says Microsoft has not described running previews. The mixed licensing model is also unsupported; the sources establish product-level requirements, not mixed entitlement for code blocks.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: title, products",
+      "type": "record",
+      "claim": "The roadmap identifies this as a Microsoft Copilot (Microsoft 365) feature.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "title; summary; What's changing; Why it matters; Risk assessment; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap describes code blocks previewing code, charts, diagrams and more inline in Chat.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "M365 Copilot now supports code blocks, which lets you preview code, charts, diagrams, and more directly inline while using Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance; rationale: impact",
+      "type": "record",
+      "claim": "Users previously could preview code side by side in a code canvas.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Previously, users could preview code side-by-side in a code canvas.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only listed cloud, with no US Government cloud listed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Why it matters; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap platforms are Desktop and Mobile.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mobile\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is September CY2026, a month already past on the run date, not a confirmed launch.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2026\"; \"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: previewDate; Scope",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-08-19T22:58:06.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-08-19T22:58:06\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Governance guidance; front matter: changes",
+      "type": "absence",
+      "claim": "Microsoft Learn does not describe code blocks.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "Enabled: Users can view and interact with AI-generated code previews in Copilot Chat and Copilot Pages, including building lightweight apps.",
+      "severity": "blocker",
+      "fix": "Replace the broad absence with: 'Microsoft Learn documents code previews in Copilot Chat; details specific to the new inline layout are not yet documented.' Cite https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration wherever the briefing currently says Learn does not describe the feature."
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Learn does not specify which output types render in the new inline code blocks.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Microsoft 365 Copilot\" \"code blocks\" \"canvas\" \"render\"' and '\"Copilot\" \"code blocks\" \"inline\"'; checked release-notes for code blocks, code canvas and 569429; opened cpcn-admin-configuration. No inline output-type specification found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Change & support; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not state whether the previous side-by-side code canvas remains alongside inline code blocks.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Copilot\" \"code canvas\" preview charts diagrams' and '\"Microsoft 365 Copilot\" \"code blocks\" \"canvas\" \"render\"'; checked release-notes and cpcn-admin-configuration. Results about the separate Copilot Code product do not establish this layout's coexistence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; Open questions; rationale: risk",
+      "type": "default",
+      "claim": "The arrival default of the new inline code-block layout is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Copilot\" \"code blocks\" \"default\" \"setting\"'; read roadmap, configure-copilot-admin-center and cpcn-admin-configuration. The existing code-preview policy defaults to enabled, but none states the arrival default of the new inline layout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "controls[0].ui and controls[0].api; summary; Governance controls; front matter: changes",
+      "type": "absence",
+      "claim": "No setting is documented for switching off code-block previews in Copilot Chat.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "Block code previews only: Disable Enable code previews for AI-generated content in Microsoft Copilot Chat and Copilot Pages; leave Create and view Copilot Pages and Copilot Notebooks enabled",
+      "severity": "blocker",
+      "fix": "Replace the existing row's UI absence with 'Microsoft 365 Apps admin center > Customization > Policy Management > policy configuration > Configure Settings > Enable code previews for AI-generated content in Microsoft Copilot Chat and Copilot Pages', citing https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration. Use scope 'user' and note: 'Enabled and Not configured allow code previews; Disabled prevents Copilot from running previews in Chat and Pages. This is a broader preview control, not a separate switch for the new inline layout.' Leave api null: the Graph admin-setting reference and targeted API/PowerShell search found no operation for this policy. Replace statements that no preview control exists with the policy's documented reach."
+    },
+    {
+      "n": 16,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No licence requirement specific to code blocks is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Copilot\" \"code blocks\" \"license\" \"price\"' and '\"Copilot Chat\" \"code previews\" \"license\"'; opened microsoft-copilot-requirements, copilot-license-options and cpcn-admin-configuration. Product-level requirements exist, but no code-block-specific licence was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has published no meter specific to code blocks.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Microsoft 365 Copilot\" \"code blocks\" \"budget\" \"meter\"' and '\"Copilot\" \"code blocks\" \"license\" \"price\"'; opened copilot-license-options and microsoft-copilot-requirements. Results meter Copilot Code or other experiences, not these inline previews.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft has published no price specific to code blocks.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Copilot\" \"code blocks\" \"license\" \"price\"' and '\"Microsoft 365 Copilot\" \"code blocks\" \"budget\" \"meter\"'; opened copilot-license-options and microsoft-copilot-requirements. No price specific to code blocks found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model for code blocks is mixed.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"Copilot\" \"code blocks\" \"license\" \"price\"' and '\"Copilot Chat\" \"code previews\" \"license\"'; read microsoft-copilot-requirements and copilot-license-options. Neither establishes mixed licensing for this feature.",
+      "severity": "blocker",
+      "fix": "Set licensing.model to 'included', following the schema's rule for a new option inside a licensed product. Retain the two documented product-level requirements in licensing.notes, but replace its last sentence with: 'No additional licensing requirement specific to code blocks is published.' Use the same narrower wording in Cost and licensing and the cost rationale; do not describe the product's two access routes as mixed code-block entitlement."
+    },
+    {
+      "n": 20,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft Copilot Chat is available to users with an eligible Microsoft 365 subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+      "quote": "Microsoft Copilot Chat is available to users with an eligible Microsoft 365 subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft Copilot requires a Microsoft Copilot licence and a qualifying prerequisite licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+      "quote": "Users need a Microsoft Copilot license and a qualifying prerequisite license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Scope: Users",
+      "type": "behaviour",
+      "claim": "The documented enterprise experience requires a work or school account in Microsoft Entra ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+      "quote": "Users must have a work or school account in Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft Learn now calls Microsoft 365 Copilot Microsoft Copilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+      "quote": "Microsoft 365 Copilot is now named Microsoft Copilot",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft Learn now calls Microsoft 365 Copilot Chat Microsoft Copilot Chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+      "quote": "Microsoft 365 Copilot Chat is now named Microsoft Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].note; Risk assessment: Change & support; Governance controls",
+      "type": "applicability",
+      "claim": "Blocking Copilot through Integrated Apps blocks Chat across the documented app surfaces rather than only code blocks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
+      "quote": "This setting blocks Copilot in the Microsoft Copilot app, Teams, Outlook, and Copilot Chat on the web for all users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Governance controls: Pin Copilot Chat",
+      "type": "admin-path",
+      "claim": "Pin Copilot Chat is under Copilot > Settings > User access in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
+      "quote": "Copilot > Settings > User access > Pin Copilot Chat.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Governance controls: Pin Copilot Chat",
+      "type": "behaviour",
+      "claim": "Pin Copilot Chat governs supported app navigation placement rather than response rendering.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
+      "quote": "Control whether Chat is pinned in supported app navigation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap description names no new data source.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "M365 Copilot now supports code blocks, which lets you preview code, charts, diagrams, and more directly inline while using Chat. Previously, users could preview code side-by-side in a code canvas.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The roadmap description names no new storage location.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "M365 Copilot now supports code blocks, which lets you preview code, charts, diagrams, and more directly inline while using Chat. Previously, users could preview code side-by-side in a code canvas.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Learn identifies no new data source introduced by the inline code-block layout.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Microsoft 365 Copilot\" \"code blocks\" \"execution\" \"storage\"' and 'Microsoft Copilot Chat code blocks inline preview execution sandbox storage rollout 569429'; opened cpcn-admin-configuration and searched release-notes. No new layout-specific data source found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Learn identifies no new storage location introduced by inline code blocks.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Microsoft 365 Copilot\" \"code blocks\" \"execution\" \"storage\"' and '\"Copilot Chat\" \"code previews\" retention storage'; opened cpcn-admin-configuration. General Chat and Pages storage documentation does not identify a new inline-block storage location.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not said whether code previews only display content or also run code.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration",
+      "quote": "Disabled: Copilot doesn't run code previews in Copilot Chat or Copilot Pages.",
+      "severity": "blocker",
+      "fix": "Replace the display-versus-execution uncertainty with: 'Microsoft documents running and interacting with code previews in Copilot Chat. The sources checked do not specify the execution location for the new inline layout.' Cite https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration and narrow the corresponding open question to execution location."
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not specify where execution associated with the new inline previews would occur.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Copilot Chat\" \"code previews\" \"sandbox\"' and '\"Microsoft 365 Copilot\" \"code blocks\" \"execution\" \"storage\"'; read cpcn-admin-configuration. Separate Copilot Code execution documentation does not establish execution location for this inline Chat layout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap description does not describe a sandbox.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "M365 Copilot now supports code blocks, which lets you preview code, charts, diagrams, and more directly inline while using Chat. Previously, users could preview code side-by-side in a code canvas.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap description does not specify an execution identity.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "M365 Copilot now supports code blocks, which lets you preview code, charts, diagrams, and more directly inline while using Chat. Previously, users could preview code side-by-side in a code canvas.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Why it matters; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "absence",
+      "claim": "No change introducing autonomous actions in other systems is documented for inline code blocks.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Microsoft Copilot Chat code blocks inline preview execution sandbox storage rollout 569429' and '\"Microsoft 365 Copilot\" \"code blocks\" \"execution\" \"storage\"'; checked roadmap, release-notes and cpcn-admin-configuration. No new external action capability found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Governance guidance: Before rollout",
+      "type": "absence",
+      "claim": "No rollout window beyond the roadmap target month is published in the checked sources.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"code blocks\" \"Copilot\" rollout September 2026' and '\"code blocks\" \"569429\"'; searched release-notes for code blocks, code canvas and 569429. The record gives only September CY2026; no Message Center post was supplied.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "summary; Why it matters; Governance guidance: Before rollout",
+      "type": "absence",
+      "claim": "No feature-specific required administrator action or deadline is documented in the checked sources.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Copilot Chat\" \"code blocks\" API policy licensing rollout' and '\"code blocks\" \"Copilot\" rollout September 2026'; read roadmap and cpcn-admin-configuration; searched release-notes. An optional preview policy exists, but no mandatory action or deadline was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope: Users",
+      "type": "absence",
+      "claim": "The sources do not identify which user cohorts receive inline code blocks.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Copilot Chat\" \"code blocks\" API policy licensing rollout' and '\"code blocks\" \"Copilot\" rollout September 2026'; read microsoft-copilot-requirements and roadmap; searched release-notes. No inline-code-block user cohort definition found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope: Users",
+      "type": "absence",
+      "claim": "The sources do not state the order in which users receive inline code blocks.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"code blocks\" \"Copilot\" rollout September 2026' and 'Microsoft Copilot Chat code blocks inline preview execution sandbox storage rollout 569429'; searched release-notes and read roadmap. No feature-specific deployment ordering found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The sources checked identify no spending cap relevant specifically to code blocks.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Microsoft 365 Copilot\" \"code blocks\" \"budget\" \"meter\"'; read copilot-license-options, microsoft-copilot-requirements and cpcn-admin-configuration. Spending limits found in other results concern separate Copilot Code or metered experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The sources checked identify no budget control relevant specifically to code blocks.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Microsoft 365 Copilot\" \"code blocks\" \"budget\" \"meter\"'; read copilot-license-options, microsoft-copilot-requirements and cpcn-admin-configuration. No code-block-specific billing or budget policy found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "No source says existing Chat behaviour changes.",
+      "status": "contradicted",
+      "source": "roadmap record",
+      "quote": "M365 Copilot now supports code blocks, which lets you preview code, charts, diagrams, and more directly inline while using Chat. Previously, users could preview code side-by-side in a code canvas.",
+      "severity": "blocker",
+      "fix": "Replace 'No source says existing Chat behaviour changes' with 'The roadmap describes a change in preview placement, but does not state whether the earlier code canvas remains available'. Do not infer either automatic replacement or user opt-in from that description."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-20T12:52:36.627Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 0,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=569429",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/plan/copilot-license-options",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/manage-copilot-chat",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/implement/configure-copilot-admin-center",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/resources/copilotadminsetting",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [],
+    "roadmapDrift": []
+  },
+  "history": []
+}

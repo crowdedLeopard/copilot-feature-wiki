@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for this integration. The Adaptive Protection page refers readers to the Microsoft 365, Office 365, Enterprise Mobility + Security, and Windows 11 Subscriptions page for licensing requirements and names no licence itself."
+  model: "included"
+  notes: "Microsoft 365 E5 includes Adaptive Protection. A licence requirement specific to this data lifecycle management integration is not yet published."
 audiences: ["compliance","security","m365-admin"]
 tags: ["purview","data-lifecycle-management","insider-risk-management","adaptive-protection","retention","ediscovery","auditing"]
 sources:
@@ -31,6 +31,9 @@ sources:
   - title: "Search the audit log"
     url: "https://learn.microsoft.com/purview/audit-search"
     kind: "learn"
+  - title: "Compare Microsoft Copilot in Microsoft 365 E3, E5, and E7"
+    url: "https://learn.microsoft.com/copilot/plan/compare-copilot-e3-e5-e7"
+    kind: "learn"
   - title: "Microsoft 365 Roadmap item 392839"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=392839"
     kind: "roadmap"
@@ -41,7 +44,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Solutions > Settings > Solution settings > Data lifecycle management > Adaptive protection"
+      path: "Solutions > Settings > Solution settings > Data lifecycle management > Adaptive protection > Adaptive protection in Data Lifecycle Management"
       docs: "https://learn.microsoft.com/purview/retention"
     api: null
     note: "Setting name: Adaptive protection in Data Lifecycle Management. Cannot be turned on unless Adaptive Protection is on. Turning it off removes labels already applied. Preview on Learn."
@@ -73,19 +76,23 @@ changes:
     note: "New briefing: Adaptive Protection will automatically retain content deleted by Elevated-risk users for 120 days; Learn documents the preview, and licensing and the general availability default are not yet published."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 56 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected after verification: removed blanket eDiscovery access and portal-only claims, named the tenant-wide Adaptive Protection off switch, completed the setting path, added the Microsoft 365 E5 listing, and dropped the risk-level review step."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 52
-  unconfirmed: 1
-  contradicted: 3
-  attempts: 1
-  hash: "cf85d6f76a0485ddf62d95d391019401"
+  claims: 60
+  confirmed: 59
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 2
+  hash: "fffaadd2ef7a668f40ce5a0d549ba320"
 ---
 
 ## What's changing
@@ -105,8 +112,8 @@ Microsoft has not stated what the general availability release does on arrival, 
 ## Risk assessment
 
 **Data exposure**
-- Content deleted by an Elevated-risk user stays in SharePoint, OneDrive or Exchange for 120 days, and Learn says it remains accessible for search and eDiscovery from the secured locations the workload uses. Anyone with eDiscovery access can therefore find items the user thought were deleted.
-- Learn says the retention period cannot be changed at this time, so a shorter deletion obligation cannot be met by editing the policy; the only documented off switch is the Adaptive protection in Data Lifecycle Management setting.
+- Content deleted by an Elevated-risk user stays in SharePoint, OneDrive or Exchange for 120 days, and Learn says it remains accessible for search and eDiscovery from the secured locations the workload uses. The preserved content remains accessible for search and eDiscovery from the secured locations used by the workload.
+- Learn says the retention period cannot be changed at this time, so a shorter deletion obligation cannot be met by editing the policy; the feature-specific off switch is the Adaptive protection in Data Lifecycle Management setting.
 
 **Security & identity**
 - The trigger is the Elevated insider risk level, which Insider Risk Management assigns from policy activity. A wrong level means ordinary users' deletions are held, or a risky user's are not. Review the risk level definitions in Adaptive Protection.
@@ -120,7 +127,7 @@ Microsoft has not stated what the general availability release does on arrival, 
 
 ## Cost and licensing
 
-Microsoft has not published a licence requirement or price for this integration on the pages that describe it. The Adaptive Protection article tells readers to see the Microsoft 365, Office 365, Enterprise Mobility + Security, and Windows 11 Subscriptions page for the licensing requirements of Adaptive Protection with data loss prevention, data lifecycle management and Conditional Access, and does not name a licence. Check your entitlement on that page.
+Microsoft's comparison of Microsoft 365 E3, E5 and E7 lists Adaptive Protection in the Microsoft 365 E5 column. A licence requirement or price specific to this integration is not yet published on the pages that describe it. The Adaptive Protection article tells readers to see the Microsoft 365, Office 365, Enterprise Mobility + Security, and Windows 11 Subscriptions page for the licensing requirements of Adaptive Protection with data loss prevention, data lifecycle management and Conditional Access, and does not name a licence. Check your entitlement on that page.
 
 The Learn pages read publish no separate meter or per-use charge for the automatic retention label. The cost the pages show is admin time to review the setting, brief records and legal owners, and monitor the audit events.
 
@@ -147,7 +154,6 @@ The Learn pages read publish no separate meter or per-use charge for the automat
 
 ### After rollout
 - Search the audit log for "Retained file proactively" and "Retained email item proactively" to see which users and items are being held.
-- Review who sits at the Elevated risk level, since that population decides whose deletions are held.
 - Watch Learn and the roadmap item for the general availability default, licensing and any change to the fixed 120-day period.
 
 ## Governance controls
@@ -157,37 +163,31 @@ The Learn pages read publish no separate meter or per-use charge for the automat
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether Adaptive Protection applies automatic retention to deleted content</strong><br><small>Tenant</small><br><small class="controls__note">Setting name: Adaptive protection in Data Lifecycle Management. Cannot be turned on unless Adaptive Protection is on. Turning it off removes labels already applied. Preview on Learn.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Settings › Solution settings › Data lifecycle management › Adaptive protection <a href="https://learn.microsoft.com/purview/retention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether Adaptive Protection applies automatic retention to deleted content</strong><br><small>Tenant</small><br><small class="controls__note">Setting name: Adaptive protection in Data Lifecycle Management. Cannot be turned on unless Adaptive Protection is on. Turning it off removes labels already applied. Preview on Learn.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Settings › Solution settings › Data lifecycle management › Adaptive protection › Adaptive protection in Data Lifecycle Management <a href="https://learn.microsoft.com/purview/retention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether Adaptive Protection is turned on for the tenant</strong><br><small>Tenant</small><br><small class="controls__note">Role group required: Insider Risk Management or Insider Risk Management Admins. Turning it off stops insider risk levels being shared with data lifecycle management.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Adaptive protection › Adaptive Protection settings › Adaptive Protection <a href="https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Audit records of items retained proactively by Adaptive Protection</strong><br><small>Tenant</small><br><small class="controls__note">Activities to select: Retained file proactively (SharePoint, OneDrive) and Retained email item proactively (Exchange), under Retention policy and retention label activities. Needs the Audit Logs or View-Only Audit Logs role.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Search <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Search-UnifiedAuditLog</code> <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The setting has a portal path but, at the time of writing (November 2026), Microsoft Learn documents no PowerShell or Graph operation for it, so changes are portal-only. Turning off Adaptive protection in Data Lifecycle Management does not affect other Adaptive Protection policies, according to Learn, but it removes the labels already applied.
+The setting has a portal path but, at the time of writing (November 2026), Microsoft Learn documents no PowerShell or Graph operation for it. Turning off Adaptive protection in Data Lifecycle Management does not affect other Adaptive Protection policies, according to Learn, but it removes the labels already applied.
 
 The setting is available only while Adaptive Protection itself is on for the tenant; the Adaptive Protection page lists the Insider Risk Management or Insider Risk Management Admins role group for configuring and updating its settings. Audit search is the only monitoring route the pages give for this feature, and Learn says data lifecycle management metrics do not currently appear on the Adaptive Protection dashboard.
 
 ## Open questions
 
 - What will the general availability release do on arrival: is the retention policy created and applied automatically when Adaptive Protection is on, or does an admin opt in? Learn's quick setup and retention pages say it is created automatically for tenants that have not yet turned Adaptive Protection on, while the custom setup note says an explicit opt-in is needed. Watch the Adaptive Protection and retention pages on Learn.
-- Which licence covers this integration, and is any meter or storage charge planned? Watch the subscriptions page Learn links.
+- Is a licence specific to this integration required beyond the Microsoft 365 E5 listing, and is any meter or storage charge planned? Watch the subscriptions page Learn links.
 - Will the 120-day period become configurable, or be set per risk level or location? Learn says it cannot be changed at this time.
 - Will any PowerShell or Graph operation be published for the Adaptive protection in Data Lifecycle Management setting?
 
 <!-- rationale
 risk: Medium. Content deleted by Elevated-risk users is held for 120 days with a fixed period that admins cannot change, so deletion duties and eDiscovery reach need a decision; the default on arrival is not stated.
-cost: Low. The only cost the pages show is admin time; Learn names no licence or meter for this integration and points to a Microsoft 365 subscriptions page for licensing requirements.
+cost: Low. The only cost the pages show is admin time; Learn lists Adaptive Protection under Microsoft 365 E5, and a licence or meter specific to this integration is not yet published.
 impact: Low. Compliance and security admins configure it, and only users at the Elevated insider risk level are affected; Learn says users do not see the retention label.
 -->
 
 <!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Data exposure / role: Anyone with eDiscovery access can find the preserved items. | Found: This role lets users access review sets in eDiscovery. ... This role doesn't allow the user to preview the results of a search that's associated with the case or do other search or case management tasks. | Fix: Replace 'Anyone with eDiscovery access can therefore find items the user thought were deleted.' with 'The preserved content remains accessible for search and eDiscovery from the secured locations used by the workload.' This wording is supported by the already cited https://learn.microsoft.com/purview/retention and makes no blanket permissions claim. | Source: https://learn.microsoft.com/purview/edisc-permissions
-- [contradicted, blocker] Risk assessment: Data exposure / applicability: The Adaptive protection in Data Lifecycle Management setting is the only documented off switch. | Found: To disable Adaptive Protection, select the Adaptive Protection settings tab and turn Adaptive Protection Off. ... the system stops assigning insider risk levels to users and stops sharing them with data loss prevention, data lifecycle management, and Conditional Access. | Fix: Replace 'the only documented off switch is the Adaptive protection in Data Lifecycle Management setting' with 'the feature-specific off switch is the Adaptive protection in Data Lifecycle Management setting'. The tenant-wide Adaptive Protection switch is also documented, including in the briefing's second control row. | Source: https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection
-- [unsupported, blocker] Governance controls: first paragraph / applicability: Changes to the retention setting are portal-only. | Found: Searched: Adaptive protection Data Lifecycle Management enable disable PowerShell Graph Set AdaptiveProtection retention. Read retention, retention-cmdlets and Adaptive Protection; no statement rules out other surfaces. | Fix: Delete ', so changes are portal-only' from the first sentence. Keep the narrower, verified statement that Microsoft Learn documents no PowerShell or Graph operation for the setting at the time of writing.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The retention setting is reached through Microsoft Purview portal > Solutions > Settings > Solution settings > Data lifecycle management > Adaptive protection. | Found: Solutions > Settings > Solution settings> Data lifecycle management > Adaptive protection. ... For Adaptive protection in Data Lifecycle Management, turn the setting off | Fix: Complete the path as 'Solutions > Settings > Solution settings > Data lifecycle management > Adaptive protection > Adaptive protection in Data Lifecycle Management'. The existing path stops on the correct page but omits the setting itself. | Source: https://learn.microsoft.com/purview/retention
-- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost / licensing: The licensing model is unknown because no integration-specific entitlement is published. | Found: Manage insider risk and communication compliance ... Microsoft 365 E5 ... Insider Risk Management, Communication Compliance, Adaptive Protection, and related advanced controls. | Fix: Set licensing.model to 'included'. Replace the licensing notes with 'Microsoft 365 E5 includes Adaptive Protection. A licence requirement specific to this data lifecycle management integration is not yet published.' Cite https://learn.microsoft.com/copilot/plan/compare-copilot-e3-e5-e7. Use the same distinction in Cost and licensing and the cost rationale instead of treating all entitlement as unknown. | Source: https://learn.microsoft.com/copilot/plan/compare-copilot-e3-e5-e7
-- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist asks administrators to review the Elevated-risk population, but the controls table has no corresponding user-risk review control. | Found: Review who sits at the Elevated risk level, since that population decides whose deletions are held. ... Controls cover automatic retention, the tenant Adaptive Protection switch, and audit records. | Fix: The checklist step 'Review who sits at the Elevated risk level, since that population decides whose deletions are held' has no corresponding controls-table row. Remove that step from the checklist; this correction does not require adding a row.
+- [contradicted, blocker] Cost and licensing; rationale: cost; Open questions / cost: The only cost the pages show is administrative time, with storage charges left entirely as a question about future plans. | Found: Because the Preservation Hold library is included in the site's storage quota, you might need to increase your storage when you use retention settings for SharePoint, OneDrive, and Microsoft 365 groups. | Fix: Replace the final sentence of Cost and licensing with: 'Plan for admin time to review the setting, brief records and legal owners, and monitor audit events. Retained SharePoint and OneDrive content also counts against the site's storage quota, and Microsoft says storage might need to be increased.' In the cost rationale, replace 'The only cost the pages show is admin time' with 'Plan for admin time and storage headroom for retained SharePoint and OneDrive content'. In Open questions, change 'any meter or storage charge planned' to 'a separate integration-specific meter planned'. Cite the already-listed https://learn.microsoft.com/purview/retention; do not infer a storage price or mandatory storage purchase. | Source: https://learn.microsoft.com/purview/retention
 -->
