@@ -1,0 +1,706 @@
+{
+  "slug": "microsoft-teams-meeting-shared-files",
+  "roadmapId": 570427,
+  "title": "Microsoft Teams: Meeting Shared Files for meeting participants and Facilitator",
+  "status": "held",
+  "date": "2026-11-20",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-20",
+    "reasons": [
+      "2 blocking findings (claims 16, 31)"
+    ]
+  },
+  "counts": {
+    "claims": 56,
+    "confirmed": 53,
+    "unconfirmed": 2,
+    "contradicted": 1,
+    "blocker": 2,
+    "major": 1,
+    "minor": 2
+  },
+  "summary": "Hold: the briefing assigns file selection exclusively to meeting organisers without evidence; the roadmap says users, not which meeting role can add files. It also calls Facilitator availability the only documented lever, although the cited page documents a separate Loop prerequisite and control. The roadmap details and the feature-specific documentation gaps otherwise check out.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is January CY2027, described as a target rather than a commitment.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "Release phases are General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant), without stating exclusion of other clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed platforms are Desktop, Mac and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: products; Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap products are Microsoft Teams and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Teams\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-10-19T23:15:15.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-19T23:15:15\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Meeting Shared Files is planned to let users add files to a meeting.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The new Meeting Shared Files feature allows users to add relevant files and links to their meeting",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Meeting Shared Files is planned to let users add links to a meeting.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "allows users to add relevant files and links to their meeting",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Added meeting content is intended to be easy to access.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "allows users to add relevant files and links to their meeting for easy access",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "Added content is planned to be shared automatically with all meeting participants.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "to automatically share that content with all meeting participants",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; What's changing; rationale: risk",
+      "type": "record",
+      "claim": "AI in the meeting, such as Facilitator, is planned to use the selected files for targeted grounding.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "AI in the meeting, like the Facilitator agent, uses these files for targeted grounding",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap says the files will help meeting AI answer questions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "uses these files for targeted grounding to answer questions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap says the files will enhance skill functionality.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "to answer questions and enhance skill functionality.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "summary; Why it matters; rationale: impact",
+      "type": "role",
+      "claim": "It is the meeting organiser, not an administrator, who chooses the files.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"Meeting Shared Files\" \"organizer\" Facilitator' and '\"Meeting Shared Files\" Teams Facilitator files links default sharing external participants organizer admin policy'; opened facilitator-teams. The roadmap says users; no role restriction was found.",
+      "severity": "blocker",
+      "fix": "Replace 'It is the organiser, not an administrator, who chooses the files, so oversharing becomes a meeting-by-meeting decision that a service owner cannot see in advance.' with 'The roadmap says users add the content; it does not identify which meeting roles can do so.' Use 'users' instead of 'organisers' for factual statements about who selects or adds files in the summary, Why it matters and impact rationale. Keep organiser-focused advice as advice."
+    },
+    {
+      "n": 17,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "A service owner cannot see the file-selection decision in advance.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"Meeting Shared Files\" \"organizer\" Facilitator' and '\"Meeting Shared Files\" Teams Facilitator files links default sharing external participants organizer admin policy'; opened facilitator-teams and ai-teams-facilitator. Neither states this visibility limitation.",
+      "severity": "major",
+      "fix": "Remove 'that a service owner cannot see in advance'; Microsoft has not documented that visibility limitation."
+    },
+    {
+      "n": 18,
+      "where": "What's changing; front matter: changes",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe Meeting Shared Files itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Meeting Shared Files\" Facilitator skills write actions file locations user guidance'; opened facilitator-teams and meeting-policies-content-sharing. No feature page found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Supported file locations for Meeting Shared Files are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Meeting Shared Files\" Facilitator skills write actions file locations user guidance'; opened facilitator-teams and meeting-policies-content-sharing. Neither describes this feature's file locations; the roadmap does not name them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "The mechanism for granting access to the underlying files is not stated for Meeting Shared Files.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Meeting Shared Files\" Teams Facilitator files links default sharing external participants organizer admin policy'; read external-chat sharing and Teams settings excerpts and opened facilitator-teams. External-chat permissions describe a different feature, not Meeting Shared Files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Handling of external, guest and anonymous participants by Meeting Shared Files is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Meeting Shared Files\" Teams Facilitator files links default sharing external participants organizer admin policy'; opened facilitator-teams and meeting-policies-content-sharing. Found external-chat sharing excerpts, but none establishes participant handling for Meeting Shared Files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Sensitivity-label handling on files used for Meeting Shared Files grounding is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Facilitator shared files grounding identity sensitivity labels retention labels Purview'; opened facilitator-teams and ai-teams-facilitator. No sensitivity-label rule for Meeting Shared Files input files was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Retention-label handling on files used for Meeting Shared Files grounding is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Facilitator file access identity permissions shared files sensitivity labels retention labels'; opened facilitator-teams and ai-teams-facilitator. Their rules cover notes, cloud attachments or interactions, not retention-label handling on this feature's grounding files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Where users add Meeting Shared Files is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Meeting Shared Files\" Facilitator skills write actions file locations user guidance'; opened facilitator-teams. No feature-specific entry point was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: defaultState; summary; Why it matters; Open questions",
+      "type": "default",
+      "claim": "The arrival default for Meeting Shared Files is unknown, and no source says existing behaviour changes.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Meeting Shared Files\" Teams Facilitator files links default sharing external participants organizer admin policy'; opened facilitator-teams and meeting-policies-content-sharing. Automatic sharing in the roadmap concerns added content, not the arrival default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Teams admin center > Teams apps > Manage apps > Facilitator > Allow or Block reaches the Facilitator availability control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "In the left rail navigation, select Teams apps > Manage apps. ... Select Facilitator from the app list. ... In the actions menu, select Allow or Block.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Update-M365TeamsApp -Id <app id> -IsBlocked $true is a MicrosoftTeams command for changing app state in the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+      "quote": "Update-M365TeamsApp -Id 4c4ec2e8-4a2c-4bce-8d8f-00fc664a4e5b -IsBlocked $true ... Unblocks Bookings app ... -IsBlocked: The state of the app in the tenant. ... Type: Boolean",
+      "severity": "minor",
+      "fix": "Use 'Update-M365TeamsApp -Id <app id> -IsBlocked <Boolean>' and add to the row note: 'The reference describes IsBlocked as the tenant app state, but Example 3 describes $true as unblocking; confirm the intended state before using automation.' The command and parameter exist, but the reference does not consistently explain the printed value."
+    },
+    {
+      "n": 28,
+      "where": "controls[0].governs and note; Governance controls",
+      "type": "applicability",
+      "claim": "Facilitator availability controls govern access to Facilitator, rather than documenting a switch for adding Meeting Shared Files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "As an admin, you control whether Facilitator is available to your entire organization or to a certain group of users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "Groups can be allowed Facilitator using an app permission policy and app-centric management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "To allow Facilitator for users, a new app policy needs to be created and then assigned to users. ... You can then assign the policy to your entire tenant or to a select group of users.",
+      "severity": "minor",
+      "fix": "Replace the policy wording in the row note and Governance controls with 'Facilitator access for groups can be managed with app-centric management. In tenants migrated to app-centric management, app permission policies are no longer available.' Cite https://learn.microsoft.com/microsoftteams/app-centric-management, which states: 'After you switch to this feature, you can't access, edit, or use permission policies.' The Facilitator page supports the original wording but the management page qualifies it."
+    },
+    {
+      "n": 30,
+      "where": "controls[1]; summary; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "No tenant switch, admin UI or API specific to Meeting Shared Files is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Teams \"Meeting Shared Files\" PowerShell Set-CsTeamsMeetingPolicy control switch'; opened facilitator-teams and meeting-policies-content-sharing; read Teams settings and meeting-policy reference excerpts. No Meeting Shared Files switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: changes; Governance controls",
+      "type": "absence",
+      "claim": "Facilitator's allow or block control is the only documented lever.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Loop experiences in Teams need to be turned on in order for Facilitator to be used in meetings. ... You can manage this control using the IsCollabMeetingNotesFluidEnabled setting in PowerShell.",
+      "severity": "blocker",
+      "fix": "Replace 'Facilitator's allow or block control is the only documented lever' in changes with 'Facilitator availability is a documented alternative lever'. Replace 'The one documented control is Facilitator's availability' in Governance controls with 'The table documents Facilitator's availability as an alternative lever'. Do not claim that this is the only documented Facilitator control."
+    },
+    {
+      "n": 32,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "default",
+      "claim": "Facilitator is allowed by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Facilitator is allowed by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Facilitator is blocked if all apps are blocked for the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "However, if all apps are blocked for your organization, Facilitator is also blocked.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Facilitator is included with a Microsoft Copilot license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Facilitator is included with a Microsoft Copilot license and subject to available capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Facilitator entitlement is subject to available capacity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Facilitator is included with a Microsoft Copilot license and subject to available capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "Facilitator requires an eligible Microsoft 365 base license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Users must meet all of the following requirements: ... An eligible Microsoft 365 base license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "Facilitator requires an eligible Teams license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Have an eligible Microsoft Teams license. ... If you have Microsoft 365 (no Teams) licenses, you need to purchase separate Teams licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "Facilitator requires a Microsoft Copilot license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Have a Microsoft Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Only licensed users can initiate Facilitator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Only licensed users can initiate Facilitator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Unlicensed users cannot prompt Facilitator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Unlicensed users can't prompt Facilitator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Unlicensed users can see other users' prompts and Facilitator's responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Unlicensed users can't prompt Facilitator, but they can see others' prompts to Facilitator and Facilitator's responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure; rationale: impact",
+      "type": "behaviour",
+      "claim": "Facilitator acts like a meeting assistant whose prompts and responses are visible to everyone in the meeting conversation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Facilitator acts like an assistant sitting in your users' meetings. If a user prompts Facilitator, all users can view that communication ... Facilitator then displays its response within the meeting's conversation for everyone to see.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure",
+      "type": "availability",
+      "claim": "Facilitator currently is not supported in external chats and meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Currently, Facilitator isn't supported in 1:1 chats, group chats, or external chats and meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Prevent copy and paste meeting settings do not apply to Facilitator responses or AI-generated meeting notes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Meeting settings like Prevent copy and paste and Watermarks aren't applied to Facilitator's responses or AI-generated notes in meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Meeting Watermarks do not apply to Facilitator responses or AI-generated meeting notes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Meeting settings like Prevent copy and paste and Watermarks aren't applied to Facilitator's responses or AI-generated notes in meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope",
+      "type": "applicability",
+      "claim": "Loop experiences in Teams must be turned on to use Facilitator in meetings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Loop experiences in Teams need to be turned on in order for Facilitator to be used in meetings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The included model describes the documented Copilot entitlement for the Facilitator component, with feature-specific licensing explicitly left unpublished.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+      "quote": "Facilitator is included with a Microsoft Copilot license and subject to available capacity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "A price specific to Meeting Shared Files is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Meeting Shared Files\" licensing price meter Microsoft Teams Copilot'; opened facilitator-teams; read Copilot license-options, service-description and Teams service-description excerpts. No Meeting Shared Files price was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "A meter specific to Meeting Shared Files is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Meeting Shared Files\" licensing price meter Microsoft Teams Copilot'; opened facilitator-teams; read Copilot license-options, billing-licensing and cost-considerations excerpts. No meter identifying Meeting Shared Files was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Licensing specific to Meeting Shared Files is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Meeting Shared Files\" licensing price meter Microsoft Teams Copilot'; opened facilitator-teams and read Teams user-access and Copilot license-options excerpts. Found product licensing, not a feature-specific requirement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "Whether adding or viewing Meeting Shared Files itself requires the Facilitator prerequisites is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Meeting Shared Files\" licensing price meter Microsoft Teams Copilot'; opened facilitator-teams and read Teams user-access excerpts. Facilitator requirements are stated, but no source extends the Copilot or Loop requirements to adding or viewing Meeting Shared Files itself.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The identity Facilitator uses to read Meeting Shared Files is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Facilitator file access identity permissions shared files sensitivity labels retention labels'; opened facilitator-teams and ai-teams-facilitator. No identity for reading Meeting Shared Files was found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Which Facilitator skills will read Meeting Shared Files is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Meeting Shared Files\" Facilitator skills write actions file locations user guidance'; opened facilitator-teams. Its general skill list does not say which skills consume Meeting Shared Files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "Whether Meeting Shared Files grounding results in write actions is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Meeting Shared Files\" Facilitator skills write actions file locations user guidance'; opened facilitator-teams. General Word creation and preview skills are documented, but neither the page nor the roadmap establishes write actions resulting from Meeting Shared Files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Change & support",
+      "type": "absence",
+      "claim": "Microsoft has not yet published user guidance for Meeting Shared Files.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Meeting Shared Files\" Facilitator skills write actions file locations user guidance'; opened facilitator-teams. Results did not identify feature-specific user guidance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Whether restricting Facilitator also stops it using Meeting Shared Files is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Teams \"Meeting Shared Files\" PowerShell Set-CsTeamsMeetingPolicy control switch'; opened facilitator-teams and meeting-policies-content-sharing. Neither documents how Facilitator restrictions interact with Meeting Shared Files grounding.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-20T21:42:42.478Z",
+    "summary": {
+      "links": 3,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=570427",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether Facilitator is allowed or blocked for the organisation",
+        "docs": "https://learn.microsoft.com/microsoftteams/facilitator-teams",
+        "reachable": true,
+        "segments": [
+          "Teams apps",
+          "Manage apps",
+          "Facilitator",
+          "Allow or Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether Facilitator is allowed or blocked for the organisation",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp",
+        "reachable": true,
+        "token": "Update-M365TeamsApp",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

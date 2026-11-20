@@ -15,7 +15,7 @@ risk: "medium"
 cost: "low"
 impact: "high"
 defaultState: "unknown"
-action: "prepare"
+action: "act-now"
 licensing:
   model: "included"
   notes: "Microsoft's Copilot requirements page says Copilot Chat is available to users with an eligible Microsoft 365 subscription and that a Microsoft Copilot licence is not required for eligible users. No price or meter specific to this expansion is published."
@@ -24,6 +24,9 @@ tags: ["copilot-chat","outlook","m365-copilot","unlicensed-users","enterprise-da
 sources:
   - title: "Microsoft 365 Roadmap 554934"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=554934"
+    kind: "roadmap"
+  - title: "Microsoft 365 Roadmap 531910"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=531910"
     kind: "roadmap"
   - title: "Microsoft 365 Copilot release notes"
     url: "https://learn.microsoft.com/microsoft-365/copilot/release-notes"
@@ -49,19 +52,19 @@ sources:
   - title: "Pin Microsoft Copilot Chat in the Microsoft 365 apps"
     url: "https://learn.microsoft.com/copilot/implement/pin-copilot-chat-navbar"
     kind: "learn"
-  - title: "Microsoft Copilot and on-premises mailboxes"
+  - title: "Exchange Hybrid: Microsoft Copilot and on-premises mailboxes"
     url: "https://learn.microsoft.com/exchange/hybrid-deployment/exchange-hybrid-and-copilot-behaviour"
     kind: "learn"
   - title: "copilotPackage: block"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
     kind: "learn"
-  - title: "Which users can install the Copilot app that provides Copilot Chat in Outlook (Microsoft 365 admin center)"
+  - title: "Apps for Microsoft 365 that work across application hosts"
     url: "https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365"
     kind: "learn"
-  - title: "Which labelled or external email Copilot Chat may use as grounding (Microsoft Purview portal)"
+  - title: "Microsoft Purview DLP for Microsoft 365 Copilot and Cowork"
     url: "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about"
     kind: "learn"
-  - title: "Which labelled or external email Copilot Chat may use as grounding (PowerShell)"
+  - title: "New-DlpComplianceRule"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy"
     kind: "learn"
 videos: []
@@ -103,19 +106,23 @@ changes:
     note: "First briefing for the GCC, GCC High and DoD roadmap item; the Worldwide item 531910 is listed separately and has no briefing yet."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 82 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected after verification: narrowed the mailbox-reach and on-premises mailbox statements, removed an unsupported claim about spending controls, clarified Integrated Apps blocking and pinning, and set action to act-now."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 79 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 82
-  confirmed: 78
-  unconfirmed: 2
-  contradicted: 2
-  attempts: 1
-  hash: "ed6c646973be53de1e72f065b98129bf"
+  claims: 79
+  confirmed: 79
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "f5263ba55e92303568d330bec00ef24d"
 ---
 
 ## What's changing
@@ -130,19 +137,19 @@ The roadmap record shows status Rolling out, General Availability, with an Octob
 
 ## Why it matters
 
-Mailbox-wide reasoning lets a prompt reach anything a user can already open in their mailbox and calendar. The data is the user's own, but summarising and searching make forgotten, over-shared or sensitive mail much easier to find than browsing would. It reaches people who hold no Copilot licence, so licence assignment is not the way to limit it.
+Mailbox-wide reasoning can use inbox and calendar data already available to the user, subject to applicable data-protection restrictions. The data is the user's own, but summarising and searching make forgotten, over-shared or sensitive mail much easier to find than browsing would. It reaches people who hold no Copilot licence, so licence assignment is not the way to limit it.
 
 Microsoft has not stated what happens on arrival in a tenant where nobody acts, and no source says existing behaviour is switched off for these users. Plan on the expansion reaching Copilot Chat users in your government tenant, and decide before then which Purview DLP rules and which Integrated Apps availability setting you want in place.
 
 ## Risk assessment
 
 **Data exposure**
-- The release notes say Copilot Chat reasons over the user's entire inbox, calendar, meetings and other enterprise data already available to them, so any mail or invite a user can open can ground an answer. Purview DLP can exclude labelled email from Copilot, but its sensitivity-label rules cover emails sent on or after January 1, 2025 and don't support calendar invites.
+- The release notes say Copilot Chat reasons over the user's entire inbox, calendar, meetings and other enterprise data already available to them. Purview DLP can exclude labelled email from Copilot, but its sensitivity-label rules cover emails sent on or after January 1, 2025 and don't support calendar invites.
 - Microsoft's overview says Copilot Chat is protected by Enterprise Data Protection when users sign in with Microsoft Entra accounts, and its government cloud page says prompts, responses and generated content stay in the government cloud.
 
 **Security & identity**
 - Inbox reasoning means external email can become grounding material. Microsoft's DLP page offers a preview condition, Email is received from > External users, to exclude such mail and says it helps reduce the risk of prompt injection and untrusted data influence.
-- Microsoft documents mailbox grounding as not supported where the primary mailbox is on-premises, so hybrid users are outside the expansion.
+- Microsoft documents mailbox grounding as not supported where the primary mailbox is on-premises, so users whose primary mailbox is hosted on-premises cannot use mailbox grounding.
 
 **Autonomy & actions**
 - The release notes say users can take action directly in Outlook, and do not describe which actions. Confirm in a pilot what Copilot Chat can change in a mailbox or calendar before relying on your current approvals.
@@ -155,7 +162,7 @@ Microsoft has not stated what happens on arrival in a tenant where nobody acts, 
 
 **Licence.** Microsoft's requirements page says Copilot Chat is available to users with an eligible Microsoft 365 subscription, and lists a Microsoft Copilot licence as not required for eligible users. The roadmap text and the release notes say the expansion is for users without a Microsoft 365 Copilot licence. Learn's overview adds that some Copilot Chat features are subject to fair use limits.
 
-**Meter.** Learn documents no meter or price for this expansion at the time of writing (November 2026), so no cap or budget control applies to it.
+**Meter.** Learn documents no meter or price for this expansion at the time of writing (November 2026).
 
 **Indirect costs.** Admin time to write and test DLP policies and decide app availability. Microsoft's service description says Purview controls for Copilot require a licence for Microsoft Purview, available as part of Microsoft 365 G3/G5 or as a standalone. Integrated Apps controls require the Global Administrator role.
 
@@ -202,11 +209,13 @@ Microsoft has not stated what happens on arrival in a tenant where nobody acts, 
 </tbody>
 </table>
 
+The Integrated Apps availability setting does not change apps an admin has deployed. Microsoft's Manage Copilot Chat page says blocking through Integrated Apps applies to Copilot in the Copilot app, Teams, Outlook and Copilot Chat on the web. Manage Copilot Chat describes user/group scoping, but the Integrated Apps blocking instructions say Block app blocks all users. To retain licensed-user access, Manage Copilot Chat instead directs administrators to restrict self-install availability to a licensed group and not deploy the app to unlicensed users. The Integrated Apps reference disagrees about Teams: it says the app is blocked only in Outlook and the Microsoft Copilot application, and Teams continues to honour its Teams admin center settings.
+
+The pinning page says the Copilot > Settings > Pin Microsoft Copilot Chat setting no longer applies to the Microsoft Copilot app. It separately says Do not pin Copilot Chat in Microsoft 365 apps is honoured in Teams and Outlook, but users can still add Copilot from their app store; pinning is therefore not an access block. Microsoft's Graph call to block a Copilot package needs a Microsoft Agent 365 licence, and Learn does not say it covers the Copilot app itself.
+
+The Purview route in the table selects the policy location. Add a rule using Content contains > Sensitivity labels and Prevent Copilot and Cowork from processing content to exclude labelled items. External-email rules use Email is received from > External users and Prevent Copilot from processing content. DLP policy scoping is based on the user who submits the prompt, not on the owner of the mail.
+
 Microsoft Learn documents no setting specific to this expansion at the time of writing (November 2026); the rows above are existing controls that apply to Copilot Chat as a whole.
-
-The Integrated Apps availability setting does not change apps an admin has deployed. Microsoft's Manage Copilot Chat page says blocking through Integrated Apps is a tenant-wide control that can be scoped to specific users or groups, including licensed users, and that it applies to Copilot in the Copilot app, Teams, Outlook and Copilot Chat on the web. The Copilot > Settings > Pin Microsoft Copilot Chat page says Copilot Chat cannot be unpinned from the navigation for all tenants worldwide as of January 2026, so pinning is not a reliable control. Microsoft's Graph call to block a Copilot package needs a Microsoft Agent 365 licence, and Learn does not say it covers the Copilot app itself.
-
-DLP policy scoping is based on the user who submits the prompt, not on the owner of the mail.
 
 ## Open questions
 
@@ -222,17 +231,8 @@ cost: Low. The roadmap text and Microsoft's requirements page say no Microsoft 3
 impact: High. It changes what Copilot Chat in Outlook can answer from for users who have Copilot Chat but no Microsoft 365 Copilot licence, on desktop, web and mobile.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters; Risk assessment: Data exposure / behaviour: Anything a user can open in their mailbox or calendar can ground an answer. | Found: Identified items still appear in the citations of the response, but Copilot and Cowork don't access or use the content of the item in the response. | Fix: Replace 'Mailbox-wide reasoning lets a prompt reach anything a user can already open in their mailbox and calendar' with 'Mailbox-wide reasoning can use inbox and calendar data already available to the user, subject to applicable data-protection restrictions.' Remove 'so any mail or invite a user can open can ground an answer' from Data exposure. The cited DLP page documents accessible labelled emails whose content is excluded. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
-- [unsupported, blocker] Risk assessment: Security & identity / availability: Hybrid users are outside the expansion. | Found: Searched: Exchange hybrid deployment Exchange Online mailboxes Copilot Chat supported. Read exchange-hybrid-and-copilot-behaviour, microsoft-copilot-requirements and the Exchange Server hybrid deployment excerpt. The exclusion is primary mailboxes on-premises, not all hybrid users. | Fix: Replace 'so hybrid users are outside the expansion' with 'so users whose primary mailbox is hosted on-premises cannot use mailbox grounding', as documented at https://learn.microsoft.com/exchange/hybrid-deployment/exchange-hybrid-and-copilot-behaviour.
-- [unsupported, blocker] Cost and licensing: Meter / cost: No cap or budget control applies to this expansion because no meter or price is documented. | Found: Searched: Copilot Chat Outlook inbox calendar reasoning price meter billing budget cap unlicensed users; "Copilot Chat" "Outlook" "billing" "inbox". Read requirements, overview, release entry, pay-as-you-go-overview and pay-as-you-go-meters. None states that no spending control applies. | Fix: Delete ', so no cap or budget control applies to it'. Keep only 'Learn documents no meter or price for this expansion at the time of writing (November 2026).' An unpublished meter does not establish the absence or inapplicability of budget controls.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; front matter: changes / record: Roadmap item 531910 describes the same Copilot Chat in Outlook expansion. | Found: 531910: Microsoft Copilot (Microsoft 365): Copilot Chat in Outlook expands to reason over inbox, calendar, and enterprise data | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=531910 to sources as a roadmap source for the separately quoted record.
-- [supported, minor] Governance controls / applicability: Manage Copilot Chat says Integrated Apps blocking can be scoped to specific users or groups. | Found: Blocking Copilot through Integrated Apps is a tenant-wide control that you can scope to specific users or groups, including licensed users. | Fix: Replace the scoping clause with: 'Manage Copilot Chat describes user/group scoping, but the Integrated Apps blocking instructions say Block app blocks all users. To retain licensed-user access, Manage Copilot Chat instead directs administrators to restrict self-install availability to a licensed group and not deploy the app to unlicensed users.' Cite https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365 and https://learn.microsoft.com/copilot/manage/manage-copilot-chat. | Source: https://learn.microsoft.com/copilot/manage/manage-copilot-chat
-- [supported, minor] Governance controls / applicability: Manage Copilot Chat says Integrated Apps blocking also blocks Teams. | Found: This setting blocks Copilot in the Microsoft Copilot app, Teams, Outlook, and Copilot Chat on the web for all users. | Fix: Add: 'The Integrated Apps reference disagrees about Teams: it says the app is blocked only in Outlook and the Microsoft Copilot application, and Teams continues to honour its Teams admin center settings.' Cite https://learn.microsoft.com/microsoft-365/admin/manage/teams-apps-work-on-outlook-and-m365. | Source: https://learn.microsoft.com/copilot/manage/manage-copilot-chat
-- [supported, minor] controls[2].ui / admin-path: The printed Purview route reaches the Microsoft Copilot, Copilot Chat, and Copilot Cowork policy location. | Found: Go to Data Loss Prevention > Policies and select + Create policy. Select the Custom template, then Custom policy. On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on. | Fix: Keep the documented route, but clarify its stopping point in the note: 'This route selects the policy location. Add a rule using Content contains > Sensitivity labels and Prevent Copilot and Cowork from processing content to exclude labelled items. External-email rules use Email is received from > External users and Prevent Copilot from processing content.' These further choices are documented at https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
-- [supported, minor] Governance controls / behaviour: The pinning page says Copilot Chat cannot be unpinned from navigation for all tenants worldwide as of January 2026. | Found: The Pin Copilot Chat in Microsoft 365 apps setting no longer applies to the Microsoft Copilot app, and Copilot Chat cannot be unpinned from the navigation for all tenants worldwide as of January 28, 2026. | Fix: Replace the blanket navigation statement with: 'The pinning page says this setting no longer applies to the Microsoft Copilot app. It separately says Do not pin Copilot Chat in Microsoft 365 apps is honoured in Teams and Outlook, but users can still add Copilot from their app store; pinning is therefore not an access block.' Cite https://learn.microsoft.com/copilot/implement/pin-copilot-chat-navbar. | Source: https://learn.microsoft.com/copilot/implement/pin-copilot-chat-navbar
-- [contradicted, minor] front matter: action; Governance guidance / consistency: The prepare action rating fits a rolling-out expansion with medium risk and an immediate app-availability decision. | Found: action: "prepare"; status: "rolling-out"; risk: "medium"; Decide whether the Copilot app stays installable by all users or only a licensed group, using the Integrated Apps availability row. | Fix: Set action to act-now: the item is already Rolling out, expands existing users' data access, is rated medium risk, and the briefing identifies an availability decision and DLP configuration to make before it reaches users. Keep the feature-specific default as unknown.
+- [supported, minor] controls[2].ui; Governance controls: third row / admin-path: The printed Purview route reaches the Microsoft Copilot, Copilot Chat, and Copilot Cowork policy location. | Found: Go to Data Loss Prevention > Policies and select + Create policy. Select the Custom template, then Custom policy. On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on. | Fix: The route correctly reaches the policy location but stops before the label restriction. Extend controls[2].ui.path to 'Data Loss Prevention > Policies > Create policy > Custom template > Custom policy > Locations > Microsoft Copilot, Copilot Chat, and Copilot Cowork > Add a rule > Content contains > Sensitivity labels > Prevent Copilot and Cowork from processing content', using https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about. Retain the separate external-email condition and action in the prose. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
 -->

@@ -1,0 +1,788 @@
+{
+  "slug": "microsoft-purview-permissions-audit-log-improvements-us-government",
+  "roadmapId": 573447,
+  "title": "Microsoft Purview: audit logs for role and scoped-role permission checks (GCC, GCC High and DoD)",
+  "status": "verified-with-gaps",
+  "date": "2026-11-20",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 58,
+    "confirmed": 58,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "The briefing matches the government-cloud roadmap record and accurately documents the existing audit controls. Minor corrections should clarify the product-level licensing, extend the role-group navigation to its membership control, and cite the documentation connecting that PowerShell command to Purview roles.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "What's changing; title; summary",
+      "type": "record",
+      "claim": "Microsoft plans to improve permission checks when users access the Microsoft Purview portal.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Improving permission checks when users access the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; title; summary; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "Enhanced audit logs are planned to provide clearer visibility into role access decisions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enhanced audit logs will provide clearer visibility into role and scoped-role access decisions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; title; summary; Governance guidance",
+      "type": "record",
+      "claim": "The planned enhanced audit logs include visibility into scoped-role access decisions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enhanced audit logs will provide clearer visibility into role and scoped-role access decisions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Why it matters; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap identifies administrators troubleshooting access issues as beneficiaries.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "helping administrators troubleshoot access issues",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; Scope; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap identifies monitoring authorisation outcomes as a purpose of the change.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "helping administrators troubleshoot access issues and monitor authorization outcomes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "summary",
+      "type": "record",
+      "claim": "No administrator action is described in the supplied roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Improving permission checks when users access the Microsoft Purview portal. Enhanced audit logs will provide clearer visibility into role and scoped-role access decisions, helping administrators troubleshoot access issues and monitor authorization outcomes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: status; summary; What's changing; Scope; Risk assessment",
+      "type": "record",
+      "claim": "Item 573447 has status Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is October CY2026, a month already past on the run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: clouds; title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The clouds listed for this item are GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: roadmapModified; What's changing",
+      "type": "record",
+      "claim": "The supplied record was last modified on 3 November 2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-03T00:14:11\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "Separate roadmap item 569363 describes the same permission-check audit improvements.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "569363: Improving permission checks when users access the Microsoft Purview portal. Enhanced audit logs will provide clearer visibility into role and scoped-role access decisions, helping administrators troubleshoot access issues and monitor authorization outcomes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Item 569363 lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "569363: \"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "Item 569363 has status Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "569363: \"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "Item 569363 has a September CY2026 target.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "569363: \"targetDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied roadmap record does not name the audit operations.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enhanced audit logs will provide clearer visibility into role and scoped-role access decisions, helping administrators troubleshoot access issues and monitor authorization outcomes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied roadmap record does not name the new record fields.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enhanced audit logs will provide clearer visibility into role and scoped-role access decisions, helping administrators troubleshoot access issues and monitor authorization outcomes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not stated the default or setup requirements for these new permission-check records.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview permission checks role scoped-role access decisions audit logs default configuration; permission checks enable disable Set-AdminAuditLogConfig. Read roadmap, audit-log-activities, audit-get-started, audit-search and audit-log-enable-disable; no feature-specific default found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; front matter: changes",
+      "type": "absence",
+      "claim": "No Microsoft Learn page describing this specific improvement was found at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview permission checks role scoped-role access decisions audit logs 573447 569363; CheckUsersInRoles CheckUserInRolesWithScopes. Opened purview-permissions, audit-log-activities, audit-search and audit-get-started; results describe surrounding controls, not this improvement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; controls[0].note; Governance guidance",
+      "type": "absence",
+      "claim": "Learn does not list operation names for these access-check audit records.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: CheckUsersInRoles CheckUserInRolesWithScopes Microsoft Purview audit; permission checks role scoped-role access decisions audit logs. Searched the fetched audit-log-activities text for these names, permission checks and access decisions; its Purview table lists role-management events.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not published the fields or record type of the new permission-check records.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview permission check audit records restricted administrative units retention record type fields; CheckUsersInRoles CheckUserInRolesWithScopes. Read audit-log-activities and audit-search; no schema or record type identifying these new records found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "Learn documents no setting specific to this feature as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview permission checks audit logs enable disable Set-AdminAuditLogConfig UnifiedAuditLogIngestionEnabled scoped role. Read audit-log-enable-disable, audit-search, purview-permissions and Get-AdminAuditLogConfig search excerpt; only general audit configuration found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is unknown because no feature-specific licence has been published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-get-started",
+      "quote": "Licensing for Audit (Standard) and Audit (Premium) requires the appropriate organization subscription that provides access to the audit log search tool and per-user licensing that's required to log and retain audit records.",
+      "severity": "minor",
+      "fix": "Set licensing.model to included under the standard's rule for an option inside a licensed product. Replace the notes with: 'The existing Audit (Standard) or Audit (Premium) organisation subscription and per-user licensing requirements apply. A licence requirement specific to this improvement is not yet published.' Keep https://learn.microsoft.com/purview/audit-get-started as the source; do not assert that the new events are Premium-only."
+    },
+    {
+      "n": 26,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "A licence requirement specific to this permission-check improvement has not been published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview permissions audit log improvements licensing price meter retention GCC GCC High DoD. Read audit-get-started, audit-solutions-overview and Microsoft Purview service-description search excerpts; general Audit licensing appears, but no requirement names this improvement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft has not published a price specific to this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview permissions audit log improvements licensing price meter retention GCC GCC High DoD. Read audit-get-started, audit-solutions-overview and Purview service-description excerpts; none gives a price for permission-check audit improvements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published a meter specific to this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview permissions audit log improvements licensing price meter retention GCC GCC High DoD. Read audit-get-started and audit-solutions-overview; the former's pay-as-you-go requirement concerns non-Microsoft 365 AI interactions, not portal permission checks.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap item mentions no charge.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Improving permission checks when users access the Microsoft Purview portal. Enhanced audit logs will provide clearer visibility into role and scoped-role access decisions, helping administrators troubleshoot access issues and monitor authorization outcomes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Audit (Standard) and Audit (Premium) require an appropriate organisation subscription for access to audit search.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-get-started",
+      "quote": "Licensing for Audit (Standard) and Audit (Premium) requires the appropriate organization subscription that provides access to the audit log search tool",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The general Audit licensing rules include per-user licensing required to log and retain records.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-get-started",
+      "quote": "per-user licensing that's required to log and retain audit records.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "Audit retention and searchability depend on the organisation subscription and licences assigned to specific users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "The length of time that an audit record is retained (and searchable in the audit log) depends on your Office 365 or Microsoft 365 Enterprise subscription, and specifically the type of the license that is assigned to specific users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft does not identify which retention category applies to the new permission-check records.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview permission check audit records retention record type fields. Read audit-search and audit-solutions-overview: general rules depend on workload, user licensing and whether an entity is non-user; no source identifies this feature's record category.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].ui; Governance controls; Governance guidance",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Audit > Search reaches the tenant's general audit search page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "Select the Audit solution card. If the Audit solution card isn't displayed, select View all solutions and then select Audit from the Core section. On the Search page, configure the following search criteria as applicable:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "Search-UnifiedAuditLog -StartDate <start> -EndDate <end> -Operations <operation names> searches the unified audit log by date and operation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchange/search-unifiedauditlog",
+      "quote": "Search-UnifiedAuditLog -StartDate 5/1/2023 -EndDate 5/8/2023 -RecordType SharePointFileOperation -Operations FileAccessed -SessionId \"WordDocs_SharepointViews\" -SessionCommand ReturnLargeSet",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "controls[0].note; Governance controls",
+      "type": "admin-path",
+      "claim": "Exact operation names are entered in Activities - operations names.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "Activities - operations names: Enter the exact operation names to search for audited activities to include in your search results.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "Search-UnifiedAuditLog runs in Exchange Online PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "The underlying cmdlet used to search the audit log is an Exchange Online cmdlet, which is Search-UnifiedAuditLog. ... You have to run this cmdlet in Exchange Online PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "controls[1].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Settings > Roles and scopes > Role groups reaches the Purview role groups used to manage audit access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "Go to Settings > Roles and scopes ... Select Role groups. ... select a Microsoft Purview role group you want to add users to. Select Edit on the control bar. ... select Choose users or Choose groups.",
+      "severity": "minor",
+      "fix": "Extend controls[1].ui.path and the rendered table path to 'Settings > Roles and scopes > Role groups > role group > Edit > Choose users' for adding individual users, as documented at https://learn.microsoft.com/purview/purview-permissions#add-users-or-groups-to-a-microsoft-purview-built-in-role-group. The current path stops early on the correct listing page."
+    },
+    {
+      "n": 39,
+      "where": "controls[1].api; Governance controls",
+      "type": "command",
+      "claim": "Add-RoleGroupMember -Identity <role group> -Member <user> grants a user the roles assigned to a Purview role group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+      "quote": "Add-RoleGroupMember [-Identity] <RoleGroupIdParameter> -Member <SecurityPrincipalIdParameter> ... When you add a member to a role group, the member is given the effective permissions provided by the management roles assigned to the role group.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/entra/identity/role-based-access-control/m365-workload-docs#microsoft-365 to sources. Its management API reference explicitly documents Add-RoleGroupMember for Purview-specific roles in Security & Compliance PowerShell; the cited command reference supplies the syntax."
+    },
+    {
+      "n": 40,
+      "where": "controls[1].note; Scope; Governance guidance; Governance controls",
+      "type": "role",
+      "claim": "Audit Reader and Audit Manager have the audit-search roles assigned by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-get-started",
+      "quote": "Admins and members of investigation teams must be assigned the View-Only Audit Logs or Audit Logs role ... By default, the Microsoft Purview portal Role groups page assigns these roles to the Audit Reader and Audit Manager role groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "Viewing Purview role groups requires Global Administrator or the Role Management role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "To view Role groups in the Roles and scopes area in the Microsoft Purview portal, users need to be a global administrator or need to be assigned the Role Management role",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[2].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Audit > Start recording user and admin activity turns on general tenant auditing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Select the Audit solution card. ... If auditing isn't turned on for your organization, a banner is displayed prompting you to start recording user and admin activity. Select the Start recording user and admin activity banner.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[2].api; Governance controls",
+      "type": "command",
+      "claim": "Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true turns on general tenant auditing in Exchange Online PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "Connect to Exchange Online PowerShell. Run the following PowerShell command to turn on auditing. Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The start-recording banner is displayed when tenant auditing is off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "If auditing isn't turned on for your organization, a banner is displayed prompting you to start recording user and admin activity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[2].note; Governance controls",
+      "type": "role",
+      "claim": "Turning auditing on or off requires the Audit Logs role in Exchange Online.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "You must be assigned the Audit Logs role in Exchange Online to turn auditing on or off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope: Prerequisite",
+      "type": "default",
+      "claim": "Learn describes audit logging as on by default for Microsoft 365 organisations in the enterprise context of this briefing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "Audit log search is turned on by default for Microsoft 365 and Office 365 enterprise organizations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Scope: Prerequisite; Governance controls",
+      "type": "behaviour",
+      "claim": "Turning tenant auditing off makes audit searches return no results.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "When you turn off auditing, searches of the audit log in Microsoft Purview return no results. Running the Search-UnifiedAuditLog cmdlet in Exchange Online PowerShell also returns no results.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance guidance: Before rollout",
+      "type": "command",
+      "claim": "Get-AdminAuditLogConfig | Format-List UnifiedAuditLogIngestionEnabled in Exchange Online PowerShell verifies the tenant audit setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+      "quote": "To verify that auditing is turned on for your organization, run the following command in Exchange Online PowerShell: Get-AdminAuditLogConfig | Format-List UnifiedAuditLogIngestionEnabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Data exposure; Scope: Roles; Governance controls",
+      "type": "role",
+      "claim": "Searching the audit log in the Purview portal requires Audit Logs or View-Only Audit Logs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "You must be assigned the Audit Logs or View-Only Audit Logs roles in the Microsoft Purview portal to search the audit log.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Access to audit cmdlets requires Audit Logs or View-Only Audit Logs in the Exchange admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "To access audit cmdlets, you must be assigned the Audit Logs or View-Only Audit Logs roles in the Exchange admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "A restricted administrator can search and export user-generated audit logs only within assigned administrative units.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "A restricted admin can only search and export user-generated audit logs within the scope of their assigned administrative units.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "An unrestricted administrator can access all audit logs, including non-user and system-account logs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "An unrestricted admin has access to all audit logs, including logs generated by non-user and system accounts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Data exposure; Open questions",
+      "type": "absence",
+      "claim": "The specific visibility of the new records to administrative-unit-restricted administrators is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview permission check audit records restricted administrative units retention record type fields. Read audit-search, purview-permissions and purview-admin-units search excerpts; general scoping is documented, but the new records' user/non-user classification is not.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "An Entra role takes precedence at runtime over an overlapping scoped Purview role-group assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "If you assign both an Entra role and a scoped Microsoft Purview role group assignment to a user or group ... the Entra role takes precedence at runtime.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "For overlapping capabilities, the Entra role leaves effective access unscoped despite the scoped Purview assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-permissions",
+      "quote": "When both scoped Microsoft Purview role assignments and Entra roles are present, Entra roles always take precedence, and scoping applied through Administrative Units doesn't restrict the user's effective permissions for overlapping capabilities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes permission checks and audit visibility, not an automated action.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Improving permission checks when users access the Microsoft Purview portal. Enhanced audit logs will provide clearer visibility into role and scoped-role access decisions, helping administrators troubleshoot access issues and monitor authorization outcomes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risk assessment: Security & identity; rationale: risk; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap does not describe granting new access or changing ordinary users' permissions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Improving permission checks when users access the Microsoft Purview portal. Enhanced audit logs will provide clearer visibility into role and scoped-role access decisions, helping administrators troubleshoot access issues and monitor authorization outcomes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Learn's Microsoft Purview permission activities table describes role-group and user-assignment management, rather than access checks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "The following table lists Microsoft Purview administration activities that the Microsoft 365 audit log records when an administrator manages role-based access control (RBAC) role groups and user assignments.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-20T21:42:42.301Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=573447",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-search",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-get-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-permissions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-log-activities",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchange/search-unifiedauditlog",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Searching the audit log for permission-check records",
+        "docs": "https://learn.microsoft.com/purview/audit-search",
+        "reachable": true,
+        "segments": [
+          "Audit",
+          "Search"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Searching the audit log for permission-check records",
+        "docs": "https://learn.microsoft.com/powershell/module/exchange/search-unifiedauditlog",
+        "reachable": true,
+        "token": "Search-UnifiedAuditLog",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Who can search and export the audit log",
+        "docs": "https://learn.microsoft.com/purview/purview-permissions",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Roles and scopes",
+          "Role groups"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Who can search and export the audit log",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember",
+        "reachable": true,
+        "token": "Add-RoleGroupMember",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether the tenant records unified audit log activity",
+        "docs": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+        "reachable": true,
+        "segments": [
+          "Audit",
+          "Start recording user and admin activity"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether the tenant records unified audit log activity",
+        "docs": "https://learn.microsoft.com/purview/audit-log-enable-disable",
+        "reachable": true,
+        "token": "Set-AdminAuditLogConfig",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

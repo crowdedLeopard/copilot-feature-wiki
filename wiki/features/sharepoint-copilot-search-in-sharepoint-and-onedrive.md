@@ -17,8 +17,8 @@ impact: "high"
 defaultState: "on"
 action: "act-now"
 licensing:
-  model: "included"
-  notes: "Learn's Copilot Search FAQ says there is no additional cost for Copilot Search itself and that it is included as part of the Microsoft Copilot licence. Microsoft's notice says some AI capabilities depend on licensing; terms for the SharePoint and OneDrive surface are not yet published."
+  model: "unknown"
+  notes: "Learn's Copilot Search FAQ says there is no additional cost for Copilot Search itself and that it is included as part of the Microsoft Copilot licence; that is documented for the Microsoft Copilot app. Microsoft's notice says some AI capabilities depend on licensing; terms for the SharePoint and OneDrive surface are not yet published."
 audiences: ["m365-admin","service-owner","security","change-adoption"]
 tags: ["sharepoint","onedrive","copilot-search","m365-copilot","restricted-content-discovery","oversharing","frontier-program"]
 sources:
@@ -39,6 +39,9 @@ sources:
     kind: "learn"
   - title: "Restrict discovery of SharePoint sites and content"
     url: "https://learn.microsoft.com/sharepoint/restricted-content-discovery"
+    kind: "learn"
+  - title: "Restricted SharePoint Search"
+    url: "https://learn.microsoft.com/sharepoint/restricted-sharepoint-search"
     kind: "learn"
   - title: "Data protection and auditing for Microsoft Copilot"
     url: "https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing"
@@ -71,19 +74,23 @@ changes:
     note: "First briefing for this item, based on the roadmap record, MC1540513 and the Copilot Search and Restricted Content Discovery pages on Learn."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 61 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Correction: licensing model is now not yet published for the SharePoint and OneDrive surface (the Copilot licence statement is scoped to the Microsoft Copilot app); Restricted SharePoint Search noted as retiring; differing Restricted Content Discovery descriptions noted."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 65 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 61
-  confirmed: 60
+  claims: 65
+  confirmed: 64
   unconfirmed: 1
   contradicted: 0
-  attempts: 1
-  hash: "f0320c71cb1aa42bc2e15c095468ef5d"
+  attempts: 0
+  hash: "ff8b1f3b1b142399a08754bb94c531a3"
 ---
 
 ## What's changing
@@ -120,9 +127,9 @@ The exposure is the content people can already reach. Learn says Microsoft Copil
 
 ## Cost and licensing
 
-Licence: Learn's Copilot Search FAQ says there is no additional cost for Copilot Search itself and that it is included as part of the Microsoft Copilot licence. The Copilot Search overview says it is available to users with an eligible Microsoft Copilot licence at no extra cost. Microsoft's notice MC1540513 says some AI-powered capabilities in the SharePoint and OneDrive experience are available based on licensing.
+Licence: Learn's Copilot Search FAQ says there is no additional cost for Copilot Search itself and that it is included as part of the Microsoft Copilot licence, and the Copilot Search overview says it is available to users with an eligible Microsoft Copilot licence at no extra cost; both describe Copilot Search in the Microsoft Copilot app. Microsoft's notice MC1540513 says some AI-powered capabilities in the SharePoint and OneDrive experience are available based on licensing, and the licence for the SharePoint and OneDrive surface is not yet published.
 
-Meter: Learn publishes no meter for this feature at the time of writing (November 2026), and a licence statement specific to the SharePoint and OneDrive surface is not yet published.
+Meter: Learn publishes no meter for this feature at the time of writing (November 2026).
 
 Related control: Learn's Restricted Content Discovery page lists a Microsoft Copilot licence among its prerequisites, and its FAQ says the organisation needs to be licensed for Copilot and have SharePoint Advanced Management available.
 
@@ -165,9 +172,9 @@ Rollout per MC1540513: Frontier Preview (Worldwide) from mid-October 2026 to mid
 
 Deferral is described in Microsoft's notice but Learn documents no setting for it at the time of writing, so the first row is empty by design.
 
-Restricted Content Discovery is an existing site-level control, not a deferral switch. Learn says it stops a site appearing in organization-wide search results and Microsoft Copilot answers unless a user owns or has recently interacted with its content, and that it affects organization-wide search experiences such as SharePoint home. Learn also says it does not affect searches that originate from site context. It is not supported for OneDrive sites.
+Restricted Content Discovery is an existing site-level control, not a deferral switch. Learn says it stops a site appearing in organization-wide search results and Microsoft Copilot answers unless a user owns or has recently interacted with its content, and that it affects organization-wide search experiences such as SharePoint home. Learn also says it does not affect searches that originate from site context. It is not supported for OneDrive sites. The Restricted Content Discovery page describes limiting discovery including recently interacted files, whereas the Copilot Search management page states an ownership or recent-interaction exception; these descriptions differ.
 
-Restricted SharePoint Search is a further existing setting for SharePoint Administrators or above; Learn says it is turned off by default with an empty allowed list.
+Restricted SharePoint Search is an existing setting that is retiring; its own Learn page says new enablement has been blocked since July 31, 2026. It is for SharePoint Administrators or above; Learn says it is turned off by default with an empty allowed list.
 
 ## Open questions
 
@@ -178,15 +185,12 @@ Restricted SharePoint Search is a further existing setting for SharePoint Admini
 
 <!-- rationale
 risk: Medium. Search reaches content users can already open, and Learn says Microsoft Copilot can surface overshared content to anyone with access. Microsoft's notice says deferral options exist, but Learn documents no setting for them yet.
-cost: Low. Learn says Copilot Search itself has no additional cost within the Microsoft Copilot licence, but licensing for the SharePoint and OneDrive surface is not yet published. The cost known today is admin time for testing.
+cost: Low. Learn says Copilot Search in the Microsoft Copilot app has no additional cost within the Microsoft Copilot licence, but licensing for the SharePoint and OneDrive surface is not yet published. The cost known today is admin time for testing.
 impact: High. Microsoft's notice says users who search in SharePoint Online and OneDrive on the web will see a changed search interface, so most staff who use search in those products will notice it.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] front matter: licensing.model / licensing: The announced SharePoint and OneDrive search experience has an included licensing model on the basis of the Microsoft Copilot licence. | Found: Searched: 'SharePoint OneDrive Copilot Search AI summaries license prerequisites pricing meter'; read Search FAQ, overview, Copilot licence options excerpts and service description. Inclusion is documented for the app; the notice does not name the new surface's entitlement. | Fix: Set licensing.model to 'unknown' for the announced surface. Retain the FAQ's inclusion statement only as explicitly app-scoped background, and retain: 'Microsoft's notice says some AI capabilities depend on licensing; terms for the SharePoint and OneDrive surface are not yet published.'
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance controls: Restricted Content Discovery explanation / behaviour: Learn says restricted sites do not appear in organisation-wide search and Copilot answers unless the user owns or recently interacted with content. | Found: This setting prevents these sites from appearing in organization-wide search results and Microsoft Copilot answers unless a user owns or has recently interacted with content on those sites. | Fix: Add: 'The Restricted Content Discovery page describes limiting discovery including recently interacted files, whereas the Copilot Search management page states an ownership or recent-interaction exception; these descriptions differ.' Cite https://learn.microsoft.com/sharepoint/restricted-content-discovery alongside the existing management source. | Source: https://learn.microsoft.com/copilot/manage/copilot-search-manage
-- [supported, minor] Governance controls: Restricted SharePoint Search explanation / behaviour: Restricted SharePoint Search is a further existing setting. | Found: Restricted SharePoint Search is a setting that helps you maintain a list of SharePoint sites, known as the allowed list. | Fix: Replace 'Restricted SharePoint Search is a further existing setting' with 'Restricted SharePoint Search is an existing setting that is retiring; its own Learn page says new enablement has been blocked since July 31, 2026.' Add https://learn.microsoft.com/sharepoint/restricted-sharepoint-search to sources; keep the separately supported role and default statements. | Source: https://learn.microsoft.com/copilot/manage/copilot-search-manage
+- [unsupported, major] Why it matters / behaviour: Search is the way most people find files in SharePoint and OneDrive. | Found: Searched: SharePoint OneDrive search most people find files primary way users find content. Read excerpts from overview-microsoft-search, overview-of-search and make-sure-content-can-be-found; none establishes how most people find files. | Fix: Replace 'Search is the way most people find files in SharePoint and OneDrive' with 'Microsoft's notice says the change affects users who search for content in SharePoint Online and OneDrive on the web'.
 -->

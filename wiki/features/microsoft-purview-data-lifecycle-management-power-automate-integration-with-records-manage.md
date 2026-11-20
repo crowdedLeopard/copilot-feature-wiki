@@ -4,7 +4,7 @@ slug: "microsoft-purview-data-lifecycle-management-power-automate-integration-wi
 roadmapId: 558859
 topic: "governance"
 products: ["Microsoft Purview"]
-summary: "Planned for January 2027 in US Government clouds: a retention label can run a Power Automate flow at the end of retention. Off by default; only admins who choose a flow see any change."
+summary: "Planned for January 2027 in US Government clouds: a retention label can run a Power Automate flow at the end of retention. Off by default; there is no user impact unless administrators configure and apply flows."
 status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["GCC","GCC High","DoD"]
@@ -72,19 +72,23 @@ changes:
     note: "First briefing: covers the January 2027 target, the admin-opt-in default, the Learn configuration steps and the older Purview planning-table status for US Government clouds."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 67 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected after the independent check: summary now states the Message Center condition (no user impact unless administrators configure and apply flows); moved-or-renamed-file risk reworded to Learn's timing; two sharing-review checklist bullets removed."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 69 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 65
+  claims: 69
+  confirmed: 69
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "7fcb306827cf348c81ae0920765610fb"
+  contradicted: 0
+  attempts: 0
+  hash: "d39e1b21a0f90523ec94fa2853055a2a"
 ---
 
 ## What's changing
@@ -116,7 +120,7 @@ Microsoft says the feature is not enabled by default, so if nobody acts nothing 
 
 - A flow that uses the delete or relabel actions changes retained items when retention ends. Learn says to allow up to seven days after expiry for the flow to trigger, up to seven days for delete and relabel to complete, and up to 14 days for delete in Exchange. Actions are queued and retried after network or service delays.
 - Learn says the principles of retention still apply, so an item is retained for the longest period where retention policies conflict, but the flow is always triggered at the end of the label's own retention period. Test a label against content that is also under a longer retention policy.
-- Learn says a renamed or moved file makes the flow fail because it can't find the file unless the flow first runs the "Trigger a new instance of the flow if an item can't be located" action.
+- Learn says that if a file is moved or renamed after the flow is triggered but before its compliance actions complete, the flow fails to find it unless it uses the "Trigger a new instance of the flow if an item can't be located" action.
 
 **Change & support**
 
@@ -152,12 +156,10 @@ Microsoft's Purview planning tables for GCC, GCC High and DoD each list "Power A
 
 - Create a test flow under **My flows** with the "When an item reaches the end of its retention period" trigger, and add the "Trigger a new instance of the flow if an item can't be located" action before any relabel or delete action.
 - Create a new test retention label in file plan that runs the flow, using the controls table row; use PowerShell with FlowId if the flow is in a non-Default environment.
-- Limit who creates and shares these flows, because the account that creates the flow must by default be the one that creates the label.
 
 ### After rollout
 
 - Check on test content that the flow and its relabel or delete actions completed within the windows Learn gives (up to seven days, up to 14 days for Exchange deletes).
-- Review shared flows periodically so only intended people can attach them to new labels.
 
 ## Governance controls
 
@@ -185,13 +187,4 @@ A label can be set to one flow only. Which flows appear in the flyout depends on
 risk: Medium. Nothing runs until an admin picks a flow, but a flow can delete or relabel items when retention ends, so a badly built flow acts on retained content without a person approving each item.
 cost: Medium. Microsoft Learn says running the flow needs a Power Automate plan that includes premium connectors, separate from the Microsoft 365 compliance plan; the notice names no licence or price.
 impact: Low. Microsoft's notice MC1385583 says there is no user impact unless administrators configure and apply flows; records management and compliance administrators are the affected group.
--->
-
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] summary: only admins who choose a flow see any change / behaviour: Only administrators who choose a flow see any change. | Found: Send an email notification to a records manager, or to the person who created or last modified a document | Fix: Replace 'Off by default; only admins who choose a flow see any change.' with 'Off by default; there is no user impact unless administrators configure and apply flows.' This is the condition stated in Message Center post MC1385583; it does not limit subsequent impact to administrators. | Source: https://learn.microsoft.com/purview/retention-label-flow
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Autonomy & actions, renamed or moved file / behaviour: Without the resilience action, a renamed or moved file can make the flow fail because the file cannot be found. | Found: This additional action is required for files that you move or rename after an instance of the flow is triggered but your specified compliance actions aren't completed. | Fix: Replace the sentence with 'Learn says that if a file is moved or renamed after the flow is triggered but before its compliance actions complete, the flow fails to find it unless it uses the "Trigger a new instance of the flow if an item can’t be located" action.' This preserves the source's timing qualification without changing the existing recommendation to add the action. | Source: https://learn.microsoft.com/purview/retention-label-flow
-- [contradicted, minor] Governance guidance: At rollout and After rollout; Governance controls table / consistency: The checklist's directions to limit and review flow sharing have no corresponding control row. | Found: Limit who creates and shares these flows ... Review shared flows periodically ... The sole control row governs 'Which Power Automate flow a retention label runs at the end of its retention period'. | Fix: The steps 'Limit who creates and shares these flows' and 'Review shared flows periodically' name a sharing control not represented in the table. Remove those two checklist bullets; retain the existing explanation of flow ownership and sharing in Risk assessment and Governance controls. Do not add a control row as part of this correction.
 -->

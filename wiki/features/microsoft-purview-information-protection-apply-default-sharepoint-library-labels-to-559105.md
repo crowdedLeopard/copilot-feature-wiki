@@ -4,7 +4,7 @@ slug: "microsoft-purview-information-protection-apply-default-sharepoint-library
 roadmapId: 559105
 topic: "governance"
 products: ["Microsoft Purview"]
-summary: "Microsoft Purview now has an opt-in auto-labeling policy that applies a SharePoint library's default sensitivity label to files already in it. Worldwide only; nothing changes until an administrator creates and enables it."
+summary: "Microsoft Purview has an opt-in auto-labeling policy that applies a SharePoint library's default sensitivity label to files already in it. Roadmap item 559105 lists Worldwide (Standard Multi-Tenant); an administrator must create and enable it."
 status: "launched"
 releasePhase: ["General Availability","Preview"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -43,6 +43,9 @@ sources:
   - title: "Set-AutoSensitivityLabelPolicy"
     url: "https://learn.microsoft.com/powershell/module/exchange/set-autosensitivitylabelpolicy"
     kind: "learn"
+  - title: "Get-AutoSensitivityLabelPolicy"
+    url: "https://learn.microsoft.com/powershell/module/exchange/get-autosensitivitylabelpolicy"
+    kind: "learn"
 videos: []
 related: ["microsoft-purview-information-protection-apply-default-sharepoint-library-labels-to-data-a","sensitivity-labels","microsoft-purview-auto-labeling-scalability-policy-management-and-reporting-enhancements","microsoft-purview-information-protection-auto-labeling-per-policy-coverage-report","auditing"]
 controls:
@@ -71,8 +74,11 @@ controls:
       surface: "Microsoft Purview portal"
       path: "Solutions > Information Protection > Policies > Auto-labeling policies > policy > View details"
       docs: "https://learn.microsoft.com/purview/apply-sensitivity-label-automatically"
-    api: null
-    note: "Newer review pages have Overview, Labeled items and Labeling failures tabs; earlier portal experiences might open Activity explorer instead."
+    api:
+      kind: "powershell"
+      call: "Get-AutoSensitivityLabelPolicy -Identity <policy> -IncludeProgressFeedback"
+      docs: "https://learn.microsoft.com/powershell/module/exchange/get-autosensitivitylabelpolicy"
+    note: "Newer review pages have Overview, Labeled items and Labeling failures tabs; earlier portal experiences might open Activity explorer instead. The PowerShell call reports labeling progress."
   - governs: "Whether the unified audit log records activity, which Learn requires for simulation"
     scope: "tenant"
     ui:
@@ -97,19 +103,23 @@ changes:
     note: "Corrected after the independent check: the policy can be turned on with Set-AutoSensitivityLabelPolicy, the lower-priority label replacement setting is now described from Learn, and prerequisite checklist bullets were narrowed."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 84 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-20"
+    note: "Corrected after the independent check: the summary now says the roadmap item lists Worldwide, and labelling progress now has its Get-AutoSensitivityLabelPolicy call."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 88 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-20"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 84
-  confirmed: 82
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 2
-  hash: "461206c1c548ace28a9e90c6bb20e9e5"
+  claims: 88
+  confirmed: 88
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "716018162e2ad50150973a77fe1153b5"
 ---
 
 ## What's changing
@@ -191,14 +201,14 @@ If you do use it, treat the first run as a change to a large body of content, no
 <tbody>
 <tr><td data-label="Control"><strong>Creating the policy and choosing the SharePoint sites it covers</strong><br><small>Tenant</small><br><small class="controls__note">Choose the option for default sensitivity labels from SharePoint document libraries. One policy of this type per tenant, up to 10 sites.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Policies › Auto-labeling policies › + Create auto-labeling policy <a href="https://learn.microsoft.com/purview/apply-sensitivity-label-automatically" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether the policy runs in simulation or labels files</strong><br><small>Tenant</small><br><small class="controls__note">Turning a policy on after simulation requires Compliance Administrator or Compliance Data Administrator. Run in Security &amp; Compliance PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Policies › Auto-labeling policies › policy › Turn on policy <a href="https://learn.microsoft.com/purview/apply-sensitivity-label-automatically" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-AutoSensitivityLabelPolicy -Identity &lt;policy&gt; -Mode Enable</code> <a href="https://learn.microsoft.com/powershell/module/exchange/set-autosensitivitylabelpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Labelling progress and failures for the policy</strong><br><small>Tenant</small><br><small class="controls__note">Newer review pages have Overview, Labeled items and Labeling failures tabs; earlier portal experiences might open Activity explorer instead.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Policies › Auto-labeling policies › policy › View details <a href="https://learn.microsoft.com/purview/apply-sensitivity-label-automatically" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Labelling progress and failures for the policy</strong><br><small>Tenant</small><br><small class="controls__note">Newer review pages have Overview, Labeled items and Labeling failures tabs; earlier portal experiences might open Activity explorer instead. The PowerShell call reports labeling progress.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Policies › Auto-labeling policies › policy › View details <a href="https://learn.microsoft.com/purview/apply-sensitivity-label-automatically" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Get-AutoSensitivityLabelPolicy -Identity &lt;policy&gt; -IncludeProgressFeedback</code> <a href="https://learn.microsoft.com/powershell/module/exchange/get-autosensitivitylabelpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether the unified audit log records activity, which Learn requires for simulation</strong><br><small>Tenant</small><br><small class="controls__note">Run in Exchange Online PowerShell. Requires the Audit Logs role in Exchange Online.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Start recording user and admin activity <a href="https://learn.microsoft.com/purview/audit-log-enable-disable" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-AdminAuditLogConfig -UnifiedAuditLogIngestionEnabled $true</code> <a href="https://learn.microsoft.com/purview/audit-log-enable-disable" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 The roles differ by task: configuring the policy needs access to read the library's default label (Compliance Administrator, or SharePoint Administrator per the notice), while turning it on after simulation needs Compliance Administrator or Compliance Data Administrator.
 
-The creation command for selecting this policy subtype is not yet documented, and Microsoft Learn documents no API for the policy's review pages at the time of writing (November 2026); Set-AutoSensitivityLabelPolicy documents changing an existing auto-labeling policy to Mode Enable. Learn does document a tenant-level setting that turns off default labelling for SharePoint document libraries, on the [library default label page](https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label); that page does not say whether it stops this policy.
+The creation command for selecting this policy subtype is not yet documented. Get-AutoSensitivityLabelPolicy -Identity <policy> -IncludeProgressFeedback reports labeling progress. Set-AutoSensitivityLabelPolicy documents changing an existing auto-labeling policy to Mode Enable. Learn does document a tenant-level setting that turns off default labelling for SharePoint document libraries, on the [library default label page](https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-default-label); that page does not say whether it stops this policy.
 
 There is no separate switch for the feature itself: the policy does not exist until an administrator creates it.
 
@@ -213,11 +223,4 @@ There is no separate switch for the feature itself: the policy does not exist un
 risk: Low. Microsoft's notice says the feature is opt-in and needs administrator configuration, so nothing is relabelled until a policy is created; once enabled it labels existing files at scale, which simulation lets you review first.
 cost: Low. Learn lists service-side auto-labeling as included with E5 and P2-tier licences and says E3 and Business Premium need an E5 or P2-tier add-on; no price or meter specific to this policy type is published. The known cost is admin time.
 impact: Low. Microsoft's notice says users are affected only if administrators enable and configure the policy; the people who notice are Purview and SharePoint administrators, then owners of the labelled libraries.
--->
-
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] summary / availability: The capability is Worldwide only. | Found: Searched: '559105 Worldwide GCC availability'; 'default SharePoint library Worldwide Purview'. Read MC1477181, both roadmap records, and apply-sensitivity-label-automatically. These list rollout scope or plans, not an explicit exclusion of every other cloud. | Fix: Replace 'Worldwide only' with 'Roadmap item 559105 lists Worldwide (Standard Multi-Tenant)' in the summary. Keep the separately attributed government-cloud roadmap plans in the body.
-- [contradicted, blocker] controls[2].api; Governance controls table and prose / absence: Automation for the row governing labeling progress and failures is not documented. | Found: IncludeProgressFeedback specifies whether to include the labeling progress of files in SharePoint or OneDrive. ... the command shows the progress of files to be labeled, files labeled in the last 7 days, and total files labeled for enabled auto-labeling policies. | Fix: Set controls[2].api to kind 'powershell', call 'Get-AutoSensitivityLabelPolicy -Identity <policy> -IncludeProgressFeedback', docs 'https://learn.microsoft.com/powershell/module/exchange/get-autosensitivitylabelpolicy'. Append to its note: 'The PowerShell call reports labeling progress.' Replace the prose clause asserting no API for the review pages with 'Get-AutoSensitivityLabelPolicy -Identity <policy> -IncludeProgressFeedback reports labeling progress.' Add that reference to sources and keep the rendered table consistent. This reference supports progress reporting, not item-level failure details. | Source: https://learn.microsoft.com/powershell/module/exchange/get-autosensitivitylabelpolicy
 -->

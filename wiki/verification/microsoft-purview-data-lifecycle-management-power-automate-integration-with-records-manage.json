@@ -2,116 +2,33 @@
   "slug": "microsoft-purview-data-lifecycle-management-power-automate-integration-with-records-manage",
   "roadmapId": 558859,
   "title": "Microsoft Purview: run a Power Automate flow when a retention label's retention period ends (GCC, GCC High, DoD)",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-20",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-20",
-    "reasons": [
-      "1 blocking finding (claim 12)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 67,
-    "confirmed": 65,
+    "claims": 69,
+    "confirmed": 69,
     "unconfirmed": 0,
-    "contradicted": 2,
-    "blocker": 1,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 2
+    "minor": 0
   },
-  "summary": "The summary incorrectly limits changes to administrators who select a flow. Configured flows can also affect document users, including notifying document authors or moving their documents; the rollout details, configuration route and licensing prerequisites are supported.",
+  "summary": "The briefing is supported by the roadmap, the supplied Microsoft notice and Microsoft Learn. Its configuration path, PowerShell call, licensing requirements and opt-in default are accurate; it also reports the conflicting government-cloud planning tables.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: status; What's changing",
+      "where": "title; summary; What's changing; rationale: risk",
       "type": "record",
-      "claim": "The roadmap status is In development.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
-      "where": "front matter: targetDate; summary; What's changing; Scope; Open questions",
-      "type": "record",
-      "claim": "The roadmap target is January CY2027.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"January CY2027\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 3,
-      "where": "title; front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap lists GCC, GCC High and DoD.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "front matter: releasePhase; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap release phase is General Availability.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap platform is Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The roadmap record supplies no preview date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-07-14T22:41:38.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-07-14T22:41:38\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "title; summary; What's changing; Why it matters",
-      "type": "record",
-      "claim": "The planned feature initiates a Power Automate workflow when an item reaches the end of its retention period.",
+      "claim": "The planned integration runs a Power Automate workflow when an item reaches the end of its retention period.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Initiate a Power Automate workflow when the item reaches the end of its retention period.",
@@ -119,7 +36,7 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 2,
       "where": "What's changing; Why it matters",
       "type": "record",
       "claim": "The roadmap gives a complex disposition approval process as an example.",
@@ -130,7 +47,7 @@
       "fix": null
     },
     {
-      "n": 10,
+      "n": 3,
       "where": "What's changing; Why it matters",
       "type": "record",
       "claim": "The roadmap gives moving a file to an archive as an example.",
@@ -141,32 +58,76 @@
       "fix": null
     },
     {
-      "n": 11,
-      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
-      "type": "default",
-      "claim": "The admin-opt-in default means flows do not run unless administrators explicitly select them during retention label configuration.",
+      "n": 4,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
       "status": "supported",
-      "source": "Message Center post MC1385583",
-      "quote": "The feature is not enabled by default; flows must be explicitly selected during retention label configuration.",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 12,
-      "where": "summary: only admins who choose a flow see any change",
-      "type": "behaviour",
-      "claim": "Only administrators who choose a flow see any change.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/purview/retention-label-flow",
-      "quote": "Send an email notification to a records manager, or to the person who created or last modified a document",
-      "severity": "blocker",
-      "fix": "Replace 'Off by default; only admins who choose a flow see any change.' with 'Off by default; there is no user impact unless administrators configure and apply flows.' This is the condition stated in Message Center post MC1385583; it does not limit subsequent impact to administrators."
+      "n": 5,
+      "where": "front matter: targetDate; summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is January CY2027.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 13,
-      "where": "What's changing",
+      "n": 6,
+      "where": "title; front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "Microsoft's notice says administrators can select a pre-existing Power Automate flow to run when a retention label expires.",
+      "claim": "The roadmap lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Governance controls",
+      "type": "record",
+      "claim": "Administrators can select a pre-existing Power Automate flow to run when a retention label expires.",
       "status": "supported",
       "source": "Message Center post MC1385583",
       "quote": "Admins can select a pre-existing Power Automate flow to run when a retention label expires.",
@@ -174,10 +135,87 @@
       "fix": null
     },
     {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The integration uses actions in the Microsoft 365 Compliance connector.",
+      "status": "supported",
+      "source": "Message Center post MC1385583",
+      "quote": "Microsoft Purview Records Management integrates with Power Automate through the Microsoft 365 Compliance connector.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice lists the action Apply a retention label on the item.",
+      "status": "supported",
+      "source": "Message Center post MC1385583",
+      "quote": "New actions are available in the Microsoft 365 Compliance connector:- Apply a retention label on the item",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The connector provides Relabel an item at the end of retention.",
+      "status": "supported",
+      "source": "Message Center post MC1385583",
+      "quote": "Relabel an item at the end of retention",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 14,
+      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "The connector provides Delete an item at the end of retention.",
+      "status": "supported",
+      "source": "Message Center post MC1385583",
+      "quote": "Delete an item at the end of retention",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "The connector provides Trigger a new instance of the flow if an item can't be located.",
+      "status": "supported",
+      "source": "Message Center post MC1385583",
+      "quote": "Trigger a new instance of the flow if an item can’t be located",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The integration is admin-opt-in and is not enabled by default.",
+      "status": "supported",
+      "source": "Message Center post MC1385583",
+      "quote": "The feature is not enabled by default; flows must be explicitly selected during retention label configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; rationale: risk",
+      "type": "record",
+      "claim": "Flows must be explicitly selected during retention label configuration.",
+      "status": "supported",
+      "source": "Message Center post MC1385583",
+      "quote": "flows must be explicitly selected during retention label configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
       "where": "What's changing; Why it matters",
       "type": "record",
-      "claim": "The rollout does not change existing retention labels or retention settings.",
+      "claim": "The rollout does not change existing retention labels.",
       "status": "supported",
       "source": "Message Center post MC1385583",
       "quote": "Existing retention labels and retention settings are not changed.",
@@ -185,8 +223,19 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "What's changing; Why it matters; rationale: impact",
+      "n": 19,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "The rollout does not change existing retention settings.",
+      "status": "supported",
+      "source": "Message Center post MC1385583",
+      "quote": "Existing retention labels and retention settings are not changed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "summary; Why it matters; rationale: impact",
       "type": "record",
       "claim": "There is no user impact unless administrators configure and apply flows.",
       "status": "supported",
@@ -196,54 +245,10 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "The notice lists Apply a retention label on the item as a Microsoft 365 Compliance connector action.",
-      "status": "supported",
-      "source": "Message Center post MC1385583",
-      "quote": "New actions are available in the Microsoft 365 Compliance connector:- Apply a retention label on the item",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: risk",
-      "type": "record",
-      "claim": "The notice lists Relabel an item at the end of retention as a Microsoft 365 Compliance connector action.",
-      "status": "supported",
-      "source": "Message Center post MC1385583",
-      "quote": "Relabel an item at the end of retention",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: risk",
-      "type": "record",
-      "claim": "The notice lists Delete an item at the end of retention as a Microsoft 365 Compliance connector action.",
-      "status": "supported",
-      "source": "Message Center post MC1385583",
-      "quote": "Delete an item at the end of retention",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance: At rollout",
-      "type": "record",
-      "claim": "The notice lists an action to trigger a new flow instance if an item cannot be located.",
-      "status": "supported",
-      "source": "Message Center post MC1385583",
-      "quote": "Trigger a new instance of the flow if an item can’t be located",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
+      "n": 21,
       "where": "What's changing; Scope; Open questions",
       "type": "record",
-      "claim": "The notice says rollout for GCC, GCCH and DoD begins in January 2027.",
+      "claim": "The notice says rollout for GCC, GCC High and DoD begins in January 2027.",
       "status": "supported",
       "source": "Message Center post MC1385583",
       "quote": "General Availability (GCC, GCCH, and DoD): Rollout begins in January 2027",
@@ -251,18 +256,18 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 22,
       "where": "What's changing; Scope",
       "type": "record",
-      "claim": "The notice says rollout is expected to complete by end of January 2027.",
+      "claim": "The notice expects rollout to complete by end of January 2027.",
       "status": "supported",
       "source": "Message Center post MC1385583",
-      "quote": "is expected to complete by end of January 2027 (previously late September 2026).",
+      "quote": "is expected to complete by end of January 2027",
       "severity": null,
       "fix": null
     },
     {
-      "n": 22,
+      "n": 23,
       "where": "What's changing",
       "type": "record",
       "claim": "The notice identifies mid-July 2026 as the previous rollout start.",
@@ -273,10 +278,10 @@
       "fix": null
     },
     {
-      "n": 23,
+      "n": 24,
       "where": "What's changing",
       "type": "record",
-      "claim": "The notice identifies late September 2026 as the previous rollout completion.",
+      "claim": "The notice identifies late September 2026 as the previous rollout completion window.",
       "status": "supported",
       "source": "Message Center post MC1385583",
       "quote": "is expected to complete by end of January 2027 (previously late September 2026).",
@@ -284,21 +289,21 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 25,
       "where": "What's changing",
       "type": "record",
       "claim": "The supplied notice sets no act-by date.",
       "status": "supported",
       "source": "Message Center post MC1385583",
-      "quote": "Act by: none; No action is required. Review internal documentation and evaluate whether to use end-of-retention workflows.",
+      "quote": "No action is required. Review internal documentation and evaluate whether to use end-of-retention workflows.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 25,
+      "n": 26,
       "where": "Scope; rationale: impact",
       "type": "record",
-      "claim": "The notice identifies Records Management and Compliance administrators as the affected group.",
+      "claim": "The notice identifies Records Management and Compliance administrators as the affected people.",
       "status": "supported",
       "source": "Message Center post MC1385583",
       "quote": "Who is affected: Records Management and Compliance administrators",
@@ -306,10 +311,10 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 27,
       "where": "Scope",
       "type": "record",
-      "claim": "The notice names Purview, Power Automate, SharePoint Online, OneDrive for Business and Exchange Online as the involved platforms and services.",
+      "claim": "The notice lists Microsoft Purview, Power Automate, SharePoint Online, OneDrive for Business and Exchange Online as the services involved.",
       "status": "supported",
       "source": "Message Center post MC1385583",
       "quote": "Microsoft Purview- Power Automate- SharePoint Online- OneDrive for Business- Exchange Online",
@@ -317,7 +322,7 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 28,
       "where": "What's changing; Scope; Open questions",
       "type": "availability",
       "claim": "The GCC planning table lists records management Power Automate integration as On engineering backlog.",
@@ -328,7 +333,7 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 29,
       "where": "What's changing; Scope; Open questions",
       "type": "availability",
       "claim": "The GCC High planning table lists records management Power Automate integration as On engineering backlog.",
@@ -339,7 +344,7 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 30,
       "where": "What's changing; Scope; Open questions",
       "type": "availability",
       "claim": "The DoD planning table lists records management Power Automate integration as On engineering backlog.",
@@ -350,32 +355,43 @@
       "fix": null
     },
     {
-      "n": 30,
-      "where": "What's changing; Scope; Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "The prerequisite flow is an automated cloud flow created from blank with the trigger When an item reaches the end of its retention period.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/retention-label-flow",
-      "quote": "In Power Automate, create an automated cloud flow from blank that uses the trigger When an item reaches the end of its retention period.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 31,
-      "where": "controls[0].note; What's changing; Risk assessment: Change & support; Cost and licensing",
+      "where": "What's changing; Scope",
       "type": "behaviour",
-      "claim": "Running a flow requires a new retention label rather than editing an existing label for this configuration.",
+      "claim": "The required Power Automate flow is an automated cloud flow created from blank.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention-label-flow",
-      "quote": "You must create a new retention label to run a flow at the end of the retention period. You can't edit an existing retention label for this configuration.",
+      "quote": "The Power Automate flow must be an automated cloud flow that you create from blank",
       "severity": null,
       "fix": null
     },
     {
       "n": 32,
-      "where": "What's changing",
+      "where": "What's changing; Scope; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Custom flow actions can send email notifications to records managers.",
+      "claim": "The flow must use the trigger When an item reaches the end of its retention period.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-label-flow",
+      "quote": "configure to use the trigger **When an item reaches the end of its retention period**.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "Configuration creates a new retention label that retains the item for a specified period and runs the flow at its end.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-label-flow",
+      "quote": "create a new retention label with the following configuration:\n- Retain the item for a specified period of time\n- At the end of the retention period, run the flow that you just created",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "A custom flow can send an email notification to a records manager.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention-label-flow",
       "quote": "Send an email notification to a records manager, or to the person who created or last modified a document",
@@ -383,10 +399,10 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "What's changing",
+      "n": 35,
+      "where": "What's changing; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "Custom flow actions can move a document to a SharePoint location used to store records centrally.",
+      "claim": "A custom flow can move a document to a SharePoint location used to store records centrally.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention-label-flow",
       "quote": "Move a document item to a SharePoint location where you centrally store records",
@@ -394,10 +410,10 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 36,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The Power Automate actions allow integration with other apps and services.",
+      "claim": "The actions permit integration with other apps and services, providing a route for information about retained items to reach connected services.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention-label-flow",
       "quote": "The actions also allow integration with other apps and services.",
@@ -405,10 +421,10 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Risk assessment: Security & identity; Governance guidance: At rollout; Governance controls",
-      "type": "role",
-      "claim": "By default, the flow creator and the retention label creator must be the same account.",
+      "n": 37,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "By default the account creating the flow must also create the retention label.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention-label-flow",
       "quote": "By default, the account that creates the Power Automate flow must be the same account that creates the retention label.",
@@ -416,9 +432,9 @@
       "fix": null
     },
     {
-      "n": 36,
-      "where": "Risk assessment: Security & identity; Governance guidance: After rollout; Governance controls",
-      "type": "role",
+      "n": 38,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "behaviour",
       "claim": "People with whom the flow is shared can also select it when creating a retention label.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention-label-flow",
@@ -427,230 +443,43 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 39,
       "where": "Risk assessment: Security & identity; Scope; Governance guidance: At rollout",
       "type": "admin-path",
-      "claim": "The flow must be created under My flows in Power Automate.",
+      "claim": "The flow must be created using My flows in Power Automate.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention-label-flow",
-      "quote": "In Power Automate, you must use the option My flows to create the flow.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 38,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "Creating the flow under Solutions is not currently supported.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/retention-label-flow",
-      "quote": "Currently, creating a flow under Solutions isn't supported.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "The replacement label selected by the relabel action cannot mark the item as a regulatory record.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/retention-label-flow",
-      "quote": "If you select the relabel action in the flow, the retention label that you select as the replacement can't be configured to mark the item as a regulatory record.",
+      "quote": "In Power Automate, you must use the option **My flows** to create the flow.",
       "severity": null,
       "fix": null
     },
     {
       "n": 40,
-      "where": "controls[0].note; Risk assessment: Change & support; Governance guidance: At rollout",
-      "type": "command",
-      "claim": "A flow in an environment type other than Default requires creating the retention label with PowerShell and FlowId.",
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Creating the flow under Solutions is not currently supported.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention-label-flow",
-      "quote": "If your chosen flow uses an environment type other than Default, you must use PowerShell to create the retention label, and use the FlowId parameter.",
+      "quote": "Currently, creating a flow under **Solutions** isn't supported.",
       "severity": null,
       "fix": null
     },
     {
       "n": 41,
-      "where": "licensing.notes; Why it matters; Cost and licensing; Scope; rationale: cost",
-      "type": "licensing",
-      "claim": "The feature requires a Power Automate plan with premium connectors separate from the Microsoft 365 compliance plan.",
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Learn says to allow up to seven days after retention expiry for the flow to trigger.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention-label-flow",
-      "quote": "You must have a Power Automate plan that includes premium connectors, separate from your Microsoft 365 compliance plan.",
+      "quote": "you should allow up to seven days after the expiration period expires before the Power Automate flow is triggered.",
       "severity": null,
       "fix": null
     },
     {
       "n": 42,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The mixed licensing model reflects the separate compliance and premium-connector Power Automate plan requirements.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/retention-label-flow",
-      "quote": "You must have a Power Automate plan that includes premium connectors, separate from your Microsoft 365 compliance plan.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "Retention label creation rights include Microsoft 365 E5/A5/G5/E3/A3/G3/F3/F1/Business Premium.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "For retention label creation, the following licenses provide user rights: ... Microsoft 365 E5/A5/G5/E3/A3/G3/F3/F1/Business Premium",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Starting retention based on an event type is a retention label setting requiring more specific licences.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "The following retention label creation settings: ... Start the retention period based on an event type ... Require these specific licenses to provide users rights:",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Triggering disposition review at the end of retention is a label setting requiring more specific licences.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "Trigger a disposition review at the end of the retention period ... Require these specific licenses to provide users rights:",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Marking retained items as records or regulatory records is a label setting requiring more specific licences.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "During the retention period mark items as a record or a regulatory record ... Require these specific licenses to provide users rights:",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Automatically changing the label after retention is a label setting requiring more specific licences.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "After the retention period, automatically change the retention label, ... Require these specific licenses to provide users rights:",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "Cost and licensing; Open questions",
-      "type": "absence",
-      "claim": "The service description's list of label settings needing specific licences does not name running a Power Automate flow.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'purview retention label Power Automate licensing specific licenses run flow end retention period'; read retention-label-flow and the service description's Licensing for retention labels section. Its four settings name event start, disposition review, records and automatic label change.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The printed Purview portal route reaches Run a Power Automate flow during new retention label creation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/retention-label-flow",
-      "quote": "On the Choose what happens after the retention period page, select Run a Power Automate flow, and then Select a flow:",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 50,
-      "where": "controls[0].api; Governance controls table and prose",
-      "type": "command",
-      "claim": "New-ComplianceTag -Name <label name> -FlowId <flow GUID> creates a retention label with the specified end-of-retention flow.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchange/new-compliancetag",
-      "quote": "The FlowId parameter specifies the Power Automate flow to run at the end of the retention period. A valid value for this parameter is the GUID value of the flow.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "controls[0].note; Risk assessment: Change & support; Governance controls; Open questions",
-      "type": "behaviour",
-      "claim": "The cmdlet reference marks FlowId as preview.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchange/new-compliancetag",
-      "quote": "This parameter is currently in Preview, is not available in all organizations, and is subject to change.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "Governance controls",
-      "type": "availability",
-      "claim": "FlowId is not available in all organisations.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchange/new-compliancetag",
-      "quote": "This parameter is currently in Preview, is not available in all organizations, and is subject to change.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "Risk assessment: Change & support; Governance controls",
-      "type": "behaviour",
-      "claim": "A retention label can be configured for only one Power Automate flow.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/retention-label-flow",
-      "quote": "A retention label can be configured for only one Power Automate flow",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "The same flow can be used by more than one retention label.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/retention-label-flow",
-      "quote": "the same flow can be used by more than one retention label.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "controls[0].note; Governance controls",
-      "type": "behaviour",
-      "claim": "Select a flow opens a flyout listing qualifying automated cloud flows created by or shared with the administrator.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/retention-label-flow",
-      "quote": "From the Select a Power Automate flow flyout pane, you'll see any automated cloud flows that you created (or somebody has shared with you) and that have the When an item reaches the end of its retention period trigger.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
       "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Learn says to allow up to seven days after retention expiry before the flow is triggered.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/retention-label-flow",
-      "quote": "you should allow up to seven days after the expiration period expires before the Power Automate flow is triggered. The initiation of the flow can then take a few hours.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Learn separately says to allow up to seven days for the delete and relabel compliance actions to complete.",
+      "claim": "Learn says to allow up to seven days for the compliance delete and relabel actions to complete.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention-label-flow",
       "quote": "For the Microsoft 365 compliance actions of delete and relabel, then allow up to seven days for these actions to complete.",
@@ -658,10 +487,10 @@
       "fix": null
     },
     {
-      "n": 58,
+      "n": 43,
       "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Learn says to allow up to 14 days for Exchange delete compliance actions.",
+      "claim": "Learn says to allow up to 14 days for Exchange compliance delete actions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention-label-flow",
       "quote": "Specific for Exchange and the Microsoft 365 compliance actions of delete, allow up to 14 days.",
@@ -669,10 +498,10 @@
       "fix": null
     },
     {
-      "n": 59,
+      "n": 44,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "The flow and its compliance actions are queued and automatically retried after network or service delays.",
+      "claim": "The flow and compliance actions are queued and automatically retried after network or service delays.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention-label-flow",
       "quote": "Both the flow itself and the Microsoft 365 compliance actions in the flow are queued so that if there are any network or service delays, the flow and actions are automatically retried.",
@@ -680,10 +509,10 @@
       "fix": null
     },
     {
-      "n": 60,
+      "n": 45,
       "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Retention principles continue to retain an item for the longest period when retention policies conflict.",
+      "type": "applicability",
+      "claim": "The principles of retention still apply, retaining an item for the longest period when retention policies conflict.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention-label-flow",
       "quote": "an item is always retained for the longest period if there is a conflict with one or more retention policies.",
@@ -691,7 +520,7 @@
       "fix": null
     },
     {
-      "n": 61,
+      "n": 46,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "The flow is nevertheless triggered at the end of the label's own retention period.",
@@ -702,43 +531,186 @@
       "fix": null
     },
     {
-      "n": 62,
-      "where": "Risk assessment: Autonomy & actions, renamed or moved file",
+      "n": 47,
+      "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Without the resilience action, a renamed or moved file can make the flow fail because the file cannot be found.",
+      "claim": "Moving or renaming a file after the flow triggers but before compliance actions complete causes failure to find it unless the additional trigger-a-new-instance action is used.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention-label-flow",
-      "quote": "This additional action is required for files that you move or rename after an instance of the flow is triggered but your specified compliance actions aren't completed.",
-      "severity": "minor",
-      "fix": "Replace the sentence with 'Learn says that if a file is moved or renamed after the flow is triggered but before its compliance actions complete, the flow fails to find it unless it uses the \"Trigger a new instance of the flow if an item can’t be located\" action.' This preserves the source's timing qualification without changing the existing recommendation to add the action."
+      "quote": "This additional action is required for files that you move or rename after an instance of the flow is triggered but your specified compliance actions aren't completed. Without it, a renamed or moved file results in the flow failing because it can't find the file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Change & support; controls[0].note; Cost and licensing",
+      "type": "behaviour",
+      "claim": "An existing retention label cannot be edited to add this end-of-retention flow configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-label-flow",
+      "quote": "You must create a new retention label to run a flow at the end of the retention period. You can't edit an existing retention label for this configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "A retention label can run only one Power Automate flow.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-label-flow",
+      "quote": "A retention label can be configured for only one Power Automate flow",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The same flow can be used by more than one retention label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-label-flow",
+      "quote": "the same flow can be used by more than one retention label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Change & support; controls[0].note; Governance guidance: At rollout",
+      "type": "command",
+      "claim": "A flow in an environment type other than Default requires creating the label with PowerShell and FlowId.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-label-flow",
+      "quote": "If your chosen flow uses an environment type other than Default, you must use PowerShell to create the retention label, and use the FlowId parameter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Change & support; controls[0].note; Governance controls; Open questions",
+      "type": "command",
+      "claim": "The New-ComplianceTag reference marks FlowId as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchange/new-compliancetag",
+      "quote": "This parameter is currently in Preview, is not available in all organizations, and is subject to change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls",
+      "type": "availability",
+      "claim": "The FlowId parameter is not available in all organisations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchange/new-compliancetag",
+      "quote": "This parameter is currently in Preview, is not available in all organizations, and is subject to change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "A replacement label selected by the relabel action cannot be configured to mark the item as a regulatory record.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-label-flow",
+      "quote": "If you select the relabel action in the flow, the retention label that you select as the replacement can't be configured to mark the item as a regulatory record.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "licensing.notes; Why it matters; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "Running this flow requires a Power Automate plan with premium connectors, separate from the Microsoft 365 compliance plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-label-flow",
+      "quote": "You must have a Power Automate plan that includes premium connectors, separate from your Microsoft 365 compliance plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Purview service description lists Microsoft 365 E5/A5/G5/E3/A3/G3/F3/F1/Business Premium among licences providing retention label creation rights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "For retention label creation, the following licenses provide user rights:\n- Microsoft 365 E5/A5/G5/E3/A3/G3/F3/F1/Business Premium",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing; Open questions",
+      "type": "licensing",
+      "claim": "The service description lists event-based retention start, disposition review, record marking and automatic relabelling as settings requiring more specific licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "- Start the retention period based on an event type\n- Trigger a disposition review at the end of the retention period\n- During the retention period mark items as a record or a regulatory record\n- After the retention period, automatically change the retention label,",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The service description's list of retention label creation settings needing specific licences does not name running a Power Automate flow.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Learn query 'site:learn.microsoft.com/purview retention label flow licensing Power Automate retention label creation'; searched the fetched Purview service description for 'retention label', 'Power Automate' and 'event-based'; read its label-creation settings list and retention-label-flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap record names no Power Automate plan, price or meter for this feature.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Initiate a Power Automate workflow when the item reaches the end of its retention period. For example, execute a complex disposition approval process or move the file to an archive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "record",
+      "claim": "The supplied Microsoft notice names no plan, price or meter for this feature.",
+      "status": "supported",
+      "source": "Message Center post MC1385583",
+      "quote": "No action is required. Review internal documentation and evaluate whether to use end-of-retention workflows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Apply a retention label on the item is independent of the end-of-retention scenario.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-label-flow",
+      "quote": "This action is independent from this scenario that applies actions at the end of the retention period.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Apply a retention label on the item is equivalent to manually applying a retention label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-label-flow",
+      "quote": "Instead, it's the equivalent to manually applying a retention label.",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 63,
-      "where": "Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "The recommended resilience action goes before relabel or delete compliance actions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/retention-label-flow",
-      "quote": "Although optional, we recommend you always add the Trigger a new instance of the flow if an item can't be located action before Relabel an item at the end of retention and Deletes an item at the end of retention.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 64,
       "where": "Scope",
       "type": "behaviour",
-      "claim": "Apply a retention label on the item is independent of the end-of-retention scenario and equivalent to manually applying a label.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/retention-label-flow",
-      "quote": "This action is independent from this scenario that applies actions at the end of the retention period. Instead, it's the equivalent to manually applying a retention label.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 65,
-      "where": "Scope",
-      "type": "behaviour",
-      "claim": "The Apply a retention label on the item action applies the label immediately.",
+      "claim": "Apply a retention label on the item applies the label immediately.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/retention-label-flow",
       "quote": "The label is applied immediately.",
@@ -746,30 +718,74 @@
       "fix": null
     },
     {
-      "n": 66,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "The supplied roadmap record and notice name no licence plan, price or meter for this feature.",
+      "n": 64,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The printed Purview route through Solutions, Records Management, File plan and retention label creation reaches Run a Power Automate flow, followed by Select a flow.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: licen[cs], price and meter in the supplied roadmap record and pre-check file; read the entire MC1385583 post. The only match was briefing licensing metadata outside the post; neither the roadmap record nor the notice names a licence plan, price or meter.",
+      "source": "https://learn.microsoft.com/purview/retention-label-flow",
+      "quote": "On the **Define label settings** page, select **Retain items indefinitely or for a specific period** and specify the retention period.\nOn the **Choose what happens after the retention period** page, select **Run a Power Automate flow**, and then **Select a flow**",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "New-ComplianceTag -Name <label name> -FlowId <flow GUID> specifies the flow for a new label using documented parameters and an accepted GUID value.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchange/new-compliancetag",
+      "quote": "The FlowId parameter specifies the Power Automate flow to run at the end of the retention period. A valid value for this parameter is the GUID value of the flow.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is mixed, combining retention-label licensing with a separate Power Automate premium-connector plan requirement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-label-flow",
+      "quote": "You must have a Power Automate plan that includes premium connectors, separate from your Microsoft 365 compliance plan.",
       "severity": null,
       "fix": null
     },
     {
       "n": 67,
-      "where": "Governance guidance: At rollout and After rollout; Governance controls table",
-      "type": "consistency",
-      "claim": "The checklist's directions to limit and review flow sharing have no corresponding control row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Limit who creates and shares these flows ... Review shared flows periodically ... The sole control row governs 'Which Power Automate flow a retention label runs at the end of its retention period'.",
-      "severity": "minor",
-      "fix": "The steps 'Limit who creates and shares these flows' and 'Review shared flows periodically' name a sharing control not represented in the table. Remove those two checklist bullets; retain the existing explanation of flow ownership and sharing in Risk assessment and Governance controls. Do not add a control row as part of this correction."
+      "where": "controls[0].ui: opening steps; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "In the Microsoft Purview portal, Solutions > Records Management > File plan > + Create a label > Retention label opens retention label creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/file-plan-manager",
+      "quote": "sign in to the Microsoft Purview portal > **Solutions** > **Records Management** > **File plan**.\nFrom the **File plan** page, select **+ Create a label** > **Retention label**",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The flow-selection flyout lists automated cloud flows created by or shared with the current account that have the required end-of-retention trigger.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-label-flow",
+      "quote": "From the **Select a Power Automate flow** flyout pane, you'll see any automated cloud flows that you created (or somebody has shared with you) and that have the **When an item reaches the end of its retention period** trigger.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The resilience action can be added before the relabel and delete actions, as recommended by Learn.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/retention-label-flow",
+      "quote": "Although optional, we recommend you always add the **Trigger a new instance of the flow if an item can't be located** action before **Relabel an item at the end of retention** and **Deletes an item at the end of retention**.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-20T20:05:01.140Z",
+    "at": "2026-11-20T21:42:34.570Z",
     "summary": {
       "links": 9,
       "unreachable": 0,
@@ -860,5 +876,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-20",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

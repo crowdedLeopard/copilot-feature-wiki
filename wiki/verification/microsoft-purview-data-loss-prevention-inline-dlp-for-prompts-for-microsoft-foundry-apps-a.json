@@ -1,0 +1,844 @@
+{
+  "slug": "microsoft-purview-data-loss-prevention-inline-dlp-for-prompts-for-microsoft-foundry-apps-a",
+  "roadmapId": 558565,
+  "title": "Microsoft Purview: inline DLP for prompts in Microsoft Foundry apps and agents",
+  "status": "held",
+  "date": "2026-11-20",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-20",
+    "reasons": [
+      "1 blocking finding (claim 46)"
+    ]
+  },
+  "counts": {
+    "claims": 64,
+    "confirmed": 61,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 1,
+    "minor": 4
+  },
+  "summary": "Hold: the briefing says the policy-creation role is undocumented, although Microsoft's permissions reference identifies roles that create DLP policies. It also confuses a prompt not matching a rule with the prompt not being evaluated. The roadmap fields, pay-as-you-go requirement and printed PowerShell rule are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap plans inline Purview DLP for prompts in Foundry-built apps and agents, with Purview enabled in Foundry.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "With Purview enabled in Microsoft Foundry, Purview admins can setup inline DLP policies to prompts on Foundry built apps and agents to ensure data loss prevention of sensitive data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The record still shows In development at the November 2026 run.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The general availability target is October CY2026, already past at the run date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The preview target is May CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"May CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed, without establishing exclusion of other clouds.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The listed platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The record lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-06-17T23:15:06.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-06-17T23:15:06\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1304291 was published on 2026-05-08.",
+      "status": "supported",
+      "source": "Message Center post MC1304291",
+      "quote": "Published 2026-05-08; last updated 2026-06-17; Microsoft's end date 2026-11-30",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1304291 was updated on 2026-06-17.",
+      "status": "supported",
+      "source": "Message Center post MC1304291",
+      "quote": "Updated June 17, 2026: We have updated the timeline. Thank you for your patience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing: preview rollout",
+      "type": "record",
+      "claim": "MC1304291 says public preview rollout began in mid-May 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1304291",
+      "quote": "Public Preview: We will begin rolling out in mid-May 2026 and expect to complete by early June 2026.",
+      "severity": "minor",
+      "fix": "Replace 'public preview rollout began in mid-May 2026' with 'public preview rollout was planned to begin in mid-May 2026'. The notice gives a plan, not confirmation that rollout began."
+    },
+    {
+      "n": 12,
+      "where": "What's changing: preview rollout",
+      "type": "record",
+      "claim": "MC1304291 expected public preview rollout to finish by early June 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1304291",
+      "quote": "Public Preview: We will begin rolling out in mid-May 2026 and expect to complete by early June 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing: general availability rollout",
+      "type": "record",
+      "claim": "MC1304291 schedules Worldwide general availability rollout to begin in October 2026, previously mid-June.",
+      "status": "supported",
+      "source": "Message Center post MC1304291",
+      "quote": "General Availability (Worldwide): Rollout will begin in October 2026 (previously mid-June)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing: general availability rollout",
+      "type": "record",
+      "claim": "MC1304291 expects general availability rollout to finish by the end of October 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1304291",
+      "quote": "is expected to complete by end of October 2026 (previously late June).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Why it matters; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Policies can detect sensitive information in LLM prompts and may block prompts.",
+      "status": "supported",
+      "source": "Message Center post MC1304291",
+      "quote": "Users continue interacting with Foundry apps and agents, but prompts may now be evaluated or blocked based on DLP policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "DLP enforcement occurs inline as prompts are submitted.",
+      "status": "supported",
+      "source": "Message Center post MC1304291",
+      "quote": "DLP enforcement occurs inline as prompts are submitted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "The control is admin-opt-in: nothing changes unless administrators create or enable policies for this scenario.",
+      "status": "supported",
+      "source": "Message Center post MC1304291",
+      "quote": "No change occurs unless admins create or enable DLP policies for this scenario (admin configuration required).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "summary; Risk assessment: Change & support; Cost and licensing; Governance guidance",
+      "type": "record",
+      "claim": "The feature requires Purview enabled with a pay-as-you-go subscription.",
+      "status": "supported",
+      "source": "Message Center post MC1304291",
+      "quote": "Foundry-based DLP capabilities follow a pay-as-you-go model. Microsoft Purview must be enabled with a pay-as-you-go subscription for this feature to work.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The notice identifies Purview and Foundry administrators and organizations building or using Foundry apps and agents as affected.",
+      "status": "supported",
+      "source": "Message Center post MC1304291",
+      "quote": "Admins managing Microsoft Purview and Microsoft Foundry\n- Organizations building or using apps and agents in Microsoft Foundry",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Scope; Why it matters; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Foundry administrators enable Purview through the Purview toggle in Foundry.",
+      "status": "supported",
+      "source": "Message Center post MC1304291",
+      "quote": "Foundry admins can enable Microsoft Purview by configuring the Purview toggle in Foundry",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Scope; Why it matters; Governance guidance: At rollout",
+      "type": "record",
+      "claim": "Security administrators configure the DLP policies for prompts.",
+      "status": "supported",
+      "source": "Message Center post MC1304291",
+      "quote": "Security admins configure and manage DLP policies in Microsoft Purview DLP for this capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Governance guidance: At rollout; Open questions: simulation",
+      "type": "record",
+      "claim": "MC1304291 recommends DLP policy simulation before enforcement.",
+      "status": "supported",
+      "source": "Message Center post MC1304291",
+      "quote": "Create and use DLP policy simulation mode to understand what data is being exchanged with AI apps and agents before enforcing policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing: Learn documentation",
+      "type": "absence",
+      "claim": "Learn does not identify this roadmap feature by its roadmap name.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Foundry inline DLP prompts Purview pricing rate requests messages simulation role policy portal; opened ai-azure-foundry, the Foundry Compliance guide and developer/use-the-api. Found app-scoped DLP documentation, not the roadmap-titled feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "The Foundry page documents support only for a DLP policy that blocks prompts based on sensitive information types.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-azure-foundry",
+      "quote": "Support today is only available for a DLP policy that blocks prompts based on sensitive information types.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Governance guidance: At rollout; summary; rationale: risk",
+      "type": "behaviour",
+      "claim": "Learn documents configuring the policy with a PowerShell cmdlet scoped to a specific Entra-registered AI app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-azure-foundry",
+      "quote": "This requires the configuration of a PowerShell cmdlet that's scoped to a specific Entra-registered AI app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure; Governance guidance; rationale: risk",
+      "type": "applicability",
+      "claim": "Foundry data security policies apply to API calls using Entra authentication with a user-context token or explicitly supplied user context.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-azure-foundry",
+      "quote": "Microsoft Purview Data Security Policies for Foundry Services interactions apply to API calls that use Microsoft Entra ID authentication with a user-context token, or for API calls that explicitly include user context.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters; Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Other authentication scenarios appear only in Purview Audit and DSPM for AI Activity Explorer, rather than receiving these data security policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-azure-foundry",
+      "quote": "For all other authentication scenarios, user interactions are displayed in Microsoft Purview Audit and AI Interactions with classifications in DSPM for AI Activity Explorer only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing: last sentence",
+      "type": "absence",
+      "claim": "Whether general availability changes the documented app-scoped policy or user-context requirements is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Foundry inline DLP prompts Purview; Microsoft Foundry DLP prompts create policy portal simulation Mode TestWithNotifications. Opened ai-azure-foundry and Foundry Compliance documentation; neither specifies GA changes to these requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure, first bullet",
+      "type": "behaviour",
+      "claim": "A prompt containing data outside the policy's configured sensitive information types is not evaluated by that rule.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Microsoft Foundry Purview blocked audit; opened ai-azure-foundry, developer/use-the-api and New-DlpComplianceRule. They describe evaluating content and applying rules on sensitive-type matches, not skipping evaluation because content does not match.",
+      "severity": "major",
+      "fix": "Replace the first sentence with 'Learn documents blocking prompts based on sensitive information type matches; data outside the rule's configured types does not match that condition.' Retain the advice to review the configured types."
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "The documented app-specific policy does not automatically cover a different new Foundry app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-azure-foundry",
+      "quote": "This requires the configuration of a PowerShell cmdlet that's scoped to a specific Entra-registered AI app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Security & identity; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Foundry Compliance prioritized actions can identify agents without the intended DLP coverage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/control-plane/how-to-manage-compliance-security",
+      "quote": "Prioritized actions might identify:\n- Bulk access to sensitive information that warrants investigation.\n- Agents without the intended data loss prevention coverage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[1].note; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The Defender for Cloud method of configuring the Foundry Purview integration is being deprecated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/defender-for-cloud/ai-onboarding",
+      "quote": "The current Microsoft Purview configuration method for Microsoft Foundry is being deprecated. A new configuration method is now available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity; Open questions: agent coverage",
+      "type": "applicability",
+      "claim": "The Defender for Cloud configuration page says that its Purview integration does not include Foundry agent data or context.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/defender-for-cloud/ai-onboarding",
+      "quote": "Microsoft Purview integration does not include data or context from Foundry agents. Support for Foundry agent integration is not available at this time",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[2].governs; Why it matters; Governance guidance: After rollout",
+      "type": "applicability",
+      "claim": "Foundry AI interactions are captured in the unified audit log and can be searched using Purview Audit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-azure-foundry",
+      "quote": "Like other activities, prompts and responses are captured in the unified audit log.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.model, cost; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Consumption licensing and variable cost fit the documented requirement to enable Purview pay-as-you-go billing for managing Foundry policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-azure-foundry",
+      "quote": "Managing policies for Microsoft Foundry AI interactions with Microsoft Purview requires you to enable pay-as-you-go billing in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing; Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "cost",
+      "claim": "Purview pay-as-you-go is consumption billing requiring the tenant to be associated with an active Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "The pay-as-you-go billing model is a consumption billing model. ... The billing mechanisms are Azure based, so you must associate your Microsoft 365 tenant with an active Azure subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing; Governance guidance: After rollout",
+      "type": "cost",
+      "claim": "An Azure bill at the end of the month covers the pay-as-you-go charges across Microsoft solutions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "An Azure bill is generated at the end of the month for the total number of pay-as-you-go charges across all Microsoft solutions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "cost",
+      "claim": "The billing table lists Data Security for Gen AI Applications for classification and protection of non-M365 AI prompts and responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "Data Security for Gen AI Applications ... Applies to classification and protection of sensitive content for non-M365 AI interactions (prompts/responses)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions: price",
+      "type": "cost",
+      "claim": "The Data Security for Gen AI Applications billing unit is number of requests or messages.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/purview-billing-models",
+      "quote": "Number of requests or messages for non-Microsoft 365 AI interactions (prompts or responses)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing: billing row qualification",
+      "type": "absence",
+      "claim": "The billing-models row does not name Foundry DLP prompt evaluation or give a numeric rate.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Foundry inline DLP prompts price rate requests messages pricing. Opened purview-billing-models, including its full Data Security for Gen AI Applications row; it gives a generic requests/messages unit and no numeric rate or Foundry-specific row.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A rate specifically identified for this Foundry prompt-DLP feature is not published in the documentation found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Foundry inline DLP prompts price rate requests messages pricing; Purview Foundry DLP price. Opened ai-azure-foundry, purview-billing-models and Azure Purview consumption pricing; found no rate identified for this Foundry feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing: Audit",
+      "type": "licensing",
+      "claim": "Microsoft Purview Audit includes Foundry data as part of the Microsoft Purview license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-azure-foundry",
+      "quote": "Note that Microsoft Purview Audit includes Microsoft Foundry data as part of the Microsoft Purview license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing: Foundry model usage",
+      "type": "cost",
+      "claim": "Foundry model usage has its own billing model and charges, separate from the Purview policy charge.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/concepts/billing-concepts",
+      "quote": "Microsoft Foundry bills you for the underlying Azure services and models that you use. How each charge accrues depends on its billing model, such as pay-as-you-go or provisioned throughput.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/azure/foundry/concepts/billing-concepts to sources and make the existing 'Foundry billing concepts page' text a link to it."
+    },
+    {
+      "n": 44,
+      "where": "Scope: DSPM for AI permissions",
+      "type": "role",
+      "claim": "The Foundry page gives Microsoft Entra Compliance Administrator as an example account role for DSPM for AI.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-azure-foundry",
+      "quote": "with an account that has appropriate permissions. For example, an account that's a member of the Microsoft Entra Compliance Administrator group role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope: cmdlet permissions",
+      "type": "role",
+      "claim": "New-DlpComplianceRule requires assigned permissions in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule",
+      "quote": "To use this cmdlet in Security & Compliance PowerShell, you need to be assigned permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope: last sentence",
+      "type": "absence",
+      "claim": "Which Purview role creates this DLP policy is not stated.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/defender-office-365/scc-permissions",
+      "quote": "Information Protection Admin | Create, edit, and delete DLP policies, sensitivity labels and their policies, and all classifier types.",
+      "severity": "blocker",
+      "fix": "Replace 'Which Purview role creates this policy is not stated.' with 'Microsoft documents the Information Protection Admin role as able to create, edit and delete DLP policies.' Cite https://learn.microsoft.com/defender-office-365/scc-permissions#roles-in-microsoft-defender-for-office-365-and-microsoft-purview and add it to sources."
+    },
+    {
+      "n": 47,
+      "where": "controls[0].ui; Governance controls: PowerShell-only explanation; Open questions",
+      "type": "absence",
+      "claim": "No Purview portal creation path is documented for the Entra-registered app DLP policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Foundry DLP prompts create policy portal simulation Mode TestWithNotifications. Opened ai-azure-foundry and developer/use-the-api; the tutorial explicitly says the portal does not currently support creating DLP policies for Entra-registered applications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "New-DlpComplianceRule with Policy, ContentContainsSensitiveInformation credit card number, and RestrictAccess UploadText Block is a documented app-DLP rule command.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule",
+      "quote": "-Policy \"Test Entra DLP\" -ContentContainsSensitiveInformation @{Name = \"credit card number\"} ... -RestrictAccess @(@{setting=\"UploadText\";value=\"Block\"})",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].note; Governance controls: PowerShell-only explanation",
+      "type": "command",
+      "claim": "The DLP rule cmdlet is available only in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule",
+      "quote": "This cmdlet is available only in Security & Compliance PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[0].note",
+      "type": "command",
+      "claim": "Example 4 creates the Entra-app-scoped policy with New-DlpCompliancePolicy -Locations and -EnforcementPlanes Application.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule",
+      "quote": "New-DlpCompliancePolicy -Name \"Test Entra DLP\" -Mode Enable -Locations $locations -EnforcementPlanes @(\"Application\")",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The Foundry portal route to Purview Data Security is Manage > Compliance > Data security and governance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/control-plane/how-to-manage-compliance-security",
+      "quote": "In the Foundry portal, select Manage > Compliance. ... Select the Data security and governance tab. ... Review the Powered by Microsoft Purview setting and the coverage indicators.",
+      "severity": "minor",
+      "fix": "The route stops on the correct tab. Set the surface to 'Microsoft Foundry (new) portal' and extend the path to 'Manage > Compliance > Data security and governance > subscription > Powered by Microsoft Purview'. Retain the note that the setting shows the integration's enabled state."
+    },
+    {
+      "n": 52,
+      "where": "controls[1].note; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The Data security and governance tab shows the Powered by Microsoft Purview enabled state for the selected subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/control-plane/how-to-manage-compliance-security",
+      "quote": "Select the subscription that you want to review. ... The Powered by Microsoft Purview setting shows the integration's enabled state.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "No automation operation for enabling this Foundry Purview integration is documented in the references found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Foundry Purview enable data security REST API toggle Microsoft.Security pricings extension. Opened Foundry Compliance, ai-onboarding and Microsoft.Security/pricings; the latter documents AIPromptEvidence, not a Purview enablement extension.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Purview portal > Audit > Search is the documented route to search the audit log.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "Select the Audit solution card. ... On the Search page, configure the following search criteria as applicable:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "Search-UnifiedAuditLog is the documented PowerShell operation for searching the unified audit log.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "The underlying cmdlet used to search the audit log is an Exchange Online cmdlet, which is Search-UnifiedAuditLog.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[2].note",
+      "type": "role",
+      "claim": "Searching audit records requires the Audit Logs or View-Only Audit Logs role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "You must be assigned the Audit Logs or View-Only Audit Logs roles in the Microsoft Purview portal to search the audit log.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[2].note",
+      "type": "command",
+      "claim": "Search-UnifiedAuditLog is read-only monitoring run in Exchange Online PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-search",
+      "quote": "you can use this cmdlet to search the audit log instead of using the search tool on the Audit page in the Microsoft Purview portal. You have to run this cmdlet in Exchange Online PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls: Compliance view",
+      "type": "behaviour",
+      "claim": "Foundry Compliance centralizes visibility but leaves policy configuration, evaluation and enforcement to the relevant underlying service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/control-plane/how-to-manage-compliance-security",
+      "quote": "Policy configuration, evaluation, investigation, and enforcement remain with the relevant service or control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls: Compliance view",
+      "type": "behaviour",
+      "claim": "Foundry's Purview coverage indicators are visibility measures, not a guarantee of active policy protection for every interaction.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/control-plane/how-to-manage-compliance-security",
+      "quote": "Treat these indicators as visibility measures, not a guarantee that every interaction has active policy protection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Governance controls: Compliance view; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Audit visibility must not be equated with data security policy enforcement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/azure/foundry/control-plane/how-to-manage-compliance-security",
+      "quote": "Don't equate audit visibility with data security policy enforcement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Open questions: blocked-prompt experience",
+      "type": "absence",
+      "claim": "The Foundry Purview page does not specify what a blocked prompt looks like to the user or app.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Foundry blocked prompt Purview; Microsoft Purview Foundry blocked audit. Opened ai-azure-foundry and developer/use-the-api; the Foundry page gives no user-facing blocked-prompt experience, while the tutorial describes application enforcement of returned actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Open questions: blocked-prompt audit events",
+      "type": "absence",
+      "claim": "The Foundry Purview page does not identify the audit events that record blocked prompts.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Purview Foundry blocked audit; Foundry blocked prompt Purview. Opened ai-azure-foundry and audit-search; the Foundry page describes unified audit capture without naming a blocked-prompt operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Open questions: simulation",
+      "type": "command",
+      "claim": "The Learn policy example uses -Mode Enable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule",
+      "quote": "New-DlpCompliancePolicy -Name \"Test Entra DLP\" -Mode Enable -Locations $locations -EnforcementPlanes @(\"Application\")",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist asks readers to confirm Purview pay-as-you-go subscription linkage, but no controls row represents that billing prerequisite.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm your tenant has an Azure subscription linked for Purview pay-as-you-go billing ... Controls: DLP rule; Whether Microsoft Purview Data Security is enabled for Foundry; Audit records of Foundry AI interactions.",
+      "severity": "minor",
+      "fix": "The Before rollout step asking readers to confirm Purview pay-as-you-go subscription linkage has no corresponding controls-table row. Remove this configuration check from the checklist; retain the documented subscription prerequisite in Cost and licensing."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-20T21:42:35.746Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=558565",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/ai-azure-foundry",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/azure/foundry/control-plane/how-to-manage-compliance-security",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/developer/use-the-api",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/purview-billing-models",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/azure/defender-for-cloud/ai-onboarding",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-search",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1304291",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "DLP rule that blocks sensitive information types in prompts to a Foundry app",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule",
+        "reachable": true,
+        "token": "New-DlpComplianceRule",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether Microsoft Purview Data Security is enabled for Foundry",
+        "docs": "https://learn.microsoft.com/azure/foundry/control-plane/how-to-manage-compliance-security",
+        "reachable": true,
+        "segments": [
+          "Manage",
+          "Compliance",
+          "Data security and governance"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Audit records of Foundry AI interactions",
+        "docs": "https://learn.microsoft.com/purview/audit-search",
+        "reachable": true,
+        "segments": [
+          "Audit",
+          "Search"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Audit records of Foundry AI interactions",
+        "docs": "https://learn.microsoft.com/purview/audit-search",
+        "reachable": true,
+        "token": "Search-UnifiedAuditLog",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

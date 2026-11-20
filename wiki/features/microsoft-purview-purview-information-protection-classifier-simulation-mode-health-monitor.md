@@ -85,19 +85,23 @@ changes:
     note: "New briefing on Classifier Simulation Mode and classifier health monitoring, from the roadmap item and MC1185445."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 75 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected after verification: qualified the uploaded-file SIT test with its Exchange Online licence prerequisite, softened the claim about disabled classifiers, and removed the Classifiers sublocation for the simulation option."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 83 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 75
-  confirmed: 71
-  unconfirmed: 2
-  contradicted: 2
-  attempts: 1
-  hash: "a72bb906ac2cc6f4bc20f641ff55c5aa"
+  claims: 83
+  confirmed: 83
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "46b0b4fbb7f71ca5cab02ebcbf35ae30"
 ---
 
 ## What's changing
@@ -123,7 +127,7 @@ Microsoft's notice says the feature is available to all tenants by default and t
 **Security & identity**
 
 - Access to simulation and publishing is described by the notice as manageable through role-based permissions, with no role named. Learn's page on testing SITs lists role groups for the existing uploaded-file test, so confirm which apply here.
-- A classifier that is disabled stops matching content, so a DLP policy or label rule that depends on a custom SIT may detect less. The notice does not describe what happens to policies that reference a disabled classifier.
+- Confirm how disabling a classifier affects matching and any DLP policies or label rules that depend on it. The notice does not describe what happens to policies that reference a disabled classifier.
 
 **Autonomy & actions**
 
@@ -137,7 +141,7 @@ Microsoft's notice says the feature is available to all tenants by default and t
 
 No licence, meter or price for Classifier Simulation Mode is published at the time of writing. The roadmap item and MC1185445 name none, and Learn's page on creating custom sensitive information types only points readers to the Microsoft 365 Enterprise Plans and Microsoft 365 licensing guidance pages without naming a licence for this feature. Treat licensing as not yet published and confirm before budgeting.
 
-The cost that is evident is admin time: simulating classifiers, reading health insights and rewriting patterns. Learn's page on testing SITs describes an uploaded-file test available today, which is a different, manual check covered in the controls notes.
+The cost that is evident is admin time: simulating classifiers, reading health insights and rewriting patterns. Learn's page on testing SITs describes an uploaded-file test available today, which is a different, manual check covered in the controls notes. For that existing test, Learn says the tenant must have at least one Exchange Online licence added; otherwise the Test SIT option is greyed out ([Learn about sensitive information types](https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about)). That is Learn's prerequisite for the existing test and is not applied here to Classifier Simulation Mode.
 
 ## Scope
 
@@ -155,7 +159,7 @@ The notice says the feature is available to all tenants by default and that no o
 
 ### At rollout
 
-- Check the Classifiers area of the Microsoft Purview compliance portal for the new simulation option and classifier health insights as the preview and general availability rollouts complete.
+- Check the Microsoft Purview compliance portal for the new simulation option and classifier health insights as the preview and general availability rollouts complete.
 - Simulate each new or changed custom SIT before publishing it, rather than publishing directly.
 - Confirm which role groups can simulate and publish, since MC1185445 names none.
 
@@ -163,7 +167,6 @@ The notice says the feature is available to all tenants by default and that no o
 
 - Monitor any SITs flagged as unhealthy and adjust their logic, as MC1185445 advises.
 - Check whether any custom SIT referenced by a DLP or labelling policy has been disabled, and compare policy matches before and after.
-- Test edited SITs with the existing uploaded-file test as well, since it covers a different case from simulation.
 
 ## Governance controls
 
@@ -180,7 +183,7 @@ The notice says the feature is available to all tenants by default and that no o
 
 At the time of writing (November 2026), Microsoft Learn documents no setting that turns Classifier Simulation Mode or classifier health monitoring on or off, and no API for either, so the first row is empty on both sides. MC1185445 says the feature is available to all tenants by default.
 
-The other two rows are how custom SITs are published and changed today. They are not controls over simulation, and Learn does not say that simulation is part of those procedures. Learn's page on testing SITs separately describes uploading one unencrypted file at a time to a SIT, which it says is different from auto-labeling policy simulation. That page also lists role groups, and has a section headed "Enable access to simulation mode" naming Communication Compliance Admins, Information Protection Admins, Information Protection Investigators and Organization Management. It does not say that section covers Classifier Simulation Mode, so confirm before relying on it.
+The other two rows are how custom SITs are published and changed today. They are not controls over simulation, and Learn does not say that simulation is part of those procedures. Learn's page on testing SITs separately describes uploading one unencrypted file at a time to a SIT, which it says is different from auto-labeling policy simulation; Learn says the tenant must have at least one Exchange Online licence added for that test, or the Test SIT option is greyed out. That page also lists role groups, and has a section headed "Enable access to simulation mode" naming Communication Compliance Admins, Information Protection Admins, Information Protection Investigators and Organization Management. It does not say that section covers Classifier Simulation Mode, so confirm before relying on it.
 
 ## Open questions
 
@@ -194,14 +197,4 @@ The other two rows are how custom SITs are published and changed today. They are
 risk: Medium. Microsoft's notice says inefficient classifiers may be automatically disabled, which could change what DLP policies and labels detect, and it does not say how admins are told first.
 cost: Low. The roadmap item and Message center post MC1185445 name no licence, meter or price, so the only cost the sources show is admin time to test and tune classifiers; licensing is not yet published.
 impact: Medium. The notice says admins managing Purview Information Protection and custom sensitive information types are affected; end users are not named, though classifier outcomes feed policies that reach them.
--->
-
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing; Governance guidance: After rollout; Governance controls / licensing: The existing uploaded-file test is available to test edited SITs, without mentioning its tenant licensing prerequisite. | Found: To test any custom or default SIT tenant, there must be at least one Exchange Online license added to the tenant. Otherwise, the Test SIT option will be greyed out when any SIT is selected. | Fix: Qualify the existing uploaded-file testing advice with: 'The tenant must have at least one Exchange Online licence added; otherwise the Test SIT option is greyed out.' Cite https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about. Do not apply this prerequisite to the new Classifier Simulation Mode. | Source: https://learn.microsoft.com/purview/sit-sensitive-information-type-learn-about
-- [unsupported, major] Risk assessment: Security & identity / behaviour: A classifier that is disabled stops matching content. | Found: Searched: Purview disabled custom sensitive information type classifier stops matching policies; read MC1185445, SIT overview and management. The notice permits automatic disabling but does not specify its effect on matching or existing classification results. | Fix: Replace 'A classifier that is disabled stops matching content, so a DLP policy or label rule that depends on a custom SIT may detect less' with 'Confirm how disabling a classifier affects matching and any DLP policies or label rules that depend on it.'
-- [unsupported, blocker] Governance guidance: At rollout / admin-path: The new simulation option and health insights are in the Classifiers area of the Microsoft Purview compliance portal. | Found: Searched: Purview Classifier Simulation Mode; read MC1185445 and classifiers overview. The notice locates simulation and insights in the compliance portal, not specifically in Classifiers; the overview does not describe these controls. | Fix: Replace the checklist bullet with 'Check the Microsoft Purview compliance portal for the new simulation option and classifier health insights as the preview and general availability rollouts complete.' MC1185445 supports the portal location but not the Classifiers sublocation.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist tells readers to use the uploaded-file SIT test, but the controls table has no testing row. | Found: Test edited SITs with the existing uploaded-file test as well Controls rows: tenant availability; creation and publishing; editing existing SIT logic. | Fix: Remove the After rollout bullet 'Test edited SITs with the existing uploaded-file test as well, since it covers a different case from simulation.' This checklist control has no table row; do not add a row as part of this correction.
 -->

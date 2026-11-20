@@ -56,7 +56,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Solutions > Information Protection > Sensitivity labels > Policies > Auto-labeling policies"
+      path: "Solutions > Information Protection > Sensitivity labels > Policies > Auto-labeling policies > Protect PDFs with Auto-labeling"
       docs: "https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files"
     api:
       kind: "powershell"
@@ -73,7 +73,7 @@ controls:
       kind: "powershell"
       call: "Set-Label -Identity <MasterIdParameter> -EncryptionRightsDefinitions <EncryptionRightsDefinitionsParameter>"
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-label"
-    note: "Existing control. Encryption settings are on the label's Access control page (Assign permissions now). Set-Label runs in Security & Compliance PowerShell. Not stated to govern annotation."
+    note: "Existing control. Encryption settings are on the label's Access control page (Assign permissions now). The label encryption settings restrict access to the content; the rights required specifically for annotation are not yet documented."
 confidence: "medium"
 created: "2026-11-20"
 updated: "2026-11-20"
@@ -83,19 +83,23 @@ changes:
     note: "First briefing for this roadmap item: records the plan, the existing PDF label and encryption controls, and what Microsoft has not yet published."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 46 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected the controls note: label encryption settings govern access to protected files; annotation rights are not yet documented. Added the banner step to row 1's path."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 50 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 46
-  confirmed: 45
+  claims: 50
+  confirmed: 49
   unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "38e53cfbe86ed0f9a7608b5fe2f9c691"
+  attempts: 2
+  hash: "cd485b771e56923d25f8215091f082c2"
 ---
 
 ## What's changing
@@ -163,12 +167,12 @@ Prerequisites are not documented for this feature. Learn documents PDF support f
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether SharePoint and OneDrive support sensitivity labels on PDFs (existing tenant setting)</strong><br><small>Tenant</small><br><small class="controls__note">Existing control; Learn does not say this feature depends on it. In the portal, the Protect PDFs with Auto-labeling banner turns it on. The cmdlet needs the SharePoint Online administrator role.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Sensitivity labels › Policies › Auto-labeling policies <a href="https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -EnableSensitivityLabelforPDF $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users hold which usage rights on files a label encrypts</strong><br><small class="controls__note">Existing control. Encryption settings are on the label's Access control page (Assign permissions now). Set-Label runs in Security &amp; Compliance PowerShell. Not stated to govern annotation.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Sensitivity labels <a href="https://learn.microsoft.com/purview/create-sensitivity-labels" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-Label -Identity &lt;MasterIdParameter&gt; -EncryptionRightsDefinitions &lt;EncryptionRightsDefinitionsParameter&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-label" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether SharePoint and OneDrive support sensitivity labels on PDFs (existing tenant setting)</strong><br><small>Tenant</small><br><small class="controls__note">Existing control; Learn does not say this feature depends on it. In the portal, the Protect PDFs with Auto-labeling banner turns it on. The cmdlet needs the SharePoint Online administrator role.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Sensitivity labels › Policies › Auto-labeling policies › Protect PDFs with Auto-labeling <a href="https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOTenant -EnableSensitivityLabelforPDF $true</code> <a href="https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spotenant" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users hold which usage rights on files a label encrypts</strong><br><small class="controls__note">Existing control. Encryption settings are on the label's Access control page (Assign permissions now). The label encryption settings restrict access to the content; the rights required specifically for annotation are not yet documented.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Information Protection › Sensitivity labels <a href="https://learn.microsoft.com/purview/create-sensitivity-labels" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-Label -Identity &lt;MasterIdParameter&gt; -EncryptionRightsDefinitions &lt;EncryptionRightsDefinitionsParameter&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-label" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-Both rows are existing controls over labelled PDFs. Learn does not say that either governs the annotation feature itself, so treat them as ways to prepare the tenant rather than as a switch for it. Row 1 needs the SharePoint Online administrator role for the cmdlet; for Microsoft 365 Multi-Geo, Learn says to connect to each geo-location and run the command separately. Row 2 changes encryption permissions on a label, which apply to every file carrying that label, so test before editing a label in use.
+Both rows are existing controls over labelled PDFs. Label encryption settings govern access to the protected content. Which usage rights annotation requires, and whether it depends on the PDF support setting in row 1, are not yet documented. Row 1 needs the SharePoint Online administrator role for the cmdlet; for Microsoft 365 Multi-Geo, Learn says to connect to each geo-location and run the command separately. Row 2 changes encryption permissions on a label, which apply to every file carrying that label, so test before editing a label in use.
 
 ## Open questions
 
@@ -187,9 +191,7 @@ impact: Low. Only users who open label-protected PDFs in the OneDrive or SharePo
 <!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: paragraph after table / applicability: Learn does not say that either existing control governs the annotation feature itself, so both should be treated only as preparation. | Found: When users download or access these files from SharePoint or OneDrive, the sensitivity label and any encryption settings from the label are enforced and remain with the file, wherever it's stored. | Fix: Replace 'Learn does not say that either governs the annotation feature itself, so treat them as ways to prepare the tenant rather than as a switch for it.' with 'Label encryption settings govern access to the protected content. Which usage rights annotation requires, and whether it depends on the PDF support setting in row 1, are not yet documented.' The cited SharePoint/OneDrive page and https://learn.microsoft.com/purview/encryption-sensitivity-labels establish this general reach without specifying the annotation rights. | Source: https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files
+- [contradicted, blocker] Governance controls: final sentence / applicability: Changes to encryption permissions on a label apply to every file carrying that label. | Found: However, if users have already opened an encrypted document or email, they won't get the new settings until their use license has expired and they must reauthenticate. | Fix: Replace the final sentence with: 'For labels configured with Assign permissions now, changes to users or permissions apply to existing encrypted items when users authenticate with the encryption service; users with an existing use licence receive the changes when it expires and they reauthenticate, so test before editing a label in use.' This qualification is documented at https://learn.microsoft.com/purview/encryption-sensitivity-labels#editing-labels-to-newly-apply-encryption-or-change-existing-encryption-settings. | Source: https://learn.microsoft.com/purview/encryption-sensitivity-labels
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The PDF support setting is reached through Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels > Policies > Auto-labeling policies. | Found: Solutions > Information Protection > Sensitivity labels > Policies > Auto-labeling policies Then, if you see a message Protect PDFs with Auto-labeling, select this banner | Fix: Append ' > Protect PDFs with Auto-labeling' to controls[0].ui.path and the rendered path. Retain the note that the banner is conditional. The cited page documents selecting that banner to turn on PDF protection. | Source: https://learn.microsoft.com/purview/sensitivity-labels-sharepoint-onedrive-files
-- [supported, minor] controls[1].ui; controls[1].note; Governance controls table / admin-path: The Sensitivity labels page in Microsoft Purview is the starting place for editing a label's Access control permissions. | Found: Solutions > Information Protection > Sensitivity labels To edit an existing label, select it, and then select the Edit label icon. | Fix: The path stops at the correct labels list. Extend it to 'Solutions > Information Protection > Sensitivity labels > label > Edit label > Define the scope for this label > Files & other data assets > Choose protection settings for the types of items you selected > Control access > Access control > Configure access control settings > Assign permissions now'. The last steps are documented at the already-cited https://learn.microsoft.com/purview/encryption-sensitivity-labels; retain that source. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
-- [supported, minor] controls[1].note; Governance controls table / applicability: The correctly documented label encryption control is accompanied by the caveat 'Not stated to govern annotation.' | Found: When a document, email, or meeting invite is encrypted, access to the content is restricted, so that it: Can be decrypted only by users authorized by the label's encryption settings. | Fix: Replace 'Not stated to govern annotation.' with 'The label encryption settings restrict access to the content; the rights required specifically for annotation are not yet documented.' Keep the existing Access control and PowerShell notes. | Source: https://learn.microsoft.com/purview/encryption-sensitivity-labels
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: Solutions > Information Protection > Sensitivity labels in Microsoft Purview portal is the route printed for configuring label encryption rights. | Found: Sign in to the Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels To edit an existing label, select it, and then select the Edit label icon. | Fix: The path stops on the correct labels page. Extend it to 'Solutions > Information Protection > Sensitivity labels > label > Edit label > Choose protection settings for the types of items you selected > Control access > Access control > Configure access control settings > Assign permissions now > Assign permissions > Choose permissions'. The label must include Files & other data assets. Cite https://learn.microsoft.com/purview/encryption-sensitivity-labels alongside the existing creation page. | Source: https://learn.microsoft.com/purview/create-sensitivity-labels
 -->
