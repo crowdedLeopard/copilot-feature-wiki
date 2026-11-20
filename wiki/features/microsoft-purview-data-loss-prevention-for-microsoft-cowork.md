@@ -67,15 +67,17 @@ changes:
     note: "Corrected after verification: added the email-date and calendar-invite qualification, replaced the unpublished-licensing statements with the Purview service description's licensing, removed an unsupported absence claim and one monitoring bullet, and set action to act-now."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 72 statements not yet confirmed"
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-18"
+  date: "2026-11-20"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
-  confirmed: 72
+  claims: 65
+  confirmed: 65
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -180,8 +182,8 @@ cost: Low. The only cost the sources show is admin time to review and tune polic
 impact: Medium. Security and compliance admins must review policies, and Cowork users whose prompts match a rule get no response or lose web search for that prompt.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] rationale: cost / licensing: The cost rationale collectively describes the eligible file and email protection plans as E5-tier plans. | Found: Microsoft 365 E5/A5, Microsoft Purview Suite/EDU/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5 Information Protection and Governance | Office 365 E5/A5 | Fix: In the cost rationale, replace 'included only in E5-tier plans' with 'included in the plans listed in Cost and licensing'. This avoids treating the broad E5-tier shorthand as an exact licence requirement. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
+- [supported, minor] rationale: cost / licensing: The rationale collectively describes the listed file and email protection plans as E5-tier plans. | Found: Microsoft 365 E5/A5, Microsoft Purview Suite/EDU/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5 Information Protection and Governance | Office 365 E5/A5 | Fix: In the cost rationale, replace 'included only in E5-tier plans' with 'included in the plans listed in Cost and licensing'. The table also names suite and frontline plans, so E5-tier should not stand in for the exact entitlement list. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
 -->

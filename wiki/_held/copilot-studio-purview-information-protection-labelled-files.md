@@ -143,18 +143,20 @@ changes:
     note: "Corrected after verification: licensing now mixed and cost variable, with Copilot Credits billing and the Microsoft 365 Copilot inclusion cited; label encryption path and Set-Label call corrected; autonomy bullet narrowed."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 69 statements not yet confirmed"
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 67 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 5
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-20"
   version: 5
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 69
-  confirmed: 69
+  claims: 67
+  confirmed: 65
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "f32455be12e349712b0af05a64ea29d9"
 ---
 
@@ -256,8 +258,12 @@ cost: Variable. Existing agent usage is measured in Copilot Credits; qualifying 
 impact: Medium. Makers of agents on the Microsoft 365 channel, their users and the compliance team that owns the label taxonomy would notice; users without agents on that channel would not.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[3].ui; Governance controls table / admin-path: The printed label-encryption route gives the complete choices needed to reach Assign permissions now. | Found: Follow the general instructions to create or edit a sensitivity label and make sure the Files & other data assets option is selected for the label's scope | Fix: Replace the path with 'Solutions > Information Protection > Sensitivity labels > label > Edit label > Define the scope for this label > Files & other data assets > Choose protection settings for the types of items you selected > Control access > Access control > Configure access control settings > Assign permissions now'. Add https://learn.microsoft.com/purview/create-sensitivity-labels to sources for the portal navigation and edit steps; retain encryption-sensitivity-labels as docs. The current route omits portal navigation and the scope choice that enables these settings. | Source: https://learn.microsoft.com/purview/encryption-sensitivity-labels
+- [contradicted, blocker] controls[5].api; Governance controls table / absence: Automation for monitoring Copilot Studio interactions involving sensitive content is not documented. | Found: Use the Export-ActivityExplorerData cmdlet to export activities from Data classification > Activity Explorer ... This cmdlet supports following filters: ... CopilotType ... SensitivityLabel ... Valid activity filters ... AIAppInteraction ... CopilotInteraction | Fix: Narrow controls[5].governs to 'Copilot experiences & agents summary report in DSPM for AI (classic)' and its note to 'Portal summary reporting only; underlying activity events can be exported with Export-ActivityExplorerData. Wait at least a day for policy data.' Keep api null only for that particular summary report, not for monitoring interactions generally. Add https://learn.microsoft.com/powershell/module/exchangepowershell/export-activityexplorerdata?view=exchange-ps to sources. The cited ai-copilot-studio article explicitly connects these report graphs to their underlying activity-explorer events. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/export-activityexplorerdata?view=exchange-ps
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing: standard harness parenthesis / behaviour: The standard harness is a Copilot Studio agent runtime. | Found: The standard harness and the Microsoft Copilot harness are two authoring and runtime options in Copilot Studio. | Fix: Add https://learn.microsoft.com/microsoft-copilot-studio/guidance/choose-harness to sources for the parenthetical explanation of standard harness, or remove the parenthesis '(a Copilot Studio agent runtime)'. | Source: https://learn.microsoft.com/microsoft-copilot-studio/guidance/choose-harness
+- [supported, minor] What's changing: standard harness parenthesis / behaviour: The standard harness is a Copilot Studio agent runtime. | Found: The standard harness and the Microsoft Copilot harness are two authoring and runtime options in Copilot Studio. | Fix: Add https://learn.microsoft.com/microsoft-copilot-studio/guidance/choose-harness to sources, or remove the parenthesis '(a Copilot Studio agent runtime)'. | Source: https://learn.microsoft.com/microsoft-copilot-studio/guidance/choose-harness
+- [supported, minor] controls[2].ui; Governance controls table / admin-path: The stated Purview DLP path reaches the Microsoft Copilot, Copilot Chat, and Copilot Cowork policy location through the Custom policy template. | Found: Go to Data Loss Prevention > Policies and select + Create policy. ... Select the Custom template, then Custom policy. ... On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on. | Fix: The path reaches the correct policy page but stops before its label-based control. Append '> rule > Content contains > Sensitivity labels > Prevent Copilot and Cowork from processing content', using the condition and action documented on the same page. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
 -->

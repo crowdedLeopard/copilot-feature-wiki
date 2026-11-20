@@ -130,14 +130,16 @@ changes:
     note: "Corrected: summary no longer says sites are encrypted; auto-labeling simulation and label deletion statements narrowed; BlockContentAnalysisServices limit, Copilot DLP licence, and Edge and inheritance exceptions added."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 97 statements confirmed"
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 113 statements not yet confirmed"
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "verified-with-gaps"
+  date: "2026-11-20"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 97
-  confirmed: 97
+  claims: 113
+  confirmed: 113
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -226,3 +228,11 @@ Label activities are listed in Audit log activities; see [Microsoft Purview Audi
 ## Open questions
 
 - Which licence applies to labelling for Microsoft 365 E3 customers? The service description's introduction and its manual-labelling table row disagree, as described under Cost and licensing.
+
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[5].ui / admin-path: The printed Copilot DLP route reaches the Copilot location in the Custom policy wizard. | Found: Go to Data Loss Prevention > Policies and select + Create policy. ... Select the Custom template, then Custom policy. ... On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on. | Fix: The route stops at the location selection rather than the label-based restriction. Extend the route in controls[5].ui and the matching rendered cell to 'Data Loss Prevention > Policies > + Create policy > Custom > Custom policy > Locations > Microsoft Copilot, Copilot Chat, and Copilot Cowork > rule > Content contains > Sensitivity labels'; retain the existing note naming the action 'Prevent Copilot and Cowork from processing content'. | Source: https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about
+- [supported, minor] What it is: Copilot and labels; Governance controls: reports / behaviour: Retention is the separate mechanism for retaining or deleting content. | Found: Although the main purpose of retention labels is to retain or delete content, you can also use retention labels without turning on any retention or other actions. | Fix: Add https://learn.microsoft.com/purview/retention and https://learn.microsoft.com/purview/purview-reports to sources. These support the retention distinction and the Information Protection > Reports path respectively; the latter path is confirmed in the Reports page's Posture reports section. This is the grouped finding for supporting Microsoft pages not currently cited. | Source: https://learn.microsoft.com/purview/retention
+- [supported, minor] Risks and limits: Container labels / behaviour: Edits to a published label's group settings are not automatically applied to already labeled groups. | Found: When you make changes to group settings for a published label ... those policy changes aren't automatically applied on the labeled groups. | Fix: After this statement, add: 'Microsoft's Purview container-label guide gives different guidance: it says to wait at least 24 hours for changed site and group settings to replicate to containers that already have the label applied.' The conflicting passage is under 'Modifying published labels that are configured for sites and groups' at https://learn.microsoft.com/purview/sensitivity-labels-teams-groups-sites. Keep both statements attributed to their respective guides. | Source: https://learn.microsoft.com/entra/identity/users/groups-assign-sensitivity-labels
+-->

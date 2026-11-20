@@ -49,6 +49,9 @@ sources:
   - title: "Who can deploy, configure and view results of the agent, through role group membership (PowerShell)"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/add-rolegroupmember"
     kind: "learn"
+  - title: "Assign eDiscovery permissions in Microsoft Purview"
+    url: "https://learn.microsoft.com/purview/edisc-permissions"
+    kind: "learn"
 videos: []
 related: ["agent-identity","microsoft-purview-data-loss-prevention-new-guided-experience-to-diagnose-and-resolve-dlp-i","microsoft-purview-endpoint-data-loss-prevention-policy-sync-and-device-health-ai-powered-i"]
 controls:
@@ -89,26 +92,30 @@ controls:
     note: "Shows consumption only. It links to the Security Copilot usage monitoring tool; capacity itself is changed in Security Copilot or Azure."
 confidence: "high"
 created: "2026-11-19"
-updated: "2026-11-19"
+updated: "2026-11-20"
 roadmapModified: "2026-08-17T22:52:47"
 changes:
   - date: "2026-11-19"
     note: "First briefing: Defender XDR will show Triage Agent summaries on DLP alerts; the agent is off until deployed, licensed per seat plus SCU consumption."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 5 of 90 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected: SCU spend no longer said to start at deployment; schedule and manual run both described; remediation reminders limited to SharePoint and OneDrive alerts; deployment no longer called Purview-only."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 89 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
-  date: "2026-11-19"
-  version: 1
+  date: "2026-11-20"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 90
-  confirmed: 85
+  claims: 89
+  confirmed: 86
   unconfirmed: 0
-  contradicted: 5
-  attempts: 1
-  hash: "ab445e3a79d25106a5da7b43f9cd3fab"
+  contradicted: 3
+  attempts: 2
+  hash: "d762ecec85754d4b2d2ec24c99f52e5e"
 ---
 
 ## What's changing
@@ -123,7 +130,7 @@ The roadmap item is In development, with a preview date of April CY2026 and a ta
 
 If nobody acts, no agent is deployed and Defender XDR shows no summaries: MC1255406 ties the summaries to the agent being deployed, and Microsoft's Security Copilot licensing FAQ says agents are not automatically enabled and an organisation must set them up and deploy them. The decision this puts in front of a service owner is whether, when and by whom the agent is deployed.
 
-That decision matters because deployment is the point where spend starts (SCUs are consumed as alerts are triaged) and where an AI agent gets access to alert content. Learn says any admin or analyst in a tenant with no agent deployed sees a banner on the alerts page to set it up with default settings, so the decision can be taken in the Defender XDR queue rather than by the compliance team. Plan for who holds the deployment roles before the banner is clicked.
+That decision matters because the agent consumes SCUs as it triages alerts, and deployment is where an AI agent gets access to alert content. Learn says any admin or analyst in a tenant with no agent deployed sees a banner on the alerts page to set it up with default settings, so the decision can be taken in the Defender XDR queue rather than by the compliance team. Plan for who holds the deployment roles before the banner is clicked.
 
 ## Risk assessment
 
@@ -139,8 +146,8 @@ That decision matters because deployment is the point where spend starts (SCUs a
 
 **Autonomy & actions**
 
-- The agent runs on a Microsoft-set schedule once deployed, and its categories (Needs attention, Less urgent, Not categorized) steer analyst attention. Learn tells analysts to do manual analysis on alerts the agent does not evaluate, so a Less urgent label is a prioritisation aid and not a closure.
-- Remediation reminders (preview) make the agent send a Microsoft Teams chat daily to the last modifier of a file behind a Needs attention alert, and enabling the setting also enables the bot in Teams for the tenant. The one-click default has it off.
+- When configured to run automatically, the agent uses a Microsoft-set schedule; it can instead be run manually on one alert at a time. Its categories (Needs attention, Less urgent, Not categorized) steer analyst attention. Learn tells analysts to do manual analysis on alerts the agent does not evaluate, so a Less urgent label is a prioritisation aid and not a closure.
+- Remediation reminders (preview) make the agent send a Microsoft Teams chat daily to the last modifier of a file behind a SharePoint or OneDrive alert categorized as Needs attention and included in the agent's remediation policy scope, and enabling the setting also enables the bot in Teams for the tenant. The one-click default has it off.
 - MC1255406 says existing DLP policies and enforcement are not changed.
 
 **Change & support**
@@ -203,7 +210,7 @@ The remediation reminders (preview) cost nothing extra beyond the SCUs needed to
 </tbody>
 </table>
 
-Deployment, editing, deactivation and removal are Purview-portal actions even where the agent was deployed from Defender XDR, so an analyst working only in Defender XDR cannot change or stop it. Microsoft Learn documents no PowerShell, Graph or other API for deploying, configuring or deactivating the agent, or for reading its usage, at the time of writing (November 2026).
+Editing, deactivation and removal are Purview-portal actions even where the agent was deployed from Defender XDR, so an analyst working only in Defender XDR cannot change or stop it. Microsoft Learn documents no PowerShell, Graph or other API for deploying, configuring or deactivating the agent, or for reading its usage, at the time of writing (November 2026).
 
 The role groups row governs who can deploy, configure and view results; the roles are listed in Scope. The Teams app setting for remediation reminders is covered on its own Learn page, linked in Scope. Existing DLP policy actions are unchanged by the agent, per MC1255406, so nothing here replaces them. Capacity and overage SCUs are changed in the Security Copilot and Azure portals, as the Security Copilot usage page describes.
 
@@ -220,15 +227,12 @@ cost: Variable. The agent consumes Security Copilot security compute units (SCUs
 impact: Low. Security analysts and admins who triage DLP alerts notice it; Microsoft's notice MC1255406 says there is no impact to users.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters / cost: Deployment is the point where spend starts. | Found: With the inclusion model, which provides 400 SCUs per 1,000 user licenses, there's no hourly provisioned capacity. Instead, the same two scenarios would deduct 3.5 SCUs from the monthly SCU allocation. | Fix: Replace 'deployment is the point where spend starts (SCUs are consumed as alerts are triaged)' with 'the agent consumes SCUs as it triages alerts'. Consumption can use included capacity, and the cited Purview billing page separately says provisioned SCUs are billed in hourly blocks; deployment is not a universal billing start. | Source: https://learn.microsoft.com/copilot/security/security-copilot-inclusion
-- [contradicted, blocker] Risk assessment: Autonomy & actions / behaviour: Once deployed, the agent runs on a Microsoft-set schedule. | Found: Choose to Run automatically based on a set schedule. If you don't choose this option, you must run the agent manually one at a time. Microsoft sets the schedule and it isn't configurable by organizations. | Fix: Replace 'The agent runs on a Microsoft-set schedule once deployed' with 'When configured to run automatically, the agent uses a Microsoft-set schedule; it can instead be run manually on one alert at a time'. The get-started page documents both modes. | Source: https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started
-- [contradicted, blocker] Risk assessment: Autonomy & actions / applicability: Remediation reminders send a Teams chat for a file behind a Needs attention alert, without limiting this statement to SharePoint and OneDrive alerts. | Found: For Sharepoint/OneDrive alerts triaged as Needs Attention, the agent sends a Microsoft Teams chat to the last modified user of the file | Fix: Replace 'of a file behind a Needs attention alert' with 'of a file behind a SharePoint or OneDrive alert categorized as Needs attention and included in the agent's remediation policy scope'. The same page requires remediation policies to be a subset of policies defined for triage. | Source: https://learn.microsoft.com/purview/copilot-in-purview-triage-dlp-agent-get-started
-- [contradicted, blocker] Governance controls: first prose paragraph / consistency: Deployment is a Purview-portal action even where the agent was deployed from Defender XDR. | Found: What's changing: 'the agent can be deployed from either portal'; Governance controls: 'Deployment, editing, deactivation and removal are Purview-portal actions even where the agent was deployed from Defender XDR'. | Fix: Remove 'Deployment, ' and capitalize 'Editing' so the sentence begins 'Editing, deactivation and removal are Purview-portal actions even where the agent was deployed from Defender XDR'. This agrees with the get-started page and the briefing's deployment guidance.
+- [contradicted, blocker] front matter: defaultState; Why it matters: first paragraph / default: The change is off by default and doing nothing guarantees no deployed agent and no summaries in Defender XDR. | Found: Who is affected: ... Organizations using Microsoft Purview Data Security Triage Agent ... DLP alerts in Defender XDR will display AI-generated summaries and categorizations when the Agent is deployed. | Fix: Set defaultState to "on" for this new display surface, qualified by deployment of the agent. Replace the first sentence of Why it matters with: "For tenants where the agent is already deployed, DLP alerts in Defender XDR will display its summaries and categorisations. Tenants without an agent must have an eligible admin or analyst deploy it first; agents are not deployed automatically." Cite MC1255406 and https://learn.microsoft.com/copilot/security/security-copilot-inclusion. Do not equate taking no action on this change with having no existing agent.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].ui; Governance controls / admin-path: Purview role-group membership is managed through Settings > Roles and scopes > Role groups. | Found: Go to Settings > Roles and scopes to view and manage compliance and governance roles in your organization. 2. Select Role groups. | Fix: The path stops on the correct list page. Extend controls[2].ui.path and the rendered table to 'Settings > Roles and scopes > Role groups > role group > Edit > Choose users' for adding individual users, as documented at https://learn.microsoft.com/purview/purview-permissions. | Source: https://learn.microsoft.com/purview/purview-permissions
-- [supported, minor] controls[2].note; Governance controls / command: The eDiscovery permissions page documents use of Add-RoleGroupMember in Security & Compliance PowerShell for a Purview role group. | Found: You can add a mail-enabled security group as a member of the eDiscovery Managers subgroup in the eDiscovery Manager role group by using the Add-RoleGroupMember cmdlet in Security & Compliance PowerShell. | Fix: Add https://learn.microsoft.com/purview/edisc-permissions to sources; the row explicitly relies on that page for the Security & Compliance PowerShell context but does not cite it. | Source: https://learn.microsoft.com/purview/edisc-permissions
-- [contradicted, minor] Governance guidance: Before rollout and At rollout; Governance controls / consistency: Every control the governance checklist asks readers to check or decide has a corresponding controls-table row. | Found: Checklist: 'has Microsoft 365 data sharing enabled', 'Decide which identity the agent uses', 'evidence collection is enabled', 'Teams app permissions have been reviewed'. Table: agent configuration, deactivation, role membership, and usage monitoring. | Fix: The checklist's Microsoft 365 data-sharing check, identity choice, device evidence-collection check and Teams app-permission review have no dedicated table rows. Retain the existing links and prerequisite advice; do not add control rows as part of this correction.
+- [supported, minor] controls[2].ui / admin-path: Purview role-group membership is managed through Settings > Roles and scopes > Role groups. | Found: Go to Settings > Roles and scopes ... Select Role groups. ... select a Microsoft Purview role group ... Select Edit ... On Edit members of the role group, select Choose users or Choose groups. | Fix: The path stops on the correct list page. Extend controls[2].ui.path to "Settings > Roles and scopes > Role groups > role group > Edit > Edit members of the role group > Choose users" for individual membership, as documented at https://learn.microsoft.com/purview/purview-permissions. | Source: https://learn.microsoft.com/purview/purview-permissions
+- [contradicted, minor] Governance guidance; Governance controls / consistency: Every control the governance checklist asks readers to check or use has a corresponding controls-table row. | Found: Checklist: 'has Microsoft 365 data sharing enabled'; 'evidence collection is enabled'; 'Teams app permissions have been reviewed'; 'use agent feedback'. Table: agent configuration, deactivation, role membership, and usage monitoring only. | Fix: The checklist directives to check Microsoft 365 data sharing, check device evidence collection, review Teams app permissions and use agent feedback have no matching control rows. Remove those checklist directives while retaining the already documented prerequisites and behaviour in Scope and Risk assessment; do not add unverified rows.
+- [contradicted, minor] front matter: action / consistency: The action rating review treats the change as doing nothing until someone chooses it. | Found: DLP alerts in Defender XDR will display AI-generated summaries and categorizations when the Agent is deployed. ... Organizations using Microsoft Purview Data Security Triage Agent | Fix: Set action to "prepare": the new display experience reaches organisations with an already-deployed agent without a new deployment choice. The August CY2027 target is not within about 60 days of the run date, so the documented dates do not require act-now.
 -->

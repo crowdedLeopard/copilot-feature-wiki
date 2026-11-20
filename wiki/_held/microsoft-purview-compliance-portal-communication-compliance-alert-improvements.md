@@ -66,18 +66,20 @@ changes:
     note: "Corrected after verification: default state is on per MC920304, licensing is included in eligible subscriptions, and the existing-policies prerequisite and employee-impact claim were removed."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 48 statements not yet confirmed"
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 50 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-18"
+  status: "held"
+  date: "2026-11-20"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 47
+  claims: 50
+  confirmed: 48
   unconfirmed: 0
-  contradicted: 1
-  attempts: 0
+  contradicted: 2
+  attempts: 1
   hash: "c50950130a62bcc34f9d032631aa15a3"
 ---
 
@@ -181,8 +183,10 @@ cost: Low. The only cost the sources show is admin and reviewer time; Communicat
 impact: Low. The people who notice are Communication Compliance admins and the reviewers who receive alert emails.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Scope: Roles; Open questions / absence: The roles able to change the new per-policy alert settings are not stated. | Found: | Actions | Communication Compliance | Communication Compliance Admins | Communication Compliance Analysts | Communication Compliance Investigators | Communication Compliance Viewers | | Configure policies and settings | Yes | Yes | No | No | No | | Fix: Replace 'The roles that will be able to change the new alert settings are not stated' with 'Learn lists the Communication Compliance and Communication Compliance Admins role groups as able to configure policies and settings; MC920304 names no separate role for the new page.' Cite https://learn.microsoft.com/purview/communication-compliance-permissions. Remove 'Which roles can change alert frequency and email recipients, and' from the Open questions bullet, retaining the recipient-eligibility question. | Source: https://learn.microsoft.com/purview/communication-compliance-permissions
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
 - [contradicted, minor] Governance guidance; Governance controls / consistency: The governance checklist names controls that are not represented in the controls table. | Found: Checklist: 'Confirm who is in the Communication Compliance Admins role group' and 'Set frequency and recipients per policy'. Table: existing alert policy triggers and a tenant-wide switch only. | Fix: The Before rollout role-group membership check and At rollout per-policy frequency/recipient configuration step have no corresponding controls-table rows; neither is represented by the existing-trigger or tenant-switch row.
 -->

@@ -70,15 +70,17 @@ changes:
     note: "Corrected: environment credit allocations now described as governing prepaid capacity (linked pay-as-you-go usage can continue), admin path and allocation API request completed, Monitor qualified, inventory step reworded."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 55 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-17"
+  date: "2026-11-20"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 60
+  claims: 55
+  confirmed: 55
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -177,8 +179,10 @@ cost: Variable. Testing agents powered by the Microsoft Copilot harness consumes
 impact: Medium. Makers who test agents in Copilot Studio are the people who see the figures; end users and most administrators do not notice it.
 -->
 
-<!-- verifier-findings (2026-11-17, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] summary; controls[0].note; Why it matters; Governance controls; rationale: risk / applicability: Environment credit allocations govern the prepaid consumption described in the briefing. | Found: To contain prepaid consumption, allocate a defined amount of Copilot Credits to the environment and turn off **Draw from the available capacity in my tenant**. | Fix: Qualify the allocation guidance and row note with: 'These Power Platform controls apply while spending remains managed in the Power Platform admin center. If a Microsoft 365 admin center resource-based spending policy covers the environment, its spending policy takes precedence and the Power Platform capacity allocations and linked billing plans do not apply.' Cite https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs, which documents this exception to the cited Power Platform guidance. | Source: https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Power Platform admin center > Licensing > Products > Copilot Studio > Manage Copilot Credits > environment reaches the allocation pane. | Found: Under Products, select Copilot Studio, and then select Manage Copilot Credits. ... Select the environment ... Under Allocate capacity ... Under Capacity overages, select or clear Draw from the available capacity in my tenant | Fix: The path stops on the right pane. Extend controls[0].ui.path and the rendered table to 'Licensing > Products > Copilot Studio > Manage Copilot Credits > environment > Capacity overages > Draw from the available capacity in my tenant'; note that Allocate capacity on the same pane sets the allocation. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
+- [supported, minor] controls[0].api; Governance controls table / command: PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01 updates environment allocations and tenant-pool draw. | Found: Invoke-RestMethod -Method Put ... -Uri "$apiBaseUrl/licensing/allocationsV2?api-version=$apiVersion" ... -Headers $headers -ContentType "application/json" -Body $allocationBody | Fix: Set controls[0].api.call and the rendered code to 'PUT https://api.powerplatform.com/licensing/allocationsV2?api-version=2024-10-01'. Remove the appended curl-style headers and -d placeholder. Add to the note: 'The request body sets scope.environmentId, allocatedEntitlements[].allocation.quantity and allocatedEntitlements[].enforcementRules with ruleType TenantPool and enabled false.' The cited tutorial documents JSON content type; the pre-check's missing literal Content-Type is not a functional error. | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-copilot-credit-allocations
+- [supported, minor] summary; controls[0].note; Why it matters; Governance controls; rationale: risk / applicability: Environment allocations and linked billing plans govern the prepaid and pay-as-you-go spend described here. | Found: To contain prepaid consumption, allocate a defined amount of Copilot Credits to the environment and turn off Draw from the available capacity in my tenant. | Fix: Qualify the allocation guidance and row note with: 'These Power Platform controls apply while spending remains managed in the Power Platform admin center. If a Microsoft 365 admin center resource-based spending policy covers the environment or agent, its controls take precedence for that usage; Power Platform capacity allocations and linked billing plans no longer apply to a covered environment.' Cite https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-studio-costs, which documents this exception to the cited Power Platform guidance. | Source: https://learn.microsoft.com/power-platform/admin/manage-usage-github-copilot-harness
 -->

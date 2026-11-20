@@ -14,8 +14,8 @@ previewDate: null
 risk: "medium"
 cost: "low"
 impact: "low"
-defaultState: "unknown"
-action: "prepare"
+defaultState: "on"
+action: "act-now"
 licensing:
   model: "included"
   notes: "Microsoft Learn says each user must have a Teams licence to use Teams; the app centric management page names no separate licence or meter. A DoD-specific licence statement is not yet published."
@@ -37,8 +37,17 @@ sources:
   - title: "Manage Teams licenses"
     url: "https://learn.microsoft.com/microsoftteams/user-access"
     kind: "learn"
+  - title: "Purchase third-party Microsoft Teams apps and manage subscriptions and licenses"
+    url: "https://learn.microsoft.com/microsoftteams/purchase-third-party-apps"
+    kind: "learn"
   - title: "Microsoft 365 Roadmap item 569434"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=569434"
+    kind: "roadmap"
+  - title: "Microsoft 365 Roadmap item 527830"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=527830"
+    kind: "roadmap"
+  - title: "Microsoft 365 Roadmap item 569433"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=569433"
     kind: "roadmap"
 videos: []
 related: ["microsoft-teams-m365-admin-centers-manage-teams-apps-that-work-on-outlook-and-m365-app","microsoft-teams-enable-agents-for-existing-applications-in-your-organization"]
@@ -47,7 +56,7 @@ controls:
     scope: "app"
     ui:
       surface: "Teams admin center"
-      path: "Teams apps > Manage apps > app > Users and groups > Availability > Edit availability > Available to"
+      path: "Teams apps > Manage apps > app > Users and groups > Select to manage who this app is installed for or available to in your organization > Availability > Edit availability > Available to"
       docs: "https://learn.microsoft.com/microsoftteams/app-centric-management"
     api:
       kind: "powershell"
@@ -64,26 +73,30 @@ controls:
     note: "Separate toggles for Microsoft, third-party and custom apps. Does not override apps assigned individually, or blocked apps. Learn says all third-party apps are blocked by default in GCC, GCCH and DoD."
 confidence: "medium"
 created: "2026-11-19"
-updated: "2026-11-19"
+updated: "2026-11-20"
 roadmapModified: "2026-11-03T00:14:11"
 changes:
   - date: "2026-11-19"
     note: "New briefing for the DoD roadmap item: per-app availability replaces app permission policies, with the documented migration exception and the controls that apply."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 64 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected after verification: Learn describes automatic migration, so the default is on and action is act-now; trimmed checklist items without a controls row; added the omitted heading to the availability path."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 70 statements confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-19"
-  version: 1
+  status: "verified"
+  date: "2026-11-20"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 61
+  claims: 70
+  confirmed: 70
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "dc846a633230e5e9ded29c0bc0e709a0"
+  contradicted: 0
+  attempts: 0
+  hash: "9fc9b612dba6f3598ef372afb500ebce"
 ---
 
 ## What's changing
@@ -98,7 +111,7 @@ This roadmap item covers DoD only. Microsoft lists the same feature under separa
 
 App centric management replaces the three settings admins used before (the org-wide third-party app setting, the app's allow or block status and the permission policy) with one setting on each app. Learn says that once an organisation moves to the feature it cannot access, edit or use permission policies, and cannot revert the migration. Any policy design that relied on per-user policy assignment has to be re-expressed as users and groups on each app.
 
-Microsoft has not stated what a DoD tenant sees on arrival, or whether DoD tenants are migrated automatically, so the wiki rates on today's behaviour continuing and treats the migration as something to prepare for. Learn describes one case where migration changes access: an app allowed in the global policy but blocked in a custom policy becomes available to all users of the tenant (to none for EDU customers). Teams administrators in DoD should find those apps before the migration reaches their tenant.
+Learn describes automatic migration to app centric management and maps existing organisations' old settings to new access settings; it does not publish a DoD-specific rollout window. Learn describes one case where migration changes access: an app allowed in the global policy but blocked in a custom policy becomes available to all users of the tenant (to none for EDU customers). Teams administrators in DoD should find those apps before the migration reaches their tenant.
 
 ## Risk assessment
 
@@ -126,7 +139,7 @@ The cost the sources show is admin time: reviewing existing permission policies,
 
 ## Scope
 
-**Clouds and rollout.** The roadmap item lists DoD, with status Rolling out and a target of November CY2026 (General Availability, web). The Learn page says that all organisations do not have the feature available, and points to Message Center post MC688930 and roadmap item 151829 for timelines. It does not give a DoD timeline.
+**Clouds and rollout.** The roadmap item lists DoD, with status Rolling out and a target of November CY2026 (General Availability, web). The Learn page says that all organizations do not have the feature available, and points to Message Center post MC688930 and roadmap item 151829 for timelines. It does not give a DoD timeline.
 
 **Who is covered.** Admins manage access for individual users, supported groups or everyone. Supported group types are security groups, Microsoft 365 groups, dynamic user membership groups, nested groups and distribution lists.
 
@@ -137,9 +150,8 @@ The cost the sources show is admin time: reviewing existing permission policies,
 ## Governance guidance
 
 ### Before rollout
-- Export or record each app permission policy and its assignments in the Teams admin center, so you can compare the result after migration.
 - Find apps that the global policy allows but a custom policy blocks; Learn says auto-migration makes these available to all users of the tenant.
-- Decide which apps should stay as `Specific users or groups` and which security groups will hold their members, and who may edit those groups.
+- Decide which apps should stay as `Specific users or groups`.
 - Confirm the roadmap target and rollout timing for DoD through your Message Center and the Learn page before relying on a date.
 
 ### At rollout
@@ -148,7 +160,6 @@ The cost the sources show is admin time: reviewing existing permission policies,
 - Test an app assigned to a group and an app set to `No one` with a pilot user, allowing up to 24 hours for changes.
 
 ### After rollout
-- Review the groups created for each former custom policy and remove or replace those you do not need.
 - Use `Update-M365TeamsApp` to change availability in bulk for many apps, since Learn says the Teams admin center does not support bulk updates.
 - Re-check the default for new apps whenever you change the org-wide settings, since the change also affects apps you have not actively managed.
 
@@ -159,7 +170,7 @@ The cost the sources show is admin time: reviewing existing permission policies,
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which users and groups can use each Teams app (availability: everyone, specific users or groups, no one)</strong><br><small>App</small><br><small class="controls__note">Teams Administrator role. -AppAssignmentType also takes UsersAndGroups and Noone; -OperationType, -Users and -Groups add or remove assignments.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › app › Users and groups › Availability › Edit availability › Available to <a href="https://learn.microsoft.com/microsoftteams/app-centric-management" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app id&gt; -AppAssignmentType Everyone</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users and groups can use each Teams app (availability: everyone, specific users or groups, no one)</strong><br><small>App</small><br><small class="controls__note">Teams Administrator role. -AppAssignmentType also takes UsersAndGroups and Noone; -OperationType, -Users and -Groups add or remove assignments.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › app › Users and groups › Select to manage who this app is installed for or available to in your organization › Availability › Edit availability › Available to <a href="https://learn.microsoft.com/microsoftteams/app-centric-management" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Update-M365TeamsApp -Id &lt;app id&gt; -AppAssignmentType Everyone</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/update-m365teamsapp" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Default availability for new apps and apps you have not actively managed (Org-wide app settings)</strong><br><small>Tenant</small><br><small class="controls__note">Separate toggles for Microsoft, third-party and custom apps. Does not override apps assigned individually, or blocked apps. Learn says all third-party apps are blocked by default in GCC, GCCH and DoD.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Teams apps › Manage apps › Actions › Org-wide app settings <a href="https://learn.microsoft.com/microsoftteams/app-centric-management" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -170,8 +181,7 @@ The PowerShell side of the org-wide default is not mapped by Microsoft Learn: `U
 
 ## Open questions
 
-- When will app centric management reach DoD tenants, and will the migration be automatic? The Learn page refers to MC688930 and roadmap item 151829 for timelines but does not mention DoD; watch Message center and the Learn page.
-- Do the Learn migration rules, including the allowed-globally-but-blocked-in-a-custom-policy exception, apply unchanged in DoD?
+- When will app centric management reach DoD tenants? The Learn page refers to MC688930 and roadmap item 151829 for timelines but does not mention DoD; watch Message center and the Learn page.
 - How do the DoD default for third-party apps (blocked by default per Learn) and the new org-wide default setting interact on arrival?
 - Which Update-M365UnifiedTenantSettings setting name corresponds to each Org-wide app settings control?
 
@@ -179,17 +189,4 @@ The PowerShell side of the org-wide default is not mapped by Microsoft Learn: `U
 risk: Medium. Microsoft's migration notes list one case where an app blocked in a custom policy but allowed globally becomes available to all users, and permission policies cannot be reverted to.
 cost: Low. The only cost the sources show is admin time to review the mapping; Microsoft Learn names no separate licence or meter for app centric management.
 impact: Low. Teams administrators notice first, because the way access is managed changes; users see a difference only where an app's availability changes.
--->
-
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: defaultState; Why it matters, second paragraph; Open questions / default: The migration's arrival behaviour is unknown because Microsoft has not said whether DoD tenants migrate automatically. | Found: Starting from April 2025, your tenant is automatically migrated to app centric management. For existing organizations, old settings are mapped to new access settings. | Fix: Set defaultState to on. Replace the sentence beginning 'Microsoft has not stated what a DoD tenant sees on arrival' with 'Learn describes automatic migration to app centric management and maps existing organisations' old settings to new access settings; it does not publish a DoD-specific rollout window.' In the first Open questions bullet retain the DoD rollout-window question but remove 'and will the migration be automatic?'. Remove the second Open questions bullet questioning whether the documented migration rules apply: the general documentation does not exclude DoD. Do not apply Learn's general April 2025 date as a DoD rollout date; retain this item's November CY2026 roadmap target. | Source: https://learn.microsoft.com/microsoftteams/app-centric-management
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing, third paragraph / record: The same feature has a separate GCC roadmap item, 527830. | Found: "id": 527830; "title": "Microsoft Teams: App centric management in Teams Admin Center to manage the Apps access for tenants, end-users, and groups in GCC" | Fix: Add the roadmap sources https://www.microsoft.com/microsoft-365/roadmap?id=527830 and https://www.microsoft.com/microsoft-365/roadmap?id=569433 for the cross-cloud comparison. Both records were read and support the comparison.
-- [supported, minor] Cost and licensing, second paragraph / licensing: Paid third-party apps have their own service subscriptions, distinct from app centric management. | Found: Some Teams apps require purchasing a service subscription to use app functionality. These service subscriptions are called Software as a Service (SaaS) offers. | Fix: Add https://learn.microsoft.com/microsoftteams/purchase-third-party-apps to sources for the paid third-party app subscription statement. | Source: https://learn.microsoft.com/microsoftteams/purchase-third-party-apps
-- [supported, minor] controls[0].ui; Governance controls: first row / admin-path: The per-app availability route is Teams apps > Manage apps > app > Users and groups > Availability > Edit availability > Available to. | Found: Select the Users and groups tab. Under Select to manage who this app is installed for or available to in your organization, select Availability. Select Edit availability. Select the required option from Available to menu. | Fix: Include the omitted heading in the front matter and rendered route: 'Teams apps > Manage apps > app > Users and groups > Select to manage who this app is installed for or available to in your organization > Availability > Edit availability > Available to'. The navigation prefix is supported by the already cited manage-apps page. | Source: https://learn.microsoft.com/microsoftteams/app-centric-management
-- [supported, minor] controls[1].ui; Governance controls: second row / admin-path: The default availability controls are reached through Teams apps > Manage apps > Actions > Org-wide app settings. | Found: To change this default setting, access Manage apps page, select Actions > Org-wide app settings, and modify the required settings. | Fix: The route stops on the correct settings pane. Add to this row's note: 'Microsoft apps and Third-party apps each have a separate control; for Custom apps, use Let users install and use available apps by default.' These final controls are documented at the already cited https://learn.microsoft.com/microsoftteams/manage-apps. | Source: https://learn.microsoft.com/microsoftteams/app-centric-management
-- [contradicted, minor] front matter: action / consistency: Prepare is the action rating despite rolling-out status, a current-month target and medium migration risk. | Found: action: "prepare"; status: "rolling-out"; targetDate: "November CY2026"; risk: "medium". Learn describes automatic migration and the page advises reviewing conflicting policies before migration. | Fix: Set action to act-now: as of 19 November 2026, the current-month rolling-out change, documented automatic migration and medium risk meet the standard's act-now definition.
-- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: The checklist directs inventory of legacy permission policies and management of directory groups, but the table has only per-app availability and org-wide defaults. | Found: Export or record each app permission policy and its assignments in the Teams admin center; Review the groups created for each former custom policy and remove or replace those you do not need. The controls table has only app availability and org-wide defaults. | Fix: Remove the Before rollout bullet beginning 'Export or record each app permission policy' and the After rollout bullet beginning 'Review the groups created'. In the Before rollout bullet beginning 'Decide which apps', end after 'Specific users or groups'. These directives name policy-inventory or directory-group controls with no table row; do not add unverified rows.
 -->

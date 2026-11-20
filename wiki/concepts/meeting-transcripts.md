@@ -4,8 +4,8 @@ title: "Meeting transcripts: who can create them, where they live and who can re
 slug: "meeting-transcripts"
 summary: "A Teams meeting transcript is the saved written record of a meeting. Administrators decide who can create one, how long it is kept, and whether Copilot, apps and agents can read it."
 created: "2026-11-19"
-updated: "2026-11-19"
-version: 1
+updated: "2026-11-20"
+version: 2
 tags: ["meeting-transcripts","teams","meeting-policy","intelligent-recap","work-iq","microsoft-graph","ediscovery","privacy","retention"]
 covers: []
 sources:
@@ -33,6 +33,15 @@ sources:
   - title: "Overview- Recording and transcription for Teams meetings, events, and calls"
     url: "https://learn.microsoft.com/microsoftteams/recording-transcription-overview"
     kind: "learn"
+  - title: "Set-CsTeamsEventsPolicy"
+    url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps"
+    kind: "learn"
+  - title: "Understand costs for Business Applications in Work IQ"
+    url: "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs"
+    kind: "learn"
+  - title: "Work IQ overview"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/"
+    kind: "learn"
 related: ["meeting-policy","work-iq","retention","sensitivity-labels","work-iq-real-time-transcripts","microsoft-teams-admins-can-control-profanity-filtering-in-meeting-transcripts","microsoft-teams-audio-announcement-for-recording-and-transcription","microsoft-teams-enhanced-copilot-and-ai-controls-for-meetings"]
 controls:
   - governs: "Whether users with a meeting policy can transcribe meetings and group calls"
@@ -56,7 +65,7 @@ controls:
       kind: "powershell"
       call: "Set-CsTeamsEventsPolicy -Identity <policy name> -TranscriptionForWebinar $true"
       docs: "https://learn.microsoft.com/microsoftteams/meeting-transcription-captions"
-    note: "Events optimized for large audiences use a separate toggle and -TranscriptionForTownhall. Both are on by default."
+    note: "Large-audience events use -TranscriptionForTownhall; both on by default. The reference marks events policies preview and types the parameter String (default Enabled); the guide shows $true."
   - governs: "Whether organizers' meetings default to Copilot with a saved transcript"
     scope: "user"
     ui:
@@ -78,7 +87,7 @@ controls:
       kind: "powershell"
       call: "Set-CsTeamsMeetingPolicy -Identity <policy name> -NewMeetingRecordingExpirationDays <days>"
       docs: "https://learn.microsoft.com/microsoftteams/manage-teams-recording-expiration-policy"
-    note: "Default is 120 days. Affects only newly created files. -1, PowerShell only, means never expire."
+    note: "General default is 120 days; maximum default for A1 users is 30 days; published Teams event recordings expire after 30 days, extendable to 90. Only new files are affected. -1 (PowerShell only) never expires."
   - governs: "Whether apps and agents can read meeting transcripts through Microsoft Graph"
     scope: "tenant"
     ui:
@@ -119,18 +128,22 @@ changes:
     note: "New concept page: how Teams meeting transcripts are created, stored, expired and exposed to Copilot, Graph and Work IQ."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 92 statements contradicted, 0 unconfirmed; taken offline until corrected"
+  - date: "2026-11-20"
+    note: "Corrected expiry defaults (A1 users and published event recordings), removed the transcript-size open question, noted events-policy preview status, and aligned the checklist with the controls table."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 103 statements not yet confirmed"
 verification:
-  status: "held"
-  date: "2026-11-19"
-  version: 1
+  status: "verified-with-gaps"
+  date: "2026-11-20"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 92
-  confirmed: 88
+  claims: 103
+  confirmed: 103
   unconfirmed: 0
-  contradicted: 4
-  attempts: 1
-  hash: "6d9bee1c21ed68631fc63515c2c60b0f"
+  contradicted: 0
+  attempts: 0
+  hash: "bd3a5b07fa7da125ffacea878c0bfa3a"
 ---
 
 ## What it is
@@ -140,7 +153,7 @@ A **meeting transcript** is the written record Teams makes of what was said in a
 ### How it is made and stored
 
 - **Two settings must agree.** Transcription is both a per-organizer and per-user policy setting: the organizer must have it on, and so must the user who starts the transcript. The Transcription setting in a meeting policy is on by default for new policies.
-- **Storage follows the recording.** For meetings and events the recording saves to the organizer's OneDrive, even if the organizer did not attend. Channel meetings save to a Recordings folder in the channel's SharePoint site.
+- **Storage follows the recording.** For meetings and events, the recording normally saves to the organizer's OneDrive, even if the organizer did not attend. Channel meetings save to a Recordings folder in the channel's SharePoint site.
 - **Live captions are not transcripts.** Live captions give real-time subtitles, and Teams does not save them.
 - **Meetings, events and calls have separate policies.** Events have their own transcription settings in events policies, and voice calling policies control 1:1 calls.
 
@@ -161,7 +174,7 @@ The transcription admin page marks Teams Premium only against specific features 
 - **Live translated transcription:** the organizer must have a Teams Premium licence for attendees to use it.
 - **Copilot in Teams meetings:** an add-on Microsoft Copilot licence for the intended users.
 - **Intelligent recap:** users with a Teams Premium or Microsoft Copilot licence get it automatically; the transcription policy also controls it.
-- **Enforcing who can record and transcribe by sensitivity label or template:** listed against a Teams Premium or Copilot licence.
+- **Enforcing who can record and transcribe by sensitivity label or template:** listed against a Teams Premium or Copilot licence. Microsoft's recording and transcription overview describes this label and template control for organizers with Teams Premium, while the sensitive-meetings table says Teams Premium/Copilot.
 - **Storage:** recording files count toward your OneDrive and SharePoint quota, and Microsoft gives 400 MB as the size of a one-hour recording.
 
 Charges for apps and agents that read transcripts belong to those products; see [Work IQ](/concepts/work-iq/).
@@ -169,7 +182,7 @@ Charges for apps and agents that read transcripts belong to those products; see 
 ## Risks and limits
 
 - **Policies do not line up across meetings and calls.** Turning transcription off in a calling policy leaves meetings and events to their own policies, and users without a custom assignment keep the global policy, where transcription is on by default.
-- **Expiry is not retention.** Recordings and transcripts expire after 120 days by default and move to the recycle bin. Changes affect only newly created files, and a recording moved from its original location is no longer affected. Microsoft says expiry does not enforce compliance requirements; use [Purview retention](/concepts/retention/) for that.
+- **Expiry is not retention.** Recordings and transcripts expire after 120 days by default and move to the recycle bin; the maximum default expiration time for A1 users is 30 days, and published Teams event recordings expire after 30 days, extendable to 90 days. Changes affect only newly created files, and a recording moved from its original location is no longer affected. Microsoft says expiry does not enforce compliance requirements; use [Purview retention](/concepts/retention/) for that.
 - **Turning Copilot off turns transcription off.** When an organizer turns Copilot off for a meeting, recording and transcription are also turned off for it.
 - **The Copilot default forces saved transcripts.** The default Copilot policy value, On with saved transcript required, is enforced: organizers cannot change it per meeting.
 - **Graph access is all-or-nothing at tenant level.** While the Microsoft Graph access toggle is off, apps and agents cannot read transcripts whatever permissions they hold. Once it is on, individual apps are allowed or blocked through Microsoft Entra API permissions.
@@ -185,9 +198,9 @@ Charges for apps and agents that read transcripts belong to those products; see 
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether users with a meeting policy can transcribe meetings and group calls</strong><br><small>User</small><br><small class="controls__note">On by default for new policies. The organizer and the user who starts the transcript both need it on.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Transcription <a href="https://learn.microsoft.com/microsoftteams/meeting-transcription-captions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -AllowTranscription $true</code> <a href="https://learn.microsoft.com/microsoftteams/meeting-transcription-captions" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether transcription is allowed in events up to 1,000 attendees</strong><br><small>User</small><br><small class="controls__note">Events optimized for large audiences use a separate toggle and -TranscriptionForTownhall. Both are on by default.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Events policies › policy › Transcription for events up to 1k attendees <a href="https://learn.microsoft.com/microsoftteams/meeting-transcription-captions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsEventsPolicy -Identity &lt;policy name&gt; -TranscriptionForWebinar $true</code> <a href="https://learn.microsoft.com/microsoftteams/meeting-transcription-captions" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether transcription is allowed in events up to 1,000 attendees</strong><br><small>User</small><br><small class="controls__note">Large-audience events use -TranscriptionForTownhall; both on by default. The reference marks events policies preview and types the parameter String (default Enabled); the guide shows $true.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Events policies › policy › Transcription for events up to 1k attendees <a href="https://learn.microsoft.com/microsoftteams/meeting-transcription-captions" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsEventsPolicy -Identity &lt;policy name&gt; -TranscriptionForWebinar $true</code> <a href="https://learn.microsoft.com/microsoftteams/meeting-transcription-captions" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether organizers' meetings default to Copilot with a saved transcript</strong><br><small>User</small><br><small class="controls__note">The default value, EnabledWithTranscript, is enforced and organizers cannot change it. Needs an add-on Microsoft Copilot licence.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Recording &amp; transcription › Copilot <a href="https://learn.microsoft.com/microsoftteams/copilot-teams-transcription" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -Copilot EnabledWithTranscriptDefaultOn</code> <a href="https://learn.microsoft.com/microsoftteams/copilot-teams-transcription" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Whether recordings and transcripts automatically expire, and after how many days</strong><br><small>User</small><br><small class="controls__note">Default is 120 days. Affects only newly created files. -1, PowerShell only, means never expire.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Recording &amp; transcription › Recordings and transcriptions automatically expire <a href="https://learn.microsoft.com/microsoftteams/manage-teams-recording-expiration-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -NewMeetingRecordingExpirationDays &lt;days&gt;</code> <a href="https://learn.microsoft.com/microsoftteams/manage-teams-recording-expiration-policy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether recordings and transcripts automatically expire, and after how many days</strong><br><small>User</small><br><small class="controls__note">General default is 120 days; maximum default for A1 users is 30 days; published Teams event recordings expire after 30 days, extendable to 90. Only new files are affected. -1 (PowerShell only) never expires.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Recording &amp; transcription › Recordings and transcriptions automatically expire <a href="https://learn.microsoft.com/microsoftteams/manage-teams-recording-expiration-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -NewMeetingRecordingExpirationDays &lt;days&gt;</code> <a href="https://learn.microsoft.com/microsoftteams/manage-teams-recording-expiration-policy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether apps and agents can read meeting transcripts through Microsoft Graph</strong><br><small>Tenant</small><br><small class="controls__note">Off by default. Individual apps are then allowed or blocked through API permissions in the Microsoft Entra admin center.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting settings › Transcript API access › Microsoft Graph access <a href="https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingConfiguration -Identity Global -EnableGraphTranscriptAccess $true</code> <a href="https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether transcripts read through Microsoft Graph include speaker attribution</strong><br><small>Tenant</small><br><small class="controls__note">Off by default. Applies only to Microsoft Graph; Work IQ transcripts include speaker names.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting settings › Transcript API access › Microsoft Graph access › Configure › Include speaker attribution <a href="https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingConfiguration -Identity Global -EnableAttributedTranscripts $true</code> <a href="https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether apps and agents can receive real-time transcripts through Work IQ</strong><br><small>Tenant</small><br><small class="controls__note">Off by default and independent of Graph access. The organizer's organisation setting applies. Needs the latest Teams PowerShell module.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting settings › Transcript API access › WorkIQ access <a href="https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingConfiguration -Identity Global -EnableWorkIQTranscriptAccess $true</code> <a href="https://learn.microsoft.com/microsoftteams/meeting-transcript-api-access" rel="noopener" class="controls__docs">Learn</a></td></tr>
@@ -208,8 +221,7 @@ To find transcripts, use eDiscovery in the Microsoft Purview portal. To delete t
 - Compare the events policy transcription toggles with the meeting policy, so one scenario does not stay open when you close another.
 - Check the Copilot value in each meeting policy, and whether a saved transcript is required.
 - Confirm whether Microsoft Graph access, speaker attribution and Work IQ access are on or off in Meeting settings.
-- Review the expiry setting and the default expiration time, and confirm Purview retention covers anything with compliance needs.
-- Test an eDiscovery collection and confirm transcripts appear in the review set.
+- Review the expiry setting and the default expiration time.
 - Check organizers' OneDrive quota before encouraging transcription at scale.
 
 ## Open questions
@@ -217,18 +229,9 @@ To find transcripts, use eDiscovery in the Microsoft Purview portal. To delete t
 - Does Microsoft state a licence requirement for the base Transcription policy setting? The transcription admin page does not.
 - How does an auto-apply retention label policy interact with the expiry setting when both apply to the same transcript? Not yet documented on the pages read.
 - Which Microsoft Entra permission names allow an app to read Graph transcripts? The transcript API page points to the Entra admin centre without listing them.
-- How large is a transcript file? Microsoft gives a size for recordings, not transcripts.
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[3].note; Risks and limits: Expiry is not retention / default: Recordings and transcripts have an unqualified default expiry of 120 days. | Found: The maximum default expiration time for A1 users is 30 days. Published recordings for Teams events have an expiration of 30 days that's extendable to 90 days. | Fix: Qualify the 120-day statement in the control note and Risks and limits: 'The general default is 120 days; the maximum default expiration time for A1 users is 30 days. Published Teams event recordings expire after 30 days, extendable to 90 days.' Keep the existing expiration-policy citation. | Source: https://learn.microsoft.com/microsoftteams/manage-teams-recording-expiration-policy
-- [contradicted, blocker] Open questions: How large is a transcript file / absence: Microsoft gives a size for recordings but not transcripts. | Found: The average size of the transcript content itself in JSON/VTT format is about 300 KB, based on averages we're seeing for meetings that are in range of 30 mins – 60 mins. | Fix: Remove the final Open questions bullet. Microsoft publishes an approximate transcript-content size in https://learn.microsoft.com/microsoftteams/export-teams-content#json-representation; it is not an undocumented quantity. | Source: https://learn.microsoft.com/microsoftteams/export-teams-content#json-representation
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].api / command: Set-CsTeamsEventsPolicy -Identity <policy name> -TranscriptionForWebinar $true enables transcription for events up to 1,000 attendees. | Found: To allow users with this policy to transcribe events with up to 1,000 attendees ... Set-CsTeamsEventsPolicy -Identity <policy name> -TranscriptionForWebinar $true | Fix: Keep the call supported by the admin guide, but add: 'The PowerShell reference marks events policies as preview and declares TranscriptionForWebinar as String with default Enabled, while the admin guide shows $true.' Cite https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamseventspolicy?view=teams-ps. | Source: https://learn.microsoft.com/microsoftteams/meeting-transcription-captions
-- [supported, minor] What it is: Storage follows the recording / behaviour: Meeting and event recordings save to the organizer's OneDrive even when the organizer does not attend. | Found: For meetings and events, the recording saves to the organizer's OneDrive, even if the organizer didn't attend the meeting or event. | Fix: Narrow the sentence to 'For meetings and events, the recording normally saves to the organizer's OneDrive, even if the organizer did not attend.' The cited page also documents fallback storage when the organizer has no OneDrive account. | Source: https://learn.microsoft.com/microsoftteams/tmr-meeting-recording-change
-- [supported, minor] Cost and licensing: Enforcing who can record and transcribe / licensing: The sensitive-meetings table lists Who can record and transcribe for labels and templates against Teams Premium/Copilot. | Found: Who can record and transcribe (Teams Premium/Copilot license) | No | Yes | Yes | Yes | Fix: Append: 'Microsoft's recording and transcription overview describes this label/template control for organizers with Teams Premium, while the sensitive-meetings table says Teams Premium/Copilot.' Both https://learn.microsoft.com/microsoftteams/recording-transcription-overview and https://learn.microsoft.com/microsoftteams/manage-meeting-recording-options are already cited. | Source: https://learn.microsoft.com/microsoftteams/manage-meeting-recording-options
-- [supported, minor] Cost and licensing: Charges for apps and agents / cost: Charges associated with consuming transcripts through apps and agents depend on those products and experiences. | Found: Other supported agents and services: To identify the applicable treatment, review the billing guidance for the consuming experience, including Copilot Studio. | Fix: Add the supporting Microsoft billing sources to sources: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs and https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/. The link to the wiki's Work IQ concept is not Microsoft evidence. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs#usage-based-billing-and-where-charges-appear
-- [contradicted, minor] What to check: confirm Purview retention covers compliance needs / consistency: The checklist asks readers to review Purview retention, but the controls table has no Purview retention row. | Found: What to check: 'confirm Purview retention covers anything with compliance needs.' Controls rows cover transcription, event transcription, Copilot, expiry, Graph access, speaker attribution and Work IQ access, not Purview retention. | Fix: Remove ', and confirm Purview retention covers anything with compliance needs' from that checklist bullet. Keep the existing retention advice and link in Risks and limits; do not add a control row.
-- [contradicted, minor] What to check: Test an eDiscovery collection / consistency: The checklist asks readers to test an eDiscovery collection, but the controls table has no eDiscovery row. | Found: What to check: 'Test an eDiscovery collection and confirm transcripts appear in the review set.' None of the seven controls rows covers eDiscovery. | Fix: Remove this checklist bullet. The existing Governance controls prose can continue describing the documented eDiscovery process; do not add a control row.
+- [supported, minor] Open questions: auto-apply retention label policy and expiry / absence: The pages cited by this concept do not explain how an auto-apply retention label interacts with expiration. | Found: Searched: Teams recording expiration auto apply retention label policy expiration retention priority transcripts. Read the cited storage, expiration and sensitive-meetings pages; the explanation is instead in manage-teams-recording-compliance and Purview retention guidance. | Fix: Remove the open question beginning 'How does an auto-apply retention label policy interact with the expiry setting'. Its qualification 'on the pages read' is accurate, but the question is answered elsewhere: https://learn.microsoft.com/microsoftteams/manage-teams-recording-compliance explains retention versus expiration, and https://learn.microsoft.com/purview/retention-policies-sharepoint states that permanent deletion is suspended when the item must be retained by a retention policy or retention label. No replacement paragraph is needed.
 -->

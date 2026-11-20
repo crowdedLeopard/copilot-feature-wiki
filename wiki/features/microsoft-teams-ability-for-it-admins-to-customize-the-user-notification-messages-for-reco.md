@@ -4,7 +4,7 @@ slug: "microsoft-teams-ability-for-it-admins-to-customize-the-user-notification-
 roadmapId: 567302
 topic: "m365-copilot"
 products: ["Microsoft Teams","Microsoft Copilot (Microsoft 365)"]
-summary: "IT admins can replace part of the recording and transcription notification text Teams shows participants. Launched; nothing changes until an admin sets it, and Learn says 1:1 calls are not supported."
+summary: "IT admins can replace part of the recording and transcription notification text Teams shows participants. The roadmap status is Launched; Microsoft has not stated the setting's default, and Learn says custom messages are not supported in 1:1 calls."
 status: "launched"
 releasePhase: ["General Availability","Targeted Release"]
 clouds: ["Worldwide (Standard Multi-Tenant)","GCC","GCC High","DoD"]
@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published. Microsoft Learn's page on this feature names no licence and no price at the time of writing (November 2026)."
+  model: "included"
+  notes: "A Teams licence is required to use Teams, except for joining meetings anonymously. No additional licence requirement specific to custom notifications is published at the time of writing (November 2026)."
 audiences: ["m365-admin","compliance","change-adoption"]
 tags: ["teams","meeting-policy","meeting-transcripts","powershell","privacy","user-experience","gcc","gcc-high","dod"]
 sources:
@@ -45,6 +45,9 @@ sources:
     kind: "learn"
   - title: "Configure call recording, transcription, and captions in Teams"
     url: "https://learn.microsoft.com/microsoftteams/call-recording-transcription-captions"
+    kind: "learn"
+  - title: "Manage Teams licenses"
+    url: "https://learn.microsoft.com/microsoftteams/user-access"
     kind: "learn"
 videos: []
 related: ["meeting-policy","microsoft-teams-audio-announcement-for-recording-and-transcription","microsoft-teams-explicit-consent-for-recording-and-transcription-in-one-to-one-pstn-calls","microsoft-teams-automatic-recording-and-transcription-choices-align-with-admin-policies","microsoft-teams-tenant-policy-controls-who-can-record-and-transcribe"]
@@ -81,26 +84,30 @@ controls:
     note: "Parameter listed in the cmdlet reference. Learn's feature page says custom messages are not supported in 1:1 calls, so its effect on calls is unconfirmed."
 confidence: "medium"
 created: "2026-11-19"
-updated: "2026-11-19"
+updated: "2026-11-20"
 roadmapModified: "2026-10-21T23:02:10"
 changes:
   - date: "2026-11-19"
     note: "New briefing: launched meeting-policy setting for custom recording and transcription notification text; Learn says 1:1 calls are not supported."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 52 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected: summary now says the default is not stated; removed calling policies from the pre-rollout check; licensing now cites the Teams licence requirement."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 57 statements confirmed"
+version: 2
 verification:
-  status: "held"
-  date: "2026-11-19"
-  version: 1
+  status: "verified"
+  date: "2026-11-20"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 50
+  claims: 57
+  confirmed: 57
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "f0a55211690066b210ba2b1de079c61b"
+  contradicted: 0
+  attempts: 0
+  hash: "892e995a5e903e8fe468061037c6611c"
 ---
 
 ## What's changing
@@ -142,7 +149,7 @@ Microsoft has not stated whether the setting is on or off by default, and no sou
 
 ## Cost and licensing
 
-No licence or price is published for this feature. Learn's page on custom in-meeting notifications names no licence requirement and no meter, and the recording and transcription overview page names none for it either, so the licence entitlement is not yet published.
+A Teams licence is required to use Teams, except for joining meetings anonymously (Learn's Manage Teams licenses page). No additional licence requirement specific to custom notifications is published at the time of writing (November 2026).
 
 The cost the sources do show is indirect: admin time to write messages, translate them into each language you support, review them with legal or compliance, test them with Preview and keep them current. Separate licensing for recording and transcription itself, such as Teams Premium or Copilot for some options, is described on other pages and is not stated to apply to this setting.
 
@@ -160,7 +167,7 @@ The cost the sources do show is indirect: admin time to write messages, translat
 ### Before rollout
 
 - Decide with legal or compliance which notification wording you need per scenario: initiator or participant, implicit or explicit consent.
-- Check which meeting policies and calling policies your users hold, so you know whose meetings will show the new text.
+- Check which meeting policies your users hold, so you know whose meetings will show the new text.
 - Draft messages within the 200-character limit for each language you support, and agree who edits the CSV in a plain text editor.
 
 ### At rollout
@@ -196,7 +203,7 @@ The New-CsTeamsRecordingAndTranscriptionCustomMessage reference carries a note t
 
 - Does the custom message apply to any kind of Teams call, given the roadmap item says calls and Learn's page says custom messages are not supported in 1:1 calls? Watch the Learn page and Message center.
 - What is the default state of the custom notification setting in a meeting policy or calling policy? Microsoft has not stated it.
-- Is any licence required? No licence is published for this feature.
+- Will Microsoft publish any licence requirement specific to custom notifications? None is published at the time of writing (November 2026).
 - Does the calling policy parameter set (Set-CsTeamsCallingPolicy) take effect, and where in the Teams admin center is it set? Learn's calling policy page lists no such setting.
 - When will iOS and Android get full customisability? Learn says it is coming soon without a date.
 
@@ -204,13 +211,4 @@ The New-CsTeamsRecordingAndTranscriptionCustomMessage reference carries a note t
 risk: Low. The change alters the wording of a notification, not what is recorded or who can record, and Microsoft Learn documents it as a per-policy setting an admin chooses to use.
 cost: Low. The only cost the sources show is admin time to write, translate and test messages; no licence or meter is yet published for this feature.
 impact: Low. Admins configure it, and users notice only where a policy carries custom text; the page says all participants in a meeting follow the organiser's settings.
--->
-
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] summary versus front matter: defaultState and Why it matters / consistency: The summary promises that nothing changes until an administrator sets it, while the page reports the arrival default as unknown. | Found: summary: "nothing changes until an admin sets it"; defaultState: "unknown"; Why it matters: "Microsoft has not stated whether the setting is on or off by default". | Fix: Replace the summary with: "IT admins can replace part of the recording and transcription notification text Teams shows participants. The roadmap status is Launched; Microsoft has not stated the setting's default, and Learn says custom messages are not supported in 1:1 calls." Keep defaultState as unknown.
-- [contradicted, blocker] Governance guidance: Before rollout, second bullet / applicability: Checking users' calling policies helps determine whose meetings will display the new custom text. | Found: Meeting policies: These policies control user permissions for recording and transcription in Teams meetings and group calls. ... Voice calling policies: These policies control user permissions for 1:1 calls | Fix: Replace the bullet with: "Check which meeting policies your users hold, so you know whose meetings will show the new text." The feature page places custom meeting notifications under the organiser's meeting policy; the briefing already correctly warns that calling-policy effects are unconfirmed. | Source: https://learn.microsoft.com/microsoftteams/recording-transcription-overview
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model and notes; Cost and licensing; Open questions / licensing: The licensing model is unknown because no feature-specific licence entitlement is published. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Set licensing.model to included. Replace the licensing notes and the broad entitlement gap in Cost and licensing and Open questions with: "A Teams licence is required to use Teams, except for joining meetings anonymously. No additional licence requirement specific to custom notifications is published at the time of writing (November 2026)." Cite https://learn.microsoft.com/microsoftteams/user-access. This is the standard's product-level licensing understatement, not evidence of a published feature-specific licence. | Source: https://learn.microsoft.com/microsoftteams/user-access
 -->

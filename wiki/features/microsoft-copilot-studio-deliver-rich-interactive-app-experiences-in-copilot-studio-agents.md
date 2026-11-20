@@ -137,15 +137,17 @@ changes:
     note: "Corrected after the check: the governance notes now state that data policies apply to Copilot Studio agents in the policy's scope and that blocking connectors also blocks tools in connected MCP servers; the approval row notes the version body property."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 88 statements confirmed"
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 95 statements confirmed"
 version: 6
 verification:
   status: "verified"
-  date: "2026-11-19"
+  date: "2026-11-20"
   version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 88
-  confirmed: 88
+  claims: 95
+  confirmed: 95
   unconfirmed: 0
   contradicted: 0
   attempts: 0

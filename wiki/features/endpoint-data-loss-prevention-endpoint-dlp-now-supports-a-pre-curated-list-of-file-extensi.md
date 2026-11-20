@@ -81,15 +81,17 @@ changes:
     note: "Correction: reworded the no-switch statement as a documentation gap, removed the unsupported roles sentence, and gave the rest of the unsupported-extensions route in the control note."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 54 statements not yet confirmed"
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 52 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-20"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 53
+  claims: 52
+  confirmed: 51
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -200,9 +202,9 @@ cost: Low. The only cost the sources show is admin time to review and edit rules
 impact: Low. The notice names Microsoft 365 administrators managing Endpoint DLP device policies as the people affected; end users are not described as changed.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui / admin-path: The cited portal route starts Data Loss Prevention > Policies > Enterprise applications & devices > Create policy > Custom > Custom policy. | Found: Open Data Loss Prevention > Policies. Select Enterprise applications & devices. Select Create policy and select the Custom from the Categories then Custom policy template from Regulations. | Fix: The path correctly reaches the policy wizard but stops early. Extend it to 'Data Loss Prevention > Policies > Enterprise applications & devices > Create policy > Categories > Custom > Regulations > Custom policy > Admin units > Full directory > Devices > rule > Actions > Audit or restrict activities on devices > Apply restrictions to only unsupported file extensions', keeping the Document could not be scanned condition in the note. Also note that the already-cited https://learn.microsoft.com/purview/dlp-create-policy-sharing-set-unsupported-files puts Create policy before Enterprise applications & devices, whereas this row follows its own cited page. | Source: https://learn.microsoft.com/purview/dlp-create-policy-files-edlp-doesnt-scan
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: Every control the governance checklist asks readers to inventory appears in the controls table. | Found: Inventory every Endpoint DLP rule that uses File extension is ... Table rows: Tenant switch to keep free-form file extension entry; Coverage for file extensions Endpoint DLP does not scan. | Fix: The checklist's instruction to inventory existing File extension is rules has no corresponding row. Remove that checklist bullet; retain the notice's review recommendation already described elsewhere. Do not add a control row.
+- [supported, minor] controls[1].ui; Governance controls / admin-path: The cited Microsoft Purview portal route starts Data Loss Prevention > Policies > Enterprise applications & devices > Create policy > Custom > Custom policy. | Found: Open **Data Loss Prevention** > **Policies**. 3. Select **Enterprise applications & devices**. 4. Select **Create policy** and select the **Custom** from the **Categories** then **Custom policy** template from **Regulations**. | Fix: Complete the path as 'Data Loss Prevention > Policies > Enterprise applications & devices > Create policy > Categories > Custom > Regulations > Custom policy > Admin units > Full directory > Devices > rule > Actions > Audit or restrict activities on devices > Apply restrictions to only unsupported file extensions', retaining Document could not be scanned in the note. This follows https://learn.microsoft.com/purview/dlp-create-policy-files-edlp-doesnt-scan. Note that the already-cited https://learn.microsoft.com/purview/dlp-create-policy-sharing-set-unsupported-files instead puts Create policy before Enterprise applications & devices. | Source: https://learn.microsoft.com/purview/dlp-create-policy-files-edlp-doesnt-scan
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls / consistency: Every control the governance checklist asks readers to inventory is represented in the controls table. | Found: Inventory every Endpoint DLP rule that uses File extension is ... Table rows: Tenant switch to keep free-form file extension entry; Coverage for file extensions Endpoint DLP does not scan. | Fix: Remove the checklist bullet 'Inventory every Endpoint DLP rule that uses File extension is and list the extensions each holds, as the notice recommends.' The table has no row for that condition. Do not add a control row; retain the supported discussion of reviewing extension lists.
 -->

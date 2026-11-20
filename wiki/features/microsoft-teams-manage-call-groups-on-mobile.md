@@ -84,7 +84,7 @@ controls:
     note: "MC1552390 says Mobile uses the same controls as desktop."
 confidence: "medium"
 created: "2026-11-19"
-updated: "2026-11-19"
+updated: "2026-11-20"
 roadmapModified: "2026-11-03T00:14:11"
 changes:
   - date: "2026-11-19"
@@ -95,19 +95,23 @@ changes:
     note: "Corrected the two Teams admin center paths to the full routes Learn documents, and removed the claim that the Manage call group screen is hidden for ineligible users."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 56 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-20"
+    note: "Corrected: removed the unsupported five-member ordering gap and its open question, extended the After rollout admin path, and removed the licence checklist step that had no control row."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 55 statements confirmed"
+version: 3
 verification:
-  status: "held"
-  date: "2026-11-19"
-  version: 2
+  status: "verified"
+  date: "2026-11-20"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 54
+  claims: 55
+  confirmed: 55
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "95ff4cf5d51bd351e53475dbe42fdc52"
+  contradicted: 0
+  attempts: 0
+  hash: "a8e17c6dd4b56a7a943b69c883266382"
 ---
 
 ## What's changing
@@ -138,7 +142,7 @@ The notice says no admin action is required before rollout and that the feature 
 
 **Change & support**
 - Expect help desk questions about where **Manage call group** is. The feature requires a Teams Phone licence; users with call groups turned off in their calling policy cannot use it on Mobile.
-- Learn says a call group can have up to 25 users, a user can own only one call group, and adding more than five members switches the ring order to **Everyone at once**. Whether the Mobile ordering options follow the five-member rule is not described.
+- Learn says a call group can have up to 25 users, a user can own only one call group, and adding more than five members switches the ring order to **Everyone at once**.
 
 ## Cost and licensing
 
@@ -158,7 +162,6 @@ The notice names no other licence, meter or charge for the Mobile experience. Th
 
 ### Before rollout
 - Check which calling policy each call group user has and confirm that **Inbound calls can be routed to call groups** is on (Teams admin center > Voice > Calling policies > policy > Edit).
-- Confirm that users who should manage call groups hold a Teams Phone licence, as the notice recommends.
 - Inform users who rely on call groups for backup cover and often work away from their desk that Manage call group is coming to Teams on Mobile.
 
 ### At rollout
@@ -166,7 +169,7 @@ The notice names no other licence, meter or charge for the Mobile experience. Th
 - Tell the help desk that MC1552390 says eligible users will see **Manage call group** under Settings > Calling on Teams on Mobile.
 
 ### After rollout
-- Review a sample of users' call groups in the Teams admin center (Users > Manage users > user > Voice) for stale or unexpected members.
+- Review a sample of users' call groups in the Teams admin center (Users > Manage users > user > Voice > Call answering rules > Ring user's devices > Also allow > Group call pickup > Manage call group) for stale or unexpected members.
 - Clean up call group relationships in the Teams admin center if you turn call groups off for a group of users, as Learn directs, to avoid incorrect call routing.
 
 ## Governance controls
@@ -191,7 +194,6 @@ Learn also says that if **Use unanswered settings** or **Send to voicemail** is 
 ## Open questions
 
 - Will Microsoft add a setting that governs call group management on Teams on Mobile separately from the calling policy, or will the policy remain the only control? Watch MC1552390 and the Learn page *Call sharing and group call pickup*.
-- Does the Mobile ordering option follow the five-member rule on the Learn page, where more than five members switches the ring order to **Everyone at once**?
 - Will the Learn call group page gain mobile-specific steps and a prerequisites list once the feature ships?
 - The roadmap lists only Worldwide (Standard Multi-Tenant). Will a later notice cover US Government clouds?
 
@@ -199,13 +201,4 @@ Learn also says that if **Use unanswered settings** or **Send to voicemail** is 
 risk: Low. Mobile edits the same call group settings as desktop and is governed by the existing calling policy, so the exposure is users changing call routing quickly from a phone.
 cost: Low. Microsoft's notice names a Teams Phone licence as the requirement and no other licence or meter; the remaining cost is checking calling policies and telling users.
 impact: Medium. Users with a Teams Phone licence who rely on call groups for backup cover will notice a new Manage call group screen in Calling settings.
--->
-
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Change & support; Open questions: five-member rule / absence: Whether Mobile ordering options follow the five-member call group rule is not described. | Found: The order in which members of the call group are notified about the incoming call can be specified as simultaneous or in order (with 5 or less members). | Fix: Remove 'Whether the Mobile ordering options follow the five-member rule is not described' and the corresponding Open questions bullet. Learn states this restriction for call groups without a desktop qualification, and MC1552390 explicitly says Mobile changes the same call group settings as desktop; retain the preceding documented five-member rule. | Source: https://learn.microsoft.com/microsoftteams/call-sharing-and-group-call-pickup
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Governance guidance: After rollout, review a sample / admin-path: Users > Manage users > user > Voice is the route given for reviewing call group membership. | Found: On the user details page, go to the Voice tab. ... Under Call answering rules ... Ring user's devices and select Group call pickup from the Also allow dropdown. ... Select Manage call group | Fix: Extend the parenthetical route in After rollout to 'Users > Manage users > user > Voice > Call answering rules > Ring user's devices > Also allow > Group call pickup > Manage call group', matching controls[1].ui. The current route stops early on the right page. | Source: https://learn.microsoft.com/microsoftteams/call-sharing-and-group-call-pickup
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: Every control the checklist tells administrators to check is represented in the controls table. | Found: Confirm that users who should manage call groups hold a Teams Phone licence ... Controls: Whether users can use call groups; A user's call group members and ring order; A separate switch for call group management on Teams on Mobile. | Fix: The Before rollout step that checks Teams Phone licence assignments has no corresponding control row. If retaining the current table, remove that checklist bullet; the licence prerequisite is already stated in Cost and licensing and Scope.
 -->

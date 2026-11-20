@@ -2,36 +2,96 @@
   "slug": "m365-copilot-reference-files-saved-in-sharepoint-libraries-and-onedrive-folders-whe-555894",
   "roadmapId": 555894,
   "title": "PowerPoint on the web: Copilot Agent Mode can reference SharePoint and OneDrive files named in a prompt",
-  "status": "held",
-  "date": "2026-11-19",
-  "version": 1,
+  "status": "verified-with-gaps",
+  "date": "2026-11-20",
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-19",
-    "reasons": [
-      "5 blocking findings (claims 20, 24, 34, 43, 58)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 58,
-    "confirmed": 53,
-    "unconfirmed": 1,
-    "contradicted": 4,
-    "blocker": 5,
+    "claims": 63,
+    "confirmed": 63,
+    "unconfirmed": 0,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 3
+    "minor": 1
   },
-  "summary": "Hold: Microsoft documents sensitivity-label inheritance for content created with Copilot in PowerPoint, contrary to the briefing's claim that this is undocumented. The licensing guidance also omits a Basic-tier qualification and makes an unsupported assurance that removing the add-on cannot switch this capability off; the prose unnecessarily questions documented DLP coverage.",
+  "summary": "The briefing's availability, permissions, licensing qualifications and governance controls are supported. The statement that presentation creation produces a new file needs an additional Microsoft citation; no blocking correction was found.",
   "claims": [
     {
       "n": 1,
+      "where": "title; What's changing",
+      "type": "record",
+      "claim": "The roadmap describes referencing files when creating a presentation using Agent Mode in PowerPoint.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "You can now reference files saved in SharePoint libraries and OneDrive folders when creating a presentation with Copilot using Agent Mode in PowerPoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Scope; rationale: impact",
+      "type": "behaviour",
+      "claim": "Copilot in PowerPoint recognizes SharePoint and OneDrive files mentioned by name in a presentation-creation prompt.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Copilot in PowerPoint can now recognize references to files stored in SharePoint and OneDrive when you mention them in your prompt, such as by file or document name.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Copilot can use the named file as context for creating the presentation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "You can naturally reference a relevant file in your prompt, and Copilot can use that file as context when creating your presentation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Implicit file references previously were not supported for files in these locations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Previously, these implicit file references were not supported for files stored in these locations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; rationale: impact",
+      "type": "behaviour",
+      "claim": "Users need not manually attach or upload the referenced file first.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "This update makes it easier to use relevant Microsoft 365 content without manually attaching or uploading the file.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; title; What's changing; Scope",
+      "type": "record",
+      "claim": "Roadmap item 555894 lists Web as its platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
       "where": "front matter: status; summary; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap status is Launched.",
@@ -42,10 +102,10 @@
       "fix": null
     },
     {
-      "n": 2,
+      "n": 8,
       "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The release phase is General Availability.",
+      "claim": "The roadmap release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\"]",
@@ -53,10 +113,10 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 9,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the record.",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant) only.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -64,18 +124,7 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "front matter: platforms; title; What's changing; Scope; rationale: impact",
-      "type": "record",
-      "claim": "Roadmap item 555894 lists the Web platform.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
+      "n": 10,
       "where": "front matter: targetDate; What's changing; Open questions",
       "type": "record",
       "claim": "The roadmap target date is June CY2026.",
@@ -86,10 +135,10 @@
       "fix": null
     },
     {
-      "n": 6,
+      "n": 11,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The record gives no preview date.",
+      "claim": "The roadmap supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -97,10 +146,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 12,
       "where": "front matter: products",
       "type": "record",
-      "claim": "The listed products are PowerPoint and Microsoft Copilot (Microsoft 365).",
+      "claim": "The roadmap associates this item with PowerPoint and Microsoft Copilot (Microsoft 365).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"products\": [\"PowerPoint\", \"Microsoft Copilot (Microsoft 365)\"]",
@@ -108,76 +157,54 @@
       "fix": null
     },
     {
-      "n": 8,
-      "where": "title; What's changing",
-      "type": "record",
-      "claim": "The roadmap describes referencing SharePoint-library and OneDrive-folder files when creating a presentation with Agent Mode in PowerPoint.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "You can now reference files saved in SharePoint libraries and OneDrive folders when creating a presentation with Copilot using Agent Mode in PowerPoint.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "summary; What's changing; Why it matters; Scope; rationale: impact",
-      "type": "behaviour",
-      "claim": "Copilot in PowerPoint can recognize a SharePoint or OneDrive file named in a prompt and use it as presentation context.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
-      "quote": "Copilot in PowerPoint can now recognize references to files stored in SharePoint and OneDrive when you mention them in your prompt, such as by file or document name.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "Implicit file references were previously unsupported for files in these locations.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
-      "quote": "Previously, these implicit file references were not supported for files stored in these locations.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "What's changing; rationale: impact",
-      "type": "behaviour",
-      "claim": "Users can reference this content without manually attaching or uploading the file first.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
-      "quote": "This update makes it easier to use relevant Microsoft 365 content without manually attaching or uploading the file.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "What's changing; Scope",
-      "type": "record",
-      "claim": "Roadmap item 555895 is the Desktop entry for the same feature.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Item 555895: \"platforms\": [\"Desktop\"]; \"title\": \"Microsoft Copilot (Microsoft 365): Reference files saved in SharePoint libraries and OneDrive folders when creating a presentation with Agent Mode in PowerPoint\"",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 13,
-      "where": "What's changing; Scope",
+      "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "Roadmap item 555897 is the Mac entry for the same feature.",
+      "claim": "The roadmap modification timestamp is 2026-10-20T23:00:34.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Item 555897: \"platforms\": [\"Mac\"]; \"description\": \"You can now reference files saved in SharePoint libraries and OneDrive folders when creating a presentation with Agent Mode in PowerPoint.\"",
+      "quote": "\"modified\": \"2026-10-20T23:00:34\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 14,
-      "where": "What's changing; Risk assessment: Change & support; Scope",
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Roadmap item 555895 is the Desktop entry for the same file-reference feature.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "555895: \"platforms\": [\"Desktop\"]; \"description\": \"You can now reference files saved in SharePoint libraries and OneDrive folders when creating a presentation with Copilot using Agent Mode in PowerPoint.\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Roadmap item 555897 is the Mac entry for the same file-reference feature.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "555897: \"platforms\": [\"Mac\"]; \"description\": \"You can now reference files saved in SharePoint libraries and OneDrive folders when creating a presentation with Agent Mode in PowerPoint.\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The release note groups roadmap items 555894, 555895 and 555897 under the same Copilot in PowerPoint feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "Reference files saved in SharePoint libraries and OneDrive folders when creating a presentation with Copilot in PowerPoint [Windows, Mac, Web]\nRoadmap ID:\n555894\n555895\n555897",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Scope",
       "type": "availability",
-      "claim": "The release note lists Windows, Mac and Web for this feature.",
+      "claim": "The release note lists Windows, Mac and Web.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
       "quote": "Reference files saved in SharePoint libraries and OneDrive folders when creating a presentation with Copilot in PowerPoint [Windows, Mac, Web]",
@@ -185,32 +212,21 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "What's changing",
-      "type": "behaviour",
-      "claim": "The release note calls the feature Copilot in PowerPoint and associates it with roadmap ids 555894, 555895 and 555897.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
-      "quote": "Reference files saved in SharePoint libraries and OneDrive folders when creating a presentation with Copilot in PowerPoint ... Roadmap ID: ... 555894 ... 555895 ... 555897",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
+      "n": 18,
       "where": "What's changing; Open questions",
       "type": "date",
-      "claim": "Learn places the feature under updates released between September 22, 2026, and October 06, 2026.",
+      "claim": "Learn places the feature among updates released between September 22, 2026, and October 06, 2026.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
-      "quote": "October 06, 2026 ... Updates released between September 22, 2026, and October 06, 2026.",
+      "quote": "October 06, 2026\nUpdates released between September 22, 2026, and October 06, 2026.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 17,
+      "n": 19,
       "where": "What's changing; Scope: Rollout",
       "type": "behaviour",
-      "claim": "Microsoft introduces Copilot features gradually to a subset of tenant users before expanding across the organization.",
+      "claim": "Copilot features gradually reach a subset of tenant users before expanding across the organization.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
       "quote": "Copilot features are introduced using a safe deployment model, gradually rolling out to a subset of users within a tenant before expanding across the organization.",
@@ -218,10 +234,10 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "summary; Why it matters; Risk assessment; Scope; Governance guidance; rationale: risk",
+      "n": 20,
+      "where": "summary; Why it matters; Risk assessment; Scope; rationale: risk",
       "type": "behaviour",
-      "claim": "Copilot's use of the referenced content stays within the initiating user's existing access permissions.",
+      "claim": "Copilot references content under the user's existing permissions rather than granting new access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing",
       "quote": "Permissions come first. Copilot only summarizes or references content that the user is already authorized to access.",
@@ -229,10 +245,10 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 21,
       "where": "Why it matters; Risk assessment: Data exposure; rationale: risk",
       "type": "behaviour",
-      "claim": "Copilot can surface already-overshared SharePoint or OneDrive content to users who have access.",
+      "claim": "Copilot can surface already-overshared SharePoint and OneDrive content to users who have access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing",
       "quote": "Copilot respects existing SharePoint and OneDrive permissions. If content is already overshared, Copilot can surface it to anyone who has access.",
@@ -240,76 +256,87 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "front matter: defaultState; Why it matters; Open questions",
-      "type": "default",
-      "claim": "The default state should be recorded as unknown.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
-      "quote": "You can now reference files saved in SharePoint libraries and OneDrive folders when creating a presentation with Copilot in PowerPoint. ... In your prompt, reference a file saved in SharePoint or OneDrive by the document name and/or owner of the document.",
-      "severity": "blocker",
-      "fix": "Set defaultState to user-opt-in under the standard's definition for an available capability a user chooses to use. Replace the default-state explanation with 'The release note describes an available capability invoked by naming a file in a prompt; no feature-specific admin switch was found as of November 2026.' Remove the open question about its arrival default, retaining the question about a separate switch."
-    },
-    {
-      "n": 21,
-      "where": "Why it matters; Governance controls introduction; Open questions",
-      "type": "absence",
-      "claim": "No setting specific to turning implicit PowerPoint file references on or off is documented in the material found.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Copilot PowerPoint implicit file references SharePoint OneDrive admin disable setting default Graph PowerShell'; 'PowerPoint file references turn off'. Read release notes, Copilot overview, Graph assignLicense, SharePoint and DLP control pages; no feature-specific switch found.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 22,
       "where": "Why it matters",
-      "type": "absence",
-      "claim": "The sources found do not say this change alters behavior for users who do not mention a file in a prompt.",
+      "type": "behaviour",
+      "claim": "The presentation workflow can use the reference without the user first locating the file.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: 'PowerPoint implicit default Copilot' and 'Copilot PowerPoint SharePoint OneDrive implicit references admin switch default licensing meter charge'. Read the release-note entry and Copilot overview; neither describes a change for users who do not invoke a file reference.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "You can bring existing SharePoint and OneDrive content into your presentation workflow more naturally, without first locating the file and manually attaching it.",
       "severity": null,
       "fix": null
     },
     {
       "n": 23,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Creating a presentation from referenced content produces a new presentation file.",
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "The capability is user-opt-in: users invoke it by naming a file in their prompt.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#september-30,-2025",
-      "quote": "Now, when creating a presentation using Copilot from an existing presentation, it creates the new presentation in a new file without affecting the original presentation.",
-      "severity": "minor",
-      "fix": "Cite https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#september-30,-2025 for the new-file behavior."
-    },
-    {
-      "n": 24,
-      "where": "Risk assessment: Data exposure; Open questions",
-      "type": "absence",
-      "claim": "Microsoft has not described which sensitivity label a presentation created from labeled source content takes.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/purview/ai-m365-copilot",
-      "quote": "If you use Copilot in Word, Copilot in PowerPoint, and Copilot in Outlook to create new content based on an item that has a sensitivity label applied, the sensitivity label from the source file is automatically inherited, with the label's protection settings.",
-      "severity": "blocker",
-      "fix": "Replace the label-absence statement and corresponding open question with 'Copilot in PowerPoint supports sensitivity-label inheritance for newly created content: it inherits the source label and its protection settings, using the highest-priority label when multiple source files are used. Label inheritance is not supported for content encrypted with user-defined permissions.' Cite https://learn.microsoft.com/purview/ai-m365-copilot and https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing. Retain the advice to test and the separate location question."
-    },
-    {
-      "n": 25,
-      "where": "Risk assessment: Data exposure",
-      "type": "absence",
-      "claim": "The documentation found does not specify the save location of the presentation generated through implicit file references.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Copilot PowerPoint implicit file references SharePoint OneDrive fetch component background scheduled source file new presentation save location'. Read the feature release note, Copilot data-protection architecture and Purview Copilot guidance; no save location for this workflow found.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+      "quote": "In your prompt, reference a file saved in SharePoint or OneDrive by the document name and/or owner of the document.",
       "severity": null,
       "fix": null
     },
     {
+      "n": 24,
+      "where": "Why it matters; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No setting specific to turning implicit file references in PowerPoint on or off was documented in the sources searched.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot PowerPoint implicit file references SharePoint OneDrive admin disable setting PowerShell policy' and 'Copilot in PowerPoint file references admin control turn off implicit SharePoint OneDrive Microsoft Graph cloud policy'; read the release-note entry and Copilot overview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The generated presentation is a new file built from referenced content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#september-30,-2025",
+      "quote": "Copilot generates the new presentation in a new file when starting from an existing presentation [Web]\nNow, when creating a presentation using Copilot from an existing presentation, it creates the new presentation in a new file without affecting the original presentation.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-365/copilot/previous-year-release-notes#september-30,-2025 to sources for the new-file statement."
+    },
+    {
       "n": 26,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "New content created by Copilot in PowerPoint inherits the source file's sensitivity label and its protection settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-m365-copilot",
+      "quote": "If you use Copilot in Word, Copilot in PowerPoint, and Copilot in Outlook to create new content based on an item that has a sensitivity label applied, the sensitivity label from the source file is automatically inherited, with the label's protection settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "When multiple files supply new content, the highest-priority sensitivity label is inherited.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/ai-m365-copilot",
+      "quote": "If multiple files are used to create new content, the sensitivity label with the highest priority is used for label inheritance.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Label inheritance is not supported for content encrypted with user-defined permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/architecture-data-protection-auditing",
+      "quote": "Label inheritance isn't supported for content encrypted with user-defined permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Copilot presents only data each individual can access through existing Microsoft 365 access controls.",
+      "claim": "Copilot presents only data the individual can access through the underlying Microsoft 365 access controls.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy",
       "quote": "Microsoft Copilot presents only data that each individual can access using the same underlying controls for data access used in other Microsoft 365 services.",
@@ -317,32 +344,32 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 30,
       "where": "Risk assessment: Security & identity",
       "type": "absence",
       "claim": "The release-note entry does not identify which component fetches the referenced file.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Copilot PowerPoint implicit file references SharePoint OneDrive fetch component background scheduled source file new presentation save location'. Opened and read the complete release-note entry for 555894; it describes prompts and context, not a fetching component.",
+      "quote": "Searched: the release-note entry for 555894, 555895 and 555897, including What changed, Why, Try this and impact paragraphs; it describes naming a document and using its content, without naming a fetching component.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 28,
-      "where": "Risk assessment: Security & identity; Governance guidance; controls[2].note",
+      "n": 31,
+      "where": "Risk assessment: Security & identity; Governance guidance; Governance controls",
       "type": "applicability",
-      "claim": "A sensitivity-label condition in a DLP policy for the Microsoft Copilot, Copilot Chat, and Copilot Cowork location excludes matching items from processing.",
+      "claim": "A sensitivity-label DLP rule on the Copilot policy location can exclude labelled content from processing in Copilot in PowerPoint.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
-      "quote": "To set this up, create DLP policies that use the Microsoft Copilot, Copilot Chat, and Copilot Cowork policy location with the Content contains > Sensitivity labels condition to exclude items from being processed.",
+      "quote": "This feature is available in Microsoft 365 Copilot, Copilot Chat, Cowork, and Copilot in Word, Excel, and PowerPoint.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 29,
+      "n": 32,
       "where": "Risk assessment: Security & identity; Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Items excluded by this label-based policy can still appear in citations without their contents being used in the response.",
+      "claim": "Items excluded by sensitivity-label DLP still appear in citations without their content being used in the response.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
       "quote": "Identified items still appear in the citations of the response, but Copilot and Cowork don't access or use the content of the item in the response.",
@@ -350,21 +377,21 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 33,
       "where": "Risk assessment: Autonomy & actions",
       "type": "absence",
-      "claim": "The release-note entry describes no background, scheduled or source-file write action for this feature.",
+      "claim": "The release-note entry describes no background, scheduled or source-file write action.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Copilot PowerPoint implicit file references SharePoint OneDrive fetch component background scheduled source file new presentation save location'. Read the complete release-note entry; its steps are to open PowerPoint, reference a file and ask for a presentation.",
+      "quote": "Searched: the complete release-note entry for 555894, 555895 and 555897; its steps are to start creating a presentation, reference a file in a prompt and ask for a presentation using that file. No background, scheduled or source-file write action is described.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 31,
+      "n": 34,
       "where": "Risk assessment: Change & support; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "DLP policy changes can take up to four hours to reach the Copilot experiences.",
+      "claim": "DLP policy changes can take up to four hours to reach Copilot experiences.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
       "quote": "Updates to a DLP policy can take up to four hours to reflect in the Microsoft Copilot, Copilot Chat, and Copilot Cowork experiences.",
@@ -372,10 +399,10 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 35,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Restricted Content Discovery changes take time to propagate.",
+      "claim": "Restricted Content Discovery changes require propagation time.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
       "quote": "Because the setting must propagate across indexing systems, updates can take time to become fully effective.",
@@ -383,10 +410,21 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 36,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The roadmap and release-note entry name no feature-specific licence tier, meter or charge.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot PowerPoint reference SharePoint OneDrive files Microsoft 365 Copilot Basic license meter pricing'; read the roadmap record, full release-note entry and Copilot overview. Neither the record nor the entry specifies a licence tier, meter or charge.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
-      "claim": "The Microsoft 365 Copilot add-on license gives the full Copilot experience in Word, Excel, PowerPoint and OneNote.",
+      "claim": "The Microsoft 365 Copilot add-on licence provides the full Copilot experience in Word, Excel, PowerPoint and OneNote.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
       "quote": "You have the Microsoft 365 Copilot add-on license with access to the full experience of Copilot in Word, Excel, PowerPoint, and OneNote.",
@@ -394,51 +432,62 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "front matter: licensing.notes; controls[0].note; Cost and licensing; Governance controls: Licence",
-      "type": "licensing",
-      "claim": "Users without the Copilot add-on license can still use Copilot in PowerPoint within fair use limits.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
-      "quote": "Copilot Chat (Basic) license ... You don't have the Microsoft 365 Copilot add-on license and don't have access to Copilot in Word, Excel, PowerPoint, and OneNote.",
-      "severity": "blocker",
-      "fix": "Qualify each occurrence: 'Users with Microsoft 365 Copilot (Basic), unlike Copilot Chat (Basic), can use Copilot in PowerPoint without the Copilot add-on; some features are subject to fair use limits.' The cited overview distinguishes these two non-add-on experiences."
-    },
-    {
-      "n": 35,
-      "where": "front matter: licensing.model",
-      "type": "licensing",
-      "claim": "The surrounding Copilot-in-PowerPoint product has a mixed entitlement model, with Basic and add-on Premium experiences.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
-      "quote": "Microsoft 365 Copilot (Basic) refers to users without the Copilot add-on license, but who have access to Copilot capabilities inside apps ... Microsoft 365 Copilot (Premium) is the full add-on licensed experience",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "front matter: licensing.notes; Cost and licensing; Scope; Governance guidance; Open questions",
-      "type": "absence",
-      "claim": "A license-tier distinction specific to implicit SharePoint and OneDrive file references is not published in the feature entry or licensing material found.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Copilot PowerPoint SharePoint OneDrive file references licensing Microsoft 365 Copilot Basic full experience'. Read the release-note entry, Copilot overview and License options for Microsoft Copilot; no distinction specific to implicit file references found.",
-      "severity": "minor",
-      "fix": "Narrow 'The licence that covers this feature is not yet published' and equivalent statements to 'Learn documents Basic and Premium experiences for Copilot in PowerPoint; the release-note entry does not distinguish entitlement specifically for implicit SharePoint and OneDrive file references.' Keep the general product licensing facts."
-    },
-    {
-      "n": 37,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "No separate meter or charge for this implicit-file-reference feature is published in the sources found.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: 'Copilot PowerPoint SharePoint OneDrive implicit references admin switch default licensing meter charge'. Read the feature release note, roadmap record, Copilot overview and License options for Microsoft Copilot; no feature-specific meter or charge found.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 38,
+      "where": "front matter: licensing.notes; controls[0].note; Cost and licensing; Governance controls",
+      "type": "licensing",
+      "claim": "Microsoft 365 Copilot (Basic) users can use Copilot in PowerPoint without the Copilot add-on licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "You don't have the Microsoft 365 Copilot add-on license but can use Copilot in Word, Excel, PowerPoint, and OneNote.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; controls[0].note; Cost and licensing; Governance controls",
+      "type": "licensing",
+      "claim": "Copilot Chat (Basic), unlike Microsoft 365 Copilot (Basic), does not provide Copilot in PowerPoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "You don't have the Microsoft 365 Copilot add-on license and don't have access to Copilot in Word, Excel, PowerPoint, and OneNote.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance controls",
+      "type": "licensing",
+      "claim": "Some Copilot features are subject to fair use limits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Some features are subject to fair use limits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.model; Cost and licensing",
+      "type": "licensing",
+      "claim": "Copilot in PowerPoint has mixed licensing experiences, with Basic access without the add-on and a full add-on tier.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/plan/copilot-overview",
+      "quote": "Microsoft 365 Copilot (Premium) is the full add-on licensed experience (some features are subject to fair use limits), which includes everything in Microsoft 365 Copilot (Basic)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; Open questions",
+      "type": "absence",
+      "claim": "The release-note entry does not distinguish entitlement for implicit SharePoint and OneDrive file references.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot in PowerPoint implicit file references pricing meter license Basic Premium'; read the full feature entry and Copilot overview. The entry gives no Basic/Premium distinction; the overview describes app tiers without naming implicit file references.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
       "where": "Cost and licensing",
       "type": "licensing",
       "claim": "Restricted Content Discovery requires Copilot licensing and SharePoint Advanced Management availability.",
@@ -449,43 +498,43 @@
       "fix": null
     },
     {
-      "n": 39,
+      "n": 44,
       "where": "Cost and licensing",
       "type": "licensing",
       "claim": "The Copilot DLP page refers licensing questions to Microsoft 365 Enterprise Plans and Microsoft 365 Service Descriptions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
-      "quote": "Licensing ... For information on licensing, see ... Microsoft 365 Enterprise Plans ... Microsoft 365 Service Descriptions",
+      "quote": "For information on licensing, see\n- Microsoft 365 Enterprise Plans\n- Microsoft 365 Service Descriptions",
       "severity": null,
       "fix": null
     },
     {
-      "n": 40,
+      "n": 45,
       "where": "controls[0].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "User license assignments are managed in Microsoft 365 admin center under Users > Active users > user > Licenses and Apps > Licenses.",
+      "claim": "User licences are managed at Microsoft 365 admin center > Users > Active users > user > Licenses and Apps > Licenses.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users",
-      "quote": "In the admin center, go to the Users > Active users page. ... Select the row of the user ... select Licenses and Apps. ... Expand the Licenses section, clear the boxes for the licenses that you want to unassign",
+      "quote": "In the admin center, go to the Users > Active users page.\nSelect the row of the user that you want to unassign a license for.\nIn the right pane, select Licenses and Apps.\nExpand the Licenses section",
       "severity": null,
       "fix": null
     },
     {
-      "n": 41,
+      "n": 46,
       "where": "controls[0].api; Governance controls table",
       "type": "command",
-      "claim": "POST /v1.0/users/{id | userPrincipalName}/assignLicense adds or removes user licenses.",
+      "claim": "POST /v1.0/users/{id | userPrincipalName}/assignLicense adds or removes user licences.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/user-assignlicense",
-      "quote": "Add or remove licenses for the user ... POST /users/{id | userPrincipalName}/assignLicense ... POST https://graph.microsoft.com/v1.0/me/assignLicense",
+      "quote": "Add or remove licenses for the user to enable or disable their use of Microsoft cloud offerings that the company has licenses to.\nPOST /users/{id | userPrincipalName}/assignLicense\nPOST https://graph.microsoft.com/v1.0/me/assignLicense",
       "severity": null,
       "fix": null
     },
     {
-      "n": 42,
+      "n": 47,
       "where": "controls[0].note; Governance controls table",
       "type": "command",
-      "claim": "The assignLicense request body's removeLicenses collection identifies licenses to remove.",
+      "claim": "The assignLicense request body's removeLicenses collection identifies licences to remove.",
       "status": "supported",
       "source": "https://learn.microsoft.com/graph/api/user-assignlicense",
       "quote": "removeLicenses | Guid collection | A collection of skuIds that identify the licenses to remove. Required. Can be an empty collection.",
@@ -493,54 +542,43 @@
       "fix": null
     },
     {
-      "n": 43,
-      "where": "Governance controls: Licence",
-      "type": "applicability",
-      "claim": "Removing the Microsoft 365 Copilot add-on license does not switch the implicit-file-reference feature off.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: 'Copilot PowerPoint SharePoint OneDrive file references licensing Microsoft 365 Copilot Basic full experience'. Read Copilot overview, License options for Microsoft Copilot and the feature release note; none establishes continued access to this specific capability after license removal.",
-      "severity": "blocker",
-      "fix": "Replace 'so this row does not switch the feature off' with 'The sources found do not establish whether removing the add-on removes access to this specific file-reference capability.' Basic access to Copilot in PowerPoint does not by itself establish access to every capability."
-    },
-    {
-      "n": 44,
+      "n": 48,
       "where": "controls[1].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "Restricted Content Discovery is enabled in SharePoint admin center under Sites > Active sites > site > Settings > Restrict content from Microsoft Copilot.",
+      "claim": "Restricted Content Discovery is configured at SharePoint admin center > Sites > Active sites > site > Settings > Restrict content from Microsoft Copilot.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
-      "quote": "In the SharePoint admin center, expand Sites and select Active sites. ... Select the site you want to configure. ... Open the Settings tab, and then turn Restrict content from Microsoft Copilot on.",
+      "quote": "In the SharePoint admin center, expand Sites and select Active sites.\nSelect the site you want to configure.\nOpen the Settings tab, and then turn Restrict content from Microsoft Copilot on.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 45,
+      "n": 49,
       "where": "controls[1].api; Governance controls table",
       "type": "command",
       "claim": "Set-SPOSite -Identity <site-url> -RestrictContentOrgWideSearch $true enables Restricted Content Discovery for a site.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
-      "quote": "Enable Restricted Content Discovery for a site ... Use PowerShell ... Set-SPOSite -Identity <site-url> -RestrictContentOrgWideSearch $true",
+      "quote": "Enable Restricted Content Discovery for a site\nUse PowerShell\nSet-SPOSite -Identity <site-url> -RestrictContentOrgWideSearch $true",
       "severity": null,
       "fix": null
     },
     {
-      "n": 46,
+      "n": 50,
       "where": "controls[1].note; Risk assessment; Governance guidance; Governance controls",
       "type": "applicability",
-      "claim": "Restricted Content Discovery applies to SharePoint sites but is not supported for OneDrive sites.",
+      "claim": "Restricted Content Discovery is site-level and applies to SharePoint sites, not OneDrive sites.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
-      "quote": "You can only apply this feature to SharePoint sites. It's not supported for OneDrive sites.",
+      "quote": "Restricted Content Discovery is a site-level setting.\nYou can only apply this feature to SharePoint sites. It's not supported for OneDrive sites.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 47,
+      "n": 51,
       "where": "controls[1].note; Governance controls",
       "type": "behaviour",
-      "claim": "Restricted Content Discovery does not change existing access permissions.",
+      "claim": "Restricted Content Discovery changes discoverability rather than existing user permissions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/sharepoint/restricted-content-discovery",
       "quote": "Restricted Content Discovery doesn't change existing permissions. Users who already have access to content can continue to access that content directly.",
@@ -548,7 +586,7 @@
       "fix": null
     },
     {
-      "n": 48,
+      "n": 52,
       "where": "Governance controls: Restricted Content Discovery",
       "type": "applicability",
       "claim": "Restricted Content Discovery does not affect experiences operating on content already in use by the user.",
@@ -559,18 +597,18 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 53,
       "where": "controls[1].note; Governance controls; Open questions",
       "type": "absence",
-      "claim": "The sources found do not explicitly classify a file named in a PowerPoint prompt as covered by Restricted Content Discovery or its content-in-use exception.",
+      "claim": "The documentation does not state whether a file named in a PowerPoint prompt falls under Restricted Content Discovery or its content-in-use exception.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: 'Restricted Content Discovery file named prompt PowerPoint references Copilot'. Read Restrict discovery of SharePoint sites and content, Copilot data-protection architecture and the PowerPoint release note; the discovery versus content-in-use distinction is not resolved for this workflow.",
+      "quote": "Searched: 'Restricted Content Discovery PowerPoint file named prompt reference explicit files' and '\"Restricted Content Discovery\" \"reference\" \"PowerPoint\"'; read the RCD page and release-note entry. Neither classifies this named-file workflow.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 50,
+      "n": 54,
       "where": "Governance controls: Restricted Content Discovery",
       "type": "role",
       "claim": "By default, only SharePoint administrators can manage Restricted Content Discovery.",
@@ -581,21 +619,21 @@
       "fix": null
     },
     {
-      "n": 51,
+      "n": 55,
       "where": "controls[2].ui; Governance controls table",
       "type": "admin-path",
-      "claim": "The Purview route through Data Loss Prevention > Policies > Create policy > Custom > Custom policy > Locations > Microsoft Copilot, Copilot Chat, and Copilot Cowork selects the policy location for the label-exclusion control.",
+      "claim": "The Purview route Data Loss Prevention > Policies > Create policy > Custom > Custom policy > Locations > Microsoft Copilot, Copilot Chat, and Copilot Cowork selects the Copilot policy location.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
-      "quote": "Go to Data Loss Prevention > Policies and select + Create policy. ... Select the Custom template, then Custom policy. ... On the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on.",
-      "severity": "minor",
-      "fix": "Clarify the row note: 'This route selects the policy location. Configure a rule with Content contains > Sensitivity labels and the Prevent Copilot and Cowork from processing content action.' The printed route is correct but stops before the label-exclusion rule."
+      "quote": "Go to Data Loss Prevention > Policies and select + Create policy.\nSelect the Custom template, then Custom policy.\nOn the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 52,
+      "n": 56,
       "where": "controls[2].api; Governance controls table",
       "type": "command",
-      "claim": "The printed New-DlpComplianceRule call creates the Copilot content-exclusion rule using AdvancedRule and RestrictAccess.",
+      "claim": "The cited Copilot example uses New-DlpComplianceRule with Name, Policy, AdvancedRule and RestrictAccess setting ExcludeContentProcessing with value Block.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
       "quote": "New-DLPComplianceRule -Name \"Copilot Rule\" -Policy \"Copilot Policy\" -AdvancedRule $advrule -RestrictAccess @(@{setting=\"ExcludeContentProcessing\";value=\"Block\"})",
@@ -603,10 +641,10 @@
       "fix": null
     },
     {
-      "n": 53,
+      "n": 57,
       "where": "controls[2].note; Governance controls table",
       "type": "command",
-      "claim": "The reference example first creates the policy with New-DlpCompliancePolicy and the CopilotExperiences enforcement plane.",
+      "claim": "The Copilot example first creates its policy with New-DlpCompliancePolicy and EnforcementPlanes set to CopilotExperiences.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy",
       "quote": "New-DLPCompliancePolicy -Name \"Copilot Policy\" -Locations $loc -EnforcementPlanes @(\"CopilotExperiences\")",
@@ -614,21 +652,32 @@
       "fix": null
     },
     {
-      "n": 54,
-      "where": "Governance controls: DLP for Copilot",
-      "type": "applicability",
-      "claim": "The label-exclusion DLP feature is available in Copilot in Word, Excel and PowerPoint and covers stored files and actively open file items.",
+      "n": 58,
+      "where": "controls[2].note; Risk assessment: Security & identity; Governance controls",
+      "type": "behaviour",
+      "claim": "The label-exclusion rule uses the Content contains > Sensitivity labels condition.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
-      "quote": "This feature is available in Microsoft 365 Copilot, Copilot Chat, Cowork, and Copilot in Word, Excel, and PowerPoint. ... File items, which are stored and items that are actively open.",
+      "quote": "create DLP policies that use the Microsoft Copilot, Copilot Chat, and Copilot Cowork policy location with the Content contains > Sensitivity labels condition to exclude items from being processed.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 55,
+      "n": 59,
+      "where": "Governance controls: DLP for Copilot",
+      "type": "applicability",
+      "claim": "The sensitivity-label DLP rule covers stored file items and items actively open.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "A rule configured to protect items with sensitivity labels applies to Microsoft 365 Copilot, Copilot Chat, and Cowork and supports the following content:\n- File items, which are stored and items that are actively open.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
       "where": "Governance controls: DLP for Copilot",
       "type": "behaviour",
-      "claim": "In Word, Excel and PowerPoint, the policy preventing Copilot content processing is evaluated at file open.",
+      "claim": "In Word, Excel and PowerPoint, this DLP policy is evaluated at file open.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
       "quote": "In Word, Excel, and PowerPoint the Microsoft Copilot, Copilot Chat, and Copilot Cowork policy to prevent Copilot from processing content is evaluated at file open.",
@@ -636,10 +685,10 @@
       "fix": null
     },
     {
-      "n": 56,
+      "n": 61,
       "where": "Governance controls: DLP for Copilot",
       "type": "behaviour",
-      "claim": "A sensitivity label applied mid-session affects DLP enforcement starting the next time the file is opened.",
+      "claim": "A sensitivity label applied mid-session affects DLP enforcement the next time the file is opened.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
       "quote": "If a sensitivity label is applied mid-session, the policy will be enforced starting the next time the file is opened.",
@@ -647,10 +696,10 @@
       "fix": null
     },
     {
-      "n": 57,
+      "n": 62,
       "where": "Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "Simulation mode is available for the recommended Copilot DLP policy.",
+      "claim": "The Copilot DLP policy can be run in simulation mode.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
       "quote": "Policy simulation mode is available for Microsoft 365 Copilot and Cowork.",
@@ -658,21 +707,21 @@
       "fix": null
     },
     {
-      "n": 58,
-      "where": "Open questions: DLP applicability",
+      "n": 63,
+      "where": "controls[0].note; Governance controls: Licence",
       "type": "absence",
-      "claim": "Whether DLP label exclusion applies to a stored file referenced in a PowerPoint prompt remains unconfirmed.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
-      "quote": "This feature is available in Microsoft 365 Copilot, Copilot Chat, Cowork, and Copilot in Word, Excel, and PowerPoint. ... File items, which are stored and items that are actively open.",
-      "severity": "blocker",
-      "fix": "Remove DLP label exclusion from the open question 'Do Restricted Content Discovery and the DLP label exclusion apply ...'. Retain the Restricted Content Discovery question alone. The DLP page explicitly covers Copilot in PowerPoint and stored files; the briefing already correctly states that coverage in Governance controls."
+      "claim": "The sources checked do not establish whether removing the add-on licence removes this specific implicit-file-reference capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Copilot in PowerPoint implicit file references pricing meter license Basic Premium'; read the release-note entry, Copilot overview and assignLicense reference. They distinguish app licence tiers and licence removal but do not assign this capability to a tier.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-19T22:10:39.165Z",
+    "at": "2026-11-20T09:04:56.898Z",
     "summary": {
-      "links": 10,
+      "links": 11,
       "unreachable": 0,
       "uiPaths": 3,
       "uiPathsWithMissingWords": 0,
@@ -688,6 +737,11 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/release-notes",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/ai-m365-copilot",
         "ok": true,
         "status": 200
       },
@@ -808,5 +862,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-19",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

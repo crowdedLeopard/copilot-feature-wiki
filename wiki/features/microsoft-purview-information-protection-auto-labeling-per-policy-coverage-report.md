@@ -69,15 +69,17 @@ changes:
     note: "Correction: removed unsupported read-only and end-user claims, stated that Learn gives no separate permissions for View coverage, added Solutions to the View details path and dropped the simulation-running checklist step."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 64 statements not yet confirmed"
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 67 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-18"
+  date: "2026-11-20"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 64
-  confirmed: 64
+  claims: 67
+  confirmed: 67
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -172,8 +174,9 @@ cost: Low. The only cost the sources show is admin time; Microsoft Learn lists n
 impact: Low. Microsoft's notice identifies Purview administrators who create and manage Information Protection auto-labeling policies as the people affected by the new View coverage action.
 -->
 
-<!-- verifier-findings (2026-11-18, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: The cited feature page lists Azure Information Protection Premium P2 (standalone) for auto-labeling. | Found: Microsoft 365 E5, Microsoft 365 E5 Compliance, Microsoft 365 E5 Information Protection & Governance, Azure Information Protection Premium P2 (standalone) | Fix: After the SKU list in Cost and licensing, add: "Microsoft's Purview service description also says that if AIP P2 is assigned to a user, AIP P1 must also be assigned." Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description, whose note states: "And if AIP P2 is assigned to a user, that user must also have AIP P1 assigned." | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
+- [supported, minor] front matter: licensing.notes; Cost and licensing; rationale: cost / licensing: The feature page lists Microsoft 365 E5, E5 Compliance, E5 Information Protection & Governance and Azure Information Protection Premium P2 (standalone) for service-side auto-labeling. | Found: Microsoft 365 E5, Microsoft 365 E5 Compliance, Microsoft 365 E5 Information Protection & Governance, Azure Information Protection Premium P2 (standalone) | Fix: After the SKU list, add: "Microsoft's Purview service description also says that if AIP P2 is assigned to a user, that user must also have AIP P1 assigned." Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description. This preserves the cited feature page's list while acknowledging the other page's qualification. | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
+- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing; Open questions / licensing: Licensing is marked unknown because no entitlement specific to the report is published. | Found: | Service-side auto-labeling (SharePoint, OneDrive, Exchange) | Microsoft Purview portal → **Information Protection** → **Policies** → **Auto-labeling policies** | Same E5 / P2-tier SKUs as above | | Fix: Set licensing.model to "included". Start licensing.notes with "The report is a view inside service-side auto-labeling, whose published entitlement is the E5 / P2-tier licensing listed below; no separate report-specific licence or charge is documented as of November 2026." Keep the existing SKU list and its cited feature page. In Cost and licensing, replace "The licence and any meter for the coverage report itself are not yet published" with "No separate licence or meter for the coverage report is documented as of November 2026". | Source: https://learn.microsoft.com/purview/apply-sensitivity-label-automatically
 -->

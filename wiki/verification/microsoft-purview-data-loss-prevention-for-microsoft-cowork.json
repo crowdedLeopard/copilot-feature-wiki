@@ -3,40 +3,117 @@
   "roadmapId": 570845,
   "title": "Microsoft Purview: Data Loss Prevention now covers Microsoft Cowork",
   "status": "verified-with-gaps",
-  "date": "2026-11-18",
+  "date": "2026-11-20",
   "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
   "attempts": 0,
-  "standard": "cd5b21ff3a5b",
+  "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "pass",
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 72,
-    "confirmed": 72,
+    "claims": 65,
+    "confirmed": 65,
     "unconfirmed": 0,
     "contradicted": 0,
     "blocker": 0,
     "major": 0,
     "minor": 1
   },
-  "summary": "The briefing passes: the automatic extension of existing policies, rollout dates, controls and documented Cowork limitations are supported. The cost rationale should replace its loose E5-tier shorthand with a reference to the exact licensing plans already listed in the briefing.",
+  "summary": "The briefing's rollout facts, policy controls and licensing statements are supported by the current Microsoft sources. One minor correction remains: the cost rationale should use the listed plan names rather than describing all eligible plans as E5-tier.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; Why it matters",
+      "where": "title; front matter: roadmapId, products; What's changing",
       "type": "record",
-      "claim": "Purview DLP extends to Microsoft Cowork and enables one policy across Microsoft 365 Copilot and Cowork.",
+      "claim": "Roadmap item 570845 concerns Microsoft Purview Data Loss Prevention for Microsoft Cowork.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Microsoft Purview Data Loss Prevention (DLP) is expanding to Microsoft Cowork, enabling data security admins to use a single policy across Microsoft 365 Copilot and Cowork.",
+      "quote": "\"id\": 570845, \"title\": \"Microsoft Purview: Data Loss Prevention for Microsoft Cowork\"",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
+      "where": "front matter: status; Scope: Dates",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: releasePhase; Scope: Dates; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; Scope: Cloud and platform",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; Scope: Cloud and platform",
+      "type": "record",
+      "claim": "The roadmap lists Web as the platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: targetDate; Scope: Dates",
+      "type": "record",
+      "claim": "The roadmap gives October CY2026 as the general availability target.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate; Scope: Dates",
+      "type": "record",
+      "claim": "The roadmap gives September CY2026 as the preview target.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "summary; What's changing; Why it matters; Scope: Who and what",
+      "type": "record",
+      "claim": "The integration enables a single DLP policy across Microsoft 365 Copilot and Cowork.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "enabling data security admins to use a single policy across Microsoft 365 Copilot and Cowork.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
       "where": "summary; What's changing",
       "type": "record",
       "claim": "The roadmap describes preventing the use of labelled knowledge sources.",
@@ -47,10 +124,10 @@
       "fix": null
     },
     {
-      "n": 3,
-      "where": "summary; What's changing",
+      "n": 10,
+      "where": "summary; What's changing; rationale: impact",
       "type": "record",
-      "claim": "The roadmap describes blocking prompts containing supported sensitive information types.",
+      "claim": "The roadmap describes blocking prompts that contain supported sensitive information types.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "blocking prompts that contain supported sensitive information types",
@@ -58,98 +135,21 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "summary; What's changing",
+      "n": 11,
+      "where": "summary; What's changing; rationale: impact",
       "type": "record",
       "claim": "The roadmap describes restricting sensitive prompts from being sent to Bing for web search.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "restricting sensitive prompts from being sent to Bing for web search",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: status; Scope",
-      "type": "record",
-      "claim": "The roadmap status is Launched.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: releasePhase; Scope; Open questions",
-      "type": "record",
-      "claim": "The roadmap lists General Availability and Preview release phases.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "front matter: targetDate; Scope",
-      "type": "record",
-      "claim": "The roadmap target is October CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"targetDate\": \"October CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
-      "where": "front matter: previewDate; Scope",
-      "type": "record",
-      "claim": "The roadmap preview date is September CY2026.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": \"September CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "front matter: clouds; Scope",
-      "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "front matter: platforms; Scope",
-      "type": "record",
-      "claim": "The roadmap platform is Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Web\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap was modified at 2026-11-06T23:04:41.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-11-06T23:04:41\"",
+      "quote": "restricting sensitive prompts from being sent to Bing for web search.",
       "severity": null,
       "fix": null
     },
     {
       "n": 12,
-      "where": "summary; What's changing; Why it matters; Governance guidance; rationale: risk",
-      "type": "record",
-      "claim": "Existing policies targeting the Microsoft Copilot workload automatically apply to Cowork.",
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Existing Copilot DLP policies automatically apply to Cowork, supporting defaultState on for this extension.",
       "status": "supported",
       "source": "Message Center post MC1477182",
       "quote": "Existing DLP policies that target the Microsoft Copilot workload will automatically apply to Microsoft Cowork.",
@@ -160,7 +160,7 @@
       "n": 13,
       "where": "What's changing",
       "type": "record",
-      "claim": "New policies created for Microsoft Copilot automatically include Cowork.",
+      "claim": "New DLP policies created for Copilot automatically include Cowork.",
       "status": "supported",
       "source": "Message Center post MC1477182",
       "quote": "New DLP policies created for Microsoft Copilot will automatically include Microsoft Cowork.",
@@ -180,20 +180,9 @@
     },
     {
       "n": 15,
-      "where": "front matter: defaultState",
-      "type": "default",
-      "claim": "The extension is on automatically, without an administrator changing existing Copilot policies.",
-      "status": "supported",
-      "source": "Message Center post MC1477182",
-      "quote": "Existing DLP policies that target the Microsoft Copilot workload will automatically apply to Microsoft Cowork.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing; Scope; controls[0].governs",
+      "where": "What's changing; Scope: Who and what; controls[0].governs",
       "type": "applicability",
-      "claim": "Learn documents one policy location named Microsoft Copilot, Copilot Chat, and Copilot Cowork.",
+      "claim": "Learn names the combined policy location Microsoft Copilot, Copilot Chat, and Copilot Cowork.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
       "quote": "The Microsoft Copilot, Copilot Chat, and Copilot Cowork policy location supports the following conditions and actions:",
@@ -201,30 +190,19 @@
       "fix": null
     },
     {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Data exposure; Open questions",
+      "type": "record",
+      "claim": "The notice limits prompt DLP and web-search DLP to prompt text, not uploaded files at this time.",
+      "status": "supported",
+      "source": "Message Center post MC1477182",
+      "quote": "Note that Prompt DLP and Web Search DLP applies to the prompt text only, not uploaded files at this time.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 17,
-      "where": "What's changing; Open questions",
-      "type": "record",
-      "claim": "The notice limits prompt DLP to prompt text, excluding uploaded files at this time.",
-      "status": "supported",
-      "source": "Message Center post MC1477182",
-      "quote": "Note that Prompt DLP and Web Search DLP applies to the prompt text only, not uploaded files at this time.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What's changing; Risk assessment: Data exposure",
-      "type": "record",
-      "claim": "The notice limits web-search DLP to prompt text, excluding uploaded files at this time.",
-      "status": "supported",
-      "source": "Message Center post MC1477182",
-      "quote": "Note that Prompt DLP and Web Search DLP applies to the prompt text only, not uploaded files at this time.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "What's changing; Risk assessment; Scope; Governance guidance; Open questions; rationale: risk",
+      "where": "What's changing; Risk assessment: Data exposure; Scope; Governance guidance; Open questions; rationale",
       "type": "applicability",
       "claim": "Blocking external email is not yet supported for Cowork.",
       "status": "supported",
@@ -234,8 +212,8 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What's changing; Risk assessment; Scope; Governance guidance; Open questions; rationale: risk",
+      "n": 18,
+      "where": "What's changing; Risk assessment: Change & support; Scope; Governance guidance; Open questions; rationale",
       "type": "applicability",
       "claim": "Customising the Learn about access restrictions link in policy tips is not yet supported for Cowork.",
       "status": "supported",
@@ -245,8 +223,8 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What's changing; Scope; Open questions",
+      "n": 19,
+      "where": "What's changing; Scope: Learn and the notice differ; Open questions",
       "type": "availability",
       "claim": "Learn marks SIT-based prompt blocking as preview and rolling out, including support for Cowork.",
       "status": "supported",
@@ -256,21 +234,21 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "Why it matters; Risk assessment: Data exposure",
+      "n": 20,
+      "where": "Risk assessment: Data exposure; Why it matters; Scope: Email and file coverage",
       "type": "behaviour",
-      "claim": "Sensitivity-label rules prevent Copilot and Cowork from using matching file and email content in responses.",
+      "claim": "Sensitivity-label rules prevent Copilot and Cowork from using matching file and email contents in responses.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
-      "quote": "Copilot and Cowork don't process the content of the item or use it in the response summary, but the item could be available in the citations of the response.",
+      "quote": "Detects when a file or an email in Exchange has a chosen sensitivity label. Copilot and Cowork don't process the content of the item or use it in the response summary",
       "severity": null,
       "fix": null
     },
     {
-      "n": 23,
+      "n": 21,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Items identified by sensitivity-label rules can still appear in response citations.",
+      "claim": "Items excluded by sensitivity-label rules can still appear in response citations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
       "quote": "Identified items still appear in the citations of the response, but Copilot and Cowork don't access or use the content of the item in the response.",
@@ -278,19 +256,8 @@
       "fix": null
     },
     {
-      "n": 24,
-      "where": "Scope: Email and file coverage",
-      "type": "applicability",
-      "claim": "Sensitivity-label protection supports file items.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
-      "quote": "File items, which are stored and items that are actively open.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 25,
-      "where": "Risk assessment: Data exposure; Scope",
+      "n": 22,
+      "where": "Risk assessment: Data exposure; Scope: Email and file coverage",
       "type": "date",
       "claim": "Sensitivity-label email protection covers emails sent on or after January 1, 2025.",
       "status": "supported",
@@ -300,8 +267,8 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "Risk assessment: Data exposure; Scope",
+      "n": 23,
+      "where": "Risk assessment: Data exposure; Scope: Email and file coverage",
       "type": "applicability",
       "claim": "Calendar invites are not supported by this sensitivity-label protection.",
       "status": "supported",
@@ -311,10 +278,10 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "Risk assessment; Scope; Governance guidance; Open questions; rationale: risk",
+      "n": 24,
+      "where": "Risk assessment: Data exposure; Scope; Governance guidance: After rollout; Open questions; rationale",
       "type": "behaviour",
-      "claim": "Learn says DLP checks typed prompt text rather than scanning the contents of files uploaded directly into prompts.",
+      "claim": "Learn says DLP scans typed prompt text rather than the contents of files uploaded directly into prompts.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
       "quote": "DLP can't scan the contents of files that you upload directly into prompts, so evaluation of the uploaded file for sensitive data doesn't occur. DLP only checks the text you type into the prompt itself.",
@@ -322,10 +289,10 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 25,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Microsoft 365 Copilot prompts run in the submitting user's security context.",
+      "claim": "Copilot prompts run in the security context of the user who submits them.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
       "quote": "All Microsoft 365 Copilot prompts run in the security context of the user who initiates the prompt.",
@@ -333,18 +300,18 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 26,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Users must already have permission to access content before seeing it in a prompt response.",
+      "claim": "A user needs permission to access an item before seeing it in a prompt response.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
-      "quote": "This means for a user to see an item in a prompt response, they must first have the necessary permissions to access the content of the item.",
+      "quote": "for a user to see an item in a prompt response, they must first have the necessary permissions to access the content of the item.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 30,
+      "n": 27,
       "where": "Risk assessment: Security & identity",
       "type": "applicability",
       "claim": "DLP can exclude items from response processing in addition to the user's existing access permissions.",
@@ -355,10 +322,10 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "controls[0].note; Risk assessment; Governance guidance; Governance controls",
+      "n": 28,
+      "where": "controls[0].note; Risk assessment: Security & identity; Governance guidance; Governance controls",
       "type": "role",
-      "claim": "Purview Data Security AI Admin is one of the roles that can create or edit these policies.",
+      "claim": "Purview Data Security AI Admin is a role that can create or edit policies for this location.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
       "quote": "Purview Data Security AI Admin - Role for editing Data Loss Prevention policies related to Copilot and viewing AI content in Data Security Posture Management.",
@@ -366,10 +333,10 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 29,
       "where": "Risk assessment: Security & identity; Governance controls",
       "type": "role",
-      "claim": "Purview Compliance Administrator is one of the roles that can create or edit these policies.",
+      "claim": "Purview Compliance Administrator is among the roles permitted to create or edit these policies.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
       "quote": "Accounts with one of the following roles or role groups can create or edit a DLP policy for the Microsoft Copilot, Copilot Chat, and Copilot Cowork location: ... Purview Compliance Administrator",
@@ -377,65 +344,21 @@
       "fix": null
     },
     {
-      "n": 33,
-      "where": "Governance controls",
-      "type": "role",
-      "claim": "Microsoft Entra AI Admin is one of the roles that can create or edit these policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
-      "quote": "Microsoft Entra AI Admin - Role for managing all aspects of Microsoft 365 Copilot and AI-related enterprise services in Microsoft 365.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 34,
-      "where": "Governance controls",
-      "type": "role",
-      "claim": "Microsoft Entra Global Admin is one of the roles that can create or edit these policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
-      "quote": "Microsoft Entra Global Admin - Role for managing all aspects of Microsoft Entra ID and Microsoft services that use Microsoft Entra identities.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "Governance controls",
-      "type": "role",
-      "claim": "Learn recommends using roles with the fewest permissions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
-      "quote": "Microsoft recommends that you use roles with the fewest permissions.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "absence",
-      "claim": "The DLP extension sources document policy evaluation rather than new agent actions.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Cowork DLP agent actions new actions. Read the feature page's supported conditions/actions and MC1477182; neither describes new agent actions introduced by this DLP extension.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 37,
+      "n": 30,
       "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "Cowork policy tips retain the standard Learn link because link customisation is not supported.",
+      "type": "default",
+      "claim": "The standard Learn about access restrictions link opens Microsoft Learn.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
-      "quote": "By default, the link opens Microsoft Learn. ... Customizing the link in Copilot policy tips isn't yet supported for Cowork.",
+      "quote": "the standard Copilot message includes a Learn about access restrictions link. By default, the link opens Microsoft Learn.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
-      "where": "Risk assessment: Change & support; Governance guidance",
+      "n": 31,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "DLP policy updates can take up to four hours to reach the Copilot, Copilot Chat and Cowork experiences.",
+      "claim": "DLP policy updates can take up to four hours to reach the covered Copilot and Cowork experiences.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
       "quote": "Updates to a DLP policy can take up to four hours to reflect in the Microsoft Copilot, Copilot Chat, and Copilot Cowork experiences.",
@@ -443,87 +366,54 @@
       "fix": null
     },
     {
-      "n": 39,
-      "where": "Risk assessment: Change & support; Governance guidance",
+      "n": 32,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "SIT conditions and sensitivity-label conditions cannot be combined in one rule, but can use separate rules.",
+      "claim": "Sensitive-information-type and sensitivity-label conditions cannot be combined in the same rule.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
-      "quote": "You can't use both content contains sensitive info types and content contains sensitivity labels conditions in the same rule. You can create a rule for each condition in the same policy, but not in the same rule.",
+      "quote": "You can't use both content contains sensitive info types and content contains sensitivity labels conditions in the same rule.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 40,
+      "n": 33,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "A shared policy can contain separate rules for the two condition types.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "You can create a rule for each condition in the same policy, but not in the same rule.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
       "where": "front matter: licensing.model; Cost and licensing",
       "type": "licensing",
-      "claim": "Purview uses per-user licensing for Microsoft 365 assets.",
+      "claim": "The per-user licensing model applies to Purview controls protecting Microsoft 365 assets.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/purview-billing-models",
-      "quote": "The per-user licensing model is the familiar Microsoft 365 E3/E5/A5/F5/G5 model. It remains unchanged. This licensing model enables you to apply Microsoft Purview controls and protections to Microsoft 365 and Windows/macOS endpoint-based assets.",
+      "quote": "This licensing model enables you to apply Microsoft Purview controls and protections to Microsoft 365 and Windows/macOS endpoint-based assets.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 41,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "The service description includes restricting Copilot processing of files and emails in Microsoft 365 E5/A5.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "Microsoft 365 E5/A5 ... | Purview Data Loss Prevention (DLP) to restrict Copilot from processing files and emails | Not included | Not included | Not included | Included | Included |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 42,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "The same file and email protection is included in Microsoft Purview Suite/EDU/FLW.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "Microsoft Purview Suite/EDU/FLW ... | Purview Data Loss Prevention (DLP) to restrict Copilot from processing files and emails | Not included | Not included | Not included | Included | Included |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 43,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The same file and email protection is included in Microsoft Defender + Purview Suite FLW.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "Microsoft Defender + Purview Suite FLW ... | Purview Data Loss Prevention (DLP) to restrict Copilot from processing files and emails | Not included | Not included | Not included | Included | Included |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The same file and email protection is included in Microsoft 365 E5/A5/F5 Information Protection and Governance.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "Microsoft 365 E5/A5/F5 Information Protection and Governance ... | Purview Data Loss Prevention (DLP) to restrict Copilot from processing files and emails | Not included | Not included | Not included | Included | Included |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "The same file and email protection is included in Office 365 E5/A5.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "| Office 365 E5/A5 | ... | Purview Data Loss Prevention (DLP) to restrict Copilot from processing files and emails | Not included | Not included | Not included | Included | Included |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
+      "n": 35,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "Prompt protection is available to all Microsoft Copilot and Copilot Chat users.",
+      "claim": "The listed E5/A5, Purview Suite/EDU/FLW, Defender + Purview Suite FLW, Information Protection and Governance, and Office 365 E5/A5 plans include Copilot file and email DLP.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5, Microsoft Purview Suite/EDU/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5 Information Protection and Governance | Office 365 E5/A5 ... restrict Copilot from processing files and emails | Not included | Not included | Not included | Included | Included",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Prompt DLP is available to all Microsoft Copilot and Copilot Chat users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
       "quote": "Purview DLP for prompts is available to all users of Microsoft Copilot and Copilot Chat",
@@ -531,21 +421,32 @@
       "fix": null
     },
     {
-      "n": 47,
+      "n": 37,
       "where": "front matter: licensing.notes; Cost and licensing; Open questions",
-      "type": "absence",
-      "claim": "The licensing table does not name Cowork separately, and Cowork-specific entitlement differences are unconfirmed.",
+      "type": "licensing",
+      "claim": "The service description's Copilot DLP licensing table does not separately name Cowork.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Cowork\" \"DLP\" \"license\"; Microsoft Cowork Purview DLP licensing pricing meter charges entitlement. Read the feature Licensing section and service description's Copilot DLP table; neither states a separate Cowork entitlement.",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "DLP for Microsoft Copilot and Copilot Chat as a location allows organizations to identify and restrict the use of sensitive content in Copilot grounding and Copilot interactions based on sensitive information types and sensitivity labels.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
+      "n": 38,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "No Cowork-specific entitlement difference for this DLP extension is confirmed in the searched documentation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Cowork Purview DLP licensing entitlement price meter separate policy location switch exclude Cowork Copilot. Opened the Copilot DLP feature page, Purview service description and Purview billing models; no Cowork-specific DLP entitlement difference found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The feature page's Licensing section only links to enterprise plans and service-description licensing guidance.",
+      "claim": "The feature page's Licensing section links to Enterprise Plans and Microsoft 365 licensing guidance without specifying its own licence list.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
       "quote": "For information on licensing, see\n- Microsoft 365 Enterprise Plans\n- Microsoft 365 Service Descriptions",
@@ -553,29 +454,29 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 40,
       "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "MC1477182 describes no meter or charge for the Cowork extension.",
+      "type": "record",
+      "claim": "MC1477182 describes no meter or charge for the Cowork DLP extension.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Cowork Purview DLP licensing pricing meter charges entitlement. Read the complete supplied MC1477182 notice; it specifies automatic coverage and no separate configuration, but no meter or charge.",
+      "source": "Message Center post MC1477182",
+      "quote": "Searched: Read the complete supplied MC1477182 notice, including What and why, Rollout schedule, Impact, Action required and Compliance considerations, for a meter or charge for this DLP extension; none is stated.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 50,
+      "n": 41,
       "where": "Cost and licensing; front matter: cost; rationale: cost",
       "type": "absence",
-      "claim": "No meter is documented for the DLP extension, leaving policy-review work as its identified incremental cost.",
+      "claim": "No separate meter for the Cowork DLP extension is documented as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Cowork\" \"DLP\" \"meter\"; Microsoft Cowork Purview DLP licensing pricing meter charges entitlement. Read Purview billing models, the service description's Copilot DLP licensing and the feature page; no DLP-extension meter found.",
+      "quote": "Searched: Microsoft Cowork Purview DLP licensing entitlement price meter; \"Cowork\" \"DLP\" \"billing\" \"meter\". Read Purview billing models, service description and Copilot DLP page. Results identify Cowork usage billing, not a separate charge for extending DLP coverage.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 51,
+      "n": 42,
       "where": "Scope: Who and what",
       "type": "record",
       "claim": "The notice identifies administrators managing Copilot, Cowork and Purview DLP policies as affected.",
@@ -586,10 +487,10 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 43,
       "where": "Scope: Dates",
       "type": "record",
-      "claim": "The notice's public preview window begins in late September and is expected to complete by early October 2026.",
+      "claim": "The notice targets public preview from late September to early October 2026.",
       "status": "supported",
       "source": "Message Center post MC1477182",
       "quote": "Public Preview: Beginning in late September 2026 and expected to complete by early October 2026",
@@ -597,10 +498,10 @@
       "fix": null
     },
     {
-      "n": 53,
-      "where": "Scope: Dates",
+      "n": 44,
+      "where": "What's changing; Scope: Dates, Learn and the notice differ",
       "type": "record",
-      "claim": "The notice's Worldwide GA window begins in mid-October and is expected to complete by late October 2026.",
+      "claim": "The notice targets worldwide general availability from mid-October to late October 2026.",
       "status": "supported",
       "source": "Message Center post MC1477182",
       "quote": "General Availability (Worldwide): Beginning in mid-October 2026 and expected to complete by late October 2026",
@@ -608,10 +509,10 @@
       "fix": null
     },
     {
-      "n": 54,
+      "n": 45,
       "where": "Scope: Dates",
       "type": "record",
-      "claim": "The notice's end date is November 30, 2026.",
+      "claim": "Microsoft's end date for the notice is 2026-11-30.",
       "status": "supported",
       "source": "Message Center post MC1477182",
       "quote": "Microsoft's end date 2026-11-30",
@@ -619,7 +520,7 @@
       "fix": null
     },
     {
-      "n": 55,
+      "n": 46,
       "where": "Scope: Dates",
       "type": "record",
       "claim": "The notice sets no act-by date.",
@@ -630,10 +531,10 @@
       "fix": null
     },
     {
-      "n": 56,
+      "n": 47,
       "where": "Scope: Policy rules",
       "type": "behaviour",
-      "claim": "The combined policy location is available only in the Custom policy template.",
+      "claim": "The combined Copilot location is available only in the Custom policy template.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
       "quote": "The Microsoft Copilot, Copilot Chat, and Copilot Cowork policy location is only available in the Custom policy template.",
@@ -641,7 +542,7 @@
       "fix": null
     },
     {
-      "n": 57,
+      "n": 48,
       "where": "Scope: Policy rules",
       "type": "behaviour",
       "claim": "Selecting the combined Copilot location disables all other locations for that policy.",
@@ -652,8 +553,8 @@
       "fix": null
     },
     {
-      "n": 58,
-      "where": "Cost and licensing; Scope; Governance guidance; Governance controls",
+      "n": 49,
+      "where": "Scope: Policy rules; Governance guidance: At rollout; Governance controls",
       "type": "applicability",
       "claim": "Policy simulation mode is available for Microsoft 365 Copilot and Cowork.",
       "status": "supported",
@@ -663,10 +564,21 @@
       "fix": null
     },
     {
-      "n": 59,
+      "n": 50,
+      "where": "Scope: Administrative units; controls[0].scope",
+      "type": "applicability",
+      "claim": "The combined location supports administrative-unit scoping, including Cowork, alongside tenant-wide policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "The Microsoft Copilot, Copilot Chat, and Copilot Cowork policy location supports administrative units for Microsoft 365 Copilot, Copilot Chat, and Cowork.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
       "where": "Scope: Administrative units",
       "type": "availability",
-      "claim": "Administrative-unit support for the combined location, including Cowork, is preview and rolling out.",
+      "claim": "Administrative-unit support for this location is in preview and rolling out, so it may be unavailable in a tenant.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
       "quote": "Administrative unit support for this location, including Cowork, is in preview and is rolling out. The option might not yet be available in your tenant.",
@@ -674,7 +586,7 @@
       "fix": null
     },
     {
-      "n": 60,
+      "n": 52,
       "where": "Scope: Administrative units",
       "type": "behaviour",
       "claim": "Policy scoping follows the user submitting the prompt.",
@@ -685,73 +597,7 @@
       "fix": null
     },
     {
-      "n": 61,
-      "where": "controls[0].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The Purview portal path is Data Loss Prevention > Policies > + Create policy > Custom > Custom policy > Locations > Microsoft Copilot, Copilot Chat, and Copilot Cowork.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
-      "quote": "Go to Data Loss Prevention > Policies and select + Create policy.\nSelect the Custom template, then Custom policy.\nOn the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 62,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "New-DlpCompliancePolicy -Name \"<policy name>\" -Locations $loc -EnforcementPlanes @(\"CopilotExperiences\") creates the policy at the Copilot location, as qualified in the note.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps",
-      "quote": "New-DLPCompliancePolicy -Name \"Copilot Policy\" -Locations $loc -EnforcementPlanes @(\"CopilotExperiences\")",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 63,
-      "where": "Governance controls; Open questions",
-      "type": "absence",
-      "claim": "No separate Cowork switch at the combined DLP location is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Microsoft Cowork DLP separate policy switch Copilot only Cowork exclude location. Read the feature page, including conditions/actions and admin units, and MC1477182; no workload-separation setting found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 64,
-      "where": "Governance controls",
-      "type": "applicability",
-      "claim": "DLP alerts are supported for the combined location that includes Cowork.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
-      "quote": "DLP alerts and DLP notifications are supported.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 65,
-      "where": "controls[0].note; Governance controls",
-      "type": "behaviour",
-      "claim": "The PowerShell reference example configures the Microsoft 365 Copilot location with sensitivity labels.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps",
-      "quote": "This example creates a DLP policy for Microsoft 365 Copilot in several steps: ... The first command returns information about all sensitivity labels.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 66,
-      "where": "controls[0].note; Governance controls",
-      "type": "absence",
-      "claim": "The New-DlpCompliancePolicy reference page does not mention Cowork.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: New-DlpCompliancePolicy EnforcementPlanes CopilotExperiences Cowork. Opened the cited command reference and searched its full text for Cowork and Copilot; the example and Locations parameter name Copilot, not Cowork.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 67,
+      "n": 53,
       "where": "Governance guidance: Before rollout",
       "type": "record",
       "claim": "The notice recommends informing compliance, security and AI governance stakeholders.",
@@ -762,21 +608,65 @@
       "fix": null
     },
     {
-      "n": 68,
-      "where": "rationale: cost",
-      "type": "licensing",
-      "claim": "The cost rationale collectively describes the eligible file and email protection plans as E5-tier plans.",
+      "n": 54,
+      "where": "controls[0].ui; Governance controls: table",
+      "type": "admin-path",
+      "claim": "The Purview portal path is Data Loss Prevention > Policies > + Create policy > Custom > Custom policy > Locations > Microsoft Copilot, Copilot Chat, and Copilot Cowork.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
-      "quote": "Microsoft 365 E5/A5, Microsoft Purview Suite/EDU/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5 Information Protection and Governance | Office 365 E5/A5",
-      "severity": "minor",
-      "fix": "In the cost rationale, replace 'included only in E5-tier plans' with 'included in the plans listed in Cost and licensing'. This avoids treating the broad E5-tier shorthand as an exact licence requirement."
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Go to Data Loss Prevention > Policies and select + Create policy.\nSelect the Custom template, then Custom policy.\nOn the Locations page, set the Microsoft Copilot, Copilot Chat, and Copilot Cowork location to on.",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 69,
+      "n": 55,
+      "where": "controls[0].api; Governance controls: table",
+      "type": "command",
+      "claim": "New-DlpCompliancePolicy -Name \"<policy name>\" -Locations $loc -EnforcementPlanes @(\"CopilotExperiences\") creates the Copilot-location DLP policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps",
+      "quote": "New-DLPCompliancePolicy -Name \"Copilot Policy\" -Locations $loc -EnforcementPlanes @(\"CopilotExperiences\")",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "The reference example creates a Microsoft 365 Copilot DLP policy using sensitivity labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps",
+      "quote": "This example creates a DLP policy for Microsoft 365 Copilot in several steps:\n- The first command returns information about all sensitivity labels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[0].note; Governance controls",
+      "type": "absence",
+      "claim": "The New-DlpCompliancePolicy reference page does not mention Cowork.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Cowork in the fetched New-DlpCompliancePolicy reference, including its Copilot example and Locations and EnforcementPlanes parameter documentation; no matches.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No separate Cowork switch within the combined Copilot DLP policy location is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Cowork Purview DLP separate policy location switch exclude Cowork Copilot; \"Cowork\" \"DLP\" \"separate\" \"configuration\". Read Copilot DLP setup, supported actions and admin units, plus New-DlpCompliancePolicy. No separate Cowork-only DLP switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
       "where": "Governance controls",
       "type": "applicability",
-      "claim": "DLP notifications are supported for the combined location that includes Cowork.",
+      "claim": "DLP alerts are supported for the combined policy location.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
       "quote": "DLP alerts and DLP notifications are supported.",
@@ -784,41 +674,74 @@
       "fix": null
     },
     {
-      "n": 70,
-      "where": "Why it matters; rationale: impact",
-      "type": "behaviour",
-      "claim": "A matching prompt-blocking rule prevents Cowork from returning a response to that prompt.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
-      "quote": "This policy prevents Copilot and Cowork from returning a response when prompts contain sensitive data.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 71,
-      "where": "Why it matters; rationale: impact",
-      "type": "behaviour",
-      "claim": "A matching web-search rule blocks web search for that prompt rather than necessarily blocking the response.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
-      "quote": "When a user prompt contains the configured SITs, Copilot and Cowork block external web search as a grounding source and continue to generate the response using allowed internal Microsoft 365 data sources.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 72,
-      "where": "controls[0].scope; Governance controls table",
+      "n": 60,
+      "where": "Governance controls",
       "type": "applicability",
-      "claim": "The DLP policy control can have tenant-wide scope.",
+      "claim": "DLP notifications are supported for the combined policy location.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
-      "quote": "An unrestricted administrator can scope policies to administrative units or keep Full directory to apply a policy across the organization. Existing tenant-wide policies continue to apply; using administrative units is optional.",
+      "quote": "DLP alerts and DLP notifications are supported.",
       "severity": null,
       "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Microsoft Entra AI Admin is among the roles that can create or edit policies for this location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Microsoft Entra AI Admin - Role for managing all aspects of Microsoft 365 Copilot and AI-related enterprise services in Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Microsoft Entra Global Admin is among the roles that can create or edit policies for this location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Microsoft Entra Global Admin - Role for managing all aspects of Microsoft Entra ID and Microsoft services that use Microsoft Entra identities.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Microsoft recommends using roles with the fewest permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-microsoft365-copilot-location-learn-about",
+      "quote": "Microsoft recommends that you use roles with the fewest permissions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The DLP extension's sources document no new agent actions, describing policy evaluation of prompts and grounding content instead.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Cowork DLP new agent actions prompt grounding New-DlpCompliancePolicy CopilotExperiences. Read the supplied roadmap and notice, Copilot DLP feature page and policy reference; no new agent action attributed to this DLP extension.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "rationale: cost",
+      "type": "licensing",
+      "claim": "The rationale collectively describes the listed file and email protection plans as E5-tier plans.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5, Microsoft Purview Suite/EDU/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5 Information Protection and Governance | Office 365 E5/A5",
+      "severity": "minor",
+      "fix": "In the cost rationale, replace 'included only in E5-tier plans' with 'included in the plans listed in Cost and licensing'. The table also names suite and frontline plans, so E5-tier should not stand in for the exact entitlement list."
     }
   ],
   "precheck": {
-    "at": "2026-11-18T09:02:08.724Z",
+    "at": "2026-11-20T09:05:02.919Z",
     "summary": {
       "links": 6,
       "unreachable": 0,
@@ -895,6 +818,12 @@
       "date": "2026-11-18",
       "status": "held",
       "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-18",
+      "status": "verified-with-gaps",
+      "version": 2,
       "model": "gpt-6.1-sol"
     }
   ]

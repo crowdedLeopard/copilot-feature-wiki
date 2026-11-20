@@ -72,15 +72,17 @@ changes:
     note: "Corrected the summary and Why it matters to say block-scope activity is also recorded, and set the action to act-now given the December 2026 rollout."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 50 statements not yet confirmed"
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 57 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-20"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 50
-  confirmed: 50
+  claims: 57
+  confirmed: 57
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -180,8 +182,8 @@ cost: Low. The only cost the sources show is admin time and client updates; Endp
 impact: Low. Admins who manage Endpoint DLP and just-in-time protection notice first; users in block scope see JIT blocking as before, and out-of-scope users see no change on their device.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls; Governance guidance / admin-path: The Microsoft Purview portal route Settings > Data Loss Prevention > Just-in-time protection reaches the page holding the audit and block scoping controls. | Found: Sign in to the Microsoft Purview portal. 2. Select Settings > Data Loss Prevention > Just-in-time protection. | Fix: Extend controls[0].ui.path and the corresponding rendered table path to 'Settings > Data Loss Prevention > Just-in-time protection > Devices > Audit covered user activities'. Retain the note attributing the Devices tab and audit setting to MC1387575, which supplies those final steps. | Source: https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit
+- [supported, minor] controls[0].ui; Governance controls; Governance guidance / Before rollout / admin-path: Microsoft Purview portal > Settings > Data Loss Prevention > Just-in-time protection reaches the page holding audit and block scoping. | Found: Sign in to the Microsoft Purview portal. 2. Select Settings > Data Loss Prevention > Just-in-time protection. | Fix: Extend controls[0].ui.path and its rendered table path to 'Settings > Data Loss Prevention > Just-in-time protection > Devices > Audit covered user activities'. Retain the note attributing the Devices tab and audit setting to MC1387575, which supplies those final steps. | Source: https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit
 -->

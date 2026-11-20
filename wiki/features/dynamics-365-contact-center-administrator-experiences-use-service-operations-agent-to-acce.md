@@ -18,7 +18,7 @@ defaultState: "on"
 action: "review"
 licensing:
   model: "consumption"
-  notes: "The Learn page names a Power Platform pay-as-you-go plan, charged to an Azure subscription when the agent runs, and lists no licence among its prerequisites. A rate specific to this agent is not yet published."
+  notes: "The Learn page names a Power Platform pay-as-you-go plan, charged to an Azure subscription when the agent runs, and lists no licence among its prerequisites. A rate or credit count specific to the Conversational Setup experience is not yet published."
 audiences: ["service-owner","power-platform-admin","finops","security"]
 tags: ["contact-center","dynamics-365","agents","admin-controls","unified-routing","pay-as-you-go","dataverse","mcp","human-in-the-loop","security-roles"]
 sources:
@@ -27,6 +27,9 @@ sources:
     kind: "roadmap"
   - title: "Use Service Operations Agent"
     url: "https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent"
+    kind: "learn"
+  - title: "Use industry templates to set up a contact center (preview)"
+    url: "https://learn.microsoft.com/dynamics365/contact-center/administer/use-industry-templates"
     kind: "learn"
   - title: "Responsible AI FAQ for Service Operations Agent"
     url: "https://learn.microsoft.com/dynamics365/contact-center/implement/service-operations-agent-rai-faq"
@@ -62,7 +65,7 @@ controls:
       kind: "pac-cli"
       call: "pac licensing add-billing-policy-environment --billing-policy-id <billing policy ID> --environment-ids <JSON array of environment IDs>"
       docs: "https://learn.microsoft.com/power-platform/developer/cli/reference/licensing"
-    note: "The environment is chosen in the Select environments pane. The pac command is labelled Preview and links an existing billing policy to environments; it does not create the policy."
+    note: "Before Select environments: name, Azure subscription, resource group, Power Platform products, Next; then region and environment. The pac command is Preview and links an existing billing policy; it does not create one."
   - governs: "Tenant or environment switch to turn Service Operations Agent off"
     scope: "other"
     ui: null
@@ -70,7 +73,7 @@ controls:
     note: "Not yet documented. The documented gate is the Omnichannel administrator role plus the connection and billing prerequisites."
 confidence: "high"
 created: "2026-11-19"
-updated: "2026-11-19"
+updated: "2026-11-20"
 roadmapModified: "2026-10-22T23:45:32"
 changes:
   - date: "2026-11-19"
@@ -81,19 +84,23 @@ changes:
     note: "Corrected: prepaid capacity and pay-as-you-go can both be used on the environment; billing path extended; Application Insights and security role sources added."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 86 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-20"
+    note: "Corrected the cost statements: a credit rate for Conversational Setup is not yet published, and the figure Microsoft gives is for the separate preview industry-template setup; added wizard and MCP connection path details."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 79 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
-  date: "2026-11-19"
-  version: 2
+  status: "verified-with-gaps"
+  date: "2026-11-20"
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 86
-  confirmed: 84
+  claims: 79
+  confirmed: 78
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "ffe599e3f0469c1570b82f4ab8286a6e"
+  contradicted: 1
+  attempts: 0
+  hash: "05654e25a7eabeaefbdd5cf6014c51ca"
 ---
 
 ## What's changing
@@ -136,7 +143,7 @@ Besides the two roles, the Learn page lists a Power Platform pay-as-you-go plan 
 
 The meter is the pay-as-you-go plan: the page says it "requires the use of an Azure subscription that the system charges when the agent runs". Microsoft's consumption-billing page says pay-as-you-go is set up by linking an Azure subscription to a Power Platform environment, and that for pay-as-you-go you view usage and adjust budgets in Microsoft Cost Management in the Azure portal ([Manage consumption-based billing and capacity](https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go)). Pay-as-you-go is available for production and sandbox environments ([Set up pay-as-you-go](https://learn.microsoft.com/power-platform/admin/pay-as-you-go-set-up)).
 
-Indirect costs are Azure and Application Insights charges for the connected resources ([Azure Monitor Logs cost calculations and options](https://learn.microsoft.com/azure/azure-monitor/logs/cost-logs#application-insights-billing)), and administrator time to review what the agent proposes. Not yet published: a charge or message count specific to Service Operations Agent. The Dynamics 365 consumption-billing guidance linked from the agent prerequisites supports prepaid capacity and pay-as-you-go on the same environment, with prepaid capacity consumed first ([Manage consumption-based billing and capacity](https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go)).
+Indirect costs are Azure and Application Insights charges for the connected resources ([Azure Monitor Logs cost calculations and options](https://learn.microsoft.com/azure/azure-monitor/logs/cost-logs#application-insights-billing)), and administrator time to review what the agent proposes. Not yet published: a rate or credit count specific to the Conversational Setup experience. The Dynamics 365 consumption-billing guidance linked from the agent prerequisites supports prepaid capacity and pay-as-you-go on the same environment, with prepaid capacity consumed first ([Manage consumption-based billing and capacity](https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go)).
 
 ## Scope
 
@@ -174,14 +181,14 @@ Indirect costs are Azure and Application Insights charges for the connected reso
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether the environment is on a pay-as-you-go plan that the agent's usage is billed to</strong><br><small>Environment</small><br><small class="controls__note">The environment is chosen in the Select environments pane. The pac command is labelled Preview and links an existing billing policy to environments; it does not create the policy.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Pay-as-you-go plans › New billing plan › Azure subscription › Select environments › environment <a href="https://learn.microsoft.com/power-platform/admin/pay-as-you-go-set-up" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac licensing add-billing-policy-environment --billing-policy-id &lt;billing policy ID&gt; --environment-ids &lt;JSON array of environment IDs&gt;</code> <a href="https://learn.microsoft.com/power-platform/developer/cli/reference/licensing" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether the environment is on a pay-as-you-go plan that the agent's usage is billed to</strong><br><small>Environment</small><br><small class="controls__note">Before Select environments: name, Azure subscription, resource group, Power Platform products, Next; then region and environment. The pac command is Preview and links an existing billing policy; it does not create one.</small></td><td data-label="Admin UI"><strong>Power Platform admin center</strong><br>Licensing › Pay-as-you-go plans › New billing plan › Azure subscription › Select environments › environment <a href="https://learn.microsoft.com/power-platform/admin/pay-as-you-go-set-up" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Power Platform CLI</strong><br><code>pac licensing add-billing-policy-environment --billing-policy-id &lt;billing policy ID&gt; --environment-ids &lt;JSON array of environment IDs&gt;</code> <a href="https://learn.microsoft.com/power-platform/developer/cli/reference/licensing" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Tenant or environment switch to turn Service Operations Agent off</strong><br><small class="controls__note">Not yet documented. The documented gate is the Omnichannel administrator role plus the connection and billing prerequisites.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
 Microsoft Learn documents no switch that turns Service Operations Agent off, so access rests on who holds the Omnichannel administrator role and on whether billing is set up. Role assignment follows the usual Dataverse security role rules; see [Dataverse security roles](/concepts/security-roles/) and Microsoft's [Security roles and privileges for Dataverse](https://learn.microsoft.com/power-platform/admin/security-roles-privileges).
 
-The MCP connection is managed in Power Apps under **Connections**; the Learn page describes deleting and recreating **D365 Contact Center MCP Connection** to refresh it, and requires the System Administrator role to manage it. The page does not present this as a way to block the agent, so do not rely on it as one. Removing the environment from the billing plan stops pay-as-you-go billing for the environment; the consumption-billing page does not say what that does to the agent.
+The MCP connection is managed in Power Apps: select the correct environment in the upper-right corner, then **Connections** > **D365 Contact Center MCP Connection**. The Learn page describes deleting and recreating it to refresh it, and requires the System Administrator role to manage it. The page does not present this as a way to block the agent, so do not rely on it as one. Removing the environment from the billing plan stops pay-as-you-go billing for the environment; the consumption-billing page does not say what that does to the agent.
 
 The billing row is preview-labelled in the CLI reference. Environment admins, Power Platform admins, Global admins and Dynamics 365 admins can create billing plans, with the scope limits in the Learn role table.
 
@@ -189,22 +196,19 @@ The billing row is preview-labelled in the CLI reference. Environment admins, Po
 
 - Is there a tenant or environment setting to turn Service Operations Agent off, other than withholding the Omnichannel administrator role? Watch the Use Service Operations Agent page.
 - Which account do the agent's changes run under, and where are changes made by chat recorded (for example in Dataverse auditing)? Neither page says.
-- What does a run of the agent cost? A rate or message count specific to it is not yet published.
+- What does a Conversational Setup run cost? A rate or credit count specific to that experience is not yet published.
 - Where is the prompt and configuration context processed and stored, and does the English-only limit change for other languages?
 - Does the Quality Assurance Agent or Customer Assist Agent share this meter or these prerequisites? Not stated on the Service Operations Agent page.
 
 <!-- rationale
 risk: Medium. The agent works through a Dataverse connection that lets it manage the environment, and its documented tools include assigning security roles and disabling users, with a human in the loop.
-cost: Variable. The Learn page says a Power Platform pay-as-you-go plan charges an Azure subscription when the agent runs; no rate specific to this agent is published.
+cost: Variable. The Learn page says a Power Platform pay-as-you-go plan charges an Azure subscription when the agent runs; no rate or credit count specific to Conversational Setup is published.
 impact: Low. Only administrators with the Omnichannel administrator role use it, and it changes setup work rather than anything agents or customers see directly.
 -->
 
-<!-- verifier-findings (2026-11-19, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost / absence: Microsoft has not published a rate, charge or message count specific to Service Operations Agent. | Found: Industry templates in Service Operations Agent help administrators set up an AI-first contact center by using a guided template experience. ... Each industry template-based setup run consumes up to eight Microsoft Copilot Studio AI credits. | Fix: Narrow each occurrence to the experience this briefing covers: 'A rate or credit count specific to the Conversational Setup experience is not yet published.' Use the same qualification in licensing.notes, Cost and licensing, the cost rationale and the cost Open question. Do not apply the preview industry-template figure to conversational setup. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/use-industry-templates
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The Power Platform admin center billing route is Licensing > Pay-as-you-go plans > New billing plan > Azure subscription > Select environments > environment. | Found: select Licensing. ... select Pay-as-you-go plans. ... Select New billing plan. ... Select Azure subscription. ... In the Select environments pane, in the Region list, select your region. ... Select the environment you want to add to the billing plan. | Fix: Keep the route, but expand its note with: 'Before Select environments, provide the billing-plan name and select the Azure subscription, resource group and Power Platform products; select Next, then choose the region and environment.' These are wizard fields omitted from an otherwise correct route, not a different admin path. | Source: https://learn.microsoft.com/power-platform/admin/pay-as-you-go-set-up
-- [supported, minor] Governance controls: MCP connection paragraph / admin-path: The D365 Contact Center MCP Connection is managed under Connections in Power Apps. | Found: Go to Power Apps. ... Select the correct environment in the upper-right corner. ... Select Connections in the left pane. ... Locate D365 Contact Center MCP Connection, and then delete it. | Fix: Replace the abbreviated location with: 'In Power Apps, select the correct environment in the upper-right corner, then Connections > D365 Contact Center MCP Connection.' The missing environment-selection step is an allowed minor path omission. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/use-service-operations-agent
-- [contradicted, minor] Governance guidance; Governance controls table / consistency: The checklist tells administrators to review role holders, connect Application Insights and monitor Cost Management, but those controls have no table rows. | Found: Identify who holds the Omnichannel administrator and System Administrator roles ... Connect Application Insights ... Review usage and budgets in Microsoft Cost Management ... [Table rows: pay-as-you-go plan; switch to turn Service Operations Agent off.] | Fix: The role-holder review, Application Insights connection and Cost Management monitoring steps have no corresponding controls-table rows. Keep this as a checklist/table coverage finding; do not add unverified rows as part of this correction.
+- [contradicted, minor] Governance guidance; Governance controls table / consistency: The governance checklist names role assignments, Application Insights, the MCP connection and Cost Management budgets, but the table does not represent these controls. | Found: Identify who holds the Omnichannel administrator and System Administrator roles; Connect Application Insights; Review usage and budgets; Recheck the role holders and the connection. Table: billing-plan membership and an undocumented feature-off switch only. | Fix: Add after the table: 'The checklist also covers role assignments, the Application Insights connection, the MCP connection and Microsoft Cost Management budgets; those controls are not represented in this table.' Do not add control rows in this correction.
+- [supported, minor] Why it matters / behaviour: Conversational setup can create and update configuration without navigating each individual setup page. | Found: Create and update configuration artifacts without navigating multiple pages | Fix: Add https://learn.microsoft.com/dynamics365/contact-center/administer/overview-service-operations-agent to sources as 'Overview of Service Operations Agent in Dynamics 365 Contact Center'. | Source: https://learn.microsoft.com/dynamics365/contact-center/administer/overview-service-operations-agent
 -->

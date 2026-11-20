@@ -75,15 +75,17 @@ changes:
     note: "Corrected the Microsoft account applicability of NewTabPageQuickLinksEnabled: its description lists those profiles but the page marks Microsoft-account applicability as No, so it is now stated as unclear."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 69 statements confirmed"
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 72 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-18"
+  date: "2026-11-20"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 69
-  confirmed: 69
+  claims: 72
+  confirmed: 72
   unconfirmed: 0
   contradicted: 0
   attempts: 0

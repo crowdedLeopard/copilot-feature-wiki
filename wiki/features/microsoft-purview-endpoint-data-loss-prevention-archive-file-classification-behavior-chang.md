@@ -70,10 +70,12 @@ changes:
     note: "Corrected after verification: the affected audience is now limited to organisations with archive file classification enabled, and three checklist items match Microsoft's notice."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 52 statements confirmed"
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 52 statements confirmed"
 version: 2
 verification:
   status: "verified"
-  date: "2026-11-19"
+  date: "2026-11-20"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
