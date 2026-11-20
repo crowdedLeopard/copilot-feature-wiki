@@ -4,7 +4,7 @@ slug: "microsoft-purview-data-lifecycle-management-graph-api-support-for-archive
 roadmapId: 573701
 topic: "governance"
 products: ["Microsoft Purview"]
-summary: "Microsoft plans Graph access to main and auxiliary archive mailboxes in GCC, GCC High and DoD, targeted for December CY2026, as EWS is disabled. Owners of EWS-based archive tools should plan migration; Learn's cloud tables mark US Government unavailable."
+summary: "Microsoft plans Graph access to main and auxiliary archive mailboxes in GCC, GCC High and DoD, targeted for December CY2026, as EWS is disabled. Owners of EWS-based archive tools should plan migration; Learn's Graph tables mark L4 and L5 unavailable."
 status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["GCC","GCC High","DoD"]
@@ -25,6 +25,9 @@ sources:
   - title: "Microsoft 365 Roadmap 573701"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=573701"
     kind: "roadmap"
+  - title: "Microsoft Graph national cloud deployments"
+    url: "https://learn.microsoft.com/graph/deployments"
+    kind: "learn"
   - title: "Deprecation of Exchange Web Services in Exchange Online"
     url: "https://learn.microsoft.com/exchange/clients-and-mobile-in-exchange-online/deprecation-of-ews-exchange-online"
     kind: "learn"
@@ -92,19 +95,23 @@ changes:
     note: "First briefing for the GCC, GCC High and DoD roadmap item: Graph archive mailbox APIs as EWS is disabled, with Learn's US Government cloud tables noted."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected the GCC cloud mapping: Graph's national cloud documentation places GCC on the worldwide endpoint, GCC High on L4 and DoD on L5."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 77 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 59
+  claims: 77
+  confirmed: 77
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "c47c3b47d91ff66884758b23d544734e"
+  contradicted: 0
+  attempts: 0
+  hash: "d28db38b6a112eed7dcc8d11f6fe1786"
 ---
 
 ## What's changing
@@ -113,13 +120,13 @@ Roadmap item 573701 plans Microsoft Graph access to archive mailboxes, both the 
 
 Learn's page on archive mailbox redirects says a folder can appear in the main archive while its contents sit in an auxiliary archive. The API then returns a redirect such as HTTP 308 Permanent Redirect, an `ErrorArchiveFolderMovedPermanently` error on export, or an HTTP 409 Conflict on import, and the app repeats the request against the mailbox the response names. The same page says well-known folder names are not supported for archive mailboxes, so apps reference archive folders by folder ID, and its examples use `/beta/` endpoints.
 
-Learn's Graph reference pages for exporting items and listing folders carry a national cloud table that marks the Global service as available and US Government L4 and US Government L5 (DOD) as not available. Learn's EWS deprecation page lists "Sovereign Cloud availability" for the Exchange workload APIs needed for EWS migration with a Q4 CY2026 estimate, and calls such dates targets that might change. Learn does not say how these pages apply to GCC, which Graph's metering page describes as accessed through the worldwide Microsoft Graph endpoint.
+Learn's Graph reference pages for exporting items and listing folders carry a national cloud table that marks the Global service as available and US Government L4 and US Government L5 (DOD) as not available. Learn's EWS deprecation page lists "Sovereign Cloud availability" for the Exchange workload APIs needed for EWS migration with a Q4 CY2026 estimate, and calls such dates targets that might change. Microsoft Graph's national cloud documentation places GCC on the worldwide endpoint, GCC High on US Government L4 and DoD on US Government L5. This endpoint mapping does not establish the GCC rollout date for archive access; the roadmap still targets December CY2026.
 
 The roadmap record shows status In development, targeted for December CY2026, release phase General Availability, platform Web. Microsoft lists the feature under a second roadmap item, 567313, for Worldwide (Standard Multi-Tenant), which the record shows as Rolling out and targeted for October CY2026; [that item has its own briefing](/features/microsoft-purview-data-lifecycle-management-graph-api-support-for-archive-mailboxes/). Learn's EWS deprecation page says EWS starts to be disabled globally for all organizations in October 2026 and is fully disabled in April 2027.
 
 ## Why it matters
 
-This is a migration deadline more than an optional feature. Any eDiscovery, records, backup or export tool that reaches archive mailbox content through EWS is exposed, and Microsoft's timeline has EWS disabling from October 2026, before this item's December CY2026 target. In these clouds the replacement route is still a plan, and Learn's Graph reference currently lists US Government as unavailable for the archive-capable mailbox APIs.
+This is a migration deadline more than an optional feature. Any eDiscovery, records, backup or export tool that reaches archive mailbox content through EWS is exposed, and Microsoft's timeline has EWS disabling from October 2026, before this item's December CY2026 target. In these clouds the replacement route is still a plan, and Learn's Graph reference currently lists US Government L4 and L5 (DOD) as unavailable for the archive-capable mailbox APIs.
 
 Microsoft has not stated what happens on arrival or whether a tenant switch governs the Graph archive APIs, so base your planning on no source saying existing behaviour changes. The practical task is to find which tools still call EWS against archives, get a migration plan and a cloud-availability answer from each owner or vendor, and decide how to cover the gap if the Graph APIs reach your cloud later than EWS goes.
 
@@ -153,7 +160,7 @@ The roadmap record lists GCC, GCC High and DoD, platform Web, release phase Gene
 
 The change matters to organisations in these clouds whose applications, scripts or third-party tools use EWS to reach archive mailbox content, including tenants that use auto-expanding archiving. Learn's Graph reference lists application and delegated permissions for the mailbox APIs; the roles that grant consent to them are not covered here.
 
-Learn marks US Government L4 and US Government L5 (DOD) as not available for the exportItems and list folders pages at the time of writing (November 2026). The record lists GCC as a separate cloud, and Learn does not say which column of its cloud tables applies to GCC.
+Learn marks US Government L4 and US Government L5 (DOD) as not available for the exportItems and list folders pages at the time of writing (November 2026). Microsoft Graph's national cloud documentation places GCC on the worldwide endpoint, GCC High on US Government L4 and DoD on US Government L5. This endpoint mapping does not establish the GCC rollout date for archive access; the roadmap still targets December CY2026.
 
 ## Governance guidance
 
@@ -191,19 +198,13 @@ Application access to the Graph mailbox APIs is governed by the Graph permission
 ## Open questions
 
 - When will the Graph archive mailbox APIs be available in GCC, GCC High and DoD, given that Learn's exportItems and list folders pages currently mark US Government L4 and L5 as not available and the EWS deprecation page lists sovereign cloud availability for Q4 CY2026? Watch the roadmap item and those pages.
-- Does GCC use the same Graph availability as the Global service, as Graph's metering page implies about the worldwide endpoint, or the US Government columns? Watch Learn's national cloud deployments page.
+- When will archive access reach GCC, given that Microsoft Graph's national cloud documentation places GCC on the worldwide endpoint and that mapping does not establish the GCC rollout date? Watch the roadmap item.
 - Which Graph version will Microsoft support for archive mailbox access at General Availability: `/beta/`, as the redirect examples show, or `/v1.0/`?
 - Will a licence or meter apply to the mailbox import and export APIs in these clouds? Watch Microsoft's Graph metered API list.
 - Will any tenant-level setting govern the Graph archive APIs? Watch Message center and Learn.
 
 <!-- rationale
-risk: Medium. EWS starts to be disabled globally in October 2026, while Learn's Graph reference currently marks the archive-capable mailbox APIs as unavailable in US Government clouds, so EWS-based archive tools in these clouds may have no Graph route yet.
+risk: Medium. EWS starts to be disabled globally in October 2026, while Learn's Graph reference currently marks the archive-capable mailbox APIs as unavailable in US Government L4 and L5 (DOD), so EWS-based archive tools in GCC High and DoD may have no Graph route yet.
 cost: Low. The cost the sources show is developer, vendor and admin time to migrate; archive mailboxes need an Exchange Online Archiving entitlement, and no licence or meter specific to these APIs is published.
 impact: Medium. Administrators, developers and vendors of EWS-based eDiscovery, export and records tools notice first; end users notice only if one of those tools stops working.
--->
-
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Scope; What's changing; Open questions: GCC cloud-column mapping / absence: Learn does not say which column of its Graph cloud tables applies to GCC. | Found: Microsoft Graph global service | https://graph.microsoft.com ... If you're working in a Microsoft 365 GCC environment, continue using the worldwide endpoints: https://portal.azure.com and https://graph.microsoft.com. | Fix: Replace the GCC cloud-column uncertainty in What's changing, Scope and Open questions with: 'Microsoft Graph's national cloud documentation places GCC on the worldwide endpoint, GCC High on US Government L4 and DoD on US Government L5. This endpoint mapping does not establish the GCC rollout date for archive access; the roadmap still targets December CY2026.' Cite https://learn.microsoft.com/graph/deployments. Do not treat the L4/L5 exclusions as an exclusion of GCC. | Source: https://learn.microsoft.com/graph/deployments
 -->

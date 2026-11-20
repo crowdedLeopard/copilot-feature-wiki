@@ -1,0 +1,711 @@
+{
+  "slug": "microsoft-defender-for-office-365-localized-default-mark-and-notify-email-template",
+  "roadmapId": 557558,
+  "title": "Microsoft Defender for Office 365: localised default result email for user reported messages",
+  "status": "verified-with-gaps",
+  "date": "2026-11-20",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 54,
+    "confirmed": 53,
+    "unconfirmed": 1,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 1,
+    "minor": 0
+  },
+  "summary": "Pass: the rollout dates, conditional default, licensing context and published controls match Microsoft's sources. The statement that data access is unchanged should be narrowed to the documented statements about verdicts, classification and investigation behaviour.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Default admin-review result emails for user reported messages are localised.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-user-reported-messages-custom-mailbox",
+      "quote": "The default admin review outcome email is automatically localized based on the recipient's preferred language.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Why it matters; Governance guidance",
+      "type": "behaviour",
+      "claim": "The recipient's Outlook language settings determine the preferred language of default notification emails.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-admin-review-user-reported-messages",
+      "quote": "When automatic notifications use the default template, users receive notification emails in their preferred language based on their Outlook language settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: defaultState; What's changing; Why it matters; controls[2].note; Governance controls",
+      "type": "default",
+      "claim": "Localisation is on automatically when automatic notifications use the default template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-admin-review-user-reported-messages",
+      "quote": "Localized default templates are enabled automatically when automatic notifications are turned on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "The documented supported languages include English, Japanese, Spanish, French and German.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-admin-review-user-reported-messages",
+      "quote": "Localized default notification templates support the following languages: English, Japanese, Spanish, Chinese (Simplified) ... Vietnamese, French, Italian, and German.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Manual Mark as and notify actions on the Submissions page use the default result email template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/air-user-automatic-feedback-response",
+      "quote": "The notification email uses the same template as when an admin selects ... Mark as and notify on the Submissions page at https://security.microsoft.com/reportsubmission.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Automatic investigation result notifications also use the default template.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-user-reported-messages-custom-mailbox",
+      "quote": "This default template is used for manual Mark as and notify actions and automatic investigation result notifications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "summary; What's changing; Why it matters; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "The localisation feature does not change or localise admin-configured custom notification templates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-admin-review-user-reported-messages",
+      "quote": "The feature doesn't affect custom notification templates configured by admins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; controls[0].note; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Customising the email body or footer sends the configured text instead of the localised default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-user-reported-messages-custom-mailbox",
+      "quote": "If you customize the email body or footer, recipients receive the text that you configure instead of the localized default text.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The notice announces softer default safe-message wording that continues to advise caution.",
+      "status": "supported",
+      "source": "Message Center post MC1387578",
+      "quote": "Default 'safe' message template will also use softer, clearer wording while continuing to advise users to exercise caution",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The notice's safe-message text says the email does not appear harmful but suspicious emails should always be handled with caution.",
+      "status": "supported",
+      "source": "Message Center post MC1387578",
+      "quote": "This email doesn’t appear harmful. But you should always handle suspicious emails with caution.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The notice says the safe-message template advises confirming validity with the sender through another channel.",
+      "status": "supported",
+      "source": "Message Center post MC1387578",
+      "quote": "Contact the sender through another channel to confirm the message’s validity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The notice says the safe-message template advises avoiding links and attachments in unsolicited email from unfamiliar senders.",
+      "status": "supported",
+      "source": "Message Center post MC1387578",
+      "quote": "Avoid links and attachments in unsolicited emails from unfamiliar senders.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: clouds; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; front matter: changes",
+      "type": "record",
+      "claim": "MC1387578 was last updated on 12 November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1387578",
+      "quote": "Published 2026-06-11; last updated 2026-11-12; Microsoft's end date 2027-02-01",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice gives June 2026 as the Worldwide rollout start.",
+      "status": "supported",
+      "source": "Message Center post MC1387578",
+      "quote": "Worldwide: Rollout begins in June 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The notice expects Worldwide completion by the end of September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1387578",
+      "quote": "Worldwide: Rollout begins in June 2026 and is expected to complete by end of September 2026 (previously late July).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The previously stated Worldwide completion was late July.",
+      "status": "supported",
+      "source": "Message Center post MC1387578",
+      "quote": "expected to complete by end of September 2026 (previously late July)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Scope; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "The notice gives late November 2026 as the GCC, GCC High and DoD rollout start.",
+      "status": "supported",
+      "source": "Message Center post MC1387578",
+      "quote": "GCC, GCC High, DoD: Rollout begins in late November 2026 (previously mid-July)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The previously stated government-cloud rollout start was mid-July.",
+      "status": "supported",
+      "source": "Message Center post MC1387578",
+      "quote": "Rollout begins in late November 2026 (previously mid-July)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "The notice expects GCC, GCC High and DoD completion by the end of December 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1387578",
+      "quote": "GCC, GCC High, DoD: Rollout begins in late November 2026 (previously mid-July) and is expected to complete by end of December 2026 (previously end of October).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The previously stated government-cloud completion was the end of October.",
+      "status": "supported",
+      "source": "Message Center post MC1387578",
+      "quote": "expected to complete by end of December 2026 (previously end of October)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The supplied notice sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1387578",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "Microsoft says no action is required.",
+      "status": "supported",
+      "source": "Message Center post MC1387578",
+      "quote": "No action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "Microsoft describes improved understanding and engagement as the aim of preferred-language notifications.",
+      "status": "supported",
+      "source": "Message Center post MC1387578",
+      "quote": "This update ensures that users receive notification emails in their preferred language based on their Outlook settings, improving clarity and understanding of review outcomes. This helps improve engagement and supports stronger security practices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Localised templates do not change message verdicts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-admin-review-user-reported-messages",
+      "quote": "Localized templates don't change message verdicts, classification logic, or automated investigation behavior.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "Localised templates do not change classification logic.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-admin-review-user-reported-messages",
+      "quote": "Localized templates don't change message verdicts, classification logic, or automated investigation behavior.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Data exposure; Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "Localised templates do not change automated investigation behaviour.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-admin-review-user-reported-messages",
+      "quote": "Localized templates don't change message verdicts, classification logic, or automated investigation behavior.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The change makes no change in data access.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Defender Office 365 localized default mark notify email template data access. Read Admin review for user reported messages, User reported settings and the What's new search excerpt; none states that data access is unchanged.",
+      "severity": "major",
+      "fix": "Remove 'No change in data access:' and retain the documented statement that localised templates do not change message verdicts, classification logic or automated investigation behaviour."
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "With automatic feedback enabled, result notification sending is automatic and based on investigation results.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/air-user-automatic-feedback-response",
+      "quote": "After you enable automated feedback response, the user who reported the message as phishing receives an email notification based on the AIR verdict and the selected Automatically email users the results of the investigation options:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Localisation is an included option within the Defender for Office 365 result-email workflow rather than a separately documented entitlement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-admin-review-user-reported-messages",
+      "quote": "In Microsoft 365 organizations with Exchange Online mailboxes and Microsoft Defender for Office 365, admins can send templated result messages back to users after they review the user reported messages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The admin-review page describes result emails for Microsoft 365 organisations with Exchange Online mailboxes and Microsoft Defender for Office 365.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-admin-review-user-reported-messages",
+      "quote": "In Microsoft 365 organizations with Exchange Online mailboxes and Microsoft Defender for Office 365, admins can send templated result messages back to users after they review the user reported messages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing; controls[1].note; Governance controls",
+      "type": "licensing",
+      "claim": "Automatically emailing investigation results is available only in Defender for Office 365 Plan 2 organisations with AIR.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-user-reported-messages-custom-mailbox",
+      "quote": "Automatically email users the results of the investigation: This feature is available only in Defender for Office 365 Plan 2 organizations with automated investigation and response (AIR).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The cited Learn pages and roadmap publish no separate licence for template localisation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Defender Office 365 localized Mark notify email template licensing pricing meter. Read the roadmap, Admin review, User reported settings and AIR feedback pages; these name Defender for Office 365 and Plan 2 for AIR, but no separate localisation licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The cited Learn pages and roadmap publish no localisation-specific price.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Defender Office 365 localized Mark notify email template licensing pricing meter. Read the roadmap, Admin review, User reported settings and AIR feedback pages; none publishes a localisation-specific price.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The cited Learn pages and roadmap publish no separate localisation meter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Defender Office 365 localized Mark notify email template licensing pricing meter. Read the roadmap, Admin review, User reported settings and AIR feedback pages; none names a separate localisation meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope",
+      "type": "record",
+      "claim": "The notice identifies Defender for Office 365 organisations and admins and users in user-reported workflows as affected only when using the default template.",
+      "status": "supported",
+      "source": "Message Center post MC1387578",
+      "quote": "Organizations using Microsoft Defender for Office 365- Admins and users participating in user-reported message workflows- Applies only when the default notification template is used",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope",
+      "type": "behaviour",
+      "claim": "Admins can mark messages and notify users only if the user reported a false positive or false negative.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-admin-review-user-reported-messages",
+      "quote": "Admins can mark messages and notify users of review results only if the user reported the message as a false positive or a false negative.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope; controls[0].note",
+      "type": "role",
+      "claim": "Security Administrator role group membership is among the documented permissions for user reported settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-user-reported-messages-custom-mailbox",
+      "quote": "Exchange Online permissions: Membership in the Security Administrator or Hygiene Management role groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope; controls[0].note",
+      "type": "role",
+      "claim": "Hygiene Management role group membership is among the documented permissions for user reported settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-user-reported-messages-custom-mailbox",
+      "quote": "Exchange Online permissions: Membership in the Security Administrator or Hygiene Management role groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Scope",
+      "type": "role",
+      "claim": "The Entra Global Administrator role is among the permissions listed for user reported settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-user-reported-messages-custom-mailbox",
+      "quote": "Membership in the Global Administrator ... or Security Administrator roles gives users the required permissions and permissions for other features in Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope",
+      "type": "role",
+      "claim": "The Entra Security Administrator role is among the permissions listed for user reported settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-user-reported-messages-custom-mailbox",
+      "quote": "Membership in the Global Administrator ... or Security Administrator roles gives users the required permissions and permissions for other features in Microsoft 365.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].ui; Governance controls: first table row",
+      "type": "admin-path",
+      "claim": "The customisation control is in Microsoft Defender portal at Settings > Email & collaboration > User reported settings > Email notifications > Results email > Customize results email.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-admin-review-user-reported-messages",
+      "quote": "Settings > Email & collaboration > User reported settings tab. ... Find the Email notifications section ... Results email section: Select Customize results email.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].api; controls[0].note; Governance controls: first table row",
+      "type": "command",
+      "claim": "Set-ReportSubmissionPolicy -Identity DefaultReportSubmissionPolicy -PhishingReviewResultMessage <text> sets the custom phishing result text.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-reportsubmissionpolicy",
+      "quote": "The only available policy is named DefaultReportSubmissionPolicy. ... The PhishingReviewResultMessage parameter specifies the custom text to use in result messages after an admin reviews and marks the reported messages as phishing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].ui; Governance controls: second table row",
+      "type": "admin-path",
+      "claim": "The automatic-result control is in Microsoft Defender portal at Settings > Email & collaboration > User reported settings > Email notifications > Results email > Automatically email users the results of the investigation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/air-user-automatic-feedback-response",
+      "quote": "Settings > Email & collaboration > User reported settings tab. ... In the Email notifications > Results email section, select Automatically email users the results of the investigation",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[1].api; Governance controls: second table row and closing paragraph",
+      "type": "absence",
+      "claim": "No usable automation operation is documented for the automatic investigation result notification option.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Defender Office 365 automatically email users results investigation Set-ReportSubmissionPolicy PowerShell. Read AIR feedback and Set-ReportSubmissionPolicy; NotificationsFor*SubmissionAirInvestigationsEnabled parameters are reserved for internal Microsoft use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[2].ui; controls[2].api; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft documents no separate UI switch or API operation for turning default-template localisation off independently.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Mark as and notify localization disable PowerShell switch; Defender localized default disable. Read Admin review, User reported settings and Set-ReportSubmissionPolicy; no independent localisation switch or usable parameter is documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls: closing paragraph",
+      "type": "command",
+      "claim": "Separate parameters on Set-ReportSubmissionPolicy configure the body text for the other verdicts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-reportsubmissionpolicy",
+      "quote": "Use the JunkReviewResultMessage, NotJunkReviewResultMessage, PhishingReviewResultMessage parameters to configure the message body text that's used for each verdict.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Governance controls: first paragraph",
+      "type": "applicability",
+      "claim": "Custom result text is configured for the organisation and applies to recipients of the corresponding verdict.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/defender-office-365/submissions-admin-review-user-reported-messages",
+      "quote": "Admins can customize the notification message template that's used for the organization. ... Email body results text: Enter the custom text to use. You can use different text for Phishing, Junk and No threats found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Open questions: unsupported Outlook language",
+      "type": "absence",
+      "claim": "The cited Learn documentation lists supported languages but does not state the fallback for an unsupported Outlook language.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: localized default notification Outlook fallback; Defender localized default fallback. Read Admin review, User reported settings and search excerpts; general locale fallback pages do not specify this feature's fallback.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Open questions: notice end date",
+      "type": "record",
+      "claim": "The supplied metadata gives 1 February 2027 as Microsoft's end date for MC1387578.",
+      "status": "supported",
+      "source": "Message Center post MC1387578",
+      "quote": "Published 2026-06-11; last updated 2026-11-12; Microsoft's end date 2027-02-01",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-20T14:40:53.963Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1387578",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/defender-office-365/submissions-admin-review-user-reported-messages",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/defender-office-365/submissions-user-reported-messages-custom-mailbox",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/defender-office-365/air-user-automatic-feedback-response",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-reportsubmissionpolicy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=557558",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Custom result email text that replaces the localised default template",
+        "docs": "https://learn.microsoft.com/defender-office-365/submissions-admin-review-user-reported-messages",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Email & collaboration",
+          "User reported settings",
+          "Email notifications",
+          "Results email",
+          "Customize results email"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Custom result email text that replaces the localised default template",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-reportsubmissionpolicy",
+        "reachable": true,
+        "token": "Set-ReportSubmissionPolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Automatic result emails to users from automated investigation (Plan 2)",
+        "docs": "https://learn.microsoft.com/defender-office-365/air-user-automatic-feedback-response",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Email & collaboration",
+          "User reported settings",
+          "Email notifications",
+          "Results email",
+          "Automatically email users the results of the investigation"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

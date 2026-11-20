@@ -18,7 +18,7 @@ defaultState: "on"
 action: "act-now"
 licensing:
   model: "included"
-  notes: "Microsoft 365 Copilot licence. Learn lists \"Create HTML, Word, Excel, or PowerPoint files\" among the capabilities included with it; advanced work uses Copilot Credits. No licence statement is published for uploading HTML without Copilot."
+  notes: "Microsoft 365 Copilot licence. The cited Learn page still labels Copilot in SharePoint as public preview while describing its transition to general availability. Learn lists \"Create HTML, Word, Excel, or PowerPoint files\" among the capabilities included with it; advanced work uses Copilot Credits. No licence statement is published for uploading HTML without Copilot."
 audiences: ["m365-admin","service-owner","security","change-adoption"]
 tags: ["sharepoint","m365-copilot","copilot-in-sharepoint","restricted-content-discovery","oversharing","licensing","copilot-credits"]
 sources:
@@ -33,6 +33,9 @@ sources:
     kind: "learn"
   - title: "Restrict discovery of SharePoint sites and content"
     url: "https://learn.microsoft.com/sharepoint/restricted-content-discovery"
+    kind: "learn"
+  - title: "Get ready for Microsoft Copilot and agents with SharePoint Advanced Management"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/get-ready-copilot-sharepoint-advanced-management"
     kind: "learn"
   - title: "Assign or unassign licenses for users in the Microsoft 365 admin center"
     url: "https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users"
@@ -53,7 +56,7 @@ controls:
       kind: "powershell"
       call: "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()"
       docs: "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell"
-    note: "Minimum role: License Administrator or User Administrator. Does not govern uploading an .html file."
+    note: "Minimum role: License Administrator or User Administrator. No licence statement specific to uploading HTML without Copilot is published."
   - governs: "Whether a site shows Copilot entry points and takes part in Copilot discovery"
     scope: "site"
     ui:
@@ -74,19 +77,23 @@ changes:
     note: "First briefing: HTML pages in SharePoint, with rollout window from MC1479517 and the Copilot licence and Restricted Content Discovery controls."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 70 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Correction: removed the claim that the Copilot licence does not govern .html upload, removed the spending-policy checklist bullet, and noted Learn's alternative label for Restricted Content Discovery."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 78 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 70
-  confirmed: 68
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 1
-  hash: "ddca11140bba50762be6d4130f727f05"
+  claims: 78
+  confirmed: 78
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "ad5296c8db8b26023e727d5e1eae477e"
 ---
 
 ## What's changing
@@ -122,7 +129,7 @@ The notice states that published pages are visible to users who already have per
 
 ## Cost and licensing
 
-**Licence.** Copilot-assisted creation depends on existing Copilot licensing (MC1479517). The Copilot in SharePoint page says users must hold an active Microsoft 365 Copilot licence, that everyday capabilities are included with it at no extra cost, and that its included capabilities list "Create HTML, Word, Excel, or PowerPoint files" and "Create and edit pages, libraries, or lists". The page does not name HTML pages as a feature, so treat that as the closest published licence statement. No licence statement is published for uploading an `.html` file without Copilot.
+**Licence.** Copilot-assisted creation depends on existing Copilot licensing (MC1479517). The cited Learn page still labels Copilot in SharePoint as public preview while describing its transition to general availability. The Copilot in SharePoint page says users must hold an active Microsoft 365 Copilot licence, that everyday capabilities are included with it at no extra cost, and that its included capabilities list "Create HTML, Word, Excel, or PowerPoint files" and "Create and edit pages, libraries, or lists". The page does not name HTML pages as a feature, so treat that as the closest published licence statement. No licence statement is published for uploading an `.html` file without Copilot.
 
 **Meter.** Advanced work in Copilot in SharePoint consumes Copilot Credits through usage-based billing, set up with a spending policy in the Microsoft 365 admin center that includes **Advanced work in SharePoint**. Learn says credit consumption varies by task type, complexity and content volume. No credit rate specific to HTML page creation is published.
 
@@ -153,7 +160,6 @@ The notice states that published pages are visible to users who already have per
 
 ### After rollout
 - Review published HTML pages on sites that hold sensitive files, and compare each page's audience with the files it was built from.
-- Review spending policies if authors report Copilot asking to spend credits during HTML page work.
 
 ## Governance controls
 
@@ -162,12 +168,12 @@ The notice states that published pages are visible to users who already have per
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which users hold the Microsoft 365 Copilot licence needed for Copilot-assisted HTML page creation</strong><br><small>User</small><br><small class="controls__note">Minimum role: License Administrator or User Administrator. Does not govern uploading an .html file.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Licenses › product › Assign licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = &quot;&lt;SkuId&gt;&quot;} -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users hold the Microsoft 365 Copilot licence needed for Copilot-assisted HTML page creation</strong><br><small>User</small><br><small class="controls__note">Minimum role: License Administrator or User Administrator. No licence statement specific to uploading HTML without Copilot is published.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Licenses › product › Assign licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = &quot;&lt;SkuId&gt;&quot;} -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether a site shows Copilot entry points and takes part in Copilot discovery</strong><br><small>Site</small><br><small class="controls__note">Removes the Copilot button, AI actions menus and Create pages with AI on the site. Learn does not say it removes the HTML page entry or upload. Needs a Copilot licence and SharePoint Advanced Management.</small></td><td data-label="Admin UI"><strong>SharePoint admin center</strong><br>Sites › Active sites › site › Settings › Restrict content from Microsoft Copilot <a href="https://learn.microsoft.com/sharepoint/restricted-content-discovery" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-SPOSite -Identity &lt;site-url&gt; -RestrictContentOrgWideSearch $true</code> <a href="https://learn.microsoft.com/sharepoint/restricted-content-discovery" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-The Copilot licence controls who can use Copilot-assisted creation; it does not govern uploading an `.html` file. Restricted Content Discovery is a site-level setting: Learn says that when it is on, Copilot in SharePoint and AI actions don't appear on the site, and lists the Copilot button, AI actions menus and **Create pages with AI** as removed entry points. Learn does not say whether the **+ New** > **HTML page** entry or the upload path is also removed. Learn also describes it as designed as a temporary governance control and requires a Copilot licence and SharePoint Advanced Management for it.
+The Copilot licence controls who can use Copilot-assisted creation; no licence statement specific to uploading HTML without Copilot is published. Restricted Content Discovery is a site-level setting: Learn says that when it is on, Copilot in SharePoint and AI actions don't appear on the site, and lists the Copilot button, AI actions menus and **Create pages with AI** as removed entry points. Learn does not say whether the **+ New** > **HTML page** entry or the upload path is also removed. Learn also describes it as designed as a temporary governance control and requires a Copilot licence and SharePoint Advanced Management for it. Microsoft's readiness guidance uses the alternative label **Restrict content discovery** > **On** for this setting.
 
 Site owners have a **Site AI** panel (**Settings** > **Site AI**) that can hide the Copilot button on site pages for site visitors only. After 1 November 2026 Learn says to manage Copilot in SharePoint availability with Site AI settings and Restricted Content Discovery; the preview `KnowledgeAgent` PowerShell parameters are retiring. The Copilot in SharePoint page and MC1479517 describe no setting specific to HTML pages.
 
@@ -185,14 +191,4 @@ Learn names License Administrator or User Administrator as the minimum role to a
 risk: Medium. Authors can generate HTML pages from prompts and attached files and publish them with no admin step; existing permissions and site-level Copilot controls cover most, but not all, of the exposure.
 cost: Low. Copilot-assisted creation depends on the Microsoft 365 Copilot licence users already hold, so the cost shown is admin and communication time; no credit rate specific to HTML pages is published.
 impact: Medium. SharePoint authors and Copilot-licensed users see a new HTML page option in the + New menu and Copilot button; readers of published pages see only the page.
--->
-
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] controls[0].note; Governance controls table and prose / licensing: The Microsoft 365 Copilot licence does not govern uploading an .html file. | Found: Searched: "SharePoint" "HTML pages" "upload" "license"; SharePoint HTML page creation Copilot Credits rate upload HTML license. Read MC1479517 and Copilot in SharePoint get-started; neither states that uploads are exempt from Copilot licensing. | Fix: Replace 'Does not govern uploading an .html file.' in controls[0].note and the rendered table with 'No licence statement specific to uploading HTML without Copilot is published.' Replace the first prose sentence under the table with 'The Copilot licence controls who can use Copilot-assisted creation; no licence statement specific to uploading HTML without Copilot is published.'
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model and notes; Cost and licensing; Scope; rationale: cost / licensing: Everyday Copilot-assisted creation is included in an active Microsoft 365 Copilot licence. | Found: Users must have an active Microsoft 365 Copilot license. Everyday Copilot in SharePoint capabilities are included with this license at no extra cost, and no opt-in step is required. | Fix: Add before the Learn-derived licensing explanation: 'The cited Learn page still labels Copilot in SharePoint as public preview while describing its transition to general availability.' | Source: https://learn.microsoft.com/sharepoint/copilot-in-sharepoint-get-started
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: Restricted Content Discovery is at SharePoint admin center > Sites > Active sites > site > Settings > Restrict content from Microsoft Copilot. | Found: In the SharePoint admin center, expand Sites and select Active sites. Select the site you want to configure. Open the Settings tab, and then turn Restrict content from Microsoft Copilot on. | Fix: Keep the cited path. Add: 'Microsoft's readiness guidance uses the alternative label Restrict content discovery > On for this setting.' Cite https://learn.microsoft.com/microsoft-365/copilot/get-ready-copilot-sharepoint-advanced-management#step-3-prevent-accidental-oversharing, which says 'Under Restrict content discovery, select On.' | Source: https://learn.microsoft.com/sharepoint/restricted-content-discovery
-- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist asks administrators to review spending policies, but the controls table has no spending-policy row. | Found: Review spending policies if authors report Copilot asking to spend credits during HTML page work. The controls table lists only Copilot licence assignment and Restricted Content Discovery. | Fix: Remove the 'Review spending policies if authors report Copilot asking to spend credits during HTML page work' checklist bullet; the spending-policy advice has no corresponding controls-table row.
 -->

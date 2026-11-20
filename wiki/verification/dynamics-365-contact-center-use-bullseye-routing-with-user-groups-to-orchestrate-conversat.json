@@ -1,0 +1,840 @@
+{
+  "slug": "dynamics-365-contact-center-use-bullseye-routing-with-user-groups-to-orchestrate-conversat",
+  "roadmapId": 576606,
+  "title": "Dynamics 365 Contact Center: bullseye routing with user groups expands the eligible pool as wait time grows",
+  "status": "held",
+  "date": "2026-11-20",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 64: severity major on a rationale: risk rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-20",
+    "reasons": [
+      "4 blocking findings (claims 58, 59, 60, 66)"
+    ]
+  },
+  "counts": {
+    "claims": 66,
+    "confirmed": 60,
+    "unconfirmed": 1,
+    "contradicted": 5,
+    "blocker": 4,
+    "major": 0,
+    "minor": 5
+  },
+  "summary": "Hold: Microsoft documents Dataverse operations for user groups and playbook records, contrary to the briefing's automation gaps. The rollout checklist also misstates the wait-time rules, and the risk rationale asserts a data-access boundary the sources do not establish.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists General Availability as a release phase.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap also lists Preview as a release phase.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: products; Scope",
+      "type": "record",
+      "claim": "The record associates this item with Microsoft Copilot (Microsoft 365) and Dynamics 365 Contact Center.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Contact Center\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-11-06T23:04:41.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-06T23:04:41\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing: roadmap example",
+      "type": "record",
+      "claim": "The roadmap gives a three-tier routing example.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "0–30 seconds: Assign to Tier 1 specialists (primary user group)\n- 30–60 seconds: Expand to include Tier 2 representatives (secondary user group)\n- 60+ seconds: Include all available representatives (tertiary user group)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Bullseye routing is a conversation orchestration playbook template in Dynamics 365 Contact Center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing",
+      "quote": "Follow the steps in Create a playbook and select the Bullseye routing template.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing; title",
+      "type": "behaviour",
+      "claim": "Assignment starts with the targeted Level 0 user group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing",
+      "quote": "Bullseye routing starts assignment with a targeted Level 0 user group",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "title; summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The eligible representative pool progressively expands to more user groups as wait time increases.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing",
+      "quote": "then progressively expands the pool of eligible representatives to more user groups as wait time increases.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Earlier user groups remain active after later levels become eligible.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing",
+      "quote": "User groups from earlier levels remain active and continue to be considered for assignment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Earlier levels retain assignment priority over later levels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing",
+      "quote": "Representatives from previous levels receive higher priority than representatives added at later levels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Bullseye expansion keeps the conversation in the same queue.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing",
+      "quote": "The conversation stays in the same queue throughout this process.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Administrators create user groups and associate them with queues before configuring bullseye routing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing",
+      "quote": "Create user groups and associate them with your queues.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; controls[0].note; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "A bullseye playbook can configure levels and wait times for one or more queues.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing",
+      "quote": "Configure the playbook for one or more queues, with levels and wait times for routing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing: Learn example",
+      "type": "behaviour",
+      "claim": "Learn's example uses Expert support at Level 0, Regional support at 30 seconds and General support at 60 seconds.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing",
+      "quote": "Consider a configuration with three levels: Level 0 (Expert support group), Level 1 at 30 seconds (Regional support group), and Level 2 at 60 seconds (General support group).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing: wait times",
+      "type": "behaviour",
+      "claim": "Wait time is cumulative from the first attempt to assign the conversation to a human representative.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing",
+      "quote": "Measures wait time cumulatively from when the system first attempts to assign the conversation to a human support representative.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing: wait times",
+      "type": "behaviour",
+      "claim": "The minimum wait time is at least 30 seconds, with a 0-second exception for Level 1.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing",
+      "quote": "Sets the minimum wait time to at least 30 seconds. The next level wait time can be the same as the previous level or should increment by at least 10 seconds. Note that Level 1 also supports a 0 second wait time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing: queue transfers",
+      "type": "behaviour",
+      "claim": "Transferring to another queue resets the timer and restarts evaluation at Level 0 in the new queue.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing",
+      "quote": "Resets the wait time and restarts evaluation from Level 0 in the new queue if a conversation is transferred to another queue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing: routing checks",
+      "type": "behaviour",
+      "claim": "Bullseye routing honours representative presence checks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing",
+      "quote": "Honors all checks for representative presence, capacity, and skills (if skill-based routing is configured).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing: routing checks",
+      "type": "behaviour",
+      "claim": "Bullseye routing honours representative capacity checks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing",
+      "quote": "Honors all checks for representative presence, capacity, and skills (if skill-based routing is configured).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing: routing checks",
+      "type": "behaviour",
+      "claim": "Bullseye routing honours skills checks when skill-based routing is configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing",
+      "quote": "Honors all checks for representative presence, capacity, and skills (if skill-based routing is configured).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing: assignment strategy",
+      "type": "behaviour",
+      "claim": "Within a group, the queue's round robin, highest capacity or least active strategy selects among equally prioritised eligible representatives.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing",
+      "quote": "Finds the most suited service representative within a user group based on the queue's assignment strategy (round robin, highest capacity, least active) when multiple users are eligible with the same priority at any level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing: assignment strategy",
+      "type": "behaviour",
+      "claim": "Custom assignments are not supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing",
+      "quote": "Custom assignments aren't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "Conversation orchestration is available only for voice and messaging channels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Conversation orchestration is available for voice and messaging channels only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Bullseye routing requires an administrator to configure and publish a playbook before its routing logic becomes active.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Administrators define the logic by using natural-language playbooks ... Review your configuration for any validation warnings, and then select Publish to activate the playbook.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope",
+      "type": "role",
+      "claim": "Configuration requires the System administrator or Omnichannel administrator role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "System administrator or Omnichannel administrator role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.model and cost; rationale: cost",
+      "type": "licensing",
+      "claim": "Licensing is mixed, combining Dynamics 365 licensing requirements with consumption of Copilot credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Specific licensing requirements apply to configure and use conversation orchestration in Dynamics 365 Contact Center. ... Conversation orchestration consumes Copilot credits only when you publish a playbook",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "licensing.notes; Cost and licensing; Open questions",
+      "type": "licensing",
+      "claim": "The configuration article refers readers to the Dynamics 365 Licensing Guide without reproducing licence names.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Specific licensing requirements apply to configure and use conversation orchestration in Dynamics 365 Contact Center. Learn more in Dynamics 365 Licensing Guide.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "summary; controls[0].note; Why it matters; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Conversation orchestration consumes Copilot credits when a playbook is published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Conversation orchestration consumes Copilot credits only when you publish a playbook, which makes the configured orchestration logic active for use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "A published playbook can process any number of customer conversations without extra Copilot credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "After you publish, the playbook can process any number of customer conversations without consuming extra Copilot credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Saving a draft does not consume Copilot credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "When you save the playbook as a draft or enable conversation orchestration, it doesn't consume Copilot credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Enabling conversation orchestration does not consume Copilot credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "When you save the playbook as a draft or enable conversation orchestration, it doesn't consume Copilot credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing; Scope; rationale: cost",
+      "type": "cost",
+      "claim": "Consumption-based billing is a prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Set up consumption-based billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Using the Power Platform pay-as-you-go plan requires an Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "If you use the Power Platform pay-as-you-go plan, you need an Azure subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A credit rate specific to publishing a bullseye routing playbook is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"bullseye\" \"credits\" \"rate\"'; '\"conversation orchestration\" \"credits\" \"rate\"'. Read configure-conversation-orchestration, setup-pay-as-you-go and Billing rates and management search excerpts; none states a bullseye publishing rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope: prerequisites",
+      "type": "behaviour",
+      "claim": "Unified routing must be enabled for the environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Unified routing enabled for your environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope: prerequisites",
+      "type": "behaviour",
+      "claim": "At least one queue and workstream must be configured for voice or messaging.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "At least one queue and workstream is configured for voice or messaging channels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope: prerequisites",
+      "type": "behaviour",
+      "claim": "A voice or messaging channel must be configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "A voice or messaging channel is configured.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope: bullseye prerequisites",
+      "type": "behaviour",
+      "claim": "Bullseye routing requires conversation orchestration availability and at least one user and queue associated with a user group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing",
+      "quote": "Conversation orchestration is available.\n- At least one user and queue is associated with a user group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Queues sharing a bullseye playbook must share user groups; queues without shared groups need separate playbooks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing",
+      "quote": "Ensure multiple queues selected in a playbook share common user groups. ... Create different bullseye routing playbooks for different queues if the queues don't share user groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls: closing prose",
+      "type": "behaviour",
+      "claim": "Playbook configuration lists only user groups common to the selected queues.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing",
+      "quote": "The playbook displays user groups that are common across the selected queues only during configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[1].note; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Queue membership can come through user groups, with all users in an associated group considered part of the queue.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing",
+      "quote": "If a user group is associated with the queue, the system considers all users in that user group as part of the queue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Why it matters; Risk assessment: Autonomy & actions; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Fallback after all levels can assign to any eligible queue user or restrict assignment to the defined user groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing",
+      "quote": "Finalizes fallback depending on configuration by either assigning the conversation to any eligible user in the queue (direct member of the queue or member via user group), or by restricting assignment to users within the defined user groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Multiple active playbooks for the same scenario and queue prevent publishing; the existing playbook can be edited or deactivated to resolve the conflict.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "You can't have multiple active playbooks for the same scenario and the same queue. This configuration creates a conflict that prevents publishing. ... Edit or deactivate the existing active playbook before publishing your new one",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[2].note; Risk assessment; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Deleting an active playbook immediately stops conversation orchestration for the corresponding queue.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "If you delete an active playbook, conversation orchestration stops for the corresponding queue immediately.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Why it matters; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Publishing uses a language model to convert natural language playbooks into a structured runtime format.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/implement/conversation-orchestration-rai-faq",
+      "quote": "When you publish a playbook, the system uses a language model to convert it into a structured runtime format that the system then uses to perform playbook actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Why it matters; Risk assessment; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The converted playbook might not fully capture the intended logic.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/implement/conversation-orchestration-rai-faq",
+      "quote": "the converted output might not fully capture the intended logic.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Why it matters; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Deviations can be identified only at runtime, which Microsoft advises administrators to test and monitor.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/implement/conversation-orchestration-rai-faq",
+      "quote": "You can identify any deviations only during runtime. Administrators should test and monitor runtime behavior and revise the playbook if orchestration doesn't work as intended.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The creation procedure selects channels and queues, saves a draft and reviews validation warnings before publishing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Channel: Select Voice or Messaging. ... List of queues: Select specific queues from the list. ... Select Save. The playbook is saved as a draft. ... Review your configuration for any validation warnings, and then select Publish to activate the playbook.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Bullseye routing diagnostics are available through a custom query.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing",
+      "quote": "You can view the diagnostics information by using a custom query. Learn more in Sample queries and dashboards.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The creation route is Copilot Service admin center > Customer support > Conversation Orchestration > Prompt gallery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "In Copilot Service admin center, go to Customer support > Conversation Orchestration. ... On the Conversation Orchestration page, select Prompt gallery.",
+      "severity": "minor",
+      "fix": "The route correctly reaches the template list but stops early. Extend it to 'Customer support > Conversation Orchestration > Prompt gallery > scenario category > Bullseye routing'; retain the note explaining levels and wait times and that Publish activates the playbook."
+    },
+    {
+      "n": 56,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "User groups are managed in Copilot Service admin center > Customer support > User management > User groups > Manage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing",
+      "quote": "In the site map of Copilot Service admin center, under Customer support, select User management. ... Under User groups, select Manage. ... Select New.",
+      "severity": "minor",
+      "fix": "For the creation action described by the note, extend the path to 'Customer support > User management > User groups > Manage > New'. Keep the existing note about members and queues."
+    },
+    {
+      "n": 57,
+      "where": "controls[2].ui; Governance guidance: After rollout; Governance controls table",
+      "type": "admin-path",
+      "claim": "All playbooks under Customer support > Conversation Orchestration is the route to manage published playbooks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Go to the All playbooks tab in Conversation orchestration. ... Select the vertical ellipsis, and then select Edit. ... Delete a playbook: Go to the Playbook tab.",
+      "severity": "minor",
+      "fix": "Extend the editing path to 'Customer support > Conversation Orchestration > All playbooks > playbook > Edit'. Retain the note that Learn's deletion procedure instead names the Playbook tab; change the After rollout sentence to 'Edit from All playbooks; Learn documents deletion from the Playbook tab using the playbook actions menu > Delete.'"
+    },
+    {
+      "n": 58,
+      "where": "controls[0].api; Governance controls: API absence; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no API for creating conversation orchestration playbooks.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt",
+      "quote": "CC User Prompt (msdyn_ccuserprompt) ... Create ... POST /msdyn_ccuserprompts",
+      "severity": "blocker",
+      "fix": "Replace the blanket playbook API absence with 'Microsoft documents POST /msdyn_ccuserprompts to create CC User Prompt records; the conversation orchestration migration article identifies CC User Prompt as its playbook component. A publishing operation is not established by that table reference.' Cite https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt and the existing orchestration article. Keep controls[0].api null only for the combined create-and-publish operation, with a note narrowing the gap to publishing; remove the claim that playbooks are admin-centre-only."
+    },
+    {
+      "n": 59,
+      "where": "controls[1].api; Governance controls: API absence; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no API for user groups.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_agentgroup",
+      "quote": "Agent Group (msdyn_agentgroup) ... Create ... POST /msdyn_agentgroups",
+      "severity": "blocker",
+      "fix": "Replace controls[1].api with kind 'rest', call 'POST /msdyn_agentgroups', docs 'https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_agentgroup'. Narrow its note to say this creates the group record, with msdyn_name and msdyn_description; it is not the complete member-and-queue setup. The Queue User Group Membership reference explicitly identifies its msdyn_usergroup lookup as 'User Group (Agent Group)' targeting msdyn_agentgroup. Remove the blanket no-user-group-API assertion and narrow the open question to complete membership setup."
+    },
+    {
+      "n": 60,
+      "where": "controls[2].api; Governance controls: API absence",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no API for editing or deleting playbooks.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt",
+      "quote": "Delete ... DELETE /msdyn_ccuserprompts(msdyn_ccuserpromptid) ... Update ... PATCH /msdyn_ccuserprompts(msdyn_ccuserpromptid)",
+      "severity": "blocker",
+      "fix": "Set controls[2].api to kind 'rest', call 'DELETE /msdyn_ccuserprompts(<msdyn_ccuserpromptid>)', docs 'https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt'. Note that this deletes the CC User Prompt record identified by the orchestration article as the playbook component; do not claim that generic record updates publish routing changes. Remove the broad no-playbook-API assertion."
+    },
+    {
+      "n": 61,
+      "where": "Governance controls: feature toggle",
+      "type": "behaviour",
+      "claim": "The Responsible AI FAQ says administrators can delete saved or published playbooks and disable a feature toggle to turn off conversation orchestration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/implement/conversation-orchestration-rai-faq",
+      "quote": "Administrators of Dynamics 365 Contact Center can delete any saved or published playbooks, disable the feature toggle to turn off the feature, and log a service request with Microsoft if they need to provide feedback.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls: feature toggle; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn gives no navigation path to the conversation orchestration feature toggle.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'Dynamics 365 Contact Center enable conversation orchestration feature toggle settings'; '\"conversation orchestration\" \"toggle\"'. Read configure-conversation-orchestration and its Responsible AI FAQ; the FAQ names the toggle but neither provides its navigation path.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "The bullseye template article describes routing existing representatives and queues without naming a new data source.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"bullseye routing\" \"data\" \"source\"'. Read configure-bullseye-routing in full: it describes user groups, queues, assignment checks and diagnostics, and names no new data source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "rationale: risk",
+      "type": "behaviour",
+      "claim": "Bullseye routing reads no new organisational data.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: '\"bullseye routing\" \"data\" \"source\"'. Read configure-bullseye-routing and conversation-orchestration-rai-faq; neither states that bullseye routing reads no new organisational data.",
+      "severity": "minor",
+      "fix": "Remove 'and reads no new organisational data' from the risk rationale. The narrower body statement that the template article describes no new data source can remain."
+    },
+    {
+      "n": 65,
+      "where": "Governance guidance: Before rollout and After rollout",
+      "type": "consistency",
+      "claim": "The governance checklist names consumption-based billing and diagnostics checks without corresponding controls-table rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm the licensing and consumption-based billing prerequisites ... Review diagnostics with the custom query Learn references. ... Controls cover playbook creation, user groups, and playbook editing or deletion.",
+      "severity": "minor",
+      "fix": "The Before rollout consumption-based billing check and After rollout diagnostics check have no corresponding controls-table rows. Do not invent paths or calls for them in this correction."
+    },
+    {
+      "n": 66,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Administrators should apply a 30-second minimum and a 10-second increment between levels.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing",
+      "quote": "Sets the minimum wait time to at least 30 seconds. The next level wait time can be the same as the previous level or should increment by at least 10 seconds. Note that Level 1 also supports a 0 second wait time.",
+      "severity": "blocker",
+      "fix": "Replace 'remember the 30-second minimum and the 10-second increment between levels' with 'the minimum wait time is 30 seconds except that Level 1 also supports 0 seconds; a later level can use the same wait time as the preceding level or increase it by at least 10 seconds'."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-20T14:40:57.062Z",
+    "summary": {
+      "links": 4,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=576606",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/contact-center/implement/conversation-orchestration-rai-faq",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Creating and publishing a bullseye routing playbook for chosen queues",
+        "docs": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+        "reachable": true,
+        "segments": [
+          "Customer support",
+          "Conversation Orchestration",
+          "Prompt gallery"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "User groups that form the bullseye levels",
+        "docs": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-bullseye-routing",
+        "reachable": true,
+        "segments": [
+          "Customer support",
+          "User management",
+          "User groups",
+          "Manage"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Editing or deleting a published playbook",
+        "docs": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+        "reachable": true,
+        "segments": [
+          "Customer support",
+          "Conversation Orchestration",
+          "All playbooks"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

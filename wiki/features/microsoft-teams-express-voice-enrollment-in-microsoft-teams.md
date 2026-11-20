@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "user-opt-in"
 action: "prepare"
 licensing:
-  model: "unknown"
-  notes: "Not yet published: the Learn pages on voice and face enrollment and on Set-CsTeamsAIPolicy name no licence for express voice enrollment. Teams Rooms recognition is stated as exclusive to devices with a Teams Rooms Pro license."
+  model: "included"
+  notes: "Teams use requires a Teams license; no licence requirement specific to express voice enrollment is stated on the cited enrollment and policy pages. Teams Rooms recognition is stated as exclusive to devices with a Teams Rooms Pro license."
 audiences: ["m365-admin","security","compliance","change-adoption"]
 tags: ["teams","voice-and-face-recognition","privacy","powershell","meeting-transcripts","teams-rooms","m365-copilot","intelligent-recap"]
 sources:
@@ -33,6 +33,9 @@ sources:
     kind: "learn"
   - title: "Enable People Recognition on Teams Rooms"
     url: "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition"
+    kind: "learn"
+  - title: "Manage Teams licenses"
+    url: "https://learn.microsoft.com/microsoftteams/user-access"
     kind: "learn"
   - title: "Microsoft 365 Copilot release notes"
     url: "https://learn.microsoft.com/microsoft-365/copilot/release-notes"
@@ -79,19 +82,23 @@ changes:
     note: "First briefing for this item: documents the PassiveVoiceEnrollment policy, its documented default, the PowerShell controls and the unpublished licensing."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 72 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected the checklist step that said transcription depends on enrolled profiles, set licensing to included on the Teams licence requirement, and noted the -VoiceIsolation documentation conflict."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 82 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
-  confirmed: 70
+  claims: 82
+  confirmed: 80
   unconfirmed: 0
   contradicted: 2
-  attempts: 1
-  hash: "3acb35d98a91fe8868f4ddf5f560e006"
+  attempts: 0
+  hash: "2eb9c98903c7bbe215f3259224d8b995"
 ---
 
 ## What's changing
@@ -130,7 +137,7 @@ The benefit is real for transcripts and Copilot recaps, which depend on knowing 
 
 ## Cost and licensing
 
-The Learn pages on voice and face enrollment and on Set-CsTeamsAIPolicy name no licence and no meter for express voice enrollment. A licence requirement for it is Not yet published, and the licensing model is recorded as unknown for that reason.
+Each user in an organisation must have a Teams licence before they can use Teams, except for joining Teams meetings anonymously, per the Manage Teams licenses page. The Learn pages on voice and face enrollment and on Set-CsTeamsAIPolicy name no licence and no meter specific to express voice enrollment, and a licence requirement specific to it is Not yet published.
 
 Two documented points sit beside that gap. The people recognition page for Teams Rooms states that recognition in meeting rooms is exclusive to Microsoft Teams Rooms devices with a Teams Rooms Pro license. The roadmap item lists Microsoft 365 Copilot among its products, because Copilot recap and insight features use the profile; no Copilot licence statement for this feature is published on the pages read.
 
@@ -158,7 +165,7 @@ Indirect cost is admin time to set the policy and to brief users.
 
 ### After rollout
 - Review enrolment status for your users in the Teams admin center, and delete profiles where required; the experience is described on the voice and face enrolment page.
-- Check that voice isolation, transcription and room recognition settings still match your intent, because they depend on enrolled profiles.
+- Check that voice isolation and room recognition settings still match your intent, because these features use enrolled profiles.
 - Re-read the Learn voice and face enrolment page each quarter; the documented behaviour and policy names have already changed once, from `EnrollUserOverride` to the Teams AI policy.
 
 ## Governance controls
@@ -178,7 +185,7 @@ The Teams AI policy is documented as accessible only through PowerShell, so the 
 
 Separately, Learn says administrators can use the **Teams admin center** to view end-user voice and face enrollment status and to delete profiles and enrolment data. The pages read give no navigation path for it, so it has no row. It does not change default availability.
 
-Voice isolation is controlled by `-VoiceIsolation` in `Set-CsTeamsMeetingPolicy`, and Learn says users also need `EnrollVoice` or `PassiveVoiceEnrollment` enabled to use it. For the Teams Rooms row, Learn recommends device settings, and says meeting-policy configuration will be retired in the future; if transcription is not enabled in the meeting policy, voice identification does not occur.
+Voice isolation is controlled by `-VoiceIsolation` in `Set-CsTeamsMeetingPolicy`, and Learn says users also need `EnrollVoice` or `PassiveVoiceEnrollment` enabled to use it. The enrollment overview instead says CsTeamsAIPolicy includes -VoiceIsolation; the voice isolation guide places it on the meeting policy. For the Teams Rooms row, Learn recommends device settings, and says meeting-policy configuration will be retired in the future; if transcription is not enabled in the meeting policy, voice identification does not occur.
 
 ## Open questions
 
@@ -192,12 +199,9 @@ cost: Low. The cost shown is admin and communication time; the Learn pages read 
 impact: Medium. Users who opt in notice it, and their profile feeds voice isolation, transcript speaker attribution, meeting-room identification and Microsoft 365 Copilot meeting recaps.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance guidance: After rollout / applicability: Transcription depends on enrolled profiles. | Found: If an in-room participant isn't enrolled, they're still displayed on video as Participant X and in the transcript as Speaker X. | Fix: Replace the checklist sentence with: 'Check that voice isolation and room recognition settings still match your intent, because these features use enrolled profiles.' This removes the incorrect claim that transcription itself requires enrollment. | Source: https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost / licensing: No express-enrollment-specific licence requirement is published, so the briefing records the licensing model as unknown. | Found: Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams. | Fix: Set licensing.model to included. Replace the unknown-entitlement explanation with: 'Teams use requires a Teams license; no licence requirement specific to express voice enrollment is stated on the cited enrollment and policy pages.' Cite https://learn.microsoft.com/microsoftteams/user-access. Keep the separately qualified Teams Rooms Pro requirement and unpublished feature-specific meter. | Source: https://learn.microsoft.com/microsoftteams/user-access
-- [supported, minor] Governance controls / command: Voice isolation is controlled through -VoiceIsolation on Set-CsTeamsMeetingPolicy. | Found: Set-CsTeamsMeetingPolicy -Identity <policy name> -VoiceIsolation Enabled | Fix: Keep the command attribution, but append: 'The enrollment overview instead says CsTeamsAIPolicy includes -VoiceIsolation; the voice isolation guide and Set-CsTeamsMeetingPolicy reference place it on the meeting policy.' The conflicting overview is https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition. | Source: https://learn.microsoft.com/microsoftteams/voice-isolation
-- [contradicted, minor] Governance guidance versus Governance controls table / consistency: Every control the governance checklist asks readers to set or check is represented in the controls table. | Found: Checklist: 'Allow *.speech.microsoft.com'; 'Review enrolment status ... and delete profiles'; 'Check that voice isolation, transcription and room recognition settings still match your intent'. Table: express enrollment, active enrollment and room recognition only. | Fix: The network allow-list step, Teams admin center enrollment-data management step, and checks of voice isolation and transcription have no corresponding controls-table rows. Do not add rows as part of this correction.
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist tells administrators to review enrollment status, delete profiles and check voice isolation, but these controls have no table rows. | Found: Review enrolment status for your users in the Teams admin center, and delete profiles where required; Check that voice isolation and room recognition settings still match your intent. The table contains only express enrollment, active enrollment and room recognition. | Fix: Remove the two After rollout checklist bullets beginning 'Review enrolment status' and 'Check that voice isolation'. Their factual descriptions can remain in Governance controls; those checklist instructions name controls absent from the table.
+- [contradicted, minor] front matter: action / consistency: The action rating is prepare despite a launched change with medium risk and an enrollment policy enabled by default. | Found: action: "prepare"; status: "launched"; risk: "medium"; Microsoft Learn documents the policy as enabled by default, so decide whether to leave it on or turn it off with PowerShell. | Fix: Set action to 'act-now': the assessment scale assigns that rating to a launched medium-risk change that reaches users without administrator action and has an availability decision to take. Individual profile creation remains user-opt-in.
 -->

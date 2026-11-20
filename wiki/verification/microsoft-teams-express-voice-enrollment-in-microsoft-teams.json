@@ -2,36 +2,41 @@
   "slug": "microsoft-teams-express-voice-enrollment-in-microsoft-teams",
   "roadmapId": 537269,
   "title": "Microsoft Teams: express voice enrollment from meeting audio",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-20",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-20",
-    "reasons": [
-      "1 blocking finding (claim 70)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 72,
-    "confirmed": 70,
+    "claims": 82,
+    "confirmed": 80,
     "unconfirmed": 0,
     "contradicted": 2,
-    "blocker": 1,
+    "blocker": 0,
     "major": 0,
-    "minor": 3
+    "minor": 2
   },
-  "summary": "Hold: the governance checklist says transcription depends on enrolled profiles, but Microsoft documents transcripts containing unenrolled speakers. The roadmap facts and control paths and commands are supported; the licensing model understates the published general Teams licence requirement.",
+  "summary": "The briefing passes: its roadmap facts, enrollment defaults, licensing description and control paths and commands are supported. Minor corrections should make the action rating reflect a launched, default-enabled policy and acknowledge the checklist controls missing from the table.",
   "claims": [
     {
       "n": 1,
+      "where": "front matter: products; Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap lists Microsoft Teams and Microsoft Copilot (Microsoft 365) as products.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Teams\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
       "where": "front matter: status; What's changing",
       "type": "record",
       "claim": "The roadmap item is Launched.",
@@ -42,7 +47,7 @@
       "fix": null
     },
     {
-      "n": 2,
+      "n": 3,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target date is June CY2026.",
@@ -53,10 +58,10 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 4,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The roadmap record gives no preview date.",
+      "claim": "The record supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -64,32 +69,10 @@
       "fix": null
     },
     {
-      "n": 4,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap platforms are Desktop, Mac and Teams and Surface Devices.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [\"Desktop\", \"Mac\", \"Teams and Surface Devices\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 5,
-      "where": "front matter: clouds; Risk assessment; Scope",
+      "where": "front matter: releasePhase; Scope: Platforms",
       "type": "record",
-      "claim": "The roadmap record lists only Worldwide (Standard Multi-Tenant).",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: releasePhase; Scope",
-      "type": "record",
-      "claim": "The roadmap release phases are General Availability and Targeted Release.",
+      "claim": "The record lists General Availability and Targeted Release.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Targeted Release\"]",
@@ -97,13 +80,24 @@
       "fix": null
     },
     {
-      "n": 7,
-      "where": "front matter: products; Cost and licensing",
+      "n": 6,
+      "where": "front matter: clouds; Risk assessment; Scope: Cloud",
       "type": "record",
-      "claim": "The roadmap lists Microsoft Teams and Microsoft Copilot (Microsoft 365) as products.",
+      "claim": "The roadmap lists only Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Teams\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope: Platforms",
+      "type": "record",
+      "claim": "The record lists Desktop, Mac and Teams and Surface Devices.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Desktop\", \"Mac\", \"Teams and Surface Devices\"]",
       "severity": null,
       "fix": null
     },
@@ -120,9 +114,9 @@
     },
     {
       "n": 9,
-      "where": "summary; What's changing",
+      "where": "title; summary; What's changing",
       "type": "behaviour",
-      "claim": "Express enrollment creates a voice profile from speech in Teams meetings instead of requiring a separate manual recording.",
+      "claim": "Express enrollment creates a Teams voice profile from meeting speech rather than requiring a manually submitted recording.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
       "quote": "For express enrollment, opt-in allows the Teams app to automatically capture users' voice data from Teams meetings and create and update their voice profile via their in-meeting speech.",
@@ -144,7 +138,7 @@
       "n": 11,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Generating a voice profile from meeting speech typically takes a couple of meetings.",
+      "claim": "Generating a voice profile from in-meeting speech typically takes a couple of meetings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
       "quote": "Generating a voice profile using in-meeting speech typically takes a couple of meetings.",
@@ -153,9 +147,9 @@
     },
     {
       "n": 12,
-      "where": "What's changing; rationale: impact",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "The voice profile supports speaker identification.",
+      "claim": "The express-enrolled voice profile supports speaker identification.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
       "quote": "PassiveVoiceEnrollment | Allows users to create their voice profiles via their voice data from Teams meetings for speaker identification, transcription, and voice isolation.",
@@ -164,53 +158,75 @@
     },
     {
       "n": 13,
-      "where": "What's changing; rationale: impact",
+      "where": "What's changing; Why it matters",
       "type": "behaviour",
-      "claim": "The profile supports transcription and transcript speaker attribution.",
+      "claim": "The profile supports transcription and improves identification of who spoke.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
-      "quote": "When an enrolled user joins meetings from a Teams Room, their contributions are accurately attributed in transcriptions, meeting recaps, and Copilot experiences.",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "PassiveVoiceEnrollment | Allows users to create their voice profiles via their voice data from Teams meetings for speaker identification, transcription, and voice isolation.",
       "severity": null,
       "fix": null
     },
     {
       "n": 14,
-      "where": "What's changing; rationale: impact; Governance guidance: After rollout",
+      "where": "What's changing; Governance guidance; rationale: impact",
       "type": "behaviour",
-      "claim": "Voice isolation depends on a voice profile.",
+      "claim": "Voice isolation uses an enrolled voice profile.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/voice-isolation",
-      "quote": "To use the voice isolation feature, your users must have a voice profile.",
+      "quote": "The voice isolation feature relies on the voice profile, stored on the user's local device, to remove any sounds or voices during a call or meeting that don't match the profile.",
       "severity": null,
       "fix": null
     },
     {
       "n": 15,
-      "where": "What's changing; Risk assessment: Security & identity; rationale: impact",
+      "where": "What's changing; rationale: impact",
       "type": "record",
-      "claim": "The roadmap says the profile enables identification in a meeting room and transcripts.",
+      "claim": "The roadmap says the voice profile enables identification in a meeting room.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "Your profile enables features like voice isolation, speaker recognition, identification in a meeting room and transcripts",
+      "quote": "Your profile enables features like voice isolation, speaker recognition, identification in a meeting room and transcripts, and enhanced meeting recaps and insights from Microsoft 365 Copilot.",
       "severity": null,
       "fix": null
     },
     {
       "n": 16,
-      "where": "What's changing; Cost and licensing; rationale: impact",
+      "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap says the profile enables enhanced meeting recaps and insights from Microsoft 365 Copilot.",
+      "claim": "The roadmap says the profile enables identification in transcripts.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "enhanced meeting recaps and insights from Microsoft 365 Copilot.",
+      "quote": "Your profile enables features like voice isolation, speaker recognition, identification in a meeting room and transcripts, and enhanced meeting recaps and insights from Microsoft 365 Copilot.",
       "severity": null,
       "fix": null
     },
     {
       "n": 17,
+      "where": "What's changing; Cost and licensing; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap says the profile enables enhanced meeting recaps from Microsoft 365 Copilot.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Your profile enables features like voice isolation, speaker recognition, identification in a meeting room and transcripts, and enhanced meeting recaps and insights from Microsoft 365 Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap says the profile enables enhanced insights from Microsoft 365 Copilot.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Your profile enables features like voice isolation, speaker recognition, identification in a meeting room and transcripts, and enhanced meeting recaps and insights from Microsoft 365 Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap states that administrators can enable or disable express voice enrollment.",
+      "claim": "The roadmap says administrators can enable or disable express voice enrollment.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Admins can enable or disable this feature.",
@@ -218,32 +234,32 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "controls[0].api; Governance controls table; Governance guidance: At rollout",
-      "type": "command",
-      "claim": "Set-CsTeamsAIPolicy -Identity Global -PassiveVoiceEnrollment Disabled disables express voice enrollment through the global Teams AI policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/teams/set-csteamsaipolicy",
-      "quote": "PS C:\\> Set-CsTeamsAIPolicy -Identity Global -PassiveVoiceEnrollment Disabled\nSet Teams AI policy \"PassiveVoiceEnrollment\" value to \"Disabled\" for global as default.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 19,
-      "where": "controls[1].api; Governance controls table; Governance guidance: At rollout",
-      "type": "command",
-      "claim": "Set-CsTeamsAIPolicy -Identity Global -EnrollVoice Disabled disables manual active voice enrollment through the global Teams AI policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/teams/set-csteamsaipolicy",
-      "quote": "PS C:\\> Set-CsTeamsAIPolicy -Identity Global -EnrollVoice Disabled\nSet Teams AI policy \"EnrollVoice\" value to \"Disabled\" for global as default.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 20,
-      "where": "summary; controls[0].note; What's changing; Why it matters; rationale: risk",
+      "where": "What's changing; controls[0].note",
+      "type": "applicability",
+      "claim": "PassiveVoiceEnrollment in the Teams AI policy controls access to express voice enrollment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/teams/set-csteamsaipolicy",
+      "quote": "PassiveVoiceEnrollment controls user access to express voice enrollment in the Teams app settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; controls[1].governs",
+      "type": "applicability",
+      "claim": "EnrollVoice controls manual, active voice enrollment through Recognition settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "EnrollVoice | Allows users to manually create and manage their voice profiles via the Recognition settings for speaker identification, transcription, and voice isolation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "summary; What's changing; Why it matters; controls[0].note; rationale: risk",
       "type": "default",
-      "claim": "PassiveVoiceEnrollment is enabled by default, subject to the separately described migration of a previously disabled EnrollVoice state.",
+      "claim": "Microsoft documents PassiveVoiceEnrollment as enabled by default, subject to the stated one-time migration exception.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/teams/set-csteamsaipolicy",
       "quote": "This setting is typically enabled by default; however any organization that previously had EnrollVoice set to disabled will see a one-time manual state duplication",
@@ -251,21 +267,21 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 23,
       "where": "What's changing",
       "type": "default",
       "claim": "EnrollVoice is enabled by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/teams/set-csteamsaipolicy",
-      "quote": "-EnrollVoice\nPolicy value of the Teams AI EnrollVoice policy. EnrollVoice controls user access to active voice enrollment in the Teams app settings.\nDefault value: Enabled",
+      "quote": "-EnrollVoice: Default value: Enabled",
       "severity": null,
       "fix": null
     },
     {
-      "n": 22,
+      "n": 24,
       "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: risk",
       "type": "default",
-      "claim": "The feature is user-opt-in: policy availability does not create a profile until the user opts in.",
+      "claim": "The feature is user-opt-in: policy availability does not create a profile without the user's choice to enroll.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
       "quote": "Even if the feature is available, users still need to opt in to enroll their voice and face and create their voice and face profile before they can start using voice and face recognition",
@@ -273,52 +289,118 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What's changing; Governance guidance: Before rollout",
-      "type": "behaviour",
-      "claim": "Organizations with EnrollVoice previously disabled receive a one-time copy of that state into PassiveVoiceEnrollment when the functionality launches.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/teams/set-csteamsaipolicy",
-      "quote": "any organization that previously had EnrollVoice set to disabled will see a one-time manual state duplication so that both EnrollVoice and PassiveVoiceEnrollment will have the same state when launching this new functionality.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
-      "where": "What's changing",
-      "type": "date",
-      "claim": "The Set-CsTeamsAIPolicy reference dates the new PassiveVoiceEnrollment setting to May 2026.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/teams/set-csteamsaipolicy",
-      "quote": "Starting May 2026, there will be a new setting - PassiveVoiceEnrollment, which will allow users in your organization the ability to enroll their voice profile using their in-meeting audio.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 25,
-      "where": "What's changing",
-      "type": "date",
-      "claim": "The Copilot release notes list express voice enrollment under November 17, 2026.",
+      "where": "front matter: licensing.model and licensing.notes",
+      "type": "licensing",
+      "claim": "The licensing model is included under the product-level Teams license requirement, with no feature-specific entitlement asserted.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#november-17,-2026",
-      "quote": "## November 17, 2026\n### Teams\n1. Express voice enrollment in Microsoft Teams [Windows, Mac]",
+      "source": "https://learn.microsoft.com/microsoftteams/user-access",
+      "quote": "Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
       "severity": null,
       "fix": null
     },
     {
       "n": 26,
-      "where": "What's changing; Scope: Platforms",
-      "type": "availability",
-      "claim": "The Copilot release notes list Windows and Mac for this feature.",
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Users need a Teams license to use Teams, except when joining meetings anonymously.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#november-17,-2026",
-      "quote": "Express voice enrollment in Microsoft Teams [Windows, Mac]",
+      "source": "https://learn.microsoft.com/microsoftteams/user-access",
+      "quote": "Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
       "severity": null,
       "fix": null
     },
     {
       "n": 27,
-      "where": "controls[0].note; Governance controls table; Governance guidance: At rollout",
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No license requirement specific to express voice enrollment is published on the cited enrollment and policy pages.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams express voice enrollment licensing requirements voice profile; express voice enrollment license pricing Copilot. Read voice-and-face-recognition, Set-CsTeamsAIPolicy, voice-isolation and user-access; no express-specific license stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The cited enrollment and policy pages publish no meter specific to express voice enrollment.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: express voice enrollment license pricing Copilot; Teams express voice enrollment licensing requirements voice profile. Read voice-and-face-recognition and Set-CsTeamsAIPolicy; neither states an express enrollment meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "front matter: licensing.notes; controls[2].note; Cost and licensing; Scope: Rooms; rationale: cost",
+      "type": "licensing",
+      "claim": "Teams Rooms people recognition is exclusive to Microsoft Teams Rooms devices with a Teams Rooms Pro license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+      "quote": "This feature is exclusive to Microsoft Teams Rooms devices with a Teams Rooms Pro license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing; Open questions",
+      "type": "absence",
+      "claim": "The pages cited for this feature do not state a Copilot license requirement specific to express voice enrollment.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: express voice enrollment license pricing Copilot; Teams express voice enrollment licensing requirements voice profile. Read enrollment overview, policy reference and November 17 Copilot release-note passage; none names a Copilot license for enrollment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].api; Governance controls table; Governance guidance: At rollout",
+      "type": "command",
+      "claim": "Set-CsTeamsAIPolicy -Identity Global -PassiveVoiceEnrollment Disabled disables express voice enrollment on the Global policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/teams/set-csteamsaipolicy",
+      "quote": "Set-CsTeamsAIPolicy -Identity Global -PassiveVoiceEnrollment Disabled\nSet Teams AI policy \"PassiveVoiceEnrollment\" value to \"Disabled\" for global as default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].ui; Governance controls",
+      "type": "absence",
+      "claim": "An administrator UI for configuring PassiveVoiceEnrollment is not documented; the policy is PowerShell-only.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: PassiveVoiceEnrollment admin center EnrollVoice. Opened voice-and-face-recognition and Set-CsTeamsAIPolicy. The overview says: You can access this policy only through Microsoft PowerShell. No administrator UI for this policy found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "controls[1].api; Governance controls table; Governance guidance: At rollout",
+      "type": "command",
+      "claim": "Set-CsTeamsAIPolicy -Identity Global -EnrollVoice Disabled disables active voice enrollment on the Global policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/teams/set-csteamsaipolicy",
+      "quote": "Set-CsTeamsAIPolicy -Identity Global -EnrollVoice Disabled\nSet Teams AI policy \"EnrollVoice\" value to \"Disabled\" for global as default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[1].ui; Governance controls",
+      "type": "absence",
+      "claim": "An administrator UI for configuring EnrollVoice is not documented; the policy is PowerShell-only.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: PassiveVoiceEnrollment admin center EnrollVoice. Opened voice-and-face-recognition and Set-CsTeamsAIPolicy. The overview says: You can access this policy only through Microsoft PowerShell. No administrator UI for this policy found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].note; Governance controls table",
       "type": "command",
       "claim": "New-CsTeamsAIPolicy creates a custom Teams AI policy.",
       "status": "supported",
@@ -328,21 +410,21 @@
       "fix": null
     },
     {
-      "n": 28,
-      "where": "controls[0].note; Governance controls table; Why it matters; Governance guidance: At rollout",
+      "n": 36,
+      "where": "controls[0].note; Why it matters; Governance guidance: At rollout",
       "type": "command",
-      "claim": "Grant-CsTeamsAIPolicy assigns the custom Teams AI policy to selected users.",
+      "claim": "Grant-CsTeamsAIPolicy applies a custom Teams AI policy to selected users.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
-      "quote": "To disable active voice and face enrollment for specific users, Enterprise administrators can create and assign a custom meeting policy to the users:\nNew-CsTeamsAIPolicy -Identity DisableEnrollment -EnrollVoice Disabled -EnrollFace Disabled\nGrant-CsTeamsAIPolicy",
+      "quote": "To disable active voice and face enrollment for specific users, Enterprise administrators can create and assign a custom meeting policy to the users:\nGrant-CsTeamsAIPolicy -Identity DisableEnrollment -Identity testuser@test.onmicrosoft.com",
       "severity": null,
       "fix": null
     },
     {
-      "n": 29,
-      "where": "controls[1].note; What's changing; Governance controls",
+      "n": 37,
+      "where": "What's changing; controls[1].note; Governance controls",
       "type": "behaviour",
-      "claim": "EnrollVoice and PassiveVoiceEnrollment operate independently.",
+      "claim": "PassiveVoiceEnrollment operates independently of EnrollVoice, so disabling one does not disable the other route.",
       "status": "supported",
       "source": "https://learn.microsoft.com/powershell/module/teams/set-csteamsaipolicy",
       "quote": "This setting can also be individually set to Enabled or Disabled and operates independently of EnrollVoice.",
@@ -350,7 +432,7 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 38,
       "where": "controls[1].note; Governance guidance: At rollout; Governance controls",
       "type": "applicability",
       "claim": "Both EnrollVoice and PassiveVoiceEnrollment must be disabled to turn voice enrollment off completely.",
@@ -361,21 +443,65 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "Why it matters",
-      "type": "behaviour",
-      "claim": "Already-enrolled users can unenroll even after the organization disables enrollment.",
+      "n": 39,
+      "where": "What's changing; Governance guidance: Before rollout",
+      "type": "default",
+      "claim": "Organizations previously disabling EnrollVoice get a one-time state duplication into PassiveVoiceEnrollment at launch.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
-      "quote": "If users enroll their voice or face profile, they can always choose to unenroll it later, even if their organization no longer allows enrollment.",
+      "source": "https://learn.microsoft.com/powershell/module/teams/set-csteamsaipolicy",
+      "quote": "any organization that previously had EnrollVoice set to disabled will see a one-time manual state duplication so that both EnrollVoice and PassiveVoiceEnrollment will have the same state when launching this new functionality.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 32,
+      "n": 40,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The Set-CsTeamsAIPolicy reference describes PassiveVoiceEnrollment as starting May 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/teams/set-csteamsaipolicy",
+      "quote": "Starting May 2026, there will be a new setting - PassiveVoiceEnrollment, which will allow users in your organization the ability to enroll their voice profile using their in-meeting audio.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What's changing",
+      "type": "date",
+      "claim": "The Copilot release notes list express voice enrollment under November 17, 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#november-17,-2026",
+      "quote": "November 17, 2026\nTeams\n1. Express voice enrollment in Microsoft Teams [Windows, Mac]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "What's changing; Scope: Platforms",
+      "type": "availability",
+      "claim": "The Copilot release-note entry names Windows and Mac.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/release-notes#november-17,-2026",
+      "quote": "Express voice enrollment in Microsoft Teams [Windows, Mac]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Previously enrolled users can still unenroll after administrators disable enrollment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "If Enterprise administrators disable enrollment after the user enrolled, the user still has the ability to opt out after.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
       "where": "Risk assessment: Data exposure; rationale: risk",
       "type": "behaviour",
-      "claim": "Express enrollment collects meeting voice data on an ongoing basis to create and update the profile.",
+      "claim": "After express enrollment opt-in, meeting voice data is collected on an ongoing basis.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
       "quote": "If users opt to expressly enroll their voice and face profile from Teams meetings, that data will be collected on an ongoing basis",
@@ -383,7 +509,18 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 45,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Meeting speech is used both to create and to update the voice profile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "For express enrollment, opt-in allows the Teams app to automatically capture users' voice data from Teams meetings and create and update their voice profile via their in-meeting speech.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Teams audio and video used for express profile creation are not retained after the call ends.",
@@ -394,10 +531,10 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 47,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The profile is removed immediately when the user unenrolls.",
+      "claim": "The user's profile is removed immediately on unenrolling.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
       "quote": "The user’s voice and face profile is removed right away if the user unenrolls from the feature.",
@@ -405,10 +542,10 @@
       "fix": null
     },
     {
-      "n": 35,
+      "n": 48,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "A profile unused for one year is removed automatically.",
+      "claim": "A voice profile unused for one year is removed automatically.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
       "quote": "In addition, a voice and face profile that isn't used for one year is removed automatically.",
@@ -416,7 +553,7 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 49,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Voice data is stored in the Office 365 trusted compliance store.",
@@ -427,32 +564,32 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 50,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Microsoft does not use voice and face profiles to train models.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
-      "quote": "Microsoft doesn't use the voice and face profiles of users to train any models",
+      "quote": "Microsoft doesn't use the voice and face profiles of users to train any models or for any other purposes other than providing the voice and face recognition feature in Microsoft Teams.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
+      "n": 51,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Microsoft uses the profiles only to provide the Teams voice and face recognition feature.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
-      "quote": "or for any other purposes other than providing the voice and face recognition feature in Microsoft Teams.",
+      "quote": "Microsoft doesn't use the voice and face profiles of users to train any models or for any other purposes other than providing the voice and face recognition feature in Microsoft Teams.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
+      "n": 52,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Voice Isolation stores an encrypted local copy of the voice profile on the user's device.",
+      "claim": "Voice Isolation stores an encrypted local copy of the voice profile on the device.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
       "quote": "When a user also uses Voice Isolation on their device, a local copy of the voice profile is stored encrypted.",
@@ -460,10 +597,10 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 53,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The local Voice Isolation profile copy expires after 14 days and is replaced.",
+      "claim": "The local Voice Isolation profile copy expires after 14 days.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
       "quote": "This copy of the voice profile expires after 14 days and is replaced with a new copy of the voice profile.",
@@ -471,10 +608,21 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "Why it matters; Risk assessment: Security & identity",
+      "n": 54,
+      "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The voice profile is biometric-style data tied to an individual and used to identify that speaker.",
+      "claim": "The expired local voice profile copy is replaced with a new copy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "This copy of the voice profile expires after 14 days and is replaced with a new copy of the voice profile.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Security & identity; rationale: impact",
+      "type": "behaviour",
+      "claim": "Teams Rooms use enrolled voice profiles to identify individual speakers and attribute their contributions in transcripts.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
       "quote": "Voice recognition: Uses an enrolled user’s voice profile to identify who is speaking in the room.",
@@ -482,18 +630,40 @@
       "fix": null
     },
     {
-      "n": 42,
-      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
-      "type": "applicability",
-      "claim": "Blocking *.speech.microsoft.com can cause enrollment failures, and Microsoft says to allow-list that endpoint.",
+      "n": 56,
+      "where": "Risk assessment: Security & identity; Why it matters",
+      "type": "behaviour",
+      "claim": "Recognition attributes enrolled Teams Room participants' contributions in meeting recaps and Copilot experiences.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
-      "quote": "This can be caused by network restrictions blocking required Microsoft speech service endpoints. Ensure the following endpoint is allow-listed:\n*.speech.microsoft.com",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+      "quote": "When an enrolled user joins meetings from a Teams Room, their contributions are accurately attributed in transcriptions, meeting recaps, and Copilot experiences.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 43,
+      "n": 57,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Blocking required Microsoft speech service endpoints can cause enrollment failures.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "Why does voice enrollment fail with errors like “Couldn't capture your voice”? This can be caused by network restrictions blocking required Microsoft speech service endpoints.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Risk assessment: Security & identity; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "Microsoft identifies *.speech.microsoft.com as the endpoint to allow-list for enrollment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "Ensure the following endpoint is allow-listed:\n*.speech.microsoft.com",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
       "where": "Risk assessment: Autonomy & actions; Governance guidance: Before rollout",
       "type": "behaviour",
       "claim": "Users can delete their voice and face profile at any time.",
@@ -504,197 +674,120 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 60,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
       "claim": "Administrators cannot export end-user voice enrollment data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
-      "quote": "Admins don't have access to export voice and face data, giving users full control over their face and voice data and profiles.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Risk assessment: Change & support",
-      "type": "behaviour",
-      "claim": "Enrollment data export is controlled by the end user.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
-      "quote": "No, data export is managed directly by end users.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Risk assessment: Change & support; Scope: Cloud",
-      "type": "availability",
-      "claim": "Learn describes voice and face enrollment as available up to GCC.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
-      "quote": "voice and face enrollments are currently available only up to GCC",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
-      "where": "Risk assessment: Change & support; Scope: Cloud",
-      "type": "availability",
-      "claim": "Learn says voice and face enrollment is unavailable in GCC High.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
-      "quote": "aren't available in GCCH or DOD environments.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
-      "where": "Risk assessment: Change & support; Scope: Cloud",
-      "type": "availability",
-      "claim": "Learn says voice and face enrollment is unavailable in DoD.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
-      "quote": "aren't available in GCCH or DOD environments.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "front matter: licensing.model and notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "licensing",
-      "claim": "No express-enrollment-specific licence requirement is published, so the briefing records the licensing model as unknown.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/user-access",
-      "quote": "Except for joining Teams meetings anonymously, each user in your organization must have a Teams license before they can use Teams.",
-      "severity": "minor",
-      "fix": "Set licensing.model to included. Replace the unknown-entitlement explanation with: 'Teams use requires a Teams license; no licence requirement specific to express voice enrollment is stated on the cited enrollment and policy pages.' Cite https://learn.microsoft.com/microsoftteams/user-access. Keep the separately qualified Teams Rooms Pro requirement and unpublished feature-specific meter."
-    },
-    {
-      "n": 50,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "The cited enrollment overview and Set-CsTeamsAIPolicy reference publish no meter for express voice enrollment.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams express voice enrollment PassiveVoiceEnrollment license licensing price meter Teams Enterprise. Opened voice-and-face-recognition, set-csteamsaipolicy and user-access on Learn; none names an express-enrollment meter.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "front matter: licensing.notes; controls[2].note; Cost and licensing; Scope: Rooms; rationale: cost",
-      "type": "licensing",
-      "claim": "People recognition on Teams Rooms devices requires a Teams Rooms Pro license.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
-      "quote": "This feature is exclusive to Microsoft Teams Rooms devices with a Teams Rooms Pro license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "Cost and licensing; Open questions",
-      "type": "absence",
-      "claim": "The cited enrollment and policy pages do not state a Copilot licence requirement for express voice enrollment itself.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"express voice enrollment\" \"Copilot\" \"license\". Read enrollment overview, Set-CsTeamsAIPolicy, voice isolation, people recognition and release-note excerpts; no Copilot licence prerequisite for enrollment itself was stated.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "Scope: Users",
-      "type": "applicability",
-      "claim": "Users with PassiveVoiceEnrollment disabled cannot use express enrollment.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/voice-isolation",
-      "quote": "-PassiveVoiceEnrollment parameter value\nDisabled | Users with this policy can't use or access the voice profile capture or enrollment.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "Scope: Roles",
-      "type": "role",
-      "claim": "Enterprise administrators manage enrollment through the Teams AI policy using PowerShell.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
-      "quote": "Enterprise administrators can manage voice and face enrollment by using the CsTeamsAIPolicy. You can access this policy only through Microsoft PowerShell.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "Scope: Roles; Open questions",
-      "type": "absence",
-      "claim": "The cited enrollment overview and Set-CsTeamsAIPolicy reference do not state a named required administrator role.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams PowerShell Teams administrator role manage policies CsTeamsAIPolicy. Read the enrollment overview and Set-CsTeamsAIPolicy; neither names an RBAC role. Also read using-admin-roles, which gives general Teams Administrator capabilities.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "controls[0].ui; Governance controls table and prose",
-      "type": "absence",
-      "claim": "An admin UI for configuring PassiveVoiceEnrollment is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams AI policy PassiveVoiceEnrollment EnrollVoice admin center configure UI role administrator enrollment status delete profiles. Read enrollment overview and Set-CsTeamsAIPolicy; the overview says the policy is accessible only through PowerShell.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "controls[1].ui; Governance controls table and prose",
-      "type": "absence",
-      "claim": "An admin UI for configuring EnrollVoice is not documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Teams AI policy PassiveVoiceEnrollment EnrollVoice admin center configure UI role administrator enrollment status delete profiles. Read enrollment overview and Set-CsTeamsAIPolicy; the overview says the policy is accessible only through PowerShell.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "controls[2].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "Teams Pro Management Portal > Rooms > Settings > Recognition > Configure with device settings > Voice Recognition reaches the room voice recognition control.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
-      "quote": "Select Rooms.\nSelect Settings followed by the Recognition tab\nEnable Configure with device settings\nModify to the desired configuration\nVoice Recognition | Off | Users with enrolled voice profile are identified with their voice when using this device.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "controls[2].api; Governance controls table",
-      "type": "command",
-      "claim": "Set-CsTeamsMeetingPolicy -Identity PolicyName -roomAttributeUserOverride Attribute configures voice-based identification of enrolled room participants.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
-      "quote": "Set-CsTeamsMeetingPolicy -Identity PolicyName -roomAttributeUserOverride Attribute -roomPeopleNameUserOverride On\nAttribute\n- Rooms users who have their voice enrolled will be attributed in the transcription.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "controls[2].note; Governance controls table",
-      "type": "default",
-      "claim": "The Teams Rooms device Voice Recognition setting defaults to Off.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
-      "quote": "Setting | Default Behavior | Description\nVoice Recognition | Off | Users with enrolled voice profile are identified with their voice when using this device.",
+      "quote": "No, data export is managed directly by end users. Admins don't have access to export voice and face data, giving users full control over their face and voice data and profiles.",
       "severity": null,
       "fix": null
     },
     {
       "n": 61,
-      "where": "controls[2].note; Governance controls table and prose",
+      "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Microsoft says meeting-policy-based Teams Rooms recognition configuration will be retired in the future.",
+      "claim": "Export of enrollment data remains under the end user's control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "Export of enrollment data remains under the end user's control and within the user experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Risk assessment: Change & support; Scope: Cloud",
+      "type": "availability",
+      "claim": "Learn says voice and face enrollments are available up to GCC but not GCC High or DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "No, voice and face enrollments are currently available only up to GCC and aren't available in GCCH or DOD environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Scope: Users",
+      "type": "applicability",
+      "claim": "Users whose PassiveVoiceEnrollment policy is disabled cannot use express enrollment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/voice-isolation",
+      "quote": "-PassiveVoiceEnrollment parameter value: Disabled | Users with this policy can't use or access the voice profile capture or enrollment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Scope: Roles; Why it matters",
+      "type": "role",
+      "claim": "Enterprise administrators manage enrollment through Teams AI policy PowerShell for users, groups or the whole organization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "Enterprise administrators can turn on or off voice and face enrollment for specific users, groups of users, or the whole organization. They can configure the feature using PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Scope: Roles; Open questions",
+      "type": "absence",
+      "claim": "The cited enrollment and policy pages do not name a required administrator role for setting the Teams AI policy or managing enrollment data.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams AI policy voice face enrollment admin role permissions enrollment status delete profiles navigation; Teams PowerShell Teams AI policy administrator role Set-CsTeamsAIPolicy permissions. Read enrollment overview and Set-CsTeamsAIPolicy; no named role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Scope: Rooms; controls[2].governs",
+      "type": "applicability",
+      "claim": "Allowing Teams Rooms to identify users with their enrolled profiles is a separate configuration from enrollment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "there's a separate configuration to allow Teams Rooms to utilize user voice and face profiles to identify who is in a meeting room.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Teams Pro Management Portal > Rooms > Settings > Recognition > Configure with device settings > Voice Recognition reaches the room voice recognition control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+      "quote": "Log in to the Teams Pro Management Portal. Select Rooms. Select Settings followed by the Recognition tab. Enable Configure with device settings. Modify to the desired configuration.\nVoice Recognition | Off",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsMeetingPolicy -Identity PolicyName -roomAttributeUserOverride Attribute configures voice-based identification of enrolled room users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+      "quote": "Set-CsTeamsMeetingPolicy -Identity PolicyName -roomAttributeUserOverride Attribute -roomPeopleNameUserOverride On\nroomAttributeUserOverride: Attribute - Rooms users who have their voice enrolled will be attributed in the transcription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[2].note; Governance controls table",
+      "type": "default",
+      "claim": "The device-level Voice Recognition setting defaults to Off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+      "quote": "Voice Recognition | Off | Users with enrolled voice profile are identified with their voice when using this device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[2].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Microsoft says meeting-policy-based room recognition configuration will be retired in the future.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
       "quote": "Meeting policy-based configuration will be retired in the future.",
@@ -702,7 +795,7 @@
       "fix": null
     },
     {
-      "n": 62,
+      "n": 71,
       "where": "Governance controls",
       "type": "behaviour",
       "claim": "Microsoft recommends device-level settings for Teams Rooms recognition.",
@@ -713,10 +806,10 @@
       "fix": null
     },
     {
-      "n": 63,
+      "n": 72,
       "where": "Governance controls",
       "type": "applicability",
-      "claim": "Teams Rooms voice identification does not occur unless transcription is enabled in the meeting policy.",
+      "claim": "Room voice identification does not occur if transcription is not enabled in the Teams Meeting policy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
       "quote": "If transcription isn't enabled in the Teams Meeting policy, voice identification won't occur.",
@@ -724,7 +817,7 @@
       "fix": null
     },
     {
-      "n": 64,
+      "n": 73,
       "where": "Governance guidance: After rollout; Governance controls",
       "type": "behaviour",
       "claim": "Administrators can view end-user voice and face enrollment status in the Teams admin center.",
@@ -735,10 +828,10 @@
       "fix": null
     },
     {
-      "n": 65,
+      "n": 74,
       "where": "Governance guidance: After rollout; Governance controls",
       "type": "behaviour",
-      "claim": "Administrators can delete end-user profiles and enrollment data in the Teams admin center.",
+      "claim": "Administrators can delete end-user voice and face profiles and enrollment data in the Teams admin center.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
       "quote": "Enterprise administrators can also delete end-user voice and face profiles and enrollment data directly from the Teams admin center.",
@@ -746,18 +839,18 @@
       "fix": null
     },
     {
-      "n": 66,
+      "n": 75,
       "where": "Governance controls; Open questions",
       "type": "absence",
-      "claim": "The cited enrollment page gives no navigation path for the Teams admin center enrollment-data experience.",
+      "claim": "The cited pages do not give a navigation path to the Teams admin center enrollment-status and profile-deletion experience.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Teams voice face enrollment admin center enrollment status delete profiles navigation Users Recognition permissions role. Read voice-and-face-recognition, including Manage enrollment data in Teams admin center and FAQ; neither gives navigation steps.",
+      "quote": "Searched: Teams admin center voice face enrollment status delete profile users manage users recognition. Opened voice-and-face-recognition, including Manage enrollment data in Teams admin center; it names the capabilities but gives no navigation steps.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 67,
+      "n": 76,
       "where": "Governance controls",
       "type": "default",
       "claim": "The Teams admin center enrollment-data management capability does not change default feature availability.",
@@ -768,21 +861,21 @@
       "fix": null
     },
     {
-      "n": 68,
+      "n": 77,
       "where": "Governance controls",
       "type": "command",
-      "claim": "Voice isolation is controlled through -VoiceIsolation on Set-CsTeamsMeetingPolicy.",
+      "claim": "Voice isolation is controlled with -VoiceIsolation on Set-CsTeamsMeetingPolicy.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/voice-isolation",
-      "quote": "Set-CsTeamsMeetingPolicy -Identity <policy name> -VoiceIsolation Enabled",
-      "severity": "minor",
-      "fix": "Keep the command attribution, but append: 'The enrollment overview instead says CsTeamsAIPolicy includes -VoiceIsolation; the voice isolation guide and Set-CsTeamsMeetingPolicy reference place it on the meeting policy.' The conflicting overview is https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition."
+      "quote": "Set-CsTeamsMeetingPolicy -Identity <policy name> -VoiceIsolation Enabled\nTo prevent users with this policy from using voice isolation, use the following script:\nSet-CsTeamsMeetingPolicy -Identity <policy name> -VoiceIsolation Disabled",
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 69,
+      "n": 78,
       "where": "Governance controls",
       "type": "applicability",
-      "claim": "The voice isolation guide says EnrollVoice and/or PassiveVoiceEnrollment must also be enabled to use voice isolation.",
+      "claim": "Learn also requires EnrollVoice or PassiveVoiceEnrollment to be enabled for voice isolation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/voice-isolation",
       "quote": "You must set the -VoiceIsolation parameter within the PowerShell CsTeamsMeetingPolicy and -EnrollVoice and/or the -PassiveVoiceEnrollment parameter within the CsTeamsAIPolicy cmdlet to manage whether your users can use voice isolation.",
@@ -790,43 +883,54 @@
       "fix": null
     },
     {
-      "n": 70,
-      "where": "Governance guidance: After rollout",
-      "type": "applicability",
-      "claim": "Transcription depends on enrolled profiles.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
-      "quote": "If an in-room participant isn't enrolled, they're still displayed on video as Participant X and in the transcript as Speaker X.",
-      "severity": "blocker",
-      "fix": "Replace the checklist sentence with: 'Check that voice isolation and room recognition settings still match your intent, because these features use enrolled profiles.' This removes the incorrect claim that transcription itself requires enrollment."
-    },
-    {
-      "n": 71,
-      "where": "Governance guidance: After rollout",
+      "n": 79,
+      "where": "Governance controls",
       "type": "behaviour",
-      "claim": "The Teams AI policy replaces the previous EnrollUserOverride enrollment setting.",
+      "claim": "The enrollment overview instead says CsTeamsAIPolicy includes -VoiceIsolation, a documentation conflict the briefing explicitly reports.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
-      "quote": "It replaces the previous EnrollUserOverride setting in CsTeamsMeetingPolicy.",
+      "quote": "The CsTeamsAIPolicy also includes the configuration for Voice Isolation -VoiceIsolation.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 72,
-      "where": "Governance guidance versus Governance controls table",
+      "n": 80,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Teams AI policy replaces the previous EnrollUserOverride setting in CsTeamsMeetingPolicy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/rooms/voice-and-face-recognition",
+      "quote": "Enterprise administrators can manage voice and face enrollment by using the CsTeamsAIPolicy. You can access this policy only through Microsoft PowerShell. It replaces the previous EnrollUserOverride setting in CsTeamsMeetingPolicy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Governance guidance: After rollout; Governance controls",
       "type": "consistency",
-      "claim": "Every control the governance checklist asks readers to set or check is represented in the controls table.",
+      "claim": "The checklist tells administrators to review enrollment status, delete profiles and check voice isolation, but these controls have no table rows.",
       "status": "contradicted",
       "source": "page",
-      "quote": "Checklist: 'Allow *.speech.microsoft.com'; 'Review enrolment status ... and delete profiles'; 'Check that voice isolation, transcription and room recognition settings still match your intent'. Table: express enrollment, active enrollment and room recognition only.",
+      "quote": "Review enrolment status for your users in the Teams admin center, and delete profiles where required; Check that voice isolation and room recognition settings still match your intent. The table contains only express enrollment, active enrollment and room recognition.",
       "severity": "minor",
-      "fix": "The network allow-list step, Teams admin center enrollment-data management step, and checks of voice isolation and transcription have no corresponding controls-table rows. Do not add rows as part of this correction."
+      "fix": "Remove the two After rollout checklist bullets beginning 'Review enrolment status' and 'Check that voice isolation'. Their factual descriptions can remain in Governance controls; those checklist instructions name controls absent from the table."
+    },
+    {
+      "n": 82,
+      "where": "front matter: action",
+      "type": "consistency",
+      "claim": "The action rating is prepare despite a launched change with medium risk and an enrollment policy enabled by default.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "action: \"prepare\"; status: \"launched\"; risk: \"medium\"; Microsoft Learn documents the policy as enabled by default, so decide whether to leave it on or turn it off with PowerShell.",
+      "severity": "minor",
+      "fix": "Set action to 'act-now': the assessment scale assigns that rating to a launched medium-risk change that reaches users without administrator action and has an availability decision to take. Individual profile creation remains user-opt-in."
     }
   ],
   "precheck": {
-    "at": "2026-11-20T13:42:25.320Z",
+    "at": "2026-11-20T14:40:59.490Z",
     "summary": {
-      "links": 6,
+      "links": 7,
       "unreachable": 0,
       "uiPaths": 1,
       "uiPathsWithMissingWords": 0,
@@ -852,6 +956,11 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoftteams/rooms/teams-rooms-people-recognition",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/user-access",
         "ok": true,
         "status": 200
       },
@@ -912,5 +1021,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-20",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

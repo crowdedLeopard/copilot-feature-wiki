@@ -1,0 +1,1052 @@
+{
+  "slug": "endpoint-dlp",
+  "kind": "concept",
+  "roadmapId": null,
+  "title": "Endpoint DLP: what Microsoft Purview enforces on onboarded devices",
+  "status": "held",
+  "date": "2026-11-20",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-20",
+    "reasons": [
+      "3 blocking findings (claims 10, 11, 24)"
+    ]
+  },
+  "counts": {
+    "claims": 76,
+    "confirmed": 73,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 3,
+    "major": 0,
+    "minor": 6
+  },
+  "summary": "Hold: the page overstates where classification happens and extends Windows offline enforcement to devices for which Microsoft explicitly excludes that support. Its general scanning description also omits the Windows Server classification exception. Most controls and licensing statements are supported, with smaller corrections needed to clarify scoping and complete paths.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "Endpoint DLP extends Purview DLP monitoring and protection to sensitive files on onboarded Windows and macOS devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-getting-started",
+      "quote": "Once a device is onboarded, DLP detects when sensitive items are used and shared. This gives you the visibility and control you need to ensure that they're used and protected properly",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What it is",
+      "type": "availability",
+      "claim": "Endpoint DLP supports Windows 10/11 and the three latest released major macOS versions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "Endpoint data loss prevention (Endpoint DLP) extends the activity monitoring and protection capabilities of DLP to Windows 10/11, macOS (the three latest released major versions) devices",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What it is",
+      "type": "availability",
+      "claim": "Certain Windows Server versions can be onboarded for Endpoint DLP.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "Endpoint DLP allows you to onboard devices running Windows Server 2019 and later versions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What it is: distinction from Power Platform data policies",
+      "type": "behaviour",
+      "claim": "Endpoint DLP is a different mechanism from Power Platform data policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/guidance/adoption/dlp-strategy",
+      "quote": "Data policies enforce rules for which connectors are enabled for each environment, and which connectors can be used together.",
+      "severity": "minor",
+      "fix": "Add the Microsoft pages relied on but absent from sources: https://learn.microsoft.com/power-platform/guidance/adoption/dlp-strategy for the Power Platform distinction, and https://learn.microsoft.com/purview/endpoint-dlp-learn-about-jit for the qualifications to JIT blocking."
+    },
+    {
+      "n": 5,
+      "where": "What it is: Onboarding comes first",
+      "type": "applicability",
+      "claim": "A device must be onboarded before it can be used as a DLP policy location.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "You need to onboard all the devices you want to use as locations in your DLP policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What it is: Onboarding comes first",
+      "type": "behaviour",
+      "claim": "Device onboarding is shared with Microsoft Defender for Endpoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-overview",
+      "quote": "Device onboarding is shared across Microsoft 365 and Microsoft Defender for Endpoint (MDE).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What it is: Onboarding comes first",
+      "type": "behaviour",
+      "claim": "Onboarding devices in the Purview portal also onboards them into Microsoft Defender for Endpoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-overview",
+      "quote": "Onboarding devices in Microsoft Purview portal also onboards them into MDE.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What it is: Onboarding comes first",
+      "type": "applicability",
+      "claim": "Windows devices must be Microsoft Entra joined, hybrid joined or registered.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-overview",
+      "quote": "All devices must be one of these:\n\n- Microsoft Entra joined\n- Microsoft Entra hybrid joined\n- Microsoft Entra registered",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What it is: Onboarding comes first",
+      "type": "applicability",
+      "claim": "Windows devices require Real-time protection and Behavior monitor to be enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-overview",
+      "quote": "None of Windows Security components need to be active, but the Real-time protection and Behavior monitor must be enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What it is: Files are classified on the device",
+      "type": "behaviour",
+      "claim": "Files are classified on the device.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "When you turn on advanced classification scanning and protection, the Microsoft Purview cloud-based data classification service scans items, classifies them, and returns the results to the local machine.",
+      "severity": "blocker",
+      "fix": "Replace the bold lead-in 'Files are classified on the device' with 'Files are classified on creation or modification'. The current wording incorrectly implies that classification stays on the device despite the documented cloud processing."
+    },
+    {
+      "n": 11,
+      "where": "What it is: Files are classified on the device",
+      "type": "behaviour",
+      "claim": "A file is fully scanned for sensitive information types and labels whenever it is created or modified, without a platform qualification.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "Installing the supported Windows Server KBs disables the Classification feature on the server. This means that Endpoint DLP won't classify files on the server.",
+      "severity": "blocker",
+      "fix": "Narrow the sentence to 'On Windows 10/11 and macOS, a file is fully scanned for sensitive information types and labels whenever it is created or modified.' The general statement must not include Windows servers, whose classification exception is documented at https://learn.microsoft.com/purview/endpoint-dlp-learn-about."
+    },
+    {
+      "n": 12,
+      "where": "What it is: Files are classified on the device",
+      "type": "behaviour",
+      "claim": "Reading an already classified file triggers policy re-evaluation if policies, rules or sensitive information types changed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "When an already classified file is read, Endpoint DLP checks for any changes to the policies, rules, or SITs. If there is a change in the DLP configuration, it re-evaluates the policies and rules",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What it is: Policies are scoped by user and device; controls[0].note",
+      "type": "applicability",
+      "claim": "For a Devices-location policy to be enforced, both the user and device must be in scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "For a DLP policy to be enforced on an endpoint, both the user and the device must be included in the policy scope.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What it is: Policies are scoped by user and device",
+      "type": "behaviour",
+      "claim": "A device needs access to all endpoint DLP policies because it can support multiple users with different policy scopes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "A device can support multiple user accounts. Because endpoint policies are scoped to users, different users of the device may have different policies scoped to them. Therefore, the device must have access to all endpoint DLP policies in order to evaluate items.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What it is: Endpoint settings; controls[1]; Governance controls: How the controls interact",
+      "type": "applicability",
+      "claim": "Centrally configured Endpoint settings apply to all DLP policies for devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "Centrally configured settings control many aspects of endpoint data loss prevention (DLP) behavior. These settings apply to all DLP policies for devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What it is: Activities",
+      "type": "behaviour",
+      "claim": "Rules can audit or restrict copying sensitive files to USB removable media.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "you can block, warn, or audit the copying or moving of protected files from an endpoint device to USB removable media.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What it is: Activities",
+      "type": "behaviour",
+      "claim": "Rules can audit or restrict copying sensitive files to network shares.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "you can block, warn, or audit the copying or moving of protected files from an endpoint device to any network share",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What it is: Activities",
+      "type": "behaviour",
+      "claim": "Rules can audit or restrict printing protected files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "you can block, warn, or audit the printing of protected files from an endpoint device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What it is: Activities",
+      "type": "behaviour",
+      "claim": "Rules can audit or restrict copying content from protected files to the clipboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "When a user attempts to copy content from a protected file, you can block, block with override, or audit the copying of protected files to a clipboard on an endpoint device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What it is: Activities",
+      "type": "behaviour",
+      "claim": "Rules can audit or restrict uploads to restricted cloud service domains.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "You can block, warn, or audit when protected files can be uploaded or prevented from being uploaded to cloud services based on the allow/unallowed domains list in Data loss prevention settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What it is: Activities",
+      "type": "availability",
+      "claim": "Copy or move using RDP is not supported on macOS.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "| Copy or move using RDP | Detects when a user attempts to copy an item to a remote desktop session. | Supported | Supported | Not supported | Auditable and restrictable |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What it is: Just-in-time protection",
+      "type": "behaviour",
+      "claim": "JIT protection blocks egress on monitored files that have never been evaluated or whose evaluation is stale until evaluation completes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "Just-in-time protection blocks egress activities on these monitored files until policy evaluation completes successfully:\n\n- Items that have never been evaluated.\n- Items on which the evaluation has gone stale.",
+      "severity": "minor",
+      "fix": "The cited overview supports this, but https://learn.microsoft.com/purview/endpoint-dlp-learn-about-jit qualifies blocking by scope, DLP actions, allowed destinations and pause/resume support. Replace with 'JIT can block egress on monitored unevaluated or stale files while policy evaluation completes; blocking depends on user scope, DLP actions, allowed destinations and pause/resume support.'"
+    },
+    {
+      "n": 23,
+      "where": "Why it matters; summary",
+      "type": "behaviour",
+      "claim": "Policy sync status shows whether devices received the latest policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "The Policy sync status shows you if the device received the latest policy version, or if the corresponding policies synced successfully to the device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Why it matters; Risks and limits: Offline or unsynced devices run old policy",
+      "type": "behaviour",
+      "claim": "An offline device keeps enforcing the policy it already holds, without limiting this statement to Windows.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "When a Windows endpoint device is offline, existing policies continue to be enforced on existing files.\n\nThis functionality isn't supported on macOS endpoint devices.",
+      "severity": "blocker",
+      "fix": "In Why it matters, replace the offline-enforcement clause with 'an offline Windows device keeps enforcing existing policies on existing files'. In Risks and limits, replace the bullet with 'Offline Windows devices run old policy. Existing policies continue to be enforced on existing files while a Windows device is offline; policy changes reach it after it reconnects. Microsoft states that this offline functionality is not supported on macOS.' See https://learn.microsoft.com/purview/endpoint-dlp-learn-about#endpoint-dlp-and-offline-devices."
+    },
+    {
+      "n": 25,
+      "where": "Why it matters; Risks and limits: Offline or unsynced devices run old policy",
+      "type": "behaviour",
+      "claim": "Policy changes are not pushed to a device while it is offline.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "DLP policies regularly sync to endpoint devices. If a device is offline, the policies can't be synchronized.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risks and limits: Offline or unsynced devices run old policy",
+      "type": "behaviour",
+      "claim": "Devices must be online for policy updates to happen.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "Devices must be online for the policy update to happen.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Why it matters; Governance controls: How the controls interact",
+      "type": "default",
+      "claim": "Onboarded devices audit Office, PDF and CSV activity by default even without a targeting policy, unless Always audit file activity for devices is turned off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "By default, when you onboard devices, the system automatically audits activity for Office, PDF, and CSV files. You can review this activity in activity explorer. Turn off this feature if you want to audit this activity only when onboarded devices are included in an active policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "Audited activity can appear in Activity explorer before any device policy has been deployed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "Once a device is onboarded, information about audited activities flows into Activity explorer even before you configure and deploy any DLP policies that have devices as a location.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Why it matters",
+      "type": "default",
+      "claim": "Endpoint DLP is not enabled for Windows servers when they are first onboarded.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "By default, Endpoint DLP isn't enabled for Windows servers when they're initially onboarded.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Purview service description lists Endpoint DLP as Included in the plans named in the page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, Microsoft 365 E5/A5/F5/G5 Information Protection & Governance |\n| --- | --- |\n| Endpoint Data Loss Prevention (DLP) | Included |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The Endpoint DLP getting-started page publishes no separate price or meter.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: read https://learn.microsoft.com/purview/endpoint-dlp-getting-started in full, including SKU/subscriptions licensing; it links licensing guidance and states no separate price or meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Endpoint DLP getting-started page refers readers to Microsoft licensing guidance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-getting-started",
+      "quote": "For information on licensing, see\n\n- Microsoft 365 Enterprise Plans\n- Microsoft 365 Service Descriptions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The Activity explorer interface requires E5/A5/G5 licensing according to the service description.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "While Data classification analytics (Content & Activity Explorer interfaces) requires E5/A5/G5 licensing, the underlying data aggregation continues for E3/A3/G3 tenants to support analytics and compliance scenarios.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Underlying data aggregation continues for E3/A3/G3 tenants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "the underlying data aggregation continues for E3/A3/G3 tenants to support analytics and compliance scenarios.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing: Evidence collection",
+      "type": "behaviour",
+      "claim": "Evidence collection can copy matched files to an Azure storage account.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "When DLP identifies items that match policies on devices, it can copy them to an Azure storage account.",
+      "severity": "minor",
+      "fix": "Append 'Evidence collection is in preview on macOS.' The platform support table at https://learn.microsoft.com/purview/endpoint-dlp-learn-about marks 'Setup evidence collection for file activities on devices' as Preview for macOS."
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing: Evidence collection",
+      "type": "applicability",
+      "claim": "The administrator creates the Azure storage account used for evidence collection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "Before you enable evidence collection, create an Azure storage account and a container in that storage account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing: Evidence collection",
+      "type": "cost",
+      "claim": "Microsoft directs readers to Azure storage access tiers and pricing for evidence storage.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "Consider configuring Azure storage account access tiers and Azure storage account pricing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risks and limits: Users who do not meet the onboarding criteria; What to check",
+      "type": "applicability",
+      "claim": "Microsoft says to exclude users or devices that do not meet the criteria from device-targeted policies to avoid unintended enforcement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-getting-started",
+      "quote": "If a policy is scoped to devices where the signed-in users do not meet the required criteria, ensure those users or devices or both are explicitly excluded from the policy. Failure to do so may lead to unintended policy enforcement behavior.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risks and limits: Excluded paths are unmonitored",
+      "type": "behaviour",
+      "claim": "Files in excluded locations are not audited.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "Files in excluded locations aren't audited.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risks and limits: Excluded paths are unmonitored",
+      "type": "applicability",
+      "claim": "Excluded paths are outside Endpoint DLP policy enforcement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit",
+      "quote": "File path exclusions for Windows setting prevents Purview from applying Endpoint DLP classification and protection for files under the specified folders.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risks and limits: Excluded paths are unmonitored; What to check",
+      "type": "default",
+      "claim": "Windows excludes AppData Roaming and Local under user profiles by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "Windows file paths excluded by default\n\n- `%SystemDrive%\\\\Users\\\\*(1)\\\\AppData\\\\Roaming`\n- `%SystemDrive%\\\\Users\\\\*(1)\\\\AppData\\\\Local`",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risks and limits: Advanced classification has a bandwidth limit",
+      "type": "behaviour",
+      "claim": "Exceeding a configured advanced-classification bandwidth limit stops content being sent to the cloud.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "If you set a bandwidth usage limit and that usage limit is exceeded, DLP stops sending the user content to the cloud.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risks and limits: Advanced classification has a bandwidth limit",
+      "type": "availability",
+      "claim": "Exact data match, named entities, trainable classifiers and credential classifiers are unavailable while that limit is exceeded.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "At that point, data classification continues locally on the device but classification by using exact data match, named entities, trainable classifiers, and credential classifiers isn't available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risks and limits: Advanced classification has a bandwidth limit",
+      "type": "behaviour",
+      "claim": "Cloud communication resumes when bandwidth usage drops below the configured limit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "When the cumulative bandwidth usage drops below the rolling 24-hour limit, communication with the cloud services resumes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risks and limits: Advanced classification has a bandwidth limit",
+      "type": "behaviour",
+      "claim": "Advanced classification does not scan text files larger than 64 MB.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "Advanced classification doesn't work for text files larger than 64 MB, even if you set the bandwidth limit to Do not limit bandwidth. Unlimited.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risks and limits: Windows servers",
+      "type": "availability",
+      "claim": "Windows servers configured as Domain Controllers are not supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "Endpoint DLP is not supported on Windows Servers configured as Domain Controllers",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risks and limits: Windows servers",
+      "type": "availability",
+      "claim": "Windows Server Core installations are not supported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "Endpoint DLP is not supported on Windows Servers configured as Domain Controllers or Windows Servers with the Core Server option selected during installation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risks and limits: Windows servers; Governance controls; What to check",
+      "type": "applicability",
+      "claim": "Supported onboarded Windows servers need Endpoint DLP support for onboarded servers turned on in Endpoint settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "On Settings, select Endpoint settings and expand Endpoint DLP support for onboarded servers.\n4. Set the toggle to On.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risks and limits: Virtual desktops",
+      "type": "behaviour",
+      "claim": "In virtualized environments USB storage is treated as network shares and requires monitoring the network-share activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-getting-started",
+      "quote": "USB storage devices are treated as network shares. You need to include the Copy to network share activity to monitor Copy to a USB device.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risks and limits: JIT blocking affects users; controls[4].note",
+      "type": "behaviour",
+      "claim": "Microsoft says to allow at least an hour for JIT setting changes to reach client devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit",
+      "quote": "Allow at least an hour for JIT setting updates, including disabling JIT, to be pushed to client devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risks and limits: JIT blocking affects users",
+      "type": "behaviour",
+      "claim": "Microsoft cautions against choosing Block users from completing actions before understanding the impact.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit",
+      "quote": "Don't choose the Block users from completing actions option until you fully understand the impact of this feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risks and limits: Cross-tenant labels",
+      "type": "behaviour",
+      "claim": "Endpoint DLP cannot detect a document's sensitivity label from another tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "Endpoint DLP cannot detect the sensitivity label from another tenant on a document.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The policy-scoping UI is reached through Data loss prevention > Policies > Create policy > Enterprise applications & devices > Custom > Custom policy > Devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-device-scoping",
+      "quote": "Scope the location to only the Devices location.\n8. Select Edit on the Devices location.\n9. Accept the default All users, groups, and adaptive scopes\n10. Select Specific devices and device groups",
+      "severity": "minor",
+      "fix": "Complete the path, which correctly stops on the location page, to 'Data loss prevention > Policies > Create policy > Enterprise applications & devices > Custom > Custom policy > Admin units > Full directory > Devices > Edit > Specific devices and device groups'. Admin units and Full directory are the documented default administrative scope."
+    },
+    {
+      "n": 54,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "New-DlpCompliancePolicy -EndpointDlpLocation <MultiValuedProperty> provides policy scope automation in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps",
+      "quote": "The EndpointDLPLocation parameter specifies the user accounts to include in the DLP policy for Endpoint DLP when they are logged on to an onboarded device. You identify the account by name or email address. You can use the value All to include all user accounts.",
+      "severity": "minor",
+      "fix": "Keep the call but replace controls[0].note with 'Security & Compliance PowerShell. This parameter selects user accounts by name or email address, or All; it is not the device-group selector shown in the UI. It requires the Compliance Administrator or Compliance Data Administrator Entra role. Both user and device must be in scope for enforcement.'"
+    },
+    {
+      "n": 55,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Shared Endpoint settings are at Microsoft Purview portal > Data loss prevention > Overview > Data loss prevention settings > Endpoint settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+      "quote": "To access these settings, from the Microsoft Purview portal, go to Data loss prevention > Overview > Data loss prevention settings > Endpoint settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[1].api; controls[1].note; Open questions",
+      "type": "command",
+      "claim": "Set-PolicyConfig -EndpointDlpGlobalSettings <PswsHashtable[]> modifies organizational endpoint restrictions in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig?view=exchange-ps",
+      "quote": "Use the Set-PolicyConfig cmdlet to modify the endpoint restrictions that are configured in the organization.\n\n[-EndpointDlpGlobalSettings <PswsHashtable[]>]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[2].ui",
+      "type": "admin-path",
+      "claim": "Device onboarding can be enabled at Microsoft Purview portal > Settings > Device onboarding > Devices > Turn on device onboarding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-overview",
+      "quote": "Open the Microsoft Purview portal. Choose Settings > Device onboarding > Devices.\n\n2. Choose Turn on device onboarding.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[2].api; Open questions",
+      "type": "absence",
+      "claim": "No API or PowerShell route for turning on Purview device onboarding was found as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Endpoint DLP turn on device onboarding enable device monitoring API PowerShell; \"device monitoring\" \"Purview\" \"PowerShell\" enable. Read device-onboarding-overview, device-onboarding-script and Set-PolicyConfig; no tenant enable call.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[3].ui; What to check",
+      "type": "admin-path",
+      "claim": "Per-device configuration and policy sync status are at Microsoft Purview portal > Settings > Device onboarding > Devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "Sign in to the Microsoft Purview portal > Settings (gear icon in the upper right corner) > Device onboarding > Devices.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[3].api; controls[3].note",
+      "type": "command",
+      "claim": "Defender portal Advanced hunting can query DeviceInfo | where DlpInfo != \"\" and expand DlpInfo for read-only Endpoint DLP status details.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "Query the DeviceInfo table\n4. Expand the DlpInfo column to view Endpoint DLP device details\n\nSample query:\n\nDeviceInfo\n| where DlpInfo != \"\"\n| project DlpInfo",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[4].ui",
+      "type": "admin-path",
+      "claim": "JIT locations and classification-failure fallback are configured at Microsoft Purview portal > Settings > Data Loss Prevention > Just-in-time protection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit",
+      "quote": "Select Settings > Data Loss Prevention > Just-in-time protection.\n3. Under Choose which locations to monitor, select the checkbox next to Devices.\n4. Under Fallback action in case of failure, select Allow users to complete actions.",
+      "severity": "minor",
+      "fix": "The path reaches the correct page but stops before its controls. Set it to 'Settings > Data Loss Prevention > Just-in-time protection > Fallback action in case of failure'; retain the note directing readers to select Devices under Choose which locations to monitor."
+    },
+    {
+      "n": 62,
+      "where": "controls[4].api; Open questions",
+      "type": "absence",
+      "claim": "No API or PowerShell route for configuring Endpoint DLP JIT protection was found as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Endpoint DLP\" \"just-in-time\" \"PowerShell\" configure; \"EndpointDlpGlobalSettings\" \"Jit\". Read endpoint-dlp-get-started-jit and the Set-PolicyConfig reference, including EndpointDlpGlobalSettings; no JIT configuration call documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[2].note; Governance controls: Roles; What to check",
+      "type": "role",
+      "claim": "Device management supports Entra roles only, not Purview roles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-overview",
+      "quote": "Device management currently only supports Entra roles. Purview roles are not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[2].note; Governance controls: Roles; What to check",
+      "type": "role",
+      "claim": "Security admin, Compliance admin or Global admin can turn device monitoring on or off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-overview",
+      "quote": "If you want to use a custom account to turn on/off device monitoring, it must be in one of these roles:\n\n- Compliance admin\n- Security admin\n- Global admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "Security admin, Compliance admin or Global admin can access the onboarding page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-overview",
+      "quote": "If you want to use a custom account to access the onboarding/offboarding page, it must be in one of these roles:\n\n- Compliance admin\n- Security admin\n- Global admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance controls: Roles",
+      "type": "role",
+      "claim": "The device health dashboard requires Compliance Administrator, Security Administrator or Global Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "To access the device health reporting dashboard, you must have one of the following roles:\n\n- Compliance Administrator\n- Security Administrator\n- Global Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance controls: How the controls interact",
+      "type": "behaviour",
+      "claim": "JIT is configured separately from Endpoint settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit",
+      "quote": "File path exclusion settings in JIT are different from File path exclusions for Windows setting found via Data loss prevention > Settings > Endpoint settings > File path exclusions for Windows.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance controls: Where it is watched",
+      "type": "behaviour",
+      "claim": "Activity explorer reports up to 30 days of data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/data-classification-activity-explorer",
+      "quote": "Activity explorer reports on up to 30 days worth of data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance controls: Where it is watched",
+      "type": "admin-path",
+      "claim": "The Device report is at Microsoft Purview portal > Settings > Device onboarding > Device report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "Go to the Microsoft Purview portal.\n2. Select Settings > Device onboarding > Device report.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance controls: Where it is watched",
+      "type": "behaviour",
+      "claim": "The Device report highlights devices at risk of missing future policy updates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "highlight devices that may be at risk of not receiving future updates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Governance controls: Where it is watched",
+      "type": "behaviour",
+      "claim": "Device-readiness indicators do not confirm whether a device failed to receive a policy update.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+      "quote": "These indicators don't confirm whether a device failed to receive a policy update",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Governance controls: Where it is watched",
+      "type": "admin-path",
+      "claim": "The Policy status report is available on the Data loss prevention > Overview page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "The Policy status report is available in the Microsoft Purview compliance portal on the > Data loss prevention > Overview page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Governance controls: Where it is watched",
+      "type": "command",
+      "claim": "Export-ActivityExplorerData exports Activity explorer activity data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/export-activityexplorerdata?view=exchange-ps",
+      "quote": "Use the Export-ActivityExplorerData cmdlet to export activities from Data classification > Activity Explorer in the Microsoft 365 Purview compliance portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "What to check: Devices list",
+      "type": "behaviour",
+      "claim": "Configuration status and policy sync status can show Not updated or Not available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "If the status is Not available or Not updated, follow the remediation steps in the details pane and the steps in the workflow diagram.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Open questions: policy update timing",
+      "type": "behaviour",
+      "claim": "The troubleshooting page's two-hour statement concerns the devices-list status updating rather than a policy-delivery guarantee.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+      "quote": "This device isn't synced the latest policy updates. It might take up to 2 hours for the status in the devices list to update.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "Why it matters: Activity explorer",
+      "type": "behaviour",
+      "claim": "Activity explorer shows activity from onboarded endpoint devices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+      "quote": "Once devices are onboarded into the Microsoft Purview solutions, the information about what users are doing with sensitive items is made visible in activity explorer.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-20T14:40:53.524Z",
+    "summary": {
+      "links": 13,
+      "unreachable": 0,
+      "uiPaths": 5,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/purview/endpoint-dlp-learn-about",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/endpoint-dlp-getting-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/device-onboarding-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/device-onboarding-health-reports-dashboard",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-device-scoping",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/data-classification-activity-explorer",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig?view=exchange-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/export-activityexplorerdata?view=exchange-ps",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which devices and users an Endpoint DLP policy applies to",
+        "docs": "https://learn.microsoft.com/purview/endpoint-dlp-create-policy-device-scoping",
+        "reachable": true,
+        "segments": [
+          "Data loss prevention",
+          "Policies",
+          "Create policy",
+          "Enterprise applications & devices",
+          "Custom",
+          "Custom policy",
+          "Devices"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which devices and users an Endpoint DLP policy applies to",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancepolicy?view=exchange-ps",
+        "reachable": true,
+        "token": "New-DlpCompliancePolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Endpoint settings shared by all device policies (path exclusions, restricted apps, domains, servers)",
+        "docs": "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings",
+        "reachable": true,
+        "segments": [
+          "Data loss prevention",
+          "Overview",
+          "Data loss prevention settings",
+          "Endpoint settings"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Endpoint settings shared by all device policies (path exclusions, restricted apps, domains, servers)",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig?view=exchange-ps",
+        "reachable": true,
+        "token": "Set-PolicyConfig",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether devices are onboarded and can be used as DLP locations",
+        "docs": "https://learn.microsoft.com/purview/device-onboarding-overview",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Device onboarding",
+          "Devices",
+          "Turn on device onboarding"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Per-device configuration status and policy sync status",
+        "docs": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Device onboarding",
+          "Devices"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Per-device configuration status and policy sync status",
+        "docs": "https://learn.microsoft.com/purview/dlp-edlp-tshoot-sync",
+        "reachable": true,
+        "token": "Microsoft Defender",
+        "found": true
+      },
+      {
+        "index": 4,
+        "side": "ui",
+        "governs": "Whether just-in-time protection blocks egress on unevaluated files, and the fallback when classification fails",
+        "docs": "https://learn.microsoft.com/purview/endpoint-dlp-get-started-jit",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Data Loss Prevention",
+          "Just-in-time protection"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

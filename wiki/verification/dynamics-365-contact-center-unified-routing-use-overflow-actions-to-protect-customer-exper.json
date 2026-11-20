@@ -1,0 +1,863 @@
+{
+  "slug": "dynamics-365-contact-center-unified-routing-use-overflow-actions-to-protect-customer-exper",
+  "roadmapId": 576607,
+  "title": "Dynamics 365 Contact Center: overflow actions for direct inward dialed calls",
+  "status": "held",
+  "date": "2026-11-20",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-20",
+    "reasons": [
+      "2 blocking findings (claims 13, 61)"
+    ]
+  },
+  "counts": {
+    "claims": 68,
+    "confirmed": 65,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: the briefing incorrectly describes inbound profiles as deciding who has a direct number, although number assignment is a prerequisite. It also overlooks the documented API for updating stored playbook prompts; the rollout facts and core overflow behaviour are supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is October CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap preview date is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The record lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing: first paragraph",
+      "type": "record",
+      "claim": "The roadmap describes detection of busy, offline, rejected and unanswered direct calls through conversation orchestration.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Overflow for direct inward dialing leverages conversation orchestration to detect key direct inward dialing-related events—such as the representative being busy, offline, rejecting the call, or failing to answer—and apply administrator-defined fallback actions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing: second paragraph",
+      "type": "record",
+      "claim": "The roadmap describes configuration at global or inbound profile level.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Administrators configure natural language playbooks using conversation orchestration at the global or inbound profile level",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing: callback discrepancy; Open questions",
+      "type": "record",
+      "claim": "The roadmap includes offering a direct callback among the actions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The actions include offering a direct callback to the caller, sending them to voicemail, transferring the call to another queue or external number, or ending the call.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing: direct inward dialed call definition; Why it matters",
+      "type": "behaviour",
+      "claim": "Direct inward dialed calls reach a representative's personal number rather than a main line or queue.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
+      "quote": "Direct inward dialed calls are phone calls from a customer that go to a specific service representative’s direct phone line via a personal number assigned to them instead of through a main support line or queue.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "An administrator-defined playbook automatically runs the fallback action matching a direct-call condition.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
+      "quote": "When a direct inward dialed call comes in, the system checks if the intended representative is available. If they're not, the system evaluates the conditions you set in the playbook and triggers the corresponding overflow action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The direct-call template is reached in Copilot Service admin center through Customer support > Conversation Orchestration > Prompt gallery > Overflow handling > Handle overflow for direct inbound call.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
+      "quote": "In the site map of Copilot Service admin center, in Customer support, select Conversation Orchestration. Select Prompt gallery, and select Overflow handling > Handle overflow for direct inbound call.",
+      "severity": "minor",
+      "fix": "The route correctly reaches the template but stops before its settings. Keep the route and add to the note: 'After opening the template, choose and save the inbound-profile scope; in Build playbook, select the overflow action for each condition.'"
+    },
+    {
+      "n": 13,
+      "where": "controls[0].api; Governance controls table; Open questions: API",
+      "type": "absence",
+      "claim": "Microsoft has not documented an API for the playbook control.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt",
+      "quote": "Update ... PATCH /msdyn_ccuserprompts(msdyn_ccuserpromptid) ... Writable columns/attributes ... msdyn_exclusionlist ... msdyn_inclusionlist ... msdyn_prompt",
+      "severity": "blocker",
+      "fix": "Replace the blanket API absence with rest call 'PATCH /msdyn_ccuserprompts(msdyn_ccuserpromptid)' and docs https://learn.microsoft.com/dynamics365/developer/reference/entities/msdyn_ccuserprompt. Note: 'The request body can update msdyn_prompt, the stored playbook prompt. This reference does not document executing publication or the format of inbound-profile scope lists.' The orchestration page explicitly identifies CC User Prompt as the playbook component in its migration instructions. Replace the API open question with 'Will Microsoft document an operation to publish a direct-call playbook through an API?' Do not claim that changing a status column publishes a playbook."
+    },
+    {
+      "n": 14,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Support experience > Productivity > Outbound and inbound profiles in Copilot Service admin center reaches the profile management page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-outbound-inbound-profiles",
+      "quote": "In the Copilot Service admin center site map, select Productivity in Support experience. On the Productivity page, select Manage for Outbound and inbound profiles.",
+      "severity": "minor",
+      "fix": "Print 'Support experience > Productivity > Outbound and inbound profiles (Manage)' to retain the documented button label, and clarify in the note: 'This route opens the profile list; select New profile and the Inbound profile type to create an inbound profile, or select an existing profile and Edit.'"
+    },
+    {
+      "n": 15,
+      "where": "controls[1].api; Governance controls table; Open questions: inbound profile API",
+      "type": "absence",
+      "claim": "An API for configuring direct inward dialing inbound profiles is not documented in the references found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'inbound profile direct inward dialing Dataverse table entity reference API', '\"inbound\" \"profile\" \"msdyn\" \"direct\"', and '\"inbound profile\" \"table/entity\"'; opened Configure outbound and inbound profiles. No relevant profile configuration API reference was returned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "The new playbook behaviour is administrator opt-in and does not operate while the playbook remains a draft.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Draft: The playbook is saved but not active. You can make changes freely. Active: The playbook is published and actively orchestrates conversations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope; Governance controls",
+      "type": "role",
+      "claim": "Configuring conversation orchestration requires System administrator or Omnichannel administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Prerequisites ... System administrator or Omnichannel administrator role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "controls[0].note; What's changing; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "A playbook can cover all inbound profiles, a list, or all inbound profiles except exclusions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
+      "quote": "Choose one of the scopes for the playbook: All inbound profiles; List of inbound profiles; All inbound profiles except",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing: conditions; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "User rejects notification is a condition for which an action is selected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
+      "quote": "In Build playbook, select the overflow action for each of the following conditions: User rejects notification",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing: conditions; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "User isn't available is a condition for which an action is selected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
+      "quote": "In Build playbook, select the overflow action for each of the following conditions: ... User isn't available",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing: conditions; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "User notification times out is the third condition for which an action is selected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
+      "quote": "User rejects notification; User isn't available; User notification times out",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing: actions; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Transfer to another queue is a documented direct-call overflow action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
+      "quote": "The available actions are: Transfer to another queue",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing: actions; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "End the conversation is a documented direct-call overflow action.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
+      "quote": "The available actions are: ... End the conversation",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing: actions; Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Send to voicemail lets the direct caller leave a recording.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
+      "quote": "If Alicia rejects the notification, the caller is requested to leave a voicemail message for Alicia.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing: actions; Why it matters; Risk assessment; rationale: risk",
+      "type": "behaviour",
+      "claim": "Transfer to external number can automatically send an unanswered call to an external after-hours number.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
+      "quote": "If the call times out, forward it to an external after-hours number. ... If Alicia doesn't answer, the system forwards the call to the external number.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing: callback discrepancy; Open questions: callback",
+      "type": "behaviour",
+      "claim": "The orchestration page lists callback and keeping the conversation unassigned for direct calls, unlike the overflow page's four-action list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Help direct-dial callers when the intended representative is unavailable ... The overflow action can be transferring to another queue or external number, offering callback or voicemail, keeping the conversation unassigned, or ending the conversation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing: last paragraph",
+      "type": "default",
+      "claim": "Learn says busy or away representatives' unanswered direct calls usually go to voicemail by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
+      "quote": "By default, if a representative doesn't answer these calls because they're busy or away, the call usually goes to voicemail.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Why it matters; Governance controls: default voicemail until publication",
+      "type": "default",
+      "claim": "Learn describes voicemail as the existing fallback before a direct-call playbook is configured.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
+      "quote": "By default, if a representative doesn't answer these calls because they're busy or away, the call usually goes to voicemail.",
+      "severity": "minor",
+      "fix": "Preserve 'usually' in the shorter default descriptions in Why it matters and Governance controls: 'Without a playbook, Learn says unanswered direct calls usually go to voicemail.' The cited voicemail page further says 'and voicemail is configured'; do not imply voicemail is guaranteed without configuration."
+    },
+    {
+      "n": 29,
+      "where": "Why it matters: draft; rationale: impact",
+      "type": "behaviour",
+      "claim": "Saving a new playbook produces an inactive draft until publication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Select Save. The playbook is saved as a draft. Review your configuration for any validation warnings, and then select Publish to activate the playbook.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "A language model converts the natural-language playbook into a structured runtime format.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Administrators configure natural language playbooks. The system uses a language model to convert them to a structured runtime format.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "The converted playbook might not fully capture the intended logic.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Because the system uses a language model to convert playbooks into a structured runtime format, the converted output might not fully capture the intended playbook logic.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: testing",
+      "type": "behaviour",
+      "claim": "Deviations can be identified only at runtime.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Any deviations can be identified only during runtime. Administrators should test and monitor runtime behavior and revise the playbook if orchestration doesn't work as intended.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: active edits; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Save & publish immediately publishes an active playbook's edits to live routing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "For active playbooks: Select Save & publish to save and immediately publish your changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: active edits",
+      "type": "behaviour",
+      "claim": "The Save button is disabled for active playbooks.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "The Save button is disabled for active playbooks to prevent unintended changes to live routing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Learn supplies custom-query diagnostics for conversation orchestration and overflow.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/guidance/resources/conversation-diagnostics-sample-queries",
+      "quote": "Use the following query to view conversation-level diagnostics for dynamic prioritization and overflow scenarios that you can configure by using conversation orchestration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The custom individual-voicemail assignment rule uses the representative's direct inward call number.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/voice-channel-voicemail",
+      "quote": "The custom assignment rule assigns the voicemail to a representative based on their direct inward call number.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Governance guidance: Before rollout; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Representatives must be added to the default individual voicemail queue for voicemail assignment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/voice-channel-voicemail",
+      "quote": "You must add the representative to the default individual voicemail queue for the system to assign the voicemails.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions: licence",
+      "type": "licensing",
+      "claim": "The orchestration prerequisites refer to specific licensing requirements and the Dynamics 365 Licensing Guide.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Specific licensing requirements apply to configure and use conversation orchestration in Dynamics 365 Contact Center. Learn more in Dynamics 365 Licensing Guide.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing: first paragraph; Open questions: licence",
+      "type": "absence",
+      "claim": "The conversation orchestration page itself does not name the required licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Specific licensing requirements apply to configure and use conversation orchestration in Dynamics 365 Contact Center. Learn more in Dynamics 365 Licensing Guide.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model combines licensing requirements with consumption-based billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Specific licensing requirements apply to configure and use conversation orchestration in Dynamics 365 Contact Center. ... Set up consumption-based billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "summary; controls[0].note; Cost and licensing; rationale: cost; front matter: cost",
+      "type": "cost",
+      "claim": "Publishing a playbook consumes Copilot credits, supporting the variable cost rating.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Conversation orchestration consumes Copilot credits only when you publish a playbook, which makes the configured orchestration logic active for use.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Cost and licensing: runtime consumption",
+      "type": "cost",
+      "claim": "A published playbook can process any number of conversations without extra Copilot credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "After you publish, the playbook can process any number of customer conversations without consuming extra Copilot credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Cost and licensing: saving drafts",
+      "type": "cost",
+      "claim": "Saving a draft does not consume Copilot credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "When you save the playbook as a draft or enable conversation orchestration, it doesn't consume Copilot credits.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "front matter: licensing.notes; Cost and licensing; Governance guidance: billing",
+      "type": "licensing",
+      "claim": "Consumption-based billing is an orchestration prerequisite.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Prerequisites ... Set up consumption-based billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing; Governance guidance: billing; rationale: cost",
+      "type": "cost",
+      "claim": "Dynamics 365 supports prepaid capacity and pay-as-you-go billing models.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
+      "quote": "Dynamics 365 supports two billing models: prepaid capacity and pay-as-you-go.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Cost and licensing: environment linkage",
+      "type": "behaviour",
+      "claim": "Both billing models require linking the Dynamics 365 environment to a Power Platform environment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
+      "quote": "Both models require that you link your Dynamics 365 environment to a Power Platform environment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Cost and licensing: Azure subscription",
+      "type": "licensing",
+      "claim": "Pay-as-you-go needs an Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
+      "quote": "To set up pay-as-you-go billing, you first need an active Azure subscription.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A credit rate specifically for publishing this direct-call playbook is not published in the documentation found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'conversation orchestration publish playbook Copilot credits rate licensing direct inward overflow' and '\"conversation orchestration\" \"credits\" \"rate\"'; read orchestration, overflow, consumption-based billing and Copilot Studio Billing rates and management. No direct-call publish rate found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing: in-queue exemption",
+      "type": "cost",
+      "claim": "The in-queue exemption requires one branch, only the wait-time-in-queue condition, and no context variables.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
+      "quote": "Upgraded and newly created playbooks don't use Copilot credits when they have only one branch, that branch contains only the wait time in queue exceeds condition, and they don't use context variables.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing: no direct-call exemption; Open questions: exemption",
+      "type": "absence",
+      "claim": "Learn does not state a direct-call playbook credit exemption.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'conversation orchestration publish playbook Copilot credits rate licensing direct inward overflow'; read the overflow credit exemption and direct-call sections and the orchestration billing notice. The exemption names only wait-time-in-queue playbooks, not direct-call conditions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Cost and licensing: editing active playbooks",
+      "type": "cost",
+      "claim": "Publishing an active playbook's edits is another credit-consuming publication event.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Conversation orchestration consumes Copilot credits only when you publish a playbook ... For active playbooks: Select Save & publish to save and immediately publish your changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope: channels",
+      "type": "availability",
+      "claim": "Conversation orchestration is available for voice and messaging channels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+      "quote": "Conversation orchestration is available for voice and messaging channels only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Scope: prerequisites",
+      "type": "behaviour",
+      "claim": "The direct-call scenario requires a configured voice channel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
+      "quote": "Prerequisites for direct inward dialed calls ... Voice channel is configured.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Scope: prerequisites; controls[1].note",
+      "type": "behaviour",
+      "claim": "Direct inward dial must be set up through inbound profiles for representatives.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
+      "quote": "Direct inward dial is set up using inbound profiles for service representatives.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Scope: prerequisites",
+      "type": "behaviour",
+      "claim": "Conversation orchestration must be available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
+      "quote": "Prerequisites for direct inward dialed calls ... Conversation orchestration is available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Scope: prerequisites; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "At least one queue must be set up to handle transfers.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
+      "quote": "At least one queue is set up to handle transfer scenarios.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Scope: prerequisites; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "External phone numbers must be set up to transfer calls externally.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
+      "quote": "External phone numbers are set up if you want to transfer calls externally.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[1].note; Scope",
+      "type": "behaviour",
+      "claim": "Creating an inbound profile requires an enabled geographic personal number already assigned to the representative.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-outbound-inbound-profiles",
+      "quote": "To create inbound profiles, you have configured and enabled a geographic type of personal number and assigned to the representative via the Omnichannel tab in user settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Scope: unified routing",
+      "type": "behaviour",
+      "claim": "Learn says direct inward dialing does not use unified routing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-outbound-inbound-profiles",
+      "quote": "Direct inward dialing doesn't use unified routing",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Scope: historical analytics",
+      "type": "behaviour",
+      "claim": "Direct calls to representatives are not tracked in unified routing historical analytics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-outbound-inbound-profiles",
+      "quote": "Direct inward dialing doesn't use unified routing and therefore the direct calls to representatives aren't tracked in unified routing historical analytics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance controls: inbound profiles decide which representatives have a direct number at all",
+      "type": "applicability",
+      "claim": "The inbound profiles row decides which representatives have a direct number at all.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-outbound-inbound-profiles",
+      "quote": "To create inbound profiles, you have configured and enabled a geographic type of personal number and assigned to the representative via the Omnichannel tab in user settings.",
+      "severity": "blocker",
+      "fix": "Replace that sentence with: 'Inbound profiles configure call behaviour for representatives whose personal numbers have already been assigned; they do not assign representatives their direct numbers.' Keep the row's narrower description about inbound profiles, not number entitlement."
+    },
+    {
+      "n": 62,
+      "where": "controls[1].note; Governance controls: prerequisite, not overflow control",
+      "type": "applicability",
+      "claim": "The inbound-profile configuration page is a prerequisite rather than the direct-call playbook's overflow-action editor.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
+      "quote": "Direct inward dial is set up using inbound profiles for service representatives. ... In Build playbook, select the overflow action for each of the following conditions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance controls: no separate tenant-wide switch",
+      "type": "absence",
+      "claim": "No separate tenant-wide switch is documented for this direct-call scenario in the documentation found.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'direct inward dialing overflow conversation orchestration enable disable tenant switch' and '\"conversation orchestration\" \"enable\" \"switch\"'; read overflow setup and orchestration management. The documented direct-call control is a scoped published playbook, not a separate tenant switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Open questions: Call transfer to external phone number",
+      "type": "behaviour",
+      "claim": "The inbound-profile Call transfer to external phone number setting must be enabled to use call forwarding for inbound profiles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-outbound-inbound-profiles",
+      "quote": "Call transfer to external phone number: Turn On the toggle if you want the representative to transfer the call to a phone number outside of your organization. You must enable this setting to use call forwarding for inbound profiles.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance guidance: Before rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist asks readers to check billing setup, queues and voicemail-queue membership, but the table contains only playbook and inbound-profile rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "confirm consumption-based billing ... Check that a backup queue exists ... representatives are in the default individual voicemail queue ... controls: overflow action; inbound profile",
+      "severity": "minor",
+      "fix": "The Before rollout billing-plan check and the backup-queue, external-number and voicemail-membership checks have no corresponding control rows. Remove those checklist bullets; retain their already sourced prerequisites and explanations in Cost and licensing, Scope and Risk assessment. Do not add rows as part of this correction."
+    },
+    {
+      "n": 66,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The record lists Microsoft Copilot (Microsoft 365) and Dynamics 365 Contact Center.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Copilot (Microsoft 365)\", \"Dynamics 365 Contact Center\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-11-06T23:04:41.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-06T23:04:41\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance controls: billing plan and credit capacity",
+      "type": "cost",
+      "claim": "Credit capacity and billing are managed through the billing setup rather than the playbook editor.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
+      "quote": "You can view Copilot Studio message capacity and usage for prepaid capacity and pay-as-you-go in the Power Platform admin center.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-20T14:40:55.891Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=576607",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/contact-center/administer/configure-conversation-orchestration",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-outbound-inbound-profiles",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/customer-service/administer/voice-channel-voicemail",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/customer-service/administer/setup-pay-as-you-go",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/dynamics365/guidance/resources/conversation-diagnostics-sample-queries",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Overflow action for direct inward dialed calls, and which inbound profiles it covers",
+        "docs": "https://learn.microsoft.com/dynamics365/customer-service/administer/manage-overflow",
+        "reachable": true,
+        "segments": [
+          "Customer support",
+          "Conversation Orchestration",
+          "Prompt gallery",
+          "Overflow handling",
+          "Handle overflow for direct inbound call"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which representatives have a direct inward dialing inbound profile",
+        "docs": "https://learn.microsoft.com/dynamics365/customer-service/administer/configure-outbound-inbound-profiles",
+        "reachable": true,
+        "segments": [
+          "Support experience",
+          "Productivity",
+          "Outbound and inbound profiles"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

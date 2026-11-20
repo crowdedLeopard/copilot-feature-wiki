@@ -17,8 +17,8 @@ impact: "low"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "unknown"
-  notes: "Not yet published for this integration. The Adaptive Protection page refers readers to Microsoft's subscription plans page, and the Purview service description lists Insider Risk Management as included in the plans it names. No page read states a licence or meter for the Data Lifecycle Management integration."
+  model: "included"
+  notes: "Insider Risk Management is included in Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW, Microsoft Defender + Purview Suite FLW, and Microsoft 365 E5/A5/F5/G5 Insider Risk Management. An integration-specific licence requirement for the planned government release is not yet published."
 audiences: ["compliance","security","m365-admin"]
 tags: ["adaptive-protection","insider-risk-management","data-lifecycle-management","retention","purview","ediscovery","auditing","gcc","gcc-high","dod"]
 sources:
@@ -39,6 +39,9 @@ sources:
     kind: "learn"
   - title: "Microsoft Purview service description"
     url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
+    kind: "learn"
+  - title: "Plan for Microsoft Purview compliance and risk management solutions – GCC High deployments"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/plan-for-microsoft-purview-gcc-high-deployments"
     kind: "learn"
 videos: []
 related: ["ediscovery","auditing","microsoft-purview-introducing-irm-alert-classification","microsoft-purview-insider-risk-management-policy-recommendation-panel-in-irm"]
@@ -63,10 +66,10 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Insider Risk Management > Adaptive protection > Insider risk levels > Edit"
+      path: "Insider Risk Management > Adaptive protection > Insider risk levels > Edit > Custom insider risk level > Insider risk level based on"
       docs: "https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection"
     api: null
-    note: "Select Edit for the Elevated level. Role group: Insider Risk Management or Insider Risk Management Admins."
+    note: "Select Edit for the Elevated level. Options: Alert generated or confirmed for a user, or Specific user activity. Role group: Insider Risk Management or Insider Risk Management Admins."
   - governs: "Audit records of items retained by Adaptive Protection"
     scope: "tenant"
     ui:
@@ -87,19 +90,23 @@ changes:
     note: "New briefing: planned Adaptive Protection retention of content deleted by Elevated-risk users in GCC, GCC High and DoD, with the commercial-cloud behaviour and the US Government availability gap."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected after verification: setup-method wording for the retention policy, storage-quota cost, product-level Insider Risk Management licence, risk-level path, and removal of an unsupported test-group step."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 66 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 57
+  claims: 66
+  confirmed: 66
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "1f5fe77c5342584b83361dd940ab5fe6"
+  contradicted: 0
+  attempts: 0
+  hash: "e1baf65182969f5204764d994042e77a"
 ---
 
 ## What's changing
@@ -110,13 +117,13 @@ The record lists GCC, GCC High and DoD, the Web platform and the General Availab
 
 Microsoft Learn describes the behaviour for commercial clouds, not for these three clouds. There, when a user at the Elevated risk level deletes content from SharePoint, OneDrive or Exchange, an automatically created auto-labeling retention policy keeps that content for 120 days. The retention page marks the integration as preview, while the roadmap lists General Availability for the US Government clouds. Learn describes a single label and policy for the tenant: users do not see the label, and at the time of writing the retention period and the policy per risk level or location cannot be changed.
 
-The same Adaptive Protection page says Insider Risk Management is available for commercial clouds but not for US Government cloud programs at this time. Microsoft Learn does not yet describe how the planned US Government release reconciles the two statements (November 2026).
+The same Adaptive Protection page says Insider Risk Management is available for commercial clouds but not for US Government cloud programs at this time. Microsoft's GCC High deployment guide separately lists Insider Risk Management capabilities, including General data leaks, as Available; it does not establish availability of this integration. Microsoft Learn does not yet describe how the planned US Government release reconciles the two statements (November 2026).
 
 ## Why it matters
 
 If your organisation holds a GCC, GCC High or DoD tenant and uses Insider Risk Management, this changes what a deletion means for the users most likely to be misusing data. Content an Elevated-risk user deletes would stay searchable for eDiscovery for 120 days, which supports investigations but also keeps data that someone intended to remove.
 
-Microsoft has not stated what happens on arrival in the US Government clouds, so do not assume it is off or on. The Learn page for commercial clouds says the policy is created when Adaptive Protection is first turned on and needs an explicit opt-in if Adaptive Protection was already on. Agree with compliance and legal now whether that retention fits your deletion obligations, and decide who owns the setting.
+Microsoft has not stated what happens on arrival in the US Government clouds, so do not assume it is off or on. Learn's quick-setup table says the policy is automatically created and applied when Adaptive Protection is first turned on, while its custom-setup note requires an explicit opt-in to apply the Data Lifecycle Management policy. Tenants that enabled Adaptive Protection before the integration released also need to opt in. Agree with compliance and legal now whether that retention fits your deletion obligations, and decide who owns the setting.
 
 ## Risk assessment
 
@@ -138,9 +145,9 @@ Microsoft has not stated what happens on arrival in the US Government clouds, so
 
 ## Cost and licensing
 
-No licence or meter specific to the Adaptive Protection integration with Data Lifecycle Management is stated on the pages read. The [Adaptive Protection page](https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection) refers readers to Microsoft's subscription plans page for licensing requirements for Adaptive Protection with data loss prevention, data lifecycle management and Conditional Access. The [Microsoft Purview service description](https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description) lists Insider Risk Management as included in the plans named in its table, but does not mention Adaptive Protection.
+Insider Risk Management is included in the plans named in the [Microsoft Purview service description](https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description): Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW, Microsoft Defender + Purview Suite FLW, and Microsoft 365 E5/A5/F5/G5 Insider Risk Management. That page does not mention Adaptive Protection. The [Adaptive Protection page](https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection) refers readers to Microsoft's subscription plans page for licensing requirements for Adaptive Protection with data loss prevention, data lifecycle management and Conditional Access. An integration-specific licence requirement for the planned government release is not yet published.
 
-The indirect cost is admin and compliance time: defining the Elevated risk level, deciding on the opt-in and answering restore requests. Treat the licence and any storage effect of retained items as open until Microsoft publishes them.
+The indirect cost is admin and compliance time: defining the Elevated risk level, deciding on the opt-in and answering restore requests. Microsoft documents that the Preservation Hold library counts against the site storage quota, so retention in SharePoint and OneDrive may require more storage ([retention page](https://learn.microsoft.com/purview/retention)). A separate meter and a government-integration-specific licence requirement were not found.
 
 ## Scope
 
@@ -158,7 +165,6 @@ The behaviour described here comes from the commercial-cloud Learn pages. It app
 
 ### At rollout
 - Check the state of the Adaptive protection in Data Lifecycle Management setting, and turn it off if you do not want automatic retention.
-- Scope the Insider Risk Management policy used by Adaptive Protection to a test group first, since Learn says the policy can cover just a subset of users for testing.
 - Allow for the delay Learn gives before actions apply after setup.
 
 ### After rollout
@@ -175,7 +181,7 @@ The behaviour described here comes from the commercial-cloud Learn pages. It app
 <tbody>
 <tr><td data-label="Control"><strong>Whether deleted content from Elevated-risk users is retained automatically</strong><br><small>Tenant</small><br><small class="controls__note">Turning it off deletes the policy and removes the labels applied. Needs Adaptive Protection turned on. Documented for commercial clouds.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Settings › Solution settings › Data lifecycle management › Adaptive protection › Adaptive protection in Data Lifecycle Management <a href="https://learn.microsoft.com/purview/retention" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Whether Adaptive Protection assigns insider risk levels and shares them with other policy engines</strong><br><small>Tenant</small><br><small class="controls__note">Role group: Insider Risk Management or Insider Risk Management Admins.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Adaptive protection › Adaptive Protection settings › Adaptive Protection <a href="https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Which activity assigns the Elevated risk level that triggers retention</strong><br><small>Tenant</small><br><small class="controls__note">Select Edit for the Elevated level. Role group: Insider Risk Management or Insider Risk Management Admins.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Adaptive protection › Insider risk levels › Edit <a href="https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which activity assigns the Elevated risk level that triggers retention</strong><br><small>Tenant</small><br><small class="controls__note">Select Edit for the Elevated level. Options: Alert generated or confirmed for a user, or Specific user activity. Role group: Insider Risk Management or Insider Risk Management Admins.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Insider Risk Management › Adaptive protection › Insider risk levels › Edit › Custom insider risk level › Insider risk level based on <a href="https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Audit records of items retained by Adaptive Protection</strong><br><small>Tenant</small><br><small class="controls__note">Reads events only. Look for Retained file proactively and Retained email item proactively. Needs the Audit Logs or View-Only Audit Logs role.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Search <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Search-UnifiedAuditLog -StartDate &lt;date&gt; -EndDate &lt;date&gt; -Operations &lt;operation names&gt;</code> <a href="https://learn.microsoft.com/powershell/module/exchange/search-unifiedauditlog" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -188,24 +194,12 @@ The audit events are "Retained file proactively" for SharePoint and OneDrive and
 
 - Will Insider Risk Management and Adaptive Protection be available in GCC, GCC High and DoD by the February CY2027 target, given the Adaptive Protection page says Insider Risk Management is not available for US Government cloud programs at this time?
 - Is the integration off, on or opt-in on arrival in the US Government clouds? Microsoft has not stated it; watch Message center and the Learn retention page.
-- Which licence covers the Data Lifecycle Management integration, and does retaining deleted items add any storage or meter cost?
+- Does Microsoft publish an integration-specific licence requirement or meter for the Data Lifecycle Management integration in the US Government clouds?
 - Will the 120-day period or the Elevated-only trigger be configurable in the US Government clouds, since Learn says they cannot be changed at this time for the commercial release?
 - Will the Learn page keep its preview label while the roadmap lists General Availability for these clouds?
 
 <!-- rationale
 risk: Medium. Learn describes retained items staying searchable for 120 days after a user deletes them, which changes what deletion means for Elevated-risk users. A setting turns the retention off.
-cost: Low. The only cost the sources show is admin and compliance time. A licence or meter specific to this integration is not yet published, and the Adaptive Protection page defers licensing to Microsoft's plans page.
+cost: Low. Plan for admin and compliance time, plus possible storage growth: Microsoft says the Preservation Hold library counts against site storage quotas.
 impact: Low. Compliance and insider risk administrators configure it. Learn says users do not see the retention label, and only users at the Elevated risk level trigger it.
--->
-
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters / default: The commercial policy is created when Adaptive Protection is first turned on, without distinguishing setup methods. | Found: Custom setup ... If you turn on Adaptive Protection for your organization, you need to explicitly opt in to apply the data lifecycle management policy. | Fix: Replace the commercial enablement sentence with: 'Learn's quick-setup table says the policy is automatically created and applied when Adaptive Protection is first turned on, while its custom-setup note requires an explicit opt-in to apply the Data Lifecycle Management policy. Tenants that enabled Adaptive Protection before the integration released also need to opt in.' Cite https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection and https://learn.microsoft.com/purview/retention. | Source: https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection
-- [contradicted, blocker] Cost and licensing; Open questions; rationale: cost / absence: Any storage effect of retaining deleted items remains unpublished, and admin and compliance time are the only costs the sources show. | Found: Because the Preservation Hold library is included in the site's storage quota, you might need to increase your storage when you use retention settings for SharePoint, OneDrive, and Microsoft 365 groups. | Fix: Replace 'Treat the licence and any storage effect of retained items as open until Microsoft publishes them' with: 'Microsoft documents that the Preservation Hold library counts against the site storage quota, so retention in SharePoint and OneDrive may require more storage. A separate meter and government-integration-specific licence requirement were not found.' In Open questions, retain only the narrower uncertainty about an integration-specific meter. Replace the cost rationale's 'only cost' sentence with: 'Low. Plan for admin and compliance time, plus possible storage growth: Microsoft says the Preservation Hold library counts against site storage quotas.' Cite https://learn.microsoft.com/purview/retention. | Source: https://learn.microsoft.com/purview/retention
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Governance guidance: Before rollout; Open questions / availability: The Adaptive Protection page says Insider Risk Management is available commercially but not for US Government clouds. | Found: Insider Risk Management is available for commercial clouds but isn't available for US Government cloud programs at this time. | Fix: Keep the attribution, but add: 'Microsoft's GCC High deployment guide separately lists Insider Risk Management capabilities, including General data leaks, as Available.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/plan-for-microsoft-purview-gcc-high-deployments; it does not establish availability of this integration. | Source: https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection
-- [supported, minor] controls[2].ui / admin-path: Purview portal > Insider Risk Management > Adaptive protection > Insider risk levels > Edit reaches the Elevated risk-level editor. | Found: On the Insider risk levels page, select Edit for the insider risk level you want to customize (Elevated, Moderate, or Minor). ... On the Custom insider risk level pane, select an option in the Insider risk level based on section | Fix: The printed route is correct but stops at the editor. Extend it to 'Insider Risk Management > Adaptive protection > Insider risk levels > Edit > Custom insider risk level > Insider risk level based on'; retain the note to select Edit for Elevated. The section offers 'Alert generated or confirmed for a user' and 'Specific user activity'. | Source: https://learn.microsoft.com/purview/insider-risk-management-adaptive-protection
-- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost / licensing: The licensing model is unknown because no integration-specific entitlement is stated. | Found: | Feature | Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW, and Microsoft 365 E5/A5/F5/G5 Insider Risk Management | ... | Insider Risk Management | Included | | Fix: Set licensing.model to 'included' for the published product-level entitlement, rather than understating it as unknown. Replace the opening notes with: 'Insider Risk Management is included in Microsoft 365 E5/A5/G5, Microsoft Purview Suite/EDU/GOV/FLW, Microsoft Defender + Purview Suite FLW, and Microsoft 365 E5/A5/F5/G5 Insider Risk Management. An integration-specific licence requirement for the planned government release is not yet published.' Retain the cited Purview service description and the government availability caveat. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
-- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The checklist tells administrators to scope the Insider Risk Management policy to a test group, but the controls table has no policy-scope control. | Found: Checklist: 'Scope the Insider Risk Management policy used by Adaptive Protection to a test group first'; table: integration switch, parent Adaptive Protection switch, risk-level editor, and audit search only. | Fix: Remove the At rollout bullet beginning 'Scope the Insider Risk Management policy used by Adaptive Protection to a test group first'; that policy-scoping instruction has no corresponding controls-table row.
 -->

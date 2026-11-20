@@ -14,7 +14,7 @@ previewDate: null
 risk: "medium"
 cost: "variable"
 impact: "medium"
-defaultState: "user-opt-in"
+defaultState: "admin-opt-in"
 action: "prepare"
 licensing:
   model: "mixed"
@@ -30,6 +30,9 @@ sources:
     kind: "learn"
   - title: "Set-CsTeamsPersonalAttendantPolicy"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamspersonalattendantpolicy"
+    kind: "learn"
+  - title: "Grant-CsTeamsPersonalAttendantPolicy"
+    url: "https://learn.microsoft.com/powershell/module/microsoftteams/grant-csteamspersonalattendantpolicy"
     kind: "learn"
   - title: "Managing AI experiences enabled by usage-based billing"
     url: "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits"
@@ -64,7 +67,7 @@ controls:
     scope: "user"
     ui:
       surface: "Teams admin center"
-      path: "Voice > Intelligent call delegation policies > policy > Choose which calls Intelligent call delegation answers"
+      path: "Voice > Intelligent call delegation policies > policy > Choose which calls Intelligent call delegation answers > External PSTN calls"
       docs: "https://learn.microsoft.com/microsoftteams/intelligent-call-delegation"
     api:
       kind: "powershell"
@@ -113,19 +116,23 @@ changes:
     note: "New briefing: public preview with usage-based billing in Copilot Credits, the Teams policy controls and the spending policy needed to keep call screening working."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 84 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-20"
+    note: "Corrected the default state to admin-opt-in because admins must set up usage-based billing and a spending policy first; added the External PSTN calls setting to the caller-type path and the Grant-CsTeamsPersonalAttendantPolicy reference."
+  - date: "2026-11-20"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 90 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-20"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 84
-  confirmed: 82
+  claims: 90
+  confirmed: 89
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "3fd1451eab0ae691dc09f0aa9adbd88a"
+  contradicted: 1
+  attempts: 0
+  hash: "b199ba49de3aa0eb796f75145a191bee"
 ---
 
 ## What's changing
@@ -140,7 +147,7 @@ The roadmap record lists the item as Rolling out, target November CY2026, with G
 
 This is a preview feature that talks to your callers on your users' behalf and spends metered credits, so two decisions fall to the administrator: whether the Teams policy should allow it, and whether to fund it. Microsoft's notice MC1537490 says billing does not begin until an admin configures spending in the Microsoft 365 admin center, and that tenants coming from Frontier preview will no longer have incoming calls screened by the feature if spending is not configured.
 
-For tenants that were not in Frontier preview, Microsoft has not stated what happens on arrival if no spending policy exists, so plan on the Learn prerequisite: a spending policy for Intelligent call delegation is required. Because users can switch it on themselves under the default policy, decide before rollout who should have it, since callers from outside the organisation will hear an AI attendant.
+For tenants that were not in Frontier preview, Microsoft has not stated what happens on arrival if no spending policy exists, so plan on the Learn prerequisite: a spending policy for Intelligent call delegation is required. After admins configure usage-based billing and a spending policy, users can switch it on themselves under the default Teams policy. Decide before rollout who should have it, since callers from outside the organisation will hear an AI attendant.
 
 ## Risk assessment
 
@@ -203,7 +210,7 @@ For tenants that were not in Frontier preview, Microsoft has not stated what hap
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether users with the policy can use Intelligent call delegation</strong><br><small>User</small><br><small class="controls__note">Reference page carries a Limited Preview banner. Grant-CsTeamsPersonalAttendantPolicy assigns the policy.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Intelligent call delegation policies › policy › General › Enable Intelligent call delegation <a href="https://learn.microsoft.com/microsoftteams/intelligent-call-delegation" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsPersonalAttendantPolicy -Identity &lt;policy name&gt; -PersonalAttendant Disabled</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamspersonalattendantpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which callers Intelligent call delegation answers (internal, federated, PSTN)</strong><br><small>User</small><br><small class="controls__note">-InboundFederatedCalls and -InboundInternalCalls set the other two call types. Values: EnabledUserOverride, Enabled, Disabled.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Intelligent call delegation policies › policy › Choose which calls Intelligent call delegation answers <a href="https://learn.microsoft.com/microsoftteams/intelligent-call-delegation" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsPersonalAttendantPolicy -Identity &lt;policy name&gt; -InboundPSTNCalls Disabled</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamspersonalattendantpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which callers Intelligent call delegation answers (internal, federated, PSTN)</strong><br><small>User</small><br><small class="controls__note">-InboundFederatedCalls and -InboundInternalCalls set the other two call types. Values: EnabledUserOverride, Enabled, Disabled.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Intelligent call delegation policies › policy › Choose which calls Intelligent call delegation answers › External PSTN calls <a href="https://learn.microsoft.com/microsoftteams/intelligent-call-delegation" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsPersonalAttendantPolicy -Identity &lt;policy name&gt; -InboundPSTNCalls Disabled</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamspersonalattendantpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether the agent can use the user's Bookings calendar to schedule follow-ups</strong><br><small>User</small><br><small class="controls__note">The Learn feature page gives this parameter in its New-CsTeamsPersonalAttendantPolicy example.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Intelligent call delegation policies › policy › Choose what Intelligent call delegation can do › Calendar integration <a href="https://learn.microsoft.com/microsoftteams/intelligent-call-delegation" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsPersonalAttendantPolicy -Identity &lt;policy name&gt; -CalendarBookings Disabled</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamspersonalattendantpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether recordings and transcripts of handled calls are saved automatically</strong><br><small>User</small><br><small class="controls__note">Automatically save transcription is the neighbouring setting; -AutomaticTranscription is its parameter.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Voice › Intelligent call delegation policies › policy › Manage recording and transcription › Automatically save recording <a href="https://learn.microsoft.com/microsoftteams/intelligent-call-delegation" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsPersonalAttendantPolicy -Identity &lt;policy name&gt; -AutomaticRecording Disabled</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamspersonalattendantpolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Spending limits for the spending policy that funds Intelligent call delegation</strong><br><small>Tenant</small><br><small class="controls__note">Beta API. The request body sets periodLimit or perUserLimit. Create the policy with + Add spending policy and select only Intelligent call delegation.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › policy › Spending limits <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
@@ -230,12 +237,8 @@ cost: Variable. Public preview uses usage-based billing with Copilot Credits thr
 impact: Medium. Users who turn it on and the people who call them notice it; tenants that used it in Frontier preview lose call screening if no spending is configured.
 -->
 
-<!-- verifier-findings (2026-11-20, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: defaultState / default: The feature's on-arrival default state is user-opt-in. | Found: Admins must set up usage-based billing for Copilot Credits and create a spending policy for Intelligent call delegation in the Microsoft 365 admin center. | Fix: Set defaultState to 'admin-opt-in' under the schema's definition: use requires administrator billing setup and a spending policy. Preserve the documented enabled-by-default Teams policy and subsequent user choice, but qualify the Why it matters sentence as 'After admins configure usage-based billing and a spending policy, users can switch it on themselves under the default Teams policy.' | Source: https://learn.microsoft.com/microsoftteams/intelligent-call-delegation
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].note; Governance controls / command: Grant-CsTeamsPersonalAttendantPolicy assigns the policy to users. | Found: Assigns a specific Teams Personal Attendant Policy to a user, a group of users, or sets the Global policy instance. | Fix: Add https://learn.microsoft.com/powershell/module/microsoftteams/grant-csteamspersonalattendantpolicy to sources to substantiate the assignment guidance. | Source: https://learn.microsoft.com/powershell/module/microsoftteams/grant-csteamspersonalattendantpolicy
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: The caller-type controls are under Teams admin center > Voice > Intelligent call delegation policies > policy > Choose which calls Intelligent call delegation answers. | Found: Choose which calls Intelligent call delegation answers Internal Teams calls Federated Teams calls External PSTN calls | Fix: The path reaches the correct section but stops before a setting. Use 'Voice > Intelligent call delegation policies > policy > Choose which calls Intelligent call delegation answers > External PSTN calls' to match the printed command; retain the note about the other two caller types. | Source: https://learn.microsoft.com/microsoftteams/intelligent-call-delegation
-- [contradicted, minor] Governance guidance: At rollout; controls / consistency: Every control that the governance checklist tells readers to configure appears in the controls table. | Found: Switch off Auto-apply new services on the spending policy if you do not want future supported services to join it automatically. The five controls rows cover enablement, caller types, calendar access, recording/transcription and spending limits, not this switch. | Fix: Remove the checklist bullet 'Switch off Auto-apply new services on the spending policy if you do not want future supported services to join it automatically.' It names a separate control without a corresponding table row.
+- [contradicted, minor] Governance guidance: At rollout; controls / consistency: Every control the governance checklist tells readers to configure is represented in the controls table. | Found: Checklist: "Switch off Auto-apply new services on the spending policy". The spending-policy table row governs "Spending limits" and contains no Auto-apply new services setting. | Fix: Remove the At rollout checklist bullet beginning "Switch off Auto-apply new services"; that setting has no corresponding control row.
 -->
