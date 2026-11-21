@@ -12,7 +12,7 @@ platforms: ["Web"]
 targetDate: "August CY2026"
 previewDate: null
 risk: "medium"
-cost: "low"
+cost: "variable"
 impact: "medium"
 defaultState: "unknown"
 action: "review"
@@ -46,6 +46,21 @@ sources:
   - title: "copilotPackage: block"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block"
     kind: "learn"
+  - title: "Microsoft Agent 365"
+    url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365"
+    kind: "learn"
+  - title: "Frequently asked questions for Microsoft 365 Copilot extensibility"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/faq"
+    kind: "learn"
+  - title: "Compare declarative and custom engine agents"
+    url: "https://learn.microsoft.com/plugins/agents-overview"
+    kind: "learn"
+  - title: "Custom engine agent architecture"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/custom-engine-agent-architecture"
+    kind: "learn"
+  - title: "Build custom engine agents with Microsoft 365 Agents SDK"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/m365-agents-sdk"
+    kind: "learn"
 videos: []
 related: ["m365-copilot-copilot-extensibility-users-in-gcc-h-will-be-able-to-use-custom-engine-agents","m365-copilot-copilot-extensibility-users-will-be-able-to-upload-files-stored-locally-or-in","m365-copilot-mcp-based-agent-enablement-for-u-s-government-clouds"]
 controls:
@@ -69,19 +84,23 @@ changes:
     note: "New briefing: the roadmap lists custom engine agents as launched for GCC users, but Learn's availability tables do not yet list them for GCC."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected after the independent check: cost is now variable (hosting and Azure consumption), the Graph API is stated as unavailable in GCC per the Agent 365 service description, and host support and usage-limit notes were added."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 70 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 58
+  claims: 70
+  confirmed: 70
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "e234756b7f3623e8965c054c241e71fe"
+  contradicted: 0
+  attempts: 0
+  hash: "25f3deffcf16c8136ff3ddc0e8ee69e5"
 ---
 
 ## What's changing
@@ -118,14 +137,14 @@ Microsoft has not stated whether the capability is on, off or something an admin
 
 **Change & support**
 
-- For agents built using the Agents Toolkit and Agents SDK, the known-issues page lists file and image attachments as unsupported, and lists custom engine agents as unsupported in Outlook, Word, Excel, PowerPoint and the Microsoft Edge browser. Expect support calls from users who assume they work there.
+- For agents built using the Agents Toolkit and Agents SDK, the known-issues page lists file and image attachments as unsupported, and lists custom engine agents as unsupported in Outlook, Word, Excel, PowerPoint and the Microsoft Edge browser. Learn's general agent comparison instead lists custom engine agents as able to run in Teams, Word, Excel and Edge; confirm host support for your build route. Expect support calls from users who assume they work there.
 - The roadmap says Launched while the service description has no custom engine agents row, so users may be told the feature exists before it is visible in the tenant.
 
 ## Cost and licensing
 
-Learn's prerequisites page lists custom engine agents as available to Copilot Chat users without usage-based billing, to Copilot Chat users with usage-based billing and to users with a Microsoft 365 Copilot licence. The same page describes Copilot Chat as available to all Microsoft 365 users, and the service description calls Microsoft 365 Copilot an add-on plan with specific licensing prerequisites.
+Learn's prerequisites page lists custom engine agents as available to Copilot Chat users without usage-based billing, to Copilot Chat users with usage-based billing and to users with a Microsoft 365 Copilot licence. Usage limits apply to all included features. The same page describes Copilot Chat as available to all Microsoft 365 users, and the service description calls Microsoft 365 Copilot an add-on plan with specific licensing prerequisites.
 
-The prerequisites page says usage-based billing is not supported in GCCH and GCC, so the usage-based billing column does not apply to a GCC tenant. Learn's overview tells builders to consider licensing, consumption and hosting costs for their agent, but publishes no figure for them. For Copilot Studio as a build tool, the US Government page says licensing for its US Government plans is the same as for public cloud.
+The prerequisites page says usage-based billing is not supported in GCCH and GCC, so the usage-based billing column does not apply to a GCC tenant. Learn's overview tells builders to consider licensing, consumption and hosting costs for their agent, but publishes no figure for them. Learn's FAQ says you don't need a Microsoft 365 Copilot licence to build custom engine agents by using Teams SDK, and that the cost depends on the Azure services consumed in the app. For Copilot Studio as a build tool, the US Government page says licensing for its US Government plans is the same as for public cloud.
 
 A licence or meter specific to this GCC release is not yet published, and the roadmap item names none. Admin time for approving and reviewing agents is an indirect cost.
 
@@ -169,7 +188,7 @@ The known-issues table of unsupported features applies to custom engine agents b
 
 The admin centre Block action restricts access to the selected agent across the organisation. Learn says that for agents created by using Agent Builder or Copilot Studio it affects availability in Microsoft Copilot and in other host products such as Outlook and Teams. For agents created by using SharePoint or Microsoft Foundry it affects only Microsoft Copilot Chat. The page does not describe the action for agents built with the Agents SDK or Teams SDK, so confirm in your tenant that such agents appear in the list.
 
-The Graph call is a beta API that needs the delegated permission CopilotPackages.ReadWrite.All and a Microsoft Agent 365 licence. Its national cloud table marks Global service as available and US Government L4 and L5 (DOD) as not available; it has no GCC column, so treat it as a reference until Microsoft confirms it for GCC.
+The Graph call is a beta API that needs the delegated permission CopilotPackages.ReadWrite.All and a Microsoft Agent 365 licence. Its national cloud table marks Global service as available and US Government L4 and L5 (DOD) as not available; the block reference has no GCC column, but the Microsoft Agent 365 service description lists the Graph API for agent registry and governance actions as unavailable in GCC.
 
 ## Open questions
 
@@ -180,18 +199,6 @@ The Graph call is a beta API that needs the delegated permission CopilotPackages
 
 <!-- rationale
 risk: Medium. Custom engine agents bring builder-chosen orchestration and models, and for pro-code builds builder-provided hosting, into Copilot; the default for GCC is not stated, and the agent block control covers them only in part.
-cost: Low. Learn lists custom engine agents for Copilot Chat users and licensed Microsoft 365 Copilot users and says usage-based billing is not supported in GCC; builders still bear hosting and licensing costs that Learn does not price.
+cost: Variable. Pro-code custom engine agents incur hosting and Azure service consumption costs; no separate GCC-release licence or meter is published.
 impact: Medium. Makers and developers who build the agents, and the GCC users who gain access to them, notice the change; users who nobody builds an agent for see nothing.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: final paragraph / absence: Microsoft has not confirmed whether the governance Graph API is available for GCC. | Found: | Feature Description | Product Surface | Core capability included with Microsoft cloud subscription | Premium capability | GCC Availability | | Graph API provides access to agent registry, basic metadata and governance actions | Microsoft 365 admin center | No | Yes | No | | Fix: Replace 'it has no GCC column, so treat it as a reference until Microsoft confirms it for GCC' with 'the block reference has no GCC column, but the Microsoft Agent 365 service description lists the Graph API for agent registry and governance actions as unavailable in GCC.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: Cost is low, meaning indirect cost only, despite the rationale acknowledging builder hosting and licensing costs. | Found: cost: "low" Low. Learn lists custom engine agents for Copilot Chat users and licensed Microsoft 365 Copilot users and says usage-based billing is not supported in GCC; builders still bear hosting and licensing costs that Learn does not price. | Fix: Set cost to 'variable' and replace its rationale with 'Variable. Pro-code custom engine agents incur hosting and Azure service consumption costs; no separate GCC-release licence or meter is published.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/faq: 'You don't need a Microsoft 365 Copilot license to build custom engine agents by using Teams SDK. Instead, the cost depends on the Azure services consumed in the app.' The GCC restriction on Copilot usage billing does not remove external hosting costs.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure / behaviour: Prompts to pro-code custom engine agents reach builder-controlled processing services. | Found: This model allows you to use the Microsoft client and catalog infrastructure while keeping full control over orchestrator, language model, and API components. Components within your control enable prompt routing to multiple language models through multiple processing loops | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/custom-engine-agent-architecture to sources for the statement about prompts reaching builder-controlled processing. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/custom-engine-agent-architecture
-- [supported, minor] Risk assessment: Security & identity; Governance guidance: Before rollout / availability: Publishing custom engine agents via Microsoft 365 Agents Toolkit is unsupported in Microsoft 365 Government tenants. | Found: Publishing agents via the Microsoft 365 Agents Toolkit isn't supported in Microsoft 365 Government tenants. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/m365-agents-sdk to sources; it explicitly confirms the Government publishing restriction for the custom engine development route, whereas the cited known-issues notice sits under Declarative agents. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/m365-agents-sdk
-- [supported, minor] Risk assessment: Change & support; Governance guidance: At rollout / availability: The known-issues page lists the scoped custom engine agents as unsupported in Outlook, Word, Excel, PowerPoint and Edge. | Found: Custom engine agents aren't supported in Outlook, Word, Excel, PowerPoint, and the Microsoft Edge browser. | Fix: Add after this sentence: 'Learn's general agent comparison instead lists custom engine agents as able to run in Teams, Word, Excel and Edge; confirm host support for your build route.' Cite https://learn.microsoft.com/plugins/agents-overview, whose Channels bullet says 'Can run in Microsoft 365 Copilot and Microsoft 365 apps like Teams, Word, Excel, and Edge.' | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/known-issues
-- [supported, minor] front matter: licensing.notes; Cost and licensing; Scope; rationale: cost / licensing: The prerequisites table lists custom engine agents for Copilot Chat users without and with usage billing and for licensed Microsoft 365 Copilot users. | Found: | Capability | Copilot Chat (no usage-based billing)* | Copilot Chat (usage-based billing)** | Microsoft 365 Copilot (licensed) | | Custom engine agents | ✅ | ✅ | ✅ | * Usage limits apply to all included features. | Fix: Append 'Usage limits apply to all included features.' to the sentence describing the prerequisites table, preserving its existing GCC usage-billing qualification. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/prerequisites
 -->

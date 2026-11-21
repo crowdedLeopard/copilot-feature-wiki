@@ -59,12 +59,12 @@ controls:
       kind: "powershell"
       call: "Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = \"<SkuId>\"} -RemoveLicenses @()"
       docs: "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell"
-    note: "Licence gates the capability per the service description. Needs License or User Administrator; PowerShell needs User.ReadWrite.All and a UsageLocation."
+    note: "Licence gates the capability per the service description. Needs License or User Administrator; PowerShell can use User.ReadWrite.All and needs a UsageLocation."
   - governs: "Which users can use Anthropic models in Copilot experiences"
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic > Choose which users can access Anthropic models"
+      path: "Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic > I acknowledge and agree to the above terms > Choose which users can access Anthropic models"
       docs: "https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc"
     api: null
     note: "Non-federal GCC only; AI Administrator or Global Administrator. Governs Claude access, not Edit with Copilot as a whole. Microsoft Learn documents no API for it at the time of writing (November 2026)."
@@ -77,19 +77,23 @@ changes:
     note: "New briefing: the roadmap says Edit with Copilot in Word reaches GCC, while the service description still lists it as unavailable in GCC, GCC High and DoD."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 43 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected the Anthropic setting path (terms acknowledgement step), replaced the claim about Claude in Edit with Copilot with what the GCC page documents, and qualified the data-boundary and PowerShell permission statements."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 50 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 43
-  confirmed: 41
+  claims: 50
+  confirmed: 49
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "28c20a61311e8c83ab9df72bd1484238"
+  contradicted: 1
+  attempts: 2
+  hash: "0cf99832a2a83fa26cef982720f605a7"
 ---
 
 ## What's changing
@@ -110,12 +114,12 @@ Because Microsoft has not stated the default, base advice on no source saying ex
 
 **Data exposure**
 
-- The roadmap says Copilot works "directly in your document", so it acts on the document a user has open. Microsoft Learn's government overview says Copilot operates entirely within the customer's U.S. government cloud tenant and that prompts, responses and generated content stay in the government cloud; that statement is about Microsoft Copilot in general, so confirm it for this capability when documentation appears.
+- The roadmap says Copilot works "directly in your document", so it acts on the document a user has open. Microsoft Learn's government overview says Copilot operates entirely within the customer's U.S. government cloud tenant and that prompts, responses and generated content stay in the government cloud; that statement is about Microsoft Copilot in general, so confirm it for this capability when documentation appears. The GCC-specific Anthropic documentation gives an exception: when enabled, those models process Customer Data outside Microsoft's FedRAMP-authorized U.S. Government cloud.
 
 **Security & identity**
 
 - Access follows the Microsoft 365 Copilot licence. Assigning or removing that licence (Billing > Licenses) is the control that decides who can use the capability.
-- Microsoft's Anthropic page says Claude models aren't available for federal customers in GCC or for any customers in GCC High and DoD, and that a setting exists for non-federal GCC customers from 22 July 2026. Edit with Copilot in Microsoft 365 apps is one place where users can select Claude, so confirm whether the GCC version offers Claude before you decide the provider setting.
+- Microsoft's Anthropic page says Claude models aren't available for federal customers in GCC or for any customers in GCC High and DoD, and that a setting exists for non-federal GCC customers from 22 July 2026. Microsoft's GCC-specific page currently documents Anthropic models only in the model picker in Copilot Chat in the Microsoft Copilot app and on the web, not in Edit with Copilot.
 
 **Autonomy & actions**
 
@@ -168,25 +172,24 @@ Neither of those pages states a price, and no meter or credit rate for this capa
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Which users hold the Microsoft 365 Copilot licence this capability requires</strong><br><small>User</small><br><small class="controls__note">Licence gates the capability per the service description. Needs License or User Administrator; PowerShell needs User.ReadWrite.All and a UsageLocation.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Licenses › product › Assign licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = &quot;&lt;SkuId&gt;&quot;} -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which users can use Anthropic models in Copilot experiences</strong><br><small>Tenant</small><br><small class="controls__note">Non-federal GCC only; AI Administrator or Global Administrator. Governs Claude access, not Edit with Copilot as a whole. Microsoft Learn documents no API for it at the time of writing (November 2026).</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › AI providers operating as Microsoft subprocessors › Available subprocessors for your organization › Anthropic › Choose which users can access Anthropic models <a href="https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Which users hold the Microsoft 365 Copilot licence this capability requires</strong><br><small>User</small><br><small class="controls__note">Licence gates the capability per the service description. Needs License or User Administrator; PowerShell can use User.ReadWrite.All and needs a UsageLocation.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Billing › Licenses › product › Assign licenses <a href="https://learn.microsoft.com/microsoft-365/admin/manage/assign-licenses-to-users" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-MgUserLicense -UserId $userUPN -AddLicenses @{SkuId = &quot;&lt;SkuId&gt;&quot;} -RemoveLicenses @()</code> <a href="https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which users can use Anthropic models in Copilot experiences</strong><br><small>Tenant</small><br><small class="controls__note">Non-federal GCC only; AI Administrator or Global Administrator. Governs Claude access, not Edit with Copilot as a whole. Microsoft Learn documents no API for it at the time of writing (November 2026).</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Settings › View all › AI providers operating as Microsoft subprocessors › Available subprocessors for your organization › Anthropic › I acknowledge and agree to the above terms › Choose which users can access Anthropic models <a href="https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-The first row governs who can use the capability, because Microsoft says a Microsoft 365 Copilot licence is required. Assigning licences needs at least the License Administrator or User Administrator role, and the PowerShell route needs the User.ReadWrite.All permission scope and a UsageLocation on each user.
+The first row governs who can use the capability, because Microsoft says a Microsoft 365 Copilot licence is required. Assigning licences needs at least the License Administrator or User Administrator role, and the PowerShell route can use the User.ReadWrite.All permission scope and requires a UsageLocation on each user.
 
-The second row governs which users may use Anthropic models, not Edit with Copilot as a whole. Microsoft's page says Edit with Copilot in Microsoft 365 apps is a place where users can select Claude; it does not state whether the GCC version offers it. The setting is described for non-federal GCC customers only, and Microsoft says the option doesn't appear for federal GCC, GCC High and DoD customers.
+The second row is a general Claude-access control, not a control over Edit with Copilot as a whole. Microsoft's GCC-specific page currently documents Anthropic models only in the model picker in Copilot Chat in the Microsoft Copilot app and on the web, not in Edit with Copilot. The setting is described for non-federal GCC customers only, and Microsoft says the option doesn't appear for federal GCC, GCC High and DoD customers.
 
 ## Open questions
 
 - Is Edit with Copilot in Word on by default for licensed users in GCC, or does an administrator or user opt in? Watch the roadmap item and Message center.
 - Which clouds does the capability reach and when: the description names GCC, the record lists GCC High and DoD, and the service description lists all three as not currently available? Watch the service description table.
-- Does Edit with Copilot in GCC use or offer Anthropic models, and does the AI providers setting therefore affect it?
 - Which administrator setting, if any, turns Edit with Copilot in Word off for a government tenant without removing the Microsoft 365 Copilot licence?
 - Are Copilot's edits tracked and reversible in the GCC version, and which audit events record them?
 
 <!-- rationale
-risk: Medium. Copilot would work directly in documents held in a government tenant, inside existing Copilot licensing and cloud boundaries, but Microsoft has not stated whether it arrives on by default.
+risk: Medium. Copilot would work directly in documents held in a government tenant, subject to existing Copilot licensing; the GCC editing data boundary is not yet confirmed, and Microsoft has not stated whether it arrives on by default.
 cost: Medium. The service description says a Microsoft 365 Copilot licence, an add-on plan, is required for this feature; a price for it is not yet published.
 impact: Medium. Users who hold a Microsoft 365 Copilot licence and work in Word on the web in a government tenant would notice it; unlicensed users would not.
 -->
@@ -194,10 +197,8 @@ impact: Medium. Users who hold a Microsoft 365 Copilot licence and work in Word 
 <!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[1].ui; Governance controls / admin-path: The GCC Anthropic configuration path proceeds directly from Anthropic to Choose which users can access Anthropic models. | Found: Review the information in the Terms and conditions section, and if they're acceptable, select the I acknowledge and agree to the above terms checkbox. | Fix: Replace controls[1].ui.path and the rendered path with 'Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic > Terms and conditions > I acknowledge and agree to the above terms > Choose which users can access Anthropic models'. Keep https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc as the docs link. | Source: https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc
-- [contradicted, blocker] Governance controls; Risk assessment: Security & identity; Open questions / absence: Microsoft does not state whether the GCC version of Edit with Copilot offers Claude. | Found: Currently, those models appear as an option in the dropdown model picker only in Copilot Chat in the Microsoft Copilot app and on the web. | Fix: Replace the GCC model-availability caveat and corresponding open question with: 'Microsoft's GCC-specific page currently documents Anthropic models only in the model picker in Copilot Chat in the Microsoft Copilot app and on the web, not in Edit with Copilot.' Cite https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc. Retain the provider row as a general Claude-access control, not a control over GCC editing. | Source: https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc
+- [contradicted, blocker] Risk assessment: Data exposure; rationale: risk / absence: The GCC editing data boundary is not yet confirmed despite the government overview's general Copilot rule. | Found: Microsoft Copilot ... operates entirely within the customer's U.S. government cloud tenant. ... Prompts, responses, and generated content stay in the government cloud. | Fix: Remove '; that statement is about Microsoft Copilot in general, so confirm it for this capability when documentation appears' from Data exposure. In the risk rationale replace 'the GCC editing data boundary is not yet confirmed' with 'Microsoft documents a government-cloud boundary for Copilot and an exception for enabled Anthropic models'. Keep the existing Anthropic exception and its GCC-specific citation; do not imply Anthropic is available in GCC Word editing. | Source: https://learn.microsoft.com/copilot/plan/gov-overview
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure; rationale: risk / behaviour: Microsoft's government overview says Copilot operates entirely within the customer's U.S. government cloud tenant. | Found: Microsoft Copilot is available in GCC, GCC High, and DoD, and operates entirely within the customer's U.S. government cloud tenant. | Fix: Add to the Data exposure bullet: 'However, Microsoft's GCC-specific Anthropic page says enabling those models processes Customer Data outside Microsoft's FedRAMP-authorized U.S. Government cloud.' Cite https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc. Narrow the risk rationale's 'inside existing Copilot licensing and cloud boundaries' to 'subject to existing Copilot licensing; the GCC editing data boundary is not yet confirmed'. | Source: https://learn.microsoft.com/copilot/plan/gov-overview
-- [supported, minor] Risk assessment: Data exposure / behaviour: Microsoft's government overview says prompts, responses and generated content stay in the government cloud. | Found: Prompts, responses, and generated content stay in the government cloud. | Fix: Qualify this general statement with: 'The GCC-specific Anthropic documentation gives an exception: when enabled, those models process Customer Data outside Microsoft's FedRAMP-authorized U.S. Government cloud.' Cite https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc; this is the same qualification needed for the preceding tenant-boundary claim. | Source: https://learn.microsoft.com/copilot/plan/gov-overview
-- [supported, minor] controls[0].note; Governance controls / role: The PowerShell route needs the User.ReadWrite.All permission scope. | Found: Assigning and removing licenses for a user requires the User.ReadWrite.All permission scope or one of the other permissions listed in the 'Assign license' Microsoft Graph API reference page. | Fix: Change 'PowerShell needs User.ReadWrite.All' to 'PowerShell can use User.ReadWrite.All' in the first row's note, and change the prose to 'the PowerShell route can use the User.ReadWrite.All permission scope and requires a UsageLocation on each user'. The cited page permits alternative assignment permissions. | Source: https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell
+- [supported, minor] front matter: licensing.model; Cost and licensing; rationale: cost / licensing: Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites. | Found: Microsoft 365 Copilot is an add-on plan with specific licensing prerequisites. | Fix: Keep the cited add-on statement, but append 'Microsoft's government plans page also lists Microsoft 365 Government G7 for GCC as including Copilot.' Cite https://www.microsoft.com/en-us/microsoft-365/enterprise/government-plans-and-pricing, which says 'Includes Microsoft 365 G5, Copilot, Agent 365, and Microsoft Entra Suite.' The service description and licence-options page do not mention that government bundle. | Source: https://learn.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot
+- [supported, minor] controls[1].ui / admin-path: The Anthropic path goes through Copilot > Settings > View all, the subprocessor page, Anthropic, terms acknowledgement and user access selection. | Found: Review the information in the Terms and conditions section, and if they're acceptable, select the I acknowledge and agree to the above terms checkbox. ... Under Choose which users can access Anthropic models | Fix: Use 'Copilot > Settings > View all > AI providers operating as Microsoft subprocessors > Available subprocessors for your organization > Anthropic > Terms and conditions > I acknowledge and agree to the above terms > Choose which users can access Anthropic models'. The omitted Terms and conditions is a heading, not a blocking navigation choice. Keep the GCC-specific citation; the general connect-to-ai-subprocessor page uses a different generic user-access label and omits the GCC acknowledgement step. | Source: https://learn.microsoft.com/copilot/implement/anthropic-non-federal-gcc
 -->

@@ -43,6 +43,9 @@ sources:
   - title: "Assign Microsoft 365 licenses to user accounts with PowerShell"
     url: "https://learn.microsoft.com/microsoft-365/enterprise/assign-licenses-to-user-accounts-with-microsoft-365-powershell"
     kind: "learn"
+  - title: "Data, Privacy, and Security for Microsoft Copilot"
+    url: "https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy"
+    kind: "learn"
 videos: []
 related: ["m365-copilot-attach-and-reference-an-image-when-creating-a-presentation-with-copilot-in-po","m365-copilot-reference-files-saved-in-sharepoint-libraries-and-onedrive-folders-when-creat","m365-copilot-reference-files-saved-in-sharepoint-libraries-and-onedrive-folders-whe-555894","powerpoint-async-notifications-for-powerpoint-agent-windows-desktop"]
 controls:
@@ -66,19 +69,23 @@ changes:
     note: "New briefing for the Desktop roadmap item 555881; Mac (555890) and Web (555882) are tracked as separate items."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 49 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected the controls note: the table documents licence assignment, not a feature-specific switch, and Microsoft's privacy page lists connected-experience controls that affect Copilot in PowerPoint."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 55 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 49
-  confirmed: 48
+  claims: 55
+  confirmed: 55
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "d1d336b1ab0fc83472e4c0dce6d4febd"
+  contradicted: 0
+  attempts: 0
+  hash: "354eb289285da0c2d73d60591eb6178f"
 ---
 
 ## What's changing
@@ -154,7 +161,9 @@ Users need Copilot in PowerPoint, which Microsoft ties to the Microsoft 365 Copi
 </tbody>
 </table>
 
-The only control documented for this feature is the Copilot licence itself; assigning licences needs at least the License Administrator or User Administrator role, per Microsoft's licence page. The licence decides who has Copilot in PowerPoint; it is not a switch for image attachment alone.
+The controls table documents Copilot licence assignment, not a feature-specific image-attachment switch; assigning licences needs at least the License Administrator or User Administrator role, per Microsoft's licence page. The licence decides who has Copilot in PowerPoint; it is not a switch for image attachment alone.
+
+Microsoft's privacy page says that if you turn off connected experiences that analyze your content on devices in your organization, Microsoft Copilot features won't be available to your users in PowerPoint and the other apps it lists. See [Data, Privacy, and Security for Microsoft Copilot](https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy).
 
 Microsoft's release note for this feature describes no administrator setting for image attachment.
 
@@ -169,10 +178,4 @@ Microsoft's release note for this feature describes no administrator setting for
 risk: Low. Users choose to attach an image to a prompt, and Microsoft's release note says the update does not alter security or privacy controls. The gap is what users choose to attach.
 cost: Low. Learn documents no separate meter or price for this feature; the known cost is the Microsoft 365 Copilot licence users already need for full Copilot in PowerPoint, plus communication time. Which licence tier covers image referencing is not yet published.
 impact: Low. Only users who attach an image to a Copilot prompt in PowerPoint notice the change; nothing in the sources says existing behaviour changes for anyone else.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: first prose sentence / absence: The only control documented for this feature is the Copilot licence itself. | Found: If you turn off connected experiences that analyze your content on devices in your organization, Microsoft Copilot features won't be available to your users in the following apps: - Excel - OneNote - Outlook - PowerPoint - Word | Fix: Replace 'The only control documented for this feature is the Copilot licence itself' with 'The controls table documents Copilot licence assignment, not a feature-specific image-attachment switch'. Keep the existing role and licence-control explanation. Do not claim that licence assignment is the only applicable control: https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy documents privacy controls affecting Copilot in PowerPoint. | Source: https://learn.microsoft.com/copilot/plan/microsoft-365-copilot-privacy
 -->

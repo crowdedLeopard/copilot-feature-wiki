@@ -40,6 +40,9 @@ sources:
   - title: "Set-CsTeamsMessagingPolicy"
     url: "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingpolicy"
     kind: "learn"
+  - title: "Limits and specifications for Microsoft Teams"
+    url: "https://learn.microsoft.com/microsoftteams/limits-specifications-teams"
+    kind: "learn"
 videos: []
 related: []
 controls:
@@ -57,19 +60,23 @@ changes:
     note: "First briefing for roadmap item 560813, using the roadmap record and Message Center notice MC1317836 updated 3 November 2026."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 47 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected the prerequisite statement: no admin role specific to this change is documented, and existing chat file sharing requires OneDrive for Business, tied to the SharePoint licence."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 51 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 46
+  claims: 51
+  confirmed: 51
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "fd0bc602d119b73f22a5b4a90dcc2490"
+  contradicted: 0
+  attempts: 0
+  hash: "6e0cf9414ed8bc49b2903cdd7248af72"
 ---
 
 ## What's changing
@@ -117,7 +124,7 @@ Microsoft's notice says all Microsoft Teams users who send files in chats or cha
 
 The record lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD, and the release phases Targeted Release and General Availability. The notice's General Availability schedule is headed Worldwide and gives no separate schedule for GCC, GCC High or DoD. Rollout dates are in What's changing.
 
-Microsoft states the feature is enabled by default for all tenants. No role or prerequisite is documented.
+Microsoft states the feature is enabled by default for all tenants. No administrator role specific to this change is documented. Existing chat file sharing requires OneDrive for Business, which is tied to the SharePoint licence ([Limits and specifications for Microsoft Teams](https://learn.microsoft.com/microsoftteams/limits-specifications-teams#storage)).
 
 ## Governance guidance
 
@@ -164,8 +171,8 @@ cost: Low. The only cost the sources show is admin time to brief users and updat
 impact: High. The notice says all Teams users who send files in chats or channels are affected, and the message box no longer blocks during an upload, which is a change to default behaviour.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Scope / absence: No prerequisite is documented. | Found: Users in private chat also can't share files because OneDrive for Business (which is tied to the SharePoint license) is required for that functionality. | Fix: Replace 'No role or prerequisite is documented.' with 'No administrator role specific to this change is documented. Existing chat file sharing requires OneDrive for Business, which is tied to the SharePoint licence.' Cite https://learn.microsoft.com/microsoftteams/limits-specifications-teams#storage. | Source: https://learn.microsoft.com/microsoftteams/limits-specifications-teams#storage
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] What's changing / record: Targeted Release rollout began in early August 2026. | Found: Targeted Release: Rollout will begin in early August 2026 (previously early July) | Fix: Replace 'Targeted Release rollout began in early August 2026' with 'Targeted Release rollout was scheduled to begin in early August 2026'. The notice gives a planned start, not confirmation that rollout actually began then.
 -->

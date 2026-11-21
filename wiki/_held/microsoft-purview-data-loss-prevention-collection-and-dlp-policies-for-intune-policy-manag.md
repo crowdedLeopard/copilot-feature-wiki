@@ -65,7 +65,7 @@ controls:
     scope: "app"
     ui:
       surface: "Microsoft Intune admin center"
-      path: "Apps > Protection > Create policy > iOS/iPadOS > Data protection"
+      path: "Apps > Protection > Create policy > iOS/iPadOS > Basics > Apps > Data protection > Restrict cut, copy and paste between other apps"
       docs: "https://learn.microsoft.com/intune/app-management/protection/create-policy"
     api:
       kind: "graph"
@@ -79,7 +79,7 @@ controls:
       path: "Solutions > Data Loss Prevention > Classifiers > Collection policies"
       docs: "https://learn.microsoft.com/purview/collection-policies-solution-overview"
     api: null
-    note: "Role listed: DLP Compliance Management. The reference lists no mobile managed-app data source at the time of writing (November 2026)."
+    note: "Role listed: DLP Compliance Management. No mobile managed-app data source is listed at the time of writing (November 2026). This route opens the policy list; use + Create policy, then + Add activities."
   - governs: "Purview DLP policy for Intune MAM-protected mobile apps"
     scope: "tenant"
     ui: null
@@ -94,19 +94,23 @@ changes:
     note: "New briefing: the roadmap plans Purview DLP and collection policies for Intune MAM-protected mobile apps; Learn does not yet document the feature."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 48 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Correction: stated the Intune licence requirement for existing app protection policies, reworded the controls note, completed the Intune path, and made the risk rationale and preview-date wording match the record."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 51 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 48
-  confirmed: 45
-  unconfirmed: 2
-  contradicted: 1
-  attempts: 1
-  hash: "49f23f0f642df96b13b15a94875d2665"
+  claims: 51
+  confirmed: 49
+  unconfirmed: 0
+  contradicted: 2
+  attempts: 2
+  hash: "bca4a0c879880c92258855644109fc2b"
 ---
 
 ## What's changing
@@ -147,7 +151,7 @@ No licence or meter for DLP in Intune MAM-protected mobile apps is yet published
 
 What is published covers collection policies. Microsoft's Purview service description says: there are no licensing requirements to apply collection policies, and you must be licensed for the workload for which you are creating the policy. The collection policy reference says some data sources are pay-as-you-go and need an Azure subscription linked before a policy is created: Copilot experiences, Enterprise AI and unmanaged cloud app activity detected through non-Microsoft SASE and secure enterprise browser integrations. Whether any of that applies to a mobile data source is not yet published.
 
-Indirect cost is admin time to write and test two sets of policies and to explain new paste behaviour to mobile users. The Intune app protection policy path is separate and its licensing is not covered by these pages.
+Indirect cost is admin time to write and test two sets of policies and to explain new paste behaviour to mobile users. The existing Intune app protection policy is separate. The [App Protection Policies Overview](https://learn.microsoft.com/intune/app-management/protection/overview) says users must have a Microsoft Intune licence assigned to their Microsoft Entra account.
 
 ## Scope
 
@@ -179,13 +183,13 @@ Clouds and platforms: the record lists Worldwide (Standard Multi-Tenant) and the
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Clipboard sharing between apps under Intune app protection</strong><br><small>App</small><br><small class="controls__note">Existing Intune control, not a control over the new Purview capability. UI setting: Restrict cut, copy and paste between other apps. The request body sets allowedOutboundClipboardSharingLevel.</small></td><td data-label="Admin UI"><strong>Microsoft Intune admin center</strong><br>Apps › Protection › Create policy › iOS/iPadOS › Data protection <a href="https://learn.microsoft.com/intune/app-management/protection/create-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/deviceAppManagement/iosManagedAppProtections</code> <a href="https://learn.microsoft.com/graph/api/intune-mam-iosmanagedappprotection-create" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Which events Purview collects from supported data sources</strong><br><small>Tenant</small><br><small class="controls__note">Role listed: DLP Compliance Management. The reference lists no mobile managed-app data source at the time of writing (November 2026).</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Loss Prevention › Classifiers › Collection policies <a href="https://learn.microsoft.com/purview/collection-policies-solution-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Clipboard sharing between apps under Intune app protection</strong><br><small>App</small><br><small class="controls__note">Existing Intune control, not a control over the new Purview capability. UI setting: Restrict cut, copy and paste between other apps. The request body sets allowedOutboundClipboardSharingLevel.</small></td><td data-label="Admin UI"><strong>Microsoft Intune admin center</strong><br>Apps › Protection › Create policy › iOS/iPadOS › Basics › Apps › Data protection › Restrict cut, copy and paste between other apps <a href="https://learn.microsoft.com/intune/app-management/protection/create-policy" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST /v1.0/deviceAppManagement/iosManagedAppProtections</code> <a href="https://learn.microsoft.com/graph/api/intune-mam-iosmanagedappprotection-create" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Which events Purview collects from supported data sources</strong><br><small>Tenant</small><br><small class="controls__note">Role listed: DLP Compliance Management. No mobile managed-app data source is listed at the time of writing (November 2026). This route opens the policy list; use + Create policy, then + Add activities.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Loss Prevention › Classifiers › Collection policies <a href="https://learn.microsoft.com/purview/collection-policies-solution-overview" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Purview DLP policy for Intune MAM-protected mobile apps</strong><br><small>Tenant</small><br><small class="controls__note">Planned per the roadmap item; no portal location or cmdlet parameter documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
-Two existing controls are the only ones Learn documents today. The Intune app protection policy is the current way to limit clipboard sharing in managed mobile apps; it is an Intune control, and Learn does not say Purview DLP reads or overrides it. Collection policies govern which events Purview collects and are not enforcement.
+The table shows two documented existing controls, distinct from the planned mobile DLP capability. The Intune app protection policy is the current way to limit clipboard sharing in managed mobile apps; it is an Intune control, and Learn does not say Purview DLP reads or overrides it. Collection policies govern which events Purview collects and are not enforcement.
 
 The third row states a gap: at the time of writing (November 2026), Learn documents no Purview DLP location or cmdlet parameter for Intune MAM-protected mobile apps. The Intune Graph operation shown creates an iOS/iPadOS policy; Android policies are not covered by this row.
 
@@ -193,12 +197,12 @@ The third row states a gap: at the time of writing (November 2026), Learn docume
 
 - Where in the Purview portal will an administrator create a DLP policy for Intune MAM-protected mobile apps, and what will the location be called? Watch the Learn data loss prevention pages.
 - Which licence and which meter, if any, apply to DLP and collection policies for mobile apps? Watch the Microsoft Purview service description.
-- What is the default when the capability reaches preview in January CY2027: does anything evaluate clipboard actions before an admin creates a policy? Watch Message center.
+- What is the default if the capability reaches its January CY2027 preview target: does anything evaluate clipboard actions before an admin creates a policy? Watch Message center.
 - Which Intune MAM-protected apps and which iOS/iPadOS and Android versions are supported, given the roadmap record lists Web as its platform?
 - If an Intune clipboard setting and a Purview DLP rule disagree, which one applies?
 
 <!-- rationale
-risk: Medium. Microsoft has not stated a default; if the new DLP checks stay unconfigured, today's Intune clipboard settings keep governing mobile apps, and the roadmap says Purview DLP will govern clipboard sharing once policies exist.
+risk: Medium. Microsoft has not stated the new control's default; this assessment assumes today's mobile data protection behaviour continues, rather than asserting what happens on arrival. The roadmap plans content-aware evaluation of clipboard actions against Purview DLP policies.
 cost: Low. The only cost the sources show is admin time; the licence and any meter for this mobile capability are not yet published, so budget requests should wait for Microsoft's licensing page.
 impact: Medium. People who use Intune MAM-protected apps on mobile devices would notice clipboard actions being evaluated; admins in Purview and Intune configure it. Roughly who is affected depends on policy scope.
 -->
@@ -206,11 +210,9 @@ impact: Medium. People who use Intune MAM-protected apps on mobile devices would
 <!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Cost and licensing: final paragraph / licensing: The cited pages do not cover licensing for Intune app protection policies. | Found: User requirements to use app protection policies ... The user must have a license for Microsoft Intune assigned to their Microsoft Entra account. | Fix: Replace 'The Intune app protection policy path is separate and its licensing is not covered by these pages' with 'The existing Intune app protection policy is separate. The App Protection Policies Overview says users must have a Microsoft Intune licence assigned to their Microsoft Entra account.' Keep the absence of licensing specific to the new Purview integration distinct. | Source: https://learn.microsoft.com/intune/app-management/protection/overview
-- [unsupported, major] Governance controls: first paragraph / behaviour: The two existing controls in the table are the only controls Learn documents today. | Found: Searched: "Purview" "mobile apps" "Intune" DLP policy. Opened Intune create-policy, iOS settings, collection overview and collection create/deploy; these establish the two selected controls, not an exhaustive inventory of all documented controls. | Fix: Replace 'Two existing controls are the only ones Learn documents today' with 'The table shows two documented existing controls, distinct from the planned mobile DLP capability.'
+- [contradicted, blocker] Risk assessment: Security & identity; Scope / absence: The roles needed to manage the mobile DLP policy are not documented. | Found: The account you use to create and deploy policies must be a member of one of these role groups: Compliance administrator; Compliance data administrator; Information Protection; Information Protection Admin; Security administrator | Fix: Replace the role-absence wording in Risk assessment and Scope with: 'Microsoft's general DLP guidance requires the account creating and deploying policies to belong to Compliance administrator, Compliance data administrator, Information Protection, Information Protection Admin or Security administrator. Additional permissions specific to the mobile integration are not yet documented.' Cite https://learn.microsoft.com/purview/dlp-create-deploy-policy. Keep the separate absence concerning the integration's evaluation identity. | Source: https://learn.microsoft.com/purview/dlp-create-deploy-policy
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The Intune route to clipboard controls is Apps > Protection > Create policy > iOS/iPadOS > Data protection. | Found: Select Apps > Protection. ... Select Create policy and select either iOS/iPadOS or Android. ... Click Next to display the Data protection page. ... including cut, copy, paste, and save-as restrictions. | Fix: Complete the route as 'Apps > Protection > Create policy > iOS/iPadOS > Basics > Apps > Data protection > Restrict cut, copy and paste between other apps'. The Basics fields and app targeting are pass-through or scope selections, not blockers. The final setting label is documented at https://learn.microsoft.com/intune/app-management/protection/ref-settings-ios. | Source: https://learn.microsoft.com/intune/app-management/protection/create-policy
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: Collection policies are at Microsoft Purview portal > Solutions > Data Loss Prevention > Classifiers > Collection policies. | Found: In the Microsoft Purview portal, select Solutions > Data Loss Prevention > Classifiers > Collection policies. | Fix: The path correctly reaches the policy list. Qualify the row note with 'This route opens the collection policy list; use + Create policy to configure a policy, then + Add activities to choose activities to detect', as documented at the already cited https://learn.microsoft.com/purview/collection-policies-create-deploy-policy. | Source: https://learn.microsoft.com/purview/collection-policies-solution-overview
-- [unsupported, minor] rationale: risk / default: If the new checks remain unconfigured, existing Intune clipboard settings keep governing, and the roadmap says Purview governs once policies exist. | Found: Searched: Purview Intune mobile DLP clipboard no policy configured default enforcement identity evaluation precedence. Read roadmap and Purview Graph security overview; neither states this integration requires newly configured policies or excludes automatic use of existing or default policies. | Fix: Replace the risk rationale with 'Medium. Microsoft has not stated the new control's default; this assessment assumes today's mobile data protection behaviour continues, rather than asserting what happens on arrival. The roadmap plans content-aware evaluation of clipboard actions against Purview DLP policies.'
-- [supported, minor] Open questions: default-state question / date: The capability reaches preview in January CY2027. | Found: "status": "In development", "previewDate": "January CY2027" | Fix: Replace 'when the capability reaches preview in January CY2027' with 'if the capability reaches its January CY2027 preview target'.
+- [supported, minor] controls[1].ui; controls[1].note; Governance controls table / admin-path: Solutions > Data Loss Prevention > Classifiers > Collection policies opens the Purview collection policy list, with + Create policy and + Add activities used for configuration. | Found: In the Microsoft Purview portal, select Solutions > Data Loss Prevention > Classifiers > Collection policies. | Fix: The printed route correctly reaches the policy list but stops before the activity control. Extend it to 'Solutions > Data Loss Prevention > Classifiers > Collection policies > + Create policy > + Add activities'; retain the list-versus-configuration distinction in the note. The creation and activity steps are at https://learn.microsoft.com/purview/collection-policies-create-deploy-policy; conditions are optional per https://learn.microsoft.com/purview/collection-policies-policy-reference. | Source: https://learn.microsoft.com/purview/collection-policies-solution-overview
+- [supported, minor] Governance guidance: After rollout / behaviour: Intune app protection reports can be reviewed. | Found: You can monitor the status of the app protection policies that you applied to users from the Intune app protection pane in Intune. Additionally, you can find information about the users affected by app protection policies, policy compliance status, and any issues | Fix: Cite https://learn.microsoft.com/intune/app-management/protection/monitor-policies for the recommendation to compare results with Intune app protection reports. | Source: https://learn.microsoft.com/intune/app-management/protection/monitor-policies
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist names monitoring controls that have no corresponding controls-table row. | Found: Review DLP and collection results in the Purview portal and compare them with Intune app protection reports. / Table rows: Clipboard sharing between apps; Which events Purview collects; Purview DLP policy for Intune MAM-protected mobile apps. | Fix: The After rollout step naming Purview results and Intune app protection reports has no monitoring row. Remove that checklist step rather than adding unverified control rows.
 -->

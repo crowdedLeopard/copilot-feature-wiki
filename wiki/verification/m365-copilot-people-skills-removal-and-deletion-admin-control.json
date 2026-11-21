@@ -1,0 +1,765 @@
+{
+  "slug": "m365-copilot-people-skills-removal-and-deletion-admin-control",
+  "roadmapId": 565905,
+  "title": "Microsoft 365 Copilot: People Skills removal and deletion admin control",
+  "status": "verified-with-gaps",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 59,
+    "confirmed": 57,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 0,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "The briefing passes: Microsoft supports the deletion scope, administrator roles, timings, licensing and opt-in behaviour. The narrower policy's UI path stops early, and the export and audit checklist steps have no corresponding controls-table entries; these are minor findings.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; front matter: products",
+      "type": "record",
+      "claim": "The item is a Microsoft Copilot (Microsoft 365) People Skills removal and deletion administrator control.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Copilot (Microsoft 365): People Skills- removal and deletion admin control",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), with no US Government cloud listed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-08-24T22:41:12.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-08-24T22:41:12\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap describes a new tenant-wide People Skills removal control for offboarding in support of governance and compliance.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "A new admin control in the People Skills settings lets administrators permanently remove their organization's People Skills data from the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: impact",
+      "type": "record",
+      "claim": "The removal control is admin-only.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The control is admin-only with no automatic changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: defaultState; summary; Why it matters; rationales",
+      "type": "default",
+      "claim": "The removal control is admin-opt-in: its arrival causes no automatic change, and nothing is deleted unless an administrator uses it.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "The control is admin-only with no automatic changes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "controls[0].ui; Governance controls table; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The Microsoft 365 admin center route is Copilot > Settings > Data access > People Skills in Microsoft Copilot > Settings > People Skills removal and deletion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-manage-skills-library",
+      "quote": "select Settings > Data access > People Skills in Microsoft Copilot.\nOn the Manage People Skills for your organization page, select Settings.\nSelect People Skills removal and deletion.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[0].api; Governance controls table; Open questions",
+      "type": "absence",
+      "claim": "No PowerShell or Graph operation for tenant-level People Skills removal is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: People Skills tenant removal deletion PowerShell Graph API offboard delete skills library. Read manage-skills-library and sharing-inferencing-controls; search returned Remove-MgBetaUserProfileSkill for individual skills, not tenant removal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "summary; controls[0].governs; What's changing; Risk assessment; Scope",
+      "type": "behaviour",
+      "claim": "Removal deletes the tenant's entire skills library and all library data, including custom skills.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-manage-skills-library",
+      "quote": "Your organization’s skills library and all library data, including any custom skills.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "summary; controls[0].governs; What's changing; Risk assessment; Scope",
+      "type": "behaviour",
+      "claim": "Removal deletes all users' confirmed, inferred and imported skills data, not only a selected group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-manage-skills-library",
+      "quote": "All users’ confirmed, inferred, and imported skills data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance; rationale: impact",
+      "type": "behaviour",
+      "claim": "Users no longer see skills on their profile card after removal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-manage-skills-library",
+      "quote": "Users no longer see skills on their profile card.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Change & support; rationale: impact",
+      "type": "behaviour",
+      "claim": "After removal, skills data no longer flows into Microsoft Copilot, Microsoft Viva or other Microsoft 365 skills experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-manage-skills-library",
+      "quote": "Skills data no longer flows into Microsoft Copilot, Microsoft Viva, or other Microsoft 365 skills experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Most data is deleted within 48-72 hours.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-manage-skills-library",
+      "quote": "Most data is deleted within 48–72 hours.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Viva Learning skills data can take up to one week to be fully deleted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-manage-skills-library",
+      "quote": "Skills data in Viva Learning can take up to one week to be fully deleted",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "The Viva Learning skills experience turns off immediately.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-manage-skills-library",
+      "quote": "the Viva Learning skills experience is turned off immediately.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "summary; controls[0].note; What's changing; Risk assessment; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "People Skills removal is permanent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-manage-skills-library",
+      "quote": "Removing People Skills is permanent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "summary; controls[0].note; What's changing; Risk assessment; Governance guidance",
+      "type": "behaviour",
+      "claim": "Setting up People Skills again does not restore the deleted skills library or user skills data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-manage-skills-library",
+      "quote": "Deleted data (such as your organization’s skill library and user skills) will not be restored if you set up People Skills again later.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Microsoft recommends waiting at least one week before setting up People Skills again.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-manage-skills-library",
+      "quote": "We recommend waiting for at least 1 week before setting up People Skills again to ensure previous data is removed completely.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Cost and licensing; Governance guidance: After rollout; rationale: cost",
+      "type": "behaviour",
+      "claim": "Returning to People Skills after removal requires repeating the initial setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-manage-skills-library",
+      "quote": "If you want to use People Skills again later, you must complete the initial setup again.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope; Cost and licensing",
+      "type": "availability",
+      "claim": "People Skills must already be deployed in the tenant for the removal control to be available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-manage-skills-library",
+      "quote": "People Skills must already be set up in your tenant. The control isn’t available to tenants that haven’t deployed People Skills.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].note; Risk assessment: Security & identity; Scope; Governance guidance; rationale: risk",
+      "type": "role",
+      "claim": "A Global Administrator, Knowledge Admin or AI admin can use the removal control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-manage-skills-library",
+      "quote": "You must be a Global Administrator, Knowledge Admin or AI admin to use this control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity",
+      "type": "role",
+      "claim": "The setup page lists AI administrator and Knowledge administrator as the roles permitted to set up People Skills.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-setup",
+      "quote": "The following roles have permission to set up People Skills:\n- AI administrator\n- Knowledge administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The removal confirmation dialog lists the data that will be removed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-manage-skills-library",
+      "quote": "Review the confirmation dialog, which lists the data that will be removed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The confirmation action is labelled Delete People Skills.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-manage-skills-library",
+      "quote": "To confirm, follow the prompts in the dialog, and then select Delete People Skills.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Autonomy & actions; Governance controls",
+      "type": "behaviour",
+      "claim": "Deletion begins automatically after the administrator confirms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-manage-skills-library",
+      "quote": "After you confirm, deletion begins automatically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "No further administrator action is needed to execute deletion after confirmation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-manage-skills-library",
+      "quote": "You don’t need to take any further action.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The manage page lists an import or export option that can export the custom skills library.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-manage-skills-library",
+      "quote": "Import or export skills: Import user skills from third-party platforms and export your custom skills library or confirmed user skills for each individual user in your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "The import or export option covers confirmed user skills for individual users in the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-manage-skills-library",
+      "quote": "export your custom skills library or confirmed user skills for each individual user in your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "An existing narrower alternative is deleting selected individual library skills.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-manage-skills-library",
+      "quote": "To delete skills, select the skills you want to delete. You can filter by domain or search by skill name. Select Delete skills.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "People Skills comes with Microsoft Copilot or Viva licences, supporting the included licensing model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-overview",
+      "quote": "People Skills comes with your Microsoft Copilot or Viva licenses and doesn't need a separate license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "People Skills does not need a separate licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-overview",
+      "quote": "People Skills comes with your Microsoft Copilot or Viva licenses and doesn't need a separate license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The overview describes the People Skills - Foundation service plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-overview",
+      "quote": "People Skills - Foundation service plan",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The overview describes the People Skills - Advanced service plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-overview",
+      "quote": "People Skills - Advanced service plan",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The overview describes the Microsoft Copilot in Productivity Apps service plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-overview",
+      "quote": "Microsoft Copilot in Productivity Apps service plan",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The removal section names setup and an administrator role as prerequisites but names no licence or meter of its own.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: People Skills removal deletion licensing price meter prerequisites. Read the removal section and its prerequisites on manage-skills-library, plus overview Licensing; no removal-specific licence or meter was named.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The overview footnote says People Skills is available in the Microsoft 365 commercial public cloud, excluding EDU.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-overview",
+      "quote": "People skills are available in the Microsoft 365 commercial public cloud, excluding EDU.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Microsoft 365 admin center route Settings > Viva > Settings > Feature access management > People Skills reaches the user experiences policy control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-sharing-inferencing-controls",
+      "quote": "Navigate to Settings in the left rail of the Microsoft 365 admin center\nSelect Viva\nSelect Settings and then\nSelect Feature access management\nOnce you're in Feature access management, select People Skills",
+      "severity": "minor",
+      "fix": "Extend controls[1].ui.path and the rendered path to 'Settings > Viva > Settings > Feature access management > People Skills > Apps and services: People Skills > Feature: People Skills user experiences > Access setting'. The current path stops on the correct page; the cited page then instructs selecting the app, feature and access setting."
+    },
+    {
+      "n": 43,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Add-VivaModuleFeaturePolicy -ModuleId PeopleSkills -FeatureId SkillsUserExperienceControl -Name MultipleGroups -IsFeatureEnabled $false -GroupIds group1@contoso.com,group2@contoso.com disables People Skills user experiences for the specified groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-sharing-inferencing-controls",
+      "quote": "Disable People Skills user experiences for the user groups:\nAdd-VivaModuleFeaturePolicy -ModuleId PeopleSkills -FeatureId SkillsUserExperienceControl -Name MultipleGroups -IsFeatureEnabled $false -GroupIds group1@contoso.com,group2@contoso.com,57680382-61a5-4378-85ad-f72095d4e9c3",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[1].governs and scope; Why it matters; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "The existing People Skills user experiences control can turn experiences on or off for the tenant, specific groups or individual users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-sharing-inferencing-controls",
+      "quote": "As an Admin, you can use the People Skills user experiences control to turn off People Skills user experiences for your entire organization, user group subsets, or individual users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[1].note; Why it matters; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Turning off People Skills user experiences permanently deletes affected users' historical confirmed, AI-inferred and imported skills data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-sharing-inferencing-controls",
+      "quote": "Turning off People Skills permanently deletes all historical user-level data for the affected users, including confirmed skills, AI-inferred skills, and any imported skills.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[1].note; Why it matters; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "The user experiences control does not delete or deprovision the skills library.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-sharing-inferencing-controls",
+      "quote": "The People Skills user experiences control doesn't delete or deprovision the skills library. Only user level data is deleted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "People Skills user experiences is the parent of the other People Skills administrator access controls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-sharing-inferencing-controls",
+      "quote": "This control is a parent to all other admin controls. If this control is turned off, then all other controls are turned off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Feature access management changes take up to 24 hours to complete.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-sharing-inferencing-controls",
+      "quote": "Changes in Feature access management take up to 24 hours to complete",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Feature access management changes may take up to 72 hours to propagate across all experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-sharing-inferencing-controls",
+      "quote": "end-to-end changes may take up to 72 hours to fully propagate across all experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Change & support; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "People Skills data is used in people-related Copilot queries.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-overview",
+      "quote": "If you use Microsoft Copilot, shared skills surface in people related queries in Copilot to help form connections and find people with the skills you need.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Open questions: Viva Insights",
+      "type": "behaviour",
+      "claim": "People Skills data is shared with Viva Insights for experiences such as the skills landscape report.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-sharing-inferencing-controls",
+      "quote": "If enabled, People Skills data (including AI-Inferred Skills data that a user hasn't confirmed) is sent to Viva Insights to populate skills dashboards and workplace analytics.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Open questions: UPA",
+      "type": "behaviour",
+      "claim": "UPA skills are hidden from the Microsoft 365 profile card when People Skills is deployed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-overview",
+      "quote": "those skills are hidden from the Microsoft 365 profile card and editor when you deploy People Skills, and replaced with this new experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance guidance: After rollout; Open questions: audit",
+      "type": "behaviour",
+      "claim": "TenantSkillsLibraryDeleted is a People Skills audit operation generated when the tenant skills library is removed during offboarding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "Deleted tenant skills library | TenantSkillsLibraryDeleted | Generated when the tenant skills library is removed as part of offboarding.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance guidance: After rollout; Open questions: audit",
+      "type": "behaviour",
+      "claim": "UserDataDeleted is a People Skills audit operation generated when user data is deleted during tenant offboarding.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "Deleted user data | UserDataDeleted | Generated when user data is deleted during tenant offboarding.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance guidance: After rollout; Open questions: audit",
+      "type": "behaviour",
+      "claim": "TenantOffboardCompleted is a People Skills audit operation generated when offboarding completes and all tenant data has been deleted.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "Completed tenant offboarding | TenantOffboardCompleted | Generated when tenant offboarding completes and all tenant data has been deleted.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Open questions: audit",
+      "type": "absence",
+      "claim": "The documentation describes offboarding audit operations without explicitly naming the removal control as their trigger.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: People Skills removal deletion audit operations UPA Viva Insights historical data; audit-log-activities People Skills TenantSkillsLibraryDeleted UserDataDeleted TenantOffboardCompleted. Read the audit excerpts and removal section; they do not explicitly map the control to these operations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Governance guidance: Before rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to use the export option, but the controls table has no export row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Export anything you need to keep, using the import or export option on the manage page. / The controls table contains only permanent removal and People Skills user experiences.",
+      "severity": "minor",
+      "fix": "Remove the 'Export anything you need to keep, using the import or export option on the manage page, which covers the custom skills library and confirmed user skills' bullet from Governance guidance: Before rollout; the existing Risk assessment export advice can remain. Do not add a control row."
+    },
+    {
+      "n": 58,
+      "where": "Governance guidance: After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist tells administrators to search the audit log, but the controls table has no audit row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Search the audit log for the People Skills activities TenantSkillsLibraryDeleted, UserDataDeleted and TenantOffboardCompleted. / The controls table contains only permanent removal and People Skills user experiences.",
+      "severity": "minor",
+      "fix": "Remove the 'Search the audit log for the People Skills activities TenantSkillsLibraryDeleted, UserDataDeleted and TenantOffboardCompleted, and note which appear for your run' bullet, including its concept link, from Governance guidance: After rollout; retain the documented operation names in Open questions. Do not add a control row."
+    },
+    {
+      "n": 59,
+      "where": "front matter: cost; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "The low cost rating represents indirect administrator and re-setup effort rather than a separate People Skills licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/manage/people-skills-overview",
+      "quote": "People Skills comes with your Microsoft Copilot or Viva licenses and doesn't need a separate license.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T14:01:55.656Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=565905",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/people-skills-manage-skills-library",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/people-skills-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/people-skills-sharing-inferencing-controls",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/manage/people-skills-setup",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-log-activities",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Permanent removal of the tenant's People Skills library and all users' skills data",
+        "docs": "https://learn.microsoft.com/copilot/manage/people-skills-manage-skills-library",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Settings",
+          "Data access",
+          "People Skills in Microsoft Copilot",
+          "Settings",
+          "People Skills removal and deletion"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether People Skills user experiences are on for the tenant, groups or users (deletes user-level data, not the library)",
+        "docs": "https://learn.microsoft.com/copilot/manage/people-skills-sharing-inferencing-controls",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Viva",
+          "Settings",
+          "Feature access management",
+          "People Skills"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether People Skills user experiences are on for the tenant, groups or users (deletes user-level data, not the library)",
+        "docs": "https://learn.microsoft.com/copilot/manage/people-skills-sharing-inferencing-controls",
+        "reachable": true,
+        "token": "Add-VivaModuleFeaturePolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

@@ -41,12 +41,12 @@ videos: []
 related: []
 controls:
   - governs: "Enhanced Security Mode Plus preset or custom modes"
-    scope: "tenant"
+    scope: "other"
     ui: null
     api: null
-    note: "The roadmap describes admin-configurable preset and custom modes; Microsoft Learn documents no setting or policy for them at the time of writing (November 2026)."
+    note: "The roadmap describes admin-configurable preset and custom modes; Microsoft Learn documents no setting or policy for them at the time of writing (November 2026). The scope of the Plus control is not yet documented."
   - governs: "Whether Enhanced Security Mode is on, and in which mode"
-    scope: "tenant"
+    scope: "other"
     ui:
       surface: "Group Policy (ADMX)"
       path: "Administrative Templates > Microsoft Edge > Enhance the security state in Microsoft Edge"
@@ -55,9 +55,9 @@ controls:
       kind: "other"
       call: "Registry: SOFTWARE\\Policies\\Microsoft\\Edge, value EnhanceSecurityMode (REG_DWORD)"
       docs: "https://learn.microsoft.com/deployedge/microsoft-edge-policies/enhancesecuritymode"
-    note: "Existing ESM policy: 0 = StandardMode (off), 1 = BalancedMode, 2 = StrictMode. Roadmap says Plus applies when ESM is enabled."
+    note: "Existing ESM policy: 0 = StandardMode (off), 1 = BalancedMode, 2 = StrictMode. Roadmap says Plus applies when ESM is enabled. This existing policy is per profile."
   - governs: "WebGL access for web pages (existing alternative to a Plus WebGL restriction)"
-    scope: "tenant"
+    scope: "other"
     ui:
       surface: "Group Policy (ADMX)"
       path: "Administrative Templates > Microsoft Edge > Disable support for 3D graphics APIs"
@@ -66,7 +66,7 @@ controls:
       kind: "other"
       call: "Registry: SOFTWARE\\Policies\\Microsoft\\Edge, value Disable3DAPIs (REG_DWORD)"
       docs: "https://learn.microsoft.com/deployedge/microsoft-edge-policies/disable3dapis"
-    note: "Existing policy, not a Plus setting. Covers WebGL and the Pepper 3D API only."
+    note: "Existing policy, not a Plus setting. Covers WebGL and the Pepper 3D API only. This existing policy is per profile and does not apply to a profile signed in with a Microsoft account."
 confidence: "medium"
 created: "2026-11-21"
 updated: "2026-11-21"
@@ -76,19 +76,23 @@ changes:
     note: "New briefing: Plus is known only from the roadmap; the existing ESM and WebGL policies are listed as today's controls."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 63 statements contradicted, 4 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected after the independent check: the unconfigured-Plus bullet now says Microsoft has not stated the behaviour, and the three controls rows carry scope Other, with the per-profile notes from Learn."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 66 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 63
-  confirmed: 59
-  unconfirmed: 4
+  claims: 66
+  confirmed: 66
+  unconfirmed: 0
   contradicted: 0
-  attempts: 1
-  hash: "164e66c521ed0302ea0150da5fe1edac"
+  attempts: 0
+  hash: "8cb3ffc33bc2ee6c235295da6a510e9f"
 ---
 
 ## What's changing
@@ -114,7 +118,7 @@ Microsoft has not stated what happens on arrival, and no source says existing ES
 **Security & identity**
 
 - On the roadmap's wording, Plus applies when ESM is enabled. A tenant that leaves the EnhanceSecurityMode policy at StandardMode, which Learn says turns the enhanced mode off, would not be covered by Plus.
-- If Plus is left unconfigured, the exposure is today's behaviour; Microsoft has not stated a default for Plus.
+- Microsoft has not stated what happens if Plus is left unconfigured. For this risk assessment, assume today's behaviour continues.
 
 **Autonomy & actions**
 
@@ -162,9 +166,9 @@ The roadmap says the protections apply when ESM is enabled, so ESM is the stated
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Enhanced Security Mode Plus preset or custom modes</strong><br><small>Tenant</small><br><small class="controls__note">The roadmap describes admin-configurable preset and custom modes; Microsoft Learn documents no setting or policy for them at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Whether Enhanced Security Mode is on, and in which mode</strong><br><small>Tenant</small><br><small class="controls__note">Existing ESM policy: 0 = StandardMode (off), 1 = BalancedMode, 2 = StrictMode. Roadmap says Plus applies when ESM is enabled.</small></td><td data-label="Admin UI"><strong>Group Policy (ADMX)</strong><br>Administrative Templates › Microsoft Edge › Enhance the security state in Microsoft Edge <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/enhancesecuritymode" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry: SOFTWARE\Policies\Microsoft\Edge, value EnhanceSecurityMode (REG_DWORD)</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/enhancesecuritymode" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>WebGL access for web pages (existing alternative to a Plus WebGL restriction)</strong><br><small>Tenant</small><br><small class="controls__note">Existing policy, not a Plus setting. Covers WebGL and the Pepper 3D API only.</small></td><td data-label="Admin UI"><strong>Group Policy (ADMX)</strong><br>Administrative Templates › Microsoft Edge › Disable support for 3D graphics APIs <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/disable3dapis" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry: SOFTWARE\Policies\Microsoft\Edge, value Disable3DAPIs (REG_DWORD)</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/disable3dapis" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Enhanced Security Mode Plus preset or custom modes</strong><br><small class="controls__note">The roadmap describes admin-configurable preset and custom modes; Microsoft Learn documents no setting or policy for them at the time of writing (November 2026). The scope of the Plus control is not yet documented.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Whether Enhanced Security Mode is on, and in which mode</strong><br><small class="controls__note">Existing ESM policy: 0 = StandardMode (off), 1 = BalancedMode, 2 = StrictMode. Roadmap says Plus applies when ESM is enabled. This existing policy is per profile.</small></td><td data-label="Admin UI"><strong>Group Policy (ADMX)</strong><br>Administrative Templates › Microsoft Edge › Enhance the security state in Microsoft Edge <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/enhancesecuritymode" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry: SOFTWARE\Policies\Microsoft\Edge, value EnhanceSecurityMode (REG_DWORD)</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/enhancesecuritymode" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>WebGL access for web pages (existing alternative to a Plus WebGL restriction)</strong><br><small class="controls__note">Existing policy, not a Plus setting. Covers WebGL and the Pepper 3D API only. This existing policy is per profile and does not apply to a profile signed in with a Microsoft account.</small></td><td data-label="Admin UI"><strong>Group Policy (ADMX)</strong><br>Administrative Templates › Microsoft Edge › Disable support for 3D graphics APIs <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/disable3dapis" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>API</strong><br><code>Registry: SOFTWARE\Policies\Microsoft\Edge, value Disable3DAPIs (REG_DWORD)</code> <a href="https://learn.microsoft.com/deployedge/microsoft-edge-policies/disable3dapis" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -181,13 +185,4 @@ No Plus setting is documented, so the first row is empty. The EnhanceSecurityMod
 risk: Low. The roadmap describes the protections as optional and admin-configurable, and no source says existing behaviour changes on arrival, so the exposure left at default is today's behaviour.
 cost: Low. The only cost the sources show is admin time to pilot and communicate; a licence for Plus is not yet published.
 impact: Low. Admins configure it, so users notice only where restrictions on WebGL, hardware-access web APIs or external protocol launches are enabled.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Risk assessment: Security & identity / default: If Plus is left unconfigured, the exposure is today's behaviour. | Found: Searched: Microsoft Edge "Enhanced Security Mode Plus" "default" "rollout". Read roadmap, ESM overview, EnhanceSecurityMode, release-note excerpts and Edge policy index matches; no source states the behaviour of an unconfigured Plus control. | Fix: Replace the bullet with: 'Microsoft has not stated what happens if Plus is left unconfigured. For this risk assessment, assume today's behaviour continues.' Keep defaultState as unknown; the rationale may retain today's behaviour as the assessment assumption, not a documented default.
-- [unsupported, blocker] controls[0].scope; Governance controls table / applicability: The undocumented Plus preset or custom-mode control has tenant-wide scope. | Found: Searched: "Enhanced Security Mode Plus" Microsoft Edge preset custom policy default licensing role rollout. Read roadmap and searched complete Edge policy index for EnhanceSecurity and Plus; roadmap says admin-configurable but provides no enforcement scope. | Fix: Set controls[0].scope to other and add to its existing note: 'The scope of the Plus control is not yet documented.' Replace the rendered Tenant label for this row with Other.
-- [unsupported, blocker] controls[1].scope; Governance controls table / applicability: The listed Group Policy and registry ESM control has tenant-wide scope. | Found: Searched: Microsoft Edge EnhanceSecurityMode Disable3DAPIs tenant scope per profile Group Policy registry enforcement. Read EnhanceSecurityMode: 'Per Profile: Yes'; its Group Policy and registry sections do not establish tenant-wide enforcement. | Fix: Set controls[1].scope to other and add to its note: 'This existing policy is per profile.' Replace the rendered Tenant label for this row with Other. The per-profile property is documented at https://learn.microsoft.com/deployedge/microsoft-edge-policies/enhancesecuritymode.
-- [unsupported, blocker] controls[2].scope; Governance controls table / applicability: The listed Group Policy and registry Disable3DAPIs control has tenant-wide scope. | Found: Searched: Microsoft Edge EnhanceSecurityMode Disable3DAPIs tenant scope per profile Group Policy registry enforcement. Read Disable3DAPIs: 'Per Profile: Yes'; 'Applies to a profile that is signed in with a Microsoft account: No'. No tenant-wide scope stated. | Fix: Set controls[2].scope to other and add to its note: 'This existing policy is per profile and does not apply to a profile signed in with a Microsoft account.' Replace the rendered Tenant label for this row with Other. Cite https://learn.microsoft.com/deployedge/microsoft-edge-policies/disable3dapis.
 -->

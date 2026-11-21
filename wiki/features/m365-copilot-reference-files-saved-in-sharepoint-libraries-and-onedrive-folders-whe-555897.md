@@ -81,19 +81,23 @@ changes:
     note: "Corrected the licence-assignment note: it governs the add-on tier, not all Copilot in PowerPoint access. Removed the permissions-review wording that had no matching controls row."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 54 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-21"
+    note: "Corrected the arrival wording: Learn's release notes describe gradual rollout within a tenant, and the feature-specific default state is still not stated."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 49 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-21"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 53
+  claims: 49
+  confirmed: 49
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "13caf02fd228f1d1a4cd05dc619abd90"
+  contradicted: 0
+  attempts: 0
+  hash: "98fcac5582708a1ef63e56375ef68970"
 ---
 
 ## What's changing
@@ -108,7 +112,7 @@ The roadmap record shows status Launched, release phase General Availability, cl
 
 The change makes it easier to pull existing content into a deck: a document name in a prompt is enough, with no need to find and attach the file. Learn's privacy page says Microsoft Copilot presents only data that each individual can access using the same underlying controls as other Microsoft 365 services, so this adds no permission. In tenants where libraries or OneDrive folders are overshared, however, a user can now draw on that content without searching for it first, which makes oversharing cleanup more relevant to PowerPoint on Mac.
 
-Microsoft has not stated what happens on arrival, so base planning on no source saying existing behaviour changes. No admin action is forced, which is why this is a review item: check that the controls you already rely on for Copilot cover this path, and tell Mac users how the feature works.
+The release notes describe gradual rollout to a subset of users within a tenant before expansion across the organization; this entry does not specify the feature-specific default state. Base planning on no source saying existing behaviour changes. No admin action is forced, which is why this is a review item: check that the controls you already rely on for Copilot cover this path, and tell Mac users how the feature works.
 
 ## Risk assessment
 
@@ -181,19 +185,11 @@ Restricted Content Discovery works at site level, changes discoverability and no
 
 - Does Restricted Content Discovery stop Copilot in PowerPoint from using a SharePoint file that a user names in a prompt? Watch the Restricted Content Discovery page on Learn.
 - Which licence entitles a user to reference SharePoint and OneDrive files by name: the Microsoft 365 Copilot add-on, or also Microsoft 365 Copilot (Basic)? Watch the Copilot overview page and the release notes.
-- Is the capability on for every eligible user on arrival, or does it roll out in stages by tenant? Watch Message center and the release notes.
+- What is the feature-specific default state? Watch Message center and the release notes.
 - Which sensitivity-label and data loss prevention behaviours apply to a file referenced by name in PowerPoint on Mac? Watch the Microsoft Purview pages for Copilot.
 
 <!-- rationale
 risk: Low. Learn says Copilot presents only data each person can already access, so no new permission is granted, but a file name in a prompt now draws overshared content into a deck.
 cost: Low. The release note names no licence or meter for this feature, so the cost the sources show is admin time; entitlement specific to this feature is not yet published.
 impact: Low. Only people who create presentations with Copilot in PowerPoint on Mac notice it, as a new way to name source files in a prompt.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Why it matters; Open questions: arrival / absence: Microsoft has not stated what happens on arrival, leaving staged rollout as an open question. | Found: Copilot features are introduced using a safe deployment model, gradually rolling out to a subset of users within a tenant before expanding across the organization. | Fix: Replace 'Microsoft has not stated what happens on arrival' with 'The release notes describe gradual rollout to a subset of users within a tenant before expansion across the organization; this entry does not specify the feature-specific default state.' Replace the arrival question with 'What is the feature-specific default state? Watch Message center and the release notes.' | Source: https://learn.microsoft.com/microsoft-365/copilot/release-notes
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].governs; Risk assessment: Data exposure; Governance guidance / applicability: Restricted Content Discovery limits discovery of selected SharePoint sites in organization-wide search and Microsoft Copilot responses. | Found: Restricted Content Discovery helps you limit discovery of content from specific SharePoint sites, including recently interacted files, in organization-wide search results and Microsoft Copilot responses | Fix: Add: 'Microsoft pages differ on recently interacted content: the Restricted Content Discovery page includes recently interacted files in its scope, while https://learn.microsoft.com/copilot/manage/copilot-search-manage#manage-access-to-files-and-sites says sites are excluded unless the user owns or has recently interacted with their content.' Cite that second page. | Source: https://learn.microsoft.com/sharepoint/restricted-content-discovery
 -->

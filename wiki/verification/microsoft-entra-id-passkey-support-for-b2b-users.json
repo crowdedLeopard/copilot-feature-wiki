@@ -1,0 +1,712 @@
+{
+  "slug": "microsoft-entra-id-passkey-support-for-b2b-users",
+  "roadmapId": 569432,
+  "title": "Microsoft Entra ID: passkey support for B2B guest users",
+  "status": "held",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-21",
+    "reasons": [
+      "1 blocking finding (claim 31)"
+    ]
+  },
+  "counts": {
+    "claims": 50,
+    "confirmed": 48,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 6
+  },
+  "summary": "Hold: the authentication-strength API creates a custom strength but does not make guests use passkeys to access a resource, as its control row claims. The roadmap facts and licensing statements are supported, and the briefing correctly distinguishes Microsoft's plan from Learn's current guest-registration restrictions.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Scope: Who; rationale: impact",
+      "type": "record",
+      "claim": "Microsoft plans resource-tenant passkey registration for B2B users, including internal guests and external users.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "B2B users, including internal guest users and external users, will be able to register and sign in with passkeys issued by a resource tenant",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "The planned resource-tenant passkeys can be used to sign in and satisfy that tenant's MFA requirements.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "and then use it to satisfy the resource tenant's MFA requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Governance guidance: At rollout; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap includes registration from the resource tenant's My Security Info page.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "B2B users can register a resource tenant passkey from the resource tenant's My Security Info page",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing; Risk assessment: Change & support; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap includes in-line guest passkey registration during a proof-up prompt.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "or in-line during a proof-up prompt or passkey registration campaign",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; Risk assessment: Autonomy & actions; rationale: impact",
+      "type": "record",
+      "claim": "The roadmap includes guest registration through a passkey registration campaign.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "or in-line during a proof-up prompt or passkey registration campaign",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing; Scope: Who",
+      "type": "record",
+      "claim": "The roadmap says passkeys are already supported for member users in their home tenant.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Today, passkeys are supported for member users in their home tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: status; What's changing; Scope: Rollout; Open questions",
+      "type": "record",
+      "claim": "The item remains In development in the supplied record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The record's release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: targetDate; What's changing; Why it matters; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is October CY2026, which has passed on the supplied run date without a Launched status.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"October CY2026\"; \"status\": \"In development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: previewDate; Scope: Rollout",
+      "type": "record",
+      "claim": "The record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: clouds; What's changing; Scope: Clouds",
+      "type": "record",
+      "claim": "The listed clouds are Worldwide (Standard Multi-Tenant) and GCC, with no other clouds listed.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: platforms",
+      "type": "record",
+      "claim": "The record lists no platforms.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": []",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-01T23:00:07.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-01T23:00:07\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: defaultState; summary; What's changing; Scope: Rollout",
+      "type": "default",
+      "claim": "The planned change is on by default.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This change is on by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "B2B users already targeted for passkeys by the Authentication methods policy will be enabled automatically.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "B2B users already in scope for passkeys in your Authentication methods policy will be enabled automatically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Why it matters; rationale: risk",
+      "type": "record",
+      "claim": "No administrator action is required to turn the planned change on.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "No action is required to turn it on.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Why it matters; Governance controls",
+      "type": "record",
+      "claim": "The roadmap directs administrators to review the Authentication methods policy, passkey campaign, Conditional Access policies and user scoping.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "update your Authentication methods policy, passkey registration campaign, Conditional Access policies, and user scoping before rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; front matter: changes; Open questions",
+      "type": "availability",
+      "claim": "The cited passkey Learn page still says resource-tenant passkey registration is unsupported for internal and external guests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "Registration of passkey (FIDO2) credentials isn't supported for internal or external guest users, including B2B collaboration users in the resource tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[1].note; What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "The registration campaign page currently says guests are not nudged for passkeys because guest passkey support is unavailable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign",
+      "quote": "They're not nudged if they're included in a registration campaign for passkeys because passkey support for guest users isn't currently available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Passkeys are included in all Microsoft Entra ID editions, including Free.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "Passkeys (FIDO2) are available in all Microsoft Entra ID editions, including Microsoft Entra ID Free.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Learn says passkeys (FIDO2) require no extra licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "No extra licenses are required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "A tenant needs Microsoft Entra ID P1 to use Conditional Access authentication strengths.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strengths",
+      "quote": "To use Conditional Access, your tenant needs to have Microsoft Entra ID P1 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published a separate B2B-specific passkey licence requirement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Entra B2B guest resource tenant passkeys FIDO2 licensing pricing; \"passkeys\" \"B2B\" \"license\". Opened how-to-authentication-passkeys-fido2 and external-identities-pricing: general passkey entitlement and guest MAU billing, but no separate B2B passkey licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap record names no licence or meter for this change.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "B2B users, including internal guest users and external users, will be able to register and sign in with passkeys issued by a resource tenant to meet that tenant's multifactor authentication (MFA) requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].ui; Governance controls table; Governance guidance: Before rollout",
+      "type": "admin-path",
+      "claim": "Passkey user/group targeting and profile assignment are reached through Entra ID > Security > Authentication methods > Policies > Passkey (FIDO2) > Enable and Target.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "Browse to Entra ID > Security > Authentication methods > Policies. Select Passkey (FIDO2). Select Enable and Target. Select Add target, and then choose All users or Select targets to choose specific groups.",
+      "severity": "minor",
+      "fix": "The route reaches the correct tab but stops before profile assignment. Extend it to 'Entra ID > Security > Authentication methods > Policies > Passkey (FIDO2) > Enable and Target > Add target > target > passkey profiles', using the cited page. State that passkey profiles must first be enabled through the banner opt-in link if the tenant has not enabled them."
+    },
+    {
+      "n": 26,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "PATCH /v1.0/policies/authenticationMethodsPolicy/authenticationMethodConfigurations/fido2 updates the tenant's passkey targeting and profiles.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/fido2authenticationmethodconfiguration-update?view=graph-rest-1.0",
+      "quote": "PATCH https://graph.microsoft.com/v1.0/policies/authenticationMethodsPolicy/authenticationMethodConfigurations/fido2; \"includeTargets\"; \"allowedPasskeyProfiles\"; \"excludeTargets\"; \"passkeyProfiles\"",
+      "severity": "minor",
+      "fix": "Keep the call. Add to controls[0].note: 'The request body uses includeTargets and excludeTargets for targeting, includeTargets[].allowedPasskeyProfiles for profile assignment, and passkeyProfiles for profile configuration.' These properties appear in the cited v1.0 update example."
+    },
+    {
+      "n": 27,
+      "where": "controls[0].note; Governance controls table",
+      "type": "role",
+      "claim": "Authentication Policy Administrator is the least privileged role for the FIDO2 configuration update.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/fido2authenticationmethodconfiguration-update?view=graph-rest-1.0",
+      "quote": "For delegated access using work or school accounts, the signed-in user must be assigned a supported Microsoft Entra role ... Authentication Policy Administrator is the least privileged role supported for this operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Entra ID > Authentication methods > Registration campaign reaches the campaign configuration page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign",
+      "quote": "Browse to Entra ID > Authentication methods > Registration campaign, and select Edit. For State: Select Enabled to enable and configure the registration campaign.",
+      "severity": "minor",
+      "fix": "Extend the path to 'Entra ID > Authentication methods > Registration campaign > Edit > State > Enabled > Authentication method > Passkey'. Add to the note: 'Select included or excluded users and groups on this page.' The cited page gives these remaining steps."
+    },
+    {
+      "n": 29,
+      "where": "controls[1].api and note; Governance controls table",
+      "type": "command",
+      "claim": "PATCH /v1.0/policies/authenticationmethodspolicy with the updated registrationEnforcement section configures a passkey campaign and its include/exclude targets.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign",
+      "quote": "To update the policy, perform a PATCH on the authentication methods policy with only the updated registrationEnforcement section: PATCH https://graph.microsoft.com/v1.0/policies/authenticationmethodspolicy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Entra ID > Authentication methods > Authentication strengths > New authentication strength reaches custom-strength creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "Browse to Entra ID > Authentication methods > Authentication strengths. Select New authentication strength. Provide a Name for your new authentication strength. ... Select Passkeys (FIDO2).",
+      "severity": "minor",
+      "fix": "Extend the path to 'Entra ID > Authentication methods > Authentication strengths > New authentication strength > Passkeys (FIDO2)', as given on the cited page. This selects the method in a custom strength; it does not apply a Conditional Access policy."
+    },
+    {
+      "n": 31,
+      "where": "controls[2].api and governs; Governance controls table and following paragraph",
+      "type": "command",
+      "claim": "POST /v1.0/policies/authenticationStrengthPolicies implements the row's control over whether guests must use passkeys to reach a resource.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/graph/api/authenticationstrengthroot-post-policies?view=graph-rest-1.0",
+      "quote": "Create a new custom authenticationStrengthPolicy object. POST /policies/authenticationStrengthPolicies. allowedCombinations: The authentication method combinations allowed by this authentication strength policy.",
+      "severity": "blocker",
+      "fix": "Keep the documented call, but narrow controls[2].governs and its table label to 'Which authentication methods a custom authentication strength permits'. Set its note to 'The request body sets allowedCombinations to [\"fido2\"]. Creates a custom strength only; a Conditional Access policy must apply it. Applies to external users who authenticate with Microsoft Entra ID.' Replace 'The first three are rows above' with 'The Authentication methods policy and registration campaign are rows above; the third row creates an authentication strength, not a Conditional Access policy.'"
+    },
+    {
+      "n": 32,
+      "where": "Scope: Roles; Governance controls",
+      "type": "role",
+      "claim": "At least Authentication Policy Administrator is required to configure the passkey policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "Sign in to the Microsoft Entra admin center as at least an Authentication Policy Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope: Roles; Governance controls",
+      "type": "role",
+      "claim": "At least Authentication Policy Administrator can configure the registration campaign.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign",
+      "quote": "Sign in to the Microsoft Entra admin center as at least an Authentication Policy Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope: Roles; Governance controls",
+      "type": "role",
+      "claim": "The documented custom authentication-strength procedure requires at least Conditional Access Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "Sign in to the Microsoft Entra admin center as at least a Conditional Access Administrator.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Scope: Prerequisites from today's pages",
+      "type": "behaviour",
+      "claim": "Users must complete MFA within the past five minutes before registering a passkey.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "Users must complete multifactor authentication (MFA) within the past five minutes before they can register a passkey (FIDO2).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Scope: Prerequisites from today's pages",
+      "type": "behaviour",
+      "claim": "Devices must support passkey (FIDO2) authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "Devices must support passkey (FIDO2) authentication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "controls[0].governs; Risk assessment: Security & identity; Governance guidance",
+      "type": "behaviour",
+      "claim": "Passkey profiles configure attestation, device-bound or synced passkey types, and key restrictions for targeted groups or all users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "Create a passkey profile — Define attestation, passkey type (device-bound or synced), and key restriction settings for your target groups. Apply a passkey profile to a targeted group — Assign your passkey profile to specific user groups or all users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Synced passkeys do not support attestation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "Synced passkeys do not support attestation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Security & identity; Why it matters",
+      "type": "applicability",
+      "claim": "Under the planned guest enablement, targeting a guest group with a profile permitting synced passkeys permits unattested credentials.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "A passkey profile is a named set of policy rules that governs how users in targeted groups can register and authenticate with passkeys (FIDO2). ... Synced passkeys do not support attestation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity; controls[2].note",
+      "type": "applicability",
+      "claim": "A Conditional Access policy applying an authentication strength can require passkeys for resource access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "Enforce passkey sign-in (optional) — Create a Conditional Access authentication strength policy to require passkeys for sensitive resources.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "controls[2].note; Risk assessment: Security & identity; Governance guidance",
+      "type": "applicability",
+      "claim": "Authentication strength policies currently apply only to external users who authenticate with Microsoft Entra ID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-guests-mfa-strength",
+      "quote": "Currently, you can only apply authentication strength policies to external users who authenticate with Microsoft Entra ID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "For other documented external identity types, Microsoft directs administrators to use the MFA grant control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/conditional-access/policy-guests-mfa-strength",
+      "quote": "For email one-time passcode, SAML/WS-Fed, Google federation, and Microsoft personal (MSA) users, use the MFA grant control to require MFA.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[1].governs; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "A registration campaign can nudge targeted users during an interactive sign-in with MFA, with include/exclude targeting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign",
+      "quote": "When a user performs an interactive sign-in with multifactor authentication (MFA), they can be prompted to set up the targeted authentication method. You can include or exclude users or groups to control who gets nudged",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Membership in an excluded Passkeys (FIDO2) policy group blocks both passkey registration and sign-in.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "If a user is a member of an excluded group in the Passkeys (FIDO2) authentication method policy, they're blocked from FIDO2 passkey registration or sign-in entirely",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Passkey-policy excluded-group membership takes precedence over included-group membership.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+      "quote": "and this takes precedence over them being in any Included groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Guest resource access remains governed by permissions and Conditional Access policies rather than merely by an authentication credential.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/entra/external-id/what-is-b2b#easily-invite-guest-users-from-the-microsoft-entra-admin-center",
+      "quote": "Assign guest users to apps or groups. ... You can use authentication and authorization policies to protect your corporate content. Conditional Access policies, such as multifactor authentication, can be enforced",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/entra/external-id/what-is-b2b in sources for the statement about guest permissions and authentication/authorization policies."
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The roadmap describes authentication to meet resource-tenant MFA, not new resource permissions or data access.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "register and sign in with passkeys issued by a resource tenant to meet that tenant's multifactor authentication (MFA) requirements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes guest registration and sign-in rather than autonomous actions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "B2B users can register a resource tenant passkey from the resource tenant's My Security Info page, or in-line during a proof-up prompt or passkey registration campaign",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls",
+      "type": "record",
+      "claim": "The roadmap names existing controls but does not name a separate B2B passkey switch.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "update your Authentication methods policy, passkey registration campaign, Conditional Access policies, and user scoping before rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance guidance: Before rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist asks readers to review guest Conditional Access policies, but no control row configures or applies a Conditional Access policy.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review which Conditional Access policies and authentication strengths apply to guests and external users. ... Creates a custom strength only; a Conditional Access policy must apply it.",
+      "severity": "minor",
+      "fix": "The checklist's instruction to review guest Conditional Access policies has no corresponding policy-control row; the third row covers custom-strength creation only. Remove that checklist instruction, retaining 'Review which authentication strengths apply to guests and external users, and note that authentication strength currently applies only to external users who authenticate with Microsoft Entra ID.'"
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T14:01:48.402Z",
+    "summary": {
+      "links": 8,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 3,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=569432",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/fido2authenticationmethodconfiguration-update?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/fido2authenticationmethodconfiguration-get?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/authenticationstrengthroot-post-policies?view=graph-rest-1.0",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/authentication/concept-authentication-strengths",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/entra/identity/conditional-access/policy-guests-mfa-strength",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which users and groups can register and use passkeys (FIDO2), and under which passkey profile",
+        "docs": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+        "reachable": true,
+        "segments": [
+          "Entra ID",
+          "Security",
+          "Authentication methods",
+          "Policies",
+          "Passkey",
+          "Enable and Target"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which users and groups can register and use passkeys (FIDO2), and under which passkey profile",
+        "docs": "https://learn.microsoft.com/graph/api/fido2authenticationmethodconfiguration-update?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/policies/authenticationMethodsPolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether a registration campaign nudges users to register a passkey, and who is included or excluded",
+        "docs": "https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign",
+        "reachable": true,
+        "segments": [
+          "Entra ID",
+          "Authentication methods",
+          "Registration campaign"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether a registration campaign nudges users to register a passkey, and who is included or excluded",
+        "docs": "https://learn.microsoft.com/entra/identity/authentication/how-to-mfa-registration-campaign",
+        "reachable": true,
+        "token": "/v1.0/policies/authenticationmethodspolicy",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Whether guests and external users must use passkeys to reach a resource, through a custom authentication strength",
+        "docs": "https://learn.microsoft.com/entra/identity/authentication/how-to-authentication-passkeys-fido2",
+        "reachable": true,
+        "segments": [
+          "Entra ID",
+          "Authentication methods",
+          "Authentication strengths",
+          "New authentication strength"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Whether guests and external users must use passkeys to reach a resource, through a custom authentication strength",
+        "docs": "https://learn.microsoft.com/graph/api/authenticationstrengthroot-post-policies?view=graph-rest-1.0",
+        "reachable": true,
+        "token": "/v1.0/policies/authenticationStrengthPolicies",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

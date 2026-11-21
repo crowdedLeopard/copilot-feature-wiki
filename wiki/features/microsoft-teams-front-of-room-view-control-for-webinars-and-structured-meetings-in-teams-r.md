@@ -54,19 +54,23 @@ changes:
     note: "First briefing for this item, based on MC1316231 (updated 22 September 2026), the Teams Rooms release notes and Microsoft's help page for hosting events from a Teams Room."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 44 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected after the independent check: cost rationale now covers only rooms already on Teams Rooms Pro, and the rollout-stages and device-maker-schedule claims are replaced with the release notes' wording on device delays."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 41 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 44
-  confirmed: 41
-  unconfirmed: 2
+  claims: 41
+  confirmed: 40
+  unconfirmed: 0
   contradicted: 1
-  attempts: 1
-  hash: "fe459ae3612a028246d51628a78134ba"
+  attempts: 0
+  hash: "f18114b9b8f8a19354f6ebd2754a041e"
 ---
 
 ## What's changing
@@ -98,7 +102,7 @@ No source says any existing Teams Rooms policy changes, so the effort is communi
 
 **Change & support**
 - Expect questions from presenters who find the room display no longer shows presenter controls. The console is where the view is switched.
-- The rollout is staged and device makers release updates on their own schedule, so some rooms may behave differently for a while.
+- There can be a delay between Microsoft's feature release and availability on a device make and model, so some rooms may behave differently for a while.
 
 ## Cost and licensing
 
@@ -156,14 +160,12 @@ The view control that is documented belongs to the presenter: the **Switch to pr
 
 <!-- rationale
 risk: Low. The change hides presenter tools from the in-room audience by default and Microsoft's notice says existing Teams Rooms policies are unchanged; the remaining exposure is a presenter switching the room display to presenter view.
-cost: Low. Microsoft's notice MC1316231 says a Teams Rooms Pro licence is needed to use the feature, and no separate meter is documented; the cost is admin and communication time, plus a Pro licence for any Android room that lacks one.
+cost: Low. For Android rooms already licensed with Teams Rooms Pro, the cost is admin and communication time; no separate meter is documented.
 impact: Medium. Presenters and in-room audiences in Teams Rooms on Android see a different default display during webinars and structured meetings; remote attendees are not affected, according to Microsoft's notice.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: cost; rationale: cost / consistency: The low cost rating represents indirect cost only, but its rationale also includes purchasing Pro licences. | Found: cost: "low" Low. Microsoft's notice MC1316231 says a Teams Rooms Pro licence is needed to use the feature, and no separate meter is documented; the cost is admin and communication time, plus a Pro licence for any Android room that lacks one. | Fix: Keep cost low only for rooms already licensed with Pro. Replace its rationale with: 'Low. For Android rooms already licensed with Teams Rooms Pro, the cost is admin and communication time; no separate meter is documented.' Keep the body warning that rooms without Pro need that licence.
-- [unsupported, major] Risk assessment: Change & support / behaviour: The feature rollout is staged. | Found: Searched: Teams Rooms Android device manufacturers updates own schedule staged rollout; Teams Android devices updates staged rollout manufacturers release schedule firmware. Read MC1316231 and rooms-release-note; they give a rollout window and device delays, not feature rollout stages. | Fix: Remove 'The rollout is staged and' from this bullet. Microsoft gives a rollout window but does not describe stages for this feature.
-- [unsupported, major] Risk assessment: Change & support / behaviour: Device makers release updates on their own schedule. | Found: Searched: Teams Android devices updates staged rollout manufacturers release schedule firmware. Read rooms-release-note and android-version-support search excerpt; Microsoft documents device availability delays and OEM firmware certification, not independent OEM release schedules. | Fix: Replace the device-maker scheduling assertion with: 'There can be a delay between Microsoft's feature release and availability on a device make and model, so some rooms may behave differently for a while.' Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: The guidance names the presenter's view-switch control without a corresponding console-control row in the table. | Found: Tell organisers and presenters ... Switch to presenter view on the console changes the front-of-room display. ... Default front-of-room view for Teams Rooms on Android presenters | Not yet documented | Not yet documented | Fix: The At rollout instruction naming Switch to presenter view, and the instruction to switch back to attendee view, have no presenter-console control row; the existing row describes only the missing administrator default-setting control.
 -->

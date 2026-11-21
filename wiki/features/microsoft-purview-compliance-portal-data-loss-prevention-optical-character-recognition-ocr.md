@@ -52,6 +52,9 @@ sources:
   - title: "ocrSettings resource type"
     url: "https://learn.microsoft.com/graph/api/resources/security-ocrsettings?view=graph-rest-1.0"
     kind: "docs"
+  - title: "Set-PolicyConfig"
+    url: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig?view=exchange-ps"
+    kind: "learn"
 videos: []
 related: ["endpoint-dlp","sensitive-information-types"]
 controls:
@@ -77,7 +80,10 @@ controls:
       surface: "Microsoft Purview portal"
       path: "Data loss prevention > Overview > Data loss prevention settings > Endpoint settings > File path exclusions for Windows"
       docs: "https://learn.microsoft.com/purview/dlp-configure-endpoint-settings"
-    api: null
+    api:
+      kind: "powershell"
+      call: "Set-PolicyConfig -EndpointDlpGlobalSettings @(@{\"Setting\"=\"PathExclusion\"; \"Value\"=\"<folder>\"})"
+      docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig?view=exchange-ps"
     note: "Existing control, not specific to OCR. Excluded files are not audited and are not subject to DLP policy enforcement."
 confidence: "medium"
 created: "2026-11-21"
@@ -92,19 +98,23 @@ changes:
     note: "Corrected billing roles (Azure owner or contributor rights), bandwidth-limit resume wording, the Endpoint cost estimator Windows Update prerequisite, GCC pay-as-you-go availability and the Windows KB requirements."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 71 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-21"
+    note: "Corrected: Windows file path exclusions can be set with Set-PolicyConfig -EndpointDlpGlobalSettings (PathExclusion); removed the DLP-rule test step that had no controls row."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 73 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 71
-  confirmed: 69
+  claims: 73
+  confirmed: 73
   unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "13861ae7286343f23854e411e943fe3c"
+  contradicted: 0
+  attempts: 0
+  hash: "0fe02c1134a2f964b4dcfb4cbdb72335"
 ---
 
 ## What's changing
@@ -172,7 +182,6 @@ Prerequisites in Learn are an Azure pay-as-you-go subscription, Syntex pay-as-yo
 
 - Enable OCR in the Microsoft Purview portal settings and select Devices as a location.
 - Review the advanced classification bandwidth limit in Endpoint DLP settings, since OCR stops scanning images once the daily limit is reached.
-- Test an existing DLP rule that uses a sensitive information type against a sample image before widening its scope.
 
 ### After rollout
 
@@ -188,13 +197,13 @@ Prerequisites in Learn are an Azure pay-as-you-go subscription, Syntex pay-as-yo
 <tbody>
 <tr><td data-label="Control"><strong>Whether OCR scans images, and for which locations and groups</strong><br><small>Tenant</small><br><small class="controls__note">Learn lists five roles, including Compliance administrator and Global administrator. Billing: Global or SharePoint admin with owner or contributor rights to the Azure subscription.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Settings › Optical character recognition (OCR) <a href="https://learn.microsoft.com/purview/ocr-learn-about" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Daily bandwidth each device may use for cloud classification, including OCR</strong><br><small>Tenant</small><br><small class="controls__note">Learn gives the OCR default as 1,024 MB of data per device per day and says OCR stops scanning images once it is reached.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Overview › Data loss prevention settings › Endpoint settings › Advanced classification scanning and protection <a href="https://learn.microsoft.com/purview/dlp-configure-endpoint-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Folders on Windows devices that Endpoint DLP, and so OCR, does not scan</strong><br><small>Tenant</small><br><small class="controls__note">Existing control, not specific to OCR. Excluded files are not audited and are not subject to DLP policy enforcement.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Overview › Data loss prevention settings › Endpoint settings › File path exclusions for Windows <a href="https://learn.microsoft.com/purview/dlp-configure-endpoint-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Folders on Windows devices that Endpoint DLP, and so OCR, does not scan</strong><br><small>Tenant</small><br><small class="controls__note">Existing control, not specific to OCR. Excluded files are not audited and are not subject to DLP policy enforcement.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Data loss prevention › Overview › Data loss prevention settings › Endpoint settings › File path exclusions for Windows <a href="https://learn.microsoft.com/purview/dlp-configure-endpoint-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-PolicyConfig -EndpointDlpGlobalSettings @(@{&quot;Setting&quot;=&quot;PathExclusion&quot;; &quot;Value&quot;=&quot;&lt;folder&gt;&quot;})</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig?view=exchange-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 OCR is a tenant-level setting that applies across the Purview stack; the Endpoint DLP settings are separate and apply to all DLP policies for devices. The OCR location selection and your existing DLP rules together decide what is scanned and acted on.
 
-When the bandwidth limit is reached, Learn says OCR stops scanning images until cumulative bandwidth usage drops below the rolling 24-hour limit or you increase the limit, and file path exclusions also remove those paths from DLP audit and enforcement. At the time of writing (November 2026) Microsoft Learn documents no PowerShell cmdlet, Microsoft Graph or other API for the tenant OCR settings or for these Endpoint DLP settings; the Graph ocrSettings resource documented for eDiscovery applies to an eDiscovery case.
+When the bandwidth limit is reached, Learn says OCR stops scanning images until cumulative bandwidth usage drops below the rolling 24-hour limit or you increase the limit, and file path exclusions also remove those paths from DLP audit and enforcement. At the time of writing (November 2026), Microsoft Learn documents no PowerShell cmdlet, Microsoft Graph or other API for tenant OCR settings or the Endpoint DLP bandwidth limit. Windows file path exclusions can be configured in Security & Compliance PowerShell with Set-PolicyConfig -EndpointDlpGlobalSettings using Setting="PathExclusion" and Value for the folder path; the Graph ocrSettings resource applies to an eDiscovery case.
 
 ## Open questions
 
@@ -209,12 +218,10 @@ cost: Variable. Learn says OCR needs Microsoft Syntex pay-as-you-go billing and 
 impact: Low. Administrators decide whether to enable OCR; users on onboarded Windows devices would notice only where an existing Endpoint DLP rule matches sensitive text found in an image.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[2].api; Governance controls table and prose / absence: Microsoft documents no automation for Endpoint DLP Windows file path exclusions. | Found: The EndpointDlpGlobalSettings parameter specifies the global endpoints. This parameter uses the following syntax: @(@{"Setting"="<Setting>"; "Value"="<Value>"},...). ... Example values: @{"Setting"="PathExclusion"; "Value"="C:\Windows";} | Fix: Replace controls[2].api with kind 'powershell', call 'Set-PolicyConfig -EndpointDlpGlobalSettings @(@{"Setting"="PathExclusion"; "Value"="<folder>"})', and docs 'https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig?view=exchange-ps'; update its rendered automation cell and cite that reference. Replace the final automation-absence sentence with: 'At the time of writing (November 2026), Microsoft Learn documents no PowerShell cmdlet, Microsoft Graph or other API for tenant OCR settings or the Endpoint DLP bandwidth limit. Windows file path exclusions can be configured in Security & Compliance PowerShell with Set-PolicyConfig -EndpointDlpGlobalSettings using Setting="PathExclusion" and Value for the folder path; the Graph ocrSettings resource applies to an eDiscovery case.' | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig?view=exchange-ps
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; Risk assessment: Autonomy & actions; Governance controls / behaviour: OCR applies existing DLP policies to images as well as text-based content. | Found: When you configure the OCR settings, Microsoft Purview applies your existing policies for data loss prevention (DLP), records management, and insider risk management (IRM) to images and text-based content. | Fix: Add: 'The Communication Compliance policy documentation still describes the shared Purview OCR settings as preview, although the OCR overview does not label them preview.' Cite https://learn.microsoft.com/purview/communication-compliance-policies#policy-settings, which says 'Microsoft Purview includes OCR (preview) settings' for DLP and related solutions. | Source: https://learn.microsoft.com/purview/ocr-learn-about
-- [supported, minor] Why it matters; Cost and licensing; rationale: cost / cost: The Purview OCR overview counts each scanned stand-alone image as one transaction. | Found: Each image scanned counts as one transaction. This pricing means that stand-alone images (JPEG, JPG, PNG, BMP, or TIFF) each count as a single transaction. | Fix: Add after the image-transaction sentence: 'The document-processing pricing page instead describes TIF and TIFF usage per page and says processing occurs each time a file is edited; its wording differs from the Purview overview.' Cite https://learn.microsoft.com/microsoft-365/documentprocessing/syntex-pay-as-you-go-services, which states 'the number of pages processed for PDF, TIF, or TIFF' and 'Processing occurs every time the file is edited.' | Source: https://learn.microsoft.com/purview/ocr-learn-about
-- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The checklist instructs readers to test an existing DLP rule, but the controls table has no DLP-rule row. | Found: Test an existing DLP rule that uses a sensitive information type against a sample image before widening its scope. | Table rows cover OCR configuration, daily bandwidth and Windows file path exclusions, not DLP rules. | Fix: Remove the At rollout bullet 'Test an existing DLP rule that uses a sensitive information type against a sample image before widening its scope.' It names a checklist control with no row; do not add an unverified control row during correction.
+- [supported, minor] controls[0].ui; Governance controls table / admin-path: Tenant OCR configuration is at Microsoft Purview portal > Settings > Optical character recognition (OCR). | Found: Sign in to the Microsoft Purview portal. Select Settings. Select Optical character recognition (OCR) to enter your OCR configuration settings. Select the locations where you want to scan images. Select the groups that you want included or excluded from OCR scans. | Fix: The path reaches the correct configuration page. Extend it to 'Settings > Optical character recognition (OCR) > locations > groups' to include the documented selections, using https://learn.microsoft.com/purview/ocr-learn-about. | Source: https://learn.microsoft.com/purview/ocr-learn-about
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: The bandwidth setting is under Microsoft Purview portal > Data loss prevention > Overview > Data loss prevention settings > Endpoint settings > Advanced classification scanning and protection. | Found: go to Data loss prevention > Overview > Data loss prevention settings > Endpoint settings. If bandwidth usage isn't a concern, select Do not limit bandwidth. Unlimited to allow unlimited bandwidth use. | Fix: The path reaches the correct section. For the documented unlimited option, extend it to 'Data loss prevention > Overview > Data loss prevention settings > Endpoint settings > Advanced classification scanning and protection > Do not limit bandwidth. Unlimited', per https://learn.microsoft.com/purview/dlp-configure-endpoint-settings. | Source: https://learn.microsoft.com/purview/dlp-configure-endpoint-settings
+- [supported, minor] What's changing / behaviour: Learn documents OCR scanning as an existing Purview capability. | Found: By using optical character recognition (OCR) scanning, Microsoft Purview can scan images for sensitive information. OCR scanning is an optional feature that you must enable at the tenant level. | Fix: Add: 'The Communication Compliance documentation still calls the separate Purview OCR settings preview, although the general OCR page does not mark them that way.' Cite https://learn.microsoft.com/purview/communication-compliance-policies#policy-settings, which says 'Microsoft Purview includes OCR (preview) settings' for its DLP and related solutions. Keep the roadmap General Availability phase unchanged. | Source: https://learn.microsoft.com/purview/ocr-learn-about
 -->

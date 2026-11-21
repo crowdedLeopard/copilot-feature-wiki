@@ -55,6 +55,9 @@ sources:
   - title: "Learn about Security Copilot for Microsoft 365 E5 and E7 included customers"
     url: "https://learn.microsoft.com/copilot/security/security-copilot-inclusion"
     kind: "learn"
+  - title: "What's new in Microsoft Purview"
+    url: "https://learn.microsoft.com/purview/whats-new"
+    kind: "learn"
 videos: []
 related: ["microsoft-purview-dspm-copilot-readiness-and-data-explorer","microsoft-purview-compliance-portal-data-loss-prevention-restrict-access-action-support-fo","microsoft-purview-data-loss-prevention-data-security-triage-agent-summaries-and-categoriza","sensitivity-labels","auditing"]
 controls:
@@ -103,26 +106,30 @@ changes:
     note: "Corrected after verification: Fabric and Graph permission wording, audit wording narrowed to AI agent actions, E5 SCU inclusion noted, first-use timing, agent deactivation path."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 112 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-21"
+    note: "Corrected after verification: the current DSPM version is generally available per Learn's May 2026 update, with partner solutions and the Posture Agent still in preview; licensing pointer wording fixed."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 118 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-21"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 112
-  confirmed: 111
+  claims: 118
+  confirmed: 116
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "cdb8773dca727b11ab593e52fef336db"
+  contradicted: 2
+  attempts: 3
+  hash: "cf332ed520de1a6ea9e251c94ab14191"
 ---
 
 ## What's changing
 
 The roadmap item describes a new Microsoft Purview Data Security Posture Management (DSPM) experience: outcome-based guided workflows, AI observability, enhanced posture reporting, Security Copilot agents for triage and policy management, and third-party signals from partners such as BigID, Cyera, OneTrust and Varonis. It also extends Data Risk Assessments to Fabric and to item-level analysis, with remediation actions such as bulk disabling of overshared SharePoint links. The roadmap status is In development, the target is January CY2027, the release phase is General Availability, the platform is Web, and the clouds listed are GCC, GCC High and DoD.
 
-Microsoft Learn already documents a **current** version of DSPM that matches much of this description, and renames the earlier versions DSPM (classic) and DSPM for AI (classic). In it, **Data security objectives** cards (for example **Prevent oversharing of sensitive data**) group the Purview solutions needed for an outcome. Other pages are **Posture**, **AI observability**, **Asset explorer**, **Reports** and **Setup tasks**. Learn says most new features will be added to this version only. Learn does not say when the new version reaches any tenant or cloud, so the roadmap's status and target remain the dates to plan on.
+Microsoft Learn already documents a **current** version of DSPM that matches much of this description, and renames the earlier versions DSPM (classic) and DSPM for AI (classic). In it, **Data security objectives** cards (for example **Prevent oversharing of sensitive data**) group the Purview solutions needed for an outcome. Other pages are **Posture**, **AI observability**, **Asset explorer**, **Reports** and **Setup tasks**. Learn says most new features will be added to this version only. Microsoft Learn's May 2026 update announces general availability of the current DSPM version, while partner solutions and the Posture Agent remain in preview. Roadmap item 561036 remains In development, targeted for January CY2027 in GCC, GCC High and DoD; Learn does not give tenant-level rollout dates for those government clouds.
 
 For oversharing, Learn documents a default data risk assessment that runs weekly for the top 100 SharePoint sites (Microsoft 365 tab) or the top 100 Fabric workspaces (Fabric tab). Fabric assessments need a one-time setup with an Entra-registered app. Custom Microsoft 365 assessments can scan at item level, currently for SharePoint sites only, with per-item actions: **Resolve**, **Apply sensitivity label**, **Notify** and **Remove sharing link**. A bulk action to disable overshared links is not described on the Learn pages for these assessments at the time of writing (November 2026).
 
@@ -161,7 +168,7 @@ The cost and exposure sit in the new options. The posture agent consumes SCUs ea
 
 ## Cost and licensing
 
-**Licence.** The DSPM prerequisites say you need 'a supporting license for this Microsoft Purview solution' and a supported region, and point to the Microsoft Purview service description. They name no licence for DSPM itself. The service description's DSPM line refers to the licensing section of the DSPM for AI (classic) considerations page.
+**Licence.** The DSPM prerequisites say you need 'a supporting license for this Microsoft Purview solution' and a supported region, and point to the Microsoft Purview service description. They name no licence for DSPM itself. The service description's DSPM for AI licensing pointer links to the DSPM for AI (classic) considerations page.
 
 **Meters.** The Data Security Posture Agent (preview) requires both per-seat licensing and pay-as-you-go billing: Microsoft 365 E5 with SCUs provisioned. It consumes SCUs every time it runs, based on the complexity of its analysis, and consumption can be tracked in the Security Copilot usage monitoring tool. The Security Copilot inclusion page says eligible Microsoft 365 E5 customers receive included SCU capacity covering core Purview agentic scenarios without separate provisioning; this differs from the agent page's pay-as-you-go wording. The setup page says some options need pay-as-you-go billing for data storage, shown in the UI where they apply, and suggests the Usage center for tracking.
 
@@ -237,7 +244,7 @@ impact: Medium. Security and compliance teams meet a new DSPM experience, and Sh
 <!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing: second paragraph / absence: Learn does not say when the new version reaches any tenant or cloud. | Found: General availability (GA): The new version of Data Security Posture Management is now generally available. Partner solutions for non-Microsoft data sources remain in preview, as does the Data Security Posture Agent. | Fix: Replace the final sentence of the second paragraph with: 'Microsoft Learn's May 2026 update announces general availability of the current DSPM version, while partner solutions and the Posture Agent remain in preview. Roadmap item 561036 remains In development, targeted for January CY2027 in GCC, GCC High and DoD; Learn does not give tenant-level rollout dates for those government clouds.' Cite https://learn.microsoft.com/purview/whats-new#may-2026. | Source: https://learn.microsoft.com/purview/whats-new#may-2026
+- [contradicted, blocker] Risk assessment: Data exposure; Open questions / absence: Learn does not describe what data each partner sends or receives. | Found: Each asset carries security-relevant metadata including ownership, permissions, sensitivity classifications, and risk indicators. Usage of the schema allows Microsoft Purview DSPM to manage data security posture across Microsoft and partner platforms. | Fix: Remove 'Learn does not describe what data each partner sends or receives.' Replace it with: 'Microsoft documents a common partner asset schema for DSPM that includes ownership, permissions, sensitivity classifications and risk indicators; confirm the exact fields exchanged by your selected partner.' Cite https://learn.microsoft.com/azure/sentinel/normalization-schema-asset. Narrow the final open question to: 'Which fields does our selected partner exchange through Microsoft Sentinel data lake, and who can see them?' | Source: https://learn.microsoft.com/azure/sentinel/normalization-schema-asset
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Cost and licensing: Licence / licensing: The service description redirects DSPM licensing information to the DSPM for AI (classic) considerations page. | Found: For information about licensing about Microsoft Purview Data Security Posture Management for AI, see Considerations for deploying Microsoft Purview Data Security Posture Management for AI & data security and compliance protections for Microsoft Copilot and other generative AI apps | Microsoft Learn. | Fix: Replace the last sentence of Licence with: 'The service description's DSPM for AI licensing pointer links to the DSPM for AI (classic) considerations page.' The link targets the article, not a licensing section, and the article has no section with that name. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The governance checklist's audit and SCU monitoring controls have corresponding controls-table rows. | Found: Check audit records of automated actions taken by AI agents in DSPM. Compare the Posture Agent's SCU consumption with the budget you agreed. Table rows: Fabric connection, item-level scanning, agent activation, partner integration. | Fix: The 'Check audit records' and 'Compare the Posture Agent's SCU consumption' checklist steps have no corresponding monitoring rows in the controls table. Qualify those two bullets as guidance outside the controls table; do not add control rows during this correction.
 -->

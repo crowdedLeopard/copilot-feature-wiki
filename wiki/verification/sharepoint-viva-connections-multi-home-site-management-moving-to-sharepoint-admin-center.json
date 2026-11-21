@@ -2,30 +2,926 @@
   "slug": "sharepoint-viva-connections-multi-home-site-management-moving-to-sharepoint-admin-center",
   "roadmapId": 567887,
   "title": "SharePoint: Viva Connections multi-home site management moves to the SharePoint admin center",
-  "status": "held",
+  "status": "verified-with-gaps",
   "date": "2026-11-21",
   "version": 1,
-  "model": "none",
-  "engine": "manual",
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
   "attempts": 0,
-  "hold": {
-    "reason": "unverified",
-    "since": "2026-11-21",
-    "reasons": [
-      "Written but not yet checked against Microsoft Learn."
-    ]
-  },
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
   "counts": {
-    "claims": 0,
-    "confirmed": 0,
+    "claims": 70,
+    "confirmed": 69,
     "unconfirmed": 0,
-    "contradicted": 0,
+    "contradicted": 1,
     "blocker": 0,
     "major": 0,
-    "minor": 0
+    "minor": 2
   },
-  "summary": "Written but not yet checked against Microsoft Learn.",
-  "claims": [],
-  "precheck": null,
-  "history": []
+  "summary": "The briefing's migration, licensing, default state and qualified PowerShell guidance are supported by Microsoft's documentation and notice. Minor corrections should extend the add-home-site route and remove the checklist's unrepresented site-permissions control.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "Viva Connections multi-home site management is moving from the Microsoft 365 admin center to the SharePoint admin center.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Viva Connections multi-home site management is moving from the Microsoft 365 admin center (MAC) to the SharePoint Admin Center (SPAC).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says administrators will create and manage multiple home sites in the SharePoint admin center.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Administrators will be able to create and manage multiple Home sites",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap says audience targeting configuration moves to the SharePoint admin center.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "configure audience targeting, manage home site priority order, and remove Home sites directly from SPAC.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The roadmap says administrators will manage home site priority order in the SharePoint admin center.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "manage home site priority order, and remove Home sites directly from SPAC.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap says administrators will remove home sites in the SharePoint admin center.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "remove Home sites directly from SPAC.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "Existing Microsoft 365 admin center entry points will redirect administrators to the new SharePoint admin center experience.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Existing entry points in the Microsoft 365 admin center will direct administrators to the new SPAC experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "Legacy Viva Connections instances are being deprecated.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "legacy Viva Connections (VC) instances and draft/enabled management concepts are being deprecated",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "The draft and enabled management concepts are being retired.",
+      "status": "supported",
+      "source": "Message Center post MC1457839",
+      "quote": "Legacy Viva Connections management concepts, including draft and enabled states, will be retired.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "record",
+      "claim": "The roadmap says existing Viva Connections experiences will be upgraded to full home sites.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Existing VC experiences will be upgraded to full Home sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is August CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phases are General Availability and Targeted Release.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\", \"Targeted Release\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists the Desktop platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Desktop\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft's notice says legacy experiences are upgraded automatically.",
+      "status": "supported",
+      "source": "Message Center post MC1457839",
+      "quote": "Existing legacy Viva Connections experiences will be automatically upgraded to full Home sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "summary; Why it matters",
+      "type": "record",
+      "claim": "Microsoft's notice says no action is required before rollout.",
+      "status": "supported",
+      "source": "Message Center post MC1457839",
+      "quote": "No action is required before rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "MC1457839 gives a rollout beginning early September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1457839",
+      "quote": "General Availability (Worldwide): Rollout will begin early September.\n- Expected completion: Mid September 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "MC1457839 gives expected rollout completion in mid-September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1457839",
+      "quote": "Expected completion: Mid September 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Scope; rationale: impact",
+      "type": "record",
+      "claim": "MC1457839 names SharePoint and Viva Connections administrators as affected.",
+      "status": "supported",
+      "source": "Message Center post MC1457839",
+      "quote": "SharePoint and Viva Connections administrators who manage Viva Connections experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft's notice recommends reviewing runbooks and updating administrator training to reference the SharePoint admin center.",
+      "status": "supported",
+      "source": "Message Center post MC1457839",
+      "quote": "Review internal documentation that references Viva Connections management in the Microsoft 365 admin center.\n- Update administrator training materials to reference the SharePoint admin center experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].ui; Governance controls: row 1",
+      "type": "admin-path",
+      "claim": "Home sites can be created or added at SharePoint admin center > Settings > Home sites > Add.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "Select Settings, and then select Home sites.\nSelect Add, and then select Create a new site.\nPreview the Home site template, and then select Use template.",
+      "severity": "minor",
+      "fix": "The printed route stops at the correct wizard entry. Extend controls[0].ui.path to 'Settings > Home sites > Add > Create a new site > Use template > Create site'. Add to its note: 'For an existing site, use Settings > Home sites > Add > Use an existing communication site.' These routes are documented at https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center."
+    },
+    {
+      "n": 23,
+      "where": "controls[0].api; Governance controls: row 1",
+      "type": "command",
+      "claim": "Set-SPOHomeSite -HomeSiteUrl <site URL> sets a site as a home site, with the row expressly qualifying its multi-home-site limitations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spohomesite",
+      "quote": "Sets a SharePoint Site as a Home Site.\nSet-SPOHomeSite\n    -HomeSiteUrl <String>\nSets the URL of the site collection to be the home site.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[1].ui; Governance controls: row 2",
+      "type": "admin-path",
+      "claim": "Audience editing is at SharePoint admin center > Settings > Home sites > home site > three dots menu > Edit audience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "In Settings > Home sites, select the home site.\nSelect the three dots menu (...), and then select Edit audience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[2].ui; Governance controls: row 3",
+      "type": "admin-path",
+      "claim": "Home site priority is edited at SharePoint admin center > Settings > Home sites > Change order.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "In Settings > Home sites, select Change order.\nDrag home sites into the order you want.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[3].ui; Governance controls: row 4",
+      "type": "admin-path",
+      "claim": "Removal is at SharePoint admin center > Settings > Home sites > home site > three dots menu > Remove as home site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "In Settings > Home sites, select the three dots menu (...) for a home site.\nSelect Remove as home site. A confirmation panel opens.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[3].api; Governance controls: row 4",
+      "type": "command",
+      "claim": "Remove-SPOHomeSite removes the current home site setting, with the row expressly qualifying its multi-home-site limitations.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/remove-spohomesite",
+      "quote": "Removes the current SharePoint Online Home site setting.\nRemove-SPOHomeSite",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[1].api; Governance controls: row 2; Open questions",
+      "type": "absence",
+      "claim": "Microsoft documents no scripted operation for assigning a home site's audience at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"home sites\" \"audience\" \"PowerShell\" \"priority\"' and '\"home sites\" \"Microsoft Graph\" \"audience\"'; opened set-up-admin-center and Set-SPOHomeSite reference. No home-site audience-setting operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[2].api; Governance controls: row 3; Open questions",
+      "type": "absence",
+      "claim": "Microsoft documents no scripted operation for changing home site priority order at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'SharePoint home sites audience priority order PowerShell Microsoft Graph Set-SPOHomeSite multiple DraftMode migration' and '\"home sites\" \"audience\" \"PowerShell\" \"priority\"'; opened setup and Set-SPOHomeSite reference. No home-site ordering call found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "front matter: defaultState; What's changing",
+      "type": "default",
+      "claim": "The management migration arrives automatically without administrator action, supporting defaultState on.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "your existing home sites, audiences, and order appear in the SharePoint admin center automatically. You don't need to do anything to move them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Licensing is mixed: the Microsoft 365 entitlement covers one experience, while multiple experiences require a Viva licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "Users with a Microsoft 365 subscription (E, F, or A license) are limited to creating and using one experience.\nIf you want to create or use two or more experiences (up to 50), then every user in your tenant must have a Microsoft Viva Suite or Viva Communications and Communities license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "An Enterprise, Frontline or Academic licence is needed to create a Viva Connections experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "An Enterprise (E), Frontline (F), or Academic (A) license type to create a Viva Connections experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft 365 E, F or A subscriptions are limited to creating and using one experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "Users with a Microsoft 365 subscription (E, F, or A license) are limited to creating and using one experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Creating or using two or more experiences requires Microsoft Viva Suite or Viva Communications and Communities for every user in the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "If you want to create or use two or more experiences (up to 50), then every user in your tenant must have a Microsoft Viva Suite or Viva Communications and Communities license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The maximum number of Viva Connections experiences is 50 per tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "Organizations are limited to creating a maximum of 50 Viva Connections experiences overall per tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The home sites update page says organisations needing multiple home sites still need appropriate licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/home-sites-improvements",
+      "quote": "Organizations that require multiple home sites still need the appropriate licensing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Security & identity; Scope; Governance controls",
+      "type": "role",
+      "claim": "Managing home sites requires SharePoint administrator permissions, with sign-in as a SharePoint admin or higher.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "SharePoint administrator permissions to manage home sites and Viva Connection experiences.\nSign in to the SharePoint admin center as a SharePoint admin or higher.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Pinning the Viva Connections app in the Teams admin center requires Teams administrator permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "Teams administrator permissions to pin the Viva Connections app in the Teams admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "What's changing; Scope; rationale: risk",
+      "type": "behaviour",
+      "claim": "Existing home sites appear automatically in the SharePoint admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "If you already set up Viva Connections experiences in the Microsoft 365 admin center, your existing home sites, audiences, and order appear in the SharePoint admin center automatically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "What's changing; Scope; rationale: risk",
+      "type": "behaviour",
+      "claim": "Existing audiences carry over automatically to the SharePoint admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "your existing home sites, audiences, and order appear in the SharePoint admin center automatically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "What's changing; Scope; rationale: risk",
+      "type": "behaviour",
+      "claim": "Existing home site order carries over automatically to the SharePoint admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "your existing home sites, audiences, and order appear in the SharePoint admin center automatically.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].note; Risk assessment: Data exposure; Governance controls",
+      "type": "behaviour",
+      "claim": "Assigning an audience does not grant access to the home site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "Assigning an audience doesn't grant access to a home site.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "applicability",
+      "claim": "Site permissions control who can access each home site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "Site permissions control who can access the site.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Data exposure; Governance guidance: At rollout",
+      "type": "role",
+      "claim": "Targeted people need at least visitor permissions to the home site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "Make sure the people you target with an audience also have at least visitor permissions to the site.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[1].note; Governance controls: row 2",
+      "type": "behaviour",
+      "claim": "Home site audiences can be filtered using Microsoft Entra security groups or Microsoft 365 groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "Filter by group: Search for and select one or more Microsoft Entra security groups or Microsoft 365 groups.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[1].note; Governance controls: row 2",
+      "type": "behaviour",
+      "claim": "Group-based home site audiences can optionally also be filtered by licence type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "Scope down the audience for this home site, and then filter by group, by license type, or both.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[2].note; Risk assessment: Data exposure; Governance controls: row 3",
+      "type": "behaviour",
+      "claim": "A person's default home site is the highest-ordered home site matching their audience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "The order determines which home site they see by default: the highest-ordered home site that matches their audience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Changes to audiences, order and home sites can take up to 24 hours to reach users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "Changes to audiences, order, and home sites can take up to 24 hours to take effect for users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Removing a home site designation does not delete the site.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "Removing a home site doesn't delete the site or its content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Removing a home site designation does not delete its content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "Removing a home site doesn't delete the site or its content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "A removed home site remains a regular communication site listed under Sites > Active sites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "The site remains available as a regular communication site under Sites > Active sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope",
+      "type": "applicability",
+      "claim": "Home sites outside the main geo in multi-geo tenants need to manage permissions in the SharePoint admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "SharePoint home sites that are part of a multi-geo tenant outside of the main geo need to manage their permissions in the SharePoint admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Governance controls: site access paragraph",
+      "type": "admin-path",
+      "claim": "Site access is managed at SharePoint admin center > Sites > Active sites > home site > Membership.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "In the SharePoint admin center, select Sites > Active sites, and then select the home site.\nSelect the Membership tab.\nAdd site owners, and add members and visitors as needed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Governance controls: legacy route",
+      "type": "admin-path",
+      "claim": "The legacy Microsoft 365 admin center route is Settings > Viva > Viva Connections > Create and manage Viva Connections experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "Select Settings to expand the selection and select Viva.\nSelect Viva Connections to open the Viva Connections admin center.\nSelect Create and manage Viva Connections experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Governance controls: legacy route",
+      "type": "availability",
+      "claim": "Learn describes the legacy Microsoft 365 admin center experience as still available during the transition.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "During the transition, you can still manage Viva Connections experiences in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "What's changing; Governance controls: legacy route",
+      "type": "behaviour",
+      "claim": "Learn says the Microsoft 365 admin center management experience will be retired.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "The Microsoft 365 admin center experience will be retired. We recommend using the SharePoint admin center to manage home sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[0].note; Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "Learn says Set-SPOHomeSite initially supports a single home site setup, with additional home sites managed in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "Initially it will continue supporting a single SharePoint home site setup. Setting up more SharePoint home sites can be done in the MAC. Support for setting up multiple SharePoint home sites will be supported at a later stage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[3].note; Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "Learn says Remove-SPOHomeSite initially is unsupported for customers with multiple home sites, with removal managed in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "This command won't be supported initially for multiple SharePoint home sites customers, but the MAC will support this operation. Users attempting to use the cmdlet will receive an error message and be redirected to the MAC.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Governance controls: PowerShell paragraph; Open questions",
+      "type": "command",
+      "claim": "The Set-SPOHomeSite reference documents a DraftMode parameter.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spohomesite",
+      "quote": "[-DraftMode <Boolean>]\nWhether to set the home site to draft mode.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Why it matters; Risk assessment; Governance guidance; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft does not state the specific treatment or subsequent visibility of draft-state experiences during the automatic upgrade.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Viva Connections\" \"draft\" \"upgraded\" \"September\"' and '\"Viva Connections\" \"multi-home\" \"draft\" migration'; read MC1457839 and the full setup page. Automatic upgrade is stated, but no draft-specific migration or visibility rule is given.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance controls: PowerShell paragraph; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not state how DraftMode relates to retiring the legacy draft state or whether the parameter will be retired.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"SharePoint\" \"home site\" \"DraftMode\" \"retired\"'; read Set-SPOHomeSite, set-up-admin-center and MC1457839. The reference lists DraftMode, but no transition or parameter-retirement rule is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[0].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Microsoft does not document whether the existing home site cmdlets now add or remove entries in the new multi-home-site management list.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: 'SharePoint home sites audience priority order PowerShell Microsoft Graph Set-SPOHomeSite multiple DraftMode migration'; read setup, Set-SPOHomeSite and Remove-SPOHomeSite. Initial limitations are given, but post-migration multi-site support is not stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Learn advises ordering home sites from the most specific audience to the broadest.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "Order home sites from the most specific audience to the broadest.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance guidance: At rollout; Governance controls",
+      "type": "consistency",
+      "claim": "Every control the governance checklist asks administrators to check is represented in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm that people in each audience have at least visitor permissions to the matching home site.\nThe four table rows cover home site creation, audience, priority order and removal, not site permissions.",
+      "severity": "minor",
+      "fix": "Remove the At rollout checklist bullet 'Confirm that people in each audience have at least visitor permissions to the matching home site.' Keep the verified site-permissions explanation and path in the prose; this correction does not add a controls row."
+    },
+    {
+      "n": 65,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "No autonomous behaviour is described for this management change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: '\"Viva Connections\" \"home sites\" \"autonomous\"'; read roadmap record, MC1457839 and set-up-admin-center. No autonomous agent action is described; the automatic management migration is explicitly reported elsewhere in the briefing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Learn points readers to Microsoft Viva plans and pricing for licence prices.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "See Microsoft Viva plans and pricing for more information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "What's changing; Open questions",
+      "type": "availability",
+      "claim": "Learn already describes the new SharePoint admin center management experience as available now, unlike the roadmap's In development status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "You can now add home sites, assign audiences, set the order of home sites, and remove home sites from SharePoint admin center > Settings > Home sites.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Home site configuration changes are made by administrators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "Sign in to the SharePoint admin center as a SharePoint admin or higher.\nIn Settings > Home sites, select Change order.\nDrag home sites into the order you want.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "controls[0].scope; controls[2].scope; controls[3].scope",
+      "type": "applicability",
+      "claim": "The home site list, priority order and home site designations are managed at tenant scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "You can create and manage multiple home sites in the SharePoint admin center.\nIf your organization has multiple home sites, some people might belong to the audience of more than one.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "controls[1].scope",
+      "type": "applicability",
+      "claim": "Home site audience targeting can be scoped to groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+      "quote": "Decide which Microsoft Entra security groups or Microsoft 365 groups should be associated with each home site.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T14:01:47.968Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 4,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=567887",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/sharepoint/homesites/home-sites-improvements",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spohomesite",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/remove-spohomesite",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1457839",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Which communication sites are home sites (create or add)",
+        "docs": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Home sites",
+          "Add"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Which communication sites are home sites (create or add)",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/set-spohomesite",
+        "reachable": true,
+        "token": "Set-SPOHomeSite",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which audience sees each home site by default",
+        "docs": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Home sites",
+          "home site",
+          "three dots menu",
+          "Edit audience"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Priority order of home sites",
+        "docs": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Home sites",
+          "Change order"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "ui",
+        "governs": "Removing a home site",
+        "docs": "https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Home sites",
+          "home site",
+          "three dots menu",
+          "Remove as home site"
+        ],
+        "missing": []
+      },
+      {
+        "index": 3,
+        "side": "api",
+        "governs": "Removing a home site",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoft.online.sharepoint.powershell/remove-spohomesite",
+        "reachable": true,
+        "token": "Remove-SPOHomeSite",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": [
+    {
+      "date": "2026-11-21",
+      "status": "held",
+      "version": 1,
+      "model": "none"
+    }
+  ]
 }

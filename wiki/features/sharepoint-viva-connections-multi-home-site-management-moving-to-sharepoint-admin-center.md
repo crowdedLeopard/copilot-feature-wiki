@@ -88,7 +88,21 @@ roadmapModified: "2026-07-29T23:07:26"
 changes:
   - date: "2026-11-21"
     note: "First briefing for this roadmap item."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 70 statements not yet confirmed"
 version: 1
+verification:
+  status: "verified-with-gaps"
+  date: "2026-11-21"
+  version: 1
+  model: "gpt-6.1-sol"
+  engine: "copilot"
+  claims: 70
+  confirmed: 69
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "150594ca0fffda35d1f1940d6f69ab9b"
 ---
 
 ## What's changing
@@ -187,4 +201,11 @@ The Set-SPOHomeSite and Remove-SPOHomeSite cmdlets are documented, but Learn's V
 risk: Low. Learn says existing home sites, audiences and order appear in the SharePoint admin center automatically, so no new data or exposure is added; what happens to draft-state experiences is not stated.
 cost: Low. The cost is admin time to update procedures and training; Learn says organisations that need multiple home sites still need the appropriate licensing (Viva Suite or Viva Communications and Communities for every user).
 impact: Low. SharePoint and Viva Connections administrators are the people Microsoft's notice names as affected, and what they notice is a change of admin centre.
+-->
+
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] controls[0].ui; Governance controls: row 1 / admin-path: Home sites can be created or added at SharePoint admin center > Settings > Home sites > Add. | Found: Select Settings, and then select Home sites. Select Add, and then select Create a new site. Preview the Home site template, and then select Use template. | Fix: The printed route stops at the correct wizard entry. Extend controls[0].ui.path to 'Settings > Home sites > Add > Create a new site > Use template > Create site'. Add to its note: 'For an existing site, use Settings > Home sites > Add > Use an existing communication site.' These routes are documented at https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center. | Source: https://learn.microsoft.com/sharepoint/homesites/set-up-admin-center
+- [contradicted, minor] Governance guidance: At rollout; Governance controls / consistency: Every control the governance checklist asks administrators to check is represented in the controls table. | Found: Confirm that people in each audience have at least visitor permissions to the matching home site. The four table rows cover home site creation, audience, priority order and removal, not site permissions. | Fix: Remove the At rollout checklist bullet 'Confirm that people in each audience have at least visitor permissions to the matching home site.' Keep the verified site-permissions explanation and path in the prose; this correction does not add a controls row.
 -->

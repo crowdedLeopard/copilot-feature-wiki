@@ -37,6 +37,9 @@ sources:
   - title: "New-RetentionCompliancePolicy"
     url: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy"
     kind: "learn"
+  - title: "Use Microsoft Purview to manage data security & compliance for Microsoft 365 Copilot & Microsoft 365 Copilot Chat"
+    url: "https://learn.microsoft.com/purview/ai-m365-copilot"
+    kind: "learn"
   - title: "Microsoft Purview service description"
     url: "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description"
     kind: "learn"
@@ -52,13 +55,13 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft Purview portal"
-      path: "Solutions > Data Lifecycle Management > Policies > Label policies > Auto-apply a label"
+      path: "Solutions > Data Lifecycle Management > Policies > Label policies > Auto-apply a label > Apply label to cloud attachments and links shared in Exchange, Teams, Viva Engage, and Copilot"
       docs: "https://learn.microsoft.com/purview/apply-retention-labels-automatically"
     api:
       kind: "powershell"
       call: "New-RetentionCompliancePolicy -Name \"<policy name>\" -SharePointLocation <site URL> -RetainCloudAttachment $true"
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy"
-    note: "Applies to files shared as cloud attachments, not to users on hold. Records Management has an equivalent path. Learn's example creates the policy; a label is added with New-RetentionComplianceRule."
+    note: "Applies to cloud attachments, not users on hold. The example creates the policy; New-RetentionComplianceRule adds a label. RetainCloudAttachment is currently in Preview, is not available in all organizations, and is subject to change."
 confidence: "medium"
 created: "2026-11-21"
 updated: "2026-11-21"
@@ -68,19 +71,23 @@ changes:
     note: "New briefing: roadmap-only description of cloud attachment preservation for users on hold, with the existing label-based option as today's alternative."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 56 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Correction: the hold inventory step now gives the full route from the eDiscovery solution card, and the label policy row gives the full wizard path and the RetainCloudAttachment Preview qualification."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 60 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 54
+  claims: 60
+  confirmed: 57
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "a9c786f1930a6f1347b1c911bf4f4d2b"
+  contradicted: 3
+  attempts: 0
+  hash: "ddde1daefc63dc11d648e6397f18ba32"
 ---
 
 ## What's changing
@@ -132,7 +139,7 @@ The users in scope are those put on infinite hold, according to the roadmap. Whi
 ## Governance guidance
 
 ### Before rollout
-- Inventory which users are on eDiscovery holds today and note which are infinite holds, using the case Hold policies tab in the Microsoft Purview portal.
+- Inventory which users are on eDiscovery holds today and note which are infinite holds, using Microsoft Purview portal > eDiscovery > Cases > case > Hold policies.
 - Check whether you already apply a retention label policy to cloud attachments, and list the sites, Microsoft 365 Groups and OneDrive accounts it covers, so you can compare it with the new capability once documented.
 - Ask legal and compliance owners which investigations depend on the version of a file at the time of sharing, and whether a fixed copy is required rather than the live file.
 
@@ -152,7 +159,7 @@ The users in scope are those put on infinite hold, according to the roadmap. Whi
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether cloud attachment versions are preserved for users on infinite hold</strong><br><small>User</small><br><small class="controls__note">No setting or automation for this capability is documented at the time of writing (November 2026). The roadmap describes it as separate from retention-label application.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Existing alternative: retention label policy that labels a copy of each shared cloud attachment</strong><br><small>Tenant</small><br><small class="controls__note">Applies to files shared as cloud attachments, not to users on hold. Records Management has an equivalent path. Learn's example creates the policy; a label is added with New-RetentionComplianceRule.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Policies › Label policies › Auto-apply a label <a href="https://learn.microsoft.com/purview/apply-retention-labels-automatically" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-RetentionCompliancePolicy -Name &quot;&lt;policy name&gt;&quot; -SharePointLocation &lt;site URL&gt; -RetainCloudAttachment $true</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Existing alternative: retention label policy that labels a copy of each shared cloud attachment</strong><br><small>Tenant</small><br><small class="controls__note">Applies to cloud attachments, not users on hold. The example creates the policy; New-RetentionComplianceRule adds a label. RetainCloudAttachment is currently in Preview, is not available in all organizations, and is subject to change.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Policies › Label policies › Auto-apply a label › Apply label to cloud attachments and links shared in Exchange, Teams, Viva Engage, and Copilot <a href="https://learn.microsoft.com/purview/apply-retention-labels-automatically" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-RetentionCompliancePolicy -Name &quot;&lt;policy name&gt;&quot; -SharePointLocation &lt;site URL&gt; -RetainCloudAttachment $true</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
@@ -174,12 +181,11 @@ cost: Low. The only cost the sources show is admin time. The licence and any sto
 impact: Low. It targets users put on infinite hold, so the people who notice are compliance, legal and eDiscovery administrators and the custodians involved. The roadmap does not describe a change for other users.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance guidance: Before rollout, first bullet / admin-path: The instruction to inventory existing holds gives the case Hold policies tab in the Microsoft Purview portal as the route. | Found: Select the eDiscovery solution card and then select Cases in the left navigation. Select a case, and then select the Hold policies tab. | Fix: Replace the first Before rollout bullet with: 'Inventory which users are on eDiscovery holds today and note which are infinite holds, using Microsoft Purview portal > eDiscovery > Cases > case > Hold policies.' The documented route is at https://learn.microsoft.com/purview/edisc-hold-create#create-a-hold; the current instruction starts inside a case without the navigation needed to reach it. | Source: https://learn.microsoft.com/purview/edisc-hold-create
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[1].ui; Governance controls table / admin-path: Solutions > Data Lifecycle Management > Policies > Label policies > Auto-apply a label is the route for the existing cloud attachment label policy. | Found: If you're using data lifecycle management: Solutions > Data Lifecycle Management > Policies > Label policies > Auto-apply a label | Fix: The printed route correctly reaches the wizard but stops before its cloud-attachment choice. Extend it to 'Solutions > Data Lifecycle Management > Policies > Label policies > Auto-apply a label > Choose the type of content you want to apply this label to > Apply label to cloud attachments and links shared in Exchange, Teams, Viva Engage, and Copilot'. The wizard page is documented at https://learn.microsoft.com/purview/apply-retention-labels-automatically and the option's full label is stated at https://learn.microsoft.com/purview/ai-m365-copilot#capabilities-supported; cite the latter for that label. | Source: https://learn.microsoft.com/purview/apply-retention-labels-automatically
-- [supported, minor] controls[1].api; Governance controls table / command: New-RetentionCompliancePolicy with -Name, -SharePointLocation <site URL> and -RetainCloudAttachment $true creates the existing cloud attachment auto-apply label policy. | Found: This example creates a new auto-apply label policy targeted to cloud attachments named Marketing Department with the specified details. Note: This parameter is currently in Preview, is not available in all organizations, and is subject to change. | Fix: Keep the call and its policy-creation qualification. Add to controls[1].note: 'The PowerShell RetainCloudAttachment parameter is currently in Preview, is not available in all organizations, and is subject to change.' This qualification is in https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy#-retaincloudattachment. | Source: https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy
-- [contradicted, minor] Governance guidance; controls / consistency: The checklist names hold review, cloud attachment collection and audit/storage review controls without corresponding table rows. | Found: Checklist: 'using the case Hold policies tab'; 'Access links (cloud attachments) in messages'; 'Review the audit log and Preservation Hold library storage'. Table: only the preservation gap and retention-label policy. | Fix: The Before rollout hold-inventory step, the After rollout Access links collection step, and the After rollout audit/storage review step have no corresponding controls-table rows. This is a checklist/table coverage finding, not a request to add rows during correction.
+- [supported, minor] controls[1].ui; Governance controls table / admin-path: The retention-label alternative is reached through Solutions > Data Lifecycle Management > Policies > Label policies > Auto-apply a label > Apply label to cloud attachments and links shared in Exchange, Teams, Viva Engage, and Copilot. | Found: Solutions > Data Lifecycle Management > Policies > Label policies > Auto-apply a label. For Choose the type of content you want to apply this label to, select one of the available conditions. | Fix: Add the wizard-page heading: 'Solutions > Data Lifecycle Management > Policies > Label policies > Auto-apply a label > Choose the type of content you want to apply this label to > Apply label to cloud attachments and links shared in Exchange, Teams, Viva Engage, and Copilot'. The cited auto-apply page gives the route and heading; the already-cited https://learn.microsoft.com/purview/ai-m365-copilot gives the final option label. | Source: https://learn.microsoft.com/purview/apply-retention-labels-automatically
+- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist names Access links (cloud attachments) in messages as a collection control, but the controls table has no row for it. | Found: check which versions eDiscovery collects with the Access links (cloud attachments) in messages option selected; table rows: Whether cloud attachment versions are preserved for users on infinite hold; Existing alternative: retention label policy | Fix: The 'Test with a pilot custodian' checklist step names a collection control with no table row. Remove 'with the Access links (cloud attachments) in messages option selected' from that step; the option itself is supported by https://learn.microsoft.com/purview/edisc-cloud-attachments.
+- [contradicted, minor] Governance guidance: Before rollout / consistency: The checklist tells readers to inventory existing eDiscovery holds, but those holds have no controls-table row. | Found: Inventory which users are on eDiscovery holds today and note which are infinite holds; table rows cover the undocumented new capability and the existing retention-label alternative, not existing eDiscovery holds. | Fix: The 'Inventory which users are on eDiscovery holds today' checklist step reviews an existing control with no table row. Remove that checklist bullet rather than adding an unverified row.
+- [contradicted, minor] Governance guidance: After rollout / consistency: The checklist tells readers to review the audit log, but the controls table has no audit row. | Found: Review the audit log and Preservation Hold library storage for the sites involved; the controls table contains only the new capability's gap and the retention-label alternative. | Fix: The 'Review the audit log' checklist step names monitoring with no table row. Replace the bullet with 'Confirm what reporting Microsoft documents for the capability before deciding how to monitor preserved versions and storage.'
 -->
