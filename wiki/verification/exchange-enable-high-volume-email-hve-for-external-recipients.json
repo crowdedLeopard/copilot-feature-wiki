@@ -1,0 +1,601 @@
+{
+  "slug": "exchange-enable-high-volume-email-hve-for-external-recipients",
+  "roadmapId": 581778,
+  "title": "Exchange: High Volume Email can send to external recipients",
+  "status": "held",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-21",
+    "reasons": [
+      "1 blocking finding (claim 44)"
+    ]
+  },
+  "counts": {
+    "claims": 46,
+    "confirmed": 44,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "Hold: billing policy assignment is not the only documented control over whether an HVE account can send; Microsoft also documents authentication policies that can block HVE traffic. The roadmap dates, opt-in default, published HVE pricing and billing-policy command are supported, while external-sending controls and rates remain undocumented.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Why it matters; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "Microsoft plans to extend Exchange Online HVE so applications and devices can send to external recipients, including customers and partners.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "High Volume Email (HVE) External Sending extends HVE in Exchange Online, which today sends only to recipients inside your organization, so it can also deliver bulk email to external recipients such as customers and partners.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "record",
+      "claim": "The roadmap describes external sending as designed for operational and transactional messages, not marketing campaigns.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "It is designed for operational and transactional messages, like notifications, alerts, receipts and required communications, and not for marketing campaigns.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "record",
+      "claim": "The roadmap says applications and devices send through SMTP using HVE account authentication.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Apps and devices send through SMTP using HVE account authentication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; Scope; controls[0].note",
+      "type": "default",
+      "claim": "External sending is admin-opt-in: administrators enable it for specific HVE accounts with a cmdlet, rather than it automatically enabling existing accounts.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Admins turn the feature on for specific HVE accounts with a cmdlet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; Risk assessment: Security & identity; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap names built-in throttling, quotas and suppression of problem recipients as sending-reputation protections.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Built-in throttling, quotas and suppression of problem recipients help protect your sending reputation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "summary; Why it matters; Cost and licensing; rationale: cost",
+      "type": "record",
+      "claim": "The roadmap says external sending will be billed based on usage, per external recipient.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Billing will be based on usage, per external recipient.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "General availability is targeted for March CY2027, not committed for that date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"March CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: previewDate; What's changing; Open questions",
+      "type": "record",
+      "claim": "Preview is targeted for December CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"December CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "Web is the platform listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: releasePhase",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview as release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-11-20T23:20:27.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-20T23:20:27\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Why it matters",
+      "type": "availability",
+      "claim": "Microsoft Learn currently documents HVE as internal-only and unable to deliver external email.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365",
+      "quote": "HVE accounts cannot be used for external email delivery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe the planned external-sending capability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: High Volume Email HVE external sending enable account cmdlet Exchange admin center; High Volume Email external sending prerequisites. Read HVE management and Learn NDR excerpts; both document external sending as unsupported, not the planned capability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "controls[0].ui and controls[0].api; What's changing; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No external-sending enablement setting or named cmdlet is yet documented for an HVE account in the Exchange admin center or Exchange PowerShell.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: High Volume Email HVE external sending enable account cmdlet Exchange admin center. Opened HVE management, Set-HVEAccountSettings and Set-HVEAccountBillingPolicy; inspected Learn HVE cmdlet results. No external-sending switch or enabling parameter was documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: licensing.model and notes; Cost and licensing; controls[1].note; rationale: cost",
+      "type": "licensing",
+      "claim": "HVE has a consumption licensing model, using Microsoft 365 pay-as-you-go billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365",
+      "quote": "High Volume Email uses M365 pay as you go (PAYG) billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "HVE accounts do not require Microsoft 365 licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365",
+      "quote": "HVE accounts do not require Microsoft 365 licenses and shouldn’t be treated as user mailboxes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Microsoft says not to assign licences to HVE accounts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365",
+      "quote": "Do not assign licenses to HVE accounts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "A rate for external recipients, including confirmation that today's HVE rate applies to them, is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: High Volume Email external recipients pricing billing rate quotas throttling suppression content controls prerequisites. Opened HVE management and Microsoft 365 PAYG overview; HVE pricing is published for the currently internal-only service, not external sending.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Risk assessment: Security & identity; Cost and licensing; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "Throttling, quota and suppression values for planned external sending are not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: High Volume Email external recipients pricing billing rate quotas throttling suppression content controls prerequisites; HVE external suppression. Read HVE management limits and Learn Exchange limits excerpts; none states external-HVE throttling, quota or suppression values.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "Microsoft has not published whether administrators can adjust external-HVE throttling, quotas or suppression.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: High Volume Email external recipients pricing billing rate quotas throttling suppression content controls prerequisites; High Volume Email HVE external sending suppression list management Exchange PowerShell. Read HVE management and HVE cmdlet results; no adjustment control.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet document content controls for external HVE mail.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: High Volume Email external content rules. Read HVE management, NDR, bulk-mail-rule and outbound-spam excerpts; those document current HVE or other mail scenarios, not content controls for planned external HVE sending.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Risk assessment: Change & support",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no suppression-list control for external HVE mail as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: HVE external suppression; High Volume Email HVE external sending suppression list management Exchange PowerShell. Read HVE management and HVE cmdlet results; suppression management results concerned other services, not external HVE.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "HVE supports basic authentication for SMTP connections.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365",
+      "quote": "High Volume Email supports both modern authentication (OAuth) and basic authentication for SMTP connections.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "HVE supports OAuth authentication for SMTP connections.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365",
+      "quote": "High Volume Email supports both modern authentication (OAuth) and basic authentication for SMTP connections.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "type": "behaviour",
+      "claim": "Microsoft recommends using OAuth authentication for HVE when possible.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365",
+      "quote": "Use OAuth authentication when possible.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Microsoft Entra ID Security Defaults disable basic authentication, including SMTP, for HVE.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365",
+      "quote": "If Security Defaults are enabled in Microsoft Entra ID, all basic authentication methods (including SMTP) are disabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "With Security Defaults enabled, HVE can authenticate only using OAuth.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365",
+      "quote": "In this configuration, HVE can authenticate only by using OAuth.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Why it matters; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "An HVE sending account uses an email address in a domain accepted by the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365",
+      "quote": "Primary email address – Must use a domain that’s accepted in your tenant (for example, hve-app@contoso.com).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "HVE supports automated messaging by applications and devices rather than requiring a person to approve each message.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365",
+      "quote": "HVE is designed for automated, transactional and operational messaging.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Cost and licensing; controls[1].note",
+      "type": "cost",
+      "claim": "Each HVE account must have a billing policy linking it to an Azure subscription for usage-based billing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365",
+      "quote": "each HVE account must be associated with a billing policy, which links the account to an Azure subscription for usage based billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Cost and licensing; Scope; Governance controls",
+      "type": "behaviour",
+      "claim": "An HVE account without a valid billing policy cannot send email in the currently documented service.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365",
+      "quote": "No billing policy is assigned, or there’s an issue with the assigned policy. The HVE account will not be able to send email, until a valid policy is assigned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope; controls[1].note",
+      "type": "cost",
+      "claim": "Microsoft 365 pay-as-you-go billing must be set up for the tenant before assigning an HVE billing policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365",
+      "quote": "Before you assign a billing policy to an HVE account, ensure that Microsoft 365 pay as you go billing is set up for your tenant:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Today's HVE meter counts expanded delivered email recipients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365",
+      "quote": "High Volume Email | Number of expanded delivered email recipients | $0.000042 per one recipient (equivalent to $42 per one million recipients)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing; Open questions",
+      "type": "cost",
+      "claim": "The published price for HVE as currently documented is US$0.000042 per recipient, equivalent to US$42 per million recipients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365",
+      "quote": "What's billed? (USD) ... $0.000042 per one recipient (equivalent to $42 per one million recipients)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Recipients are counted for HVE billing after distribution-list expansion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365",
+      "quote": "However, for billing purposes, recipients are counted after distribution list expansion.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Learn documents HVE as supported in Microsoft 365 Worldwide standard multi-tenant environments.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365",
+      "quote": "High Volume Email is supported in Microsoft 365 Worldwide (standard multi-tenant) environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Learn says support for additional HVE cloud environments is under evaluation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365",
+      "quote": "Support for additional cloud environments is under evaluation and will be communicated as information becomes available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Exchange admin center > Mail flow > High Volume Email > account > Billing policies reaches the HVE billing-policy assignment page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365",
+      "quote": "In the left navigation, select Mail flow, and then select High Volume Email. ... Select an HVE account from the list to open the account details. ... two tabs are available – General and Billing policies.",
+      "severity": "minor",
+      "fix": "The path correctly reaches the assignment page but stops before selecting the policy. Extend it to 'Mail flow > High Volume Email > account > Billing policies > billing policy'; the final step means selecting a different policy from the drop-down menu documented at https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365."
+    },
+    {
+      "n": 41,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Exchange PowerShell Set-HVEAccountBillingPolicy -Identity <HVE account> -BillingPolicyId <billing policy GUID> assigns or changes the specified account's billing policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-hveaccountbillingpolicy?view=exchange-ps",
+      "quote": "The BillingPolicyId parameter specified the GUID of the billing policy to assign to the HVE account. ... The Identity parameter specifies the email address of the HVE account you want to modify.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The documented HVE billing-policy assignment control changes billing mapping, not recipient restrictions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-hveaccountbillingpolicy?view=exchange-ps",
+      "quote": "Use the Set-HVEAccountBillingPolicy cmdlet to modify the billing policy mapping for a specified High Volume Email (HVE) account.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "Set-HVEAccountSettings currently documents ReplyTo as its only account-setting parameter, not an external-sending switch.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-hveaccountsettings?view=exchange-ps",
+      "quote": "Set-HVEAccountSettings [-Identity] <MailUserIdParameter> [-ReplyTo <SmtpAddress>] [-Confirm] [-WhatIf] [<CommonParameters>]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Until external enablement is documented, billing policy is the only documented control that decides whether an HVE account can send at all.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365",
+      "quote": "To prevent authentication policies from blocking HVE traffic, ensure that the authentication settings applied to the HVE account allow the selected authentication method (OAuth or basic authentication). You can apply custom authentication policies specifically to HVE accounts as needed.",
+      "severity": "blocker",
+      "fix": "Replace the sentence beginning 'Until it is documented' with 'For HVE as documented today, an account without a valid billing policy cannot send email.' This preserves the documented billing requirement without falsely excluding authentication controls; source: https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365."
+    },
+    {
+      "n": 45,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Prerequisites specific to planned external HVE sending are not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: High Volume Email external sending prerequisites. Opened HVE management and read test-HVE and authentication excerpts; these describe current HVE prerequisites and explicitly unsupported external delivery, not prerequisites specific to planned external sending.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance guidance: After rollout; controls",
+      "type": "consistency",
+      "claim": "The checklist asks readers to watch per-account recipient counts, but the controls table has no usage-report row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Watch recipient counts and bills for each enabled account and compare them with what the application should send. ... The controls table contains only external-sending enablement and billing-policy assignment.",
+      "severity": "minor",
+      "fix": "Remove the 'Watch recipient counts and bills for each enabled account and compare them with what the application should send' checklist bullet, which names a monitoring control with no table row. Do not add a control row as part of this correction."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T03:13:22.919Z",
+    "summary": {
+      "links": 4,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-hveaccountbillingpolicy?view=exchange-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-hveaccountsettings?view=exchange-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=581778",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Billing policy that lets an HVE account send and be charged",
+        "docs": "https://learn.microsoft.com/exchange/mail-flow-best-practices/high-volume-mails-m365",
+        "reachable": true,
+        "segments": [
+          "Mail flow",
+          "High Volume Email",
+          "account",
+          "Billing policies"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Billing policy that lets an HVE account send and be charged",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-hveaccountbillingpolicy?view=exchange-ps",
+        "reachable": true,
+        "token": "Set-HVEAccountBillingPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

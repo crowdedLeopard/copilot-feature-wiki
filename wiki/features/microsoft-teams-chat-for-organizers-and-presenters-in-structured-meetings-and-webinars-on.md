@@ -91,19 +91,23 @@ changes:
     note: "Corrected after verification: added Learn's Windows-only presenter support caveat, reworded the government-cloud chat note, and updated rollout status to Rolling out."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 53 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-21"
+    note: "Corrected after verification: Learn's release notes list this chat in Android build 1449/1.0.96.2026344105 (November 2026), so the earlier statement that only the town hall version was listed is replaced and its open question removed."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 59 statements confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-21"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 53
-  confirmed: 52
+  claims: 59
+  confirmed: 59
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "45997a76abb3f9c423cdd95f9d2cdfbb"
+  contradicted: 0
+  attempts: 0
+  hash: "370499d35e65084ea8ee3534394dbb09"
 ---
 
 ## What's changing
@@ -112,7 +116,7 @@ When a Teams Rooms on Android device acts as an organiser, co-organiser or prese
 
 Microsoft's notice MC1519857 (published 2026-10-21) adds detail. It applies when the meeting or event has green room enabled, and the private chat appears as a separate tab on the meeting chat pane, labelled "Event group" for events and "Planning group" for meetings. It describes the private chat as a place for backstage coordination between presenters. The notice gives General Availability (Worldwide) as beginning mid November 2026 and completing by late November 2026, and a Public Preview (Worldwide) that began in late August 2025 and is expected to complete by mid November 2026. It states that no Teams admin center or Teams Pro Management portal configuration changes are required to enable the feature.
 
-The roadmap item is Rolling out with a target of November CY2026, and lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD. Microsoft Learn's Teams Rooms release notes already record the same capability for town halls on Android, in build 1449/1.0.96.2026249711 (September 2026). At the time of writing (November 2026) they list no equivalent entry for webinars or structured meetings.
+The roadmap item is Rolling out with a target of November CY2026, and lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD. Microsoft Learn's Teams Rooms release notes already record the same capability for town halls on Android, in build 1449/1.0.96.2026249711 (September 2026). Microsoft Learn also lists private chat for organisers and presenters in webinars and structured meetings in Android build 1449/1.0.96.2026344105 (November 2026).
 
 Learn's [Plan for Teams events](https://learn.microsoft.com/microsoftteams/plan-events#reference) page still says only Teams Rooms on Windows with a Pro licence are officially supported to join meetings and events as presenters or attendees, conflicting with the Android support described by the roadmap and Android release notes.
 
@@ -172,7 +176,7 @@ No separate meter, price or cap is documented for this feature at the time of wr
 ### After rollout
 
 - Collect help-desk reports about the events-style console interface and the two tab labels.
-- Watch Message center post MC1519857 and the Teams Rooms on Android release notes for the build that lists webinar and structured meeting chat.
+- Check the installed Android app version against build 1449/1.0.96.2026344105 (November 2026), which the Teams Rooms release notes list as introducing this chat.
 
 ## Governance controls
 
@@ -195,18 +199,9 @@ The notice says no Teams admin center or Teams Pro Management portal configurati
 - Does the Meeting chat policy, or any other admin setting, govern the Event group and Planning group chat on Teams Rooms on Android? Watch the Manage chat in Microsoft Teams meetings page on Microsoft Learn.
 - Can people in a Teams Rooms on Android room joined as an organiser or co-organiser send messages in the private chat? Watch the Teams Rooms release notes for the Android build that adds this feature.
 - Will the feature be available in GCC, GCC High and DoD, which the roadmap lists, when Learn says attendee chat is not available on those clouds for events optimized for large audiences? Watch Message center and the Manage chat for Teams events page.
-- Which Teams Rooms on Android build first includes chat for webinars and structured meetings? Learn currently lists the town hall version only.
 
 <!-- rationale
 risk: Low. The roadmap item and Microsoft's notice describe a chat tab for room presenters in meetings that already have a green room; no agent behaviour is described, and the one related admin control is the existing Meeting chat policy.
 cost: Low. The feature is included for Teams Rooms Pro-licensed Android rooms; the expected indirect cost is admin time to brief organisers and room users.
 impact: Low. Only people in a Teams Rooms on Android Pro room who join a green-room-enabled webinar or structured meeting as organiser, co-organiser or presenter will notice the extra chat tab.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing; Governance guidance: After rollout; Open questions / absence: At the time of writing, Learn's Android release notes list only the town hall version and no build or equivalent entry for webinar and structured-meeting chat. | Found: ### 1449/1.0.96.2026344105 (November 2026) Private chat for organizers and presenters for webinars and structured meetings | Fix: Replace the absence sentence in What's changing with 'Microsoft Learn also lists private chat for organisers and presenters in webinars and structured meetings in Android build 1449/1.0.96.2026344105 (November 2026).' Replace the After rollout bullet with 'Check the installed Android app version against build 1449/1.0.96.2026344105 (November 2026), which the Teams Rooms release notes list as introducing this chat.' Remove the final Open questions bullet: the cited release notes now answer it. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Data exposure / behaviour: Learn lists a limitation that Windows Pro rooms can't use chat when they join meetings as presenters. | Found: Microsoft Teams Rooms on Windows with a Pro license can't use chat when they join meetings as a presenter. | Fix: Append to this sentence: 'However, Learn's Plan for Teams meetings and Plan for Teams events tables say Windows Rooms presenters can see, but cannot send, chat messages, consistent with Support's view-only guidance.' Both planning pages are already cited: https://learn.microsoft.com/microsoftteams/plan-meetings and https://learn.microsoft.com/microsoftteams/plan-events. | Source: https://learn.microsoft.com/microsoftteams/manage-meeting-chat
 -->

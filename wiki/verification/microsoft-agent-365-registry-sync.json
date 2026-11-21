@@ -2,27 +2,33 @@
   "slug": "microsoft-agent-365-registry-sync",
   "roadmapId": 559615,
   "title": "Microsoft Agent 365: registry sync from external AI platforms",
-  "status": "verified",
-  "date": "2026-11-18",
+  "status": "held",
+  "date": "2026-11-21",
   "version": 3,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 0,
-  "standard": "cd5b21ff3a5b",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "pass",
+  "verifierVerdict": "hold",
   "notes": [],
-  "hold": null,
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-21",
+    "reasons": [
+      "3 blocking findings (claims 56, 62, 63)"
+    ]
+  },
   "counts": {
-    "claims": 77,
-    "confirmed": 77,
+    "claims": 79,
+    "confirmed": 76,
     "unconfirmed": 0,
-    "contradicted": 0,
-    "blocker": 0,
+    "contradicted": 3,
+    "blocker": 3,
     "major": 0,
     "minor": 0
   },
-  "summary": "The briefing passes: its roadmap facts, connection controls, licensing statements and operational limitations are supported. It appropriately distinguishes the roadmap targets from published preview guidance and reports the service description's ambiguous entitlement table without resolving it by assumption.",
+  "summary": "Hold the briefing because its licensing explanation relies on superseded service-description columns. The current table identifies Connected Platforms as a core capability included with a Microsoft cloud subscription, while the connection paths, opt-in default and roadmap targets remain supported.",
   "claims": [
     {
       "n": 1,
@@ -70,17 +76,6 @@
     },
     {
       "n": 5,
-      "where": "front matter: releasePhase; Scope",
-      "type": "record",
-      "claim": "The roadmap release phases are General Availability and Preview.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
@@ -91,13 +86,24 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 6,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap platform is Web.",
+      "claim": "The roadmap lists Web.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
       "severity": null,
       "fix": null
     },
@@ -114,9 +120,9 @@
     },
     {
       "n": 9,
-      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
-      "type": "default",
-      "claim": "Registry sync is admin-opt-in: an administrator must create a connection before agents can sync.",
+      "where": "What's changing; summary",
+      "type": "behaviour",
+      "claim": "After a platform connection is created, Agent 365 can discover supported agents and add them to the Microsoft 365 agent registry.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
       "quote": "After you create a connection, Agent 365 can discover supported agents and add them to the Microsoft 365 agent registry.",
@@ -125,73 +131,18 @@
     },
     {
       "n": 10,
-      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
-      "type": "licensing",
-      "claim": "Microsoft's overview states that Agent 365 is licensed per user.",
+      "where": "What's changing; Governance controls",
+      "type": "behaviour",
+      "claim": "Connected platforms is documented in the Microsoft 365 admin center.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/overview",
-      "quote": "Microsoft Agent 365 is licensed on a per-user basis.",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
+      "quote": "Create and manage external platform connections from the Connected platforms page in the Microsoft 365 admin center.",
       "severity": null,
       "fix": null
     },
     {
       "n": 11,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
-      "type": "licensing",
-      "claim": "The service description marks external-platform registry synchronization as included with Microsoft 365 Enterprise, Business, Education and Front Line Worker plans.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365",
-      "quote": "Included with Microsoft 365 Enterprise, Business, Education, and Front Line Worker plans\n| Synchronize agents and agent metadata from external platforms that aren’t managed by Agent 365 into the registry | Microsoft 365 Admin Center | Yes | Yes | Yes |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions",
-      "type": "licensing",
-      "claim": "The same service-description row also says Yes under Requires Microsoft 365 E7 / G7 or Agent 365.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365",
-      "quote": "| Synchronize agents and agent metadata from external platforms that aren’t managed by Agent 365 into the registry | Microsoft 365 Admin Center | Yes | Yes | Yes |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "What's changing; summary",
-      "type": "behaviour",
-      "claim": "Microsoft documents registry sync as Connected platforms in the Microsoft 365 admin center.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
-      "quote": "Registry sync (the connected platforms feature described in this article) gives you visibility and governance for agents that you don't build or host yourself.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "What's changing; controls[0].note; Scope; Governance guidance; Governance controls",
-      "type": "role",
-      "claim": "The Agent 365 AI administrator creates and manages connections in the Microsoft 365 admin center.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
-      "quote": "The Agent 365 AI administrator creates and manages the connection in the Microsoft 365 admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "What's changing; controls[0].note; Scope; Governance guidance; Governance controls",
-      "type": "role",
-      "claim": "The platform administrator owns the source account and prepares the source-platform credentials and permissions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/guidance/connected-platforms",
-      "quote": "The platform administrator controls the source account and its credentials; the Agent 365 administrator manages the connection and reviews the resulting inventory.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing; summary; Why it matters",
+      "where": "What's changing",
       "type": "availability",
       "claim": "Amazon Bedrock Agents Classic and AgentCore support agent synchronization.",
       "status": "supported",
@@ -201,10 +152,10 @@
       "fix": null
     },
     {
-      "n": 17,
-      "where": "What's changing; summary; Why it matters",
+      "n": 12,
+      "where": "What's changing",
       "type": "availability",
-      "claim": "Google Vertex AI supports agent synchronization.",
+      "claim": "Google Vertex AI agents support agent synchronization.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
       "quote": "| Google Vertex AI | Vertex AI agents | Yes | Yes |",
@@ -212,8 +163,8 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "What's changing; Why it matters",
+      "n": 13,
+      "where": "What's changing",
       "type": "availability",
       "claim": "Salesforce Agentforce supports agent synchronization.",
       "status": "supported",
@@ -223,7 +174,7 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 14,
       "where": "What's changing",
       "type": "availability",
       "claim": "Databricks Genie supports agent synchronization.",
@@ -234,10 +185,10 @@
       "fix": null
     },
     {
-      "n": 20,
+      "n": 15,
       "where": "What's changing",
       "type": "availability",
-      "claim": "Anthropic Claude Managed Agents supports agent synchronization.",
+      "claim": "Anthropic Claude Managed Agents support agent synchronization.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
       "quote": "| Anthropic Claude | Managed Agents | Yes | Yes |",
@@ -245,10 +196,10 @@
       "fix": null
     },
     {
-      "n": 21,
+      "n": 16,
       "where": "What's changing",
       "type": "availability",
-      "claim": "Oracle Generative AI Agents supports agent synchronization.",
+      "claim": "Oracle Generative AI Agents support agent synchronization.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
       "quote": "| Oracle Generative AI Agents | Generative AI Agents | Yes | Coming soon |",
@@ -256,10 +207,10 @@
       "fix": null
     },
     {
-      "n": 22,
+      "n": 17,
       "where": "What's changing",
       "type": "availability",
-      "claim": "Snowflake Cortex supports agent synchronization.",
+      "claim": "Snowflake Cortex Agents support agent synchronization.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
       "quote": "| Snowflake Cortex | Cortex Agents | Yes | Coming soon |",
@@ -267,10 +218,43 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What's changing; Risk assessment; Governance guidance",
+      "n": 18,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "The Connected platforms guide lists seven supported platforms with synchronization.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
+      "quote": "| Amazon Bedrock | ...\n| Google Vertex AI | ...\n| Salesforce Agentforce | ...\n| Databricks Genie | ...\n| Anthropic Claude | ...\n| Oracle Generative AI Agents | ...\n| Snowflake Cortex | ...",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; controls[0].note; Scope; Governance controls",
+      "type": "role",
+      "claim": "The Agent 365 AI administrator creates and manages connections.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
+      "quote": "The Agent 365 AI administrator creates and manages the connection in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; controls[0].note; Scope; Governance controls",
+      "type": "role",
+      "claim": "The platform administrator owns source-platform credentials and permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
+      "quote": "The platform administrator creates the source-platform credentials, grants the required permissions, and enables platform-side telemetry when applicable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Risk assessment; Governance guidance; Open questions",
       "type": "behaviour",
-      "claim": "The general Connected platforms guide describes synchronization as manual and administrator-started.",
+      "claim": "Synchronization is manually started by an administrator using Sync agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
       "quote": "After you save the connection, select Sync agents to start synchronization. You need to manually synchronize the agents.",
@@ -278,10 +262,10 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 22,
       "where": "What's changing; Risk assessment; Open questions",
       "type": "behaviour",
-      "claim": "Registry synchronization does not currently run on a schedule.",
+      "claim": "Agent 365 does not currently synchronize connected platforms on a schedule.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
       "quote": "Manual synchronization only. Agent 365 doesn't currently sync on a schedule, and Microsoft doesn't prescribe a fixed synchronization interval.",
@@ -289,10 +273,10 @@
       "fix": null
     },
     {
-      "n": 25,
+      "n": 23,
       "where": "What's changing; Risk assessment; Open questions",
       "type": "behaviour",
-      "claim": "Removing an agent from the source platform is not guaranteed to remove its registry entry.",
+      "claim": "Removing an agent from the source platform is not guaranteed to remove its registry entry automatically.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
       "quote": "Synchronization doesn't currently guarantee that an agent removed from the source platform is automatically removed from the Microsoft 365 agent registry.",
@@ -300,10 +284,10 @@
       "fix": null
     },
     {
-      "n": 26,
+      "n": 24,
       "where": "What's changing; controls[0].note; Governance guidance",
-      "type": "admin-path",
-      "claim": "The general connection procedure says to save the connection and then select Sync agents.",
+      "type": "behaviour",
+      "claim": "The general guide says to select Sync agents after saving a connection.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
       "quote": "After you save the connection, select Sync agents to start synchronization.",
@@ -311,10 +295,10 @@
       "fix": null
     },
     {
-      "n": 27,
+      "n": 25,
       "where": "What's changing; controls[0].note; Governance guidance",
       "type": "behaviour",
-      "claim": "The Databricks Genie guide says saving the connection starts the first synchronization.",
+      "claim": "Saving a Databricks Genie connection starts its first synchronization.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms-databricks-genie",
       "quote": "When you save the connection, the details pane opens and starts the first synchronization.",
@@ -322,10 +306,10 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 26,
       "where": "What's changing; Governance guidance",
-      "type": "admin-path",
-      "claim": "Later Databricks synchronizations use Sync agents on the connection.",
+      "type": "behaviour",
+      "claim": "Later Databricks Genie synchronizations use Sync agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms-databricks-genie",
       "quote": "To synchronize after you create or share more Genie agents, open the connection and select Sync agents.",
@@ -333,10 +317,10 @@
       "fix": null
     },
     {
-      "n": 29,
+      "n": 27,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Registry sync provides visibility and governance for externally built or hosted agents.",
+      "claim": "Registry sync provides visibility and governance for agents administrators do not build or host themselves.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
       "quote": "It provides visibility and governance for agents you don't build or host yourself.",
@@ -344,10 +328,10 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 28,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Registry sync does not add code-level Agent 365 capabilities.",
+      "claim": "Registry sync does not add code-level capabilities.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
       "quote": "Registry sync doesn't add code-level capabilities.",
@@ -355,21 +339,10 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 29,
       "where": "What's changing; Scope; Open questions",
       "type": "availability",
-      "claim": "Microsoft's integration-options page labels registry sync as preview.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/developer/choose-integration-option",
-      "quote": "| Registry sync (preview) | Connected agent platforms, such as Google Vertex AI and Amazon Bedrock. | Configured per platform. Imports agents for visibility and governance. | No |",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 32,
-      "where": "What's changing; Scope; Open questions",
-      "type": "availability",
-      "claim": "Learn documents usable Connected platforms functionality despite the roadmap's In development status.",
+      "claim": "Learn documents a usable Connected platforms feature despite the roadmap's In development status.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
       "quote": "Use the Connected platforms page to connect supported third-party agent platforms to Microsoft Agent 365.",
@@ -377,10 +350,21 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 30,
+      "where": "What's changing; Scope; Open questions",
+      "type": "availability",
+      "claim": "The integration-options page labels registry sync as preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/developer/choose-integration-option",
+      "quote": "| Registry sync (preview) | Connected agent platforms, such as Google Vertex AI and Amazon Bedrock. | Configured per platform. Imports agents for visibility and governance. | No |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "Registry coverage depends on the platform and the agents it exposes, rather than guaranteeing every agent is included.",
+      "claim": "Registry coverage depends on the connected platform and does not guarantee every source agent is included.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/guidance/connected-platforms",
       "quote": "Coverage depends on the connected platform and the agents it exposes, so a registry entry represents the supported information available from that source - not a guarantee that every agent on the platform is included.",
@@ -388,10 +372,10 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 32,
       "where": "Why it matters",
       "type": "behaviour",
-      "claim": "Supported connected-platform agents join the shared registry alongside other agents.",
+      "claim": "Synced agents appear in a common inventory with other agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/guidance/connected-platforms",
       "quote": "Agent 365 can synchronize supported agents from connected platforms into the Microsoft 365 agent registry, where they appear with other agents in the organization's inventory.",
@@ -399,8 +383,19 @@
       "fix": null
     },
     {
-      "n": 35,
-      "where": "Risk assessment: Data exposure; Why it matters; rationale: risk",
+      "n": 33,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Registry sync is admin-opt-in: no agents sync without an administrator configuring a connection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
+      "quote": "The Agent 365 AI administrator creates and manages the connection in the Microsoft 365 admin center. After you create a connection, Agent 365 can discover supported agents and add them to the Microsoft 365 agent registry.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure; rationale: risk",
       "type": "behaviour",
       "claim": "Connection credentials are stored as encrypted connection data within Microsoft 365.",
       "status": "supported",
@@ -410,7 +405,7 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 35,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
       "claim": "Every currently supported platform requires a key-based credential.",
@@ -421,10 +416,10 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 36,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The Connected platforms guide says keyless authentication options such as workload identity federation or role assumption are not currently supported.",
+      "claim": "Connected platforms does not currently support workload identity federation or role assumption.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
       "quote": "Keyless authentication options, such as workload identity federation or role assumption, aren't currently supported for Connected platforms.",
@@ -432,8 +427,8 @@
       "fix": null
     },
     {
-      "n": 38,
-      "where": "controls[1].note; Why it matters; Risk assessment; Governance guidance; rationale: risk",
+      "n": 37,
+      "where": "controls[1].note; Why it matters; Risk assessment; rationale: risk",
       "type": "default",
       "claim": "Collect agent observability data is enabled by default for new connections.",
       "status": "supported",
@@ -443,10 +438,10 @@
       "fix": null
     },
     {
-      "n": 39,
-      "where": "Risk assessment: Data exposure; Cost and licensing",
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Enabled observability collection retrieves source-platform agent activity telemetry using the stored connection credentials.",
+      "claim": "Observability collection retrieves agent activity telemetry using the connection's stored credentials.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
       "quote": "When you enable this setting, Microsoft 365 retrieves agent activity telemetry—such as agent sessions, usage, and related operational signals—from the connected platform by using the connection's stored credentials.",
@@ -454,10 +449,10 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 39,
       "where": "controls[1].note; Risk assessment; Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "Telemetry retrieval can query services such as Google BigQuery or Amazon S3 and incur provider-billed data access or query charges.",
+      "claim": "Telemetry retrieval can incur source-provider data access or query charges.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
       "quote": "Retrieving agent telemetry from the connected platform might query the provider's own logging or data services (for example, Google BigQuery or Amazon S3) and can incur data access or query charges that the provider bills.",
@@ -465,10 +460,10 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 40,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Learn describes connected-platform connections as read-only by design.",
+      "claim": "Connected platform connections are read-only by design.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
       "quote": "Connected platform connections are read-only by design:",
@@ -476,10 +471,10 @@
       "fix": null
     },
     {
-      "n": 42,
-      "where": "Risk assessment: Security & identity; Autonomy & actions",
+      "n": 41,
+      "where": "Risk assessment: Security & identity; rationale: impact",
       "type": "behaviour",
-      "claim": "Agent 365 does not invoke or interact with the source agents through these connections.",
+      "claim": "Agent 365 does not invoke or interact with source agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
       "quote": "Agent 365 never invokes, executes, or interacts with agents in the source platform.",
@@ -487,10 +482,10 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 42,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "The general security model excludes writes to the source platform except explicit administrator removal of a synchronized agent.",
+      "claim": "Agent 365 does not write to the source platform except when an administrator explicitly removes a synchronized agent.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
       "quote": "Agent 365 doesn't write to, modify, or delete resources in the source platform. The only exception is an explicit administrator action to remove a synchronized agent",
@@ -498,10 +493,10 @@
       "fix": null
     },
     {
-      "n": 44,
-      "where": "Risk assessment: Security & identity; Governance guidance: Before rollout",
+      "n": 43,
+      "where": "Risk assessment: Security & identity; Governance guidance",
       "type": "behaviour",
-      "claim": "The general guide describes source-agent removal as requiring a separate optional delete permission that administrators can choose not to grant.",
+      "claim": "The general guide describes source deletion as requiring a separate optional delete permission.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
       "quote": "The only exception is an explicit administrator action to remove a synchronized agent, which requires a separate, optional delete permission that you can choose not to grant.",
@@ -509,18 +504,18 @@
       "fix": null
     },
     {
-      "n": 45,
+      "n": 44,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "The Google Vertex AI guide lists aiplatform.reasoningEngines.delete among the permissions to grant.",
+      "claim": "The Google Vertex AI guide includes aiplatform.reasoningEngines.delete in the permissions to grant.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms-google-vertex-ai",
-      "quote": "Grant the service account the Vertex AI permissions required for agent discovery and management: aiplatform.reasoningEngines.list aiplatform.reasoningEngines.get aiplatform.reasoningEngines.delete",
+      "quote": "Grant the service account the Vertex AI permissions required for agent discovery and management:\naiplatform.reasoningEngines.list\naiplatform.reasoningEngines.get\naiplatform.reasoningEngines.delete",
       "severity": null,
       "fix": null
     },
     {
-      "n": 46,
+      "n": 45,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
       "claim": "Databricks Genie activity collection requires Can Manage permission.",
@@ -531,35 +526,46 @@
       "fix": null
     },
     {
-      "n": 47,
+      "n": 46,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "Databricks Can Manage also permits moving a Genie agent to the trash when an administrator removes it in Agent 365.",
+      "claim": "Can Manage also permits moving a Genie agent to the trash when an administrator removes it in Agent 365.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms-databricks-genie",
-      "quote": "The only exception is when an administrator removes a synchronized agent in Agent 365 and the service principal has Can Manage permission on the Genie agent. In that case, Agent 365 moves the Genie agent to the trash in Databricks.",
+      "quote": "| Can Manage | Also read the agent's sharing details, collect conversation activity from all users of the agent, and move the agent to the trash when an administrator removes it in Agent 365. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Security & identity; Scope",
+      "type": "behaviour",
+      "claim": "Agent 365 uses a fixed set of outbound IP addresses for source-platform APIs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
+      "quote": "Agent 365 calls source platform APIs from a fixed set of outbound IP addresses.",
       "severity": null,
       "fix": null
     },
     {
       "n": 48,
-      "where": "Risk assessment: Security & identity; Scope: Prerequisites",
+      "where": "Risk assessment: Security & identity; Scope",
       "type": "behaviour",
-      "claim": "Agent 365 uses fixed outbound IP addresses that must be allowed where the source platform restricts network access.",
+      "claim": "Source-network restrictions can cause authentication errors even with correct credentials.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
-      "quote": "Agent 365 calls source platform APIs from a fixed set of outbound IP addresses. If your organization restricts network access to a source platform, allow traffic from these addresses before you create the connection.",
+      "quote": "When a network restriction blocks Agent 365, the connection can fail with the message Authentication failed. Please check your credentials and try again., even when the credentials are correct.",
       "severity": null,
       "fix": null
     },
     {
       "n": 49,
-      "where": "Risk assessment: Security & identity",
-      "type": "behaviour",
-      "claim": "A network restriction can produce an authentication failure even when the credentials are correct.",
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The documentation describes no autonomous synchronization or source-agent execution by registry sync.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
-      "quote": "When a network restriction blocks Agent 365, the connection can fail with the message Authentication failed. Please check your credentials and try again., even when the credentials are correct.",
+      "source": null,
+      "quote": "Searched: Agent 365 registry sync rollout schedule; opened Connected platforms, Databricks Genie and integration-options guides. They document manual sync, an initial sync on saving Databricks, and no source-agent invocation.",
       "severity": null,
       "fix": null
     },
@@ -587,7 +593,7 @@
     },
     {
       "n": 52,
-      "where": "Risk assessment: Change & support; controls[1].note",
+      "where": "Risk assessment: Change & support",
       "type": "availability",
       "claim": "Databricks Genie observability is available through the Frontier program.",
       "status": "supported",
@@ -600,18 +606,51 @@
       "n": 53,
       "where": "controls[1].note; Risk assessment: Change & support",
       "type": "availability",
-      "claim": "The observability collection control is a Frontier preview subject to the existing preview terms of customer agreements.",
+      "claim": "Agent observability data collection is a Frontier preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
-      "quote": "This feature is part of Frontier preview program. Frontier connects you directly with Microsoft’s latest AI innovations. Frontier previews are subject to the existing preview terms of your customer agreements.",
+      "quote": "Agent observability data collection (preview)\nThis feature is part of Frontier preview program.",
       "severity": null,
       "fix": null
     },
     {
       "n": 54,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Frontier previews are subject to existing customer-agreement preview terms.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
+      "quote": "Frontier previews are subject to the existing preview terms of your customer agreements.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing; front matter: licensing.notes; rationale: cost",
+      "type": "licensing",
+      "claim": "The Agent 365 overview says the product is licensed per user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/overview",
+      "quote": "Microsoft Agent 365 is licensed on a per-user basis.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The entitlement model for registry synchronization is per-user.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365",
+      "quote": "Core capability included with Microsoft cloud subscription\nSynchronize 3P agents and agent metadata from external platforms not managed by Microsoft into the Agent 365 registry (Connected Platforms) | Microsoft 365 admin center | Yes | Yes | Yes",
+      "severity": "blocker",
+      "fix": "Set licensing.model to included. Replace licensing.notes with: 'The current service description lists Connected Platforms synchronization as a core capability included with a Microsoft cloud subscription and also available as a premium capability. The Agent 365 overview separately describes the product as licensed per user and requires at least one qualifying licensed user to enable Agent 365.' Keep both cited sources; do not infer that premium observability is included."
+    },
+    {
+      "n": 57,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The overview says at least one user must have a qualifying Agent 365 licence to enable Agent 365.",
+      "claim": "The overview requires at least one user with a qualifying Agent 365 license to enable Agent 365.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/overview",
       "quote": "At least one user must be licensed with a qualifying Microsoft Agent 365 license to enable Agent 365.",
@@ -619,7 +658,7 @@
       "fix": null
     },
     {
-      "n": 55,
+      "n": 58,
       "where": "Cost and licensing",
       "type": "licensing",
       "claim": "The overview says Agent 365 works best with Microsoft E5 as a prerequisite.",
@@ -630,10 +669,10 @@
       "fix": null
     },
     {
-      "n": 56,
+      "n": 59,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The overview directs readers to Agent 365 plans and pricing and the service description for plan details.",
+      "claim": "The overview points to the Agent 365 plans and pricing page and service description for plan details.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/overview",
       "quote": "For plans and pricing information, see Microsoft Agent 365: The Control Plane for Agents. For details on feature availability by plan, see the Microsoft Agent 365 service description.",
@@ -641,54 +680,76 @@
       "fix": null
     },
     {
-      "n": 57,
+      "n": 60,
       "where": "Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "The Connected platforms page names no separate registry-sync licence or price.",
+      "claim": "The Connected platforms page names no separate registry-sync license or price.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Agent 365 registry synchronization pricing billing meter licence. Opened Connected platforms, Agent 365 overview, service description and Microsoft's Agent 365 pricing page; no separate registry-sync licence or price appears on Connected platforms.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "Cost and licensing",
-      "type": "record",
-      "claim": "The supplied roadmap record states no registry-sync licence or price.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "Searched: read the complete supplied roadmap record, including description and descriptionHtml; no licensing requirement, price or meter is specified.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 59,
-      "where": "Cost and licensing",
-      "type": "absence",
-      "claim": "No Microsoft meter for registry sync is documented in the material found.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Agent 365\" registry synchronization pricing billing meter licence; \"Agent 365\" \"registry sync\" \"meter\". Read Connected platforms, overview, service description and Microsoft's Agent 365 pricing page; found per-user licensing, not a registry-sync meter.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 60,
-      "where": "Scope: Clouds, platforms and rollout",
-      "type": "absence",
-      "claim": "The rollout mechanics for Connected platforms registry sync are not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Agent 365\" \"connected platforms\" rollout availability schedule. Read Connected platforms, integration options, overview and the roadmap record; no tenant rollout sequence or release-channel mechanics found.",
+      "quote": "Searched: Agent 365 connected platforms license pricing meter; opened Connected platforms in full, Agent 365 overview and service description. The Connected platforms page specifies provider query charges but no separate Microsoft license or price.",
       "severity": null,
       "fix": null
     },
     {
       "n": 61,
-      "where": "Scope: Prerequisites",
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap record states no license or price.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"description\": \"Connect to external AI platforms to discover agents created outside Microsoft and automatically sync them into the Agent 365 registry for more complete agent visibility and governance.\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Cost and licensing; front matter: licensing.notes",
+      "type": "licensing",
+      "claim": "The current service-description table lists registry sync under an Included with Microsoft 365 Enterprise, Business, Education and Front Line Worker plans column.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365",
+      "quote": "| Feature Description | Product Surface | Core capability included with Microsoft cloud subscription | Premium capability | GCC Availability |",
+      "severity": "blocker",
+      "fix": "Replace the two-sentence service-description paragraph with: 'The current Agent 365 service description lists Connected Platforms synchronization as a core capability included with a Microsoft cloud subscription and also marks it Yes as a premium capability.' Use https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365#feature-availability. Remove the obsolete named-plan-column description from licensing.notes."
+    },
+    {
+      "n": 63,
+      "where": "Cost and licensing; front matter: licensing.notes; Open questions",
+      "type": "licensing",
+      "claim": "The registry-sync row also marks Yes under Requires Microsoft 365 E7 / G7 or Agent 365, making the table's entitlement ambiguous.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365",
+      "quote": "| Feature Description | Product Surface | Core capability included with Microsoft cloud subscription | Premium capability | GCC Availability |",
+      "severity": "blocker",
+      "fix": "Remove the statement about a Requires Microsoft 365 E7 / G7 or Agent 365 column and the ambiguity attributed to that column from the body and licensing.notes. Replace the first Open questions bullet with: 'Is there any charge for registry sync separate from the published subscription entitlements? Watch the Agent 365 service description and Microsoft Agent 365 pricing page.' The current columns distinguish core inclusion from premium availability, not an additional required license."
+    },
+    {
+      "n": 64,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "No Microsoft meter for external-platform registry sync is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Agent 365 registry sync connected platforms pricing license billing meter; Agent 365 connected platforms license pricing meter. Opened Connected platforms, overview and service description; no registry-sync meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "Registry-sync rollout mechanics are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Agent 365 registry sync rollout schedule. Read roadmap record, Connected platforms and integration-options page; results describe operational sync and other agent rollouts, not rollout mechanics for external-platform connections.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Scope",
       "type": "behaviour",
-      "claim": "Registry sync does not require code changes to the agents.",
+      "claim": "Registry sync requires no code changes to agents.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
       "quote": "Registry sync (the connected platforms feature described in this article) gives you visibility and governance for agents that you don't build or host yourself. It doesn't require code changes.",
@@ -696,63 +757,63 @@
       "fix": null
     },
     {
-      "n": 62,
-      "where": "controls[0].ui; Governance controls table; Governance guidance: At rollout",
+      "n": 67,
+      "where": "controls[0].ui; Governance controls; Governance guidance: At rollout",
       "type": "admin-path",
-      "claim": "The connection creation route is Microsoft 365 admin center > Agents > All Agents > Connected platforms > Manage > + Connect a platform.",
+      "claim": "The connection-creation path is Microsoft 365 admin center > Agents > All Agents > Connected platforms > Manage > + Connect a platform.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
-      "quote": "In the navigation pane, select Agents > All Agents. In the Connected platforms web part, select Manage. Select + Connect a platform.",
+      "quote": "Open the Microsoft 365 admin center. In the navigation pane, select Agents > All Agents. In the Connected platforms web part, select Manage. Select + Connect a platform.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 63,
-      "where": "controls[0].api; Governance controls",
-      "type": "absence",
-      "claim": "Microsoft does not document an administrative API for creating, editing or deleting Connected platforms connections.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Agent 365 connected platforms API Microsoft Graph create connection sync agents observability; site:learn.microsoft.com/graph/api \"Agent 365\" connection sync. Read Connected platforms, Graph API guide and package references; no connection-management operation found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 64,
-      "where": "controls[1].ui; Governance controls table",
+      "n": 68,
+      "where": "controls[1].ui; Governance controls",
       "type": "admin-path",
-      "claim": "Observability collection is edited under Microsoft 365 admin center > Agents > All Agents > Connected platforms > Manage > connection > Edit > Collect agent observability data.",
+      "claim": "The observability-setting path is Microsoft 365 admin center > Agents > All Agents > Connected platforms > Manage > connection > Edit > Collect agent observability data.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
-      "quote": "Open the Connected platforms page in the Microsoft 365 admin center. Create a new connection, or select an existing connection and edit it. Select or clear Collect agent observability data.",
+      "quote": "In the navigation pane, select Agents > All Agents. In the Connected platforms web part, select Manage. Open the Connected platforms page in the Microsoft 365 admin center. Create a new connection, or select an existing connection and edit it. Select or clear Collect agent observability data.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 65,
-      "where": "controls[1].api; Governance controls table",
+      "n": 69,
+      "where": "controls[0].api; Governance controls; Open questions",
       "type": "absence",
-      "claim": "No API for changing a connection's observability collection setting is documented.",
+      "claim": "No administrative API is documented for connected-platform connection management or running Sync agents.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Agent 365\" \"connected platforms\" PowerShell API \"Collect agent observability data\"; Graph connected platforms agents synchronization. Read Connected platforms, third-party observability excerpts and Graph package references; no setting-write API found.",
+      "quote": "Searched: graph beta Agent 365 connected platforms create connection synchronize sync agents observability data collection API PowerShell. Opened Connected platforms, Graph API guide and Package Management API overview; no connection-management or sync operation found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 66,
+      "n": 70,
+      "where": "controls[1].api; Governance controls",
+      "type": "absence",
+      "claim": "No administrative API is documented for Collect agent observability data on a connected-platform connection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: connected platforms observability Graph connection API; graph beta Agent 365 connected platforms observability data collection API PowerShell. Opened Connected platforms, Graph API guide and Package Management API overview; no collection-setting operation found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
       "where": "controls[2].ui; controls[2].api; controls[2].note; Governance controls",
       "type": "absence",
-      "claim": "No tenant-wide UI or API switch specifically turning Connected platforms registry sync off is documented.",
+      "claim": "No tenant-wide UI or API switch to disable registry sync is documented; the documented control is creating or removing connections.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Agent 365\" \"registry sync\" disable tenant setting; Graph Agent 365 connection sync. Read Agent settings, Connected platforms and Graph API guide; found connection-level management, not a tenant-wide registry-sync switch.",
+      "quote": "Searched: Agent 365 registry sync tenant disable switch agent settings user access agent plugin access management rules synced external agents. Opened Connected platforms, Agent settings, Graph API guide and Package Management API overview; no tenant registry-sync switch found.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 67,
-      "where": "controls[1].note; Governance controls table",
+      "n": 72,
+      "where": "controls[1].note; Governance controls",
       "type": "behaviour",
       "claim": "Clearing Collect agent observability data stops new collection for that connection's agents.",
       "status": "supported",
@@ -762,10 +823,10 @@
       "fix": null
     },
     {
-      "n": 68,
-      "where": "controls[1].note; Governance controls table",
+      "n": 73,
+      "where": "controls[1].note; Governance controls",
       "type": "behaviour",
-      "claim": "Previously collected telemetry remains subject to existing retention and management behaviour after collection is disabled.",
+      "claim": "Telemetry collected earlier is retained according to existing retention and management behavior.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
       "quote": "The agent registry retains telemetry collected earlier according to its existing retention and management behavior.",
@@ -773,10 +834,10 @@
       "fix": null
     },
     {
-      "n": 69,
+      "n": 74,
       "where": "Governance controls",
       "type": "behaviour",
-      "claim": "Credential rotation, source-scope changes and access revocation follow the provider guide.",
+      "claim": "Credential rotation, source-scope changes and revoking access follow the relevant provider guide.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
       "quote": "When you need to rotate credentials, change the source scope, revoke access, or remove the connection, follow the relevant provider guide.",
@@ -784,96 +845,63 @@
       "fix": null
     },
     {
-      "n": 70,
+      "n": 75,
       "where": "Governance controls",
       "type": "behaviour",
       "claim": "The Agent settings overview lists management rules, agent and plugin access, security templates, sharing, user access, feedback sharing and tags.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-      "quote": "Agent management rules; Agent and plugin access; Security templates; Sharing; User access; Agent feedback sharing; Tags",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 71,
-      "where": "Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Applicability of the agent and plugin access setting to externally synchronized agents is not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"synced agents\" \"agent and plugin access\". Read Agent settings and Connected platforms; the former governs catalog viewing and installation, while the latter describes externally hosted inventory. No explicit synced-agent applicability found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 72,
-      "where": "Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Applicability of User access to externally synchronized agents is not stated.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"synchronized agents\" \"User access\" \"Agent 365\". Read Agent settings and Connected platforms; User access addresses access and installation in Microsoft 365, not whether it governs use of agents remaining on external platforms.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 73,
-      "where": "Open questions",
-      "type": "absence",
-      "claim": "The applicability of agent management rules to synchronized external agents remains unconfirmed.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"synchronized agents\" \"agent management rules\". Read Agent settings and Connected platforms; rules have scenario and agent-identity qualifications, but no passage establishes which synced external agents meet those qualifications.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 74,
-      "where": "Governance controls; Open questions",
-      "type": "absence",
-      "claim": "No administrative API or PowerShell operation for running Connected platforms Sync agents is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Agent 365 connected platforms API create connection sync agents; Agent 365 connected platforms PowerShell API; site:learn.microsoft.com/graph/api Agent 365 connection sync. Read Connected platforms and Graph registry references; no sync operation found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 75,
-      "where": "Governance controls",
-      "type": "behaviour",
-      "claim": "Microsoft's Graph agent registry guide documents listing agents in the tenant inventory.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/graph-api",
-      "quote": "Get all agents in your inventory: Use the List packages API, to retrieve a complete list of agents in your tenant for compliance and reporting.",
+      "quote": "Agent management rules ... Agent and plugin access ... Security templates ... Sharing ... User access ... Agent feedback sharing ... Tags",
       "severity": null,
       "fix": null
     },
     {
       "n": 76,
-      "where": "Governance controls",
+      "where": "Governance controls; Open questions",
       "type": "absence",
-      "claim": "The Graph agent-listing and details references do not document connection management or synchronization operations.",
+      "claim": "Application of agent and plugin access or user access settings to externally hosted synced agents is not explicitly stated.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: connection, synchronization and sync in Graph API for agent registry and agent details, List packages and Get Copilot package details; read their operation descriptions and HTTP request sections. These describe agent listing/details, not connection management.",
+      "quote": "Searched: Agent 365 agent settings user access agent plugin access management rules synced external agents. Opened Agent settings, Connected platforms and Connect existing agents; no explicit access-setting effects on externally hosted sync-only agents.",
       "severity": null,
       "fix": null
     },
     {
       "n": 77,
-      "where": "rationale: impact",
-      "type": "absence",
-      "claim": "The registry-sync documentation describes no end-user change.",
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The Graph agent-registry guide documents APIs for listing tenant inventory and getting specific agent details, not connection management or synchronization.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"registry sync\" \"end users\" \"Agent 365\". Read Connected platforms, integration options and connected-platform guidance; documented changes concern administrator connections, inventory and telemetry while agents remain on their source platforms.",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/graph-api",
+      "quote": "Get all agents in your inventory: Use the List packages API, to retrieve a complete list of agents in your tenant for compliance and reporting. Get details for a specific agent: Use the Get Copilot package details API",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "controls[0].governs; Governance controls; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Connected platforms supports creating, editing and deleting connections.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
+      "quote": "Create platform connections. Delete existing connections. When you create or edit a connection to a supported platform, you can control whether Microsoft 365 collects observability data",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "controls[1].governs; controls[1].scope; Why it matters; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Observability collection is controlled per connection for agents synchronized from that platform.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/connected-platforms",
+      "quote": "When you create or edit a connection to a supported platform, you can control whether Microsoft 365 collects observability data for the agents synchronized from that platform.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-18T09:02:09.503Z",
+    "at": "2026-11-21T03:13:38.985Z",
     "summary": {
       "links": 11,
       "unreachable": 0,
@@ -987,6 +1015,12 @@
       "date": "2026-11-18",
       "status": "held",
       "version": 2,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-18",
+      "status": "verified",
+      "version": 3,
       "model": "gpt-6.1-sol"
     }
   ]

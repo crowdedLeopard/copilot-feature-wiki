@@ -101,18 +101,20 @@ changes:
     note: "Corrected after the independent check: replaced the statement that Learn documents no MCP tool-access control with the Agent 365 service description's tenant-wide tool-access control, available in GCC, and reworded the matching open question."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 67 statements confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 66 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 4
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "held"
+  date: "2026-11-21"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 67
+  claims: 66
+  confirmed: 65
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "33b14a4ff7a19cd83bf1f831761017c7"
 ---
 
@@ -210,4 +212,12 @@ The Agent 365 service description lists tenant-wide control of agent access to t
 risk: Medium. An MCP plugin lets an agent call a separately hosted server that can create, update and delete data, and Learn lists government-cloud limits for agents that the roadmap item does not mention.
 cost: Low. The only cost the sources show is admin and developer time; Learn documents general agent entitlements but no separate MCP-specific government licensing terms, and says usage-based billing is not supported in GCC or GCCH.
 impact: Medium. Developers who build the agents and the users they share them with notice it; nothing in the sources says other users see a change.
+-->
+
+<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Governance controls: final paragraph / licensing: The briefing attaches Microsoft 365 E7 / G7 or Agent 365 entitlement to tenant-wide tool-access control. | Found: Core capability included with Microsoft cloud subscription ... | Control which tools (Plugins, Skills, Connectors, Microsoft MCP servers) Copilot and Microsoft platform agents can access tenant-wide | Microsoft 365 admin center | Yes | Yes | Yes | | Fix: Replace the sentence with: 'The Agent 365 service description lists tenant-wide control of which tools (Plugins, Skills, Connectors, Microsoft MCP servers) Copilot and Microsoft platform agents can access as a core capability included with a Microsoft cloud subscription and available in GCC.' Keep the following GCC High, DoD and integration-route caveat. The fetched page, independently confirmed through its live HTML, has changed; the Learn search excerpt still shows the older E7 / G7 or Agent 365 column. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model; Cost and licensing; rationale: cost / licensing: Custom actions are included under the general agent entitlements. | Found: | Custom actions | ✅ | ✅ | ✅ | ... * Usage limits apply to all included features. | Fix: Keep licensing.model as included. Add to the licensing notes and licence paragraph: 'Usage limits apply to all included features in Copilot Chat without usage-based billing.' This qualification is stated at https://learn.microsoft.com/plugins/prerequisites. | Source: https://learn.microsoft.com/plugins/prerequisites
 -->

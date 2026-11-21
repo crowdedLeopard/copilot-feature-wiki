@@ -93,18 +93,20 @@ changes:
     note: "Corrected after verification: the Graph registry APIs sentence now says what the Graph guide documents, and checklist steps with no controls-table row were removed."
   - date: "2026-11-18"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 77 statements confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 79 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-18"
+  status: "held"
+  date: "2026-11-21"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 77
-  confirmed: 77
+  claims: 79
+  confirmed: 76
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 3
+  attempts: 1
   hash: "5635776e16d67b3b41938e021f255b14"
 ---
 
@@ -211,4 +213,12 @@ Microsoft Learn documents no API for creating connections or running **Sync agen
 risk: Low. Nothing syncs until an administrator creates a connection. After opt-in, credentials are stored in Microsoft 365 and observability collection is enabled by default for new connections.
 cost: Medium. Agent 365 is licensed per user, and the Connected platforms page names no separate licence for registry sync. Observability collection can incur query charges billed by the source platform.
 impact: Low. Administrators create the connections and see the synced agents in the registry; the documentation describes no change for end users.
+-->
+
+<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: licensing.model / licensing: The entitlement model for registry synchronization is per-user. | Found: Core capability included with Microsoft cloud subscription Synchronize 3P agents and agent metadata from external platforms not managed by Microsoft into the Agent 365 registry (Connected Platforms) | Microsoft 365 admin center | Yes | Yes | Yes | Fix: Set licensing.model to included. Replace licensing.notes with: 'The current service description lists Connected Platforms synchronization as a core capability included with a Microsoft cloud subscription and also available as a premium capability. The Agent 365 overview separately describes the product as licensed per user and requires at least one qualifying licensed user to enable Agent 365.' Keep both cited sources; do not infer that premium observability is included. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
+- [contradicted, blocker] Cost and licensing; front matter: licensing.notes / licensing: The current service-description table lists registry sync under an Included with Microsoft 365 Enterprise, Business, Education and Front Line Worker plans column. | Found: | Feature Description | Product Surface | Core capability included with Microsoft cloud subscription | Premium capability | GCC Availability | | Fix: Replace the two-sentence service-description paragraph with: 'The current Agent 365 service description lists Connected Platforms synchronization as a core capability included with a Microsoft cloud subscription and also marks it Yes as a premium capability.' Use https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365#feature-availability. Remove the obsolete named-plan-column description from licensing.notes. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
+- [contradicted, blocker] Cost and licensing; front matter: licensing.notes; Open questions / licensing: The registry-sync row also marks Yes under Requires Microsoft 365 E7 / G7 or Agent 365, making the table's entitlement ambiguous. | Found: | Feature Description | Product Surface | Core capability included with Microsoft cloud subscription | Premium capability | GCC Availability | | Fix: Remove the statement about a Requires Microsoft 365 E7 / G7 or Agent 365 column and the ambiguity attributed to that column from the body and licensing.notes. Replace the first Open questions bullet with: 'Is there any charge for registry sync separate from the published subscription entitlements? Watch the Agent 365 service description and Microsoft Agent 365 pricing page.' The current columns distinguish core inclusion from premium availability, not an additional required license. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
 -->

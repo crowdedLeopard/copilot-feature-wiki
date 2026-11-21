@@ -9,7 +9,7 @@ status: "in-development"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
 platforms: ["Web"]
-targetDate: "November CY2026"
+targetDate: "December CY2026"
 previewDate: null
 risk: "low"
 cost: "low"
@@ -31,6 +31,9 @@ sources:
   - title: "Release notes for Microsoft Edge Stable Channel"
     url: "https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel"
     kind: "learn"
+  - title: "Configure Microsoft Edge policy settings on Windows devices"
+    url: "https://learn.microsoft.com/deployedge/configure-microsoft-edge"
+    kind: "learn"
 videos: []
 related: []
 controls:
@@ -47,26 +50,30 @@ controls:
     note: "Mandatory only; requires a browser restart; Windows only, from Edge 153. Unconfigured leaves the choice with the user."
 confidence: "high"
 created: "2026-11-20"
-updated: "2026-11-20"
-roadmapModified: "2026-10-30T22:08:34"
+updated: "2026-11-21"
+roadmapModified: "2026-11-20T23:20:27"
 changes:
   - date: "2026-11-20"
     note: "First briefing for this item: opt-in banner and LaunchEdgeOnWindowsStartupEnabled policy for launching Edge at Windows start."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 43 statements not yet confirmed"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected after the independent check: added the Edge policy configuration page as the source for mandatory policies, and updated the roadmap target to December CY2026."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 42 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-20"
-  version: 1
+  status: "held"
+  date: "2026-11-21"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 43
-  confirmed: 43
+  claims: 42
+  confirmed: 41
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
-  hash: "d8ad82b64d8e7f8ef4249b1d9d6aae4f"
+  contradicted: 1
+  attempts: 1
+  hash: "b9aa6d951dd4d542f56444280ec0aa27"
 ---
 
 ## What's changing
@@ -75,7 +82,7 @@ Microsoft Edge will introduce an opt-in experience that lets users on managed de
 
 The policy's own Learn page describes the three states. If you enable the policy, Edge launches visibly when Windows starts. If you disable it, Edge never launches visibly when Windows starts. If you don't configure it, Edge doesn't launch automatically at Windows start by default, users are periodically shown an opt-in banner to turn it on, and they can enable or disable automatic launch at any time from settings. The page lists support for Windows from Edge version 153 and states that macOS, Android and iOS are not supported.
 
-The roadmap item is In development with a target of November CY2026 and release phase General Availability. The Edge release notes already list this item for the Stable channel in version 156 (22 October 2026) and version 158 (19 November 2026), each marked as a controlled feature rollout: "If you don't see this change, check back as we continue the rollout."
+The roadmap item is In development with a target of December CY2026 and release phase General Availability. The Edge release notes already list this item for the Stable channel in version 156 (22 October 2026) and version 158 (19 November 2026), each marked as a controlled feature rollout: "If you don't see this change, check back as we continue the rollout."
 
 ## Why it matters
 
@@ -89,7 +96,7 @@ Plan for service desk questions about the banner and decide your stance before t
 - No change in the sources: the roadmap description and the policy page describe a launch setting, not new data access.
 
 **Security & identity**
-- The policy is listed as mandatory and not recommended ("Can be mandatory: Yes", "Can be recommended: No"), so a value you set is applied as a mandatory policy rather than a default users can change.
+- The policy is listed as mandatory and not recommended ("Can be mandatory: Yes", "Can be recommended: No"), so a value you set is applied as a mandatory policy rather than a default users can change. Microsoft's Edge policy configuration page says mandatory policies override user preferences and prevent the user from changing the policy settings.
 - Enabling the policy makes Edge launch visibly at Windows start for every device it reaches. Decide that deliberately rather than by default.
 
 **Autonomy & actions**
@@ -143,7 +150,7 @@ The policy page documents no separate admin-centre switch for this item; set the
 ## Open questions
 
 - How often is the opt-in banner shown? The policy page says "periodically" without a frequency. Watch the policy page and Edge release notes.
-- When will the controlled rollout reach all tenants? The roadmap target is November CY2026 while the status is still In development; watch the Microsoft 365 roadmap and Message center.
+- When will the controlled rollout reach all tenants? The roadmap target is December CY2026 while the status is still In development; watch the Microsoft 365 roadmap and Message center.
 - Will a licence or meter be published for the feature? Watch the policy page and the Edge for Business documentation.
 
 <!-- rationale
@@ -152,8 +159,8 @@ cost: Low. The only cost the sources show is admin time to choose a policy value
 impact: Medium. Users on managed Windows devices are periodically shown an opt-in banner, so many people may notice it, but Edge's default launch behaviour does not change unless a user or admin enables it.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Risk assessment: Security & identity / behaviour: A mandatory policy value is enforced rather than being a default that users can override. | Found: Mandatory policies override user preferences and prevent the user from changing the policy settings. Recommended policies provide a default setting that the user can override. | Fix: Add https://learn.microsoft.com/deployedge/configure-microsoft-edge to sources for the explanation that mandatory policies override user preferences. | Source: https://learn.microsoft.com/deployedge/configure-microsoft-edge
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] controls[0].ui; Governance controls: rendered table / admin-path: The complete Group Policy route is Administrative Templates > Microsoft Edge > Launch Microsoft Edge on Windows startup. | Found: To configure a mandatory policy, open the Group Policy Editor and go to (Computer Configuration or User Configuration) > Policies > Administrative Templates > Microsoft Edge. | Fix: Set controls[0].ui.surface to 'Group Policy Editor' and controls[0].ui.path to 'Computer Configuration > Policies > Administrative Templates > Microsoft Edge > Launch Microsoft Edge on Windows startup'. Update the rendered table to match. The configuration page supplies the opening route and the existing policy reference supplies the final setting label. | Source: https://learn.microsoft.com/deployedge/configure-microsoft-edge
 -->

@@ -65,15 +65,17 @@ changes:
     note: "First briefing for the My Tasks redesign, based on the roadmap record, MC1488844 and Planner admin pages on Microsoft Learn."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 57 statements confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 61 statements not yet confirmed"
 version: 1
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "verified-with-gaps"
+  date: "2026-11-21"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 57
-  confirmed: 57
+  claims: 61
+  confirmed: 61
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -160,4 +162,10 @@ Separately, Learn's article on Planner in Teams says a user's My Tasks is hidden
 risk: Low. Microsoft's notice MC1488844 describes an interface redesign with existing tasks and data kept and no change to admin policies, so no new data access or autonomous action is described.
 cost: Low. Microsoft's notice names no new licence or charge for the redesign; the cost shown is admin time for helpdesk briefing, user communication and training material updates.
 impact: High. Microsoft's notice says all users who access Planner and use My Tasks are affected, and the new interface is enabled automatically during the December 2026 rollout.
+-->
+
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: The Planner app in Teams article says users with a Microsoft 365 licence are entitled to the Planner app. | Found: Users with a Microsoft 365 license are entitled to the Planner app. | Fix: Replace the unqualified entitlement sentence and corresponding licensing note with: 'Microsoft Learn lists My Day and My Tasks among the capabilities available with a qualifying Microsoft 365 licence that includes Planner.' Cite https://learn.microsoft.com/planner/planner-for-admins, whose 20 November guidance names qualifying subscriptions rather than every Microsoft 365 licence. | Source: https://learn.microsoft.com/microsoftteams/manage-planner-app
 -->

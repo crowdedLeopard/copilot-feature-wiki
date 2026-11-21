@@ -76,15 +76,17 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 72 statements confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 71 statements not yet confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 69 statements not yet confirmed"
 version: 3
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-21"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 71
-  confirmed: 71
+  claims: 69
+  confirmed: 69
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -184,7 +186,7 @@ cost: Variable. Microsoft Learn says Work IQ is available through usage-based bi
 impact: Low. The roadmap item is for agents and the people building them; no source says end users see anything change, and the only platform listed is Web.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
 - [supported, minor] Risk assessment: Autonomy & actions / record: Work IQ: Human in the loop is a separate roadmap entry. | Found: "id": 570672, "title": "Work IQ: Human in the loop", "description": "Allow agents and agent flows to pause for human input or approval before continuing." | Fix: Add https://www.microsoft.com/microsoft-365/roadmap?id=570672 to sources for the statement about the separate Work IQ: Human in the loop entry.

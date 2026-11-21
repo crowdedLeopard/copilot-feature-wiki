@@ -79,15 +79,17 @@ changes:
     note: "Corrected after verification: added the Update-M365TeamsApp call for the Teams app row and removed the Purview audit open question."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 54 statements confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 56 statements not yet confirmed"
 version: 3
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "verified-with-gaps"
+  date: "2026-11-21"
   version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 54
+  claims: 56
+  confirmed: 56
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -183,4 +185,11 @@ The Teams admin centre row is an existing control for the Planner app in Teams, 
 risk: Medium. Where new private tasks are stored changes, and Microsoft's notice says retention, discovery and governance processes tied to Microsoft To Do storage should be validated; no setting to opt out is documented.
 cost: Low. The only cost the sources show is admin and support time; Microsoft has not published a licence or meter specific to this change.
 impact: High. It changes default behaviour for users who create private tasks: new ones are stored in Planner and, per Microsoft's notice, no longer appear in Microsoft To Do.
+-->
+
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] What's changing / record: The notice says the change enables task history. | Found: This enables richer Planner capabilities, such as labels and task history, while maintaining the same private experience. | Fix: Keep the attribution to MC1488845, then add: 'The Planner service description separately lists task history as included with Planner and Project Plan 3 and Microsoft 365 Copilot, but not with Microsoft 365 alone or Planner Plan 1.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-planner-service-description. Do not infer that every user receives task history from this storage change.
+- [supported, minor] front matter: licensing.notes; Cost and licensing / licensing: The Teams Planner page says users with a Microsoft 365 licence are entitled to the Planner app. | Found: Users with a Microsoft 365 license are entitled to the Planner app. | Fix: Replace the broad entitlement sentence in the licensing notes and Cost and licensing with: 'Users with a qualifying Microsoft 365 licence have access to Planner task creation and editing and My Tasks; the Planner for admins page lists the eligible subscriptions.' Cite https://learn.microsoft.com/office365/planner/planner-for-admins, which now explicitly says 'qualifying' and 'eligible'. | Source: https://learn.microsoft.com/microsoftteams/manage-planner-app
 -->

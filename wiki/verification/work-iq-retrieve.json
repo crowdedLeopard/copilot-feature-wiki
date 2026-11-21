@@ -3,32 +3,43 @@
   "roadmapId": 570673,
   "title": "Work IQ: retrieve tool gives agents Microsoft 365 grounding content",
   "status": "verified-with-gaps",
-  "date": "2026-11-19",
+  "date": "2026-11-21",
   "version": 1,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
   "attempts": 0,
-  "standard": "cd5b21ff3a5b",
+  "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "pass",
   "notes": [],
   "hold": null,
   "counts": {
-    "claims": 75,
-    "confirmed": 74,
+    "claims": 66,
+    "confirmed": 64,
     "unconfirmed": 0,
-    "contradicted": 1,
+    "contradicted": 2,
     "blocker": 0,
     "major": 0,
-    "minor": 3
+    "minor": 5
   },
-  "summary": "The roadmap details, retrieval behaviour, billing prerequisites and documented controls are supported. Minor corrections should simplify the Graph call, acknowledge the documented workIQ service category and remove a consent-governance checklist step that has no controls-table row.",
+  "summary": "The roadmap details, preview retrieval behaviour, Copilot Credits billing and documented controls are supported. Minor corrections should complete the spending-policy navigation, simplify the Graph call, acknowledge the documented workIQ service category and remove checklist controls that have no table row.",
   "claims": [
     {
       "n": 1,
-      "where": "What's changing: roadmap description",
+      "where": "What's changing: first paragraph",
       "type": "record",
-      "claim": "Roadmap item Work IQ: Retrieve plans to enable agents to retrieve relevant Microsoft 365 content and context through Work IQ.",
+      "claim": "The roadmap item is titled Work IQ: Retrieve.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"title\": \"Work IQ: Retrieve\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing: first paragraph",
+      "type": "record",
+      "claim": "Microsoft plans to enable agents to retrieve relevant Microsoft 365 content and context through Work IQ.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "Enable agents to retrieve relevant Microsoft 365 content and context through Work IQ.",
@@ -36,18 +47,18 @@
       "fix": null
     },
     {
-      "n": 2,
-      "where": "What's changing: roadmap identification",
+      "n": 3,
+      "where": "What's changing: first paragraph; Open questions",
       "type": "record",
-      "claim": "The roadmap record has no more-info link identifying the MCP retrieve tool.",
+      "claim": "The record has no more-info link establishing that it refers to the MCP retrieve tool.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"moreInfoLink\": null",
+      "quote": "\"moreInfoLink\": null; \"description\": \"Enable agents to retrieve relevant Microsoft 365 content and context through Work IQ.\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 3,
+      "n": 4,
       "where": "front matter: status; What's changing; Governance guidance",
       "type": "record",
       "claim": "The roadmap status is In development.",
@@ -58,18 +69,18 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 5,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
-      "claim": "The roadmap target date is November CY2026, presented as a target rather than a commitment.",
+      "claim": "The roadmap target is November CY2026, not a committed release date.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"targetDate\": \"November CY2026\"",
+      "quote": "\"targetDate\": \"November CY2026\", \"status\": \"In development\"",
       "severity": null,
       "fix": null
     },
     {
-      "n": 5,
+      "n": 6,
       "where": "front matter: previewDate; What's changing",
       "type": "record",
       "claim": "The roadmap preview target is October CY2026.",
@@ -80,10 +91,10 @@
       "fix": null
     },
     {
-      "n": 6,
-      "where": "front matter: releasePhase; What's changing",
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing; Risk assessment",
       "type": "record",
-      "claim": "The roadmap lists General Availability and Preview release phases.",
+      "claim": "The record lists General Availability and Preview as release phases.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
@@ -91,10 +102,10 @@
       "fix": null
     },
     {
-      "n": 7,
+      "n": 8,
       "where": "front matter: clouds; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "claim": "The record lists Worldwide (Standard Multi-Tenant).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
@@ -102,10 +113,10 @@
       "fix": null
     },
     {
-      "n": 8,
+      "n": 9,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap platform is Developer.",
+      "claim": "The record lists the Developer platform.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"platforms\": [\"Developer\"]",
@@ -113,10 +124,21 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 10,
+      "where": "Scope: Cloud and platform",
+      "type": "record",
+      "claim": "The record lists no US Government cloud.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
       "where": "front matter: products",
       "type": "record",
-      "claim": "The record associates Work IQ and Microsoft Copilot (Microsoft 365) with this item.",
+      "claim": "The record's products are Work IQ and Microsoft Copilot (Microsoft 365).",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"products\": [\"Work IQ\", \"Microsoft Copilot (Microsoft 365)\"]",
@@ -124,8 +146,19 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "summary; What's changing; Risk assessment: Data exposure",
+      "n": 12,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-13T23:01:05.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-13T23:01:05\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "title; summary; What's changing; Risk assessment; Scope; rationale: risk",
       "type": "behaviour",
       "claim": "Retrieve searches Microsoft 365 email, files, meetings, Teams messages and people.",
       "status": "supported",
@@ -135,10 +168,10 @@
       "fix": null
     },
     {
-      "n": 11,
+      "n": 14,
       "where": "summary; What's changing; Why it matters; Risk assessment; Scope; rationale: risk",
       "type": "behaviour",
-      "claim": "Retrieval uses the signed-in user's access and does not grant access to otherwise inaccessible content.",
+      "claim": "Retrieval is limited to content the signed-in user can access.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
       "quote": "Retrieval runs in the context of the signed-in user and doesn't grant access to content that the user can't otherwise access.",
@@ -146,8 +179,8 @@
       "fix": null
     },
     {
-      "n": 12,
-      "where": "What's changing: output",
+      "n": 15,
+      "where": "What's changing: second paragraph",
       "type": "behaviour",
       "claim": "Retrieve returns model-friendly grounding Markdown with inline citations.",
       "status": "supported",
@@ -157,8 +190,8 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "What's changing: output",
+      "n": 16,
+      "where": "What's changing: second paragraph",
       "type": "behaviour",
       "claim": "Retrieve returns structured metadata for each cited source.",
       "status": "supported",
@@ -168,10 +201,10 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "What's changing: retrieve versus ask",
+      "n": 17,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Retrieve does not produce a final answer to the user's question.",
+      "claim": "Retrieve returns grounding rather than a final answer; ask is the answering tool.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
       "quote": "Unlike the `ask` tool, `retrieve` doesn't produce a final answer to the user's question.",
@@ -179,21 +212,10 @@
       "fix": null
     },
     {
-      "n": 15,
-      "where": "What's changing: retrieve versus ask",
+      "n": 18,
+      "where": "What's changing; Governance controls",
       "type": "behaviour",
-      "claim": "The separate ask tool returns a Copilot or agent answer.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/tool-reference",
-      "quote": "Asks Microsoft 365 Copilot (or a specific agent) a natural-language question about your data.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "What's changing: strategies",
-      "type": "behaviour",
-      "claim": "Grounding is the default strategy and searches Microsoft 365 indexed content including SharePoint, OneDrive, Teams and Outlook.",
+      "claim": "Grounding is the default strategy and searches indexed SharePoint, OneDrive, Teams and Outlook content.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
       "quote": "`grounding` (default) | Microsoft 365 indexed content, including SharePoint, OneDrive, Teams, and Outlook",
@@ -201,8 +223,8 @@
       "fix": null
     },
     {
-      "n": 17,
-      "where": "What's changing; Risk assessment: Data exposure; Scope",
+      "n": 19,
+      "where": "What's changing; Risk assessment; Scope; Governance controls",
       "type": "behaviour",
       "claim": "The copilot strategy also searches connected enterprise sources available to Copilot.",
       "status": "supported",
@@ -212,10 +234,10 @@
       "fix": null
     },
     {
-      "n": 18,
-      "where": "What's changing: capabilities",
+      "n": 20,
+      "where": "What's changing; Governance guidance: At rollout; Governance controls",
       "type": "behaviour",
-      "claim": "Capabilities provides a request-level source allow list with People, Meetings, OneDriveAndSharePoint, Email, TeamsMessages and GraphConnectors.",
+      "claim": "Capabilities provides a per-request source allow list with People, Meetings, OneDriveAndSharePoint, Email, TeamsMessages and GraphConnectors.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/tool-reference",
       "quote": "A source allow list for the request. Currently supported capability names are `People`, `Meetings`, `OneDriveAndSharePoint`, `Email`, `TeamsMessages`, and `GraphConnectors`.",
@@ -223,32 +245,21 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "What's changing: unsupported sources",
-      "type": "availability",
-      "claim": "Dataverse is a roadmap source rather than a currently supported retrieval source.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
-      "quote": "Dataverse and Power BI are roadmap sources, not currently supported retrieval sources.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 20,
-      "where": "What's changing: unsupported sources",
-      "type": "availability",
-      "claim": "Power BI is a roadmap source rather than a currently supported retrieval source.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
-      "quote": "Dataverse and Power BI are roadmap sources, not currently supported retrieval sources.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 21,
-      "where": "What's changing: endpoint; Scope; rationale: impact",
+      "where": "What's changing: second paragraph",
+      "type": "availability",
+      "claim": "Dataverse and Power BI are roadmap sources, not currently supported retrieval sources.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/tool-reference",
+      "quote": "Dataverse and Power BI are roadmap sources, not currently supported retrieval sources.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Scope; rationale: impact",
       "type": "behaviour",
-      "claim": "Applications call the tool through an MCP client connected to https://workiq.svc.cloud.microsoft/mcp.",
+      "claim": "Applications call retrieve using an MCP client connected to https://workiq.svc.cloud.microsoft/mcp.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
       "quote": "Connect an MCP client to `https://workiq.svc.cloud.microsoft/mcp`.",
@@ -256,10 +267,10 @@
       "fix": null
     },
     {
-      "n": 22,
-      "where": "What's changing; Risk assessment: Change & support; Open questions",
+      "n": 23,
+      "where": "What's changing; Risk assessment; changes: first entry; Open questions",
       "type": "availability",
-      "claim": "Microsoft Learn marks retrieve as public preview.",
+      "claim": "Microsoft Learn describes retrieve as available in public preview, separately from the roadmap's In development status.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
       "quote": "The `retrieve` tool is available in public preview.",
@@ -267,18 +278,51 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "Risk assessment: Change & support",
+      "n": 24,
+      "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Microsoft says tool availability and schemas can evolve.",
+      "claim": "Source metadata can include sensitivity labels.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
-      "quote": "Tool availability and schemas can evolve, so use the schema returned by `tools/list` as the source of truth instead of hard-coding a locally copied schema.",
+      "quote": "`sensitivityLabel` | object | Sensitivity-label metadata for the source, when available.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 24,
+      "n": 25,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Source metadata can include a contentProtection evaluation value.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
+      "quote": "`contentProtection` | string | The content-protection evaluation result, when available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Learn tells developers not to interpret missing, failed, blocked or unrecognised contentProtection values as permission to allow content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
+      "quote": "Don't treat a missing, failed, blocked, or unrecognized value as an allow decision.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Developers have responsibility for how the retrieving application uses source security metadata.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
+      "quote": "Use `results` for programmatic operations such as: ... Applying application-specific redaction or filtering. ... Inspecting sensitivity-label metadata.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
       "where": "Risk assessment: Security & identity; Scope",
       "type": "behaviour",
       "claim": "Work IQ uses delegated authentication.",
@@ -289,10 +333,10 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "Risk assessment: Security & identity; Scope: Prerequisites",
+      "n": 29,
+      "where": "Risk assessment: Security & identity; Scope",
       "type": "behaviour",
-      "claim": "The retrieve prerequisites include registering a client application.",
+      "claim": "Retrieve requires a registered client application with the delegated WorkIQAgent.Ask permission.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
       "quote": "Register a client application and grant the delegated `WorkIQAgent.Ask` permission.",
@@ -300,21 +344,10 @@
       "fix": null
     },
     {
-      "n": 26,
-      "where": "Risk assessment: Security & identity; Scope; Governance guidance: consent",
-      "type": "behaviour",
-      "claim": "Retrieve requires the delegated WorkIQAgent.Ask permission.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
-      "quote": "Register a client application and grant the delegated `WorkIQAgent.Ask` permission.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
+      "n": 30,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "The Work IQ service principal is created automatically on first use in the tenant.",
+      "claim": "The Work IQ service principal is automatically created on first use.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview",
       "quote": "The Work IQ service principal is created automatically in the tenant when you use Work IQ for the first time.",
@@ -322,10 +355,10 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 31,
       "where": "Risk assessment: Security & identity; Scope: Roles",
       "type": "role",
-      "claim": "The documented one-time manual Work IQ setup requires a Global Administrator.",
+      "claim": "A Global Administrator can provision Work IQ through the documented one-time setup.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
       "quote": "A user with Global Administrator role for the one-time Work IQ setup",
@@ -333,43 +366,32 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "Scope: Prerequisites",
-      "type": "behaviour",
-      "claim": "The retrieve page lists enabling the tenant for Work IQ as a prerequisite.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
-      "quote": "Complete the following prerequisites: ... Enable your tenant for Work IQ",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "Why it matters; Cost and licensing; Scope",
-      "type": "licensing",
-      "claim": "The retrieve prerequisites require setting up usage-based billing for Copilot Credits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
-      "quote": "Set up usage-based billing for Copilot Credits and assign the calling users to a spending policy that includes Work IQ API.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 31,
-      "where": "Why it matters; Cost and licensing; Scope; controls[1].note; Governance controls",
-      "type": "applicability",
-      "claim": "Calling users must be assigned to a spending policy that includes Work IQ API.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
-      "quote": "Set up usage-based billing for Copilot Credits and assign the calling users to a spending policy that includes Work IQ API.",
-      "severity": null,
-      "fix": null
-    },
-    {
       "n": 32,
-      "where": "Scope: Prerequisites",
-      "type": "applicability",
-      "claim": "Where the organization uses Work IQ MCP policy, Work IQ MCP must be enabled.",
+      "where": "Scope: Prerequisites listed on Learn",
+      "type": "behaviour",
+      "claim": "Retrieve's prerequisites include enabling the tenant for Work IQ.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
+      "quote": "Complete the following prerequisites: ... Enable your tenant for Work IQ.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Why it matters; Cost and licensing; Scope; controls[1].note; Governance controls",
+      "type": "licensing",
+      "claim": "Calling users need usage-based billing and assignment to a spending policy that includes Work IQ API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
+      "quote": "Set up usage-based billing for Copilot Credits and assign the calling users to a spending policy that includes Work IQ API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Scope: Prerequisites listed on Learn",
+      "type": "behaviour",
+      "claim": "Where an organisation uses Work IQ MCP policy, Learn requires confirming Work IQ MCP is enabled.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
       "quote": "If your organization uses Work IQ MCP policy, confirm that Work IQ MCP is enabled.",
@@ -377,10 +399,10 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 35,
       "where": "front matter: defaultState; Why it matters",
       "type": "default",
-      "claim": "Admin-opt-in describes the required billing, spending-policy and consent setup rather than an asserted default for the MCP policy toggle.",
+      "claim": "The retrieve capability is admin-opt-in because access requires billing setup, spending-policy coverage and consent.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
       "quote": "Set up usage-based billing for Copilot Credits and assign the calling users to a spending policy that includes Work IQ API. ... Register a client application and grant the delegated `WorkIQAgent.Ask` permission.",
@@ -388,87 +410,32 @@
       "fix": null
     },
     {
-      "n": 34,
-      "where": "Why it matters; Open questions: MCP policy default",
+      "n": 36,
+      "where": "Why it matters; Open questions: policy default",
       "type": "absence",
-      "claim": "Microsoft has not stated whether the tenant Work IQ MCP policy toggle is on or off by default.",
+      "claim": "Microsoft has not stated whether the tenant-level Work IQ MCP policy is on or off by default.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ MCP\" policy \"default\" enabled. Read policy-governance-mcp, retrieve and MCP overview; results state default mutation restrictions but not the initial on/off state of the tenant policy toggle.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
-      "where": "controls[0].ui; Governance controls: first row",
-      "type": "admin-path",
-      "claim": "Microsoft 365 admin center > Agents > Tools > Work IQ MCP > Policy reaches the tenant policy surface.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "In the left navigation, select Agents > Tools. ... In the tools registry, select Work IQ MCP. ... On the Work IQ MCP details pane, select the Policy tab when it's available.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 36,
-      "where": "controls[0].scope; Governance controls; rationale: risk",
-      "type": "applicability",
-      "claim": "The initial Work IQ MCP policy control is tenant-level.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "In the initial release, Work IQ MCP provides tenant-level policy control.",
+      "quote": "Searched: Work IQ MCP policy default enabled; Work IQ retrieve default admin enable. Read policy-governance-mcp, retrieve, MCP overview and enable-work-iq; mutation defaults are stated, but the tenant policy toggle's default is not.",
       "severity": null,
       "fix": null
     },
     {
       "n": 37,
-      "where": "Governance controls: policy granularity",
+      "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Per-user, per-app, per-agent and scenario-specific policy templates are not part of the initial policy surface.",
+      "claim": "Retrieve is a read-style grounding tool rather than a data-mutation operation.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "Per-user, per-app, per-agent, or scenario-specific policy templates aren't part of the initial policy control surface.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview",
+      "quote": "Entity tools ... CRUD operations and actions ... Copilot tools | `ask`, `retrieve`, `list_agents` | Invoke Microsoft 365 Copilot, retrieve grounding content, and discover available agents",
       "severity": null,
       "fix": null
     },
     {
       "n": 38,
-      "where": "controls[0].note; Governance controls: first row",
-      "type": "availability",
-      "claim": "The instructions qualify the Policy tab with 'when it's available'.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "On the Work IQ MCP details pane, select the Policy tab when it's available.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 39,
-      "where": "controls[0].note; Risk assessment: Change & support; Governance controls",
-      "type": "behaviour",
-      "claim": "A saved Work IQ MCP policy change can take up to 24 hours to apply across the tenant.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
-      "quote": "After you save the setting, it can take up to 24 hours for the policy change to apply across your tenant.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "controls[0].api; Governance controls: UI-only qualification; Open questions",
-      "type": "absence",
-      "claim": "No API for reading or changing the Work IQ MCP tenant policy was found in Microsoft's documentation.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ MCP\" policy API Graph update Allowed Disallowed; site:learn.microsoft.com/graph \"Work IQ\" \"policy\"; \"Work IQ MCP\" \"policy\" \"API\" \"PATCH\". Read policy-governance-mcp and MCP overview; no policy API operation was returned.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 41,
       "where": "Risk assessment: Autonomy & actions",
       "type": "default",
-      "claim": "The policy page says mutation operations including create, update, delete and action requests are blocked by default.",
+      "claim": "The Work IQ MCP policy documentation says create, update, delete and modifying action requests are blocked by default.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
       "quote": "By default, mutation operations aren't allowed for safety. This restriction includes create, update, delete, and action requests that modify data, such as sending email.",
@@ -476,7 +443,7 @@
       "fix": null
     },
     {
-      "n": 42,
+      "n": 39,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
       "claim": "Administrators can enable supported mutation scenarios through tenant policy.",
@@ -487,43 +454,43 @@
       "fix": null
     },
     {
+      "n": 40,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The policy page does not describe the mutation restriction as behaviour specific to retrieve.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: retrieve and mutation in policy-governance-mcp and tool-reference. The former gives a general modifying-operation restriction; the latter describes retrieve separately as returning grounding.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Learn says tool availability and schemas can evolve and instructs clients to discover the retrieve schema through tools/list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
+      "quote": "Call `tools/list` after connecting and confirm that `retrieve` is available. Tool availability and schemas can evolve, so use the schema returned by `tools/list` as the source of truth",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0].note; Risk assessment: Change & support; Governance controls",
+      "type": "behaviour",
+      "claim": "A Work IQ MCP policy change can take up to 24 hours to apply across the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "After you save the setting, it can take up to 24 hours for the policy change to apply across your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 43,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Result source metadata can include sensitivity labels.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
-      "quote": "`sensitivityLabel` | object | Sensitivity-label metadata for the source, when available.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Result source metadata can include a contentProtection evaluation value.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
-      "quote": "`contentProtection` | string | The content-protection evaluation result, when available.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 45,
-      "where": "Risk assessment: Data exposure",
-      "type": "behaviour",
-      "claim": "Learn tells developers not to treat missing, failed, blocked or unrecognized contentProtection values as an allow decision.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
-      "quote": "Don't treat a missing, failed, blocked, or unrecognized value as an allow decision.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "front matter: licensing.model; summary; Cost and licensing; rationale: cost",
+      "where": "front matter: licensing.model; summary; Why it matters; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "Work IQ API uses consumption-based billing measured in Copilot Credits.",
+      "claim": "Work IQ API uses consumption licensing billed in Copilot Credits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
       "quote": "You pay for use of the Work IQ API through a usage-based model that uses Copilot Credits.",
@@ -531,7 +498,7 @@
       "fix": null
     },
     {
-      "n": 47,
+      "n": 44,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "Work IQ API access is independent of Microsoft 365 Copilot licensing.",
@@ -542,7 +509,7 @@
       "fix": null
     },
     {
-      "n": 48,
+      "n": 45,
       "where": "Why it matters; Cost and licensing; rationale: cost",
       "type": "cost",
       "claim": "Work IQ API consumes Copilot Credits shared with other eligible services.",
@@ -553,109 +520,21 @@
       "fix": null
     },
     {
-      "n": 49,
-      "where": "Cost and licensing: funding",
+      "n": 46,
+      "where": "Cost and licensing: first paragraph",
       "type": "cost",
-      "claim": "Supported usage-based services such as Cowork and Work IQ API can use prepaid credits or pay-as-you-go funding managed in the Microsoft 365 admin center.",
+      "claim": "Prepaid credits and pay-as-you-go can fund consumption for Work IQ API and other supported services such as Cowork.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
-      "quote": "Depending on the service, organizations can use fixed licensing, the Copilot Credit Pre-purchase Plan (P3), pay-as-you-go billing, prepaid capacity packs, or supported combinations of these billing methods.",
+      "quote": "Depending on the service, organizations can use ... pay-as-you-go billing, prepaid capacity packs, or supported combinations ... Services ... now include: ... Cowork ... Work IQ API for custom apps and agents",
       "severity": null,
       "fix": null
     },
     {
-      "n": 50,
-      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
-      "type": "absence",
-      "claim": "A credit rate specific to retrieve, including a strategy-specific rate, was not found as of November 2026.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ\" \"retrieve\" \"credits\" rate pricing; \"retrieve\" \"Work IQ\" \"rate\" \"Copilot Credits\". Read retrieve, Work IQ access/pricing, API overview and billing overview; no retrieve-specific rate found. The licensing short-link fetch was denied.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 51,
-      "where": "controls[1].ui; Governance controls: second row",
-      "type": "admin-path",
-      "claim": "Microsoft 365 admin center > Copilot > Cost Management > Configuration > + Add spending policy opens spending-policy creation.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
-      "quote": "In the Microsoft 365 admin center, go to Copilot > Cost Management. ... Select the Configuration tab and then select + Add spending policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 52,
-      "where": "controls[1].api; Governance controls: second row",
-      "type": "command",
-      "claim": "PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id} updates periodLimit, perUserLimit or billingMethods using an If-Match ETag.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
-      "quote": "PATCH /copilot/costManagement/spendingPolicies/{id} ... If-Match | The ETag of the spending policy. Required. ... The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
-      "severity": "minor",
-      "fix": "Set controls[1].api.call and the rendered call to 'PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id}'. Add to its note: 'The request body sets periodLimit or perUserLimit to change spending limits; If-Match supplies the policy ETag.' Leave complete funding-change requirements to the linked reference."
-    },
-    {
-      "n": 53,
-      "where": "controls[1].note; Governance controls: API qualification",
-      "type": "availability",
-      "claim": "The Copilot Cost Management API used in the row is beta.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
-      "quote": "APIs under the `/beta` version are subject to change.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 54,
-      "where": "controls[1].note; Governance controls: second row",
-      "type": "role",
-      "claim": "The update operation requires CopilotCostManagement-Policy.ReadWrite.All.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
-      "quote": "Delegated (work or school account) | CopilotCostManagement-Policy.ReadWrite.All",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "Governance controls: production qualification",
-      "type": "availability",
-      "claim": "Microsoft says using this beta API in production applications is not supported.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
-      "quote": "Use of these APIs in production applications is not supported.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 56,
-      "where": "controls[1].governs; Governance guidance: Before rollout; Governance controls",
+      "n": 47,
+      "where": "Cost and licensing; Governance controls",
       "type": "cost",
-      "claim": "Spending policies control eligible users and services and provide policy-level and optional per-user monthly limits.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
-      "quote": "Select the agents and services that users and groups in this policy can access. ... Select the monthly spending limit for this policy. ... Select monthly budget limits for users (optional).",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 57,
-      "where": "Cost and licensing; Governance guidance: Before rollout",
-      "type": "default",
-      "claim": "Auto-apply new services is selected by default and automatically adds newly supported services to spending policies.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
-      "quote": "By default, the Auto-apply new services toggle is selected for spending policies. ... When the setting is on, newly supported Microsoft Copilot services and agents are automatically added to the policy.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 58,
-      "where": "Cost and licensing: spending-policy mechanics",
-      "type": "cost",
-      "claim": "Spending policies are limit-based controls and do not reserve or allocate Copilot Credits.",
+      "claim": "Spending policies define access and spending limits without reserving or allocating Copilot Credits.",
       "status": "supported",
       "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
       "quote": "Spending policies are limit-based controls and don't reserve or allocate Copilot Credits to users or groups.",
@@ -663,8 +542,19 @@
       "fix": null
     },
     {
-      "n": 59,
-      "where": "Cost and licensing: reporting",
+      "n": 48,
+      "where": "Cost and licensing; Governance guidance: Before rollout",
+      "type": "default",
+      "claim": "Auto-apply new services is on by default for spending policies and automatically adds newly supported services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "By default, the **Auto-apply new services** toggle is selected for spending policies. ... When the setting is on, newly supported Microsoft Copilot services and agents are automatically added to the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Cost and licensing: third paragraph",
       "type": "cost",
       "claim": "Consumption through custom integrations that call Work IQ directly appears under Work IQ API.",
       "status": "supported",
@@ -674,10 +564,10 @@
       "fix": null
     },
     {
-      "n": 60,
-      "where": "Cost and licensing: variable task costs",
+      "n": 50,
+      "where": "front matter: cost; Cost and licensing; rationale: cost",
       "type": "cost",
-      "claim": "One request can involve multiple tool calls and reasoning steps, so cost per task varies.",
+      "claim": "Cost varies because one request can involve multiple tool calls and reasoning steps.",
       "status": "supported",
       "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs",
       "quote": "One user request can involve multiple tool calls and reasoning steps. Work IQ includes deterministic operations and variable-cost contextual reasoning, so a prompt isn't necessarily a single fixed-price operation.",
@@ -685,10 +575,21 @@
       "fix": null
     },
     {
-      "n": 61,
+      "n": 51,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No Copilot Credit rate specific to retrieve or its strategies is documented in the Microsoft Learn billing and feature material checked.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ retrieve Copilot Credits rate pricing grounding copilot meter; Work IQ retrieve rate licensing. Read retrieve, tool-reference, Work IQ overview, API overview, usage-based billing overview and Business Applications costs; results give no retrieve-specific rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
       "where": "Scope: Who calls it",
       "type": "behaviour",
-      "claim": "Application-only authentication is not supported for the Work IQ API.",
+      "claim": "Work IQ API does not support application-only authentication.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
       "quote": "Application-only authentication isn't supported.",
@@ -696,169 +597,169 @@
       "fix": null
     },
     {
-      "n": 62,
-      "where": "Governance controls: API service-setting qualification",
+      "n": 53,
+      "where": "controls[0].ui; Governance controls: first row",
+      "type": "admin-path",
+      "claim": "The Work IQ MCP policy is reached in Microsoft 365 admin center through Agents > Tools > Work IQ MCP > Policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "In the left navigation, select **Agents** > **Tools**. ... select **Work IQ MCP**. ... select the **Policy** tab when it's available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "summary; controls[0].governs; Governance controls; rationale: risk",
+      "type": "applicability",
+      "claim": "Tenant policy can allow or deny Work IQ MCP requests, including retrieve requests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
+      "quote": "Don't automatically retry a policy-denied request. Policy denials require the user or an administrator to review access, consent, billing assignment, or Work IQ MCP policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[0].scope and note; Governance controls",
+      "type": "applicability",
+      "claim": "The initial Work IQ MCP policy surface is tenant-level, without per-user, per-app, per-agent or scenario-specific policy templates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "Tenant-level control applies across the tenant. Per-user, per-app, per-agent, or scenario-specific policy templates aren't part of the initial policy control surface.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[0].api; Governance controls; Open questions",
       "type": "absence",
-      "claim": "No page found maps the API's service settings specifically to Work IQ API as an individual billable service.",
+      "claim": "No API for reading or changing the tenant Work IQ MCP policy is documented in the Microsoft material checked.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: \"Work IQ\" \"serviceSettings\" \"workIQ\". Read spendingpolicyservicesetting: serviceId identifies a category such as workIQ, and multiple billable services can share a category; it does not identify Work IQ API individually.",
+      "quote": "Searched: Work IQ MCP policy API update policy settings Graph tenant retrieve; Work IQ policy PATCH. Read policy-governance-mcp, tool-reference, MCP overview and returned Graph references; no operation for the MCP policy was returned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[1].ui; Governance controls: second row",
+      "type": "admin-path",
+      "claim": "Copilot > Cost Management > Configuration > + Add spending policy reaches the spending-policy creation workflow in Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "go to **Copilot > Cost Management**. ... Select the **Configuration** tab and then select **+ Add spending policy**. ... Define the policy scope ... Select agents and services ... Set limits and alerts",
+      "severity": "minor",
+      "fix": "The path stops at the correct workflow but not its limits. Replace controls[1].ui.path and the rendered route with 'Copilot > Cost Management > Configuration > + Add spending policy > Policy scope > Identity > Select agents and services > Set limits and alerts'. Keep the note that Work IQ API must be selected. Source: https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits."
+    },
+    {
+      "n": 58,
+      "where": "controls[1].api; Governance controls: second row",
+      "type": "command",
+      "claim": "PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id} updates periodLimit, perUserLimit or billingMethods with an If-Match ETag header.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "PATCH /copilot/costManagement/spendingPolicies/{id} ... If-Match | The ETag of the spending policy. Required. ... The following properties can be updated: `displayName`, `periodLimit`, `perUserLimit`, and `billingMethods`.",
+      "severity": "minor",
+      "fix": "Set controls[1].api.call and the rendered call to 'PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/{id}'. Add to the row note: 'The request body sets periodLimit or perUserLimit to change spending limits; If-Match supplies the policy ETag.' Leave complete billingMethods change requirements to the linked reference."
+    },
+    {
+      "n": 59,
+      "where": "controls[1].note; Governance controls: second row",
+      "type": "role",
+      "claim": "The update-spending-policy API requires CopilotCostManagement-Policy.ReadWrite.All.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "Delegated (work or school account) | CopilotCostManagement-Policy.ReadWrite.All",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[1].note; Governance controls",
+      "type": "availability",
+      "claim": "The Copilot Cost Management API is beta and unsupported for production applications.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "APIs under the `/beta` version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Governance controls: second prose paragraph",
+      "type": "absence",
+      "claim": "No page checked identifies the API's service settings specifically with the individual Work IQ API billable service.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: spendingPolicyServiceSetting workIQ Work IQ API serviceSettings. Read spendingpolicyservicesetting: serviceId identifies a category such as workIQ; multiple billable services can share a category. No individual Work IQ API mapping is stated.",
       "severity": "minor",
       "fix": "Replace 'This briefing found no page saying that API's service settings expose Work IQ API specifically.' with 'The API documents a governed-service category named workIQ; multiple billable services can share a category.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/resources/spendingpolicyservicesetting. Do not equate the category with an individual billable service."
     },
     {
-      "n": 63,
-      "where": "Governance controls: request scoping",
-      "type": "behaviour",
-      "claim": "Capabilities and strategy are chosen in individual application requests, not tenant admin settings.",
+      "n": 62,
+      "where": "Governance controls: final paragraph; Open questions: source restriction",
+      "type": "absence",
+      "claim": "Capabilities and strategy are request parameters, not documented tenant-admin enforcement settings for retrieve source types.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
-      "quote": "The strategy parameter controls where Work IQ searches. ... Use capabilities to provide a source allow list for one retrieval request.",
+      "source": null,
+      "quote": "Searched: Work IQ MCP policy API tenant retrieve source restrictions. Read retrieve, tool-reference and policy-governance-mcp: capabilities is a source allow list for one request; no tenant-level retrieve source-type setting is documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance guidance: Before rollout",
+      "type": "cost",
+      "claim": "Spending policies support monthly policy and optional per-user limits, and users reaching a limit lose access until credits reset.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
+      "quote": "When users hit the limit, they lose access to agents and services for the rest of the month until credits reset on the first of the month. ... Select monthly budget limits for users (optional).",
       "severity": null,
       "fix": null
     },
     {
       "n": 64,
-      "where": "Scope: Cloud and platform",
-      "type": "record",
-      "claim": "The roadmap lists no US Government cloud, without asserting exclusion from those clouds.",
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "The Microsoft 365 admin center Cost management dashboard lets administrators review Work IQ API consumption.",
       "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
+      "quote": "In the Microsoft admin center, **Copilot > Cost management**, admins can monitor Copilot Credit consumption and manage spending associated with the supported services such as ... **Work IQ API**.",
       "severity": null,
       "fix": null
     },
     {
       "n": 65,
-      "where": "front matter: cost; rationale: cost",
-      "type": "cost",
-      "claim": "The variable cost rating corresponds to metered Copilot Credit consumption.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
-      "quote": "Work IQ cost is variable based on usage ... Work IQ API usage consumes Copilot Credits shared with other eligible services.",
-      "severity": null,
-      "fix": null
+      "where": "Governance guidance: Before rollout, consent bullet",
+      "type": "consistency",
+      "claim": "The checklist's consent-governance control is represented in the controls table.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Decide who may grant the delegated `WorkIQAgent.Ask` permission for client apps. ... Table rows: Whether Work IQ MCP tools ... are allowed in the tenant; Who can consume Copilot Credits ... and the monthly limits.",
+      "severity": "minor",
+      "fix": "Remove the Before rollout bullet 'Decide who may grant the delegated `WorkIQAgent.Ask` permission for client apps.' It has no corresponding controls-table row. Keep the documented permission prerequisite and Security & identity discussion unchanged."
     },
     {
       "n": 66,
-      "where": "Governance guidance: Before rollout, delegated consent bullet",
+      "where": "Governance guidance: After rollout, consumption bullet",
       "type": "consistency",
-      "claim": "The consent-governance decision in the checklist is represented in the controls table.",
+      "claim": "The checklist's consumption-monitoring control is represented in the controls table.",
       "status": "contradicted",
       "source": "page",
-      "quote": "Decide who may grant the delegated `WorkIQAgent.Ask` permission for client apps. ... Controls table: Whether Work IQ MCP tools ... are allowed in the tenant; Who can consume Copilot Credits ... and the monthly limits.",
+      "quote": "Review consumption in the Cost management dashboard in the Microsoft 365 admin center ... Table rows: Work IQ MCP policy; spending-policy creation and update. Neither row gives the consumption dashboard control.",
       "severity": "minor",
-      "fix": "Remove the Before rollout bullet 'Decide who may grant the delegated `WorkIQAgent.Ask` permission for client apps.' Keep the permission prerequisite and security discussion unchanged; the consent-governance decision has no corresponding control row."
-    },
-    {
-      "n": 67,
-      "where": "summary; controls[0].governs; Open questions: policy and retrieve",
-      "type": "applicability",
-      "claim": "Work IQ MCP policy can affect whether retrieve is available and permitted.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
-      "quote": "`retrieve` isn't returned by `tools/list` | Verify tenant availability and that Work IQ MCP isn't blocked",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 68,
-      "where": "Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Learn recommends surfacing policy-denied responses instead of automatically retrying them.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
-      "quote": "Surface policy denials and authentication failures instead of retrying them as transient errors.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 69,
-      "where": "Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Developers should call tools/list and confirm retrieve is available.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
-      "quote": "Call `tools/list` after connecting and confirm that `retrieve` is available.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 70,
-      "where": "Governance guidance: Before rollout, monthly limits",
-      "type": "cost",
-      "claim": "Users reaching the spending limit lose access to agents and services for the rest of the month until credits reset.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
-      "quote": "When users hit the limit, they lose access to agents and services for the rest of the month until credits reset on the first of the month.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 71,
-      "where": "Governance guidance: After rollout, consumption monitoring",
-      "type": "applicability",
-      "claim": "The Cost management dashboard in the Microsoft 365 admin center supports monitoring Work IQ API usage.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
-      "quote": "In the Microsoft admin center, Copilot > Cost management, admins can monitor Copilot Credit consumption and manage spending associated with the supported services such as Cowork, running apps hosted on the Copilot Managed Runtime, and Work IQ API.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 72,
-      "where": "Risk assessment: Autonomy & actions",
-      "type": "behaviour",
-      "claim": "Retrieve is a read-style tool returning grounding content rather than modifying data.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
-      "quote": "The Work IQ MCP `retrieve` tool searches data that the signed-in user can access and returns grounding content for an AI agent.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 73,
-      "where": "Risk assessment: Autonomy & actions, mutation qualification",
-      "type": "absence",
-      "claim": "The policy page's mutation-default discussion does not specifically identify retrieve.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Work IQ MCP\" policy \"default\" enabled; \"Work IQ MCP\" policy API Graph update Allowed Disallowed. Read the full policy-governance-mcp page: its mutation discussion identifies create, update, delete and action requests, not retrieve.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 74,
-      "where": "Risk assessment: Security & identity, manual provisioning",
-      "type": "behaviour",
-      "claim": "The manual tenant-enablement procedure creates the Work IQ service principal.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
-      "quote": "This section creates the Work IQ service principal in your organization, which provisions the Work IQ resource so your applications can request tokens for it.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 75,
-      "where": "front matter: roadmapModified",
-      "type": "record",
-      "claim": "The roadmap modification timestamp is 2026-10-13T23:01:05.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"modified\": \"2026-10-13T23:01:05\"",
-      "severity": null,
-      "fix": null
+      "fix": "Remove the After rollout bullet 'Review consumption in the Cost management dashboard in the Microsoft 365 admin center, where Work IQ API usage is listed among the supported services.' The monitoring control has no corresponding table row; do not add a row as part of this correction."
     }
   ],
   "precheck": {
-    "at": "2026-11-19T02:04:25.680Z",
+    "at": "2026-11-21T03:13:39.500Z",
     "summary": {
       "links": 12,
-      "unreachable": 10,
+      "unreachable": 0,
       "uiPaths": 2,
-      "uiPathsWithMissingWords": 1,
+      "uiPathsWithMissingWords": 0,
       "apiCalls": 1,
-      "apiCallsNotOnPage": 1,
+      "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
     "linkChecks": [
@@ -869,18 +770,18 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/tool-reference",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
@@ -889,38 +790,38 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/copilot/plan/usage-based-billing-overview-copilot-credits",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       },
       {
         "url": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs",
-        "ok": false,
-        "status": 429
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -942,28 +843,23 @@
         "side": "ui",
         "governs": "Who can consume Copilot Credits for Work IQ API, and the monthly limits",
         "docs": "https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits",
-        "reachable": false,
+        "reachable": true,
         "segments": [
           "Copilot",
           "Cost Management",
           "Configuration",
           "+ Add spending policy"
         ],
-        "missing": [
-          "Copilot",
-          "Cost Management",
-          "Configuration",
-          "+ Add spending policy"
-        ]
+        "missing": []
       },
       {
         "index": 1,
         "side": "api",
         "governs": "Who can consume Copilot Credits for Work IQ API, and the monthly limits",
         "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
-        "reachable": false,
+        "reachable": true,
         "token": "If-Match",
-        "found": false
+        "found": true
       }
     ],
     "roadmapDrift": []
@@ -971,6 +867,12 @@
   "history": [
     {
       "date": "2026-11-18",
+      "status": "verified-with-gaps",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "date": "2026-11-19",
       "status": "verified-with-gaps",
       "version": 1,
       "model": "gpt-6.1-sol"

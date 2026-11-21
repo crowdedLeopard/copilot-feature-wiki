@@ -76,19 +76,23 @@ changes:
     note: "Corrected after the independent check: added the preview Microsoft Graph automation for the Notebooks policy, set action to act-now and noted the conflicting licence wording."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 60 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-21"
+    note: "Corrected after the independent check: the governance notes no longer call the creation setting the only Cloud Policy setting Learn documents for Notebooks; Learn also lists a code-preview setting."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 65 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-21"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 60
-  confirmed: 59
+  claims: 65
+  confirmed: 65
   unconfirmed: 0
-  contradicted: 1
-  attempts: 2
-  hash: "8ece973d8246cabaa6d9f718cc7e67a0"
+  contradicted: 0
+  attempts: 0
+  hash: "eedd13eb40d0cf36954db411272f6a4a"
 ---
 
 ## What's changing
@@ -119,7 +123,7 @@ If nobody acts, the notice says the feature arrives on its own in tenants that a
 
 **Change & support**
 - Expect questions from users who work with lists and tables, on desktop, web, Android and iOS, under the notice's rollout, which was expected to complete by late October 2026.
-- The Cloud Policy settings Learn documents for Notebooks govern creation of Copilot Pages and Copilot Notebooks as a whole; neither listed setting refers to CSV or TSV. Turning Notebooks off to hold back CSV and TSV references also removes the Notebooks module for the users in scope.
+- Learn lists two Cloud Policy settings for Copilot Pages and Copilot Notebooks: Create and view Copilot Pages and Copilot Notebooks, which governs creation as a whole, and a code-preview setting. Neither refers to CSV or TSV. Turning Notebooks off to hold back CSV and TSV references also removes the Notebooks module for the users in scope.
 
 ## Cost and licensing
 
@@ -161,7 +165,7 @@ Prerequisites: Learn's requirements page lists the Microsoft Copilot or Copilot 
 </tbody>
 </table>
 
-The one control Learn documents for Notebooks is the Cloud Policy setting Create and view Copilot Pages and Copilot Notebooks. It governs creation and integration of Copilot Pages and Copilot Notebooks, not individual file types. When it is disabled, the Notebooks module is hidden in the Microsoft Copilot app and existing items are not deleted; sharing links to Copilot Notebooks do not work. A change takes up to 90 minutes where policy configurations already exist, and up to 24 hours where none did. It can be scoped to all users or to a group.
+Learn documents the Cloud Policy setting Create and view Copilot Pages and Copilot Notebooks as the creation control. It governs creation and integration of Copilot Pages and Copilot Notebooks, not individual file types. When it is disabled, the Notebooks module is hidden in the Microsoft Copilot app and existing items are not deleted; sharing links to Copilot Notebooks do not work. A change takes up to 90 minutes where policy configurations already exist, and up to 24 hours where none did. It can be scoped to all users or to a group.
 
 MC1519841 refers to tenants that already allow Copilot to reason over CSV and TSV files but does not name the control. It is not a row in the table because its path has not been read; confirm it before you document it as your control for this feature. Microsoft documents preview Microsoft Graph TCM automation for the tenant-level Copilot Pages and Notebooks policy, subject to the restrictions below.
 
@@ -178,10 +182,4 @@ The preview automation works on tenant-level policies in the Microsoft 365 Apps 
 risk: Medium. Microsoft's notice says the feature is enabled automatically, and CSV and TSV files often hold exported business records that Copilot will now use when generating content.
 cost: Low. The requirements page names the Microsoft Copilot or Copilot Chat licence for Copilot Notebooks and no separate licence or meter for CSV or TSV files; the cost is admin and communication time.
 impact: Medium. Users who work with structured lists and tables in Copilot Notebooks notice it, on desktop, web, Android and iOS; Microsoft recommends telling those users.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance controls: first sentence / applicability: The one control Learn documents for Notebooks is Create and view Copilot Pages and Copilot Notebooks. | Found: Copilot Pages and Copilot Notebooks check the following Cloud Policy settings: Create and view Copilot Pages and Copilot Notebooks; Enable code previews for AI-generated content in Microsoft Copilot Chat and Copilot Pages | Fix: Replace the first sentence with 'Learn documents the Cloud Policy setting Create and view Copilot Pages and Copilot Notebooks as the creation control.' The cited page also lists a code-preview setting; do not claim this is the only documented control. | Source: https://learn.microsoft.com/microsoft-365/loop/cpcn-admin-configuration
 -->

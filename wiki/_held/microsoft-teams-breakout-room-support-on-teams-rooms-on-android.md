@@ -60,18 +60,20 @@ changes:
     note: "New briefing: breakout room support for Teams Rooms on Android, with the December 2026 target and the AllowBreakoutRooms meeting policy parameter."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 45 statements confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 49 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 1
 verification:
-  status: "verified"
-  date: "2026-11-19"
+  status: "held"
+  date: "2026-11-21"
   version: 1
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 45
-  confirmed: 45
+  claims: 49
+  confirmed: 46
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 3
+  attempts: 1
   hash: "1a090dc6063ac165e3d4dd560ae48f37"
 ---
 
@@ -155,4 +157,12 @@ The documented control is the AllowBreakoutRooms parameter of the Teams meeting 
 risk: Low. The change extends an existing Teams meeting feature to Teams Rooms on Android; the existing AllowBreakoutRooms meeting policy parameter is the documented control for breakout rooms in general.
 cost: Low. Microsoft's notice and Learn name no new licence or meter for this feature; the known cost is admin time and organiser communication. The Teams Rooms Basic or Pro licence each device already needs still applies.
 impact: Medium. Meeting organisers who use breakout rooms and the people in rooms with Teams Rooms on Android devices notice it; Microsoft says the feature is on by default when rollout completes.
+-->
+
+<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] What's changing; Scope / availability: The feature comparison currently lists Android breakout room participation as Not available. | Found: |  | Features | Windows | Android | ... |  | Participate in breakout rooms | Available | Available | | Fix: Replace both current 'Not available' statements with: 'Microsoft Learn now lists Participate in breakout rooms as Available on both Windows and Android, while the roadmap remains In development with a December CY2026 target and MC1488847 retains its early-to-mid-December 2026 Worldwide rollout window.' Keep the record status and targets unchanged. | Source: https://learn.microsoft.com/microsoftteams/rooms/teams-devices-feature-comparison
+- [contradicted, blocker] What's changing / absence: Microsoft Learn has no page describing the Android feature's new behaviour itself. | Found: ### 1449/1.0.96.2026344105 (November 2026) Introduced in this update: - **Breakout rooms support:** Teams Rooms on Android devices can join a breakout room, allowing in-room participants to stay with their group. | Fix: Replace the no-Learn-description sentence with: 'Microsoft Learn release notes describe breakout room support in the November 2026 Android update 1449/1.0.96.2026344105: devices can join a breakout room, allowing in-room participants to stay with their group.' Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note
+- [contradicted, blocker] Scope; Open questions / absence: No minimum Android app version is published for the feature. | Found: ### 1449/1.0.96.2026344105 (November 2026) Introduced in this update: - **Breakout rooms support:** Teams Rooms on Android devices can join a breakout room, allowing in-room participants to stay with their group. | Fix: Replace the app-version absence with: 'Learn introduces breakout room support in Android app update 1449/1.0.96.2026344105 (November 2026); availability on a particular device make and model may lag Microsoft's release.' Cite https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note. Remove the app-version part of the corresponding open question; the release notes identify an introduction build, not a guarantee of immediate availability on every device. | Source: https://learn.microsoft.com/microsoftteams/rooms/rooms-release-note
 -->

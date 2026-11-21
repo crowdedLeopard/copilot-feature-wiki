@@ -158,18 +158,20 @@ changes:
     note: "Corrected the API side of the user access and publish-request controls: both now name the preview Microsoft Graph operations that Microsoft Learn documents."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 77 statements not yet confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 4 of 77 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 6
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-19"
+  status: "held"
+  date: "2026-11-21"
   version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 77
-  confirmed: 76
+  confirmed: 73
   unconfirmed: 0
-  contradicted: 1
-  attempts: 0
+  contradicted: 4
+  attempts: 1
   hash: "78c8b041ee22f25e4de9bb5ed4e5c724"
 ---
 
@@ -262,8 +264,13 @@ cost: None. Included in Copilot controls.
 impact: Medium. Users can lose agents; managers inherit ownership.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: licensing.model and notes; What's changing; rationale: cost / licensing: Lifecycle rules are included with Copilot licensing through Copilot controls. | Found: | Automate agent lifecycle actions using conditions-based rules | Microsoft 365 admin center | No | Yes | Yes | | Fix: Set licensing.model to add-on and replace its entitlement statement with: 'Conditions-based lifecycle rules are a premium Microsoft Agent 365 capability. Microsoft Agent 365 is available as a stand-alone subscription with eligible Microsoft 365 subscriptions and is included with Microsoft 365 E7.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365. Replace 'for Copilot-licensed tenants' in What's changing with 'as a premium Microsoft Agent 365 capability'. Retain the separate API licence statement. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
+- [contradicted, blocker] Cost and licensing / licensing: Copilot-licensed tenants need no additional licence for lifecycle rules. | Found: Microsoft Agent 365 is available as a stand-alone subscription for use with eligible Microsoft 365 subscriptions and is also included with Microsoft 365 E7. | Fix: Replace 'No additional licence for Copilot-licensed tenants' with 'Conditions-based lifecycle rules require the premium Microsoft Agent 365 capability, available through a stand-alone Agent 365 subscription or Microsoft 365 E7.' Cite https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365. | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
+- [contradicted, blocker] front matter: cost; rationale: cost / consistency: Cost is none because lifecycle rules are included in Copilot controls. | Found: Briefing: 'None. Included in Copilot controls.' Current service table: 'Automate agent lifecycle actions using conditions-based rules' has Core capability 'No' and Premium capability 'Yes'. | Fix: Set cost to medium and replace the cost rationale with: 'Medium. Conditions-based lifecycle rules are a premium Agent 365 capability, available through an Agent 365 subscription or Microsoft 365 E7; administrators also spend time defining and reviewing rules.' | Source: https://learn.microsoft.com/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist asks administrators to check Entra manager attributes, but the controls table has no corresponding row. | Found: Check manager attributes in Entra for the maker population of Agent Builder agents so reassignment works. The table covers lifecycle rules, block/unblock, user access and publish requests, not manager attributes. | Fix: The checklist step 'Check manager attributes in Entra for the maker population of Agent Builder agents so reassignment works' has no controls-table row. Remove that checklist bullet; retain the existing explanation that reassignment depends on accurate manager data.
+- [supported, minor] What's changing / behaviour: Researcher and Analyst can be blocked tenant-wide. | Found: For the Researcher and Analyst agents, the Edit users panel is disabled. To manage their availability, block the agent for the entire tenant by using the Block action in the Microsoft 365 admin center. | Fix: Retain the cited agent-actions statement, but append: 'The agents admin guide separately says Researcher and Analyst are core Copilot chat experiences that will not fall under agent-related settings.' Cite https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/m365-agents-admin-guide alongside https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions to disclose the documentation disagreement. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions
+- [contradicted, minor] Governance guidance: Before rollout; controls / consistency: The checklist tells administrators to check Entra manager attributes, but the controls table has no corresponding row. | Found: 'Check manager attributes in Entra for the maker population of Agent Builder agents so reassignment works.' The table covers lifecycle rules, block/unblock, user access and publish requests, not manager attributes. | Fix: Remove the Before rollout bullet 'Check manager attributes in Entra for the maker population of Agent Builder agents so reassignment works'; it has no controls-table row. Retain the explanation of the Microsoft Entra hierarchy dependency in Risk assessment.
 -->

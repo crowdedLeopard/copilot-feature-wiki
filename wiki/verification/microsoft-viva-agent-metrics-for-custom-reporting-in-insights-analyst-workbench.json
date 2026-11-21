@@ -1,0 +1,829 @@
+{
+  "slug": "microsoft-viva-agent-metrics-for-custom-reporting-in-insights-analyst-workbench",
+  "roadmapId": 562412,
+  "title": "Viva Insights: agent query for custom agent adoption reporting in the analyst workbench",
+  "status": "verified-with-gaps",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 65,
+    "confirmed": 64,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 0,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "The roadmap details, query outputs, licensing prerequisites and documented access control are supported. Minor corrections should complete the admin route, cite the cmdlet reference and clarify the Advanced analysis policy's documented reach. The checklist also names controls that have no table rows.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap plans self-serve custom agent adoption reporting using agent usage, agent attributes and organizational attributes.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Insights global and partition analysts can access and combine granular agent usage metrics with agent and organizational attributes to uncover agent adoption trends, export and customize reporting",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is September CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap preview date is July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap lists General Availability and Preview phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [ \"General Availability\", \"Preview\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [ \"Web\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap products are Microsoft Viva and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [ \"Microsoft Viva\", \"Microsoft Copilot (Microsoft 365)\" ]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-10-19T23:15:15.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-19T23:15:15\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; title; rationale: risk",
+      "type": "behaviour",
+      "claim": "Agent query is an agent-person-level custom query template in the Viva Insights web app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "The agent query is a custom flexible (agent-person-level) query template",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The query extracts the same agent activity and adoption metrics that power the Agent 365 Dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "lets you extract agent activity and adoption data across Microsoft 365 apps - the same metrics that power the Agent 365 Dashboard",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Query results can be downloaded as .csv files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "deliver it through any of the standard query output channels, like .csv download",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Query results support a Power BI connection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "where you can download the output, copy the connection link for Power BI or Azure Data Lake",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Data exposure; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Query results support Azure Data Lake output.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "deliver it through any of the standard query output channels, like .csv download, Power BI connection, or Azure Data Lake.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "summary; What's changing; Scope; rationale: impact",
+      "type": "role",
+      "claim": "Both global and partitioned Insights analysts can use the query.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "The query is available to both global and partitioned analysts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "An analyst selects the query's time period.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "Select a time period. Choose the range your query analyzes (for example, last 3 months, or a custom start and end date).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The query grouping options are days, weeks and months.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "Set Group by to Days, Weeks, or Months.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The query offers up to three selectable metrics.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "Select Add metrics, then choose the metrics you want. You can choose amongst these three metrics:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "One metric is Returning agent user (most recent and prior 7 days).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "| Returning agent user (most recent and prior 7 days) | number |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "One metric is Returning agent user (most recent and prior 28 days).",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "| Returning agent user (most recent and prior 28 days) | number |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "One metric is Conversational Agent Sessions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "| Conversational Agent Sessions | number |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Agent filters include agent name, creator type and publishing source.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "Set up filters for agents - filter on agent attributes, such as agent name, creator type, or publishing source.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Employee filters include HR attributes such as Organization, Function and Level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "Set up filters for employees - filter on HR attributes, such as Organization, Function, or Level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Each run produces a set of .csv files.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "Each run produces a set of .csv files.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "The activity file is keyed by person, agent and date, with one row per PersonID, AgentId and MetricDate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "File 2 - Activity file (PersonAgentActivityMetrics)\n\nOne row per PersonID, AgentId, and MetricDate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "The people metadata file contains one column per selected HR attribute.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "The people metadata output file includes one column per attribute you select, so the file's columns vary from query to query.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Risk assessment: Change & support; Open questions",
+      "type": "behaviour",
+      "claim": "Learn describes the query as covering agents that Agent 365 manages in the organization, rather than using the roadmap's Copilot-agent wording.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "This Agent 365 activity query includes insights for all agents that Agent 365 manages in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The query scope includes agents built in Azure AI Foundry.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "The agent query's scope covers all agents your organization manages, including agents built in Azure AI Foundry",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The query scope includes active and inactive agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "covers both active and inactive agents, so you can report on inventory as well as usage.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Reporting history covers the period after the organization accepted the Agent 365 licensing terms of use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "Its reporting history covers the period after which your organization accepted the terms of use of Agent 365 licensing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Scope; Governance guidance; rationale: risk",
+      "type": "applicability",
+      "claim": "Agent query partitioning uses Viva Insights' existing person-row and HR-attribute-column design.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "Partitioning follows the same design used elsewhere in Viva Insights, based on person rows and HR attribute columns.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "The query requires at least 50 Microsoft 365 Copilot licenses in the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "Your tenant must have at least 50 Microsoft 365 Copilot licenses",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; rationale: cost",
+      "type": "licensing",
+      "claim": "The query requires at least one Agent 365 license in the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "and at least 1 Agent 365 license and have agent activity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing; Scope",
+      "type": "behaviour",
+      "claim": "The tenant must have agent activity to meet query prerequisites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "Your tenant must have at least 50 Microsoft 365 Copilot licenses, and at least 1 Agent 365 license and have agent activity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The analyzed population includes employees with agent activity regardless of their Copilot license status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "The analyzed population includes all employees who have had agent activity, regardless of their Copilot license status.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is mixed, reflecting the combined Copilot and Agent 365 tenant prerequisites.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "Your tenant must have at least 50 Microsoft 365 Copilot licenses, and at least 1 Agent 365 license and have agent activity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "default",
+      "claim": "Microsoft has not stated the agent query's specific default state on arrival.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Insights agent query enable disable default access policy AdvancedInsights AgentMetricsExport. Read agent-query, control-analysis-powershell, feature-access-management and manage-access-policies; advanced analysis has a default, but no query-specific arrival default was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost; Open questions",
+      "type": "absence",
+      "claim": "No separate price, meter or credit rate for running the agent query is published in the sources searched.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Insights agent query pricing billing license meter credits; Agent 365 agent query price licensing billing. Read agent-query and environment-requirements, plus Agent 365 overview/licensing search excerpts; no query-specific price or meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "controls[0].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Settings > Viva > Settings > Manage feature access reaches the advanced analysis policy management page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/control-access-admin-center",
+      "quote": "From the Microsoft 365 admin center, select Viva from the settings menu. ... Select the Settings tab and select Manage feature access. ... Select Create a policy.",
+      "severity": "minor",
+      "fix": "Extend controls[0].ui.path and its rendered copy to 'Settings > Viva > Settings > Manage feature access > Create a policy > app and feature > Access setting > Off > Apply access settings to > Everyone'. The existing route is correct but stops at the policy management page."
+    },
+    {
+      "n": 40,
+      "where": "controls[0].api; Governance controls table",
+      "type": "command",
+      "claim": "Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId AdvancedInsights -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone disables advanced analysis tenant-wide.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy",
+      "quote": "Add-VivaModuleFeaturePolicy\n    -FeatureId <String>\n    -IsFeatureEnabled <Boolean>\n    -ModuleId <String>\n    -Name <String>\n    [-Confirm]\n    [-Everyone]",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy to sources. The existing cited advanced-analysis page supplies VivaInsights, AdvancedInsights and the disabling example; this additional reference verifies the actual parameter syntax and boolean value."
+    },
+    {
+      "n": 41,
+      "where": "controls[1]; controls[0].note; Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "No separately documented UI or API switch for the agent query alone was found, and the feature's page and feature-access table name no dedicated query policy.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Insights agent query enable disable default access policy; Viva Insights agent query PowerShell Microsoft Graph feature ID switch access. Read agent-query, feature-access-management, manage-access-policies and Add-VivaModuleFeaturePolicy; no dedicated query-only switch found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "Disabling the Advanced analysis policy blocks analysts from the Advanced analysis tab.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/control-analysis-powershell",
+      "quote": "If you disable advanced analysis, Insights analysts can't access the Advanced analysis tab in the Viva Insights web app",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].scope; Governance controls",
+      "type": "applicability",
+      "claim": "The Advanced analysis policy supports tenant-level policies only, not user or group policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/control-analysis-powershell",
+      "quote": "This control supports tenant-level policies only, not user or group-level policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "The feature access table lists Global admin as managing the Advanced insights policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "| Viva Insights web app - Advanced insights | No | Global admin | Viva Insights |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Feature access policy changes take effect within 24 hours unless otherwise noted for a feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "Changes to access policies take effect for the user within 24 hours, unless noted for a specific feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The feature access management controls are not available in GCC High or DoD.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "The access controls described in this document aren't available in GCC-High or DoD.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Governance controls; Risk assessment: Change & support",
+      "type": "applicability",
+      "claim": "Agent Metrics Export (Preview) controls export from the Agent Dashboard, a different surface from the agent query.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-agent-data",
+      "quote": "There are two ways the global and AI admins can control the Agent 365 export experience through Viva Feature Access Management (VFAM) in the Microsoft 365 admin center: ... The \"AgentMetricsExport\" VFAM control also governs Agent 365 export.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Risk assessment: Security & identity; Scope; Governance controls",
+      "type": "role",
+      "claim": "Microsoft 365 Global Administrators inherit Insights Administrator privileges.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/user-roles",
+      "quote": "Users with the Microsoft 365 Global Administrator role in Microsoft Entra ID automatically inherit Insights Administrator privileges.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Data exposure; Governance guidance",
+      "type": "applicability",
+      "claim": "Partitions restrict analyst workspaces to certain employee data and attributes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/privacy-settings",
+      "quote": "Partitions are analyst workspaces that include only certain employee data and attributes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "An analyst runs the query manually by selecting Run.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "Select Run in the screen's upper right to run the query.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[0].governs; Governance guidance: At rollout; Open questions",
+      "type": "applicability",
+      "claim": "The Advanced analysis policy controls analyst access to the workbench containing the custom agent query.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/privacy/privacy",
+      "quote": "To enable or disable access to all advanced analysis features at the tenant level, you can use PowerShell cmdlets or create a policy in the Microsoft 365 admin center",
+      "severity": "minor",
+      "fix": "Replace 'Does the Advanced analysis policy, the Agent Metrics Export policy or neither govern the agent query?' with 'Does the Agent Metrics Export policy additionally govern the agent query? The Advanced analysis policy controls access to all advanced analysis features at tenant level.' Cite https://learn.microsoft.com/viva/insights/advanced/privacy/privacy. The roles page places building custom queries in Advanced analysis, and the agent query page identifies this as a custom query."
+    },
+    {
+      "n": 52,
+      "where": "Governance guidance: Before rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist recommends checking analyst role assignments, partitions and privacy settings, but these controls have no table rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Confirm which people hold the Insights Analyst role and which partitions they belong to ... Check privacy settings and partitions ... Table rows: Whether analysts can use advanced analysis; A switch for the agent query alone.",
+      "severity": "minor",
+      "fix": "The Before rollout steps for analyst role assignment, partitions and privacy settings have no matching control rows. Record this checklist/table mismatch; do not add rows as part of this correction."
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "role",
+      "claim": "The Microsoft 365 global admin assigns the Insights Analyst role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/control-analysis-powershell",
+      "quote": "users can't access advanced analysis until the Microsoft 365 global admin assigns the roles of Insights admin and Insights analyst.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Security & identity; Governance guidance",
+      "type": "role",
+      "claim": "Insights Administrators configure privacy settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/privacy-settings",
+      "quote": "Applies to: Insights Administrator\n\nTo get the most out of the Viva Insights experience, you might want to set up a few optional controls in the Privacy settings page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Security & identity; rationale: impact",
+      "type": "role",
+      "claim": "Access to custom queries follows the Insights Analyst role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/user-roles",
+      "quote": "| Advanced analysis | Landing page for analysts. View recent queries, Power BI templates, and build custom queries. | | X | |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Partitions are managed in the Viva Insights web app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/user-roles",
+      "quote": "Viva Insights web app ... Partitions ... Create and manage partitions",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Risk assessment: Data exposure",
+      "type": "absence",
+      "claim": "The agent query page does not describe retention or access controls for the external output destinations.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Insights agent query PersonID identifiable protected identifiers retention access controls Azure Data Lake Power BI. Read agent-query in full and technical privacy guide retention excerpts; the query page names output channels but no destination retention or access controls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Open questions: person identifiers",
+      "type": "absence",
+      "claim": "The agent query page does not specify whether its person identifiers are protected or identifiable, or name an identifiability setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Insights agent query PersonID identifiable protected identifiers retention access controls Azure Data Lake Power BI. Read agent-query, user-roles, privacy guide excerpts and export-agent-data; query's own page says unique identifier, not protection or an identifiability setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Agent Dashboard export IDs often do not match Microsoft 365 admin center export IDs.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/export-agent-data",
+      "quote": "Agent IDs in the Microsoft 365 admin center export and Agent Dashboard export won't often match because the two exports use different identifier systems.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Enabling Auto refresh runs the query automatically as complete new data becomes available for the chosen grouping.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "When turned on, your query runs automatically and refreshes whenever a new, complete set of data becomes available, based on the aggregation type (Group by) you selected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[0].note",
+      "type": "behaviour",
+      "claim": "Creating a feature access policy includes selecting its app and feature.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/control-access-admin-center",
+      "quote": "Name the policy and select the app and feature for which you'd like to set the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "The advanced analysis control page is headed Applies to: AI admin.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/control-analysis-powershell",
+      "quote": "Applies to: AI admin",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The query output includes an agent metadata file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+      "quote": "File 1 - Agent metadata (AgentMetadata)\n\nOne row per agent. This file includes both active and inactive agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "role",
+      "claim": "Insights Administrators create and manage partitions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/user-roles",
+      "quote": "| Partitions | Create and manage partitions | X | | |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Insights role assignment is performed in the Microsoft 365 admin center.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/user-roles",
+      "quote": "So users can access Viva Insights features, assign them roles in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T03:13:30.346Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=562412",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/advanced/analyst/agent-query",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/feature-access-management",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/control-analysis-powershell",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/control-access-admin-center",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/manage-access-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/user-roles",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/privacy-settings",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/org-team-insights/export-agent-data",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether analysts can use advanced analysis, where the agent query sits (tenant-wide)",
+        "docs": "https://learn.microsoft.com/viva/control-access-admin-center",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Viva",
+          "Settings",
+          "Manage feature access"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether analysts can use advanced analysis, where the agent query sits (tenant-wide)",
+        "docs": "https://learn.microsoft.com/viva/insights/advanced/setup-maint/control-analysis-powershell",
+        "reachable": true,
+        "token": "Add-VivaModuleFeaturePolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

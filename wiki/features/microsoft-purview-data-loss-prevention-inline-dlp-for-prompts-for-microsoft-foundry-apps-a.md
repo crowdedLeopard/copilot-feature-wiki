@@ -65,7 +65,7 @@ controls:
       kind: "powershell"
       call: "New-DlpComplianceRule -Policy <policy name> -ContentContainsSensitiveInformation @{Name = \"credit card number\"} -RestrictAccess @(@{setting=\"UploadText\";value=\"Block\"})"
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule"
-    note: "Security & Compliance PowerShell only. Example 4 scopes the policy with New-DlpCompliancePolicy -Locations and -EnforcementPlanes @(\"Application\") to an Entra app."
+    note: "Security & Compliance PowerShell only. For this documented route, the app must integrate with Microsoft Purview APIs and enforce the returned policy actions; enabling Purview and user context alone does not establish prompt blocking."
   - governs: "Whether Microsoft Purview Data Security is enabled for Foundry"
     scope: "other"
     ui:
@@ -98,19 +98,23 @@ changes:
     note: "Corrected after verification: the DLP-creating role is now named, the preview rollout is described as planned, the Foundry portal path is extended and the pay-as-you-go linkage check is removed from the checklist."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 65 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-21"
+    note: "Corrected after verification: the documented route now states that the app must integrate with Purview APIs and enforce returned policy actions, and the unsupported Foundry Compliance review checklist step is removed."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 1 of 68 statements not yet confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
-  confirmed: 63
-  unconfirmed: 0
-  contradicted: 2
-  attempts: 2
-  hash: "9056eb42b24148c37fb5ecdc88b51e54"
+  claims: 68
+  confirmed: 67
+  unconfirmed: 1
+  contradicted: 0
+  attempts: 0
+  hash: "d8c94c9f4cee278445f0b9ac75dfd965"
 ---
 
 ## What's changing
@@ -121,11 +125,13 @@ The roadmap status is In development, with a preview target of May CY2026 and a 
 
 Microsoft Learn does not describe this roadmap feature by name. What it documents today, on its Purview page for Microsoft Foundry, is that "Support today is only available for a DLP policy that blocks prompts based on sensitive information types", configured with a PowerShell cmdlet scoped to a specific Entra-registered AI app. Learn also says Purview data security policies for Foundry interactions apply to API calls that use Microsoft Entra ID authentication with a user-context token, or that explicitly include user context. Whether general availability changes either point is not stated.
 
+For this documented route, the app must integrate with Microsoft Purview APIs and enforce the returned policy actions; enabling Purview and supplying user context alone does not establish prompt blocking. Learn's tutorial says the app sends a content activity for policy evaluation and returns policy actions the app must enforce. This API-based route is separate from the inline enforcement the roadmap plans.
+
 ## Why it matters
 
 This gives a security or compliance team a way to block sensitive data in prompts at the point of submission, rather than finding it afterwards in audit logs. The default is that nothing is enforced until an admin creates a policy, per MC1304291, so prompts to Foundry apps are as exposed after this ships as they are today until someone acts.
 
-The wiki's view is that the practical work sits with two groups who rarely share a backlog: Purview admins who write the policy, and Foundry owners who enable Purview in Foundry and ensure calls carry user context. Learn says calls without it appear in Purview Audit and DSPM for AI Activity Explorer only, so a policy that looks complete in Purview can leave some app traffic unevaluated.
+The wiki's view is that the practical work sits with two groups who rarely share a backlog: Purview admins who write the policy, and Foundry owners who enable Purview in Foundry, ensure calls carry user context and, for the documented route, confirm the app integrates with Microsoft Purview APIs and enforces the returned policy actions. Learn says calls without user context appear in Purview Audit and DSPM for AI Activity Explorer only, so a policy that looks complete in Purview can leave some app traffic unevaluated.
 
 ## Risk assessment
 
@@ -165,12 +171,11 @@ MC1304291 names Purview admins, Microsoft Foundry admins, and organisations buil
 
 ### At rollout
 - Enable Microsoft Purview Data Security in Foundry for the subscription (row 2 of the controls table).
-- Create the DLP policy and rule for each Foundry app through the PowerShell route (row 1), starting with the policy mode MC1304291's simulation advice points to if the cmdlet allows it.
+- Create the DLP policy and rule for each Foundry app through the PowerShell route (row 1), after confirming that the app integrates with Purview APIs and enforces returned policy actions, starting with the policy mode MC1304291's simulation advice points to if the cmdlet allows it.
 - Tell Foundry app owners which prompts may now be blocked and who to contact.
 
 ### After rollout
 - Search the unified audit log for Foundry interaction records to see what policies are evaluating (row 3).
-- Review the Compliance view in Foundry for agents without the intended data loss prevention coverage.
 - Check the Azure bill for the pay-as-you-go charge once the first month of use completes.
 
 ## Governance controls
@@ -180,7 +185,7 @@ MC1304291 names Purview admins, Microsoft Foundry admins, and organisations buil
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>DLP rule that blocks sensitive information types in prompts to a Foundry app</strong><br><small>App</small><br><small class="controls__note">Security &amp; Compliance PowerShell only. Example 4 scopes the policy with New-DlpCompliancePolicy -Locations and -EnforcementPlanes @(&quot;Application&quot;) to an Entra app.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpComplianceRule -Policy &lt;policy name&gt; -ContentContainsSensitiveInformation @{Name = &quot;credit card number&quot;} -RestrictAccess @(@{setting=&quot;UploadText&quot;;value=&quot;Block&quot;})</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>DLP rule that blocks sensitive information types in prompts to a Foundry app</strong><br><small>App</small><br><small class="controls__note">Security &amp; Compliance PowerShell only. For this documented route, the app must integrate with Microsoft Purview APIs and enforce the returned policy actions; enabling Purview and user context alone does not establish prompt blocking.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-DlpComplianceRule -Policy &lt;policy name&gt; -ContentContainsSensitiveInformation @{Name = &quot;credit card number&quot;} -RestrictAccess @(@{setting=&quot;UploadText&quot;;value=&quot;Block&quot;})</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-dlpcompliancerule" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Whether Microsoft Purview Data Security is enabled for Foundry</strong><br><small class="controls__note">The tab shows the Powered by Microsoft Purview setting's enabled state. Learn also lists enabling it in Microsoft Defender for Cloud, a method that page says is being deprecated.</small></td><td data-label="Admin UI"><strong>Microsoft Foundry (new) portal</strong><br>Manage › Compliance › Data security and governance › subscription › Powered by Microsoft Purview <a href="https://learn.microsoft.com/azure/foundry/control-plane/how-to-manage-compliance-security" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Audit records of Foundry AI interactions</strong><br><small>Tenant</small><br><small class="controls__note">Read-only monitoring. Needs the Audit Logs or View-Only Audit Logs role. Run the cmdlet in Exchange Online PowerShell.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Audit › Search <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Search-UnifiedAuditLog</code> <a href="https://learn.microsoft.com/purview/audit-search" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
@@ -204,10 +209,10 @@ cost: Variable. Microsoft's Foundry page requires Purview pay-as-you-go billing,
 impact: Low. Purview admins and Foundry app builders set this up; end users notice only if a policy blocks a prompt.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] What's changing; Why it matters; controls[0].note; Governance guidance: At rollout / applicability: The description of today's documented blocking setup names the PowerShell policy, Purview enablement and user context but omits application integration and enforcement. | Found: Your app sends a content activity for policy evaluation and returns policy actions your app must enforce (such as blocking or detecting policy modifications). | Fix: Add this qualification to the paragraph describing today's Learn route and controls[0].note: 'For this documented route, the app must integrate with Microsoft Purview APIs and enforce the returned policy actions; enabling Purview and supplying user context alone does not establish prompt blocking.' Qualify the existing rollout instruction with 'after confirming that the app integrates with Purview APIs and enforces returned policy actions'. The cited Foundry page explicitly links this integration, and https://learn.microsoft.com/purview/developer/use-the-api documents the app's enforcement responsibility. Keep the roadmap's planned inline enforcement separate from this current API-based route. | Source: https://learn.microsoft.com/purview/developer/use-the-api
+- [unsupported, major] What's changing: final sentence / behaviour: The API-based route is separate from the inline enforcement planned on the roadmap. | Found: Searched: Foundry Purview DLP prompt inline roadmap 558565; read ai-azure-foundry and use-the-api. Neither establishes that the roadmap represents a separate mechanism; use-the-api itself documents evaluateInline. | Fix: Remove 'This API-based route is separate from the inline enforcement the roadmap plans.' Keep the preceding verified description of app integration and enforcement.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist's instruction to review Foundry Compliance for agents lacking DLP coverage has a corresponding control row. | Found: Review the Compliance view in Foundry for agents without the intended data loss prevention coverage. | Rows cover a DLP rule, Purview enablement and audit records, not the Compliance coverage review. | Fix: Remove the checklist bullet 'Review the Compliance view in Foundry for agents without the intended data loss prevention coverage.' Its supported coverage explanation can remain in Risk assessment and Governance controls; do not add a control row.
+- [supported, minor] Governance guidance: After rollout / applicability: Audit log records can be used to monitor DLP-evaluated activities. | Found: All DLP monitored activities are recorded to the Microsoft 365 Audit log by default and routed to Activity explorer. | Fix: Add https://learn.microsoft.com/purview/dlp-learn-about-dlp to sources for the audit-monitoring checklist step. Retain the existing warning that audit visibility alone does not establish enforcement. | Source: https://learn.microsoft.com/purview/dlp-learn-about-dlp
 -->

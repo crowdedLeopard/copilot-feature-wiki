@@ -87,15 +87,17 @@ changes:
     note: "Corrected after the independent check: Learn's Planner service description now cited for Planner in Copilot Chat and the Microsoft Copilot licence; Planner Agent chat restriction qualified as premium plans only."
   - date: "2026-11-20"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 72 statements not yet confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 76 statements not yet confirmed"
 version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-20"
+  date: "2026-11-21"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 72
-  confirmed: 71
+  claims: 76
+  confirmed: 75
   unconfirmed: 0
   contradicted: 1
   attempts: 0
@@ -203,10 +205,11 @@ cost: Low. Microsoft's notice and the roadmap name no separate licence or meter,
 impact: Medium. Users of Copilot Chat who also manage work in Planner get a new way to create and update tasks without opening Planner; people who do not use Planner will not notice.
 -->
 
-<!-- verifier-findings (2026-11-20, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].api; Governance controls table and prose / command: POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package. | Found: Block a Copilot package to prevent its usage. ... APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported. | Fix: Keep the call unchanged and add to controls[0].note: 'The block operation is preview; beta APIs are subject to change and their use in production applications is not supported.' The same qualification should appear in the rendered row. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block
+- [supported, minor] controls[0].api; Governance controls table and prose / command: POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package. | Found: Block a Copilot package to prevent its usage. ... APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported. | Fix: Keep the call unchanged and add to controls[0].note and the rendered row: 'The block operation is preview; beta APIs are subject to change and their use in production applications is not supported.' | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block
 - [supported, minor] Governance guidance: At rollout / command: Setting AllowPlannerCopilot to false disables the documented Planner Agent experiences and can be tested in a pilot. | Found: Set-PlannerConfiguration -AllowPlannerCopilot $false ... Turning off Planner Agent will also disable document authoring skill of Facilitator. All other Facilitator skills remain unaffected. | Fix: Add to the pilot bullet: 'Turning off Planner Agent also disables Facilitator's document authoring skill; all other Facilitator skills remain unaffected.' Cite https://learn.microsoft.com/planner/turn-off-planner-agent. | Source: https://learn.microsoft.com/planner/turn-off-planner-agent
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist instructs readers to check Planner plan membership, but the controls table has no corresponding control. | Found: Ask Planner plan owners to check the membership of plans that hold sensitive tasks ... Table rows: Whether the Planner Plugin is available to users; Who can use Planner Agent ... and Planner Agent chat | Fix: Remove the first Before rollout bullet, which instructs plan owners to check plan membership without a corresponding controls-table row. Do not add a new control row during this correction.
+- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist instructs readers to check Planner plan membership, but no controls-table row covers it. | Found: Ask Planner plan owners to check the membership of plans that hold sensitive tasks ... Table rows: Whether the Planner Plugin is available to users; Who can use Planner Agent ... and Planner Agent chat | Fix: Remove the first Before rollout bullet, which instructs plan owners to check plan membership without a corresponding controls-table row. Do not add a new row during this correction.
+- [supported, minor] title; summary; body references to Microsoft 365 Copilot and Microsoft 365 Copilot Chat / behaviour: The briefing refers to the products by their former names, Microsoft 365 Copilot and Microsoft 365 Copilot Chat. | Found: Microsoft 365 Copilot is now named Microsoft Copilot, and Microsoft 365 Copilot Chat is now named Microsoft Copilot Chat. | Fix: Use 'Microsoft Copilot' and 'Microsoft Copilot Chat' in the briefing's own current product references. Preserve the original names in attributed roadmap and Message Center titles and quotations. | Source: https://learn.microsoft.com/copilot/plan/microsoft-copilot-requirements
 -->

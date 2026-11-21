@@ -3,226 +3,55 @@
   "kind": "concept",
   "roadmapId": null,
   "title": "Microsoft Frontier program: who in your tenant gets pre-release features?",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-21",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-21",
-    "reasons": [
-      "3 blocking findings (claims 7, 32, 61)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 63,
-    "confirmed": 59,
+    "claims": 70,
+    "confirmed": 70,
     "unconfirmed": 0,
-    "contradicted": 4,
-    "blocker": 3,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 2
+    "minor": 0
   },
-  "summary": "Hold: Frontier enrolment is not a universal gate, because agents published before 29 March 2026 remain accessible to Copilot-licensed users. Microsoft also documents automation for the Microsoft-built agent access setting and a general Copilot settings audit event, contrary to the page's absence claims.",
+  "summary": "The page passes: Microsoft documentation supports its enrolment, licensing, preview limitations and governance controls. The documented licensing disagreement is disclosed, and no actionable factual errors were found.",
   "claims": [
     {
       "n": 1,
-      "where": "controls[0].ui",
-      "type": "admin-path",
-      "claim": "Frontier enrolment is configured in Microsoft 365 admin center at Settings > Org settings > Organization profile > Release preferences > Turn on Frontier.",
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "Frontier provides opt-in preview access to Microsoft 365 capabilities before general availability.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
-      "quote": "In the Microsoft 365 admin center, go to Settings > Org settings. Under the Organization profile tab, select Release preferences. To opt in to Frontier preview, toggle Turn on Frontier to On.",
+      "quote": "The Microsoft Frontier program gives organizations preview access to innovative and emerging capabilities in Microsoft 365 before those features reach general availability (GA).",
       "severity": null,
       "fix": null
     },
     {
       "n": 2,
-      "where": "controls[0].api; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Learn documents no PowerShell or Graph call for the Frontier user and group enrolment setting itself.",
+      "where": "What it is",
+      "type": "behaviour",
+      "claim": "Frontier covers Copilot agents and AI and non-AI experiences.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Frontier\" \"graph\" \"settings\" enrollment; \"Frontier\" \"PowerShell\" enrollment. Opened get-started-frontier, utcm-copilot-resources (separate OCPS web-app policy), Update-M365UnifiedTenantSettings (no Frontier setting name). No enrolment call found.",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "By opting in to Frontier, IT administrators can evaluate new Microsoft Copilot agents, review AI and non-AI powered experiences",
       "severity": null,
       "fix": null
     },
     {
       "n": 3,
-      "where": "controls[0].note; Cost and licensing; What to check",
-      "type": "role",
-      "claim": "An AI Administrator, Security Administrator or Office Apps Administrator account is required to enrol users.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
-      "quote": "You need an account that includes one of the following roles: AI Administrator; Security Administrator; Office Apps Administrator",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 4,
-      "where": "controls[0].note",
-      "type": "date",
-      "claim": "The unified release preferences experience is rolling out gradually from mid-November 2026.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
-      "quote": "The unified release preferences experience is rolling out gradually in mid-November 2026, so it might not be available in your organization yet.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "controls[0].note",
-      "type": "admin-path",
-      "claim": "The existing Copilot > Settings > View all > Copilot Frontier > Turn on Frontier path remains available.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
-      "quote": "the existing experience for opting in to Frontier preview within the Microsoft 365 admin center will still exist. ... go to Copilot > Settings. ... Select the View all tab. ... Select Copilot Frontier. ... toggle Turn on Frontier to On.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "controls[1].ui",
-      "type": "admin-path",
-      "claim": "Microsoft-built agent installation is controlled at Microsoft 365 admin center > Agent > Settings > Agent and plugin access > Allow agents and plugins built by Microsoft.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
-      "quote": "go to Agent > Settings > Agent and plugin access. Verify that Allow agents and plugins built by Microsoft is checked.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "controls[1].api",
-      "type": "absence",
-      "claim": "Automation for allowing Microsoft-built agents and plugins is not yet documented.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
-      "quote": "These resources also support remediation and applyOnce. ... areMicrosoftAppsAllowed | Write | Boolean | Indicates whether apps, agents, and plugins built by Microsoft are allowed.",
-      "severity": "blocker",
-      "fix": "Set controls[1].api to kind graph, call 'POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors', docs 'https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta'. Append to the row note: 'Preview TCM automation: the request body uses mode applyOnce and a baseline.resources entry with resourceType microsoft.agent.allowedagenttypes, resourceVersion 1, and properties.valueObject.areMicrosoftAppsAllowed set to true or false.' Cite https://learn.microsoft.com/graph/utcm-agent-resources and https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources. The create-monitor reference explicitly documents applying a baseline in applyOnce mode, not merely monitoring it."
-    },
-    {
-      "n": 8,
-      "where": "controls[1].note",
+      "where": "What it is; Why it matters",
       "type": "behaviour",
-      "claim": "Users still see Microsoft-built agents when the Microsoft-built agent setting is disabled.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-      "quote": "Users see agents and plugins built by Microsoft even if you disable the setting",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 9,
-      "where": "controls[1].note",
-      "type": "behaviour",
-      "claim": "Users cannot install Microsoft-built agents when the Microsoft-built agent setting is disabled.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
-      "quote": "Users see agents and plugins built by Microsoft even if you disable the setting, but they can't install those agents and plugins.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 10,
-      "where": "controls[2].ui",
-      "type": "admin-path",
-      "claim": "An agent can be blocked organisation-wide at Microsoft 365 admin center > Agents > All agents > agent > Block > Block agent.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
-      "quote": "Select Agents > All agents. ... select an agent from the list of agents. ... select Block or Unblock. ... select either Block agent or Unblock agent, and then select Save.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 11,
-      "where": "controls[2].api",
-      "type": "command",
-      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package to prevent its usage.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "Block a Copilot package to prevent its usage. ... POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 12,
-      "where": "controls[2].note",
-      "type": "behaviour",
-      "claim": "The package blocking API is a beta API.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 13,
-      "where": "controls[2].note; Governance controls",
-      "type": "licensing",
-      "claim": "Access to the Package Management API requires a Microsoft Agent 365 licence.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 14,
-      "where": "controls[2].note",
-      "type": "command",
-      "claim": "The block API requires CopilotPackages.ReadWrite.All delegated work or school account permission.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "Delegated (work or school account) | CopilotPackages.ReadWrite.All | Not available. ... Application | Not available. | Not available.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 15,
-      "where": "controls[2].note",
-      "type": "availability",
-      "claim": "The block API is unavailable in US Government clouds.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
-      "quote": "Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet ... ✅ | ❌ | ❌ | ❌",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 16,
-      "where": "summary; What it is",
-      "type": "behaviour",
-      "claim": "Frontier is an opt-in route to preview Microsoft 365 capabilities before general availability.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
-      "quote": "The Microsoft Frontier program gives organizations preview access to innovative and emerging capabilities in Microsoft 365 before those features reach general availability (GA). By opting in to Frontier",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 17,
-      "where": "What it is",
-      "type": "behaviour",
-      "claim": "Frontier covers Copilot agents and other AI and non-AI experiences.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
-      "quote": "IT administrators can evaluate new Microsoft Copilot agents, review AI and non-AI powered experiences",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 18,
-      "where": "What it is",
-      "type": "behaviour",
-      "claim": "Frontier features are previews and subject to change.",
+      "claim": "Frontier features are preview and subject to change.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
       "quote": "Frontier features are preview and subject to change.",
@@ -230,8 +59,8 @@
       "fix": null
     },
     {
-      "n": 19,
-      "where": "What it is: release audience table",
+      "n": 4,
+      "where": "What it is: audience table",
       "type": "behaviour",
       "claim": "Microsoft's audience-based release model has Frontier, Standard release and Deferred release audiences.",
       "status": "supported",
@@ -241,10 +70,21 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What it is: Standard release row",
+      "n": 5,
+      "where": "What it is: Frontier audience",
+      "type": "behaviour",
+      "claim": "Frontier is an opt-in audience for evaluating and preparing for pre-GA features.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Frontier (opt-in) is designed for users who want access before general availability to features to evaluate and prepare.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "What it is: Standard release audience",
       "type": "default",
-      "claim": "Standard release is the default general availability release experience.",
+      "claim": "Standard release is the default release experience.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
       "quote": "Standard release is the default release experience where users receive new features as soon as they're generally available.",
@@ -252,21 +92,21 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "What it is: Standard release row",
+      "n": 7,
+      "where": "What it is: Standard release audience",
       "type": "behaviour",
-      "claim": "Standard release users receive features as soon as they are generally available.",
+      "claim": "Standard release delivers features as soon as they are generally available.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
-      "quote": "users receive new features as soon as they're generally available.",
+      "quote": "Standard release is the default release experience where users receive new features as soon as they're generally available.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 22,
-      "where": "What it is: Deferred release row",
-      "type": "date",
-      "claim": "Deferred release delays deferred-eligible major updates approximately 30 days after rollout to Standard release begins.",
+      "n": 8,
+      "where": "What it is: Deferred release audience",
+      "type": "behaviour",
+      "claim": "Deferred release delays deferred-eligible major updates.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/configure-release-options",
       "quote": "Deferred release lets you delay deferred-eligible major updates for specific users for approximately 30 days after rollout to the Standard release audience begins.",
@@ -274,8 +114,19 @@
       "fix": null
     },
     {
-      "n": 23,
-      "where": "What it is",
+      "n": 9,
+      "where": "What it is: Deferred release audience",
+      "type": "behaviour",
+      "claim": "The Deferred delay is approximately 30 days after Standard release rollout begins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/configure-release-options",
+      "quote": "Deferred release lets you delay deferred-eligible major updates for specific users for approximately 30 days after rollout to the Standard release audience begins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What it is: combined choices",
       "type": "behaviour",
       "claim": "Users can be enrolled in Frontier while also assigned to Standard or Deferred release.",
       "status": "supported",
@@ -285,10 +136,10 @@
       "fix": null
     },
     {
-      "n": 24,
-      "where": "What it is",
+      "n": 11,
+      "where": "What it is: combined choices",
       "type": "behaviour",
-      "claim": "For non-Frontier features, a user's existing Standard or Deferred release preference determines general availability delivery.",
+      "claim": "The existing Standard or Deferred preference determines GA delivery for features outside Frontier.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
       "quote": "For features that aren't part of Frontier, the user's existing Standard release or Deferred release preference determines when they receive features at GA.",
@@ -296,43 +147,54 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "What it is; summary",
-      "type": "behaviour",
-      "claim": "Frontier is managed at tenant level by administrators controlling user access.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
-      "quote": "Frontier is managed at the tenant level. ... IT admins have explicit control which users have access to which Frontier features.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 26,
-      "where": "What it is; Why it matters; Risks and limits: All users; What to check",
-      "type": "behaviour",
-      "claim": "After enabling Frontier, an administrator can select All users to give eligible users Frontier features and agents.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
-      "quote": "All users - All users automatically receive Frontier features and agents. ... After you turn on Frontier experiences for your organization, eligible users can access supported preview features as they're released.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 27,
-      "where": "What it is; Why it matters; What to check",
-      "type": "behaviour",
-      "claim": "Specific users and groups scopes Frontier assignment to named users and groups and allows a security-group pilot.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
-      "quote": "Specific users and groups - Only specified users and groups automatically receive Frontier features and agents. ... Use a Microsoft Entra ID security group to target specific users who can access Frontier agents.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
+      "n": 12,
       "where": "What it is",
+      "type": "behaviour",
+      "claim": "Frontier is managed at tenant level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Frontier is managed at the tenant level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; What it is",
+      "type": "behaviour",
+      "claim": "An administrator turns on Frontier and controls its user audience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "To opt in to Frontier preview, toggle Turn on Frontier to On. Choose how Frontier access is assigned in your organization:",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What it is; Risks and limits; What to check",
+      "type": "behaviour",
+      "claim": "All users assigns Frontier features and agents across the tenant, subject to product eligibility.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "All users - All users automatically receive Frontier features and agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What it is; Risks and limits; What to check",
+      "type": "behaviour",
+      "claim": "Specific users and groups assigns Frontier only to the specified audience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Specific users and groups - Only specified users and groups automatically receive Frontier features and agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What it is; Cost and licensing",
       "type": "licensing",
-      "claim": "Frontier enrolment alone does not replace the licence needed for the product being previewed.",
+      "claim": "Users need licences providing access to the products they preview.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
       "quote": "Assign users licenses that provide access to the products you want them to preview.",
@@ -340,10 +202,21 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "What it is",
+      "n": 17,
+      "where": "summary; What it is; Governance controls",
+      "type": "applicability",
+      "claim": "Agent controls independently govern availability of Frontier agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "The Frontier admin control doesn't override the settings configured in the Agent section of the admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What it is; Why it matters; Governance controls",
       "type": "date",
-      "claim": "Frontier agents published after 29 March 2026 are available only to Frontier-enrolled users.",
+      "claim": "New Frontier agents published from 29 March 2026 require Frontier enrolment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
       "quote": "Starting March 29, 2026, newly published Frontier agents are available only to Frontier-enrolled users.",
@@ -351,10 +224,21 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 19,
+      "where": "Why it matters",
+      "type": "availability",
+      "claim": "Frontier agents published before 29 March 2026 remain accessible to users with a Microsoft Copilot licence without Frontier enrolment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Frontier agents published before this date continue to be accessible to all users with a Microsoft Copilot license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
       "where": "What it is",
       "type": "behaviour",
-      "claim": "Frontier agents appear in the Agent Store in Microsoft Copilot with (Frontier) in their names.",
+      "claim": "Frontier agents appear in Microsoft Copilot's Agent Store with (Frontier) in their names.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
       "quote": "Frontier agents are available to them from the Agent store in Microsoft Copilot. Search for \"Built by Microsoft\", and Frontier program agents are displayed with (Frontier) in the name.",
@@ -362,10 +246,10 @@
       "fix": null
     },
     {
-      "n": 31,
+      "n": 21,
       "where": "What it is",
       "type": "behaviour",
-      "claim": "Frontier features and agents can take three hours to become available to users.",
+      "claim": "Frontier feature and agent availability can take up to three hours to propagate.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
       "quote": "It might take three hours for Frontier features and agents to be available to users.",
@@ -373,54 +257,32 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "Why it matters; Governance controls",
-      "type": "applicability",
-      "claim": "Frontier enrolment universally decides whether Frontier preview agents reach users at all, and every agent requires enrolment as well as agent access controls.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
-      "quote": "Frontier agents published before this date continue to be accessible to all users with a Microsoft Copilot license.",
-      "severity": "blocker",
-      "fix": "Replace the first sentence of Why it matters with 'Frontier enrolment controls access to eligible pre-GA features and newly published Frontier agents; Frontier agents published before 29 March 2026 remain accessible to all users with a Microsoft Copilot licence.' Replace its second paragraph's first sentence with 'A Frontier label does not by itself establish that enrolment is required: Microsoft exempts agents published before 29 March 2026.' Replace Governance controls' opening sentence with 'Enrolment and agent-level controls are separate; agents published from 29 March 2026 require Frontier enrolment as well as permission under the agent controls.' Keep the following sentences describing agent controls."
-    },
-    {
-      "n": 33,
-      "where": "Why it matters: factual premise about agents reading tenant data",
-      "type": "behaviour",
-      "claim": "Frontier includes agents that read tenant data.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/autopilot/microsoft-autopilot-application-card#key-features-or-capabilities",
-      "quote": "Works across Microsoft 365: Autopilot uses authorized Teams, Outlook, OneDrive, and SharePoint information through its available tools.",
-      "severity": "minor",
-      "fix": "Add https://learn.microsoft.com/copilot/autopilot/microsoft-autopilot-application-card to sources. Its Key features or capabilities section supports both factual premises in Why it matters about Frontier agents reading tenant data and taking actions; the current cited pages do not establish these specific capabilities."
-    },
-    {
-      "n": 34,
-      "where": "Why it matters: factual premise about agents taking actions",
-      "type": "behaviour",
-      "claim": "Frontier includes agents that take actions.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/copilot/autopilot/microsoft-autopilot-application-card#key-features-or-capabilities",
-      "quote": "Autopilot can complete tasks without asking at each step. An automated review system reviews each action that sends, shares, deletes, or changes content, or that creates or changes an automation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 35,
+      "n": 22,
       "where": "Why it matters; Open questions",
       "type": "absence",
-      "claim": "The Frontier Get started page does not state whether the toggle is on or off in a tenant that has never changed it.",
+      "claim": "The Get started page does not state an on/off default for a tenant that has never changed Frontier.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Frontier enrollment Turn on Frontier default off tenant release preferences; \"Frontier\" \"default\" \"off\" program enrollment. Opened get-started-frontier and configure-release-options; opt-in steps are stated, but no untouched-tenant toggle default is stated.",
+      "quote": "Searched: Frontier default get-started-frontier; Frontier enrollment Turn on Frontier default enabled disabled. Read Get started with the Microsoft Frontier Program and Configure new Standard and Deferred release options in full; neither states Frontier's untouched-tenant on/off default.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
+      "n": 23,
+      "where": "controls[0].note; Cost and licensing; What to check",
+      "type": "role",
+      "claim": "Enrolment requires AI Administrator, Security Administrator or Office Apps Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "You need an account that includes one of the following roles: AI Administrator; Security Administrator; Office Apps Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "A Microsoft Copilot licence is not required to enrol users in Frontier.",
+      "claim": "A Microsoft Copilot licence is not required to enrol users in the expanded Frontier program.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
       "quote": "With the expansion of Frontier across Microsoft 365 previews to include both AI and non-AI features, a Microsoft Copilot license isn't required to enroll users in Frontier.",
@@ -428,43 +290,54 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 25,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Users need a Copilot licence or a licence including Copilot access to receive Copilot-related Frontier features.",
+      "claim": "Copilot Frontier features require a Copilot licence or a licence including access to Copilot.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
-      "quote": "to use Frontier features for Copilot, users need a Microsoft Copilot license or a license that includes access to Copilot. Users enrolled in Frontier without a Microsoft Copilot license aren't presented with Copilot-related Frontier features.",
+      "quote": "to use Frontier features for Copilot, users need a Microsoft Copilot license or a license that includes access to Copilot.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
+      "n": 26,
       "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Teams-related Frontier features require a licence including access to Teams.",
+      "type": "behaviour",
+      "claim": "Enrolled users without Copilot licensing are not shown Copilot-related Frontier features.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
-      "quote": "to use Frontier features for Microsoft Teams, users need a license that includes access to Teams. Users enrolled in Frontier without a license that includes access to Teams aren't presented with Teams-related Frontier features.",
+      "quote": "Users enrolled in Frontier without a Microsoft Copilot license aren't presented with Copilot-related Frontier features.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
+      "n": 27,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "The Get started prerequisites list admin roles and product licences without naming a separate Frontier fee.",
+      "claim": "Teams-related Frontier features require a licence including Teams.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
-      "quote": "Review the following requirements and recommendations: ... Verify your admin role in Microsoft 365 admin center. ... Assign users licenses that provide access to the products you want them to preview.",
+      "quote": "to use Frontier features for Microsoft Teams, users need a license that includes access to Teams.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 40,
+      "n": 28,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The Get started prerequisites list roles and product licences but name no separate Frontier fee.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Frontier program enrollment licensing fee. Read the Get started page's complete Prerequisites and its closing payment terms: prerequisites name roles and product licences, not a separate enrolment fee; closing terms allow paid experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Certain Frontier experiences may only be available on a paid basis, so charges are tied to the experiences being used.",
+      "claim": "Certain Frontier experiences may be available only on a paid basis.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
       "quote": "Certain Frontier experiences may only be available on a paid basis.",
@@ -472,10 +345,10 @@
       "fix": null
     },
     {
-      "n": 41,
+      "n": 30,
       "where": "Cost and licensing",
       "type": "cost",
-      "claim": "Microsoft refers readers to the Microsoft Copilot Credits Guide for Frontier credit consumption requirements.",
+      "claim": "Microsoft refers readers to its Copilot Credits Guide for credit consumption requirements.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
       "quote": "Copilot credit consumption requirements are described in the Microsoft Copilot Credits Guide.",
@@ -483,10 +356,10 @@
       "fix": null
     },
     {
-      "n": 42,
-      "where": "Cost and licensing; Open questions",
+      "n": 31,
+      "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Once the unified experience is available in commercial clouds, administrators no longer need a licence including Copilot to opt in through either experience.",
+      "claim": "Once the unified experience is available, admins no longer need Copilot licensing to opt in through either enrolment experience.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
       "quote": "Once the unified release preferences experience is available, admins will no longer be required to have a license that includes Copilot to opt in to Frontier via the existing experience or the new unified release preferences experience.",
@@ -494,32 +367,43 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 32,
       "where": "Cost and licensing; Open questions",
       "type": "licensing",
-      "claim": "The Agent 365 Frontier FAQ gives a different answer for seeing Copilot Frontier, advising purchase of a Copilot or Microsoft E7 licence.",
+      "claim": "The Agent 365 Frontier FAQ gives a different answer, directing tenants missing Copilot Frontier to purchase Copilot or E7.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-agent-365/frontier",
-      "quote": "I don't see Copilot Frontier under Copilot Settings. ... Purchase a Microsoft 365 Copilot license or Microsoft E7 license if you don't already have one. Frontier features are available to all Microsoft 365 customers with a Copilot or E7 license.",
+      "quote": "I don't see Copilot Frontier under Copilot Settings. | Purchase a Microsoft 365 Copilot license or Microsoft E7 license if you don't already have one.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 44,
-      "where": "Risks and limits: Preview terms; Why it matters",
+      "n": 33,
+      "where": "Risks and limits: Licensed admins",
+      "type": "licensing",
+      "claim": "An admin account needs corresponding product licensing for full access; some Frontier settings and agents otherwise may not appear.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Verify that your own admin account has also has a corresponding license for products to ensure full access to Frontier AI settings and agents. Some Frontier settings and agents in the Microsoft 365 admin center might not appear.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Why it matters; Risks and limits: Preview terms",
       "type": "behaviour",
       "claim": "Frontier experiences may be modified, suspended or discontinued.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
-      "quote": "Frontier experiences may be modified, suspended, or discontinued",
+      "quote": "As preview features, Frontier experiences may be modified, suspended, or discontinued",
       "severity": null,
       "fix": null
     },
     {
-      "n": 45,
+      "n": 35,
       "where": "Risks and limits: Preview terms",
       "type": "behaviour",
-      "claim": "Frontier experiences may not be covered by standard support commitments.",
+      "claim": "Standard support commitments or SLAs may not cover Frontier experiences.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
       "quote": "may not be covered by standard support commitments or service level agreements",
@@ -527,18 +411,7 @@
       "fix": null
     },
     {
-      "n": 46,
-      "where": "Risks and limits: Preview terms",
-      "type": "behaviour",
-      "claim": "Frontier experiences may not be covered by standard service level agreements.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
-      "quote": "may not be covered by standard support commitments or service level agreements",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 47,
+      "n": 36,
       "where": "Risks and limits: Preview terms",
       "type": "behaviour",
       "claim": "Additional Frontier-specific preview terms may apply.",
@@ -549,7 +422,7 @@
       "fix": null
     },
     {
-      "n": 48,
+      "n": 37,
       "where": "Risks and limits: Compliance coverage; What to check",
       "type": "applicability",
       "claim": "HIPAA Business Associate Agreement coverage is not included for Frontier experiences.",
@@ -560,7 +433,7 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 38,
       "where": "Risks and limits: Compliance coverage; What to check",
       "type": "applicability",
       "claim": "Frontier features do not comply with ISO 27001 requirements.",
@@ -571,7 +444,7 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 39,
       "where": "Risks and limits: Compliance coverage; What to check",
       "type": "applicability",
       "claim": "Frontier features do not comply with ISO 27002 requirements.",
@@ -582,7 +455,7 @@
       "fix": null
     },
     {
-      "n": 51,
+      "n": 40,
       "where": "Risks and limits: Compliance coverage; What to check",
       "type": "applicability",
       "claim": "Frontier features do not comply with ISO 27018 requirements.",
@@ -593,21 +466,10 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 41,
       "where": "Risks and limits: Agent controls; Governance controls",
       "type": "applicability",
-      "claim": "Frontier enrolment does not override the Agent section's settings.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
-      "quote": "The Frontier admin control doesn't override the settings configured in the Agent section of the admin center.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "Risks and limits: Agent controls; Governance controls",
-      "type": "applicability",
-      "claim": "A Frontier agent turned off in the Agent view is unavailable regardless of a user's enrolment.",
+      "claim": "A Frontier agent disabled in the Agent view is unavailable regardless of the user's Frontier enrolment.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
       "quote": "If an admin turned off a Frontier agent in the Agent view, that agent isn't available to users, regardless of a user's Frontier enrollment.",
@@ -615,21 +477,10 @@
       "fix": null
     },
     {
-      "n": 54,
-      "where": "controls[1].governs; Risks and limits: Agent controls; Governance controls",
-      "type": "applicability",
-      "claim": "Allow agents and plugins built by Microsoft governs use of Microsoft Frontier agents.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
-      "quote": "Verify that Allow agents and plugins built by Microsoft is checked. This setting allows the use of Microsoft Frontier agents.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
-      "where": "Risks and limits: AI providers; What to check",
-      "type": "default",
-      "claim": "Frontier never enables AI providers on an administrator's behalf.",
+      "n": 42,
+      "where": "Risks and limits: AI providers",
+      "type": "behaviour",
+      "claim": "Frontier never enables AI providers on the administrator's behalf.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
       "quote": "Frontier will never enable AI providers on your behalf.",
@@ -637,102 +488,322 @@
       "fix": null
     },
     {
-      "n": 56,
-      "where": "Risks and limits: AI providers; What to check",
+      "n": 43,
+      "where": "Risks and limits: AI providers",
       "type": "applicability",
-      "claim": "A Frontier feature depending on a provider such as Anthropic is unusable until the administrator enables that provider.",
+      "claim": "A feature requiring an AI provider such as Anthropic is unusable until the administrator enables that provider.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
-      "quote": "Some Frontier features and agents require access to large language models from AI providers, such as Anthropic. ... If the corresponding AI provider isn't enabled by you, the Frontier feature will not be usable for you or your users.",
+      "quote": "Some Frontier features and agents require access to large language models from AI providers, such as Anthropic. If the corresponding AI provider isn't enabled by you, the Frontier feature will not be usable for you or your users.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 57,
+      "n": 44,
       "where": "Risks and limits: Government clouds",
       "type": "availability",
       "claim": "Frontier is currently unavailable in GCC, GCC High and DoD.",
       "status": "supported",
       "source": "https://learn.microsoft.com/microsoft-365/admin/manage/configure-release-options",
-      "quote": "For customers in GCC, GCC High, and DoD environments, Standard release (general availability) remains the supported release option ... Currently, Deferred release and Frontier aren't available in government cloud environments.",
+      "quote": "For customers in GCC, GCC High, and DoD environments, Standard release (general availability) remains the supported release option following the retirement of Targeted release. Currently, Deferred release and Frontier aren't available in government cloud environments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The unified enrolment control is in Microsoft 365 admin center > Settings > Org settings > Organization profile > Release preferences > Turn on Frontier.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "In the Microsoft 365 admin center, go to Settings > Org settings. Under the Organization profile tab, select Release preferences. To opt in to Frontier preview, toggle Turn on Frontier to On.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "controls[0].note",
+      "type": "admin-path",
+      "claim": "The existing enrolment path is Copilot > Settings > View all > Copilot Frontier > Turn on Frontier.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "go to Copilot > Settings. Select the View all tab. In the Search all Copilot settings search bar, type \"Frontier\". Select Copilot Frontier. To opt in to Frontier preview, toggle Turn on Frontier to On.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[0].note",
+      "type": "date",
+      "claim": "The unified release preferences experience is rolling out gradually from mid-November 2026.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "The unified release preferences experience is rolling out gradually in mid-November 2026, so it might not be available in your organization yet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[0].note; Cost and licensing",
+      "type": "availability",
+      "claim": "The existing Frontier enrolment experience remains when the unified experience becomes available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "When the unified release preferences experience becomes available, the existing experience for opting in to Frontier preview within the Microsoft 365 admin center will still exist.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[0].api; Open questions",
+      "type": "absence",
+      "claim": "No API or PowerShell operation is documented for the tenant's Frontier enrolment and user/group assignment control.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Frontier enrollment Graph PowerShell; Frontier program enrollment automation API; Frontier tenant enrollment assignment API. Read get-started-frontier, utcm-copilot-resources and utcm-agent-resources: OCPS frontier toggles web-app access, not enrolment assignments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Microsoft-built Frontier agent access is controlled at Microsoft 365 admin center > Agent > Settings > Agent and plugin access > Allow agents and plugins built by Microsoft.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "In the Microsoft 365 admin center, go to Agent > Settings > Agent and plugin access. Verify that Allow agents and plugins built by Microsoft is checked. This setting allows the use of Microsoft Frontier agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].governs; Governance controls; What to check",
+      "type": "applicability",
+      "claim": "Allow agents and plugins built by Microsoft controls users' installation of Microsoft-built agents, including Frontier agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "Allow agents and plugins built by Microsoft - Enables users to install agents and plugins created by Microsoft.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "Users still see Microsoft-built agents when that setting is disabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "Users see agents and plugins built by Microsoft even if you disable the setting, but they can't install those agents and plugins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[1].note",
+      "type": "behaviour",
+      "claim": "Users cannot install Microsoft-built agents while that setting is disabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings",
+      "quote": "Users see agents and plugins built by Microsoft even if you disable the setting, but they can't install those agents and plugins.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors can apply the allowedagenttypes desired-state baseline using applyOnce.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+      "quote": "POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors\nAn active applyOnce monitor runs in the background on behalf of the signed-in administrator and then becomes inactive.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "Preview TCM supports mode applyOnce for applying Agent resource baselines once.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
+      "quote": "TCM drift remediation and applyOnce monitors change workload configuration on behalf of the signed-in administrator. These capabilities are available in preview through Microsoft Graph beta.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "The Microsoft-built agent access baseline uses resourceType microsoft.agent.allowedagenttypes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "\"displayName\": \"Allowed agent types\",\n\"resourceType\": \"microsoft.agent.allowedagenttypes\",",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "The Agent baseline resource version is 1.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "All resources on this page use resourceVersion: 1 and are singletons.",
       "severity": null,
       "fix": null
     },
     {
       "n": 58,
-      "where": "Risks and limits: Licensed admins",
-      "type": "licensing",
-      "claim": "An administrator's own account needs corresponding product licences for full access, or some Frontier settings and agents might not appear.",
+      "where": "controls[1].note",
+      "type": "command",
+      "claim": "The baseline valueObject.areMicrosoftAppsAllowed property is a writable Boolean controlling Microsoft-built apps, agents and plugins.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
-      "quote": "Verify that your own admin account has also has a corresponding license for products to ensure full access to Frontier AI settings and agents. Some Frontier settings and agents in the Microsoft 365 admin center might not appear.",
+      "source": "https://learn.microsoft.com/graph/utcm-agent-resources",
+      "quote": "areMicrosoftAppsAllowed | Write | Boolean | Indicates whether apps, agents, and plugins built by Microsoft are allowed.",
       "severity": null,
       "fix": null
     },
     {
       "n": 59,
-      "where": "Governance controls: direct deployment",
+      "where": "controls[2].ui",
       "type": "admin-path",
-      "claim": "To deploy directly, select the agent under Agents > All agents, add users or Microsoft Entra ID security groups on its Users tab, and select Install.",
+      "claim": "Per-agent blocking is at Microsoft 365 admin center > Agents > All agents > agent > Block > Block agent.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
-      "quote": "Go to Agents > All agents. Select the agent you want to install. In the Users tab, add the specific users or security groups that you want to use this agent. ... In the agent flyout, select Install.",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Select Agents > All agents. In the All agents page, select an agent from the list of agents. In the agent details pane that opens, immediately under the agent's name, select Block or Unblock. In the Block agent or Unblock agent pane that opens, select either Block agent or Unblock agent",
       "severity": null,
       "fix": null
     },
     {
       "n": 60,
-      "where": "Governance controls: direct deployment",
+      "where": "controls[2].governs; Governance controls; What to check",
       "type": "applicability",
-      "claim": "Microsoft's direct deployment instructions also require assigning those users in Frontier Admin Control.",
+      "claim": "The Block action restricts the selected agent across the whole organisation.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
-      "quote": "You can install and pin specific agents for select users or groups directly rather than users needing to search the Agent store. ... You must assign these users in Frontier Admin Control",
+      "source": "https://learn.microsoft.com/microsoft-agent-365/admin/agent-actions",
+      "quote": "Block and unblock | Restrict access to an agent across the organization, preventing any user from using it.",
       "severity": null,
       "fix": null
     },
     {
       "n": 61,
-      "where": "Governance controls; Open questions",
-      "type": "absence",
-      "claim": "Learn does not describe an audit event covering Frontier enrolment setting changes.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/purview/audit-log-activities#microsoft-365-copilot-admin-activities",
-      "quote": "Updated a Copilot setting | UpdateTenantSettings | An admin (or system on behalf of an admin) updated a Copilot setting.",
-      "severity": "blocker",
-      "fix": "Replace the audit-event absence with 'Microsoft documents the UpdateTenantSettings audit operation for changes to Copilot settings; the audit activities table does not name a Frontier-specific operation.' Cite https://learn.microsoft.com/purview/audit-log-activities. Copilot Frontier is explicitly a Copilot setting in the Get started page, so the documented general event's scope includes that existing setting. Remove 'or audit event' from the final Open questions bullet and its assertion that none was found; do not promise Frontier-specific fields or coverage of the new unified experience."
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block blocks a Copilot package to prevent its use.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Block a Copilot package to prevent its usage.\nPOST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block",
+      "severity": null,
+      "fix": null
     },
     {
       "n": 62,
-      "where": "Governance controls",
-      "type": "absence",
-      "claim": "Learn does not document a report specifically recording Frontier enrolment changes.",
+      "where": "controls[2].note; Governance controls",
+      "type": "licensing",
+      "claim": "The Package Management API requires a Microsoft Agent 365 licence.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: \"Frontier\" \"audit\" enrollment changes report; \"Frontier\" \"Purview\" \"enrollment\" audit. Opened get-started-frontier and purview/audit-log-activities. A general Copilot settings event is documented, but no Frontier enrolment-change report was found.",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Access to the Package Management API requires a Microsoft Agent 365 license.",
       "severity": null,
       "fix": null
     },
     {
       "n": 63,
-      "where": "What to check: AI provider approvals",
-      "type": "consistency",
-      "claim": "What to check tells administrators to review approved AI providers, but the controls table has no AI provider approval row.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Review which AI providers, such as Anthropic, are approved ... [The controls table contains only Frontier enrolment, Microsoft-built agent access and individual agent blocking.]",
-      "severity": "minor",
-      "fix": "Remove the What to check bullet beginning 'Review which AI providers'. It instructs readers to review a control absent from the table. Keep the verified provider dependency warning in Risks and limits; no new control row is required by this correction."
+      "where": "controls[2].note",
+      "type": "behaviour",
+      "claim": "The package block API is a beta API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[2].note",
+      "type": "command",
+      "claim": "The block API needs delegated CopilotPackages.ReadWrite.All permission.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Delegated (work or school account) | CopilotPackages.ReadWrite.All | Not available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[2].note",
+      "type": "availability",
+      "claim": "The block API is unavailable in US Government clouds.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block",
+      "quote": "Global service | US Government L4 | US Government L5 (DOD) | China operated by 21Vianet\n✅ | ❌ | ❌ | ❌",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance controls: direct pilot deployment",
+      "type": "admin-path",
+      "claim": "Admins can directly install an agent by selecting it in Agents > All agents, assigning its Users tab audience and selecting Install.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Go to Agents > All agents. Select the agent you want to install. In the Users tab, add the specific users or security groups that you want to use this agent. In the agent flyout, select Install.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Why it matters; Governance controls; What to check",
+      "type": "behaviour",
+      "claim": "Microsoft Entra ID security groups can target Frontier pilot users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "Use a Microsoft Entra ID security group to target specific users who can access Frontier agents. This approach helps you validate experiences with a small group before broad rollout.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance controls: direct pilot deployment",
+      "type": "applicability",
+      "claim": "Users receiving directly deployed Frontier agents must also be assigned in Frontier Admin Control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/admin/manage/get-started-frontier",
+      "quote": "You can install and pin specific agents for select users or groups directly rather than users needing to search the Agent store. This method helps users start using Frontier agents more quickly. You must assign these users in Frontier Admin Control",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance controls: audit",
+      "type": "behaviour",
+      "claim": "Microsoft documents UpdateTenantSettings for Microsoft 365 Copilot setting changes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/audit-log-activities",
+      "quote": "Microsoft 365 Copilot admin activities\nUpdated a Copilot setting | UpdateTenantSettings | An admin (or system on behalf of an admin) updated a Copilot setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance controls: audit",
+      "type": "absence",
+      "claim": "The audit activities table does not name a Frontier-specific operation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: site:learn.microsoft.com/purview/audit-log-activities Frontier UpdateTenantSettings. Fetched the full Audit log activities page and searched its text for Frontier, UpdateTenantSettings and UpdatedTenantSettings; no Frontier entry appears.",
+      "severity": null,
+      "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-21T01:58:48.443Z",
+    "at": "2026-11-21T03:13:23.513Z",
     "summary": {
-      "links": 6,
+      "links": 10,
       "unreachable": 0,
       "uiPaths": 3,
       "uiPathsWithMissingWords": 0,
-      "apiCalls": 1,
+      "apiCalls": 2,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
@@ -764,6 +835,26 @@
       },
       {
         "url": "https://learn.microsoft.com/microsoft-agent-365/frontier",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/utcm-agent-resources",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/utcm-remediation-applyonce-resources",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/audit-log-activities",
         "ok": true,
         "status": 200
       }
@@ -798,6 +889,15 @@
         "missing": []
       },
       {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether Microsoft-built agents, including Frontier agents, can be installed by users",
+        "docs": "https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta",
+        "reachable": true,
+        "token": "/beta/admin/configurationManagement",
+        "found": true
+      },
+      {
         "index": 2,
         "side": "ui",
         "governs": "Whether a specific Frontier agent is blocked for the whole organisation",
@@ -823,5 +923,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-21",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

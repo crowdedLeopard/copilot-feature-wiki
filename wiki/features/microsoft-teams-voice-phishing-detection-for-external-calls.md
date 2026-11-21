@@ -77,19 +77,23 @@ changes:
     note: "Target date updated to January CY2027 to match the roadmap record; added that the User reported settings page also covers Defender for Office 365 Plan 1 for call reporting."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 55 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 3
+  - date: "2026-11-21"
+    note: "Corrected the last open question: it now asks only whether the Defender portal receives anything automatically when a detection alert is raised, since Learn documents Submissions metadata and default alerts for user-reported calls."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 53 statements not yet confirmed"
+version: 4
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 3
+  version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 55
-  confirmed: 54
+  claims: 53
+  confirmed: 53
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "28f0be6b237c86823bd2c3a2053dbfae"
+  contradicted: 0
+  attempts: 0
+  hash: "808413af5d0282bf5ddcee749e760329"
 ---
 
 ## What's changing
@@ -178,7 +182,7 @@ Learn says calling policies can be applied at a global, group and user level; th
 - Where is call audio or its transcript analysed, is anything retained, and is the result visible to administrators or in audit logs? Watch Message center and Microsoft Learn.
 - Does detection cover only inbound calls, as the cmdlet reference says, or all one-to-one external calls, as the roadmap says?
 - Which Teams admin center setting will expose the VoicePhishingDetection values, and will it be in Voice > Calling policies?
-- Does the Defender portal receive anything when an alert is raised or a user reports a flagged call as not a security concern?
+- Does the Defender portal receive anything automatically when a voice phishing detection alert is raised?
 
 <!-- rationale
 risk: Medium. The feature analyses call conversations with AI and the policy parameter defaults to BannerAndAudio alerts, while Microsoft has not described where or how call content is processed.
@@ -186,8 +190,8 @@ cost: Low. The only cost the sources show is admin time and user communication; 
 impact: Medium. Users who take one-to-one calls from outside the organisation would see alerts, but only when Teams detects suspicious activity on a call.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Open questions: Defender portal, report as not a security concern / absence: Whether the Defender portal receives anything when a user reports a flagged call as not a security concern is left as unpublished. | Found: Metadata from the reported Teams items (for example, senders/callers, recipients, reported by, meeting and participant details, and item details) is available on the User reported tab on the Submissions page. | Fix: Replace the final Open questions bullet with: 'Does the Defender portal receive anything automatically when a voice phishing detection alert is raised?' Remove the user-report branch: https://learn.microsoft.com/defender-office-365/submissions-teams documents report metadata in Submissions and says the 'Teams call reported by user as a not security risk' alert policy generates alerts by default. | Source: https://learn.microsoft.com/defender-office-365/submissions-teams
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] Risk assessment: Security & identity / licensing: In organisations with Defender for Office 365 Plan 2 or Defender XDR, users can report suspicious calls when Report call is enabled. | Found: In organizations with Microsoft Defender for Office 365 Plan 2 or Microsoft Defender XDR, admins can decide whether users can report malicious or suspicious calls in Microsoft Teams. | Fix: Add after the reporting prerequisites: 'The User reported settings page documents call reporting on the Teams desktop client and Web App, and requires users to have an online Teams mailbox.' Source: https://learn.microsoft.com/defender-office-365/submissions-teams. This qualifies the separate reporting capability, not voice phishing detection. | Source: https://learn.microsoft.com/microsoftteams/end-user-reporting-teams-calling
 -->

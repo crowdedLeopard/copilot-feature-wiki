@@ -80,18 +80,20 @@ changes:
     note: "Corrected the cost statement: the Learn migration page lists no licence and publishes no migration price, rather than stating there is no charge."
   - date: "2026-11-17"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 65 statements confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 74 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 2
 verification:
-  status: "verified"
-  date: "2026-11-17"
+  status: "held"
+  date: "2026-11-21"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 65
-  confirmed: 65
+  claims: 74
+  confirmed: 73
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "a06afeaf0616e14f75a0fa7aa2021b11"
 ---
 
@@ -195,4 +197,12 @@ Microsoft Learn documents no API for starting the migration or for the finance a
 risk: Medium. Migration starts only when an administrator chooses it, but it is one-way, takes the environment offline for about 15 minutes per AOS instance, and Learn does not recommend production use during public preview.
 cost: Low. The Learn page lists no licence and publishes no migration price; the known costs are admin time, downtime and capacity, because the migrated environment consumes capacity under the Power Platform capacity model.
 impact: Medium. Environment administrators and developers change from Lifecycle Services to Power Platform admin center and Azure Pipelines, and users of a migrated environment notice the downtime window.
+-->
+
+<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] front matter: cost; rationale: cost / consistency: A low cost rating accurately represents the documented costs of this change. | Found: cost: low; Low. ... the known costs are admin time, downtime and capacity ... consumes capacity under the Power Platform capacity model. Standard: low means indirect cost only; medium includes predictable consumption. | Fix: Set cost to medium. Replace the cost rationale with: 'Medium. The migrated environment consumes Power Platform capacity, and a storage deficit must be cleared by freeing or purchasing capacity before migration. Admin time and downtime are indirect costs; a separate migration price is not yet published.'
+These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
+- [supported, minor] front matter: licensing.model; licensing.notes; Cost and licensing; Open questions / licensing: Licensing is unknown because no migration-specific licence is published. | Found: Customers must acquire and assign appropriate subscription licenses for their users ... Example: Dynamics 365 Commerce, Dynamics 365 Finance, Dynamics 365 Supply Chain Management, Dynamics 365 Team Members, and more. | Fix: Set licensing.model to included. Replace the licensing notes and the sentence treating the licence as unpublished with: 'Finance and operations apps require appropriate product subscription licences, such as Dynamics 365 Finance or Dynamics 365 Supply Chain Management. No migration-specific licence or migration price is published as of November 2026. After migration the environment consumes Power Platform capacity.' Add https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/sysadmin/stay-compliant-user-license-requirement to sources. Narrow the final Open questions bullet to ask whether a separate migration licence or price will be introduced. | Source: https://learn.microsoft.com/dynamics365/fin-ops-core/dev-itpro/sysadmin/stay-compliant-user-license-requirement#assign-licenses-to-users
 -->

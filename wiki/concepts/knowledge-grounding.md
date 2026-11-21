@@ -132,14 +132,16 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 99 statements not yet confirmed"
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 96 statements not yet confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 99 statements not yet confirmed"
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-21"
   version: 4
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 96
-  confirmed: 96
+  claims: 99
+  confirmed: 99
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -226,8 +228,10 @@ For monitoring, Copilot Studio documents analytics on a per knowledge source bas
 - Which admin setting turns off web search for agents powered by the Microsoft Copilot harness? Microsoft's page says the toggle is disabled if an admin turned it off but does not name the setting.
 - Does endpoint filtering restrict SharePoint and public website knowledge sources? Microsoft's pages differ.
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[2].note / applicability: The organization property isexternalsearchindexenabled represents whether Dataverse search is enabled. | Found: The IsExternalSearchIndexEnabled boolean column indicates whether search is enabled for the organization. | Fix: Add https://learn.microsoft.com/power-apps/developer/data-platform/search/overview to sources. It explicitly connects isexternalsearchindexenabled to Dataverse search; retain the existing command and Organization table reference. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/search/overview
+- [supported, minor] Cost and licensing: employee-facing inclusion / licensing: The standard-harness billing page includes employee-facing usage in the Microsoft Copilot USL when the agent user is licensed and the agent uses that authenticated user's identity. | Found: are included in the Microsoft Copilot USL when the user of the agent is licensed with Microsoft Copilot, and the agent operates using the authenticated Microsoft Copilot USL user's identity. | Fix: After this inclusion sentence add: 'The harness cost-management page limits standard-harness inclusion to Microsoft 365 channels and says usage in a channel outside Microsoft 365 is billed.' Cite and add https://learn.microsoft.com/power-platform/admin/manage-usage-microsoft-copilot-harness to sources; its table says 'Yes, in Microsoft 365 channels' and 'Billed when the user has no Microsoft 365 Copilot license, or when the agent is used in a channel outside Microsoft 365.' Retain attribution of the existing statement to the billing page. | Source: https://learn.microsoft.com/microsoft-copilot-studio/requirements-messages-management
+- [supported, minor] controls[2].ui / admin-path: Dataverse search is reached through Power Platform admin center > Manage > Environments > environment > Settings > Product > Features > Dataverse search. | Found: In the command bar, select Settings. Expand Product, then select Features. Under Dataverse search, select the options you want to turn on: | Fix: Complete controls[2].ui.path and its rendered table path as 'Manage > Environments > environment > Settings > Product > Features > Dataverse search > Turn on search indexing to support Dataverse intelligence (Work IQ) in AI and agent experiences'. The existing path reaches the correct section; https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization now names this selectable option under that section. | Source: https://learn.microsoft.com/power-platform/admin/configure-relevance-search-organization
+- [supported, minor] controls[2].note / applicability: The organization property isexternalsearchindexenabled indicates whether Dataverse search is enabled. | Found: The IsExternalSearchIndexEnabled boolean column indicates whether search is enabled for the organization. | Fix: Add https://learn.microsoft.com/power-apps/developer/data-platform/search/overview to sources. It explicitly connects isexternalsearchindexenabled to Dataverse search; retain PATCH /organizations(organizationid), its existing Organization reference link and the note naming the request-body property. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/search/overview
 -->

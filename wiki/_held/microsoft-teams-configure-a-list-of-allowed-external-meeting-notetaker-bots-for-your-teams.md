@@ -44,10 +44,10 @@ videos: []
 related: ["microsoft-teams-block-all-identified-external-bots-automatically-from-joining-your-meeting","meeting-policy","microsoft-teams-report-a-security-concern-in-meetings","microsoft-teams-granular-conditional-access-for-teams-meetings"]
 controls:
   - governs: "Allowed list of external meeting notetaker bots, with the choice to block or lobby all others (planned)"
-    scope: "tenant"
+    scope: "other"
     ui: null
     api: null
-    note: "Described only on the roadmap item. Microsoft Learn documents no setting or API for it at the time of writing (November 2026)."
+    note: "Described only on the roadmap item. Microsoft Learn documents no setting or API for it at the time of writing (November 2026). The configuration and assignment scope of the planned list is not yet documented."
   - governs: "How external bots are detected and handled in meetings today (existing meeting policy setting)"
     scope: "user"
     ui:
@@ -72,19 +72,23 @@ changes:
     note: "Corrected after verification: licensing now records the Teams licence requirement, bot admission and the existing policy options match Learn, a transcript-storage claim was removed and Web was added to the roadmap's platforms."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 62 statements contradicted, 2 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-21"
+    note: "Corrected after verification: the planned list's control scope is now 'other' with its scope marked not yet documented, and the default is stated as not stated by Microsoft."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 59 statements contradicted, 1 unconfirmed; taken offline until corrected"
+version: 3
 verification:
   status: "held"
   date: "2026-11-21"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 62
-  confirmed: 60
-  unconfirmed: 2
+  claims: 59
+  confirmed: 58
+  unconfirmed: 1
   contradicted: 0
-  attempts: 1
-  hash: "fb464fbf2bb786991457ce323acff911"
+  attempts: 2
+  hash: "62450faff97e715a612e97b4adbe98e3"
 ---
 
 ## What's changing
@@ -93,7 +97,7 @@ Microsoft Teams plans to let administrators keep a list of external meeting note
 
 Microsoft Learn does not describe this feature yet, so what follows about its behaviour is the roadmap's description. The roadmap does not say how a bot is named on the list or how Teams recognises it. It does not say which existing behaviour it means by the "high friction lobby" either.
 
-The nearest documented behaviour is the existing meeting policy setting **Manage external bots and their access to meetings**. Learn says Teams detects external bots from signals collected during the join process and places detected bots in the lobby irrespective of the meeting's lobby configuration. Detected bots require explicit admission; the external-bots guidance says presenters can also admit them depending on the meeting setting. Its default option, **When detected, require approval before joining** (`RequireApprovalWhenDetected`), keeps detected bots in the lobby until explicitly admitted. Treat this as background, not as a description of the new list.
+The nearest documented behaviour is the existing meeting policy setting **Manage external bots and their access to meetings**. Learn says Teams detects external bots from signals collected during the join process and places detected bots in the lobby irrespective of the meeting's lobby configuration. Detected bots require explicit admission; the external-bots guidance says presenters can also admit them depending on the meeting setting. The Teams Bot Identification Program page instead describes detected bots as requiring organizer approval before joining (https://learn.microsoft.com/microsoftteams/teams-bot-identification). Its default option, **When detected, require approval before joining** (`RequireApprovalWhenDetected`), keeps detected bots in the lobby until explicitly admitted. Treat this as background, not as a description of the new list.
 
 The roadmap item is In development, with a target of January CY2027, General Availability, for Worldwide (Standard Multi-Tenant) and GCC, on Android, Desktop, iOS, Mac and Web.
 
@@ -101,7 +105,7 @@ The roadmap item is In development, with a target of January CY2027, General Ava
 
 Notetaker bots are the exposure the Learn page describes: external tools can record or transcribe meetings without participants' awareness and store meeting data in third-party systems outside the organisation's compliance boundary. Today the external-bots guide lists detection with approval and no detection. The cited Set-CsTeamsMeetingPolicy reference additionally documents BlockDetectedBots to block detected external bots. A named allow list would let a security team approve the tools it has vetted instead of leaving each organiser to judge a lobby request.
 
-Microsoft has not stated what happens on arrival, so this briefing assumes today's documented behaviour continues until an admin acts, and treats the list as a decision for security and Teams owners rather than a deadline. The roadmap gives no act-by date and no Message Center post was supplied with the item.
+Microsoft has not stated what happens on arrival, and no source says existing behaviour will change; this briefing therefore treats the list as a decision for security and Teams owners rather than a deadline. The roadmap gives no act-by date and no Message Center post was supplied with the item.
 
 ## Risk assessment
 
@@ -161,7 +165,7 @@ The roadmap describes controls for bots joining meetings hosted in your organisa
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Allowed list of external meeting notetaker bots, with the choice to block or lobby all others (planned)</strong><br><small>Tenant</small><br><small class="controls__note">Described only on the roadmap item. Microsoft Learn documents no setting or API for it at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Allowed list of external meeting notetaker bots, with the choice to block or lobby all others (planned)</strong><br><small class="controls__note">Described only on the roadmap item. Microsoft Learn documents no setting or API for it at the time of writing (November 2026). The configuration and assignment scope of the planned list is not yet documented.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>How external bots are detected and handled in meetings today (existing meeting policy setting)</strong><br><small>User</small><br><small class="controls__note">Existing setting, not the planned allow list. The external-bots guide lists detection with approval and no detection; the cmdlet reference also documents BlockDetectedBots to block detected external bots.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Meeting policies › policy › Meeting Join and Lobby › Manage external bots and their access to meetings <a href="https://learn.microsoft.com/microsoftteams/manage-external-bots" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsMeetingPolicy -Identity &lt;policy name&gt; -ExternalBotAccessMode RequireApprovalWhenDetected</code> <a href="https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmeetingpolicy?view=teams-ps" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
@@ -187,8 +191,5 @@ impact: Low. Admins who manage meeting policies see the control; organisers and 
 <!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] controls[0].scope; Governance controls: first row / applicability: The planned allowed-bots list is a tenant-scoped configuration control. | Found: Searched: Teams external bots allow list default policy scope bot identity Bot Identification Program BlockDetectedBots override blocked participants. The roadmap describes hosted meetings, not assignment scope; manage-external-bots documents scope only for the existing policy. | Fix: Set controls[0].scope to 'other' and add to its note: 'The configuration and assignment scope of the planned list is not yet documented.' Hosting meetings in the organisation does not establish tenant-wide configuration scope.
-- [unsupported, blocker] Why it matters: second paragraph / default: Today's documented behaviour continues until an administrator acts on the new list. | Found: Searched: Teams external bots allow list default policy scope bot identity Bot Identification Program BlockDetectedBots override blocked participants. Read roadmap, manage-external-bots and teams-bot-identification; none states that the new list waits for administrator action. | Fix: Replace the paragraph's first sentence with: 'Microsoft has not stated what happens on arrival, and no source says existing behaviour will change; this briefing therefore treats the list as a decision for security and Teams owners rather than a deadline.' Keep defaultState as 'unknown'.
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing; rationale: risk / role: The external-bots guide says presenters can admit detected bots depending on the meeting setting. | Found: Organizers (also presenters, depending on the meeting setting), need to explicitly admit these bots into the meeting. | Fix: Add after the sentence about presenters: 'The Teams Bot Identification Program page instead describes detected bots as requiring organizer approval before joining (https://learn.microsoft.com/microsoftteams/teams-bot-identification).' This reports the different wording in the two cited pages. | Source: https://learn.microsoft.com/microsoftteams/manage-external-bots
+- [unsupported, blocker] Governance guidance: At rollout; Cost and licensing / applicability: The planned allowed-bots list can be piloted with a targeted meeting policy and assigned to users or groups before changing the default org-wide policy. | Found: Searched: Microsoft Teams external bot allowlist default policy assignment scope. Read roadmap, manage-external-bots and Set-CsTeamsMeetingPolicy; targeted/default policy configuration is documented for existing bot handling, not the new list. | Fix: Replace 'Pilot with a targeted meeting policy for a small group before changing the default org-wide policy.' with 'Confirm the list's documented configuration and assignment scope before deciding how to pilot it.' Remove 'assigning a policy to the right users or groups' from the Cost and licensing list of work for the planned list.
 -->

@@ -1,0 +1,1344 @@
+{
+  "slug": "work-iq-listen",
+  "roadmapId": 570867,
+  "title": "Work IQ: Listen lets agents subscribe to workplace events",
+  "status": "held",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-21",
+    "reasons": [
+      "1 blocking finding (claim 105)"
+    ]
+  },
+  "counts": {
+    "claims": 109,
+    "confirmed": 108,
+    "unconfirmed": 0,
+    "contradicted": 1,
+    "blocker": 1,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: the briefing incorrectly treats tenant policy coverage of subscription creation as undocumented, although Listen creates subscriptions through an MCP creation tool and Microsoft documents policy evaluation for each tool request. The roadmap facts, preview behaviour, billing model and printed control paths and Graph operation are otherwise supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; What's changing",
+      "type": "record",
+      "claim": "Work IQ Listen is planned to let agents listen for supported Work IQ events and respond to relevant changes.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enable agents to listen for supported Work IQ events and respond as relevant changes occur.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "January CY2027 is the roadmap target, not a committed availability date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "November CY2026 is the roadmap preview target.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "Web is the listed platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "General Availability and Preview are the listed release phases.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\", \"Preview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The record identifies Work IQ and Microsoft Copilot (Microsoft 365) as the products.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Work IQ\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-11-20T23:20:27.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-20T23:20:27\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing",
+      "type": "availability",
+      "claim": "Learn documents Listen as available in public preview, separately from the roadmap's In development status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Work IQ Listen is available in public preview and must be enabled for your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing; Why it matters; Scope; controls[3].note",
+      "type": "default",
+      "claim": "Listen must be turned on for the tenant during the preview, and the guide directs questions to the Listen team.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Listen must be turned on for your tenant during the preview. For questions, contact the Listen team.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Preview schemas, tool names and payload fields can change before general availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Features, tool names, schemas, and payload fields can change before general availability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; What's changing",
+      "type": "behaviour",
+      "claim": "Third-party agents and apps can subscribe to workplace events rather than poll a mailbox or calendar.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Work IQ Listen lets third-party agents and apps subscribe to workplace events instead of polling a mailbox or calendar.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "A matching event causes Listen to call the developer's registered HTTPS endpoint.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "When an event matches a subscription, Listen calls your registered HTTPS endpoint with identifiers and an opaque event reference.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The notification contains identifiers and an opaque event reference.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Listen calls your registered HTTPS endpoint with identifiers and an opaque event reference.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The notification does not carry work content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Listen uses a doorbell model: the notification tells your agent to wake up, but doesn't carry work content or grant access to it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "The agent fetches the event and related content through Work IQ using the user's delegated token.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Your agent connects to Work IQ, presents the user's delegated token, and fetches the event.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "availability",
+      "claim": "The preview catalogue contains only seven event scenarios.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "The preview catalog contains only the seven event scenarios described in this article.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "summary; What's changing: event catalogue",
+      "type": "behaviour",
+      "claim": "One scenario is a flagged email still unanswered.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Flagged email still unanswered | Someone is waiting on an email the user flagged, and since when.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing: event catalogue; Why it matters",
+      "type": "behaviour",
+      "claim": "One scenario is a mention awaiting a response in email or chat.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Mention awaiting a response | People mentioned the user in an email, chat, or meeting chat and are still waiting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing: event catalogue; Why it matters",
+      "type": "behaviour",
+      "claim": "One scenario is a shared file the user has not reviewed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Shared file not reviewed | A colleague who matters to the user shared a file directly with them, but the user hasn't opened it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing: event catalogue",
+      "type": "behaviour",
+      "claim": "One scenario is an upcoming one-on-one meeting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Upcoming one-on-one meeting | A one-on-one meeting is about to start.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "summary; What's changing: event catalogue",
+      "type": "behaviour",
+      "claim": "One scenario is a missed meeting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Missed meeting | The user missed a meeting, whether its recap is ready, and which action items they own.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing: event catalogue",
+      "type": "behaviour",
+      "claim": "One scenario is a meeting recap assigning the user action items.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Action items assigned to the user | A meeting recap assigned the user one or more action items.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing: event catalogue",
+      "type": "behaviour",
+      "claim": "One scenario is an upcoming meeting with external guests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Upcoming meeting with external guests | A small meeting with people outside the organization is coming up.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "availability",
+      "claim": "Event availability can vary by tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "The preview catalog contains seven event scenarios. Availability can vary by tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Events fire after their condition has held for a period of time.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Each event fires after its condition holds for a period of time, such as a wait for a reply or a lead time before a meeting",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "An event fires once per condition, which is separate from repeated notification delivery.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "and only once per condition: once per flagged email, mention, or meeting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Scope; Governance guidance; Governance controls",
+      "type": "availability",
+      "claim": "The preview supports Listen only through the Work IQ MCP server with delegated authentication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "This preview supports only the Work IQ MCP server with delegated authentication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "REST access to Listen is unavailable in the preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "REST, A2A, and app-only access aren't available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing; Scope",
+      "type": "availability",
+      "claim": "A2A access to Listen is unavailable in the preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "REST, A2A, and app-only access aren't available.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Risk assessment: Security & identity; Scope",
+      "type": "availability",
+      "claim": "App-only access is unsupported.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Use delegated permissions with admin and user consent. App-only access isn't supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Events cannot be filtered on content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "You can't filter events on content, such as a subject or message body.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The preview provides no guaranteed notification ordering.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "There's no guaranteed ordering, exactly-once processing, notification replay, test-event API, or latency commitment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The preview provides no exactly-once processing guarantee.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "There's no guaranteed ordering, exactly-once processing, notification replay, test-event API, or latency commitment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The preview has no notification replay API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "The preview doesn't include a replay, force-fire, or test-event API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The preview has no test-event API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "The preview doesn't include a replay, force-fire, or test-event API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The preview lists no latency commitment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "There's no guaranteed ordering, exactly-once processing, notification replay, test-event API, or latency commitment.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Context reads are limited by the delegated user's permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "A read through Work IQ with the user's delegated identity that returns only what the user is allowed to see.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Work IQ reads enforce sensitivity labels.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview",
+      "quote": "Microsoft 365 permissions, sensitivity labels, and compliance policies are enforced automatically.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/api-overview to sources for the statement that sensitivity labels govern Work IQ reads."
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure; controls[1].governs",
+      "type": "applicability",
+      "claim": "Work IQ MCP tenant policy governs the MCP tool requests Listen uses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "For Work IQ MCP, policy evaluates details from each MCP request.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The guide tells developers to treat event references as opaque and sensitive.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Treat event references as opaque and sensitive. A reference alone grants no access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Meeting recaps and action items can contain AI-generated content.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Meeting recaps and action items can contain AI-generated content. Verify facts, owners, and dates before relying on them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "applicability",
+      "claim": "The developer's delegated app permissions require admin consent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Microsoft Entra app registration | Use delegated permissions with admin and user consent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance",
+      "type": "applicability",
+      "claim": "The developer's delegated app permissions require user consent.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Use delegated permissions with admin and user consent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Security & identity; Open questions",
+      "type": "absence",
+      "claim": "The guide does not specify the callback challenge response format.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "This guide doesn't specify the challenge response format or callback authentication contract. Confirm those details with the Listen team before implementing a production receiver.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Risk assessment: Security & identity; Open questions; Governance guidance",
+      "type": "absence",
+      "claim": "The guide leaves the callback authentication contract to confirmation with the Listen team.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "This guide doesn't specify the challenge response format or callback authentication contract. Confirm those details with the Listen team before implementing a production receiver.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Why it matters; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "A subscription can wake an agent without a user prompting it in a conversation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "When a matching event occurs, such as a meeting recap that assigns the user action items or a flagged email that remains unanswered, Listen notifies your agent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Microsoft's guide tells developers to prepare outcomes privately.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Prepare a private recap, draft, or brief for the user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "The guide requires explicit approval for the exact action before sending, sharing, posting or scheduling.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Get explicit approval for that exact action. Reading, authorized fetches, and private drafting can happen without this approval; sending, sharing, posting, or scheduling can't.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "behaviour",
+      "claim": "The approval experience is a component the developer builds rather than a documented tenant setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Build the following components: ... An approval experience that shows the user the exact action and captures explicit approval before sending, sharing, posting, or scheduling anything.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Notification delivery is at least once.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Expect at-least-once delivery.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "The guide documents deduplication keys and instructs developers to use them.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Deduplicate events with the keys in the following table. Never deduplicate on the event reference.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Risk assessment: Autonomy & actions; Governance controls",
+      "type": "default",
+      "claim": "The Work IQ MCP policy disallows mutation operations by default, including create, update, delete and action requests.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "By default, mutation operations aren't allowed for safety. This restriction includes create, update, delete, and action requests that modify data, such as sending email.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Disabling the receiver does not cancel a service-side subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Disabling your receiver doesn't cancel a subscription on the service side.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "Risk assessment: Change & support; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "The guide does not specify the cancellation operation and directs developers to confirm it before a pilot.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "This guide doesn't specify the cancellation operation or schema. Confirm the supported cancellation procedure with the Listen team before starting a pilot that creates subscriptions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Work IQ API access is independent of Microsoft 365 Copilot licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Work IQ API access is independent of Microsoft 365 Copilot licensing and available through usage-based billing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The June 2026 announcement says there is no separate Work IQ API subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/partner-center/announcements/2026-june",
+      "quote": "There's no separate Work IQ API subscription, SKU, or per-user license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The June 2026 announcement says there is no separate Work IQ API SKU.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/partner-center/announcements/2026-june",
+      "quote": "There's no separate Work IQ API subscription, SKU, or per-user license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Cost and licensing: Licence",
+      "type": "licensing",
+      "claim": "The June 2026 announcement says there is no separate Work IQ API per-user licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/partner-center/announcements/2026-june",
+      "quote": "There's no separate Work IQ API subscription, SKU, or per-user license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Cost and licensing: Licence; Scope",
+      "type": "absence",
+      "claim": "The Listen guide names no licence among its requirements.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ Tool API credit rate Listen notifications pricing licensing; read Listen's full Before you begin table: tenant enablement, MCP client, Entra registration, HTTPS endpoint, test users and synthetic data; no licence is named.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "front matter: licensing.model; licensing.notes; summary; Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "Consumption is the licensing model, with Work IQ API usage billed in Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/partner-center/announcements/2026-june",
+      "quote": "Work IQ API is billed through a consumption-based model using Copilot Credits",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "front matter: licensing.notes; Cost and licensing: Meter; rationale: cost",
+      "type": "cost",
+      "claim": "Listen uses existing Work IQ credit consumption rates.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Listen uses existing Work IQ credit consumption rates.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Subscription calls such as creation are subject to the Work IQ Tool API rate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Subscription calls, such as creating a subscription, are subject to the Work IQ Tool API rate.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Cost and licensing: Meter; rationale: cost",
+      "type": "cost",
+      "claim": "Notifications waking the agent are not charged during the preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Notifications that wake your agent aren't charged during the preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Cost and licensing: Meter; rationale: cost",
+      "type": "cost",
+      "claim": "Fetching events and related content is charged as standard Work IQ tool calls.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Fetching events and related content is charged as standard Work IQ tool calls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Preview pricing can change before general availability.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Preview pricing can change before general availability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Cost and licensing: Meter",
+      "type": "cost",
+      "claim": "Work IQ API consumes Copilot Credits shared with other eligible services.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Work IQ API usage consumes Copilot Credits shared with other eligible services.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Cost and licensing: Where it is managed; Governance guidance",
+      "type": "cost",
+      "claim": "Work IQ enablement requires a usage-based billing plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+      "quote": "A usage-based billing plan set up in Copilot Studio with an Azure subscription and resource group assigned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Cost and licensing: Where it is managed; Governance guidance",
+      "type": "cost",
+      "claim": "That billing plan requires an assigned Azure subscription.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+      "quote": "A usage-based billing plan set up in Copilot Studio with an Azure subscription and resource group assigned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Cost and licensing: Where it is managed",
+      "type": "cost",
+      "claim": "That billing plan requires an assigned resource group.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+      "quote": "A usage-based billing plan set up in Copilot Studio with an Azure subscription and resource group assigned.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "Cost and licensing: Indirect costs",
+      "type": "behaviour",
+      "claim": "The guide instructs the developer to build an HTTPS callback receiver.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "An HTTPS callback receiver that validates, records, and acknowledges notifications quickly.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 73,
+      "where": "Cost and licensing: Indirect costs",
+      "type": "behaviour",
+      "claim": "The guide instructs the developer to build a worker.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "A worker that fetches events and related context with the user's delegated identity and prepares a private outcome.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 74,
+      "where": "Cost and licensing: Indirect costs",
+      "type": "behaviour",
+      "claim": "The guide instructs the developer to use a state store for subscriptions and deduplication.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Use a state store for subscriptions and deduplication.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 75,
+      "where": "Cost and licensing: Indirect costs",
+      "type": "behaviour",
+      "claim": "Microsoft recommends a durable queue between the receiver and worker.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "A durable queue between the receiver and worker is recommended so slow fetches and reasoning don't delay acknowledgments.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 76,
+      "where": "front matter: licensing.notes; Cost and licensing: Not yet published",
+      "type": "absence",
+      "claim": "The Listen guide and Work IQ overview give no numerical credit figure for the Work IQ Tool API rate.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ Tool API credit rate Listen notifications pricing licensing; \"Work IQ\" \"licensing\" \"Tool API\" credits rate. Read Listen and Work IQ overview in full; they identify usage-based billing and existing rates but give no Tool API credit figure.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 77,
+      "where": "Cost and licensing: Not yet published",
+      "type": "behaviour",
+      "claim": "The Work IQ overview points to its licensing link for pricing details.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+      "quote": "Work IQ cost is variable based on usage and can be managed in the Microsoft 365 admin center. To learn more, see Licensing (https://aka.ms/WorkIQ/licensing).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 78,
+      "where": "Cost and licensing: Not yet published; Open questions",
+      "type": "absence",
+      "claim": "Whether Listen notifications remain uncharged after the preview is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"Listen\" \"notifications\" \"general availability\" pricing; Work IQ Tool API credit rate Listen notifications pricing licensing. Read Listen, Work IQ overview and billing overview; only preview notification charging is stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 79,
+      "where": "Scope: Users and licences; rationale: impact",
+      "type": "behaviour",
+      "claim": "Each subscription belongs to the user whose work the event describes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Each subscription belongs to the user whose work the event describes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 80,
+      "where": "Scope: Users and licences",
+      "type": "behaviour",
+      "claim": "One person's agent does not receive another person's events.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "One person's agent doesn't receive another person's events.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 81,
+      "where": "Scope: Roles",
+      "type": "role",
+      "claim": "The Work IQ enablement page requires a Global Administrator for one-time setup.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+      "quote": "A user with Global Administrator role for the one-time Work IQ setup",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 82,
+      "where": "Scope: Roles; controls[0].note",
+      "type": "role",
+      "claim": "The Work IQ MCP access page requires the AI Administrator role for its Microsoft 365 admin center settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
+      "quote": "AI Administrator role to work with settings in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 83,
+      "where": "Scope: Roles",
+      "type": "absence",
+      "claim": "The policy page gives no specific role name beyond permission to manage tenant-level Work IQ or Copilot settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "Sign in with an account that has permission to manage tenant-level Work IQ or Copilot settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 84,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Listen requires a Work IQ MCP server and an MCP client.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Work IQ MCP server and an MCP client | Your app calls Listen through the Work IQ MCP server.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 85,
+      "where": "Scope: Prerequisites; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "Listen requires a Microsoft Entra app registration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Microsoft Entra app registration | Use delegated permissions with admin and user consent.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 86,
+      "where": "Scope: Prerequisites; Governance guidance",
+      "type": "behaviour",
+      "claim": "The HTTPS callback endpoint must be publicly reachable and controlled by the developer.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "HTTPS callback endpoint | Provide a publicly reachable endpoint you control. Listen validates it before delivering notifications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 87,
+      "where": "Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "Testing uses real activity in a test tenant with synthetic data.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Test with real activity in a test tenant using synthetic data.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 88,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Agents > Tools > Work IQ MCP > Block blocks server access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
+      "quote": "Sign in to the Microsoft 365 admin center. Select Agents > Tools. Select Work IQ MCP. Review its current availability. To block access to the server, select Block.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 89,
+      "where": "controls[0].governs; controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "The Block control applies to the entire Work IQ MCP server rather than Listen alone.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
+      "quote": "This control applies to the entire Work IQ MCP server, separate from Copilot audience settings or App Access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 90,
+      "where": "controls[0].api",
+      "type": "absence",
+      "claim": "No API operation for the Work IQ MCP server availability control is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ MCP server block availability Microsoft Graph admin tools API; \"Work IQ MCP\" \"block\" \"API\" \"Graph\" availability. Read manage-ai-experience-access and Agent 365 management search excerpts; none documents an API setting this server's availability.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 91,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Agents > Tools > Work IQ MCP > Policy reaches tenant policy settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "In the left navigation, select Agents > Tools. In the tools registry, select Work IQ MCP. On the Work IQ MCP details pane, select the Policy tab when it's available.",
+      "severity": "minor",
+      "fix": "Keep 'Agents > Tools > Work IQ MCP > Policy'; append to controls[1].note: 'The Policy tab is shown when available; review the current policy state there, then turn policy on or off as needed.' The cited page documents this final action but supplies no further setting label."
+    },
+    {
+      "n": 92,
+      "where": "controls[1].api",
+      "type": "absence",
+      "claim": "No API operation for configuring Work IQ MCP tenant policy is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ MCP tenant policy settings update API Microsoft Graph Allowed Disallowed; \"Work IQ\" \"policy\" \"PATCH\". Read policy-governance-mcp and MCP tool reference; results identify policy evaluation and UI controls, not a configuration endpoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 93,
+      "where": "controls[1].scope; controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "Work IQ MCP policy can be turned on or off at tenant scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "In the Microsoft 365 admin center, tenant administrators can turn Work IQ MCP policy on or off for the tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 94,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "A saved tenant policy change can take up to 24 hours to apply.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "After you save the setting, it can take up to 24 hours for the policy change to apply across your tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 95,
+      "where": "controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "Policy cannot grant access beyond the signed-in user's existing access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+      "quote": "Policy can't grant access beyond what the signed-in user is already allowed to access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 96,
+      "where": "controls[2].ui; Cost and licensing; Governance guidance",
+      "type": "admin-path",
+      "claim": "Microsoft 365 admin center > Copilot > Cost management provides Work IQ API consumption monitoring and spending management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits",
+      "quote": "In the Microsoft admin center, Copilot > Cost management, admins can monitor Copilot Credit consumption and manage spending associated with the supported services such as Cowork, running apps hosted on the Copilot Managed Runtime, and Work IQ API.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 97,
+      "where": "controls[2].api",
+      "type": "command",
+      "claim": "PATCH /beta/copilot/costManagement/spendingPolicies/{id} updates a spending policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "PATCH https://graph.microsoft.com/beta/copilot/costManagement/spendingPolicies/3f9e2c1a-0000-0000-0000-00000000c21b",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 98,
+      "where": "controls[2].note; Governance controls",
+      "type": "availability",
+      "claim": "The spending policy API is a beta API.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "APIs under the /beta version are subject to change. Use of these APIs in production applications is not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 99,
+      "where": "controls[2].note; Governance controls",
+      "type": "availability",
+      "claim": "The spending policy update API supports only delegated work or school permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "Delegated (work or school account) | CopilotCostManagement-Policy.ReadWrite.All; Delegated (personal Microsoft account) | Not supported.; Application | Not supported.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 100,
+      "where": "controls[2].note; Governance controls",
+      "type": "command",
+      "claim": "The request body can update periodLimit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 101,
+      "where": "controls[2].note; Governance controls",
+      "type": "command",
+      "claim": "The request body can update perUserLimit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "The following properties can be updated: displayName, periodLimit, perUserLimit, and billingMethods.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 102,
+      "where": "controls[2].note",
+      "type": "command",
+      "claim": "The request body can update billingMethods.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+      "quote": "When changing stored non-pay-as-you-go funding to include pay-as-you-go, supply a complete billingInstrument; no separate billing endpoint or action is used.",
+      "severity": "minor",
+      "fix": "Append to controls[2].note: 'Changing non-pay-as-you-go funding to include pay-as-you-go also requires a complete billingInstrument with billingSubscriptionId, billingResourceGroup and billingRegion.' Keep the method and path unchanged."
+    },
+    {
+      "n": 103,
+      "where": "controls[3].ui; controls[3].api; Governance controls; Governance guidance; Open questions",
+      "type": "absence",
+      "claim": "No Listen-specific tenant enablement UI setting or admin API is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ Listen tenant enable switch default general availability admin API; \"Work IQ Listen\" callback authentication challenge cancellation admin subscriptions. Read Listen and Work IQ enablement; Listen enablement directs questions to its team, not a switch or endpoint.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 104,
+      "where": "front matter: defaultState; Why it matters; Open questions",
+      "type": "default",
+      "claim": "Listen's default on arrival at general availability is unknown, distinguished from its documented preview enablement requirement.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Work IQ Listen tenant enable switch default general availability admin API. Read roadmap record and full Listen guide; the record gives no default, and the guide specifies tenant enablement during preview but no general-availability default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 105,
+      "where": "Governance controls: mutation caveat; Open questions: create_entity",
+      "type": "absence",
+      "claim": "Whether the policy's default mutation restriction covers creating a Listen subscription is not stated.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/tool-reference",
+      "quote": "A separate tenant policy layer evaluates each tool request and blocks mutation operations by default. Administrators can enable supported create, update, delete, and action requests through tenant policy.",
+      "severity": "blocker",
+      "fix": "Replace the mutation caveat with: 'Listen creates subscriptions with create_entity. Work IQ MCP tenant policy evaluates each tool request and blocks mutation operations by default; administrators can enable supported creation requests through tenant policy. Exact policy behaviour can depend on tenant configuration.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/tool-reference alongside the existing Listen and policy pages, and remove the corresponding Open questions bullet. This states the documented general reach without inventing a Listen-specific exception or guaranteed tenant outcome."
+    },
+    {
+      "n": 106,
+      "where": "front matter: cost; rationale: cost",
+      "type": "cost",
+      "claim": "Variable is the appropriate cost field because Listen consumes metered Copilot Credits.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Listen uses existing Work IQ credit consumption rates. ... Fetching events and related content is charged as standard Work IQ tool calls.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 107,
+      "where": "Governance controls: spending limit caveat",
+      "type": "absence",
+      "claim": "The cited billing overview and spending policy update reference do not establish whether a limit ends Work IQ API use.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Work IQ\" \"licensing\" \"Tool API\" credits rate. Read billing overview and spendingPolicy update in full: no Work IQ limit enforcement rule. Search excerpts from Plan licensing and cost additionally state that retries do not resolve exhausted spending limits.",
+      "severity": "minor",
+      "fix": "Replace 'Whether a limit ends Work IQ API use is not read on these pages, so do not assume a limit stops it' with 'A spending policy defines limits, not a reserved credit allocation; repeated retries will not resolve an exhausted spending limit.' Cite https://learn.microsoft.com/plugins/cost-considerations. The original is narrowly true about its two references but omits the additional documented Work IQ guidance."
+    },
+    {
+      "n": 108,
+      "where": "Scope: Prerequisites",
+      "type": "behaviour",
+      "claim": "Work IQ must be enabled in the Microsoft 365 tenant before using Listen.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Work IQ enabled in your Microsoft 365 tenant | See Enable your tenant for Work IQ.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 109,
+      "where": "Open questions: create_entity",
+      "type": "command",
+      "claim": "Listen subscriptions are created through create_entity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+      "quote": "Subscription | An interest in an event for one user, with a callback URL. Create it with create_entity; the service identifies it with a registrationId.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T03:13:27.343Z",
+    "summary": {
+      "links": 9,
+      "unreachable": 0,
+      "uiPaths": 3,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/listen",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/partner-center/announcements/2026-june",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=570867",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether the Work IQ MCP server, which Listen runs through, is available",
+        "docs": "https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Tools",
+          "Work IQ MCP",
+          "Block"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Work IQ MCP tenant policy for MCP tool requests",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp",
+        "reachable": true,
+        "segments": [
+          "Agents",
+          "Tools",
+          "Work IQ MCP"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Copilot Credit spending and consumption for Work IQ API",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/usage-based-billing-overview-copilot-credits",
+        "reachable": true,
+        "segments": [
+          "Copilot",
+          "Cost management"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Copilot Credit spending and consumption for Work IQ API",
+        "docs": "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update",
+        "reachable": true,
+        "token": "/beta/copilot/costManagement",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

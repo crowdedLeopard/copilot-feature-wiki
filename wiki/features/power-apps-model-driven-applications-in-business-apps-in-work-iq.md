@@ -17,8 +17,8 @@ impact: "medium"
 defaultState: "on"
 action: "prepare"
 licensing:
-  model: "consumption"
-  notes: "Learn says usage and billing depend on the experience used: Copilot Studio uses Copilot Credits; Cowork and direct Work IQ API calls are attributed to their own consumption. The cost page gives no fixed price per Business Applications prompt; total cost depends on the consuming experience and work performed."
+  model: "mixed"
+  notes: "Charges follow the experience used: Copilot Studio uses Copilot Credits; Cowork and direct Work IQ API calls are attributed to their own consumption. For Microsoft 365 Copilot Chat, the applicable entitlement includes business-data grounding in the licensed chat scenario; it is not charged extra as a Work IQ API interaction."
 audiences: ["power-platform-admin","m365-admin","security","finops"]
 tags: ["model-driven-apps","power-apps","work-iq","mcp","copilot-studio","write-actions","user-confirmation","dataverse","usage-based-billing","copilot-credits","power-platform-admin-center"]
 sources:
@@ -71,7 +71,7 @@ sources:
     url: "https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/application"
     kind: "learn"
 videos: []
-related: ["work-iq","mcp","copilot-credits"]
+related: ["work-iq","copilot-credits"]
 controls:
   - governs: "Whether Work IQ features are on in an environment"
     scope: "environment"
@@ -129,7 +129,7 @@ controls:
     note: "Per-agent maker setting; also clear Business apps (preview) under Sources on the Work IQ tool to drop the workload."
 confidence: "high"
 created: "2026-11-18"
-updated: "2026-11-19"
+updated: "2026-11-21"
 roadmapModified: "2026-10-12T23:01:05"
 changes:
   - date: "2026-11-18"
@@ -156,19 +156,23 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 100 statements confirmed"
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 107 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 5
+  - date: "2026-11-21"
+    note: "Correction: licensing model changed from consumption to mixed, and the note now says Microsoft 365 Copilot Chat's entitlement includes business-data grounding at no extra Work IQ API charge."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 110 statements not yet confirmed"
+version: 6
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 5
+  version: 6
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 107
-  confirmed: 106
+  claims: 110
+  confirmed: 110
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "a6d519d1b3b9790f66cdbf01fe7a1ddd"
+  contradicted: 0
+  attempts: 0
+  hash: "5d9ce8c0850c844d9de9014c3b1c0370"
 ---
 
 ## What's changing
@@ -288,11 +292,10 @@ cost: Variable. Learn says charges follow the experience used: Copilot Credits f
 impact: Medium. Users of model-driven apps in environments where Work IQ is on notice it first. Learn says it is on by default only in new public production environments, and has deferred switching on existing ones.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: licensing.model / licensing: The licensing model for the experiences covered by the briefing is consumption. | Found: Microsoft 365 Copilot Chat: The applicable entitlement includes business-data grounding in the licensed chat scenario. You don't pay extra for it as a Work IQ API interaction. | Fix: Set licensing.model to mixed. Append to licensing.notes: 'For Microsoft 365 Copilot Chat, the applicable entitlement includes business-data grounding in the licensed chat scenario; it is not charged extra as a Work IQ API interaction.' Keep the existing experience-specific consumption notes. Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/understand-costs
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[3].ui; Governance controls table / admin-path: The App Access UI route is Power Platform admin center > Security > Identity & access > App Access Control > environment > Enable > Save. | Found: Select App Access Control. 4. Select the environment in which you want to enable app access. 5. Select Enable, and then select Save. 6. Return to the environment and select the applications you want to block from accessing the environment. | Fix: The printed route enables App Access but stops before choosing blocked applications. Use the complete documented alternative already given in the prose: 'Security > Identity and access > App access control > environment > Set up app access control > Access control > Enabled > application > Block', with controls[3].ui.docs set to https://learn.microsoft.com/power-platform/admin/control-app-access-environment. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access
-- [supported, minor] controls[4].api; Governance controls closing automation statement / command: POST <organization-url>/api/data/v9.2/SaveSettingValue creates or updates an app-level setting override. | Found: SaveSettingValue Action. Creates or updates app/organization level override. | Fix: Add https://learn.microsoft.com/power-apps/developer/data-platform/webapi/use-web-api-actions to sources. It documents POST for the referenced actions and the /api/data/v9.2/<action-name> unbound-action route. Keep controls[4].api.call and its current action reference unchanged. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue
+- [supported, minor] controls[3].ui; Governance controls table / admin-path: App Access is enabled at Power Platform admin center > Security > Identity & access > App Access Control > environment > Enable > Save. | Found: Select **Security** > **Identity & access**. ... Select **App Access Control**. ... Select **Enable**, and then select **Save**. ... Return to the environment and select the applications you want to block | Fix: The row stops on the App Access setup rather than selecting blocked applications. Keep the supported path and append to controls[3].note: 'After Save, return to the environment and select the applications you want to block from accessing the environment.' This is the continuation at https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access. | Source: https://learn.microsoft.com/power-platform/admin/business-applications-work-iq/manage-ai-experience-access
+- [supported, minor] controls[3].api; Governance controls table; Governance controls closing paragraph / command: PATCH <organization-url>/api/data/v9.2/applications(<application-id>) updates an application access record. | Found: Entity set path: [organization URI]/api/data/v9.2/applications; Primary key: applicationid; Operations supported: POSTGETPATCHDELETE | Fix: Keep the call and its application reference docs link. Add https://learn.microsoft.com/power-apps/developer/data-platform/webapi/update-delete-table-rows to sources: its Basic update section establishes PATCH to a record URI, completing verification of the printed syntax. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/application
+- [supported, minor] controls[4].api; controls[4].note; Governance controls closing paragraph / command: POST <organization-url>/api/data/v9.2/SaveSettingValue sets an app override using AppUniqueName, SettingName and Value. | Found: Creates or updates app/organization level override. ... AppUniqueName ... Model-driven app unique name (Optional). ... SettingName ... Setting definition unique name (Required). ... Value ... Overridden value that needs to be set (Required). | Fix: Keep the call, reference docs link and request-property note. Add https://learn.microsoft.com/power-apps/developer/data-platform/webapi/use-web-api-actions to sources: it establishes POST to /api/data/v9.2/<action-name> for unbound actions, completing verification of the printed syntax. | Source: https://learn.microsoft.com/power-apps/developer/data-platform/webapi/reference/savesettingvalue
 -->

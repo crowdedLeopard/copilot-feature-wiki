@@ -126,14 +126,16 @@ changes:
     note: "Corrected licensing: premium and custom connector licence scoped to Microsoft 365 use rights, Copilot Studio plans noted, Premium end-user clause removed; narrowed the Copilot connectors paragraph and removed three checklist items without table rows."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 107 statements not yet confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 103 statements not yet confirmed"
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
+  date: "2026-11-21"
   version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 107
-  confirmed: 107
+  claims: 103
+  confirmed: 103
   unconfirmed: 0
   contradicted: 0
   attempts: 0
@@ -223,8 +225,9 @@ To see what exists, `Get-AdminPowerAppConnection` returns connections from all e
 - When will individual triggers be configurable in the Power Platform admin center? Microsoft says support is planned; today it is PowerShell only.
 - Which maker portals already enforce advanced connector policies at design time, and when does ACP reach general availability for each?
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[3].api / command: POST https://api.powerplatform.com/governance/ruleBasedPolicies?api-version=2024-10-01 creates an advanced connector policy with its allowlist and action settings. | Found: An advanced connector policy is a rule-based policy that contains a rule set with the ID ConnectorManagement. That rule set carries a version and its inputs hold an AllowedConnectorList | Fix: Keep the call unchanged. Add to controls[3].note and the rendered note: 'The request body sets ruleSets[].inputs.AllowedConnectorList in the ConnectorManagement rule set; entries use AllowedConnector, AllowedActionsMode and AllowedActions to select connectors and actions.' | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-advanced-connector-policies
+- [supported, minor] controls[3].api / command: POST https://api.powerplatform.com/governance/ruleBasedPolicies?api-version=2024-10-01 creates an ACP with connector and action allowlist settings. | Found: $apiBaseUrl = "https://api.powerplatform.com" ... $apiVersion = "2024-10-01" ... Invoke-RestMethod -Method Post ... "$apiBaseUrl/governance/ruleBasedPolicies?api-version=$apiVersion" | Fix: Keep the call. Add to controls[3].note and its rendered note: 'The request body sets ruleSets[].inputs.AllowedConnectorList in the ConnectorManagement rule set; entries use AllowedConnector, AllowedActionsMode and AllowedActions to select connectors and actions.' | Source: https://learn.microsoft.com/power-platform/admin/programmability-tutorial-manage-advanced-connector-policies
+- [supported, minor] Risks and limits: Custom connectors / behaviour: Set Host URL can dynamically replace a custom connector's host with another REST API. | Found: the host url defined in the connector will no longer be relevant for the correspinding operations since it will always be replaced by the value evaluated by this template. | Fix: Add https://learn.microsoft.com/connectors/custom-connectors/policy-templates/dynamichosturl/dynamichosturl to sources for the Set Host URL explanation. | Source: https://learn.microsoft.com/connectors/custom-connectors/policy-templates/dynamichosturl/dynamichosturl
 -->

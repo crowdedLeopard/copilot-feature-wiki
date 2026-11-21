@@ -5,7 +5,7 @@ roadmapId: 573250
 topic: "modern-work"
 products: ["Microsoft Teams"]
 summary: "Organisers of Teams events with registration can email invitations with a registration link. Admins need no preparation, but Microsoft says a tenant without a custom domain for Microsoft 365 notifications will be restricted."
-status: "in-development"
+status: "rolling-out"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)","GCC"]
 platforms: ["Web"]
@@ -50,7 +50,7 @@ controls:
     scope: "tenant"
     ui:
       surface: "Microsoft 365 admin center"
-      path: "Settings > Org settings > Organization profile > Send email notifications from your domain"
+      path: "Settings > Org settings > Organization profile > Send email notifications from your domain > Use a custom send-from domain address"
       docs: "https://learn.microsoft.com/microsoft-365/admin/email/select-domain-to-use-for-email-from-microsoft-365-products"
     api: null
     note: "Opt-in setting per the page; can take up to 24 hours to take effect. Microsoft's notice MC1537353 says a missing custom domain restricts this feature."
@@ -83,26 +83,30 @@ controls:
     note: "No setting is documented at the time of writing (November 2026)."
 confidence: "medium"
 created: "2026-11-19"
-updated: "2026-11-19"
-roadmapModified: "2026-11-04T00:02:09"
+updated: "2026-11-21"
+roadmapModified: "2026-11-20T23:20:27"
 changes:
   - date: "2026-11-19"
     note: "New briefing: Teams event organisers can email invitations to register; Microsoft's notice asks admins to configure a custom domain for Microsoft 365 notifications."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 54 statements not yet confirmed"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected the sending-domain admin path to end at Use a custom send-from domain address, and updated the roadmap status in the text to Rolling out."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 57 statements not yet confirmed"
+version: 2
 verification:
   status: "verified-with-gaps"
-  date: "2026-11-19"
-  version: 1
+  date: "2026-11-21"
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 54
+  claims: 57
+  confirmed: 57
   unconfirmed: 0
   contradicted: 0
   attempts: 0
-  hash: "223b987f3efe2b102856ab3b3f88260a"
+  hash: "24fbe76225e3aff9cc984a43c12b6435"
 ---
 
 ## What's changing
@@ -111,7 +115,7 @@ Teams organisers can send email invitations that link to the registration page o
 
 Per the notice, Invite to register is available across event access types: public, organisation-wide, and events limited to specific people and groups. For public and organisation-wide events, an invitation does not change who is eligible to register. For events limited to specific people and groups, the selected audience continues to decide registration eligibility.
 
-The roadmap item (status In development, target November CY2026, General Availability, Worldwide (Standard Multi-Tenant) and GCC, platform Web) matches the notice. The notice, updated 10 November 2026, moves the rollout to start in late November 2026 (previously mid-November) and finish in late November 2026. Microsoft Learn does not yet describe Invite to register itself, so how the feature behaves beyond the roadmap and the notice is not documented at the time of writing (November 2026).
+The roadmap item (status Rolling out, target November CY2026, General Availability, Worldwide (Standard Multi-Tenant) and GCC, platform Web) matches the notice. The notice, updated 10 November 2026, moves the rollout to start in late November 2026 (previously mid-November) and finish in late November 2026. Microsoft Learn does not yet describe Invite to register itself, so how the feature behaves beyond the roadmap and the notice is not documented at the time of writing (November 2026).
 
 ## Why it matters
 
@@ -170,7 +174,7 @@ The notice names one prerequisite for full use: a custom domain configured for M
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Sending domain for Microsoft 365 system notification emails, including Teams events</strong><br><small>Tenant</small><br><small class="controls__note">Opt-in setting per the page; can take up to 24 hours to take effect. Microsoft's notice MC1537353 says a missing custom domain restricts this feature.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Org settings › Organization profile › Send email notifications from your domain <a href="https://learn.microsoft.com/microsoft-365/admin/email/select-domain-to-use-for-email-from-microsoft-365-products" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Sending domain for Microsoft 365 system notification emails, including Teams events</strong><br><small>Tenant</small><br><small class="controls__note">Opt-in setting per the page; can take up to 24 hours to take effect. Microsoft's notice MC1537353 says a missing custom domain restricts this feature.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Settings › Org settings › Organization profile › Send email notifications from your domain › Use a custom send-from domain address <a href="https://learn.microsoft.com/microsoft-365/admin/email/select-domain-to-use-for-email-from-microsoft-365-products" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Who can attend events up to 1,000 attendees, such as webinars</strong><br><small>User</small><br><small class="controls__note">Existing control; it decides who can attend, not who can be invited. Default is Everyone.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Events policies › policy › Who can attend events up to 1k attendees <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsEventsPolicy -Identity &lt;policy name&gt; -EventAccessType EveryoneInCompanyExcludingGuests</code> <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Who can attend events optimised for a large audience, such as town halls</strong><br><small>User</small><br><small class="controls__note">Existing control; it decides who can attend, not who can be invited. Default is Everyone.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Meetings › Events policies › policy › Who can attend events optimized for a large audience <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTeamsEventsPolicy -Identity &lt;policy name&gt; -TownhallEventAttendeeAccess EveryoneInOrganizationAndGuests</code> <a href="https://learn.microsoft.com/microsoftteams/set-up-events" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Switch to turn Invite to register on or off</strong><br><small>Tenant</small><br><small class="controls__note">No setting is documented at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
@@ -194,8 +198,8 @@ cost: Low. The only cost shown is admin time to set up a custom sending domain; 
 impact: Medium. Event organisers notice it, and recipients get invitation emails; admins see an effect only if the tenant has no custom domain for Microsoft 365 notifications.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] controls[0].ui; Governance controls table / admin-path: The sending-domain setting is at Microsoft 365 admin center > Settings > Org settings > Organization profile > Send email notifications from your domain. | Found: On the Organization profile page, select Send email notifications from your domain. ... In the Send email notifications from your domain page, select Use a custom send-from domain address. | Fix: Extend controls[0].ui.path and the matching table path to 'Settings > Org settings > Organization profile > Send email notifications from your domain > Use a custom send-from domain address'. The current path stops on the correct page before its enabling control. | Source: https://learn.microsoft.com/microsoft-365/admin/email/select-domain-to-use-for-email-from-microsoft-365-products
+- [supported, minor] controls[1].api; Governance controls table / command: Set-CsTeamsEventsPolicy -Identity <policy name> -EventAccessType EveryoneInCompanyExcludingGuests restricts smaller-event attendance to users in the organisation. | Found: To only allow users in your organization to attend events with up to 1,000 attendees created by organizers with this policy, run the following command: Set-CsTeamsEventsPolicy -Identity <policy name> -EventAccessType EveryoneInCompanyExcludingGuests | Fix: Add to Governance controls: 'The Set-CsTeamsEventsPolicy reference still labels Events policy as preview, although the admin guidance documents these settings without that label.' Cite https://learn.microsoft.com/powershell/module/teams/set-csteamseventspolicy, which states 'Note that this policy is currently still in preview.' The printed calls need no change. | Source: https://learn.microsoft.com/microsoftteams/set-up-events
 -->

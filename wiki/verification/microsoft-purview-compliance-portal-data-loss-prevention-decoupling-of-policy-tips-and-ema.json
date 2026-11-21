@@ -1,0 +1,742 @@
+{
+  "slug": "microsoft-purview-compliance-portal-data-loss-prevention-decoupling-of-policy-tips-and-ema",
+  "roadmapId": 396575,
+  "title": "Microsoft Purview DLP: set policy tips and email notifications separately for SharePoint and OneDrive rules (GCC, GCC High, DoD)",
+  "status": "held",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-21",
+    "reasons": [
+      "2 blocking findings (claims 18, 54)"
+    ]
+  },
+  "counts": {
+    "claims": 57,
+    "confirmed": 54,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 0,
+    "minor": 3
+  },
+  "summary": "Hold: the impact rationale promises that users see changes only after an administrator edits a rule, although the effect on existing rules is not stated. The claim that Learn does not describe separate notification options also overlooks the documented PowerShell parameter and its email-only and policy-tip-only values.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "This change concerns Microsoft Purview DLP rules for SharePoint and OneDrive.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Purview compliance portal: Data Loss Prevention - Decoupling of Policy tips and Email notifications while configuring rules on Data Loss Prevention for Sharepoint and Onedriv",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; summary; What's changing",
+      "type": "record",
+      "claim": "Roadmap item 396575 is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target date is August CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "Roadmap item 396575 supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; title; summary; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists the Web platform.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The record lists General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-10-23T21:59:27.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-10-23T21:59:27\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap describes the preceding configuration as requiring policy tips and email notifications to be enabled together.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "As of today, whenever the user wants to enable email notifications the policy tips also need to be enabled and vice versa",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; controls[0].governs",
+      "type": "record",
+      "claim": "The change lets administrators choose neither notification type.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "1) None of policy tips or email notification",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; controls[0].governs",
+      "type": "record",
+      "claim": "The change lets administrators choose only policy tips.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "2) Only policy tips",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "summary; What's changing; controls[0].governs",
+      "type": "record",
+      "claim": "The change lets administrators choose only email notifications.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "3) Only Email Notifications",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "summary; What's changing; controls[0].governs",
+      "type": "record",
+      "claim": "The change lets administrators choose both notification types.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "4) Both Email Notifications and Policy tips",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Microsoft lists the same feature for Worldwide (Standard Multi-Tenant) under roadmap item 394279.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 394279; \"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]; \"description\": \"As of today, whenever the user wants to enable email notifications the policy tips also need to be enabled and vice versa\"",
+      "severity": "minor",
+      "fix": "Add https://www.microsoft.com/microsoft-365/roadmap?id=394279 to sources as the roadmap source for the Worldwide comparison."
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Roadmap item 394279 is also Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Record 394279: \"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Roadmap item 394279 has a preview date of February CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Record 394279: \"previewDate\": \"February CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Roadmap item 394279 has a target date of July CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Record 394279: \"targetDate\": \"July CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "summary; What's changing; Governance guidance",
+      "type": "absence",
+      "claim": "Microsoft Learn does not yet describe the decoupled notification options.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+      "quote": "The NotifyUserType parameter specifies the type of notification that's used for the rule. Valid values are: NotSet; Email; PolicyTip; Email,PolicyTip",
+      "severity": "blocker",
+      "fix": "Replace the broad documentation-absence statements with: 'Learn documents -NotifyUserType values NotSet, Email, PolicyTip and Email,PolicyTip. The SharePoint and OneDrive creation walkthrough still shows the combined policy-tip option and does not describe cloud-specific decoupled portal labels.' Keep the cloud-specific questions; do not infer rollout or NotSet semantics from this parameter list."
+    },
+    {
+      "n": 19,
+      "where": "front matter: defaultState; Scope; rationale: risk",
+      "type": "absence",
+      "claim": "The default state of this change on arrival is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview DLP SharePoint OneDrive decoupling policy tips email notifications NotifyUserType default existing rules GCC; read both roadmap records, notifications, policy reference and Set-DlpComplianceRule. No change-specific arrival default found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Why it matters; Open questions; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft has not stated what this change does to existing rules on arrival.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"DLP\" \"email notifications\" \"default\" \"existing rules\"; read notifications, policy reference, deployment guidance, Set-DlpComplianceRule and both roadmap records. No migration or automatic change to existing notification settings found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Scope",
+      "type": "absence",
+      "claim": "The rollout mechanics for the decoupling are not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview DLP SharePoint OneDrive decoupling policy tips email notifications NotifyUserType default existing rules GCC; read both roadmap records and notifications, policy reference and deployment pages. No change-specific rollout mechanics found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A DLP rule can notify people by email.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "For each rule in a DLP policy, you can: Send the notification to the people you choose.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "A DLP rule can show a policy tip.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "For each rule in a DLP policy, you can configure policy tips to: Notify the person that the content conflicts with a DLP policy",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "SharePoint and OneDrive policy tips appear as warning icons on documents when a rule sends a notification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "When a document on a OneDrive site or SharePoint site matches a rule in a DLP policy that uses policy tips, special icons appear on the document: If the rule sends a notification about the file, the warning icon appears.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "A blocked icon appears when a rule using policy tips blocks access to the document.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "When a document on a OneDrive site or SharePoint site matches a rule in a DLP policy that uses policy tips, special icons appear on the document: ... If the rule blocks access to the document, the blocked icon appears.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Governance controls",
+      "type": "admin-path",
+      "claim": "The SharePoint and OneDrive walkthrough selects the policy-tip option and then chooses who is notified.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
+      "quote": "Select Notify users in Office 365 services with a policy tip and then select Notify the user who sent, shared, or last modified the content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Risk assessment; Governance guidance; Open questions",
+      "type": "applicability",
+      "claim": "The DLP policy reference says user overrides require the policy-tip option to be enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "User overrides are enabled only when Notify users in Office 365 services with a policy tip is enabled, so user overrides go hand-in-hand with Notifications and Policy tips.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Notification emails are sent unprotected.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "Notification emails are sent unprotected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "A custom notification email body can contain the %%MatchedConditions%% token.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "You can also use the following tokens to help customize the body of the email. ... %%MatchedConditions%% | The conditions that the content matched. Use this token to inform people of possible issues with the content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Data exposure; Governance guidance",
+      "type": "behaviour",
+      "claim": "Only new content triggers an email notification.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "Only new content triggers an email notification.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Risk assessment: Data exposure; Governance guidance",
+      "type": "behaviour",
+      "claim": "Editing existing content triggers policy tips.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "Editing existing content triggers policy tips, but not email notifications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Risk assessment: Data exposure; Governance guidance",
+      "type": "behaviour",
+      "claim": "Editing existing content does not trigger notification emails.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "Editing existing content triggers policy tips, but not email notifications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Email notifications can be sent only to individuals, not groups or distribution lists.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "You can send email notifications only to individual recipients, not to groups or distribution lists.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Change & support; Why it matters",
+      "type": "behaviour",
+      "claim": "Recipients can be the content owner, last modifier, site owner or a specific user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+      "quote": "These people can include the owner of the content, the person who last modified the content, the owner of the site where the content is stored, or a specific user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Security & identity",
+      "type": "admin-path",
+      "claim": "For Exchange and SharePoint, overrides are configured in the user notification section.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+      "quote": "For Exchange online and SharePoint in Microsoft 365, you configure overrides in the user notification section.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Learn names the policy state Run the policy in simulation mode and show policy tips while in simulation mode.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+      "quote": "Run the policy in simulation mode and show policy tips while in simulation mode",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "That simulation state does not enforce policy actions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+      "quote": "No actions are enforced, but users receive policy tips and notification emails to raise their awareness and educate them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "That simulation state delivers policy tips to users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+      "quote": "No actions are enforced, but users receive policy tips and notification emails to raise their awareness and educate them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "That simulation state delivers notification emails to users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+      "quote": "No actions are enforced, but users receive policy tips and notification emails to raise their awareness and educate them.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Scope; Governance controls",
+      "type": "role",
+      "claim": "The account creating and deploying DLP policies must belong to one of the role groups listed in deployment guidance.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+      "quote": "The account you use to create and deploy policies must be a member of one of these role groups: Compliance administrator; Compliance data administrator; Information Protection; Information Protection Admin; Security administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Governance controls",
+      "type": "role",
+      "claim": "Editing DLP policies requires an account assigned DLP administration permissions through the documented roles or role groups.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "Administrative unit admins need to be assigned to one of the same roles or role groups as administrators of unrestricted DLP policies in order to create and manage DLP policies for their administrative unit.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The printed Microsoft Purview portal creation path reaches the User Notifications section of a SharePoint and OneDrive DLP rule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
+      "quote": "Select Data loss prevention > Policies > + Create policy. ... Select Custom from both the Categories list and the Regulations list. ... On the Customize advanced DLP rules page, select + Create rule. ... Set the User Notifications toggle to On.",
+      "severity": "minor",
+      "fix": "Expand the path to 'Data loss prevention > Policies > + Create policy > Enterprise applications & devices > Categories: Custom > Regulations: Custom > Assign admin units > Choose where to apply the policy > Define policy settings > Create or customize advanced DLP rules > Customize advanced DLP rules > + Create rule > User Notifications'. The cited walkthrough already has the advanced-rules option selected; omitted scope and wizard headings do not invalidate the existing route. Qualify the note with 'This walkthrough shows the combined policy-tip option, not the four separate portal choices.'"
+    },
+    {
+      "n": 43,
+      "where": "controls[0].api; Governance controls",
+      "type": "command",
+      "claim": "Set-DlpComplianceRule -Identity <rule name or GUID> -NotifyUserType Email,PolicyTip sets the notification type of the identified rule to both.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+      "quote": "The Identity parameter specifies the DLP rule that you want to modify. ... Name ... GUID ... The NotifyUserType parameter specifies the type of notification that's used for the rule. Valid values are: ... Email,PolicyTip",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].note; Governance controls",
+      "type": "behaviour",
+      "claim": "The notification type is configured per rule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+      "quote": "The NotifyUserType parameter specifies the type of notification that's used for the rule.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "Set-DlpComplianceRule is available only in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+      "quote": "This cmdlet is available only in Security & Compliance PowerShell.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "The documented NotifyUserType values are NotSet, Email, PolicyTip and Email,PolicyTip.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+      "quote": "The NotifyUserType parameter specifies the type of notification that's used for the rule. Valid values are: NotSet; Email; PolicyTip; Email,PolicyTip",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "This new DLP configuration option takes the product's included licensing, with user rights under the Microsoft 365, Office 365, standalone Plan 2 and Purview Suite options listed in the service description.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5/E3/A3/G3, Microsoft 365 Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2), Exchange Online Plan 2; Office 365 E5/A5/G5/E3/A3/G3; Microsoft Purview Suite/EDU/GOV/FLW and Microsoft Defender + Purview Suite FLW",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "A separate licence for this notification-decoupling change is not yet published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview DLP notifications policy tips separate licensing meter pricing email notification volume; Purview DLP notifications separate license meter price email volume. Read Purview service description, notifications and deployment guidance; no separate decoupling licence found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft Learn publishes no meter for these DLP notifications or this decoupling change.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview DLP notifications policy tips separate licensing meter pricing email notification volume; Purview DLP notifications separate license meter price email volume. Read Purview service description, notifications, policy reference and DLP alerts excerpts; no notification meter found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Learn publishes no figure for the increase in mail volume caused by choosing email-only rules.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview DLP notifications separate license meter price email volume; read notifications, policy reference and DLP alerts excerpts. Per-document notification behavior is documented, but no projected email-only volume increase is given.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[0].note; Governance controls",
+      "type": "absence",
+      "claim": "The cited SharePoint and OneDrive walkthrough describes creation, not editing an existing rule.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: editing and existing-rule instructions in dlp-create-policy-spo-odb-external; read the complete page. Its steps enter + Create policy and + Create rule; no existing-rule editing route is given.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Risk assessment: Autonomy & actions; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes a notification-options change, not a change to rule conditions or block actions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "with this decoupling the admin can configure the following: 1) None of policy tips or email notification 2) Only policy tips 3) Only Email Notifications 4) Both Email Notifications and Policy tips",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[0].scope; Governance controls",
+      "type": "applicability",
+      "claim": "This is a tenant-administered DLP control whose individual settings are applied per rule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "By default, Exchange Online emails, SharePoint sites, and OneDrive accounts are enabled locations (workloads) for these DLP features for all users within the tenant. ... Admins can customize locations (workloads), include users, and exclude users",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "rationale: impact; front matter: defaultState; What's changing",
+      "type": "consistency",
+      "claim": "The impact rationale states that end users see a difference only if an administrator edits a rule, despite the page saying the arrival effect is unknown.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "defaultState: \"unknown\"; \"Microsoft has not stated what happens to existing rules on arrival.\" versus \"End users see a difference only if an admin edits a rule\"",
+      "severity": "blocker",
+      "fix": "Replace the second sentence of the impact rationale with: 'Microsoft has not stated what happens to existing rules on arrival; this rating assumes today's notification behaviour continues.' Keep impact low as a judgement under that explicit assumption."
+    },
+    {
+      "n": 55,
+      "where": "Governance guidance: Before rollout and At rollout; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist asks administrators to identify override settings, set simulation state and narrow policy scope, but the table contains only the notification-type control.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "\"Identify rules that block with override\"; \"use the policy state Run the policy in simulation mode and show policy tips while in simulation mode\"; \"Scope the pilot to a small group of sites or accounts\"; table: notification type only.",
+      "severity": "minor",
+      "fix": "The override inventory, simulation-state step and policy-scope step have no corresponding control row. Remove these three checklist bullets to make the checklist match the existing table; do not add control rows as part of this correction."
+    },
+    {
+      "n": 56,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Cloud-specific portal labels for the four decoupled choices in GCC, GCC High and DoD are not yet documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview DLP SharePoint OneDrive separate email policy tips portal labels GCC decoupled; read notifications, policy reference, policy-tips reference and SharePoint/OneDrive walkthrough. No cloud-specific four-choice portal labels found.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "Cost and licensing",
+      "type": "record",
+      "claim": "The roadmap record names no separate licence for this change.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "with this decoupling the admin can configure the following: 1) None of policy tips or email notification 2) Only policy tips 3) Only Email Notifications 4) Both Email Notifications and Policy tips",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T03:13:21.804Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=396575",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-use-notifications-and-policy-tips",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-policy-reference",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-create-deploy-policy",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Notification type of a DLP rule for SharePoint and OneDrive (policy tip, email, both or neither)",
+        "docs": "https://learn.microsoft.com/purview/dlp-create-policy-spo-odb-external",
+        "reachable": true,
+        "segments": [
+          "Data loss prevention",
+          "Policies",
+          "+ Create policy",
+          "Enterprise applications & devices",
+          "Custom",
+          "Define policy settings",
+          "Customize advanced DLP rules",
+          "+ Create rule",
+          "User Notifications"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Notification type of a DLP rule for SharePoint and OneDrive (policy tip, email, both or neither)",
+        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+        "reachable": true,
+        "token": "Set-DlpComplianceRule",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

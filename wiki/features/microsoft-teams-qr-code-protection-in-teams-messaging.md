@@ -58,7 +58,7 @@ controls:
       kind: "powershell"
       call: "Set-CsTenantFederationConfiguration -BlockedDomains <domain list>"
       docs: "https://learn.microsoft.com/powershell/module/teams/set-cstenantfederationconfiguration"
-    note: "Sets the organisation-level external domain list; users assigned a custom external access policy communicate with domains specified in that policy, not the organisation settings. Does not change QR code image display."
+    note: "Sets the organisation-level external domain list. Custom external access policies can inherit the organisation-level domain list or specify a different list for assigned users. Does not change QR code image display."
 confidence: "high"
 created: "2026-11-20"
 updated: "2026-11-21"
@@ -72,19 +72,23 @@ changes:
     note: "Corrected after verification: external domain row now notes custom policies take precedence, licensing set to included Teams license, impact raised to high, risk rationale narrowed."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 46 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-21"
+    note: "Corrected after verification: removed the claim that a tenant cannot tune the behaviour, and restated how custom external access policies relate to the organisation domain list."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 47 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-21"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 46
-  confirmed: 44
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 2
-  hash: "2c061d1c7fa1c9dedf22271ea396a0fd"
+  claims: 47
+  confirmed: 47
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "0af48b49a0b5af0d9558de2fe401ec45"
 ---
 
 ## What's changing
@@ -109,7 +113,7 @@ The protection is a prompt, not a block: one selection of **Reveal QR code** sho
 
 **Security & identity**
 - The protection applies to QR codes in messages from external senders on desktop, web and mobile. Learn does not describe how Teams detects QR codes in an image, so do not assume every QR code is caught.
-- Learn states that there are no admin controls to enable or disable the behaviour, so a tenant cannot switch it off or tune it. The organisation-level external domain list (see the controls table) sets which external domains your users can communicate with; users assigned a custom external access policy communicate with domains specified in that policy, not the organisation settings.
+- Learn states that there are no admin controls to enable or disable the behaviour. The organisation-level external domain list (see the controls table) sets which external domains your users can communicate with; custom external access policies can inherit the organisation-level domain list or specify a different list for assigned users.
 
 **Autonomy & actions**
 - No autonomous action is described: the user chooses to reveal the image.
@@ -157,11 +161,11 @@ The cost the sources show is indirect: updating user awareness material and help
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Whether QR code obscuring in Teams messages from external users is on</strong><br><small>Tenant</small><br><small class="controls__note">Learn states the experience is enabled by default with no admin controls to enable or disable it.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Organisation-level external domain list for Teams chat</strong><br><small>Tenant</small><br><small class="controls__note">Sets the organisation-level external domain list; users assigned a custom external access policy communicate with domains specified in that policy, not the organisation settings. Does not change QR code image display.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Users › External access › Teams and Skype for Business users in external organizations › Block only specific external domains › Block external domains <a href="https://learn.microsoft.com/microsoftteams/trusted-organizations-external-meetings-chat" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTenantFederationConfiguration -BlockedDomains &lt;domain list&gt;</code> <a href="https://learn.microsoft.com/powershell/module/teams/set-cstenantfederationconfiguration" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Organisation-level external domain list for Teams chat</strong><br><small>Tenant</small><br><small class="controls__note">Sets the organisation-level external domain list. Custom external access policies can inherit the organisation-level domain list or specify a different list for assigned users. Does not change QR code image display.</small></td><td data-label="Admin UI"><strong>Teams admin center</strong><br>Users › External access › Teams and Skype for Business users in external organizations › Block only specific external domains › Block external domains <a href="https://learn.microsoft.com/microsoftteams/trusted-organizations-external-meetings-chat" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>Set-CsTenantFederationConfiguration -BlockedDomains &lt;domain list&gt;</code> <a href="https://learn.microsoft.com/powershell/module/teams/set-cstenantfederationconfiguration" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
-Learn states there are no admin controls to enable or disable QR code obscuring, so the first row has no admin centre path and no API. The external domain row sets the organisation-level external domain list; users assigned a custom external access policy communicate with domains specified in that policy, not the organisation settings. It does not change how a QR code image from an allowed sender is displayed.
+Learn states there are no admin controls to enable or disable QR code obscuring, so the first row has no admin centre path and no API. The external domain row sets the organisation-level external domain list; custom external access policies can inherit the organisation-level domain list or specify a different list for assigned users. It does not change how a QR code image from an allowed sender is displayed.
 
 As the feature page and notice describe it, the blurring applies automatically to QR code images from external senders, with no administrator configuration.
 
@@ -176,11 +180,4 @@ As the feature page and notice describe it, the blurring applies automatically t
 risk: Low. The change adds a protection; Microsoft does not describe new data access. The remaining exposure is that users can still reveal and scan a QR code from an external sender, and Learn documents no admin control over the behaviour.
 cost: Low. The only cost the sources show is admin and help desk time for user communication. Each user needs a Teams license to use Teams, and Microsoft has not published a licensing requirement specific to QR code obscuring.
 impact: High. It changes default behaviour for users who receive images with QR codes from external senders, so those users and the help desk will notice; users with no such messages will not.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Risk assessment: Security & identity / applicability: A tenant cannot tune QR code obscuring. | Found: Searched: Teams QR code obscuring detection algorithm image data processing tuning; Teams QR code detection processing allowlist configure PowerShell Graph. Read the feature page: no enable/disable controls stated, but no statement that tuning is impossible. | Fix: Remove 'or tune it' from the sentence 'Learn states that there are no admin controls to enable or disable the behaviour, so a tenant cannot switch it off or tune it.' The cited Learn page states only that no admin enable/disable controls exist.
-- [contradicted, blocker] controls[1].note; Risk assessment: Security & identity; Governance controls / applicability: Users assigned a custom external access policy communicate with its domains, not organisation settings. | Found: Unlike organization settings that apply to everyone, these policies can either inherit the organization's domain list or define completely different domain lists for specific users and groups. | Fix: In controls[1].note, its rendered table note, Risk assessment and Governance controls, replace the categorical custom-policy sentence with: 'Custom external access policies can inherit the organisation-level domain list or specify a different list for assigned users.' Source: https://learn.microsoft.com/microsoftteams/trusted-organizations-external-meetings-chat. | Source: https://learn.microsoft.com/microsoftteams/trusted-organizations-external-meetings-chat
 -->

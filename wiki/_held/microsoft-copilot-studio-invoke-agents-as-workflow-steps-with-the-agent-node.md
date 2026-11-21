@@ -222,18 +222,20 @@ changes:
     note: "Corrected after verification: removed the open question about whether the Work IQ MCP tenant policy governs Work IQ in an agent node."
   - date: "2026-11-19"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 78 statements not yet confirmed"
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 84 statements contradicted, 0 unconfirmed; taken offline until corrected"
 version: 33
 verification:
-  status: "verified-with-gaps"
-  date: "2026-11-19"
+  status: "held"
+  date: "2026-11-21"
   version: 33
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 78
-  confirmed: 78
+  claims: 84
+  confirmed: 83
   unconfirmed: 0
-  contradicted: 0
-  attempts: 0
+  contradicted: 1
+  attempts: 1
   hash: "f2cbe0eaf2900d859da58e8013ec3b16"
 ---
 
@@ -338,8 +340,11 @@ cost: Variable. The node's usage is billed in Copilot Credits, drawn from an env
 impact: Medium. Makers who build workflows notice it first; the people who feed or receive a workflow's output see decisions made by an agent instead of a fixed rule.
 -->
 
-<!-- verifier-findings (2026-11-19, verified-with-gaps; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
+Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
+- [contradicted, blocker] Risk assessment: Security & identity; Governance controls: Platform controls outside the table / applicability: Classic data policies govern connector tools, including custom and HTTP connectors, without an enforcement-mode qualification. | Found: Don't rely on a data policy for any control in an ACP-only scope, including custom connectors, HTTP connectors, endpoint filtering, and virtual connectors. If a scope still depends on data policies, keep it in mixed mode. | Fix: Qualify both passages with: 'Classic data policies are ignored in ACP-only mode. Keep scopes that depend on classic data policies for custom or HTTP connectors in mixed mode.' Cite https://learn.microsoft.com/power-platform/admin/advanced-connector-policies. | Source: https://learn.microsoft.com/power-platform/admin/advanced-connector-policies
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: status; What's changing / record: Roadmap item 562222 has status Launched. | Found: "id": 562222; "status": "Launched"; "roadmapUrl": "https://www.microsoft.com/microsoft-365/roadmap?id=562222" | Fix: Replace the source titled 'Microsoft 365 Roadmap 566998' with title 'Microsoft 365 Roadmap 562222' and URL 'https://www.microsoft.com/microsoft-365/roadmap?id=562222'. The supplied record supports the facts, but its roadmap item is not the one cited.
+- [supported, minor] front matter: status; What's changing; sources / record: Roadmap item 562222 is Launched. | Found: "id": 562222; "status": "Launched"; "roadmapUrl": "https://www.microsoft.com/microsoft-365/roadmap?id=562222" | Fix: Replace the source titled 'Microsoft 365 Roadmap 566998' with 'Microsoft 365 Roadmap 562222' and URL https://www.microsoft.com/microsoft-365/roadmap?id=562222.
+- [supported, minor] controls[1].ui; Governance controls table; Governance guidance: After rollout / admin-path: Licensing > Copilot Studio in the Power Platform admin center leads to workflow credit-consumption monitoring. | Found: In the Power Platform admin center > Licensing > Copilot Studio, review the Agent flow actions used by each workflow. | Fix: Expand controls[1].ui.path to 'Licensing > Products > Copilot Studio > Environments > environment > Copilot Credits capacity > Copilot credit consumption details'. The cited overview supports the printed route but the cited capacity page gives the remaining steps: https://learn.microsoft.com/power-platform/admin/manage-copilot-studio-copilot-credits-capacity. | Source: https://learn.microsoft.com/microsoft-copilot-studio/workflows-experience/flows-overview
 -->

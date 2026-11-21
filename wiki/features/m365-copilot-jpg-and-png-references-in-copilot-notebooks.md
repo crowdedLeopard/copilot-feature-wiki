@@ -78,19 +78,23 @@ changes:
     note: "Corrected after the independent check: added the Graph beta applyOnce automation for the Cloud Policy setting, removed the claim that it is the only documented Notebooks control, and noted the preview reference's Microsoft 365 Copilot licence wording."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 64 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 2
+  - date: "2026-11-21"
+    note: "Corrected after the independent check: replaced the unsupported claim that the Cloud Policy setting cannot allow documents while excluding images with a statement that the admin and TCM resource pages document no file-type selector."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 64 statements confirmed"
+version: 3
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-21"
-  version: 2
+  version: 3
   model: "gpt-6.1-sol"
   engine: "copilot"
   claims: 64
-  confirmed: 63
-  unconfirmed: 1
+  confirmed: 64
+  unconfirmed: 0
   contradicted: 0
-  attempts: 2
-  hash: "9b6bf4cda4dcae81fe6e28660dad414c"
+  attempts: 0
+  hash: "b56e0c41c7ac4e7f46557357c14551d8"
 ---
 
 ## What's changing
@@ -171,7 +175,7 @@ The prerequisite documented on Learn is the Microsoft Copilot or Copilot Chat li
 </tbody>
 </table>
 
-The documented Cloud Policy setting governs Copilot Pages and Copilot Notebooks creation and integration. It does not distinguish file types, so it cannot allow documents while excluding images. Policy changes take time to show: the Learn page says up to 90 minutes where policy configurations already existed and up to 24 hours where none did.
+The documented Cloud Policy setting governs Copilot Pages and Copilot Notebooks creation and integration. At the time of writing (November 2026), the admin and TCM resource pages document no file-type selector for this setting. Policy changes take time to show: the Learn page says up to 90 minutes where policy configurations already existed and up to 24 hours where none did.
 
 When creation is disabled, Learn says existing Pages and Notebooks aren't deleted and users can still view and edit existing items if they have permission, while the Notebooks module is hidden in the Copilot app. Microsoft Learn and the notice document no setting specific to JPG and PNG references; the second row records that gap.
 
@@ -188,10 +192,4 @@ The automation for the Cloud Policy setting is the preview Tenant Configuration 
 risk: Medium. Images users add, including screenshots and photographs, become grounding context for generated presentations and reports, and Microsoft's notice says no new admin controls come with the rollout.
 cost: Low. Copilot Notebooks needs the Microsoft Copilot or Copilot Chat licence; no separate licence or meter for image references is documented, so the known cost is user communication.
 impact: Medium. People who use Copilot Notebooks notice it; Microsoft's notice names users with access to Copilot Notebooks as the affected group.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] Governance controls: first paragraph / applicability: The Cloud Policy setting cannot allow documents while excluding images. | Found: Searched: "Create and view Copilot Pages and Copilot Notebooks" "file types" images documents; "Copilot Notebooks" "file types" policy image disable. Read cpcn-admin-configuration and utcm-copilot-resources; neither states this image-versus-document restriction. | Fix: Replace 'It does not distinguish file types, so it cannot allow documents while excluding images.' with 'At the time of writing (November 2026), the admin and TCM resource pages document no file-type selector for this setting.'
 -->

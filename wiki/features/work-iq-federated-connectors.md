@@ -14,7 +14,7 @@ previewDate: "October CY2026"
 risk: "medium"
 cost: "variable"
 impact: "medium"
-defaultState: "unknown"
+defaultState: "on"
 action: "review"
 licensing:
   model: "consumption"
@@ -25,6 +25,12 @@ sources:
   - title: "Microsoft 365 Roadmap 570670"
     url: "https://www.microsoft.com/microsoft-365/roadmap?id=570670"
     kind: "roadmap"
+  - title: "Use Copilot Connectors with Work IQ APIs"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/connectors-in-work-iq-apis"
+    kind: "learn"
+  - title: "Policy governance for Work IQ MCP"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp"
+    kind: "learn"
   - title: "Work IQ overview"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/"
     kind: "learn"
@@ -45,9 +51,6 @@ sources:
     kind: "learn"
   - title: "Which users may use connectors (Microsoft 365 admin center)"
     url: "https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings"
-    kind: "learn"
-  - title: "Policy governance for Work IQ MCP"
-    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp"
     kind: "learn"
   - title: "Agent 365 Package Management API overview"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/overview"
@@ -122,14 +125,10 @@ controls:
       path: "Agents > Tools > Work IQ MCP > Policy"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp#open-policy-settings-in-the-microsoft-365-admin-center"
     api: null
-    note: "General Work IQ MCP control. The Policy tab shows when available; changes can take up to 24 hours to apply."
-  - governs: "Work IQ-specific control for federated connectors"
-    scope: "tenant"
-    ui: null
-    api: null
+    note: "Tenant policy can explicitly enable or disable connector participation in Work IQ paths. The Policy tab shows when available; changes can take up to 24 hours to apply."
 confidence: "medium"
 created: "2026-11-14"
-updated: "2026-11-19"
+updated: "2026-11-21"
 roadmapModified: "2026-11-06T23:04:41"
 changes:
   - date: "2026-11-14"
@@ -158,28 +157,32 @@ changes:
     note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 56 statements not yet confirmed"
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 56 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 6
+  - date: "2026-11-21"
+    note: "Correction: default state is now on, per Learn's connectors-in-Work-IQ page; removed the both-empty Work IQ-specific control row and the write-tools review step; Work IQ MCP policy now noted as able to enable or disable connector participation."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 65 statements not yet confirmed"
+version: 7
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 6
+  version: 7
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 56
-  confirmed: 53
+  claims: 65
+  confirmed: 64
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "b2289f9fee5a2a2d132350e204376846"
+  contradicted: 1
+  attempts: 0
+  hash: "75b292f93834e5d51fdf878aebc06dfb"
 ---
 
 ## What's changing
 
-Work IQ will be able to use federated connectors for governed access to additional enterprise data sources. The roadmap lists Microsoft Graph and Work IQ as products, with a November 2026 target and In development status. Microsoft has not stated what this capability does on arrival.
+Work IQ will be able to use federated connectors for governed access to additional enterprise data sources. The roadmap lists Microsoft Graph and Work IQ as products, with a November 2026 target and In development status. Microsoft documents connector access as enabled by default: configured connectors participate when available to the signed-in user and connected by that user in Copilot Chat; Work IQ must be enabled for the organisation ([Use Copilot Connectors with Work IQ APIs](https://learn.microsoft.com/microsoft-365/copilot/connectors/connectors-in-work-iq-apis)).
 
 Microsoft Learn describes federated Copilot connectors as using Model Context Protocol to fetch data in real time under the user's identity and permissions, without indexing the external data into Microsoft 365. Admins manage them in the Microsoft 365 admin center.
 
-[Learn](https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/) now describes connected enterprise sources as participating in Work IQ Copilot, entity and schema tools; connector developers must enable participation in Work IQ APIs. The roadmap still lists this item as In development.
+[Learn](https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/) now describes connected enterprise sources as participating in Work IQ Copilot, entity and schema tools; Copilot Connectors configured in Microsoft 365 Copilot automatically participate in Work IQ APIs, and participation may be limited by data sensitivity requirements or partner agreements ([Use Copilot Connectors with Work IQ APIs](https://learn.microsoft.com/microsoft-365/copilot/connectors/connectors-in-work-iq-apis)). The roadmap still lists this item as In development.
 
 ## Why it matters
 
@@ -213,7 +216,6 @@ Work IQ experiences using federated connectors. The roadmap lists Worldwide (Sta
 
 ### Before rollout
 - List the connectors that Work IQ should reach.
-- Review each connector's write tools.
 
 ### At rollout
 - Approve connectors in the Microsoft 365 admin center; existing controls to allow or block Copilot Connectors also apply when connectors are accessed through Work IQ APIs.
@@ -230,8 +232,7 @@ Work IQ experiences using federated connectors. The roadmap lists Worldwide (Sta
 <tr><td data-label="Control"><strong>Enabling, disabling or staging a federated connector</strong><br><small>Tenant</small><br><small class="controls__note">Beta API: needs Agent 365 licence and CopilotPackages.ReadWrite.All; sets no staged rollout. Existing Copilot Connectors control; also applies through Work IQ APIs.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Connectors › Your connections › connector › Enable / Disable / Staged rollout <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/manage-federated-connectors" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/copilot/admin/catalog/packages/{id}/block</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/package/copilotpackage-block" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Allowing or blocking connectors by publisher type</strong><br><small>Tenant</small><br><small class="controls__note">Preview TCM applyOnce: mode applyOnce; resourceType microsoft.agent.allowedagenttypes; valueObject areMicrosoftAppsAllowed, areTenantScopedAppsAllowed, areISVAppsAllowed. Needs AI Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › Agent and plugin access <a href="https://learn.microsoft.com/microsoft-365/copilot/connectors/federated-connectors-overview#admin-experience-and-controls" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Which users may use connectors</strong><br><small>User</small><br><small class="controls__note">Preview TCM applyOnce: mode applyOnce; resourceType microsoft.agent.useraccess; valueObject userAssignmentCategory everyone or noOne, not specific groups. Needs AI Administrator.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Settings › User access <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>POST https://graph.microsoft.com/beta/admin/configurationManagement/configurationMonitors</code> <a href="https://learn.microsoft.com/graph/api/configurationmanagement-post-configurationmonitors?view=graph-rest-beta" rel="noopener" class="controls__docs">Learn</a></td></tr>
-<tr><td data-label="Control"><strong>Work IQ MCP policy on or off for the tenant</strong><br><small>Tenant</small><br><small class="controls__note">General Work IQ MCP control. The Policy tab shows when available; changes can take up to 24 hours to apply.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Policy <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp#open-policy-settings-in-the-microsoft-365-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Work IQ-specific control for federated connectors</strong><br><small>Tenant</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Work IQ MCP policy on or off for the tenant</strong><br><small>Tenant</small><br><small class="controls__note">Tenant policy can explicitly enable or disable connector participation in Work IQ paths. The Policy tab shows when available; changes can take up to 24 hours to apply.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Agents › Tools › Work IQ MCP › Policy <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp#open-policy-settings-in-the-microsoft-365-admin-center" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
 
@@ -254,12 +255,8 @@ cost: Variable. Work IQ API usage consumes Copilot Credits; connector-backed Mic
 impact: Medium. Affects users of Work IQ-enabled agents and admins who approve connectors.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] front matter: defaultState; What's changing / default: Microsoft has not stated what Work IQ federated connector participation does on arrival. | Found: Copilot Connectors configured in Microsoft 365 Copilot automatically participate in Work IQ APIs. ... Connector access is enabled by default. | Fix: Set defaultState to on. Replace 'Microsoft has not stated what this capability does on arrival.' with 'Microsoft documents connector access as enabled by default: configured connectors participate when available to the signed-in user and connected by that user in Copilot Chat; Work IQ must be enabled for the organisation.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/connectors-in-work-iq-apis. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/connectors-in-work-iq-apis
-- [contradicted, blocker] controls[4].ui and controls[4].api; Governance controls table / absence: Microsoft has not documented a Work IQ-specific control for federated connectors on either surface. | Found: Work IQ MCP provides Rego-based policy governance to control access to connectors through Work IQ APIs. ... Administrators can explicitly enable or disable connector participation in Work IQ paths through tenant-level policies. | Fix: Remove the both-null 'Work IQ-specific control for federated connectors' row. In the existing Work IQ MCP policy row's note, replace 'General Work IQ MCP control.' with 'Tenant policy can explicitly enable or disable connector participation in Work IQ paths.' Cite https://learn.microsoft.com/microsoft-365/copilot/connectors/connectors-in-work-iq-apis; keep the verified Policy path and the null automation side. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/connectors-in-work-iq-apis
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] What's changing / behaviour: Connector developers must enable participation in Work IQ APIs. | Found: Connector developers must enable participation in Work IQ APIs. | Fix: The Learn search excerpt supports this wording, but the opened overview now links to https://learn.microsoft.com/microsoft-365/copilot/connectors/connectors-in-work-iq-apis, which says participation is automatic. Replace the developer-enablement clause with 'Copilot Connectors configured in Microsoft 365 Copilot automatically participate in Work IQ APIs; participation may be limited by data sensitivity requirements or partner agreements.' Cite that page. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/
-- [contradicted, minor] Governance guidance: Before rollout / consistency: The instruction to review each connector's write tools has a corresponding controls-table row. | Found: Checklist: 'Review each connector's write tools.' Table: connector enable/disable/staging, publisher-type access, User access, Work IQ MCP policy and an undocumented Work IQ-specific connector control; no row covers reviewing write tools. | Fix: Remove the Before rollout bullet 'Review each connector's write tools.' It instructs a control review with no corresponding table row; do not add a row.
+- [contradicted, minor] front matter: action / consistency: The review action rating fits this change. | Found: action: "review"; defaultState: "on"; targetDate: "November CY2026"; risk: "medium"; Copilot Connectors configured in Microsoft 365 Copilot automatically participate in Work IQ APIs. | Fix: Set action to act-now. On the 21 November 2026 run, the November target is within about 60 days, connector access is enabled by default for existing eligible connected sources, risk is medium, and documented connector and tenant-policy controls allow an administrator to decide access before it lands.
 -->
