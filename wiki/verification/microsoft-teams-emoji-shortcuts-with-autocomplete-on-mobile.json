@@ -1,0 +1,790 @@
+{
+  "slug": "microsoft-teams-emoji-shortcuts-with-autocomplete-on-mobile",
+  "roadmapId": 565370,
+  "title": "Microsoft Teams: emoji shortcuts with autocomplete on iOS and Android",
+  "status": "held",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-21",
+    "reasons": [
+      "3 blocking findings (claims 38, 51, 56)"
+    ]
+  },
+  "counts": {
+    "claims": 60,
+    "confirmed": 57,
+    "unconfirmed": 0,
+    "contradicted": 3,
+    "blocker": 3,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "The rollout, default and shortcut behaviours match Microsoft's notice and roadmap. The upload-policy path omits Edit, and the prose wrongly casts tenant-wide custom emoji controls as unconfirmed for mobile; it also says nothing happens without a colon despite documenting parenthesis shortcuts.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; summary; What's changing",
+      "type": "record",
+      "claim": "Teams brings existing desktop-style emoji shortcuts to mobile.",
+      "status": "supported",
+      "source": "Message Center post MC1404321",
+      "quote": "We are bringing desktop-style emoji shortcuts to Microsoft Teams on iOS and Android.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "What's changing; Risk assessment; rationale: risk",
+      "type": "record",
+      "claim": "Typing a keyword between colons in the compose box inserts an emoji.",
+      "status": "supported",
+      "source": "Message Center post MC1404321",
+      "quote": "Users can insert emojis directly in the compose box by typing a keyword between colons",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "The shortcuts provide real-time autocomplete suggestions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Real-time autocomplete suggestions help you quickly find the right emoji as you type",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "summary; What's changing; Why it matters; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "Custom emojis are supported by the mobile shortcuts.",
+      "status": "supported",
+      "source": "Message Center post MC1404321",
+      "quote": "Custom emojis are supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is August CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"August CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "title; front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Android and iOS.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"iOS\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modified timestamp is 2026-11-19T00:53:06.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-19T00:53:06\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: defaultState; summary; What's changing; Why it matters; rationale: impact",
+      "type": "default",
+      "claim": "Emoji shortcuts are enabled by default without administrator action.",
+      "status": "supported",
+      "source": "Message Center post MC1404321",
+      "quote": "The feature is enabled by default with no admin controls",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "controls[0]; summary; Why it matters; Risk assessment; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "There is no documented admin UI or automation switch for mobile emoji shortcuts or conversion.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams mobile emoji shortcuts autocomplete emoticon conversion admin settings PowerShell disable. Read MC1404321, messaging-policies-in-teams, Set-CsTeamsMessagingConfiguration and Set-CsTeamsMessagingPolicy; no shortcut switch is documented.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing; Governance guidance; rationale: impact",
+      "type": "record",
+      "claim": "A colon followed by at least two characters opens the suggestion menu.",
+      "status": "supported",
+      "source": "Message Center post MC1404321",
+      "quote": "Users can open the emoji suggestion menu by typing : followed by at least two characters (e.g., :sm)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Why it matters; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "Common emoticons such as :), :D and :P convert automatically.",
+      "status": "supported",
+      "source": "Message Center post MC1404321",
+      "quote": "Common emoticons such as :), :D, and :P automatically convert into emojis",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Lowercase emoticons such as :d and :p are supported.",
+      "status": "supported",
+      "source": "Message Center post MC1404321",
+      "quote": "Lowercase emoticons (e.g., :d, :p) are also supported",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Emoji search supports fuzzy matching.",
+      "status": "supported",
+      "source": "Message Center post MC1404321",
+      "quote": "Emoji search supports fuzzy matching and mid-string search",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Emoji search supports mid-string search.",
+      "status": "supported",
+      "source": "Message Center post MC1404321",
+      "quote": "Emoji search supports fuzzy matching and mid-string search",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Risk assessment; Governance guidance",
+      "type": "record",
+      "claim": "Existing parenthesis shortcuts continue to work.",
+      "status": "supported",
+      "source": "Message Center post MC1404321",
+      "quote": "Parenthesis () shortcuts continue to work",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment; Open questions",
+      "type": "record",
+      "claim": "Microsoft plans to retire parenthesis shortcuts later in alignment with desktop, without giving a date.",
+      "status": "supported",
+      "source": "Message Center post MC1404321",
+      "quote": "Parenthesis () shortcuts continue to work and will be retired later in alignment with desktop",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1404321 was last updated on 2026-10-05 with a revised timeline.",
+      "status": "supported",
+      "source": "Message Center post MC1404321",
+      "quote": "Updated October 5, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "Targeted Release in Worldwide began in early August 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1404321",
+      "quote": "Targeted Release (Worldwide): We began rolling out in early August 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Targeted Release in Worldwide was expected to finish by mid-August 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1404321",
+      "quote": "expect to complete by mid-August 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "General Availability in Worldwide was scheduled to begin in mid-August 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1404321",
+      "quote": "General Availability (Worldwide): We will begin rolling out in mid-August 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "General Availability in GCC was scheduled to begin in mid-August 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1404321",
+      "quote": "General Availability (GCC): We will begin rolling out in mid-August 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "General Availability in GCC High was scheduled to begin in late August 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1404321",
+      "quote": "General Availability (GCC High): We will begin rolling out in late August 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "General Availability in DoD was scheduled to begin in early September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1404321",
+      "quote": "General Availability (DoD): We will begin rolling out in early September 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Scope",
+      "type": "record",
+      "claim": "General Availability was expected to complete by early November 2026 in every listed cloud.",
+      "status": "supported",
+      "source": "Message Center post MC1404321",
+      "quote": "expect to complete by early November 2026",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Scope; rationale: impact",
+      "type": "record",
+      "claim": "All Microsoft Teams users on iOS and Android devices are affected.",
+      "status": "supported",
+      "source": "Message Center post MC1404321",
+      "quote": "Who is affected: All Microsoft Teams users on iOS and Android devices",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "summary; Why it matters",
+      "type": "record",
+      "claim": "Microsoft says no action is required.",
+      "status": "supported",
+      "source": "Message Center post MC1404321",
+      "quote": "No action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "Why it matters; Cost and licensing; Governance guidance; rationale: cost",
+      "type": "record",
+      "claim": "Microsoft recommends notifying the help desk about the shortcut experience.",
+      "status": "supported",
+      "source": "Message Center post MC1404321",
+      "quote": "Notify your help desk about the updated emoji shortcut experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Why it matters; Cost and licensing; Governance guidance; rationale: cost",
+      "type": "record",
+      "claim": "Microsoft recommends updating training or adoption materials for colon-triggered shortcuts.",
+      "status": "supported",
+      "source": "Message Center post MC1404321",
+      "quote": "Update internal training or adoption materials to include emoji shortcuts triggered with :.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Why it matters; Cost and licensing; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft recommends considering a brief communication about mobile parity.",
+      "status": "supported",
+      "source": "Message Center post MC1404321",
+      "quote": "Consider sharing a brief user communication highlighting the new mobile parity experience.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing",
+      "type": "absence",
+      "claim": "Microsoft Learn has no page specifically describing mobile emoji shortcuts at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Teams\" \"emoji\" \"shortcuts\" \"mobile\"; Teams mobile emoji shortcuts autocomplete emoticon conversion admin settings PowerShell disable. Results describe reactions, custom emojis and messaging policies, not this shortcut feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "absence",
+      "claim": "The supplied roadmap and notice describe no new data access.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: read the complete roadmap description and MC1404321 for data access; they describe compose-box shortcuts, suggestions, search and conversion, without identifying new data access.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure; rationale: risk",
+      "type": "record",
+      "claim": "Microsoft's notice identifies no compliance considerations.",
+      "status": "supported",
+      "source": "Message Center post MC1404321",
+      "quote": "No compliance considerations identified, review as appropriate for your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The roadmap and notice describe no change to sign-in, roles or permissions.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: read the complete roadmap description and MC1404321 for sign-in, roles and permissions; neither describes an identity or permission change.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The feature does nothing without a user typing a colon in the compose box.",
+      "status": "contradicted",
+      "source": "Message Center post MC1404321",
+      "quote": "Parenthesis () shortcuts continue to work and will be retired later in alignment with desktop",
+      "severity": "blocker",
+      "fix": "Replace the bullet with 'The notice describes emoji insertion and conversion while users compose messages, including colon-based and existing parenthesis shortcuts.'"
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "Neither the roadmap record nor MC1404321 names a licence for this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: read the complete roadmap record and MC1404321 for licence requirements; neither names a licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Neither the roadmap record nor MC1404321 names a meter for this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: read the complete roadmap record and MC1404321 for a billing meter; neither names one.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "Neither the roadmap record nor MC1404321 names a price or charge for this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: read the complete roadmap record and MC1404321 for price and charge statements; neither gives one.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The cited Teams deployment page says Teams is provided as part of many Microsoft 365 licenses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/deploy-chat-teams-channels-microsoft-teams-landing-page",
+      "quote": "Teams is provided as part of many Microsoft 365 licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is unknown because no feature-specific licence is published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/teams-service-description",
+      "quote": "Microsoft Teams can be licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU.",
+      "severity": "minor",
+      "fix": "Set licensing.model to 'included'. Replace the notes with 'Teams can be licensed as part of qualifying Microsoft 365 offerings or as a standalone SKU. No licence specific to mobile emoji shortcuts is published.' Cite https://learn.microsoft.com/office365/servicedescriptions/teams-service-description."
+    },
+    {
+      "n": 44,
+      "where": "Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published a licence statement specific to mobile emoji shortcuts.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams emoji shortcuts mobile licensing price meter Teams license requirements. Read Teams deployment page, Teams service description, roadmap and MC1404321; general Teams entitlement is published, not a shortcut-specific licence.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft has not published a charge or meter specifically for this shortcut feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams emoji shortcuts mobile licensing price meter Teams license requirements. Read Teams deployment page, service description, roadmap and MC1404321; no shortcut-specific price or meter. Teams interoperability pricing result concerns messaging, not a shortcut meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Uploaded custom emojis are accessible to all users in the tenant alongside standard emojis.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-custom-emojis",
+      "quote": "These emojis and reactions are also accessible to all users in the tenant alongside the standard Teams emojis and reactions.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[1].note; Scope",
+      "type": "default",
+      "claim": "The existing tenant-wide custom emoji feature is on by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-custom-emojis",
+      "quote": "The new custom emojis and reactions feature will be turned on by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope: Custom emojis",
+      "type": "availability",
+      "claim": "The custom emoji feature is currently unavailable for EDU tenants.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-custom-emojis",
+      "quote": "This feature is currently not available for EDU tenants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "The tenant custom emoji switch is at Teams admin center > Messaging Settings > Custom emojis > use custom emojis.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-custom-emojis",
+      "quote": "In the Teams Admin Center controls, go to Messaging Settings section and toggle the use custom emojis option, found under the Custom emojis section, on or off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[1].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsMessagingConfiguration -CustomEmojis $false disables custom emojis and reactions across the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
+      "quote": "Set-CsTeamsMessagingConfiguration -CustomEmojis $False\nThe command shown in example 1 disables custom emojis within Teams.\nThis setting enables/disables the use of custom emojis and reactions across the whole tenant.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[2].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Upload custom emojis can be configured at Teams admin center > Messaging policies > policy > Upload custom emojis.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams",
+      "quote": "Select the policy by clicking to the left of the policy name, and then select Edit.",
+      "severity": "blocker",
+      "fix": "Replace controls[2].ui.path and the rendered path with 'Messaging policies > policy > Edit > Upload custom emojis'. Keep the existing surface and docs URL."
+    },
+    {
+      "n": 52,
+      "where": "controls[2].api; Governance controls table",
+      "type": "command",
+      "claim": "Set-CsTeamsMessagingPolicy -Identity <policy name> -CreateCustomEmojis $false disables creation for that policy's users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingpolicy",
+      "quote": "[-CreateCustomEmojis <Boolean>]\nThis setting enables the creation of custom emojis and reactions within an organization for the specified policy users.\nIdentity for the teams messaging policy you're modifying.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "controls[2].note; Governance controls table",
+      "type": "default",
+      "claim": "Uploading custom emojis is on by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams",
+      "quote": "Upload custom emojis - Set which users can create custom emojis. This setting is on by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[2].note; Governance controls table",
+      "type": "applicability",
+      "claim": "Upload custom emojis governs creation for policy users, rather than their ability to insert existing custom emojis.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-custom-emojis",
+      "quote": "These emojis and reactions are also accessible to all users in the tenant alongside the standard Teams emojis and reactions.\nSet which users can create new emojis via the Messaging Policy groups",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "controls[1].note; Governance controls table",
+      "type": "applicability",
+      "claim": "The correctly documented tenant custom emoji control is not documented as covering the mobile shortcut menu.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
+      "quote": "This setting enables/disables the use of custom emojis and reactions across the whole tenant.",
+      "severity": "minor",
+      "fix": "Replace controls[1].note and its rendered note with 'Existing custom emoji control; on by default. Enables or disables use of custom emojis and reactions across the whole tenant.' The documented reach includes custom emojis used through mobile shortcuts, without turning off standard emoji shortcuts."
+    },
+    {
+      "n": 56,
+      "where": "Governance controls prose; Open questions",
+      "type": "absence",
+      "claim": "It is unconfirmed whether the tenant custom emoji control restricts custom emojis used through mobile shortcuts.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
+      "quote": "This setting enables/disables the use of custom emojis and reactions across the whole tenant.",
+      "severity": "blocker",
+      "fix": "Replace the sentence beginning 'Neither the notice nor the custom emoji page' with 'The tenant setting enables or disables use of custom emojis and reactions across the whole tenant; the Upload custom emojis policy setting controls creation, not insertion.' Remove the first Open questions bullet. Keep the distinction that these are not switches for standard emoji shortcuts."
+    },
+    {
+      "n": 57,
+      "where": "Governance controls prose",
+      "type": "behaviour",
+      "claim": "Teams messaging policies include a Delete custom emojis setting.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/teams-custom-emojis",
+      "quote": "The Messaging policies section of the Teams admin center will allow you to turn the Upload custom emojis and Delete custom emojis settings on or off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Governance controls prose",
+      "type": "default",
+      "claim": "Delete custom emojis is off by default except for Teams admins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams",
+      "quote": "Delete custom emojis - Set which users can delete custom emojis. This setting is off by default (except for Teams admins).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Scope: Rollout",
+      "type": "absence",
+      "claim": "The supplied notice names no prerequisites.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: read complete MC1404321 for prerequisites; it identifies affected users, rollout, behaviours and communication recommendations, but names no prerequisite.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Scope: Rollout",
+      "type": "absence",
+      "claim": "The supplied notice names no roles.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: read complete MC1404321 for required roles; no role is named.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T20:54:40.361Z",
+    "summary": {
+      "links": 7,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=565370",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1404321",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/teams-custom-emojis",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/deploy-chat-teams-channels-microsoft-teams-landing-page",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingpolicy",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether custom emojis and reactions are used across the tenant",
+        "docs": "https://learn.microsoft.com/microsoftteams/teams-custom-emojis",
+        "reachable": true,
+        "segments": [
+          "Messaging Settings",
+          "Custom emojis",
+          "use custom emojis"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether custom emojis and reactions are used across the tenant",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration",
+        "reachable": true,
+        "token": "Set-CsTeamsMessagingConfiguration",
+        "found": true
+      },
+      {
+        "index": 2,
+        "side": "ui",
+        "governs": "Which users can upload (create) custom emojis",
+        "docs": "https://learn.microsoft.com/microsoftteams/messaging-policies-in-teams",
+        "reachable": true,
+        "segments": [
+          "Messaging policies",
+          "Upload custom emojis"
+        ],
+        "missing": []
+      },
+      {
+        "index": 2,
+        "side": "api",
+        "governs": "Which users can upload (create) custom emojis",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingpolicy",
+        "reachable": true,
+        "token": "Set-CsTeamsMessagingPolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

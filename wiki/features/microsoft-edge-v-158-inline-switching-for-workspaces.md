@@ -4,7 +4,7 @@ slug: "microsoft-edge-v-158-inline-switching-for-workspaces"
 roadmapId: 568786
 topic: "modern-work"
 products: ["Microsoft Edge"]
-summary: "Edge 158 lets users switch between Workspaces within their current window instead of opening one window each. The roadmap lists it as Launched; Microsoft names no admin switch or licence for it, so plan communication."
+summary: "Edge 158 lets users switch between Workspaces within their current window instead of opening one window each. The roadmap lists it as Launched; Microsoft names no separate switching policy or feature-specific licence, so plan communication."
 status: "launched"
 releasePhase: ["General Availability"]
 clouds: ["Worldwide (Standard Multi-Tenant)"]
@@ -40,6 +40,9 @@ sources:
   - title: "SyncDisabled"
     url: "https://learn.microsoft.com/deployedge/microsoft-edge-policies/syncdisabled"
     kind: "learn"
+  - title: "Getting started with Microsoft Edge Workspaces"
+    url: "https://support.microsoft.com/en-us/edge/getting-started-with-microsoft-edge-workspaces"
+    kind: "docs"
 videos: []
 related: []
 controls:
@@ -74,19 +77,23 @@ changes:
     note: "First briefing: in-window Workspaces switching shipped in Edge Stable 158 on 19 November 2026; no separate admin switch or licence is documented."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 52 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected the pilot step and an open question so they no longer say tab behaviour is undocumented, and narrowed the summary to 'no separate switching policy or feature-specific licence'."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 58 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 52
-  confirmed: 51
+  claims: 58
+  confirmed: 58
   unconfirmed: 0
-  contradicted: 1
-  attempts: 1
-  hash: "ae60a0e6cea93e880e6db5cc352fefe5"
+  contradicted: 0
+  attempts: 0
+  hash: "62684a5488a5cbb58735998b78af4fc2"
 ---
 
 ## What's changing
@@ -141,7 +148,7 @@ The feature shipped in the Edge Stable channel version 158.0.4370.33 on 19 Novem
 
 ### At rollout
 - Confirm the Edge version users run: in-window switching is listed in Stable 158.0.4370.33.
-- Pilot with a few Workspaces users to confirm how tabs and sign-in state behave when they switch, since Microsoft has not described this.
+- Pilot with a few Workspaces users to confirm sign-in state when they switch, since Microsoft has not described identity handling specifically for in-window switching.
 
 ### After rollout
 - Collect help-desk questions about Workspaces and V1 removal in Edge 159.
@@ -168,7 +175,7 @@ The feature shipped in the Edge Stable channel version 158.0.4370.33 on 19 Novem
 - Is in-window switching on by default for everyone who uses Workspaces, and does anything change for users who do not? Watch the Edge release notes and the Message center.
 - Is there a policy that controls in-window switching on its own, or does `EdgeWorkspacesEnabled` remain the only switch?
 - Which licence, if any, does in-window switching need, and does the OneDrive for Business prerequisite still apply now that Workspaces data is moving to the Edge Sync service?
-- How are tabs, theme and sign-in context kept apart when users swap Workspaces in one window?
+- How is sign-in context kept apart when users swap Workspaces in one window?
 
 <!-- rationale
 risk: Low. It changes how users move between Workspaces they already have; Microsoft's notes describe no new data access, and the existing EdgeWorkspacesEnabled policy governs access to Workspaces.
@@ -176,10 +183,8 @@ cost: Low. The only cost the sources show is admin time and user communication; 
 impact: Medium. Users who work in Edge Workspaces will see the window behave differently; people who do not use Workspaces are not the audience the release note describes.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Governance guidance: At rollout, pilot bullet / absence: Microsoft has not described how tabs behave when users switch Workspaces. | Found: Selecting a Workspace swaps in its tabs, theme, and context, with an easy return to the default space. | Fix: Replace the pilot bullet with: 'Pilot with a few Workspaces users to confirm sign-in state when they switch, since Microsoft has not described identity handling specifically for in-window switching.' The roadmap already describes tab swapping; https://support.microsoft.com/en-us/edge/getting-started-with-microsoft-edge-workspaces also documents selecting a Workspace to open it in the same window and using the Workspaces button to return to the Default window or switch again.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] summary; controls[0].note; Why it matters; Governance controls; front matter: changes; Open questions / absence: Microsoft documents no separate admin policy for in-window switching. | Found: Searched: Microsoft Edge in-window workspace switching separate policy default on identity sign-in tabs context documentation. Read the Edge policy Workspaces table, EdgeWorkspacesEnabled and Stable/Beta release notes; no separate switching policy documented. | Fix: In the summary, replace 'Microsoft names no admin switch or licence for it' with 'Microsoft names no separate switching policy or feature-specific licence'. This preserves the narrow absence without suggesting that the documented EdgeWorkspacesEnabled control does not exist.
+- [supported, minor] What's changing; summary; Governance guidance: Before rollout / behaviour: Users can now switch Workspaces in their current browser window instead of opening a separate window for each Workspace. | Found: Users can now switch between workspaces directly within their current browser window instead of opening a separate window for each workspace. | Fix: After the Stable release-note paragraph, add: "The linked Microsoft Support page still calls these updates 'coming soon' and says some users may encounter them; it also documents an 'Open in a new window' option." Source: https://support.microsoft.com/en-us/edge/getting-started-with-microsoft-edge-workspaces. | Source: https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel
 -->

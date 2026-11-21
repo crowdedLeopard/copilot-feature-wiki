@@ -37,6 +37,9 @@ sources:
   - title: "NotificationsBlockedForUrls"
     url: "https://learn.microsoft.com/deployedge/microsoft-edge-policies/notificationsblockedforurls"
     kind: "learn"
+  - title: "Push notifications for ASP.NET Core Blazor Progressive Web Applications (PWAs)"
+    url: "https://learn.microsoft.com/aspnet/core/blazor/progressive-web-app/push-notifications?view=aspnetcore-11.0#display-notifications"
+    kind: "learn"
 videos: []
 related: ["microsoft-edge-notifications-unsubscribe-user-action","microsoft-edge-enhanced-security-mode-plus"]
 controls:
@@ -76,24 +79,28 @@ changes:
     note: "First briefing: Edge 158 automatically unsubscribes users from notification sources that lead to SmartScreen-blocked sites; no admin control is documented."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 0 of 42 statements contradicted, 5 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected after verification: the Edge behaviour is now worded as the release notes give it, and the unsupported statements about restoring sites, data access and side effects were removed."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 51 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 42
-  confirmed: 37
-  unconfirmed: 5
-  contradicted: 0
-  attempts: 1
-  hash: "a32fb9d71eb85fd17e86d1cbe5b8bed3"
+  claims: 51
+  confirmed: 50
+  unconfirmed: 0
+  contradicted: 1
+  attempts: 0
+  hash: "02df689cdaa25aee5257a5cce5f208b3"
 ---
 
 ## What's changing
 
-Microsoft Edge now removes a notification source's permission to keep sending notifications when a notification leads users to a site that Microsoft Defender SmartScreen blocks as a scam, phishing or malware page. The roadmap item says Edge also lets users know, and that users can review and restore these sites at any time under `edge://settings/privacy/sitePermissions/allPermissions/notifications`.
+Microsoft Edge now automatically stops a notification source from sending further notifications when a notification leads users to a site that Microsoft Defender SmartScreen blocks as a scam, phishing or malware page. The roadmap item says Edge also lets users know, and that users can review and restore these sites at any time under `edge://settings/privacy/sitePermissions/allPermissions/notifications`.
 
 The Edge release notes for the Stable channel list this under Feature Updates for version 158.0.4370.33 (19 November 2026) and describe it in the same terms: Edge "automatically stops that source from sending further notifications. Edge also informs users." The same feature appears in the Edge 152 Stable release notes of 27 August 2026, where Microsoft marks it as a controlled feature rollout.
 
@@ -118,7 +125,7 @@ The release notes describe the behaviour as automatic and name no administrator 
 
 **Autonomy & actions**
 
-- Edge makes the unsubscribe decision itself; the release notes say it acts "automatically" and informs the user afterwards, and describe no approval step for users or administrators.
+- Edge makes the unsubscribe decision itself; the release notes say it acts "automatically" and also informs the user, and describe no approval step for users or administrators.
 
 **Change & support**
 
@@ -167,7 +174,7 @@ The feature is documented in the Edge release notes for version 158.0.4370.33 (S
 </tbody>
 </table>
 
-No administrator control specific to this feature is documented. The two notification policies in the table are existing controls that decide whether sites may display notifications; the release notes do not say they interact with the automatic unsubscribe, and neither restores or removes a site that Edge has unsubscribed. The user-facing review page is `edge://settings/privacy/sitePermissions/allPermissions/notifications`, as the roadmap item gives it.
+No administrator control specific to this feature is documented. The two notification policies in the table are existing controls that decide whether sites may display notifications; the release notes do not say they interact with the automatic unsubscribe. The user-facing review page is `edge://settings/privacy/sitePermissions/allPermissions/notifications`, as the roadmap item gives it.
 
 Both policies are Group Policy and registry settings for Windows, with preference keys for macOS, and Android from version 147, as their pages list. The release notes do not say whether the automatic unsubscribe applies on every platform those policies cover.
 
@@ -180,19 +187,13 @@ Both policies are Group Policy and registry settings for Windows, with preferenc
 - What data, if any, does Edge send or store when it unsubscribes a source?
 
 <!-- rationale
-risk: Low. The change removes a notification source after SmartScreen blocks the site it leads to; it adds no data access, and the only side effect is a user losing a source's notifications.
+risk: Low. The change stops a notification source after SmartScreen blocks the destination; the feature-specific data handling is not described in the release notes.
 cost: Low. The release notes name no licence or meter, so the only cost the sources show is admin and helpdesk time; a licence statement for this feature is not yet published.
 impact: Low. Only users who receive a notification that leads to a site SmartScreen blocks as a scam, phishing or malware page see the behaviour.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, major] Risk assessment: Autonomy & actions / behaviour: Microsoft says Edge informs the user afterwards. | Found: Searched: Edge automatic unsubscribe notification informs user before after permission revoked. Read Stable and archived feature entries; 'Edge also informs users' and 'Edge lets users know when this happens' do not specify a before/after sequence. | Fix: Replace 'informs the user afterwards' with 'also informs the user', matching https://learn.microsoft.com/deployedge/microsoft-edge-relnote-stable-channel.
-- [unsupported, major] What's changing: first sentence / behaviour: Edge implements automatic unsubscribe by removing the notification source's permission. | Found: Searched: Edge automatic unsubscribe notification informs user before after permission revoked; automatic unsubscribe notifications no data access side effects permission revoked. Read Stable and archived entries; they say the source stops sending, not how its permission is changed. | Fix: Replace the first sentence with 'Microsoft Edge now automatically stops a notification source from sending further notifications when a notification leads users to a site that Microsoft Defender SmartScreen blocks as a scam, phishing or malware page.'
-- [unsupported, blocker] Governance controls: first paragraph / applicability: Neither notification policy restores or removes a site that Edge has unsubscribed. | Found: Searched: DefaultNotificationsSetting NotificationsBlockedForUrls unsubscribe restore permissions. Read both policy references and Stable feature notes; these document notification defaults and blocked sites, but not effects on an automatically unsubscribed site's state. | Fix: Remove ', and neither restores or removes a site that Edge has unsubscribed'. Retain the narrower statement that the release notes do not describe how these policies interact with automatic unsubscribe.
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Why it matters: first paragraph / behaviour: Website notifications can reach users after they have left the site. | Found: When using the app in either Google Chrome or Microsoft Edge, the notification appears even if the user isn't actively using the Blazing Pizza app. | Fix: Add https://learn.microsoft.com/aspnet/core/blazor/progressive-web-app/push-notifications?view=aspnetcore-11.0#display-notifications to sources for the background statement about notifications reaching users after they leave a site. | Source: https://learn.microsoft.com/aspnet/core/blazor/progressive-web-app/push-notifications?view=aspnetcore-11.0#display-notifications
-- [unsupported, minor] rationale: risk / behaviour: The feature adds no data access. | Found: Searched: Edge automatic unsubscribe notifications no data access side effects. Read Stable and archived feature entries and SmartScreen privacy excerpts; none states that automatic unsubscribe adds no data access. | Fix: Remove 'it adds no data access' from the risk rationale. Use 'Low. The change stops a notification source after SmartScreen blocks the destination; the feature-specific data handling is not described in the release notes.'
-- [unsupported, minor] rationale: risk / behaviour: The only side effect is a user losing a source's notifications. | Found: Searched: Edge automatic unsubscribe notifications no data access side effects. Read Stable and archived feature entries; neither gives an exhaustive account of side effects. | Fix: Remove the clause saying that losing notifications is the only side effect. The replacement rationale supplied for the data-access claim makes no exhaustive side-effect assertion.
+- [contradicted, minor] front matter: impact; rationale: impact / consistency: The low impact rating fits an automatic change to existing notification behaviour. | Found: impact: "low"; defaultState: "on". Standard: low means "admins only, or a small opt-in group"; high means "most users, or a change to default behaviour". | Fix: Set impact to high and replace its rationale with: "High. Edge changes notification behaviour automatically when a notification leads to a SmartScreen-blocked scam, phishing or malware page; affected users do not opt in to this protection."
 -->

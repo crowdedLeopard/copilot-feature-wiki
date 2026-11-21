@@ -28,6 +28,12 @@ sources:
   - title: "Add MCP apps to declarative agents in Microsoft 365 Copilot"
     url: "https://learn.microsoft.com/plugins/plugin-mcp-apps"
     kind: "learn"
+  - title: "MCP and API plugins for declarative agents"
+    url: "https://learn.microsoft.com/plugins/overview-plugins"
+    kind: "learn"
+  - title: "MCP server plugins"
+    url: "https://learn.microsoft.com/plugins/plugin-type-mcp-servers"
+    kind: "learn"
   - title: "Set up your development environment for your plugin"
     url: "https://learn.microsoft.com/plugins/prerequisites"
     kind: "learn"
@@ -72,19 +78,23 @@ changes:
     note: "First briefing for this item: interactive UI widgets for MCP agents in GCC, GCC High and DoD, with Learn's differing government-cloud limits on agents reported beside the roadmap listing."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 67 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Correction: MCP plugins are custom actions, so Learn's government restriction on authenticated custom actions covers them; removed the related open question and the unsupported User access checklist bullet."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 80 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 67
-  confirmed: 65
+  claims: 80
+  confirmed: 80
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "a691b26c888c7fb51c35867cdc0e3bf5"
+  contradicted: 0
+  attempts: 0
+  hash: "1992be61fc1ad9b5ccd19e100345dfe5"
 ---
 
 ## What's changing
@@ -111,7 +121,7 @@ The differences between the roadmap, the service description and Learn's known-i
 
 **Security & identity**
 - Learn says Copilot supports OAuth 2.1 and Microsoft Entra single sign-on for MCP apps, and anonymous authentication (the **None** option in Agents Toolkit) for development, which must be replaced before production. Ask developers which type each server uses.
-- Learn's known-issues page lists authenticated custom actions as not currently supported in Microsoft 365 Government tenants. The MCP apps page does not say whether that limit covers MCP widget agents, so confirm it before approving an agent that signs users in.
+- MCP plugins are custom actions, so Learn's government restriction on authenticated custom actions covers authenticated MCP plugins used by these declarative agents. Learn's known-issues page lists authenticated custom actions as not currently supported in Microsoft 365 Government tenants.
 
 **Autonomy & actions**
 - Learn's walkthrough says the user is prompted to allow the agent to connect to the MCP server, and the widget can call tools on its server. Treat each connected server as a decision about an outside system.
@@ -139,7 +149,6 @@ Users: anyone who can use an agent that implements widgets. Learn's user access 
 ### Before rollout
 - Ask developers which MCP servers will return widgets, who hosts each one, and which sign-in type each uses, and record the answers per agent.
 - Check Learn's service description and known-issues page for your cloud, because they list government-cloud limits on declarative agents and on authenticated custom actions that the roadmap item does not.
-- Decide who may use agents and plugins at all, using the user access setting described under the controls table.
 
 ### At rollout
 - Review each new widget agent on the Agents > All agents page of the Microsoft 365 admin center before pilot users receive it.
@@ -170,7 +179,6 @@ The Graph call is a preview API under /beta, needs a Microsoft Agent 365 licence
 ## Open questions
 
 - Does the roadmap's DoD listing mean declarative agents with widgets run in DoD, given that the service description lists declarative agents as not currently available there? Watch the service description and Message center.
-- Does the known-issues limit on authenticated custom actions in Microsoft 365 Government tenants cover MCP widget agents that sign users in with OAuth 2.1 or Entra single sign-on?
 - Which publishing route works in government clouds for a widget agent, given that publishing through the Agents Toolkit is listed as not supported there?
 - Is there a setting that turns widgets off separately from the agent, or is blocking the agent the only route? Watch the agent settings page.
 - Is the widget host `{hashed-mcp-domain}.widget-renderer.usercontent.microsoft.com` the same in each government cloud? Confirm with the MCP apps page before changing firewall or identity provider rules.
@@ -181,11 +189,8 @@ cost: Low. Learn's agent licensing table lists MCP Apps (interactive UI widgets)
 impact: Low. Only people who use an agent that implements widgets see them, and developers must build those agents first. The roadmap says administrators keep managing these agents in the Microsoft 365 admin center.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Security & identity; Open questions: authenticated actions / absence: Whether the government restriction on authenticated custom actions covers MCP widget agents remains unconfirmed. | Found: MCP and API plugins are custom actions that enable declarative agents in Microsoft 365 Copilot to interact with Model Context Protocol (MCP) servers or REST APIs | Fix: Replace the applicability caveat with: 'MCP plugins are custom actions, so Learn's government restriction on authenticated custom actions covers authenticated MCP plugins used by these declarative agents.' Cite https://learn.microsoft.com/plugins/overview-plugins alongside the existing known-issues source. Remove the open question asking whether that restriction covers authenticated MCP widget agents. Keep the general MCP authentication description and the roadmap listing distinct from this documented government restriction. | Source: https://learn.microsoft.com/plugins/overview-plugins
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] rationale: risk; Risk assessment: Autonomy & actions / behaviour: The MCP server is an external service operated separately from the Microsoft 365 agent package. | Found: A Model Context Protocol (MCP) server is an external service that exposes tools and resources through MCP. The running server isn't part of the plugin package. | Fix: Add https://learn.microsoft.com/plugins/plugin-type-mcp-servers to sources for the statement that the MCP server runs externally and separately from the agent package. | Source: https://learn.microsoft.com/plugins/plugin-type-mcp-servers
-- [contradicted, minor] Governance guidance: Before rollout, user access / consistency: The checklist tells readers to set User access, but the controls table contains no User access row. | Found: Decide who may use agents and plugins at all, using the user access setting described under the controls table. The table's only row is: Whether an agent is blocked for the whole organisation. | Fix: Remove the Before rollout checklist bullet 'Decide who may use agents and plugins at all, using the user access setting described under the controls table.' It names a control without a table row; retain the documented User access explanation beneath the table.
+- [supported, minor] Governance controls / default: All users is the default for the agent and plugin User access setting. | Found: All users - This option is the default. It means that all users in the organization can access agents and plugins, subject to the existing app policies and user assignments. | Fix: Replace the last sentence of the User access paragraph with: "The page names All users as the default for that setting, subject to existing app policies and user assignments." This qualification is stated at https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings. | Source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-settings
 -->

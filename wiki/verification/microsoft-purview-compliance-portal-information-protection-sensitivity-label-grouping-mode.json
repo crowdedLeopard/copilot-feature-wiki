@@ -4,10 +4,10 @@
   "title": "Microsoft Purview: sensitivity label groups replace parent labels (GCC, GCC High and DoD)",
   "status": "held",
   "date": "2026-11-21",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 2,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
   "verifierVerdict": "hold",
@@ -16,36 +16,25 @@
     "reason": "failed",
     "since": "2026-11-21",
     "reasons": [
-      "2 blocking findings (claims 62, 64)"
+      "1 blocking finding (claim 20)"
     ]
   },
   "counts": {
-    "claims": 67,
-    "confirmed": 64,
-    "unconfirmed": 2,
+    "claims": 72,
+    "confirmed": 71,
+    "unconfirmed": 0,
     "contradicted": 1,
-    "blocker": 2,
+    "blocker": 1,
     "major": 0,
-    "minor": 5
+    "minor": 0
   },
-  "summary": "Hold: the migration and label-group creation PowerShell calls have documented parameter names, but Microsoft does not describe what those switches do. They should not be presented as verified automation for an irreversible migration or for creating label groups. The roadmap facts and the main migration guidance are supported.",
+  "summary": "Hold: the description overstates which differences in label scope cause migration to create a same-name sublabel. Microsoft specifies two particular scope conditions, which administrators need when deciding which labels to review before migration.",
   "claims": [
     {
       "n": 1,
-      "where": "front matter: products; title",
-      "type": "record",
-      "claim": "The feature belongs to Microsoft Purview.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"products\": [\"Microsoft Purview\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 2,
       "where": "What's changing",
       "type": "record",
-      "claim": "The roadmap plans to simplify the sensitivity labelling scheme to labels and label groupings.",
+      "claim": "The roadmap plans a sensitivity labelling scheme consisting of labels and label groupings.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "the sensitivity labeling scheme will be simplified to only consist of labels and label groupings.",
@@ -53,10 +42,21 @@
       "fix": null
     },
     {
+      "n": 2,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The planned groupings let administrators organise and categorise labels.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "These new label groupings allow admins to better organize and categorize their labels",
+      "severity": null,
+      "fix": null
+    },
+    {
       "n": 3,
       "where": "What's changing",
       "type": "record",
-      "claim": "The groupings let administrators organise and categorise labels, previously done with parent labels.",
+      "claim": "Parent labels previously performed this grouping function.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "These new label groupings allow admins to better organize and categorize their labels (previously done via parent labels).",
@@ -65,53 +65,9 @@
     },
     {
       "n": 4,
-      "where": "front matter: status; What's changing",
-      "type": "record",
-      "claim": "Roadmap item 386901 is In development.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 5,
-      "where": "front matter: targetDate; summary; What's changing; Open questions",
-      "type": "record",
-      "claim": "November CY2026 is the roadmap target, not a committed launch date.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"status\": \"In development\", \"targetDate\": \"November CY2026\"",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: previewDate",
-      "type": "record",
-      "claim": "The record supplies no preview date for this item.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"previewDate\": null",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "front matter: releasePhase; What's changing; Scope",
-      "type": "record",
-      "claim": "The release phase listed for this item is General Availability.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [\"General Availability\"]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
       "where": "front matter: clouds; title; summary; What's changing; Scope",
       "type": "record",
-      "claim": "This roadmap item lists GCC, GCC High and DoD.",
+      "claim": "Roadmap item 386901 lists GCC, GCC High and DoD.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
@@ -119,7 +75,7 @@
       "fix": null
     },
     {
-      "n": 9,
+      "n": 5,
       "where": "front matter: platforms; What's changing; Scope",
       "type": "record",
       "claim": "The roadmap platform is Web.",
@@ -130,21 +86,54 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "front matter: roadmapModified",
+      "n": 6,
+      "where": "front matter: releasePhase; What's changing; Scope",
       "type": "record",
-      "claim": "The roadmap record was modified at 2026-09-28T22:58:08.",
+      "claim": "The roadmap release phase is General Availability.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"modified\": \"2026-09-28T22:58:08\"",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing",
+      "n": 7,
+      "where": "front matter: status; What's changing",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: targetDate; summary; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is November CY2026, not a committed launch date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The record gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "title; What's changing",
       "type": "behaviour",
-      "claim": "Learn already describes label groups as replacing parent labels.",
+      "claim": "Learn describes label groups as now replacing parent labels.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sensitivity-labels",
       "quote": "To reduce this complexity, label groups are now replacing parent labels.",
@@ -152,10 +141,10 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 11,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Label groups support configuration only for name, descriptions, colour and priority.",
+      "claim": "Label groups have configuration options only for name, descriptions, colour and priority.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sensitivity-labels",
       "quote": "Label groups look and behave the same to users, but have configuration options only for the settings that they support: the label name, descriptions, color, and priority.",
@@ -163,10 +152,10 @@
       "fix": null
     },
     {
-      "n": 13,
-      "where": "What's changing; Risk assessment: Autonomy & actions; Governance controls",
+      "n": 12,
+      "where": "What's changing; Risk assessment; Governance controls",
       "type": "behaviour",
-      "claim": "Label groups themselves cannot be published; labels within them can be.",
+      "claim": "Label groups themselves cannot be published, only the labels within them.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sensitivity-labels",
       "quote": "You can't publish label groups themselves, only the labels within the groupings.",
@@ -174,18 +163,18 @@
       "fix": null
     },
     {
-      "n": 14,
+      "n": 13,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Migration converts existing parent labels into label groups.",
+      "claim": "Migration converts parent labels into label groups.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
-      "quote": "To migrate your parent sensitivity labels to sensitivity label groups, use the Microsoft Purview portal if you see the information banner displayed in the following instructions.",
+      "quote": "Migration is gradually rolling out, so migrating your parent labels to label groups might not yet be available for your tenant.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 15,
+      "n": 14,
       "where": "summary; What's changing; Why it matters; Risk assessment; rationale: risk",
       "type": "behaviour",
       "claim": "Label migration is irreversible.",
@@ -196,10 +185,21 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What's changing; Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "n": 15,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
       "type": "behaviour",
-      "claim": "Parent labels with encryption, content marking, auto-labelling or PowerShell advanced settings produce a same-name sublabel.",
+      "claim": "A parent label configured for encryption is applicable for creation of a same-name sublabel during migration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
+      "quote": "It's configured for label actions that include encryption, content marking, auto-labeling, and PowerShell advanced settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "A parent label configured for content marking is applicable for creation of a same-name sublabel during migration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
       "quote": "It's configured for label actions that include encryption, content marking, auto-labeling, and PowerShell advanced settings.",
@@ -208,12 +208,12 @@
     },
     {
       "n": 17,
-      "where": "What's changing",
+      "where": "What's changing; rationale: risk",
       "type": "behaviour",
-      "claim": "A parent label included in a different publishing policy from its sublabels produces a same-name sublabel.",
+      "claim": "A parent label configured for auto-labelling is applicable for creation of a same-name sublabel during migration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
-      "quote": "It's included in a different publishing policy from its sublabels.",
+      "quote": "It's configured for label actions that include encryption, content marking, auto-labeling, and PowerShell advanced settings.",
       "severity": null,
       "fix": null
     },
@@ -221,40 +221,40 @@
       "n": 18,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "Differences between a parent label's scope and its sublabels' scopes can cause same-name sublabel creation.",
+      "claim": "A parent label configured for PowerShell advanced settings is applicable for creation of a same-name sublabel during migration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
-      "quote": "It has a different label scope from its sublabels in one or more of the following ways:",
+      "quote": "It's configured for label actions that include encryption, content marking, auto-labeling, and PowerShell advanced settings.",
       "severity": null,
       "fix": null
     },
     {
       "n": 19,
-      "where": "What's changing; Why it matters; Risk assessment",
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "The resulting sublabel has the original parent's name.",
+      "claim": "A parent label included in a different publishing policy from its sublabels is applicable for same-name sublabel creation.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
-      "quote": "The resulting sublabel that's created has the same name, label GUID, and settings as the original parent label.",
+      "quote": "It's included in a different publishing policy from its sublabels.",
       "severity": null,
       "fix": null
     },
     {
       "n": 20,
-      "where": "What's changing; Risk assessment: Security & identity",
+      "where": "What's changing: third paragraph",
       "type": "behaviour",
-      "claim": "The new sublabel inherits the original parent's GUID.",
-      "status": "supported",
+      "claim": "Having a different label scope from its sublabels is sufficient for a parent label to create a same-name sublabel.",
+      "status": "contradicted",
       "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
-      "quote": "To ensure business continuity post migration, the new sublabel inherits the GUID from the applicable parent label, and the new label group is given a new GUID.",
-      "severity": null,
-      "fix": null
+      "quote": "A sublabel is configured for a label scope that the parent label isn't configured for. Within the same label policy, the parent label has one or more scopes that aren't configured for any of its sublabels.",
+      "severity": "blocker",
+      "fix": "Replace 'or has a different label scope from its sublabels' with 'or has a sublabel configured for a scope the parent does not have, or, within the same label policy, has a scope not configured for any of its sublabels'. These are the specific scope conditions at https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme."
     },
     {
       "n": 21,
-      "where": "What's changing; Risk assessment: Data exposure",
+      "where": "What's changing; Why it matters; Risk assessment",
       "type": "behaviour",
-      "claim": "The new sublabel retains the original parent's settings.",
+      "claim": "The new applicable sublabel has the original parent's name.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
       "quote": "The resulting sublabel that's created has the same name, label GUID, and settings as the original parent label.",
@@ -265,18 +265,40 @@
       "n": 22,
       "where": "What's changing; Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "The new label group receives a new GUID.",
+      "claim": "The new applicable sublabel inherits the original parent's GUID.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
-      "quote": "the new sublabel inherits the GUID from the applicable parent label, and the new label group is given a new GUID.",
+      "quote": "To ensure business continuity post migration, the new sublabel inherits the GUID from the applicable parent label",
       "severity": null,
       "fix": null
     },
     {
       "n": 23,
-      "where": "What's changing; Why it matters; Risk assessment: Data exposure; rationale: impact",
+      "where": "What's changing; Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "Without reconfiguration, a published new sublabel becomes selectable where its parent was not selectable.",
+      "claim": "The new applicable sublabel retains the original parent's settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
+      "quote": "The resulting sublabel that's created has the same name, label GUID, and settings as the original parent label.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing; Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "The new label group gets a new GUID.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
+      "quote": "the new label group is given a new GUID.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; Why it matters; Risk assessment; rationale: impact",
+      "type": "behaviour",
+      "claim": "Without reconfiguration, the new sublabel is selectable in a publishing policy where the parent previously was not.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
       "quote": "Without reconfiguration, this new sublabel will be available to select in a policy where previously it couldn't be selected as a parent label.",
@@ -284,7 +306,7 @@
       "fix": null
     },
     {
-      "n": 24,
+      "n": 26,
       "where": "What's changing; Risk assessment: Autonomy & actions",
       "type": "date",
       "claim": "Learn describes automatic migration for new tenants beginning October 1, 2025.",
@@ -295,21 +317,32 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "What's changing; Why it matters; Risk assessment: Autonomy & actions; Open questions",
+      "n": 27,
+      "where": "What's changing; Why it matters; Risk assessment: Autonomy & actions",
       "type": "default",
-      "claim": "Learn describes automatic migration where parent-label migration would not create a new same-name sublabel.",
+      "claim": "Learn describes automatic migration when migration would not create a same-name sublabel.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
-      "quote": "Migration is automatic if you have a new tenant beginning October 1, 2025 or the migration of parent labels won't create a new sublabel with the same name because you have applicable parent labels.",
+      "quote": "or the migration of parent labels won't create a new sublabel with the same name because you have applicable parent labels. In both these cases, your sensitivity labels will automatically use the modern label scheme",
       "severity": null,
       "fix": null
     },
     {
-      "n": 26,
-      "where": "What's changing; Governance guidance: Before rollout",
+      "n": 28,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "For manual migration, an administrator starts from the banner on the Sensitivity labels page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
+      "quote": "On the Sensitivity labels page, if you see an information banner Migrate to the modern label scheme, label migration is available to your tenant. From this banner, select Get started to start the migration",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; controls[0].note; Governance guidance: Before rollout",
       "type": "availability",
-      "claim": "Learn says migration is gradually rolling out and might not be available for a tenant.",
+      "claim": "Migration availability is gradual and the banner indicates availability for that tenant.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
       "quote": "Migration is gradually rolling out, so migrating your parent labels to label groups might not yet be available for your tenant.",
@@ -317,51 +350,40 @@
       "fix": null
     },
     {
-      "n": 27,
-      "where": "controls[0].note; What's changing; Governance guidance: Before rollout",
-      "type": "availability",
-      "claim": "The Migrate to the modern label scheme banner indicates that migration is available to the tenant.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
-      "quote": "On the Sensitivity labels page, if you see an information banner Migrate to the modern label scheme, label migration is available to your tenant.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 28,
+      "n": 30,
       "where": "front matter: defaultState; What's changing; Why it matters; Open questions",
       "type": "absence",
-      "claim": "Microsoft has not stated the government-cloud-specific migration behaviour on arrival, so the default is unknown.",
+      "claim": "Microsoft has not stated the migration default specifically for GCC, GCC High and DoD.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: modern label scheme label groups GCC High DoD default migration automatic November 2026; read migration and creation pages and government deployment excerpts. General automatic-migration rules are stated, but no government-specific arrival rule or window was found.",
+      "quote": "Searched: sensitivity label groups migration GCC GCC High DoD automatic licensing IsLabelGroup MigrateLabelScheme; \"label groups\" \"GCC\" \"migration\" default automatic. Read migration, create-labels, overview and government deployment search excerpts; none states this cloud-specific default.",
       "severity": null,
       "fix": null
-    },
-    {
-      "n": 29,
-      "where": "What's changing; Scope; Open questions",
-      "type": "absence",
-      "claim": "Learn's label-group and migration guidance does not specify the clouds covered by the modern label scheme.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Purview label groups migration GCC GCC High DoD automatic modern label scheme. Read migrate-sensitivity-label-scheme, create-sensitivity-labels and sensitivity-labels; government deployment search excerpts did not identify modern-label-scheme cloud coverage.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 30,
-      "where": "What's changing",
-      "type": "record",
-      "claim": "Roadmap item 386900 lists the same feature for Worldwide (Standard Multi-Tenant).",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "386900: \"title\": \"Microsoft Purview compliance portal: Information Protection - Sensitivity label grouping modernization\", \"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
-      "severity": "minor",
-      "fix": "Add https://www.microsoft.com/microsoft-365/roadmap?id=386900 to sources for the comparison with the Worldwide roadmap entry."
     },
     {
       "n": 31,
+      "where": "What's changing; Scope",
+      "type": "absence",
+      "claim": "The label-group and migration guidance does not name the clouds covered by the modern scheme.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"label groups\" \"GCC\" \"migration\" default automatic. Read https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme and https://learn.microsoft.com/purview/create-sensitivity-labels in full; neither identifies the modern scheme's clouds.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Roadmap item 386900 describes the same grouping modernization for Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "386900: \"title\": \"Microsoft Purview compliance portal: Information Protection - Sensitivity label grouping modernization\", \"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
       "where": "What's changing",
       "type": "record",
       "claim": "Roadmap item 386900 has status Launched.",
@@ -372,7 +394,7 @@
       "fix": null
     },
     {
-      "n": 32,
+      "n": 34,
       "where": "What's changing",
       "type": "record",
       "claim": "Roadmap item 386900 has target December CY2025.",
@@ -383,32 +405,43 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 35,
+      "where": "Why it matters: second paragraph",
+      "type": "absence",
+      "claim": "In the government-cloud context of this paragraph, no source says existing label behaviour changes before an administrator acts.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"label groups\" \"GCC\" \"migration\" default automatic. Read migration, overview and government deployment search excerpts. None specifies a government-cloud change to existing label behaviour before admin action; Learn says groups look and behave the same to users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
       "where": "Risk assessment: Security & identity",
       "type": "behaviour",
-      "claim": "References to the original parent's GUID continue to identify the sublabel rather than the new group.",
+      "claim": "Existing GUID-based references to the applicable parent continue to identify the sublabel, not the new group.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
-      "quote": "Because label GUIDs are unique in your tenant, they are used by backend services and configurations to reliably identify a sensitivity label.",
+      "quote": "Because label GUIDs are unique in your tenant, they are used by backend services and configurations to reliably identify a sensitivity label. To ensure business continuity post migration, the new sublabel inherits the GUID from the applicable parent label",
       "severity": null,
       "fix": null
     },
     {
-      "n": 34,
+      "n": 37,
       "where": "Risk assessment: Autonomy & actions",
       "type": "behaviour",
-      "claim": "Label groups do not themselves apply protection or marking actions to content.",
+      "claim": "Label groups do not themselves apply content protection settings.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
-      "quote": "To reduce complexity, their replacement, label groups, don't support settings other than name, description, color, and priority.",
+      "source": "https://learn.microsoft.com/purview/sensitivity-labels",
+      "quote": "have configuration options only for the settings that they support: the label name, descriptions, color, and priority. You can't publish label groups themselves, only the labels within the groupings.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 35,
+      "n": 38,
       "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "The New label scheme page alerts administrators to naming conflicts that must be resolved before migration.",
+      "claim": "The New label scheme page flags naming conflicts that must be resolved before migration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
       "quote": "This page will also alert you to any naming conflicts that need to be resolved before the migration.",
@@ -416,10 +449,10 @@
       "fix": null
     },
     {
-      "n": 36,
+      "n": 39,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Sublabel names must be different from their parent label's name.",
+      "claim": "Sublabels must have names distinct from their parent's name.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
       "quote": "All sublabels must have a unique name from their parent label.",
@@ -427,10 +460,10 @@
       "fix": null
     },
     {
-      "n": 37,
+      "n": 40,
       "where": "Risk assessment: Change & support; Governance guidance: At rollout",
       "type": "behaviour",
-      "claim": "Microsoft recommends avoiding label-configuration changes while migration is in progress.",
+      "claim": "Microsoft does not recommend editing label configuration during migration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
       "quote": "While the migration is in progress, we don't recommend making any changes to the label configuration",
@@ -438,21 +471,21 @@
       "fix": null
     },
     {
-      "n": 38,
+      "n": 41,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Label-configuration changes made during migration will likely be lost.",
+      "claim": "Label configuration changes made during migration are likely to be lost.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
-      "quote": "we don't recommend making any changes to the label configuration because those changes will likely be lost.",
+      "quote": "While the migration is in progress, we don't recommend making any changes to the label configuration because those changes will likely be lost.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
+      "n": 42,
       "where": "Risk assessment: Change & support; Open questions",
       "type": "behaviour",
-      "claim": "Learn advises allowing up to 24 hours for migration as a precaution.",
+      "claim": "Microsoft says to allow up to 24 hours for migration as a precaution.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
       "quote": "The migration process doesn't take long, typically just a few minutes to an hour. However, as a precaution, allow up to 24 hours.",
@@ -460,10 +493,10 @@
       "fix": null
     },
     {
-      "n": 40,
+      "n": 43,
       "where": "Risk assessment: Change & support",
       "type": "behaviour",
-      "claim": "Sublabels in the same label group do not support justification for lowering sensitivity.",
+      "claim": "Sublabels in the same label group do not support the justification setting for lowering a label.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sensitivity-labels",
       "quote": "If you're using the modern label scheme that replaces parent labels with label groups, sublabels in the same label group also don't support the justification setting.",
@@ -471,21 +504,21 @@
       "fix": null
     },
     {
-      "n": 41,
-      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
+      "n": 44,
+      "where": "front matter: licensing.model and notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "Per-user subscriptions support sensitivity labels for Microsoft 365 apps and services.",
+      "claim": "Sensitivity labels for Microsoft 365 apps and services are supported by per-user subscriptions.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
       "quote": "A number of different per-user subscriptions support sensitivity labels for Microsoft 365 apps and services",
-      "severity": "minor",
-      "fix": "In Cost and licensing, replace \"Learn's sensitivity labels page says\" with \"Learn's Get started with sensitivity labels page says\"; that cited page, not the overview, contains the licensing passage."
+      "severity": null,
+      "fix": null
     },
     {
-      "n": 42,
+      "n": 45,
       "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
       "type": "licensing",
-      "claim": "Sensitivity-label licensing requirements depend on the features used.",
+      "claim": "User licensing requirements depend on the sensitivity-label features used.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
       "quote": "the licensing requirements for users depend on the features you use.",
@@ -493,7 +526,7 @@
       "fix": null
     },
     {
-      "n": 43,
+      "n": 46,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "licensing",
       "claim": "Administrators also need a licence to manage sensitivity labels.",
@@ -504,10 +537,10 @@
       "fix": null
     },
     {
-      "n": 44,
+      "n": 47,
       "where": "Cost and licensing",
       "type": "licensing",
-      "claim": "Learn points to the Microsoft Purview service description for feature-level sensitivity-label licensing.",
+      "claim": "Get started with sensitivity labels points to the Microsoft Purview service description for feature-level licensing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
       "quote": "For sensitivity labels, see the Microsoft Purview Information Protection sensitivity labeling section and related PDF download for feature-level licensing requirements.",
@@ -515,43 +548,43 @@
       "fix": null
     },
     {
-      "n": 45,
-      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost; Open questions",
+      "n": 48,
+      "where": "front matter: licensing.notes; Cost and licensing; Open questions; rationale: cost",
       "type": "absence",
-      "claim": "No licence specific to label groups or their migration is published as of November 2026.",
+      "claim": "No licensing requirement specific to label groups or migration is published as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Purview label groups licensing price meter migrate sensitivity label scheme. Read migration, get-started and creation pages; searched the Purview service description for label groups and modern label migration. No group- or migration-specific entitlement was found.",
+      "quote": "Searched: \"sensitivity label groups\" licensing price meter. Read migration, create-labels, get-started and the Purview service description sensitivity-labeling section; they give general sensitivity-label licensing, not a separate label-group or migration entitlement.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 46,
+      "n": 49,
       "where": "Cost and licensing; rationale: cost",
       "type": "absence",
-      "claim": "No meter specific to label groups or their migration is published as of November 2026.",
+      "claim": "No meter specific to label groups or migration is published as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Purview label groups licensing price meter migrate sensitivity label scheme. Read migration and get-started pages and the service description's Information Protection section; no label-group or migration meter was identified.",
+      "quote": "Searched: \"sensitivity label groups\" licensing price meter. Read migration, create-labels, get-started licensing and the Purview service description sensitivity-labeling section; no group-creation or migration meter is stated.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 47,
+      "n": 50,
       "where": "front matter: licensing.notes; Cost and licensing",
       "type": "absence",
-      "claim": "No price specific to label groups or their migration is published as of November 2026.",
+      "claim": "No price specific to label groups or migration is published as of November 2026.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: Purview label groups licensing price meter migrate sensitivity label scheme. Read migration, get-started, creation and the service description's sensitivity-labeling section; no separate label-group or migration price was found.",
+      "quote": "Searched: \"sensitivity label groups\" licensing price meter. Read migration, create-labels, get-started licensing and the Purview service description sensitivity-labeling section; no group-specific or migration-specific price is stated.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 48,
+      "n": 51,
       "where": "Scope",
       "type": "availability",
-      "claim": "Learn's overview says sensitivity labels are supported for all platforms for US Government tenants.",
+      "claim": "Learn's overview says sensitivity labels are supported for all platforms in US Government tenants.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sensitivity-labels",
       "quote": "For US Government tenants, sensitivity labels are supported for all platforms.",
@@ -559,10 +592,10 @@
       "fix": null
     },
     {
-      "n": 49,
+      "n": 52,
       "where": "Scope; Governance controls",
       "type": "role",
-      "claim": "The get-started page lists Information Protection role groups for creating and managing sensitivity labels.",
+      "claim": "Learn lists the Information Protection role groups for permissions to create and manage labels.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
       "quote": "You can use the following role groups: Information Protection; Information Protection Admins; Information Protection Analysts; Information Protection Investigators; Information Protection Readers",
@@ -570,10 +603,10 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 53,
       "where": "Scope",
       "type": "role",
-      "claim": "A custom role group with the Sensitivity Label Administrator role is another documented permissions option.",
+      "claim": "A new role group can be given the Sensitivity Label Administrator role.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
       "quote": "Alternatively to using the default role groups, you can create a new role group and add the Sensitivity Label Administrator role to this group.",
@@ -581,10 +614,10 @@
       "fix": null
     },
     {
-      "n": 51,
+      "n": 54,
       "where": "Scope; Governance controls",
       "type": "role",
-      "claim": "The get-started page also lists Compliance Data Administrator, Compliance Administrator and Security Administrator role groups.",
+      "claim": "Learn also lists Compliance Data Administrator, Compliance Administrator and Security Administrator role groups.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/get-started-with-sensitivity-labels",
       "quote": "Another option is to add users to the Compliance Data Administrator, Compliance Administrator, or Security Administrator role group.",
@@ -592,10 +625,10 @@
       "fix": null
     },
     {
-      "n": 52,
+      "n": 55,
       "where": "Scope",
       "type": "role",
-      "claim": "The migration prerequisites require permissions to create and manage sensitivity labels.",
+      "claim": "Before migration, administrators must have permissions to create and manage sensitivity labels.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
       "quote": "First, make sure you have permissions to create and manage sensitivity labels.",
@@ -603,10 +636,120 @@
       "fix": null
     },
     {
-      "n": 53,
+      "n": 56,
+      "where": "controls[0].ui; rendered controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "The printed Microsoft Purview portal route reaches migration through Sensitivity labels, the migration banner, Get started, Review new scheme, New label scheme and Migrate.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
+      "quote": "Solutions > Information Protection > Sensitivity labels; From this banner, select Get started; select the Review new scheme button; The New label scheme page; select the Migrate button.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "controls[0].api; rendered controls table; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No documented operation with a stated migration effect is supplied for automating the migration.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Set-PolicyConfig\" \"MigrateLabelScheme\" migration. Read migration and the Set-PolicyConfig reference's matching parameter sections; the switch is listed but its description is a placeholder, and no returned passage states its migration effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "Set-PolicyConfig lists the MigrateLabelScheme switch.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig",
+      "quote": "[-MigrateLabelScheme]; Type: SwitchParameter",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "controls[0].note; Governance controls",
+      "type": "absence",
+      "claim": "The Set-PolicyConfig reference does not describe the effect of MigrateLabelScheme.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Set-PolicyConfig\" \"MigrateLabelScheme\" migration; searched the fetched reference for MigrateLabelScheme. Its description is '{{ Fill MigrateLabelScheme Description }}', followed by parameter properties, not an explanation of its effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "controls[1].ui; rendered controls table; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels > + Create > Label group starts label-group creation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "Sign in to the Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels. Select + Create and then Label group to start the new label group configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[1].api; rendered controls table; Governance controls",
+      "type": "absence",
+      "claim": "No verified automation call with a documented label-group creation effect is given.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"New-Label\" \"IsLabelGroup\" create label group. Read create-labels and the New-Label reference's IsLabelGroup section; the switch is listed but its effect is not described. No returned passage supplies an explained label-group creation operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "controls[1].note; Governance controls",
+      "type": "command",
+      "claim": "New-Label lists the IsLabelGroup switch.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-label",
+      "quote": "[-IsLabelGroup]; Type: SwitchParameter",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "controls[1].note; Governance controls",
+      "type": "absence",
+      "claim": "The New-Label reference does not describe the effect of IsLabelGroup.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"New-Label\" \"IsLabelGroup\" create label group; searched the fetched reference for IsLabelGroup. Its description is '{{ Fill IsLabelGroup Description }}', followed by parameter properties, not an explanation of its effect.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "controls[2].ui; rendered controls table; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "The printed Publishing policies > policy > Edit Policy > Choose sensitivity labels to publish > Choose sensitivity labels to publish route reaches the label-selection control.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
+      "quote": "Solutions > Information Protection > Publishing policies. To edit an existing label policy, select it, and then select the Edit Policy button. On the Choose sensitivity labels to publish page, select the Choose sensitivity labels to publish link.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "controls[2].api and note; rendered controls table; Governance guidance: At rollout",
+      "type": "command",
+      "claim": "Set-LabelPolicy -Identity <policy> -RemoveLabels <label> unpublishes the new sublabels in Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
+      "quote": "These PowerShell commands use Security & Compliance PowerShell. Script Two: As soon as migration is complete, run the following script to unpublish the newly created sublabels from applicable parent labels: Set-LabelPolicy -Identity $policyToRemove -RemoveLabels $_",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
       "where": "Governance guidance: Before rollout",
       "type": "command",
-      "claim": "Script One on the migration page records policies that publish parent labels before migration.",
+      "claim": "Script One on the migration page fetches policies publishing parent labels before migration.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
       "quote": "Script One: Before the migration, run the following command to fetch all policies that publish parent labels.",
@@ -614,21 +757,10 @@
       "fix": null
     },
     {
-      "n": 54,
-      "where": "Governance guidance: At rollout; Governance controls",
-      "type": "applicability",
-      "claim": "New same-name sublabels can be unpublished by editing their label policies or using Script Two.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
-      "quote": "If you decide to unpublish these new sublabels, you can do this manually, or use PowerShell scripts to automatically unpublish them.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 55,
+      "n": 67,
       "where": "Governance guidance: Before rollout",
       "type": "behaviour",
-      "claim": "Microsoft recommends testing migration in a test tenant with the same label configurations as production.",
+      "claim": "Microsoft recommends testing migration in a test tenant with the production tenant's sensitivity-label configurations.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
       "quote": "We highly recommend that you first test the migration by using a test tenant that has the same sensitivity label configurations as your production tenant.",
@@ -636,10 +768,10 @@
       "fix": null
     },
     {
-      "n": 56,
+      "n": 68,
       "where": "Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "The Sensitivity labels page displays confirmation when migration completes.",
+      "claim": "The portal shows a message confirming migration completion.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
       "quote": "When the migration is complete, the browser refreshes, and the new label scheme is displayed with a message to confirm that the migration is complete.",
@@ -647,141 +779,69 @@
       "fix": null
     },
     {
-      "n": 57,
+      "n": 69,
       "where": "Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Learn advises allowing 24 hours for label and policy changes to propagate before troubleshooting.",
+      "claim": "Microsoft advises allowing 24 hours for label and policy changes before troubleshooting.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
-      "quote": "For labels and label policy settings, allow 24 hours for the changes to propagate through the services.",
+      "quote": "For labels and label policy settings, allow 24 hours for the changes to propagate through the services. There are many external dependencies that each have their own timing cycles, so it's a good idea to wait this 24-hour time period before you spend time troubleshooting",
       "severity": null,
       "fix": null
     },
     {
-      "n": 58,
+      "n": 70,
+      "where": "Governance controls; Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Unpublishing a new same-name sublabel is done through its label policy rather than on the label.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
+      "quote": "Script Two: As soon as migration is complete, run the following script to unpublish the newly created sublabels from applicable parent labels: Set-LabelPolicy -Identity $policyToRemove -RemoveLabels $_",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
       "where": "rationale: impact",
       "type": "behaviour",
-      "claim": "Learn says label groups look and behave the same to users.",
+      "claim": "Label groups look and behave the same to users as parent labels.",
       "status": "supported",
       "source": "https://learn.microsoft.com/purview/sensitivity-labels",
-      "quote": "Label groups look and behave the same to users",
+      "quote": "To reduce this complexity, label groups are now replacing parent labels. Label groups look and behave the same to users",
       "severity": null,
       "fix": null
     },
     {
-      "n": 59,
-      "where": "controls[0].note; Governance controls; Open questions",
-      "type": "absence",
-      "claim": "The Set-PolicyConfig reference lists MigrateLabelScheme but supplies placeholder text instead of a behavioural description.",
+      "n": 72,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record's modification timestamp is 2026-09-28T22:58:08.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig",
-      "quote": "### -MigrateLabelScheme\n{{ Fill MigrateLabelScheme Description }}\nType: SwitchParameter",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-09-28T22:58:08\"",
       "severity": null,
       "fix": null
-    },
-    {
-      "n": 60,
-      "where": "controls[1].note; Governance controls",
-      "type": "absence",
-      "claim": "The New-Label reference lists IsLabelGroup without a behavioural description.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-label",
-      "quote": "### -IsLabelGroup\n{{ Fill IsLabelGroup Description }}\nType: SwitchParameter",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 61,
-      "where": "controls[0].ui; Governance controls table; Governance guidance",
-      "type": "admin-path",
-      "claim": "Migration is reached through Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels > Migrate to the modern label scheme > Get started > Review new scheme > Migrate.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
-      "quote": "For more details, select the Review new scheme button at the bottom of the pane.\nThe New label scheme page shows you how your migrated labels will look\nWhen you're ready to migrate your labels, select the Migrate button.",
-      "severity": "minor",
-      "fix": "Use the full path \"Solutions > Information Protection > Sensitivity labels > Migrate to the modern label scheme > Get started > Review new scheme > New label scheme > Migrate\" in controls[0].ui and the rendered row; the omitted New label scheme is a page reached without another choice."
-    },
-    {
-      "n": 62,
-      "where": "controls[0].api; Governance controls table",
-      "type": "command",
-      "claim": "Set-PolicyConfig -MigrateLabelScheme performs the tenant's migration from parent labels to label groups.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: Set-PolicyConfig MigrateLabelScheme New-Label IsLabelGroup creates label group; \"MigrateLabelScheme\" migration sensitivity labels PowerShell. Read Set-PolicyConfig and migration guidance. The switch exists, but its description is a placeholder; no passage states its effect.",
-      "severity": "blocker",
-      "fix": "Set controls[0].api to null and render that side as Not yet documented. Keep the portal path. Replace the row note with \"Banner appears only where migration is available. The Set-PolicyConfig reference lists -MigrateLabelScheme but does not document its effect; no verified migration call is given here.\" A caution to test does not establish what the call does."
-    },
-    {
-      "n": 63,
-      "where": "controls[1].ui; Governance controls table; Governance guidance: At rollout",
-      "type": "admin-path",
-      "claim": "Label-group creation is reached through Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels > + Create > Label group.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
-      "quote": "Sign in to the Microsoft Purview portal > Solutions > Information Protection > Sensitivity labels\nSelect + Create and then Label group to start the new label group configuration.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 64,
-      "where": "controls[1].api; Governance controls table",
-      "type": "command",
-      "claim": "New-Label -Name <name> -DisplayName <display name> -Tooltip <tooltip> -IsLabelGroup creates a label group.",
-      "status": "unsupported",
-      "source": null,
-      "quote": "Searched: \"IsLabelGroup\" \"create\" label group PowerShell; Set-PolicyConfig MigrateLabelScheme New-Label IsLabelGroup creates label group. Read New-Label and creation guidance. All printed parameters exist, but IsLabelGroup has no description stating that it creates a group.",
-      "severity": "blocker",
-      "fix": "Set controls[1].api to null and render that side as Not yet documented. Replace its note with \"The New-Label reference lists -IsLabelGroup but does not document its effect; no verified label-group creation call is given here.\" Keep the documented portal path rather than inferring the switch's effect from its name."
-    },
-    {
-      "n": 65,
-      "where": "controls[2].ui; Governance controls table",
-      "type": "admin-path",
-      "claim": "The policy-publishing control is reached through Microsoft Purview portal > Solutions > Information Protection > Publishing policies > policy > Edit Policy.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/create-sensitivity-labels",
-      "quote": "To edit an existing label policy, select it, and then select the Edit Policy button from the flyout pane:\nThis action starts the Create policy configuration, which lets you edit which labels are included and the label settings.",
-      "severity": "minor",
-      "fix": "Extend controls[2].ui and its rendered row to \"Solutions > Information Protection > Publishing policies > policy > Edit Policy > Choose sensitivity labels to publish > Choose sensitivity labels to publish\". The first final step is the wizard page and the second is its link for selecting labels, as documented at https://learn.microsoft.com/purview/create-sensitivity-labels."
-    },
-    {
-      "n": 66,
-      "where": "controls[2].api; controls[2].note; Governance controls table",
-      "type": "command",
-      "claim": "Set-LabelPolicy -Identity <policy> -RemoveLabels <label> unpublishes the newly created same-name sublabel using Security & Compliance PowerShell.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/purview/migrate-sensitivity-label-scheme",
-      "quote": "These PowerShell commands use Security & Compliance PowerShell.\nScript Two: As soon as migration is complete, run the following script to unpublish the newly created sublabels\nSet-LabelPolicy -Identity $policyToRemove -RemoveLabels $_",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 67,
-      "where": "Governance guidance: After rollout; Governance controls table",
-      "type": "consistency",
-      "claim": "The checklist tells administrators to edit retained same-name sublabels, but the controls table has no row for editing a label's settings.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "After rollout: \"Edit any same-name sublabel you left published before users rely on it.\" The table covers migration, label-group creation and policy publishing, not editing a label.",
-      "severity": "minor",
-      "fix": "Remove \"Edit any same-name sublabel you left published before users rely on it\" from the After rollout checklist. Keep the existing policy-publishing control; do not add an unverified control row."
     }
   ],
   "precheck": {
-    "at": "2026-11-21T20:02:38.664Z",
+    "at": "2026-11-21T20:54:37.628Z",
     "summary": {
-      "links": 7,
+      "links": 8,
       "unreachable": 0,
       "uiPaths": 3,
       "uiPathsWithMissingWords": 0,
-      "apiCalls": 3,
+      "apiCalls": 1,
       "apiCallsNotOnPage": 0,
       "roadmapDrift": 0
     },
     "linkChecks": [
       {
         "url": "https://www.microsoft.com/microsoft-365/roadmap?id=386901",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=386900",
         "ok": true,
         "status": 200
       },
@@ -830,18 +890,10 @@
           "Migrate to the modern label scheme",
           "Get started",
           "Review new scheme",
+          "New label scheme",
           "Migrate"
         ],
         "missing": []
-      },
-      {
-        "index": 0,
-        "side": "api",
-        "governs": "Migration of parent labels to label groups",
-        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig",
-        "reachable": true,
-        "token": "Set-PolicyConfig",
-        "found": true
       },
       {
         "index": 1,
@@ -859,15 +911,6 @@
         "missing": []
       },
       {
-        "index": 1,
-        "side": "api",
-        "governs": "Creating a label group to hold labels",
-        "docs": "https://learn.microsoft.com/powershell/module/exchangepowershell/new-label",
-        "reachable": true,
-        "token": "New-Label",
-        "found": true
-      },
-      {
         "index": 2,
         "side": "ui",
         "governs": "Which labels a policy publishes, including new same-name sublabels",
@@ -877,7 +920,9 @@
           "Solutions",
           "Information Protection",
           "Publishing policies",
-          "Edit Policy"
+          "Edit Policy",
+          "Choose sensitivity labels to publish",
+          "Choose sensitivity labels to publish"
         ],
         "missing": []
       },
@@ -893,5 +938,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-21",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

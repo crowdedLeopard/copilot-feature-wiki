@@ -2,39 +2,33 @@
   "slug": "sharepoint-cross-post-sharepoint-news-to-engage",
   "roadmapId": 568074,
   "title": "SharePoint News: cross-post published news posts to Viva Engage communities and storylines",
-  "status": "held",
+  "status": "verified",
   "date": "2026-11-21",
-  "version": 1,
+  "version": 2,
   "model": "gpt-6.1-sol",
   "engine": "copilot",
-  "attempts": 1,
+  "attempts": 0,
   "standard": "8d9ea11d6387",
   "writerStandard": "09a7e0bf2292",
-  "verifierVerdict": "hold",
+  "verifierVerdict": "pass",
   "notes": [],
-  "hold": {
-    "reason": "failed",
-    "since": "2026-11-21",
-    "reasons": [
-      "2 blocking findings (claims 42, 46)"
-    ]
-  },
+  "hold": null,
   "counts": {
-    "claims": 54,
-    "confirmed": 51,
+    "claims": 75,
+    "confirmed": 75,
     "unconfirmed": 0,
-    "contradicted": 3,
-    "blocker": 2,
+    "contradicted": 0,
+    "blocker": 0,
     "major": 0,
-    "minor": 3
+    "minor": 0
   },
-  "summary": "Hold: the storyline restriction path omits the Edit step needed to reach the setting. The checklist also incorrectly links announcement permissions to posting as another person; Microsoft documents delegation as that requirement.",
+  "summary": "The briefing passes: its rollout facts, publishing permissions, licensing qualifications and storyline control match Microsoft's sources. Targeted searches confirmed the narrowly stated gaps for a cross-posting tenant switch and storyline-creator automation.",
   "claims": [
     {
       "n": 1,
-      "where": "title; summary; What's changing; Why it matters",
+      "where": "title; summary; What's changing; Scope",
       "type": "behaviour",
-      "claim": "Publishers can distribute a published SharePoint news post to an Engage community or storyline.",
+      "claim": "Publishers can distribute a published SharePoint news post to a Viva Engage community or storyline.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
       "quote": "SharePoint News to Engage cross-posting lets creators distribute a published SharePoint News post to a Viva Engage community or storyline.",
@@ -43,6 +37,17 @@
     },
     {
       "n": 2,
+      "where": "summary; What's changing; Why it matters; Governance guidance",
+      "type": "behaviour",
+      "claim": "Comments are shared and synchronized across SharePoint and Engage as one discussion.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
+      "quote": "Comments and reactions are synchronized across SharePoint and Engage. A person can engage from either product, and participate in the same discussion for the news post.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
       "where": "front matter: status; summary; What's changing",
       "type": "record",
       "claim": "The roadmap status is Launched.",
@@ -53,7 +58,40 @@
       "fix": null
     },
     {
-      "n": 3,
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the roadmap record.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Android, Desktop, iOS, Mac and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
       "where": "front matter: targetDate; What's changing",
       "type": "record",
       "claim": "The roadmap target is September CY2026.",
@@ -64,10 +102,10 @@
       "fix": null
     },
     {
-      "n": 4,
+      "n": 8,
       "where": "front matter: previewDate",
       "type": "record",
-      "claim": "The record gives no preview date.",
+      "claim": "The roadmap record supplies no preview date.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"previewDate\": null",
@@ -75,54 +113,21 @@
       "fix": null
     },
     {
-      "n": 5,
-      "where": "front matter: releasePhase; What's changing",
-      "type": "record",
-      "claim": "The release phase is General Availability.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"releasePhase\": [ \"General Availability\" ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 6,
-      "where": "front matter: clouds; What's changing; Scope",
-      "type": "record",
-      "claim": "Worldwide (Standard Multi-Tenant) is the only cloud listed in the record.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"clouds\": [ \"Worldwide (Standard Multi-Tenant)\" ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 7,
-      "where": "front matter: platforms; What's changing; Scope",
-      "type": "record",
-      "claim": "The roadmap platforms are Android, Desktop, iOS, Mac and Web.",
-      "status": "supported",
-      "source": "roadmap record",
-      "quote": "\"platforms\": [ \"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Web\" ]",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 8,
+      "n": 9,
       "where": "front matter: products",
       "type": "record",
-      "claim": "The record identifies SharePoint and Microsoft Viva as the products.",
+      "claim": "The roadmap products are SharePoint and Microsoft Viva.",
       "status": "supported",
       "source": "roadmap record",
-      "quote": "\"products\": [ \"SharePoint\", \"Microsoft Viva\" ]",
+      "quote": "\"products\": [\"SharePoint\", \"Microsoft Viva\"]",
       "severity": null,
       "fix": null
     },
     {
-      "n": 9,
+      "n": 10,
       "where": "front matter: roadmapModified",
       "type": "record",
-      "claim": "The roadmap was modified on 19 November 2026 at 21:32:07.",
+      "claim": "The roadmap record was modified at 2026-11-19T21:32:07.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "\"modified\": \"2026-11-19T21:32:07\"",
@@ -130,21 +135,274 @@
       "fix": null
     },
     {
-      "n": 10,
-      "where": "What's changing; Governance guidance: At rollout",
-      "type": "admin-path",
-      "claim": "The published news workflow uses Amplify or Promote, the Engage card, Post as, Post to and Distribute.",
+      "n": 11,
+      "where": "front matter: defaultState; Why it matters",
+      "type": "default",
+      "claim": "Cross-posting is user-opt-in: distribution starts only when a publisher chooses Engage after publishing.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
-      "quote": "Open the published news post and select Amplify or Promote on the command bar. ... In the panel, select the Engage card. ... Under Post as, confirm the publisher's identity. ... Under Post to, select an Engage community or storyline ... Select Distribute to share the post.",
+      "quote": "The cross-posting action starts in SharePoint after the news post is published. The publisher then chooses Engage from the SharePoint amplification experience and configures the Engage destination.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 11,
-      "where": "What's changing; Risk assessment: Change & support; Governance guidance: At rollout",
+      "n": 12,
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The basic cross-posting capability is included with a Microsoft 365 license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
+      "quote": "The feature is available to all users with a Microsoft 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "The cross-post page states that the feature is available to all users with a Microsoft 365 license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
+      "quote": "The feature is available to all users with a Microsoft 365 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Engage setup page lists delegation as a premium Viva Engage experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/setup",
+      "quote": "Engage premium experiences Example: Leadership corner, AMAs (Ask Me Anything), storyline announcements, delegation, analytics, and campaigns",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The Engage setup page lists storyline announcements as a premium Viva Engage experience.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/setup",
+      "quote": "Engage premium experiences Example: Leadership corner, AMAs (Ask Me Anything), storyline announcements, delegation, analytics, and campaigns",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "Premium Viva Engage experiences come with Microsoft Viva Suite or Microsoft Viva Employee Communications and Communities.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/setup",
+      "quote": "Your organization can use premium Viva Engage experiences if your tenant owns either of these plans:\n- Microsoft Viva Suite\n- Microsoft Viva Employee Communications and Communities",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "If Viva Engage licensing is enforced, each user needs a Microsoft 365 license.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/setup",
+      "quote": "If you do enforce Viva Engage licensing, users access the Viva Engage Core experience, but each user must have the following:\n- a Microsoft 365 license.\n- a Viva Engage Core Service Plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "If Viva Engage licensing is enforced, each user also needs a Viva Engage Core Service Plan.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/setup",
+      "quote": "If you do enforce Viva Engage licensing, users access the Viva Engage Core experience, but each user must have the following:\n- a Microsoft 365 license.\n- a Viva Engage Core Service Plan.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0].ui; Governance controls",
+      "type": "admin-path",
+      "claim": "The storyline-creator setting is at Engage admin center > Feature management > Storyline > Advanced Settings > Edit > Specify storyline creators.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-storyline",
+      "quote": "from the Engage admin center, go to Feature management > Storyline.\n2. Select Edit in Advanced Settings.\n3. Switch Specify storyline creators to Eligible users from selected group.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].api; Governance controls",
+      "type": "absence",
+      "claim": "No API or automation is documented for the Specify storyline creators setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Viva Engage Specify storyline creators setting API PowerShell Microsoft Graph storyline privileges selected group. Opened eac-storyline, Graph engagement-api-overview and beta storyline resource; found community/role and following APIs, not a creator-setting operation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[1]; summary; Why it matters; Governance controls; rationale: risk",
+      "type": "absence",
+      "claim": "Microsoft Learn documents no tenant-wide UI or API switch for SharePoint News to Engage cross-posting as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint News Viva Engage cross-posting tenant admin setting disable turn off PowerShell Set-SPOTenant; \"Set-SPOTenant\" \"Engage\" \"cross\"; \"SharePoint\" \"cross-post\" \"tenant\" \"disable\". Read cross-post, setup, Graph overview and Set-SPOTenant excerpts; no such switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "controls[0].note; Governance guidance; Governance controls",
       "type": "behaviour",
-      "claim": "The Amplify or Promote label depends on the publisher's assigned licence.",
+      "claim": "The storyline-creator setting controls who has a storyline feed on their user profile.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-storyline",
+      "quote": "This setting controls who has a storyline feed on their user profile and who can create new storyline posts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "controls[0].governs; controls[0].note; Governance guidance; Governance controls",
+      "type": "applicability",
+      "claim": "The storyline-creator setting limits who can create new storyline posts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-storyline",
+      "quote": "By default, all internal Viva Engage users can post to their own storyline feed. Admins can override the default and limit this option to specific users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "The storyline-creator setting does not restrict viewing other people's storyline posts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-storyline",
+      "quote": "It doesn’t restrict who can view, react, or reply to storyline posts made by others.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "The storyline-creator setting does not restrict reacting to other people's storyline posts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-storyline",
+      "quote": "It doesn’t restrict who can view, react, or reply to storyline posts made by others.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].note; Governance controls",
+      "type": "applicability",
+      "claim": "The storyline-creator setting does not restrict replying to other people's storyline posts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-storyline",
+      "quote": "It doesn’t restrict who can view, react, or reply to storyline posts made by others.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[0].scope; Governance controls",
+      "type": "applicability",
+      "claim": "Storyline-creator configuration has tenant scope.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
+      "quote": "Manage storylines for the tenant (storyline creation access management, setting default notifications, etc.)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].note; Scope; Governance controls",
+      "type": "role",
+      "claim": "Network Administrators can manage storylines for the tenant.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
+      "quote": "Network Administrator\nPermissions\nManage storylines for the tenant (storyline creation access management, setting default notifications, etc.)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing; Why it matters; Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "The cross-posting action starts in SharePoint after the news post is published.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
+      "quote": "The cross-posting action starts in SharePoint after the news post is published.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Publishers open the published news post and select Amplify or Promote on the command bar.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
+      "quote": "Open the published news post and select Amplify or Promote on the command bar.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "After Amplify or Promote, publishers select the Engage card in the panel.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
+      "quote": "In the panel, select the Engage card.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "admin-path",
+      "claim": "Publishers confirm the posting identity under Post as before distributing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
+      "quote": "Review the posting identity and destination before publishing the cross-post.\nUnder Post as, confirm the publisher's identity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "What's changing; Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "admin-path",
+      "claim": "Publishers select the destination community or storyline under Post to before distributing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
+      "quote": "Under Post to, select an Engage community or storyline where the posting identity has permission to publish.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "admin-path",
+      "claim": "Publishers select Distribute to share the configured post.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
+      "quote": "Select Distribute to share the post. Keep this window open until the successful distribution screen appears.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "What's changing; Risk assessment: Change & support; Governance guidance",
+      "type": "behaviour",
+      "claim": "The Amplify or Promote command label depends on the publisher's assigned license.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
       "quote": "Depending on the publisher’s assigned license, the command may be labeled Amplify or Promote. The workflow is the same.",
@@ -152,21 +410,32 @@
       "fix": null
     },
     {
-      "n": 12,
+      "n": 36,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "The Engage feed displays the cross-post as a SharePoint news post with its SharePoint layout.",
+      "claim": "The cross-post preserves the SharePoint news layout.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
-      "quote": "The cross-post appears in Engage feeds as a SharePoint news post, not as a separate copy of the content. The card carries the news post into Engage while preserving the full SharePoint layout.",
+      "quote": "The card carries the news post into Engage while preserving the full SharePoint layout.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 13,
+      "n": 37,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "The cross-post appears in Engage feeds as a SharePoint news post.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
+      "quote": "The cross-post appears in Engage feeds as a SharePoint news post, not as a separate copy of the content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
       "where": "What's changing",
       "type": "behaviour",
-      "claim": "View full news opens the complete post without leaving Engage.",
+      "claim": "View full news opens the complete news post without leaving Engage.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
       "quote": "An in-feed reading experience; users can select View full news to open the complete SharePoint news post without leaving Engage.",
@@ -174,18 +443,18 @@
       "fix": null
     },
     {
-      "n": 14,
-      "where": "summary; What's changing; Why it matters; Governance guidance: At rollout; rationales",
+      "n": 39,
+      "where": "What's changing",
       "type": "behaviour",
-      "claim": "Comments and reactions are synchronised between SharePoint and Engage as one discussion.",
+      "claim": "Reactions are synchronized across SharePoint and Engage.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
-      "quote": "Comments and reactions are synchronized across SharePoint and Engage. A person can engage from either product, and participate in the same discussion for the news post.",
+      "quote": "Comments and reactions are synchronized across SharePoint and Engage.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 15,
+      "n": 40,
       "where": "What's changing; rationale: impact",
       "type": "record",
       "claim": "The roadmap says distribution replaces the SharePoint News comments module with the Engage conversation module.",
@@ -196,10 +465,10 @@
       "fix": null
     },
     {
-      "n": 16,
-      "where": "What's changing; rationales: risk and impact",
+      "n": 41,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure; rationale: impact",
       "type": "record",
-      "claim": "The roadmap describes distribution across feeds, digests, Outlook, Teams and desktop, web and mobile apps.",
+      "claim": "The roadmap describes the post appearing across Engage feeds, digests, Outlook, Teams, desktop, web and mobile apps.",
       "status": "supported",
       "source": "roadmap record",
       "quote": "SharePoint News post will appear consistently in Engage across feeds, digests, Outlook, Teams, desktop, web and mobile apps.",
@@ -207,10 +476,10 @@
       "fix": null
     },
     {
-      "n": 17,
+      "n": 42,
       "where": "What's changing",
       "type": "record",
-      "claim": "MC1466762 was published on 3 September 2026 and updated on 8 September 2026.",
+      "claim": "Microsoft's notice MC1466762 was published on 3 September 2026.",
       "status": "supported",
       "source": "Message Center post MC1466762",
       "quote": "Published 2026-09-03; last updated 2026-09-08",
@@ -218,10 +487,21 @@
       "fix": null
     },
     {
-      "n": 18,
+      "n": 43,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Microsoft's notice MC1466762 was updated on 8 September 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1466762",
+      "quote": "Updated September 8, 2026: We have updated the content.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
       "where": "What's changing; Scope; front matter: changes",
       "type": "record",
-      "claim": "MC1466762 gave an expected rollout from late September to late October 2026.",
+      "claim": "MC1466762 gave late September 2026 as the start of Worldwide General Availability rollout.",
       "status": "supported",
       "source": "Message Center post MC1466762",
       "quote": "General Availability (Worldwide): We will begin rolling out on late September 2026 and expect to complete by late October 2026.",
@@ -229,7 +509,18 @@
       "fix": null
     },
     {
-      "n": 19,
+      "n": 45,
+      "where": "What's changing; Scope; front matter: changes",
+      "type": "record",
+      "claim": "MC1466762 gave late October 2026 as the expected rollout completion.",
+      "status": "supported",
+      "source": "Message Center post MC1466762",
+      "quote": "General Availability (Worldwide): We will begin rolling out on late September 2026 and expect to complete by late October 2026.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
       "where": "What's changing",
       "type": "record",
       "claim": "MC1466762 sets no act-by date.",
@@ -240,10 +531,10 @@
       "fix": null
     },
     {
-      "n": 20,
-      "where": "What's changing; Cost and licensing; rationale: cost",
+      "n": 47,
+      "where": "What's changing; Cost and licensing",
       "type": "record",
-      "claim": "Microsoft suggests informing users or refreshing training on distributing content from SharePoint to Engage.",
+      "claim": "MC1466762 suggests that admins tell users about the change.",
       "status": "supported",
       "source": "Message Center post MC1466762",
       "quote": "Admins may want to let users know about this change or refresh any training on distributing content from SharePoint to Engage.",
@@ -251,43 +542,21 @@
       "fix": null
     },
     {
-      "n": 21,
-      "where": "front matter: defaultState; Why it matters; Risk assessment: Autonomy & actions",
-      "type": "default",
-      "claim": "Cross-posting is user-opt-in: a publisher chooses Engage after publishing the news post.",
+      "n": 48,
+      "where": "What's changing; Cost and licensing; rationale: cost",
+      "type": "record",
+      "claim": "MC1466762 suggests refreshing training on distributing content from SharePoint to Engage.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
-      "quote": "The cross-posting action starts in SharePoint after the news post is published. The publisher then chooses Engage from the SharePoint amplification experience and configures the Engage destination.",
+      "source": "Message Center post MC1466762",
+      "quote": "Admins may want to let users know about this change or refresh any training on distributing content from SharePoint to Engage.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 22,
-      "where": "controls[1].ui and controls[1].api; summary; Why it matters; Governance controls; rationale: risk",
-      "type": "absence",
-      "claim": "Microsoft documents no tenant-wide on/off switch for SharePoint News to Engage cross-posting in November 2026.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: SharePoint News Viva Engage cross-post disable tenant switch Set-SPOTenant Amplify Promote admin; Set-SPOTenant SharePoint news cross posting Engage disable switch. Read cross-post, storyline, setup and Graph Engage overview pages; no feature-wide switch found.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 23,
-      "where": "Why it matters; Risk assessment: Security & identity; Cost and licensing; Scope; Governance controls",
-      "type": "role",
-      "claim": "Publishers need permission to publish to their selected Engage destination.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
-      "quote": "A publisher can cross-post only to an Engage storyline or community where they have permission to publish.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 24,
+      "n": 49,
       "where": "Why it matters; Risk assessment: Security & identity; Scope; Governance controls; rationale: risk",
       "type": "role",
-      "claim": "Cross-posting requires create or edit permissions on the SharePoint site.",
+      "claim": "Publishers need create or edit permissions on the SharePoint site to cross-post.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
       "quote": "Users must have create or edit permissions on the SharePoint site to cross-post to Engage.",
@@ -295,29 +564,29 @@
       "fix": null
     },
     {
-      "n": 25,
-      "where": "Risk assessment: Data exposure; Why it matters; rationale: impact",
-      "type": "behaviour",
-      "claim": "Readers can see cross-posts and receive notifications across Engage integrations, including Teams and Outlook.",
+      "n": 50,
+      "where": "Why it matters; Risk assessment: Security & identity; Cost and licensing; Scope; Governance controls",
+      "type": "role",
+      "claim": "A publisher can cross-post only to an Engage destination where they have publishing permission.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
-      "quote": "The cross-post appears across all Engage integrations. Users can see the content and receive notifications in Teams, Outlook, and other experiences across mobile and SharePoint.",
+      "quote": "A publisher can cross-post only to an Engage storyline or community where they have permission to publish.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 26,
+      "n": 51,
       "where": "Risk assessment: Data exposure",
       "type": "behaviour",
-      "claim": "The chosen Engage community or storyline is the cross-post destination.",
+      "claim": "The cross-post's audience is set by the community or storyline chosen as its destination.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
-      "quote": "Under Post to, select an Engage community or storyline where the posting identity has permission to publish.",
+      "quote": "Under Post to, select an Engage community or storyline where the posting identity has permission to publish.\nThe SharePoint news post is then distributed to the selected Engage destination.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 27,
+      "n": 52,
       "where": "Risk assessment: Data exposure",
       "type": "availability",
       "claim": "Storyline content is visible to any internal user with access to Viva Engage.",
@@ -328,7 +597,7 @@
       "fix": null
     },
     {
-      "n": 28,
+      "n": 53,
       "where": "Risk assessment: Data exposure",
       "type": "availability",
       "claim": "Guests cannot see storyline content.",
@@ -339,10 +608,10 @@
       "fix": null
     },
     {
-      "n": 29,
-      "where": "Risk assessment: Security & identity; Cost and licensing; Governance guidance: At rollout",
-      "type": "role",
-      "claim": "Publishers may post as themselves or as another person for whom they are an Engage delegate.",
+      "n": 54,
+      "where": "Risk assessment: Security & identity",
+      "type": "behaviour",
+      "claim": "A publisher can cross-post as themselves.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
       "quote": "The publisher can post as themselves or on behalf of a person for whom they are an Engage delegate.",
@@ -350,7 +619,18 @@
       "fix": null
     },
     {
-      "n": 30,
+      "n": 55,
+      "where": "Risk assessment: Security & identity; Cost and licensing",
+      "type": "role",
+      "claim": "Posting as another person requires being an Engage delegate for that person.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
+      "quote": "To post as another person, the publisher must be an Engage delegate for that person.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
       "where": "Cost and licensing",
       "type": "role",
       "claim": "Sending an announcement requires the applicable Engage role.",
@@ -361,10 +641,10 @@
       "fix": null
     },
     {
-      "n": 31,
-      "where": "Risk assessment: Change & support; Scope; Governance guidance: Before rollout",
+      "n": 57,
+      "where": "Risk assessment: Change & support; Scope",
       "type": "behaviour",
-      "claim": "Cross-posting fails when Require Check Out is turned on.",
+      "claim": "Cross-posting fails if Require Check Out is turned on for the site.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
       "quote": "If Require Check Out is turned on for your site, cross-posting to Engage fails.",
@@ -372,10 +652,10 @@
       "fix": null
     },
     {
-      "n": 32,
-      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "n": 58,
+      "where": "Risk assessment: Change & support",
       "type": "admin-path",
-      "claim": "The cross-posting error links to the library's Versioning settings, where a site owner can turn off Require Check Out.",
+      "claim": "The cross-posting error message links to the site library's Versioning settings.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
       "quote": "The error message includes a link to the site library's Versioning settings, where a site owner can turn off the setting.",
@@ -383,10 +663,21 @@
       "fix": null
     },
     {
-      "n": 33,
+      "n": 59,
+      "where": "Risk assessment: Change & support",
+      "type": "role",
+      "claim": "A site owner can turn off Require Check Out at the linked Versioning settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
+      "quote": "The error message includes a link to the site library's Versioning settings, where a site owner can turn off the setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
       "where": "Risk assessment: Change & support; Governance guidance: At rollout",
       "type": "role",
-      "claim": "Other site members can edit, republish and delete a community cross-post.",
+      "claim": "Other site members can edit a news post cross-posted to a community.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
       "quote": "A news post cross-posted to a community works like any other news post: Other site members can edit, republish, and delete it.",
@@ -394,87 +685,120 @@
       "fix": null
     },
     {
-      "n": 34,
+      "n": 61,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "role",
+      "claim": "Other site members can republish a news post cross-posted to a community.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
+      "quote": "A news post cross-posted to a community works like any other news post: Other site members can edit, republish, and delete it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "role",
+      "claim": "Other site members can delete a news post cross-posted to a community.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
+      "quote": "A news post cross-posted to a community works like any other news post: Other site members can edit, republish, and delete it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
       "where": "Risk assessment: Change & support",
       "type": "role",
-      "claim": "Only the storyline owner, their delegates and Engage network admins can republish or delete a storyline cross-post.",
+      "claim": "Only the storyline owner, their delegates and Engage network admins can republish a news post cross-posted to that storyline.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
-      "quote": "Only the storyline owner, their delegates and Engage network admins can republish or delete it",
+      "quote": "Only the storyline owner, their delegates and Engage network admins can republish or delete it, while other site members can still edit it and save it as a draft.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 35,
+      "n": 64,
       "where": "Risk assessment: Change & support",
       "type": "role",
-      "claim": "Other site members can edit a storyline cross-post and save it as a draft.",
+      "claim": "Only the storyline owner, their delegates and Engage network admins can delete a news post cross-posted to that storyline.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
-      "quote": "while other site members can still edit it and save it as a draft.",
+      "quote": "Only the storyline owner, their delegates and Engage network admins can republish or delete it, while other site members can still edit it and save it as a draft.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 36,
-      "where": "front matter: licensing.model and notes; Cost and licensing; Scope; rationale: cost",
-      "type": "licensing",
-      "claim": "Cross-posting is included and its page says it is available to all users with a Microsoft 365 license.",
+      "n": 65,
+      "where": "Risk assessment: Change & support",
+      "type": "role",
+      "claim": "Other site members can still edit a news post cross-posted to a storyline.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
-      "quote": "The feature is available to all users with a Microsoft 365 license.",
-      "severity": "minor",
-      "fix": "Keep the cross-post page's Microsoft 365 entitlement statement, and add: 'The Engage setup page also says that, if Viva Engage licensing is enforced, each user needs a Microsoft 365 license and a Viva Engage Core Service Plan.' Cite https://learn.microsoft.com/viva/engage/setup for that qualification."
-    },
-    {
-      "n": 37,
-      "where": "Cost and licensing; rationale: cost",
-      "type": "absence",
-      "claim": "The cross-post page's Licensing and access section names no separate licence or meter for cross-posting itself.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: SharePoint cross-post Viva Engage storyline creators restriction publishing permissions delegation premium license. Read cross-post Licensing and access and Engage setup; the section names Microsoft 365 and permissions, with no separate cross-post licence or meter.",
+      "quote": "Only the storyline owner, their delegates and Engage network admins can republish or delete it, while other site members can still edit it and save it as a draft.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 38,
-      "where": "front matter: licensing.notes; Cost and licensing",
-      "type": "licensing",
-      "claim": "The setup page lists delegation and storyline announcements as premium Viva Engage experiences.",
+      "n": 66,
+      "where": "Risk assessment: Change & support",
+      "type": "role",
+      "claim": "Other site members can save a news post cross-posted to a storyline as a draft.",
       "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/setup",
-      "quote": "Engage premium experiences Example: Leadership corner, AMAs (Ask Me Anything), storyline announcements, delegation, analytics, and campaigns",
+      "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
+      "quote": "Only the storyline owner, their delegates and Engage network admins can republish or delete it, while other site members can still edit it and save it as a draft.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 39,
+      "n": 67,
       "where": "Cost and licensing",
-      "type": "licensing",
-      "claim": "Premium Engage experiences come with Microsoft Viva Suite or Microsoft Viva Employee Communications and Communities.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/setup",
-      "quote": "Your organization can use premium Viva Engage experiences if your tenant owns either of these plans: Microsoft Viva Suite; Microsoft Viva Employee Communications and Communities",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 40,
-      "where": "Cost and licensing; rationale: cost; Open questions",
       "type": "absence",
-      "claim": "The cross-post page does not state a separate premium licensing requirement for delegate posting or announcements from SharePoint.",
+      "claim": "The cross-post page's Licensing and access section names no license other than Microsoft 365.",
       "status": "supported",
       "source": null,
-      "quote": "Searched: SharePoint cross-post Viva Engage storyline creators restriction publishing permissions delegation premium license. Read cross-post and setup: setup names premium delegation and storyline announcements; cross-post names delegate and role requirements, not a SharePoint-specific premium rule.",
+      "quote": "Searched: \"SharePoint\" \"cross-post\" \"premium\" \"license\". Read the full cross-post page, especially Licensing and access, and Engage setup. The cross-post section names Microsoft 365 and permission/role requirements, not another license.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 41,
+      "n": 68,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "The cross-post page's Licensing and access section names no meter for cross-posting itself.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: SharePoint news cross-post Viva Engage licensing premium delegation announcements meter price default enabled. Read the full cross-post page and Engage setup; Licensing and access states a Microsoft 365 license and permissions, with no cross-posting meter.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "The cross-post page does not say whether delegation and announcement options need a premium license when used from SharePoint.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"SharePoint\" \"cross-post\" \"premium\" \"license\". Read the full cross-post page and Engage setup. The former states delegate and announcement-role requirements but no premium-license qualification; the latter labels delegation and storyline announcements premium.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
       "where": "Scope: Prerequisites and limits",
       "type": "availability",
-      "claim": "Storyline is unavailable in networks that do not enforce Microsoft 365 identity.",
+      "claim": "Storyline is supported only in Viva Engage networks that enforce Microsoft 365 identity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/engage/eac-storyline",
+      "quote": "Storyline is supported in Viva Engage networks that enforce Microsoft 365 identity. If your network doesn't enforce Microsoft 365 (formerly Office 365) identity, or if you have a Viva Engage Basic network, storyline isn't available to your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Scope: Prerequisites and limits",
+      "type": "availability",
+      "claim": "Storyline is not available in a Viva Engage Basic network.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/eac-storyline",
       "quote": "If your network doesn't enforce Microsoft 365 (formerly Office 365) identity, or if you have a Viva Engage Basic network, storyline isn't available to your organization.",
@@ -482,87 +806,10 @@
       "fix": null
     },
     {
-      "n": 42,
-      "where": "controls[0].ui; rendered controls table",
-      "type": "admin-path",
-      "claim": "The restriction path is Engage admin center > Feature management > Storyline > Advanced Settings > Specify storyline creators.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/viva/engage/eac-storyline",
-      "quote": "from the Engage admin center, go to Feature management > Storyline. ... Select Edit in Advanced Settings. ... Switch Specify storyline creators to Eligible users from selected group.",
-      "severity": "blocker",
-      "fix": "Replace the path in controls[0].ui and the rendered table with 'Feature management > Storyline > Advanced Settings > Edit > Specify storyline creators'. The cited page requires selecting Edit before changing the setting."
-    },
-    {
-      "n": 43,
-      "where": "controls[0].api",
-      "type": "absence",
-      "claim": "No automation for Specify storyline creators is documented.",
-      "status": "supported",
-      "source": null,
-      "quote": "Searched: Viva Engage Specify storyline creators settings API PowerShell Microsoft Graph storyline permissions. Read eac-storyline, Graph beta storyline resource and engagement-api-overview: following and community/role operations, but no storyline creator restriction operation.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 44,
-      "where": "controls[0].note; Governance guidance: Before rollout; Governance controls; Open questions",
-      "type": "applicability",
-      "claim": "The storyline creator restriction is a general storyline setting whose applicability to cross-posting is described as unconfirmed.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/eac-storyline",
-      "quote": "This setting controls who has a storyline feed on their user profile and who can create new storyline posts. It doesn’t restrict who can view, react, or reply to storyline posts made by others.",
-      "severity": "minor",
-      "fix": "Replace the unconfirmed-applicability caveat with 'This setting controls who has a storyline feed on their user profile and who can create new storyline posts; it does not restrict viewing, reacting or replying.' Keep the description in these general terms rather than asserting cross-post-specific enforcement."
-    },
-    {
-      "n": 45,
-      "where": "controls[0].note; Scope; Governance controls",
-      "type": "role",
-      "claim": "Network administrators can manage storylines for the tenant.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/eac-key-admin-roles-permissions",
-      "quote": "Network Administrator ... Manage storylines for the tenant (storyline creation access management, setting default notifications, etc.)",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 46,
-      "where": "Governance guidance: Before rollout, second bullet",
-      "type": "role",
-      "claim": "Delegate rights and permission to send announcements decide who can post as another person.",
-      "status": "contradicted",
-      "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
-      "quote": "To post as another person, the publisher must be an Engage delegate for that person. Sending an announcement also requires the applicable Engage role.",
-      "severity": "blocker",
-      "fix": "Replace the bullet with 'List the people who hold Engage delegate rights and who may send announcements: delegate rights determine who can post as another person, while the applicable Engage role determines who can send an announcement.'"
-    },
-    {
-      "n": 47,
-      "where": "Governance guidance: At rollout",
-      "type": "behaviour",
-      "claim": "Publishers should keep the distribution window open until the successful distribution screen appears.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
-      "quote": "Select Distribute to share the post. Keep this window open until the successful distribution screen appears.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 48,
+      "n": 72,
       "where": "Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Existing analytics remain available in both SharePoint and Engage for cross-posted news.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
-      "quote": "The integration uses the existing analytics experiences in SharePoint and Engage.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 49,
-      "where": "Governance guidance: After rollout",
-      "type": "behaviour",
-      "claim": "Engage checks membership of the selected storyline creator group daily.",
+      "claim": "Viva Engage checks the selected storyline-creator group's membership daily.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/eac-storyline",
       "quote": "When a group is selected, Viva Engage checks the group membership on a daily basis to assign storyline privileges.",
@@ -570,10 +817,10 @@
       "fix": null
     },
     {
-      "n": 50,
+      "n": 73,
       "where": "Governance guidance: After rollout",
       "type": "behaviour",
-      "claim": "Backend group membership changes can take up to 24 hours to affect storyline privileges.",
+      "claim": "Membership changes in the selected storyline-creator group can take up to 24 hours to apply.",
       "status": "supported",
       "source": "https://learn.microsoft.com/viva/engage/eac-storyline",
       "quote": "Backend membership changes in the selected group can take up to 24 hours to apply to storyline privileges.",
@@ -581,52 +828,30 @@
       "fix": null
     },
     {
-      "n": 51,
-      "where": "Open questions: SharePoint site access",
-      "type": "absence",
-      "claim": "The cross-post page does not resolve whether Engage readers without SharePoint site access can view the full news post.",
+      "n": 74,
+      "where": "Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Microsoft tells publishers to keep the distribution window open until the success screen appears.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: SharePoint News cross-post Engage existing comments readers SharePoint site permission full news access. Read cross-post page and search excerpts on SharePoint permissions; no cross-post-specific answer about readers lacking site access.",
+      "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
+      "quote": "Select Distribute to share the post. Keep this window open until the successful distribution screen appears.",
       "severity": null,
       "fix": null
     },
     {
-      "n": 52,
-      "where": "Open questions: existing comments",
-      "type": "absence",
-      "claim": "The cross-post page does not explain what happens to existing SharePoint comments when news is cross-posted.",
+      "n": 75,
+      "where": "Risk assessment: Data exposure; rationale: impact",
+      "type": "behaviour",
+      "claim": "Users can see cross-posted content and receive notifications in Engage integrations including Teams and Outlook.",
       "status": "supported",
-      "source": null,
-      "quote": "Searched: SharePoint News cross-post Engage existing comments readers SharePoint site permission full news access. Read cross-post page: it describes synchronized comments and reactions, but not migration or preservation of preexisting comments.",
-      "severity": null,
-      "fix": null
-    },
-    {
-      "n": 53,
-      "where": "Governance guidance: Before rollout and After rollout",
-      "type": "consistency",
-      "claim": "Every control the governance checklist asks readers to review appears in the controls table.",
-      "status": "contradicted",
-      "source": "page",
-      "quote": "Checklist: delegate rights and announcements; Require Check Out; enforce Microsoft 365 identity; analytics. Table: Who can create storyline posts; Tenant-wide switch for cross-posting.",
-      "severity": "minor",
-      "fix": "The checklist steps reviewing delegate rights and announcement permissions, Require Check Out, Microsoft 365 identity enforcement and analytics have no corresponding table rows. Remove those checklist steps to resolve the mismatch without adding unverified control rows."
-    },
-    {
-      "n": 54,
-      "where": "Scope: Prerequisites and limits",
-      "type": "availability",
-      "claim": "Storyline is unavailable in Viva Engage Basic networks.",
-      "status": "supported",
-      "source": "https://learn.microsoft.com/viva/engage/eac-storyline",
-      "quote": "If your network doesn't enforce Microsoft 365 (formerly Office 365) identity, or if you have a Viva Engage Basic network, storyline isn't available to your organization.",
+      "source": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
+      "quote": "The cross-post appears across all Engage integrations. Users can see the content and receive notifications in Teams, Outlook, and other experiences across mobile and SharePoint.",
       "severity": null,
       "fix": null
     }
   ],
   "precheck": {
-    "at": "2026-11-21T20:02:43.550Z",
+    "at": "2026-11-21T20:54:44.539Z",
     "summary": {
       "links": 6,
       "unreachable": 0,
@@ -637,16 +862,6 @@
       "roadmapDrift": 0
     },
     "linkChecks": [
-      {
-        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=568074",
-        "ok": true,
-        "status": 200
-      },
-      {
-        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1466762",
-        "ok": true,
-        "status": 200
-      },
       {
         "url": "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage",
         "ok": true,
@@ -666,6 +881,16 @@
         "url": "https://learn.microsoft.com/viva/engage/setup",
         "ok": true,
         "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1466762",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=568074",
+        "ok": true,
+        "status": 200
       }
     ],
     "controlChecks": [
@@ -679,6 +904,7 @@
           "Feature management",
           "Storyline",
           "Advanced Settings",
+          "Edit",
           "Specify storyline creators"
         ],
         "missing": []
@@ -686,5 +912,12 @@
     ],
     "roadmapDrift": []
   },
-  "history": []
+  "history": [
+    {
+      "date": "2026-11-21",
+      "status": "held",
+      "version": 1,
+      "model": "gpt-6.1-sol"
+    }
+  ]
 }

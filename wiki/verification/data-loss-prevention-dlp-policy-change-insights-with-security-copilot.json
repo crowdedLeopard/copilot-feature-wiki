@@ -1,0 +1,846 @@
+{
+  "slug": "data-loss-prevention-dlp-policy-change-insights-with-security-copilot",
+  "roadmapId": 472031,
+  "title": "Microsoft Purview DLP: Security Copilot insights on policy coverage (GCC, GCC High, DoD)",
+  "status": "held",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 65: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-21",
+    "reasons": [
+      "2 blocking findings (claims 45, 61)"
+    ]
+  },
+  "counts": {
+    "claims": 67,
+    "confirmed": 60,
+    "unconfirmed": 3,
+    "contradicted": 4,
+    "blocker": 2,
+    "major": 2,
+    "minor": 4
+  },
+  "summary": "Hold: Microsoft documents a plugin-enablement PowerShell operation that the briefing reports as undocumented, and its current Security Copilot guidance explicitly excludes government-cloud use rather than leaving that question unstated. The roadmap dates and preview prerequisites are accurate, but the claims that the feature is read-only and leaves end users unaffected go beyond the documented description.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; front matter: products; Scope",
+      "type": "record",
+      "claim": "The roadmap feature belongs to Microsoft Purview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Purview\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; Scope; changes",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "summary; front matter: targetDate; What's changing; Scope; changes",
+      "type": "record",
+      "claim": "The roadmap target is September CY2027, described as a plan rather than a commitment.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "title; summary; front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists GCC, GCC High and DoD, without listing other clouds or declaring them excluded.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: previewDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap gives no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap gives no more information link and does not link to the matching Learn skill.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"moreInfoLink\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-09-09T22:36:54.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-09-09T22:36:54\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; Why it matters; rationale: risk",
+      "type": "record",
+      "claim": "The roadmap describes Copilot for Security in DLP summarising DLP policies for DLP administrators.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Copilot for Security in DLP can summarize DLP policies. This enhancement enables DLP admins to gain insights on coverage of policies",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes insights into policy location coverage.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "gain insights on coverage of policies viz. location, classifiers and notifications, and more.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes insights into policy classifiers.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "gain insights on coverage of policies viz. location, classifiers and notifications, and more.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes insights into policy notifications.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "gain insights on coverage of policies viz. location, classifiers and notifications, and more.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap describes insights on all policies or a selected few.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "DLP admins can get these insights on all the policies or on few selected policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Administrators would use prompts to obtain a deeper view of policy configuration.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "They will be able to use prompts to gain deeper level view of how a policy is configured for their digital landscape.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "Why it matters",
+      "type": "record",
+      "claim": "The roadmap says the insights help administrators regularly align and correct their policy posture.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This helps them align their data posture on a regular basis and make corrections to policy posture as needed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap description does not say the feature edits policies.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Copilot for Security in DLP can summarize DLP policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing; Scope",
+      "type": "behaviour",
+      "claim": "Get insights with Copilot is a Security Copilot skill embedded in the Microsoft Purview DLP policy page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+      "quote": "Get insights with Copilot is a Security Copilot skill that is embedded in the Microsoft Purview Data Loss Prevention policy page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing; Scope; Risk assessment; Open questions",
+      "type": "behaviour",
+      "claim": "Learn documents the matching skill as preview, not as the final government-cloud design.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+      "quote": "The Get insights with Copilot feature is in preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing",
+      "type": "admin-path",
+      "claim": "On the DLP policy page, administrators select one or multiple policies and the Get insights with Copilot button.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+      "quote": "Select one or multiple policies, then select the Get insights with Copilot button.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The response describes where the selected policies look for sensitive information.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+      "quote": "Where your policies are looking for sensitive information.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The response describes the kind of sensitive information the policies look for.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+      "quote": "What kind of sensitive information your policies are looking for.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The response describes scenarios that trigger the policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+      "quote": "What scenarios trigger the policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The response describes how end users are affected by the policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+      "quote": "How end users are impacted by the policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The response describes how administrators are notified.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+      "quote": "How the admins are notified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "Administrators can pivot their investigation by administrative unit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+      "quote": "You can further pivot your investigation by administrative units, locations DLP protects and, types of data that's been classified",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "Administrators can pivot their investigation by the locations DLP protects.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+      "quote": "You can further pivot your investigation by administrative units, locations DLP protects and, types of data that's been classified",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Open questions",
+      "type": "behaviour",
+      "claim": "Administrators can pivot their investigation by classified data type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+      "quote": "You can further pivot your investigation by administrative units, locations DLP protects and, types of data that's been classified",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "summary; licensing.notes; Cost and licensing; Scope",
+      "type": "licensing",
+      "claim": "The organisation must be licensed for Microsoft Security Copilot to use the preview skill.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+      "quote": "Your organization must be licensed for Microsoft Security Copilot.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Security & identity; Scope; Governance guidance; rationale: risk",
+      "type": "role",
+      "claim": "The preview skill requires the accessing account to be in the Information protection admin role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+      "quote": "The account you use to access the Get insights with Copilot feature must be in the Information protection admin role.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: defaultState; summary; Why it matters; Open questions; rationale: risk",
+      "type": "default",
+      "claim": "The default state on arrival of this planned government-cloud feature is not stated.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Security Copilot DLP Get insights with Copilot policy insights read only edit policies default admin disable switch. Read the roadmap, DLP testing page, Purview overview and inclusion page; none states this roadmap feature's government-cloud arrival default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "summary; Why it matters; Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "The feature is read-only, leaves policies as they are and cannot itself change enforcement.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Security Copilot DLP Get insights with Copilot policy insights read only edit policies default admin disable switch; Security Copilot policy read-only. Read DLP testing and Purview overview; they describe generated policy information, not an explicit read-only guarantee.",
+      "severity": "major",
+      "fix": "Remove 'It is read-only' from the summary, 'not an enforcement change' and 'and leaves policies as they are' from Why it matters. Replace the asserted no-change wording in Autonomy & actions and the final After rollout bullet with 'The roadmap describes policy summaries and does not say it edits policies.'"
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The Learn description generates information about selected policies and does not describe the skill changing them.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Security Copilot DLP Get insights with Copilot policy insights read only edit policies default admin disable switch. Read Get insights with Microsoft Security Copilot in dlp-test-dlp-policies and the Purview overview; no policy-editing action is described for this skill.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Security Copilot can process Microsoft 365 data to answer user prompts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "After enablement, Security Copilot can process Microsoft 365 Customer Data from supported products in order to generate security insights and responses to user prompts.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Relevant Customer Data may be copied by Security Copilot to provide responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "Relevant Customer Data may be copied, processed, and stored by Security Copilot to provide responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Relevant Customer Data may be processed by Security Copilot to provide responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "Relevant Customer Data may be copied, processed, and stored by Security Copilot to provide responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Relevant Customer Data may be stored by Security Copilot to provide responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "Relevant Customer Data may be copied, processed, and stored by Security Copilot to provide responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Security Copilot access is scoped to configured products and permissions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "Access is scoped to the products and permissions your organization has configured.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Policy definitions, including locations, classifiers and notification recipients, become inputs to Copilot responses.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Security Copilot DLP policy definitions classifiers notification recipients data inputs insights. Read DLP testing, Purview overview, inclusion and privacy search excerpts; they describe response contents and data handling, not this exact input payload.",
+      "severity": "major",
+      "fix": "Remove 'DLP policy definitions (locations, classifiers, notification recipients) become input to those responses.' The verified response contents already appear in What's changing."
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "applicability",
+      "claim": "An owner can choose not to share Microsoft 365 service data with Copilot in Owner settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "Customers can choose not to share their Microsoft 365 service data with Copilot in the Owner settings page.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure; Governance controls",
+      "type": "applicability",
+      "claim": "Opting out of Microsoft 365 service data sharing prevents use of Copilot with products such as Microsoft Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "However, the organization won't be able to use Copilot with Microsoft 365 products such as like Microsoft Purview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "controls[0].note; Scope: Prerequisite",
+      "type": "default",
+      "claim": "The general Security Copilot in Purview source is enabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-overview",
+      "quote": "Security Copilot in Purview is enabled by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "controls[0].governs; controls[0].note; Scope; Risk assessment; Governance controls",
+      "type": "applicability",
+      "claim": "The Purview source must be enabled for standalone and embedded Purview experiences, so disabling it affects more than policy insights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-overview",
+      "quote": "Security Copilot in Purview must be enabled for both the standalone and embedded experiences to work.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "controls[0].ui; Governance guidance: Before rollout; Governance controls table",
+      "type": "admin-path",
+      "claim": "The Purview source toggle is at Microsoft Security Copilot > Sources > Manage plugins > Purview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-overview",
+      "quote": "Open Sources in the prompt bar. On the Manage plugins page, set the Purview toggle to On to enable or Off to disable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "controls[0].api; Governance controls table",
+      "type": "absence",
+      "claim": "No API or automation operation is documented for enabling or disabling the Purview plugin source.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/microsoft.graph.beta.security/update-mgbetasecuritycopilotworkspaceplugin?view=graph-powershell-beta",
+      "quote": "Update the navigation property plugins in security. Update-MgBetaSecurityCopilotWorkspacePlugin -PluginName <string> -WorkspaceId <string> ... [-IsEnabled]. Displays whether the plugin is enabled for use within the catalogScope.",
+      "severity": "blocker",
+      "fix": "Replace controls[0].api null with kind 'powershell', call 'Update-MgBetaSecurityCopilotWorkspacePlugin -WorkspaceId <workspace-id> -PluginName <plugin-name> -IsEnabled:$false', and docs https://learn.microsoft.com/powershell/module/microsoft.graph.beta.security/update-mgbetasecuritycopilotworkspaceplugin?view=graph-powershell-beta. Add to the note: 'The beta cmdlet updates a workspace plugin's enabled state within its catalog scope; its documentation does not establish government-cloud availability.' Use a plugin-name placeholder rather than inventing the Purview plugin identifier."
+    },
+    {
+      "n": 46,
+      "where": "controls[1].governs; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Preinstalled plugin availability can be set to All users or Owners only across the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/manage-plugins",
+      "quote": "When an owner toggles plugin availability and restricts access, there are two options for plugin availability: All users; Owners only",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "An owner manages plugin availability and owner settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/manage-plugins",
+      "quote": "To manage plugins as an owner: On the left navigation, navigate to Owner. Select Plugin settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "controls[1].ui; Governance controls table",
+      "type": "admin-path",
+      "claim": "Microsoft Security Copilot > Owner > Plugin settings reaches the page for restricting preinstalled plugins.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/manage-plugins",
+      "quote": "On the left navigation, navigate to Owner. Select Plugin settings. ... Choose to manage preinstalled plugin availability and restrict access.",
+      "severity": "minor",
+      "fix": "Keep 'Owner > Plugin settings' as the documented route, but append to the note: 'On that page, manage preinstalled plugin availability and choose All users or Owners only.' The path ends on the correct page; Microsoft does not provide a further exact setting label in this text."
+    },
+    {
+      "n": 49,
+      "where": "controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "Preinstalled plugin restriction settings apply to standalone and embedded Security Copilot experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/manage-plugins",
+      "quote": "You can choose to make specific plugins accessible to everyone or restrict them to owners only. These settings apply to both standalone and embedded Security Copilot experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[1].note; Governance controls",
+      "type": "behaviour",
+      "claim": "Restricting plugin access is an immediate change impacting all Security Copilot and embedded-experience users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/manage-plugins",
+      "quote": "Restricting access is an immediate change impacting all users of Security Copilot and embedded experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "controls[1].api; Governance controls table",
+      "type": "absence",
+      "claim": "No automation operation is documented for changing the preinstalled-plugin All users versus Owners only restriction.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Security Copilot preinstalled plugins owners only restriction API PowerShell Graph setting. Read Manage plugins, Graph plugin and pluginSetting excerpts, and Update-MgBetaSecurityCopilotWorkspacePlugin syntax; none names a property for this owners-only restriction.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "Security Copilot has mixed entitlement through Microsoft 365 E5/E7 inclusion and an existing paid capacity model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "Microsoft 365 E5 and E7 eligible customers get Security Copilot at no additional cost as part of their license. Customers without Microsoft 365 E5 and E7 licenses can continue to access Security Copilot using the existing pricing model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "licensing.notes; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "E5/E7 inclusion provides 400 SCUs monthly per 1,000 paid user licences, up to 10,000 SCUs monthly, at no additional cost.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "Customers with Microsoft 365 E5 and E7 will have 400 Security Compute Units (SCU) each month for every 1,000 paid user license, up to 10,000 SCUs each month at no additional cost.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Included SCU allocations reset monthly.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "SCU allocations reset monthly and don't roll over if unused.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 55,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "Unused included SCUs do not roll over.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "SCU allocations reset monthly and don't roll over if unused. Customers can't carry forward unused SCUs to future months.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 56,
+      "where": "licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "Customers without Microsoft 365 E5/E7 can use the existing Security Copilot pricing model.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "Customers without Microsoft 365 E5 and E7 licenses can continue to access Security Copilot using the existing pricing model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 57,
+      "where": "front matter: cost; Cost and licensing; rationale: cost",
+      "type": "cost",
+      "claim": "Security Copilot uses Security Compute Units as its compute measure, supporting a variable cost rating.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "A Security Compute Unit is a unit measure of the compute power to run Security Copilot workloads for AI capabilities within the standalone and embedded experiences.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 58,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The inclusion page covers all chat, promptbook and agentic scenarios across Microsoft Purview as core experiences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "Core Experiences: All chat, promptbook, and agentic scenarios across Microsoft Entra, Microsoft Intune, Microsoft Purview, Microsoft Defender, and the standalone Security Copilot portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 59,
+      "where": "Cost and licensing",
+      "type": "cost",
+      "claim": "The inclusion page says usage beyond allocated SCUs will be throttled at a future date.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "Usage beyond the allocated SCUs will be throttled at a future date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Cost and licensing; Open questions; rationale: cost",
+      "type": "absence",
+      "claim": "No fixed per-query SCU rate for policy insights is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Security Copilot DLP policy insights SCU per query rate billing. Read inclusion and DLP testing, plus FAQ, capacity and Purview billing search excerpts. No policy-insights rate appears; FAQ says every prompt varies in complexity and SCU consumption isn't fixed.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "Cost and licensing; What's changing; Governance guidance: Before rollout; Open questions",
+      "type": "absence",
+      "claim": "Government-cloud applicability of current Security Copilot and its E5/E7 inclusion is unstated.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/copilot/security/get-started-security-copilot",
+      "quote": "This documentation is only intended for customers using commercial clouds. Currently, Security Copilot isn't designed for use by customers using US government clouds, including but not limited to GCC, GCC High, DoD, and Microsoft Azure Government.",
+      "severity": "blocker",
+      "fix": "Replace the government-cloud absence sentence in Cost and licensing with 'Current Security Copilot onboarding guidance is for commercial clouds and says Security Copilot is not designed for GCC, GCC High, DoD or Azure Government. The roadmap nevertheless targets this DLP feature for GCC, GCC High and DoD in September CY2027; its future government-cloud entitlement is not yet published.' Cite https://learn.microsoft.com/copilot/security/get-started-security-copilot and add it to sources. Add that current restriction to the preview-cloud discussion in What's changing. Change the first Before rollout bullet to 'Confirm with your licensing owner what entitlement Microsoft publishes for the planned government-cloud rollout; do not assume current commercial E5/E7 inclusion applies.' Narrow the Open questions inclusion question to the future rollout."
+    },
+    {
+      "n": 62,
+      "where": "Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "SCU usage can be tracked in the usage dashboard in the Security Copilot standalone portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+      "quote": "Customers are able to track their usage in the in-product usage dashboard in the Security Copilot standalone portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "No DLP-specific switch for the policy-insights skill is documented as of November 2026.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Security Copilot DLP Get insights with Copilot policy insights read only edit policies default admin disable switch. Read DLP testing, Purview overview and Manage plugins; they give prerequisites and general plugin controls, not a policy-insights-specific switch.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "The policy summaries are AI-generated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/copilot-in-purview-overview",
+      "quote": "Microsoft Security Copilot is a cloud-based AI platform ... Get insights into policies. Security copilot can help you understand what your policies are doing in your organization, and where they're active.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "Only DLP administrators using the policy page are affected and end users see no change.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: Security Copilot DLP Get insights with Copilot policy insights read only edit policies default admin disable switch; Security Copilot policy read-only. Read DLP testing and Purview overview; they name the admin skill and outputs, not an exhaustive no-end-user-impact guarantee.",
+      "severity": "minor",
+      "fix": "Replace the impact rationale with 'Low. The documented preview skill is embedded in the DLP policy page and requires the Information protection admin role, so the direct audience is DLP administrators.'"
+    },
+    {
+      "n": 66,
+      "where": "Governance guidance: Before rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist tells readers to list Information protection admin accounts, but the table has no role-access row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "List the accounts in the Information protection admin role ... Controls table rows: Purview source enabled; preinstalled plugin availability.",
+      "severity": "minor",
+      "fix": "Remove the checklist bullet 'List the accounts in the Information protection admin role, because Learn names it as the prerequisite for the matching preview skill.' Keep the verified role prerequisite in Scope; this correction does not add a control row."
+    },
+    {
+      "n": 67,
+      "where": "Governance guidance: After rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The checklist tells readers to review usage in the SCU dashboard, but the table has no usage-monitoring row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Review SCU use in Security Copilot's usage dashboard against your allocation. Controls table rows: Purview source enabled; preinstalled plugin availability.",
+      "severity": "minor",
+      "fix": "Remove the After rollout checklist bullet 'Review SCU use in Security Copilot's usage dashboard against your allocation.' This correction does not add a control row."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T20:54:35.204Z",
+    "summary": {
+      "links": 6,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=472031",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-test-dlp-policies",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/copilot-in-purview-overview",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/security/manage-plugins",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/security/security-copilot-inclusion",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/copilot/security/owner-settings",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether the Purview source is enabled in Security Copilot, which the embedded Purview experiences need",
+        "docs": "https://learn.microsoft.com/purview/copilot-in-purview-overview",
+        "reachable": true,
+        "segments": [
+          "Sources",
+          "Manage plugins",
+          "Purview"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Which preinstalled Security Copilot plugins are available to all users or restricted to owners only",
+        "docs": "https://learn.microsoft.com/copilot/security/manage-plugins",
+        "reachable": true,
+        "segments": [
+          "Owner",
+          "Plugin settings"
+        ],
+        "missing": []
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

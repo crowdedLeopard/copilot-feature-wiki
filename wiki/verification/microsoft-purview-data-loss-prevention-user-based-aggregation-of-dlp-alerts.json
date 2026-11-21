@@ -1,0 +1,683 @@
+{
+  "slug": "microsoft-purview-data-loss-prevention-user-based-aggregation-of-dlp-alerts",
+  "roadmapId": 567010,
+  "title": "Microsoft Purview DLP: aggregate alerts by user (GCC, GCC High, DoD)",
+  "status": "held",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 54: severity major on a rationale: impact rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-21",
+    "reasons": [
+      "1 blocking finding (claim 50)"
+    ]
+  },
+  "counts": {
+    "claims": 55,
+    "confirmed": 52,
+    "unconfirmed": 1,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 4
+  },
+  "summary": "Hold: the statement that Microsoft publishes no automation for tenant-level user-based aggregation overlooks parameters in the Set-PolicyConfig reference. The roadmap facts and the preview behaviour are supported, but the Defender investigation guidance needs qualifications and the assertion that end users do not see alerts is not established.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; front matter: products",
+      "type": "record",
+      "claim": "This is a Microsoft Purview Data Loss Prevention feature.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Purview: Data Loss Prevention - User Based Aggregation of DLP Alerts",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "summary; What's changing; Open questions; rationale: risk",
+      "type": "record",
+      "claim": "Microsoft plans to consolidate related alert events for a common user into one alert even when multiple rules match.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Enable aggregation of DLP alerts based on common entities user even when multiple rules are matched. This feature should consolidate related alert events into a single alert object",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap expects this change to reduce alert noise.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Reduce alert noise",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap expects this change to simplify investigation workflows.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "simplify investigation workflows",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "The roadmap expects more contextual understanding of violations.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "enhance contextual understanding of violations",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The government-cloud roadmap item is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "summary; front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "January CY2027 is the roadmap target, not a committed availability date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"targetDate\": \"January CY2027\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "title; summary; front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "GCC is listed for this roadmap item.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "title; summary; front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "GCC High is listed for this roadmap item.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "title; summary; front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "DoD is listed for this roadmap item.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "front matter: releasePhase; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The government-cloud roadmap record supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap modification timestamp is 2026-09-16T22:57:03.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-09-16T22:57:03\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing: second paragraph",
+      "type": "record",
+      "claim": "Microsoft lists the same feature under roadmap item 564765.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"id\": 564765, \"title\": \"Microsoft Purview: Data Loss Prevention - User Based Aggregation of DLP Alerts\"",
+      "severity": "minor",
+      "fix": "Add the source 'Microsoft 365 Roadmap item 564765' at https://www.microsoft.com/microsoft-365/roadmap?id=564765 for the second item's title, cloud, status and target."
+    },
+    {
+      "n": 16,
+      "where": "What's changing: second paragraph",
+      "type": "record",
+      "claim": "Roadmap item 564765 lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Item 564765: \"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing: second paragraph",
+      "type": "record",
+      "claim": "Roadmap item 564765 has status Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Item 564765: \"status\": \"Launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing: second paragraph",
+      "type": "record",
+      "claim": "Roadmap item 564765 has an August CY2026 target.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Item 564765: \"targetDate\": \"August CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "summary; What's changing: third paragraph",
+      "type": "behaviour",
+      "claim": "Learn describes user and rule-based aggregation as a preview.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "In preview, single-event alerts can be aggregated on per rule per user basis. This is called user and rule-based alert aggregation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "controls[0].note; What's changing; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "Enabling the preview's user-based aggregation at tenant level aggregates single-event alerts by user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "When you enable user based alert aggration in DLP setting at the tenant level, single event alerts are aggregated based on users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "controls[0].note; What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The preview has configurable aggregation windows of 15, 30, 45 or 60 minutes.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "The rule match events must occur within the configurable time window (15, 30, 45 and 60 minutes).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Why it matters; Open questions",
+      "type": "behaviour",
+      "claim": "Learn's preview generates alerts per rule match event per user rather than aggregating multiple users for one rule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "Alerts are generated per rule match event per user. ... For single user per rule.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing: third paragraph; Open questions",
+      "type": "absence",
+      "claim": "Learn does not identify which roadmap item or government clouds its user and rule-based preview covers.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"user based\" \"aggregation\" \"default\" DLP GCC DoD; read dlp-alerts-get-started and the GCC and GCC High Purview planning pages. No preview-to-roadmap mapping or government-cloud preview scope was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk; Open questions",
+      "type": "default",
+      "claim": "Microsoft has not stated the government-cloud feature's arrival default, so defaultState is unknown.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"user based\" \"aggregation\" \"default\" DLP GCC DoD. Read roadmap 567010, dlp-alerts-get-started, GCC and GCC High planning pages and Set-PolicyConfig. On/Off are configured scenarios, not an arrival default; parameter Default value: None is not a feature default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Governance controls: first paragraph",
+      "type": "behaviour",
+      "claim": "The preview's tenant-level setting can be set On or Off.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "User based alert aggregation is set to Off at the tenant level. ... User based alert aggregation is set to On at the tenant level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "Why it matters; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Learn warns that the single-user-per-rule option can increase alert volume.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "For single user per rule. - Expect an increase in alert volume.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "A new match for the same user and rule within the window is aggregated into an alert even if the alert was closed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "If the alert is closed within the aggregation time window and a new match occurs for the same user and rule, then the new rule match will be aggregated into the same alert.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Governance controls: second paragraph",
+      "type": "behaviour",
+      "claim": "Single-event alert aggregation is configured at rule level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "Single event alert aggregation configured at the rule level.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Governance controls: second paragraph",
+      "type": "behaviour",
+      "claim": "Threshold-based aggregation is configured separately at rule level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "Configured at the rule level, 60-999 minutes. ... Threshold based aggregation",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Change & support; Governance controls",
+      "type": "applicability",
+      "claim": "User-based aggregation is not applicable to threshold-based aggregation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "Threshold based aggregation - Aggregate DLP rule matches based on count of matches. - User based alert aggregation not applicable.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Learn permits single-event alert configuration for organisations with the listed E1, E3, E5, F1, G1, G3 or G5 DLP subscriptions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "Single-event alert configuration: All organizations with a DLP subscription (E1, E3, E5, F1, G1, E3, G3, E5, G5) can configure policies to generate an alert for every time a triggering activity occurs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is included, based on the existing DLP subscription requirement for single-event alerts.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "All organizations with a DLP subscription (E1, E3, E5, F1, G1, E3, G3, E5, G5) can configure policies to generate an alert for every time a triggering activity occurs.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No separate licence requirement specifically for user-based aggregation is published.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"user based\" \"aggregation\" DLP licensing price meter; Microsoft Purview DLP \"user-based aggregation\" licensing. Read dlp-alerts-get-started licensing and preview sections; results did not state a separate user-based aggregation entitlement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "Microsoft publishes no meter specifically for user-based alert aggregation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"user based\" \"aggregation\" DLP licensing price meter. Read dlp-alerts-get-started; returned Purview Data Map pricing excerpt concerns resource sets, not DLP alert aggregation. No relevant meter was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft publishes no separate price for user-based alert aggregation.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"user based\" \"aggregation\" DLP licensing price meter; Microsoft Purview DLP \"user-based aggregation\" licensing. Read dlp-alerts-get-started and relevant search excerpts; no user-based DLP aggregation price was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "Cost and licensing: second paragraph",
+      "type": "licensing",
+      "claim": "Threshold-based aggregate alert configuration requires A5, E5 or G5, or the listed lower-tier subscriptions with qualifying add-ons.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "To configure aggregate alert policies based on a threshold ... An A5 subscription ... An E5 or G5 subscription ... An E1, F1, or G1 subscription or an E3 or G3 subscription that includes one of the following features",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "Scope; Governance guidance: Before rollout",
+      "type": "role",
+      "claim": "Viewing the DLP dashboard or editing a policy's alert configuration requires membership of a listed role group, including Compliance Administrator, Compliance Data Administrator or Security Administrator.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "If you want to view the DLP alert management dashboard or to edit the alert configuration options in a DLP policy, you must be a member of one of these role groups: Compliance Administrator; Compliance Data Administrator; Security Administrator",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Dashboard access requires the Manage alerts role.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "To access the DLP alert management dashboard, you need the Manage alerts role",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Scope",
+      "type": "role",
+      "claim": "Dashboard access additionally requires DLP Compliance Management or View-Only DLP Compliance Management.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "and either of these two roles: DLP Compliance Management; View-Only DLP Compliance Management",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Data exposure",
+      "type": "role",
+      "claim": "Content preview and Matched sensitive content access requires Content Explorer Content Viewer role-group membership.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "To access the Content preview feature and the Matched sensitive content and context features, you must be a member of the Content Explorer Content Viewer role group",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "A DLP alert event can include the user who caused the policy match.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "user | user who took the action that caused the policy match | all events",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "A DLP alert event can include a file path.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "file path | the absolute path of the item involved with the DLP policy match | SharePoint, OneDrive, and devices events",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "An email-related DLP alert event can include email recipients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "email recipients | if an email was the sensitive item that matched the DLP policy, this field includes the recipients of that email | Exchange events",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Risk assessment: Data exposure; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "An email-related DLP alert event can include its subject.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "email subject | subject of the email that matched the DLP policy | Exchange events",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Risk assessment: Change & support; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "Alerts may take up to three hours to generate after alert configuration is changed in a DLP policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "It may take up to 3 hours to generate alerts after you configure or modify existing alerts in a DLP policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope; Governance guidance: After rollout",
+      "type": "availability",
+      "claim": "DLP alerts can be investigated in Microsoft Defender XDR.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "DLP alerts can be investigated and managed in the Microsoft Defender XDR dashboard ... Other page: When the built-in DLP alert tuning rule is disabled, you can manage and respond to ... DLP alerts and incidents in the Microsoft Defender portal.",
+      "severity": "minor",
+      "fix": "Cite https://learn.microsoft.com/defender-xdr/dlp-investigate-alerts-defender and replace the Defender sentence with: 'The DLP alerts page lists Defender XDR as an investigation surface; the Defender guide says its built-in DLP alert tuning rule must be disabled to see DLP signals as alerts and requires Microsoft Office 365 E5/A5, Microsoft 365 E5/A5, Microsoft 365 E5/A5 Compliance or Microsoft 365 E5/A5 Information Protection and Governance.' Qualify the After rollout check with 'if licensed and the built-in DLP alert tuning rule is disabled'."
+    },
+    {
+      "n": 47,
+      "where": "Scope; Governance guidance: After rollout",
+      "type": "availability",
+      "claim": "DLP alerts can be investigated in the Microsoft Purview portal.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+      "quote": "DLP alerts can be investigated and managed ... in the Microsoft Purview portal.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The GCC Purview planning page lists the DLP alerts dashboard and alerting experience as Available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/plan-for-microsoft-purview-gcc-deployments",
+      "quote": "Microsoft Purview Data Loss Prevention | Alerts dashboard and alerting experience | Available",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "The GCC High Purview planning page lists the DLP alerts dashboard and alerting experience as Available.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/plan-for-microsoft-purview-gcc-high-deployments",
+      "quote": "Microsoft Purview Data Loss Prevention | Alerts dashboard and alerting experience | Available",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "controls[0].ui/api; controls[0].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "Neither an admin UI route nor a command or API for tenant-level user-based aggregation and its time window is documented.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig",
+      "quote": "Set-PolicyConfig ... [-AggregationTimeWindowForDlpAlerts <System.UInt32>] ... [-IsUserBaseDlpAlertAggregationEnabled <Boolean>]",
+      "severity": "blocker",
+      "fix": "Remove the both-null control row rather than claiming that no automation is published. Replace the blanket command absence in Governance controls with: 'The Security & Compliance PowerShell Set-PolicyConfig reference lists -IsUserBaseDlpAlertAggregationEnabled (Boolean) and -AggregationTimeWindowForDlpAlerts (System.UInt32), but their descriptions are placeholders, so their detailed behaviour and cloud applicability are not stated there.' Cite https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig. Replace the automation part of the open question with 'How do the published Set-PolicyConfig aggregation parameters behave in these clouds?' Do not infer the time parameter's units or allowed values from its name."
+    },
+    {
+      "n": 51,
+      "where": "controls[0].note; Governance controls: first paragraph; Open questions",
+      "type": "absence",
+      "claim": "Microsoft Learn publishes no navigation path for the tenant-level user-based aggregation setting at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"user based alert\" \"settings\" \"aggregation\" Purview navigation; \"user\" \"alert aggregation\" \"Settings\" \"Purview\" tenant portal. Read dlp-alerts-get-started and search excerpts; none gave a route to the tenant-level aggregation setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "controls[0].note; Governance controls table",
+      "type": "behaviour",
+      "claim": "The Set-DlpComplianceRule reference gives no substantive description for -AlertProperties.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+      "quote": "### -AlertProperties ... {{ Fill AlertProperties Description }}",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "The roadmap describes consolidation of alert events without describing new automated actions.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "This feature should consolidate related alert events into a single alert object to: Reduce alert noise, simplify investigation workflows, enhance contextual understanding of violations.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "rationale: impact",
+      "type": "behaviour",
+      "claim": "End users do not see alerts.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: DLP alerts end users see alerts security administrators. Read dlp-alerts-get-started and dlp-alert-investigation-learn; dashboard role requirements do not establish a universal exclusion, and notifications can be sent to users.",
+      "severity": "minor",
+      "fix": "Remove '; end users do not see alerts' from the impact rationale. Retain the assessment that the change mainly affects administrators and analysts who triage DLP alerts."
+    },
+    {
+      "n": 55,
+      "where": "Governance guidance: Before rollout; Governance controls table",
+      "type": "consistency",
+      "claim": "The governance checklist asks readers to take stock of alert-access role groups, but the controls table has no corresponding row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Identify who triages DLP alerts today and which role groups they hold ... Table: Tenant-level user-based alert aggregation and its time window",
+      "severity": "minor",
+      "fix": "The Before rollout role-group inventory step has no corresponding control row. Remove that checklist bullet to resolve the mismatch without adding an unverified row; keep the documented role requirements in Scope."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T20:54:42.827Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 0,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 0,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-alerts-get-started",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-dlpcompliancerule",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/plan-for-microsoft-purview-gcc-deployments",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/plan-for-microsoft-purview-gcc-high-deployments",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=567010",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [],
+    "roadmapDrift": []
+  },
+  "history": []
+}

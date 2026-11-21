@@ -18,16 +18,10 @@ defaultState: "user-opt-in"
 action: "review"
 licensing:
   model: "included"
-  notes: "The cross-post page says the feature is available to all users with a Microsoft 365 license. The Engage setup page lists delegation and storyline announcements among Viva Engage premium experiences."
+  notes: "The cross-post page says the feature is available to all users with a Microsoft 365 license. The Engage setup page lists delegation and storyline announcements among Viva Engage premium experiences, and says that if Viva Engage licensing is enforced, each user needs a Microsoft 365 license and a Viva Engage Core Service Plan."
 audiences: ["m365-admin","service-owner","change-adoption"]
 tags: ["sharepoint","sharepoint-news","viva-engage","teams","outlook"]
 sources:
-  - title: "Microsoft 365 Roadmap 568074"
-    url: "https://www.microsoft.com/microsoft-365/roadmap?id=568074"
-    kind: "roadmap"
-  - title: "MC1466762: (Updated) Cross-post SharePoint News to Engage"
-    url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1466762"
-    kind: "message-center"
   - title: "Cross-post SharePoint News to Viva Engage"
     url: "https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage"
     kind: "learn"
@@ -40,6 +34,12 @@ sources:
   - title: "Viva Engage setup requirements"
     url: "https://learn.microsoft.com/viva/engage/setup"
     kind: "learn"
+  - title: "MC1466762: (Updated) Cross-post SharePoint News to Engage"
+    url: "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1466762"
+    kind: "message-center"
+  - title: "Microsoft 365 Roadmap 568074"
+    url: "https://www.microsoft.com/microsoft-365/roadmap?id=568074"
+    kind: "roadmap"
 videos: []
 related: ["viva-engage-my-team-audiences-and-flexible-targeting-for-leader-communications","microsoft-viva-engage-community-feed-improvements"]
 controls:
@@ -47,10 +47,10 @@ controls:
     scope: "tenant"
     ui:
       surface: "Engage admin center"
-      path: "Feature management > Storyline > Advanced Settings > Specify storyline creators"
+      path: "Feature management > Storyline > Advanced Settings > Edit > Specify storyline creators"
       docs: "https://learn.microsoft.com/viva/engage/eac-storyline"
     api: null
-    note: "Existing storyline setting, not specific to cross-posting; Learn does not say whether it applies to cross-posts. Network administrators manage storylines for the tenant."
+    note: "This setting controls who has a storyline feed on their user profile and who can create new storyline posts; it does not restrict viewing, reacting or replying. Network administrators manage storylines for the tenant."
   - governs: "Tenant-wide switch for SharePoint News to Engage cross-posting"
     scope: "tenant"
     ui: null
@@ -65,19 +65,23 @@ changes:
     note: "First briefing: launched feature, Microsoft's notice MC1466762 rollout window of late September to late October 2026, and the Learn page on cross-posting."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 3 of 54 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected the Specify storyline creators path to include Edit, replaced the storyline-creator caveat with the page's description, added the Engage Core Service Plan licensing qualification, and trimmed checklist steps that have no controls-table row."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 75 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 54
-  confirmed: 51
+  claims: 75
+  confirmed: 75
   unconfirmed: 0
-  contradicted: 3
-  attempts: 1
-  hash: "4bdf271a6bc06b47af8fafc2f561f341"
+  contradicted: 0
+  attempts: 0
+  hash: "261c625533a14497c6ac3fd0e0c28099"
 ---
 
 ## What's changing
@@ -114,7 +118,7 @@ The wiki's view is that the main questions for a service owner are who may publi
 
 ## Cost and licensing
 
-The cross-post page states that the feature is available to all users with a Microsoft 365 license. Its Licensing and access section names no other licence and no meter for cross-posting itself.
+The cross-post page states that the feature is available to all users with a Microsoft 365 license. Its Licensing and access section names no other licence and no meter for cross-posting itself. The Engage setup page also says that, if Viva Engage licensing is enforced, each user needs a Microsoft 365 license and a Viva Engage Core Service Plan.
 
 Three options in the flow depend on Engage permissions. Posting as another person requires the publisher to be an Engage delegate for that person, and sending an announcement requires the applicable Engage role. The Engage setup page lists delegation and storyline announcements among the premium Viva Engage experiences, which come with Microsoft Viva Suite or Microsoft Viva Employee Communications and Communities. The cross-post page does not say whether those two options need a premium licence when used from SharePoint.
 
@@ -131,10 +135,7 @@ The other cost shown is people's time: Microsoft's notice MC1466762 suggests tel
 ## Governance guidance
 
 ### Before rollout
-- Check whether your Engage administrators restrict who can create storyline posts (Engage admin center, row 1 of the controls table) and note that Learn does not say whether this setting also applies to cross-posts.
-- List the people who hold Engage delegate rights and who may send announcements, because those decide who can post as another person.
-- Ask site owners of news sites to check that **Require Check Out** is off in the site library's **Versioning settings**, since cross-posting fails with it on.
-- Confirm which of your Engage networks enforce Microsoft 365 identity if storyline destinations matter to your publishers.
+- Check whether your Engage administrators restrict who can create storyline posts (Engage admin center, row 1 of the controls table). Learn describes that setting as controlling who has a storyline feed on their user profile and who can create new storyline posts.
 
 ### At rollout
 - Send publishers the documented steps: publish the news post, select **Amplify** or **Promote**, select the **Engage** card, set **Post as** and **Post to**, select **Distribute**, and keep the window open until the success screen appears.
@@ -142,7 +143,6 @@ The other cost shown is people's time: Microsoft's notice MC1466762 suggests tel
 - Brief the help desk on the **Amplify** or **Promote** label difference and on the shared comment thread.
 
 ### After rollout
-- Review analytics in both SharePoint and Engage, which Learn says remain available for cross-posted news.
 - Recheck the selected group if you use **Specify storyline creators**; the storyline page says Engage checks group membership daily and changes can take up to 24 hours to apply.
 - Watch Message center and the Learn page for a tenant-level switch or a licence statement for delegation and announcements.
 
@@ -153,7 +153,7 @@ The other cost shown is people's time: Microsoft's notice MC1466762 suggests tel
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Who can create storyline posts in Viva Engage</strong><br><small>Tenant</small><br><small class="controls__note">Existing storyline setting, not specific to cross-posting; Learn does not say whether it applies to cross-posts. Network administrators manage storylines for the tenant.</small></td><td data-label="Admin UI"><strong>Engage admin center</strong><br>Feature management › Storyline › Advanced Settings › Specify storyline creators <a href="https://learn.microsoft.com/viva/engage/eac-storyline" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
+<tr><td data-label="Control"><strong>Who can create storyline posts in Viva Engage</strong><br><small>Tenant</small><br><small class="controls__note">This setting controls who has a storyline feed on their user profile and who can create new storyline posts; it does not restrict viewing, reacting or replying. Network administrators manage storylines for the tenant.</small></td><td data-label="Admin UI"><strong>Engage admin center</strong><br>Feature management › Storyline › Advanced Settings › Edit › Specify storyline creators <a href="https://learn.microsoft.com/viva/engage/eac-storyline" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 <tr><td data-label="Control"><strong>Tenant-wide switch for SharePoint News to Engage cross-posting</strong><br><small>Tenant</small><br><small class="controls__note">Microsoft Learn documents no such setting at the time of writing (November 2026).</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
 </tbody>
 </table>
@@ -162,7 +162,6 @@ The first row is an existing Engage setting that limits who can create storyline
 
 ## Open questions
 
-- Does the **Specify storyline creators** setting also stop someone cross-posting to their own or another person's storyline? Watch the cross-post and storyline pages on Microsoft Learn.
 - Is a tenant-level switch for SharePoint News to Engage cross-posting planned? Watch Message center and the cross-post page.
 - Do posting as a delegate and sending an announcement from SharePoint need a Viva Engage premium licence? Watch the cross-post and Engage setup pages.
 - Do people who can read a cross-post in Engage but lack access to the SharePoint site get the full news post? Watch the cross-post page.
@@ -172,15 +171,4 @@ The first row is an existing Engage setting that limits who can create storyline
 risk: Medium. A cross-post puts SharePoint news and its discussion into Engage feeds, Teams and Outlook, and Learn documents no tenant switch; Engage and site permissions decide who can distribute.
 cost: Low. Learn says the feature is available to all users with a Microsoft 365 license; the cost shown is communication and training time. Delegation and announcements are Engage options whose licence the cross-post page does not state.
 impact: Medium. News publishers and Engage community or storyline owners see the new workflow, and readers in Engage, Teams and Outlook see cross-posted news; the roadmap says SharePoint's comments module is replaced by Engage's.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].ui; rendered controls table / admin-path: The restriction path is Engage admin center > Feature management > Storyline > Advanced Settings > Specify storyline creators. | Found: from the Engage admin center, go to Feature management > Storyline. ... Select Edit in Advanced Settings. ... Switch Specify storyline creators to Eligible users from selected group. | Fix: Replace the path in controls[0].ui and the rendered table with 'Feature management > Storyline > Advanced Settings > Edit > Specify storyline creators'. The cited page requires selecting Edit before changing the setting. | Source: https://learn.microsoft.com/viva/engage/eac-storyline
-- [contradicted, blocker] Governance guidance: Before rollout, second bullet / role: Delegate rights and permission to send announcements decide who can post as another person. | Found: To post as another person, the publisher must be an Engage delegate for that person. Sending an announcement also requires the applicable Engage role. | Fix: Replace the bullet with 'List the people who hold Engage delegate rights and who may send announcements: delegate rights determine who can post as another person, while the applicable Engage role determines who can send an announcement.' | Source: https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage
-These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] front matter: licensing.model and notes; Cost and licensing; Scope; rationale: cost / licensing: Cross-posting is included and its page says it is available to all users with a Microsoft 365 license. | Found: The feature is available to all users with a Microsoft 365 license. | Fix: Keep the cross-post page's Microsoft 365 entitlement statement, and add: 'The Engage setup page also says that, if Viva Engage licensing is enforced, each user needs a Microsoft 365 license and a Viva Engage Core Service Plan.' Cite https://learn.microsoft.com/viva/engage/setup for that qualification. | Source: https://learn.microsoft.com/viva/engage/cross-post-sharepoint-news-viva-engage
-- [supported, minor] controls[0].note; Governance guidance: Before rollout; Governance controls; Open questions / applicability: The storyline creator restriction is a general storyline setting whose applicability to cross-posting is described as unconfirmed. | Found: This setting controls who has a storyline feed on their user profile and who can create new storyline posts. It doesn’t restrict who can view, react, or reply to storyline posts made by others. | Fix: Replace the unconfirmed-applicability caveat with 'This setting controls who has a storyline feed on their user profile and who can create new storyline posts; it does not restrict viewing, reacting or replying.' Keep the description in these general terms rather than asserting cross-post-specific enforcement. | Source: https://learn.microsoft.com/viva/engage/eac-storyline
-- [contradicted, minor] Governance guidance: Before rollout and After rollout / consistency: Every control the governance checklist asks readers to review appears in the controls table. | Found: Checklist: delegate rights and announcements; Require Check Out; enforce Microsoft 365 identity; analytics. Table: Who can create storyline posts; Tenant-wide switch for cross-posting. | Fix: The checklist steps reviewing delegate rights and announcement permissions, Require Check Out, Microsoft 365 identity enforcement and analytics have no corresponding table rows. Remove those checklist steps to resolve the mismatch without adding unverified control rows.
 -->

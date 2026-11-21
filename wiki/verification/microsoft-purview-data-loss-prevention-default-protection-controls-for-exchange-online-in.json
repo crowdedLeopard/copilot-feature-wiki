@@ -1,0 +1,605 @@
+{
+  "slug": "microsoft-purview-data-loss-prevention-default-protection-controls-for-exchange-online-in",
+  "roadmapId": 569477,
+  "title": "Microsoft Purview DLP: act on classification failures in Exchange Online",
+  "status": "held",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-21",
+    "reasons": [
+      "1 blocking finding (claim 30)"
+    ]
+  },
+  "counts": {
+    "claims": 46,
+    "confirmed": 44,
+    "unconfirmed": 0,
+    "contradicted": 2,
+    "blocker": 1,
+    "major": 0,
+    "minor": 2
+  },
+  "summary": "Hold: the briefing overstates the reach of a blocking scan-failure rule by saying it applies to every message with that failure type. Microsoft documents policy scoping and enforcement-mode qualifications; the default, enabling control, licensing background and roadmap details are otherwise supported.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is In development.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"In development\", \"statusKey\": \"in-development\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: targetDate; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap target is September CY2026, not a committed release date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"September CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: releasePhase; What's changing",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: clouds; What's changing; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap publishes no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-09-01T22:59:38.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-09-01T22:59:38\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The roadmap description says default protection controls for Exchange Online are available in public preview.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Default protection controls for Exchange Online is available in public preview.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "title; summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Exchange Online DLP policies can detect and act on classification failures when the classification service cannot fully scan an attachment.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection",
+      "quote": "Microsoft Purview data loss prevention (DLP) policies for Exchange Online can detect and act on classification failures—cases where the classification service can't fully scan a document.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "summary; What's changing; controls[0].note; Scope",
+      "type": "availability",
+      "claim": "The feature's Learn page is titled Configure default protection for classification failures in Data loss prevention for Exchange (preview) and documents preview behaviour.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection",
+      "quote": "Configure default protection for classification failures in Data loss prevention for Exchange (preview)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "front matter: defaultState; summary; Why it matters; rationale: risk",
+      "type": "default",
+      "claim": "Classification failure detection is admin-opt-in, so its expanded detection does not start until an administrator enables it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection",
+      "quote": "By default, these conditions detect only text extraction failures. After you enable classification failure detection, they also detect classification failures such as timeouts, throttling, and other errors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "The improved attachment conditions are Document couldn't be scanned and Document didn't complete scanning.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection",
+      "quote": "| Document couldn't be scanned | Text extraction failures\n| Document didn't complete scanning | Partial text extraction",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure; rationale: risk",
+      "type": "behaviour",
+      "claim": "With detection off, these conditions detect text extraction failures rather than classification failures.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection",
+      "quote": "By default, these conditions detect only text extraction failures.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Text extraction failure examples include a file that cannot be opened, an unsupported format and a password-protected file.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection",
+      "quote": "Text extraction failures (for example, the file couldn't be opened, the format is unsupported, or the file is password protected).",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Why it matters; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Enabling detection adds classification failures caused by timeouts, throttling and other errors to the scan conditions.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection",
+      "quote": "After you enable classification failure detection, they also detect classification failures such as timeouts, throttling, and other errors.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "summary; What's changing; Governance guidance; Governance controls",
+      "type": "behaviour",
+      "claim": "DocumentScanFailures lets rules take different actions for Timeout, Throttled and Other classification failure types.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection",
+      "quote": "To take different actions for specific classification failure types—Timeout, Throttled, or Other—use the DocumentScanFailures condition.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "DocumentScanFailures must be combined with either of the two scan conditions using AND.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection",
+      "quote": "Combine it with either Document couldn't be scanned or Document didn't complete scanning using AND",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "DocumentScanFailures cannot be used on its own.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection",
+      "quote": "DocumentScanFailures can't be used on its own.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "controls[0].note; What's changing; Scope; Governance controls",
+      "type": "applicability",
+      "claim": "The classification failure detection setting applies only to Exchange Online.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection",
+      "quote": "This setting applies to Exchange Online only.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Scope",
+      "type": "applicability",
+      "claim": "The setting does not affect SharePoint, OneDrive, Teams or Endpoint DLP policies.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection",
+      "quote": "It doesn't affect SharePoint, OneDrive, Teams, or Endpoint DLP policies.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "Why it matters; Risk assessment: Change & support; Governance guidance; rationale: risk",
+      "type": "behaviour",
+      "claim": "Existing rules using the scan conditions may have more DLP rule matches after detection is enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection",
+      "quote": "If your tenant already has rules that use these conditions, you might see an increase in DLP rule matches after you enable detection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Scan-failure rules detect failures only from classifiers DLP has already evaluated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection",
+      "quote": "Scan-failure rules detect failures only from classifiers that DLP has already evaluated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "A classifier failure in a content-detection rule placed after a scan-failure rule can be missed by that scan-failure rule.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection",
+      "quote": "If a content-detection rule is placed after a scan-failure rule and its classifier fails, the failure won't be detected.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "Governance guidance: Before rollout, After rollout; Governance controls",
+      "type": "behaviour",
+      "claim": "Microsoft advises putting content-detection rules at higher priority than scan-failure rules.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection",
+      "quote": "To avoid missed detections, order your rules so that content-detection rules (sensitive information types, exact data matches, and trainable classifiers) have higher priority than scan-failure rules (Timeout, Throttled, Other)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The feature page describes no new identity or permission model.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"classification failure detection\" \"per-user\" \"per-policy\" \"permissions\"; read the complete classification-failure protection page, which describes portal and Security & Compliance PowerShell configuration but no new identity model.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].scope; Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "Classification failure detection is an organisation-level setting rather than a rule-level switch.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection",
+      "quote": "from the Microsoft Purview portal, go to Settings on the left navigation menu > Data loss prevention > Scan failure settings for Exchange. In Scan failure settings for Exchange turn on the toggle.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "Risk assessment: Security & identity",
+      "type": "absence",
+      "claim": "The feature page names no per-user or per-policy scope for the detection setting.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"classification failure detection\" \"per-user\" \"per-policy\" \"permissions\"; read the complete classification-failure protection page and the Set-PolicyConfig syntax. Neither describes per-user or per-policy scoping for this setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "behaviour",
+      "claim": "Protection actions are configured in DLP rules rather than determined solely by enabling detection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-exchange-conditions-and-actions",
+      "quote": "Actions define what happens as a consequence of a condition being met.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "Risk assessment: Autonomy & actions; Governance guidance",
+      "type": "behaviour",
+      "claim": "The Learn example uses Block for content rules and Audit for Timeout, Throttled and Other scan-failure rules.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection",
+      "quote": "| 1 | Detect credit cards | Content contains Credit Card Number | Block |\n| 4 | Full scan timeout | DocumentIsUnsupported AND DocumentScanFailures = Timeout | Audit |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "applicability",
+      "claim": "A block action on a scan-failure condition would apply to every message whose attachment hits that failure type.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/purview/dlp-policy-reference",
+      "quote": "Whether an action takes effect or not depends on how you configure the mode of the policy.",
+      "severity": "blocker",
+      "fix": "Remove the sentence 'A block action on a scan-failure condition would apply to every message whose attachment hits that failure type.' The unconditional 'every message' disregards policy scope, policy mode and the classifier-ordering limitation already described on the page."
+    },
+    {
+      "n": 31,
+      "where": "controls[0].note; Risk assessment: Change & support; Scope; Governance guidance",
+      "type": "behaviour",
+      "claim": "Microsoft advises allowing up to one hour for the detection setting to synchronise before validating policy behaviour.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection",
+      "quote": "Allow up to one hour for the setting change to synchronize across the service before validating policy behavior.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "controls[0].ui; Governance controls table; Governance guidance",
+      "type": "admin-path",
+      "claim": "The enabling control is reached in Microsoft Purview portal through Settings > Data loss prevention > Scan failure settings for Exchange.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection",
+      "quote": "go to Settings on the left navigation menu > Data loss prevention > Scan failure settings for Exchange. In Scan failure settings for Exchange turn on the toggle.",
+      "severity": "minor",
+      "fix": "Extend controls[0].ui.path and the matching rendered table path to 'Settings > Data loss prevention > Scan failure settings for Exchange > toggle'. The source gives an unlabelled toggle on that page; the current route correctly reaches the page but stops before the control."
+    },
+    {
+      "n": 33,
+      "where": "controls[0].api; Governance controls table; Scope; Governance controls",
+      "type": "command",
+      "claim": "Set-PolicyConfig -DlpErrorHandlingConfig $json configures detection through Security & Compliance PowerShell as documented on the feature page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection",
+      "quote": "Connect to Security & Compliance PowerShell and run the following commands.\nConnect-IPPSSession\n$json = '{\"Classification\":{\"State\":1}}'  # To disable, set State to 0\nSet-PolicyConfig -DlpErrorHandlingConfig $json",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "The JSON string {\"Classification\":{\"State\":1}} enables classification failure detection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection",
+      "quote": "$json = '{\"Classification\":{\"State\":1}}'  # To disable, set State to 0\nSet-PolicyConfig -DlpErrorHandlingConfig $json",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "controls[0].note; Governance controls",
+      "type": "command",
+      "claim": "Setting State to 0 with the same command disables detection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection",
+      "quote": "$json = '{\"Classification\":{\"State\":1}}'  # To disable, set State to 0",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.model; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "The licensing model is included under the existing DLP for Exchange Online entitlement, with no feature-specific requirement stated.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Which licenses provide the rights for a user to benefit from the service?\n- Microsoft 365 E5/A5/G5/E3/A3/G3, Microsoft 365 Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2), Exchange Online Plan 2",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "licensing",
+      "claim": "The service description's DLP for Exchange Online, SharePoint Online and OneDrive for Business section lists Microsoft 365 E5/A5/G5/E3/A3/G3, Microsoft 365 Business Premium and Exchange Online Plan 2 among its eligible licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+      "quote": "Microsoft 365 E5/A5/G5/E3/A3/G3, Microsoft 365 Business Premium, SharePoint Online Plan 2, OneDrive for Business (Plan 2), Exchange Online Plan 2",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The feature page names no separate licence for classification failure protection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Exchange classification failure protection separate license price meter; read the complete feature page and DLP section of the Purview service description. They give no separate licence for this setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "No meter is documented for this classification failure protection feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Exchange classification failure protection separate license price meter; read the feature page and service description's Exchange DLP section. Neither documents a classification-failure meter; results about network DLP describe a different feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft publishes no feature-specific price for classification failure protection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Purview Exchange classification failure protection separate license price meter; read the feature page and Purview service description's Exchange DLP section. No price specific to this setting was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing",
+      "type": "absence",
+      "claim": "Microsoft publishes no feature-specific credit rate for classification failure protection.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"classification failure\" \"Exchange\" licensing price meter GCC scope default message outcome; Purview Exchange classification failure protection separate license price meter. Read the feature page and Exchange DLP licensing section; no credit rate was stated.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope; Open questions",
+      "type": "absence",
+      "claim": "The feature's Learn page states no cloud availability.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"classification failure\" \"Exchange\" \"GCC\"; read the complete classification-failure protection page. It specifies Exchange Online but gives no cloud list or cloud-specific rollout timing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The Set-PolicyConfig reference does not list DlpErrorHandlingConfig, although the feature page documents the command.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: DlpErrorHandlingConfig|ErrorHandling throughout the fetched Set-PolicyConfig reference; no matches. Read its complete syntax and the feature page's command, which explicitly includes -DlpErrorHandlingConfig.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Open questions",
+      "type": "absence",
+      "claim": "The feature page does not describe the message outcome when scanning fails and detection is off.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"classification failure\" \"detection\" \"off\" \"message\"; read the complete feature page. It explains default condition matching but does not prescribe delivery, blocking or another message outcome with detection off.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Governance controls",
+      "type": "command",
+      "claim": "The Exchange conditions reference lists DocumentScanFailures as a condition for Security & Compliance PowerShell.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/purview/dlp-exchange-conditions-and-actions",
+      "quote": "| Document scan failures | Condition: DocumentScanFailures | N/A | Recommend using with Document could not be scanned or Document didn't complete scanning conditions to enforce actions on granular scanning error scenarios across classification timeout, throttling or other failures. |",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Governance guidance; Governance controls",
+      "type": "consistency",
+      "claim": "The checklist tells readers to configure failure-type rules and review rule priorities and match volumes, but those controls have no table rows.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "Checklist: 'Add rules that combine DocumentScanFailures'; 'Check that scan-failure rules still rank below content rules'; 'Review DLP rule match volumes'. The only table row governs 'Whether Exchange Online DLP detects classification failures'.",
+      "severity": "minor",
+      "fix": "The checklist's scan-failure rule configuration, rule-priority review and rule-match-volume review have no controls-table rows. Remove those checklist instructions if retaining the current one-row table; keep the explanatory prose. Do not add unverified control rows."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T20:54:41.582Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=569477",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/purview/dlp-exchange-conditions-and-actions",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-purview-service-description",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/exchangepowershell/set-policyconfig",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether Exchange Online DLP detects classification failures",
+        "docs": "https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Data loss prevention",
+          "Scan failure settings for Exchange"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether Exchange Online DLP detects classification failures",
+        "docs": "https://learn.microsoft.com/purview/dlp-exchange-classification-failure-protection",
+        "reachable": true,
+        "token": "Set-PolicyConfig",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

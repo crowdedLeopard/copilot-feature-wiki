@@ -17,7 +17,7 @@ impact: "low"
 defaultState: "unknown"
 action: "review"
 licensing:
-  model: "included"
+  model: "unknown"
   notes: "Microsoft's service description lists the licences that give user rights for retention policies, for example Microsoft 365 E5/A5/G5/E3/A3/G3 and Business Premium. A licence statement specific to the insights and recommendations is not yet published."
 audiences: ["compliance","m365-admin"]
 tags: ["purview","data-lifecycle-management","retention","sharepoint","onedrive","data-governance"]
@@ -58,7 +58,7 @@ controls:
       kind: "powershell"
       call: "New-RetentionCompliancePolicy -Name \"<policy name>\" -SharePointLocation \"<site URL>\""
       docs: "https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy"
-    note: "Existing control, not a control over the insights. Needs the Compliance Administrator role group or Retention Management role. A policy also needs New-RetentionComplianceRule."
+    note: "Not a control over the insights. Needs Compliance Administrator or Retention Management. For policies that include SharePoint sites, the administrator must be unrestricted; administrators assigned administrative units cannot configure them."
 confidence: "medium"
 created: "2026-11-21"
 updated: "2026-11-21"
@@ -68,19 +68,23 @@ changes:
     note: "New briefing: roadmap-only description of Data Lifecycle Management insights and retention policy recommendations; Learn does not yet describe the feature."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 1 of 42 statements contradicted, 1 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected after verification: licensing model changed to unknown, and the unrestricted-administrator qualification for SharePoint retention policies added to the role guidance."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed: all 45 statements confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 42
-  confirmed: 40
-  unconfirmed: 1
-  contradicted: 1
-  attempts: 1
-  hash: "d8f8ef61fdc12e2e1283916dc18b64af"
+  claims: 45
+  confirmed: 45
+  unconfirmed: 0
+  contradicted: 0
+  attempts: 0
+  hash: "15bab5c0be1b2b34387dc7f3bbd3a657"
 ---
 
 ## What's changing
@@ -106,7 +110,7 @@ Microsoft has not stated what happens on arrival, so base your plan on no source
 - Learn says the people who configure retention policies do not need access to the content. Whether that holds for the insights is not stated.
 
 **Security & identity**
-- The documented roles for retention policies are the Compliance Administrator role group, or a custom role group with the Retention Management role (View-Only Retention Management for read-only). Which roles see the insights and recommendations is not stated.
+- The documented roles for retention policies are the Compliance Administrator role group, or a custom role group with the Retention Management role (View-Only Retention Management for read-only). For policies that include SharePoint sites, the administrator must be unrestricted; administrators assigned administrative units cannot configure those policies. Which roles see the insights and recommendations is not stated.
 
 **Autonomy & actions**
 - The roadmap describes recommendations, not automatic changes. Whether a recommendation can be applied in one step is not stated, so treat each one as input to the normal retention policy path.
@@ -125,12 +129,12 @@ A licence requirement, meter or price specific to the insights and recommendatio
 
 The roadmap record lists Worldwide (Standard Multi-Tenant) as the cloud and Web as the platform. It names OneDrive and SharePoint as the data in scope. Rollout mechanics, prerequisites and the roles that can see the insights are not stated.
 
-Roles documented for retention policies in general are the Compliance Administrator role group or the Retention Management role; these are the closest documented roles but are not confirmed to apply to the insights.
+Roles documented for retention policies in general are the Compliance Administrator role group or the Retention Management role; these are the closest documented roles but are not confirmed to apply to the insights. For policies that include SharePoint sites, the administrator must be unrestricted; administrators assigned administrative units cannot configure those policies.
 
 ## Governance guidance
 
 ### Before rollout
-- Identify who holds the Compliance Administrator role group or the Retention Management role, since these are the documented roles for creating retention policies.
+- Identify who holds the Compliance Administrator role group or the Retention Management role, since these are the documented roles for creating retention policies. For policies that include SharePoint sites, the administrator must be unrestricted; administrators assigned administrative units cannot configure those policies.
 - List the retention policies that already include SharePoint and OneDrive locations (Microsoft Purview portal > Solutions > Data Lifecycle Management > Policies > Retention policies), so a recommendation can be compared with what is already applied.
 - Check the licences you hold against the retention policy list in the Purview service description.
 
@@ -150,13 +154,13 @@ Roles documented for retention policies in general are the Compliance Administra
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
 <tr><td data-label="Control"><strong>Switch or role scoping for the insights and recommendations</strong><br><small>Tenant</small><br><small class="controls__note">No setting is documented on Learn at the time of writing (November 2026). The feature is described only in the roadmap item.</small></td><td data-label="Admin UI"><em class="controls__gap">Not yet documented</em></td><td data-label="API and automation"><em class="controls__gap">Not yet documented</em></td></tr>
-<tr><td data-label="Control"><strong>Creating retention policies for SharePoint and OneDrive content (existing path)</strong><br><small>Tenant</small><br><small class="controls__note">Existing control, not a control over the insights. Needs the Compliance Administrator role group or Retention Management role. A policy also needs New-RetentionComplianceRule.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Policies › Retention policies › New retention policy <a href="https://learn.microsoft.com/purview/create-retention-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-RetentionCompliancePolicy -Name &quot;&lt;policy name&gt;&quot; -SharePointLocation &quot;&lt;site URL&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Creating retention policies for SharePoint and OneDrive content (existing path)</strong><br><small>Tenant</small><br><small class="controls__note">Not a control over the insights. Needs Compliance Administrator or Retention Management. For policies that include SharePoint sites, the administrator must be unrestricted; administrators assigned administrative units cannot configure them.</small></td><td data-label="Admin UI"><strong>Microsoft Purview portal</strong><br>Solutions › Data Lifecycle Management › Policies › Retention policies › New retention policy <a href="https://learn.microsoft.com/purview/create-retention-policies" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>PowerShell</strong><br><code>New-RetentionCompliancePolicy -Name &quot;&lt;policy name&gt;&quot; -SharePointLocation &quot;&lt;site URL&gt;&quot;</code> <a href="https://learn.microsoft.com/powershell/module/exchangepowershell/new-retentioncompliancepolicy" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 No setting for the insights or recommendations is documented at the time of writing (November 2026), so the first row records that gap. The second row is the existing way to create the retention policies a recommendation would concern; it is not a control over the insights.
 
-The cmdlet reference says a new policy is not valid until a rule is added, so scripting also needs New-RetentionComplianceRule. Roles for retention policies are the Compliance Administrator role group, or a custom role group with the Retention Management role; Priority Cleanup Admin is a separate role for priority cleanup.
+The cmdlet reference says a new policy is not valid until a rule is added, so scripting also needs New-RetentionComplianceRule. Roles for retention policies are the Compliance Administrator role group, or a custom role group with the Retention Management role; Priority Cleanup Admin is a separate role for priority cleanup. For policies that include SharePoint sites, the administrator must be unrestricted; administrators assigned administrative units cannot configure those policies.
 
 ## Open questions
 
@@ -170,11 +174,4 @@ The cmdlet reference says a new policy is not valid until a rule is added, so sc
 risk: Low. The roadmap describes insights and recommendations, and no source says existing retention behaviour changes; retention policies that delete content remain a separate, existing admin decision.
 cost: Low. The only cost the sources show is admin time; a licence or meter specific to the insights and recommendations is not yet published.
 impact: Low. The roadmap item describes the feature as help for customers to govern sensitive data, which points to compliance administrators; Microsoft has not said who sees the insights.
--->
-
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
-The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [unsupported, blocker] front matter: licensing.model / licensing: The insights and recommendations are included in a licence the product already needs. | Found: Searched: "Data Lifecycle Management" "insights" "recommendations" license price meter. Opened Purview service description and DLM getting-started; licences are assigned to particular retention capabilities, with no named entitlement covering these new insights. | Fix: Change licensing.model from "included" to "unknown". Keep the notes and Cost and licensing text distinguishing existing retention-policy licences from the unpublished licence requirement for the insights and recommendations.
-- [contradicted, blocker] controls[1].note; Risk assessment: Security & identity; Scope; Governance guidance; Governance controls / role: The role guidance for creating SharePoint retention policies gives Compliance Administrator or Retention Management but omits the qualification for administrators restricted to administrative units. | Found: you won't be able to configure a retention policy that includes SharePoint sites or Exchange public folders. For these locations, you must be an unrestricted administrator. | Fix: Keep the documented role names, but append this qualification to the role guidance and controls[1].note in both front matter and the rendered table: "For policies that include SharePoint sites, the administrator must be unrestricted; administrators assigned administrative units cannot configure those policies." Source: https://learn.microsoft.com/purview/create-retention-policies. | Source: https://learn.microsoft.com/purview/create-retention-policies
 -->

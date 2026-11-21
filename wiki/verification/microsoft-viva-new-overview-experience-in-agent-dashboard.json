@@ -1,0 +1,931 @@
+{
+  "slug": "microsoft-viva-new-overview-experience-in-agent-dashboard",
+  "roadmapId": 559996,
+  "title": "Viva Insights: new Overview page in the Agent Dashboard",
+  "status": "held",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 1,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "hold",
+  "notes": [
+    "claim 72: severity major on a rationale: risk rating lowered to minor; ratings are judgements and cannot hold a page"
+  ],
+  "hold": {
+    "reason": "failed",
+    "since": "2026-11-21",
+    "reasons": [
+      "2 blocking findings (claims 43, 46)"
+    ]
+  },
+  "counts": {
+    "claims": 73,
+    "confirmed": 68,
+    "unconfirmed": 2,
+    "contradicted": 3,
+    "blocker": 2,
+    "major": 1,
+    "minor": 8
+  },
+  "summary": "Hold: the access description omits restrictions administrators need when deciding who can see the dashboard. Microsoft limits automatic senior-leader access to specific hierarchy levels and warns that Global Administrators in Privileged Identity Management tenants might need to be added explicitly.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "front matter: status; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists the item as Launched.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Launched\", \"statusKey\": \"launched\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: releasePhase; What's changing; Open questions",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing",
+      "type": "record",
+      "claim": "The roadmap target is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap preview date is June CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": \"June CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: clouds; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: platforms; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap platform is Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified on 2026-07-28T22:43:45.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-07-28T22:43:45\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: products",
+      "type": "record",
+      "claim": "The roadmap products are Microsoft Viva and Microsoft Copilot (Microsoft 365).",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"products\": [\"Microsoft Viva\", \"Microsoft Copilot (Microsoft 365)\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "title; summary; What's changing",
+      "type": "behaviour",
+      "claim": "The Agent Dashboard in Viva Insights has a new Overview page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "The overview page gives leaders and analysts an at-a-glance view of their agent landscape before they move into detailed reporting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Governance guidance: At rollout",
+      "type": "behaviour",
+      "claim": "The Overview page is the dashboard's landing view and the first thing leaders and analysts see.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Agent Dashboard\" \"Overview\" landing page read-only reporting actions; opened Connect to the Agent Dashboard (preview), including Access the dashboard and Overview page. It describes orientation before detailed reporting, not which page opens first.",
+      "severity": "major",
+      "fix": "Remove 'the first thing leaders and analysts see before they move into the detailed adoption reporting'. Replace the At rollout bullet with 'Tell leaders and analysts that the Overview page summarises agent adoption and counts agents by creator type.'"
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "The Overview page shows which agents and groups drive adoption and who creates the agents used in the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "It shows which agents and groups are driving adoption, and who is creating the agents used across the organization",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Overview page contains top-level adoption insights and agent creation insights.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "Top-level insights into agent and user adoption over the last 28 days. Agent creation insights that break down active agents by creator type.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "Overview metrics, agents and groups are based on the previous 28 days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "All metrics, agents, and groups on the overview page are based on the last 28 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Agent adoption card shows the total number of active agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "Active agents: The total number of active agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Agent adoption card shows percentage change in active agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "Change: The percentage change in active agents over the last 28 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The Agent adoption card shows the top three agents ranked by agent responses.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "Top agents: The top three agents, ranked by number of agent responses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The User adoption card shows total active users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "Active users: The total number of active users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The User adoption card shows percentage change in active users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "Change: The percentage change in active users over the last 28 days.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "The User adoption card shows the top three groups ranked by active users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "Top groups: The top three groups, ranked by number of active users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The top groups can be viewed by Group, Organization or Job function.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "Select View by to see the top groups by Group (the default), Organization, or Job function.",
+      "severity": "minor",
+      "fix": "Add 'Job function is available only when the relevant organisational data has been uploaded' to the View by description. The same cited page states that this filter only appears after a FunctionType or Microsoft_JobDiscipline upload."
+    },
+    {
+      "n": 21,
+      "where": "What's changing; Why it matters; Governance guidance",
+      "type": "behaviour",
+      "claim": "Agent creation insights break down active agents by creator type.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "It shows the total number of active agents, along with a breakdown of active agents by creator type.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "User agents are built by users and optionally shareable.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "User: Agents built by users and optionally shareable with others",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "What's changing; Why it matters",
+      "type": "behaviour",
+      "claim": "Your org agents are admin-approved agents built by and for the organisation.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "Your org: Admin-approved agents built by and for your organization",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Microsoft is one of the agent creator types.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "Microsoft: Agents built by Microsoft",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Third party agents are admin-approved agents built by a third party.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "Third party: Admin-approved agents built by a third party",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "What's changing; Governance guidance: After rollout",
+      "type": "behaviour",
+      "claim": "Shared agents counts user-created agents with more than one user.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "Shared agents shows the number and percentage of user-created agents that have more than one user.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "What's changing; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Overview cards show agent responses in the Copilot Agent Dashboard view.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "Agent responses (if using the Copilot Agent Dashboard view)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "What's changing; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Overview cards show sessions in the Agent 365 Dashboard view.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "Sessions (if using the Agent 365 Dashboard view)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "What's changing",
+      "type": "behaviour",
+      "claim": "Dashboard data can lag the current date by up to six days.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "There's up to a six-day data delay from the current date.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "What's changing; Risk assessment: Data exposure",
+      "type": "applicability",
+      "claim": "Agent names are suppressed below the minimum group size on the Overview page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "To protect individual privacy, agent names and group metrics aren't shown for groups that are smaller than the minimum group size.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "What's changing; Risk assessment: Data exposure; rationale: risk",
+      "type": "applicability",
+      "claim": "Group metrics are suppressed below the minimum group size on the Overview page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "To protect individual privacy, agent names and group metrics aren't shown for groups that are smaller than the minimum group size.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "What's changing; Risk assessment: Change & support; Open questions",
+      "type": "availability",
+      "claim": "Learn still labels the Copilot Agent Dashboard view as public preview, unlike the roadmap's Launched status.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "The Copilot Agent Dashboard view within the Agent Dashboard is for public preview customers only. Features in preview might not be complete and could undergo changes before becoming available in the broader release.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The preview notice says this feature allows personal data processing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "This preview feature allows personal data processing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Data exposure",
+      "type": "behaviour",
+      "claim": "The Agent Dashboard page describes the analysed population as all employees who have had agent activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "The analyzed population in the Agent Dashboard includes all employees who have had agent activity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: defaultState; summary; Why it matters",
+      "type": "default",
+      "claim": "The Agent Dashboard is on by default for people with access and requires no action to enable its Overview page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "The Agent Dashboard is on by default as part of the Viva Insights web app.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.model",
+      "type": "licensing",
+      "claim": "The licensing model is mixed, reflecting the Copilot licence prerequisite and the additional Agent 365 requirement for the other view.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "Copilot Agent Dashboard: Your organization must have at least 50 Microsoft Copilot licenses assigned and have agent activity. Agent 365 Dashboard: The same licensing requirements as the Copilot Agent Dashboard view, plus Agent 365 licensing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; Governance guidance; rationale: cost",
+      "type": "licensing",
+      "claim": "The Copilot Agent Dashboard view requires at least 50 Microsoft Copilot licences assigned and agent activity.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "Copilot Agent Dashboard: Your organization must have at least 50 Microsoft Copilot licenses assigned and have agent activity.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "front matter: licensing.notes; Cost and licensing; Scope; Governance guidance; rationale: cost",
+      "type": "licensing",
+      "claim": "The Agent 365 Dashboard view requires the Copilot Agent Dashboard prerequisites plus Agent 365 licensing.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "Agent 365 Dashboard: The same licensing requirements as the Copilot Agent Dashboard view, plus Agent 365 licensing.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Cost and licensing",
+      "type": "licensing",
+      "claim": "The All agents toggle does not appear when the organisation does not meet the Agent 365 Dashboard licensing requirement.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "If your organization doesn't meet this requirement, the All agents toggle won't appear in the dashboard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "absence",
+      "claim": "The Agent Dashboard page publishes no price, meter or separate charge specifically for the Overview page.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Agent Dashboard\" \"Overview\" licensing price charge meter; Viva Insights Agent Dashboard Overview page pricing meter separate charge reporting read only actions. Read the complete Agent Dashboard page, including Licensing requirements and Overview page; no Overview charge is specified.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Cost and licensing",
+      "type": "behaviour",
+      "claim": "The Copilot Agent Dashboard view reports Copilot Credit usage by employees without Microsoft Copilot licences.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "associated Copilot Credit usage, which measures how agents are used by employees who don't have Microsoft Copilot licenses.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Scope: Users and access",
+      "type": "admin-path",
+      "claim": "People with access find the dashboard by selecting Agent Dashboard in the Viva Insights web app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "If you have access to the Agent Dashboard, you can find it in the Viva Insights web app. On the left, select Agent Dashboard.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Scope: Users and access; Risk assessment: Security & identity; rationale: impact",
+      "type": "role",
+      "claim": "Senior leaders in qualifying tenants receive automatic access based on the Entra ID manager hierarchy.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "For those qualifying tenants, only users who meet all of the following criteria are enabled by default: 1. The user's in the top three levels in the organization. 2. The user has a significant portion of the organization in their reporting line.",
+      "severity": "blocker",
+      "fix": "Qualify the senior-leader access statements with 'who are in the top three organisational levels and have a significant portion of the organisation in their reporting line', as stated at https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard."
+    },
+    {
+      "n": 44,
+      "where": "Scope: Users and access",
+      "type": "availability",
+      "claim": "A tenant qualifies for senior-leader automatic access only when most users belong to a single reporting line.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "The majority of users in the tenant are part of a single reporting line; for example, they report to the same CEO",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Scope: Users and access; Open questions",
+      "type": "availability",
+      "claim": "A tenant needs at least 2,500 users with an Entra ID to qualify for senior-leader automatic access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "The tenant has at least 2,500 users with an Entra ID",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Scope: Users and access; Risk assessment: Security & identity; Governance guidance; rationale: impact",
+      "type": "role",
+      "claim": "Global Administrators automatically have dashboard access.",
+      "status": "contradicted",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "If you're a Privileged Identity Management (PIM) enabled tenant, global admins might not have access to the Agent Dashboard. If you want to give global admins access to the Agent Dashboard, add them explicitly using these steps.",
+      "severity": "blocker",
+      "fix": "Add 'In Privileged Identity Management (PIM) enabled tenants, Global Administrators might not have dashboard access and must be added explicitly if access is required.' Cite https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard and its linked manage-access instructions; qualify the repeated automatic-access descriptions accordingly."
+    },
+    {
+      "n": 47,
+      "where": "Scope: Users and access; Risk assessment: Security & identity; Governance guidance; rationale: impact",
+      "type": "role",
+      "claim": "Enabled managers with existing team-level Copilot Analytics access can access the Agent Dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "Enabled managers who already have team-level access to Copilot Analytics in Viva Insights can also access the dashboard. Managers can see agent insights scoped to the teams they're enabled to view.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 48,
+      "where": "Scope: Users and access; Risk assessment: Security & identity; Governance guidance; rationale: impact",
+      "type": "role",
+      "claim": "Viva Insights Analysts with global partition access also have automatic dashboard access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "The following types of users also have automatic access to the Agent Dashboard: Viva Insights Analysts with global partition access",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Scope: Users and access; Risk assessment: Security & identity; Governance guidance; rationale: impact",
+      "type": "role",
+      "claim": "Users with delegate access also have dashboard access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "The following types of users also have automatic access to the Agent Dashboard: ... Users with delegate access",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Scope: Users and access",
+      "type": "role",
+      "claim": "Microsoft 365 Global Administrators can disable access.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "Microsoft 365 Global Administrators can disable access at any time.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Scope: Clouds and platforms",
+      "type": "availability",
+      "claim": "The Agent Dashboard is not currently available in national or regional clouds, including U.S. Government clouds and Office 365 operated by 21Vianet.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "The Agent Dashboard isn't currently available for national/regional cloud deployments including but not limited to Microsoft's U.S. Government clouds and Office 365 operated by 21Vianet.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 52,
+      "where": "Scope: Agents covered",
+      "type": "behaviour",
+      "claim": "Both dashboard views cover agents built in Microsoft Copilot Studio, SharePoint and Microsoft 365 Agents Toolkit.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "Both views cover adoption metrics aggregated at the user level, for agents that might be: Built in Microsoft Copilot Studio, SharePoint, and Microsoft 365 Agents Toolkit",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 53,
+      "where": "Scope: Agents covered",
+      "type": "behaviour",
+      "claim": "Covered agents can be built by end users, published by the organisation or created by Microsoft or third parties.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+      "quote": "Built by end users, formally published by your organization, and created by Microsoft or third parties",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 54,
+      "where": "controls[0].ui",
+      "type": "admin-path",
+      "claim": "The Agent Dashboard control is reached through Settings > Microsoft Viva > Viva Insights > Set up and management > Access Management > Turn Advanced Insights on or off > Agent Dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "Under Access Management, select Turn Advanced Insights on or off. ... On the Feature access management page, select Agent Dashboard and Add policy.",
+      "severity": "minor",
+      "fix": "Complete the path as 'Settings > Microsoft Viva > Viva Insights > Set up and management > Access Management > Turn Advanced Insights on or off > Feature access management > Agent Dashboard > Add policy'. The printed route reaches the correct feature but stops before Add policy and omits the page heading."
+    },
+    {
+      "n": 55,
+      "where": "controls[0].api",
+      "type": "command",
+      "claim": "Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId AgentDashboard -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone creates the tenant policy disabling the Agent Dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy",
+      "quote": "Add-VivaModuleFeaturePolicy -FeatureId <String> -IsFeatureEnabled <Boolean> -ModuleId <String> -Name <String> ... [-Everyone]",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy to sources. Its syntax and parameter definitions verify the call, while the already-cited manage-settings page supplies VivaInsights, AgentDashboard, false and Everyone for this operation. Keep the call unchanged."
+    },
+    {
+      "n": 56,
+      "where": "controls[1].ui",
+      "type": "admin-path",
+      "claim": "The Viva Insights web app control can be configured through Viva > Settings > Manage feature access > Create a policy.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/control-access-admin-center",
+      "quote": "From the Microsoft 365 admin center, select Viva from the settings menu. Select the Settings tab and select Manage feature access. Select Create a policy.",
+      "severity": "minor",
+      "fix": "Complete the route as 'Settings > Viva > Settings > Manage feature access > Create a policy > Viva Insights > Viva Insights web app > Access setting > Off'. Keep the note about selecting the app and feature. The printed path reaches the policy page but omits the settings-menu heading and stops before the documented setting."
+    },
+    {
+      "n": 57,
+      "where": "controls[1].api",
+      "type": "command",
+      "claim": "Add-VivaModuleFeaturePolicy -ModuleId VivaInsights -FeatureId \"Viva Insights web app\" -Name DisableFeatureForAll -IsFeatureEnabled $false -Everyone creates the tenant policy disabling the web app.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy",
+      "quote": "The Everyone switch specifies that the policy applies to all users in the organization. ... $false: The feature is not enabled by the policy.",
+      "severity": "minor",
+      "fix": "Add https://learn.microsoft.com/powershell/module/exchange/add-vivamodulefeaturepolicy to sources. The reference verifies the parameters and values; the already-cited manage-settings page supplies the Viva Insights web app feature identifier. Keep the call unchanged."
+    },
+    {
+      "n": 58,
+      "where": "controls[0].note; controls[1].note; Governance controls",
+      "type": "role",
+      "claim": "AI Administrators can manage both controls, and Global Administrators can manage all these settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "In addition to the roles described below, all settings can also be managed by Microsoft 365 Global Administrators. ... Applies to: AI Administrator",
+      "severity": "minor",
+      "fix": "Add 'The feature access management overview table lists Global admin for the Viva Insights web app, whereas this manage-settings page lists AI Administrator; the role documentation differs.' Both pages are already cited: https://learn.microsoft.com/viva/feature-access-management and https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard."
+    },
+    {
+      "n": 59,
+      "where": "controls[0].note; Governance guidance: At rollout",
+      "type": "applicability",
+      "claim": "The Agent Dashboard policy can enable or disable access at tenant, group or user level.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "The AI admin can enable or disable the Agent Dashboard at the tenant, group, or user level using the Agent Dashboard VFAM control in the Microsoft 365 admin center.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 60,
+      "where": "Risk assessment: Security & identity; Governance controls",
+      "type": "applicability",
+      "claim": "Access to the Agent Dashboard requires both its own control and the Viva Insights web app control to be enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "To access the Agent Dashboard, both the Viva Insights web app control and this control must be enabled.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 61,
+      "where": "controls[1].note; Governance controls",
+      "type": "applicability",
+      "claim": "Disabling the Viva Insights web app disables the entire app, including Copilot Dashboard, Copilot Analytics reports, advanced analysis and admin tools.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "Turning this control off disables the entire app, which includes the Microsoft Copilot Dashboard, Copilot Analytics reports, and advanced analysis and admin tools.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 62,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Viva feature access management policy changes take effect within 24 hours unless a feature states otherwise.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/feature-access-management",
+      "quote": "Changes to access policies take effect for the user within 24 hours, unless noted for a specific feature.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 63,
+      "where": "Governance controls",
+      "type": "default",
+      "claim": "The dashboards' minimum group size defaults to 10 employees.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "The dashboards' adoption and impact pages provide group-level metrics for groups that meet or exceed the minimum group size you set, which by default is 10 employees.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 64,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Minimum group size must be at least five.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "Enter your preferred minimum group size, which must be at least five, then select Save.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 65,
+      "where": "Governance controls; Risk assessment: Data exposure; Governance guidance",
+      "type": "applicability",
+      "claim": "The unified exclusion list hides selected employees from dashboard aggregates, including the Agent Dashboard.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "Your organization might want to exclude certain users from being included in the aggregated insights in the Microsoft Copilot Dashboard, Agent Dashboard, Consumption Dashboard, or Viva Insights behavior collaboration reports",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 66,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "The exclusion policy must be turned on to use the exclusion list.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "To use an exclusion list, you must turn on the policy.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 67,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "Organisational data upload affects the Agent Dashboard and is documented on the manage-settings page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "Upload organizational data for the Copilot Dashboard and Agent Dashboard",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 68,
+      "where": "Governance controls",
+      "type": "applicability",
+      "claim": "VFAM can limit Agent 365 Dashboard reporting to agents available to all users instead of including non-public agents.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "You can also use VFAM to set whether reporting in the Agent 365 Dashboard view includes non-public agents, or only agents available to all users in the organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 69,
+      "where": "Governance controls",
+      "type": "behaviour",
+      "claim": "Non-public agents include agents with creator type Your org or User.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "Non-public agents include agents with a creator type of Your org or user, and might not be available to all users in your organization.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 70,
+      "where": "Governance controls",
+      "type": "default",
+      "claim": "The Agent 365 Dashboard includes all agents by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+      "quote": "By default, the Agent 365 Dashboard includes all agents.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 71,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "The Agent Dashboard Learn page describes no action the Overview page takes on agents or users.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: \"Agent Dashboard\" \"Overview\" landing page read-only reporting actions; Viva Insights Agent Dashboard Overview page pricing meter separate charge reporting read only actions. Read the complete Agent Dashboard page; Overview actions navigate or filter reporting, not modify agents or users.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 72,
+      "where": "rationale: risk",
+      "type": "behaviour",
+      "claim": "The Overview page is read-only reporting on the dashboard's existing agent-activity data.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: \"Agent Dashboard\" \"Overview\" landing page read-only reporting actions. Read the full Agent Dashboard page and manage-settings page. They describe adoption reporting, but do not explicitly establish read-only operation or that this new view uses only previously existing data.",
+      "severity": "minor",
+      "fix": "Replace the risk rationale with 'Low. The Overview page summarises agent and user adoption over the last 28 days, with group metrics suppressed below the minimum group size.' This is supported by https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard."
+    },
+    {
+      "n": 73,
+      "where": "Governance guidance: Before rollout",
+      "type": "consistency",
+      "claim": "The checklist tells readers to check minimum group size and exclusion-list settings, but neither control has a table row.",
+      "status": "contradicted",
+      "source": "page",
+      "quote": "'Confirm the minimum group size and exclusion list settings that apply to the dashboards' versus controls containing only 'Whether the Agent Dashboard ... is available' and 'Whether the Viva Insights web app ... is on'.",
+      "severity": "minor",
+      "fix": "Remove the Before rollout bullet 'Confirm the minimum group size and exclusion list settings that apply to the dashboards, described in the notes below the controls table.' Those two checklist controls have no table row; keep the existing descriptive notes without adding rows."
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T20:54:44.775Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 2,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 2,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=559996",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/org-team-insights/agent-dashboard",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/feature-access-management",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/viva/control-access-admin-center",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Whether the Agent Dashboard, including its Overview page, is available",
+        "docs": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+        "reachable": true,
+        "segments": [
+          "Settings",
+          "Microsoft Viva",
+          "Viva Insights",
+          "Set up and management",
+          "Access Management",
+          "Turn Advanced Insights on or off",
+          "Agent Dashboard"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Whether the Agent Dashboard, including its Overview page, is available",
+        "docs": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+        "reachable": true,
+        "token": "Add-VivaModuleFeaturePolicy",
+        "found": true
+      },
+      {
+        "index": 1,
+        "side": "ui",
+        "governs": "Whether the Viva Insights web app, which hosts the Agent Dashboard, is on",
+        "docs": "https://learn.microsoft.com/viva/control-access-admin-center",
+        "reachable": true,
+        "segments": [
+          "Viva",
+          "Settings",
+          "Manage feature access",
+          "Create a policy"
+        ],
+        "missing": []
+      },
+      {
+        "index": 1,
+        "side": "api",
+        "governs": "Whether the Viva Insights web app, which hosts the Agent Dashboard, is on",
+        "docs": "https://learn.microsoft.com/viva/insights/advanced/admin/manage-settings-copilot-dashboard",
+        "reachable": true,
+        "token": "Add-VivaModuleFeaturePolicy",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}

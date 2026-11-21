@@ -34,6 +34,9 @@ sources:
   - title: "Microsoft Copilot reporting options for admins"
     url: "https://learn.microsoft.com/copilot/manage/copilot-admin-reports"
     kind: "learn"
+  - title: "Drive adoption with Microsoft Copilot Usage report Organizational Messaging"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/track-copilot-adoption"
+    kind: "learn"
   - title: "Update adminReportSettings"
     url: "https://learn.microsoft.com/graph/api/adminreportsettings-update?view=graph-rest-beta"
     kind: "learn"
@@ -63,19 +66,23 @@ changes:
     note: "New briefing for the Microsoft 365 Copilot usage report in GCC High and DoD, launched per the roadmap."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 47 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Correction: replaced the claim that the report takes no action and end users see no change; reworded one control note and removed two checklist steps that had no controls-table row."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: passed with 0 of 63 statements not yet confirmed"
+version: 2
 verification:
-  status: "held"
+  status: "verified-with-gaps"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 47
-  confirmed: 45
+  claims: 63
+  confirmed: 63
   unconfirmed: 0
-  contradicted: 2
-  attempts: 1
-  hash: "65be9ab504e8bca45b702157a8b8a71e"
+  contradicted: 0
+  attempts: 0
+  hash: "377799aec0bc5f0a0d3ce07c7383bb3a"
 ---
 
 ## What's changing
@@ -106,7 +113,7 @@ The user-level table is the part to govern. Microsoft Learn says usernames, disp
 
 **Autonomy & actions**
 
-- No change: the report reads activity data and takes no action on users or content.
+- The roadmap describes activity reporting; it does not state whether organizational messaging is available in the GCC High or DoD report.
 
 **Change & support**
 
@@ -130,13 +137,11 @@ The report is in the Microsoft 365 admin center under Reports > Usage, then Micr
 
 ### Before rollout
 
-- Confirm which role holders can open usage reports in your tenant, using the role list on the Microsoft 365 admin center usage reports overview.
 - Check the current state of **Conceal user, group, and site names in all reports** and decide whether named user-level data is acceptable under your organisation's privacy practices.
 - Agree who owns the adoption figures and which source (this report, the Microsoft Copilot Dashboard or Purview audit data) is the reference.
 
 ### At rollout
 
-- Open Reports > Usage > Microsoft Copilot > Copilot in the Microsoft 365 admin center and confirm the report appears for an administrator with a permitted role in your GCC High or DoD tenant.
 - Leave names concealed unless a named review is needed; if you show them, record who approved it, because the change is an audited event.
 
 ### After rollout
@@ -156,7 +161,7 @@ The report is in the Microsoft 365 admin center under Reports > Usage, then Micr
 </tbody>
 </table>
 
-The one control Microsoft documents for this report's user-level data is the tenant-wide org setting that conceals user, group and site names in all usage reports. It is not specific to Copilot: it applies to the properties of reports across Microsoft 365, and Learn says it also applies to the usage reports in Microsoft Graph and Power BI. Global administrators can update it, per Learn. The Graph API is documented in beta, and its reference page marks it available in US Government L4 and L5 (DOD) deployments.
+A documented control for this report's user-level data is the tenant-wide org setting that conceals user, group and site names in all usage reports. It is not specific to Copilot: it applies to the properties of reports across Microsoft 365, and Learn says it also applies to the usage reports in Microsoft Graph and Power BI. Global administrators can update it, per Learn. The Graph API is documented in beta, and its reference page marks it available in US Government L4 and L5 (DOD) deployments.
 
 Access to the report itself is set by the Microsoft Entra roles listed in Scope, not by a Copilot-specific switch on this page.
 
@@ -167,17 +172,13 @@ Access to the report itself is set by the Microsoft Entra roles listed in Scope,
 - Does the GCC High or DoD report differ from the public cloud report described on Learn (for example in metrics, columns or timeframes)? Watch the Learn Microsoft Copilot usage report page.
 
 <!-- rationale
-risk: Low. The report only reports on Copilot activity, and Microsoft Learn says usernames and display names are hidden in usage reports by default until an administrator changes the org setting.
+risk: Low. The roadmap describes Copilot activity reporting, and Microsoft Learn says usernames and display names are hidden in usage reports by default until an administrator changes the org setting.
 cost: Low. The only cost the sources show is administrator time to read the report. Microsoft Learn names roles, not a licence, for viewing it, and no meter is documented for it at the time of writing (November 2026).
-impact: Low. Administrators and report readers see the report; end users see no change. The roadmap item describes it as a report, not a change to Copilot behaviour.
+impact: Low. Administrators and report readers see the report. The roadmap item describes it as a report, not a change to Copilot behaviour.
 -->
 
-<!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
+<!-- verifier-findings (2026-11-21, verified-with-gaps; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
-Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] Risk assessment: Autonomy & actions; rationale: risk and impact / behaviour: The report only reports activity, takes no action on users or content, and end users see no change. | Found: You can identify and address Copilot adoption gaps in your organization by using the Organizational Messages feature that's built into the Microsoft Copilot usage report. This feature sends notifications directly to the users you need to reach to increase usage and adoption. | Fix: Replace the Autonomy & actions bullet with 'The roadmap describes activity reporting; it does not state whether organizational messaging is available in the GCC High or DoD report.' In the risk rationale replace 'The report only reports on Copilot activity' with 'The roadmap describes Copilot activity reporting'. In the impact rationale remove 'end users see no change'. Do not assert government-cloud messaging availability from the general documentation. | Source: https://learn.microsoft.com/microsoft-365/copilot/track-copilot-adoption
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Scope; Governance guidance: At rollout / admin-path: The report is reached through Reports > Usage > Microsoft Copilot > Copilot and the Usage tab. | Found: On the Usage page, under Reports, select Microsoft Copilot, and then select Copilot. On the report page, select the Usage tab to view adoption and usage metrics. | Fix: In the At rollout checklist, complete the path as 'Microsoft 365 admin center > Reports > Usage > Microsoft Copilot > Copilot > Usage', adding the Usage tab already given in Scope. | Source: https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-usage
-- [supported, minor] controls[0].note; Governance controls / applicability: The tenant concealment setting applies across Microsoft 365 usage reports, including Graph and Power BI reports, not just Copilot. | Found: By default, all reports hide user information such as usernames, display names, groups, and sites to help companies support local privacy laws. This setting also applies to the Microsoft 365 usage reports in Microsoft Graph and Power BI | Fix: Change 'The one control Microsoft documents for this report's user-level data is' to 'A documented control for this report's user-level data is'. The briefing also correctly identifies role-based access, so avoid suggesting the concealment setting is the sole documented control. | Source: https://learn.microsoft.com/microsoft-365/admin/activity-reports/activity-reports
-- [contradicted, minor] Governance guidance: Before rollout and At rollout; Governance controls / consistency: The checklist asks readers to review report access and open the usage report, but the controls table records only name concealment. | Found: Confirm which role holders can open usage reports in your tenant Open Reports > Usage > Microsoft Copilot > Copilot controls: Whether usernames and display names show in the Copilot usage report | Fix: The Before rollout role-access review and At rollout report-opening step have no corresponding controls-table row. Do not add rows in this correction; remove those checklist bullets or keep them as non-checklist background in Scope, where the documented roles and report path already appear.
+- [supported, minor] Scope: report navigation / admin-path: The report is reached through Microsoft 365 admin center > Reports > Usage > Microsoft Copilot > Copilot > Usage tab. | Found: On the Usage page, under Reports, select Microsoft Copilot, and then select Copilot. ... select the Usage tab. Reporting options instead says: Select Microsoft Copilot > Readiness or Usage. | Fix: Keep the existing route and append: 'The Copilot reporting options overview gives an alternative route: Reports > Usage > Microsoft Copilot > Usage (https://learn.microsoft.com/copilot/manage/copilot-admin-reports#microsoft-365-admin-center-reports).' | Source: https://learn.microsoft.com/microsoft-365/admin/activity-reports/microsoft-365-copilot-usage
 -->

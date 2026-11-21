@@ -40,6 +40,18 @@ sources:
   - title: "Enable your tenant for Work IQ"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq"
     kind: "learn"
+  - title: "Work IQ MCP overview"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview"
+    kind: "learn"
+  - title: "Policy governance for Work IQ MCP"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp"
+    kind: "learn"
+  - title: "Migrate agentic retrieval workflows to Work IQ MCP"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/migrate-retrieval-api"
+    kind: "learn"
+  - title: "Use Copilot Connectors with Work IQ APIs"
+    url: "https://learn.microsoft.com/microsoft-365/copilot/connectors/connectors-in-work-iq-apis"
+    kind: "learn"
   - title: "Connect and use Work IQ in Claude"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/claude"
     kind: "learn"
@@ -58,10 +70,10 @@ sources:
   - title: "Microsoft Work IQ general availability: release details and features"
     url: "https://www.microsoft.com/en-us/licensing/news/work-iq-general-availability"
     kind: "docs"
-  - title: "Whether a spending policy covers Work IQ API for custom apps and agents (Microsoft Graph)"
+  - title: "Update spendingPolicyServiceSetting"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-update"
     kind: "learn"
-  - title: "Monthly policy limit and per-user limit for credits (Microsoft Graph)"
+  - title: "Update spendingPolicy"
     url: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update"
     kind: "learn"
 videos: []
@@ -77,7 +89,7 @@ controls:
       kind: "graph"
       call: "PATCH /beta/copilot/costManagement/spendingPolicies/{id}/serviceSettings/{serviceId}"
       docs: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-update"
-    note: "The request body sets state; disabled removes a service. Delegated only; needs CopilotCostManagement-Policy.ReadWrite.All. Applies per policy, not tenant-wide."
+    note: "The request body sets state; disabled removes a service unless it is the policy's last enabled service (409 atLeastOneServiceRequired). Delegated only; needs CopilotCostManagement-Policy.ReadWrite.All. Applies per policy."
   - governs: "Monthly policy limit and per-user limit for credits"
     scope: "group"
     ui:
@@ -98,19 +110,23 @@ changes:
     note: "First briefing for this item: the Work IQ REST API, its Copilot Credits billing and the spending-policy controls that govern it."
   - date: "2026-11-21"
     note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 6 of 84 statements contradicted, 0 unconfirmed; taken offline until corrected"
-version: 1
+  - date: "2026-11-21"
+    note: "Corrected after verification: service removal in a spending policy cannot disable the last enabled service; removed the claim that MCP policy controls are undocumented for REST; clarified service principal provisioning; trimmed checklist items without a controls row."
+  - date: "2026-11-21"
+    note: "Checked against Microsoft Learn by gpt-6.1-sol: held: 2 of 86 statements contradicted, 0 unconfirmed; taken offline until corrected"
+version: 2
 verification:
   status: "held"
   date: "2026-11-21"
-  version: 1
+  version: 2
   model: "gpt-6.1-sol"
   engine: "copilot"
-  claims: 84
-  confirmed: 78
+  claims: 86
+  confirmed: 84
   unconfirmed: 0
-  contradicted: 6
-  attempts: 1
-  hash: "157519cf9f24699a89fcb1853197962d"
+  contradicted: 2
+  attempts: 2
+  hash: "ae60cae8363316ca9e288f37b2dc6946"
 ---
 
 ## What's changing
@@ -158,7 +174,7 @@ Charges and consumption appear in the Microsoft 365 admin center under Copilot >
 
 The record lists Worldwide (Standard Multi-Tenant) only and the Developer platform, with General Availability and Preview as release phases. It lists no US Government clouds; that is a record fact, not a statement that the API is unavailable there.
 
-Callers sign in as a user: Learn says application-only authentication is not supported. A tenant must be enabled once: a Global Administrator creates the Work IQ service principal, and the enablement page lists a usage-based billing plan with an Azure subscription and resource group as a prerequisite.
+Callers sign in as a user: Learn says application-only authentication is not supported. The enablement page documents one-time manual provisioning of the Work IQ service principal. The MCP overview also says that this principal is created automatically on first use and manual provisioning can be needed before that. The enablement page lists a usage-based billing plan with an Azure subscription and resource group as a prerequisite.
 
 Who can spend depends on spending policy scope. Learn's Claude walkthrough lists an identity-based spending policy covering the users and the Work IQ API service as a prerequisite for that integration.
 
@@ -167,14 +183,12 @@ Who can spend depends on spending policy scope. Learn's Claude walkthrough lists
 ### Before rollout
 - Ask development teams which apps will call the Work IQ REST, A2A or MCP endpoints, and who owns each app registration.
 - Review each existing spending policy under Copilot > Cost Management > Configuration and note whether Work IQ API for custom apps and agents is selected; Learn says Auto-apply new services is enabled by default.
-- Confirm that a usage-based billing plan with an Azure subscription and resource group exists, as the enablement page requires.
 
 ### At rollout
-- Create or edit an identity-based spending policy that names an approved security group and selects the Work IQ API service, and exclude the service from policies whose users should not consume credits through it.
+- Create or edit an identity-based spending policy to select the Work IQ API service, and exclude the service from policies whose users should not consume credits through it. The API refuses to disable a policy's last enabled service.
 - Set the policy and per-user limits, remembering that Learn's policy page asks for at least 2,000 credits per user per month and that limits do not reserve credits.
 
 ### After rollout
-- Review the Consumption tab by service, user and group each month to see Work IQ API spend against the shared credit pool.
 - Investigate any `QuotaExhausted` error by checking the policy's service selection, limits, billing method and prepaid capacity.
 - Re-read the Work IQ REST reference when Microsoft moves the `/beta` operations to production.
 
@@ -185,23 +199,23 @@ Who can spend depends on spending policy scope. Learn's Claude walkthrough lists
 <table class="controls">
 <thead><tr><th>Control</th><th>Admin UI</th><th>API and automation</th></tr></thead>
 <tbody>
-<tr><td data-label="Control"><strong>Whether a spending policy covers Work IQ API for custom apps and agents</strong><br><small>Tenant</small><br><small class="controls__note">The request body sets state; disabled removes a service. Delegated only; needs CopilotCostManagement-Policy.ReadWrite.All. Applies per policy, not tenant-wide.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › spending policy › Agents and services <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}/serviceSettings/{serviceId}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
+<tr><td data-label="Control"><strong>Whether a spending policy covers Work IQ API for custom apps and agents</strong><br><small>Tenant</small><br><small class="controls__note">The request body sets state; disabled removes a service unless it is the policy's last enabled service (409 atLeastOneServiceRequired). Delegated only; needs CopilotCostManagement-Policy.ReadWrite.All. Applies per policy.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › spending policy › Agents and services <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}/serviceSettings/{serviceId}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 <tr><td data-label="Control"><strong>Monthly policy limit and per-user limit for credits</strong><br><small>Group</small><br><small class="controls__note">The request body sets periodLimit and perUserLimit. Limits do not reserve credits. Delegated only; needs CopilotCostManagement-Policy.ReadWrite.All.</small></td><td data-label="Admin UI"><strong>Microsoft 365 admin center</strong><br>Copilot › Cost Management › Configuration › spending policy › Spending limits <a href="https://learn.microsoft.com/copilot/implement/usage-based-billing-manage-copilot-credits" rel="noopener" class="controls__docs">Learn</a></td><td data-label="API and automation"><strong>Microsoft Graph</strong><br><code>PATCH /beta/copilot/costManagement/spendingPolicies/{id}</code> <a href="https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicy-update" rel="noopener" class="controls__docs">Learn</a></td></tr>
 </tbody>
 </table>
 
 Both rows are spending-policy controls. They decide who may consume Work IQ API credits and how much; they are not a switch that blocks the endpoint itself. Learn's cost page notes that excluding a service from one policy does not exclude it from other policies, including the default policy.
 
-The Graph calls are `/beta`, delegated only and need the `CopilotCostManagement-Policy.ReadWrite.All` permission. The one-time tenant enablement, a Global Administrator creating the Work IQ service principal, is documented on the Enable your tenant for Work IQ page.
+The Graph calls are `/beta`, delegated only and need the `CopilotCostManagement-Policy.ReadWrite.All` permission. The enablement page documents one-time manual provisioning of the Work IQ service principal, and the MCP overview says the principal is created automatically on first use.
 
-The Work IQ MCP policy and block controls in the Microsoft 365 admin center are documented for the MCP server. Microsoft Learn pages read for this briefing do not apply them to the REST API (see Open questions).
+The Work IQ MCP policy and block controls in the Microsoft 365 admin center are documented for the MCP server. Separately, Learn's connectors page says administrators can explicitly enable or disable connector participation in Work IQ paths through tenant-level policies.
 
 ## Open questions
 
 - Which legacy Copilot Chat endpoints does the roadmap mean, and will Microsoft publish retirement dates in Message center or the Work IQ API overview?
 - Does Microsoft document a tenant control that blocks the Work IQ REST API itself, as opposed to limiting who can spend credits on it?
 - What credit rate applies to a typical Work IQ Chat API request? The announcement lists it as variable by scenario.
-- Is Work IQ API for custom apps and agents added automatically to existing spending policies, and what is the state on arrival for a tenant that has not configured billing?
+- What is the state on arrival for a tenant that has not configured billing?
 - Which operations does the REST API offer for invoking agents and workflows, beyond the multi-turn chat the reference documents?
 
 <!-- rationale
@@ -213,14 +227,8 @@ impact: Low. The people who notice are developers who build against the endpoint
 <!-- verifier-findings (2026-11-21, held; checked by gpt-6.1-sol)
 The independent check found fault only with the statements below. This is a correction: change what they name and carry the rest of the page over unchanged.
 Correct each of these with the smallest change that removes the fault: delete the statement, narrow it, or put the finding's own "Found" text or worded replacement in its place. Where a fix asks for more than that (a new row, an explanation, further references), do only the part that removes the fault. A correction adds no control rows.
-- [contradicted, blocker] controls[0].note; Governance controls table; Governance guidance: At rollout / command: Setting state to disabled removes a service from a policy, without stating the last-enabled-service restriction. | Found: Setting state to disabled is the removal semantic; the entry is retained in that state, and the collection has no DELETE. Disabling the last enabled service is refused with a 409 atLeastOneServiceRequired response. | Fix: Replace 'The request body sets state; disabled removes a service.' in controls[0].note and its rendered copy with 'The request body sets state; disabled removes a service unless it is the policy's last enabled service, which returns 409 atLeastOneServiceRequired.' Add 'The API refuses to disable a policy's last enabled service.' to the At rollout service-exclusion bullet. Keep the documented PATCH call unchanged. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/api/admin-settings/cost-management/spendingpolicyservicesetting-update
-- [contradicted, blocker] Governance controls / absence: Microsoft Learn does not document applicability of Work IQ MCP policy controls to the REST API. | Found: Work IQ MCP provides Rego-based policy governance to control access to connectors through Work IQ APIs. Connector access is enabled by default. Administrators can explicitly enable or disable connector participation in Work IQ paths through tenant-level policies. | Fix: Remove 'Microsoft Learn pages read for this briefing do not apply them to the REST API (see Open questions).' The connector documentation explicitly describes tenant policies controlling connector participation through Work IQ APIs and includes a Work IQ REST API section. Do not replace it with a claim that all MCP controls or the MCP server block govern REST. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/connectors-in-work-iq-apis
+- [contradicted, blocker] front matter: defaultState; What's changing; Why it matters; Open questions / default: The default state is unknown because Microsoft has not stated what happens on arrival, including for a tenant without billing configured. | Found: Before Work IQ usage can begin at GA on June 16, an administrator must enable consumptive billing. | Fix: Set defaultState to admin-opt-in. Replace the last clause of What's changing about no stated tenant on/off state, and the first sentence of Why it matters' second paragraph, with: 'Microsoft says an administrator must enable consumption billing before Work IQ API usage can begin.' Replace the Open questions bullet about a tenant without billing with: 'A tenant without consumption billing configured cannot begin Work IQ API usage; an administrator must enable billing first.' Cite https://learn.microsoft.com/partner-center/announcements/2026-june#work-iq-api-and-consumptive-pricing-update. | Source: https://learn.microsoft.com/partner-center/announcements/2026-june#work-iq-api-and-consumptive-pricing-update
 These are minor and do not hold the page. Where removing the statement, or rewording it in the words the fix gives, settles one, do that; otherwise leave it as it is. A minor finding may also add a source link it names for a statement already on the page. It adds no row and nothing that needs research.
-- [supported, minor] Scope; Governance controls / behaviour: A tenant is enabled once by creating the Work IQ service principal. | Found: one-time per organization. This section creates the Work IQ service principal in your organization, which provisions the Work IQ resource so your applications can request tokens for it. | Fix: Replace the mandatory-manual-setup wording in Scope and Governance controls with: 'The enablement page documents one-time manual provisioning of the Work IQ service principal. The MCP overview also says that this principal is created automatically on first use and manual provisioning can be needed before that.' Cite https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/overview, which states 'The Work IQ service principal is created automatically in the tenant when you use Work IQ for the first time.' | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/enable-work-iq
-- [supported, minor] Governance controls / applicability: The Microsoft 365 admin center has documented Work IQ MCP tenant-policy controls. | Found: In the Microsoft 365 admin center, tenant administrators can turn Work IQ MCP policy on or off for the tenant. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp to sources for the statement about MCP policy controls. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/policy-governance-mcp
-- [supported, minor] Governance controls / applicability: Work IQ MCP can be blocked tenant-wide. | Found: Block Work IQ MCP tenant-wide only when you intend to stop it for the entire tenant. | Fix: Add https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/migrate-retrieval-api to sources for the MCP blocking statement. | Source: https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq/mcp/migrate-retrieval-api
-- [contradicted, minor] Open questions; Governance guidance: Before rollout / consistency: The question treats automatic addition to existing spending policies as unanswered despite stating the documented default Auto-apply new services behaviour. | Found: Learn says Auto-apply new services is enabled by default. Is Work IQ API for custom apps and agents added automatically to existing spending policies | Fix: Replace that Open questions bullet with 'What is the state on arrival for a tenant that has not configured billing?' Remove the already-answered question about automatic addition to spending policies.
-- [contradicted, minor] Governance guidance: Before rollout; Governance controls table / consistency: The checklist tells administrators to check billing-plan configuration, but no controls row covers that control. | Found: Confirm that a usage-based billing plan with an Azure subscription and resource group exists, as the enablement page requires. Whether a spending policy covers Work IQ API for custom apps and agents Monthly policy limit and per-user limit for credits | Fix: The Before rollout billing-plan check has no controls-table row. Remove that checklist bullet; retain the verified prerequisite in Scope.
-- [contradicted, minor] Governance guidance: At rollout; Governance controls table / consistency: The checklist instructs administrators to configure the policy's security-group scope, but the table has no scope-setting row. | Found: Create or edit an identity-based spending policy that names an approved security group and selects the Work IQ API service Whether a spending policy covers Work IQ API for custom apps and agents Monthly policy limit and per-user limit for credits | Fix: The policy security-group scope instruction has no controls-table row. Replace the At rollout bullet with 'Create or edit an identity-based spending policy to select the Work IQ API service, and exclude the service from policies whose users should not consume credits through it. The API refuses to disable a policy's last enabled service.' This also incorporates the service-removal qualification.
-- [contradicted, minor] Governance guidance: After rollout; Governance controls table / consistency: The checklist tells administrators to review the Consumption reporting control, but no table row covers it. | Found: Review the Consumption tab by service, user and group each month to see Work IQ API spend against the shared credit pool. Whether a spending policy covers Work IQ API for custom apps and agents Monthly policy limit and per-user limit for credits | Fix: The Consumption-tab review has no controls-table row. Remove that After rollout checklist bullet; retain the verified consumption-monitoring location in Cost and licensing.
+- [supported, minor] Risk assessment: Data exposure / behaviour: Copilot Connector sources are reachable through Work IQ APIs. | Found: Copilot Connectors, both synced and federated, participate in Work IQ APIs when they're available to the signed-in user and connected by that user as data sources in Microsoft 365 Copilot Chat. | Fix: Replace 'Copilot Connectors sources are reachable through Work IQ APIs' with 'Work IQ APIs can reach Copilot Connector sources that are available to the signed-in user and connected by that user in Microsoft 365 Copilot Chat; not every configured connector is available through Work IQ.' The qualifications are at https://learn.microsoft.com/microsoft-365/copilot/connectors/connectors-in-work-iq-apis. | Source: https://learn.microsoft.com/microsoft-365/copilot/connectors/connectors-in-work-iq-apis
+- [contradicted, minor] Governance guidance: After rollout; Governance controls / consistency: The checklist asks readers to check billing method and prepaid capacity, but neither has a controls-table row. | Found: Investigate any `QuotaExhausted` error by checking the policy's service selection, limits, billing method and prepaid capacity. The table contains only service coverage and policy/per-user limits. | Fix: Replace the After rollout bullet with: 'Investigate any `QuotaExhausted` error by checking the policy's service selection and limits.' Do not add controls-table rows as part of this correction.
 -->

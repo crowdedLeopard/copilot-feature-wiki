@@ -1,0 +1,655 @@
+{
+  "slug": "microsoft-teams-near-real-time-detection-of-malicious-qr-codes-in-messages",
+  "roadmapId": 576198,
+  "title": "Microsoft Teams: near-real-time detection of malicious QR codes in messages",
+  "status": "verified-with-gaps",
+  "date": "2026-11-21",
+  "version": 1,
+  "model": "gpt-6.1-sol",
+  "engine": "copilot",
+  "attempts": 0,
+  "standard": "8d9ea11d6387",
+  "writerStandard": "09a7e0bf2292",
+  "verifierVerdict": "pass",
+  "notes": [],
+  "hold": null,
+  "counts": {
+    "claims": 51,
+    "confirmed": 50,
+    "unconfirmed": 1,
+    "contradicted": 0,
+    "blocker": 0,
+    "major": 1,
+    "minor": 0
+  },
+  "summary": "The briefing passes: the rollout, default, licensing and controls are supported by Microsoft's documentation and tenant notice. The general statement that QR codes bypass text-based link checks needs narrowing; the sources checked do not establish that mechanism.",
+  "claims": [
+    {
+      "n": 1,
+      "where": "title; What's changing",
+      "type": "record",
+      "claim": "Microsoft Teams is extending URL protection with near-real-time detection of malicious destinations in QR codes in messages.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "Microsoft Teams will introduce near-real-time detection of malicious QR codes shared in messages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 2,
+      "where": "front matter: status; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap status is Rolling out.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"status\": \"Rolling out\", \"statusKey\": \"rolling-out\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 3,
+      "where": "front matter: targetDate; What's changing; Scope",
+      "type": "record",
+      "claim": "The roadmap target is November CY2026.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"targetDate\": \"November CY2026\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 4,
+      "where": "front matter: previewDate",
+      "type": "record",
+      "claim": "The roadmap supplies no preview date.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"previewDate\": null",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 5,
+      "where": "front matter: releasePhase; Scope",
+      "type": "record",
+      "claim": "The roadmap release phase is General Availability.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"releasePhase\": [\"General Availability\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 6,
+      "where": "front matter: clouds; Scope; Open questions",
+      "type": "record",
+      "claim": "The roadmap lists Worldwide (Standard Multi-Tenant), GCC, GCC High and DoD.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"clouds\": [\"Worldwide (Standard Multi-Tenant)\", \"GCC\", \"GCC High\", \"DoD\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 7,
+      "where": "front matter: platforms; Scope",
+      "type": "record",
+      "claim": "The roadmap platforms are Android, Desktop, iOS, Mac and Web.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"platforms\": [\"Android\", \"Desktop\", \"iOS\", \"Mac\", \"Web\"]",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 8,
+      "where": "front matter: roadmapModified",
+      "type": "record",
+      "claim": "The roadmap record was modified at 2026-11-17T00:31:56.",
+      "status": "supported",
+      "source": "roadmap record",
+      "quote": "\"modified\": \"2026-11-17T00:31:56\"",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 9,
+      "where": "What's changing; Risk assessment: Data exposure; Scope",
+      "type": "record",
+      "claim": "Teams decodes and evaluates QR destinations in inline images in 1:1 chats, group chats, meeting chats and channels.",
+      "status": "supported",
+      "source": "Message Center post MC1526651",
+      "quote": "Teams will decode and evaluate QR code destinations in inline images shared in 1:1 chats, group chats, meeting chats, and channels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 10,
+      "where": "What's changing; Risk assessment: Data exposure; Scope; rationale: impact",
+      "type": "record",
+      "claim": "Detection covers Teams messaging users in internal and external communications.",
+      "status": "supported",
+      "source": "Message Center post MC1526651",
+      "quote": "Users who use Microsoft Teams messaging ... Detection applies to internal and external communications.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 11,
+      "where": "summary; What's changing; Governance guidance; rationale: risk",
+      "type": "record",
+      "claim": "A malicious QR detection adds the warning 'This message contains a link that might be harmful'.",
+      "status": "supported",
+      "source": "Message Center post MC1526651",
+      "quote": "When Teams identifies a malicious QR code, users will also see the warning, “This message contains a link that might be harmful,”",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 12,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "The malicious QR warning includes a 'Learn about file and link safety' link.",
+      "status": "supported",
+      "source": "Message Center post MC1526651",
+      "quote": "and a “Learn about file and link safety” link.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 13,
+      "where": "What's changing; Why it matters",
+      "type": "record",
+      "claim": "QR images from external senders are already blurred by default, and malicious detection adds a warning to that experience.",
+      "status": "supported",
+      "source": "Message Center post MC1526651",
+      "quote": "Images containing QR codes from external senders are already blurred by default. When Teams identifies a malicious QR code, users will also see the warning",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 14,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "QR images from internal senders are not blurred by default, subject to the stated China mobile exception.",
+      "status": "supported",
+      "source": "Message Center post MC1526651",
+      "quote": "QR code images from internal senders are not blurred by default. The same warning will appear when Teams detects a malicious QR code.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 15,
+      "where": "What's changing; Why it matters; Governance guidance",
+      "type": "behaviour",
+      "claim": "Blurring is a separate precaution and does not mean Teams identified a QR code as malicious.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/qr-code-obscuring-teams-messages",
+      "quote": "A blurred QR code doesn't mean that Teams identified the QR code as malicious.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 16,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "Teams mobile users in China receive QR image blurring for both internal and external senders.",
+      "status": "supported",
+      "source": "Message Center post MC1526651",
+      "quote": "For users on Teams mobile in China, QR code images are blurred by default regardless of whether the sender is internal or external",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 17,
+      "where": "What's changing; Risk assessment: Autonomy & actions",
+      "type": "record",
+      "claim": "Messages containing malicious QR codes are blocked for Teams mobile users in China.",
+      "status": "supported",
+      "source": "Message Center post MC1526651",
+      "quote": "and any messages containing malicious QR code will be blocked.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 18,
+      "where": "summary; controls[0].governs; Cost and licensing; Governance controls; rationale: risk",
+      "type": "record",
+      "claim": "The existing Malicious URL protection setting manages malicious QR code detection.",
+      "status": "supported",
+      "source": "Message Center post MC1526651",
+      "quote": "Malicious QR code detection is managed by the existing Malicious URL protection setting.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 19,
+      "where": "front matter: defaultState; summary; controls[0].note; Why it matters",
+      "type": "default",
+      "claim": "Malicious URL protection and its QR detection extension are on by default.",
+      "status": "supported",
+      "source": "Message Center post MC1526651",
+      "quote": "The setting is enabled by default. Organizations with Malicious URL protection enabled will automatically receive malicious QR code detection as the feature rolls out.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 20,
+      "where": "Why it matters; Risk assessment: Security & identity; Governance guidance",
+      "type": "record",
+      "claim": "Organisations with Malicious URL protection enabled receive QR detection automatically during rollout.",
+      "status": "supported",
+      "source": "Message Center post MC1526651",
+      "quote": "Organizations with Malicious URL protection enabled will automatically receive malicious QR code detection as the feature rolls out.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 21,
+      "where": "summary; What's changing",
+      "type": "record",
+      "claim": "MC1526651 requires no admin action.",
+      "status": "supported",
+      "source": "Message Center post MC1526651",
+      "quote": "No admin action is required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 22,
+      "where": "What's changing; Scope; Governance guidance: At rollout; Open questions",
+      "type": "record",
+      "claim": "MC1526651 names only Worldwide general availability, beginning in mid-November 2026 and expected to complete by late November 2026.",
+      "status": "supported",
+      "source": "Message Center post MC1526651",
+      "quote": "General Availability (Worldwide): Beginning in mid-November 2026 (previously early November) and expected to complete by late November 2026 (previously mid-November)",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 23,
+      "where": "front matter: changes; What's changing",
+      "type": "record",
+      "claim": "The November 10, 2026 update changed the rollout timeline.",
+      "status": "supported",
+      "source": "Message Center post MC1526651",
+      "quote": "Updated November 10, 2026: We have updated the timeline.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 24,
+      "where": "What's changing",
+      "type": "record",
+      "claim": "MC1526651 sets no act-by date.",
+      "status": "supported",
+      "source": "Message Center post MC1526651",
+      "quote": "Act by: none",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 25,
+      "where": "What's changing; rationale: impact",
+      "type": "behaviour",
+      "claim": "When a URL, directly supplied or embedded in a QR code, is flagged, Teams warns the sender and all recipients.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/malicious-url-protection-teams",
+      "quote": "If the URL is detected as potentially malicious, Teams displays warnings to both the sender and all recipients in the conversation.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 26,
+      "where": "controls[0].ui; Governance controls; Open questions",
+      "type": "admin-path",
+      "claim": "Learn gives Teams admin center > Messaging > Messaging settings > Messaging safety > Malicious URL protection.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/malicious-url-protection-teams",
+      "quote": "In the left navigation, go to Messaging > Messaging settings. ... Under Messaging safety, turn off or turn on Malicious URL protection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 27,
+      "where": "controls[0].api; controls[0].note; Governance controls; Governance guidance: After rollout",
+      "type": "command",
+      "claim": "The MicrosoftTeams cmdlet Set-CsTeamsMessagingConfiguration -UrlReputationCheck Enabled enables tenant malicious URL detection; Disabled is also allowed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration?view=teams-ps",
+      "quote": "-UrlReputationCheck ... This setting enables malicious URL detection in Teams messages in the tenant. Possible Values: ... Enabled ... Disabled",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 28,
+      "where": "controls[0].note; Governance controls; Open questions",
+      "type": "absence",
+      "claim": "The cmdlet reference describes UrlReputationCheck but does not explicitly name the admin center toggle or its QR detection linkage.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Set-CsTeamsMessagingConfiguration UrlReputationCheck malicious URL protection QR separate switch per-user per-group. Read the full Set-CsTeamsMessagingConfiguration reference; no admin toggle name or QR linkage is given.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 29,
+      "where": "controls[1]; Cost and licensing; Governance controls",
+      "type": "absence",
+      "claim": "No separate UI or automation configuration for malicious QR detection is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams malicious QR code detection separate configuration; Set-CsTeamsMessagingConfiguration UrlReputationCheck QR separate switch. Read malicious URL protection and the cmdlet reference; MC1526651 explicitly says no separate configuration is available or required.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 30,
+      "where": "controls[2]",
+      "type": "absence",
+      "claim": "No admin UI or automation control to enable or disable external-sender QR blurring is documented.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams QR code obscuring blurring disable PowerShell Graph admin controls. Read QR code obscuring and Set-CsTeamsMessagingConfiguration; the obscuring page states there are no admin controls to enable or disable it.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 31,
+      "where": "controls[0].scope; controls[0].note; Scope; Governance controls",
+      "type": "applicability",
+      "claim": "Malicious URL protection is tenant-level and applies to all users in the organisation when enabled.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/malicious-url-protection-teams",
+      "quote": "This is a tenant-level setting. When enabled, all users in your organization have malicious URL protection applied to their Teams messages.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 32,
+      "where": "Scope",
+      "type": "default",
+      "claim": "New tenants receive malicious URL protection as Teams baseline security without admin configuration.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/malicious-url-protection-teams",
+      "quote": "For new tenants, this protection is included as part of Teams baseline security protection and doesn’t require admin configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 33,
+      "where": "Scope",
+      "type": "availability",
+      "claim": "Existing tenants and GCC, GCC High and DoD tenants can turn malicious URL protection off or on, and it is enabled by default.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/malicious-url-protection-teams",
+      "quote": "For existing tenants and GCC, GCC High, and DoD tenants, admins can turn malicious URL protection off or on in the Teams admin center. It's enabled by default.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 34,
+      "where": "Risk assessment: Security & identity",
+      "type": "applicability",
+      "claim": "In external conversations, protection applies to all participants if any participating organisation enables it.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/malicious-url-protection-teams",
+      "quote": "If any organization in the conversation has malicious URL protection enabled, the protection applies to all participants.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 35,
+      "where": "front matter: licensing.model; licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Malicious URL protection is included as baseline protection available to all Teams users.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/malicious-url-protection-teams",
+      "quote": "Is available for all Teams users as part of baseline protection.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 36,
+      "where": "front matter: licensing.notes; Cost and licensing; rationale: cost",
+      "type": "licensing",
+      "claim": "Malicious URL protection does not require an additional licence.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/malicious-url-protection-teams",
+      "quote": "Doesn't require an additional license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 37,
+      "where": "front matter: licensing.notes; Cost and licensing",
+      "type": "absence",
+      "claim": "No separate meter, price or licence specific to QR detection is published at the time of writing.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Microsoft Teams malicious QR code detection pricing meter license separate configuration UrlReputationCheck. Read malicious URL protection, QR obscuring, the cmdlet reference and Defender Teams licensing excerpts; none publishes separate QR pricing or entitlement.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 38,
+      "where": "Risk assessment: Security & identity; rationale: risk",
+      "type": "behaviour",
+      "claim": "Malicious URL protection does not block URLs on click, and recipients can choose to proceed.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/malicious-url-protection-teams",
+      "quote": "Doesn't block URLs on click. ... Can choose whether to proceed with caution or avoid the link entirely.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 39,
+      "where": "Risk assessment: Change & support",
+      "type": "behaviour",
+      "claim": "Learn describes warnings for URLs identified as potentially malicious.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/malicious-url-protection-teams",
+      "quote": "Adds warnings to messages to inform users about URLs identified as potentially malicious.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 40,
+      "where": "Risk assessment: Security & identity; Cost and licensing",
+      "type": "behaviour",
+      "claim": "Safe Links is separate from baseline warnings and blocks URLs at click time according to Defender portal settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/malicious-url-protection-teams",
+      "quote": "Safe Links: ... Blocks URLs at the time of click based on your Defender portal settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 41,
+      "where": "Risk assessment: Security & identity; Cost and licensing",
+      "type": "licensing",
+      "claim": "Safe Links requires Microsoft Defender for Office 365 Plan 1 or Plan 2.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/malicious-url-protection-teams",
+      "quote": "Safe Links: ... Requires a Microsoft Defender for Office 365 Plan 1 or Plan 2 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 42,
+      "where": "Risk assessment: Security & identity; Cost and licensing",
+      "type": "behaviour",
+      "claim": "ZAP for Teams is a separate capability that removes malicious URLs and content in internal messages according to Defender settings.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/malicious-url-protection-teams",
+      "quote": "Zero-hour auto purge (ZAP): ... Removes malicious URLs and content entirely for internal messages. ... Actions are based on your Defender portal settings.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 43,
+      "where": "Risk assessment: Security & identity; Cost and licensing",
+      "type": "licensing",
+      "claim": "ZAP for Teams requires Microsoft Defender for Office 365 Plan 1 or Plan 2 as stated on the cited comparison page.",
+      "status": "supported",
+      "source": "https://learn.microsoft.com/microsoftteams/malicious-url-protection-teams",
+      "quote": "Zero-hour auto purge (ZAP): ... Requires a Microsoft Defender for Office 365 Plan 1 or Plan 2 license.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 44,
+      "where": "Why it matters; Risk assessment: Change & support; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft recommends informing users and help desk staff about the additional warning.",
+      "status": "supported",
+      "source": "Message Center post MC1526651",
+      "quote": "Inform users and help desk staff about the additional warning for detected malicious QR codes.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 45,
+      "where": "Why it matters; Governance guidance",
+      "type": "record",
+      "claim": "Microsoft recommends explaining that blurring is separate and does not signify a malicious detection.",
+      "status": "supported",
+      "source": "Message Center post MC1526651",
+      "quote": "Clarify that QR code blurring is a separate precautionary experience and does not mean that Teams has identified a QR code as malicious.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 46,
+      "where": "Risk assessment: Change & support; Governance guidance: Before rollout",
+      "type": "record",
+      "claim": "Microsoft recommends reviewing internal Teams messaging security documentation and updating it if necessary.",
+      "status": "supported",
+      "source": "Message Center post MC1526651",
+      "quote": "Review internal documentation about Teams messaging security and update it if necessary.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 47,
+      "where": "Why it matters",
+      "type": "behaviour",
+      "claim": "QR codes in images can carry phishing links past text-based link checks.",
+      "status": "unsupported",
+      "source": null,
+      "quote": "Searched: QR codes images phishing bypass text based URL link detection Microsoft Teams. Read malicious URL protection and QR obscuring, and returned Teams security and phishing excerpts; none states the claimed bypass of text-based checks.",
+      "severity": "major",
+      "fix": "Replace 'QR codes in images are a way to carry a phishing link past text-based link checks, and this change brings them under the same protection as typed URLs.' with 'This change brings destinations in QR codes under the same malicious URL protection as typed URLs.'"
+    },
+    {
+      "n": 48,
+      "where": "Governance controls",
+      "type": "absence",
+      "claim": "No per-user, per-group or separate QR control is documented; the existing tenant setting is the documented lever for this feature.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Set-CsTeamsMessagingConfiguration UrlReputationCheck malicious URL protection QR separate switch per-user per-group. Read malicious URL protection and the full cmdlet reference; they give tenant-wide configuration, and MC1526651 rules out separate QR configuration.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 49,
+      "where": "Governance controls; Open questions",
+      "type": "record",
+      "claim": "MC1526651 gives a different navigation route: Teams admin center > Settings and policies > Messaging Safety.",
+      "status": "supported",
+      "source": "Message Center post MC1526651",
+      "quote": "Admins can review or change the existing Malicious URL protection setting in Teams admin center > Settings and policies > Messaging Safety.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 50,
+      "where": "Open questions",
+      "type": "record",
+      "claim": "MC1526651 specifies inline images, without describing QR detection in files or other attachments.",
+      "status": "supported",
+      "source": "Message Center post MC1526651",
+      "quote": "Teams will decode and evaluate QR code destinations in inline images shared in 1:1 chats, group chats, meeting chats, and channels.",
+      "severity": null,
+      "fix": null
+    },
+    {
+      "n": 51,
+      "where": "Risk assessment: Autonomy & actions",
+      "type": "absence",
+      "claim": "No broader autonomous actions are described beyond the warnings and China mobile blocking specified in the same bullet.",
+      "status": "supported",
+      "source": null,
+      "quote": "Searched: Teams malicious QR code detection autonomous actions warning blocking. Read malicious URL protection, QR obscuring and MC1526651; they describe scanning, warnings, blurring and the China mobile blocking exception, not further autonomous actions.",
+      "severity": null,
+      "fix": null
+    }
+  ],
+  "precheck": {
+    "at": "2026-11-21T20:54:41.324Z",
+    "summary": {
+      "links": 5,
+      "unreachable": 0,
+      "uiPaths": 1,
+      "uiPathsWithMissingWords": 0,
+      "apiCalls": 1,
+      "apiCallsNotOnPage": 0,
+      "roadmapDrift": 0
+    },
+    "linkChecks": [
+      {
+        "url": "https://www.microsoft.com/microsoft-365/roadmap?id=576198",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/malicious-url-protection-teams",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/microsoftteams/qr-code-obscuring-teams-messages",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration?view=teams-ps",
+        "ok": true,
+        "status": 200
+      },
+      {
+        "url": "https://admin.microsoft.com/Adminportal/Home#/MessageCenter/:/messages/MC1526651",
+        "ok": true,
+        "status": 200
+      }
+    ],
+    "controlChecks": [
+      {
+        "index": 0,
+        "side": "ui",
+        "governs": "Malicious URL protection, which Microsoft says covers QR code detection",
+        "docs": "https://learn.microsoft.com/microsoftteams/malicious-url-protection-teams",
+        "reachable": true,
+        "segments": [
+          "Messaging",
+          "Messaging settings",
+          "Messaging safety",
+          "Malicious URL protection"
+        ],
+        "missing": []
+      },
+      {
+        "index": 0,
+        "side": "api",
+        "governs": "Malicious URL protection, which Microsoft says covers QR code detection",
+        "docs": "https://learn.microsoft.com/powershell/module/microsoftteams/set-csteamsmessagingconfiguration?view=teams-ps",
+        "reachable": true,
+        "token": "Set-CsTeamsMessagingConfiguration",
+        "found": true
+      }
+    ],
+    "roadmapDrift": []
+  },
+  "history": []
+}
